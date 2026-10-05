@@ -1,0 +1,15 @@
+import { readFile, readdir, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { summarizePerformanceReport } from './lib/performance-assessment.mjs';
+const runId=process.argv[2];
+const outputName=process.argv[3]||'performance-summary';
+if(!/^[a-z][a-z0-9-]{0,80}$/.test(outputName))throw new Error('Invalid report file name.');
+if(!/^browser-run-\d+$/.test(runId||''))throw new Error('Pass the observed browser run ID.');
+const directory='output/validation/telemetry';
+const files=(await readdir(directory)).filter(file=>file.startsWith(runId+'-')&&file.endsWith('.json')).sort();
+if(!files.length)throw new Error('No captured telemetry for the requested browser run.');
+const source=files.at(-1),report=JSON.parse(await readFile(path.join(directory,source),'utf8'));
+const summary=summarizePerformanceReport(report,{runId,source:'telemetry/'+source});
+await writeFile('output/validation/'+outputName+'.json',JSON.stringify(summary,null,2)+'\n');
+console.log(JSON.stringify(summary,null,2));
+if(summary.violations.length)process.exitCode=1;

@@ -1,0 +1,1233 @@
+{
+  "schema": "connected-seascape-delivery-v1",
+  "date": "2026-10-06",
+  "passed": true,
+  "scope": "fresh four-owner 128m committed seabeds share interior seams; actual birth and habitat source; visited supports and ecological history retained",
+  "files": {
+    "legacyBefore": {
+      "metadata": "telemetry/reef-1791216095264-metadata-2026-10-05T16-01-35-365Z-cca01bda.json",
+      "image": "output/validation/screenshots/reef-1791216095264-2026-10-05T16-01-35-289Z-859fb8e8.png"
+    },
+    "legacyAfter": {
+      "metadata": "telemetry/reef-1791216967688-metadata-2026-10-05T16-16-08-007Z-bd9e6def.json",
+      "image": "output/validation/screenshots/reef-1791216967688-2026-10-05T16-16-07-770Z-22ba6d80.png"
+    },
+    "connected": {
+      "metadata": "telemetry/reef-1791217200732-metadata-2026-10-05T16-20-00-920Z-ff91762f.json",
+      "image": "output/validation/screenshots/reef-1791217200732-2026-10-05T16-20-00-776Z-083f6041.png"
+    },
+    "crossed": {
+      "metadata": "telemetry/reef-1791217478594-metadata-2026-10-05T16-24-38-774Z-a3c6c1cd.json",
+      "image": "output/validation/screenshots/reef-1791217478594-2026-10-05T16-24-38-624Z-8e6f491b.png"
+    },
+    "away": {
+      "metadata": "telemetry/reef-1791217531035-metadata-2026-10-05T16-25-31-465Z-795f2b56.json",
+      "image": "output/validation/screenshots/reef-1791217531035-2026-10-05T16-25-31-132Z-341d2e1b.png"
+    },
+    "revisit": {
+      "metadata": "telemetry/reef-1791217559577-metadata-2026-10-05T16-26-00-508Z-4ea2624e.json",
+      "image": "output/validation/screenshots/reef-1791217559577-2026-10-05T16-25-59-679Z-e34aa18e.png"
+    },
+    "refreshed": {
+      "metadata": "telemetry/reef-1791217916032-metadata-2026-10-05T16-31-56-190Z-bfcc5caf.json",
+      "image": "output/validation/screenshots/reef-1791217916032-2026-10-05T16-31-56-061Z-c78e9204.png"
+    }
+  },
+  "preservation": {
+    "legacy": {
+      "animalsExact": true,
+      "regionsExact": true,
+      "environmentExact": true,
+      "clockExact": true,
+      "discoveriesExact": true,
+      "elementsExact": true,
+      "cameraWithin1eMinus10Metres": true,
+      "targetWithin1eMinus10Metres": true,
+      "viewportExact": true
+    },
+    "legacyAfterExploration": {
+      "animalsExact": true,
+      "regionsExact": true,
+      "environmentExact": true,
+      "clockExact": true,
+      "discoveriesExact": true,
+      "elementsExact": true,
+      "cameraWithin1eMinus10Metres": true,
+      "targetWithin1eMinus10Metres": true,
+      "viewportExact": true
+    },
+    "revisit": {
+      "animalsExact": true,
+      "regionsExact": true,
+      "environmentExact": true,
+      "clockExact": true,
+      "discoveriesExact": true,
+      "elementsExact": true,
+      "cameraWithin1eMinus10Metres": true,
+      "targetWithin1eMinus10Metres": true,
+      "viewportExact": true
+    },
+    "refresh": {
+      "animalsExact": true,
+      "regionsExact": true,
+      "environmentExact": true,
+      "clockExact": true,
+      "discoveriesExact": true,
+      "elementsExact": true,
+      "cameraWithin1eMinus10Metres": true,
+      "targetWithin1eMinus10Metres": true,
+      "viewportExact": true
+    }
+  },
+  "checks": {
+    "actualConnectedPlans": true,
+    "actualCrossedPlans": true,
+    "sharedSeamsExact": true,
+    "actualNonzeroCrossOwnerRelief": true,
+    "commonRegionAnimalsExact": true,
+    "commonCompleteRegionsExact": true,
+    "allCrossedOwnersUnloaded": true,
+    "ready": true,
+    "bounded": true,
+    "clean": true,
+    "paused": true,
+    "originalNotesExact": true,
+    "revisitedNotesExact": true,
+    "refreshedNotesExact": true,
+    "normalRouteCrossedNonzeroSeam": true
+  },
+  "seams": [
+    {
+      "owners": [
+        "54,8",
+        "54,9"
+      ],
+      "direction": "north-south",
+      "exactSeam": true,
+      "maxDeltaM": 4.010955333709717,
+      "longestSpanM": 13
+    },
+    {
+      "owners": [
+        "54,8",
+        "55,8"
+      ],
+      "direction": "east-west",
+      "exactSeam": true,
+      "maxDeltaM": 1.6452131271362305,
+      "longestSpanM": 2
+    },
+    {
+      "owners": [
+        "54,9",
+        "55,9"
+      ],
+      "direction": "east-west",
+      "exactSeam": true,
+      "maxDeltaM": 0.6589460372924805,
+      "longestSpanM": 0
+    },
+    {
+      "owners": [
+        "55,8",
+        "55,9"
+      ],
+      "direction": "north-south",
+      "exactSeam": true,
+      "maxDeltaM": 0.00009250640869140625,
+      "longestSpanM": 0
+    }
+  ],
+  "domObservation": {
+    "file": "seascape-notes-observation.json",
+    "source": "Read-only #reef-diagnostics in the actual user browser, not canvas metadata or a store mutation.",
+    "originalPointCount": 8,
+    "finalPointCount": 10,
+    "normalRoute": {
+      "start": [
+        3502.5,
+        -7.657638740539577,
+        544
+      ],
+      "arrival": {
+        "errors": [],
+        "individuals": 119,
+        "loading": 0,
+        "position": [
+          3502.5,
+          -7.210505570221696,
+          608
+        ],
+        "travelling": false
+      },
+      "sharedBoundaryZ": 576,
+      "nonzeroSpanX": [
+        3496,
+        3509
+      ],
+      "method": "Clicked normal 相邻生境 navigation from 连续海床; observed completed 64m continuous route before one existing overview action."
+    }
+  },
+  "samples": {
+    "first": {
+      "individuals": 120,
+      "alive": 120,
+      "owners": [
+        {
+          "id": "53,7",
+          "version": 0,
+          "theme": "original"
+        },
+        {
+          "id": "53,8",
+          "version": 1,
+          "theme": "ridge-gully"
+        },
+        {
+          "id": "53,9",
+          "version": 2,
+          "theme": "meadow-edge"
+        },
+        {
+          "id": "54,8",
+          "version": 4,
+          "theme": "connected-seascape"
+        },
+        {
+          "id": "54,9",
+          "version": 4,
+          "theme": "connected-seascape"
+        },
+        {
+          "id": "54,7",
+          "version": 0,
+          "theme": "original"
+        },
+        {
+          "id": "55,7",
+          "version": 1,
+          "theme": "ridge-gully"
+        },
+        {
+          "id": "55,8",
+          "version": 4,
+          "theme": "connected-seascape"
+        },
+        {
+          "id": "55,9",
+          "version": 4,
+          "theme": "connected-seascape"
+        }
+      ],
+      "plans": [
+        {
+          "id": "54,8",
+          "group": {
+            "id": "connected-seascape:54,8",
+            "cx": 54,
+            "cz": 8,
+            "ownerIds": [
+              "54,8",
+              "55,8",
+              "54,9",
+              "55,9"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope",
+              "seagrass"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "deltaSpanM": 4.654311180114746,
+            "maxSlope": 0.6499898806667463,
+            "minDepthM": 13.945300102233887,
+            "mostDisplaced": {
+              "x": 3502,
+              "z": 572,
+              "deltaM": 4.654311180114746
+            },
+            "longestInternalSeamM": 13,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 53,
+                "endM": 55,
+                "lengthM": 2,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 566
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 40,
+                "endM": 53,
+                "lengthM": 13,
+                "sign": 1,
+                "center": {
+                  "x": 3502.5,
+                  "z": 576
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 6.644178456580608,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "maxSlope": 0.6206203025103408
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 25,
+              "seagrass": 0,
+              "slope": 39,
+              "authored-reef": 0
+            },
+            "primary": "slope",
+            "secondary": "sand",
+            "minDepthM": 14.366518497467041,
+            "maxDepthM": 18.886345833378208
+          }
+        },
+        {
+          "id": "54,9",
+          "group": {
+            "id": "connected-seascape:54,8",
+            "cx": 54,
+            "cz": 8,
+            "ownerIds": [
+              "54,8",
+              "55,8",
+              "54,9",
+              "55,9"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope",
+              "seagrass"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "deltaSpanM": 4.654311180114746,
+            "maxSlope": 0.6499898806667463,
+            "minDepthM": 13.945300102233887,
+            "mostDisplaced": {
+              "x": 3502,
+              "z": 572,
+              "deltaM": 4.654311180114746
+            },
+            "longestInternalSeamM": 13,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 53,
+                "endM": 55,
+                "lengthM": 2,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 566
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 40,
+                "endM": 53,
+                "lengthM": 13,
+                "sign": 1,
+                "center": {
+                  "x": 3502.5,
+                  "z": 576
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 6.644178456580608,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 4.010955333709717,
+            "maxSlope": 0.6499898806667463
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 9,
+              "seagrass": 0,
+              "slope": 55,
+              "authored-reef": 0
+            },
+            "primary": "slope",
+            "secondary": null,
+            "minDepthM": 17.18942356109619,
+            "maxDepthM": 18.911956787109375
+          }
+        },
+        {
+          "id": "55,8",
+          "group": {
+            "id": "connected-seascape:54,8",
+            "cx": 54,
+            "cz": 8,
+            "ownerIds": [
+              "54,8",
+              "55,8",
+              "54,9",
+              "55,9"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope",
+              "seagrass"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "deltaSpanM": 4.654311180114746,
+            "maxSlope": 0.6499898806667463,
+            "minDepthM": 13.945300102233887,
+            "mostDisplaced": {
+              "x": 3502,
+              "z": 572,
+              "deltaM": 4.654311180114746
+            },
+            "longestInternalSeamM": 13,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 53,
+                "endM": 55,
+                "lengthM": 2,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 566
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 40,
+                "endM": 53,
+                "lengthM": 13,
+                "sign": 1,
+                "center": {
+                  "x": 3502.5,
+                  "z": 576
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 6.644178456580608,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 1.6452131271362305,
+            "maxSlope": 0.47551035322680124
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 5,
+              "seagrass": 0,
+              "slope": 59,
+              "authored-reef": 0
+            },
+            "primary": "slope",
+            "secondary": null,
+            "minDepthM": 18.296481132507324,
+            "maxDepthM": 18.93748651811282
+          }
+        },
+        {
+          "id": "55,9",
+          "group": {
+            "id": "connected-seascape:54,8",
+            "cx": 54,
+            "cz": 8,
+            "ownerIds": [
+              "54,8",
+              "55,8",
+              "54,9",
+              "55,9"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope",
+              "seagrass"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "deltaSpanM": 4.654311180114746,
+            "maxSlope": 0.6499898806667463,
+            "minDepthM": 13.945300102233887,
+            "mostDisplaced": {
+              "x": 3502,
+              "z": 572,
+              "deltaM": 4.654311180114746
+            },
+            "longestInternalSeamM": 13,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 53,
+                "endM": 55,
+                "lengthM": 2,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 566
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 40,
+                "endM": 53,
+                "lengthM": 13,
+                "sign": 1,
+                "center": {
+                  "x": 3502.5,
+                  "z": 576
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 6.644178456580608,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 0.6589460372924805,
+            "maxSlope": 0.12271106627423177
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 45,
+              "seagrass": 0,
+              "slope": 19,
+              "authored-reef": 0
+            },
+            "primary": "sand",
+            "secondary": "slope",
+            "minDepthM": 18.057626724243164,
+            "maxDepthM": 18.78311245012647
+          }
+        }
+      ],
+      "counts": {
+        "rock": 49,
+        "coral": 118,
+        "seagrass": 357,
+        "rubble": 543,
+        "algae": 137,
+        "formation": 0,
+        "driftwood": 2,
+        "bottle": 0
+      }
+    },
+    "crossed": {
+      "individuals": 119,
+      "alive": 119,
+      "owners": [
+        {
+          "id": "53,8",
+          "version": 1,
+          "theme": "ridge-gully"
+        },
+        {
+          "id": "54,8",
+          "version": 4,
+          "theme": "connected-seascape"
+        },
+        {
+          "id": "55,8",
+          "version": 4,
+          "theme": "connected-seascape"
+        },
+        {
+          "id": "53,9",
+          "version": 2,
+          "theme": "meadow-edge"
+        },
+        {
+          "id": "54,9",
+          "version": 4,
+          "theme": "connected-seascape"
+        },
+        {
+          "id": "55,9",
+          "version": 4,
+          "theme": "connected-seascape"
+        },
+        {
+          "id": "53,10",
+          "version": 2,
+          "theme": "patch-reef"
+        },
+        {
+          "id": "54,10",
+          "version": 4,
+          "theme": "connected-seascape"
+        },
+        {
+          "id": "55,10",
+          "version": 4,
+          "theme": "connected-seascape"
+        }
+      ],
+      "plans": [
+        {
+          "id": "54,8",
+          "group": {
+            "id": "connected-seascape:54,8",
+            "cx": 54,
+            "cz": 8,
+            "ownerIds": [
+              "54,8",
+              "55,8",
+              "54,9",
+              "55,9"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope",
+              "seagrass"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "deltaSpanM": 4.654311180114746,
+            "maxSlope": 0.6499898806667463,
+            "minDepthM": 13.945300102233887,
+            "mostDisplaced": {
+              "x": 3502,
+              "z": 572,
+              "deltaM": 4.654311180114746
+            },
+            "longestInternalSeamM": 13,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 53,
+                "endM": 55,
+                "lengthM": 2,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 566
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 40,
+                "endM": 53,
+                "lengthM": 13,
+                "sign": 1,
+                "center": {
+                  "x": 3502.5,
+                  "z": 576
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 6.644178456580608,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "maxSlope": 0.6206203025103408
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 25,
+              "seagrass": 0,
+              "slope": 39,
+              "authored-reef": 0
+            },
+            "primary": "slope",
+            "secondary": "sand",
+            "minDepthM": 14.366518497467041,
+            "maxDepthM": 18.886345833378208
+          }
+        },
+        {
+          "id": "55,8",
+          "group": {
+            "id": "connected-seascape:54,8",
+            "cx": 54,
+            "cz": 8,
+            "ownerIds": [
+              "54,8",
+              "55,8",
+              "54,9",
+              "55,9"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope",
+              "seagrass"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "deltaSpanM": 4.654311180114746,
+            "maxSlope": 0.6499898806667463,
+            "minDepthM": 13.945300102233887,
+            "mostDisplaced": {
+              "x": 3502,
+              "z": 572,
+              "deltaM": 4.654311180114746
+            },
+            "longestInternalSeamM": 13,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 53,
+                "endM": 55,
+                "lengthM": 2,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 566
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 40,
+                "endM": 53,
+                "lengthM": 13,
+                "sign": 1,
+                "center": {
+                  "x": 3502.5,
+                  "z": 576
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 6.644178456580608,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 1.6452131271362305,
+            "maxSlope": 0.47551035322680124
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 5,
+              "seagrass": 0,
+              "slope": 59,
+              "authored-reef": 0
+            },
+            "primary": "slope",
+            "secondary": null,
+            "minDepthM": 18.296481132507324,
+            "maxDepthM": 18.93748651811282
+          }
+        },
+        {
+          "id": "54,9",
+          "group": {
+            "id": "connected-seascape:54,8",
+            "cx": 54,
+            "cz": 8,
+            "ownerIds": [
+              "54,8",
+              "55,8",
+              "54,9",
+              "55,9"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope",
+              "seagrass"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "deltaSpanM": 4.654311180114746,
+            "maxSlope": 0.6499898806667463,
+            "minDepthM": 13.945300102233887,
+            "mostDisplaced": {
+              "x": 3502,
+              "z": 572,
+              "deltaM": 4.654311180114746
+            },
+            "longestInternalSeamM": 13,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 53,
+                "endM": 55,
+                "lengthM": 2,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 566
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 40,
+                "endM": 53,
+                "lengthM": 13,
+                "sign": 1,
+                "center": {
+                  "x": 3502.5,
+                  "z": 576
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 6.644178456580608,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 4.010955333709717,
+            "maxSlope": 0.6499898806667463
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 9,
+              "seagrass": 0,
+              "slope": 55,
+              "authored-reef": 0
+            },
+            "primary": "slope",
+            "secondary": null,
+            "minDepthM": 17.18942356109619,
+            "maxDepthM": 18.911956787109375
+          }
+        },
+        {
+          "id": "55,9",
+          "group": {
+            "id": "connected-seascape:54,8",
+            "cx": 54,
+            "cz": 8,
+            "ownerIds": [
+              "54,8",
+              "55,8",
+              "54,9",
+              "55,9"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope",
+              "seagrass"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.654311180114746,
+            "deltaSpanM": 4.654311180114746,
+            "maxSlope": 0.6499898806667463,
+            "minDepthM": 13.945300102233887,
+            "mostDisplaced": {
+              "x": 3502,
+              "z": 572,
+              "deltaM": 4.654311180114746
+            },
+            "longestInternalSeamM": 13,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 53,
+                "endM": 55,
+                "lengthM": 2,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 566
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 40,
+                "endM": 53,
+                "lengthM": 13,
+                "sign": 1,
+                "center": {
+                  "x": 3502.5,
+                  "z": 576
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 6.644178456580608,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 0.6589460372924805,
+            "maxSlope": 0.12271106627423177
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 45,
+              "seagrass": 0,
+              "slope": 19,
+              "authored-reef": 0
+            },
+            "primary": "sand",
+            "secondary": "slope",
+            "minDepthM": 18.057626724243164,
+            "maxDepthM": 18.78311245012647
+          }
+        },
+        {
+          "id": "54,10",
+          "group": {
+            "id": "connected-seascape:54,10",
+            "cx": 54,
+            "cz": 10,
+            "ownerIds": [
+              "54,10",
+              "55,10",
+              "54,11",
+              "55,11"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.242427825927734,
+            "deltaSpanM": 4.242427825927734,
+            "maxSlope": 0.6499900592767717,
+            "minDepthM": 14.164885520935059,
+            "mostDisplaced": {
+              "x": 3497,
+              "z": 703,
+              "deltaM": 4.242427825927734
+            },
+            "longestInternalSeamM": 23,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 91,
+                "endM": 94,
+                "lengthM": 3,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 732.5
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 29,
+                "endM": 52,
+                "lengthM": 23,
+                "sign": 1,
+                "center": {
+                  "x": 3496.5,
+                  "z": 704
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 5.541610049406555,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 4.242427825927734,
+            "maxSlope": 0.6499900592767717
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 10,
+              "seagrass": 0,
+              "slope": 54,
+              "authored-reef": 0
+            },
+            "primary": "slope",
+            "secondary": null,
+            "minDepthM": 15.201841354370117,
+            "maxDepthM": 19.019947376456003
+          }
+        },
+        {
+          "id": "55,10",
+          "group": {
+            "id": "connected-seascape:54,10",
+            "cx": 54,
+            "cz": 10,
+            "ownerIds": [
+              "54,10",
+              "55,10",
+              "54,11",
+              "55,11"
+            ],
+            "widthM": 128,
+            "outerGuardM": 16,
+            "gridSize": 129,
+            "fieldScaleM": 160,
+            "nativeHabitatKinds": [
+              "reef",
+              "sand",
+              "slope"
+            ],
+            "deltaMinM": 0,
+            "deltaMaxM": 4.242427825927734,
+            "deltaSpanM": 4.242427825927734,
+            "maxSlope": 0.6499900592767717,
+            "minDepthM": 14.164885520935059,
+            "mostDisplaced": {
+              "x": 3497,
+              "z": 703,
+              "deltaM": 4.242427825927734
+            },
+            "longestInternalSeamM": 23,
+            "seams": [
+              {
+                "axis": "x",
+                "startM": 91,
+                "endM": 94,
+                "lengthM": 3,
+                "sign": 1,
+                "center": {
+                  "x": 3520,
+                  "z": 732.5
+                }
+              },
+              {
+                "axis": "z",
+                "startM": 29,
+                "endM": 52,
+                "lengthM": 23,
+                "sign": 1,
+                "center": {
+                  "x": 3496.5,
+                  "z": 704
+                }
+              }
+            ],
+            "controls": {
+              "peakLocal": {
+                "x": 48,
+                "z": 64
+              },
+              "amplitudeM": 5.541610049406555,
+              "protectionRampM": 12,
+              "worldFieldM": [
+                160,
+                235
+              ]
+            }
+          },
+          "floorMetrics": {
+            "deltaMinM": 0,
+            "deltaMaxM": 0.7601842880249023,
+            "maxSlope": 0.15689277537045243
+          },
+          "habitat": {
+            "samples": 64,
+            "habitats": {
+              "reef": 0,
+              "sand": 50,
+              "seagrass": 0,
+              "slope": 14,
+              "authored-reef": 0
+            },
+            "primary": "sand",
+            "secondary": "slope",
+            "minDepthM": 17.747453689575195,
+            "maxDepthM": 18.56405722940155
+          }
+        }
+      ],
+      "counts": {
+        "rock": 49,
+        "coral": 105,
+        "seagrass": 417,
+        "rubble": 474,
+        "algae": 135,
+        "formation": 0,
+        "driftwood": 2,
+        "bottle": 0
+      }
+    }
+  },
+  "validation": {
+    "scope": "19 distinct related checks; no full-suite claim",
+    "cases": 19,
+    "groups": [
+      {
+        "scope": "shared group floor, seam, supports and replay",
+        "cases": 4,
+        "log": "living-seascape-pure-final.log"
+      },
+      {
+        "scope": "real renderer and atomic source publication",
+        "cases": 3,
+        "log": "living-seascape-render-final.log"
+      },
+      {
+        "scope": "actual births, once-only stocks, failure, legacy and restore",
+        "cases": 4,
+        "log": "living-seascape-ecology-initial.tap"
+      },
+      {
+        "scope": "production opt-in and existing world integration",
+        "cases": 8,
+        "log": "seascape-world-checks.log"
+      }
+    ],
+    "buildAttempts": 1,
+    "buildPassed": true,
+    "buildLog": "seascape-build.log",
+    "captureFormat": "compact lossless JSON after one full-frame capture exceeded the unchanged 2MiB development telemetry quota"
+  },
+  "limits": [
+    "128m groups with original outer support bands, not unlimited single geological surface or measured bathymetry",
+    "native rooted/attached hosts retained, relative ecosystem proxies retained, no new species or decorative animal population",
+    "no terrain-coupled fluid or sediment solver; unloaded regions freeze",
+    "documentary visual realism and ordinary-distance small-life readability remain open"
+  ]
+}

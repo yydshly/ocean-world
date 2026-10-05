@@ -1,0 +1,15 @@
+:root{font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;color:#f2f1e7;background:#214f60;font-synthesis:none;text-rendering:optimizeLegibility}
+
+* {
+  box-sizing: border-box;
+}
+
+html,body,#root{margin:0;width:100%;height:100%;overflow:hidden;-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #d5dcb9;outline-offset:4px}
+
+.mobile-prototype {
+  width: min(100vw, 390px);
+  height: min(100dvh, 844px);
+  margin-inline: auto;
+  overflow: hidden;
+  position: relative;
+}

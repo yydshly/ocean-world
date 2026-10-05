@@ -1,0 +1,37 @@
+TAP version 13
+# Subtest: one deterministic complete group carries actual gentle macro relief and finite unsuitable groups decline
+ok 1 - one deterministic complete group carries actual gentle macro relief and finite unsuitable groups decline
+  ---
+  duration_ms: 932.2928
+  type: 'test'
+  ...
+# group 54,8: actual span=4.654311180114746m; maximum triangle grade=0.6499898806667463; original scene descriptors unchanged
+# Subtest: all four actual Float32 internal edges match and an independently measured shared seam spans at least twelve metres
+ok 2 - all four actual Float32 internal edges match and an independently measured shared seam spans at least twelve metres
+  ---
+  duration_ms: 0.7966
+  type: 'test'
+  ...
+# four shared edges: 260 exact Float32 vertex comparisons; actual continuous >=1m internal seam=13m
+# Subtest: all native hosts, real hundred-root grass bed and driftwood remain exact on their entire protected floor footprints
+ok 3 - all native hosts, real hundred-root grass bed and driftwood remain exact on their entire protected floor footprints
+  ---
+  duration_ms: 61.2623
+  type: 'test'
+  ...
+# protected actual grass=106; props=1; hard hosts=27; complete footprint probes=2142; regrounded original rubble=50
+# Subtest: saved validation rejects changed shared grids or hosts, and deterministic replay survives original owner cache eviction
+ok 4 - saved validation rejects changed shared grids or hosts, and deterministic replay survives original owner cache eviction
+  ---
+  duration_ms: 981.7621
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2530.9518

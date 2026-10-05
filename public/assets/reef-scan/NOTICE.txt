@@ -1,0 +1,32 @@
+USNM 229 scan
+============
+Acropora cytherea (original published name: Madrepora cytherea)
+National Museum of Natural History, Smithsonian Institution.
+This is a dry museum skeleton, used as a dead-skeleton environment asset.
+It is not a scan of a living Acropora muricata individual.
+
+Specific official object 3D media is declared public domain. Smithsonian
+Open Access dedicates marked digital assets under CC0. See license-evidence.json
+for source URLs, observation scope, and the preserved manifest copyright mismatch.
+The original downloaded GLB and document.json have not been modified.
+
+Draco runtime
+=============
+draco_wasm_wrapper.js and draco_decoder.wasm are unmodified copies from
+three 0.186.1, examples/jsm/libs/draco/gltf/.
+The accompanying upstream Three Draco README identifies Apache License 2.0:
+https://github.com/google/draco/blob/master/LICENSE
+The complete retrieved upstream license is retained as DRACO-LICENSE.txt.
+DRACO-README.md is the unmodified local source README.
+No separate upstream NOTICE file is represented by this project notice.
+
+Three.js
+========
+The local loader implementation uses the installed Three.js package.
+Its MIT license is retained as THREE-LICENSE.txt.
+
+Provenance
+==========
+download-receipts.json records public downloads, UTC retrieval time, size and hash.
+decoder-receipts.json records local decoder copies, package version and hash.
+See docs/REEF_SCAN_ASSETS.md for runtime ownership, transform and validation limits.

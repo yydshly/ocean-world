@@ -1,0 +1,23 @@
+[
+  {
+    "file": "usnm_229-20k-thumb.glb",
+    "url": "https://3d-api.si.edu/content/document/3d_package:ad22ed7a-d030-4162-8880-e9cd65232514/usnm_229-20k-thumb.glb",
+    "retrievedAtUtc": "2026-10-03T05:22:52.4909820Z",
+    "bytes": 323096,
+    "sha256": "c3ce125d357952ff1caa68efb920fcd4876d29459517d83b2de2a3aa211f8060"
+  },
+  {
+    "file": "document.json",
+    "url": "https://3d-api.si.edu/content/document/3d_package:ad22ed7a-d030-4162-8880-e9cd65232514/document.json",
+    "retrievedAtUtc": "2026-10-03T05:22:53.8364662Z",
+    "bytes": 8698,
+    "sha256": "a6332dc422504fc2793124b159301a5aa33a82096d0a591dcfd7fa1d704c8418"
+  },
+  {
+    "file": "DRACO-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/google/draco/main/LICENSE",
+    "retrievedAtUtc": "2026-10-03T05:22:54.4851319Z",
+    "bytes": 13898,
+    "sha256": "d3709b0fb4b8a94bbb1d02b8a2e484f258b0d9c5c5a01f940391f3fe662cd1a4"
+  }
+]

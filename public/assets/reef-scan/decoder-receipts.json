@@ -1,0 +1,26 @@
+[
+  {
+    "file": "draco_wasm_wrapper.js",
+    "source": "node_modules/three/examples/jsm/libs/draco/gltf/draco_wasm_wrapper.js",
+    "threeVersion": "0.186.1",
+    "copiedAtUtc": "2026-10-03T05:25:52.0031385Z",
+    "bytes": 58456,
+    "sha256": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6"
+  },
+  {
+    "file": "draco_decoder.wasm",
+    "source": "node_modules/three/examples/jsm/libs/draco/gltf/draco_decoder.wasm",
+    "threeVersion": "0.186.1",
+    "copiedAtUtc": "2026-10-03T05:25:52.0930676Z",
+    "bytes": 192420,
+    "sha256": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac"
+  },
+  {
+    "file": "DRACO-README.md",
+    "source": "node_modules/three/examples/jsm/libs/draco/README.md",
+    "threeVersion": "0.186.1",
+    "copiedAtUtc": "2026-10-03T05:25:52.1046283Z",
+    "bytes": 1395,
+    "sha256": "839850a67c93f6b26d3cc038a45bd8289e3cfdf15531e69339e8eb1282b4eb76"
+  }
+]

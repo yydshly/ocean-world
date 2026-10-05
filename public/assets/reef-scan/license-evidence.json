@@ -1,0 +1,36 @@
+{
+  "schema": "reef-scan-license-evidence-v1",
+  "checkedAtUtc": "2026-10-03T05:33:05Z",
+  "specimen": "USNM 229",
+  "scientificName": "Acropora cytherea",
+  "originalPublishedName": "Madrepora cytherea",
+  "mediaRecord": {
+    "url": "https://www.si.edu/object/madrepora-cytherea%3Anmnhinvertebratezoology_13935",
+    "observationMethod": "Official Smithsonian record content exposed by web search index; not a downloaded full-page archive",
+    "recordLastModified": "7 May 2026",
+    "mediaLabel": "3d model of Madrepora cytherea",
+    "shortLicenseExcerpt": "This media is in the public domain (free of copyright restrictions).",
+    "mediaPermissionSummary": "The record permits copying, modification, and distribution of the identified 3D media without contacting Smithsonian.",
+    "metadataLicenseSeparatelyShown": "CC0",
+    "preparation": "Dry"
+  },
+  "openAccessPolicy": {
+    "url": "https://www.si.edu/openaccess/faq",
+    "observationMethod": "Official FAQ content exposed by web search index; not a downloaded full-page archive",
+    "summary": "Smithsonian dedicates marked Open Access digital assets, including 3D assets, to the public domain under CC0. Its FAQ lists glTF and GLB formats and permits transformation and reuse. Suggested credit is retained here."
+  },
+  "assetScope": {
+    "file": "usnm_229-20k-thumb.glb",
+    "sha256": "c3ce125d357952ff1caa68efb920fcd4876d29459517d83b2de2a3aa211f8060",
+    "geometry": "One Draco-compressed triangle mesh",
+    "textures": "Two JPEG images embedded in the same GLB BIN as baseColor and occlusion; no external image URI",
+    "scopeReasoning": "The specific 3D media declaration is the permission basis for this self-contained mesh and its embedded textures. Photographs, annotations, logos, and other website material are not included in this asset permission."
+  },
+  "retainedManifestConflict": {
+    "file": "document.json",
+    "sha256": "a6332dc422504fc2793124b159301a5aa33a82096d0a591dcfd7fa1d704c8418",
+    "assetCopyright": "(c) Smithsonian Institution. All rights reserved.",
+    "handling": "Original manifest is preserved verbatim. Specific object 3D media declaration and Smithsonian Open Access policy are retained as the permission basis; no claim is made that the manifest itself says CC0. Confirm with Smithsonian if subsequently discovered asset-specific restrictions conflict with the concrete media declaration."
+  },
+  "suggestedCredit": "Acropora cytherea, USNM 229, National Museum of Natural History, Smithsonian Institution. Public-domain 3D media / Smithsonian Open Access CC0."
+}

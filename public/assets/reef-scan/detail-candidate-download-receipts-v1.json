@@ -1,0 +1,52 @@
+{
+  "schema": "reef-scan-detail-candidate-download-v1",
+  "createdAtUtc": "2026-10-03T06:29:45.079Z",
+  "officialManifestUrl": "https://3d-api.si.edu/content/document/3d_package:ad22ed7a-d030-4162-8880-e9cd65232514/document.json",
+  "manifestFile": "document.json",
+  "manifestSha256": "a6332dc422504fc2793124b159301a5aa33a82096d0a591dcfd7fa1d704c8418",
+  "sourceFilesModified": false,
+  "licenseEvidenceFile": "license-evidence.json",
+  "downloadMode": "public unauthenticated official GET; credentials omitted",
+  "files": [
+    {
+      "file": "usnm_229-150k-1024-low.glb",
+      "url": "https://3d-api.si.edu/content/document/3d_package:ad22ed7a-d030-4162-8880-e9cd65232514/usnm_229-150k-1024-low.glb",
+      "startedAtUtc": "2026-10-03T06:29:41.287Z",
+      "retrievedAtUtc": "2026-10-03T06:29:45.077Z",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "contentLengthHeader": "1729252",
+      "lastModified": "Wed, 28 Jun 2023 19:38:52 GMT",
+      "etag": "\"1a62e4-5ff35bbc2ab00\"",
+      "bytes": 1729252,
+      "sha256": "11a2bedd6925eae830831e191eb4a13668eb93e6ba9c44270534f574ec89f12b",
+      "manifestEntry": {
+        "uri": "usnm_229-150k-1024-low.glb",
+        "type": "Model",
+        "byteSize": 1729252,
+        "numFaces": 150000,
+        "imageSize": 1024
+      }
+    },
+    {
+      "file": "usnm_229-150k-2048-medium.glb",
+      "url": "https://3d-api.si.edu/content/document/3d_package:ad22ed7a-d030-4162-8880-e9cd65232514/usnm_229-150k-2048-medium.glb",
+      "startedAtUtc": "2026-10-03T06:29:41.388Z",
+      "retrievedAtUtc": "2026-10-03T06:29:44.760Z",
+      "status": 200,
+      "contentType": "model/gltf-binary",
+      "contentLengthHeader": "4244612",
+      "lastModified": "Wed, 28 Jun 2023 19:38:52 GMT",
+      "etag": "\"40c484-5ff35bbc2ab00\"",
+      "bytes": 4244612,
+      "sha256": "20563502ece6c714c6a8853fa7add4d8dc4e3897d77f27aff1c93fda3c78a114",
+      "manifestEntry": {
+        "uri": "usnm_229-150k-2048-medium.glb",
+        "type": "Model",
+        "byteSize": 4244612,
+        "numFaces": 150000,
+        "imageSize": 2048
+      }
+    }
+  ]
+}

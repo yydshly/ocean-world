@@ -1,0 +1,30 @@
+{
+  "schema": "connected-seascape-notes-dom-v1",
+  "date": "2026-10-06",
+  "source": "Read-only #reef-diagnostics in the actual user browser, not canvas metadata or a store mutation.",
+  "comparison": "JSON.stringify of complete arrays, including ids, labels and all saved view fields.",
+  "originalPointCount": 8,
+  "finalPointCount": 10,
+  "originalEightExact": true,
+  "revisitTenExact": true,
+  "refreshTenExact": true,
+  "finalPoints": [
+    {"id":"point:1","label":"草床整景","view":{"freeDepthM":8.57315392494202,"habitat":"seagrass","layer":"bed","position":{"x":448,"y":-0.5731539249420194,"z":240},"target":{"x":457.9994889759011,"y":-2.373153924942018,"z":240.10109510785017}}},
+    {"id":"point:2","label":"外礁整景","view":{"freeDepthM":12.372816763312084,"habitat":"slope","layer":"bed","position":{"x":569,"y":-4.372816763312084,"z":280},"target":{"x":583,"y":-8.132113078998854,"z":272}}},
+    {"id":"point:3","label":"礁脊岩沟整景","view":{"freeDepthM":7.14351463317871,"habitat":"reef","layer":"free","position":{"x":928,"y":0.85648536682129,"z":317},"target":{"x":928,"y":-6.477413036084187,"z":287.9102434830427}}},
+    {"id":"point:4","label":"分散礁丘整景","view":{"freeDepthM":4.859936714172358,"habitat":"sand","layer":"free","position":{"x":1386,"y":3.140063285827642,"z":516},"target":{"x":1386,"y":-3.194195027902757,"z":486.67633768413407}}},
+    {"id":"point:5","label":"礁丘砂道整景","view":{"freeDepthM":8.159098148345947,"habitat":"sand","layer":"free","position":{"x":1386,"y":-0.1590981483459473,"z":498},"target":{"x":1386,"y":-4.636363029479979,"z":480}}},
+    {"id":"point:6","label":"草床边缘整景","view":{"freeDepthM":9.39086608076006,"habitat":"sand","layer":"free","position":{"x":1232.5176774774193,"y":-1.390866080760059,"z":285.1813773099025},"target":{"x":1248,"y":-5.907598495483399,"z":276}}},
+    {"id":"point:7","label":"海床缓坡整景","view":{"freeDepthM":7.742222785949707,"habitat":"sand","layer":"free","position":{"x":2245,"y":0.25777721405029297,"z":489},"target":{"x":2263,"y":-1.0387363433837893,"z":489}}},
+    {"id":"point:8","label":"宽缓砂盆整景","view":{"freeDepthM":6.908593654632568,"habitat":"sand","layer":"free","position":{"x":1746,"y":1.0914063453674316,"z":600},"target":{"x":1764,"y":-6.124279022216794,"z":600}}},
+    {"id":"point:9","label":"连续海床入口","view":{"freeDepthM":15.657638740539577,"habitat":"sand","layer":"bed","position":{"x":3502.5,"y":-7.657638740539577,"z":544},"target":{"x":3512.4949216944237,"y":-9.45763874053958,"z":543.6813460774906}}},
+    {"id":"point:10","label":"连续海床整景","view":{"freeDepthM":11.788630485534668,"habitat":"slope","layer":"free","position":{"x":3485,"y":-3.788630485534669,"z":576},"target":{"x":3503,"y":-4.13615655899048,"z":576}}}
+  ],
+  "normalRoute": {
+    "start": [3502.5,-7.657638740539577,544],
+    "arrival": {"errors":[],"individuals":119,"loading":0,"position":[3502.5,-7.210505570221696,608],"travelling":false},
+    "sharedBoundaryZ": 576,
+    "nonzeroSpanX": [3496,3509],
+    "method": "Clicked normal 相邻生境 navigation from 连续海床; observed completed 64m continuous route before one existing overview action."
+  }
+}
