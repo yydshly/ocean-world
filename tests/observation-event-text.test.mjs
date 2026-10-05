@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { ReefSimulation } from '../src/Simulation.js';
+import { ReefSimulation } from '../src/simulation.js';
 import { speciesById } from '../src/species.js';
 import { observationEventCause } from '../src/observationEventText.js';
 
