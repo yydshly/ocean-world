@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { BIOMASS_POOLS, MODEL_SOURCES, runPairedExperiment } from './ecology/PopulationExperiment.js';
 import { saveJson } from './capture.js';
 import './population.css';
@@ -22,12 +22,15 @@ function ComparisonPlot({result,pool}){
   </svg>;
 }
 
-export function PopulationWorkbench({onClose,onToast,onModelChange}){
+export function PopulationWorkbench({onClose,onToast,onModelChange,onReady,onFailure}){
+  const callbacks=useRef({onReady,onFailure});
+  callbacks.current={onReady,onFailure};
   const[seed,setSeed]=useState('42'),[scenario,setScenario]=useState('turbidity'),[duration,setDuration]=useState(365),[pool,setPool]=useState('benthicProducers'),[result,setResult]=useState(()=>runPairedExperiment());
+  useEffect(()=>{callbacks.current.onReady?.(result);},[result]);
   const run=()=>setResult(runPairedExperiment({seed,durationDays:duration,interventionDay:90,intervention:interventions[scenario].patch}));
   const chosen=useMemo(()=>Object.keys(interventions).find(k=>JSON.stringify(interventions[k].patch)===JSON.stringify(result.intervention))||'turbidity',[result]);
   const base=result.baseline.current,changed=result.perturbed.current,ledger=changed.ledger;
-  const exportData=async()=>{try{const file=await saveJson(result,`population-seed-${result.seed}-${result.durationDays}days`);onToast(`长期实验已保存：${file}`);}catch(e){onToast(e.message);}};
+  const exportData=async()=>{try{const file=await saveJson(result,`population-seed-${result.seed}-${result.durationDays}days`);onToast(`长期实验已保存：${file}`);}catch(e){onToast(e.message);callbacks.current.onFailure?.(e);}};
   return <section className="population-workbench glass" aria-label="长期生态实验工作台">
     <div className="panel-heading"><div><p className="eyebrow">ECOLOGICAL TIMESCALES</p><h2>看见一个变化，如何传遍食物网。</h2></div><button onClick={onClose}>回到观察</button></div>
     <EcologyModelSwitch value="foodweb" onChange={onModelChange}/>

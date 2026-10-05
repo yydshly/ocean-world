@@ -42,8 +42,10 @@ export function EcologyModelSwitch({ value, onChange }) {
     <button className={value==='age'?'selected':''} onClick={()=>onChange('age')}>出生与成熟</button>
   </div>;
 }
-export function AgeWorkbench({ onClose, onToast, onModelChange }) {
+export function AgeWorkbench({ onClose, onToast, onModelChange, onReady, onFailure }) {
   const worker = useRef(null), nextRequest = useRef(0), activeRequest = useRef(0);
+  const callbacks = useRef({ onReady, onFailure });
+  callbacks.current = { onReady, onFailure };
   const [seed,setSeed] = useState('42'), [scenario,setScenario] = useState('food'), [duration,setDuration] = useState(365), [metric,setMetric] = useState('juvenileDensityM2');
   const [result,setResult] = useState(null), [busy,setBusy] = useState(true), [error,setError] = useState(null);
   useEffect(()=>{
@@ -51,9 +53,11 @@ export function AgeWorkbench({ onClose, onToast, onModelChange }) {
     worker.current = w;
     w.onmessage = ({data}) => {
       if(data.requestId!==activeRequest.current)return;
-      setBusy(false);setError(data.error||null);if(data.result)setResult(data.result);
+      setBusy(false);setError(data.error||null);
+      if(data.error)callbacks.current.onFailure?.(data.error);
+      if(data.result){setResult(data.result);callbacks.current.onReady?.(data.result);}
     };
-    w.onerror = () => {setBusy(false);setError('实验计算未完成，请重新运行。');};
+    w.onerror = () => {const message='实验计算未完成，请重新运行。';setBusy(false);setError(message);callbacks.current.onFailure?.(message);};
     const requestId=++nextRequest.current;activeRequest.current=requestId;
     w.postMessage({requestId,options:{seed:'42',durationDays:365,interventionDay:90,intervention:scenarios.food.patch}});
     return()=>{w.terminate();worker.current=null;};

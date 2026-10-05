@@ -38,6 +38,8 @@ jobs:
           tests/living-shallows-world.test.mjs
           tests/sites-worker.test.mjs
           tests/demo-navigation.test.mjs
+          tests/director-tour.test.mjs
+          tests/director-readiness.test.mjs
       - name: Upload static website
         uses: actions/upload-pages-artifact@v4
         with:

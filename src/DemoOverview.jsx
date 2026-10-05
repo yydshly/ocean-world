@@ -16,7 +16,7 @@ function CapabilityButton({ entry, onChoose, disabled, selected = false, compact
   </button>;
 }
 
-export function DemoOverview({ onChoose, onClose, worldReady, recording = false,
+export function DemoOverview({ onChoose, onClose, onStartDirector, worldReady, recording = false,
   currentBiome = 'reef', currentProfile = LIVING_SHALLOWS_PROFILE, snapshot, pending = false, notice = '' }) {
   const heading = useRef(null);
   const living = currentBiome === 'reef' && currentProfile === LIVING_SHALLOWS_PROFILE;
@@ -44,6 +44,13 @@ export function DemoOverview({ onChoose, onClose, worldReady, recording = false,
       <button type="button" className="demo-close" onClick={onClose}>回到观察 <span aria-hidden="true">×</span></button>
     </header>
     <p id="demo-overview-intro" className="demo-intro">先看四类海域 → 宏观地貌 → 生物与环境 → 工作台与记录。选择入口进入实际场景，随时从顶部“能力总览”返回。</p>
+
+    <div className="demo-director-entry">
+      <button type="button" disabled={recording} aria-describedby="demo-director-intro" onClick={onStartDirector}>
+        <span aria-hidden="true">▶</span>一键导演演示
+      </button>
+      <p id="demo-director-intro">约 4 分钟，自动带你走过四类海域、地貌、生物观察与现有工具。可暂停、跳过或退出。</p>
+    </div>
 
     <div className="demo-current-status" role="status" aria-live="polite">
       <span className={`demo-status-dot${ready ? ' is-ready' : ''}`} aria-hidden="true"/>
