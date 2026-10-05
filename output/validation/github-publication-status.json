@@ -1,0 +1,23 @@
+{
+  "schema": "ocean-world-github-publication-v1",
+  "date": "2026-10-06",
+  "repository": "https://github.com/yydshly/ocean-world",
+  "visibility": "private",
+  "branch": "main",
+  "validatedSourceCommit": "c4f6e27d4ead43c8593c85cc82127e9a8ae6dfd8",
+  "local": {"subdirectoryBuildPassed": true, "basePath": "/ocean-world/", "integrationChecks": 12, "log": "github-pages-checks.log"},
+  "cloud": {
+    "workflowRunId": 37343715052,
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/37343715052",
+    "buildConclusion": "success",
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "durationMs": 54557.577024,
+    "deploymentConclusion": "skipped"
+  },
+  "deployed": false,
+  "deploymentBlocker": "GitHub POST pages returned HTTP422: current plan does not support Pages for this private repository.",
+  "pending": "User authorization to make this repository public, or choice of another host with access.",
+  "scope": "Cloud23 includes local12; no aggregate35 or full historical-suite claim. Browser stores were not uploaded or migrated."
+}

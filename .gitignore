@@ -32,6 +32,7 @@ output/validation/*
 !output/validation/seascape-build.log
 !output/validation/github-pages-build.log
 !output/validation/github-pages-checks.log
+!output/validation/github-publication-status.json
 !output/validation/telemetry/
 output/validation/telemetry/*
 !output/validation/telemetry/reef-1791216095264-metadata-2026-10-05T16-01-35-365Z-cca01bda.json
