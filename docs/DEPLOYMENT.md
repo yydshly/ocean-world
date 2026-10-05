@@ -2,13 +2,15 @@
 
 更新：2026-10-06。
 
+最新统一演示：[能力总览](https://yydshly.github.io/ocean-world/?demo=all)。网页源码 `088b6d214922a9e3a150df458a0f753f79f6eac6` 的 [运行 37349644714](https://github.com/yydshly/ocean-world/actions/runs/37349644714) 构建、33 项相关检查与部署成功，部署 `6865814471` 状态为 success。基础 23 项新增 10 项入口适配检查，未声称全历史测试通过。后续仅文档/证据提交使用 skip ci，网页源码不变。实际入口与下载边界见 [演示核对](DEMO_ENTRY_AUDIT.md)。
+
 源代码仓库：[yydshly/ocean-world](https://github.com/yydshly/ocean-world)。初始创建为私有仓库，2026-10-06获得用户授权后已公开。
 
 ## 当前发布状态
 
 在线体验：[海底观察站](https://yydshly.github.io/ocean-world/)。GitHub Pages已启用，`PAGES_ENABLED=true`，HTTPS发布成功。仓库About也已设置在线地址。
 
-成功 [发布运行37344757126](https://github.com/yydshly/ocean-world/actions/runs/37344757126) 构建及部署均通过，23项相关检查通过/0失败。实际部署源码为 `d4d008a64e8a5bd264a5d6bc912f2512b1127b5a`，GitHub部署6864983604状态为success并返回上述线上URL；之后仅文档/记录提交没有改动网页源码。
+首次公开 [发布运行37344757126](https://github.com/yydshly/ocean-world/actions/runs/37344757126) 构建及部署均通过，23项相关检查通过/0失败。当时部署源码为 `d4d008a64e8a5bd264a5d6bc912f2512b1127b5a`，GitHub部署6864983604状态为success；最新演示版本的33项检查和部署记录见文首。
 
 已在实际浏览器打开线上页面：九区加载完成，一次读到127条活动窗口动物记录，运行/保存错误均为0，控制台错误为空；界面及沙地、岩体和生物实际呈现。本次有限检查不代表长期性能或纪录片视觉验收。浏览器自动化截图下载事件等待超时，未获得本机图片路径，不把它当作已保存的截图证据。[发布状态记录](../output/validation/github-publication-status.json) 保留完整状态。
 
