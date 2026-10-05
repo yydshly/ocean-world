@@ -1784,5 +1784,165 @@
       "token": 12
     }
   ],
-  "browserErrors": []
+  "browserErrors": [],
+  "widenedFollow": {
+    "source": "7de5b4bb698023f94c7703c54c68820ec597d41b",
+    "start": {
+      "biome": "reef",
+      "camera": {
+        "position": [
+          27.09563814689011,
+          -1.7746090487275843,
+          -21.50735321119896
+        ],
+        "target": [
+          26.63055132542246,
+          -2.408613651633833,
+          -22.013465977693457
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "current-local-life",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-life",
+          "token": 2
+        }
+      ],
+      "errors": [],
+      "index": 12,
+      "motion": {
+        "active": true,
+        "agentId": "ocean:3,3:cleaner-shrimp:host:living-rock:13,14",
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 1.6,
+        "durationSec": 14,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": "follow",
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 219.0956381468901,
+          "y": -1.7746090487275843,
+          "z": 234.49264678880104
+        },
+        "worldTarget": {
+          "x": 218.6305513254225,
+          "y": -2.408613651633833,
+          "z": 233.98653402230656
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 2
+    },
+    "later": {
+      "biome": "reef",
+      "camera": {
+        "position": [
+          27.95397790039615,
+          -1.5633468531734862,
+          -20.45957671295903
+        ],
+        "target": [
+          26.638851803303737,
+          -2.4085284655003925,
+          -22.004086612167185
+        ]
+      },
+      "elapsedMs": 2520.7999999999824,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "current-local-life",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-life",
+          "token": 2
+        }
+      ],
+      "errors": [],
+      "index": 12,
+      "motion": {
+        "active": true,
+        "agentId": "ocean:3,3:cleaner-shrimp:host:living-rock:13,14",
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 1.6,
+        "durationSec": 14,
+        "elapsedSec": 2.712499999999985,
+        "error": null,
+        "kind": "follow",
+        "layer": null,
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 1.3717833614270338,
+        "worldPosition": {
+          "x": 219.95397790039615,
+          "y": -1.5633468531734862,
+          "z": 235.54042328704097
+        },
+        "worldTarget": {
+          "x": 218.63885180330377,
+          "y": -2.4085284655003925,
+          "z": 233.9959133878328
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 2
+    }
+  },
+  "publication": {
+    "source": "7de5b4bb698023f94c7703c54c68820ec597d41b",
+    "run": 37366892941,
+    "status": "queued",
+    "publicMovingVersionVerified": false,
+    "providerIncident": "https://www.githubstatus.com/"
+  }
 }
