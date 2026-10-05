@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DEMO_ACTIONS, DEMO_LIVING_STOPS } from '../src/demoCapabilities.js';
-import { DIRECTOR_STEPS, createDirectorState, directorReducer } from '../src/directorTour.js';
+import { DIRECTOR_STEPS, createDirectorState, directorReducer, directorStepAction } from '../src/directorTour.js';
 
 const send = (state, type, data = {}) => directorReducer(state, { type, ...data });
 const enter = state => send(state, 'entered', { token: state.token });
@@ -19,7 +19,20 @@ test('the finite tour covers every existing entry without invented or destructiv
     assert.ok(!['reset', 'environment', 'record', 'download'].includes(step.action.kind));
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
-  assert.ok(duration >= 210000 && duration <= 270000, 'viewing time stays approximately four minutes');
+  assert.ok(duration >= 360000 && duration <= 420000, 'local moving observation stays approximately six to seven minutes');
+});
+
+test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
+  assert.equal(DIRECTOR_STEPS.length, 34);
+  for (const step of DIRECTOR_STEPS) {
+    assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
+    assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));
+    assert.ok(Number.isFinite(step.motion.durationSec) && step.motion.durationSec > 0);
+    assert.equal(step.motion.durationSec * 1000, step.durationMs);
+    const scene = ['world', 'living-stop', 'view', 'layer', 'local-life', 'discoveries'].includes(step.action.kind);
+    assert.ok(scene ? step.durationMs >= 12000 && step.durationMs <= 14000
+      : step.durationMs >= 6000 && step.durationMs <= 8000, `${step.id} has appropriate walkthrough/read time`);
+  }
 });
 
 test('macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds', () => {
@@ -31,7 +44,6 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     if (step.action.kind === 'living-stop') {
       assert.equal(biome, 'reef');
       assert.equal(profile, 'living-shallows-v1');
-      assert.match(step.caption, /观察点直达/);
       routes.push(step.action.stopId);
     }
     if (step.action.kind === 'local-life') observedBiomes.add(biome);
@@ -43,6 +55,30 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
   const firstWorkbench = DIRECTOR_STEPS.findIndex(step => step.action.kind === 'population');
   assert.ok(DIRECTOR_STEPS.slice(0, firstWorkbench).some(step => step.action.id === 'world-deep'));
   assert.match(DIRECTOR_STEPS[firstWorkbench].caption, /独立/);
+});
+
+test('direct chapter seeks resolve their intended world from any currently loaded world', () => {
+  const currentWorlds = [{ biome: 'reef', profile: 'legacy' }, { biome: 'reef', profile: 'living-shallows-v1' },
+    { biome: 'kelp' }, { biome: 'deep' }];
+  const chapters = [
+    ...['kelp', 'deep'].flatMap(biome => ['bed', 'midwater', 'surface', 'life'].map(name => ({ id: `${biome}-${name}`, biome }))),
+    ...['catalog', 'environment', 'journal', 'foodweb', 'age', 'capture'].map(name => ({ id: `tools-${name}`, biome: 'reef', profile: 'living-shallows-v1' })),
+  ];
+  for (const expected of chapters) {
+    const chapter = DIRECTOR_STEPS.find(item => item.id === expected.id);
+    assert.ok(chapter, expected.id);
+    assert.ok(Object.isFrozen(chapter.context));
+    const resolved = directorStepAction(chapter);
+    assert.ok(Object.isFrozen(resolved));
+    assert.equal(resolved.id, chapter.action.id);
+    assert.ok(DEMO_ACTIONS.includes(chapter.action), 'the original native entry reference is retained');
+    for (const current of currentWorlds) {
+      const target = { ...current, ...resolved };
+      assert.equal(target.biome, expected.biome, `${expected.id} from ${current.biome}`);
+      if (expected.profile) assert.equal(target.profile, expected.profile);
+      else assert.equal(Object.hasOwn(resolved, 'profile'), false, 'kelp/deep do not inherit a reef profile');
+    }
+  }
 });
 
 test('loading and pausing never consume viewing time', () => {

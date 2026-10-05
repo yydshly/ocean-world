@@ -52,6 +52,7 @@ import { SEA_SPIDER_BODY_LOCAL } from '../deepSeaSpiderGeometry.js';
 import { localCaptureEnabled, saveJson } from '../capture.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../livingShallows.js';
 import { createLivingWorldState } from '../livingWorldState.js';
+import { createDirectorCameraMotion, sampleDirectorCameraMotion, advanceDirectorCameraElapsed } from '../directorCameraMotion.js';
 
 const reefPresets = {
   wide: { position: [3, 2.8, 5], target: [-2.5, 0.65, -2] },
@@ -102,6 +103,7 @@ export class ReefWorld {
     this.followOffsetY = 0;
     this.paused = !!paused; this.speed = 1; this.selectedId = null; this.following = false;
     this.oceanExploring = false; this.oceanCruising = false; this.oceanTravel = null;
+    this.directorMotion = null;
     this.oceanObservationLayer = 'bed'; this.oceanFreeDepthM = null;
     this.oceanRenderOrigin = { x: 0, z: 0 };
     this.oceanEcologyCenter = null; this.oceanEcologyResetting = false;
@@ -156,7 +158,7 @@ export class ReefWorld {
       this.controls.maxPolarAngle = Math.PI * 0.55;
       this.controls.minPolarAngle = Math.PI * 0.15;
       this.controls.panSpeed = 0.7; this.controls.rotateSpeed = 0.42;
-      this.onControlStart = () => { this.controlStartCount++; this.beginOceanManualObservation(); this.following = false; this.transition = null; };
+      this.onControlStart = () => { this.stopDirectorMotion(); this.controlStartCount++; this.beginOceanManualObservation(); this.following = false; this.transition = null; };
       this.controls.addEventListener('start', this.onControlStart);
       this.makeLighting();
       this.causticUniforms = [];
@@ -212,7 +214,7 @@ export class ReefWorld {
       this.renderer.domElement.addEventListener('pointerup',this.onPointerUp);
       this.onContextLost=e=>{e.preventDefault();const message='WebGL 绘图上下文丢失，请重新加载场景';this.errors.push(message);this.onError(message);};
       this.renderer.domElement.addEventListener('webglcontextlost',this.onContextLost);
-      this.onKeyDown = e => { if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return; this.keys.add(e.code); if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','Space'].includes(e.code))e.preventDefault(); };
+      this.onKeyDown = e => { if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return; if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE'].includes(e.code))this.stopDirectorMotion(); this.keys.add(e.code); if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','Space'].includes(e.code))e.preventDefault(); };
       this.onKeyUp = e => this.keys.delete(e.code);
       this.onBlur = () => this.keys.clear();
       window.addEventListener('keydown',this.onKeyDown);window.addEventListener('keyup',this.onKeyUp);window.addEventListener('blur',this.onBlur);
@@ -899,6 +901,79 @@ export class ReefWorld {
     this.requestOceanEcology();
   }
   oceanWorldPosition(){return this.camera.position.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z));}
+  beginDirectorMotion({durationSec=12,kind='walk',layer=null,distanceM}={}){
+    if(this.disposed||!this.camera||!this.controls)return false;
+    if(layer&&!['bed','midwater','surface','free'].includes(layer))return false;
+    const origin=new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z),position=this.oceanWorldPosition();
+    const target=this.controls.target.clone().add(origin),selected=this.findAgent(this.selectedId);
+    const following=kind==='follow'&&selected?.alive;
+    const focusTarget=following?this.focusTarget(selected).add(origin):target;
+    const focusPosition=following&&this.transition?.position?this.transition.position.clone().add(origin):position.clone();
+    if(following){
+      // The normal species focus can be only centimetres from a shrimp. A
+      // director chapter observes its real surrounding habitat, so approach
+      // a wider framing smoothly instead of orbiting an invisible tiny arc.
+      const offset=focusPosition.clone().sub(focusTarget);offset.y=0;
+      if(offset.length()<3){
+        if(offset.lengthSq()<1e-10){offset.copy(position).sub(focusTarget);offset.y=0;}
+        if(offset.lengthSq()<1e-10){this.camera.getWorldDirection(offset);offset.y=0;offset.negate();}
+        if(offset.lengthSq()<1e-10)offset.set(0,0,1);
+        offset.normalize().multiplyScalar(3);
+        focusPosition.x=focusTarget.x+offset.x;focusPosition.z=focusTarget.z+offset.z;
+      }
+      focusPosition.y=Math.max(focusPosition.y,focusTarget.y+1);
+    }
+    try{
+      const shot=createDirectorCameraMotion({position,target,durationSec,kind:following?'follow':kind==='follow'?'orbit':kind,
+        distanceM:distanceM??(!this.oceanExploring&&kind==='walk'?3:undefined),floorY:this.floorY(position.x,position.z),
+        focusPosition,focusTarget,clearanceM:.25});
+      // Validate the starting pose before acquiring the camera. This affects
+      // observation only, with no environment, animal or clock mutation.
+      sampleDirectorCameraMotion(shot,0,this.directorMotionQueries(layer));
+      this.directorMotion={shot,active:true,complete:false,elapsedSec:0,travelledM:0,error:null,
+        layer,agentId:following?selected.id:null,lastPosition:{x:position.x,y:position.y,z:position.z}};
+      this.following=false;this.transition=null;this.oceanTravel=null;this.oceanCruising=false;this.keys.clear();
+      if(layer){this.oceanObservationLayer=layer;this.oceanFreeDepthM=layer==='free'?Math.max(0,this.surfaceY-position.y):null;}
+      this.emitSnapshot(true);return true;
+    }catch(error){this.directorMotion={active:false,complete:true,elapsedSec:0,travelledM:0,error:error.message,shot:null};return false;}
+  }
+  directorMotionQueries(layer=null){
+    return {floorHeight:(x,z)=>this.floorY(x,z),safeHeight:(x,z)=>this.habitatY(x,z),surfaceY:this.surfaceY,
+      ceilingHeight:this.isDeep?(x,z)=>this.floorY(x,z)+8:null,
+      layerHeight:layer?(x,z)=>this.oceanLayerY(x,z,layer):null};
+  }
+  updateDirectorMotion(dt){
+    const motion=this.directorMotion;if(!motion?.active)return;
+    const elapsed=advanceDirectorCameraElapsed(motion.elapsedSec,motion.shot.durationSec,dt,
+      {paused:this.paused,hidden:typeof document!=='undefined'&&document.visibilityState==='hidden'});
+    if(elapsed===motion.elapsedSec)return;
+    try{
+      const agent=motion.agentId?this.findAgent(motion.agentId):null;
+      const trackingTarget=agent?.alive?this.focusTarget(agent).add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z)):null;
+      const frame=sampleDirectorCameraMotion(motion.shot,elapsed,{...this.directorMotionQueries(motion.layer),trackingTarget});
+      const position=new THREE.Vector3(frame.position.x-this.oceanRenderOrigin.x,frame.position.y,frame.position.z-this.oceanRenderOrigin.z);
+      const target=new THREE.Vector3(frame.target.x-this.oceanRenderOrigin.x,frame.target.y,frame.target.z-this.oceanRenderOrigin.z);
+      this.camera.position.copy(position);this.controls.target.copy(target);
+      const damping=this.controls.enableDamping;this.controls.enableDamping=false;
+      try{this.controls.update();this.camera.position.copy(position);this.controls.target.copy(target);this.controls.update();}
+      finally{this.controls.enableDamping=damping;}
+      this.enforceCameraClearance();
+      const actual=this.oceanWorldPosition(),previous=motion.lastPosition;
+      motion.travelledM+=Math.hypot(actual.x-previous.x,actual.y-previous.y,actual.z-previous.z);
+      motion.lastPosition={x:actual.x,y:actual.y,z:actual.z};motion.elapsedSec=frame.elapsedSec;
+      motion.complete=frame.complete;motion.active=!frame.complete;
+    }catch(error){motion.active=false;motion.complete=true;motion.error=error.message;}
+  }
+  stopDirectorMotion(){this.directorMotion=null;}
+  directorMotionSnapshot(){
+    const motion=this.directorMotion,shot=motion?.shot;
+    return {active:!!motion?.active,complete:!!motion?.complete,kind:shot?.kind??null,
+      elapsedSec:motion?.elapsedSec??0,durationSec:shot?.durationSec??0,distanceM:shot?.distanceM??0,travelledM:motion?.travelledM??0,
+      layer:motion?.layer??null,agentId:motion?.agentId??null,error:motion?.error??null,
+      paused:!!this.paused,scope:'local-continuous-observation-shot',coordinateSpace:'absolute-world-metres',
+      worldPosition:this.camera?{...this.oceanWorldPosition()}:null,
+      worldTarget:this.controls?{x:this.controls.target.x+this.oceanRenderOrigin.x,y:this.controls.target.y,z:this.controls.target.z+this.oceanRenderOrigin.z}:null};
+  }
   persistLivingWorld(){
     if(!this.livingWorldState||!this.sim)return;
     this.livingWorldState.save({version:1,timeSec:this.livingClockSec,environment:{...this.sim.environment}});
@@ -1473,10 +1548,12 @@ export class ReefWorld {
     this.causticUniforms.forEach(u=>u.value=this.visualTimeSec);
     const selected=this.findAgent(this.selectedId);
     if(selected&&selected.alive){const isPlant=this.catalog.get(selected.speciesId)?.kind==='kelp';this.highlight.position.copy(this.focusTarget(selected));this.highlight.quaternion.copy(this.camera.quaternion);this.highlight.scale.setScalar((isPlant?.28:Math.max(.009,selected.sizeM*.65))/.28);this.highlight.material.opacity=this.isDeep?(env.observerLight>0?.16:0):isPlant?.3:.16;
-      if(this.following&&!this.transition){const p=this.focusTarget(selected),delta=p.clone().sub(this.controls.target);this.controls.target.lerp(p,.08);this.camera.position.addScaledVector(delta,.08);}
+      if(this.following&&!this.transition&&!this.directorMotion){const p=this.focusTarget(selected),delta=p.clone().sub(this.controls.target);this.controls.target.lerp(p,.08);this.camera.position.addScaledVector(delta,.08);}
     }else this.highlight.visible=false;
-    if(this.transition){if(this.transition.agentId&&selected){const next=this.focusTarget(selected),delta=next.clone().sub(this.transition.target);this.transition.position.add(delta);this.transition.target.copy(next);}this.camera.position.lerp(this.transition.position,.065);this.controls.target.lerp(this.transition.target,.065);if(this.camera.position.distanceTo(this.transition.position)<.025)this.transition=null;}
-    this.moveCamera(dt);this.controls.update();this.enforceCameraClearance();this.updateLivingDiscoveries();
+    if(this.transition&&!this.directorMotion){if(this.transition.agentId&&selected){const next=this.focusTarget(selected),delta=next.clone().sub(this.transition.target);this.transition.position.add(delta);this.transition.target.copy(next);}this.camera.position.lerp(this.transition.position,.065);this.controls.target.lerp(this.transition.target,.065);if(this.camera.position.distanceTo(this.transition.position)<.025)this.transition=null;}
+    if(this.directorMotion)this.updateDirectorMotion(dt);
+    else{this.moveCamera(dt);this.controls.update();}
+    this.enforceCameraClearance();this.updateLivingDiscoveries();
     if(this.oceanChunks){
       const p=this.oceanWorldPosition();
       if(Math.hypot(p.x,p.z)>25&&!this.following&&!this.oceanExploring){this.oceanExploring=true;this.select(null);this.onSelect(null);}
@@ -1609,7 +1686,7 @@ export class ReefWorld {
     }
   }
   observationStateSnapshot(){
-    return {ocean:this.oceanSnapshot(),resourceInventory:this.resourceInventorySnapshot(),environmentAssets:this.environmentAssets.map(asset=>({...asset})),initializationMs:this.initializationMs,
+    return {ocean:this.oceanSnapshot(),directorMotion:this.directorMotionSnapshot(),resourceInventory:this.resourceInventorySnapshot(),environmentAssets:this.environmentAssets.map(asset=>({...asset})),initializationMs:this.initializationMs,
       ...(this.isLivingShallows?{sceneProfile:LIVING_SHALLOWS_PROFILE,inputSeed:this.inputSeed,worldClockSec:this.livingClockSec}:{}),
       gpuWarmup:this.gpuWarmup?{...this.gpuWarmup}:null,visualTimeSec:this.visualTimeSec,
       landscapeCoralDetail:this.landscapeCoralDetail?{...this.landscapeCoralDetail}:null,
@@ -1623,6 +1700,7 @@ export class ReefWorld {
   dispose(){
     if(this.disposed)return;
     this.disposed=true;
+    this.stopDirectorMotion();
     // A partial constructor must release every resource that it acquired.
     // Continue cleanup if one disposer fails; preserve the original failure.
     const release=action=>{try{action();}catch(error){this.errors?.push('资源释放失败：'+error.message);}};

@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useRef } from 'react';
-import { createDirectorState, directorReducer, DIRECTOR_STEPS } from './directorTour.js';
+import { createDirectorState, directorReducer, DIRECTOR_STEPS, directorStepAction } from './directorTour.js';
 import { directorSceneReady } from './directorReadiness.js';
 
 const worldKey = world => `${world.biomeId}:${world.isLivingShallows ? 'living' : 'original'}`;
@@ -14,17 +14,23 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   const restoreArmed = useRef(false);
   const environments = useRef(new Map()), preparedWorlds = useRef(new WeakSet());
   const receipts = useRef([]), autoStarted = useRef(false);
+  const motion = useRef(null);
   const valid = token => current.current.active && current.current.token === token;
-  const fail = (token, problem) => { if (valid(token)) dispatch({ type: 'failed', token, error: problem }); };
+  const stopMotion = () => {
+    motion.current?.world.stopDirectorMotion?.(); motion.current = null;
+  };
+  const fail = (token, problem) => { if (valid(token)) { stopMotion(); dispatch({ type: 'failed', token, error: problem }); } };
   const start = () => {
     if (recording) { adapters.current.onNotice('请先结束录像，再开始导演演示'); return; }
+    stopMotion();
     if (!original.current) original.current = { paused: worldRef.current?.paused ?? paused, speed: worldRef.current?.speed ?? speed };
     receipts.current = []; waiting.current = null; startedToken.current = null;
     restoreArmed.current = false;
     environments.current.clear(); preparedWorlds.current = new WeakSet();
     dispatch({ type: 'start' });
   };
-  const stop = () => { waiting.current = null; dispatch({ type: 'stop' }); };
+  const stop = () => { stopMotion(); waiting.current = null; dispatch({ type: 'stop' }); };
+  const changeStep = event => { stopMotion(); dispatch(event); };
   const prepareWorld = (world, token) => {
     if (!valid(token) || !world || preparedWorlds.current.has(world)) return;
     const prior = environments.current.get(worldKey(world));
@@ -46,11 +52,12 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
 
   useEffect(() => {
     if (!state.active || state.phase !== 'loading' || state.error || startedToken.current === state.token) return;
-    const token = state.token, action = DIRECTOR_STEPS[state.index].action;
+    const token = state.token, action = directorStepAction(DIRECTOR_STEPS[state.index]);
     startedToken.current = token;
     waiting.current = { token, action, appliedAt: null, panelReady: false, absence: false };
     const enter = async () => {
       const previous = worldRef.current;
+      stopMotion();
       adapters.current.onControls(true, 1);
       try {
         if (previous && !previous.disposed) {
@@ -63,7 +70,6 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
         }
         if (!valid(token)) return;
         adapters.current.execute({ ...action, directorToken: token });
-        if (panelAction(action)) applied(token);
       } catch (problem) { fail(token, problem); }
     };
     enter();
@@ -113,19 +119,48 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   }, [state.active, state.phase, state.playing, state.token, state.error, worldReady, snapshot?.runId]);
 
   useEffect(() => {
+    if (!state.active || state.phase !== 'showing' || state.error || !worldReady) return;
+    const actual = worldRef.current, token = state.token, step = DIRECTOR_STEPS[state.index];
+    if (!actual || actual.disposed) return;
+    try {
+      const begun = actual.beginDirectorMotion({ ...step.motion,
+        layer: step.action.kind === 'layer' ? step.action.layer : undefined,
+        distanceM: panelAction(step.action) ? 3 : undefined,
+      });
+      if (!begun) { fail(token, '当前镜头无法启动，可重试或跳到下一章。'); return; }
+      const owner = { world: actual, token }; motion.current = owner;
+      return () => {
+        actual.stopDirectorMotion();
+        if (motion.current === owner) motion.current = null;
+      };
+    } catch (problem) { fail(token, problem); }
+    // Pause/resume changes native pause only, retaining this shot and its path.
+  }, [state.active, state.phase, state.token, state.error, worldReady, snapshot?.runId]);
+
+  useEffect(() => {
     if (!state.active || state.phase !== 'showing' || !state.playing || state.error) return;
-    let previous = performance.now();
     const timer = setInterval(() => {
-      const now = performance.now(), deltaMs = Math.min(1000, now - previous); previous = now;
-      if (document.visibilityState === 'visible') dispatch({ type: 'tick', token: state.token, deltaMs });
+      if (document.visibilityState !== 'visible') return;
+      const owner = motion.current;
+      if (!owner || owner.token !== state.token || owner.world !== worldRef.current) return;
+      const shot = owner.world.directorMotionSnapshot();
+      if (!shot?.kind && !shot?.error) {
+        stop(); adapters.current.onNotice('已切换为自由观察，可从顶部重新开始导演演示。'); return;
+      }
+      if (shot?.error) { fail(state.token, shot.error); return; }
+      // Follow the rendered shot's clock, not a wall timer that could advance
+      // while a low frame rate leaves the camera behind its planned route.
+      const observedMs = shot?.complete ? DIRECTOR_STEPS[state.index].durationMs : (shot?.elapsedSec ?? 0) * 1000;
+      dispatch({ type: 'tick', token: state.token, deltaMs: observedMs - current.current.elapsedMs });
     }, 250);
     return () => clearInterval(timer);
   }, [state.active, state.phase, state.playing, state.token, state.error]);
 
   return { state, steps: DIRECTOR_STEPS, start, stop, applied, prepareWorld, panelReady, fail,
     pause: () => dispatch({ type: 'pause' }), resume: () => dispatch({ type: 'resume' }),
-    next: () => dispatch({ type: 'next' }), previous: () => dispatch({ type: 'prev' }),
-    seek: index => dispatch({ type: 'seek', index }),
-    diagnostics: { ...state, title: DIRECTOR_STEPS[state.index].title, entered: receipts.current },
+    next: () => changeStep({ type: 'next' }), previous: () => changeStep({ type: 'prev' }),
+    seek: index => changeStep({ type: 'seek', index }),
+    diagnostics: { ...state, title: DIRECTOR_STEPS[state.index].title, entered: receipts.current,
+      motion: worldRef.current?.directorMotionSnapshot?.() ?? null },
   };
 }

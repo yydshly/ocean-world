@@ -13,7 +13,7 @@ export function demoWorldMatches(choice, world, snapshot) {
 
 // Reuse normal observation/navigation operations. No generation, population,
 // clock, resource, environment or persistence reset belongs in this adapter.
-export function navigateDemoEntry(choice, world) {
+export function navigateDemoEntry(choice, world, { movingDirector = false } = {}) {
   if (choice.kind === 'living-stop') {
     const index = world.oceanChunks?.generator.routeStops?.findIndex(stop => stop.id === choice.stopId) ?? -1;
     return index >= 0 && world.enterLivingShallows(index);
@@ -33,7 +33,11 @@ export function navigateDemoEntry(choice, world) {
   }
   if (choice.kind === 'layer' || choice.kind === 'local-life') {
     if (!world.oceanExploring) world.startOceanExploration();
-    if (choice.kind === 'layer') return world.setOceanObservationLayer(choice.layer);
+    // The director approaches this height in its real camera shot. Manual
+    // observation buttons retain their existing safe, immediate placement.
+    if (choice.kind === 'layer') return movingDirector
+      ? world.oceanExploring && ['bed', 'midwater', 'surface'].includes(choice.layer)
+      : world.setOceanObservationLayer(choice.layer);
     return world.focusNearbyOceanAnimal(null);
   }
   return false;

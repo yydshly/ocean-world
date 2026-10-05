@@ -147,6 +147,22 @@ test('current-world tools do not select a biome or shallow profile; shallow disc
   assert.equal(discoveries.profile, LIVING_SHALLOWS_PROFILE);
 });
 
+test('director layer entry defers vertical movement to the rendered shot and leaves manual switching intact', () => {
+  const choice = demoLayerEntries('kelp')[1].action;
+  const { world, calls, protectedState } = observationWorld({ biomeId: 'kelp', exploring: true });
+  const before = { ...world.position };
+  assert.equal(navigateDemoEntry(choice, world, { movingDirector: true }), true);
+  assert.deepEqual(world.position, before, 'loading a director chapter must not teleport its height');
+  assert.deepEqual(calls, []);
+  assert.equal(navigateDemoEntry({ ...choice, layer: 'invalid' }, world, { movingDirector: true }), false);
+  assert.equal(world.protectedState, protectedState);
+  assert.equal(navigateDemoEntry(choice, world), true);
+  assert.equal(world.position.y, -8, 'ordinary observation button behavior remains available');
+  assert.deepEqual(calls, [['setOceanObservationLayer', 'midwater']]);
+  const failed = observationWorld({ biomeId: 'kelp', startSucceeds: false });
+  assert.equal(navigateDemoEntry(choice, failed.world, { movingDirector: true }), false);
+});
+
 test('a missing local animal remains absent and the navigation adapter ignores UI-only tools', () => {
   const local = DEMO_ACTIONS.find(action => action.kind === 'local-life');
   const { world, calls, protectedState } = observationWorld({ biomeId: 'kelp', exploring: true });

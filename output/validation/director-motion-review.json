@@ -1,0 +1,1788 @@
+{
+  "url": "http://127.0.0.1:4173/ocean-world/?demo=director",
+  "finalBuild": true,
+  "samples": [
+    {
+      "label": "walk-zero",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          25,
+          1.4549150772107895,
+          -24
+        ],
+        "target": [
+          39,
+          -0.8714310814579478,
+          -32
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        }
+      ],
+      "errors": [],
+      "index": 0,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 14,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": "walk",
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 217,
+          "y": 1.4549150772107895,
+          "z": 232
+        },
+        "worldTarget": {
+          "x": 231,
+          "y": -0.8714310814579478,
+          "z": 224
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 2
+    },
+    {
+      "label": "walk-a",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          25,
+          1.4549150772107895,
+          -24
+        ],
+        "target": [
+          39,
+          -0.8714310814579478,
+          -32
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        }
+      ],
+      "errors": [],
+      "index": 0,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 14,
+        "elapsedSec": 0.008200000000000728,
+        "error": null,
+        "kind": "walk",
+        "layer": null,
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0.000012365724283186513,
+        "worldPosition": {
+          "x": 217.000010718794,
+          "y": 1.454915786217156,
+          "z": 231.99999387497735
+        },
+        "worldTarget": {
+          "x": 231.0000062599949,
+          "y": -0.8714303724515817,
+          "z": 224.0000029188814
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 2
+    },
+    {
+      "label": "walk-b",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          26.308688035299355,
+          1.539846709062228,
+          -24.711614506490093
+        ],
+        "target": [
+          39.73772245097996,
+          -0.786499449606508,
+          -31.650703361610823
+        ]
+      },
+      "elapsedMs": 3045.899999999998,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        }
+      ],
+      "errors": [],
+      "index": 0,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 14,
+        "elapsedSec": 3.083299999999996,
+        "error": null,
+        "kind": "walk",
+        "layer": null,
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 1.4921809090548577,
+        "worldPosition": {
+          "x": 218.30868803529935,
+          "y": 1.539846709062228,
+          "z": 231.2883854935099
+        },
+        "worldTarget": {
+          "x": 231.73772245097996,
+          "y": -0.786499449606508,
+          "z": 224.3492966383892
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 2
+    },
+    {
+      "label": "paused-final-a",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          26.63041312757207,
+          1.5599086936590116,
+          -24.87577693211955
+        ],
+        "target": [
+          39.911367058395655,
+          -0.7664374650097275,
+          -31.5670468016383
+        ]
+      },
+      "elapsedMs": 3308.1999999999975,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        }
+      ],
+      "errors": [],
+      "index": 0,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 14,
+        "elapsedSec": 3.4749999999999965,
+        "error": null,
+        "kind": "walk",
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 1.8539266163815191,
+        "worldPosition": {
+          "x": 218.63041312757207,
+          "y": 1.5599086936590116,
+          "z": 231.12422306788045
+        },
+        "worldTarget": {
+          "x": 231.91136705839563,
+          "y": -0.7664374650097275,
+          "z": 224.4329531983617
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 2
+    },
+    {
+      "label": "paused-final-b",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          26.63041312757207,
+          1.5599086936590116,
+          -24.87577693211955
+        ],
+        "target": [
+          39.911367058395655,
+          -0.7664374650097275,
+          -31.5670468016383
+        ]
+      },
+      "elapsedMs": 3308.1999999999975,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        }
+      ],
+      "errors": [],
+      "index": 0,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 14,
+        "elapsedSec": 3.4749999999999965,
+        "error": null,
+        "kind": "walk",
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 1.8539266163815191,
+        "worldPosition": {
+          "x": 218.63041312757207,
+          "y": 1.5599086936590116,
+          "z": 231.12422306788045
+        },
+        "worldTarget": {
+          "x": 231.91136705839563,
+          "y": -0.7664374650097275,
+          "z": 224.4329531983617
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 2
+    },
+    {
+      "label": "kelp-layer-zero",
+      "biome": "kelp",
+      "camera": {
+        "position": [
+          5.800000000000001,
+          7.5,
+          5.599999999999999
+        ],
+        "target": [
+          0.4186176480294996,
+          5.1,
+          -0.31952058716754994
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        }
+      ],
+      "errors": [],
+      "index": 19,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 12,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": "walk",
+        "layer": "midwater",
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 5.800000000000001,
+          "y": 7.5,
+          "z": 5.599999999999999
+        },
+        "worldTarget": {
+          "x": 0.4186176480294996,
+          "y": 5.1,
+          "z": -0.31952058716754994
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "speed": 1,
+      "token": 3
+    },
+    {
+      "label": "kelp-layer-a",
+      "biome": "kelp",
+      "camera": {
+        "position": [
+          5.778557897880522,
+          7.495790935482546,
+          5.576392267510366
+        ],
+        "target": [
+          0.4025266319410035,
+          5.095790935482547,
+          -0.3479885294709302
+        ]
+      },
+      "elapsedMs": 240.8000000000029,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        }
+      ],
+      "errors": [],
+      "index": 19,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 12,
+        "elapsedSec": 0.3608000000000029,
+        "error": null,
+        "kind": "walk",
+        "layer": "midwater",
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0.0321683859660921,
+        "worldPosition": {
+          "x": 5.778557897880522,
+          "y": 7.495790935482546,
+          "z": 5.576392267510366
+        },
+        "worldTarget": {
+          "x": 0.4025266319410035,
+          "y": 5.095790935482547,
+          "z": -0.3479885294709302
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "speed": 1,
+      "token": 3
+    },
+    {
+      "label": "kelp-layer-b",
+      "biome": "kelp",
+      "camera": {
+        "position": [
+          4.926263265497512,
+          7.327836808969767,
+          4.60182853644842
+        ],
+        "target": [
+          -0.22886688806796587,
+          4.927836808969768,
+          -1.5157390438730252
+        ]
+      },
+      "elapsedMs": 2480.899999999995,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        }
+      ],
+      "errors": [],
+      "index": 19,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 12,
+        "elapsedSec": 2.480899999999995,
+        "error": null,
+        "kind": "walk",
+        "layer": "midwater",
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 1.3377703992497894,
+        "worldPosition": {
+          "x": 4.926263265497512,
+          "y": 7.327836808969767,
+          "z": 4.60182853644842
+        },
+        "worldTarget": {
+          "x": -0.22886688806796587,
+          "y": 4.927836808969768,
+          "z": -1.5157390438730252
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "speed": 1,
+      "token": 3
+    },
+    {
+      "label": "deep-midwater-ready",
+      "biome": "deep",
+      "camera": {
+        "position": [
+          0.3999999999999986,
+          1.6500112235546114,
+          4.199999999999999
+        ],
+        "target": [
+          -2.593552273537102,
+          -0.7499887764453885,
+          -3.218803460504994
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        }
+      ],
+      "errors": [],
+      "index": 24,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 12,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": "walk",
+        "layer": "midwater",
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 0.3999999999999986,
+          "y": 1.6500112235546114,
+          "z": 4.199999999999999
+        },
+        "worldTarget": {
+          "x": -2.593552273537102,
+          "y": -0.7499887764453885,
+          "z": -3.218803460504994
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "speed": 1,
+      "token": 4
+    },
+    {
+      "label": "deep-midwater-moving",
+      "biome": "deep",
+      "camera": {
+        "position": [
+          0.31793215117362106,
+          1.6818776524190835,
+          3.9947647915844495
+        ],
+        "target": [
+          -2.6291001417892885,
+          -0.7181223475809159,
+          -3.4426407146545213
+        ]
+      },
+      "elapsedMs": 999.9999999999992,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        }
+      ],
+      "errors": [],
+      "index": 24,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 12,
+        "durationSec": 12,
+        "elapsedSec": 1.058300000000002,
+        "error": null,
+        "kind": "walk",
+        "layer": "midwater",
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0.26628512371201535,
+        "worldPosition": {
+          "x": 0.30229925072025043,
+          "y": 1.6881650104969823,
+          "z": 3.955242678500806
+        },
+        "worldTarget": {
+          "x": -2.635774696610367,
+          "y": -0.7118349895030176,
+          "z": -3.4857062851742633
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "speed": 1,
+      "token": 4
+    },
+    {
+      "label": "legacy-orbit-zero",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          3,
+          2.7999999999999994,
+          5.000000000000001
+        ],
+        "target": [
+          -2.5,
+          0.65,
+          -2
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        },
+        {
+          "absence": false,
+          "action": "legacy-wide",
+          "alive": 15,
+          "biome": "reef",
+          "chunkId": "0,0",
+          "loadingRegions": 8,
+          "panelReady": false,
+          "step": "legacy-wide",
+          "token": 5
+        }
+      ],
+      "errors": [
+        "区域生态加载失败：Invalid saved habitat scene; original population was not regenerated."
+      ],
+      "index": 15,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 3,
+        "durationSec": 12,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": "orbit",
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 3,
+          "y": 2.7999999999999994,
+          "z": 5.000000000000001
+        },
+        "worldTarget": {
+          "x": -2.5,
+          "y": 0.65,
+          "z": -2
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "speed": 1,
+      "token": 5
+    },
+    {
+      "label": "legacy-orbit-moving",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          2.892117784976975,
+          2.7949790608061194,
+          5.083436016011934
+        ],
+        "target": [
+          -2.5,
+          0.64497906080612,
+          -2
+        ]
+      },
+      "elapsedMs": 1440.8000000000168,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        },
+        {
+          "absence": false,
+          "action": "legacy-wide",
+          "alive": 15,
+          "biome": "reef",
+          "chunkId": "0,0",
+          "loadingRegions": 8,
+          "panelReady": false,
+          "step": "legacy-wide",
+          "token": 5
+        }
+      ],
+      "errors": [
+        "区域生态加载失败：Invalid saved habitat scene; original population was not regenerated."
+      ],
+      "index": 15,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 3,
+        "durationSec": 12,
+        "elapsedSec": 1.544999999999999,
+        "error": null,
+        "kind": "orbit",
+        "layer": null,
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0.13647605877938335,
+        "worldPosition": {
+          "x": 2.892117784976975,
+          "y": 2.7949790608061194,
+          "z": 5.083436016011934
+        },
+        "worldTarget": {
+          "x": -2.5,
+          "y": 0.64497906080612,
+          "z": -2
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "speed": 1,
+      "token": 5
+    },
+    {
+      "label": "shallows-life-ready",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          27.096887928501506,
+          -1.7656090203783912,
+          -21.51498462793387
+        ],
+        "target": [
+          26.685806666758474,
+          -2.404579592201416,
+          -22.05678382280264
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        },
+        {
+          "absence": false,
+          "action": "legacy-wide",
+          "alive": 15,
+          "biome": "reef",
+          "chunkId": "0,0",
+          "loadingRegions": 8,
+          "panelReady": false,
+          "step": "legacy-wide",
+          "token": 5
+        },
+        {
+          "absence": false,
+          "action": "current-local-life",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-life",
+          "token": 6
+        }
+      ],
+      "errors": [],
+      "index": 12,
+      "motion": {
+        "active": true,
+        "agentId": "ocean:3,3:cleaner-shrimp:host:living-rock:13,14",
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 1.6,
+        "durationSec": 14,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": "follow",
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 219.0968879285015,
+          "y": -1.7656090203783912,
+          "z": 234.48501537206613
+        },
+        "worldTarget": {
+          "x": 218.68580666675848,
+          "y": -2.404579592201416,
+          "z": 233.94321617719737
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 6
+    },
+    {
+      "label": "shallows-life-moving",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          27.09393730146533,
+          -1.765694938137117,
+          -21.5161186451341
+        ],
+        "target": [
+          26.68367792273048,
+          -2.404680264985846,
+          -22.05849369898556
+        ]
+      },
+      "elapsedMs": 1565.9000000000228,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        },
+        {
+          "absence": false,
+          "action": "legacy-wide",
+          "alive": 15,
+          "biome": "reef",
+          "chunkId": "0,0",
+          "loadingRegions": 8,
+          "panelReady": false,
+          "step": "legacy-wide",
+          "token": 5
+        },
+        {
+          "absence": false,
+          "action": "current-local-life",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-life",
+          "token": 6
+        }
+      ],
+      "errors": [],
+      "index": 12,
+      "motion": {
+        "active": true,
+        "agentId": "ocean:3,3:cleaner-shrimp:host:living-rock:13,14",
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 1.6,
+        "durationSec": 14,
+        "elapsedSec": 1.574300000000017,
+        "error": null,
+        "kind": "follow",
+        "layer": null,
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0.0038016141601306215,
+        "worldPosition": {
+          "x": 219.0936665379656,
+          "y": -1.765706961021208,
+          "z": 234.48390815188623
+        },
+        "worldTarget": {
+          "x": 218.68356595165932,
+          "y": -2.4046855603334127,
+          "z": 233.9414163622218
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 6
+    },
+    {
+      "label": "tools-age-ready",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          27.09215737362396,
+          -1.765762635031096,
+          -21.516300995005395
+        ],
+        "target": [
+          26.68289581837271,
+          -2.404703479509209,
+          -22.059409226608864
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        },
+        {
+          "absence": false,
+          "action": "legacy-wide",
+          "alive": 15,
+          "biome": "reef",
+          "chunkId": "0,0",
+          "loadingRegions": 8,
+          "panelReady": false,
+          "step": "legacy-wide",
+          "token": 5
+        },
+        {
+          "absence": false,
+          "action": "current-local-life",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-life",
+          "token": 6
+        },
+        {
+          "absence": false,
+          "action": "population-age",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": true,
+          "profile": "living-shallows-v1",
+          "step": "tools-age",
+          "token": 7
+        }
+      ],
+      "errors": [],
+      "index": 32,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 3,
+        "durationSec": 8,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": "walk",
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 219.09215737362396,
+          "y": -1.765762635031096,
+          "z": 234.4836990049946
+        },
+        "worldTarget": {
+          "x": 218.6828958183727,
+          "y": -2.404703479509209,
+          "z": 233.9405907733911
+        }
+      },
+      "paused": true,
+      "phase": "showing",
+      "playing": false,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 7
+    },
+    {
+      "label": "tools-age-moving",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          26.92572500134412,
+          -1.765515639352316,
+          -21.74468356047927
+        ],
+        "target": [
+          26.13693147534272,
+          -2.4044564838304288,
+          -22.86432467254255
+        ]
+      },
+      "elapsedMs": 1520.7999999999886,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        },
+        {
+          "absence": false,
+          "action": "legacy-wide",
+          "alive": 15,
+          "biome": "reef",
+          "chunkId": "0,0",
+          "loadingRegions": 8,
+          "panelReady": false,
+          "step": "legacy-wide",
+          "token": 5
+        },
+        {
+          "absence": false,
+          "action": "current-local-life",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-life",
+          "token": 6
+        },
+        {
+          "absence": false,
+          "action": "population-age",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": true,
+          "profile": "living-shallows-v1",
+          "step": "tools-age",
+          "token": 7
+        }
+      ],
+      "errors": [],
+      "index": 32,
+      "motion": {
+        "active": true,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 3,
+        "durationSec": 8,
+        "elapsedSec": 1.5373999999999652,
+        "error": null,
+        "kind": "walk",
+        "layer": null,
+        "paused": false,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0.28979764083680426,
+        "worldPosition": {
+          "x": 218.92158456136343,
+          "y": -1.765506445955495,
+          "z": 234.2494342631522
+        },
+        "worldTarget": {
+          "x": 218.1236073113361,
+          "y": -2.4044472904336076,
+          "z": 233.114793929857
+        }
+      },
+      "paused": false,
+      "phase": "showing",
+      "playing": true,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 7
+    },
+    {
+      "label": "tools-state-after-input-attempt",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          25.320579078826768,
+          -1.0427110600888063,
+          -27.128387601271186
+        ],
+        "target": [
+          25.594349641861044,
+          -1.68165190456692,
+          -35.12370183392119
+        ]
+      },
+      "elapsedMs": 8000,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 1
+        },
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 2
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 132,
+          "biome": "kelp",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "kelp-midwater",
+          "token": 3
+        },
+        {
+          "absence": false,
+          "action": "layer-midwater",
+          "alive": 80,
+          "biome": "deep",
+          "chunkId": "0,0",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "step": "deep-midwater",
+          "token": 4
+        },
+        {
+          "absence": false,
+          "action": "legacy-wide",
+          "alive": 15,
+          "biome": "reef",
+          "chunkId": "0,0",
+          "loadingRegions": 8,
+          "panelReady": false,
+          "step": "legacy-wide",
+          "token": 5
+        },
+        {
+          "absence": false,
+          "action": "current-local-life",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-life",
+          "token": 6
+        },
+        {
+          "absence": false,
+          "action": "population-age",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": true,
+          "profile": "living-shallows-v1",
+          "step": "tools-age",
+          "token": 7
+        },
+        {
+          "absence": false,
+          "action": "capture-guide",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "tools-capture",
+          "token": 8
+        }
+      ],
+      "errors": [],
+      "index": 33,
+      "motion": {
+        "active": false,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 0,
+        "durationSec": 0,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": null,
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 217.32057907882677,
+          "y": -1.0427110600888063,
+          "z": 228.8716123987288
+        },
+        "worldTarget": {
+          "x": 217.59434964186104,
+          "y": -1.68165190456692,
+          "z": 220.8762981660788
+        }
+      },
+      "paused": true,
+      "phase": "complete",
+      "playing": false,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 9
+    },
+    {
+      "label": "manual-takeover-success",
+      "biome": "reef",
+      "camera": {
+        "position": [
+          25.156896054429353,
+          1.4652789262581185,
+          -24.089123633739433
+        ],
+        "target": [
+          39.091233807185915,
+          -0.8610672324106178,
+          -31.957375045952375
+        ]
+      },
+      "elapsedMs": 0,
+      "entered": [
+        {
+          "absence": false,
+          "action": "world-living-shallows",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-opening",
+          "token": 10
+        },
+        {
+          "absence": false,
+          "action": "stop-reef-garden",
+          "alive": 152,
+          "biome": "reef",
+          "chunkId": "3,3",
+          "loadingRegions": 0,
+          "panelReady": false,
+          "profile": "living-shallows-v1",
+          "step": "shallows-reef-garden",
+          "token": 11
+        }
+      ],
+      "errors": [],
+      "index": 0,
+      "motion": {
+        "active": false,
+        "agentId": null,
+        "complete": false,
+        "coordinateSpace": "absolute-world-metres",
+        "distanceM": 0,
+        "durationSec": 0,
+        "elapsedSec": 0,
+        "error": null,
+        "kind": null,
+        "layer": null,
+        "paused": true,
+        "scope": "local-continuous-observation-shot",
+        "travelledM": 0,
+        "worldPosition": {
+          "x": 217.15689605442935,
+          "y": 1.4652789262581185,
+          "z": 231.91087636626057
+        },
+        "worldTarget": {
+          "x": 231.09123380718592,
+          "y": -0.8610672324106178,
+          "z": 224.0426249540476
+        }
+      },
+      "paused": true,
+      "phase": "idle",
+      "playing": false,
+      "profile": "living-shallows-v1",
+      "speed": 1,
+      "token": 12
+    }
+  ],
+  "browserErrors": []
+}

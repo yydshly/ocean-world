@@ -294,9 +294,11 @@ export function OceanApp(){
     if(choice.directorToken===undefined)director.stop();
     if(recording&&['world','living-stop','view','discoveries'].includes(choice.kind)){setToast('请先结束录像，再切换观察入口');return;}
     setPendingDemo(null);setHelp(false);
-    if(choice.kind==='population'){setEcologyModel(choice.model);setPanel('population');return;}
-    if(choice.kind==='panel'){setPanel(choice.panel);return;}
-    if(choice.kind==='capture'){setPanel('capture');return;}
+    if(choice.directorToken===undefined){
+      if(choice.kind==='population'){setEcologyModel(choice.model);setPanel('population');return;}
+      if(choice.kind==='panel'){setPanel(choice.panel);return;}
+      if(choice.kind==='capture'){setPanel('capture');return;}
+    }
     rememberOcean();setSelected(null);setObservationId(null);setExplorationIndex(null);setPanel(choice.directorToken===undefined?'demo':null);
     setPendingDemo(choice);
     if(choice.biome&&choice.biome!==biome){try{localStorage.setItem('tidal-observation-biome-v1',choice.biome);}catch{}setBiome(choice.biome);}
@@ -313,10 +315,16 @@ export function OceanApp(){
     if(choice.directorToken!==undefined){
       if(!director.state.active||choice.directorToken!==director.state.token){setPendingDemo(null);return;}
       director.prepareWorld(world.current,choice.directorToken);
+      if(choice.kind==='local-life'&&!world.current.oceanExploring){world.current.startOceanExploration();return;}
       if(choice.kind==='local-life'&&!directorSceneReady(choice,world.current,snapshot))return;
     }
     setPendingDemo(null);
-    const entered=navigateDemoEntry(choice,world.current);
+    if(choice.directorToken!==undefined&&['panel','population','capture'].includes(choice.kind)){
+      if(choice.kind==='population'){setEcologyModel(choice.model);setPanel('population');}
+      else setPanel(choice.kind==='capture'?'capture':choice.panel);
+      director.applied(choice.directorToken);return;
+    }
+    const entered=navigateDemoEntry(choice,world.current,{movingDirector:choice.directorToken!==undefined});
     if(!entered){
       setToast(choice.kind==='local-life'?'附近当前没有可观察的活体，可在图鉴中查看其他条目':'此观察点暂不可用，请选择其他入口');
       if(choice.directorToken!==undefined){

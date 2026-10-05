@@ -16,7 +16,7 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
   const elapsedMs = Math.min(durationMs, Math.max(0, finite(state.elapsedMs)));
   const progress = complete ? 100 : durationMs ? Math.round(elapsedMs / durationMs * 100) : 0;
   const remainingSec = Math.ceil(Math.max(0, durationMs - elapsedMs) / 1000);
-  const phaseLabel = complete ? '演示结束' : loading ? '正在进入章节' : state.playing ? '自动播放' : '已暂停';
+  const phaseLabel = complete ? '演示结束' : !state.playing ? '已暂停' : loading ? '正在进入章节' : '镜头巡游';
   const currentLabel = complete ? '演示结束' : `${index + 1} / ${count} · ${step?.title || '场景观察'}`;
 
   return <section className="director-player glass" aria-label="导演演示播放器" data-phase={state.phase}>
@@ -38,7 +38,7 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
     {state.error && <p className="director-player-error" role="alert">{String(state.error)}</p>}
 
     <div className="director-player-progress-row">
-      <div className="director-player-progress" role="progressbar" aria-label="当前章节停留进度"
+      <div className="director-player-progress" role="progressbar" aria-label="当前章节巡游进度"
         aria-valuemin={0} aria-valuemax={100} aria-valuenow={loading ? 0 : progress}
         aria-valuetext={complete ? '演示结束' : loading ? '章节加载中' : `${progress}%，剩余 ${remainingSec} 秒`}>
         <span style={{ width: `${loading ? 0 : progress}%` }}/>

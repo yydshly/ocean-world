@@ -62,3 +62,8 @@ output/validation/screenshots/*
 !output/validation/director-repair-checks.log
 !output/validation/director-audit.json
 !output/validation/director-overview.jpg
+!output/validation/director-motion-build.log
+!output/validation/director-motion-checks.log
+!output/validation/director-motion-final-checks.log
+!output/validation/director-motion-review.json
+!output/validation/director-motion-overview.jpg

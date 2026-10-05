@@ -49,7 +49,7 @@ export function DemoOverview({ onChoose, onClose, onStartDirector, worldReady, r
       <button type="button" disabled={recording} aria-describedby="demo-director-intro" onClick={onStartDirector}>
         <span aria-hidden="true">▶</span>一键导演演示
       </button>
-      <p id="demo-director-intro">约 4 分钟，自动带你走过四类海域、地貌、生物观察与现有工具。可暂停、跳过或退出。</p>
+      <p id="demo-director-intro">约 7 分钟，镜头前进、转向和升降，依次巡游各观察点并展示现有工具。跨海域时切换场景，可暂停、跳章或退出。</p>
     </div>
 
     <div className="demo-current-status" role="status" aria-live="polite">

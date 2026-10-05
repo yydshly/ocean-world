@@ -1,43 +1,66 @@
 import { DEMO_ACTIONS, DEMO_LIVING_STOPS } from './demoCapabilities.js';
 
 const actions = new Map(DEMO_ACTIONS.map(action => [action.id, action]));
-const step = (id, title, caption, actionId, durationMs) => Object.freeze({
+const step = (id, title, caption, actionId, durationMs, motionKind = 'walk') => Object.freeze({
   id, title, caption, action: actions.get(actionId), durationMs,
+  motion: Object.freeze({ kind: motionKind, durationSec: durationMs / 1000 }),
 });
 const layers = (biome, labels) => [
-  step(`${biome}-bed`, labels[0], '在当前水平位置切换观察高度；海床、生境和群落保持原状。', 'layer-bed', 6000),
-  step(`${biome}-midwater`, labels[1], '观察同一海域的垂直空间，动物是否出现取决于实际活体分布。', 'layer-midwater', 6000),
+  step(`${biome}-bed`, labels[0], '镜头缓慢下降，靠近海床观察起伏与近底生活空间。', 'layer-bed', 12000),
+  step(`${biome}-midwater`, labels[1], '镜头缓慢升起，观察水层中的动物与周围空间。', 'layer-midwater', 12000),
   step(`${biome}-surface`, labels[2], biome === 'deep'
-    ? '这是深海观察器上方的观察高度，并非抵达海面。'
-    : '观察巨藻上部和周围水域；这次切换不移动到另一个海域。', 'layer-surface', 6000),
+    ? '镜头升至海床上方，俯看灯光中的沉积地形。'
+    : '镜头向巨藻上部升起，观察藻冠与开放水域。', 'layer-surface', 12000),
 ];
+
+function withStepContexts(steps) {
+  let context = null;
+  return steps.map(item => {
+    if (['world', 'living-stop'].includes(item.action.kind)) {
+      context = Object.freeze({ biome: item.action.biome,
+        ...(item.action.biome === 'reef' ? { profile: item.action.profile } : {}) });
+    }
+    if (!context) throw new TypeError('A director chapter requires an explicit world context.');
+    return Object.freeze({ ...item, context });
+  });
+}
+
+// A direct chapter seek must enter its own world even when the native action
+// normally operates on the current one. Keep the native action reference on
+// the step; the dispatcher receives this explicit contextual copy instead.
+export function directorStepAction(item) {
+  if (!item?.action || !item?.context) throw new TypeError('A director action requires its chapter context.');
+  return Object.freeze({ ...item.action, ...item.context });
+}
 
 // Every action goes through the same native entry dispatcher as the capability
 // overview. Route stops are explicit observation jumps, never simulated travel.
-// Time below is viewing time; asynchronous world loading does not consume it.
-export const DIRECTOR_STEPS = Object.freeze([
-  step('shallows-opening', '新浅海：先看整体', '从连续海床开始，观察礁群、海草床和沙道；沿用当前世界的实际存档。', 'world-living-shallows', 10000),
+// After the real entry becomes ready, motion drives a bounded local walkthrough.
+// Independent worlds and distant stop jumps are not one geographic journey.
+// Time below is moving observation time; asynchronous loading does not consume it.
+export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
+  step('shallows-opening', '新浅海：先看整体', '先看礁群、草床与沙道。依次巡游各观察点，跨海域时切换场景。', 'world-living-shallows', 14000),
   ...DEMO_LIVING_STOPS.map(stop => step(`shallows-${stop.id}`, stop.title,
-    `观察点直达：${stop.description}。切换完成后再开始计时；地貌以当前实际海床为准。`, stop.action.id, 6000)),
-  step('shallows-life', '浅海：附近的真实生物', '寻找当前已加载海域中的活体；若附近没有可观察动物，会如实说明并继续演示。', 'current-local-life', 10000),
-  step('shallows-discoveries', '浅海：沉木与沉底瓶', '查看当前世界的实际发现记录；只有进入近距观察范围才会形成发现，不自动添加记录。', 'living-discoveries', 8000),
-  step('legacy-opening', '原浅礁：固定礁区', '切换到原浅礁世界，观察既有珊瑚、鱼群与岩隙。', 'world-legacy-reef', 10000),
-  step('legacy-wide', '原浅礁：全景入口', '回到固定礁区全景，查看这个入口实际提供的场景。', 'legacy-wide', 6000),
-  step('legacy-skeleton', '原浅礁：珊瑚骨架', '通过原有骨架入口观察模型；模型完成加载后才开始停留计时。', 'legacy-skeleton', 8000),
-  step('kelp-opening', '海带林：进入连续探索', '进入巨藻岩底与林间空地；海带附着在适合的硬质基底上，动物沿用实际群落。', 'world-kelp', 10000),
+    `${stop.description}。镜头沿海床缓慢前进，转向观察周围生境。`, stop.action.id, 12000)),
+  step('shallows-life', '浅海：附近的真实生物', '在群落周围巡游，观察生物的运动与生活空间。', 'current-local-life', 14000, 'follow'),
+  step('shallows-discoveries', '浅海：沉木与沉底瓶', '沿海床寻找沉木与沉底瓶，查看途中留下的发现记录。', 'living-discoveries', 12000),
+  step('legacy-opening', '原浅礁：固定礁区', '在珊瑚、鱼群与岩隙之间缓行，观察原礁区的整体关系。', 'world-legacy-reef', 14000),
+  step('legacy-wide', '原浅礁：全景入口', '绕礁群缓慢转看，留意开放水域与岩面的层次。', 'legacy-wide', 12000, 'orbit'),
+  step('legacy-skeleton', '原浅礁：珊瑚骨架', '环绕珊瑚骨架，观察枝群的轮廓与结构。', 'legacy-skeleton', 12000, 'orbit'),
+  step('kelp-opening', '海带林：进入连续探索', '在巨藻岩底与林间空地缓行，观察林下、藻间和冠层。', 'world-kelp', 14000),
   ...layers('kelp', ['海带林：林底', '海带林：藻间水层', '海带林：上部水域']),
-  step('kelp-life', '海带林：附近的真实动物', '从当前加载区域寻找活体，展示动物所在的生活空间；稀疏或缺席不会触发补种。', 'current-local-life', 10000),
-  step('deep-opening', '深海：软底与观察器照明', '进入连续深海探索，观察沉积平原、缓坡与岩露头，以及当前实际软底群落。', 'world-deep', 10000),
+  step('kelp-life', '海带林：附近的真实动物', '在林下群落周围巡游，留意动物与藻体之间的生活空间。', 'current-local-life', 14000, 'follow'),
+  step('deep-opening', '深海：软底与观察器照明', '观察器沿软底缓行，灯光扫过沉积平原、缓坡和岩露头。', 'world-deep', 14000),
   ...layers('deep', ['深海：近底观察', '深海：离底观察', '深海：上方观察']),
-  step('deep-life', '深海：附近的真实动物', '寻找当前深海中的真实活体；只有实际存在时才会聚焦，不保证所有动物同框出现。', 'current-local-life', 10000),
-  step('tools-return', '回到浅海：查看现有工具', '返回新浅海的入口观察点，依次演示图鉴、环境读数、记录和独立实验工作台。', 'world-living-shallows', 8000),
-  step('tools-catalog', '生物图鉴', '查看当前海域的物种资料与可观察活体；目录中的物种不代表此刻都在附近。', 'current-catalog', 8000),
-  step('tools-environment', '环境实验入口', '展示当前光照、水流、资源和生态读数；导演演示不会自动修改环境参数。', 'current-science', 8000),
-  step('tools-journal', '探索手记', '展示当前浏览器保存的观察点；演示不会自动标记、覆盖或删除手记。', 'current-journal', 8000),
-  step('tools-foodweb', '独立实验：食物网对照', '这是独立的功能群模型，用于比较资源与物质账本；结果不等于当前三维世界的种群。', 'population-foodweb', 8000),
-  step('tools-age', '独立实验：年龄结构', '展示独立种群模型的年龄结构和长期变化；工作台计算同种子对照，不改写三维海域中的动物。', 'population-age', 10000),
-  step('tools-capture', '截图、录像与导出', '演示捕捉入口和实际可用按钮；下载或录像由你点击启动，导演不会自动录制。', 'capture-guide', 8000),
-]);
+  step('deep-life', '深海：附近的真实动物', '沿深海群落缓慢移动，观察近底活动与觅食空间。', 'current-local-life', 14000, 'follow'),
+  step('tools-return', '回到浅海：查看现有工具', '回到浅海巡游，接着查看图鉴、环境、记录与实验工具。', 'world-living-shallows', 12000),
+  step('tools-catalog', '生物图鉴', '认识当前海域的生物，查看物种资料与附近可观察的活体。', 'current-catalog', 8000),
+  step('tools-environment', '环境实验入口', '查看光照、水流、资源与生态读数，探索环境与生物活动的联系。', 'current-science', 8000),
+  step('tools-journal', '探索手记', '记下喜欢的观察点，回访途中发现的生活空间。', 'current-journal', 8000),
+  step('tools-foodweb', '独立实验：食物网对照', '用独立食物网模型比较基线与干预，查看资源变化和物质账本。', 'population-foodweb', 8000),
+  step('tools-age', '独立实验：年龄结构', '用独立种群模型观察年龄结构与长期变化。', 'population-age', 8000),
+  step('tools-capture', '截图、录像与导出', '保存观察画面，录制一段巡游，或导出当前实验数据。', 'capture-guide', 8000),
+]));
 
 export function createDirectorState() {
   return { active: false, index: 0, phase: 'idle', playing: false, elapsedMs: 0, token: 0, error: null };
