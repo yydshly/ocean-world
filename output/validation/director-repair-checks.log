@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: readiness rejects absent, disposed, wrong-biome and stale-profile renderers or snapshots
+ok 1 - readiness rejects absent, disposed, wrong-biome and stale-profile renderers or snapshots
+  ---
+  duration_ms: 1.2662
+  type: 'test'
+  ...
+# Subtest: fixed authored scenes need only an actual match and never wait for a moving focus transition
+ok 2 - fixed authored scenes need only an actual match and never wait for a moving focus transition
+  ---
+  duration_ms: 0.2521
+  type: 'test'
+  ...
+# Subtest: new regional births and pending requests cannot be acknowledged from an older visible community
+ok 3 - new regional births and pending requests cannot be acknowledged from an older visible community
+  ---
+  duration_ms: 0.3059
+  type: 'test'
+  ...
+# Subtest: only the actual current region completes exploration, and a loaded empty region is a valid outcome
+ok 4 - only the actual current region completes exploration, and a loaded empty region is a valid outcome
+  ---
+  duration_ms: 0.3395
+  type: 'test'
+  ...
+# Subtest: an older nine-owner window containing the new centre cannot acknowledge its pending neighbour births
+ok 5 - an older nine-owner window containing the new centre cannot acknowledge its pending neighbour births
+  ---
+  duration_ms: 0.2604
+  type: 'test'
+  ...
+# Subtest: failed loading and missing region/metric evidence remain unready
+ok 6 - failed loading and missing region/metric evidence remain unready
+  ---
+  duration_ms: 0.2087
+  type: 'test'
+  ...
+# Subtest: population chapters require their actual panel result as well as the matching loaded scene
+ok 7 - population chapters require their actual panel result as well as the matching loaded scene
+  ---
+  duration_ms: 0.2445
+  type: 'test'
+  ...
+# Subtest: the finite tour covers every existing entry without invented or destructive actions
+ok 8 - the finite tour covers every existing entry without invented or destructive actions
+  ---
+  duration_ms: 3.1842
+  type: 'test'
+  ...
+# Subtest: macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds
+ok 9 - macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds
+  ---
+  duration_ms: 0.4319
+  type: 'test'
+  ...
+# Subtest: loading and pausing never consume viewing time
+ok 10 - loading and pausing never consume viewing time
+  ---
+  duration_ms: 0.3413
+  type: 'test'
+  ...
+# Subtest: late callbacks cannot enter, fail, or count a replaced step after seek, stop, or restart
+ok 11 - late callbacks cannot enter, fail, or count a replaced step after seek, stop, or restart
+  ---
+  duration_ms: 0.3196
+  type: 'test'
+  ...
+# Subtest: one slow tick cannot skip viewing/loading of the next scene
+ok 12 - one slow tick cannot skip viewing/loading of the next scene
+  ---
+  duration_ms: 0.1684
+  type: 'test'
+  ...
+# Subtest: an entry failure pauses visibly until a retry or explicit skip
+ok 13 - an entry failure pauses visibly until a retry or explicit skip
+  ---
+  duration_ms: 0.1638
+  type: 'test'
+  ...
+# Subtest: manual navigation stays finite and preserves a paused playback preference
+ok 14 - manual navigation stays finite and preserves a paused playback preference
+  ---
+  duration_ms: 0.2466
+  type: 'test'
+  ...
+# Subtest: a complete automatic traversal visits every step once and stops at its end
+ok 15 - a complete automatic traversal visits every step once and stops at its end
+  ---
+  duration_ms: 0.3003
+  type: 'test'
+  ...
+# Subtest: invalid timer input and duplicate readiness cannot distort a showing step
+ok 16 - invalid timer input and duplicate readiness cannot distort a showing step
+  ---
+  duration_ms: 0.4573
+  type: 'test'
+  ...
+# Subtest: a real ordinary reef predation event keeps its cause and cannot become a sea-spider event
+ok 17 - a real ordinary reef predation event keeps its cause and cannot become a sea-spider event
+  ---
+  duration_ms: 15.2536
+  type: 'test'
+  ...
+# Subtest: the deep predation schema preserves its finite condition-transfer values and units
+ok 18 - the deep predation schema preserves its finite condition-transfer values and units
+  ---
+  duration_ms: 0.7214
+  type: 'test'
+  ...
+# Subtest: missing, nonfinite or differently measured predation values retain the real cause without fabricated zeroes
+ok 19 - missing, nonfinite or differently measured predation values retain the real cause without fabricated zeroes
+  ---
+  duration_ms: 0.2563
+  type: 'test'
+  ...
+# Subtest: kelp drift uses finite real intake values and never substitutes missing stock with zero
+ok 20 - kelp drift uses finite real intake values and never substitutes missing stock with zero
+  ---
+  duration_ms: 0.4865
+  type: 'test'
+  ...
+# Subtest: other native feeding explanations keep resource names, finite intake and source causes
+ok 21 - other native feeding explanations keep resource names, finite intake and source causes
+  ---
+  duration_ms: 0.2217
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 142.458

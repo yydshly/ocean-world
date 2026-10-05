@@ -18,6 +18,7 @@ import { demoWorldMatches, navigateDemoEntry } from './demoNavigation.js';
 import { DirectorPlayer } from './DirectorPlayer.jsx';
 import { useDirectorTour } from './useDirectorTour.js';
 import { directorSceneReady } from './directorReadiness.js';
+import { observationEventCause } from './observationEventText.js';
 import './ocean.css';
 
 function LivingEcosystem({ecosystem,compact=false}){
@@ -83,13 +84,7 @@ Object.assign(oceanActivityNames,{'seagrass-cruising':'草床巡游',surfacing:'
 kinds.turtle='海洋爬行动物';
 // A UI preference, separate from ecological records and saved observation points.
 function savedPause(){try{return localStorage.getItem('tidal-observation-paused-v1')==='true';}catch{return false;}}
-function eventCause(event){
-  if(event.type==='kelp-drift-feeding'&&event.removedUnits>0)return `接近实际落料点后摄入 ${driftUnits(event.removedUnits)} 相对藻料，来源为已有巨藻组织的自然脱落。`;
-  if(event.type==='predation')return `吻端接触海葵触手后，海葵体况减少 ${event.removedUnits.toFixed(5)}，海蜘蛛获得 ${event.gainUnits.toFixed(5)}。这是无量纲条件能量转移，双方保留身份。`;
-  if(event.actualIntake>0)return `接近${resourceNames[event.foodPool]||'局部食物'}后摄入 ${event.actualIntake.toFixed(5)} 相对有机代理量，消耗来自附近食物斑块。`;
-  const bite=event.cause?.match(/接近局部 (\w+) 斑块后移出 ([\d.]+)/);
-  return bite?`在附近找到${resourceNames[bite[1]]||'食物'}并摄食，本次消耗 ${bite[2]} 相对资源量；摄食所得进入个体能量收支。`:event.cause;
-}
+const eventCause=event=>observationEventCause(event,resourceNames);
 function Resource({label,value,color}){return <div className="resource"><span>{label}</span><div className="bar-track"><i style={{width:`${Math.min(100,Math.max(0,(value||0)*100))}%`,background:color}}/></div><b>{label==='平均能量'?percent(value):label==='林底藻料'?driftUnits(value):Number(value||0).toFixed(2)}</b></div>;}
 function PredatorObservation({agent}){
   if(agent.speciesId!=='giant-sea-spider-group')return null;

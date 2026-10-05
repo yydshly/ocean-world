@@ -59,5 +59,6 @@ output/validation/screenshots/*
 !output/validation/demo-entry-overview.jpg
 !output/validation/director-build.log
 !output/validation/director-checks.log
+!output/validation/director-repair-checks.log
 !output/validation/director-audit.json
 !output/validation/director-overview.jpg
