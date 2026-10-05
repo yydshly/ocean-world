@@ -2,6 +2,8 @@
 
 更新：2026-10-06。
 
+最新自动演示：[导演入口](https://yydshly.github.io/ocean-world/?demo=director)。修复源码 `e59c59a73b14f3f85cd4d5f466cb8a061ba7174e` 的 [运行 37359031147](https://github.com/yydshly/ocean-world/actions/runs/37359031147) 构建、54 项相关检查和部署成功；部署 `6867326583` 状态 success。此前导演源码 `3f92b0a46f72e565163818f2f656b90afc7c6d5b` 的 [运行 37356921260](https://github.com/yydshly/ocean-world/actions/runs/37356921260) 构建、49 项检查及部署成功，但实际导览随后暴露旧捕食事件显示缺陷。首次修复的 [运行 37358590602](https://github.com/yydshly/ocean-world/actions/runs/37358590602) 因新增测试导入文件名大小写失败，未部署；修正为仓库的 simulation.js 后完成最新发布。此前手动总览发布记录保留如下。导演范围及实际分段播放核对见 [说明](DIRECTOR_ENTRY.md)。
+
 最新统一演示：[能力总览](https://yydshly.github.io/ocean-world/?demo=all)。网页源码 `088b6d214922a9e3a150df458a0f753f79f6eac6` 的 [运行 37349644714](https://github.com/yydshly/ocean-world/actions/runs/37349644714) 构建、33 项相关检查与部署成功，部署 `6865814471` 状态为 success。基础 23 项新增 10 项入口适配检查，未声称全历史测试通过。后续仅文档/证据提交使用 skip ci，网页源码不变。实际入口与下载边界见 [演示核对](DEMO_ENTRY_AUDIT.md)。
 
 源代码仓库：[yydshly/ocean-world](https://github.com/yydshly/ocean-world)。初始创建为私有仓库，2026-10-06获得用户授权后已公开。

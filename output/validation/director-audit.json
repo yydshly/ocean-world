@@ -1,0 +1,1219 @@
+{
+  "schema": "director-entry-audit-v1",
+  "source": "3f92b0a46f72e565163818f2f656b90afc7c6d5b",
+  "url": "https://yydshly.github.io/ocean-world/?demo=director",
+  "startedAt": "2026-10-05T18:37:59.359Z",
+  "initialControls": {
+    "paused": true,
+    "speed": 1
+  },
+  "localChecks": {
+    "pauseAndResume": true,
+    "ageActualResult": true,
+    "seek": true,
+    "completionRestoredPaused": true,
+    "manualExitRestoredPausedAndSpeed12": true,
+    "mobileViewport": {
+      "width": 390,
+      "height": 844,
+      "playerInsideViewport": true
+    }
+  },
+  "browserLimitations": [
+    "本机临时页签在视口重置后的检查中报告 page crashed，随后工具超时并重建上下文；原因未确定。线上改用新页签进行完整自动播放。"
+  ],
+  "observations": [
+    {
+      "at": "2026-10-05T18:37:59.468Z",
+      "biome": "reef",
+      "director": {
+        "active": true,
+        "elapsedMs": 5510.89999999851,
+        "entered": [
+          {
+            "absence": false,
+            "action": "world-living-shallows",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-opening",
+            "token": 1
+          },
+          {
+            "absence": false,
+            "action": "stop-reef-garden",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-reef-garden",
+            "token": 2
+          }
+        ],
+        "error": null,
+        "index": 1,
+        "phase": "showing",
+        "playing": true,
+        "title": "连片礁群",
+        "token": 2
+      },
+      "errors": [],
+      "paused": false,
+      "speed": 1,
+      "viewport": {
+        "height": 720,
+        "pixelRatio": 1.5,
+        "width": 1280
+      },
+      "visible": "visible"
+    },
+    {
+      "at": "2026-10-05T18:39:21.297Z",
+      "biome": "reef",
+      "director": {
+        "active": true,
+        "elapsedMs": 2251.800000000745,
+        "entered": [
+          {
+            "absence": false,
+            "action": "world-living-shallows",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-opening",
+            "token": 1
+          },
+          {
+            "absence": false,
+            "action": "stop-reef-garden",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-reef-garden",
+            "token": 2
+          },
+          {
+            "absence": false,
+            "action": "stop-sand-channel",
+            "alive": 113,
+            "biome": "reef",
+            "chunkId": "5,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-sand-channel",
+            "token": 3
+          },
+          {
+            "absence": false,
+            "action": "stop-seagrass-meadow",
+            "alive": 125,
+            "biome": "reef",
+            "chunkId": "6,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-seagrass-meadow",
+            "token": 4
+          },
+          {
+            "absence": false,
+            "action": "stop-outer-reef",
+            "alive": 128,
+            "biome": "reef",
+            "chunkId": "8,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-outer-reef",
+            "token": 5
+          },
+          {
+            "absence": false,
+            "action": "stop-ridge-gully",
+            "alive": 138,
+            "biome": "reef",
+            "chunkId": "14,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-ridge-gully",
+            "token": 6
+          },
+          {
+            "absence": false,
+            "action": "stop-patch-reef",
+            "alive": 146,
+            "biome": "reef",
+            "chunkId": "21,7",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-patch-reef",
+            "token": 7
+          },
+          {
+            "absence": false,
+            "action": "stop-meadow-edge",
+            "alive": 133,
+            "biome": "reef",
+            "chunkId": "19,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-meadow-edge",
+            "token": 8
+          },
+          {
+            "absence": false,
+            "action": "stop-shelf-rise",
+            "alive": 132,
+            "biome": "reef",
+            "chunkId": "35,7",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-shelf-rise",
+            "token": 9
+          },
+          {
+            "absence": false,
+            "action": "stop-sand-basin",
+            "alive": 131,
+            "biome": "reef",
+            "chunkId": "27,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-sand-basin",
+            "token": 10
+          },
+          {
+            "absence": false,
+            "action": "stop-connected-seascape",
+            "alive": 120,
+            "biome": "reef",
+            "chunkId": "54,8",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-connected-seascape",
+            "token": 11
+          },
+          {
+            "absence": false,
+            "action": "stop-seascape-transition",
+            "alive": 117,
+            "biome": "reef",
+            "chunkId": "54,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-seascape-transition",
+            "token": 12
+          }
+        ],
+        "error": null,
+        "index": 11,
+        "phase": "showing",
+        "playing": true,
+        "title": "相邻生境",
+        "token": 12
+      },
+      "errors": [],
+      "paused": false,
+      "speed": 1,
+      "visible": "visible"
+    },
+    {
+      "at": "2026-10-05T18:40:41.350Z",
+      "biome": "kelp",
+      "director": {
+        "active": true,
+        "elapsedMs": 3011.89999999851,
+        "entered": [
+          {
+            "absence": false,
+            "action": "world-living-shallows",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-opening",
+            "token": 1
+          },
+          {
+            "absence": false,
+            "action": "stop-reef-garden",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-reef-garden",
+            "token": 2
+          },
+          {
+            "absence": false,
+            "action": "stop-sand-channel",
+            "alive": 113,
+            "biome": "reef",
+            "chunkId": "5,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-sand-channel",
+            "token": 3
+          },
+          {
+            "absence": false,
+            "action": "stop-seagrass-meadow",
+            "alive": 125,
+            "biome": "reef",
+            "chunkId": "6,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-seagrass-meadow",
+            "token": 4
+          },
+          {
+            "absence": false,
+            "action": "stop-outer-reef",
+            "alive": 128,
+            "biome": "reef",
+            "chunkId": "8,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-outer-reef",
+            "token": 5
+          },
+          {
+            "absence": false,
+            "action": "stop-ridge-gully",
+            "alive": 138,
+            "biome": "reef",
+            "chunkId": "14,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-ridge-gully",
+            "token": 6
+          },
+          {
+            "absence": false,
+            "action": "stop-patch-reef",
+            "alive": 146,
+            "biome": "reef",
+            "chunkId": "21,7",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-patch-reef",
+            "token": 7
+          },
+          {
+            "absence": false,
+            "action": "stop-meadow-edge",
+            "alive": 133,
+            "biome": "reef",
+            "chunkId": "19,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-meadow-edge",
+            "token": 8
+          },
+          {
+            "absence": false,
+            "action": "stop-shelf-rise",
+            "alive": 132,
+            "biome": "reef",
+            "chunkId": "35,7",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-shelf-rise",
+            "token": 9
+          },
+          {
+            "absence": false,
+            "action": "stop-sand-basin",
+            "alive": 131,
+            "biome": "reef",
+            "chunkId": "27,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-sand-basin",
+            "token": 10
+          },
+          {
+            "absence": false,
+            "action": "stop-connected-seascape",
+            "alive": 120,
+            "biome": "reef",
+            "chunkId": "54,8",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-connected-seascape",
+            "token": 11
+          },
+          {
+            "absence": false,
+            "action": "stop-seascape-transition",
+            "alive": 117,
+            "biome": "reef",
+            "chunkId": "54,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-seascape-transition",
+            "token": 12
+          },
+          {
+            "absence": false,
+            "action": "current-local-life",
+            "alive": 117,
+            "biome": "reef",
+            "chunkId": "54,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-life",
+            "token": 13
+          },
+          {
+            "absence": false,
+            "action": "living-discoveries",
+            "alive": 117,
+            "biome": "reef",
+            "chunkId": "54,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-discoveries",
+            "token": 14
+          },
+          {
+            "absence": false,
+            "action": "world-legacy-reef",
+            "alive": 19,
+            "biome": "reef",
+            "chunkId": "0,0",
+            "loadingRegions": 7,
+            "panelReady": false,
+            "step": "legacy-opening",
+            "token": 15
+          },
+          {
+            "absence": false,
+            "action": "legacy-wide",
+            "alive": 113,
+            "biome": "reef",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "legacy-wide",
+            "token": 16
+          },
+          {
+            "absence": false,
+            "action": "legacy-skeleton",
+            "alive": 77,
+            "biome": "reef",
+            "chunkId": "0,-1",
+            "loadingRegions": 2,
+            "panelReady": false,
+            "step": "legacy-skeleton",
+            "token": 17
+          },
+          {
+            "absence": false,
+            "action": "world-kelp",
+            "alive": 129,
+            "biome": "kelp",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "kelp-opening",
+            "token": 18
+          },
+          {
+            "absence": false,
+            "action": "layer-bed",
+            "alive": 129,
+            "biome": "kelp",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "kelp-bed",
+            "token": 19
+          }
+        ],
+        "error": null,
+        "index": 18,
+        "phase": "showing",
+        "playing": true,
+        "title": "海带林：林底",
+        "token": 19
+      },
+      "errors": [],
+      "paused": false,
+      "speed": 1,
+      "visible": "visible"
+    },
+    {
+      "at": "2026-10-05T18:42:02.376Z",
+      "biome": "reef",
+      "director": {
+        "active": true,
+        "elapsedMs": 6503.300000000745,
+        "entered": [
+          {
+            "absence": false,
+            "action": "world-living-shallows",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-opening",
+            "token": 1
+          },
+          {
+            "absence": false,
+            "action": "stop-reef-garden",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-reef-garden",
+            "token": 2
+          },
+          {
+            "absence": false,
+            "action": "stop-sand-channel",
+            "alive": 113,
+            "biome": "reef",
+            "chunkId": "5,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-sand-channel",
+            "token": 3
+          },
+          {
+            "absence": false,
+            "action": "stop-seagrass-meadow",
+            "alive": 125,
+            "biome": "reef",
+            "chunkId": "6,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-seagrass-meadow",
+            "token": 4
+          },
+          {
+            "absence": false,
+            "action": "stop-outer-reef",
+            "alive": 128,
+            "biome": "reef",
+            "chunkId": "8,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-outer-reef",
+            "token": 5
+          },
+          {
+            "absence": false,
+            "action": "stop-ridge-gully",
+            "alive": 138,
+            "biome": "reef",
+            "chunkId": "14,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-ridge-gully",
+            "token": 6
+          },
+          {
+            "absence": false,
+            "action": "stop-patch-reef",
+            "alive": 146,
+            "biome": "reef",
+            "chunkId": "21,7",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-patch-reef",
+            "token": 7
+          },
+          {
+            "absence": false,
+            "action": "stop-meadow-edge",
+            "alive": 133,
+            "biome": "reef",
+            "chunkId": "19,4",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-meadow-edge",
+            "token": 8
+          },
+          {
+            "absence": false,
+            "action": "stop-shelf-rise",
+            "alive": 132,
+            "biome": "reef",
+            "chunkId": "35,7",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-shelf-rise",
+            "token": 9
+          },
+          {
+            "absence": false,
+            "action": "stop-sand-basin",
+            "alive": 131,
+            "biome": "reef",
+            "chunkId": "27,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-sand-basin",
+            "token": 10
+          },
+          {
+            "absence": false,
+            "action": "stop-connected-seascape",
+            "alive": 120,
+            "biome": "reef",
+            "chunkId": "54,8",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-connected-seascape",
+            "token": 11
+          },
+          {
+            "absence": false,
+            "action": "stop-seascape-transition",
+            "alive": 117,
+            "biome": "reef",
+            "chunkId": "54,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-seascape-transition",
+            "token": 12
+          },
+          {
+            "absence": false,
+            "action": "current-local-life",
+            "alive": 117,
+            "biome": "reef",
+            "chunkId": "54,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-life",
+            "token": 13
+          },
+          {
+            "absence": false,
+            "action": "living-discoveries",
+            "alive": 117,
+            "biome": "reef",
+            "chunkId": "54,9",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "shallows-discoveries",
+            "token": 14
+          },
+          {
+            "absence": false,
+            "action": "world-legacy-reef",
+            "alive": 19,
+            "biome": "reef",
+            "chunkId": "0,0",
+            "loadingRegions": 7,
+            "panelReady": false,
+            "step": "legacy-opening",
+            "token": 15
+          },
+          {
+            "absence": false,
+            "action": "legacy-wide",
+            "alive": 113,
+            "biome": "reef",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "legacy-wide",
+            "token": 16
+          },
+          {
+            "absence": false,
+            "action": "legacy-skeleton",
+            "alive": 77,
+            "biome": "reef",
+            "chunkId": "0,-1",
+            "loadingRegions": 2,
+            "panelReady": false,
+            "step": "legacy-skeleton",
+            "token": 17
+          },
+          {
+            "absence": false,
+            "action": "world-kelp",
+            "alive": 129,
+            "biome": "kelp",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "kelp-opening",
+            "token": 18
+          },
+          {
+            "absence": false,
+            "action": "layer-bed",
+            "alive": 129,
+            "biome": "kelp",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "kelp-bed",
+            "token": 19
+          },
+          {
+            "absence": false,
+            "action": "layer-midwater",
+            "alive": 129,
+            "biome": "kelp",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "kelp-midwater",
+            "token": 20
+          },
+          {
+            "absence": false,
+            "action": "layer-surface",
+            "alive": 129,
+            "biome": "kelp",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "kelp-surface",
+            "token": 21
+          },
+          {
+            "absence": false,
+            "action": "current-local-life",
+            "alive": 129,
+            "biome": "kelp",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "kelp-life",
+            "token": 22
+          },
+          {
+            "absence": false,
+            "action": "world-deep",
+            "alive": 80,
+            "biome": "deep",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "deep-opening",
+            "token": 23
+          },
+          {
+            "absence": false,
+            "action": "layer-bed",
+            "alive": 80,
+            "biome": "deep",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "deep-bed",
+            "token": 24
+          },
+          {
+            "absence": false,
+            "action": "layer-midwater",
+            "alive": 80,
+            "biome": "deep",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "deep-midwater",
+            "token": 25
+          },
+          {
+            "absence": false,
+            "action": "layer-surface",
+            "alive": 80,
+            "biome": "deep",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "deep-surface",
+            "token": 26
+          },
+          {
+            "absence": false,
+            "action": "current-local-life",
+            "alive": 80,
+            "biome": "deep",
+            "chunkId": "0,0",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "step": "deep-life",
+            "token": 27
+          },
+          {
+            "absence": false,
+            "action": "world-living-shallows",
+            "alive": 121,
+            "biome": "reef",
+            "chunkId": "3,3",
+            "loadingRegions": 0,
+            "panelReady": false,
+            "profile": "living-shallows-v1",
+            "step": "tools-return",
+            "token": 28
+          }
+        ],
+        "error": null,
+        "index": 27,
+        "phase": "showing",
+        "playing": true,
+        "title": "回到浅海：查看现有工具",
+        "token": 28
+      },
+      "errors": [],
+      "paused": false,
+      "speed": 1,
+      "visible": "visible"
+    }
+  ],
+  "failure": {
+    "at": "2026-10-05T18:45:51.237Z",
+    "stage": "tools-environment",
+    "kind": "render-error",
+    "message": "普通浅海捕食事件缺少 removedUnits/gainUnits，旧 eventCause.toFixed 导致环境面板 React 崩溃",
+    "console": [
+      {
+        "level": "error",
+        "message": "TypeError: Cannot read properties of undefined (reading 'toFixed')\n    at TK (https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:4586:77027)\n    at https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:4586:123328\n    at Array.map (<anonymous>)\n    at NK (https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:4586:123186)\n    at tv (https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:48:48768)\n    at Mv (https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:48:71658)\n    at KA (https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:48:82076)\n    at AT (https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:48:117992)\n    at N4 (https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:48:117029)\n    at Gv (https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js:48:116859)",
+        "timestamp": "2026-10-05T18:42:12.864Z",
+        "url": "https://yydshly.github.io/ocean-world/assets/index-COkU-uEI.js"
+      }
+    ]
+  },
+  "repair": {
+    "functionalSource": "da37b0c6e49e7136bcf4aadb5c082f436a615684",
+    "localRelevantTests": {
+      "pass": 21,
+      "fail": 0,
+      "includesPrior16": true,
+      "newCases": 5
+    },
+    "build": "pass",
+    "firstCi": {
+      "run": 37358590602,
+      "status": "failure",
+      "reason": "New regression import used Simulation.js; tracked filename is simulation.js. Corrected to canonical path for Linux."
+    }
+  },
+  "recovery": {
+    "source": "e59c59a73b14f3f85cd4d5f466cb8a061ba7174e",
+    "ciRun": 37359031147,
+    "deployment": 6867326583,
+    "startedAt": "2026-10-05T18:52:32.428Z",
+    "manualSeek": "tools-return",
+    "observations": [
+      {
+        "at": "2026-10-05T18:53:17.358Z",
+        "biome": "reef",
+        "director": {
+          "active": true,
+          "elapsedMs": 6753.699999999255,
+          "entered": [
+            {
+              "absence": false,
+              "action": "world-living-shallows",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "shallows-opening",
+              "token": 1
+            },
+            {
+              "absence": false,
+              "action": "stop-reef-garden",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "shallows-reef-garden",
+              "token": 2
+            },
+            {
+              "absence": false,
+              "action": "world-living-shallows",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-return",
+              "token": 3
+            },
+            {
+              "absence": false,
+              "action": "current-catalog",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-catalog",
+              "token": 4
+            },
+            {
+              "absence": false,
+              "action": "current-science",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-environment",
+              "token": 5
+            }
+          ],
+          "error": null,
+          "index": 29,
+          "phase": "showing",
+          "playing": true,
+          "title": "环境实验入口",
+          "token": 5
+        },
+        "errors": [],
+        "panel": "环境实验面板",
+        "paused": false,
+        "plot": false,
+        "speed": 1,
+        "visible": "visible"
+      },
+      {
+        "at": "2026-10-05T18:53:56.086Z",
+        "biome": "reef",
+        "director": {
+          "active": true,
+          "elapsedMs": 5753.10000000149,
+          "entered": [
+            {
+              "absence": false,
+              "action": "world-living-shallows",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "shallows-opening",
+              "token": 1
+            },
+            {
+              "absence": false,
+              "action": "stop-reef-garden",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "shallows-reef-garden",
+              "token": 2
+            },
+            {
+              "absence": false,
+              "action": "world-living-shallows",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-return",
+              "token": 3
+            },
+            {
+              "absence": false,
+              "action": "current-catalog",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-catalog",
+              "token": 4
+            },
+            {
+              "absence": false,
+              "action": "current-science",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-environment",
+              "token": 5
+            },
+            {
+              "absence": false,
+              "action": "current-journal",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-journal",
+              "token": 6
+            },
+            {
+              "absence": false,
+              "action": "population-foodweb",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": true,
+              "profile": "living-shallows-v1",
+              "step": "tools-foodweb",
+              "token": 7
+            },
+            {
+              "absence": false,
+              "action": "population-age",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": true,
+              "profile": "living-shallows-v1",
+              "step": "tools-age",
+              "token": 8
+            },
+            {
+              "absence": false,
+              "action": "capture-guide",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-capture",
+              "token": 9
+            }
+          ],
+          "error": null,
+          "index": 33,
+          "phase": "showing",
+          "playing": true,
+          "title": "截图、录像与导出",
+          "token": 9
+        },
+        "errors": [],
+        "paused": false,
+        "plot": false,
+        "speed": 1,
+        "visible": "visible"
+      },
+      {
+        "at": "2026-10-05T18:54:23.612Z",
+        "director": {
+          "active": false,
+          "elapsedMs": 8000,
+          "entered": [
+            {
+              "absence": false,
+              "action": "world-living-shallows",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "shallows-opening",
+              "token": 1
+            },
+            {
+              "absence": false,
+              "action": "stop-reef-garden",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "shallows-reef-garden",
+              "token": 2
+            },
+            {
+              "absence": false,
+              "action": "world-living-shallows",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-return",
+              "token": 3
+            },
+            {
+              "absence": false,
+              "action": "current-catalog",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-catalog",
+              "token": 4
+            },
+            {
+              "absence": false,
+              "action": "current-science",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-environment",
+              "token": 5
+            },
+            {
+              "absence": false,
+              "action": "current-journal",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-journal",
+              "token": 6
+            },
+            {
+              "absence": false,
+              "action": "population-foodweb",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": true,
+              "profile": "living-shallows-v1",
+              "step": "tools-foodweb",
+              "token": 7
+            },
+            {
+              "absence": false,
+              "action": "population-age",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": true,
+              "profile": "living-shallows-v1",
+              "step": "tools-age",
+              "token": 8
+            },
+            {
+              "absence": false,
+              "action": "capture-guide",
+              "alive": 121,
+              "biome": "reef",
+              "chunkId": "3,3",
+              "loadingRegions": 0,
+              "panelReady": false,
+              "profile": "living-shallows-v1",
+              "step": "tools-capture",
+              "token": 9
+            }
+          ],
+          "error": null,
+          "index": 33,
+          "phase": "complete",
+          "playing": false,
+          "title": "截图、录像与导出",
+          "token": 10
+        },
+        "errors": [],
+        "notes": 0,
+        "paused": true,
+        "speed": 1
+      }
+    ],
+    "completedAt": "2026-10-05T18:54:23.612Z",
+    "consoleErrors": []
+  },
+  "result": {
+    "coverageAcrossTwoRuns": {
+      "chapters": 34,
+      "actions": 28
+    },
+    "repairSegmentComplete": true,
+    "controlRestored": true,
+    "errors": [],
+    "ci": {
+      "run": 37359031147,
+      "pass": 54,
+      "fail": 0
+    },
+    "singleUninterruptedFinalSourceRun": false
+  }
+}
