@@ -1,6 +1,6 @@
 # 当前状态与后续步骤
 
-更新：2026-10-06。此文归纳当前开发版，历史阶段与原始证据保留在 [开发记录](../PROGRESS.md)、[完整路线图](../PLAN.md) 和 [原 README 全文](HISTORICAL_README.md)。[GitHub 仓库](https://github.com/yydshly/ocean-world)已创建，Web 部署尚未完成，见 [部署说明](DEPLOYMENT.md)。
+更新：2026-10-06。此文归纳当前开发版，历史阶段与原始证据保留在 [开发记录](../PROGRESS.md)、[完整路线图](../PLAN.md) 和 [原 README 全文](HISTORICAL_README.md)。[GitHub 仓库](https://github.com/yydshly/ocean-world)已公开，[在线体验](https://yydshly.github.io/ocean-world/)已发布，见 [部署说明](DEPLOYMENT.md)。
 
 ## 项目定位
 

@@ -1,12 +1,44 @@
 {
-  "schema": "ocean-world-github-publication-v1",
+  "schema": "ocean-world-github-publication-v2",
   "date": "2026-10-06",
   "repository": "https://github.com/yydshly/ocean-world",
-  "visibility": "private",
+  "visibility": "public",
+  "authorization": "User explicitly allowed public repository and Pages publication.",
   "branch": "main",
-  "validatedSourceCommit": "c4f6e27d4ead43c8593c85cc82127e9a8ae6dfd8",
+  "validatedSourceCommit": "d4d008a64e8a5bd264a5d6bc912f2512b1127b5a",
+  "website": "https://yydshly.github.io/ocean-world/",
   "local": {"subdirectoryBuildPassed": true, "basePath": "/ocean-world/", "integrationChecks": 12, "log": "github-pages-checks.log"},
   "cloud": {
+    "workflowRunId": 37344757126,
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/37344757126",
+    "buildConclusion": "success",
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "durationMs": 42587.656068,
+    "deploymentConclusion": "success",
+    "deploymentId": 6864983604,
+    "environmentUrl": "https://yydshly.github.io/ocean-world/",
+    "httpsEnforced": true
+  },
+  "browserObservation": {
+    "source": "Read-only actual deployed-page DOM diagnostics and browser console; native screenshot inspected.",
+    "activeRegions": 9,
+    "activeIndividuals": 127,
+    "loadingRegions": 0,
+    "persistenceErrors": 0,
+    "errors": [],
+    "consoleErrors": [],
+    "renderedPageObserved": true,
+    "savedScreenshotPath": null,
+    "captureLimitation": "Automated download-event wait timed out; no local saved screenshot claimed."
+  },
+  "deployed": true,
+  "deploymentBlocker": null,
+  "pending": null,
+  "initialAttempt": {
+    "visibility": "private",
+    "validatedSourceCommit": "c4f6e27d4ead43c8593c85cc82127e9a8ae6dfd8",
     "workflowRunId": 37343715052,
     "url": "https://github.com/yydshly/ocean-world/actions/runs/37343715052",
     "buildConclusion": "success",
@@ -14,10 +46,8 @@
     "pass": 23,
     "fail": 0,
     "durationMs": 54557.577024,
-    "deploymentConclusion": "skipped"
+    "deploymentConclusion": "skipped",
+    "blocker": "GitHub POST pages returned HTTP422: current plan did not support Pages for the private repository."
   },
-  "deployed": false,
-  "deploymentBlocker": "GitHub POST pages returned HTTP422: current plan does not support Pages for this private repository.",
-  "pending": "User authorization to make this repository public, or choice of another host with access.",
-  "scope": "Cloud23 includes local12; no aggregate35 or full historical-suite claim. Browser stores were not uploaded or migrated."
+  "scope": "Each cloud run has23 related tests including local12. Overlapping runs are not added or represented as a full historical-suite pass. Browser stores remain origin-local. Final documentation-only commit does not alter deployed application code."
 }

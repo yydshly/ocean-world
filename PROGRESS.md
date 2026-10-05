@@ -1,14 +1,20 @@
 # 开发记录
 
+## 2026-10-06 · 公开仓库与 GitHub Pages 发布
+
+用户明确允许公开后，将 `yydshly/ocean-world` 改为PUBLIC，启用Pages workflow来源与PAGES_ENABLED=true，手动触发 [发布运行37344757126](https://github.com/yydshly/ocean-world/actions/runs/37344757126)。云端构建与部署均成功，23项相关检查通过/0失败，部署6864983604返回success及 [在线体验](https://yydshly.github.io/ocean-world/)。实际发布源码SHA为 `d4d008a64e8a5bd264a5d6bc912f2512b1127b5a`。仓库About、README、当前状态、部署文档及发布状态记录均更新；之后仅提交文档/记录，skip ci避免重复构建未改变的网页源码。
+
+实际浏览器打开线上网页，九区加载完成，一次读取127条活动窗口动物记录，运行错误和保存错误为0，控制台无错误；实际界面、砂地/岩体与生物可见。只作有限上线核对，不声称长期稳定FPS或纪录片视觉验收。浏览器自动化截图下载事件等待超时，未取得文件路径；未把该操作计为已保存图片证据。线上存档在新的站点来源独立建立，未迁移或上传本机IndexedDB/手记，未改生态/场景源码。详见 [发布状态](output/validation/github-publication-status.json)。
+
 ## 2026-10-06 · GitHub 首次归档与网页部署准备
 
 按用户要求创建私有仓库 `yydshly/ocean-world`，初始化main分支。首页改为简明上手说明，原README全文保存在 `docs/HISTORICAL_README.md`；`docs/CURRENT_STATUS.md`归纳已有功能、生态/地貌/视觉缺口及五步有限路线，`docs/DEPLOYMENT.md`记录发布流程和实际状态。首次版本包含源码、锁文件、测试、资产许可/来源、历史文档及最新连续海床七份完整元数据/对应图片/日志。node_modules、dist、缓存与大量历史原始输出保留本机且不入库，没有清理用户记录。
 
 为了GitHub Pages项目子目录，Vite增加默认仍为 `/` 的VITE_BASE_PATH配置，ReefWorld.texture改为读取BASE_URL；只改资源地址，不改模拟或材质。一次 `/ocean-world/` 生产构建及本机世界8/托管4共12项检查通过，保留原大包提示。GitHub Actions安装锁定依赖、构建并检查连续海床/世界/托管共23项（包含这12项），只发布dist/client。Pages启用前发布job跳过，构建检查仍运行。
 
-当前GitHub账号套餐实际返回422，拒绝为私有仓库启用Pages；已询问用户是否公开新仓库，未获授权前保持私有。原Sites配置无project_id且本会话没有发布接口，不宣称已上线。线上和本机存档属于不同浏览器来源，不自动迁移IndexedDB或手记。后续发布结果记录在部署文档；本轮不进行场景细节迭代。
+首次准备时GitHub账号套餐实际返回422，拒绝为私有仓库启用Pages；当时已询问用户是否公开新仓库，未获授权前保持私有。原Sites配置无project_id且该会话没有发布接口，当时尚未上线。线上和本机存档属于不同浏览器来源，不自动迁移IndexedDB或手记。后续成功发布见上方记录；本轮不进行场景细节迭代。
 
-首次归档提交 `c4f6e27d4ead43c8593c85cc82127e9a8ae6dfd8` 已推送main，共457个文件。GitHub [云端运行37343715052](https://github.com/yydshly/ocean-world/actions/runs/37343715052) 构建成功、23项相关检查通过/0失败，发布job按条件跳过；当前远端确认为PRIVATE。验证状态见 [github-publication-status.json](output/validation/github-publication-status.json)。后续归档该结果的提交仅修改文档/记录，使用skip ci避免重复检查未改变的源码。
+首次归档提交 `c4f6e27d4ead43c8593c85cc82127e9a8ae6dfd8` 已推送main，共457个文件。GitHub [云端运行37343715052](https://github.com/yydshly/ocean-world/actions/runs/37343715052) 构建成功、23项相关检查通过/0失败，发布job按条件跳过；当时远端确认为PRIVATE。验证状态见 [github-publication-status.json](output/validation/github-publication-status.json)。后续归档该结果的提交仅修改文档/记录，使用skip ci避免重复检查未改变的源码。
 
 ## 2026-10-06 · 四区连续海床与真实群落
 

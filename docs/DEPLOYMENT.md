@@ -2,15 +2,17 @@
 
 更新：2026-10-06。
 
-源代码仓库：[yydshly/ocean-world](https://github.com/yydshly/ocean-world)。初始创建为私有仓库。
+源代码仓库：[yydshly/ocean-world](https://github.com/yydshly/ocean-world)。初始创建为私有仓库，2026-10-06获得用户授权后已公开。
 
 ## 当前发布状态
 
-本机已完成 `/ocean-world/` 子目录生产构建，并配置 `.github/workflows/pages.yml`。GitHub 当前账号套餐拒绝为私有仓库启用 Pages；在获得公开仓库授权或改用其他托管之前，网页尚未上线。
+在线体验：[海底观察站](https://yydshly.github.io/ocean-world/)。GitHub Pages已启用，`PAGES_ENABLED=true`，HTTPS发布成功。仓库About也已设置在线地址。
 
-源码已推送至main。首次 [云端运行](https://github.com/yydshly/ocean-world/actions/runs/37343715052) 构建成功，23项相关检查全部通过，发布步骤按当前私有状态跳过。[发布状态记录](../output/validation/github-publication-status.json) 保存实际结果；这不等于网页已上线。
+成功 [发布运行37344757126](https://github.com/yydshly/ocean-world/actions/runs/37344757126) 构建及部署均通过，23项相关检查通过/0失败。实际部署源码为 `d4d008a64e8a5bd264a5d6bc912f2512b1127b5a`，GitHub部署6864983604状态为success并返回上述线上URL；之后仅文档/记录提交没有改动网页源码。
 
-GitHub Pages 的目标地址为 `https://yydshly.github.io/ocean-world/`；目标地址不能当作已成功发布的证明，实际状态以 Actions 部署记录为准。
+已在实际浏览器打开线上页面：九区加载完成，一次读到127条活动窗口动物记录，运行/保存错误均为0，控制台错误为空；界面及沙地、岩体和生物实际呈现。本次有限检查不代表长期性能或纪录片视觉验收。浏览器自动化截图下载事件等待超时，未获得本机图片路径，不把它当作已保存的截图证据。[发布状态记录](../output/validation/github-publication-status.json) 保留完整状态。
+
+首次私有准备时，GitHub套餐返回422拒绝私有Pages。[初次运行37343715052](https://github.com/yydshly/ocean-world/actions/runs/37343715052) 的构建/23项检查通过，但部署跳过。获授权公开后完成本次发布，初次阻塞事实保留。
 
 ## 部署流程
 
