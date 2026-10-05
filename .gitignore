@@ -52,3 +52,8 @@ output/validation/screenshots/*
 !output/validation/screenshots/reef-1791217559577-2026-10-05T16-25-59-679Z-e34aa18e.png
 !output/validation/screenshots/reef-1791217916032-2026-10-05T16-31-56-061Z-c78e9204.png
 
+
+!output/validation/demo-entry-build.log
+!output/validation/demo-entry-checks.log
+!output/validation/demo-entry-audit.json
+!output/validation/demo-entry-overview.jpg

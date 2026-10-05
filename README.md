@@ -4,6 +4,8 @@
 
 当前默认进入“浅海生态海域”；原浅礁、蒙特雷巨藻林和东北太平洋深海软底也可独立切换。项目仍在开发，纪录片式整体画面尚未验收。
 
+统一演示：[全部能力总览](https://yydshly.github.io/ocean-world/?demo=all)。从四类海域开始，直接查看 11 个浅海地貌观察点，再进入生物、环境、工作台和记录工具；顶部“能力总览”可随时返回。观察点直达与普通航行分开，不自动运行干预、重建动物或标记地点。
+
 在线体验：[海底观察站](https://yydshly.github.io/ocean-world/)。公开源码：[yydshly/ocean-world](https://github.com/yydshly/ocean-world)。发布记录见 [部署说明](docs/DEPLOYMENT.md)。
 
 ## 快速运行

@@ -1,0 +1,211 @@
+TAP version 13
+# Subtest: matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+ok 1 - matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+  ---
+  duration_ms: 1.2782
+  type: 'test'
+  ...
+# Subtest: missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+ok 2 - missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+  ---
+  duration_ms: 0.2553
+  type: 'test'
+  ...
+# Subtest: the public observation shortcuts cover the actual living generator route once each
+ok 3 - the public observation shortcuts cover the actual living generator route once each
+  ---
+  duration_ms: 1.414
+  type: 'test'
+  ...
+# Subtest: stop selection resolves the loaded route by ID and never substitutes the first stop
+ok 4 - stop selection resolves the loaded route by ID and never substitutes the first stop
+  ---
+  duration_ms: 0.5263
+  type: 'test'
+  ...
+# Subtest: kelp and deep world entries start continuous exploration and report an actual startup failure
+ok 5 - kelp and deep world entries start continuous exploration and report an actual startup failure
+  ---
+  duration_ms: 0.6195
+  type: 'test'
+  ...
+# Subtest: living and legacy world entries use their own observation operations without rebuilding populations
+ok 6 - living and legacy world entries use their own observation operations without rebuilding populations
+  ---
+  duration_ms: 0.3424
+  type: 'test'
+  ...
+# Subtest: water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+ok 7 - water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+  ---
+  duration_ms: 2.04
+  type: 'test'
+  ...
+# Subtest: current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+ok 8 - current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+  ---
+  duration_ms: 0.2502
+  type: 'test'
+  ...
+# Subtest: a missing local animal remains absent and the navigation adapter ignores UI-only tools
+ok 9 - a missing local animal remains absent and the navigation adapter ignores UI-only tools
+  ---
+  duration_ms: 0.4949
+  type: 'test'
+  ...
+# Subtest: discovery entry starts only the living observation world and preserves an existing exploration location
+ok 10 - discovery entry starts only the living observation world and preserves an existing exploration location
+  ---
+  duration_ms: 0.4229
+  type: 'test'
+  ...
+# Subtest: four fresh owners share real seam geometry, births and one atomic inventory admission; inactive siblings freeze
+ok 11 - four fresh owners share real seam geometry, births and one atomic inventory admission; inactive siblings freeze
+  ---
+  duration_ms: 5124.3199
+  type: 'test'
+  ...
+# Subtest: full-group delayed, failed and superseded commits publish no partial source/population and can restore after retry
+ok 12 - full-group delayed, failed and superseded commits publish no partial source/population and can restore after retry
+  ---
+  duration_ms: 15704.6172
+  type: 'test'
+  ...
+# Subtest: legacy mixed groups and complete old v3 death records use the old path without replacement
+ok 13 - legacy mixed groups and complete old v3 death records use the old path without replacement
+  ---
+  duration_ms: 7960.414
+  type: 'test'
+  ...
+# Subtest: all nine owners unload and full group restoration preserves complete deaths, clocks, stocks and 25/9/20 bounds
+ok 14 - all nine owners unload and full group restoration preserves complete deaths, clocks, stocks and 25/9/20 bounds
+  ---
+  duration_ms: 7803.4602
+  type: 'test'
+  ...
+# Subtest: v4 retains saved v1/v2/v3 plans, sources, queries and the original nine routes exactly
+ok 15 - v4 retains saved v1/v2/v3 plans, sources, queries and the original nine routes exactly
+  ---
+  duration_ms: 2598.101
+  type: 'test'
+  ...
+# Subtest: the four persisted floor slices have equal internal vertices/normals and actual raycast support across the continuous relief
+ok 16 - the four persisted floor slices have equal internal vertices/normals and actual raycast support across the continuous relief
+  ---
+  duration_ms: 1127.9851
+  type: 'test'
+  ...
+# Subtest: temporary/failed batches expose no ready owner, then one commit replaces full owners and restored sources stay bounded
+ok 17 - temporary/failed batches expose no ready owner, then one commit replaces full owners and restored sources stay bounded
+  ---
+  duration_ms: 3889.4726
+  type: 'test'
+  ...
+# Subtest: one deterministic complete group carries actual gentle macro relief and finite unsuitable groups decline
+ok 18 - one deterministic complete group carries actual gentle macro relief and finite unsuitable groups decline
+  ---
+  duration_ms: 1613.9644
+  type: 'test'
+  ...
+# group 54,8: actual span=4.654311180114746m; maximum triangle grade=0.6499898806667463; original scene descriptors unchanged
+# Subtest: all four actual Float32 internal edges match and an independently measured shared seam spans at least twelve metres
+ok 19 - all four actual Float32 internal edges match and an independently measured shared seam spans at least twelve metres
+  ---
+  duration_ms: 1.5298
+  type: 'test'
+  ...
+# four shared edges: 260 exact Float32 vertex comparisons; actual continuous >=1m internal seam=13m
+# Subtest: all native hosts, real hundred-root grass bed and driftwood remain exact on their entire protected floor footprints
+ok 20 - all native hosts, real hundred-root grass bed and driftwood remain exact on their entire protected floor footprints
+  ---
+  duration_ms: 112.6554
+  type: 'test'
+  ...
+# protected actual grass=106; props=1; hard hosts=27; complete footprint probes=2142; regrounded original rubble=50
+# Subtest: saved validation rejects changed shared grids or hosts, and deterministic replay survives original owner cache eviction
+ok 21 - saved validation rejects changed shared grids or hosts, and deterministic replay survives original owner cache eviction
+  ---
+  duration_ms: 1062.9535
+  type: 'test'
+  ...
+# Subtest: scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+ok 22 - scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+  ---
+  duration_ms: 54.728
+  type: 'test'
+  ...
+# Subtest: new scene hides authored terrain and disables all three old additive scenery systems
+ok 23 - new scene hides authored terrain and disables all three old additive scenery systems
+  ---
+  duration_ms: 15.0481
+  type: 'test'
+  ...
+# Subtest: world restores saved global forcing and clock before handing environment to regional ecology
+ok 24 - world restores saved global forcing and clock before handing environment to regional ecology
+  ---
+  duration_ms: 14.7469
+  type: 'test'
+  ...
+# Subtest: new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+ok 25 - new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+  ---
+  duration_ms: 21.208
+  type: 'test'
+  ...
+# Subtest: route controls use finite ordinary travel without teleport or ecology replacement
+ok 26 - route controls use finite ordinary travel without teleport or ecology replacement
+  ---
+  duration_ms: 416.8869
+  type: 'test'
+  ...
+# Subtest: environment updates and pause save the actual global forcing and latest time
+ok 27 - environment updates and pause save the actual global forcing and latest time
+  ---
+  duration_ms: 9.0949
+  type: 'test'
+  ...
+# Subtest: explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+ok 28 - explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+  ---
+  duration_ms: 468.855
+  type: 'test'
+  ...
+# Subtest: new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+ok 29 - new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+  ---
+  duration_ms: 333.6362
+  type: 'test'
+  ...
+# Subtest: serves existing static assets without a fallback
+ok 30 - serves existing static assets without a fallback
+  ---
+  duration_ms: 37.836
+  type: 'test'
+  ...
+# Subtest: falls back to index.html for an unknown app route
+ok 31 - falls back to index.html for an unknown app route
+  ---
+  duration_ms: 2.2484
+  type: 'test'
+  ...
+# Subtest: does not turn missing API or write requests into the app shell
+ok 32 - does not turn missing API or write requests into the app shell
+  ---
+  duration_ms: 0.6996
+  type: 'test'
+  ...
+# Subtest: emits the files required by Sites packaging
+ok 33 - emits the files required by Sites packaging
+  ---
+  duration_ms: 5.9069
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 36801.5992
