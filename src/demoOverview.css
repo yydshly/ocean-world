@@ -10,4 +10,4 @@
 @media(max-width:400px){.demo-overview{padding:15px 12px}.demo-overview-heading{gap:8px}.demo-close span{display:none}.demo-world-tag{font-size:7px}.demo-tools-grid{grid-template-columns:1fr}.demo-section-heading p{max-width:96px}.demo-item-arrow{display:none}}
 @media(max-height:550px) and (min-width:701px){.demo-overview{top:92px;bottom:93px;padding:18px 23px}.demo-intro{margin:10px 0}}
 
-.masthead nav{min-width:0;overflow-x:auto}.masthead nav button{white-space:nowrap;flex-shrink:0}@media(max-width:1050px){.masthead{gap:20px}.masthead nav{max-width:calc(100% - 130px)}.masthead .brand-cn,.masthead .brand-divider{display:none}}@media(max-width:700px){.masthead{gap:12px}.masthead nav{max-width:calc(100% - 92px)}.masthead nav button.demo-entry{display:block}}
+.masthead nav{min-width:0;overflow-x:auto}.masthead nav button{white-space:nowrap;flex-shrink:0}@media(max-width:1050px){.masthead{gap:20px}.masthead nav{max-width:calc(100% - 130px)}.masthead .brand-cn,.masthead .brand-divider{display:none}}@media(max-width:700px){.masthead{gap:12px}.masthead nav{max-width:calc(100% - 92px)}.ocean-app .masthead nav button.demo-entry{display:block}}
