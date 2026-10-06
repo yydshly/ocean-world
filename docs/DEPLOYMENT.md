@@ -2,6 +2,8 @@
 
 更新：2026-10-06。
 
+完整生活带版源码 `01d902df2de6b23e3a8804b9805a98bd763bf66d` 已发布。[运行37418001983](https://github.com/yydshly/ocean-world/actions/runs/37418001983) 构建、119项当前整合检查（0失败）及Pages部署全部success；部署 `6876352206` 状态success。打开[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，章节列表新增“生活带：礁群沙道”和“生活带：草床水层”，共36章、1×观察时间422秒，加载另计。适宜且四区未访问时，新组合中的礁丘/草床与实际动物和库存一起保存；旧区域不重建。本机同样119项及一次构建通过，不与云端重复相加；[交付记录](../output/validation/living-belt-delivery.json)只包含CPU模型/Three几何证据，浏览器工具受阻，本轮无实际整景播放或视觉验收。此前发布历史如下。
+
 导演整体进度/完整播放记录版源码 `84b8bba974781468fcff8f2c4bcd58406791ba0a` 已发布。[运行37416425198](https://github.com/yydshly/ocean-world/actions/runs/37416425198) 构建、101项当前工作流检查（0失败）及Pages部署全部success，部署 `6876104761` 状态success。打开[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，可查看路线位置、剩余估时及本次完整播放章数；跳章/提前结束不等于全部看完。本机构建及82项有限相关检查通过，101项包含82项不相加；仍无新版浏览器整段观看/截图验收。此次导演整体导览包收尾，此前发布历史如下。
 
 导演重试/发现旅行/键盘操作的有限修正版源码 `fbde7089123148ad93e88145d254833180ece1f1` 已发布。[运行37415436017](https://github.com/yydshly/ocean-world/actions/runs/37415436017) 的构建、89项当前工作流检查（0失败）及Pages部署全部success；部署 `6875952422` 状态success。使用[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，本机构建及70项相关检查通过。89项包含本机70项，不相加。浏览器整段播放未新增实测，此前实际发布历史如下。

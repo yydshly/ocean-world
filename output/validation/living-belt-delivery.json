@@ -362,5 +362,19 @@
       "habitat-belt-reef",
       "habitat-belt-meadow"
     ]
+  },
+  "deployment": {
+    "sourceCommit": "01d902df2de6b23e3a8804b9805a98bd763bf66d",
+    "runId": 37418001983,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37418001983",
+    "cloudTests": 119,
+    "cloudPassed": 119,
+    "cloudFailed": 0,
+    "buildJobId": 112120831472,
+    "deployJobId": 112121082297,
+    "deploymentId": 6876352206,
+    "state": "success",
+    "environmentUrl": "https://yydshly.github.io/ocean-world/",
+    "deploymentStatusCreatedAt": "2026-10-06T05:21:17Z"
   }
 }
