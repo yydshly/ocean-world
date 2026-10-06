@@ -12,10 +12,12 @@ function rockGeometry(profile) {
 /** A bounded soft-sediment scenery window, lit only by the scene's observer.
  * No lights, photosynthesis, landscape organisms or inferred food masses. */
 export class DeepOceanChunks {
-  constructor(seed, { sandMaterial } = {}) {
+  constructor(seed, { sandMaterial, seascape = false } = {}) {
     this.root = new THREE.Group(); this.root.name = 'continuous-deep-ocean-landscape';
     this.root.userData.oceanStreaming = true; this.root.userData.role = 'generated-soft-bottom-not-simulated-populations';
-    this.generator = createDeepOceanGenerator(seed); this.renderOrigin = { x: 0, z: 0 };
+    this._seascapeRequested = seascape === true;
+    this.generator = createDeepOceanGenerator(seed, { seascape: this._seascapeRequested });
+    this._seascapeRevision = this.generator.seascapeRevision ?? null; this.renderOrigin = { x: 0, z: 0 };
     this._chunks = new Map(); this._center = null; this._position = { x: 0, z: 0 };
     this._loads = 0; this._unloads = 0; this._disposed = false; this._transform = new THREE.Object3D();
     this._color = new THREE.Color(); this._environment = { clockSec: 0, currentMps: 0, observerLight: 0 };
@@ -83,7 +85,8 @@ export class DeepOceanChunks {
       elementCounts[kind] += elements.length; rockProfileCounts[profile] += elements.length; group.add(mesh); instances.push(mesh);
     }
     this.root.add(group); this._chunks.set(chunk.id, { group, origin: chunk.origin, terrainGeometry, instances,
-      elementCounts, rockProfileCounts }); this._loads++;
+      elementCounts, rockProfileCounts,
+      ...(this._seascapeRequested ? { seascapePlan: this.generator.seascapePlan(cx, cz) ?? null } : {}) }); this._loads++;
   }
   _unload(id) {
     const record = this._chunks.get(id); if (!record) return;
@@ -107,17 +110,25 @@ export class DeepOceanChunks {
       prototypeGeometries: Object.keys(this._geometries).length, prototypeMaterials: 3, ownedOverlayGeometries: 0,
       terrainTriangles: this._chunks.size * SEGMENTS ** 2 * 2, drawCalls: this._chunks.size + sceneryDraws, maxDrawCalls: MAX_CHUNKS * 4,
       loads: this._loads, unloads: this._unloads, landscapeRole: 'soft-sediment-and-sparse-hard-scenery-not-simulated-biomass',
-      environment: Object.freeze({ ...this._environment }), naturalLight: 0, photosyntheticScenery: 0 });
+      environment: Object.freeze({ ...this._environment }), naturalLight: 0, photosyntheticScenery: 0,
+      ...(this._seascapeRequested ? { seascapeRevision: this._seascapeRevision,
+        seascapeOwners: Object.freeze([...this._chunks.values()].filter(r => r.seascapePlan).map(r => r.group.userData.chunkId)),
+        seascapeAddedRocks: [...this._chunks.values()].reduce((n, r) => n + (r.seascapePlan?.addedRockIds.length ?? 0), 0) } : {}) });
   }
   update(position) {
     if (this._disposed) return false;
     if (!Number.isFinite(position?.x) || !Number.isFinite(position?.z)) throw new TypeError('Deep ocean position needs finite X/Z.');
+    if (this.generator.seascapeCandidatesActive) return false;
     this._position = { x: position.x, z: position.z }; const cx = Math.floor(position.x / 64), cz = Math.floor(position.z / 64);
-    if (this._center?.cx === cx && this._center?.cz === cz) return false;
+    const revision = this.generator.seascapeRevision ?? null;
+    if (this._center?.cx === cx && this._center?.cz === cz && this._seascapeRevision === revision) return false;
     const wanted = new Set(); for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) wanted.add(`${cx + dx},${cz + dz}`);
-    for (const id of this._chunks.keys()) if (!wanted.has(id)) this._unload(id);
+    const previousLoads = this._loads, previousUnloads = this._unloads;
+    for (const [id, record] of this._chunks) if (!wanted.has(id) || (this._seascapeRequested &&
+      record.seascapePlan !== (this.generator.seascapePlan(...id.split(',').map(Number)) ?? null))) this._unload(id);
     for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) if (!this._chunks.has(`${cx + dx},${cz + dz}`)) this._load(cx + dx, cz + dz);
-    this._center = { cx, cz }; this._refreshStats(); return true;
+    this._center = { cx, cz }; this._seascapeRevision = revision; this._refreshStats();
+    return this._loads !== previousLoads || this._unloads !== previousUnloads;
   }
   setRenderOrigin(origin) {
     if (this._disposed) return false;
@@ -137,7 +148,9 @@ export class DeepOceanChunks {
   reset(seed) {
     if (this._disposed) return false;
     for (const id of this._chunks.keys()) this._unload(id); this.generator.clearCache();
-    this.generator = createDeepOceanGenerator(seed); this._center = null; this._environment.clockSec = 0; return this.update(this._position);
+    this.generator = createDeepOceanGenerator(seed, { seascape: this._seascapeRequested });
+    this._seascapeRevision = this.generator.seascapeRevision ?? null;
+    this._center = null; this._environment.clockSec = 0; return this.update(this._position);
   }
   get stats() { return this._stats; }
   dispose() {

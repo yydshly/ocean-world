@@ -25,7 +25,7 @@ const methods = ['floorY', 'habitatY', 'select', 'oceanWorldPosition', 'oceanLay
   'setOceanObservationLayer', 'setOceanRenderOrigin', 'startOceanExploration',
   'travelOcean', 'toggleOceanCruise', 'moveCamera', 'clearCameraPosition',
   'enforceCameraClearance', 'oceanSnapshot', 'makeLighting', 'updateObserverLighting',
-  'makeSurface', 'makeDeepParticles', 'updateDeepOceanWater'];
+  'makeSurface', 'makeDeepParticles', 'updateDeepOceanWater', 'enterDeepSeascape', 'travelDeepSeascape'];
 const seedStart = source.indexOf('function seeded(');
 const seeded = new Function(`return ${source.slice(seedStart, source.indexOf('\n', seedStart))}`)();
 const WorldFixture = new Function('THREE', 'clamp', 'oceanLayerHeight', 'deepOceanLayerHeight', 'normalizeOceanObservationView',
@@ -89,6 +89,31 @@ function storageFixture() {
   const records = new Map(); return { records, getItem: key => records.get(key) ?? null,
     setItem: (key, value) => records.set(key, value), removeItem: key => records.delete(key) };
 }
+
+test('native deep seascape arrival and ordinary travel preserve full ecology and use bounded near-bed coordinates', () => {
+  const {world,calls}=fixture(),before=preserved(world);
+  world.oceanChunks.generator=createDeepOceanGenerator('42',{seascape:true});
+  const stops=world.oceanChunks.generator.seascapeRouteStops;
+  assert.equal(stops.length,2);
+  assert.equal(world.enterDeepSeascape(stops[0].id),true);
+  const p=world.oceanWorldPosition();
+  assert.ok(Math.hypot(p.x-stops[0].x,p.z-stops[0].z)<=6.000001);
+  assert.ok(p.y<=world.floorY(p.x,p.z)+8);
+  assert.ok(calls.some(row=>row[0]==='ecology-request'));
+  assert.deepEqual(preserved(world),before);
+  const arrived=world.oceanWorldPosition().toArray();
+  assert.equal(world.travelDeepSeascape(stops[1].id),true);
+  closeVector(world.oceanWorldPosition().toArray(),arrived);
+  assert.deepEqual(world.oceanTravel,{x:stops[1].x,z:stops[1].z});
+  assert.equal(world.oceanObservationLayer,'bed');
+  assert.deepEqual(preserved(world),before);
+  assert.equal(world.enterDeepSeascape('missing'),false);
+  assert.equal(world.travelDeepSeascape('missing'),false);
+  world.isDeep=false;
+  assert.equal(world.enterDeepSeascape(stops[0].id),false);
+  assert.equal(world.travelDeepSeascape(stops[0].id),false);
+  assert.deepEqual(preserved(world),before);
+});
 
 test('real deep World layers remain 1.8, 3.5 and 6 metres above local floor, never halfway to the sea surface', () => {
   for (const [layer, height] of [['bed', 1.8], ['midwater', 3.5], ['surface', 6]]) {

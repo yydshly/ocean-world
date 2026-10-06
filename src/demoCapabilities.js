@@ -69,6 +69,13 @@ export const DEMO_KELP_STOPS = Object.freeze([
     action:{id:'stop-forest-belt-opening',kind:'kelp-stop',biome:'kelp',stopId:'forest-belt-opening'}}),
 ]);
 
+export const DEMO_DEEP_STOPS = Object.freeze([
+  entry({id:'deep-plain-community',number:'01',title:'深海生活带：沉积平原',description:'软泥底、实际底栖动物与近底觅食空间',
+    action:{id:'stop-deep-plain-community',kind:'deep-stop',biome:'deep',stopId:'deep-plain-community'}}),
+  entry({id:'deep-slope-outcrop',number:'02',title:'深海生活带：缓坡岩露头',description:'共享床面的宽缓坡、稀疏硬底和周围真实群落',
+    action:{id:'stop-deep-slope-outcrop',kind:'deep-stop',biome:'deep',stopId:'deep-slope-outcrop'}}),
+]);
+
 export const DEMO_LEGACY_VIEWS = Object.freeze([
   entry({ id: 'legacy-wide', title: '原浅礁全景', description: '回到固定礁区的整体观察视角',
     action: { id: 'legacy-wide', kind: 'view', biome: 'reef', profile: 'legacy', view: 'wide' } }),
@@ -109,7 +116,7 @@ export function demoLayerEntries(biome) {
   }));
 }
 
-export const demoNeedsSceneChange = choice => ['world', 'living-stop', 'kelp-stop', 'view', 'discoveries'].includes(choice.kind);
+export const demoNeedsSceneChange = choice => ['world', 'living-stop', 'kelp-stop', 'deep-stop', 'view', 'discoveries'].includes(choice.kind);
 
-export const DEMO_ACTIONS = Object.freeze([...DEMO_WORLDS, ...DEMO_LIVING_STOPS, ...DEMO_KELP_STOPS, ...DEMO_LEGACY_VIEWS,
+export const DEMO_ACTIONS = Object.freeze([...DEMO_WORLDS, ...DEMO_LIVING_STOPS, ...DEMO_KELP_STOPS, ...DEMO_DEEP_STOPS, ...DEMO_LEGACY_VIEWS,
   ...DEMO_CURRENT_TOOLS, ...DEMO_RECORD_TOOLS, ...DEMO_WORKBENCHES, ...demoLayerEntries('reef')].map(item => item.action));

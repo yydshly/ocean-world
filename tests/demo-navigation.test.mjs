@@ -1,14 +1,29 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { demoWorldMatches, navigateDemoEntry } from '../src/demoNavigation.js';
-import { DEMO_ACTIONS, DEMO_KELP_STOPS, demoLayerEntries } from '../src/demoCapabilities.js';
+import { DEMO_ACTIONS, DEMO_KELP_STOPS, DEMO_DEEP_STOPS, demoLayerEntries } from '../src/demoCapabilities.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../src/livingShallows.js';
 import { createLivingShallowsGenerator } from '../src/livingShallowsGeneration.js';
 import { createLivingRidgeGenerator } from '../src/livingRidgeGeology.js';
 import { createKelpOceanGenerator } from '../src/kelpOceanGeneration.js';
+import { createDeepOceanGenerator } from '../src/deepOceanGeneration.js';
 
 const worldAction = biome => DEMO_ACTIONS.find(action => action.kind === 'world' && action.biome === biome &&
   (biome !== 'reef' || action.profile === LIVING_SHALLOWS_PROFILE));
+
+test('deep seascape shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries', () => {
+  const generator=createDeepOceanGenerator('42',{seascape:true});
+  assert.deepEqual(DEMO_DEEP_STOPS.map(entry=>entry.id),generator.seascapeRouteStops.map(stop=>stop.id));
+  for(const entry of DEMO_DEEP_STOPS){
+    const {world,protectedState}=observationWorld({biomeId:'deep'}),calls=[];
+    world.enterDeepSeascape=id=>{calls.push(id);return generator.seascapeRouteStops.some(stop=>stop.id===id);};
+    assert.equal(navigateDemoEntry(entry.action,world),true);
+    assert.deepEqual(calls,[entry.id]);assert.strictEqual(world.protectedState,protectedState);
+    assert.equal(navigateDemoEntry({...entry.action,stopId:'missing'},world),false);
+    world.biomeId='kelp';assert.equal(navigateDemoEntry(entry.action,world),false);
+    world.biomeId='deep';delete world.enterDeepSeascape;assert.equal(navigateDemoEntry(entry.action,world),false);
+  }
+});
 
 test('the two kelp belt shortcuts resolve native seed routes without changing protected ecology', () => {
   const generator=createKelpOceanGenerator('42',{forestBelt:true});

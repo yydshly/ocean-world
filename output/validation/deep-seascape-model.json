@@ -1,0 +1,98 @@
+{
+  "scope": "finite CPU model, shared support and persistence evidence; not browser or visual acceptance",
+  "seed": "42",
+  "group": {
+    "cx": -6,
+    "cz": -10
+  },
+  "maximumActiveRegions": 9,
+  "maximumRegistrySize": 4,
+  "ownerIds": [
+    "-6,-10",
+    "-5,-10",
+    "-6,-9",
+    "-5,-9"
+  ],
+  "groupSpeciesCounts": {
+    "sea-pig-group": 20,
+    "rattail-family": 8,
+    "pom-pom-anemone": 9
+  },
+  "activeWindowSpeciesCounts": {
+    "sea-pig-group": 38,
+    "rattail-family": 17,
+    "pom-pom-anemone": 25,
+    "giant-sea-spider-group": 1
+  },
+  "groupRocks": 12,
+  "groupRubble": 14,
+  "groupAddedRocks": 2,
+  "changedBedSamples": 106,
+  "sampledHabitats": [
+    "deep-hard-bottom",
+    "deep-slope",
+    "deep-soft-bottom"
+  ],
+  "groupInitialFoodUnits": 0.9395000000000001,
+  "groupInitialFoodByPool": {
+    "surfaceDetritus": 0.6749999999999999,
+    "benthicAnimalFood": 0.224,
+    "suspendedPrey": 0.0405
+  },
+  "simulatedSec": 3,
+  "activeWindowMovedAnimals": 23,
+  "activeWindowIngestedUnits": 0.03440000000000001,
+  "activeWindowFeedingEvents": 54,
+  "activeWindowFeedingPools": [
+    "benthicAnimalFood",
+    "surfaceDetritus",
+    "suspendedPrey"
+  ],
+  "maximumFoodBalanceError": 5.551115123125783e-17,
+  "maximumNativeEnergyBalanceError": 8.881784197001252e-16,
+  "maximumPredatorEnergyBalanceError": 1.3322676295501878e-15,
+  "oldRecordsPreserved": true,
+  "oldDeathPreserved": true,
+  "offscreenOwners": [
+    "-6,-9",
+    "-5,-9"
+  ],
+  "offscreenFrozen": true,
+  "fullRecordsRestored": 9,
+  "allOriginalOwnersUnloaded": true,
+  "revisitRecordsExact": true,
+  "coldRecordsExact": true,
+  "corruptPlansRejected": true,
+  "missingGroupMemberRejected": true,
+  "strippedGroupMemberRejected": true,
+  "loadedRegistryTransitions": [
+    {
+      "x": -352,
+      "z": -608,
+      "activeRegions": 9,
+      "sourceOwners": 4,
+      "publicRevision": 1
+    },
+    {
+      "x": -160,
+      "z": -480,
+      "activeRegions": 9,
+      "sourceOwners": 0,
+      "publicRevision": 2
+    },
+    {
+      "x": 448,
+      "z": 92,
+      "activeRegions": 9,
+      "sourceOwners": 0,
+      "publicRevision": 2
+    },
+    {
+      "x": -352,
+      "z": -608,
+      "activeRegions": 9,
+      "sourceOwners": 4,
+      "publicRevision": 3
+    }
+  ]
+}

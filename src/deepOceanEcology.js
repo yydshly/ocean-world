@@ -2,6 +2,7 @@ import { DeepSimulation, DEFAULT_ENVIRONMENT, DEEP_MODEL_PARAMETERS } from './de
 import { deepSpeciesById } from './deepSpecies.js';
 import { OceanEcologyStore } from './oceanEcologyStore.js';
 import { upgradeDeepPredators, advanceDeepPredators, validateDeepPredatorRecord, predatorEnergyBudgetError } from './deepPredatorEcology.js';
+import { createDeepSeascapePlans, validateDeepSeascapePlan } from './deepSeascape.js';
 
 export const DEEP_OCEAN_REGION_ANIMAL_LIMIT = 20;
 export const DEEP_OCEAN_ACTIVE_REGION_LIMIT = 9;
@@ -25,14 +26,33 @@ function hash(value) {
  * local organic-food/condition ledgers are retained; unloaded cells freeze.
  * All allocation rates, occupancy and food quantities remain display proxies. */
 export class DeepOceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore() } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), seascape = false } = {}) {
     this.seed = seed; this.generator = generator; this.store = store; this._world = keyFor(seed);
+    this._seascapeRequested = seascape === true;
+    this.seascapeEnabled = this._seascapeRequested && this._seascapeAvailable(generator);
     this._active = new Map(); this._locked = new Set(); this._center = null;
     this._queue = Promise.resolve(); this._pending = this._queue; this._revision = 0; this._generation = 0;
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10; this._disposed = false;
     this.environment = { ...DEFAULT_ENVIRONMENT };
     this._counts = { generated: 0, restored: 0, saved: 0, unloaded: 0, persistenceErrors: 0 };
     this._storageError = null;
+  }
+
+  _seascapeAvailable(generator) {
+    return Boolean(typeof this.store.saveMany === 'function' && generator.baseGenerator &&
+      typeof generator.withSeascapePlans === 'function' && typeof generator.setSeascapePlans === 'function' &&
+      typeof generator.seascapePlan === 'function');
+  }
+
+  _savedSeascapePlan(record, cx, cz) {
+    const has = record && ['seascapeVersion', 'seascapeInitializedAtSec', 'seascapePlan'].some(key => Object.hasOwn(record, key));
+    if (!has) return null;
+    if (!this.seascapeEnabled || record.seascapeVersion !== 1 ||
+        !nonnegative(record.seascapeInitializedAtSec) || record.seascapeInitializedAtSec > record.state?.timeSec ||
+        record.seascapePlan?.id !== `${cx},${cz}` || record.seascapePlan.cx !== cx || record.seascapePlan.cz !== cz ||
+        !validateDeepSeascapePlan(record.seascapePlan, this.generator.baseGenerator))
+      throw new Error('Invalid saved deep seascape; original landscape and population were not regenerated.');
+    return record.seascapePlan;
   }
 
   _plan(cx, cz) {
@@ -74,6 +94,11 @@ export class DeepOceanEcology {
       state: { ...clone(region._savedState ?? {}), ...Object.fromEntries(fields.map(field => [field, clone(region.sim[field])])) } };
     if (region.predatorCommunityVersion !== undefined) for (const key of ['predatorCommunityVersion', 'predatorAgents',
       'predatorEnergyLedger', 'predatorCounters', 'predatorEvents']) record[key] = clone(region[key]);
+    if (region.seascapeVersion !== undefined) {
+      record.seascapeVersion = region.seascapeVersion;
+      record.seascapeInitializedAtSec = region.seascapeInitializedAtSec;
+      record.seascapePlan = clone(region.seascapePlan);
+    }
     return record;
   }
   _restore(record, cx, cz) {
@@ -95,6 +120,7 @@ export class DeepOceanEcology {
       !['initial', 'input', 'ingested', 'transferred', 'exported'].every(key => nonnegative(state.ledger?.[key])) ||
       !['initial', 'feedingGain', 'maintenanceAndMotionDebit'].every(key => nonnegative(state.energyLedger?.[key])) ||
       !Number.isFinite(state.energyLedger?.clampCorrection)) fail();
+    const seascapePlan = this._savedSeascapePlan(record, cx, cz);
     const region = this._create(cx, cz), ids = new Set(), expected = new Map(region.sim.agents.map(agent => [agent.id, agent]));
     if (expected.size !== state.agents.length) fail();
     for (const agent of state.agents) {
@@ -156,6 +182,11 @@ export class DeepOceanEcology {
     region._savedRecord = clone(record); region._savedState = clone(state);
     if (record.predatorCommunityVersion !== undefined) for (const key of ['predatorCommunityVersion', 'predatorAgents',
       'predatorEnergyLedger', 'predatorCounters', 'predatorEvents']) region[key] = clone(record[key]);
+    if (seascapePlan) {
+      region.seascapeVersion = record.seascapeVersion;
+      region.seascapeInitializedAtSec = record.seascapeInitializedAtSec;
+      region.seascapePlan = clone(seascapePlan);
+    }
     return region;
   }
   _enqueue(operation) {
@@ -171,6 +202,100 @@ export class DeepOceanEcology {
       } else for (const [id, record] of records) if (await this.store.save(world, id, record) === null) throw new Error('Deep regional save did not commit.');
       this._counts.saved += records.length; return true;
     } catch (error) { this._counts.persistenceErrors++; this._storageError = String(error?.message || error); return false; }
+  }
+
+  _prepareSeascapeOwner(saved, cx, cz) {
+    const fresh = saved === null, region = fresh ? this._create(cx, cz) : this._restore(saved, cx, cz);
+    const upgraded = upgradeDeepPredators(region, { seed: this.seed,
+      supportHeight: (x, z) => this.generator.heightAt(x, z), animalLimit: DEEP_OCEAN_REGION_ANIMAL_LIMIT });
+    return { region, fresh, changed: fresh || upgraded };
+  }
+
+  async _updateSeascapeWindow(world, desired, current) {
+    try {
+      const groups = new Map(), halo = new Map();
+      for (const [x, z] of desired.values()) {
+        const gx = Math.floor(x / 2) * 2, gz = Math.floor(z / 2) * 2;
+        groups.set(`${gx},${gz}`, [gx, gz]);
+        for (let dz = 0; dz < 2; dz++) for (let dx = 0; dx < 2; dx++) halo.set(`${gx + dx},${gz + dz}`, [gx + dx, gz + dz]);
+      }
+      if (halo.size > 16) throw new Error('Deep seascape admission exceeded the bounded owner read halo.');
+      const savedRows = new Map(), savedPlans = [];
+      for (const [id, [x, z]] of halo) {
+        const active = this._active.get(id), saved = active ? this._record(active) : await this.store.load(world, id);
+        if (!current()) return;
+        // A failed or undefined read is not an empty ocean. Only a successful
+        // null permits new landscape, population and initial food inventory.
+        if (saved === undefined) throw new Error('Deep seascape owner read returned no result.');
+        savedRows.set(id, saved);
+        if (saved !== null) {
+          const plan = this._savedSeascapePlan(saved, x, z);
+          if (plan) savedPlans.push(plan);
+        }
+      }
+      const freshPlans = [];
+      for (const [gx, gz] of groups.values()) {
+        const ids = [0, 1].flatMap(dz => [0, 1].map(dx => `${gx + dx},${gz + dz}`));
+        const rows = ids.map(id => savedRows.get(id));
+        const marked = rows.filter(row => row && ['seascapeVersion', 'seascapeInitializedAtSec', 'seascapePlan'].some(key => Object.hasOwn(row, key)));
+        if (marked.length) {
+          // All four owners were committed together. Missing records or
+          // stripped markers must not reconstruct unrecorded life or food.
+          if (marked.length !== 4 || rows.some(row => !row || row.seascapeVersion !== 1 ||
+              row.seascapePlan?.group?.cx !== gx || row.seascapePlan?.group?.cz !== gz ||
+              row.seascapeInitializedAtSec !== marked[0].seascapeInitializedAtSec ||
+              JSON.stringify(row.seascapePlan.group) !== JSON.stringify(marked[0].seascapePlan.group)))
+            throw new Error('Saved deep seascape group is incomplete or inconsistent; no landscape or population was regenerated.');
+          continue;
+        }
+        if (!ids.every(id => savedRows.get(id) === null)) continue;
+        let plans;
+        try { plans = createDeepSeascapePlans(this.generator.baseGenerator, gx, gz); }
+        catch (error) { if (error instanceof RangeError) continue; throw error; }
+        if (!Array.isArray(plans) || plans.length !== 4 || new Set(plans.map(plan => plan.id)).size !== 4 ||
+            plans.some(plan => !ids.includes(plan.id) || plan.group?.cx !== gx || plan.group?.cz !== gz ||
+              !Array.isArray(plan.group.ownerIds) || plan.group.ownerIds.length !== 4 || ids.some(id => !plan.group.ownerIds.includes(id)) ||
+              !validateDeepSeascapePlan(plan, this.generator.baseGenerator)))
+          throw new Error('Invalid fresh deep seascape group.');
+        freshPlans.push(...plans);
+      }
+      const allPlans = [...savedPlans, ...freshPlans], prepared = new Map();
+      // The same temporary source creates the original three identities,
+      // conditional predator and every real food patch once, without exposing
+      // scenery revisions before the complete birth records are committed.
+      this.generator.withSeascapePlans(allPlans, () => {
+        for (const plan of freshPlans) {
+          const item = this._prepareSeascapeOwner(null, plan.cx, plan.cz);
+          item.region.seascapeVersion = 1; item.region.seascapeInitializedAtSec = item.region.sim.timeSec;
+          item.region.seascapePlan = clone(plan); prepared.set(plan.id, item);
+        }
+        for (const [id, [x, z]] of desired) {
+          if (this._active.has(id) || prepared.has(id)) continue;
+          prepared.set(id, this._prepareSeascapeOwner(savedRows.get(id), x, z));
+        }
+      });
+      if (!current()) return;
+      for (const { region } of prepared.values()) {
+        if (region.sim.agents.length + (region.predatorAgents?.length ?? 0) > DEEP_OCEAN_REGION_ANIMAL_LIMIT ||
+            Math.abs(region.sim.metrics.resourceBudgetError) > 1e-8 ||
+            Math.abs(region.sim.metrics.energyBudgetError) > 1e-8 || Math.abs(predatorEnergyBudgetError(region)) > 1e-8)
+          throw new Error('Invalid deep seascape birth population or initial food inventory.');
+      }
+      const records = [...prepared].filter(([, item]) => item.changed).map(([id, item]) => [id, this._record(item.region)]);
+      if (records.length && !await this._save(world, records)) { this._center = null; return false; }
+      if (!current()) return;
+      // Offscreen members of a newly saved group remain frozen at time zero.
+      // Replace with the complete bounded halo rather than accumulate visited
+      // plans; sim support closures continue to query this published facade.
+      this.generator.setSeascapePlans(allPlans);
+      for (const [id, item] of prepared) {
+        if (!desired.has(id)) continue;
+        this._active.set(id, item.region); this._counts[item.fresh ? 'generated' : 'restored']++;
+      }
+      return true;
+    } catch (error) {
+      this._counts.persistenceErrors++; this._storageError = String(error?.message || error); this._center = null; return false;
+    }
   }
   update(position) {
     if (!position || !Number.isFinite(position.x) || !Number.isFinite(position.z)) throw new RangeError('Deep exploration coordinates must be finite.');
@@ -195,6 +320,7 @@ export class DeepOceanEcology {
           for (const id of exits) { this._active.delete(id); this._counts.unloaded++; }
         }
       } finally { for (const id of exits) this._locked.delete(id); }
+      if (this.seascapeEnabled) return this._updateSeascapeWindow(world, desired, current);
       for (const [id, [x, z]] of desired) {
         if (this._active.has(id)) continue;
         try {
@@ -261,6 +387,8 @@ export class DeepOceanEcology {
       predatorEnergyLedger: clone(region.predatorEnergyLedger ?? { initial: 0, transferredIn: 0, metabolism: 0, loss: 0 }),
       predatorCounters: clone(region.predatorCounters ?? { feedingCount: 0, approachCount: 0, deathCount: 0 }),
       predatorEnergyBalanceError: predatorEnergyBudgetError(region),
+      ...(region.seascapeVersion !== undefined ? { seascapeVersion: region.seascapeVersion,
+        seascapeInitializedAtSec: region.seascapeInitializedAtSec, seascape: clone(region.seascapePlan.group) } : {}),
       suspendedParcelCount: region.sim.suspendedPatches.length, primaryProduction: 0,
       localEnvironment: { ...region.sim.environment, lightLevel: 0, naturalLightLevel: 0, visibilityM: region.sim.visibilityM } }));
     const resources = Object.fromEntries(pools.map(pool => [pool, regions.reduce((sum, region) => sum + region.resources[pool], 0)]));
@@ -290,6 +418,8 @@ export class DeepOceanEcology {
     const previous = this._world, next = keyFor(seed);
     this._generation++; this._revision++; this._active.clear(); this._locked.clear(); this._center = null;
     this.seed = seed; this.generator = generator; this._world = next; this._disposed = false;
+    this.seascapeEnabled = this._seascapeRequested && this._seascapeAvailable(generator);
+    if (this.seascapeEnabled) this.generator.setSeascapePlans([]);
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10;
     return this._pending = this._enqueue(async () => {
       try { await this.store.clear(previous); if (next !== previous) await this.store.clear(next); }

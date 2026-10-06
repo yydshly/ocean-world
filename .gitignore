@@ -87,3 +87,7 @@ output/validation/screenshots/*
 !output/validation/kelp-forest-belt-checks.log
 !output/validation/kelp-forest-belt-model.json
 !output/validation/kelp-forest-belt-delivery.json
+!output/validation/deep-seascape-build.log
+!output/validation/deep-seascape-checks.log
+!output/validation/deep-seascape-model.json
+!output/validation/deep-seascape-delivery.json

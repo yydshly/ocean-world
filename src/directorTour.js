@@ -19,7 +19,7 @@ const layers = (biome, labels) => [
 function withStepContexts(steps) {
   let context = null;
   return steps.map(item => {
-    if (['world', 'living-stop', 'kelp-stop'].includes(item.action.kind)) {
+    if (['world', 'living-stop', 'kelp-stop', 'deep-stop'].includes(item.action.kind)) {
       context = Object.freeze({ biome: item.action.biome,
         ...(item.action.biome === 'reef' ? { profile: item.action.profile } : {}) });
     }
@@ -56,6 +56,8 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
   ...layers('kelp', ['海带林：林底', '海带林：藻间水层', '海带林：上部水域']),
   step('kelp-life', '海带林：附近的真实动物', '在林下群落周围巡游，留意动物与藻体之间的生活空间。', 'current-local-life', 14000, 'follow'),
   step('deep-opening', '深海：软底与观察器照明', '观察器沿软底缓行，灯光扫过沉积平原、缓坡和岩露头。', 'world-deep', 14000),
+  step('deep-plain-belt', '深海生活带：沉积平原', '沿软泥底缓行，观察实际底栖生命、近底鱼与食物活动。', 'stop-deep-plain-community', 14000),
+  step('deep-outcrop-belt', '深海生活带：缓坡岩露头', '灯光随镜头扫过宽缓坡和稀疏岩露头，观察周围生活空间。', 'stop-deep-slope-outcrop', 12000),
   ...layers('deep', ['深海：近底观察', '深海：离底观察', '深海：上方观察']),
   step('deep-life', '深海：附近的真实动物', '沿深海群落缓慢移动，观察近底活动与觅食空间。', 'current-local-life', 14000, 'follow'),
   step('tools-return', '回到浅海：查看现有工具', '回到浅海巡游，接着查看图鉴、环境、记录与实验工具。', 'world-living-shallows', 12000),

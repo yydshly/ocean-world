@@ -29,9 +29,19 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Check kelp forest belt, saved ecosystems and hosting integration
+      - name: Check deep seascape, saved ecosystems and hosting integration
         run: >-
           node --test
+          tests/deep-seascape.test.mjs
+          tests/deep-seascape-render.test.mjs
+          tests/deep-seascape-ecology.test.mjs
+          tests/deep-ocean-generation.test.mjs
+          tests/deep-ocean-chunks.test.mjs
+          tests/deep-ocean-ecology.test.mjs
+          tests/deep-ocean-animals.test.mjs
+          tests/deep-ocean-world.test.mjs
+          tests/deep-simulation.test.mjs
+          tests/deep-sea-spider-rendering.test.mjs
           tests/kelp-forest-belt.test.mjs
           tests/kelp-forest-belt-render.test.mjs
           tests/kelp-forest-belt-ecology.test.mjs

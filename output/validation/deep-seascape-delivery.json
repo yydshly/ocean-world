@@ -1,0 +1,54 @@
+{
+  "package": "deep-seascape-v1",
+  "recordedAtUtc": "2026-10-06T11:25:44.299972+00:00",
+  "scope": "finite macro content, CPU/Three geometry and persistence integration; no actual browser or WebGL viewing acceptance",
+  "sourceCommit": null,
+  "publication": {
+    "state": "pending"
+  },
+  "localValidation": {
+    "tests": 332,
+    "passed": 332,
+    "failed": 0,
+    "testFiles": 44,
+    "checksLog": "deep-seascape-checks.log",
+    "builds": 1,
+    "buildPassed": true,
+    "buildLog": "deep-seascape-build.log",
+    "existingBundleSizeWarning": true
+  },
+  "modelReceipt": "deep-seascape-model.json",
+  "director": {
+    "chapters": 40,
+    "distinctActions": 34,
+    "observationDurationAt1xSec": 474,
+    "loadingAdditional": true,
+    "newChapters": [
+      "deep-plain-belt",
+      "deep-outcrop-belt"
+    ]
+  },
+  "sourceHashes": {
+    "src/deepSeascape.js": "f3116fbdc2d67c716185d6c549a8f6d94f1fe6b2e1f345c39e67099551098115",
+    "src/deepOceanGeneration.js": "c42c5d17d1a6d27eaffcd967d578fe89cd53b9303dc5b221a561ec12f1cff7d0",
+    "src/deepOceanEcology.js": "f2688cceb70a025cde529795acb758dc06e9fb9eaea69c0dfa4c2b9feb58ee7b",
+    "src/world/DeepOceanChunks.js": "12d3a8b0ffb513ac59df9b8b39e9d2af2299925143c2082f2061898acb63797e",
+    "src/world/ReefWorld.js": "ef00f1bb0759a11ce7b0431e5ad2bd79c8d935cd102e1eb39c2af970d2ac95b8",
+    "src/demoCapabilities.js": "1828bdeebff9517b61beedec001de2e10cce646115e713dfc501694bd92bbbdb",
+    "src/demoNavigation.js": "e9f907d9e52d190277ca6499ba48645be5250ca95619ab147ad3b4e6d000c52f",
+    "src/directorTour.js": "8ba28ab2a65a8514caee7c5e4c5aaeb49e1bd6df80f9cd6320e6839180cef3ca",
+    "src/OceanApp.jsx": "a8d313ef5f829f08242d51133d5d483015983cdeb293aa10f909b9ec7490c153",
+    "src/DemoOverview.jsx": "564e03d2685918e62317ba38270624ccabb55ab5e717f397dfcc63d550cfcd24"
+  },
+  "limits": {
+    "activeRegions": 9,
+    "ownerReadHalo": 16,
+    "planRegistry": 25,
+    "animalsPerOwner": 20,
+    "sceneryDraws": 36,
+    "offscreenFrozen": true,
+    "foodRelativeUnits": true,
+    "browserVisualAcceptance": false,
+    "fullOceanGoalComplete": false
+  }
+}

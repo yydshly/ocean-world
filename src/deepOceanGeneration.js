@@ -1,5 +1,6 @@
 import { DEEP_DEPTH_M, DEEP_ANEMONE_ANCHORS, deepFloorHeight } from './deepHabitat.js';
 import { oceanRockMesh, oceanRockHeight, oceanRockSurface } from './oceanRockShape.js';
+import { createDeepSeascapeGenerator } from './deepSeascape.js';
 
 export const DEEP_OCEAN_CHUNK_SIZE = 64;
 export const DEEP_OCEAN_SURFACE_Y = DEEP_DEPTH_M;
@@ -34,7 +35,9 @@ function freezeElement(element) { Object.freeze(element.scale); return Object.fr
 
 /** Qualitative soft-sediment landscape, not a measured abyssal survey.
  * No generated landform is a simulated animal, food pool or vent system. */
-export function createDeepOceanGenerator(seed = 42) {
+export function createDeepOceanGenerator(seed = 42, options = {}) {
+  if (!options || typeof options !== 'object' || Array.isArray(options)) throw new TypeError('Deep options must be an object.');
+  if (options.seascape === true) return createDeepSeascapeGenerator(createDeepOceanGenerator(seed));
   if (!['number', 'string'].includes(typeof seed) || (typeof seed === 'number' && !Number.isFinite(seed))) {
     throw new TypeError('The deep ocean seed must be a finite number or string.');
   }
