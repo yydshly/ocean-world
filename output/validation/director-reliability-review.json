@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-06",
+  "scope": "three finite director operation fixes",
+  "fixes": [
+    "an unchanged stale constructor error cannot fail retry or seek; a new error after clearing still fails the current token",
+    "both discovery trip buttons stop director ownership and cancel pending chapter before original native travel",
+    "interactive controls keep native key behavior; scene movement retains takeover and key-release cleanup"
+  ],
+  "unchanged": ["camera paths and rate options", "terrain", "animals", "ecology", "environment forcing", "saved histories"],
+  "validation": {
+    "build": "success; Pages base /ocean-world/ with Sites packaging retained",
+    "relatedTests": {"passed": 70, "failed": 0, "newCasesIncluded": 12},
+    "newCaseScope": {"actualHookErrorSubscriptionWithFiniteDependencyScheduling": 3, "actualDiscoveryJSXAndAppCallback": 4, "actualKeyboardHandlers": 5},
+    "browserPlayback": "not performed; earlier URL-policy refusal not bypassed",
+    "limits": "CPU checks are not React mounting, native browser default activation, screenshots, saved-world WebGL tours or visual acceptance"
+  },
+  "release": "pending commit/publication; follow docs/DEPLOYMENT.md"
+}

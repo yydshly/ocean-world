@@ -53,6 +53,7 @@ import { localCaptureEnabled, saveJson } from '../capture.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../livingShallows.js';
 import { createLivingWorldState } from '../livingWorldState.js';
 import { createDirectorCameraMotion, sampleDirectorCameraMotion, advanceDirectorCameraElapsed, isDirectorPlaybackRate } from '../directorCameraMotion.js';
+import { oceanKeyboardTargetConsumesInput } from '../oceanKeyboardInput.js';
 
 const reefPresets = {
   wide: { position: [3, 2.8, 5], target: [-2.5, 0.65, -2] },
@@ -214,7 +215,7 @@ export class ReefWorld {
       this.renderer.domElement.addEventListener('pointerup',this.onPointerUp);
       this.onContextLost=e=>{e.preventDefault();const message='WebGL 绘图上下文丢失，请重新加载场景';this.errors.push(message);this.onError(message);};
       this.renderer.domElement.addEventListener('webglcontextlost',this.onContextLost);
-      this.onKeyDown = e => { if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return; if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE'].includes(e.code))this.stopDirectorMotion(); this.keys.add(e.code); if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','Space'].includes(e.code))e.preventDefault(); };
+      this.onKeyDown = e => { if(oceanKeyboardTargetConsumesInput(e.target)){this.keys.delete(e.code);return;} if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE'].includes(e.code))this.stopDirectorMotion(); this.keys.add(e.code); if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','Space'].includes(e.code))e.preventDefault(); };
       this.onKeyUp = e => this.keys.delete(e.code);
       this.onBlur = () => this.keys.clear();
       window.addEventListener('keydown',this.onKeyDown);window.addEventListener('keyup',this.onKeyUp);window.addEventListener('blur',this.onBlur);

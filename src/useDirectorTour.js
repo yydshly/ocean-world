@@ -98,8 +98,11 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   }, [snapshot, worldReady, state.active, state.phase, state.token, state.error]);
 
   useEffect(() => {
-    if (error && state.active) fail(state.token, error);
-  }, [error, state.active, state.token]);
+    // The constructor clears its error on the next render after retry/seek.
+    // Re-observing that same old value for a new chapter token would fail the
+    // replacement before it can load. Only a new root error stops playback.
+    if (error && current.current.active) fail(current.current.token, error);
+  }, [error]);
 
   useEffect(() => {
     // Auto-start dispatches in an earlier effect of the initial idle render.

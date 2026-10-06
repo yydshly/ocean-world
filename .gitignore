@@ -70,3 +70,6 @@ output/validation/screenshots/*
 !output/validation/director-speed-build.log
 !output/validation/director-speed-checks.log
 !output/validation/director-speed-review.json
+!output/validation/director-reliability-checks.log
+!output/validation/director-reliability-build.log
+!output/validation/director-reliability-review.json

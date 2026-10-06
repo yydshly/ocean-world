@@ -2,6 +2,8 @@
 
 更新：2026-10-06。
 
+导演重试/发现旅行/键盘操作的有限修正版已完成，本机构建及70项相关检查通过，正在准备发布。此前实际线上版本如下，待发布不视为成功。
+
 巡游速度版源码 `3deced6c1816396603b4dfeb8f01ddda825e4095` 已提交并发布。[运行37403459202](https://github.com/yydshly/ocean-world/actions/runs/37403459202) 的生产构建、77项当前工作流检查（0失败）及Pages部署全部success；部署 `6874045206` 状态success。打开[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，播放器右上角“巡游速度”可选0.5×–4×。本机生产构建及58项有限相关检查通过；[本机导演](http://127.0.0.1:4173/ocean-world/?demo=director)也已更新。本轮浏览器工具拒绝本机URL绑定，没有新增实际播放/截图核对；部署成功不替代实际浏览器验收。
 
 此前移动镜头源码 `7de5b4bb698023f94c7703c54c68820ec597d41b` 本机构建/68项检查通过，但 [发布运行 37366892941](https://github.com/yydshly/ocean-world/actions/runs/37366892941) 已于10月5日20:14 UTC结束failure：build cancelled，runner_id=0、无执行步骤，deploy skipped。此运行未发布成功，不再称queued。[GitHub 官方状态](https://www.githubstatus.com/)记录Actions故障于10月5日22:49 UTC解除；本轮正常重新构建并发布，未更换托管方。

@@ -40,6 +40,9 @@ jobs:
           tests/demo-navigation.test.mjs
           tests/director-tour.test.mjs
           tests/director-player.test.mjs
+          tests/director-root-error.test.mjs
+          tests/director-discoveries.test.mjs
+          tests/ocean-keyboard-input.test.mjs
           tests/director-readiness.test.mjs
           tests/director-camera-motion.test.mjs
           tests/observation-event-text.test.mjs
