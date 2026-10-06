@@ -5,5 +5,5 @@
   "receipt": "native success-only completion before camera release; owner/world/token and full duration verified; records without extra chapter advance",
   "unchanged": ["camera paths", "cruising rates", "ecological simulation", "saved terrain", "actual animals", "discovery and notebook records"],
   "validation": {"productionBuild": "success", "relatedTests": {"passed": 82, "failed": 0, "newCasesIncluded": 12}, "scope": "real JSX, reducer, progress/receipt helpers, native CPU methods and existing readiness/navigation/hosting checks", "browserPlayback": "not performed; earlier URL-policy refusal not bypassed", "limits": "not actual React mount/WebGL tour playback or visual acceptance"},
-  "release": "pending commit/publication; follow docs/DEPLOYMENT.md"
+  "release": {"source": "84b8bba974781468fcff8f2c4bcd58406791ba0a", "run": 37416425198, "build": "success", "workflowTests": {"passed": 101, "failed": 0, "includesLocal82": true}, "deploymentId": 6876104761, "deploymentStatus": "success", "url": "https://yydshly.github.io/ocean-world/?demo=director"}
 }
