@@ -27,6 +27,11 @@ export function navigateDemoEntry(choice, world, { movingDirector = false, direc
       const index=choice.entryStopId===undefined?0:world.oceanChunks?.generator.routeStops?.findIndex(stop=>stop.id===choice.entryStopId)??-1;
       return index>=0&&world.enterLivingShallows(index);
     }
+    if (choice.entryStopId !== undefined) {
+      if (world.biomeId === 'kelp') return world.enterKelpForestBelt?.(choice.entryStopId) === true;
+      if (world.biomeId === 'deep') return world.enterDeepSeascape?.(choice.entryStopId) === true;
+      return false;
+    }
     // The moving shot takes ownership as soon as this entry is ready. Place
     // its fixed starting view now, before it clears any unfinished transition.
     if (world.biomeId === 'reef') {
@@ -55,7 +60,8 @@ export function navigateDemoEntry(choice, world, { movingDirector = false, direc
     if (choice.kind === 'layer') return movingDirector
       ? world.oceanExploring && ['bed', 'midwater', 'surface'].includes(choice.layer)
       : world.setOceanObservationLayer(choice.layer);
-    return world.focusNearbyOceanAnimal(null);
+    return movingDirector ? world.focusNearbyOceanAnimal(null, null, { director: true })
+      : world.focusNearbyOceanAnimal(null);
   }
   return false;
 }

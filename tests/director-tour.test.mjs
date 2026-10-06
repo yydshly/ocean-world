@@ -2,6 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DEMO_ACTIONS, DEMO_LIVING_STOPS, DEMO_KELP_STOPS, DEMO_DEEP_STOPS } from '../src/demoCapabilities.js';
 import { DIRECTOR_STEPS, DIRECTOR_PLAYBACK_RATES, createDirectorState, directorReducer, directorStepAction } from '../src/directorTour.js';
+import { createLivingShallowsGenerator } from '../src/livingShallowsGeneration.js';
+import { createLivingRidgeGenerator } from '../src/livingRidgeGeology.js';
+import { livingShallowsSeed } from '../src/livingShallows.js';
+import { createKelpOceanGenerator } from '../src/kelpOceanGeneration.js';
+import { createDeepOceanGenerator } from '../src/deepOceanGeneration.js';
+import { createLivingVisualRoute } from '../src/livingVisualRoute.js';
+import { OceanEcology } from '../src/oceanEcology.js';
 
 const send = (state, type, data = {}) => directorReducer(state, { type, ...data });
 const enter = state => send(state, 'entered', { token: state.token });
@@ -63,6 +70,7 @@ test('the finite tour covers every existing entry without invented or destructiv
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
   assert.ok(duration >= 360000 && duration <= 480000, 'local moving observation stays approximately six to eight minutes');
+  assert.equal(duration, 474000); assert.equal(included.size, 34);
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
@@ -92,7 +100,10 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     if (step.action.kind === 'local-life') observedBiomes.add(biome);
     if (step.action.kind === 'layer') layeredBiomes.add(biome);
   }
-  assert.deepEqual(routes, DEMO_LIVING_STOPS.map(stop => stop.id));
+  assert.deepEqual(routes, ['habitat-belt-reef', 'habitat-belt-meadow', 'seascape-transition', 'connected-seascape',
+    'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
+    'seagrass-meadow', 'sand-channel', 'reef-garden']);
+  assert.deepEqual([...routes].sort(), DEMO_LIVING_STOPS.map(stop => stop.id).sort(), 'all ordinary route entries remain available');
   assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').map(step=>step.action.stopId),
     DEMO_KELP_STOPS.map(stop=>stop.id));
   assert.ok(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').every(step=>step.action.biome==='kelp'));
@@ -104,6 +115,77 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
   const firstWorkbench = DIRECTOR_STEPS.findIndex(step => step.action.kind === 'population');
   assert.ok(DIRECTOR_STEPS.slice(0, firstWorkbench).some(step => step.action.id === 'world-deep'));
   assert.match(DIRECTOR_STEPS[firstWorkbench].caption, /独立/);
+});
+
+test('the opening observes actual nearby life and discoveries before repositioning to the thirteen geographic stops', () => {
+  assert.deepEqual(DIRECTOR_STEPS.slice(0, 3).map(step => step.id), ['shallows-opening', 'shallows-life', 'shallows-discoveries']);
+  assert.deepEqual(DIRECTOR_STEPS.slice(1, 3).map(step => step.action.kind), ['local-life', 'discoveries']);
+  for (const step of DIRECTOR_STEPS.slice(0, 3)) {
+    const action = directorStepAction(step);
+    assert.equal(action.biome, 'reef'); assert.equal(action.profile, 'living-shallows-v1');
+  }
+  assert.equal(DIRECTOR_STEPS[3].action.stopId, 'habitat-belt-reef');
+  assert.deepEqual(DEMO_LIVING_STOPS.map(stop => stop.id), ['reef-garden', 'sand-channel', 'seagrass-meadow', 'outer-reef',
+    'ridge-gully', 'patch-reef', 'meadow-edge', 'shelf-rise', 'sand-basin', 'connected-seascape', 'seascape-transition',
+    'habitat-belt-reef', 'habitat-belt-meadow'], 'ordinary capability buttons retain their original order');
+});
+
+test('opening actions resolve existing shallow, kelp and deep stops without changing their native action references', () => {
+  const generators = {
+    reef: createLivingRidgeGenerator(createLivingShallowsGenerator(livingShallowsSeed('42'))),
+    kelp: createKelpOceanGenerator('42', { forestBelt: true }), deep: createDeepOceanGenerator('42', { seascape: true }),
+  };
+  for (const [id, biome, expectedId, key] of [
+    ['shallows-opening', 'reef', 'habitat-belt-reef', 'routeStops'],
+    ['kelp-opening', 'kelp', 'forest-belt-interior', 'forestRouteStops'],
+    ['deep-opening', 'deep', 'deep-plain-community', 'seascapeRouteStops'],
+  ]) {
+    const step = DIRECTOR_STEPS.find(step => step.id === id), action = directorStepAction(step);
+    assert.equal(step.action.kind, 'world'); assert.ok(DEMO_ACTIONS.includes(step.action));
+    assert.equal(action.id, step.action.id); assert.equal(action.biome, biome); assert.equal(action.entryStopId, expectedId);
+    const stop = generators[biome][key].find(stop => stop.id === action.entryStopId);
+    assert.ok(stop && Number.isFinite(stop.x) && Number.isFinite(stop.z), `${id} uses a real generator entry`);
+  }
+  assert.equal(Object.hasOwn(directorStepAction(DIRECTOR_STEPS.find(step => step.id === 'tools-return')), 'entryStopId'), false,
+    'the ordinary shallow return retains its existing entry');
+});
+
+test('the real shallow landmark order reduces repeated relocation while retaining every distant native destination', () => {
+  const generator = createLivingRidgeGenerator(createLivingShallowsGenerator(livingShallowsSeed('42')));
+  const stops = new Map(generator.routeStops.map(stop => [stop.id, stop]));
+  const origin = stops.get(directorStepAction(DIRECTOR_STEPS[0]).entryStopId);
+  const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
+  const lengths = ids => ids.map((id, index) => distance(index ? stops.get(ids[index - 1]) : origin, stops.get(id)));
+  const oldIds = DEMO_LIVING_STOPS.map(stop => stop.id), ids = DIRECTOR_STEPS.filter(step => step.action.kind === 'living-stop').map(step => step.action.stopId);
+  assert.deepEqual([...ids].sort(), [...stops.keys()].sort());
+  const oldLengths = lengths(oldIds), revisedLengths = lengths(ids), total = legs => legs.reduce((sum, value) => sum + value, 0);
+  assert.ok(Math.abs(total(oldLengths) - 10780.567) < .001); assert.ok(Math.abs(total(revisedLengths) - 4977.384) < .001);
+  assert.ok(total(revisedLengths) < total(oldLengths) * .47);
+  assert.ok(revisedLengths.slice(1).every(length => length >= 64), 'the remaining geographic stop pairs still require distant transfers');
+  // These sums measure horizontal landmark repositioning, never travelled or
+  // simulated swimming. A repeated opening landmark is not a resident bridge.
+});
+
+test('the actual source-based opening tail remains too far from the habitat entry to invent a continuous bridge', async () => {
+  const seed = livingShallowsSeed('42'), generator = createLivingRidgeGenerator(createLivingShallowsGenerator(seed)), saved = new Map();
+  const store = { available: true, async load(_world, id) { return structuredClone(saved.get(id) ?? null); },
+    async saveMany(_world, rows) { for (const [id, record] of rows) saved.set(id, structuredClone(record)); } };
+  const ecology = new OceanEcology(seed, generator, { store, turtles: true, livingGeology: true, habitatMosaic: true,
+    seabedRelief: true, seascape: true, livingBelt: true, turtleGrazing: true });
+  const stop = generator.routeStops.find(stop => stop.id === directorStepAction(DIRECTOR_STEPS[0]).entryStopId);
+  const heading = stop.heading ?? 0, across = stop.entryAcrossM ?? 8;
+  const entry = { x: stop.x - 7 * Math.cos(heading) + across * Math.sin(heading),
+    z: stop.z + 7 * Math.sin(heading) + across * Math.cos(heading) };
+  assert.notEqual(await ecology.update(entry), false); assert.equal(ecology._active.size, 9);
+  const cameraPosition = { ...entry, y: Math.min(generator.surfaceY - .6, generator.heightForCamera(entry.x, entry.z) + 2.8) };
+  const agents = ecology.agents, before = structuredClone({ active: [...ecology._active], saved: [...saved], environment: ecology._environment });
+  const route = createLivingVisualRoute({ generator, agents, loadedChunkIds: [...ecology._active.keys()], cameraPosition,
+    surfaceY: generator.surfaceY, fov: 49, aspect: 16 / 9, safeHeight: (x, z) => generator.heightForCamera(x, z) });
+  assert.equal(route.status, 'ready', route.reason); assert.equal(route.stops.length, 3);
+  const tail = route.stops.at(-1).position, distanceM = Math.hypot(tail.x - entry.x, tail.z - entry.z);
+  assert.ok(distanceM > 32, `The actual route tail is ${distanceM} m from its native entry; no continuous bridge is admitted.`);
+  assert.deepEqual({ active: [...ecology._active], saved: [...saved], environment: ecology._environment }, before,
+    'reading the real route leaves full actual ecological records and inventory untouched');
 });
 
 test('direct chapter seeks resolve their intended world from any currently loaded world', () => {

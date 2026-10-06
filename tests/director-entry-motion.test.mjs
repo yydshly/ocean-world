@@ -9,6 +9,9 @@ import { normalizeOceanObservationView } from '../src/oceanExplorationMemory.js'
 import { oceanLayerHeight } from '../src/oceanLayerNavigation.js';
 import { oceanOverviewObservation } from '../src/oceanOverview.js';
 import { LIVING_SHALLOWS_PROFILE } from '../src/livingShallows.js';
+import { createKelpOceanGenerator } from '../src/kelpOceanGeneration.js';
+import { createDeepOceanGenerator } from '../src/deepOceanGeneration.js';
+import { nearestOceanAnimal } from '../src/oceanCommunityReading.js';
 
 const pointDistance = (a, b) => Math.hypot(...['x', 'y', 'z'].map(key => a[key] - b[key]));
 const near = (a, b) => assert.ok(pointDistance(a, b) < 1e-7, `${JSON.stringify(a)} / ${JSON.stringify(b)}`);
@@ -70,13 +73,14 @@ function method(name) {
 const names = ['oceanWorldPosition','planDirectorEntry','beginDirectorEntry','setDirectorEntryPlayback','updateDirectorEntry',
   'directorEntrySnapshot','stopDirectorEntry','prepareDirectorObservation','beginDirectorMotion','directorMotionQueries',
   'updateDirectorMotion','directorMotionSnapshot','findAgent','restoreOceanObservation','oceanLayerY',
-  'clearCameraPosition','enforceCameraClearance','setOceanRenderOrigin'];
+  'clearCameraPosition','enforceCameraClearance','setOceanRenderOrigin','stopDirectorMotion',
+  'select','focusNearbyOceanAnimal','focusAgent','applyFocus','focusTarget','focusUp'];
 const World = new Function('THREE','createDirectorEntryMotion','sampleDirectorEntryMotion','advanceDirectorEntryElapsed',
   'createDirectorCameraMotion','sampleDirectorCameraMotion','advanceDirectorCameraElapsed','isDirectorPlaybackRate',
-  'normalizeOceanObservationView','oceanLayerHeight','oceanOverviewObservation','LIVING_SHALLOWS_PROFILE','sampleLivingVisualRoute','clamp',
+  'normalizeOceanObservationView','oceanLayerHeight','oceanOverviewObservation','LIVING_SHALLOWS_PROFILE','sampleLivingVisualRoute','nearestOceanAnimal','clamp',
   `return class {${names.map(method).join('\n')}}`)(THREE,createDirectorEntryMotion,sampleDirectorEntryMotion,advanceDirectorEntryElapsed,
   createDirectorCameraMotion,sampleDirectorCameraMotion,advanceDirectorCameraElapsed,isDirectorPlaybackRate,
-  normalizeOceanObservationView,oceanLayerHeight,oceanOverviewObservation,LIVING_SHALLOWS_PROFILE,sampleLivingVisualRoute,THREE.MathUtils.clamp);
+  normalizeOceanObservationView,oceanLayerHeight,oceanOverviewObservation,LIVING_SHALLOWS_PROFILE,sampleLivingVisualRoute,nearestOceanAnimal,THREE.MathUtils.clamp);
 function fixture() {
   const world = new World(), calls = [];
   const records = new Map(ids.map(id => [id, { id,timeSec:112.3,agents:[{id:`old:${id}`,alive:false,state:'dead',history:{opaque:true}}],
@@ -156,4 +160,87 @@ test('opaque preparation installs the real route start once and chapter motion n
   world._preparedDirectorObservation=null;world.camera.position.x+=1;
   assert.equal(world.beginDirectorMotion(motion),true);assert.equal(restores,1);
   assert.equal(world.directorMotion.livingRoute,undefined,'an unprepared mismatched view falls back without a second jump');
+});
+
+test('kelp and deep world openings resolve their actual native stop, preserve state, and refuse missing IDs without overview fallback', () => {
+  for(const biome of ['kelp','deep']){
+    const f=fixture(),world=f.world,generator=biome==='kelp'?createKelpOceanGenerator('42',{forestBelt:true}):createDeepOceanGenerator('42',{seascape:true});
+    const stop=(biome==='kelp'?generator.forestRouteStops:generator.seascapeRouteStops)[0];assert.ok(stop,'a real public native stop exists');
+    Object.assign(world,{biomeId:biome,isLivingShallows:false,isKelp:biome==='kelp',isDeep:biome==='deep',surfaceY:generator.surfaceY,
+      floorY:(x,z)=>generator.floorSurface(x,z).height,habitatY:(x,z)=>generator.heightForCamera(x,z)});
+    world.oceanChunks.generator=generator;
+    const heading=stop.heading??0,x=stop.x-6*Math.cos(heading),z=stop.z-6*Math.sin(heading);
+    const y=biome==='deep'?world.habitatY(x,z)+2.4:Math.min(world.surfaceY-.6,world.habitatY(x,z)+3.2);
+    const cx=Math.floor(x/64),cz=Math.floor(z/64),loaded=[];
+    for(let dz=-1;dz<=1;dz++)for(let dx=-1;dx<=1;dx++)loaded.push(`${cx+dx},${cz+dz}`);
+    f.records.clear();for(const id of loaded)f.records.set(id,{id,timeSec:112.3,agents:[{id:`old:${id}`,alive:false,state:'dead',history:{opaque:true}}],food:{detritus:.013},extra:{unknown:['keep']}});
+    world.oceanChunks.stats.loadedChunks=loaded;world.camera.position.set(x,y,z);world.controls.target.set(x+8,y-1,z);world.controls.update();
+    const before=preserved(f),position={...world.oceanWorldPosition()},target=world.controls.target.clone();
+    const worldPlan=world.planDirectorEntry({kind:'world',biome,entryStopId:stop.id});
+    const nativePlan=world.planDirectorEntry({kind:biome==='kelp'?'kelp-stop':'deep-stop',biome,stopId:stop.id});
+    assert.equal(worldPlan.kind,'continuous');assert.deepEqual(worldPlan,nativePlan,'native pose, support proof and bridge are exactly shared');
+    assert.ok(worldPlan.worldKey.endsWith(':string:42'));
+    const missing=world.planDirectorEntry({kind:'world',biome,entryStopId:'missing-native-stop'});
+    assert.equal(missing.kind,'cut');assert.equal(missing.reason,'missing-observation-stop');assert.equal(missing.view,undefined);
+    assert.equal(world.planDirectorEntry({kind:'world',biome:biome==='kelp'?'deep':'kelp',entryStopId:stop.id}).reason,'different-world');
+    world.oceanChunks.stats.loadedChunks=[];assert.equal(world.planDirectorEntry({kind:'world',biome,entryStopId:stop.id}).kind,'cut');
+    near(world.oceanWorldPosition(),position);near(world.controls.target,target);assert.deepEqual(preserved(f),before);assert.deepEqual(f.calls,[]);
+    assert.equal(biome==='kelp'?generator.forestBeltRevision:generator.seascapeRevision,0,'pure lookup cannot publish scenery or migrate old records');
+  }
+  const f=fixture(),before=preserved(f);
+  assert.equal(f.world.planDirectorEntry({kind:'world',biome:'reef',profile:'legacy',entryStopId:'near'}).reason,'different-world');
+  assert.deepEqual(preserved(f),before);
+});
+
+function focusFixture(){
+  const f=fixture(),world=f.world,live={id:'actual-live',regionId:'0,0',speciesId:'test-fish',alive:true,state:'swimming',
+    sizeM:.2,position:{x:13,y:.5,z:28},timeSec:112.3,energy:.8,opaqueHistory:{keep:true}};
+  const dead={...live,id:'actual-dead',alive:false,state:'dead',position:{x:8.1,y:1,z:28}};
+  f.records.get('0,0').agents.push(live,dead);world.oceanEcology.agents=[live,dead];
+  world.scene={updateMatrixWorld(){}};world.catalog=new Map([['test-fish',{kind:'fish'}]]);
+  // Keep the normal geometry assessor at its documented method boundary;
+  // the selected records and shipped focus/shot methods remain authoritative.
+  world.assessFocus=function(agent,options){const target=this.focusTarget(agent);return{target,
+    position:target.clone().add(new THREE.Vector3(options.minDistanceM,1,0)),
+    visibleSamples:5,totalSamples:5,centerVisible:true,candidateCount:1,obstacleMeshes:0};};
+  return {...f,live,dead};
+}
+
+test('director live selection defers all camera movement, then consumes one absolute focus goal from the actual current pose', () => {
+  const f=focusFixture(),world=f.world,before=preserved(f),position={...world.oceanWorldPosition()},target=world.controls.target.clone();
+  assert.equal(world.focusNearbyOceanAnimal(null,null,{director:true}),true);
+  assert.equal(world.selectedId,f.live.id,'a closer dead record is excluded');
+  near(world.oceanWorldPosition(),position);near(world.controls.target,target);
+  assert.equal(world.following,false);assert.equal(world.transition,null);
+  assert.equal(world._directorFocusAssessment.agentId,f.live.id);
+  const pending=world._directorFocusAssessment;world.setOceanRenderOrigin(64,0);
+  near(world.oceanWorldPosition(),position);near(pending.target,f.live.position);
+  assert.equal(world.beginDirectorMotion({kind:'follow',durationSec:14}),true);
+  assert.equal(world._directorFocusAssessment,null);near(world.directorMotion.shot.position,position);
+  near(world.directorMotion.shot.focusTarget,f.live.position);assert.equal(world.directorMotion.agentId,f.live.id);
+  near(world.oceanWorldPosition(),position);near(world.controls.target.clone().add(new THREE.Vector3(64,0,0)),target);
+  assert.equal(world.transition,null);assert.equal(world.following,false);
+  world.paused=false;world.updateDirectorMotion(.1);
+  assert.ok(pointDistance(world.oceanWorldPosition(),position)>0&&pointDistance(world.oceanWorldPosition(),position)<.05,'one rendered gradual approach starts without the earlier close-focus pass');
+  assert.deepEqual(preserved(f),before);
+});
+
+test('ordinary live focus retains its native transition, while death, cancellation and changed selection discard deferred director goals', () => {
+  const manual=focusFixture(),before=preserved(manual);
+  assert.equal(manual.world.focusNearbyOceanAnimal(),true);assert.equal(manual.world.following,true);
+  assert.equal(manual.world.transition.agentId,manual.live.id);assert.equal(manual.world._directorFocusAssessment,null);
+  assert.deepEqual(preserved(manual),before);
+  for(const stop of ['stopDirectorMotion','stopDirectorEntry']){
+    const f=focusFixture();f.world.focusNearbyOceanAnimal(null,null,{director:true});f.world[stop]();
+    assert.equal(f.world._directorFocusAssessment,null);assert.equal(f.world.transition,null);assert.equal(f.world.following,false);
+  }
+  const changed=focusFixture();changed.world.focusNearbyOceanAnimal(null,null,{director:true});changed.world.select(null);
+  assert.equal(changed.world._directorFocusAssessment,null);
+  const death=focusFixture();death.world.focusNearbyOceanAnimal(null,null,{director:true});death.live.alive=false;death.live.state='dead';
+  const afterDeath=preserved(death),pose={...death.world.oceanWorldPosition()};
+  assert.equal(death.world.beginDirectorMotion({kind:'follow',durationSec:14}),true);
+  assert.equal(death.world.directorMotion.agentId,null);assert.equal(death.world.directorMotion.shot.kind,'orbit');
+  assert.equal(death.world._directorFocusAssessment,null);near(death.world.oceanWorldPosition(),pose);assert.deepEqual(preserved(death),afterDeath);
+  const empty=focusFixture();empty.live.alive=false;assert.equal(empty.world.focusNearbyOceanAnimal(null,null,{director:true}),false);
+  assert.equal(empty.world._directorFocusAssessment,undefined);
 });

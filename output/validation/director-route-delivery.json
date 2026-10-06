@@ -1,0 +1,94 @@
+{
+  "package": "director-coherent-route-v1",
+  "baselineCommit": "727778e7b4363f7ba587974fe9bb95cafa87857b",
+  "sourceCommit": null,
+  "recordedAt": "2026-10-06T16:15:08.337750+03:00",
+  "timezone": "Africa/Nairobi",
+  "publication": {
+    "status": "pending"
+  },
+  "behavior": {
+    "shallowOpeningSequence": [
+      "shallows-opening",
+      "shallows-life",
+      "shallows-discoveries"
+    ],
+    "shallowStopOrder": [
+      "habitat-belt-reef",
+      "habitat-belt-meadow",
+      "seascape-transition",
+      "connected-seascape",
+      "shelf-rise",
+      "sand-basin",
+      "patch-reef",
+      "meadow-edge",
+      "ridge-gully",
+      "outer-reef",
+      "seagrass-meadow",
+      "sand-channel",
+      "reef-garden"
+    ],
+    "landmarkRelocationMetric": {
+      "beforeM": 10780.567,
+      "afterM": 4977.384,
+      "reductionPercent": 53.830035099267036,
+      "definition": "Sum of horizontal canonical landmark distances from the shallow opening anchor. Excludes local camera paths and live animal following; not travelled distance, loading time or count of fades."
+    },
+    "kelpOpeningEntryStopId": "forest-belt-interior",
+    "deepOpeningEntryStopId": "deep-plain-community",
+    "localLife": "Select the actual living individual and defer its safe camera goal; the native director shot starts at the current pose and consumes the goal once. No ordinary focus approach before it.",
+    "ordinaryControls": "Original capability order, world defaults and manual animal focus remain available.",
+    "chapterCount": 40,
+    "distinctActionCount": 34,
+    "chapterObservationSecondsAt1x": 474,
+    "maxContinuousBridgeM": 32,
+    "distantTransfers": "Existing fade, native entry, actual nine-owner readiness and fade-in. Large regional transfers are not continuous swimming."
+  },
+  "validation": {
+    "testFiles": 54,
+    "finalTests": {
+      "tests": 400,
+      "pass": 400,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "localBuildCount": 2,
+    "checksLog": "output/validation/director-route-checks.log",
+    "buildLog": "output/validation/director-route-build.log",
+    "browserVisualAcceptance": false,
+    "browserLimitation": "Existing browser URL policy refusal is retained; no alternate frontend request/capture bypass. Actual WebGL appearance and whole tour playback are not verified.",
+    "scope": [
+      "actual generator landmark ordering and full entry coverage",
+      "native World camera selection and follow ownership",
+      "native world entry dispatch and missing-stop failures",
+      "director reducer/effect/controls and related ecological saved-state regressions"
+    ],
+    "initialChecks": {
+      "tests": 397,
+      "passed": 397,
+      "failed": 0
+    },
+    "finalRevisionReason": "Retain the exact ordinary focusAgent options contract: deferCamera is present only for director selection. Added the existing three-case ocean-community-world manual observation regression file to the same CI suite; final source is rebuilt and retested.",
+    "finalChecksExitCode": 0,
+    "finalBuildExitCode": 0,
+    "buildWarning": "Existing bundle exceeds 500 kB."
+  },
+  "preservation": [
+    "old world seed and terrain",
+    "animals and deaths",
+    "food and inventories",
+    "history, notes and clocks"
+  ],
+  "sourceHashes": {
+    "src/directorTour.js": "a3264ba10f1081808b9cf3c20c1331624fce58cf38eee4ca9be0e75077c3ffa0",
+    "src/demoNavigation.js": "3e45f2a36b9c90325d31465aed1f936980cc70efdc4833176dac5cf192fd6541",
+    "src/world/ReefWorld.js": "1d79c13d942f92f9c87585e2b357dd7f2c594c90459e9011ae39c5b6629d98d8"
+  },
+  "buildArtifacts": {
+    "dist/client/index.html": true,
+    "dist/server/index.js": true,
+    "dist/.openai/hosting.json": true
+  }
+}

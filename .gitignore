@@ -98,3 +98,6 @@ output/validation/screenshots/*
 !output/validation/director-transition-checks.log
 !output/validation/director-transition-build.log
 !output/validation/director-transition-delivery.json
+!output/validation/director-route-checks.log
+!output/validation/director-route-build.log
+!output/validation/director-route-delivery.json

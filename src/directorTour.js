@@ -4,6 +4,13 @@ import { isDirectorPlaybackRate } from './directorCameraMotion.js';
 export { DIRECTOR_PLAYBACK_RATES } from './directorCameraMotion.js';
 
 const actions = new Map(DEMO_ACTIONS.map(action => [action.id, action]));
+const livingStops = new Map(DEMO_LIVING_STOPS.map(stop => [stop.id, stop]));
+// The capability list retains its familiar button order. The director visits
+// the existing geographic stops from its opening area back towards the reef.
+const livingStopOrder = ['habitat-belt-reef', 'habitat-belt-meadow', 'seascape-transition', 'connected-seascape',
+  'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
+  'seagrass-meadow', 'sand-channel', 'reef-garden'];
+const openingEntryStops = Object.freeze({ 'kelp-opening': 'forest-belt-interior', 'deep-opening': 'deep-plain-community' });
 const step = (id, title, caption, actionId, durationMs, motionKind = 'walk', routeId = null) => Object.freeze({
   id, title, caption, action: actions.get(actionId), durationMs,
   motion: Object.freeze({ kind: motionKind, durationSec: durationMs / 1000, ...(routeId?{routeId}:{}) }),
@@ -33,8 +40,9 @@ function withStepContexts(steps) {
 // the step; the dispatcher receives this explicit contextual copy instead.
 export function directorStepAction(item) {
   if (!item?.action || !item?.context) throw new TypeError('A director action requires its chapter context.');
+  const entryStopId = item.motion?.routeId === 'living-visual' ? 'habitat-belt-reef' : openingEntryStops[item.id];
   return Object.freeze({ ...item.action, ...item.context,
-    ...(item.motion?.routeId==='living-visual'?{entryStopId:'habitat-belt-reef'}:{}) });
+    ...(entryStopId ? { entryStopId } : {}) });
 }
 
 // Every action goes through the same native entry dispatcher as the capability
@@ -44,10 +52,14 @@ export function directorStepAction(item) {
 // Time below is moving observation time; asynchronous loading does not consume it.
 export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
   step('shallows-opening', '新浅海：先看整体', '先看礁群、草床与沙道。依次巡游各观察点，跨海域时切换场景。', 'world-living-shallows', 14000, 'walk', 'living-visual'),
-  ...DEMO_LIVING_STOPS.map(stop => step(`shallows-${stop.id}`, stop.title,
-    `${stop.description}。镜头沿海床缓慢前进，转向观察周围生境。`, stop.action.id, 12000)),
   step('shallows-life', '浅海：附近的真实生物', '在群落周围巡游，观察生物的运动与生活空间。', 'current-local-life', 14000, 'follow'),
   step('shallows-discoveries', '浅海：沉木与沉底瓶', '沿海床寻找沉木与沉底瓶，查看途中留下的发现记录。', 'living-discoveries', 12000),
+  ...livingStopOrder.map(id => {
+    const stop = livingStops.get(id);
+    if (!stop) throw new TypeError(`Missing director observation stop: ${id}`);
+    return step(`shallows-${stop.id}`, stop.title,
+      `${stop.description}。镜头沿海床缓慢前进，转向观察周围生境。`, stop.action.id, 12000);
+  }),
   step('legacy-opening', '原浅礁：固定礁区', '在珊瑚、鱼群与岩隙之间缓行，观察原礁区的整体关系。', 'world-legacy-reef', 14000),
   step('legacy-wide', '原浅礁：全景入口', '绕礁群缓慢转看，留意开放水域与岩面的层次。', 'legacy-wide', 12000, 'orbit'),
   step('legacy-skeleton', '原浅礁：珊瑚骨架', '环绕珊瑚骨架，观察枝群的轮廓与结构。', 'legacy-skeleton', 12000, 'orbit'),

@@ -108,7 +108,7 @@ export class ReefWorld {
     this.paused = !!paused; this.speed = 1; this.selectedId = null; this.following = false;
     this.oceanExploring = false; this.oceanCruising = false; this.oceanTravel = null;
     this.directorMotion = null;
-    this.directorEntry = null; this._preparedDirectorObservation = null;
+    this.directorEntry = null; this._preparedDirectorObservation = null; this._directorFocusAssessment = null;
     this.oceanObservationLayer = 'bed'; this.oceanFreeDepthM = null;
     this.oceanRenderOrigin = { x: 0, z: 0 };
     this.oceanEcologyCenter = null; this.oceanEcologyResetting = false;
@@ -701,7 +701,7 @@ export class ReefWorld {
     if(this.isKelp)animateKelpOrganism(object,metrics.timeSec,this.sim.environment);
     else animateOrganism(object,metrics.timeSec,agent.state==='fleeing'?2:(agent.state==='resting'||agent.state==='fixed'?.25:1));
   }
-  select(id){ this.selectedId=id;this.oceanAnimals?.setObservationAgent?.(id);if(!id){this.following=false;if(this.transition?.agentId)this.transition=null;}if(this.lastFocusAssessment?.agentId!==id)this.lastFocusAssessment=null;this.highlight.visible=!!id;this.emitSnapshot(true); }
+  select(id){ if(this._directorFocusAssessment?.agentId!==id)this._directorFocusAssessment=null;this.selectedId=id;this.oceanAnimals?.setObservationAgent?.(id);if(!id){this.following=false;if(this.transition?.agentId)this.transition=null;}if(this.lastFocusAssessment?.agentId!==id)this.lastFocusAssessment=null;this.highlight.visible=!!id;this.emitSnapshot(true); }
   findAgent(id){return this.sim.agents.find(a=>a.id===id)||this.oceanEcology?.agents.find(a=>a.id===id);}
   requestOceanEcology(position=this.oceanWorldPosition()){
     if(!this.oceanEcology||this.oceanEcologyResetting||this.disposed)return;
@@ -821,6 +821,7 @@ export class ReefWorld {
     return {...best,candidateCount,agentId:agent.id};
   }
   applyFocus(agent,assessment){
+    this._directorFocusAssessment=null;
     this.followOffsetY=assessment.target.y-agent.position.y;
     this.lastFocusAssessment={agentId:agent.id,visibleSamples:assessment.visibleSamples,totalSamples:assessment.totalSamples,
       centerVisible:assessment.centerVisible,candidateCount:assessment.candidateCount,obstacleMeshes:assessment.obstacleMeshes};
@@ -845,6 +846,7 @@ export class ReefWorld {
   }
   focusAgent(id,options={}){
     const agent=this.findAgent(id);if(!agent?.alive)return;
+    this._directorFocusAssessment=null;
     if(agent.speciesId==='blue-rockfish')options={minDistanceM:5.5,...options};
     if(!agent.regionId&&this.oceanExploring)this.returnToReef();
     if(agent.regionId){this.oceanExploring=true;this.oceanCruising=false;this.oceanTravel=null;}
@@ -853,10 +855,19 @@ export class ReefWorld {
       this.oceanAnimals.update(this.oceanEcology.agents,this.sim.metrics.timeSec,this.oceanRenderOrigin,this.camera.position);
       this.oceanChunks.setDetailedHosts?.(this.oceanAnimals.detailedHostIds);
     }
-    this.scene.updateMatrixWorld(true);this.applyFocus(agent,this.assessFocus(agent,options));
+    this.scene.updateMatrixWorld(true);const assessment=this.assessFocus(agent,options);
+    if(options.deferCamera){
+      // Director loading selects a real individual without beginning the
+      // ordinary close-focus transition before its own observation shot.
+      const origin=new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z);
+      this._directorFocusAssessment={agentId:agent.id,position:assessment.position.clone().add(origin),target:assessment.target.clone().add(origin),
+        visibleSamples:assessment.visibleSamples,totalSamples:assessment.totalSamples,centerVisible:assessment.centerVisible,
+        candidateCount:assessment.candidateCount,obstacleMeshes:assessment.obstacleMeshes};
+      this.following=false;this.transition=null;
+    }else this.applyFocus(agent,assessment);
     this.emitSnapshot();
   }
-  focusNearbyOceanAnimal(speciesId=null,regionId=null){
+  focusNearbyOceanAnimal(speciesId=null,regionId=null,{director=false}={}){
     if(!this.oceanEcology)return false;
     const p=this.oceanWorldPosition();
     const agents=this.oceanEcology.agents;
@@ -864,7 +875,7 @@ export class ReefWorld {
       (!regionId||agent.regionId===regionId)&&agent.state==='schooling'):[];
     const nearest=nearestOceanAnimal(schoolMembers.length?schoolMembers:agents,p,{speciesId,regionId});
     if(!nearest)return false;
-    this.focusAgent(nearest.id,{minDistanceM:Math.max(nearest.speciesId==='blue-rockfish'?5.5:nearest.habitat==='pelagic-water-column'?3.5:.7,nearest.sizeM*3.5)});return true;
+    this.focusAgent(nearest.id,{minDistanceM:Math.max(nearest.speciesId==='blue-rockfish'?5.5:nearest.habitat==='pelagic-water-column'?3.5:.7,nearest.sizeM*3.5),...(director?{deferCamera:true}:{})});return true;
   }
   focusKelpCommunity(stopId='community'){
     if(!this.isKelp||!this.oceanExploring||!this.oceanChunks||!this.oceanEcology||this.disposed||this.oceanEcologyResetting||
@@ -955,10 +966,11 @@ export class ReefWorld {
         const x=stop.x-7*c+across*s,z=stop.z+7*s+across*c,y=Math.min(this.surfaceY-.6,this.habitatY(x,z)+2.8);
         const tx=stop.x+7*c,tz=stop.z-7*s;
         view={position:{x,y,z},target:{x:tx,y:Math.min(y-.8,this.habitatY(tx,tz)+1.2),z:tz},layer:'bed'};exploring=true;
-      }else if(['kelp-stop','deep-stop'].includes(choice.kind)){
-        const deep=choice.kind==='deep-stop';
+      }else if(['kelp-stop','deep-stop'].includes(choice.kind)||choice.kind==='world'&&choice.entryStopId!==undefined&&(this.isKelp||this.isDeep)){
+        const deep=choice.kind==='deep-stop'||choice.kind==='world'&&this.isDeep;
         if(deep?!this.isDeep:!this.isKelp)return result('cut','different-world');
-        const stop=(deep?generator?.seascapeRouteStops:generator?.forestRouteStops)?.find(row=>row.id===choice.stopId);
+        const stopId=choice.kind==='world'?choice.entryStopId:choice.stopId;
+        const stop=(deep?generator?.seascapeRouteStops:generator?.forestRouteStops)?.find(row=>row.id===stopId);
         if(!stop)return result('cut','missing-observation-stop');
         const heading=Number.isFinite(stop.heading)?stop.heading:0,c=Math.cos(heading),s=Math.sin(heading);
         const x=stop.x-6*c,z=stop.z-6*s,y=deep?this.habitatY(x,z)+2.4:Math.min(this.surfaceY-.6,this.habitatY(x,z)+3.2);
@@ -1054,7 +1066,7 @@ export class ReefWorld {
       coordinateSpace:'absolute-world-metres',worldPosition:this.camera?{...this.oceanWorldPosition()}:null,
       worldTarget:this.controls?{x:this.controls.target.x+this.oceanRenderOrigin.x,y:this.controls.target.y,z:this.controls.target.z+this.oceanRenderOrigin.z}:null};
   }
-  stopDirectorEntry(){this.directorEntry=null;}
+  stopDirectorEntry(){this.directorEntry=null;this._directorFocusAssessment=null;}
   prepareDirectorObservation(motion={}){
     this._preparedDirectorObservation=null;
     if(motion.routeId!=='living-visual'||!this.isLivingShallows)return true;
@@ -1084,8 +1096,13 @@ export class ReefWorld {
     const origin=new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z),position=this.oceanWorldPosition();
     const target=this.controls.target.clone().add(origin),selected=this.findAgent(this.selectedId);
     const following=kind==='follow'&&selected?.alive;
+    const pending=following&&this._directorFocusAssessment?.agentId===selected.id?this._directorFocusAssessment:null;
+    this._directorFocusAssessment=null;
     const focusTarget=following?this.focusTarget(selected).add(origin):target;
-    const focusPosition=following&&this.transition?.position?this.transition.position.clone().add(origin):position.clone();
+    const focusPosition=pending?pending.position.clone().add(focusTarget.clone().sub(pending.target)):
+      following&&this.transition?.position?this.transition.position.clone().add(origin):position.clone();
+    if(pending)this.lastFocusAssessment={agentId:pending.agentId,visibleSamples:pending.visibleSamples,totalSamples:pending.totalSamples,
+      centerVisible:pending.centerVisible,candidateCount:pending.candidateCount,obstacleMeshes:pending.obstacleMeshes};
     if(following){
       // The normal species focus can be only centimetres from a shrimp. A
       // director chapter observes its real surrounding habitat, so approach
@@ -1161,7 +1178,7 @@ export class ReefWorld {
       // Manual controls can release a finished shot before the guide's next
       // timer observes it. Acknowledge its actual completion before clearing.
       if(motion?.complete===true&&!motion.error&&motion.shot)this.onDirectorMotionComplete?.(this.directorMotionSnapshot());
-    }finally{this.directorMotion=null;}
+    }finally{this.directorMotion=null;this._directorFocusAssessment=null;}
   }
   directorMotionSnapshot(){
     const motion=this.directorMotion,shot=motion?.shot;

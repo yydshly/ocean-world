@@ -122,6 +122,7 @@ function harness(world, { execute: executeOverride } = {}) {
   render(); return run;
 }
 const count = (log, name) => log.filter(row => row[0] === name).length;
+const nearbyEntryIndex = DIRECTOR_STEPS.findIndex(step => step.id === 'shallows-habitat-belt-reef');
 const start = async (run, index = 0) => { run.api.start(index); await run.flush(); };
 
 test('a distant reposition executes only under full cover and begins its shot only after reveal', async () => {
@@ -159,7 +160,7 @@ test('cross-world loading and a second physical window requested by preparation 
 test('a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window', async () => {
   const f = worldFixture({ entryKind: 'continuous' }), run = harness(f.world);
   f.world.onEntryPlayback = () => run.publish(); // The production setter emits a new snapshot.
-  await start(run, 1); await run.until(() => run.execution.length === 1, 'nearby entry must execute without a fade');
+  await start(run, nearbyEntryIndex); await run.until(() => run.execution.length === 1, 'nearby entry must execute without a fade');
   assert.equal(run.execution[0].action.directorEntryPlan.kind, 'continuous');
   assert.equal(run.state.transition.phase, 'move'); assert.equal(run.state.transition.opacity, 0);
   assert.equal(count(f.log, 'bridge-begin'), 1); assert.equal(count(f.log, 'prepare'), 0);
@@ -207,7 +208,7 @@ test('playing, hidden state and playback rate control the transition while prese
   run.document.visibilityState = 'visible'; await run.advance(50);
   assert.ok(run.state.transition.opacity > opacity); assert.equal(run.state.elapsedMs, 0);
   const bridge = worldFixture({ entryKind: 'continuous' }), nearby = harness(bridge.world);
-  await start(nearby, 1); await nearby.until(() => count(bridge.log, 'bridge-begin') === 1, 'bridge must acquire its path');
+  await start(nearby, nearbyEntryIndex); await nearby.until(() => count(bridge.log, 'bridge-begin') === 1, 'bridge must acquire its path');
   nearby.api.pause(); nearby.api.setPlaybackRate(.5); await nearby.flush();
   await nearby.advance(250);
   assert.equal(bridge.world.bridge.playing, false); assert.equal(bridge.world.bridge.playbackRate, .5);

@@ -133,6 +133,46 @@ test('kelp and deep world entries start continuous exploration and report an act
   }
 });
 
+test('anchored kelp and deep openings use actual native habitat entries without a preliminary overview', () => {
+  for (const [biomeId, entryStopId, methodName] of [
+    ['kelp', 'forest-belt-interior', 'enterKelpForestBelt'],
+    ['deep', 'deep-plain-community', 'enterDeepSeascape'],
+  ]) {
+    const { world, calls, protectedState } = observationWorld({ biomeId });
+    const before = structuredClone(protectedState);
+    world[methodName] = id => {
+      calls.push([methodName, id]);
+      if (id !== entryStopId) return false;
+      world.oceanExploring = true;
+      return true;
+    };
+    const choice = { ...worldAction(biomeId), entryStopId };
+    assert.equal(navigateDemoEntry(choice, world, { movingDirector: true }), true);
+    assert.deepEqual(calls, [[methodName, entryStopId]]);
+    assert.deepEqual(world.protectedState, before);
+    calls.length = 0;
+    assert.equal(navigateDemoEntry({ ...choice, entryStopId: 'missing' }, world, { movingDirector: true }), false);
+    assert.deepEqual(calls, [[methodName, 'missing']], 'unavailable habitat must not fall back to another view');
+    delete world[methodName]; calls.length = 0;
+    assert.equal(navigateDemoEntry(choice, world, { movingDirector: true }), false);
+    assert.deepEqual(calls, []);
+    assert.deepEqual(world.protectedState, before);
+  }
+});
+
+test('director animal entry delegates selection and camera preparation while manual focus retains its native call', () => {
+  const choice = DEMO_ACTIONS.find(action => action.kind === 'local-life');
+  const { world, calls, protectedState } = observationWorld({ biomeId: 'kelp', exploring: true });
+  const before = structuredClone({ position: world.position, protectedState });
+  world.focusNearbyOceanAnimal = (...args) => { calls.push(args); return true; };
+  assert.equal(navigateDemoEntry(choice, world, { movingDirector: true }), true);
+  assert.deepEqual(calls, [[null, null, { director: true }]]);
+  assert.deepEqual({ position: world.position, protectedState }, before);
+  calls.length = 0;
+  assert.equal(navigateDemoEntry(choice, world), true);
+  assert.deepEqual(calls, [[null]]);
+});
+
 test('living and legacy world entries use their own observation operations without rebuilding populations', () => {
   const living = observationWorld({ living: true });
   assert.equal(navigateDemoEntry(worldAction('reef'), living.world), true);

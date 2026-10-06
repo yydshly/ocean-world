@@ -29,7 +29,7 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Check director transitions, saved ecosystems and hosting
+      - name: Check director route, camera ownership and saved ecosystems
         run: >-
           node --test
           tests/director-entry-motion.test.mjs
@@ -82,6 +82,7 @@ jobs:
           tests/director-root-error.test.mjs
           tests/director-discoveries.test.mjs
           tests/ocean-keyboard-input.test.mjs
+          tests/ocean-community-world.test.mjs
           tests/director-readiness.test.mjs
           tests/director-camera-motion.test.mjs
           tests/observation-event-text.test.mjs
