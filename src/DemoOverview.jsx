@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { livingShallowsSpeciesCatalog, sceneCatalogs } from './sceneCatalog.js';
 import { LIVING_SHALLOWS_PROFILE } from './livingShallows.js';
-import { DEMO_WORLDS, DEMO_LIVING_STOPS, DEMO_LEGACY_VIEWS, DEMO_CURRENT_TOOLS,
+import { DEMO_WORLDS, DEMO_LIVING_STOPS, DEMO_KELP_STOPS, DEMO_LEGACY_VIEWS, DEMO_CURRENT_TOOLS,
   DEMO_RECORD_TOOLS, DEMO_WORKBENCHES, demoLayerEntries, demoNeedsSceneChange } from './demoCapabilities.js';
 import './demoOverview.css';
 
@@ -49,7 +49,7 @@ export function DemoOverview({ onChoose, onClose, onStartDirector, worldReady, r
       <button type="button" disabled={recording} aria-describedby="demo-director-intro" onClick={onStartDirector}>
         <span aria-hidden="true">▶</span>一键导演演示
       </button>
-      <p id="demo-director-intro">约 7 分钟，镜头前进、转向和升降，依次巡游各观察点并展示现有工具。跨海域时切换场景，可暂停、跳章或退出。</p>
+      <p id="demo-director-intro">约 7 分半，镜头前进、转向和升降，依次巡游各观察点并展示现有工具。跨海域时切换场景，可暂停、跳章或退出。</p>
     </div>
 
     <div className="demo-current-status" role="status" aria-live="polite">
@@ -80,9 +80,12 @@ export function DemoOverview({ onChoose, onClose, onStartDirector, worldReady, r
     </section>
 
     <section className="demo-section" aria-labelledby="demo-landforms-title">
-      <div className="demo-section-heading"><h3 id="demo-landforms-title"><span>2</span> 新浅海宏观地貌</h3><p>11 个观察点直达</p></div>
+      <div className="demo-section-heading"><h3 id="demo-landforms-title"><span>2</span> 宏观地貌与生活带</h3><p>{DEMO_LIVING_STOPS.length + DEMO_KELP_STOPS.length} 个观察点直达</p></div>
       <p className="demo-section-note">这些按钮直接进入观察点；沿途探索使用场景内的航行、路线与自由移动。地形取决于种子、适宜条件和已有存档。</p>
       <div className="demo-stops-grid">{DEMO_LIVING_STOPS.map(item =>
+        <CapabilityButton key={item.id} entry={item} onChoose={onChoose} disabled={disabled(item)} compact/>)}</div>
+      <p className="demo-section-note">巨藻林生活带：适宜的新区域连接高巨藻、林下植物和天然沉积空隙；已有区域读取原存档。</p>
+      <div className="demo-stops-grid">{DEMO_KELP_STOPS.map(item =>
         <CapabilityButton key={item.id} entry={item} onChoose={onChoose} disabled={disabled(item)} compact/>)}</div>
     </section>
 

@@ -301,7 +301,7 @@ export function OceanApp(){
   const captureScreenshot=async()=>{try{const file=await world.current?.downloadScreenshot();setToast(import.meta.env.DEV?`观察截图已保存：${file}`:`已请求下载截图：${file}，请查看下载列表`);}catch(e){setToast(e.message);}};
   const chooseDemo=choice=>{
     if(choice.directorToken===undefined)director.stop();
-    if(recording&&['world','living-stop','view','discoveries'].includes(choice.kind)){setToast('请先结束录像，再切换观察入口');return;}
+    if(recording&&['world','living-stop','kelp-stop','view','discoveries'].includes(choice.kind)){setToast('请先结束录像，再切换观察入口');return;}
     setPendingDemo(null);setHelp(false);
     if(choice.directorToken===undefined){
       if(choice.kind==='population'){setEcologyModel(choice.model);setPanel('population');return;}
@@ -319,6 +319,7 @@ export function OceanApp(){
   const startDirector=()=>{setPendingDemo(null);setPanel(null);setHelp(false);director.start();};
   const stopDirector=()=>{director.stop();setPendingDemo(null);setPanel(null);};
   const travelDiscovery=id=>{director.stop();setPendingDemo(null);return world.current?.travelLivingDiscovery(id)??false;};
+  const travelKelpBelt=id=>{director.stop();setPendingDemo(null);return world.current?.travelKelpForestBelt(id)??false;};
   useEffect(()=>{
     if(!pendingDemo||!worldReady||!demoWorldMatches(pendingDemo,world.current,snapshot))return;
     const choice=pendingDemo;
@@ -380,6 +381,7 @@ export function OceanApp(){
       <div className="observation-entry-heading"><span>海域随探索延展</span><div className="ocean-tools-heading-actions"><button onClick={returnReef}>返回{homeLabel}</button><button aria-expanded={oceanToolsOpen} aria-controls="ocean-exploration-tools" onClick={()=>setOceanToolsOpen(open=>!open)}>{oceanToolsOpen?'收起工具':'展开海域'}</button></div></div>
       <div className="ocean-position"><strong>{oceanSceneThemes[ocean.localHabitat?.sceneTheme]||oceanHabitatLabel(oceanComposition,ocean.habitat)}</strong><span>距{homeShort} {Math.round(livingShallows?ocean.distanceFromEntryM:ocean.distanceFromReefM)} m</span></div>
       {livingShallows&&ocean.routeStops&&<div className="living-route" aria-label="浅海探索路线">{ocean.routeStops.map((stop,index)=><button key={stop.id} disabled={!worldReady} onClick={()=>world.current?.travelLivingShallows(index)}>{stop.label}</button>)}</div>}
+      {biome==='kelp'&&ocean.forestRouteStops?.length>0&&<div className="living-route" aria-label="巨藻林探索路线">{ocean.forestRouteStops.map(stop=><button key={stop.id} disabled={!worldReady||recording} onClick={()=>travelKelpBelt(stop.id)}>{stop.label}</button>)}</div>}
       {livingShallows&&ecosystem&&<LivingEcosystem ecosystem={ecosystem} compact/>}
       {livingShallows&&<><div className="living-guild" aria-label="开放水层观察">{[['yellowtail-fusilier','水层鱼群'],['reef-squid','礁鱿游动'],['spotted-jelly','漂游水母']].map(([id,label])=><button key={id} disabled={!worldReady||!regionalEcology?.agents.some(a=>a.speciesId===id&&a.alive)} onClick={()=>world.current?.focusNearbyOceanAnimal(id)}>{label}</button>)}</div><LivingDiscoveries discoveries={ocean.discoveries} world={world} ready={worldReady} onTravel={travelDiscovery}/></>}
       {livingShallows&&<div className="living-guild" aria-label="礁底生命观察">{[['day-octopus','礁底章鱼'],['spotted-reef-crab','底栖蟹'],['tube-sponge','附着海绵']].map(([id,label])=><button key={id} disabled={!worldReady||!regionalEcology?.agents.some(a=>a.speciesId===id&&a.alive)} onClick={()=>world.current?.focusNearbyOceanAnimal(id)}>{label}</button>)}</div>}

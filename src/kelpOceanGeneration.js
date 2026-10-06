@@ -1,6 +1,7 @@
 import { KELP_SURFACE_Y, floorHeight, habitatNormal, rockSurfaceHeight, KELP_ROCKS, KELP_ANCHORS } from './kelpHabitat.js';
 import { oceanRockHeight, oceanRockMesh, oceanRockSurface } from './oceanRockShape.js';
 import { createKelpOceanLandforms, KELP_LANDFORM_LIMIT } from './kelpOceanLandforms.js';
+import { createKelpForestBeltGenerator } from './kelpForestBelt.js';
 
 export const KELP_OCEAN_CHUNK_SIZE = 64;
 export const KELP_OCEAN_SURFACE_Y = KELP_SURFACE_Y;
@@ -162,6 +163,7 @@ function createLegacyKelpOceanGenerator(seed=42){
  * allocates the same plants, on a genuinely larger shelf/channel landscape. */
 export function createKelpOceanGenerator(seed=42, options={}){
   if(!options||typeof options!=='object'||Array.isArray(options))throw new TypeError('Kelp generator options must be an object.');
+  if(options.forestBelt===true)return createKelpForestBeltGenerator(createKelpOceanGenerator(seed,{...options,forestBelt:false}));
   const supportVersion=options.supportVersion??KELP_OCEAN_SUPPORT_GEOMETRY_VERSION;
   if(![1,2].includes(supportVersion))throw new RangeError('Unknown kelp ocean support version.');
   const legacy=createLegacyKelpOceanGenerator(seed);

@@ -1,0 +1,65 @@
+{
+  "scope": "finite CPU model and persistence evidence; not a browser or visual acceptance",
+  "seed": "42",
+  "group": {
+    "cx": -6,
+    "cz": -2
+  },
+  "maximumActiveRegions": 9,
+  "maximumRegistrySize": 8,
+  "ownerIds": [
+    "-6,-2",
+    "-5,-2",
+    "-6,-1",
+    "-5,-1"
+  ],
+  "streamedRoots": 49,
+  "addedRoots": 16,
+  "simulatedPlants": 7,
+  "understoryPlants": 31,
+  "speciesCounts": {
+    "purple-urchin": 16,
+    "gumboot-chiton": 6,
+    "bat-star": 8,
+    "brown-turban-snail": 7,
+    "giant-kelpfish": 7,
+    "leopard-shark": 2
+  },
+  "addedRootLengthRangeM": [
+    11.219534613572431,
+    13.381136350617824
+  ],
+  "addedCanopyHeightRangeM": [
+    10.498871442793389,
+    11.122623495312192
+  ],
+  "surfaceY": 12,
+  "initialFoodUnits": 8.701,
+  "simulatedSec": 2,
+  "movedAnimals": 60,
+  "ingestedUnits": 0.0186,
+  "maximumFoodBalanceError": 8.881784197001252e-16,
+  "maximumDriftBalanceError": 5.293955920339377e-23,
+  "oldRecordsPreserved": true,
+  "oldDeathPreserved": true,
+  "offscreenOwners": [
+    "-6,-1",
+    "-5,-1"
+  ],
+  "offscreenFrozen": true,
+  "fullRecordsRestored": 9,
+  "allOriginalOwnersUnloaded": true,
+  "revisitRecordsExact": true,
+  "coldRecordsExact": true,
+  "corruptPlansRejected": true,
+  "missingGroupMemberRejected": true,
+  "strippedGroupMemberRejected": true,
+  "temporarySourceReplacement": {
+    "scope": "source facade with two sets of valid natural plans; not two loaded ecological halos",
+    "oldOwners": 16,
+    "newOwners": 16,
+    "distinctOwners": 32,
+    "committedRegistrySize": 16,
+    "privateRevisionUnchanged": true
+  }
+}

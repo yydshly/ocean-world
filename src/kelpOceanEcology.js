@@ -10,6 +10,7 @@ import { createKelpWaterCommunityPlan, kelpWaterElements, kelpWaterPositionValid
 import { createKelpVisitorPlan, validateKelpVisitorRecord, tickKelpVisitors,
   KELP_VISITOR_COMMUNITY_VERSION } from './kelpVisitorCommunity.js';
 import { createKelpUnderstoryPlan, validateKelpUnderstoryRecord, KELP_UNDERSTORY_SCENERY_VERSION } from './kelpUnderstory.js';
+import { createKelpForestBeltPlans, validateKelpForestBeltPlan } from './kelpForestBelt.js';
 
 export const KELP_OCEAN_REGION_ANIMAL_LIMIT = 20;
 export const KELP_OCEAN_REGION_PLANT_LIMIT = 3;
@@ -42,10 +43,12 @@ function normalAt(generator, x, z) {
  * qualitative. Only up to three selected plant hosts are simulated per cell.
  * All other streamed kelp is scenery and is excluded from animal counts. */
 export class KelpOceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), visitors = false, understory = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), visitors = false, understory = false, forestBelt = false } = {}) {
     this.seed = seed; this.generator = generator; this.store = store; this._world = worldKey(seed);
     this.visitorsEnabled = visitors === true;
     this.understoryEnabled = understory === true;
+    this._forestBeltRequested = forestBelt === true;
+    this.forestBeltEnabled = this._forestBeltRequested && this._forestBeltAvailable(generator);
     this._active = new Map(); this._locked = new Set(); this._center = null; this._waterCells = new Map();
     this._waterFrames = new Map(); this._waterPlantFrames = new Map(); this._waterTransfers = [];
     this._waterContextMemo = new Map(); this._waterContextMemoActive = false;
@@ -54,6 +57,23 @@ export class KelpOceanEcology {
     this.environment = { ...DEFAULT_ENVIRONMENT };
     this._counts = { generated: 0, restored: 0, saved: 0, unloaded: 0, persistenceErrors: 0 };
     this._storageError = null;
+  }
+
+  _forestBeltAvailable(generator) {
+    return Boolean(typeof this.store.saveMany === 'function' && generator.supportVersion === 2 && generator.baseGenerator &&
+      typeof generator.withForestPlans === 'function' && typeof generator.setForestPlans === 'function' &&
+      typeof generator.forestBeltPlan === 'function');
+  }
+
+  _savedForestPlan(record, cx, cz) {
+    const has = record && ['forestBeltVersion', 'forestBeltInitializedAtSec', 'forestBeltPlan'].some(key => Object.hasOwn(record, key));
+    if (!has) return null;
+    if (!this.forestBeltEnabled || record.forestBeltVersion !== 1 || record.supportGeometryVersion !== 2 ||
+        !nonnegative(record.forestBeltInitializedAtSec) || record.forestBeltInitializedAtSec > record.state?.timeSec ||
+        record.forestBeltPlan?.id !== `${cx},${cz}` || record.forestBeltPlan.cx !== cx || record.forestBeltPlan.cz !== cz ||
+        !validateKelpForestBeltPlan(record.forestBeltPlan, this.generator.baseGenerator))
+      throw new Error('Invalid saved kelp forest belt; original landscape and population were not regenerated.');
+    return record.forestBeltPlan;
   }
 
   _plan(cx, cz, generator = this.generator) {
@@ -122,6 +142,8 @@ export class KelpOceanEcology {
       ...(region.driftCommunityVersion !== undefined ? { driftCommunityVersion: region.driftCommunityVersion,
         driftPatches: clone(region.driftPatches), driftLedger: clone(region.driftLedger) } : {}),
       ...(region.supportGeometryVersion!==undefined?{supportGeometryVersion:region.supportGeometryVersion}:{}),
+      ...(region.forestBeltVersion !== undefined ? { forestBeltVersion: region.forestBeltVersion,
+        forestBeltInitializedAtSec: region.forestBeltInitializedAtSec, forestBeltPlan: clone(region.forestBeltPlan) } : {}),
       ...(region.waterEverOccupied !== undefined ? { waterEverOccupied: region.waterEverOccupied } : {}),
       ...(region.waterCommunityVersion !== undefined ? { waterCommunityVersion: region.waterCommunityVersion,
         waterCommunityAdded: region.waterCommunityAdded ?? 0, waterInitializedAtSec: region.waterInitializedAtSec ?? region.sim.timeSec,
@@ -141,6 +163,7 @@ export class KelpOceanEcology {
       throw new Error(`Saved kelp region ${cx},${cz} is invalid; population was not regenerated.`);
     }
     const state = record.state;
+    const forestPlan = this._savedForestPlan(record, cx, cz);
     const supportVersion = this.generator.supportVersion ?? KELP_OCEAN_SUPPORT_GEOMETRY_VERSION;
     if(record.supportGeometryVersion!==undefined&&(!Number.isInteger(record.supportGeometryVersion)||record.supportGeometryVersion<1 || record.supportGeometryVersion > supportVersion))
       throw new Error('Invalid saved kelp support geometry version.');
@@ -215,6 +238,11 @@ export class KelpOceanEcology {
     const validationRegion = legacy ? { ...region, sim: Object.assign(Object.create(Object.getPrototypeOf(region.sim)), region.sim, { rockHeight: legacy.rockHeight }) } : region;
     if (!validateKelpDriftRecord(record, validationRegion, this._driftValidation(region, savedGenerator))) throw new Error('Invalid saved kelp-drift inventory or contact history.');
     region._savedRecord = clone(record);
+    if (forestPlan) {
+      region.forestBeltVersion = record.forestBeltVersion;
+      region.forestBeltInitializedAtSec = record.forestBeltInitializedAtSec;
+      region.forestBeltPlan = clone(forestPlan);
+    }
     if (record.driftCommunityVersion !== undefined) {
       region.driftCommunityVersion = record.driftCommunityVersion;
       region.driftPatches = clone(record.driftPatches); region.driftLedger = clone(record.driftLedger);
@@ -577,6 +605,106 @@ export class KelpOceanEcology {
     }
   }
 
+  _prepareForestOwner(saved, cx, cz) {
+    const fresh = saved === null;
+    const region = fresh ? this._create(cx, cz) : this._restore(saved, cx, cz);
+    const supportUpdated = this._upgradeSupport(region), waterUpdated = this._upgradeWater(region);
+    const mobilityUpdated = this._upgradeWaterMobility(region);
+    const driftUpdated = upgradeKelpDrift(region, { generator: this.generator });
+    const visitorUpdated = this._upgradeVisitors(region), understoryUpdated = this._upgradeUnderstory(region);
+    return { region, fresh, changed: fresh || supportUpdated || waterUpdated || mobilityUpdated || driftUpdated || visitorUpdated || understoryUpdated };
+  }
+
+  async _updateForestWindow(world, desired, current) {
+    try {
+      const groups = new Map(), halo = new Map();
+      for (const [x, z] of desired.values()) {
+        const gx = Math.floor(x / 2) * 2, gz = Math.floor(z / 2) * 2;
+        groups.set(`${gx},${gz}`, [gx, gz]);
+        for (let dz = 0; dz < 2; dz++) for (let dx = 0; dx < 2; dx++) halo.set(`${gx + dx},${gz + dz}`, [gx + dx, gz + dz]);
+      }
+      if (halo.size > 16) throw new Error('Kelp forest admission exceeded the bounded owner read halo.');
+      const savedRows = new Map(), savedPlans = [];
+      for (const [id, [x, z]] of halo) {
+        const active = this._active.get(id), saved = active ? this._record(active) : await this.store.load(world, id);
+        if (!current()) return;
+        // Only an explicit successful null is virgin. Missing/failed reads
+        // cannot be reinterpreted as empty landscape or population history.
+        if (saved === undefined) throw new Error('Kelp forest owner read returned no result.');
+        savedRows.set(id, saved);
+        if (saved !== null) {
+          const plan = this._savedForestPlan(saved, x, z);
+          if (plan) savedPlans.push(plan);
+        }
+      }
+      const freshPlans = [];
+      for (const [gx, gz] of groups.values()) {
+        const ids = [0, 1].flatMap(dz => [0, 1].map(dx => `${gx + dx},${gz + dz}`));
+        const rows = ids.map(id => savedRows.get(id));
+        const marked = rows.filter(row => row && ['forestBeltVersion', 'forestBeltInitializedAtSec', 'forestBeltPlan'].some(key => Object.hasOwn(row, key)));
+        if (marked.length) {
+          // A committed forest is one four-owner persistence boundary. A lost
+          // row or stripped marker cannot silently turn its sibling into a
+          // fresh baseline owner, nor reconstruct unrecorded animals or food.
+          if (marked.length !== 4 || rows.some(row => !row || row.forestBeltVersion !== 1 ||
+              row.forestBeltPlan?.group?.cx !== gx || row.forestBeltPlan?.group?.cz !== gz ||
+              row.forestBeltInitializedAtSec !== marked[0].forestBeltInitializedAtSec ||
+              JSON.stringify(row.forestBeltPlan.group) !== JSON.stringify(marked[0].forestBeltPlan.group)))
+            throw new Error('Saved kelp forest group is incomplete or inconsistent; no landscape or population was regenerated.');
+          continue;
+        }
+        if (!ids.every(id => savedRows.get(id) === null)) continue;
+        let plans;
+        try { plans = createKelpForestBeltPlans(this.generator.baseGenerator, gx, gz); }
+        catch (error) { if (error instanceof RangeError) continue; throw error; }
+        if (!Array.isArray(plans) || plans.length !== 4 || new Set(plans.map(p => p.id)).size !== 4 ||
+            plans.some(p => !ids.includes(p.id) || p.group?.cx !== gx || p.group?.cz !== gz ||
+              !Array.isArray(p.group.ownerIds) || p.group.ownerIds.length !== 4 || ids.some(id => !p.group.ownerIds.includes(id)) ||
+              !validateKelpForestBeltPlan(p, this.generator.baseGenerator)))
+          throw new Error('Invalid fresh kelp forest group.');
+        freshPlans.push(...plans);
+      }
+      const allPlans = [...savedPlans, ...freshPlans], prepared = new Map();
+      // This synchronous source view creates actual sim hosts, animals, water
+      // representatives, understory and food once. It never publishes scenery
+      // revisions, and its references become public only after persistence.
+      this.generator.withForestPlans(allPlans, () => {
+        for (const plan of freshPlans) {
+          const item = this._prepareForestOwner(null, plan.cx, plan.cz);
+          item.region.forestBeltVersion = 1; item.region.forestBeltInitializedAtSec = item.region.sim.timeSec;
+          item.region.forestBeltPlan = clone(plan); prepared.set(plan.id, item);
+        }
+        for (const [id, [x, z]] of desired) {
+          if (this._active.has(id) || prepared.has(id)) continue;
+          prepared.set(id, this._prepareForestOwner(savedRows.get(id), x, z));
+        }
+      });
+      if (!current()) return;
+      for (const { region } of prepared.values()) {
+        if (this._waterRegionCount(region) > KELP_OCEAN_REGION_ANIMAL_LIMIT || region.sim.hostById.size > KELP_OCEAN_REGION_PLANT_LIMIT ||
+            Math.abs(region.sim.metrics.resourceBudgetError) > 1e-8)
+          throw new Error('Invalid kelp forest birth population or initial food inventory.');
+      }
+      const records = [...prepared].filter(([, item]) => item.changed).map(([id, item]) => [id, this._record(item.region)]);
+      if (records.length && !await this._save(world, records)) { this._center = null; return false; }
+      if (!current()) return;
+      // The complete persisted four-owner groups can include offscreen owners.
+      // Retain only this bounded read halo; no unbounded visited-plan registry.
+      this.generator.setForestPlans(allPlans);
+      this._waterCells.clear(); this._clearWaterContextMemo();
+      for (const [id, item] of prepared) {
+        if (!desired.has(id)) continue;
+        const region = item.region;
+        installKelpDriftHooks(region, { generator: this.generator,
+          enabled: () => this._active.get(region.id) === region && typeof this.store.saveMany === 'function' });
+        this._active.set(id, region); this._counts[item.fresh ? 'generated' : 'restored']++;
+      }
+      return true;
+    } catch (error) {
+      this._counts.persistenceErrors++; this._storageError = String(error?.message || error); this._center = null; return false;
+    }
+  }
+
   update(position) {
     this._clearWaterContextMemo();
     if (!position || !Number.isFinite(position.x) || !Number.isFinite(position.z)) throw new RangeError('Kelp exploration coordinates must be finite.');
@@ -605,6 +733,7 @@ export class KelpOceanEcology {
           for (const id of exits) { this._active.delete(id); this._counts.unloaded++; }
         }
       } finally { for (const id of exits) this._locked.delete(id); }
+      if (this.forestBeltEnabled) return this._updateForestWindow(world, desired, current);
       for (const [id, [x, z]] of desired) {
         if (this._active.has(id)) continue;
         try {
@@ -838,6 +967,8 @@ export class KelpOceanEcology {
     const agents = this.agents, living = agents.filter(agent => agent.alive), energetic = living.filter(agent => Number.isFinite(agent.energy));
     const regions = [...this._active.values()].map(region => ({ id: region.id, cx: region.cx, cz: region.cz, habitat: region.habitat,
       timeSec: region.sim.timeSec, supportGeometryVersion: region.supportGeometryVersion, agentCount: this._waterRegionCount(region),
+      ...(region.forestBeltVersion !== undefined ? { forestBeltVersion: region.forestBeltVersion,
+        forestBeltInitializedAtSec: region.forestBeltInitializedAtSec, forestBelt: clone(region.forestBeltPlan.group) } : {}),
       alive: region.sim.agents.filter(agent => animalIds.has(agent.speciesId) && agent.alive).length + region.waterAgents.filter(agent => agent.alive).length + region.visitorAgents.filter(agent => agent.alive).length,
       ...(region.visitorCommunityVersion !== undefined ? { visitorCommunityVersion: region.visitorCommunityVersion,
         visitorInitializedAtSec: region.visitorInitializedAtSec, visitorAgentCount: region.visitorAgents.length } : {}),
@@ -884,6 +1015,8 @@ export class KelpOceanEcology {
     this._generation++; this._revision++; this._active.clear(); this._locked.clear(); this._center = null; this._waterCells.clear();
     this._waterFrames.clear(); this._waterPlantFrames.clear(); this._waterTransfers.length = 0;
     this.seed = seed; this.generator = generator; this._legacyGenerator = null; this._world = next; this._disposed = false;
+    this.forestBeltEnabled = this._forestBeltRequested && this._forestBeltAvailable(generator);
+    if (this.forestBeltEnabled) this.generator.setForestPlans([]);
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10;
     return this._pending = this._enqueue(async () => {
       try { await this.store.clear(previous); if (next !== previous) await this.store.clear(next); }

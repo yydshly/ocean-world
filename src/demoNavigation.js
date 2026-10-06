@@ -14,6 +14,7 @@ export function demoWorldMatches(choice, world, snapshot) {
 // Reuse normal observation/navigation operations. No generation, population,
 // clock, resource, environment or persistence reset belongs in this adapter.
 export function navigateDemoEntry(choice, world, { movingDirector = false } = {}) {
+  if (choice.kind === 'kelp-stop') return world.biomeId==='kelp'&&world.enterKelpForestBelt?.(choice.stopId)===true;
   if (choice.kind === 'living-stop') {
     const index = world.oceanChunks?.generator.routeStops?.findIndex(stop => stop.id === choice.stopId) ?? -1;
     return index >= 0 && world.enterLivingShallows(index);

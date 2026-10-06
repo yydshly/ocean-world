@@ -83,3 +83,7 @@ output/validation/screenshots/*
 !output/validation/turtle-grazing-build.log
 !output/validation/turtle-grazing-delivery.json
 !output/validation/ocean-turtle-ecology-before.js
+!output/validation/kelp-forest-belt-build.log
+!output/validation/kelp-forest-belt-checks.log
+!output/validation/kelp-forest-belt-model.json
+!output/validation/kelp-forest-belt-delivery.json

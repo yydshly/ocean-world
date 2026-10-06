@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { DEMO_ACTIONS, DEMO_LIVING_STOPS } from '../src/demoCapabilities.js';
+import { DEMO_ACTIONS, DEMO_LIVING_STOPS, DEMO_KELP_STOPS } from '../src/demoCapabilities.js';
 import { DIRECTOR_STEPS, DIRECTOR_PLAYBACK_RATES, createDirectorState, directorReducer, directorStepAction } from '../src/directorTour.js';
 
 const send = (state, type, data = {}) => directorReducer(state, { type, ...data });
@@ -66,13 +66,13 @@ test('the finite tour covers every existing entry without invented or destructiv
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 36);
+  assert.equal(DIRECTOR_STEPS.length, 38);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));
     assert.ok(Number.isFinite(step.motion.durationSec) && step.motion.durationSec > 0);
     assert.equal(step.motion.durationSec * 1000, step.durationMs);
-    const scene = ['world', 'living-stop', 'view', 'layer', 'local-life', 'discoveries'].includes(step.action.kind);
+    const scene = ['world', 'living-stop', 'kelp-stop', 'view', 'layer', 'local-life', 'discoveries'].includes(step.action.kind);
     assert.ok(scene ? step.durationMs >= 12000 && step.durationMs <= 14000
       : step.durationMs >= 6000 && step.durationMs <= 8000, `${step.id} has appropriate walkthrough/read time`);
   }
@@ -93,6 +93,9 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     if (step.action.kind === 'layer') layeredBiomes.add(biome);
   }
   assert.deepEqual(routes, DEMO_LIVING_STOPS.map(stop => stop.id));
+  assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').map(step=>step.action.stopId),
+    DEMO_KELP_STOPS.map(stop=>stop.id));
+  assert.ok(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').every(step=>step.action.biome==='kelp'));
   assert.deepEqual([...observedBiomes].sort(), ['deep', 'kelp', 'reef']);
   assert.deepEqual([...layeredBiomes].sort(), ['deep', 'kelp']);
   const firstWorkbench = DIRECTOR_STEPS.findIndex(step => step.action.kind === 'population');
@@ -104,6 +107,7 @@ test('direct chapter seeks resolve their intended world from any currently loade
   const currentWorlds = [{ biome: 'reef', profile: 'legacy' }, { biome: 'reef', profile: 'living-shallows-v1' },
     { biome: 'kelp' }, { biome: 'deep' }];
   const chapters = [
+    ...['kelp-forest-belt','kelp-forest-opening'].map(id=>({id,biome:'kelp'})),
     ...['kelp', 'deep'].flatMap(biome => ['bed', 'midwater', 'surface', 'life'].map(name => ({ id: `${biome}-${name}`, biome }))),
     ...['catalog', 'environment', 'journal', 'foodweb', 'age', 'capture'].map(name => ({ id: `tools-${name}`, biome: 'reef', profile: 'living-shallows-v1' })),
   ];

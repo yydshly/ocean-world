@@ -62,6 +62,13 @@ export const DEMO_LIVING_STOPS = Object.freeze(stops.map((stop, index) => entry(
   action: { id: `stop-${stop.id}`, kind: 'living-stop', biome: 'reef', profile: LIVING_SHALLOWS_PROFILE, stopId: stop.id },
 })));
 
+export const DEMO_KELP_STOPS = Object.freeze([
+  entry({id:'forest-belt-interior',number:'01',title:'林缘生活带：巨藻群',description:'硬底高巨藻、低冠植物与真实林间动物',
+    action:{id:'stop-forest-belt-interior',kind:'kelp-stop',biome:'kelp',stopId:'forest-belt-interior'}}),
+  entry({id:'forest-belt-opening',number:'02',title:'林缘生活带：开放沙地',description:'相邻林缘、天然沉积空隙与上方水域',
+    action:{id:'stop-forest-belt-opening',kind:'kelp-stop',biome:'kelp',stopId:'forest-belt-opening'}}),
+]);
+
 export const DEMO_LEGACY_VIEWS = Object.freeze([
   entry({ id: 'legacy-wide', title: '原浅礁全景', description: '回到固定礁区的整体观察视角',
     action: { id: 'legacy-wide', kind: 'view', biome: 'reef', profile: 'legacy', view: 'wide' } }),
@@ -102,7 +109,7 @@ export function demoLayerEntries(biome) {
   }));
 }
 
-export const demoNeedsSceneChange = choice => ['world', 'living-stop', 'view', 'discoveries'].includes(choice.kind);
+export const demoNeedsSceneChange = choice => ['world', 'living-stop', 'kelp-stop', 'view', 'discoveries'].includes(choice.kind);
 
-export const DEMO_ACTIONS = Object.freeze([...DEMO_WORLDS, ...DEMO_LIVING_STOPS, ...DEMO_LEGACY_VIEWS,
+export const DEMO_ACTIONS = Object.freeze([...DEMO_WORLDS, ...DEMO_LIVING_STOPS, ...DEMO_KELP_STOPS, ...DEMO_LEGACY_VIEWS,
   ...DEMO_CURRENT_TOOLS, ...DEMO_RECORD_TOOLS, ...DEMO_WORKBENCHES, ...demoLayerEntries('reef')].map(item => item.action));

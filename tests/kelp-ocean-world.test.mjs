@@ -23,7 +23,7 @@ const methods = ['floorY', 'habitatY', 'select', 'oceanWorldPosition', 'oceanLay
   'captureOceanObservation', 'restoreOceanObservation', 'captureOceanFreeDepth',
   'setOceanObservationLayer', 'setOceanRenderOrigin', 'startOceanExploration',
   'travelOcean', 'toggleOceanCruise', 'moveCamera', 'clearCameraPosition',
-  'enforceCameraClearance', 'oceanSnapshot', 'makeSurface'];
+  'enforceCameraClearance', 'oceanSnapshot', 'makeSurface', 'enterKelpForestBelt', 'travelKelpForestBelt'];
 const WorldFixture = new Function('THREE', 'clamp', 'oceanLayerHeight', 'normalizeOceanObservationView',
   'oceanCommunityReading', 'reefRockFootprintContains', 'reefRockCanonicalCoordinates', 'reefRockSurfaceY',
   `return class {${methods.map(method).join('\n')}}`)(THREE, THREE.MathUtils.clamp,
@@ -84,6 +84,31 @@ function storageFixture() {
   return { records, getItem: key => records.get(key) ?? null,
     setItem: (key, value) => records.set(key, value), removeItem: key => records.delete(key) };
 }
+
+test('native kelp belt arrival and ordinary travel use absolute seed stops and preserve full saved ecology', () => {
+  const {world,calls}=fixture(),before=preserved(world);
+  world.oceanChunks.generator=createKelpOceanGenerator('42',{forestBelt:true});
+  const stops=world.oceanChunks.generator.forestRouteStops;
+  assert.equal(stops.length,2);
+  assert.equal(world.enterKelpForestBelt(stops[0].id),true);
+  const p=world.oceanWorldPosition();
+  assert.ok(Math.hypot(p.x-stops[0].x,p.z-stops[0].z)<=6.000001);
+  assert.ok(p.y<=world.surfaceY-.6);
+  assert.ok(calls.some(row=>row[0]==='ecology-request'));
+  assert.deepEqual(preserved(world),before);
+  const arrived=world.oceanWorldPosition().toArray();
+  assert.equal(world.travelKelpForestBelt(stops[1].id),true);
+  assert.deepEqual(world.oceanWorldPosition().toArray(),arrived,'ordinary route selects travel without teleporting');
+  assert.deepEqual(world.oceanTravel,{x:stops[1].x,z:stops[1].z});
+  assert.equal(world.oceanObservationLayer,'bed');
+  assert.deepEqual(preserved(world),before);
+  assert.equal(world.enterKelpForestBelt('missing'),false);
+  assert.equal(world.travelKelpForestBelt('missing'),false);
+  world.isKelp=false;
+  assert.equal(world.enterKelpForestBelt(stops[0].id),false);
+  assert.equal(world.travelKelpForestBelt(stops[0].id),false);
+  assert.deepEqual(preserved(world),before);
+});
 
 test('real kelp World water layers use surface 12 without changing logical X/Z or model records', () => {
   assert.equal(KELP_OCEAN_SURFACE_Y, 12); assert.equal(OCEAN_SURFACE_Y, 8);

@@ -1,13 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { demoWorldMatches, navigateDemoEntry } from '../src/demoNavigation.js';
-import { DEMO_ACTIONS, demoLayerEntries } from '../src/demoCapabilities.js';
+import { DEMO_ACTIONS, DEMO_KELP_STOPS, demoLayerEntries } from '../src/demoCapabilities.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../src/livingShallows.js';
 import { createLivingShallowsGenerator } from '../src/livingShallowsGeneration.js';
 import { createLivingRidgeGenerator } from '../src/livingRidgeGeology.js';
+import { createKelpOceanGenerator } from '../src/kelpOceanGeneration.js';
 
 const worldAction = biome => DEMO_ACTIONS.find(action => action.kind === 'world' && action.biome === biome &&
   (biome !== 'reef' || action.profile === LIVING_SHALLOWS_PROFILE));
+
+test('the two kelp belt shortcuts resolve native seed routes without changing protected ecology', () => {
+  const generator=createKelpOceanGenerator('42',{forestBelt:true});
+  assert.deepEqual(DEMO_KELP_STOPS.map(entry=>entry.id),generator.forestRouteStops.map(stop=>stop.id));
+  for(const entry of DEMO_KELP_STOPS){
+    const {world,protectedState}=observationWorld({biomeId:'kelp'}),calls=[];
+    world.enterKelpForestBelt=id=>{calls.push(id);return generator.forestRouteStops.some(stop=>stop.id===id);};
+    assert.equal(navigateDemoEntry(entry.action,world),true);
+    assert.deepEqual(calls,[entry.id]);assert.strictEqual(world.protectedState,protectedState);
+    assert.equal(navigateDemoEntry({...entry.action,stopId:'missing'},world),false);
+    world.biomeId='reef';assert.equal(navigateDemoEntry(entry.action,world),false);
+    world.biomeId='kelp';delete world.enterKelpForestBelt;assert.equal(navigateDemoEntry(entry.action,world),false);
+  }
+});
 
 function observationWorld({ biomeId = 'reef', living = false, exploring = false, stops = [], startSucceeds = true } = {}) {
   const calls = [];

@@ -19,7 +19,7 @@ const layers = (biome, labels) => [
 function withStepContexts(steps) {
   let context = null;
   return steps.map(item => {
-    if (['world', 'living-stop'].includes(item.action.kind)) {
+    if (['world', 'living-stop', 'kelp-stop'].includes(item.action.kind)) {
       context = Object.freeze({ biome: item.action.biome,
         ...(item.action.biome === 'reef' ? { profile: item.action.profile } : {}) });
     }
@@ -51,6 +51,8 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
   step('legacy-wide', '原浅礁：全景入口', '绕礁群缓慢转看，留意开放水域与岩面的层次。', 'legacy-wide', 12000, 'orbit'),
   step('legacy-skeleton', '原浅礁：珊瑚骨架', '环绕珊瑚骨架，观察枝群的轮廓与结构。', 'legacy-skeleton', 12000, 'orbit'),
   step('kelp-opening', '海带林：进入连续探索', '在巨藻岩底与林间空地缓行，观察林下、藻间和冠层。', 'world-kelp', 14000),
+  step('kelp-forest-belt', '林缘生活带：巨藻群', '沿硬底巨藻群缓行，观察高冠、林下低冠和真实动物。', 'stop-forest-belt-interior', 14000),
+  step('kelp-forest-opening', '林缘生活带：开放沙地', '在相邻的天然沉积空隙移动，回望巨藻林缘与上方水域。', 'stop-forest-belt-opening', 12000),
   ...layers('kelp', ['海带林：林底', '海带林：藻间水层', '海带林：上部水域']),
   step('kelp-life', '海带林：附近的真实动物', '在林下群落周围巡游，留意动物与藻体之间的生活空间。', 'current-local-life', 14000, 'follow'),
   step('deep-opening', '深海：软底与观察器照明', '观察器沿软底缓行，灯光扫过沉积平原、缓坡和岩露头。', 'world-deep', 14000),

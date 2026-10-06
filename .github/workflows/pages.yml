@@ -29,9 +29,18 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Check turtle grazing, habitat belt and hosting integration
+      - name: Check kelp forest belt, saved ecosystems and hosting integration
         run: >-
           node --test
+          tests/kelp-forest-belt.test.mjs
+          tests/kelp-forest-belt-render.test.mjs
+          tests/kelp-forest-belt-ecology.test.mjs
+          tests/kelp-ocean-generation.test.mjs
+          tests/kelp-ocean-render.test.mjs
+          tests/kelp-ocean-ecology.test.mjs
+          tests/kelp-ocean-world.test.mjs
+          tests/kelp-water-community.test.mjs
+          tests/kelp-water-roaming.test.mjs
           tests/living-turtle-organic.test.mjs
           tests/ocean-turtle-grazing.test.mjs
           tests/living-turtle-grazing-ecology.test.mjs

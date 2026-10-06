@@ -49,10 +49,13 @@ function kelpGeometry(){
 
 /** Fixed 3×3 landscape window for the independent temperate ocean. */
 export class KelpOceanChunks{
-  constructor(seed,{sandMaterial}={}){
+  constructor(seed,{sandMaterial,forestBelt=false}={}){
     this.root=new THREE.Group();this.root.name='continuous-kelp-ocean-landscape';
     this.root.userData.oceanStreaming=true;this.root.userData.role='generated-landscape-not-simulated-populations';
-    this.generator=createKelpOceanGenerator(seed);this.renderOrigin={x:0,z:0};this._chunks=new Map();this._center=null;
+    this._forestBeltRequested=forestBelt===true;
+    this.generator=createKelpOceanGenerator(seed,{forestBelt:this._forestBeltRequested});
+    this._forestBeltRevision=this.generator.forestBeltRevision??null;
+    this.renderOrigin={x:0,z:0};this._chunks=new Map();this._center=null;
     this._position={x:0,z:0};this._loads=0;this._unloads=0;this._disposed=false;this._detailedHostIds=new Set();
     this._transform=new THREE.Object3D();this._color=new THREE.Color();this._uniforms={time:{value:0},flow:{value:.18}};
     this._terrainMaterial=sandMaterial?sandMaterial.clone():new THREE.MeshStandardMaterial({color:0x686a51,roughness:.99});
@@ -161,7 +164,8 @@ export class KelpOceanChunks{
       elementCounts[kind]+=elements.length;group.add(mesh);instances.push(mesh);
     }
     this.root.add(group);this._chunks.set(chunk.id,{group,origin:chunk.origin,terrainGeometry,rockBaseGeometry,instances,elementCounts,rockProfileCounts,
-      landformElements:chunk.elements.filter(element=>element.kind==='formation')});this._loads++;
+      landformElements:chunk.elements.filter(element=>element.kind==='formation'),
+      ...(this._forestBeltRequested?{forestBeltPlan:this.generator.forestBeltPlan(cx,cz)??null}:{})});this._loads++;
   }
   _unload(id){
     const record=this._chunks.get(id);if(!record)return;
@@ -206,17 +210,25 @@ export class KelpOceanChunks{
         coverAttributes:this._chunks.size,maximumSourceChunks:9,maximumSupportRadiusM:8,
         macroRole:'coordinate-shelf-display-weight-not-root-cover-or-food',
         residentCoverBytes:this._chunks.size*(SEGMENTS+1)**2*3*4}),
-      animation:{clockSec:this._uniforms.time.value,currentMps:this._uniforms.flow.value,scope:'paused-visual-clock-display-deformation'}});
+      animation:{clockSec:this._uniforms.time.value,currentMps:this._uniforms.flow.value,scope:'paused-visual-clock-display-deformation'},
+      ...(this._forestBeltRequested?{forestBeltRevision:this._forestBeltRevision,
+        forestBeltOwners:Object.freeze([...this._chunks.values()].filter(record=>record.forestBeltPlan).map(record=>record.group.userData.chunkId)),
+        forestBeltAddedRoots:[...this._chunks.values()].reduce((total,record)=>total+(record.forestBeltPlan?.addedRootIds.length??0),0)}:{})});
   }
   update(position){
     if(this._disposed)return false;
     if(!Number.isFinite(position?.x)||!Number.isFinite(position?.z))throw new TypeError('Kelp ocean position needs finite X/Z.');
+    if(this.generator.forestBeltCandidatesActive)return false;
     this._position={x:position.x,z:position.z};const cx=Math.floor(position.x/64),cz=Math.floor(position.z/64);
-    if(this._center?.cx===cx&&this._center?.cz===cz)return false;
+    const revision=this.generator.forestBeltRevision??null;
+    if(this._center?.cx===cx&&this._center?.cz===cz&&this._forestBeltRevision===revision)return false;
     const wanted=new Set();for(let dz=-1;dz<=1;dz++)for(let dx=-1;dx<=1;dx++)wanted.add(`${cx+dx},${cz+dz}`);
-    for(const id of this._chunks.keys())if(!wanted.has(id))this._unload(id);
+    const previousLoads=this._loads,previousUnloads=this._unloads;
+    for(const [id,record] of this._chunks)if(!wanted.has(id)||
+      (this._forestBeltRequested&&record.forestBeltPlan!==(this.generator.forestBeltPlan(...id.split(',').map(Number))??null)))this._unload(id);
     for(let dz=-1;dz<=1;dz++)for(let dx=-1;dx<=1;dx++)if(!this._chunks.has(`${cx+dx},${cz+dz}`))this._load(cx+dx,cz+dz);
-    this._center={cx,cz};this._refreshStats();return true;
+    this._center={cx,cz};this._forestBeltRevision=revision;this._refreshStats();
+    return this._loads!==previousLoads||this._unloads!==previousUnloads;
   }
   setRenderOrigin(origin){
     if(this._disposed)return false;
@@ -252,7 +264,9 @@ export class KelpOceanChunks{
   }
   reset(seed){
     if(this._disposed)return false;for(const id of this._chunks.keys())this._unload(id);
-    this.generator=createKelpOceanGenerator(seed);this._center=null;this._uniforms.time.value=0;this._detailedHostIds.clear();return this.update(this._position);
+    this.generator=createKelpOceanGenerator(seed,{forestBelt:this._forestBeltRequested});
+    this._forestBeltRevision=this.generator.forestBeltRevision??null;
+    this._center=null;this._uniforms.time.value=0;this._detailedHostIds.clear();return this.update(this._position);
   }
   get stats(){return this._stats;}
   dispose(){
