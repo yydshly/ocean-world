@@ -8,6 +8,8 @@
 
 手动选择：[全部能力总览](https://yydshly.github.io/ocean-world/?demo=all)，顶部也有“一键导演演示”按钮。
 
+导演播放器还显示路线位置、本次完整播放章数与剩余观察时间估算。估算随巡游速度调整，加载另计；跳章或提前结束会保留实际完成数，只有34章的镜头都完整结束才显示全部播放完成。
+
 入口核对：[线上检查结果](docs/DEMO_ENTRY_AUDIT.md)，33 项相关检查与部署通过。
 
 在线体验：[海底观察站](https://yydshly.github.io/ocean-world/)。公开源码：[yydshly/ocean-world](https://github.com/yydshly/ocean-world)。发布记录见 [部署说明](docs/DEPLOYMENT.md)。

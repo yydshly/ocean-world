@@ -4,6 +4,8 @@ import { readFileSync } from 'node:fs';
 import { createDirectorState, directorReducer, DIRECTOR_STEPS, directorStepAction } from '../src/directorTour.js';
 import { directorSceneReady } from '../src/directorReadiness.js';
 import { isDirectorPlaybackRate } from '../src/directorCameraMotion.js';
+import { directorMotionCompletionEvent } from '../src/directorMotionReceipt.js';
+import { directorTourProgress } from '../src/directorTourProgress.js';
 
 const source = readFileSync(new URL('../src/useDirectorTour.js', import.meta.url), 'utf8')
   .replace(/^import .*;\r?\n/gm, '').replace('export function useDirectorTour', 'function useDirectorTour');
@@ -19,9 +21,9 @@ function harness() {
   const useRef = value => refs[cursor++] ?? (refs[cursor - 1] = { current: value });
   const useReducer = () => [state, event => { events.push(event); state = directorReducer(state, event); }];
   const hook = new Function('useEffect', 'useReducer', 'useRef', 'createDirectorState', 'directorReducer',
-    'DIRECTOR_STEPS', 'directorStepAction', 'directorSceneReady', 'isDirectorPlaybackRate',
+    'DIRECTOR_STEPS', 'directorStepAction', 'directorSceneReady', 'isDirectorPlaybackRate', 'directorMotionCompletionEvent', 'directorTourProgress',
     `${source}\nreturn useDirectorTour;`)(useEffect, useReducer, useRef, createDirectorState, directorReducer,
-    DIRECTOR_STEPS, directorStepAction, directorSceneReady, isDirectorPlaybackRate);
+    DIRECTOR_STEPS, directorStepAction, directorSceneReady, isDirectorPlaybackRate, directorMotionCompletionEvent, directorTourProgress);
   const inputs = { worldRef: { current: null }, snapshot: null, worldReady: false, error: null,
     execute() {}, recording: false, paused: true, speed: 12, onControls() {}, onNotice() {} };
   const render = error => {

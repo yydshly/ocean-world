@@ -233,15 +233,69 @@ test('a complete automatic traversal visits every step once and stops at its end
     assert.ok(visited.length <= DIRECTOR_STEPS.length);
   }
   assert.deepEqual(visited, DIRECTOR_STEPS.map(step => step.id));
+  assert.deepEqual(state.completedStepIds, visited, 'only each completed native-clock chapter is counted');
   assert.equal(state.phase, 'complete');
   assert.equal(state.playing, false);
   assert.equal(state.index, DIRECTOR_STEPS.length - 1);
   assert.equal(state.elapsedMs, DIRECTOR_STEPS.at(-1).durationMs);
   const completeToken = state.token;
   state = send(state, 'start');
+  assert.deepEqual(state.completedStepIds, [], 'another tour begins a new coverage run');
   assert.equal(state.index, 0);
   assert.equal(state.phase, 'loading');
   assert.ok(state.token > completeToken);
+});
+
+test('full-shot coverage does not treat loading, skips or a manual finish as completed observation', () => {
+  let state = send(createDirectorState(), 'start');
+  assert.deepEqual(state.completedStepIds, []);
+  state = enter(state);
+  state = tick(state, DIRECTOR_STEPS[0].durationMs - 1);
+  const previousIds = state.completedStepIds;
+  state = tick(state, 1);
+  assert.deepEqual(state.completedStepIds, [DIRECTOR_STEPS[0].id]);
+  assert.deepEqual(previousIds, [], 'recording coverage never mutates a previous state');
+  state = send(state, 'next');
+  state = send(state, 'seek', { index: DIRECTOR_STEPS.length - 1 });
+  state = enter(state);
+  state = send(state, 'pause');
+  state = send(state, 'set-rate', { playbackRate: 4 });
+  state = send(state, 'finish');
+  assert.deepEqual(state.completedStepIds, [DIRECTOR_STEPS[0].id], 'cursor arrival and finish cannot stand in for a full shot');
+  const coveredIds = state.completedStepIds;
+  state = send(state, 'stop');
+  assert.equal(state.phase, 'idle');
+  assert.strictEqual(state.completedStepIds, coveredIds, 'exit retains coverage for diagnostics');
+  state = send(state, 'start', { index: 2 });
+  assert.deepEqual(state.completedStepIds, []);
+  assert.equal(state.playbackRate, 4);
+});
+
+test('an explicit native completion receipt is token guarded, idempotent and never advances the chapter', () => {
+  let state = send(createDirectorState(), 'start');
+  const firstToken = state.token;
+  assert.strictEqual(send(state, 'record-complete', { token: firstToken }), state, 'loading has not shown the shot');
+  state = enter(state);
+  state = tick(state, 1000);
+  state = send(state, 'pause');
+  const prior = state;
+  state = send(state, 'record-complete', { token: firstToken });
+  assert.deepEqual(state.completedStepIds, [DIRECTOR_STEPS[0].id]);
+  assert.deepEqual(prior.completedStepIds, []);
+  assert.equal(state.index, prior.index);
+  assert.equal(state.token, prior.token);
+  assert.equal(state.phase, 'showing');
+  assert.equal(state.elapsedMs, 1000, 'receipt marks actual ownership evidence without inventing rendered time');
+  assert.equal(state.playing, false);
+  assert.strictEqual(send(state, 'record-complete', { token: firstToken }), state, 'duplicate receipt is harmless');
+  state = send(state, 'seek', { index: 4 });
+  assert.strictEqual(send(state, 'record-complete', { token: firstToken }), state, 'a replaced shot cannot count this chapter');
+  state = enter(state);
+  state = send(state, 'failed', { token: state.token, error: 'current shot failed' });
+  assert.strictEqual(send(state, 'record-complete', { token: state.token }), state, 'a failed shot cannot be recorded');
+  assert.strictEqual(send(state, 'record-complete'), state);
+  state = send(state, 'stop');
+  assert.strictEqual(send(state, 'record-complete', { token: state.token }), state, 'stopped shots cannot produce coverage');
 });
 
 test('invalid timer input and duplicate readiness cannot distort a showing step', () => {

@@ -1,8 +1,13 @@
 import React from 'react';
 import { DIRECTOR_PLAYBACK_RATES } from './directorTour.js';
+import { directorTourProgress } from './directorTourProgress.js';
 import './directorPlayer.css';
 
 const finite = value => Number.isFinite(value) ? value : 0;
+const durationText = seconds => {
+  const remaining = Math.max(0, Math.ceil(finite(seconds)));
+  return `${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}`;
+};
 
 export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
   onPrevious, onSeek, onStop, onRestart, onPlaybackRateChange }) {
@@ -15,9 +20,15 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
   const loading = state.phase === 'loading';
   const durationMs = Math.max(0, finite(step?.durationMs));
   const elapsedMs = Math.min(durationMs, Math.max(0, finite(state.elapsedMs)));
-  const progress = complete ? 100 : durationMs ? Math.round(elapsedMs / durationMs * 100) : 0;
+  const progress = durationMs ? Math.round(elapsedMs / durationMs * 100) : 0;
   const playbackRate = DIRECTOR_PLAYBACK_RATES.includes(state.playbackRate) ? state.playbackRate : 1;
   const remainingSec = Math.ceil(Math.max(0, durationMs - elapsedMs) / (1000 * playbackRate));
+  const route = directorTourProgress(state, steps);
+  const timelinePercent = Math.min(100, Math.max(0, Math.round(finite(route.timelinePercent))));
+  const routeTiming = `${state.playing ? '剩余约' : '继续播放约'} ${durationText(route.remainingSec)}（另加加载）`;
+  const routeSummary = `路线位置 ${timelinePercent}% · 完整播放 ${route.completedCount}/${route.totalCount}`;
+  const completionSummary = `完整播放 ${route.completedCount}/${route.totalCount}${route.allCompleted
+    ? '' : ` · 尚有 ${route.unfinishedCount} 章未完整播放`}`;
   const phaseLabel = complete ? '演示结束' : !state.playing ? '已暂停' : loading ? '正在进入章节' : '镜头巡游';
   const currentLabel = complete ? '演示结束' : `${index + 1} / ${count} · ${step?.title || '场景观察'}`;
 
@@ -39,7 +50,9 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
           updates remain outside it so screen readers hear each step once. */}
       <p className="director-player-title" role="status" aria-live="polite" aria-atomic="true">{currentLabel}</p>
       <p className="director-player-caption">{complete
-        ? '选择章节可重新观看，也可以重新播放全部，或自由探索。'
+        ? route.allCompleted
+          ? `全部 ${route.totalCount} 章已完整播放。可选择章节重看，或自由探索。`
+          : '本次演示已结束。选择章节可重新观看，也可以重新播放全部，或自由探索。'
         : step?.caption || '观察当前海域的实际场景与状态。'}</p>
     </div>
 
@@ -53,6 +66,15 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
       </div>
       <span className="director-player-timing">{complete ? '已结束' : loading
         ? '加载中…' : state.playing ? `${remainingSec} 秒后继续` : '暂停中'}</span>
+    </div>
+
+    <div className="director-player-route-row">
+      {!complete && <div className="director-player-route-progress" role="progressbar" aria-label="导演路线进度"
+        aria-valuemin={0} aria-valuemax={100} aria-valuenow={timelinePercent}
+        aria-valuetext={`${routeSummary} · ${routeTiming}`}>
+        <span style={{ width: `${timelinePercent}%` }}/>
+      </div>}
+      <span className="director-player-route-summary">{complete ? completionSummary : `${routeSummary} · ${routeTiming}`}</span>
     </div>
 
     <div className="director-player-controls">

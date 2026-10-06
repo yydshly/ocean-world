@@ -73,3 +73,6 @@ output/validation/screenshots/*
 !output/validation/director-reliability-checks.log
 !output/validation/director-reliability-build.log
 !output/validation/director-reliability-review.json
+!output/validation/director-progress-build.log
+!output/validation/director-progress-checks.log
+!output/validation/director-progress-review.json

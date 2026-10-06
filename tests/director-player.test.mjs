@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { transform } from 'esbuild';
 import React from 'react';
 import { DIRECTOR_STEPS, DIRECTOR_PLAYBACK_RATES, createDirectorState, directorReducer } from '../src/directorTour.js';
+import { directorTourProgress } from '../src/directorTourProgress.js';
 
 // Exercise the shipped JSX component and its actual event handlers without a
 // browser. This verifies React output, not layout or rendered camera motion.
@@ -11,7 +12,7 @@ const source = await readFile(new URL('../src/DirectorPlayer.jsx', import.meta.u
 const componentSource = source.replace(/^import .*;\r?\n/gm, '')
   .replace('export function DirectorPlayer', 'function DirectorPlayer');
 const compiled = await transform(componentSource, { loader: 'jsx', jsx: 'transform', target: 'es2022' });
-const DirectorPlayer = new Function('React', 'DIRECTOR_PLAYBACK_RATES', `${compiled.code}\nreturn DirectorPlayer;`)(React, DIRECTOR_PLAYBACK_RATES);
+const DirectorPlayer = new Function('React', 'DIRECTOR_PLAYBACK_RATES', 'directorTourProgress', `${compiled.code}\nreturn DirectorPlayer;`)(React, DIRECTOR_PLAYBACK_RATES, directorTourProgress);
 
 const send = (state, type, data = {}) => directorReducer(state, { type, ...data });
 const enter = state => send(state, 'entered', { token: state.token });
@@ -84,4 +85,57 @@ test('a completed player can select the last chapter again through its real seek
   assert.equal(options.at(-1).props.value, DIRECTOR_STEPS[lastIndex].id);
   selector.props.onChange({ target: { value: DIRECTOR_STEPS[lastIndex].id } });
   assert.deepEqual(sought, [lastIndex]);
+});
+
+test('route estimates respond to camera rate without changing completed coverage or paused wording', () => {
+  let state = enter(send(createDirectorState(), 'start'));
+  state = send(state, 'tick', { token: state.token, deltaMs: 3000 });
+  const normal = byLabel(render(state), '导演路线进度');
+  assert.equal(normal.props['aria-valuenow'], 1);
+  assert.equal(normal.props['aria-valuetext'], '路线位置 1% · 完整播放 0/34 · 剩余约 6:35（另加加载）');
+
+  state = send(state, 'set-rate', { playbackRate: 4 });
+  const fast = byLabel(render(state), '导演路线进度');
+  assert.equal(fast.props['aria-valuenow'], normal.props['aria-valuenow']);
+  assert.equal(fast.props['aria-valuetext'], '路线位置 1% · 完整播放 0/34 · 剩余约 1:39（另加加载）');
+
+  state = send(send(state, 'pause'), 'set-rate', { playbackRate: 0.5 });
+  assert.equal(byLabel(render(state), '导演路线进度').props['aria-valuetext'],
+    '路线位置 1% · 完整播放 0/34 · 继续播放约 13:10（另加加载）');
+});
+
+test('manual last-chapter skips and ending cannot claim that all chapters were played', () => {
+  const lastIndex = DIRECTOR_STEPS.length - 1;
+  let skipped = enter(send(createDirectorState(), 'start'));
+  skipped = send(skipped, 'tick', { token: skipped.token, deltaMs: DIRECTOR_STEPS[0].durationMs });
+  skipped = send(skipped, 'seek', { index: lastIndex });
+  const seekingTree = render(skipped);
+  assert.match(byLabel(seekingTree, '导演路线进度').props['aria-valuetext'], /完整播放 1\/34/);
+  assert.ok(content(seekingTree).includes('加载中…'));
+
+  skipped = send(enter(skipped), 'next');
+  const manualEnd = render(skipped);
+  assert.ok(content(manualEnd).includes('完整播放 1/34 · 尚有 33 章未完整播放'));
+  assert.equal(byLabel(manualEnd, '当前章节巡游进度').props['aria-valuenow'], 0,
+    'ending the tour does not fill an unseen final chapter');
+  assert.ok(!content(manualEnd).includes('全部 34 章已完整播放'));
+
+  let lastOnly = enter(send(createDirectorState(), 'start', { index: lastIndex }));
+  lastOnly = send(lastOnly, 'tick', { token: lastOnly.token, deltaMs: DIRECTOR_STEPS[lastIndex].durationMs });
+  assert.ok(content(render(lastOnly)).includes('完整播放 1/34 · 尚有 33 章未完整播放'));
+  assert.ok(!content(render(lastOnly)).includes('全部 34 章已完整播放'));
+});
+
+test('the shipped player claims full completion only after every actual chapter clock completes', () => {
+  let state = send(createDirectorState(), 'start');
+  for (const step of DIRECTOR_STEPS) {
+    state = enter(state);
+    state = send(state, 'tick', { token: state.token, deltaMs: step.durationMs });
+  }
+  assert.equal(state.phase, 'complete');
+  const tree = render(state);
+  assert.ok(content(tree).includes('全部 34 章已完整播放'));
+  assert.ok(content(tree).includes('完整播放 34/34'));
+  assert.ok(!content(tree).includes('尚有'));
+  assert.equal(byLabel(tree, '当前章节巡游进度').props['aria-valuenow'], 100);
 });

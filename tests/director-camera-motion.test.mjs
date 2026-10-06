@@ -177,6 +177,44 @@ test('native rate changes retain the current shot and pose, work while paused, a
   assert.equal(world.speed,1.5);assert.deepEqual(world.sim,model);
 });
 
+test('native stopping acknowledges only a successful complete shot before clearing camera ownership',()=>{
+  for(const outcome of ['complete','unfinished','error']){
+    const world=nativeWorld(),receipts=[];
+    assert.equal(world.beginDirectorMotion({durationSec:12}),true);
+    if(outcome==='error')world.habitatY=()=>30;
+    world.updateDirectorMotion(outcome==='complete'?12:3);
+    const before=world.directorMotionSnapshot(),model=structuredClone(world.sim);
+    world.onDirectorMotionComplete=receipt=>{
+      assert.ok(world.directorMotion?.shot,'completion is observed before the actual shot is cleared');
+      assert.deepEqual(receipt,before);
+      receipts.push(receipt);
+    };
+    world.stopDirectorMotion();
+    assert.equal(receipts.length,outcome==='complete'?1:0,'an unfinished or failed shot cannot count as complete');
+    assert.equal(world.directorMotion,null);
+    const after=world.directorMotionSnapshot();
+    assert.deepEqual(after.worldPosition,before.worldPosition);
+    assert.deepEqual(after.worldTarget,before.worldTarget);
+    assert.deepEqual(world.sim,model);
+    world.stopDirectorMotion();
+    assert.equal(receipts.length,outcome==='complete'?1:0,'repeated cleanup cannot repeat the same completion');
+  }
+});
+
+test('a completion callback failure still releases the real shot without changing its pose or simulation',()=>{
+  const world=nativeWorld();
+  assert.equal(world.beginDirectorMotion({durationSec:12}),true);
+  world.updateDirectorMotion(12);
+  const before=world.directorMotionSnapshot(),model=structuredClone(world.sim);
+  world.onDirectorMotionComplete=()=>{throw new Error('completion callback failed');};
+  assert.throws(()=>world.stopDirectorMotion(),/completion callback failed/);
+  assert.equal(world.directorMotion,null);
+  const after=world.directorMotionSnapshot();
+  assert.deepEqual(after.worldPosition,before.worldPosition);
+  assert.deepEqual(after.worldTarget,before.worldTarget);
+  assert.deepEqual(world.sim,model);
+});
+
 test('native follow uses the actual selected living target and approaches its existing focus placement gradually',()=>{
   const world=nativeWorld(),agent={id:'real-live-agent',alive:true,position:{x:100005,y:.5,z:-200000}};
   world.sim.agents=[agent];world.selectedId=agent.id;world.following=true;

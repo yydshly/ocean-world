@@ -2,6 +2,8 @@
 
 更新：2026-10-06。
 
+导演整体进度/完整播放记录版已完成本机构建及82项有限相关检查，正准备发布。此前实际线上版本如下，准备不视为部署成功。
+
 导演重试/发现旅行/键盘操作的有限修正版源码 `fbde7089123148ad93e88145d254833180ece1f1` 已发布。[运行37415436017](https://github.com/yydshly/ocean-world/actions/runs/37415436017) 的构建、89项当前工作流检查（0失败）及Pages部署全部success；部署 `6875952422` 状态success。使用[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，本机构建及70项相关检查通过。89项包含本机70项，不相加。浏览器整段播放未新增实测，此前实际发布历史如下。
 
 巡游速度版源码 `3deced6c1816396603b4dfeb8f01ddda825e4095` 已提交并发布。[运行37403459202](https://github.com/yydshly/ocean-world/actions/runs/37403459202) 的生产构建、77项当前工作流检查（0失败）及Pages部署全部success；部署 `6874045206` 状态success。打开[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，播放器右上角“巡游速度”可选0.5×–4×。本机生产构建及58项有限相关检查通过；[本机导演](http://127.0.0.1:4173/ocean-world/?demo=director)也已更新。本轮浏览器工具拒绝本机URL绑定，没有新增实际播放/截图核对；部署成功不替代实际浏览器验收。

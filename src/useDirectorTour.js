@@ -2,6 +2,8 @@ import { useEffect, useReducer, useRef } from 'react';
 import { createDirectorState, directorReducer, DIRECTOR_STEPS, directorStepAction } from './directorTour.js';
 import { directorSceneReady } from './directorReadiness.js';
 import { isDirectorPlaybackRate } from './directorCameraMotion.js';
+import { directorMotionCompletionEvent } from './directorMotionReceipt.js';
+import { directorTourProgress } from './directorTourProgress.js';
 
 const worldKey = world => `${world.biomeId}:${world.isLivingShallows ? 'living' : 'original'}`;
 const panelAction = action => ['panel', 'population', 'capture'].includes(action.kind);
@@ -134,9 +136,19 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
       });
       if (!begun) { fail(token, '当前镜头无法启动，可重试或跳到下一章。'); return; }
       const owner = { world: actual, token }; motion.current = owner;
+      const previousCompletion = actual.onDirectorMotionComplete;
+      const onCompletion = shot => {
+        if (motion.current !== owner || worldRef.current !== actual) return;
+        const event = directorMotionCompletionEvent(shot, current.current, token, DIRECTOR_STEPS);
+        if (event) dispatch(event);
+      };
+      actual.onDirectorMotionComplete = onCompletion;
       return () => {
-        actual.stopDirectorMotion();
-        if (motion.current === owner) motion.current = null;
+        try { actual.stopDirectorMotion(); }
+        finally {
+          if (actual.onDirectorMotionComplete === onCompletion) actual.onDirectorMotionComplete = previousCompletion;
+          if (motion.current === owner) motion.current = null;
+        }
       };
     } catch (problem) { fail(token, problem); }
     // Pause/resume changes native pause only, retaining this shot and its path.
@@ -177,7 +189,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     setPlaybackRate: playbackRate => {
       if (isDirectorPlaybackRate(playbackRate)) dispatch({ type: 'set-rate', playbackRate });
     },
-    diagnostics: { ...state, title: DIRECTOR_STEPS[state.index].title, entered: receipts.current,
+    diagnostics: { ...state, title: DIRECTOR_STEPS[state.index].title, progress: directorTourProgress(state), entered: receipts.current,
       motion: worldRef.current?.directorMotionSnapshot?.() ?? null },
   };
 }

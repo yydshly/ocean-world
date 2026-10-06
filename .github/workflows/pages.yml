@@ -39,6 +39,8 @@ jobs:
           tests/sites-worker.test.mjs
           tests/demo-navigation.test.mjs
           tests/director-tour.test.mjs
+          tests/director-tour-progress.test.mjs
+          tests/director-motion-receipt.test.mjs
           tests/director-player.test.mjs
           tests/director-root-error.test.mjs
           tests/director-discoveries.test.mjs

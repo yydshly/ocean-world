@@ -977,7 +977,14 @@ export class ReefWorld {
       motion.complete=frame.complete;motion.active=!frame.complete;
     }catch(error){motion.active=false;motion.complete=true;motion.error=error.message;}
   }
-  stopDirectorMotion(){this.directorMotion=null;}
+  stopDirectorMotion(){
+    const motion=this.directorMotion;
+    try{
+      // Manual controls can release a finished shot before the guide's next
+      // timer observes it. Acknowledge its actual completion before clearing.
+      if(motion?.complete===true&&!motion.error&&motion.shot)this.onDirectorMotionComplete?.(this.directorMotionSnapshot());
+    }finally{this.directorMotion=null;}
+  }
   directorMotionSnapshot(){
     const motion=this.directorMotion,shot=motion?.shot;
     return {active:!!motion?.active,complete:!!motion?.complete,kind:shot?.kind??null,

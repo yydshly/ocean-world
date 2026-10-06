@@ -66,7 +66,7 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
 ]));
 
 export function createDirectorState() {
-  return { active: false, index: 0, phase: 'idle', playing: false, elapsedMs: 0, token: 0, error: null, playbackRate: 1 };
+  return { active: false, index: 0, phase: 'idle', playing: false, elapsedMs: 0, token: 0, error: null, playbackRate: 1, completedStepIds: [] };
 }
 
 const validIndex = index => Number.isInteger(index) && index >= 0 && index < DIRECTOR_STEPS.length;
@@ -79,6 +79,11 @@ const complete = state => ({
 });
 const advance = state => state.index + 1 < DIRECTOR_STEPS.length
   ? loadStep(state, state.index + 1) : complete(state);
+const recordComplete = state => {
+  const id = DIRECTOR_STEPS[state.index].id;
+  return state.completedStepIds.includes(id) ? state
+    : { ...state, completedStepIds: [...state.completedStepIds, id] };
+};
 
 /** A callback must carry the token of the step that created it. This lets a
  * late load, failure, or timer from an old step harmlessly settle after seek,
@@ -90,7 +95,7 @@ export function directorReducer(state, event) {
       return isDirectorPlaybackRate(event.playbackRate) && event.playbackRate !== state.playbackRate
         ? { ...state, playbackRate: event.playbackRate } : state;
     case 'start':
-      return loadStep(state, validIndex(event.index) ? event.index : 0, true);
+      return loadStep({ ...state, completedStepIds: [] }, validIndex(event.index) ? event.index : 0, true);
     case 'entered':
       if (!matches(state, event) || state.phase !== 'loading' || state.error) return state;
       return { ...state, phase: 'showing', elapsedMs: 0 };
@@ -108,6 +113,11 @@ export function directorReducer(state, event) {
       return state.active ? loadStep(state, Math.max(0, state.index - 1)) : state;
     case 'seek':
       return state.active && validIndex(event.index) ? loadStep(state, event.index) : state;
+    case 'record-complete':
+      // The native shot owner verifies completion before releasing the camera.
+      // This receipt records coverage without advancing or inventing shot time.
+      return matches(state, event) && state.phase === 'showing' && !state.error
+        ? recordComplete(state) : state;
     case 'tick': {
       if (!matches(state, event) || state.phase !== 'showing' || !state.playing || state.error
         || !Number.isFinite(event.deltaMs) || event.deltaMs <= 0) return state;
@@ -115,10 +125,11 @@ export function directorReducer(state, event) {
       const nextState = { ...state, elapsedMs };
       // A slow tab can complete this step, but cannot consume viewing time for
       // the next scene before that scene has actually finished loading.
-      return elapsedMs >= DIRECTOR_STEPS[state.index].durationMs ? advance(nextState) : nextState;
+      return elapsedMs >= DIRECTOR_STEPS[state.index].durationMs ? advance(recordComplete(nextState)) : nextState;
     }
     case 'stop':
-      return { ...createDirectorState(), token: state.token + 1, playbackRate: state.playbackRate };
+      return { ...createDirectorState(), token: state.token + 1, playbackRate: state.playbackRate,
+        completedStepIds: state.completedStepIds };
     case 'finish':
       return state.active && (event.token === undefined || event.token === state.token) ? complete(state) : state;
     default:
