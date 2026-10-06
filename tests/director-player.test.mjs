@@ -92,16 +92,16 @@ test('route estimates respond to camera rate without changing completed coverage
   state = send(state, 'tick', { token: state.token, deltaMs: 3000 });
   const normal = byLabel(render(state), '导演路线进度');
   assert.equal(normal.props['aria-valuenow'], 1);
-  assert.equal(normal.props['aria-valuetext'], '路线位置 1% · 完整播放 0/40 · 剩余约 7:51（另加加载）');
+  assert.equal(normal.props['aria-valuetext'], '路线位置 1% · 完整播放 0/40 · 剩余约 7:51（另加转场和加载）');
 
   state = send(state, 'set-rate', { playbackRate: 4 });
   const fast = byLabel(render(state), '导演路线进度');
   assert.equal(fast.props['aria-valuenow'], normal.props['aria-valuenow']);
-  assert.equal(fast.props['aria-valuetext'], '路线位置 1% · 完整播放 0/40 · 剩余约 1:58（另加加载）');
+  assert.equal(fast.props['aria-valuetext'], '路线位置 1% · 完整播放 0/40 · 剩余约 1:58（另加转场和加载）');
 
   state = send(send(state, 'pause'), 'set-rate', { playbackRate: 0.5 });
   assert.equal(byLabel(render(state), '导演路线进度').props['aria-valuetext'],
-    '路线位置 1% · 完整播放 0/40 · 继续播放约 15:42（另加加载）');
+    '路线位置 1% · 完整播放 0/40 · 继续播放约 15:42（另加转场和加载）');
 });
 
 test('manual last-chapter skips and ending cannot claim that all chapters were played', () => {
@@ -138,4 +138,64 @@ test('the shipped player claims full completion only after every actual chapter 
   assert.ok(content(tree).includes('完整播放 40/40'));
   assert.ok(!content(tree).includes('尚有'));
   assert.equal(byLabel(tree, '当前章节巡游进度').props['aria-valuenow'], 100);
+});
+
+test('a scene-only sibling mask follows exact director opacity while pause, skip and seek stay usable', () => {
+  const loading = { ...createDirectorState(), active: true, playing: true, phase: 'loading', index: 1 };
+  const calls = [];
+  const callbacks = { onPause: () => calls.push('pause'), onResume: () => calls.push('resume'),
+    onNext: () => calls.push('next'), onStop: () => calls.push('stop'), onSeek: index => calls.push(index) };
+  for (const [phase, opacity] of [['out', .17], ['covered', 1], ['in', .33]]) {
+    const tree = render({ ...loading, transition: { phase, opacity, kind: 'cross-world' } }, callbacks);
+    assert.equal(tree.type, React.Fragment);
+    const mask = elements(tree).find(item => item.props.className === 'director-scene-transition');
+    const player = byLabel(tree, '导演演示播放器');
+    assert.ok(mask); assert.equal(mask.props['aria-hidden'], 'true');
+    assert.equal(mask.props.style.opacity, opacity, 'the hook numeric value reaches the mask without another animation clock');
+    assert.equal(mask.props['data-transition-phase'], phase);
+    assert.equal(mask.props['data-transition-kind'], 'cross-world');
+    assert.ok(!elements(mask).includes(player), 'the player is a sibling rather than inside the obscured scenery');
+    assert.ok(content(tree).includes('自然转场中')); assert.ok(content(tree).includes('转往另一海域'));
+    assert.ok(content(tree).includes('加载中…'), 'loading remains distinct from a rendered chapter countdown');
+    byLabel(tree, '暂停导演演示').props.onClick();
+    const next = elements(player).find(item => item.type === 'button' && content(item) === '下一章');
+    assert.notEqual(next.props.disabled, true); next.props.onClick();
+    const chapters = byLabel(tree, '导演演示章节'); assert.equal(chapters.props.disabled, false);
+    chapters.props.onChange({ target: { value: DIRECTOR_STEPS[2].id } });
+    byLabel(tree, '退出导演演示').props.onClick();
+  }
+  assert.deepEqual(calls, ['pause', 'next', 2, 'stop', 'pause', 'next', 2, 'stop', 'pause', 'next', 2, 'stop']);
+  const paused = render({ ...loading, playing: false, error: '当前海域尚未就绪',
+    transition: { phase: 'covered', opacity: 1, kind: 'reposition' } }, callbacks);
+  assert.ok(content(paused).includes('已暂停 · 自然转场中'));
+  assert.ok(content(paused).includes('转往另一观察点'));
+  assert.ok(elements(paused).some(item => item.props.role === 'alert' && content(item) === '当前海域尚未就绪'));
+  byLabel(paused, '继续导演演示').props.onClick(); assert.equal(calls.at(-1), 'resume');
+});
+
+test('nearby shot linking stays visible and completion or idle cannot retain a stale mask', () => {
+  const loading = { ...createDirectorState(), active: true, playing: true, phase: 'loading' };
+  for (const phase of ['none', 'move']) {
+    const tree = render({ ...loading, transition: { phase, opacity: 1, kind: 'nearby' } });
+    assert.equal(elements(tree).some(item => item.props.className === 'director-scene-transition'), false);
+    assert.ok(content(tree).includes('镜头衔接中'));
+    assert.ok(!content(tree).includes('转往另一海域'));
+    assert.ok(!content(tree).includes('自然转场中'));
+  }
+  const stale = { phase: 'covered', opacity: 1, kind: 'cross-world' };
+  assert.equal(render({ ...createDirectorState(), transition: stale }), null);
+  const completed = render({ ...createDirectorState(), phase: 'complete', transition: stale });
+  assert.equal(elements(completed).some(item => item.props.className === 'director-scene-transition'), false);
+});
+
+test('shipped mask styling sits below controls and adds no asynchronous opacity animation', async () => {
+  const css = await readFile(new URL('../src/directorPlayer.css', import.meta.url), 'utf8');
+  const rule = className => css.match(new RegExp(`\\.${className}\\{([^}]*)\\}`))?.[1];
+  const mask = rule('director-scene-transition'), player = rule('director-player');
+  assert.ok(mask); assert.match(mask, /position:absolute/); assert.match(mask, /inset:0/);
+  assert.match(mask, /pointer-events:none/); assert.match(mask, /background:#061f28/);
+  assert.equal(Number(mask.match(/z-index:(\d+)/)?.[1]), 2);
+  assert.ok(Number(player.match(/z-index:(\d+)/)?.[1]) > 2);
+  assert.match(mask, /transition:none/); assert.ok(!mask.includes('animation:'));
+  assert.match(css, /prefers-reduced-motion:reduce/);
 });

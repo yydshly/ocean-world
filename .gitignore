@@ -95,3 +95,6 @@ output/validation/screenshots/*
 !output/validation/living-visual-build.log
 !output/validation/living-visual-world-validation.json
 !output/validation/living-visual-delivery.json
+!output/validation/director-transition-checks.log
+!output/validation/director-transition-build.log
+!output/validation/director-transition-delivery.json

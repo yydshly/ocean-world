@@ -71,16 +71,18 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
 ]));
 
 export function createDirectorState() {
-  return { active: false, index: 0, phase: 'idle', playing: false, elapsedMs: 0, token: 0, error: null, playbackRate: 1, completedStepIds: [] };
+  return { active: false, index: 0, phase: 'idle', playing: false, elapsedMs: 0, token: 0, error: null, playbackRate: 1, completedStepIds: [], transition: { phase: 'none', kind: null, opacity: 0, elapsedMs: 0, durationMs: 0 } };
 }
 
 const validIndex = index => Number.isInteger(index) && index >= 0 && index < DIRECTOR_STEPS.length;
 const matches = (state, event) => state.active && event.token === state.token;
 const loadStep = (state, index, playing = state.playing) => ({
   ...state, active: true, index, phase: 'loading', playing, elapsedMs: 0, token: state.token + 1, error: null,
+  transition: { ...state.transition, phase: state.transition?.opacity > 0 ? 'out' : 'none' },
 });
 const complete = state => ({
   ...state, active: false, phase: 'complete', playing: false, token: state.token + 1, error: null,
+  transition: { phase: 'none', kind: null, opacity: 0, elapsedMs: 0, durationMs: 0 },
 });
 const advance = state => state.index + 1 < DIRECTOR_STEPS.length
   ? loadStep(state, state.index + 1) : complete(state);
@@ -96,13 +98,36 @@ const recordComplete = state => {
 export function directorReducer(state, event) {
   if (!event || typeof event.type !== 'string') return state;
   switch (event.type) {
+    case 'transition-stage': {
+      if (!matches(state, event) || state.phase !== 'loading' || state.error ||
+          !['none', 'out', 'covered', 'in', 'move'].includes(event.phase) ||
+          !['nearby', 'reposition', 'cross-world'].includes(event.kind)) return state;
+      const opacity = Math.max(0, Math.min(1, state.transition?.opacity ?? 0));
+      const animated = event.phase === 'out' || event.phase === 'in';
+      const duration = Number.isFinite(event.durationMs) ? Math.max(0, Math.min(2000, event.durationMs)) : 480;
+      return { ...state, transition: { phase: event.phase, kind: event.kind, token: event.token, elapsedMs: 0,
+        startOpacity: opacity, opacity: event.phase === 'covered' ? 1 : animated ? opacity : 0,
+        durationMs: animated ? duration * (event.phase === 'out' ? 1 - opacity : opacity) : 0 } };
+    }
+    case 'transition-tick': {
+      const transition = state.transition;
+      if (!matches(state, event) || !state.playing || state.error || !['out', 'in'].includes(transition?.phase) ||
+          !Number.isFinite(event.deltaMs) || event.deltaMs <= 0) return state;
+      const elapsedMs = Math.min(transition.durationMs, transition.elapsedMs + event.deltaMs);
+      const progress = transition.durationMs > 0 ? elapsedMs / transition.durationMs : 1;
+      const eased = progress * progress * (3 - 2 * progress);
+      const end = transition.phase === 'out' ? 1 : 0;
+      return { ...state, transition: { ...transition, elapsedMs,
+        opacity: transition.startOpacity + (end - transition.startOpacity) * eased,
+        phase: progress === 1 ? transition.phase === 'out' ? 'covered' : 'none' : transition.phase } };
+    }
     case 'set-rate':
       return isDirectorPlaybackRate(event.playbackRate) && event.playbackRate !== state.playbackRate
         ? { ...state, playbackRate: event.playbackRate } : state;
     case 'start':
       return loadStep({ ...state, completedStepIds: [] }, validIndex(event.index) ? event.index : 0, true);
     case 'entered':
-      if (!matches(state, event) || state.phase !== 'loading' || state.error) return state;
+      if (!matches(state, event) || state.phase !== 'loading' || state.error || state.transition?.phase !== 'none' || state.transition?.opacity > 0) return state;
       return { ...state, phase: 'showing', elapsedMs: 0 };
     case 'failed':
       if (!matches(state, event)) return state;

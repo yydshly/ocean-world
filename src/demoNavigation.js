@@ -13,7 +13,9 @@ export function demoWorldMatches(choice, world, snapshot) {
 
 // Reuse normal observation/navigation operations. No generation, population,
 // clock, resource, environment or persistence reset belongs in this adapter.
-export function navigateDemoEntry(choice, world, { movingDirector = false } = {}) {
+export function navigateDemoEntry(choice, world, { movingDirector = false, directorEntryPlan = null, playing = true, playbackRate = 1 } = {}) {
+  if (movingDirector && directorEntryPlan?.kind === 'continuous')
+    return world.beginDirectorEntry?.(directorEntryPlan, { playing, playbackRate }) === true;
   if (choice.kind === 'deep-stop') return world.biomeId==='deep'&&world.enterDeepSeascape?.(choice.stopId)===true;
   if (choice.kind === 'kelp-stop') return world.biomeId==='kelp'&&world.enterKelpForestBelt?.(choice.stopId)===true;
   if (choice.kind === 'living-stop') {

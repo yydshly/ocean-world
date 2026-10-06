@@ -27,7 +27,7 @@ function method(name) {
 }
 const constructorStart = source.indexOf('  constructor('), constructorEnd = source.indexOf('    // Own the canvas', constructorStart);
 const methods = ['oceanWorldPosition', 'enterLivingShallows', 'travelLivingShallows', 'setView', 'moveCamera',
-  'captureOceanFreeDepth', 'oceanLayerY', 'persistLivingWorld', 'setEnvironment', 'setPaused', 'reset', 'focusSpecies'];
+  'captureOceanFreeDepth', 'oceanLayerY', 'persistLivingWorld', 'setEnvironment', 'setPaused', 'stopDirectorEntry', 'reset', 'focusSpecies'];
 const constructorHead = `${source.slice(constructorStart, constructorEnd)}\n  }`;
 const initialSceneStart = source.indexOf('        if(this.isLivingShallows){', source.indexOf('        this.bindAuthoredSurface();'));
 const initialSceneEnd = source.indexOf('        this.oceanWaterField=', initialSceneStart);
@@ -205,9 +205,11 @@ test('environment updates and pause save the actual global forcing and latest ti
 
 test('explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world', async () => {
   const { world, calls, storage } = worldFixture(); world.livingClockSec = 400;
+  world.directorEntry = { active: true }; world._preparedDirectorObservation = { route: {} };
   world.sim.environment.hour = 18.4; world.persistLivingWorld();
   const oldSeed = world.sim.seed, oldRecord = createLivingWorldState(oldSeed, { storage }).load();
   world.reset('91'); await Promise.resolve();
+  assert.equal(world.directorEntry, null); assert.equal(world._preparedDirectorObservation, null);
   const nextSeed = livingShallowsSeed('91');
   assert.equal(world.inputSeed, '91'); assert.equal(world.sim.seed, nextSeed);
   assert.equal(world.oceanChunks.generator.profile, LIVING_SHALLOWS_PROFILE);

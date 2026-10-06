@@ -29,9 +29,11 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Check shallow presentation, observation routes, saved ecosystems and hosting
+      - name: Check director transitions, saved ecosystems and hosting
         run: >-
           node --test
+          tests/director-entry-motion.test.mjs
+          tests/director-transition-hook.test.mjs
           tests/living-visual-route.test.mjs
           tests/living-visual-world.test.mjs
           tests/living-shallows-presentation.test.mjs

@@ -26,7 +26,7 @@ function method(name) {
   return source.slice(start, next ? start + 2 + next.index : source.lastIndexOf('\n}'));
 }
 const methods = ['oceanWorldPosition', 'findAgent', 'currentLivingVisualRoute', 'enterLivingVisualScene', 'enterLivingVisualSample', 'enterLivingShallows',
-  'beginDirectorMotion', 'directorMotionQueries', 'updateDirectorMotion', 'setDirectorPlaybackRate',
+  'prepareDirectorObservation', 'beginDirectorMotion', 'directorMotionQueries', 'updateDirectorMotion', 'setDirectorPlaybackRate',
   'stopDirectorMotion', 'directorMotionSnapshot', 'restoreOceanObservation', 'oceanLayerY',
   'clearCameraPosition', 'enforceCameraClearance', 'setOceanRenderOrigin'];
 const WorldCPU = new Function('THREE', 'createLivingVisualRoute', 'sampleLivingVisualRoute',
@@ -144,7 +144,11 @@ test('entering the ordinary whole-scene view changes observation only and keeps 
 
 test('the real director advances across all three admitted stops and completes once without altering ecology', async () => {
   const f = await fixture(), before = preserved(f);
+  assert.equal(f.world.prepareDirectorObservation({ routeId: 'living-visual' }), true);
+  const positioned = f.world.oceanWorldPosition(), requests = f.calls.filter(call => call[0] === 'ecology-request').length;
   assert.equal(f.world.beginDirectorMotion({ routeId: 'living-visual', kind: 'walk', durationSec: 12 }), true);
+  nearPoint(f.world.oceanWorldPosition(), positioned, 'starting observation does not repeat the covered positioning');
+  assert.equal(f.calls.filter(call => call[0] === 'ecology-request').length, requests, 'starting observation does not request a second relocation');
   const route = f.world.directorMotion.livingRoute; provenance(f, route);
   nearPoint(f.world.oceanWorldPosition(), route.stops[0].position, 'director first stop');
   f.world.updateDirectorMotion(6);
@@ -164,6 +168,7 @@ test('the real director advances across all three admitted stops and completes o
 
 test('pause and camera playback rates control the same admitted path without changing ecology speed or stocks', async () => {
   const f = await fixture(), before = preserved(f);
+  assert.equal(f.world.prepareDirectorObservation({ routeId: 'living-visual' }), true);
   assert.equal(f.world.beginDirectorMotion({ routeId: 'living-visual', durationSec: 12, playbackRate: 2 }), true);
   const shot = f.world.directorMotion.shot, route = f.world.directorMotion.livingRoute;
   f.world.updateDirectorMotion(1); assert.equal(f.world.directorMotionSnapshot().elapsedSec, 2);
@@ -186,6 +191,8 @@ test('source paths and actual camera positions remain in world metres through a 
   const a = await fixture(), b = await fixture({ renderOrigin: { x: 4736, z: 128 } });
   const beforeA = preserved(a), beforeB = preserved(b);
   assert.deepEqual(a.world.currentLivingVisualRoute(), b.world.currentLivingVisualRoute());
+  assert.equal(a.world.prepareDirectorObservation({ routeId: 'living-visual' }), true);
+  assert.equal(b.world.prepareDirectorObservation({ routeId: 'living-visual' }), true);
   assert.equal(a.world.beginDirectorMotion({ routeId: 'living-visual', durationSec: 12 }), true);
   assert.equal(b.world.beginDirectorMotion({ routeId: 'living-visual', durationSec: 12 }), true);
   a.world.updateDirectorMotion(3); b.world.updateDirectorMotion(3);
@@ -209,6 +216,7 @@ test('missing composition or living sources stays honestly empty and never inven
   const before = preserved(f), position = f.world.oceanWorldPosition();
   assert.equal(f.world.enterLivingVisualScene(), false); assert.equal(f.world.livingVisualRoute.status, 'empty');
   nearPoint(f.world.oceanWorldPosition(), position, 'empty scene does not relocate camera');
+  assert.equal(f.world.prepareDirectorObservation({ routeId: 'living-visual' }), true);
   assert.equal(f.world.beginDirectorMotion({ routeId: 'living-visual', durationSec: 12 }), true);
   assert.equal(f.world.livingVisualRoute.status, 'empty'); assert.equal(f.world.directorMotion.livingRoute, undefined);
   assert.equal(f.world.directorMotionSnapshot().observationRoute, undefined, 'ordinary fallback is not reported as a complete combination');

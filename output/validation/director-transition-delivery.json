@@ -1,0 +1,76 @@
+{
+  "package": "director-natural-transitions-v1",
+  "recordedAt": "2026-10-06T20:52:52.433734+08:00",
+  "timezone": "Asia/Shanghai",
+  "baselineCommit": "e80c988",
+  "sourceCommit": null,
+  "publication": {
+    "status": "pending"
+  },
+  "behavior": {
+    "nearby": "Keep same actual world and bridge current camera position and heading to an already resident safe pose.",
+    "cut": "Fade out before native entry, wait actual complete nine-owner readiness, then fade in before chapter motion starts.",
+    "firstShallowShot": "Prepare actual route first stop under full cover, wait its actual complete resident window again before revealing.",
+    "maxContinuousDistanceM": 32,
+    "supportSampleSpacingM": 0.5,
+    "nominalFadePhaseMsAt1x": 480,
+    "chapterCount": 40,
+    "actionCount": 34,
+    "chapterObservationSecondsAt1x": 474,
+    "transitionTime": "Additional bridge, fade and loading time; not deducted from chapter observation.",
+    "controls": "Pause, playback rate, hidden document, seek/skip and manual takeover guard native transition and camera clocks; stale tokens cannot execute late cuts.",
+    "ecology": "Normal ecology continues for nearby entries; distant/world entry uses native pause and checkpoint, retaining old records."
+  },
+  "validation": {
+    "testFiles": 53,
+    "finalTests": {
+      "tests": 388,
+      "pass": 388,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "localBuildCount": 1,
+    "buildExitCode": 0,
+    "checksLog": "output/validation/director-transition-checks.log",
+    "buildLog": "output/validation/director-transition-build.log",
+    "initialFinalBatch": {
+      "tests": 388,
+      "passed": 387,
+      "failed": 1,
+      "cause": "Existing extracted reset fixture omitted the new native stopDirectorEntry method. Added the actual method and reset cancellation assertions; no production change."
+    },
+    "scope": [
+      "actual production hook effects and adapters with finite clock harness",
+      "native Three camera bridge, resident support and floating origin",
+      "player render and keyboard takeover",
+      "related ecological, saved-record and hosting regression suite"
+    ],
+    "browserVisualAcceptance": false,
+    "browserLimitation": "Browser URL policy refusal remains in force; no alternate browser, frontend request or capture bypass. Current WebGL appearance and full tour playback are not verified.",
+    "buildWarning": "Existing bundle exceeds 500 kB.",
+    "finalChecksExitCode": 0
+  },
+  "preservation": [
+    "world seeds and terrain plans",
+    "old animal identities and deaths",
+    "food inventories and history",
+    "saved clocks and views"
+  ],
+  "sourceHashes": {
+    "src/DirectorPlayer.jsx": "a686a5ed4e179fd445195c35264eeb86424582be9fef827c42b495b9650e5065",
+    "src/directorPlayer.css": "2822ce1110aa60175791d4498f5cb14c4530ff41d548ebf3ece53e8d53a7ee5c",
+    "src/OceanApp.jsx": "9ddbe1f302e19200abaa7d7f4e6b3e57ed27e74f7c9695d98fb85b311b6cdf89",
+    "src/demoNavigation.js": "fabf75a56e9f70ad1a39fda40adbe40463d9b5ada35b03fe004a7b747f7f12f6",
+    "src/directorTour.js": "9696e8a654dab1f55bfd8214de8a65f8fedc242272db1bf30f697417131c4618",
+    "src/useDirectorTour.js": "b6d4bb5387b414059a57abaa6f2021e54f3de764422e5441ea654db36471913c",
+    "src/directorEntryMotion.js": "79467a1ff24da5abe54f3e93015c8f56b1af1b2759a6a4e78152aae4fb71c748",
+    "src/world/ReefWorld.js": "10aa4fd29ae8e09907dac7ddf3c62ac8077d08749fffb8ea8e294a7f7ab594f1"
+  },
+  "buildArtifacts": {
+    "dist/client/index.html": true,
+    "dist/server/index.js": true,
+    "dist/.openai/hosting.json": true
+  }
+}

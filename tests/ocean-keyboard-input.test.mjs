@@ -12,7 +12,9 @@ assert.ok(start >= 0 && end > start);
 const installHandlers = new Function('oceanKeyboardTargetConsumesInput',
   `return function(){${source.slice(start, end)}}`)(oceanKeyboardTargetConsumesInput);
 const worldFixture = () => {
-  const world = { keys: new Set(), directorStops: 0, stopDirectorMotion() { this.directorStops++; } };
+  const world = { keys: new Set(), directorStops: 0, entryStops: 0, manualTakeovers: 0,
+    onDirectorManualTakeover() { this.manualTakeovers++; },
+    stopDirectorEntry() { this.entryStops++; }, stopDirectorMotion() { this.directorStops++; } };
   installHandlers.call(world);
   return world;
 };
@@ -29,6 +31,8 @@ test('production handlers preserve Space activation on buttons, links and other 
     world.onKeyDown(event);
     assert.equal(event.defaultPrevented, false, `${tag} retains its default activation/editing behavior`);
     assert.equal(world.directorStops, 0);
+    assert.equal(world.entryStops, 0);
+    assert.equal(world.manualTakeovers, 0, 'native controls must not cancel a covered director entry');
     assert.equal(world.keys.size, 0);
   }
 });
@@ -68,6 +72,8 @@ test('scene WASDQE still take over the director, suppress page defaults and rele
     world.onKeyDown(event);
     assert.equal(event.defaultPrevented, true);
     assert.equal(world.directorStops, 1);
+    assert.equal(world.entryStops, 1, 'scene movement also releases an unfinished continuous entry');
+    assert.equal(world.manualTakeovers, 1, 'actual scene movement notifies the director before relinquishing camera ownership');
     assert.equal(world.keys.has(code), true);
     world.onKeyUp(event);
     assert.equal(world.keys.size, 0);
@@ -77,6 +83,7 @@ test('scene WASDQE still take over the director, suppress page defaults and rele
   assert.equal(world.keys.has('ShiftLeft'), true, 'the existing travel speed modifier is retained');
   assert.equal(shift.defaultPrevented, false);
   assert.equal(world.directorStops, 0);
+  assert.equal(world.manualTakeovers, 0, 'the travel speed modifier alone does not acquire the camera');
 });
 
 test('changing focus while a movement key is held cannot leave a camera key stuck', () => {

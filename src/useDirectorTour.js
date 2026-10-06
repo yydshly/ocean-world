@@ -21,6 +21,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   const valid = token => current.current.active && current.current.token === token;
   const stopMotion = () => {
     motion.current?.world.stopDirectorMotion?.(); motion.current = null;
+    waiting.current?.entryWorld?.stopDirectorEntry?.();
   };
   const fail = (token, problem) => { if (valid(token)) { stopMotion(); dispatch({ type: 'failed', token, error: problem }); } };
   const start = (index = 0) => {
@@ -41,7 +42,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     preparedWorlds.current.add(world);
   };
   const applied = (token, absence = false) => {
-    if (!valid(token) || waiting.current?.token !== token) return;
+    if (!valid(token) || waiting.current?.token !== token || !waiting.current.executed) return;
     waiting.current.appliedAt = performance.now(); waiting.current.absence = absence;
   };
   const panelReady = token => {
@@ -54,25 +55,52 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   }, [worldReady]);
 
   useEffect(() => {
+    const actual = worldRef.current;
+    if (!state.active || !actual || actual.disposed) return;
+    const previousTakeover = actual.onDirectorManualTakeover;
+    const takeover = () => {
+      if (worldRef.current === actual && current.current.active) {
+        stop(); adapters.current.onNotice('已切换为自由观察。');
+      }
+      previousTakeover?.();
+    };
+    actual.onDirectorManualTakeover = takeover;
+    return () => { if (actual.onDirectorManualTakeover === takeover) actual.onDirectorManualTakeover = previousTakeover; };
+  }, [state.active, worldReady, snapshot?.runId]);
+
+  useEffect(() => {
     if (!state.active || state.phase !== 'loading' || state.error || startedToken.current === state.token) return;
     const token = state.token, action = directorStepAction(DIRECTOR_STEPS[state.index]);
     startedToken.current = token;
-    waiting.current = { token, action, appliedAt: null, panelReady: false, absence: false };
+    const previous = worldRef.current;
+    stopMotion();
+    const sameWorld = previous && !previous.disposed && action.biome === previous.biomeId &&
+      (action.biome !== 'reef' || action.profile === (previous.isLivingShallows ? 'living-shallows-v1' : 'legacy'));
+    let plan = null;
+    try { if (sameWorld && !(state.transition?.opacity > 0) && DIRECTOR_STEPS[state.index].motion.routeId !== 'living-visual')
+      plan = previous.planDirectorEntry?.(action); }
+    catch (problem) { fail(token, problem); return; }
+    const mode = ['keep', 'continuous'].includes(plan?.kind) ? plan.kind : 'cut';
+    const kind = mode === 'cut' ? sameWorld ? 'reposition' : 'cross-world' : 'nearby';
+    const wait = { token, action, entryWorld: previous, plan, mode, kind, executeReady: false, executed: false,
+      appliedAt: null, panelReady: false, absence: false, prepared: false, revealing: false };
+    waiting.current = wait;
     const enter = async () => {
-      const previous = worldRef.current;
-      stopMotion();
-      adapters.current.onControls(true, 1);
+      const nativePaused = mode === 'cut' || !current.current.playing;
+      adapters.current.onControls(nativePaused, 1);
       try {
         if (previous && !previous.disposed) {
-          await previous.setPaused(true);
+          await previous.setPaused(nativePaused);
           if (!valid(token) || worldRef.current !== previous) return;
-          // Retain actual forcing across ordinary constructors; do not rewind clocks.
           const env = previous.snapshot().environment;
           environments.current.set(worldKey(previous), Object.fromEntries(
             ['currentMps', 'turbidity', 'foodSupply', 'hour', 'observerLight'].filter(key => Number.isFinite(env[key])).map(key => [key, env[key]])));
         }
-        if (!valid(token)) return;
-        adapters.current.execute({ ...action, directorToken: token });
+        if (!valid(token) || waiting.current !== wait) return;
+        wait.executeReady = true;
+        const reduced = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        dispatch({ type: 'transition-stage', token, phase: mode === 'cut' ? 'out' : mode === 'continuous' ? 'move' : 'none',
+          kind, durationMs: reduced ? 0 : 480 });
       } catch (problem) { fail(token, problem); }
     };
     enter();
@@ -80,24 +108,99 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
 
   useEffect(() => {
     if (!state.active || state.phase !== 'loading' || state.error) return;
+    const wait = waiting.current;
+    if (!wait || wait.token !== state.token || !wait.executeReady || wait.executed ||
+        (wait.mode === 'cut' && state.transition?.phase !== 'covered')) return;
+    wait.executed = true;
+    try {
+      adapters.current.execute({ ...wait.action, directorToken: state.token,
+        ...(wait.mode === 'continuous' ? { directorEntryPlan: wait.plan } : {}) });
+    } catch (problem) { fail(state.token, problem); }
+  }, [state.active, state.phase, state.token, state.error, state.transition?.phase, state.transition?.token]);
+
+  useEffect(() => {
+    if (!state.active || !state.playing || state.error || !['out', 'in'].includes(state.transition?.phase)) return;
     const token = state.token;
-    const timeout = setTimeout(() => fail(token, '这个入口未在 45 秒内就绪。可以重试或跳过。'), 45000);
-    return () => clearTimeout(timeout);
+    let frame, previousTime = performance.now();
+    const advance = now => {
+      const deltaMs = Math.max(0, Math.min(100, now - previousTime)); previousTime = now;
+      if (!valid(token)) return;
+      if (typeof document === 'undefined' || document.visibilityState === 'visible')
+        dispatch({ type: 'transition-tick', token, deltaMs: deltaMs * current.current.playbackRate });
+      frame = requestAnimationFrame(advance);
+    };
+    frame = requestAnimationFrame(advance);
+    return () => cancelAnimationFrame(frame);
+  }, [state.active, state.playing, state.token, state.error, state.transition?.phase]);
+
+  useEffect(() => {
+    const wait = waiting.current, actual = worldRef.current;
+    if (!state.active || state.phase !== 'loading' || state.error || wait?.mode !== 'continuous' ||
+        wait.token !== state.token || actual !== wait.entryWorld) return;
+    actual?.setDirectorEntryPlayback?.({ playing: state.playing, playbackRate: state.playbackRate });
+  }, [state.active, state.phase, state.token, state.error, state.playing, state.playbackRate,
+    worldReady, snapshot?.runId, waiting.current?.appliedAt]);
+
+  useEffect(() => {
+    if (!state.active || state.phase !== 'loading' || state.error) return;
+    const token = state.token;
+    let elapsedMs = 0, previousTime = performance.now();
+    const timer = setInterval(() => {
+      const now = performance.now(), deltaMs = Math.max(0, now - previousTime); previousTime = now;
+      const wait = waiting.current;
+      if (!valid(token) || !current.current.playing || !wait?.executed ||
+          (typeof document !== 'undefined' && document.visibilityState !== 'visible') ||
+          ['out', 'in'].includes(current.current.transition?.phase) ||
+          (wait.mode === 'continuous' && worldRef.current?.directorEntrySnapshot?.().active)) return;
+      elapsedMs += deltaMs;
+      if (elapsedMs >= 45000) fail(token, '这个入口未在 45 秒有效加载时间内就绪。可以重试或跳过。');
+    }, 1000);
+    return () => clearInterval(timer);
   }, [state.active, state.phase, state.token, state.error]);
 
   useEffect(() => {
     const wait = waiting.current;
     if (!state.active || state.phase !== 'loading' || state.error || !worldReady || !wait || wait.token !== state.token || wait.appliedAt === null) return;
-    if (performance.now() - wait.appliedAt < 750) return;
-    if (!directorSceneReady(wait.action, worldRef.current, snapshot, { panelReady: wait.panelReady })) return;
+    const actual = worldRef.current;
+    if (wait.mode === 'continuous') {
+      if (actual !== wait.entryWorld) { fail(state.token, '镜头衔接所属海域已改变。'); return; }
+      const entry = actual.directorEntrySnapshot();
+      if (entry.error) { fail(state.token, entry.error); return; }
+      if (!entry.kind) { stop(); adapters.current.onNotice('已切换为自由观察。'); return; }
+      if (!entry.complete) return;
+    }
+    if (!directorSceneReady(wait.action, actual, snapshot, { panelReady: wait.panelReady })) return;
+    if (wait.mode === 'cut' && !wait.prepared) {
+      wait.prepared = true;
+      if (DIRECTOR_STEPS[state.index].motion.routeId === 'living-visual') {
+        if (actual.prepareDirectorObservation?.(DIRECTOR_STEPS[state.index].motion) !== true) {
+          fail(state.token, '当前观察镜头无法安全就位，可重试或跳到下一章。'); return;
+        }
+        wait.absence = actual.livingVisualRoute?.status === 'empty';
+        // Preparing can move into another resident window. Keep full cover
+        // until its native nine-owner loading has genuinely completed.
+        return;
+      }
+    }
+    if (wait.mode === 'cut' && !wait.revealing) {
+      wait.revealing = true;
+      const reduced = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      dispatch({ type: 'transition-stage', token: state.token, phase: 'in', kind: wait.kind, durationMs: reduced ? 0 : 480 });
+      return;
+    }
+    if (state.transition?.phase === 'move') {
+      dispatch({ type: 'transition-stage', token: state.token, phase: 'none', kind: wait.kind }); return;
+    }
+    if (state.transition?.phase !== 'none' || state.transition?.opacity > 0) return;
     receipts.current = [...receipts.current.slice(-63), {
       step: DIRECTOR_STEPS[state.index].id, action: wait.action.id, token: state.token,
       biome: snapshot.biomeId, profile: snapshot.sceneProfile, chunkId: snapshot.ocean?.chunkId,
       loadingRegions: snapshot.ocean?.ecology?.metrics?.loadingRegions ?? 0,
       alive: snapshot.ocean?.ecology?.metrics?.alive, panelReady: wait.panelReady, absence: wait.absence,
+      transitionMode: wait.mode,
     }];
     dispatch({ type: 'entered', token: state.token });
-  }, [snapshot, worldReady, state.active, state.phase, state.token, state.error]);
+  }, [snapshot, worldReady, state.active, state.phase, state.token, state.error, state.transition?.phase]);
 
   useEffect(() => {
     // The constructor clears its error on the next render after retry/seek.
@@ -115,14 +218,15 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     if (!actual || !worldReady) return;
     const previous = original.current;
     if (!state.active && !previous) return;
-    const target = state.active ? { paused: state.phase !== 'showing' || !state.playing || !!state.error, speed: 1 } : previous;
+    const continuousEntry = state.phase === 'loading' && ['keep', 'continuous'].includes(waiting.current?.mode);
+    const target = state.active ? { paused: (state.phase !== 'showing' && !continuousEntry) || !state.playing || !!state.error, speed: 1 } : previous;
     actual.speed = target.speed; adapters.current.onControls(target.paused, target.speed);
     if (actual.paused !== target.paused) actual.setPaused(target.paused).catch(problem => {
       if (worldRef.current === actual && state.active) fail(state.token, problem);
       else adapters.current.onNotice(problem.message);
     });
     if (!state.active) { original.current = null; restoreArmed.current = false; }
-  }, [state.active, state.phase, state.playing, state.token, state.error, worldReady, snapshot?.runId]);
+  }, [state.active, state.phase, state.playing, state.token, state.error, worldReady, snapshot?.runId, state.transition?.phase]);
 
   useEffect(() => {
     if (!state.active || state.phase !== 'showing' || state.error || !worldReady) return;
@@ -190,6 +294,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
       if (isDirectorPlaybackRate(playbackRate)) dispatch({ type: 'set-rate', playbackRate });
     },
     diagnostics: { ...state, title: DIRECTOR_STEPS[state.index].title, progress: directorTourProgress(state), entered: receipts.current,
-      motion: worldRef.current?.directorMotionSnapshot?.() ?? null },
+      motion: worldRef.current?.directorMotionSnapshot?.() ?? null,
+      entry: worldRef.current?.directorEntrySnapshot?.() ?? null },
   };
 }

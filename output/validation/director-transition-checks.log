@@ -1,0 +1,2347 @@
+TAP version 13
+# Subtest: three admitted morphologies retain taxonomy, stable objects and live picking metadata
+ok 1 - three admitted morphologies retain taxonomy, stable objects and live picking metadata
+  ---
+  duration_ms: 329.7041
+  type: 'test'
+  ...
+# Subtest: regional clocks freeze anatomy despite display time and observer-light changes
+ok 2 - regional clocks freeze anatomy despite display time and observer-light changes
+  ---
+  duration_ms: 221.1922
+  type: 'test'
+  ...
+# Subtest: stable ID determines phase across reload order, independently of factory serial
+ok 3 - stable ID determines phase across reload order, independently of factory serial
+  ---
+  duration_ms: 267.9433
+  type: 'test'
+  ...
+# Subtest: floating origins translate all three animals without changing logical pose or clock
+ok 4 - floating origins translate all three animals without changing logical pose or clock
+  ---
+  duration_ms: 144.2867
+  type: 'test'
+  ...
+# Subtest: all twelve actual sea-pig foot endpoints follow model terrain contacts under yaw and rebase
+ok 5 - all twelve actual sea-pig foot endpoints follow model terrain contacts under yaw and rebase
+  ---
+  duration_ms: 211.6579
+  type: 'test'
+  ...
+# Subtest: removing one animal retains shared assets until the last live instance and disposal is idempotent
+ok 6 - removing one animal retains shared assets until the last live instance and disposal is idempotent
+  ---
+  duration_ms: 58.2927
+  type: 'test'
+  ...
+# Subtest: actual shared terrain edges match heights, normals, colour and UVs in negative and positive cells
+ok 7 - actual shared terrain edges match heights, normals, colour and UVs in negative and positive cells
+  ---
+  duration_ms: 863.5087
+  type: 'test'
+  ...
+# Subtest: actual ground triangles expose the same metre-scale height and support normals as the generator
+ok 8 - actual ground triangles expose the same metre-scale height and support normals as the generator
+  ---
+  duration_ms: 1065.3526
+  type: 'test'
+  ...
+# Subtest: rock instance transforms and rotated support queries describe the same actual triangles
+ok 9 - rock instance transforms and rotated support queries describe the same actual triangles
+  ---
+  duration_ms: 1238.2264
+  type: 'test'
+  ...
+# Subtest: positive, negative and far routes retain nine scenery regions and a bounded cache without adding illumination or plants
+ok 10 - positive, negative and far routes retain nine scenery regions and a bounded cache without adding illumination or plants
+  ---
+  duration_ms: 7185.1058
+  type: 'test'
+  ...
+# Subtest: floating origins and environmental controls leave local geometry and scenery seeds stable
+ok 11 - floating origins and environmental controls leave local geometry and scenery seeds stable
+  ---
+  duration_ms: 1393.5341
+  type: 'test'
+  ...
+# Subtest: eviction, reset and repeated disposal release owned resources once and preserve borrowed materials/textures
+ok 12 - eviction, reset and repeated disposal release owned resources once and preserve borrowed materials/textures
+  ---
+  duration_ms: 3842.0324
+  type: 'test'
+  ...
+# Subtest: authored configuration retains identities and initial random order while corrected prey transport applies to both models
+ok 13 - authored configuration retains identities and initial random order while corrected prey transport applies to both models
+  ---
+  duration_ms: 18.1201
+  type: 'test'
+  ...
+# Subtest: coordinate-seeded habitats allocate sparse admitted animals within owners and independent of visit order
+ok 14 - coordinate-seeded habitats allocate sparse admitted animals within owners and independent of visit order
+  ---
+  duration_ms: 1261.7677
+  type: 'test'
+  ...
+# Subtest: fixed frame partitions and reversed active Maps preserve complete regional state
+ok 15 - fixed frame partitions and reversed active Maps preserve complete regional state
+  ---
+  duration_ms: 2488.9413
+  type: 'test'
+  ...
+# Subtest: generated ground, all twelve sea-pig feet and fish nine-point support obey bounded full-XYZ movements
+ok 16 - generated ground, all twelve sea-pig feet and fish nine-point support obey bounded full-XYZ movements
+  ---
+  duration_ms: 7498.8328
+  type: 'test'
+  ...
+# Subtest: all three foods have reachable positive ingestion, real resource debit, and closed per-pool and condition ledgers
+ok 17 - all three foods have reachable positive ingestion, real resource debit, and closed per-pool and condition ledgers
+  ---
+  duration_ms: 10057.5083
+  type: 'test'
+  ...
+# Subtest: suspended prey advances from its real local position and exits with a ledger debit instead of wrapping
+ok 18 - suspended prey advances from its real local position and exits with a ledger debit instead of wrapping
+  ---
+  duration_ms: 231.3856
+  type: 'test'
+  ...
+# Subtest: actual seeded rock shoulders cannot lift suspended prey beyond the current movement budget
+ok 19 - actual seeded rock shoulders cannot lift suspended prey beyond the current movement budget
+  ---
+  duration_ms: 78.2817
+  type: 'test'
+  ...
+# Subtest: old regional heightM records resume unchanged without rewriting identity, food, timers or ledger
+ok 20 - old regional heightM records resume unchanged without rewriting identity, food, timers or ledger
+  ---
+  duration_ms: 1048.1596
+  type: 'test'
+  ...
+# Subtest: zero-step pause is exact and light, hour and turbidity do not create food, energy or photosynthesis
+ok 21 - zero-step pause is exact and light, hour and turbidity do not create food, energy or photosynthesis
+  ---
+  duration_ms: 2929.533
+  type: 'test'
+  ...
+# Subtest: unload freezes complete food, random and animal records, including deaths, and reopen resumes the identical next step
+ok 22 - unload freezes complete food, random and animal records, including deaths, and reopen resumes the identical next step
+  ---
+  duration_ms: 2492.2728
+  type: 'test'
+  ...
+# Subtest: failed reads, corrupted food/ownership and oversized cohorts do not regenerate or publish altered records
+ok 23 - failed reads, corrupted food/ownership and oversized cohorts do not regenerate or publish altered records
+  ---
+  duration_ms: 1689.8694
+  type: 'test'
+  ...
+# Subtest: fresh save failures never activate unsaved animals and blocked unload freezes outgoing records until a retry
+ok 24 - fresh save failures never activate unsaved animals and blocked unload freezes outgoing records until a retry
+  ---
+  duration_ms: 343.0857
+  type: 'test'
+  ...
+# Subtest: typed deep namespaces and explicit reset never overwrite reef or kelp records; dispose freezes and saves before clearing
+ok 25 - typed deep namespaces and explicit reset never overwrite reef or kelp records; dispose freezes and saves before clearing
+  ---
+  duration_ms: 441.9746
+  type: 'test'
+  ...
+# Subtest: the forty metre authored floor survives and generated footprints stay outside it
+ok 26 - the forty metre authored floor survives and generated footprints stay outside it
+  ---
+  duration_ms: 114.3469
+  type: 'test'
+  ...
+# Subtest: typed coordinate seeds reproduce terrain and immutable scenery independently of visiting order and eviction
+ok 27 - typed coordinate seeds reproduce terrain and immutable scenery independently of visiting order and eviction
+  ---
+  duration_ms: 935.0662
+  type: 'test'
+  ...
+# Subtest: floor, retention and hard-site fields join without a chunk rim or an authored transition cliff
+ok 28 - floor, retention and hard-site fields join without a chunk rim or an authored transition cliff
+  ---
+  duration_ms: 997.7366
+  type: 'test'
+  ...
+# Subtest: deep reference depth is independent of local relief and chunks remain mostly open sediment scenery
+ok 29 - deep reference depth is independent of local relief and chunks remain mostly open sediment scenery
+  ---
+  duration_ms: 31.852
+  type: 'test'
+  ...
+# Subtest: support heights and normals agree with actual shared rock triangles under unequal scales and rotations
+ok 30 - support heights and normals agree with actual shared rock triangles under unequal scales and rotations
+  ---
+  duration_ms: 261.6712
+  type: 'test'
+  ...
+# Subtest: far and negative exploration stays finite with a bounded cache; missing rock intersections never become zero support
+ok 31 - far and negative exploration stays finite with a bounded cache; missing rock intersections never become zero support
+  ---
+  duration_ms: 725.2189
+  type: 'test'
+  ...
+# Subtest: bounded support caches preserve all pre-cache sample and actual-triangle query fields before and after eviction
+ok 32 - bounded support caches preserve all pre-cache sample and actual-triangle query fields before and after eviction
+  ---
+  duration_ms: 7462.3784
+  type: 'test'
+  ...
+# Subtest: native deep seascape arrival and ordinary travel preserve full ecology and use bounded near-bed coordinates
+ok 33 - native deep seascape arrival and ordinary travel preserve full ecology and use bounded near-bed coordinates
+  ---
+  duration_ms: 1769.6363
+  type: 'test'
+  ...
+# Subtest: real deep World layers remain 1.8, 3.5 and 6 metres above local floor, never halfway to the sea surface
+ok 34 - real deep World layers remain 1.8, 3.5 and 6 metres above local floor, never halfway to the sea surface
+  ---
+  duration_ms: 483.3385
+  type: 'test'
+  ...
+# Subtest: deep Q/E and free navigation clamp to actual support and the local eight metre observer ceiling
+ok 35 - deep Q/E and free navigation clamp to actual support and the local eight metre observer ceiling
+  ---
+  duration_ms: 86.0475
+  type: 'test'
+  ...
+# Subtest: real deep neighbor travel and floating rebasing preserve model records and logical camera coordinates
+ok 36 - real deep neighbor travel and floating rebasing preserve model records and logical camera coordinates
+  ---
+  duration_ms: 1115.0735
+  type: 'test'
+  ...
+# Subtest: deep capture and restore retain physical depth and flush real pending OrbitControls damping
+ok 37 - deep capture and restore retain physical depth and flush real pending OrbitControls damping
+  ---
+  duration_ms: 1255.8512
+  type: 'test'
+  ...
+# Subtest: saved deep views outside the local viewing volume restore above real rocks and below the near-bed ceiling
+ok 38 - saved deep views outside the local viewing volume restore above real rocks and below the near-bed ceiling
+  ---
+  duration_ms: 310.501
+  type: 'test'
+  ...
+# Subtest: real deep snapshot observation adapters report 3500 minus Y depth through floating origins
+ok 39 - real deep snapshot observation adapters report 3500 minus Y depth through floating origins
+  ---
+  duration_ms: 93.5442
+  type: 'test'
+  ...
+# Subtest: deep observation memory stays isolated from reef, kelp and differently typed seeds
+ok 40 - deep observation memory stays isolated from reef, kelp and differently typed seeds
+  ---
+  duration_ms: 6.5091
+  type: 'test'
+  ...
+# Subtest: actual deep lighting and observer-local marine snow never create sunlight, a surface or ecological food
+ok 41 - actual deep lighting and observer-local marine snow never create sunlight, a surface or ecological food
+  ---
+  duration_ms: 117.5217
+  type: 'test'
+  ...
+# Subtest: 16 shared Liponema references remain actual canonical animated vertices under yaw, flow and feeding
+ok 42 - 16 shared Liponema references remain actual canonical animated vertices under yaw, flow and feeding
+  ---
+  duration_ms: 361.6164
+  type: 'test'
+  ...
+# Subtest: all eight actual sea-spider toe vertices and the actual mouth follow model support under yaw and rebase
+ok 43 - all eight actual sea-spider toe vertices and the actual mouth follow model support under yaw and rebase
+  ---
+  duration_ms: 100.0325
+  type: 'test'
+  ...
+# Subtest: model feeding freezes middle joints and regional clocks freeze walking independently of display time
+ok 44 - model feeding freezes middle joints and regional clocks freeze walking independently of display time
+  ---
+  duration_ms: 85.5789
+  type: 'test'
+  ...
+# Subtest: the shipped World focusTarget aims at the shared tiny body through floating origins
+ok 45 - the shipped World focusTarget aims at the shared tiny body through floating origins
+  ---
+  duration_ms: 111.746
+  type: 'test'
+  ...
+# Subtest: shared sea-spider assets are bounded and released once after the final animal
+ok 46 - shared sea-spider assets are bounded and released once after the final animal
+  ---
+  duration_ms: 68.6082
+  type: 'test'
+  ...
+# Subtest: disabled deep composition preserves complete default records and their next ordinary steps
+ok 47 - disabled deep composition preserves complete default records and their next ordinary steps
+  ---
+  duration_ms: 1014.0341
+  type: 'test'
+  ...
+# Subtest: a natural fresh group commits actual sediment, hard supports and existing living food consumers together
+ok 48 - a natural fresh group commits actual sediment, hard supports and existing living food consumers together
+  ---
+  duration_ms: 2630.9023
+  type: 'test'
+  ...
+# Subtest: one visited member blocks macro replacement and preserves full old deaths, ledgers and opaque histories
+ok 49 - one visited member blocks macro replacement and preserves full old deaths, ledgers and opaque histories
+  ---
+  duration_ms: 1208.1292
+  type: 'test'
+  ...
+# Subtest: pending, rejected or unreadable complete saves never expose candidate terrain or unsaved populations
+ok 50 - pending, rejected or unreadable complete saves never expose candidate terrain or unsaved populations
+  ---
+  duration_ms: 3922.6335
+  type: 'test'
+  ...
+# Subtest: all nine owners unload, revisit and cold restore full plans and stocks without reviving deaths or refilling food
+ok 51 - all nine owners unload, revisit and cold restore full plans and stocks without reviving deaths or refilling food
+  ---
+  duration_ms: 3930.6512
+  type: 'test'
+  ...
+# Subtest: corrupt plans, missing group members and wholly stripped markers reject without replacing stored history
+ok 52 - corrupt plans, missing group members and wholly stripped markers reject without replacing stored history
+  ---
+  duration_ms: 3279.5333
+  type: 'test'
+  ...
+# Subtest: ordinary repeated long-distance exploration keeps actual ecology and registered sources bounded
+ok 53 - ordinary repeated long-distance exploration keeps actual ecology and registered sources bounded
+  ---
+  duration_ms: 2711.0777
+  type: 'test'
+  ...
+# Subtest: same-center committed bed revision refreshes four owners without altering native matrices, prototype assets or outer floor bands
+ok 54 - same-center committed bed revision refreshes four owners without altering native matrices, prototype assets or outer floor bands
+  ---
+  duration_ms: 3720.7196
+  type: 'test'
+  ...
+# Subtest: actual re-based 1m floor triangles and two real wide instanced rock caps agree with physical height and normals
+ok 55 - actual re-based 1m floor triangles and two real wide instanced rock caps agree with physical height and normals
+  ---
+  duration_ms: 1915.2552
+  type: 'test'
+  ...
+# seed=string:42 group=-6,-10 floor triangle max error=3.9968028886505635e-15m wide-rock cap max error=2.635306811660243e-7m
+# Subtest: temporary complete birth views are undrawn; unload/revisit/reset preserve opt-in and release owned resources exactly once
+ok 56 - temporary complete birth views are undrawn; unload/revisit/reset preserve opt-in and release owned resources exactly once
+  ---
+  duration_ms: 8263.1242
+  type: 'test'
+  ...
+# Subtest: one 128m shared bed preserves external bands, every native element footprint and a complete low-slope plain
+ok 57 - one 128m shared bed preserves external bands, every native element footprint and a complete low-slope plain
+  ---
+  duration_ms: 1200.5153
+  type: 'test'
+  ...
+# Subtest: two sparse wide solids keep original counts within budget and are actual same-source hard support and camera obstacles
+ok 58 - two sparse wide solids keep original counts within budget and are actual same-source hard support and camera obstacles
+  ---
+  duration_ms: 841.332
+  type: 'test'
+  ...
+# Subtest: temporary complete replacement and failed publication preserve original public source, revision and physical caches
+ok 59 - temporary complete replacement and failed publication preserve original public source, revision and physical caches
+  ---
+  duration_ms: 1029.511
+  type: 'test'
+  ...
+# Subtest: default source remains exact and bounded route discovery never publishes new terrain or resources
+ok 60 - default source remains exact and bounded route discovery never publishes new terrain or resources
+  ---
+  duration_ms: 4085.5766
+  type: 'test'
+  ...
+# Subtest: only admitted identities, source ceilings and representative display sizes enter the deep model
+ok 61 - only admitted identities, source ceilings and representative display sizes enter the deep model
+  ---
+  duration_ms: 12.6897
+  type: 'test'
+  ...
+# Subtest: deterministic seed, fixed 0.1-second updates and reset are independent of frame batching
+ok 62 - deterministic seed, fixed 0.1-second updates and reset are independent of frame batching
+  ---
+  duration_ms: 397.1236
+  type: 'test'
+  ...
+# Subtest: finite and atomic environment validation, fractional steps and clock-only hour remain explicit
+ok 63 - finite and atomic environment validation, fractional steps and clock-only hour remain explicit
+  ---
+  duration_ms: 10.4422
+  type: 'test'
+  ...
+# Subtest: sea-pig representative foot contacts and fixed anemone bases share the exact soft bottom
+ok 64 - sea-pig representative foot contacts and fixed anemone bases share the exact soft bottom
+  ---
+  duration_ms: 839.6823
+  type: 'test'
+  ...
+# Subtest: empty resources with stopped external input cannot fabricate feeding or timestamps
+ok 65 - empty resources with stopped external input cannot fabricate feeding or timestamps
+  ---
+  duration_ms: 215.8668
+  type: 'test'
+  ...
+# Subtest: positive intake is gated by the actual mouth/capture volume, including direct calls with remote food
+ok 66 - positive intake is gated by the actual mouth/capture volume, including direct calls with remote food
+  ---
+  duration_ms: 63.0624
+  type: 'test'
+  ...
+# Subtest: external organic input enters finite resources first and enables real feeding from an initially empty bed
+ok 67 - external organic input enters finite resources first and enables real feeding from an initially empty bed
+  ---
+  duration_ms: 3458.2282
+  type: 'test'
+  ...
+# Subtest: current advects finite parcels to an explicit outlet and changes cost without moving attached bases
+ok 68 - current advects finite parcels to an explicit outlet and changes cost without moving attached bases
+  ---
+  duration_ms: 326.6777
+  type: 'test'
+  ...
+# Subtest: suspended prey keeps its world height over falling ground and detects a ridge between clear endpoints
+ok 69 - suspended prey keeps its world height over falling ground and detects a ridge between clear endpoints
+  ---
+  duration_ms: 5.2738
+  type: 'test'
+  ...
+# Subtest: 3500m sunlight and photosynthesis stay zero; observer light and hour have no ecological effect
+ok 70 - 3500m sunlight and photosynthesis stay zero; observer light and hour have no ecological effect
+  ---
+  duration_ms: 5284.6545
+  type: 'test'
+  ...
+# Subtest: turbidity attenuates observation without penalising all nonvisual food mechanisms
+ok 71 - turbidity attenuates observation without penalising all nonvisual food mechanisms
+  ---
+  duration_ms: 4049.9194
+  type: 'test'
+  ...
+# Subtest: resource and condition ledgers close per pool and total under all paired 600-second cases
+ok 72 - resource and condition ledgers close per pool and total under all paired 600-second cases
+  ---
+  duration_ms: 10292.1958
+  type: 'test'
+  ...
+# Subtest: zero-flow long runs bound parcel storage while retaining every incoming relative unit in the ledger
+ok 73 - zero-flow long runs bound parcel storage while retaining every incoming relative unit in the ledger
+  ---
+  duration_ms: 2915.8594
+  type: 'test'
+  ...
+# Subtest: a full suspended channel with an empty lane accounts overflow without throwing or exceeding storage
+ok 74 - a full suspended channel with an empty lane accounts overflow without throwing or exceeding storage
+  ---
+  duration_ms: 8.7197
+  type: 'test'
+  ...
+# Subtest: deep seascape shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries
+ok 75 - deep seascape shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries
+  ---
+  duration_ms: 1495.8748
+  type: 'test'
+  ...
+# Subtest: the two kelp belt shortcuts resolve native seed routes without changing protected ecology
+ok 76 - the two kelp belt shortcuts resolve native seed routes without changing protected ecology
+  ---
+  duration_ms: 799.5148
+  type: 'test'
+  ...
+# Subtest: matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+ok 77 - matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+  ---
+  duration_ms: 1.5997
+  type: 'test'
+  ...
+# Subtest: missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+ok 78 - missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+  ---
+  duration_ms: 0.7739
+  type: 'test'
+  ...
+# Subtest: the public observation shortcuts cover the actual living generator route once each
+ok 79 - the public observation shortcuts cover the actual living generator route once each
+  ---
+  duration_ms: 2.9175
+  type: 'test'
+  ...
+# Subtest: stop selection resolves the loaded route by ID and never substitutes the first stop
+ok 80 - stop selection resolves the loaded route by ID and never substitutes the first stop
+  ---
+  duration_ms: 1.5653
+  type: 'test'
+  ...
+# Subtest: kelp and deep world entries start continuous exploration and report an actual startup failure
+ok 81 - kelp and deep world entries start continuous exploration and report an actual startup failure
+  ---
+  duration_ms: 1.09
+  type: 'test'
+  ...
+# Subtest: living and legacy world entries use their own observation operations without rebuilding populations
+ok 82 - living and legacy world entries use their own observation operations without rebuilding populations
+  ---
+  duration_ms: 2.0293
+  type: 'test'
+  ...
+# Subtest: director fixed-view shots start at the requested view even before a slow transition could finish
+ok 83 - director fixed-view shots start at the requested view even before a slow transition could finish
+  ---
+  duration_ms: 51.6011
+  type: 'test'
+  ...
+# Subtest: water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+ok 84 - water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+  ---
+  duration_ms: 19.1086
+  type: 'test'
+  ...
+# Subtest: current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+ok 85 - current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+  ---
+  duration_ms: 6.8412
+  type: 'test'
+  ...
+# Subtest: director layer entry defers vertical movement to the rendered shot and leaves manual switching intact
+ok 86 - director layer entry defers vertical movement to the rendered shot and leaves manual switching intact
+  ---
+  duration_ms: 4.7089
+  type: 'test'
+  ...
+# Subtest: a missing local animal remains absent and the navigation adapter ignores UI-only tools
+ok 87 - a missing local animal remains absent and the navigation adapter ignores UI-only tools
+  ---
+  duration_ms: 7.6036
+  type: 'test'
+  ...
+# Subtest: discovery entry starts only the living observation world and preserves an existing exploration location
+ok 88 - discovery entry starts only the living observation world and preserves an existing exploration location
+  ---
+  duration_ms: 1.8392
+  type: 'test'
+  ...
+# Subtest: the existing director opening resolves the exact native reef sample while ordinary entry keeps its original start
+ok 89 - the existing director opening resolves the exact native reef sample while ordinary entry keeps its original start
+  ---
+  duration_ms: 2.7744
+  type: 'test'
+  ...
+# Subtest: walking genuinely advances and turns through a finite local path, ending without extrapolation
+ok 90 - walking genuinely advances and turns through a finite local path, ending without extrapolation
+  ---
+  duration_ms: 5.1738
+  type: 'test'
+  ...
+# Subtest: absolute geographical paths remain translation invariant across far floating origins
+ok 91 - absolute geographical paths remain translation invariant across far floating origins
+  ---
+  duration_ms: 1.3606
+  type: 'test'
+  ...
+# Subtest: camera conforms to real floor and hard support while staying beneath the water ceiling
+ok 92 - camera conforms to real floor and hard support while staying beneath the water ceiling
+  ---
+  duration_ms: 2.3571
+  type: 'test'
+  ...
+# Subtest: layer changes approach the requested safe height continuously along a moving shot
+ok 93 - layer changes approach the requested safe height continuously along a moving shot
+  ---
+  duration_ms: 0.5525
+  type: 'test'
+  ...
+# Subtest: follow motion approaches actual framing gently and tracks the actual moving target
+ok 94 - follow motion approaches actual framing gently and tracks the actual moving target
+  ---
+  duration_ms: 0.6057
+  type: 'test'
+  ...
+# Subtest: pause and hidden tabs freeze elapsed time, and a slow frame cannot exceed the finite end
+ok 95 - pause and hidden tabs freeze elapsed time, and a slow frame cannot exceed the finite end
+  ---
+  duration_ms: 0.3857
+  type: 'test'
+  ...
+# Subtest: playback scales only shot time, respects pause and hidden tabs, and rejects unsupported rates
+ok 96 - playback scales only shot time, respects pause and hidden tabs, and rejects unsupported rates
+  ---
+  duration_ms: 0.6195
+  type: 'test'
+  ...
+# Subtest: near scene arcs move modestly and invalid requests cannot create endless or nonfinite shots
+ok 97 - near scene arcs move modestly and invalid requests cannot create endless or nonfinite shots
+  ---
+  duration_ms: 0.6595
+  type: 'test'
+  ...
+# Subtest: native camera methods move in absolute space through a rebase, pause, complete and stop without touching simulation
+ok 98 - native camera methods move in absolute space through a rebase, pause, complete and stop without touching simulation
+  ---
+  duration_ms: 5.8404
+  type: 'test'
+  ...
+# Subtest: native rate changes retain the current shot and pose, work while paused, and never alter ecology speed or state
+ok 99 - native rate changes retain the current shot and pose, work while paused, and never alter ecology speed or state
+  ---
+  duration_ms: 3.0284
+  type: 'test'
+  ...
+# Subtest: native stopping acknowledges only a successful complete shot before clearing camera ownership
+ok 100 - native stopping acknowledges only a successful complete shot before clearing camera ownership
+  ---
+  duration_ms: 2.9277
+  type: 'test'
+  ...
+# Subtest: a completion callback failure still releases the real shot without changing its pose or simulation
+ok 101 - a completion callback failure still releases the real shot without changing its pose or simulation
+  ---
+  duration_ms: 1.1226
+  type: 'test'
+  ...
+# Subtest: native follow uses the actual selected living target and approaches its existing focus placement gradually
+ok 102 - native follow uses the actual selected living target and approaches its existing focus placement gradually
+  ---
+  duration_ms: 1.256
+  type: 'test'
+  ...
+# Subtest: a real follow target that dies or unloads retains its last observed world position without a camera jump or animal replacement
+ok 103 - a real follow target that dies or unloads retains its last observed world position without a camera jump or animal replacement
+  ---
+  duration_ms: 2.0885
+  type: 'test'
+  ...
+# Subtest: a centimetre species focus becomes a visible habitat pullback and metre arc without moving its real animal
+ok 104 - a centimetre species focus becomes a visible habitat pullback and metre arc without moving its real animal
+  ---
+  duration_ms: 1.0542
+  type: 'test'
+  ...
+# Subtest: widening an already settled animal focus does not mutate the shot starting position or teleport the camera
+ok 105 - widening an already settled animal focus does not mutate the shot starting position or teleport the camera
+  ---
+  duration_ms: 9.2234
+  type: 'test'
+  ...
+# Subtest: the real discovery button releases the director and pending entry before native travel
+ok 106 - the real discovery button releases the director and pending entry before native travel
+  ---
+  duration_ms: 7.4417
+  type: 'test'
+  ...
+# Subtest: a refused discovery trip preserves the actual discovery records and does not substitute another trip
+ok 107 - a refused discovery trip preserves the actual discovery records and does not substitute another trip
+  ---
+  duration_ms: 2.5726
+  type: 'test'
+  ...
+# Subtest: manual component use retains native travel and only exposes supplied discoveries
+ok 108 - manual component use retains native travel and only exposes supplied discoveries
+  ---
+  duration_ms: 0.7844
+  type: 'test'
+  ...
+# Subtest: loading keeps discovery buttons disabled and a disappeared world makes no navigation request
+ok 109 - loading keeps discovery buttons disabled and a disappeared world makes no navigation request
+  ---
+  duration_ms: 3.5709
+  type: 'test'
+  ...
+# Subtest: the actual bridge translates and turns 180 degrees with a positive look direction and exact endpoints
+ok 110 - the actual bridge translates and turns 180 degrees with a positive look direction and exact endpoints
+  ---
+  duration_ms: 10.5653
+  type: 'test'
+  ...
+# Subtest: bounded paths reject unloaded owners, intermediate rock barriers, insufficient water and nonfinite requests
+ok 111 - bounded paths reject unloaded owners, intermediate rock barriers, insufficient water and nonfinite requests
+  ---
+  duration_ms: 9.0906
+  type: 'test'
+  ...
+# Subtest: absolute path sampling survives far translations and the independent entry clock honors guide controls
+ok 112 - absolute path sampling survives far translations and the independent entry clock honors guide controls
+  ---
+  duration_ms: 4.8036
+  type: 'test'
+  ...
+# Subtest: native entry planning is read-only, distinguishes near/remote/world/mode, and keeps local tools in place
+ok 113 - native entry planning is read-only, distinguishes near/remote/world/mode, and keeps local tools in place
+  ---
+  duration_ms: 15.7673
+  type: 'test'
+  ...
+# Subtest: the shipped World bridge moves before native entry, preserves records, honors controls and survives rebase
+ok 114 - the shipped World bridge moves before native entry, preserves records, honors controls and survives rebase
+  ---
+  duration_ms: 15.429
+  type: 'test'
+  ...
+# Subtest: changed resident support stops a bridge without jumping or emitting a chapter completion
+ok 115 - changed resident support stops a bridge without jumping or emitting a chapter completion
+  ---
+  duration_ms: 1.8334
+  type: 'test'
+  ...
+# Subtest: opaque preparation installs the real route start once and chapter motion never repeats that restore
+ok 116 - opaque preparation installs the real route start once and chapter motion never repeats that restore
+  ---
+  duration_ms: 21.3421
+  type: 'test'
+  ...
+# Subtest: a real completed clock can be recorded before manual navigation without advancing twice
+ok 117 - a real completed clock can be recorded before manual navigation without advancing twice
+  ---
+  duration_ms: 5.8055
+  type: 'test'
+  ...
+# Subtest: paused completion is confirmed, but missing, short, failed, wrong-length and stale shots cannot claim viewing
+ok 118 - paused completion is confirmed, but missing, short, failed, wrong-length and stale shots cannot claim viewing
+  ---
+  duration_ms: 1.5782
+  type: 'test'
+  ...
+# Subtest: the actual player exposes working camera-rate choices while loading or paused
+ok 119 - the actual player exposes working camera-rate choices while loading or paused
+  ---
+  duration_ms: 15.4728
+  type: 'test'
+  ...
+# Subtest: the actual countdown scales with rate while progress retains rendered shot time
+ok 120 - the actual countdown scales with rate while progress retains rendered shot time
+  ---
+  duration_ms: 16.5503
+  type: 'test'
+  ...
+# Subtest: a completed player can select the last chapter again through its real seek handler
+ok 121 - a completed player can select the last chapter again through its real seek handler
+  ---
+  duration_ms: 4.0582
+  type: 'test'
+  ...
+# Subtest: route estimates respond to camera rate without changing completed coverage or paused wording
+ok 122 - route estimates respond to camera rate without changing completed coverage or paused wording
+  ---
+  duration_ms: 5.8313
+  type: 'test'
+  ...
+# Subtest: manual last-chapter skips and ending cannot claim that all chapters were played
+ok 123 - manual last-chapter skips and ending cannot claim that all chapters were played
+  ---
+  duration_ms: 16.5245
+  type: 'test'
+  ...
+# Subtest: the shipped player claims full completion only after every actual chapter clock completes
+ok 124 - the shipped player claims full completion only after every actual chapter clock completes
+  ---
+  duration_ms: 7.8522
+  type: 'test'
+  ...
+# Subtest: a scene-only sibling mask follows exact director opacity while pause, skip and seek stay usable
+ok 125 - a scene-only sibling mask follows exact director opacity while pause, skip and seek stay usable
+  ---
+  duration_ms: 20.4415
+  type: 'test'
+  ...
+# Subtest: nearby shot linking stays visible and completion or idle cannot retain a stale mask
+ok 126 - nearby shot linking stays visible and completion or idle cannot retain a stale mask
+  ---
+  duration_ms: 11.2393
+  type: 'test'
+  ...
+# Subtest: shipped mask styling sits below controls and adds no asynchronous opacity animation
+ok 127 - shipped mask styling sits below controls and adds no asynchronous opacity animation
+  ---
+  duration_ms: 28.3422
+  type: 'test'
+  ...
+# Subtest: readiness rejects absent, disposed, wrong-biome and stale-profile renderers or snapshots
+ok 128 - readiness rejects absent, disposed, wrong-biome and stale-profile renderers or snapshots
+  ---
+  duration_ms: 3.064
+  type: 'test'
+  ...
+# Subtest: fixed authored scenes need only an actual match and never wait for a moving focus transition
+ok 129 - fixed authored scenes need only an actual match and never wait for a moving focus transition
+  ---
+  duration_ms: 0.5751
+  type: 'test'
+  ...
+# Subtest: new regional births and pending requests cannot be acknowledged from an older visible community
+ok 130 - new regional births and pending requests cannot be acknowledged from an older visible community
+  ---
+  duration_ms: 0.4178
+  type: 'test'
+  ...
+# Subtest: only the actual current region completes exploration, and a loaded empty region is a valid outcome
+ok 131 - only the actual current region completes exploration, and a loaded empty region is a valid outcome
+  ---
+  duration_ms: 0.6347
+  type: 'test'
+  ...
+# Subtest: an older nine-owner window containing the new centre cannot acknowledge its pending neighbour births
+ok 132 - an older nine-owner window containing the new centre cannot acknowledge its pending neighbour births
+  ---
+  duration_ms: 0.5532
+  type: 'test'
+  ...
+# Subtest: failed loading and missing region/metric evidence remain unready
+ok 133 - failed loading and missing region/metric evidence remain unready
+  ---
+  duration_ms: 0.5052
+  type: 'test'
+  ...
+# Subtest: population chapters require their actual panel result as well as the matching loaded scene
+ok 134 - population chapters require their actual panel result as well as the matching loaded scene
+  ---
+  duration_ms: 0.5804
+  type: 'test'
+  ...
+# Subtest: the same old constructor error cannot fail a retry or seek before replacement loading clears it
+ok 135 - the same old constructor error cannot fail a retry or seek before replacement loading clears it
+  ---
+  duration_ms: 14.8158
+  type: 'test'
+  ...
+# Subtest: a fresh repeated error after clearing still fails the current retry token
+ok 136 - a fresh repeated error after clearing still fails the current retry token
+  ---
+  duration_ms: 1.9911
+  type: 'test'
+  ...
+# Subtest: an inactive root error does not defeat a deliberate start, and late idle errors do not activate a tour
+ok 137 - an inactive root error does not defeat a deliberate start, and late idle errors do not activate a tour
+  ---
+  duration_ms: 1.299
+  type: 'test'
+  ...
+# Subtest: route progress uses elapsed shot time and excludes unknown loading delays from the estimate
+ok 138 - route progress uses elapsed shot time and excludes unknown loading delays from the estimate
+  ---
+  duration_ms: 5.9146
+  type: 'test'
+  ...
+# Subtest: a speed change only changes the remaining wall-time estimate; invalid rates and elapsed values stay bounded
+ok 139 - a speed change only changes the remaining wall-time estimate; invalid rates and elapsed values stay bounded
+  ---
+  duration_ms: 1.0824
+  type: 'test'
+  ...
+# Subtest: skipping to the end cannot claim whole-tour playback, while distinct complete chapters can
+ok 140 - skipping to the end cannot claim whole-tour playback, while distinct complete chapters can
+  ---
+  duration_ms: 1.3864
+  type: 'test'
+  ...
+# Subtest: the chosen camera rate survives chapter changes, pauses, completion and another tour
+ok 141 - the chosen camera rate survives chapter changes, pauses, completion and another tour
+  ---
+  duration_ms: 5.9022
+  type: 'test'
+  ...
+# Subtest: unsupported playback rates leave the actual shot and playback state untouched
+ok 142 - unsupported playback rates leave the actual shot and playback state untouched
+  ---
+  duration_ms: 1.2379
+  type: 'test'
+  ...
+# Subtest: the finite tour covers every existing entry without invented or destructive actions
+ok 143 - the finite tour covers every existing entry without invented or destructive actions
+  ---
+  duration_ms: 1.1717
+  type: 'test'
+  ...
+# Subtest: all chapters declare finite frozen camera motion, with enough time to walk through scenes
+ok 144 - all chapters declare finite frozen camera motion, with enough time to walk through scenes
+  ---
+  duration_ms: 0.5335
+  type: 'test'
+  ...
+# Subtest: macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds
+ok 145 - macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds
+  ---
+  duration_ms: 5.1055
+  type: 'test'
+  ...
+# Subtest: direct chapter seeks resolve their intended world from any currently loaded world
+ok 146 - direct chapter seeks resolve their intended world from any currently loaded world
+  ---
+  duration_ms: 2.0074
+  type: 'test'
+  ...
+# Subtest: loading and pausing never consume viewing time
+ok 147 - loading and pausing never consume viewing time
+  ---
+  duration_ms: 0.5575
+  type: 'test'
+  ...
+# Subtest: late callbacks cannot enter, fail, or count a replaced step after seek, stop, or restart
+ok 148 - late callbacks cannot enter, fail, or count a replaced step after seek, stop, or restart
+  ---
+  duration_ms: 0.4223
+  type: 'test'
+  ...
+# Subtest: one slow tick cannot skip viewing/loading of the next scene
+ok 149 - one slow tick cannot skip viewing/loading of the next scene
+  ---
+  duration_ms: 1.2734
+  type: 'test'
+  ...
+# Subtest: an entry failure pauses visibly until a retry or explicit skip
+ok 150 - an entry failure pauses visibly until a retry or explicit skip
+  ---
+  duration_ms: 1.1799
+  type: 'test'
+  ...
+# Subtest: manual navigation stays finite and preserves a paused playback preference
+ok 151 - manual navigation stays finite and preserves a paused playback preference
+  ---
+  duration_ms: 0.8673
+  type: 'test'
+  ...
+# Subtest: a complete automatic traversal visits every step once and stops at its end
+ok 152 - a complete automatic traversal visits every step once and stops at its end
+  ---
+  duration_ms: 0.9769
+  type: 'test'
+  ...
+# Subtest: full-shot coverage does not treat loading, skips or a manual finish as completed observation
+ok 153 - full-shot coverage does not treat loading, skips or a manual finish as completed observation
+  ---
+  duration_ms: 3.0843
+  type: 'test'
+  ...
+# Subtest: an explicit native completion receipt is token guarded, idempotent and never advances the chapter
+ok 154 - an explicit native completion receipt is token guarded, idempotent and never advances the chapter
+  ---
+  duration_ms: 0.7616
+  type: 'test'
+  ...
+# Subtest: invalid timer input and duplicate readiness cannot distort a showing step
+ok 155 - invalid timer input and duplicate readiness cannot distort a showing step
+  ---
+  duration_ms: 0.6861
+  type: 'test'
+  ...
+# Subtest: a distant reposition executes only under full cover and begins its shot only after reveal
+ok 156 - a distant reposition executes only under full cover and begins its shot only after reveal
+  ---
+  duration_ms: 32.0482
+  type: 'test'
+  ...
+# Subtest: cross-world loading and a second physical window requested by preparation remain covered until truly ready
+ok 157 - cross-world loading and a second physical window requested by preparation remain covered until truly ready
+  ---
+  duration_ms: 33.0229
+  type: 'test'
+  ...
+# Subtest: a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window
+ok 158 - a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window
+  ---
+  duration_ms: 9.1812
+  type: 'test'
+  ...
+# Subtest: a keep entry opens its existing tool without fading or acquiring an entry camera path
+ok 159 - a keep entry opens its existing tool without fading or acquiring an entry camera path
+  ---
+  duration_ms: 10.7215
+  type: 'test'
+  ...
+# Subtest: playing, hidden state and playback rate control the transition while preserving chapter time
+ok 160 - playing, hidden state and playback rate control the transition while preserving chapter time
+  ---
+  duration_ms: 9.2528
+  type: 'test'
+  ...
+# Subtest: seek and stop invalidate old fades, pause promises and applied callbacks before they can reposition a new token
+ok 161 - seek and stop invalidate old fades, pause promises and applied callbacks before they can reposition a new token
+  ---
+  duration_ms: 10.04
+  type: 'test'
+  ...
+# Subtest: a failed entry cannot fabricate readiness, chapter time or a started observation shot
+ok 162 - a failed entry cannot fabricate readiness, chapter time or a started observation shot
+  ---
+  duration_ms: 19.7103
+  type: 'test'
+  ...
+# Subtest: default-disabled forest composition preserves complete saved kelp state and the next ordinary steps
+ok 163 - default-disabled forest composition preserves complete saved kelp state and the next ordinary steps
+  ---
+  duration_ms: 2380.9842
+  type: 'test'
+  ...
+# Subtest: one natural fresh forest group commits real high-canopy roots and existing ecological populations and food together
+ok 164 - one natural fresh forest group commits real high-canopy roots and existing ecological populations and food together
+  ---
+  duration_ms: 1644.3788
+  type: 'test'
+  ...
+# Subtest: one visited member prevents group replacement and preserves all its complete old state, deaths and opaque history
+ok 165 - one visited member prevents group replacement and preserves all its complete old state, deaths and opaque history
+  ---
+  duration_ms: 1839.522
+  type: 'test'
+  ...
+# Subtest: delayed or failed atomic writes and failed or ambiguous reads never publish candidate source or births
+ok 166 - delayed or failed atomic writes and failed or ambiguous reads never publish candidate source or births
+  ---
+  duration_ms: 4120.1569
+  type: 'test'
+  ...
+# Subtest: all owners unload, revisit and cold restore the full plans, inventories, deaths and saved history without refill
+ok 167 - all owners unload, revisit and cold restore the full plans, inventories, deaths and saved history without refill
+  ---
+  duration_ms: 3661.4247
+  type: 'test'
+  ...
+# Subtest: corrupt or partial saved forest plans reject before regenerating owners or changing saved history
+ok 168 - corrupt or partial saved forest plans reject before regenerating owners or changing saved history
+  ---
+  duration_ms: 2887.4992
+  type: 'test'
+  ...
+# Subtest: ordinary repeated exploration retains a bounded ecology and source registry
+ok 169 - ordinary repeated exploration retains a bounded ecology and source registry
+  ---
+  duration_ms: 2257.5428
+  type: 'test'
+  ...
+# Subtest: same-center publication reloads only changed owners, preserving every old bed/solid/root instance and shared resource
+ok 170 - same-center publication reloads only changed owners, preserving every old bed/solid/root instance and shared resource
+  ---
+  duration_ms: 2982.8007
+  type: 'test'
+  ...
+# Subtest: sixteen appended actual kelp matrices are grounded on their existing rendered hard-cap triangles through rebases
+ok 171 - sixteen appended actual kelp matrices are grounded on their existing rendered hard-cap triangles through rebases
+  ---
+  duration_ms: 1314.6222
+  type: 'test'
+  ...
+# seed=string:42 group=-6,-2 appended=16 hard-cap max triangle contact error=0.0000011870986331707911m
+# Subtest: temporary candidate scenery stays undrawn and eviction/revisit/reset release owned resources once while retaining opt-in
+ok 172 - temporary candidate scenery stays undrawn and eviction/revisit/reset release owned resources once while retaining opt-in
+  ---
+  duration_ms: 5513.962
+  type: 'test'
+  ...
+# Subtest: natural 128m forest/edge/clearing keeps every native descriptor and admits sixteen real rock-cap roots
+ok 173 - natural 128m forest/edge/clearing keeps every native descriptor and admits sixteen real rock-cap roots
+  ---
+  duration_ms: 866.6247
+  type: 'test'
+  ...
+# Subtest: opt-in facade preserves exact original bed, environment and solids before and after forest publication
+ok 174 - opt-in facade preserves exact original bed, environment and solids before and after forest publication
+  ---
+  duration_ms: 629.2118
+  type: 'test'
+  ...
+# Subtest: temporary birth views and invalid registry replacements never publish partial plans or revisions
+ok 175 - temporary birth views and invalid registry replacements never publish partial plans or revisions
+  ---
+  duration_ms: 318.1444
+  type: 'test'
+  ...
+# Subtest: native route derives one canonical belt without publication and surveys the unchanged sediment opening
+ok 176 - native route derives one canonical belt without publication and surveys the unchanged sediment opening
+  ---
+  duration_ms: 761.5111
+  type: 'test'
+  ...
+# Subtest: two disjoint valid sixteen-owner birth windows replace temporary scenery without exceeding the registry cap
+ok 177 - two disjoint valid sixteen-owner birth windows replace temporary scenery without exceeding the registry cap
+  ---
+  duration_ms: 1988.9483
+  type: 'test'
+  ...
+# Subtest: real generated habitats allocate bounded sparse animal records and separate three plant representatives
+ok 178 - real generated habitats allocate bounded sparse animal records and separate three plant representatives
+  ---
+  duration_ms: 1722.4173
+  type: 'test'
+  ...
+# Subtest: same logical cells are independent of visit order, Map order and fixed frame partitioning
+ok 179 - same logical cells are independent of visit order, Map order and fixed frame partitioning
+  ---
+  duration_ms: 3847.4193
+  type: 'test'
+  ...
+# Subtest: local feeding moves resources into a closed ledger and never awards intake from empty patches
+ok 180 - local feeding moves resources into a closed ledger and never awards intake from empty patches
+  ---
+  duration_ms: 487.2352
+  type: 'test'
+  ...
+# Subtest: actual support and shared moving leaves constrain crawlers and snails, while fish move and can shelter
+ok 181 - actual support and shared moving leaves constrain crawlers and snails, while fish move and can shelter
+  ---
+  duration_ms: 1049.0892
+  type: 'test'
+  ...
+# Subtest: zero-step pause freezes every animal, host, food patch and regional clock
+ok 182 - zero-step pause freezes every animal, host, food patch and regional clock
+  ---
+  duration_ms: 567.5804
+  type: 'test'
+  ...
+# Subtest: unload freezes and preserves complete records, including deaths; reopen continues the same next step
+ok 183 - unload freezes and preserves complete records, including deaths; reopen continues the same next step
+  ---
+  duration_ms: 2385.1985
+  type: 'test'
+  ...
+# Subtest: typed kelp namespaces never overwrite reef records and explicit reset clears only its old/new kelp seeds
+ok 184 - typed kelp namespaces never overwrite reef records and explicit reset clears only its old/new kelp seeds
+  ---
+  duration_ms: 678.132
+  type: 'test'
+  ...
+# Subtest: failed reads and corrupt saved records do not silently regenerate a population
+ok 185 - failed reads and corrupt saved records do not silently regenerate a population
+  ---
+  duration_ms: 428.51
+  type: 'test'
+  ...
+# Subtest: a missing snail leaf food patch is rejected before activation even when the stored ledger still balances
+ok 186 - a missing snail leaf food patch is rejected before activation even when the stored ledger still balances
+  ---
+  duration_ms: 400.0228
+  type: 'test'
+  ...
+# Subtest: finite but altered stored resources cannot activate against an inconsistent ledger and an intact record can retry
+ok 187 - finite but altered stored resources cannot activate against an inconsistent ledger and an intact record can retry
+  ---
+  duration_ms: 935.1947
+  type: 'test'
+  ...
+# Subtest: failed unloading saves retain the live window for retry without losing state or exceeding nine regions
+ok 188 - failed unloading saves retain the live window for retry without losing state or exceeding nine regions
+  ---
+  duration_ms: 951.1168
+  type: 'test'
+  ...
+# Subtest: dispose freezes immediately and serializes after queued saves; unsafe coordinates cannot touch storage
+ok 189 - dispose freezes immediately and serializes after queued saves; unsafe coordinates cannot touch storage
+  ---
+  duration_ms: 971.7514
+  type: 'test'
+  ...
+# Subtest: authored floor vertices and ecological rock roots stay unchanged while support follows the rendered triangles
+ok 190 - authored floor vertices and ecological rock roots stay unchanged while support follows the rendered triangles
+  ---
+  duration_ms: 824.893
+  type: 'test'
+  ...
+# Subtest: seeded chunks are immutable and independent of load order, cache eviction and typed seeds
+ok 191 - seeded chunks are immutable and independent of load order, cache eviction and typed seeds
+  ---
+  duration_ms: 2209.9657
+  type: 'test'
+  ...
+# Subtest: bathymetry and forest fields are continuous at chunk boundaries and authored transition endpoints
+ok 192 - bathymetry and forest fields are continuous at chunk boundaries and authored transition endpoints
+  ---
+  duration_ms: 25.8082
+  type: 'test'
+  ...
+# Subtest: the same world contains coherent forests, open clearings and rocky patches without copying populations
+ok 193 - the same world contains coherent forests, open clearings and rocky patches without copying populations
+  ---
+  duration_ms: 114.5896
+  type: 'test'
+  ...
+# Subtest: each generated plant has a stable actual rock anchor, metre length and submerged canopy
+ok 194 - each generated plant has a stable actual rock anchor, metre length and submerged canopy
+  ---
+  duration_ms: 949.1613
+  type: 'test'
+  ...
+# Subtest: generated support queries agree with actual Float32 rock triangles under scale and rotation
+ok 195 - generated support queries agree with actual Float32 rock triangles under scale and rotation
+  ---
+  duration_ms: 240.43
+  type: 'test'
+  ...
+# Subtest: a rock bounding-box corner outside the actual footprint never turns a negative sea floor into zero-height support
+ok 196 - a rock bounding-box corner outside the actual footprint never turns a negative sea floor into zero-height support
+  ---
+  duration_ms: 182.9332
+  type: 'test'
+  ...
+# Subtest: large positive and negative coordinates remain finite, with a bounded cache and explicit malformed-input rejection
+ok 197 - large positive and negative coordinates remain finite, with a bounded cache and explicit malformed-input rejection
+  ---
+  duration_ms: 2384.5512
+  type: 'test'
+  ...
+# Subtest: streaming keeps exactly nine chunks and bounded draw/instance/prototype counts along positive and negative routes
+ok 198 - streaming keeps exactly nine chunks and bounded draw/instance/prototype counts along positive and negative routes
+  ---
+  duration_ms: 8160.2003
+  type: 'test'
+  ...
+# Subtest: actual terrain vertices, normals and texture coordinates match across chunk seams and keep the original central floor
+ok 199 - actual terrain vertices, normals and texture coordinates match across chunk seams and keep the original central floor
+  ---
+  duration_ms: 1391.4931
+  type: 'test'
+  ...
+# Subtest: actual instanced rock matrices expose the same support triangles as the generator under rotations
+ok 200 - actual instanced rock matrices expose the same support triangles as the generator under rotations
+  ---
+  duration_ms: 830.3278
+  type: 'test'
+  ...
+# Subtest: floating render origins move chunk groups while logical anchors, local matrices and landscape motion phase remain stable
+ok 201 - floating render origins move chunk groups while logical anchors, local matrices and landscape motion phase remain stable
+  ---
+  duration_ms: 1117.8942
+  type: 'test'
+  ...
+# Subtest: a paused visual clock leaves sway uniforms unchanged and updates never regenerate plants or GPU prototypes
+ok 202 - a paused visual clock leaves sway uniforms unchanged and updates never regenerate plants or GPU prototypes
+  ---
+  duration_ms: 1162.0218
+  type: 'test'
+  ...
+# Subtest: detailed ecological hosts replace only matching landscape plants and restore their exact original matrices
+ok 203 - detailed ecological hosts replace only matching landscape plants and restore their exact original matrices
+  ---
+  duration_ms: 1762.9311
+  type: 'test'
+  ...
+# Subtest: eviction and dispose release owned terrain and instance resources exactly once without disposing borrowed materials or textures
+ok 204 - eviction and dispose release owned terrain and instance resources exactly once without disposing borrowed materials or textures
+  ---
+  duration_ms: 1617.516
+  type: 'test'
+  ...
+# Subtest: reset regenerates only its own landscape seed, clears detailed substitutions and keeps the rendering origin
+ok 205 - reset regenerates only its own landscape seed, clears detailed substitutions and keeps the rendering origin
+  ---
+  duration_ms: 1531.3666
+  type: 'test'
+  ...
+# Subtest: native kelp belt arrival and ordinary travel use absolute seed stops and preserve full saved ecology
+ok 206 - native kelp belt arrival and ordinary travel use absolute seed stops and preserve full saved ecology
+  ---
+  duration_ms: 854.149
+  type: 'test'
+  ...
+# Subtest: real kelp World water layers use surface 12 without changing logical X/Z or model records
+ok 207 - real kelp World water layers use surface 12 without changing logical X/Z or model records
+  ---
+  duration_ms: 5025.1469
+  type: 'test'
+  ...
+# Subtest: continuous kelp neighbor travel and cruise cross cells and rebase through actual World methods
+ok 208 - continuous kelp neighbor travel and cruise cross cells and rebase through actual World methods
+  ---
+  duration_ms: 985.9689
+  type: 'test'
+  ...
+# Subtest: kelp Q/E and free-depth navigation use the actual 12 m surface and its 11.5 m camera ceiling
+ok 209 - kelp Q/E and free-depth navigation use the actual 12 m surface and its 11.5 m camera ceiling
+  ---
+  duration_ms: 177.8066
+  type: 'test'
+  ...
+# Subtest: kelp capture and return preserve actual depth across origins, named layers, and pending real damping
+ok 210 - kelp capture and return preserve actual depth across origins, named layers, and pending real damping
+  ---
+  duration_ms: 728.5313
+  type: 'test'
+  ...
+# Subtest: kelp safe return height uses current terrain clearance and surface 12 while old reef stays at 8
+ok 211 - kelp safe return height uses current terrain clearance and surface 12 while old reef stays at 8
+  ---
+  duration_ms: 532.1412
+  type: 'test'
+  ...
+# Subtest: real kelp snapshot and observation adapter report depth from surface 12, preserving old reef fallback
+ok 212 - real kelp snapshot and observation adapter report depth from surface 12, preserving old reef fallback
+  ---
+  duration_ms: 165.3699
+  type: 'test'
+  ...
+# Subtest: kelp observation persistence is isolated from both default and explicit reef namespaces and typed seeds
+ok 213 - kelp observation persistence is isolated from both default and explicit reef namespaces and typed seeds
+  ---
+  duration_ms: 54.4684
+  type: 'test'
+  ...
+# Subtest: shared actual surface construction preserves reef material parameters and uses kelp height 12
+ok 214 - shared actual surface construction preserves reef material parameters and uses kelp height 12
+  ---
+  duration_ms: 29.7374
+  type: 'test'
+  ...
+# Subtest: coordinate allocation creates sparse coherent 4–6 member schools from real kelp hosts, independent of visit order
+ok 215 - coordinate allocation creates sparse coherent 4–6 member schools from real kelp hosts, independent of visit order
+  ---
+  duration_ms: 2728.22
+  type: 'test'
+  ...
+# Subtest: fixed-step frame partitions and reversed active Maps produce identical old and water-layer state
+ok 216 - fixed-step frame partitions and reversed active Maps produce identical old and water-layer state
+  ---
+  duration_ms: 5720.6961
+  type: 'test'
+  ...
+# Subtest: actual water movement respects nine-point bottom clearance, surface ceiling and total XYZ step budgets
+ok 217 - actual water movement respects nine-point bottom clearance, surface ceiling and total XYZ step budgets
+  ---
+  duration_ms: 4961.0886
+  type: 'test'
+  ...
+# Subtest: food is debited only at the actual moving local prey reference with a successful near-distance bite
+ok 218 - food is debited only at the actual moving local prey reference with a successful near-distance bite
+  ---
+  duration_ms: 584.3195
+  type: 'test'
+  ...
+# Subtest: distant local resources never feed a school member that cannot reach the food reference
+ok 219 - distant local resources never feed a school member that cannot reach the food reference
+  ---
+  duration_ms: 467.8933
+  type: 'test'
+  ...
+# Subtest: zero-step pause preserves whole records and low light reduces activity without fabricated feeding or night-depth relocation
+ok 220 - zero-step pause preserves whole records and low light reduces activity without fabricated feeding or night-depth relocation
+  ---
+  duration_ms: 686.4948
+  type: 'test'
+  ...
+# Subtest: one-time legacy upgrades preserve every old state field and initialize new clocks at the saved region time
+ok 221 - one-time legacy upgrades preserve every old state field and initialize new clocks at the saved region time
+  ---
+  duration_ms: 880.6813
+  type: 'test'
+  ...
+# Subtest: full and fewer-than-four-slot legacy records are marked examined and never replace or revive dead occupants
+ok 222 - full and fewer-than-four-slot legacy records are marked examined and never replace or revive dead occupants
+  ---
+  duration_ms: 2416.8753
+  type: 'test'
+  ...
+# Subtest: dead water records retain capacity and identity across ordinary reload and cannot trigger cohort refill
+ok 223 - dead water records retain capacity and identity across ordinary reload and cannot trigger cohort refill
+  ---
+  duration_ms: 620.082
+  type: 'test'
+  ...
+# Subtest: failed compatibility saves publish only intact base records; later ordinary revisit commits just one cohort
+ok 224 - failed compatibility saves publish only intact base records; later ordinary revisit commits just one cohort
+  ---
+  duration_ms: 1665.7418
+  type: 'test'
+  ...
+# Subtest: a fresh save failure publishes no unsaved population and can retry without duplicate identities
+ok 225 - a fresh save failure publishes no unsaved population and can retry without duplicate identities
+  ---
+  duration_ms: 260.077
+  type: 'test'
+  ...
+# Subtest: checkpoint, unload/revisit and reopen restore complete water records and the same next step
+ok 226 - checkpoint, unload/revisit and reopen restore complete water records and the same next step
+  ---
+  duration_ms: 1516.4837
+  type: 'test'
+  ...
+# Subtest: corrupt water ownership or live body clearance is rejected before any altered fish can be published
+ok 227 - corrupt water ownership or live body clearance is rejected before any altered fish can be published
+  ---
+  duration_ms: 2271.8258
+  type: 'test'
+  ...
+# Subtest: the actual 734.6s school pose remains clear through a 120s moving-stipe reference replay
+ok 228 - the actual 734.6s school pose remains clear through a 120s moving-stipe reference replay
+  ---
+  duration_ms: 2770.7318
+  type: 'test'
+  ...
+# Subtest: the actual 803.8s historical 24.9mm stipe intrusion recovers monotonically without a snap or food debit
+ok 229 - the actual 803.8s historical 24.9mm stipe intrusion recovers monotonically without a snap or food debit
+  ---
+  duration_ms: 32.5608
+  type: 'test'
+  ...
+# Subtest: allocation validates at the accepted saved clock and deformation environment rather than an empty initial phase
+ok 230 - allocation validates at the accepted saved clock and deformation environment rather than an empty initial phase
+  ---
+  duration_ms: 34.091
+  type: 'test'
+  ...
+# Subtest: one-time water mobility adds metadata without rewriting old live, dead, plant, food or individual fields
+ok 231 - one-time water mobility adds metadata without rewriting old live, dead, plant, food or individual fields
+  ---
+  duration_ms: 1007.939
+  type: 'test'
+  ...
+# Subtest: crossing publishes exactly one XYZ, energy and mobile-clock tick across differently aged owners in either Map order
+ok 232 - crossing publishes exactly one XYZ, energy and mobile-clock tick across differently aged owners in either Map order
+  ---
+  duration_ms: 767.7219
+  type: 'test'
+  ...
+# Subtest: the departure tick feeds source prey, later ticks feed destination prey, and all deadlines use the carried clock
+ok 233 - the departure tick feeds source prey, later ticks feed destination prey, and all deadlines use the carried clock
+  ---
+  duration_ms: 357.5658
+  type: 'test'
+  ...
+# Subtest: mobile route phase and depth do not inherit the current owner age or rewrite birthplace school fields
+ok 234 - mobile route phase and depth do not inherit the current owner age or rewrite birthplace school fields
+  ---
+  duration_ms: 486.0894
+  type: 'test'
+  ...
+# Subtest: a cross-seam school frame retains peers and produces the same target irrespective of owner iteration order
+ok 235 - a cross-seam school frame retains peers and produces the same target irrespective of owner iteration order
+  ---
+  duration_ms: 502.582
+  type: 'test'
+  ...
+# Subtest: static supports and intermediate barriers are checked over the full budgeted XYZ step without an upward snap
+ok 236 - static supports and intermediate barriers are checked over the full budgeted XYZ step without an upward snap
+  ---
+  duration_ms: 321.0585
+  type: 'test'
+  ...
+# Subtest: moving plant references resolve their own geographic clock and environment rather than mobile fish time
+ok 237 - moving plant references resolve their own geographic clock and environment rather than mobile fish time
+  ---
+  duration_ms: 305.8236
+  type: 'test'
+  ...
+# Subtest: all differently aged local plants finish their tick before any water fish reads the geographic reference
+ok 238 - all differently aged local plants finish their tick before any water fish reads the geographic reference
+  ---
+  duration_ms: 579.9712
+  type: 'test'
+  ...
+# Subtest: dead records occupy destination capacity and competing arrivals cannot exceed the combined regional animal cap
+ok 239 - dead records occupy destination capacity and competing arrivals cannot exceed the combined regional animal cap
+  ---
+  duration_ms: 265.4999
+  type: 'test'
+  ...
+# Subtest: unloaded and locked owners block entry without changing identity or granting a larger movement budget
+ok 240 - unloaded and locked owners block entry without changing identity or granting a larger movement budget
+  ---
+  duration_ms: 522.3611
+  type: 'test'
+  ...
+# Subtest: preactivation metadata commits before publication while all historical record fields remain exact
+ok 241 - preactivation metadata commits before publication while all historical record fields remain exact
+  ---
+  duration_ms: 792.5053
+  type: 'test'
+  ...
+# Subtest: throwing or explicitly uncommitted preactivation saves roll back the complete base record and retry once
+ok 242 - throwing or explicitly uncommitted preactivation saves roll back the complete base record and retry once
+  ---
+  duration_ms: 3445.0421
+  type: 'test'
+  ...
+# Subtest: support correction, missing water allocation and mobility metadata share one preactivation transaction and rejection
+ok 243 - support correction, missing water allocation and mobility metadata share one preactivation transaction and rejection
+  ---
+  duration_ms: 1480.1848
+  type: 'test'
+  ...
+# Subtest: mobile restoration retains strict birthplace home and finite metadata checks while only current seam position permits zero margin
+ok 244 - mobile restoration retains strict birthplace home and finite metadata checks while only current seam position permits zero margin
+  ---
+  duration_ms: 349.507
+  type: 'test'
+  ...
+# Subtest: atomic checkpoint, zero-step pause, actual unload/revisit and reopen preserve complete ownership without a birthplace refill
+ok 245 - atomic checkpoint, zero-step pause, actual unload/revisit and reopen preserve complete ownership without a birthplace refill
+  ---
+  duration_ms: 1518.9206
+  type: 'test'
+  ...
+# Subtest: queued atomic checkpoints capture the latest ownership at execution and failed unloads retain all owners for retry
+ok 246 - queued atomic checkpoints capture the latest ownership at execution and failed unloads retain all owners for retry
+  ---
+  duration_ms: 1472.4481
+  type: 'test'
+  ...
+# Subtest: unloading only the destination still checkpoints its retained departure owner in one coherent batch
+ok 247 - unloading only the destination still checkpoints its retained departure owner in one coherent batch
+  ---
+  duration_ms: 435.3189
+  type: 'test'
+  ...
+# Subtest: pre-unload locks freeze owner clocks and a failed birth-cell read cannot allocate duplicate departing fish
+ok 248 - pre-unload locks freeze owner clocks and a failed birth-cell read cannot allocate duplicate departing fish
+  ---
+  duration_ms: 919.3092
+  type: 'test'
+  ...
+# Subtest: durable ever-occupied markers and historical deaths prevent category supplementation after departure
+ok 249 - durable ever-occupied markers and historical deaths prevent category supplementation after departure
+  ---
+  duration_ms: 147.9157
+  type: 'test'
+  ...
+# Subtest: a legacy non-atomic adapter keeps even restored mobile records in the old local patrol and never duplicates ownership
+ok 250 - a legacy non-atomic adapter keeps even restored mobile records in the old local patrol and never duplicates ownership
+  ---
+  duration_ms: 566.2099
+  type: 'test'
+  ...
+# Subtest: restored mobile history with a non-atomic adapter uses geographic plant motion when patrol intention is unchanged
+ok 251 - restored mobile history with a non-atomic adapter uses geographic plant motion when patrol intention is unchanged
+  ---
+  duration_ms: 379.9818
+  type: 'test'
+  ...
+# Subtest: all three entire coral prototypes change within the existing combined triangle budget
+ok 252 - all three entire coral prototypes change within the existing combined triangle budget
+  ---
+  duration_ms: 151.7977
+  type: 'test'
+  ...
+# v3 -> v4 triangles: branching 2165 -> 2004, table 1817 -> 2056, fan 1813 -> 1579; total 5795 -> 5639
+# Subtest: meadow feeding buffers, rubble and discovery props retain their independent pre-change bytes
+ok 253 - meadow feeding buffers, rubble and discovery props retain their independent pre-change bytes
+  ---
+  duration_ms: 37.7928
+  type: 'test'
+  ...
+# Subtest: one coral surface hooks the installed standard shader without displacement or extra textures
+ok 254 - one coral surface hooks the installed standard shader without displacement or extra textures
+  ---
+  duration_ms: 4.2528
+  type: 'test'
+  ...
+# CPU checks the installed Three shader hooks; it does not compile a GPU shader or establish browser visual acceptance.
+# Subtest: production shallow chunks share the new material and release the same bounded kit exactly once
+ok 255 - production shallow chunks share the new material and release the same bounded kit exactly once
+  ---
+  duration_ms: 17019.7287
+  type: 'test'
+  ...
+# Subtest: reference material inventory is independent of energy; historical deaths gain no fabricated carcass
+ok 256 - reference material inventory is independent of energy; historical deaths gain no fabricated carcass
+  ---
+  duration_ms: 11.4942
+  type: 'test'
+  ...
+# Subtest: production consumes finite nutrients; litter and decomposition feed measured transfer ledgers
+ok 257 - production consumes finite nutrients; litter and decomposition feed measured transfer ledgers
+  ---
+  duration_ms: 3.4474
+  type: 'test'
+  ...
+# Subtest: actual ingestion partitions tracked intake into retention, detritus and explicit output
+ok 258 - actual ingestion partitions tracked intake into retention, detritus and explicit output
+  ---
+  duration_ms: 1.1336
+  type: 'test'
+  ...
+# Subtest: death enters detritus once, and predation transfers the prey stock without energy-to-mass conversion
+ok 259 - death enters detritus once, and predation transfers the prey stock without energy-to-mass conversion
+  ---
+  duration_ms: 7.4058
+  type: 'test'
+  ...
+# Subtest: consumer geographic ownership carries material and preserves each region balance
+ok 260 - consumer geographic ownership carries material and preserves each region balance
+  ---
+  duration_ms: 1.4035
+  type: 'test'
+  ...
+# Subtest: integrated new profile covers roles, consumes real food and conserves both ledgers across local and transport steps
+ok 261 - integrated new profile covers roles, consumes real food and conserves both ledgers across local and transport steps
+  ---
+  duration_ms: 4127.7069
+  type: 'test'
+  ...
+# Subtest: food shortage prevents intake and energy gain; new light production obeys the resource boundary
+ok 262 - food shortage prevents intake and energy gain; new light production obeys the resource boundary
+  ---
+  duration_ms: 707.1752
+  type: 'test'
+  ...
+# Subtest: death, complete network and individual identities survive actual unload, revisit and paused refresh without refilling
+ok 263 - death, complete network and individual identities survive actual unload, revisit and paused refresh without refilling
+  ---
+  duration_ms: 3460.1305
+  type: 'test'
+  ...
+# Subtest: new-profile partial/corrupt saved networks reject before regeneration or replacement
+ok 264 - new-profile partial/corrupt saved networks reject before regeneration or replacement
+  ---
+  duration_ms: 2384.6692
+  type: 'test'
+  ...
+# Subtest: missing whole network initializes once at preactivation; failed commit activates no new owner
+ok 265 - missing whole network initializes once at preactivation; failed commit activates no new owner
+  ---
+  duration_ms: 1382.4045
+  type: 'test'
+  ...
+# Subtest: old profile remains outside the network; defaults preserve complete records and public shape
+ok 266 - old profile remains outside the network; defaults preserve complete records and public shape
+  ---
+  duration_ms: 8617.0347
+  type: 'test'
+  ...
+# Subtest: production route links living habitat to four spontaneous animal relationships, with reproducible new births
+ok 267 - production route links living habitat to four spontaneous animal relationships, with reproducible new births
+  ---
+  duration_ms: 18583.0072
+  type: 'test'
+  ...
+# Subtest: fresh living belt uses its committed reef, sediment, meadow and water supports for real births and balanced stocks
+ok 268 - fresh living belt uses its committed reef, sediment, meadow and water supports for real births and balanced stocks
+  ---
+  duration_ms: 12095.6203
+  type: 'test'
+  ...
+# Subtest: delayed and superseded whole-belt commits reveal no partial source or population, and restore their exact durable births
+ok 269 - delayed and superseded whole-belt commits reveal no partial source or population, and restore their exact durable births
+  ---
+  duration_ms: 16816.003
+  type: 'test'
+  ...
+# Subtest: write and read failures never become virgin owners; a successful retry commits the complete living belt
+ok 270 - write and read failures never become virgin owners; a successful retry commits the complete living belt
+  ---
+  duration_ms: 3615.496
+  type: 'test'
+  ...
+# Subtest: one saved group member blocks the belt and preserves every historical field and death
+ok 271 - one saved group member blocks the belt and preserves every historical field and death
+  ---
+  duration_ms: 3901.8525
+  type: 'test'
+  ...
+# Subtest: all nine owners unload, revisit and cold restore exact full living-belt populations, plans, deaths and inventories
+ok 272 - all nine owners unload, revisit and cold restore exact full living-belt populations, plans, deaths and inventories
+  ---
+  duration_ms: 10803.9507
+  type: 'test'
+  ...
+# Subtest: living belt requires explicit opt-in and living geology; disabled admission retains the established v4 path
+ok 273 - living belt requires explicit opt-in and living geology; disabled admission retains the established v4 path
+  ---
+  duration_ms: 4656.7897
+  type: 'test'
+  ...
+# Subtest: a complete committed belt renders four real sources through the existing readiness gate
+ok 274 - a complete committed belt renders four real sources through the existing readiness gate
+  ---
+  duration_ms: 4915.567
+  type: 'test'
+  ...
+# Subtest: belt reef colonies and added meadow roots use real rock and unchanged floor triangles
+ok 275 - belt reef colonies and added meadow roots use real rock and unchanged floor triangles
+  ---
+  duration_ms: 5005.0979
+  type: 'test'
+  ...
+# Subtest: belt rebase, unload and saved-plan restore keep bounded resources and exact instance matrices
+ok 276 - belt rebase, unload and saved-plan restore keep bounded resources and exact instance matrices
+  ---
+  duration_ms: 9617.9096
+  type: 'test'
+  ...
+# Subtest: v5 integration keeps saved v4 sources, terrain and actual instances byte-identical
+ok 277 - v5 integration keeps saved v4 sources, terrain and actual instances byte-identical
+  ---
+  duration_ms: 2308.9399
+  type: 'test'
+  ...
+# Subtest: one deterministic four-owner belt contains a real reef, complete meadow and surveyed native sediment opening
+ok 278 - one deterministic four-owner belt contains a real reef, complete meadow and surveyed native sediment opening
+  ---
+  duration_ms: 2554.2937
+  type: 'test'
+  ...
+# Subtest: the composite reuses existing v2 habitat plans and retains complete native owners and protected boundary hosts
+ok 279 - the composite reuses existing v2 habitat plans and retains complete native owners and protected boundary hosts
+  ---
+  duration_ms: 557.6384
+  type: 'test'
+  ...
+# Subtest: the native sand route checks a finite body envelope, rather than only counting a clear centre point
+ok 280 - the native sand route checks a finite body envelope, rather than only counting a clear centre point
+  ---
+  duration_ms: 36.3588
+  type: 'test'
+  ...
+# Subtest: habitat fields use the actual added rock and meadow supports without changing floor or depth
+ok 281 - habitat fields use the actual added rock and meadow supports without changing floor or depth
+  ---
+  duration_ms: 1.9222
+  type: 'test'
+  ...
+# Subtest: all original six-metre boundary bands and queries outside the owner keep the base habitat exactly
+ok 282 - all original six-metre boundary bands and queries outside the owner keep the base habitat exactly
+  ---
+  duration_ms: 17.5701
+  type: 'test'
+  ...
+# Subtest: saved plan validation rejects altered supports, group membership, route and a fifth terrain source
+ok 283 - saved plan validation rejects altered supports, group membership, route and a fifth terrain source
+  ---
+  duration_ms: 1417.4201
+  type: 'test'
+  ...
+# Subtest: unsuitable groups decline finitely, and invalid coordinate/world requests are rejected
+ok 284 - unsuitable groups decline finitely, and invalid coordinate/world requests are rejected
+  ---
+  duration_ms: 5507.1685
+  type: 'test'
+  ...
+# Subtest: the single meadow prototype has complete finite positions, normals, colours, UVs and indices in its unit height
+ok 285 - the single meadow prototype has complete finite positions, normals, colours, UVs and indices in its unit height
+  ---
+  duration_ms: 159.3508
+  type: 'test'
+  ...
+# Subtest: every blade retains one exact fixed rootXZ reference and a zero-height substrate root
+ok 286 - every blade retains one exact fixed rootXZ reference and a zero-height substrate root
+  ---
+  duration_ms: 61.5313
+  type: 'test'
+  ...
+# Subtest: roots cover the existing broad patch in all quadrants with one sand opening and finite current-bend reserve
+ok 287 - roots cover the existing broad patch in all quadrants with one sand opening and finite current-bend reserve
+  ---
+  duration_ms: 24.9371
+  type: 'test'
+  ...
+# Subtest: a deterministic multi-shoot meadow retains height and width variation within one bounded 768-triangle geometry
+ok 288 - a deterministic multi-shoot meadow retains height and width variation within one bounded 768-triangle geometry
+  ---
+  duration_ms: 75.7715
+  type: 'test'
+  ...
+# Subtest: grounded discovery props and the original palette survive later whole-reef kit upgrades byte-exact
+ok 289 - grounded discovery props and the original palette survive later whole-reef kit upgrades byte-exact
+  ---
+  duration_ms: 76.6887
+  type: 'test'
+  ...
+# Subtest: the complete outer-reef kit has finite triangles, normals and bounded attached metre envelopes
+ok 290 - the complete outer-reef kit has finite triangles, normals and bounded attached metre envelopes
+  ---
+  duration_ms: 83.7738
+  type: 'test'
+  ...
+# Subtest: the branching crown has a broad low connected foundation and distributed elevated stems instead of one central inverted cone
+ok 291 - the branching crown has a broad low connected foundation and distributed elevated stems instead of one central inverted cone
+  ---
+  duration_ms: 29.3784
+  type: 'test'
+  ...
+# Subtest: table and fan remain distinct whole forms: thin overlapping horizontal crowns and a branching web with genuine holes
+ok 292 - table and fan remain distinct whole forms: thin overlapping horizontal crowns and a branching web with genuine holes
+  ---
+  duration_ms: 174.7792
+  type: 'test'
+  ...
+# Subtest: coarse angular rubble and all three complete crowns keep finite shared-prototype triangle budgets
+ok 293 - coarse angular rubble and all three complete crowns keep finite shared-prototype triangle budgets
+  ---
+  duration_ms: 29.9177
+  type: 'test'
+  ...
+# Subtest: the completed meadow, rootXZ grounding references, discovery props and palette remain byte-exact
+ok 294 - the completed meadow, rootXZ grounding references, discovery props and palette remain byte-exact
+  ---
+  duration_ms: 19.1777
+  type: 'test'
+  ...
+# Subtest: four fresh owners share real seam geometry, births and one atomic inventory admission; inactive siblings freeze
+ok 295 - four fresh owners share real seam geometry, births and one atomic inventory admission; inactive siblings freeze
+  ---
+  duration_ms: 17446.2607
+  type: 'test'
+  ...
+# Subtest: full-group delayed, failed and superseded commits publish no partial source/population and can restore after retry
+ok 296 - full-group delayed, failed and superseded commits publish no partial source/population and can restore after retry
+  ---
+  duration_ms: 26414.1039
+  type: 'test'
+  ...
+# Subtest: legacy mixed groups and complete old v3 death records use the old path without replacement
+ok 297 - legacy mixed groups and complete old v3 death records use the old path without replacement
+  ---
+  duration_ms: 10639.7065
+  type: 'test'
+  ...
+# Subtest: all nine owners unload and full group restoration preserves complete deaths, clocks, stocks and 25/9/20 bounds
+ok 298 - all nine owners unload and full group restoration preserves complete deaths, clocks, stocks and 25/9/20 bounds
+  ---
+  duration_ms: 9555.2479
+  type: 'test'
+  ...
+# Subtest: v4 retains saved v1/v2/v3 plans, sources, queries and the original nine routes exactly
+ok 299 - v4 retains saved v1/v2/v3 plans, sources, queries and the original nine routes exactly
+  ---
+  duration_ms: 11016.8987
+  type: 'test'
+  ...
+# Subtest: the four persisted floor slices have equal internal vertices/normals and actual raycast support across the continuous relief
+ok 300 - the four persisted floor slices have equal internal vertices/normals and actual raycast support across the continuous relief
+  ---
+  duration_ms: 3445.4955
+  type: 'test'
+  ...
+# Subtest: temporary/failed batches expose no ready owner, then one commit replaces full owners and restored sources stay bounded
+ok 301 - temporary/failed batches expose no ready owner, then one commit replaces full owners and restored sources stay bounded
+  ---
+  duration_ms: 9111.4413
+  type: 'test'
+  ...
+# Subtest: one deterministic complete group carries actual gentle macro relief and finite unsuitable groups decline
+ok 302 - one deterministic complete group carries actual gentle macro relief and finite unsuitable groups decline
+  ---
+  duration_ms: 5928.1326
+  type: 'test'
+  ...
+# group 54,8: actual span=4.654311180114746m; maximum triangle grade=0.6499898806667463; original scene descriptors unchanged
+# Subtest: all four actual Float32 internal edges match and an independently measured shared seam spans at least twelve metres
+ok 303 - all four actual Float32 internal edges match and an independently measured shared seam spans at least twelve metres
+  ---
+  duration_ms: 4.5861
+  type: 'test'
+  ...
+# four shared edges: 260 exact Float32 vertex comparisons; actual continuous >=1m internal seam=13m
+# Subtest: all native hosts, real hundred-root grass bed and driftwood remain exact on their entire protected floor footprints
+ok 304 - all native hosts, real hundred-root grass bed and driftwood remain exact on their entire protected floor footprints
+  ---
+  duration_ms: 353.4797
+  type: 'test'
+  ...
+# protected actual grass=106; props=1; hard hosts=27; complete footprint probes=2142; regrounded original rubble=50
+# Subtest: saved validation rejects changed shared grids or hosts, and deterministic replay survives original owner cache eviction
+ok 305 - saved validation rejects changed shared grids or hosts, and deterministic replay survives original owner cache eviction
+  ---
+  duration_ms: 3537.2564
+  type: 'test'
+  ...
+# Subtest: shallow display retains directional relief while water turbidity still removes distant contrast
+ok 306 - shallow display retains directional relief while water turbidity still removes distant contrast
+  ---
+  duration_ms: 3.5367
+  type: 'test'
+  ...
+# Subtest: day/night and depth change only display output and preserve the entire supplied forcing object
+ok 307 - day/night and depth change only display output and preserve the entire supplied forcing object
+  ---
+  duration_ms: 3.0729
+  type: 'test'
+  ...
+# Subtest: display boundary inputs always produce finite nonnegative settings
+ok 308 - display boundary inputs always produce finite nonnegative settings
+  ---
+  duration_ms: 0.8834
+  type: 'test'
+  ...
+# Subtest: whole-scene asset kit has three distinct attached colony forms in metre-scaled envelopes
+ok 309 - whole-scene asset kit has three distinct attached colony forms in metre-scaled envelopes
+  ---
+  duration_ms: 205.9411
+  type: 'test'
+  ...
+# Subtest: new plan renders every colony in its morphotype batch and retains actual metre transforms
+ok 310 - new plan renders every colony in its morphotype batch and retains actual metre transforms
+  ---
+  duration_ms: 5941.7717
+  type: 'test'
+  ...
+# Subtest: new natural rocks render the exact shared triangular support surface
+ok 311 - new natural rocks render the exact shared triangular support surface
+  ---
+  duration_ms: 5460.936
+  type: 'test'
+  ...
+# Subtest: continuous new sea bed keeps matching geometry, normal, colour and UV vertices across both chunk seams
+ok 312 - continuous new sea bed keeps matching geometry, normal, colour and UV vertices across both chunk seams
+  ---
+  duration_ms: 4133.2938
+  type: 'test'
+  ...
+# Subtest: whole-scene streaming remains bounded and rebase changes no resident geometry or instances
+ok 313 - whole-scene streaming remains bounded and rebase changes no resident geometry or instances
+  ---
+  duration_ms: 12710.7859
+  type: 'test'
+  ...
+# Subtest: switching the independent scene version owns and disposes only the replaced kit
+ok 314 - switching the independent scene version owns and disposes only the replaced kit
+  ---
+  duration_ms: 7319.7573
+  type: 'test'
+  ...
+# Subtest: sparse discovery props use exact shared rigid triangles, metre scales and flooded static bottle state in the existing chunk group
+ok 315 - sparse discovery props use exact shared rigid triangles, metre scales and flooded static bottle state in the existing chunk group
+  ---
+  duration_ms: 5854.1067
+  type: 'test'
+  ...
+# Subtest: scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+ok 316 - scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+  ---
+  duration_ms: 376.341
+  type: 'test'
+  ...
+# Subtest: new scene hides authored terrain and disables all three old additive scenery systems
+ok 317 - new scene hides authored terrain and disables all three old additive scenery systems
+  ---
+  duration_ms: 75.9281
+  type: 'test'
+  ...
+# Subtest: world restores saved global forcing and clock before handing environment to regional ecology
+ok 318 - world restores saved global forcing and clock before handing environment to regional ecology
+  ---
+  duration_ms: 109.7147
+  type: 'test'
+  ...
+# Subtest: new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+ok 319 - new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+  ---
+  duration_ms: 53.8727
+  type: 'test'
+  ...
+# Subtest: route controls use finite ordinary travel without teleport or ecology replacement
+ok 320 - route controls use finite ordinary travel without teleport or ecology replacement
+  ---
+  duration_ms: 1666.4019
+  type: 'test'
+  ...
+# Subtest: the two living-belt entries face their planned local spaces and keep original ecological controls
+ok 321 - the two living-belt entries face their planned local spaces and keep original ecological controls
+  ---
+  duration_ms: 2570.7571
+  type: 'test'
+  ...
+# Subtest: environment updates and pause save the actual global forcing and latest time
+ok 322 - environment updates and pause save the actual global forcing and latest time
+  ---
+  duration_ms: 29.5207
+  type: 'test'
+  ...
+# Subtest: explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+ok 323 - explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+  ---
+  duration_ms: 1481.4361
+  type: 'test'
+  ...
+# Subtest: new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+ok 324 - new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+  ---
+  duration_ms: 1230.003
+  type: 'test'
+  ...
+# Subtest: default-disabled grazing preserves complete saved old turtle and native future state
+ok 325 - default-disabled grazing preserves complete saved old turtle and native future state
+  ---
+  duration_ms: 14019.5046
+  type: 'test'
+  ...
+# Subtest: organic boundary and grazing fields become public only after an atomic successful save and preserve full old history
+ok 326 - organic boundary and grazing fields become public only after an atomic successful save and preserve full old history
+  ---
+  duration_ms: 6626.2401
+  type: 'test'
+  ...
+# Subtest: read failure and null or throwing atomic saves never publish partial compatibility fields or replace old disk history
+ok 327 - read failure and null or throwing atomic saves never publish partial compatibility fields or replace old disk history
+  ---
+  duration_ms: 13697.9186
+  type: 'test'
+  ...
+# Subtest: unload, revisit and cold refresh retain complete grazing history without repeating initial input or refilling dead turtles
+ok 328 - unload, revisit and cold refresh retain complete grazing history without repeating initial input or refilling dead turtles
+  ---
+  duration_ms: 9562.4454
+  type: 'test'
+  ...
+# Subtest: partial saved organic or grazing records reject without repairing or regenerating the original turtle
+ok 329 - partial saved organic or grazing records reject without repairing or regenerating the original turtle
+  ---
+  duration_ms: 4861.9405
+  type: 'test'
+  ...
+# Subtest: ordinary seeded turtle grazing reaches the existing static leaf mesh, consumes plant stock and conserves the ecosystem
+ok 330 - ordinary seeded turtle grazing reaches the existing static leaf mesh, consumes plant stock and conserves the ecosystem
+  ---
+  duration_ms: 7727.3059
+  type: 'test'
+  ...
+# {"seed":"living-shallows-v1|string:42","realTurtleOwners":["6,2","6,3"],"contacts":[{"id":"ocean-turtle:6,3:green-turtle:0","owner":"6,3","firstBiteAtSec":24.3,"plantId":"living-grass:147,83","leafIndex":90,"biteCount":1,"consumedUnits":0.0005,"nearestStaticGroundedLeafDistanceM":2.162713614856923e-11,"phase":"grazing"}],"plantDebitsVerified":true,"materialBalanceError":2.353672812205332e-14,"foodBalanceError":2.0625862129364236e-14,"feedingPhaseColdRestoreExact":true,"forcedBirthsOrFood":false,"shaderCurrentBendOmittedLocalXZUnitsMax":0.05,"browserViewingVerified":false}
+# Subtest: legacy turtle records remain outside the existing material boundary until an explicit admission
+ok 331 - legacy turtle records remain outside the existing material boundary until an explicit admission
+  ---
+  duration_ms: 12.6365
+  type: 'test'
+  ...
+# Subtest: admission records live turtle stocks once without recomputing history or reviving a death
+ok 332 - admission records live turtle stocks once without recomputing history or reviving a death
+  ---
+  duration_ms: 4.5
+  type: 'test'
+  ...
+# Subtest: a real plant debit transfers 60 percent to the turtle, 25 to residues and 15 to output
+ok 333 - a real plant debit transfers 60 percent to the turtle, 25 to residues and 15 to output
+  ---
+  duration_ms: 2.4902
+  type: 'test'
+  ...
+# Subtest: grazing is bounded by actual plant stocks and body capacity; excess retention becomes output
+ok 334 - grazing is bounded by actual plant stocks and body capacity; excess retention becomes output
+  ---
+  duration_ms: 0.9369
+  type: 'test'
+  ...
+# Subtest: only an admitted living turtle can receive plant material and invalid quantities cannot change stocks
+ok 335 - only an admitted living turtle can receive plant material and invalid quantities cannot change stocks
+  ---
+  duration_ms: 2.4428
+  type: 'test'
+  ...
+# Subtest: registered turtle metabolism and a real death preserve balance without repeating carcass material
+ok 336 - registered turtle metabolism and a real death preserve balance without repeating carcass material
+  ---
+  duration_ms: 1.4045
+  type: 'test'
+  ...
+# Subtest: partial, invalid or unbalanced turtle extensions fail validation rather than being repaired
+ok 337 - partial, invalid or unbalanced turtle extensions fail validation rather than being repaired
+  ---
+  duration_ms: 8.3915
+  type: 'test'
+  ...
+# Subtest: summary includes registered stocks and distinguishes the grazer role from actual observed plant consumption
+ok 338 - summary includes registered stocks and distinguishes the grazer role from actual observed plant consumption
+  ---
+  duration_ms: 1.4602
+  type: 'test'
+  ...
+# actual visual route: 73,1 / 14 elements / 4 living fish / 12.00 m
+# Subtest: a complete actual core selects living fish and public reef/grass IDs without changing source records
+ok 339 - a complete actual core selects living fish and public reef/grass IDs without changing source records
+  ---
+  duration_ms: 41.7004
+  type: 'test'
+  ...
+# Subtest: the admitted path continuously moves through three low views in absolute world metres
+ok 340 - the admitted path continuously moves through three low views in absolute world metres
+  ---
+  duration_ms: 63.9724
+  type: 'test'
+  ...
+# Subtest: blocked vertical clearance and failed physical queries produce explicit absence
+ok 341 - blocked vertical clearance and failed physical queries produce explicit absence
+  ---
+  duration_ms: 8.3865
+  type: 'test'
+  ...
+# Subtest: dead fish, tiny nearest animals, missing grass and distant fish cannot stand in for a complete real scene
+ok 342 - dead fish, tiny nearest animals, missing grass and distant fish cannot stand in for a complete real scene
+  ---
+  duration_ms: 2.4169
+  type: 'test'
+  ...
+# Subtest: owner reads remain bounded and malformed or duplicate loaded windows are refused
+ok 343 - owner reads remain bounded and malformed or duplicate loaded windows are refused
+  ---
+  duration_ms: 1.5526
+  type: 'test'
+  ...
+# Subtest: a naturally committed living42 window supplies the complete route without rewriting animals, clocks or food
+ok 344 - a naturally committed living42 window supplies the complete route without rewriting animals, clocks or food
+  ---
+  duration_ms: 13932.3442
+  type: 'test'
+  ...
+# Subtest: the production whole-scene route uses only loaded real descriptors and alive actual fish
+ok 345 - the production whole-scene route uses only loaded real descriptors and alive actual fish
+  ---
+  duration_ms: 14719.2432
+  type: 'test'
+  ...
+# Subtest: entering the ordinary whole-scene view changes observation only and keeps complete ecology and clocks
+ok 346 - entering the ordinary whole-scene view changes observation only and keeps complete ecology and clocks
+  ---
+  duration_ms: 8099.0324
+  type: 'test'
+  ...
+# Subtest: the real director advances across all three admitted stops and completes once without altering ecology
+ok 347 - the real director advances across all three admitted stops and completes once without altering ecology
+  ---
+  duration_ms: 5573.3627
+  type: 'test'
+  ...
+# Subtest: pause and camera playback rates control the same admitted path without changing ecology speed or stocks
+ok 348 - pause and camera playback rates control the same admitted path without changing ecology speed or stocks
+  ---
+  duration_ms: 4643.7047
+  type: 'test'
+  ...
+# Subtest: source paths and actual camera positions remain in world metres through a floating-origin change
+ok 349 - source paths and actual camera positions remain in world metres through a floating-origin change
+  ---
+  duration_ms: 9872.4338
+  type: 'test'
+  ...
+# Subtest: missing composition or living sources stays honestly empty and never invents a full-scene demonstration
+ok 350 - missing composition or living sources stays honestly empty and never invents a full-scene demonstration
+  ---
+  duration_ms: 4217.6156
+  type: 'test'
+  ...
+# Subtest: the async sample entry actually loads its existing habitat stop and preserves every prior saved owner
+ok 351 - the async sample entry actually loads its existing habitat stop and preserves every prior saved owner
+  ---
+  duration_ms: 11268.8026
+  type: 'test'
+  ...
+# Subtest: manual camera or target takeover rejects a late async sample without undoing the user view
+ok 352 - manual camera or target takeover rejects a late async sample without undoing the user view
+  ---
+  duration_ms: 19317.4055
+  type: 'test'
+  ...
+# Subtest: a real ordinary reef predation event keeps its cause and cannot become a sea-spider event
+ok 353 - a real ordinary reef predation event keeps its cause and cannot become a sea-spider event
+  ---
+  duration_ms: 112.9976
+  type: 'test'
+  ...
+# Subtest: the deep predation schema preserves its finite condition-transfer values and units
+ok 354 - the deep predation schema preserves its finite condition-transfer values and units
+  ---
+  duration_ms: 0.8171
+  type: 'test'
+  ...
+# Subtest: missing, nonfinite or differently measured predation values retain the real cause without fabricated zeroes
+ok 355 - missing, nonfinite or differently measured predation values retain the real cause without fabricated zeroes
+  ---
+  duration_ms: 0.4962
+  type: 'test'
+  ...
+# Subtest: kelp drift uses finite real intake values and never substitutes missing stock with zero
+ok 356 - kelp drift uses finite real intake values and never substitutes missing stock with zero
+  ---
+  duration_ms: 1.583
+  type: 'test'
+  ...
+# Subtest: other native feeding explanations keep resource names, finite intake and source causes
+ok 357 - other native feeding explanations keep resource names, finite intake and source causes
+  ---
+  duration_ms: 0.7717
+  type: 'test'
+  ...
+# Subtest: production handlers preserve Space activation on buttons, links and other native controls
+ok 358 - production handlers preserve Space activation on buttons, links and other native controls
+  ---
+  duration_ms: 2.6325
+  type: 'test'
+  ...
+# Subtest: nested labels, SVG icons and text nodes retain their enclosing control keyboard behavior
+ok 359 - nested labels, SVG icons and text nodes retain their enclosing control keyboard behavior
+  ---
+  duration_ms: 12.4565
+  type: 'test'
+  ...
+# Subtest: contenteditable regions and ARIA input controls keep editing and navigation keys
+ok 360 - contenteditable regions and ARIA input controls keep editing and navigation keys
+  ---
+  duration_ms: 0.8196
+  type: 'test'
+  ...
+# Subtest: scene WASDQE still take over the director, suppress page defaults and release on keyup
+ok 361 - scene WASDQE still take over the director, suppress page defaults and release on keyup
+  ---
+  duration_ms: 1.0377
+  type: 'test'
+  ...
+# Subtest: changing focus while a movement key is held cannot leave a camera key stuck
+ok 362 - changing focus while a movement key is held cannot leave a camera key stuck
+  ---
+  duration_ms: 1.2059
+  type: 'test'
+  ...
+# Subtest: default false matches the independently frozen full previous regional model including ordinary future steps
+ok 363 - default false matches the independently frozen full previous regional model including ordinary future steps
+  ---
+  duration_ms: 11105.4831
+  type: 'test'
+  ...
+# Subtest: once-only committed turtles preserve complete old individuals, deaths, positive stocks, ledgers, clocks and opaque state
+ok 364 - once-only committed turtles preserve complete old individuals, deaths, positive stocks, ledgers, clocks and opaque state
+  ---
+  duration_ms: 5165.1997
+  type: 'test'
+  ...
+# Subtest: sparse allocation is typed and deterministic across visit order and reversed actual scenery/native arrays without consuming old state
+ok 365 - sparse allocation is typed and deterministic across visit order and reversed actual scenery/native arrays without consuming old state
+  ---
+  duration_ms: 8996.4146
+  type: 'test'
+  ...
+# Subtest: birth and all sixteen patrol points use a real sediment-rooted six-tuft cluster and actual finite whole-body support
+ok 366 - birth and all sixteen patrol points use a real sediment-rooted six-tuft cluster and actual finite whole-body support
+  ---
+  duration_ms: 1711.3904
+  type: 'test'
+  ...
+# Subtest: one actual normal-speed patrol, ascent, eight-second nasal breathing and descent obey full XYZ, turn and intermediate support budgets
+ok 367 - one actual normal-speed patrol, ascent, eight-second nasal breathing and descent obey full XYZ, turn and intermediate support budgets
+  ---
+  duration_ms: 8705.8246
+  type: 'test'
+  ...
+# Subtest: turtle stepping never changes the independently frozen native stocks, food history, randomness or old event stream
+ok 368 - turtle stepping never changes the independently frozen native stocks, food history, randomness or old event stream
+  ---
+  duration_ms: 4643.0778
+  type: 'test'
+  ...
+# Subtest: fixed-step partitions and reversed owner order match complete state while paused and locked owners do not advance
+ok 369 - fixed-step partitions and reversed owner order match complete state while paused and locked owners do not advance
+  ---
+  duration_ms: 4815.2499
+  type: 'test'
+  ...
+# Subtest: unload and reopen freeze complete local turtle clocks, cohorts and native state and preserve the same next ordinary step
+ok 370 - unload and reopen freeze complete local turtle clocks, cohorts and native state and preserve the same next ordinary step
+  ---
+  duration_ms: 4867.5118
+  type: 'test'
+  ...
+# Subtest: a full compatibility transaction exposes no uncommitted turtle, and null or throwing saves preserve old disk records before retry
+ok 371 - a full compatibility transaction exposes no uncommitted turtle, and null or throwing saves preserve old disk records before retry
+  ---
+  duration_ms: 6826.7465
+  type: 'test'
+  ...
+# Subtest: native and turtle deaths occupy the shared twenty-slot capacity and no once-only empty or dead cohort is refilled
+ok 372 - native and turtle deaths occupy the shared twenty-slot capacity and no once-only empty or dead cohort is refilled
+  ---
+  duration_ms: 2622.5715
+  type: 'test'
+  ...
+# Subtest: invalid saved turtle identity, ownership, body, grass source, finite clock, future marker or excess speed is rejected without regenerating old animals
+ok 373 - invalid saved turtle identity, ownership, body, grass source, finite clock, future marker or excess speed is rejected without regenerating old animals
+  ---
+  duration_ms: 5461.5438
+  type: 'test'
+  ...
+# Subtest: the old roaming ray candidate and ownership commit reserve a saved turtle death as a twentieth resident
+ok 374 - the old roaming ray candidate and ownership commit reserve a saved turtle death as a twentieth resident
+  ---
+  duration_ms: 1205.2547
+  type: 'test'
+  ...
+# Subtest: optional initializer is additive and the absent controller leaves the whole old patrol record exact
+ok 375 - optional initializer is additive and the absent controller leaves the whole old patrol record exact
+  ---
+  duration_ms: 5687.5732
+  type: 'test'
+  ...
+# Subtest: one real seeded route visits every finite contact phase and preserves legal complete saved records
+ok 376 - one real seeded route visits every finite contact phase and preserves legal complete saved records
+  ---
+  duration_ms: 11534.3615
+  type: 'test'
+  ...
+# Subtest: rigid beak meets an independently transformed actual shared mesh leaf tip rather than an empty crown edge
+ok 377 - rigid beak meets an independently transformed actual shared mesh leaf tip rather than an empty crown edge
+  ---
+  duration_ms: 16.4471
+  type: 'test'
+  ...
+# Subtest: saved forged grass, ghost leaf, arbitrary mouth position and inconsistent consumption counter reject
+ok 378 - saved forged grass, ghost leaf, arbitrary mouth position and inconsistent consumption counter reject
+  ---
+  duration_ms: 123.8346
+  type: 'test'
+  ...
+# Subtest: zero actual stock debit ends the bout without inventing a bite or consumption
+ok 379 - zero actual stock debit ends the bout without inventing a bite or consumption
+  ---
+  duration_ms: 66.1286
+  type: 'test'
+  ...
+# Subtest: breathing deadline cancels feeding immediately and ascends to old clearance before the native surface column
+ok 380 - breathing deadline cancels feeding immediately and ascends to old clearance before the native surface column
+  ---
+  duration_ms: 2105.6875
+  type: 'test'
+  ...
+# Subtest: the appended sourced total-length representative has a bounded whole animated outline and a fixed physical nostril
+ok 381 - the appended sourced total-length representative has a bounded whole animated outline and a fixed physical nostril
+  ---
+  duration_ms: 195.0308
+  type: 'test'
+  ...
+# Subtest: actual turtle dispatch preserves size, owner, pitch, picking and its regional clock through pause and distant rebasing
+ok 382 - actual turtle dispatch preserves size, owner, pitch, picking and its regional clock through pause and distant rebasing
+  ---
+  duration_ms: 104.4116
+  type: 'test'
+  ...
+# Subtest: shared turtle resources release once and remain independent of original animals through deaths, species changes and reset
+ok 383 - shared turtle resources release once and remain independent of original animals through deaths, species changes and reset
+  ---
+  duration_ms: 316.2982
+  type: 'test'
+  ...
+# Subtest: native, pelagic and manta complete geometry and animation remain exact beside the turtle
+ok 384 - native, pelagic and manta complete geometry and animation remain exact beside the turtle
+  ---
+  duration_ms: 843.3785
+  type: 'test'
+  ...
+# Subtest: serves existing static assets without a fallback
+ok 385 - serves existing static assets without a fallback
+  ---
+  duration_ms: 146.8119
+  type: 'test'
+  ...
+# Subtest: falls back to index.html for an unknown app route
+ok 386 - falls back to index.html for an unknown app route
+  ---
+  duration_ms: 4.3654
+  type: 'test'
+  ...
+# Subtest: does not turn missing API or write requests into the app shell
+ok 387 - does not turn missing API or write requests into the app shell
+  ---
+  duration_ms: 2.2259
+  type: 'test'
+  ...
+# Subtest: emits the files required by Sites packaging
+ok 388 - emits the files required by Sites packaging
+  ---
+  duration_ms: 26.3273
+  type: 'test'
+  ...
+1..388
+# tests 388
+# suites 0
+# pass 388
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82160.355

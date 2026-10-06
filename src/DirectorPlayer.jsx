@@ -18,6 +18,13 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
   const step = steps[index];
   const complete = state.phase === 'complete';
   const loading = state.phase === 'loading';
+  const transition = state.transition;
+  const fading = state.active && ['out', 'covered', 'in'].includes(transition?.phase);
+  const moving = state.active && transition?.phase === 'move';
+  const maskOpacity = Math.min(1, Math.max(0, finite(transition?.opacity)));
+  const transitionCopy = fading ? transition.kind === 'cross-world' ? '转往另一海域'
+    : transition.kind === 'reposition' ? '转往另一观察点' : '调整观察镜头'
+    : moving ? '附近镜头正在衔接' : null;
   const durationMs = Math.max(0, finite(step?.durationMs));
   const elapsedMs = Math.min(durationMs, Math.max(0, finite(state.elapsedMs)));
   const progress = durationMs ? Math.round(elapsedMs / durationMs * 100) : 0;
@@ -25,14 +32,23 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
   const remainingSec = Math.ceil(Math.max(0, durationMs - elapsedMs) / (1000 * playbackRate));
   const route = directorTourProgress(state, steps);
   const timelinePercent = Math.min(100, Math.max(0, Math.round(finite(route.timelinePercent))));
-  const routeTiming = `${state.playing ? '剩余约' : '继续播放约'} ${durationText(route.remainingSec)}（另加加载）`;
+  const routeTiming = `${state.playing ? '剩余约' : '继续播放约'} ${durationText(route.remainingSec)}（另加转场和加载）`;
   const routeSummary = `路线位置 ${timelinePercent}% · 完整播放 ${route.completedCount}/${route.totalCount}`;
   const completionSummary = `完整播放 ${route.completedCount}/${route.totalCount}${route.allCompleted
     ? '' : ` · 尚有 ${route.unfinishedCount} 章未完整播放`}`;
-  const phaseLabel = complete ? '演示结束' : !state.playing ? '已暂停' : loading ? '正在进入章节' : '镜头巡游';
+  const activePhaseLabel = fading ? '自然转场中' : loading || moving ? '镜头衔接中' : '镜头巡游';
+  const phaseLabel = complete ? '演示结束' : !state.playing
+    ? fading || loading || moving ? `已暂停 · ${activePhaseLabel}` : '已暂停' : activePhaseLabel;
   const currentLabel = complete ? '演示结束' : `${index + 1} / ${count} · ${step?.title || '场景观察'}`;
 
-  return <section className="director-player glass" aria-label="导演演示播放器" data-phase={state.phase}>
+  return <>
+    {/* The hook owns the actual opacity and execution gate. This sibling only
+        covers scenery; there is no independent CSS timer or completion event. */}
+    {fading && <div className="director-scene-transition" aria-hidden="true"
+      data-transition-phase={transition.phase} data-transition-kind={transition.kind}
+      style={{ opacity: maskOpacity }}
+    />}
+    <section className="director-player glass" aria-label="导演演示播放器" data-phase={state.phase}>
     <header className="director-player-heading">
       <span className="director-player-brand"><i aria-hidden="true"/>导演演示</span>
       <span className="director-player-phase">{phaseLabel}</span>
@@ -54,6 +70,7 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
           ? `全部 ${route.totalCount} 章已完整播放。可选择章节重看，或自由探索。`
           : '本次演示已结束。选择章节可重新观看，也可以重新播放全部，或自由探索。'
         : step?.caption || '观察当前海域的实际场景与状态。'}</p>
+      {transitionCopy && <p className="director-player-transition-copy">{transitionCopy}</p>}
     </div>
 
     {state.error && <p className="director-player-error" role="alert">{String(state.error)}</p>}
@@ -99,5 +116,5 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
         <button type="button" disabled={!count} onClick={onNext}>{index === count - 1 ? '结束演示' : '下一章'}</button>
       </div>}
     </div>
-  </section>;
+  </section></>;
 }

@@ -337,7 +337,7 @@ export function OceanApp(){
       else setPanel(choice.kind==='capture'?'capture':choice.panel);
       director.applied(choice.directorToken);return;
     }
-    const entered=navigateDemoEntry(choice,world.current,{movingDirector:choice.directorToken!==undefined});
+    const entered=navigateDemoEntry(choice,world.current,{movingDirector:choice.directorToken!==undefined,directorEntryPlan:choice.directorEntryPlan,playing:director.state.playing,playbackRate:director.state.playbackRate});
     if(!entered){
       setToast(choice.kind==='local-life'?'附近当前没有可观察的活体，可在图鉴中查看其他条目':'此观察点暂不可用，请选择其他入口');
       if(choice.directorToken!==undefined){
