@@ -79,9 +79,26 @@
     "Previously untracked historical old-ecology fixture is included for CI opt-out regression. Obsolete whole-file hash snapshot removed from rendering test, retaining exact original geometry/animation/resource checks."
   ],
   "publication": {
-    "status": "pending",
+    "status": "success",
     "repository": "https://github.com/yydshly/ocean-world",
-    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "sourceSha": "04e1db8388be5be5df7dbc180d7c977311dda103",
+    "actionsRunId": 37419920460,
+    "actionsUrl": "https://github.com/yydshly/ocean-world/actions/runs/37419920460",
+    "buildJobId": 112126764668,
+    "deployJobId": 112127243160,
+    "cloudTests": {
+      "tests": 167,
+      "pass": 167,
+      "fail": 0,
+      "sameSetAsLocal": true,
+      "additiveCount": false
+    },
+    "deploymentId": 6876661769,
+    "deploymentStatusId": 19324182548,
+    "deploymentState": "success",
+    "deploymentStatusCreatedAt": "2026-10-06T05:45:08Z",
+    "environmentUrl": "https://yydshly.github.io/ocean-world/"
   },
   "goalState": "Separate overall ocean objective; this package does not mean full documentary visual acceptance or complete ocean ecology."
 }

@@ -2,6 +2,8 @@
 
 更新：2026-10-06。
 
+源码`04e1db8`已发布：[运行37419920460](https://github.com/yydshly/ocean-world/actions/runs/37419920460)构建、167项当前整合检查（0失败）与Pages部署全部success，部署`6876661769`状态success。云端与本机同一167项，不相加。刷新[线上导演](https://yydshly.github.io/ocean-world/?demo=director)后，在草床章退出导览并用“观察草床海龟”跟随实际活体；档案显示成功次数，生态变化显示海草库存。发布成功不替代浏览器实际画面验收。本包补充原海龟与海草食物关系，旧地形、个体和死亡保留；本机两次构建均通过，第二次包含取食时死亡保存的必要修复。模型边界及本轮证据见[说明](TURTLE_GRAZING.md)和[记录](../output/validation/turtle-grazing-delivery.json)。
+
 完整生活带版源码 `01d902df2de6b23e3a8804b9805a98bd763bf66d` 已发布。[运行37418001983](https://github.com/yydshly/ocean-world/actions/runs/37418001983) 构建、119项当前整合检查（0失败）及Pages部署全部success；部署 `6876352206` 状态success。打开[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，章节列表新增“生活带：礁群沙道”和“生活带：草床水层”，共36章、1×观察时间422秒，加载另计。适宜且四区未访问时，新组合中的礁丘/草床与实际动物和库存一起保存；旧区域不重建。本机同样119项及一次构建通过，不与云端重复相加；[交付记录](../output/validation/living-belt-delivery.json)只包含CPU模型/Three几何证据，浏览器工具受阻，本轮无实际整景播放或视觉验收。此前发布历史如下。
 
 导演整体进度/完整播放记录版源码 `84b8bba974781468fcff8f2c4bcd58406791ba0a` 已发布。[运行37416425198](https://github.com/yydshly/ocean-world/actions/runs/37416425198) 构建、101项当前工作流检查（0失败）及Pages部署全部success，部署 `6876104761` 状态success。打开[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，可查看路线位置、剩余估时及本次完整播放章数；跳章/提前结束不等于全部看完。本机构建及82项有限相关检查通过，101项包含82项不相加；仍无新版浏览器整段观看/截图验收。此次导演整体导览包收尾，此前发布历史如下。
