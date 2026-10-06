@@ -4,7 +4,7 @@
 
 暂停与页面隐藏冻结衔接时钟，调速保留当前路径；手动接管、跳章、重试、退出和迟到异步切换均取消旧镜头／入口的所有权。桥接和淡入不占章节观看时间，仍为40章、34个原生动作，1×章节观察共474秒，转场与加载另计。完整旧个体、死亡、库存、历史、时钟及地形记录保持，不补活、不重建旧区域、不新增3D资产。这个有限包完成后收口，不展开镜头或模型细节循环。
 
-最终53文件、388项本机整合检查全部通过（0失败），一次生产构建通过。首次批次发现旧重置夹具缺少stopDirectorEntry，已接入实际原生方法并补充取消断言，未改生产代码。发布待完成，见[本轮记录](output/validation/director-transition-delivery.json)。当前没有浏览器／GPU视觉验收或全程实际观看记录，不能将CPU、效果状态或JSX验证表述为已看完整条路线。下文保留此前计划与交付历史。
+最终53文件、388项本机整合检查全部通过（0失败），一次生产构建通过。首次批次发现旧重置夹具缺少stopDirectorEntry，已接入实际原生方法并补充取消断言，未改生产代码。源码`4b92372`已发布：[运行37466671452](https://github.com/yydshly/ocean-world/actions/runs/37466671452)的构建、同一388项云端检查和Pages部署全部success；部署`6884546240`状态`19342449955`为success（2026-10-06 20:57:36，Asia/Shanghai）。源码哈希保持一致，本机与云端检查不累计相加。刷新[导演入口](https://yydshly.github.io/ocean-world/?demo=director)，见[本轮记录](output/validation/director-transition-delivery.json)。当前没有浏览器／GPU视觉验收或全程实际观看记录，不能将CPU、效果状态或JSX验证表述为已看完整条路线。这个有限转场包收口；下文保留此前计划与交付历史。
 
 本轮最终51个文件、371项当前整合检查全部通过，生产构建两次通过（初版与真实窗口视角接线后，最终日志记录最终源码），同一检查不累计重复次数。实际来源示例为73,1的14个场景元素、4条原鱼，三点路径约12米；完整旧记录、死亡、库存/时钟、普通加载、暂停/速度、浮动原点和手动接管拒绝迟到镜头均通过CPU验证。见[本轮记录](output/validation/living-visual-delivery.json)与[实际来源](output/validation/living-visual-world-validation.json)。没有当前浏览器或GPU视觉验收，源码`da1bb18`已发布：[运行37461953766](https://github.com/yydshly/ocean-world/actions/runs/37461953766)的构建、同一371项检查和Pages部署全部success；部署`6883697134`状态success（2026-10-06 15:18:50，Africa/Nairobi）。刷新[导演入口](https://yydshly.github.io/ocean-world/?demo=director)第一章“新浅海：先看整体”，或普通探索点击“礁缘整景”。发布成功不替代整景观看验收。
 

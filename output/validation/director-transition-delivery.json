@@ -1,11 +1,34 @@
 {
   "package": "director-natural-transitions-v1",
-  "recordedAt": "2026-10-06T20:52:52.433734+08:00",
+  "recordedAt": "2026-10-06T20:58:41.932512+08:00",
   "timezone": "Asia/Shanghai",
   "baselineCommit": "e80c988",
-  "sourceCommit": null,
+  "sourceCommit": "4b92372e25829db785c62860608600ced0ec6158",
   "publication": {
-    "status": "pending"
+    "status": "success",
+    "runId": 37466671452,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37466671452",
+    "runConclusion": "success",
+    "buildJobId": 112279328280,
+    "buildConclusion": "success",
+    "deployJobId": 112280673059,
+    "deployConclusion": "success",
+    "cloudChecks": {
+      "tests": 388,
+      "pass": 388,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "deploymentId": 6884546240,
+    "deploymentStatusId": 19342449955,
+    "deploymentState": "success",
+    "completedAtUtc": "2026-10-06T12:57:36Z",
+    "completedAtUserLocal": "2026-10-06T20:57:36+08:00",
+    "directorUrl": "https://yydshly.github.io/ocean-world/?demo=director",
+    "sourceHashesVerified": true,
+    "frontendVisuallyVerified": false
   },
   "behavior": {
     "nearby": "Keep same actual world and bridge current camera position and heading to an already resident safe pose.",
