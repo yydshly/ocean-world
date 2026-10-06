@@ -26,12 +26,12 @@ test('deep seascape shortcuts match native seed routes and preserve protected ec
   }
 });
 
-test('the two kelp belt shortcuts resolve native seed routes without changing protected ecology', () => {
+test('kelp belt and whole-scene shortcuts resolve native seed routes without changing protected ecology', () => {
   const generator=createKelpOceanGenerator('42',{forestBelt:true});
-  assert.deepEqual(DEMO_KELP_STOPS.map(entry=>entry.id),generator.forestRouteStops.map(stop=>stop.id));
+  assert.deepEqual(DEMO_KELP_STOPS.map(entry=>entry.id),[...generator.forestRouteStops,...generator.kelpSeascapeRouteStops].map(stop=>stop.id));
   for(const entry of DEMO_KELP_STOPS){
     const {world,protectedState}=observationWorld({biomeId:'kelp'}),calls=[];
-    world.enterKelpForestBelt=id=>{calls.push(id);return generator.forestRouteStops.some(stop=>stop.id===id);};
+    world.enterKelpForestBelt=id=>{calls.push(id);return [...generator.forestRouteStops,...generator.kelpSeascapeRouteStops].some(stop=>stop.id===id);};
     assert.equal(navigateDemoEntry(entry.action,world),true);
     assert.deepEqual(calls,[entry.id]);assert.strictEqual(world.protectedState,protectedState);
     assert.equal(navigateDemoEntry({...entry.action,stopId:'missing'},world),false);

@@ -1,0 +1,186 @@
+{
+  "schema": "complete-kelp-seascape-delivery-v1",
+  "createdAtUtc": "2026-10-06T16:30:19.615270+00:00",
+  "objective": "One finite complete temperate kelp macro scene, actual existing biology, original supports, normal exploration and moving director; whole scene before detail",
+  "sample": {
+    "seed": "42",
+    "originOwner": [
+      6,
+      -2
+    ],
+    "ownerCount": 12,
+    "widthM": 384,
+    "depthM": 128,
+    "nativeRoots": 252,
+    "nativeRocks": 268,
+    "addedRoots": 49,
+    "addedHostClusters": 12,
+    "addedRocks": 0,
+    "bedAndOldDescriptorsUnchanged": true,
+    "finiteSedimentOpening": {
+      "widthM": 16,
+      "depthM": 8,
+      "locations": 45,
+      "bodyProbesPerLocation": 9,
+      "bodyRadiusM": 0.6
+    },
+    "finiteOuterOpening": {
+      "widthM": 6,
+      "depthM": 6,
+      "locations": 16,
+      "bodyProbesPerLocation": 9,
+      "bodyRadiusM": 0.6
+    }
+  },
+  "actualModel": {
+    "scope": "finite CPU actual-record, shared-support and persistence evidence; no browser or visual acceptance",
+    "seed": "42",
+    "group": {
+      "cx": 6,
+      "cz": -2,
+      "widthM": 384,
+      "depthM": 128,
+      "ownerIds": [
+        "6,-2",
+        "7,-2",
+        "8,-2",
+        "9,-2",
+        "10,-2",
+        "11,-2",
+        "6,-1",
+        "7,-1",
+        "8,-1",
+        "9,-1",
+        "10,-1",
+        "11,-1"
+      ]
+    },
+    "groupOwnerCount": 12,
+    "groupStreamedRoots": 301,
+    "groupAddedRoots": 49,
+    "groupSimulatedPlants": 25,
+    "groupUnderstoryPlants": 141,
+    "groupAnimalSpecies": {
+      "purple-urchin": 39,
+      "gumboot-chiton": 17,
+      "bat-star": 24,
+      "brown-turban-snail": 25,
+      "giant-kelpfish": 21,
+      "leopard-shark": 6,
+      "blue-rockfish": 20
+    },
+    "groupInitialFoodUnits": 28.019000000000002,
+    "activeOwnerCount": 9,
+    "sourceOwnerCount": 12,
+    "observedSec": 2,
+    "activeMovedAnimals": 88,
+    "activeIngestedUnits": 0.02976,
+    "maxFoodBalanceError": 4.440892098500626e-16,
+    "maxDriftBalanceError": 5.293955920339377e-23,
+    "transitions": [
+      {
+        "x": 416,
+        "z": -96,
+        "diskReads": 24,
+        "sourceOwners": 12,
+        "activeOwners": 9
+      },
+      {
+        "x": 544,
+        "z": -96,
+        "diskReads": 17,
+        "sourceOwners": 12,
+        "activeOwners": 9
+      },
+      {
+        "x": 736,
+        "z": -32,
+        "diskReads": 24,
+        "sourceOwners": 16,
+        "activeOwners": 9
+      },
+      {
+        "x": -2400,
+        "z": 1600,
+        "diskReads": 16,
+        "sourceOwners": 0,
+        "activeOwners": 9
+      },
+      {
+        "x": 416,
+        "z": -96,
+        "diskReads": 24,
+        "sourceOwners": 12,
+        "activeOwners": 9
+      }
+    ]
+  },
+  "bounds": {
+    "diskReadOwnerLimit": 24,
+    "publicPlanOwnerLimit": 25,
+    "activeOwnerLimit": 9,
+    "animalRecordLimitPerOwnerIncludingDeaths": 20,
+    "simulatedKelpHostLimitPerOwner": 3,
+    "streamedRootLimitPerOwner": 72,
+    "landscapeDrawCallLimit": 81,
+    "sharedLandscapeGeometries": 4,
+    "sharedLandscapeMaterials": 3
+  },
+  "navigation": {
+    "ordinaryWholeSceneButton": "巨藻整景",
+    "routeIds": [
+      "kelp-scene-forest",
+      "kelp-scene-rockbed",
+      "kelp-scene-opening",
+      "kelp-scene-outer"
+    ],
+    "oldForestEntriesRetained": true,
+    "directorKelpOpeningStop": "kelp-scene-forest",
+    "directorChapterCount": 48,
+    "distinctNativeActions": 42,
+    "observationAt1xSec": 570,
+    "transitionsAndLoadingAdditional": true
+  },
+  "validation": {
+    "workflowFileCount": 62,
+    "local": {
+      "tests": 448,
+      "pass": 448,
+      "fail": 0
+    },
+    "localBuildCount": 1,
+    "entryFocusedCases": 51,
+    "entryFocusedFailures": 0,
+    "initialEntryLog": "kelp-seascape-entry-initial.log",
+    "finalLog": "kelp-seascape-checks.log",
+    "buildLog": "kelp-seascape-build.log",
+    "countsAreNotSummedAcrossRepeatedBatches": true,
+    "browserVisualAcceptance": false,
+    "gpuPerformanceAcceptance": false,
+    "completeTourViewed": false
+  },
+  "sourceHashes": {
+    "src/kelpSeascape.js": "72440c8e5c42b2c4b6780f2d8897b737362793efbe1de4c2f97fcd151d46d880",
+    "src/kelpForestBelt.js": "2d3ab4a798087de8359ccac8526406fc7de1a78bc0492e423af0150dd071aac5",
+    "src/kelpOceanEcology.js": "9c9f1515175528ef6d316922cfe688cdbcf8f11a23340a6b4c6908e782273c85",
+    "src/world/ReefWorld.js": "98a9e31093f9132f421b7be96eb0a1f87f381423b5c4c2fdf6364de16ed89467",
+    "src/OceanApp.jsx": "1005c6813b62509ffe82d318b49e08e8dd0c1d8b8d5066bc9983aa48100540f5",
+    "src/demoCapabilities.js": "1e9222d2451ab277e6fddb5abae673edaca2b484a69124bdec175cdd9cb58556",
+    "src/directorTour.js": "a168e0acb4257e3668389000e7c5aa1ed0134d7b6a983db2ef62232556a32b57",
+    ".github/workflows/pages.yml": "ce8b3a11109b200a8867775537defba725757b709262c068f395f8ee32cf0444"
+  },
+  "publication": {
+    "status": "awaiting-source-push-and-CI",
+    "site": "https://yydshly.github.io/ocean-world/",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+  },
+  "limits": [
+    "One explicit sample is not an ocean boundary; external regions continue native generation.",
+    "A saved member declines whole replacement; existing identities, deaths, histories, stocks and clocks are retained.",
+    "Sample may decline for unsuitable seeds.",
+    "Scenery roots and understory descriptors are not extra simulated biomass or food.",
+    "Offscreen owners freeze; animal and food rates remain qualitative proxies.",
+    "Sediment probes are finite, not continuous free-space proofs.",
+    "No current browser/GPU visual, FPS or complete-tour acceptance; existing browser policy refusal was not bypassed."
+  ]
+}

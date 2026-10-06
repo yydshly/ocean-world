@@ -11,6 +11,7 @@ import { createKelpVisitorPlan, validateKelpVisitorRecord, tickKelpVisitors,
   KELP_VISITOR_COMMUNITY_VERSION } from './kelpVisitorCommunity.js';
 import { createKelpUnderstoryPlan, validateKelpUnderstoryRecord, KELP_UNDERSTORY_SCENERY_VERSION } from './kelpUnderstory.js';
 import { createKelpForestBeltPlans, validateKelpForestBeltPlan } from './kelpForestBelt.js';
+import { createKelpSeascapePlans, validateKelpSeascapePlan, KELP_SEASCAPE_ANCHOR, KELP_SEASCAPE_OWNERS } from './kelpSeascape.js';
 
 export const KELP_OCEAN_REGION_ANIMAL_LIMIT = 20;
 export const KELP_OCEAN_REGION_PLANT_LIMIT = 3;
@@ -24,6 +25,8 @@ const clone = value => structuredClone(value);
 const worldKey = seed => `kelp-ecology-v1:${typeof seed}:${seed}`;
 const finiteVector = value => value && ['x', 'y', 'z'].every(axis => Number.isFinite(value[axis]));
 const nonnegative = value => Number.isFinite(value) && value >= 0;
+const seascapeMarked = record => record && (record.forestBeltVersion === 2 || record.forestBeltPlan?.version === 2 ||
+  ['kelpSeascapeVersion', 'kelpSeascapeGroupId', 'kelpSeascapeInitializedAtSec'].some(key => Object.hasOwn(record, key)));
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
 const regionCoordinates = id => typeof id === 'string' && /^-?\d+,-?\d+$/.test(id) ? id.split(',').map(Number) : null;
 function hash(value) {
@@ -43,12 +46,14 @@ function normalAt(generator, x, z) {
  * qualitative. Only up to three selected plant hosts are simulated per cell.
  * All other streamed kelp is scenery and is excluded from animal counts. */
 export class KelpOceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), visitors = false, understory = false, forestBelt = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), visitors = false, understory = false, forestBelt = false, kelpSeascape = false } = {}) {
     this.seed = seed; this.generator = generator; this.store = store; this._world = worldKey(seed);
     this.visitorsEnabled = visitors === true;
     this.understoryEnabled = understory === true;
     this._forestBeltRequested = forestBelt === true;
     this.forestBeltEnabled = this._forestBeltRequested && this._forestBeltAvailable(generator);
+    this._kelpSeascapeRequested = kelpSeascape === true;
+    this.kelpSeascapeEnabled = this._kelpSeascapeRequested && this.forestBeltEnabled;
     this._active = new Map(); this._locked = new Set(); this._center = null; this._waterCells = new Map();
     this._waterFrames = new Map(); this._waterPlantFrames = new Map(); this._waterTransfers = [];
     this._waterContextMemo = new Map(); this._waterContextMemoActive = false;
@@ -66,6 +71,17 @@ export class KelpOceanEcology {
   }
 
   _savedForestPlan(record, cx, cz) {
+    if (seascapeMarked(record)) {
+      const plan = record.forestBeltPlan;
+      if (!this.kelpSeascapeEnabled || record.forestBeltVersion !== 2 || record.supportGeometryVersion !== 2 ||
+          record.forestBeltInitializedAtSec !== 0 || record.kelpSeascapeVersion !== 1 ||
+          record.kelpSeascapeGroupId !== `${KELP_SEASCAPE_ANCHOR.cx},${KELP_SEASCAPE_ANCHOR.cz}` ||
+          record.kelpSeascapeInitializedAtSec !== 0 || !KELP_SEASCAPE_OWNERS.includes(`${cx},${cz}`) ||
+          plan?.version !== 2 || plan.id !== `${cx},${cz}` || plan.cx !== cx || plan.cz !== cz ||
+          !validateKelpSeascapePlan(this.generator.baseGenerator, plan))
+        throw new Error('Invalid saved kelp seascape; original landscape and population were not regenerated.');
+      return plan;
+    }
     const has = record && ['forestBeltVersion', 'forestBeltInitializedAtSec', 'forestBeltPlan'].some(key => Object.hasOwn(record, key));
     if (!has) return null;
     if (!this.forestBeltEnabled || record.forestBeltVersion !== 1 || record.supportGeometryVersion !== 2 ||
@@ -144,6 +160,8 @@ export class KelpOceanEcology {
       ...(region.supportGeometryVersion!==undefined?{supportGeometryVersion:region.supportGeometryVersion}:{}),
       ...(region.forestBeltVersion !== undefined ? { forestBeltVersion: region.forestBeltVersion,
         forestBeltInitializedAtSec: region.forestBeltInitializedAtSec, forestBeltPlan: clone(region.forestBeltPlan) } : {}),
+      ...(region.kelpSeascapeVersion !== undefined ? { kelpSeascapeVersion: region.kelpSeascapeVersion,
+        kelpSeascapeGroupId: region.kelpSeascapeGroupId, kelpSeascapeInitializedAtSec: region.kelpSeascapeInitializedAtSec } : {}),
       ...(region.waterEverOccupied !== undefined ? { waterEverOccupied: region.waterEverOccupied } : {}),
       ...(region.waterCommunityVersion !== undefined ? { waterCommunityVersion: region.waterCommunityVersion,
         waterCommunityAdded: region.waterCommunityAdded ?? 0, waterInitializedAtSec: region.waterInitializedAtSec ?? region.sim.timeSec,
@@ -242,6 +260,11 @@ export class KelpOceanEcology {
       region.forestBeltVersion = record.forestBeltVersion;
       region.forestBeltInitializedAtSec = record.forestBeltInitializedAtSec;
       region.forestBeltPlan = clone(forestPlan);
+      if (forestPlan.version === 2) {
+        region.kelpSeascapeVersion = record.kelpSeascapeVersion;
+        region.kelpSeascapeGroupId = record.kelpSeascapeGroupId;
+        region.kelpSeascapeInitializedAtSec = record.kelpSeascapeInitializedAtSec;
+      }
     }
     if (record.driftCommunityVersion !== undefined) {
       region.driftCommunityVersion = record.driftCommunityVersion;
@@ -625,9 +648,9 @@ export class KelpOceanEcology {
       }
       if (halo.size > 16) throw new Error('Kelp forest admission exceeded the bounded owner read halo.');
       const savedRows = new Map(), savedPlans = [];
-      for (const [id, [x, z]] of halo) {
+      const readOwner = async (id, x, z) => {
         const active = this._active.get(id), saved = active ? this._record(active) : await this.store.load(world, id);
-        if (!current()) return;
+        if (!current()) return false;
         // Only an explicit successful null is virgin. Missing/failed reads
         // cannot be reinterpreted as empty landscape or population history.
         if (saved === undefined) throw new Error('Kelp forest owner read returned no result.');
@@ -636,11 +659,66 @@ export class KelpOceanEcology {
           const plan = this._savedForestPlan(saved, x, z);
           if (plan) savedPlans.push(plan);
         }
+        return true;
+      };
+      for (const [id, [x, z]] of halo) {
+        if (!await readOwner(id, x, z)) return;
       }
       const freshPlans = [];
+      const wantsSeascape = this.kelpSeascapeEnabled && KELP_SEASCAPE_OWNERS.some(id => desired.has(id));
+      let savedSeascape = [];
+      if (this.kelpSeascapeEnabled && (wantsSeascape || [...savedRows.values()].some(seascapeMarked))) {
+        // A 6x2 aligned sample overlaps this aligned 2x2 halo in at least
+        // four owners. Only this one fixed group is expanded: 16+12-4 <=24.
+        for (const id of KELP_SEASCAPE_OWNERS) if (!savedRows.has(id)) {
+          const [x, z] = id.split(',').map(Number); halo.set(id, [x, z]);
+          if (!await readOwner(id, x, z)) return;
+        }
+        if (halo.size > 24) throw new Error('Kelp seascape admission exceeded its 24-owner read halo.');
+        const rows = KELP_SEASCAPE_OWNERS.map(id => savedRows.get(id)), marked = rows.filter(seascapeMarked);
+        if (marked.length) {
+          const group = marked[0].forestBeltPlan?.group;
+          if (marked.length !== 12 || group?.cx !== KELP_SEASCAPE_ANCHOR.cx || group?.cz !== KELP_SEASCAPE_ANCHOR.cz ||
+              JSON.stringify(group.ownerIds) !== JSON.stringify(KELP_SEASCAPE_OWNERS) || rows.some(row =>
+                row.forestBeltVersion !== 2 || row.kelpSeascapeVersion !== 1 ||
+                row.kelpSeascapeGroupId !== `${group.cx},${group.cz}` || row.kelpSeascapeInitializedAtSec !== 0 ||
+                row.forestBeltInitializedAtSec !== 0 || JSON.stringify(row.forestBeltPlan?.group) !== JSON.stringify(group)))
+            throw new Error('Saved kelp seascape group is incomplete or inconsistent; no landscape or population was regenerated.');
+          savedSeascape = rows;
+        } else if (wantsSeascape && rows.every(row => row === null)) {
+          let plans;
+          try { plans = createKelpSeascapePlans(this.generator.baseGenerator, KELP_SEASCAPE_ANCHOR.cx, KELP_SEASCAPE_ANCHOR.cz); }
+          catch (error) { if (!(error instanceof RangeError)) throw error; }
+          if (plans) {
+            if (!Array.isArray(plans) || plans.length !== 12 || new Set(plans.map(plan => plan.id)).size !== 12 ||
+                plans.some(plan => plan.version !== 2 || !KELP_SEASCAPE_OWNERS.includes(plan.id) ||
+                  JSON.stringify(plan.group?.ownerIds) !== JSON.stringify(KELP_SEASCAPE_OWNERS) ||
+                  !validateKelpSeascapePlan(this.generator.baseGenerator, plan)))
+              throw new Error('Invalid fresh complete kelp seascape.');
+            freshPlans.push(...plans);
+          }
+        }
+      }
+      if (this.kelpSeascapeEnabled) {
+        // Reading the larger sample may discover an existing v1 group outside
+        // the desired window. Its four-owner contract still applies, but no
+        // extra offscreen v1 groups are generated just because they were read.
+        const historicalGroups = new Map();
+        for (const row of savedRows.values()) if (row?.forestBeltVersion === 1) {
+          const group = row.forestBeltPlan.group; historicalGroups.set(`${group.cx},${group.cz}`, group);
+        }
+        for (const group of historicalGroups.values()) {
+          const rows = group.ownerIds.map(id => savedRows.get(id));
+          if (rows.length !== 4 || rows.some(row => !row || row.forestBeltVersion !== 1 ||
+              row.forestBeltInitializedAtSec !== rows[0]?.forestBeltInitializedAtSec ||
+              JSON.stringify(row.forestBeltPlan?.group) !== JSON.stringify(group)))
+            throw new Error('Saved kelp forest group is incomplete or inconsistent; no landscape or population was regenerated.');
+        }
+      }
       for (const [gx, gz] of groups.values()) {
         const ids = [0, 1].flatMap(dz => [0, 1].map(dx => `${gx + dx},${gz + dz}`));
         const rows = ids.map(id => savedRows.get(id));
+        if (rows.some(seascapeMarked) || freshPlans.some(plan => plan.version === 2 && ids.includes(plan.id))) continue;
         const marked = rows.filter(row => row && ['forestBeltVersion', 'forestBeltInitializedAtSec', 'forestBeltPlan'].some(key => Object.hasOwn(row, key)));
         if (marked.length) {
           // A committed forest is one four-owner persistence boundary. A lost
@@ -669,9 +747,17 @@ export class KelpOceanEcology {
       // representatives, understory and food once. It never publishes scenery
       // revisions, and its references become public only after persistence.
       this.generator.withForestPlans(allPlans, () => {
+        // A complete restored sample is validated as actual full records,
+        // including unloaded owners' death histories and food ledgers. These
+        // private simulations never tick, publish or add inventory.
+        for (const record of savedSeascape) this._restore(record, record.cx, record.cz);
         for (const plan of freshPlans) {
           const item = this._prepareForestOwner(null, plan.cx, plan.cz);
-          item.region.forestBeltVersion = 1; item.region.forestBeltInitializedAtSec = item.region.sim.timeSec;
+          item.region.forestBeltVersion = plan.version; item.region.forestBeltInitializedAtSec = item.region.sim.timeSec;
+          if (plan.version === 2) {
+            item.region.kelpSeascapeVersion = 1; item.region.kelpSeascapeGroupId = `${plan.group.cx},${plan.group.cz}`;
+            item.region.kelpSeascapeInitializedAtSec = 0;
+          }
           item.region.forestBeltPlan = clone(plan); prepared.set(plan.id, item);
         }
         for (const [id, [x, z]] of desired) {
@@ -688,7 +774,7 @@ export class KelpOceanEcology {
       const records = [...prepared].filter(([, item]) => item.changed).map(([id, item]) => [id, this._record(item.region)]);
       if (records.length && !await this._save(world, records)) { this._center = null; return false; }
       if (!current()) return;
-      // The complete persisted four-owner groups can include offscreen owners.
+      // Complete persisted groups can include offscreen owners.
       // Retain only this bounded read halo; no unbounded visited-plan registry.
       this.generator.setForestPlans(allPlans);
       this._waterCells.clear(); this._clearWaterContextMemo();
@@ -969,6 +1055,8 @@ export class KelpOceanEcology {
       timeSec: region.sim.timeSec, supportGeometryVersion: region.supportGeometryVersion, agentCount: this._waterRegionCount(region),
       ...(region.forestBeltVersion !== undefined ? { forestBeltVersion: region.forestBeltVersion,
         forestBeltInitializedAtSec: region.forestBeltInitializedAtSec, forestBelt: clone(region.forestBeltPlan.group) } : {}),
+      ...(region.kelpSeascapeVersion !== undefined ? { kelpSeascapeVersion: region.kelpSeascapeVersion,
+        kelpSeascapeGroupId: region.kelpSeascapeGroupId, kelpSeascapeInitializedAtSec: region.kelpSeascapeInitializedAtSec } : {}),
       alive: region.sim.agents.filter(agent => animalIds.has(agent.speciesId) && agent.alive).length + region.waterAgents.filter(agent => agent.alive).length + region.visitorAgents.filter(agent => agent.alive).length,
       ...(region.visitorCommunityVersion !== undefined ? { visitorCommunityVersion: region.visitorCommunityVersion,
         visitorInitializedAtSec: region.visitorInitializedAtSec, visitorAgentCount: region.visitorAgents.length } : {}),
@@ -1016,6 +1104,7 @@ export class KelpOceanEcology {
     this._waterFrames.clear(); this._waterPlantFrames.clear(); this._waterTransfers.length = 0;
     this.seed = seed; this.generator = generator; this._legacyGenerator = null; this._world = next; this._disposed = false;
     this.forestBeltEnabled = this._forestBeltRequested && this._forestBeltAvailable(generator);
+    this.kelpSeascapeEnabled = this._kelpSeascapeRequested && this.forestBeltEnabled;
     if (this.forestBeltEnabled) this.generator.setForestPlans([]);
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10;
     return this._pending = this._enqueue(async () => {

@@ -29,7 +29,7 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Check complete shallow scenery, native entries and saved ecosystems
+      - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test
           tests/living-shallow-seascape.test.mjs
@@ -55,6 +55,10 @@ jobs:
           tests/deep-ocean-world.test.mjs
           tests/deep-simulation.test.mjs
           tests/deep-sea-spider-rendering.test.mjs
+          tests/kelp-seascape.test.mjs
+          tests/kelp-seascape-render.test.mjs
+          tests/kelp-seascape-ecology.test.mjs
+          tests/kelp-seascape-world.test.mjs
           tests/kelp-forest-belt.test.mjs
           tests/kelp-forest-belt-render.test.mjs
           tests/kelp-forest-belt-ecology.test.mjs

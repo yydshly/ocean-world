@@ -1,4 +1,4 @@
-import { DEMO_ACTIONS, DEMO_LIVING_STOPS } from './demoCapabilities.js';
+import { DEMO_ACTIONS, DEMO_LIVING_STOPS, DEMO_KELP_STOPS } from './demoCapabilities.js';
 import { isDirectorPlaybackRate } from './directorCameraMotion.js';
 
 export { DIRECTOR_PLAYBACK_RATES } from './directorCameraMotion.js';
@@ -12,7 +12,7 @@ const livingStopOrder = ['shallow-scene-reef', 'shallow-scene-sand', 'shallow-sc
   'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
   'seagrass-meadow', 'sand-channel', 'reef-garden'];
 const openingEntryStops = Object.freeze({ 'shallows-opening': 'shallow-scene-reef',
-  'kelp-opening': 'forest-belt-interior', 'deep-opening': 'deep-plain-community' });
+  'kelp-opening': 'kelp-scene-forest', 'deep-opening': 'deep-plain-community' });
 const step = (id, title, caption, actionId, durationMs, motionKind = 'walk', routeId = null) => Object.freeze({
   id, title, caption, action: actions.get(actionId), durationMs,
   motion: Object.freeze({ kind: motionKind, durationSec: durationMs / 1000, ...(routeId?{routeId}:{}) }),
@@ -65,7 +65,11 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
   step('legacy-opening', '原浅礁：固定礁区', '在珊瑚、鱼群与岩隙之间缓行，观察原礁区的整体关系。', 'world-legacy-reef', 14000),
   step('legacy-wide', '原浅礁：全景入口', '绕礁群缓慢转看，留意开放水域与岩面的层次。', 'legacy-wide', 12000, 'orbit'),
   step('legacy-skeleton', '原浅礁：珊瑚骨架', '环绕珊瑚骨架，观察枝群的轮廓与结构。', 'legacy-skeleton', 12000, 'orbit'),
-  step('kelp-opening', '海带林：进入连续探索', '在巨藻岩底与林间空地缓行，观察林下、藻间和冠层。', 'world-kelp', 14000),
+  step('kelp-opening', '巨藻整景：先看整体', '从高冠藻群起步，依次观察岩底、沉积开口和开放林缘。', 'world-kelp', 14000),
+  ...['kelp-scene-forest','kelp-scene-rockbed','kelp-scene-opening','kelp-scene-outer'].map(id=>{
+    const stop=DEMO_KELP_STOPS.find(row=>row.id===id);
+    return step(`kelp-${id}`,stop.title,`${stop.description}。沿海床缓行，转看周围的整体生境。`,stop.action.id,12000);
+  }),
   step('kelp-forest-belt', '林缘生活带：巨藻群', '沿硬底巨藻群缓行，观察高冠、林下低冠和真实动物。', 'stop-forest-belt-interior', 14000),
   step('kelp-forest-opening', '林缘生活带：开放沙地', '在相邻的天然沉积空隙移动，回望巨藻林缘与上方水域。', 'stop-forest-belt-opening', 12000),
   ...layers('kelp', ['海带林：林底', '海带林：藻间水层', '海带林：上部水域']),

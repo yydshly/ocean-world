@@ -3,6 +3,7 @@ import { LIVING_SHALLOWS_PROFILE } from './livingShallows.js';
 import { OCEAN_OBSERVATION_LAYERS } from './oceanLayerNavigation.js';
 import { DEEP_OCEAN_OBSERVATION_LAYERS } from './deepOceanNavigation.js';
 import { SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
+import { KELP_SEASCAPE_ROUTE_STOPS } from './kelpSeascape.js';
 
 const action = data => Object.freeze(data);
 const entry = data => Object.freeze({ ...data, action: action(data.action) });
@@ -73,6 +74,12 @@ export const DEMO_KELP_STOPS = Object.freeze([
     action:{id:'stop-forest-belt-interior',kind:'kelp-stop',biome:'kelp',stopId:'forest-belt-interior'}}),
   entry({id:'forest-belt-opening',number:'02',title:'林缘生活带：开放沙地',description:'相邻林缘、天然沉积空隙与上方水域',
     action:{id:'stop-forest-belt-opening',kind:'kelp-stop',biome:'kelp',stopId:'forest-belt-opening'}}),
+  ...KELP_SEASCAPE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+3).padStart(2,'0'),title:stop.label,
+    description:({ 'kelp-scene-forest':'硬底高冠藻群、林下植物和真实动物',
+      'kelp-scene-rockbed':'原生不规则岩底与林下生活空间',
+      'kelp-scene-opening':'天然沉积空隙、林缘与藻间水层',
+      'kelp-scene-outer':'稀疏林缘、开放海床与上方水域' })[stop.id],
+    action:{id:`stop-${stop.id}`,kind:'kelp-stop',biome:'kelp',stopId:stop.id}})),
 ]);
 
 export const DEMO_DEEP_STOPS = Object.freeze([

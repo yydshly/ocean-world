@@ -1,0 +1,83 @@
+{
+  "scope": "finite CPU actual-record, shared-support and persistence evidence; no browser or visual acceptance",
+  "seed": "42",
+  "group": {
+    "cx": 6,
+    "cz": -2,
+    "widthM": 384,
+    "depthM": 128,
+    "ownerIds": [
+      "6,-2",
+      "7,-2",
+      "8,-2",
+      "9,-2",
+      "10,-2",
+      "11,-2",
+      "6,-1",
+      "7,-1",
+      "8,-1",
+      "9,-1",
+      "10,-1",
+      "11,-1"
+    ]
+  },
+  "groupOwnerCount": 12,
+  "groupStreamedRoots": 301,
+  "groupAddedRoots": 49,
+  "groupSimulatedPlants": 25,
+  "groupUnderstoryPlants": 141,
+  "groupAnimalSpecies": {
+    "purple-urchin": 39,
+    "gumboot-chiton": 17,
+    "bat-star": 24,
+    "brown-turban-snail": 25,
+    "giant-kelpfish": 21,
+    "leopard-shark": 6,
+    "blue-rockfish": 20
+  },
+  "groupInitialFoodUnits": 28.019000000000002,
+  "activeOwnerCount": 9,
+  "sourceOwnerCount": 12,
+  "observedSec": 2,
+  "activeMovedAnimals": 88,
+  "activeIngestedUnits": 0.02976,
+  "maxFoodBalanceError": 4.440892098500626e-16,
+  "maxDriftBalanceError": 5.293955920339377e-23,
+  "transitions": [
+    {
+      "x": 416,
+      "z": -96,
+      "diskReads": 24,
+      "sourceOwners": 12,
+      "activeOwners": 9
+    },
+    {
+      "x": 544,
+      "z": -96,
+      "diskReads": 17,
+      "sourceOwners": 12,
+      "activeOwners": 9
+    },
+    {
+      "x": 736,
+      "z": -32,
+      "diskReads": 24,
+      "sourceOwners": 16,
+      "activeOwners": 9
+    },
+    {
+      "x": -2400,
+      "z": 1600,
+      "diskReads": 16,
+      "sourceOwners": 0,
+      "activeOwners": 9
+    },
+    {
+      "x": 416,
+      "z": -96,
+      "diskReads": 24,
+      "sourceOwners": 12,
+      "activeOwners": 9
+    }
+  ]
+}

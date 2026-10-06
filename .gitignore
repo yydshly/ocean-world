@@ -109,3 +109,11 @@ output/validation/screenshots/*
 !output/validation/shallow-scene-entry-repair.log
 !output/validation/shallow-scene-cloud-build.log
 !output/validation/shallow-scene-cloud-run.json
+
+!output/validation/kelp-seascape-checks.log
+!output/validation/kelp-seascape-build.log
+!output/validation/kelp-seascape-model.json
+!output/validation/kelp-seascape-delivery.json
+!output/validation/kelp-seascape-entry-initial.log
+!output/validation/kelp-seascape-cloud-build.log
+!output/validation/kelp-seascape-cloud-run.json

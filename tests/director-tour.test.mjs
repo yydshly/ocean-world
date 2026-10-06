@@ -70,11 +70,11 @@ test('the finite tour covers every existing entry without invented or destructiv
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
   assert.ok(duration >= 360000 && duration <= 600000, 'local moving observation stays approximately six to ten minutes');
-  assert.equal(duration, 522000); assert.equal(included.size, 38);
+  assert.equal(duration, 570000); assert.equal(included.size, 42);
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 44);
+  assert.equal(DIRECTOR_STEPS.length, 48);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));
@@ -106,7 +106,7 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     'seagrass-meadow', 'sand-channel', 'reef-garden']);
   assert.deepEqual([...routes].sort(), DEMO_LIVING_STOPS.map(stop => stop.id).sort(), 'all ordinary route entries remain available');
   assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').map(step=>step.action.stopId),
-    DEMO_KELP_STOPS.map(stop=>stop.id));
+    ['kelp-scene-forest','kelp-scene-rockbed','kelp-scene-opening','kelp-scene-outer','forest-belt-interior','forest-belt-opening']);
   assert.ok(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').every(step=>step.action.biome==='kelp'));
   assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='deep-stop').map(step=>step.action.stopId),
     DEMO_DEEP_STOPS.map(stop=>stop.id));
@@ -138,7 +138,7 @@ test('opening actions resolve existing shallow, kelp and deep stops without chan
   };
   for (const [id, biome, expectedId, key] of [
     ['shallows-opening', 'reef', 'shallow-scene-reef', 'routeStops'],
-    ['kelp-opening', 'kelp', 'forest-belt-interior', 'forestRouteStops'],
+    ['kelp-opening', 'kelp', 'kelp-scene-forest', 'kelpSeascapeRouteStops'],
     ['deep-opening', 'deep', 'deep-plain-community', 'seascapeRouteStops'],
   ]) {
     const step = DIRECTOR_STEPS.find(step => step.id === id), action = directorStepAction(step);
