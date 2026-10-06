@@ -29,3 +29,5 @@
 验收包括真实CPU模拟、原Three实例与支撑、原默认生成和行为回归、保存失败不公开、旧死亡与完整状态、离屏冻结、全窗口卸载/回访/冷恢复、普通导航和导演入口。检查与构建记录分别见[检查日志](../output/validation/kelp-forest-belt-checks.log)和[构建日志](../output/validation/kelp-forest-belt-build.log)，发布状态见[交付记录](../output/validation/kelp-forest-belt-delivery.json)。
 
 本轮没有新增浏览器观看、完整WebGL播放或纪录片式视觉验收；此前工具拒绝浏览器URL访问，未绕过该限制。有限功能包交付后继续整体海域与生态组合，不在这一处植物、个体或镜头上循环细调。
+
+源码959198a已发布：运行37436433914、部署6879363122均success。本机与云端同一257项检查全部通过，一次本机构建通过；重复检查不相加。

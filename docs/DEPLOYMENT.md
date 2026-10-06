@@ -1,5 +1,7 @@
 # GitHub 与网页部署
 
+源码`959198a`已发布：[运行37436433914](https://github.com/yydshly/ocean-world/actions/runs/37436433914)的构建、257项当前整合检查（0失败）与Pages部署全部success，部署`6879363122`状态success（2026-10-06 11:31:55，Africa/Nairobi）。本机与云端是同一257项，不相加。刷新[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，章节列表可直达“林缘生活带：巨藻群 / 林缘生活带：开放沙地”，进入后使用原移动镜头。旧访问区域保留原存档；适宜且全新四区才生成组合。发布成功不替代实际浏览器画面验收。
+
 更新：2026-10-06。
 
 源码`04e1db8`已发布：[运行37419920460](https://github.com/yydshly/ocean-world/actions/runs/37419920460)构建、167项当前整合检查（0失败）与Pages部署全部success，部署`6876661769`状态success。云端与本机同一167项，不相加。刷新[线上导演](https://yydshly.github.io/ocean-world/?demo=director)后，在草床章退出导览并用“观察草床海龟”跟随实际活体；档案显示成功次数，生态变化显示海草库存。发布成功不替代浏览器实际画面验收。本包补充原海龟与海草食物关系，旧地形、个体和死亡保留；本机两次构建均通过，第二次包含取食时死亡保存的必要修复。模型边界及本轮证据见[说明](TURTLE_GRAZING.md)和[记录](../output/validation/turtle-grazing-delivery.json)。

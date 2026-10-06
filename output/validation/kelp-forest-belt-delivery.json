@@ -77,8 +77,26 @@
     "reason": "Earlier URL policy refusal; not bypassed."
   },
   "publication": {
-    "status": "pending",
+    "status": "success",
     "repository": "https://github.com/yydshly/ocean-world",
-    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "sourceCommit": "959198ade59887efab7d02ebe9f4d84ea84c15b8",
+    "runId": 37436433914,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37436433914",
+    "runConclusion": "success",
+    "buildJobId": 112179279169,
+    "buildJobConclusion": "success",
+    "deployJobId": 112180099429,
+    "deployJobConclusion": "success",
+    "cloudTests": 257,
+    "cloudPassed": 257,
+    "cloudFailed": 0,
+    "cloudTestSummaryReadFromActualJobLog": true,
+    "deploymentId": 6879363122,
+    "deploymentState": "success",
+    "deploymentStatusId": 19330482314,
+    "deploymentSucceededAtUtc": "2026-10-06T08:31:55Z",
+    "deploymentSucceededAtAfricaNairobi": "2026-10-06T11:31:55+03:00",
+    "countsAreSameLocalAndCloudNotAdded": true
   }
 }
