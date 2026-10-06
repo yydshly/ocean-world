@@ -1,4 +1,5 @@
 import { OCEAN_SURFACE_Y, OCEAN_CHUNK_SIZE, OCEAN_AUTHORED_RADIUS } from './oceanGeneration.js';
+import { validateOceanTurtleGrazingRecord } from './oceanTurtleGrazing.js';
 
 export const OCEAN_TURTLE_COMMUNITY_VERSION = 1;
 export const OCEAN_TURTLE_MODEL = Object.freeze({ speedMps: .22, turnRateRadps: .7,
@@ -116,6 +117,7 @@ export function createOceanTurtlePlan(generator, region, { seed = generator.seed
 }
 
 export function validateOceanTurtleRecord(record, generator, { surface } = {}) {
+  if (!validateOceanTurtleGrazingRecord(record, generator, { surface })) return false;
   if (record.turtleCommunityVersion === undefined && record.turtleInitializedAtSec === undefined && record.turtleAgents === undefined) return true;
   if (record.turtleCommunityVersion !== 1 || !Array.isArray(record.turtleAgents) || record.turtleAgents.length > 1 ||
       !Number.isSafeInteger(record.cx) || !Number.isSafeInteger(record.cz) || record.id !== `${record.cx},${record.cz}` ||
@@ -140,7 +142,7 @@ export function validateOceanTurtleRecord(record, generator, { surface } = {}) {
         !Array.isArray(a.patrolWaypoints) || a.patrolWaypoints.length !== 16 || !Number.isInteger(a.patrolIndex) || a.patrolIndex < 0 || a.patrolIndex >= 16 ||
         !a.patrolWaypoints.every(p => oceanTurtlePositionValid(generator, p, a.sizeM, { cx, cz, surface, grass })) ||
         !oceanTurtlePositionValid(generator, a.home, a.sizeM, { cx, cz, surface, grass }) ||
-        !oceanTurtlePositionValid(generator, a.position, a.sizeM, { cx, cz, surface, grass, allowSurface: a.state !== 'seagrass-cruising' }) ||
+        (!(a.grazing?.version === 1 && a.grazing.phase !== 'idle') && !oceanTurtlePositionValid(generator, a.position, a.sizeM, { cx, cz, surface, grass, allowSurface: a.state !== 'seagrass-cruising' })) ||
         (a.diveTarget !== null && !oceanTurtlePositionValid(generator, a.diveTarget, a.sizeM, { cx, cz, surface, grass })) ||
         (a.alive && ['surfacing', 'breathing', 'diving'].includes(a.state) && !finite(a.diveTarget)) ||
         !phaseValid(a) || Math.hypot(a.velocity.x, a.velocity.y, a.velocity.z) > OCEAN_TURTLE_MODEL.speedMps + 1e-8) return false;

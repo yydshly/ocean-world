@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-06",
+  "package": "Existing green-turtle seagrass relationship, living-shallows only",
+  "productionScope": {
+    "newSpecies": false,
+    "newAnimals": false,
+    "replacementOrRefill": false,
+    "newMeshes": false,
+    "optionalAtomicUpgrade": true,
+    "originalBedAndHostsRetained": true,
+    "oldPatrolAndBreathFieldsRetained": true,
+    "discreteBiteIntervalSec": 2.5,
+    "requestedBiteUnits": 0.0005,
+    "boutLimitSec": 12,
+    "initialAliveTurtleOrganicInputUnits": 0.004,
+    "intakePartition": {
+      "retention": 0.6,
+      "detritus": 0.25,
+      "systemOutput": 0.15
+    }
+  },
+  "verification": {
+    "localChecks": {
+      "tests": 167,
+      "pass": 167,
+      "fail": 0,
+      "log": "turtle-grazing-checks.log",
+      "sameSetAsPagesWorkflow": true
+    },
+    "localBuild": {
+      "status": "passed",
+      "localBuildRuns": 2,
+      "log": "turtle-grazing-build.log",
+      "initialBuildAlsoPassed": true,
+      "secondBuildReason": "Necessary grazing-phase death validation repair after first build. No assets or shaders modified.",
+      "retainedHostingArtifacts": [
+        "dist/client/index.html",
+        "dist/server/index.js",
+        "dist/.openai/hosting.json"
+      ]
+    },
+    "browserViewingVerified": false,
+    "browserLimitation": "Prior browser-tool URL refusal remains; no alternate browser or automation workaround used.",
+    "staticLeafContactOnly": true,
+    "shaderBendCollisionImplemented": false,
+    "shaderBendOmittedLocalXZUnitsMax": 0.05,
+    "measuredBiomassOrPhysiology": false,
+    "actualOrdinaryRun": {
+      "seed": "living-shallows-v1|string:42",
+      "realTurtleOwners": [
+        "6,2",
+        "6,3"
+      ],
+      "contacts": [
+        {
+          "id": "ocean-turtle:6,3:green-turtle:0",
+          "owner": "6,3",
+          "firstBiteAtSec": 24.3,
+          "plantId": "living-grass:147,83",
+          "leafIndex": 90,
+          "biteCount": 1,
+          "consumedUnits": 0.0005,
+          "nearestStaticGroundedLeafDistanceM": 2.162713614856923e-11,
+          "phase": "grazing"
+        }
+      ],
+      "plantDebitsVerified": true,
+      "materialBalanceError": 2.353672812205332e-14,
+      "foodBalanceError": 2.0625862129364236e-14,
+      "feedingPhaseColdRestoreExact": true,
+      "forcedBirthsOrFood": false,
+      "shaderCurrentBendOmittedLocalXZUnitsMax": 0.05,
+      "browserViewingVerified": false
+    }
+  },
+  "repairNotes": [
+    "Initial logical crown-edge contact could be outside rendered leaves; replaced by actual shared static leaf-tip geometry, four-corner grounding and uphill shortening. No asset redesign.",
+    "A saved owner consumption counter could disagree with individual consumedUnits; validator now checks the equality.",
+    "Previously untracked historical old-ecology fixture is included for CI opt-out regression. Obsolete whole-file hash snapshot removed from rendering test, retaining exact original geometry/animation/resource checks."
+  ],
+  "publication": {
+    "status": "pending",
+    "repository": "https://github.com/yydshly/ocean-world",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+  },
+  "goalState": "Separate overall ocean objective; this package does not mean full documentary visual acceptance or complete ocean ecology."
+}

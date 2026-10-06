@@ -260,6 +260,10 @@ export function livingShallowsAssetGeometries() {
   return result;
 }
 
+// Physics/feeding may sample this same immutable prototype without allocating
+// the other scenery assets. This does not change the renderer's mesh recipe.
+export function livingShallowsMeadowGeometry() { return meadowGeometry(); }
+
 export function livingShallowsTerrainColor(x, z, sample, cover, rootEnvelope, target = [0, 0, 0]) {
   const hard = THREE.MathUtils.clamp(sample.rockiness || 0, 0, 1);
   const grass = THREE.MathUtils.clamp(cover.seagrass || 0, 0, 1) * THREE.MathUtils.clamp(rootEnvelope, 0, 1);

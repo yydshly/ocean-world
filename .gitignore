@@ -79,3 +79,7 @@ output/validation/screenshots/*
 !output/validation/living-belt-build.log
 !output/validation/living-belt-checks.log
 !output/validation/living-belt-delivery.json
+!output/validation/turtle-grazing-checks.log
+!output/validation/turtle-grazing-build.log
+!output/validation/turtle-grazing-delivery.json
+!output/validation/ocean-turtle-ecology-before.js

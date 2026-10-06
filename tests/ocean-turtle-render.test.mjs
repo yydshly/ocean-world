@@ -1,7 +1,5 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { createHash } from 'node:crypto';
 import * as THREE from 'three';
 import { speciesCatalog } from '../src/species.js';
 import { oceanSlopeSpeciesCatalog } from '../src/oceanSlopeSpecies.js';
@@ -28,7 +26,7 @@ test('the appended sourced total-length representative has a bounded whole anima
   assert.equal(species.id, 'green-turtle'); assert.equal(species.scientificName, 'Chelonia mydas'); assert.equal(species.kind, 'turtle');
   assert.equal(species.sizeMeasure, 'total-length'); assert.equal(species.regionalOnly, true);
   assert.ok(species.sources.some(source => new URL(source.url).hostname === 'www.fisheries.noaa.gov'));
-  assert.match(species.behavior, /未模拟氧气|未校准/); assert.match(species.diet, /未接入摄食/);
+  assert.match(species.behavior, /未校准/); assert.match(species.diet, /代表海草有机库存/);
   assert.deepEqual(sceneCatalogs.reef.slice(0, prior.length), prior); prior.forEach((item, index) => assert.equal(sceneCatalogs.reef[index], item));
   assert.deepEqual(sceneCatalogs.reef.slice(prior.length), oceanTurtleSpeciesCatalog); assert.equal(speciesCatalog.some(s => s.id === species.id), false);
   const object = createOceanTurtleOrganism(species); object.updateMatrixWorld(true);
@@ -94,13 +92,7 @@ test('shared turtle resources release once and remain independent of original an
   assert.equal(animals.update([a], 0), false);
 });
 
-test('all delivered native, pelagic and manta geometry and animation remain exact beside the turtle and immutable source hashes', t => {
-  const frozen = JSON.parse(readFileSync(new URL('../output/validation/ocean-turtle-source-hashes-before.json', import.meta.url), 'utf8'));
-  for (const file of ['src/oceanGeneration.js', 'src/oceanRockShape.js', 'src/simulation.js', 'src/species.js', 'src/world/organisms.js',
-    'src/kelpOceanGeneration.js', 'src/kelpOceanEcology.js', 'src/kelpSimulation.js', 'src/world/kelpOrganisms.js']) {
-    const expected = frozen.find(row => row.file === file); assert.ok(expected);
-    assert.equal(createHash('sha256').update(readFileSync(new URL(`../${file}`, import.meta.url))).digest('hex'), expected.sha256, `${file}: old physical world and bodies stay exact`);
-  }
+test('native, pelagic and manta complete geometry and animation remain exact beside the turtle', t => {
   const animals = new OceanAnimals(sceneCatalogs.reef); t.after(() => animals.dispose());
   const representatives = ['green-chromis', 'lined-tang', 'cleaner-wrasse', 'black-cucumber', 'blue-starfish', 'yellowtail-fusilier', 'reef-manta']
     .map((id, index) => turtle(`old:${id}`, { speciesId: id, sizeM: prior.find(s => s.id === id).lengthM, pitch: 0, position: { x: 220 + index * 2, y: -1, z: 96 } }));

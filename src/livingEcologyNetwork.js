@@ -11,11 +11,17 @@ const POOLS = ['algae', 'plankton', 'detritus'];
 const TOTALS = ['primaryProduction', 'externalInput', 'ingestion', 'feedingDetritus', 'predation',
   'deathDetritus', 'plantLitter', 'decomposition', 'mineralisation', 'systemOutput'];
 const finiteNonnegative = value => Number.isFinite(value) && value >= 0;
+const TURTLE_ORGANIC_FIELDS = ['turtleOrganicVersion', 'turtleOrganicInitializedAtSec', 'turtleOrganic'];
+const hasTurtleOrganicRecord = region => TURTLE_ORGANIC_FIELDS.some(key => Object.hasOwn(region, key)) ||
+  (Array.isArray(region.turtleAgents) ? region.turtleAgents : []).some(agent =>
+    agent && (Object.hasOwn(agent, 'organicUnits') || Object.hasOwn(agent, 'organicDeathRecorded')));
+const trackedTurtles = region => region.turtleOrganicVersion === 1 && Array.isArray(region.turtleAgents) ? region.turtleAgents : [];
 const stock = region => POOLS.reduce((n, key) => n + region.resources[key], 0) + region.basicNetwork.nutrients +
   region.basicNetwork.plantOrganicUnits + region.basicNetwork.coralOrganicUnits +
   (region.reefGuild?.preyOrganicUnits ?? 0) +
   (region.openWaterLife?.preyOrganicUnits ?? 0) +
-  region.agents.reduce((n, agent) => n + agent.organicUnits, 0);
+  region.agents.reduce((n, agent) => n + agent.organicUnits, 0) +
+  trackedTurtles(region).reduce((n, agent) => n + agent.organicUnits, 0);
 const cap = value => Math.max(0, Math.min(1, value));
 
 export function livingNetworkBalance(region) {
@@ -63,6 +69,14 @@ export function validateLivingNetworkRecord(region) {
     !['initial', 'input', 'ingested', 'exported', 'networkAdded', 'networkRemoved'].every(key => finiteNonnegative(region.ledger?.[key])) ||
     !region.agents.every(agent => finiteNonnegative(agent.organicUnits) && typeof agent.organicDeathRecorded === 'boolean' &&
       (agent.alive ? !agent.organicDeathRecorded : !agent.organicDeathRecorded || agent.organicUnits === 0))) return false;
+  if (hasTurtleOrganicRecord(region) && (region.turtleOrganicVersion !== 1 || !Array.isArray(region.turtleAgents) ||
+    !finiteNonnegative(region.turtleOrganicInitializedAtSec) || region.turtleOrganicInitializedAtSec > region.timeSec ||
+    !finiteNonnegative(region.turtleOrganic?.initialInputUnits) || region.turtleOrganic.initialInputUnits > n.ledger.externalInput + 1e-8 ||
+    !finiteNonnegative(region.turtleOrganic?.counters?.seagrassGrazedUnits) ||
+    region.turtleOrganic.counters.seagrassGrazedUnits > n.processTotals.ingestion + 1e-8 ||
+    !region.turtleAgents.every(agent => agent && typeof agent.alive === 'boolean' && finiteNonnegative(agent.organicUnits) &&
+      typeof agent.organicDeathRecorded === 'boolean' &&
+      (agent.alive ? !agent.organicDeathRecorded : !agent.organicDeathRecorded || agent.organicUnits === 0)))) return false;
   const foodError = region.ledger.initial + region.ledger.input + (region.ledger.transferredIn ?? 0) + region.ledger.networkAdded -
     region.ledger.ingested - region.ledger.exported - (region.ledger.transferredOut ?? 0) - region.ledger.networkRemoved -
     POOLS.reduce((total, key) => total + region.resources[key], 0);
@@ -105,6 +119,19 @@ export function recordLivingAdmission(region, agents) {
   region.basicNetwork.processTotals.externalInput += input;
   return input;
 }
+
+/** A once-only extension of the existing ledger boundary. Historical turtles
+ * retain their identity, movement and deaths; only live body reference stocks
+ * are admitted as explicit input. A partial record is left for validation,
+ * never silently repaired or used to recalculate the old initial balance. */
+export function initializeLivingTurtleOrganic(region) {
+  if (!region.basicNetwork || !Array.isArray(region.turtleAgents) || hasTurtleOrganicRecord(region)) return false;
+  const input = recordLivingAdmission(region, region.turtleAgents);
+  region.turtleOrganicVersion = 1;
+  region.turtleOrganicInitializedAtSec = region.timeSec;
+  region.turtleOrganic = { initialInputUnits: input, counters: { seagrassGrazedUnits: 0 } };
+  return true;
+}
 function retainOrganic(region, agent, quantity) {
   const retained = Math.min(quantity, Math.max(0, .04 - agent.organicUnits));
   agent.organicUnits += retained;
@@ -120,6 +147,21 @@ export function recordLivingIngestion(region, agent, quantity) {
   output(region, quantity * .15);
   n.processTotals.ingestion += quantity;
   n.processTotals.feedingDetritus += residue;
+}
+
+/** The caller proves actual contact with an existing seagrass descriptor.
+ * This debits the representative plant stock, not the algae/plankton/detritus
+ * food ledger. No material or energy is obtained when that stock is empty. */
+export function recordLivingSeagrassGrazing(region, turtle, requestedQuantity) {
+  if (!finiteNonnegative(requestedQuantity)) throw new RangeError('Seagrass grazing quantity must be finite and non-negative.');
+  if (!region.basicNetwork || region.turtleOrganicVersion !== 1 || !trackedTurtles(region).includes(turtle) ||
+      !turtle.alive || turtle.organicDeathRecorded) return 0;
+  const quantity = Math.min(requestedQuantity, region.basicNetwork.plantOrganicUnits);
+  if (quantity === 0) return 0;
+  region.basicNetwork.plantOrganicUnits -= quantity;
+  recordLivingIngestion(region, turtle, quantity);
+  region.turtleOrganic.counters.seagrassGrazedUnits += quantity;
+  return quantity;
 }
 
 export function recordLivingDeath(region, agent) {
@@ -193,7 +235,7 @@ export function tickLivingNetwork(region, environment, dt) {
     addFood(region, 'detritus', litter);
     n.processTotals.plantLitter += litter;
   }
-  for (const agent of region.agents) {
+  for (const agent of [...region.agents, ...trackedTurtles(region)]) {
     if (!agent.alive) { recordLivingDeath(region, agent); continue; }
     const loss = Math.min(agent.organicUnits, agent.organicUnits * .0001 * dt);
     agent.organicUnits -= loss;
@@ -217,19 +259,32 @@ export function tickLivingNetwork(region, environment, dt) {
 
 export function summarizeLivingNetwork(regions, speciesById) {
   const agents = regions.flatMap(region => region.agents.filter(agent => agent.alive));
+  const turtleRegions = regions.filter(region => region.turtleOrganicVersion === 1);
+  const turtles = turtleRegions.flatMap(region => region.turtleAgents);
+  const liveTurtles = turtles.filter(agent => agent.alive);
+  const seagrassGrazedUnits = turtleRegions.reduce((n, region) => n + region.turtleOrganic.counters.seagrassGrazedUnits, 0);
   const hasGuild = guild => agents.some(agent => speciesById[agent.speciesId]?.guild === guild);
   const total = key => regions.reduce((n, region) => n + region.basicNetwork[key], 0);
   const coverage = {
     primaryProduction: regions.some(region => region.basicNetwork.habitat.algae > 0 || region.basicNetwork.habitat.seagrass > 0),
-    grazing: hasGuild('grazer'), planktonFeeding: hasGuild('planktivore'),
+    grazing: hasGuild('grazer') || liveTurtles.length > 0, planktonFeeding: hasGuild('planktivore'),
     attachedFilterFeeding: hasGuild('photosymbiotic-filter') || hasGuild('attached-filter') || regions.some(region => region.basicNetwork.habitat.coral > 0),
     predation: hasGuild('predator'), detritusFeeding: hasGuild('deposit-feeder'), decomposition: regions.length > 0,
+    ...(turtleRegions.length ? { seagrassGrazing: seagrassGrazedUnits > 0 } : {}),
   };
   return { enabled: true, version: LIVING_NETWORK_VERSION, units: LIVING_NETWORK_UNITS,
-    scope: 'loaded regions; unloaded frozen; turtle patrol visitors outside organic consumer inventory', coverage,
+    scope: turtleRegions.length ? 'loaded regions; unloaded frozen; registered turtles included in organic consumer inventory' :
+      'loaded regions; unloaded frozen; turtle patrol visitors outside organic consumer inventory', coverage,
     nutrients: total('nutrients'), plantOrganicUnits: total('plantOrganicUnits'), coralOrganicUnits: total('coralOrganicUnits'),
-    consumerOrganicUnits: agents.reduce((n, agent) => n + agent.organicUnits, 0),
+    consumerOrganicUnits: [...agents, ...liveTurtles].reduce((n, agent) => n + agent.organicUnits, 0),
     detritus: regions.reduce((n, region) => n + region.resources.detritus, 0),
+    ...(turtleRegions.length ? { turtleGrazing: {
+      scope: 'registered owner-local turtles; seagrass consumption only after actual descriptor contact; organic quantities are relative proxies',
+      registeredCount: turtles.length, aliveCount: liveTurtles.length,
+      consumerOrganicUnits: liveTurtles.reduce((n, agent) => n + agent.organicUnits, 0),
+      initialInputUnits: turtleRegions.reduce((n, region) => n + region.turtleOrganic.initialInputUnits, 0),
+      seagrassGrazedUnits,
+    } } : {}),
     ...(regions.some(region => region.reefGuildVersion === 1) ? { reefGuild: {
       scope: 'unresolved benthic invertebrate prey food pool; detrital support is a group food-web approximation; no rendered prey kills',
       preyOrganicUnits: regions.reduce((n, region) => n + (region.reefGuild?.preyOrganicUnits ?? 0), 0),
