@@ -158,9 +158,36 @@
     "src/demoCapabilities.js": "3aa2822d363ab9ac9dd98b2fbf7830fa972dd18d733a243721e068d53ba77e8f",
     "src/directorTour.js": "f1b9c7a13bd76d826f104783979525c7844e4720c4d96640aa728897ae1692fb"
   },
-  "sourceCommit": null,
+  "sourceCommit": "a74ee406e9e28227a8c917ca14988b5c4d1df4a9",
   "publication": {
-    "status": "pending"
+    "status": "success",
+    "runId": 37478023789,
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/37478023789",
+    "headSha": "a74ee406e9e28227a8c917ca14988b5c4d1df4a9",
+    "buildJobId": 112318499441,
+    "deployJobId": 112320990458,
+    "cloudChecks": {
+      "tests": 425,
+      "pass": 425,
+      "fail": 0,
+      "notAddedToLocalCount": true,
+      "log": "output/validation/shallow-scene-cloud-build.log"
+    },
+    "runEvidence": "output/validation/shallow-scene-cloud-run.json",
+    "deployment": {
+      "id": 6886597062,
+      "sha": "a74ee406e9e28227a8c917ca14988b5c4d1df4a9",
+      "environment": "github-pages",
+      "createdAtUtc": "2026-10-06T14:24:49Z",
+      "statusId": 19347253959,
+      "state": "success",
+      "statusCreatedAtUtc": "2026-10-06T14:25:08Z",
+      "statusUrl": "https://api.github.com/repos/yydshly/ocean-world/deployments/6886597062/statuses/19347253959",
+      "environmentUrl": "https://yydshly.github.io/ocean-world/",
+      "logUrl": "https://github.com/yydshly/ocean-world/actions/runs/37478023789/job/112320990458"
+    },
+    "allEightSourceHashesUnchanged": true,
+    "browserVisualAcceptance": false
   },
   "limits": [
     "CPU, native Three geometry and persistence evidence only; no current browser or WebGL visual acceptance",

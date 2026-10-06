@@ -107,3 +107,5 @@ output/validation/screenshots/*
 !output/validation/shallow-scene-model.json
 !output/validation/shallow-scene-checks-initial.log
 !output/validation/shallow-scene-entry-repair.log
+!output/validation/shallow-scene-cloud-build.log
+!output/validation/shallow-scene-cloud-run.json
