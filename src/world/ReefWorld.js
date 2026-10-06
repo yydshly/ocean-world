@@ -52,7 +52,7 @@ import { SEA_SPIDER_BODY_LOCAL } from '../deepSeaSpiderGeometry.js';
 import { localCaptureEnabled, saveJson } from '../capture.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../livingShallows.js';
 import { createLivingWorldState } from '../livingWorldState.js';
-import { createDirectorCameraMotion, sampleDirectorCameraMotion, advanceDirectorCameraElapsed } from '../directorCameraMotion.js';
+import { createDirectorCameraMotion, sampleDirectorCameraMotion, advanceDirectorCameraElapsed, isDirectorPlaybackRate } from '../directorCameraMotion.js';
 
 const reefPresets = {
   wide: { position: [3, 2.8, 5], target: [-2.5, 0.65, -2] },
@@ -901,8 +901,9 @@ export class ReefWorld {
     this.requestOceanEcology();
   }
   oceanWorldPosition(){return this.camera.position.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z));}
-  beginDirectorMotion({durationSec=12,kind='walk',layer=null,distanceM}={}){
+  beginDirectorMotion({durationSec=12,kind='walk',layer=null,distanceM,playbackRate=1}={}){
     if(this.disposed||!this.camera||!this.controls)return false;
+    if(!isDirectorPlaybackRate(playbackRate))return false;
     if(layer&&!['bed','midwater','surface','free'].includes(layer))return false;
     const origin=new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z),position=this.oceanWorldPosition();
     const target=this.controls.target.clone().add(origin),selected=this.findAgent(this.selectedId);
@@ -930,8 +931,9 @@ export class ReefWorld {
       // Validate the starting pose before acquiring the camera. This affects
       // observation only, with no environment, animal or clock mutation.
       sampleDirectorCameraMotion(shot,0,this.directorMotionQueries(layer));
-      this.directorMotion={shot,active:true,complete:false,elapsedSec:0,travelledM:0,error:null,
-        layer,agentId:following?selected.id:null,lastPosition:{x:position.x,y:position.y,z:position.z}};
+      this.directorMotion={shot,active:true,complete:false,elapsedSec:0,travelledM:0,error:null,playbackRate,
+        layer,agentId:following?selected.id:null,lastTrackingTarget:following?{x:focusTarget.x,y:focusTarget.y,z:focusTarget.z}:null,
+        lastPosition:{x:position.x,y:position.y,z:position.z}};
       this.following=false;this.transition=null;this.oceanTravel=null;this.oceanCruising=false;this.keys.clear();
       if(layer){this.oceanObservationLayer=layer;this.oceanFreeDepthM=layer==='free'?Math.max(0,this.surfaceY-position.y):null;}
       this.emitSnapshot(true);return true;
@@ -942,14 +944,24 @@ export class ReefWorld {
       ceilingHeight:this.isDeep?(x,z)=>this.floorY(x,z)+8:null,
       layerHeight:layer?(x,z)=>this.oceanLayerY(x,z,layer):null};
   }
+  setDirectorPlaybackRate(playbackRate){
+    if(this.disposed||!this.directorMotion?.shot||!isDirectorPlaybackRate(playbackRate))return false;
+    this.directorMotion.playbackRate=playbackRate;
+    this.emitSnapshot(true);return true;
+  }
   updateDirectorMotion(dt){
     const motion=this.directorMotion;if(!motion?.active)return;
     const elapsed=advanceDirectorCameraElapsed(motion.elapsedSec,motion.shot.durationSec,dt,
-      {paused:this.paused,hidden:typeof document!=='undefined'&&document.visibilityState==='hidden'});
+      {paused:this.paused,hidden:typeof document!=='undefined'&&document.visibilityState==='hidden',playbackRate:motion.playbackRate});
     if(elapsed===motion.elapsedSec)return;
     try{
       const agent=motion.agentId?this.findAgent(motion.agentId):null;
-      const trackingTarget=agent?.alive?this.focusTarget(agent).add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z)):null;
+      const actualTarget=agent?.alive?this.focusTarget(agent).add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z)):null;
+      if(actualTarget&&['x','y','z'].every(key=>Number.isFinite(actualTarget[key])))motion.lastTrackingTarget={x:actualTarget.x,y:actualTarget.y,z:actualTarget.z};
+      // Death or regional unloading ends tracking of the real individual.
+      // Keep the last observed absolute location for this finite shot rather
+      // than suddenly aiming back at its original chapter-entry position.
+      const trackingTarget=motion.lastTrackingTarget;
       const frame=sampleDirectorCameraMotion(motion.shot,elapsed,{...this.directorMotionQueries(motion.layer),trackingTarget});
       const position=new THREE.Vector3(frame.position.x-this.oceanRenderOrigin.x,frame.position.y,frame.position.z-this.oceanRenderOrigin.z);
       const target=new THREE.Vector3(frame.target.x-this.oceanRenderOrigin.x,frame.target.y,frame.target.z-this.oceanRenderOrigin.z);
@@ -968,7 +980,7 @@ export class ReefWorld {
   directorMotionSnapshot(){
     const motion=this.directorMotion,shot=motion?.shot;
     return {active:!!motion?.active,complete:!!motion?.complete,kind:shot?.kind??null,
-      elapsedSec:motion?.elapsedSec??0,durationSec:shot?.durationSec??0,distanceM:shot?.distanceM??0,travelledM:motion?.travelledM??0,
+      elapsedSec:motion?.elapsedSec??0,durationSec:shot?.durationSec??0,distanceM:shot?.distanceM??0,travelledM:motion?.travelledM??0,playbackRate:motion?.playbackRate??1,
       layer:motion?.layer??null,agentId:motion?.agentId??null,error:motion?.error??null,
       paused:!!this.paused,scope:'local-continuous-observation-shot',coordinateSpace:'absolute-world-metres',
       worldPosition:this.camera?{...this.oceanWorldPosition()}:null,

@@ -3,6 +3,8 @@ const smooth = value => { const t = clamp(value, 0, 1); return t * t * (3 - 2 * 
 const point = value => value && ['x', 'y', 'z'].every(key => Number.isFinite(value[key]));
 const copy = value => ({ x: value.x, y: value.y, z: value.z });
 const mix = (a, b, t) => a + (b - a) * t;
+export const DIRECTOR_PLAYBACK_RATES = Object.freeze([.5, 1, 1.5, 2, 4]);
+export const isDirectorPlaybackRate = rate => DIRECTOR_PLAYBACK_RATES.includes(rate);
 
 /** A finite local observation shot in absolute metres, independent of any
  * renderer origin. It never stands for travel between distant route stops. */
@@ -21,9 +23,9 @@ export function createDirectorCameraMotion({ position, target, durationSec = 12,
     kind, durationSec, distanceM: distance, floorY, clearanceM, heading });
 }
 
-export function advanceDirectorCameraElapsed(elapsedSec, durationSec, dtSec, { paused = false, hidden = false } = {}) {
-  if (paused || hidden || !Number.isFinite(dtSec) || dtSec <= 0) return elapsedSec;
-  return Math.min(durationSec, elapsedSec + dtSec);
+export function advanceDirectorCameraElapsed(elapsedSec, durationSec, dtSec, { paused = false, hidden = false, playbackRate = 1 } = {}) {
+  if (paused || hidden || !Number.isFinite(dtSec) || dtSec <= 0 || !isDirectorPlaybackRate(playbackRate)) return elapsedSec;
+  return Math.min(durationSec, elapsedSec + dtSec * playbackRate);
 }
 
 export function sampleDirectorCameraMotion(shot, elapsedSec, { floorHeight = () => shot.floorY,

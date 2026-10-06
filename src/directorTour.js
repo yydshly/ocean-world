@@ -1,4 +1,7 @@
 import { DEMO_ACTIONS, DEMO_LIVING_STOPS } from './demoCapabilities.js';
+import { isDirectorPlaybackRate } from './directorCameraMotion.js';
+
+export { DIRECTOR_PLAYBACK_RATES } from './directorCameraMotion.js';
 
 const actions = new Map(DEMO_ACTIONS.map(action => [action.id, action]));
 const step = (id, title, caption, actionId, durationMs, motionKind = 'walk') => Object.freeze({
@@ -63,7 +66,7 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
 ]));
 
 export function createDirectorState() {
-  return { active: false, index: 0, phase: 'idle', playing: false, elapsedMs: 0, token: 0, error: null };
+  return { active: false, index: 0, phase: 'idle', playing: false, elapsedMs: 0, token: 0, error: null, playbackRate: 1 };
 }
 
 const validIndex = index => Number.isInteger(index) && index >= 0 && index < DIRECTOR_STEPS.length;
@@ -83,6 +86,9 @@ const advance = state => state.index + 1 < DIRECTOR_STEPS.length
 export function directorReducer(state, event) {
   if (!event || typeof event.type !== 'string') return state;
   switch (event.type) {
+    case 'set-rate':
+      return isDirectorPlaybackRate(event.playbackRate) && event.playbackRate !== state.playbackRate
+        ? { ...state, playbackRate: event.playbackRate } : state;
     case 'start':
       return loadStep(state, validIndex(event.index) ? event.index : 0, true);
     case 'entered':
@@ -112,7 +118,7 @@ export function directorReducer(state, event) {
       return elapsedMs >= DIRECTOR_STEPS[state.index].durationMs ? advance(nextState) : nextState;
     }
     case 'stop':
-      return { ...createDirectorState(), token: state.token + 1 };
+      return { ...createDirectorState(), token: state.token + 1, playbackRate: state.playbackRate };
     case 'finish':
       return state.active && (event.token === undefined || event.token === state.token) ? complete(state) : state;
     default:

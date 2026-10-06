@@ -67,3 +67,6 @@ output/validation/screenshots/*
 !output/validation/director-motion-final-checks.log
 !output/validation/director-motion-review.json
 !output/validation/director-motion-overview.jpg
+!output/validation/director-speed-build.log
+!output/validation/director-speed-checks.log
+!output/validation/director-speed-review.json

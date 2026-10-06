@@ -2,7 +2,9 @@
 
 更新：2026-10-06。
 
-移动镜头源码 `7de5b4bb698023f94c7703c54c68820ec597d41b` 已推送，最终本机生产构建及 68 项相关检查通过。[发布运行 37366892941](https://github.com/yydshly/ocean-world/actions/runs/37366892941) 尚为 queued，未分配 runner，未发布成功。[GitHub 官方状态](https://www.githubstatus.com/)报告 Actions 机器分配延迟，故障尚未解除。保留此发布队列，线上目前仍是下述 e59c59a；可先观看[本机移动版](http://127.0.0.1:4173/ocean-world/?demo=director)。
+巡游速度版本机生产构建及58项有限相关检查通过；本轮准备正常发布，尚未把准备视为成功。可先使用[本机导演](http://127.0.0.1:4173/ocean-world/?demo=director)。
+
+此前移动镜头源码 `7de5b4bb698023f94c7703c54c68820ec597d41b` 本机构建/68项检查通过，但 [发布运行 37366892941](https://github.com/yydshly/ocean-world/actions/runs/37366892941) 已于10月5日20:14 UTC结束failure：build cancelled，runner_id=0、无执行步骤，deploy skipped。此运行未发布成功，不再称queued。[GitHub 官方状态](https://www.githubstatus.com/)记录Actions故障于10月5日22:49 UTC解除；当前服务正常。本轮发布结果将单独记录。
 
 最新自动演示：[导演入口](https://yydshly.github.io/ocean-world/?demo=director)。修复源码 `e59c59a73b14f3f85cd4d5f466cb8a061ba7174e` 的 [运行 37359031147](https://github.com/yydshly/ocean-world/actions/runs/37359031147) 构建、54 项相关检查和部署成功；部署 `6867326583` 状态 success。此前导演源码 `3f92b0a46f72e565163818f2f656b90afc7c6d5b` 的 [运行 37356921260](https://github.com/yydshly/ocean-world/actions/runs/37356921260) 构建、49 项检查及部署成功，但实际导览随后暴露旧捕食事件显示缺陷。首次修复的 [运行 37358590602](https://github.com/yydshly/ocean-world/actions/runs/37358590602) 因新增测试导入文件名大小写失败，未部署；修正为仓库的 simulation.js 后完成最新发布。此前手动总览发布记录保留如下。导演范围及实际分段播放核对见 [说明](DIRECTOR_ENTRY.md)。
 

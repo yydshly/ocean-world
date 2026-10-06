@@ -1,6 +1,7 @@
 import { useEffect, useReducer, useRef } from 'react';
 import { createDirectorState, directorReducer, DIRECTOR_STEPS, directorStepAction } from './directorTour.js';
 import { directorSceneReady } from './directorReadiness.js';
+import { isDirectorPlaybackRate } from './directorCameraMotion.js';
 
 const worldKey = world => `${world.biomeId}:${world.isLivingShallows ? 'living' : 'original'}`;
 const panelAction = action => ['panel', 'population', 'capture'].includes(action.kind);
@@ -20,14 +21,14 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     motion.current?.world.stopDirectorMotion?.(); motion.current = null;
   };
   const fail = (token, problem) => { if (valid(token)) { stopMotion(); dispatch({ type: 'failed', token, error: problem }); } };
-  const start = () => {
+  const start = (index = 0) => {
     if (recording) { adapters.current.onNotice('请先结束录像，再开始导演演示'); return; }
     stopMotion();
     if (!original.current) original.current = { paused: worldRef.current?.paused ?? paused, speed: worldRef.current?.speed ?? speed };
     receipts.current = []; waiting.current = null; startedToken.current = null;
     restoreArmed.current = false;
     environments.current.clear(); preparedWorlds.current = new WeakSet();
-    dispatch({ type: 'start' });
+    dispatch({ type: 'start', index });
   };
   const stop = () => { stopMotion(); waiting.current = null; dispatch({ type: 'stop' }); };
   const changeStep = event => { stopMotion(); dispatch(event); };
@@ -124,6 +125,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     if (!actual || actual.disposed) return;
     try {
       const begun = actual.beginDirectorMotion({ ...step.motion,
+        playbackRate: current.current.playbackRate,
         layer: step.action.kind === 'layer' ? step.action.layer : undefined,
         distanceM: panelAction(step.action) ? 3 : undefined,
       });
@@ -138,7 +140,15 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   }, [state.active, state.phase, state.token, state.error, worldReady, snapshot?.runId]);
 
   useEffect(() => {
-    if (!state.active || state.phase !== 'showing' || !state.playing || state.error) return;
+    // A rate change updates the current native clock without starting a new path.
+    const owner = motion.current;
+    if (!state.active || state.phase !== 'showing' || state.error || !owner
+      || owner.token !== state.token || owner.world !== worldRef.current) return;
+    if (!owner.world.setDirectorPlaybackRate(state.playbackRate)) fail(state.token, '当前巡游速度无法应用，请重试。');
+  }, [state.playbackRate, state.active, state.phase, state.token, state.error, worldReady, snapshot?.runId]);
+
+  useEffect(() => {
+    if (!state.active || state.phase !== 'showing' || state.error) return;
     const timer = setInterval(() => {
       if (document.visibilityState !== 'visible') return;
       const owner = motion.current;
@@ -148,6 +158,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
         stop(); adapters.current.onNotice('已切换为自由观察，可从顶部重新开始导演演示。'); return;
       }
       if (shot?.error) { fail(state.token, shot.error); return; }
+      if (!current.current.playing) return;
       // Follow the rendered shot's clock, not a wall timer that could advance
       // while a low frame rate leaves the camera behind its planned route.
       const observedMs = shot?.complete ? DIRECTOR_STEPS[state.index].durationMs : (shot?.elapsedSec ?? 0) * 1000;
@@ -159,7 +170,10 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   return { state, steps: DIRECTOR_STEPS, start, stop, applied, prepareWorld, panelReady, fail,
     pause: () => dispatch({ type: 'pause' }), resume: () => dispatch({ type: 'resume' }),
     next: () => changeStep({ type: 'next' }), previous: () => changeStep({ type: 'prev' }),
-    seek: index => changeStep({ type: 'seek', index }),
+    seek: index => state.phase === 'complete' ? start(index) : changeStep({ type: 'seek', index }),
+    setPlaybackRate: playbackRate => {
+      if (isDirectorPlaybackRate(playbackRate)) dispatch({ type: 'set-rate', playbackRate });
+    },
     diagnostics: { ...state, title: DIRECTOR_STEPS[state.index].title, entered: receipts.current,
       motion: worldRef.current?.directorMotionSnapshot?.() ?? null },
   };

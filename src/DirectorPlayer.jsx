@@ -1,10 +1,11 @@
 import React from 'react';
+import { DIRECTOR_PLAYBACK_RATES } from './directorTour.js';
 import './directorPlayer.css';
 
 const finite = value => Number.isFinite(value) ? value : 0;
 
 export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
-  onPrevious, onSeek, onStop, onRestart }) {
+  onPrevious, onSeek, onStop, onRestart, onPlaybackRateChange }) {
   if (!state || (!state.active && state.phase !== 'complete')) return null;
 
   const count = steps.length;
@@ -15,7 +16,8 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
   const durationMs = Math.max(0, finite(step?.durationMs));
   const elapsedMs = Math.min(durationMs, Math.max(0, finite(state.elapsedMs)));
   const progress = complete ? 100 : durationMs ? Math.round(elapsedMs / durationMs * 100) : 0;
-  const remainingSec = Math.ceil(Math.max(0, durationMs - elapsedMs) / 1000);
+  const playbackRate = DIRECTOR_PLAYBACK_RATES.includes(state.playbackRate) ? state.playbackRate : 1;
+  const remainingSec = Math.ceil(Math.max(0, durationMs - elapsedMs) / (1000 * playbackRate));
   const phaseLabel = complete ? '演示结束' : !state.playing ? '已暂停' : loading ? '正在进入章节' : '镜头巡游';
   const currentLabel = complete ? '演示结束' : `${index + 1} / ${count} · ${step?.title || '场景观察'}`;
 
@@ -23,6 +25,12 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
     <header className="director-player-heading">
       <span className="director-player-brand"><i aria-hidden="true"/>导演演示</span>
       <span className="director-player-phase">{phaseLabel}</span>
+      <label className="director-player-speed">巡游速度
+        <select aria-label="巡游速度" value={playbackRate}
+          onChange={event => onPlaybackRateChange?.(Number(event.target.value))}>
+          {DIRECTOR_PLAYBACK_RATES.map(rate => <option key={rate} value={rate}>{rate}×</option>)}
+        </select>
+      </label>
       <button type="button" className="director-player-exit" aria-label="退出导演演示" onClick={onStop}>退出</button>
     </header>
 
@@ -31,7 +39,7 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
           updates remain outside it so screen readers hear each step once. */}
       <p className="director-player-title" role="status" aria-live="polite" aria-atomic="true">{currentLabel}</p>
       <p className="director-player-caption">{complete
-        ? '可以重新播放，或回到当前海域自由探索。'
+        ? '选择章节可重新观看，也可以重新播放全部，或自由探索。'
         : step?.caption || '观察当前海域的实际场景与状态。'}</p>
     </div>
 
@@ -48,11 +56,12 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
     </div>
 
     <div className="director-player-controls">
-      <select aria-label="导演演示章节" value={step?.id || ''} disabled={!count}
+      <select aria-label="导演演示章节" value={complete ? '' : step?.id || ''} disabled={!count}
         onChange={event => {
           const chosen = steps.findIndex(item => item.id === event.target.value);
           if (chosen >= 0) onSeek(chosen);
         }}>
+        {complete && <option value="" disabled>选择章节重新观看</option>}
         {steps.map((item, itemIndex) => <option key={item.id} value={item.id}>
           {String(itemIndex + 1).padStart(2, '0')} · {item.title}
         </option>)}

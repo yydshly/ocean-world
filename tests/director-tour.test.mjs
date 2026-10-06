@@ -1,11 +1,54 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DEMO_ACTIONS, DEMO_LIVING_STOPS } from '../src/demoCapabilities.js';
-import { DIRECTOR_STEPS, createDirectorState, directorReducer, directorStepAction } from '../src/directorTour.js';
+import { DIRECTOR_STEPS, DIRECTOR_PLAYBACK_RATES, createDirectorState, directorReducer, directorStepAction } from '../src/directorTour.js';
 
 const send = (state, type, data = {}) => directorReducer(state, { type, ...data });
 const enter = state => send(state, 'entered', { token: state.token });
 const tick = (state, deltaMs) => send(state, 'tick', { token: state.token, deltaMs });
+
+test('the chosen camera rate survives chapter changes, pauses, completion and another tour', () => {
+  let state = createDirectorState();
+  assert.equal(state.playbackRate, 1);
+  assert.deepEqual(DIRECTOR_PLAYBACK_RATES, [0.5, 1, 1.5, 2, 4]);
+  assert.ok(Object.isFrozen(DIRECTOR_PLAYBACK_RATES));
+  state = send(state, 'set-rate', { playbackRate: 2 });
+  state = send(state, 'start');
+  state = enter(state);
+  state = tick(state, 500);
+  const token = state.token;
+  state = send(state, 'set-rate', { playbackRate: 4 });
+  assert.equal(state.token, token, 'changing rate cannot start another shot');
+  assert.equal(state.elapsedMs, 500, 'the current camera path position is retained');
+  state = tick(state, 500);
+  assert.equal(state.elapsedMs, 1000, 'rendered camera time is not multiplied a second time');
+  state = send(state, 'pause');
+  state = send(state, 'set-rate', { playbackRate: 0.5 });
+  assert.equal(state.playing, false, 'a rate change cannot resume a paused shot');
+  state = send(state, 'resume');
+  state = send(state, 'next');
+  state = send(state, 'prev');
+  state = send(state, 'seek', { index: DIRECTOR_STEPS.length - 1 });
+  assert.equal(state.playbackRate, 0.5);
+  state = send(state, 'next');
+  assert.equal(state.phase, 'complete');
+  assert.equal(state.playbackRate, 0.5);
+  state = send(state, 'stop');
+  assert.equal(state.playbackRate, 0.5);
+  state = send(state, 'start', { index: 3 });
+  assert.equal(state.playbackRate, 0.5);
+});
+
+test('unsupported playback rates leave the actual shot and playback state untouched', () => {
+  const state = enter(send(createDirectorState(), 'start'));
+  for (const playbackRate of [0, -1, 0.75, 8, NaN, Infinity, '2', null, undefined]) {
+    assert.strictEqual(send(state, 'set-rate', { playbackRate }), state);
+  }
+  assert.strictEqual(send(state, 'set-rate', { playbackRate: 1 }), state);
+  for (const playbackRate of DIRECTOR_PLAYBACK_RATES) {
+    assert.equal(send(state, 'set-rate', { playbackRate }).playbackRate, playbackRate);
+  }
+});
 
 test('the finite tour covers every existing entry without invented or destructive actions', () => {
   const included = new Set(DIRECTOR_STEPS.map(step => step.action.id));

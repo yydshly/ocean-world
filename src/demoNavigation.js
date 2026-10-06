@@ -20,12 +20,22 @@ export function navigateDemoEntry(choice, world, { movingDirector = false } = {}
   }
   if (choice.kind === 'world') {
     if (world.isLivingShallows) return world.enterLivingShallows(0);
-    if (world.biomeId === 'reef') { world.setView('wide'); return true; }
+    // The moving shot takes ownership as soon as this entry is ready. Place
+    // its fixed starting view now, before it clears any unfinished transition.
+    if (world.biomeId === 'reef') {
+      if (movingDirector) world.setView('wide', true);
+      else world.setView('wide');
+      return true;
+    }
     world.startOceanExploration();
     world.setOceanOverview?.();
     return world.oceanExploring;
   }
-  if (choice.kind === 'view') { world.setView(choice.view); return true; }
+  if (choice.kind === 'view') {
+    if (movingDirector) world.setView(choice.view, true);
+    else world.setView(choice.view);
+    return true;
+  }
   if (choice.kind === 'discoveries') {
     if (!world.isLivingShallows) return false;
     if (!world.oceanExploring) return world.enterLivingShallows(0);

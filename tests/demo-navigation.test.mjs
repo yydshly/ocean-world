@@ -116,6 +116,31 @@ test('living and legacy world entries use their own observation operations witho
   assert.equal(legacy.world.protectedState, legacy.protectedState);
 });
 
+test('director fixed-view shots start at the requested view even before a slow transition could finish', () => {
+  const choices = ['world-legacy-reef', 'legacy-wide', 'legacy-skeleton']
+    .map(id => DEMO_ACTIONS.find(action => action.id === id));
+  for (const choice of choices) {
+    const { world, protectedState } = observationWorld();
+    const expected = choice.kind === 'world' ? 'wide' : choice.view;
+    world.actualView = 'previous-view';
+    world.setView = (view, immediate = false) => {
+      if (immediate) { world.actualView = view; world.transition = null; }
+      else world.transition = { view };
+    };
+    // Acquiring a native director shot clears transitions, so an unfinished
+    // ordinary view change cannot be relied on to supply its starting pose.
+    assert.equal(navigateDemoEntry(choice, world, { movingDirector: true }), true);
+    world.transition = null;
+    assert.equal(world.actualView, expected, `${choice.id} must not retain the previous shot's view`);
+    assert.equal(world.protectedState, protectedState);
+
+    world.actualView = 'manual-start';
+    assert.equal(navigateDemoEntry(choice, world), true);
+    assert.equal(world.actualView, 'manual-start', 'ordinary manual navigation keeps its animated transition');
+    assert.deepEqual(world.transition, { view: expected });
+  }
+});
+
 test('water-layer entries preserve horizontal location and do not call overview or an observation shortcut', () => {
   for (const biomeId of ['reef', 'kelp', 'deep']) {
     const choices = demoLayerEntries(biomeId).map(entry => entry.action);

@@ -1,0 +1,87 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { transform } from 'esbuild';
+import React from 'react';
+import { DIRECTOR_STEPS, DIRECTOR_PLAYBACK_RATES, createDirectorState, directorReducer } from '../src/directorTour.js';
+
+// Exercise the shipped JSX component and its actual event handlers without a
+// browser. This verifies React output, not layout or rendered camera motion.
+const source = await readFile(new URL('../src/DirectorPlayer.jsx', import.meta.url), 'utf8');
+const componentSource = source.replace(/^import .*;\r?\n/gm, '')
+  .replace('export function DirectorPlayer', 'function DirectorPlayer');
+const compiled = await transform(componentSource, { loader: 'jsx', jsx: 'transform', target: 'es2022' });
+const DirectorPlayer = new Function('React', 'DIRECTOR_PLAYBACK_RATES', `${compiled.code}\nreturn DirectorPlayer;`)(React, DIRECTOR_PLAYBACK_RATES);
+
+const send = (state, type, data = {}) => directorReducer(state, { type, ...data });
+const enter = state => send(state, 'entered', { token: state.token });
+const render = (state, callbacks = {}) => DirectorPlayer({ state, steps: DIRECTOR_STEPS, ...callbacks });
+
+function elements(value) {
+  if (Array.isArray(value)) return value.flatMap(elements);
+  if (!React.isValidElement(value)) return [];
+  return [value, ...elements(value.props.children)];
+}
+
+function content(value) {
+  if (Array.isArray(value)) return value.map(content).join('');
+  if (React.isValidElement(value)) return content(value.props.children);
+  return typeof value === 'string' || typeof value === 'number' ? String(value) : '';
+}
+
+function byLabel(tree, label) {
+  const element = elements(tree).find(item => item.props['aria-label'] === label);
+  assert.ok(element, `Actual player output contains ${label}`);
+  return element;
+}
+
+test('the actual player exposes working camera-rate choices while loading or paused', () => {
+  let state = send(createDirectorState(), 'start');
+  state = send(state, 'set-rate', { playbackRate: 1.5 });
+  const chosen = [];
+  for (const phaseState of [state, send(enter(state), 'pause')]) {
+    const selector = byLabel(render(phaseState, { onPlaybackRateChange: rate => chosen.push(rate) }), '巡游速度');
+    assert.equal(selector.type, 'select');
+    assert.equal(selector.props.value, 1.5);
+    assert.notEqual(selector.props.disabled, true, 'rate selection remains available without resuming the shot');
+    const options = elements(selector.props.children).filter(item => item.type === 'option');
+    assert.deepEqual(options.map(item => item.props.value), DIRECTOR_PLAYBACK_RATES);
+    assert.deepEqual(options.map(content), ['0.5×', '1×', '1.5×', '2×', '4×']);
+    selector.props.onChange({ target: { value: '2' } });
+  }
+  assert.deepEqual(chosen, [2, 2], 'the shipped handler passes numeric camera rates to the controller');
+});
+
+test('the actual countdown scales with rate while progress retains rendered shot time', () => {
+  let state = enter(send(createDirectorState(), 'start'));
+  state = send(state, 'tick', { token: state.token, deltaMs: 3000 });
+  state = send(state, 'set-rate', { playbackRate: 4 });
+  const tree = render(state);
+  const progress = byLabel(tree, '当前章节巡游进度');
+  assert.equal(progress.props['aria-valuenow'], 21);
+  assert.equal(progress.props['aria-valuetext'], '21%，剩余 3 秒');
+  assert.ok(elements(tree).some(item => content(item) === '3 秒后继续'));
+  state = send(state, 'pause');
+  state = send(state, 'set-rate', { playbackRate: 0.5 });
+  const pausedTree = render(state);
+  assert.equal(byLabel(pausedTree, '当前章节巡游进度').props['aria-valuetext'], '21%，剩余 22 秒');
+  assert.ok(elements(pausedTree).some(item => content(item) === '暂停中'));
+  assert.equal(byLabel(pausedTree, '继续导演演示').type, 'button');
+});
+
+test('a completed player can select the last chapter again through its real seek handler', () => {
+  const lastIndex = DIRECTOR_STEPS.length - 1;
+  let state = enter(send(createDirectorState(), 'start', { index: lastIndex }));
+  state = send(state, 'tick', { token: state.token, deltaMs: DIRECTOR_STEPS[lastIndex].durationMs });
+  assert.equal(state.phase, 'complete');
+  const sought = [];
+  const selector = byLabel(render(state, { onSeek: index => sought.push(index) }), '导演演示章节');
+  assert.equal(selector.props.value, '', 'completion leaves no chapter preselected, so the last chapter can trigger a change');
+  assert.equal(selector.props.disabled, false);
+  const options = elements(selector.props.children).filter(item => item.type === 'option');
+  assert.equal(options[0].props.value, '');
+  assert.equal(options[0].props.disabled, true);
+  assert.equal(options.at(-1).props.value, DIRECTOR_STEPS[lastIndex].id);
+  selector.props.onChange({ target: { value: DIRECTOR_STEPS[lastIndex].id } });
+  assert.deepEqual(sought, [lastIndex]);
+});

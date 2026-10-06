@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-06",
+  "scope": "director playback speed and a finite usability correction",
+  "rates": [0.5, 1, 1.5, 2, 4],
+  "clock": "native camera dt multiplied once; ecology speed remains independent",
+  "preserved": ["current shot path and elapsed time on rate changes", "choice through loading, pause, seek and restart", "actual saved animals, habitat, environment and records"],
+  "fixes": ["completed chapter selector including last chapter", "director fixed views before motion acquires camera", "last observed target held after actual follow target death or unload", "catalogue selection and journal return take over camera", "manual camera takeover detected while paused", "starting a recording leaves the tour"],
+  "validation": {
+    "productionBuild": "passed; Pages base /ocean-world/ and existing Sites packaging retained",
+    "relatedTests": {"passed": 58, "failed": 0, "newCasesIncluded": 9},
+    "testScope": ["navigation", "native camera methods and pure paths", "reducer", "readiness", "real JSX controls", "observation event text", "hosting packaging"],
+    "browser": "blocked before page read by browser URL policy; no workaround, new screenshot or realtime playback claim"
+  },
+  "previousRelease": {"run": 37366892941, "status": "completed", "conclusion": "failure", "build": "cancelled; runner_id 0; no steps", "deploy": "skipped"},
+  "newRelease": "pending commit and publication; follow docs/DEPLOYMENT.md"
+}

@@ -1,0 +1,368 @@
+TAP version 13
+# Subtest: matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+ok 1 - matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+  ---
+  duration_ms: 0.6626
+  type: 'test'
+  ...
+# Subtest: missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+ok 2 - missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+  ---
+  duration_ms: 0.1438
+  type: 'test'
+  ...
+# Subtest: the public observation shortcuts cover the actual living generator route once each
+ok 3 - the public observation shortcuts cover the actual living generator route once each
+  ---
+  duration_ms: 0.9601
+  type: 'test'
+  ...
+# Subtest: stop selection resolves the loaded route by ID and never substitutes the first stop
+ok 4 - stop selection resolves the loaded route by ID and never substitutes the first stop
+  ---
+  duration_ms: 0.2772
+  type: 'test'
+  ...
+# Subtest: kelp and deep world entries start continuous exploration and report an actual startup failure
+ok 5 - kelp and deep world entries start continuous exploration and report an actual startup failure
+  ---
+  duration_ms: 1.2693
+  type: 'test'
+  ...
+# Subtest: living and legacy world entries use their own observation operations without rebuilding populations
+ok 6 - living and legacy world entries use their own observation operations without rebuilding populations
+  ---
+  duration_ms: 0.3275
+  type: 'test'
+  ...
+# Subtest: director fixed-view shots start at the requested view even before a slow transition could finish
+ok 7 - director fixed-view shots start at the requested view even before a slow transition could finish
+  ---
+  duration_ms: 0.3644
+  type: 'test'
+  ...
+# Subtest: water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+ok 8 - water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+  ---
+  duration_ms: 0.735
+  type: 'test'
+  ...
+# Subtest: current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+ok 9 - current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+  ---
+  duration_ms: 0.3818
+  type: 'test'
+  ...
+# Subtest: director layer entry defers vertical movement to the rendered shot and leaves manual switching intact
+ok 10 - director layer entry defers vertical movement to the rendered shot and leaves manual switching intact
+  ---
+  duration_ms: 0.2902
+  type: 'test'
+  ...
+# Subtest: a missing local animal remains absent and the navigation adapter ignores UI-only tools
+ok 11 - a missing local animal remains absent and the navigation adapter ignores UI-only tools
+  ---
+  duration_ms: 0.1807
+  type: 'test'
+  ...
+# Subtest: discovery entry starts only the living observation world and preserves an existing exploration location
+ok 12 - discovery entry starts only the living observation world and preserves an existing exploration location
+  ---
+  duration_ms: 0.0974
+  type: 'test'
+  ...
+# Subtest: walking genuinely advances and turns through a finite local path, ending without extrapolation
+ok 13 - walking genuinely advances and turns through a finite local path, ending without extrapolation
+  ---
+  duration_ms: 2.1085
+  type: 'test'
+  ...
+# Subtest: absolute geographical paths remain translation invariant across far floating origins
+ok 14 - absolute geographical paths remain translation invariant across far floating origins
+  ---
+  duration_ms: 0.4108
+  type: 'test'
+  ...
+# Subtest: camera conforms to real floor and hard support while staying beneath the water ceiling
+ok 15 - camera conforms to real floor and hard support while staying beneath the water ceiling
+  ---
+  duration_ms: 0.8704
+  type: 'test'
+  ...
+# Subtest: layer changes approach the requested safe height continuously along a moving shot
+ok 16 - layer changes approach the requested safe height continuously along a moving shot
+  ---
+  duration_ms: 0.2096
+  type: 'test'
+  ...
+# Subtest: follow motion approaches actual framing gently and tracks the actual moving target
+ok 17 - follow motion approaches actual framing gently and tracks the actual moving target
+  ---
+  duration_ms: 0.2565
+  type: 'test'
+  ...
+# Subtest: pause and hidden tabs freeze elapsed time, and a slow frame cannot exceed the finite end
+ok 18 - pause and hidden tabs freeze elapsed time, and a slow frame cannot exceed the finite end
+  ---
+  duration_ms: 0.1493
+  type: 'test'
+  ...
+# Subtest: playback scales only shot time, respects pause and hidden tabs, and rejects unsupported rates
+ok 19 - playback scales only shot time, respects pause and hidden tabs, and rejects unsupported rates
+  ---
+  duration_ms: 0.2501
+  type: 'test'
+  ...
+# Subtest: near scene arcs move modestly and invalid requests cannot create endless or nonfinite shots
+ok 20 - near scene arcs move modestly and invalid requests cannot create endless or nonfinite shots
+  ---
+  duration_ms: 0.2387
+  type: 'test'
+  ...
+# Subtest: native camera methods move in absolute space through a rebase, pause, complete and stop without touching simulation
+ok 21 - native camera methods move in absolute space through a rebase, pause, complete and stop without touching simulation
+  ---
+  duration_ms: 1.8249
+  type: 'test'
+  ...
+# Subtest: native rate changes retain the current shot and pose, work while paused, and never alter ecology speed or state
+ok 22 - native rate changes retain the current shot and pose, work while paused, and never alter ecology speed or state
+  ---
+  duration_ms: 0.8629
+  type: 'test'
+  ...
+# Subtest: native follow uses the actual selected living target and approaches its existing focus placement gradually
+ok 23 - native follow uses the actual selected living target and approaches its existing focus placement gradually
+  ---
+  duration_ms: 0.562
+  type: 'test'
+  ...
+# Subtest: a real follow target that dies or unloads retains its last observed world position without a camera jump or animal replacement
+ok 24 - a real follow target that dies or unloads retains its last observed world position without a camera jump or animal replacement
+  ---
+  duration_ms: 0.7189
+  type: 'test'
+  ...
+# Subtest: a centimetre species focus becomes a visible habitat pullback and metre arc without moving its real animal
+ok 25 - a centimetre species focus becomes a visible habitat pullback and metre arc without moving its real animal
+  ---
+  duration_ms: 0.3826
+  type: 'test'
+  ...
+# Subtest: widening an already settled animal focus does not mutate the shot starting position or teleport the camera
+ok 26 - widening an already settled animal focus does not mutate the shot starting position or teleport the camera
+  ---
+  duration_ms: 0.2929
+  type: 'test'
+  ...
+# Subtest: readiness rejects absent, disposed, wrong-biome and stale-profile renderers or snapshots
+ok 27 - readiness rejects absent, disposed, wrong-biome and stale-profile renderers or snapshots
+  ---
+  duration_ms: 0.8001
+  type: 'test'
+  ...
+# Subtest: fixed authored scenes need only an actual match and never wait for a moving focus transition
+ok 28 - fixed authored scenes need only an actual match and never wait for a moving focus transition
+  ---
+  duration_ms: 0.1584
+  type: 'test'
+  ...
+# Subtest: new regional births and pending requests cannot be acknowledged from an older visible community
+ok 29 - new regional births and pending requests cannot be acknowledged from an older visible community
+  ---
+  duration_ms: 0.1047
+  type: 'test'
+  ...
+# Subtest: only the actual current region completes exploration, and a loaded empty region is a valid outcome
+ok 30 - only the actual current region completes exploration, and a loaded empty region is a valid outcome
+  ---
+  duration_ms: 0.2183
+  type: 'test'
+  ...
+# Subtest: an older nine-owner window containing the new centre cannot acknowledge its pending neighbour births
+ok 31 - an older nine-owner window containing the new centre cannot acknowledge its pending neighbour births
+  ---
+  duration_ms: 0.1607
+  type: 'test'
+  ...
+# Subtest: failed loading and missing region/metric evidence remain unready
+ok 32 - failed loading and missing region/metric evidence remain unready
+  ---
+  duration_ms: 0.1355
+  type: 'test'
+  ...
+# Subtest: population chapters require their actual panel result as well as the matching loaded scene
+ok 33 - population chapters require their actual panel result as well as the matching loaded scene
+  ---
+  duration_ms: 0.1835
+  type: 'test'
+  ...
+# Subtest: the chosen camera rate survives chapter changes, pauses, completion and another tour
+ok 34 - the chosen camera rate survives chapter changes, pauses, completion and another tour
+  ---
+  duration_ms: 1.5398
+  type: 'test'
+  ...
+# Subtest: unsupported playback rates leave the actual shot and playback state untouched
+ok 35 - unsupported playback rates leave the actual shot and playback state untouched
+  ---
+  duration_ms: 0.2136
+  type: 'test'
+  ...
+# Subtest: the finite tour covers every existing entry without invented or destructive actions
+ok 36 - the finite tour covers every existing entry without invented or destructive actions
+  ---
+  duration_ms: 0.3728
+  type: 'test'
+  ...
+# Subtest: all chapters declare finite frozen camera motion, with enough time to walk through scenes
+ok 37 - all chapters declare finite frozen camera motion, with enough time to walk through scenes
+  ---
+  duration_ms: 0.2157
+  type: 'test'
+  ...
+# Subtest: macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds
+ok 38 - macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds
+  ---
+  duration_ms: 0.3356
+  type: 'test'
+  ...
+# Subtest: direct chapter seeks resolve their intended world from any currently loaded world
+ok 39 - direct chapter seeks resolve their intended world from any currently loaded world
+  ---
+  duration_ms: 0.437
+  type: 'test'
+  ...
+# Subtest: loading and pausing never consume viewing time
+ok 40 - loading and pausing never consume viewing time
+  ---
+  duration_ms: 0.1351
+  type: 'test'
+  ...
+# Subtest: late callbacks cannot enter, fail, or count a replaced step after seek, stop, or restart
+ok 41 - late callbacks cannot enter, fail, or count a replaced step after seek, stop, or restart
+  ---
+  duration_ms: 0.777
+  type: 'test'
+  ...
+# Subtest: one slow tick cannot skip viewing/loading of the next scene
+ok 42 - one slow tick cannot skip viewing/loading of the next scene
+  ---
+  duration_ms: 0.6312
+  type: 'test'
+  ...
+# Subtest: an entry failure pauses visibly until a retry or explicit skip
+ok 43 - an entry failure pauses visibly until a retry or explicit skip
+  ---
+  duration_ms: 0.5867
+  type: 'test'
+  ...
+# Subtest: manual navigation stays finite and preserves a paused playback preference
+ok 44 - manual navigation stays finite and preserves a paused playback preference
+  ---
+  duration_ms: 0.3501
+  type: 'test'
+  ...
+# Subtest: a complete automatic traversal visits every step once and stops at its end
+ok 45 - a complete automatic traversal visits every step once and stops at its end
+  ---
+  duration_ms: 0.3533
+  type: 'test'
+  ...
+# Subtest: invalid timer input and duplicate readiness cannot distort a showing step
+ok 46 - invalid timer input and duplicate readiness cannot distort a showing step
+  ---
+  duration_ms: 0.1754
+  type: 'test'
+  ...
+# Subtest: a real ordinary reef predation event keeps its cause and cannot become a sea-spider event
+ok 47 - a real ordinary reef predation event keeps its cause and cannot become a sea-spider event
+  ---
+  duration_ms: 13.2116
+  type: 'test'
+  ...
+# Subtest: the deep predation schema preserves its finite condition-transfer values and units
+ok 48 - the deep predation schema preserves its finite condition-transfer values and units
+  ---
+  duration_ms: 0.391
+  type: 'test'
+  ...
+# Subtest: missing, nonfinite or differently measured predation values retain the real cause without fabricated zeroes
+ok 49 - missing, nonfinite or differently measured predation values retain the real cause without fabricated zeroes
+  ---
+  duration_ms: 0.1594
+  type: 'test'
+  ...
+# Subtest: kelp drift uses finite real intake values and never substitutes missing stock with zero
+ok 50 - kelp drift uses finite real intake values and never substitutes missing stock with zero
+  ---
+  duration_ms: 0.269
+  type: 'test'
+  ...
+# Subtest: other native feeding explanations keep resource names, finite intake and source causes
+ok 51 - other native feeding explanations keep resource names, finite intake and source causes
+  ---
+  duration_ms: 0.2551
+  type: 'test'
+  ...
+# Subtest: serves existing static assets without a fallback
+ok 52 - serves existing static assets without a fallback
+  ---
+  duration_ms: 48.8676
+  type: 'test'
+  ...
+# Subtest: falls back to index.html for an unknown app route
+ok 53 - falls back to index.html for an unknown app route
+  ---
+  duration_ms: 1.283
+  type: 'test'
+  ...
+# Subtest: does not turn missing API or write requests into the app shell
+ok 54 - does not turn missing API or write requests into the app shell
+  ---
+  duration_ms: 0.3563
+  type: 'test'
+  ...
+# Subtest: emits the files required by Sites packaging
+ok 55 - emits the files required by Sites packaging
+  ---
+  duration_ms: 4.2741
+  type: 'test'
+  ...
+1..55
+# tests 55
+# suites 0
+# pass 55
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 198.6142
+TAP version 13
+# Subtest: the actual player exposes working camera-rate choices while loading or paused
+ok 1 - the actual player exposes working camera-rate choices while loading or paused
+  ---
+  duration_ms: 2.3879
+  type: 'test'
+  ...
+# Subtest: the actual countdown scales with rate while progress retains rendered shot time
+ok 2 - the actual countdown scales with rate while progress retains rendered shot time
+  ---
+  duration_ms: 1.0271
+  type: 'test'
+  ...
+# Subtest: a completed player can select the last chapter again through its real seek handler
+ok 3 - a completed player can select the last chapter again through its real seek handler
+  ---
+  duration_ms: 1.0052
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 102.0091

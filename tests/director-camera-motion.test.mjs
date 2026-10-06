@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createDirectorCameraMotion, sampleDirectorCameraMotion, advanceDirectorCameraElapsed } from '../src/directorCameraMotion.js';
+import { createDirectorCameraMotion, sampleDirectorCameraMotion, advanceDirectorCameraElapsed, DIRECTOR_PLAYBACK_RATES, isDirectorPlaybackRate } from '../src/directorCameraMotion.js';
 import * as THREE from 'three';
 
 const shot = options => createDirectorCameraMotion({position:{x:0,y:3,z:0},target:{x:8,y:1,z:0},durationSec:12,...options});
@@ -73,6 +73,16 @@ test('pause and hidden tabs freeze elapsed time, and a slow frame cannot exceed 
   for(const dt of [NaN,Infinity,0,-1])assert.equal(advanceDirectorCameraElapsed(4,12,dt),4);
 });
 
+test('playback scales only shot time, respects pause and hidden tabs, and rejects unsupported rates',()=>{
+  for(const playbackRate of DIRECTOR_PLAYBACK_RATES){
+    assert.equal(advanceDirectorCameraElapsed(3,12,.25,{playbackRate}),3+.25*playbackRate);
+    assert.equal(advanceDirectorCameraElapsed(3,12,.25,{playbackRate,paused:true}),3);
+    assert.equal(advanceDirectorCameraElapsed(3,12,.25,{playbackRate,hidden:true}),3);
+    assert.equal(advanceDirectorCameraElapsed(11,12,10,{playbackRate}),12);
+  }
+  for(const playbackRate of [0,-1,3,NaN,Infinity,'2'])assert.equal(advanceDirectorCameraElapsed(3,12,1,{playbackRate}),3);
+});
+
 test('near scene arcs move modestly and invalid requests cannot create endless or nonfinite shots',()=>{
   const path=shot({kind:'orbit',distanceM:3});
   const start=sample(path,0),end=sample(path,12);
@@ -92,10 +102,10 @@ const nativeMethod=name=>{
   const next=/\n  (?:async )?[A-Za-z_]\w*\(/.exec(worldSource.slice(start+2));
   return worldSource.slice(start,next?start+2+next.index:worldSource.lastIndexOf('\n}'));
 };
-const NativeWorld=new Function('THREE','createDirectorCameraMotion','sampleDirectorCameraMotion','advanceDirectorCameraElapsed','clamp',
+const NativeWorld=new Function('THREE','createDirectorCameraMotion','sampleDirectorCameraMotion','advanceDirectorCameraElapsed','isDirectorPlaybackRate','clamp',
   `return class {${['oceanWorldPosition','findAgent','beginDirectorMotion','directorMotionQueries','updateDirectorMotion',
-    'stopDirectorMotion','directorMotionSnapshot','clearCameraPosition','enforceCameraClearance','setOceanRenderOrigin'].map(nativeMethod).join('\n')}}`)(
-  THREE,createDirectorCameraMotion,sampleDirectorCameraMotion,advanceDirectorCameraElapsed,THREE.MathUtils.clamp);
+    'setDirectorPlaybackRate','stopDirectorMotion','directorMotionSnapshot','clearCameraPosition','enforceCameraClearance','setOceanRenderOrigin'].map(nativeMethod).join('\n')}}`)(
+  THREE,createDirectorCameraMotion,sampleDirectorCameraMotion,advanceDirectorCameraElapsed,isDirectorPlaybackRate,THREE.MathUtils.clamp);
 const nativeWorld = () => {
   // Exercise the production methods without constructing a WebGL renderer.
   const world=new NativeWorld();
@@ -133,6 +143,40 @@ test('native camera methods move in absolute space through a rebase, pause, comp
   assert.equal(world.directorMotionSnapshot().elapsedSec,0);
 });
 
+test('native rate changes retain the current shot and pose, work while paused, and never alter ecology speed or state',()=>{
+  const world=nativeWorld();world.speed=1.5;
+  const model=structuredClone(world.sim);
+  assert.equal(world.setDirectorPlaybackRate(2),false,'an absent shot has no playback state to change');
+  assert.equal(world.beginDirectorMotion({playbackRate:2}),true);
+  const path=world.directorMotion.shot;
+  world.updateDirectorMotion(1);
+  assert.equal(world.directorMotionSnapshot().elapsedSec,2);
+  const before=world.directorMotionSnapshot();
+  assert.equal(world.setDirectorPlaybackRate(.5),true);
+  assert.equal(world.directorMotion.shot,path);
+  assert.deepEqual(world.directorMotionSnapshot().worldPosition,before.worldPosition);
+  assert.deepEqual(world.directorMotionSnapshot().worldTarget,before.worldTarget);
+  assert.equal(world.directorMotionSnapshot().elapsedSec,2);
+  world.updateDirectorMotion(1);
+  assert.equal(world.directorMotionSnapshot().elapsedSec,2.5);
+  world.paused=true;
+  const paused=world.directorMotionSnapshot();
+  assert.equal(world.setDirectorPlaybackRate(4),true);
+  world.updateDirectorMotion(1);
+  assert.equal(world.directorMotionSnapshot().elapsedSec,2.5);
+  assert.deepEqual(world.directorMotionSnapshot().worldPosition,paused.worldPosition);
+  world.paused=false;world.updateDirectorMotion(1);
+  assert.equal(world.directorMotionSnapshot().elapsedSec,6.5);
+  assert.equal(world.directorMotionSnapshot().playbackRate,4);
+  for(const invalid of [0,-1,3,NaN,Infinity,'2']){
+    const beforeInvalid=world.directorMotionSnapshot();
+    assert.equal(world.setDirectorPlaybackRate(invalid),false);
+    assert.equal(world.beginDirectorMotion({playbackRate:invalid}),false);
+    assert.deepEqual(world.directorMotionSnapshot(),beforeInvalid);
+  }
+  assert.equal(world.speed,1.5);assert.deepEqual(world.sim,model);
+});
+
 test('native follow uses the actual selected living target and approaches its existing focus placement gradually',()=>{
   const world=nativeWorld(),agent={id:'real-live-agent',alive:true,position:{x:100005,y:.5,z:-200000}};
   world.sim.agents=[agent];world.selectedId=agent.id;world.following=true;
@@ -148,6 +192,32 @@ test('native follow uses the actual selected living target and approaches its ex
   assert.equal(world.directorMotionSnapshot().complete,true);
   world.stopDirectorMotion();
   assert.equal(world.following,false,'exiting the director does not restart an old animal follow');
+});
+
+test('a real follow target that dies or unloads retains its last observed world position without a camera jump or animal replacement',()=>{
+  for(const missing of ['dead','unloaded']){
+    const world=nativeWorld(),agent={id:`actual-${missing}-target`,alive:true,position:{x:100005,y:.5,z:-200000}};
+    world.sim.agents=[agent];world.selectedId=agent.id;
+    world.focusTarget=value=>new THREE.Vector3(value.position.x-world.oceanRenderOrigin.x,value.position.y,value.position.z-world.oceanRenderOrigin.z);
+    assert.equal(world.beginDirectorMotion({kind:'follow'}),true);
+    agent.position.x+=7;agent.position.z+=4;
+    world.updateDirectorMotion(5);
+    const last=world.directorMotionSnapshot();
+    assert.deepEqual(last.worldTarget,agent.position);
+    const observed={...agent.position};
+    if(missing==='dead')agent.alive=false;else world.sim.agents=[];
+    const actualState=structuredClone(world.sim);
+    world.setOceanRenderOrigin(100064,-200064);
+    world.updateDirectorMotion(.01);
+    const after=world.directorMotionSnapshot();
+    assert.deepEqual(after.worldTarget,observed);
+    assert.ok(distance(after.worldPosition,last.worldPosition)<.02,'the next frame continues the small arc instead of snapping to the original centre');
+    world.updateDirectorMotion(6.99);
+    assert.deepEqual(world.directorMotionSnapshot().worldTarget,observed);
+    assert.equal(world.directorMotionSnapshot().agentId,agent.id);
+    assert.equal(world.directorMotionSnapshot().complete,true);
+    assert.deepEqual(world.sim,actualState,'retaining observation coordinates must not fabricate or mutate an animal');
+  }
 });
 
 test('a centimetre species focus becomes a visible habitat pullback and metre arc without moving its real animal',()=>{

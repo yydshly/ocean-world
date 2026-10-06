@@ -8,7 +8,7 @@
 
 当前是可持续探索的模拟原型。技术与保存基础已经形成，主要缺口是宏观内容的连贯性、普通视距的生命可见性和自然形象。功能数量、目录条目与检查通过均不能替代画面验收。
 
-现在可以打开 [一键导演入口](https://yydshly.github.io/ocean-world/?demo=director)，镜头自动前进、转向和升降，顺序巡游四类海域、11 个地貌观察点、真实动物和现有工具。约 7 分钟加加载，实际镜头走完才换章；可暂停、跳章或退出。手动 [能力总览](https://yydshly.github.io/ocean-world/?demo=all) 仍保留；详细范围见 [导演说明](DIRECTOR_ENTRY.md)。
+现在可以打开 [一键导演入口](https://yydshly.github.io/ocean-world/?demo=director)，镜头自动前进、转向和升降，顺序巡游四类海域、11 个地貌观察点、真实动物和现有工具。1× 约 7 分钟加加载，可用“巡游速度”选择 0.5×–4×，实际镜头走完才换章；可暂停、跳章、结束后选章重看或退出。巡游改速保留当前路径，不改变生态时间速度；图鉴选择、手记回访和开始录像转为自主观察。手动 [能力总览](https://yydshly.github.io/ocean-world/?demo=all) 仍保留；详细范围见 [导演说明](DIRECTOR_ENTRY.md)，发布状态见 [部署记录](DEPLOYMENT.md)。
 
 ## 已实现的整体能力
 
