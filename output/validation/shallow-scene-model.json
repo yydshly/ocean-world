@@ -1,0 +1,35 @@
+{
+  "scope": "CPU full-record and shared-support verification; no browser or GPU acceptance",
+  "groupOwnerCount": 12,
+  "widthM": 384,
+  "depthM": 128,
+  "groupElementCounts": {
+    "rock": 85,
+    "coral": 169,
+    "algae": 228,
+    "seagrass": 1117,
+    "rubble": 860,
+    "driftwood": 1,
+    "bottle": 1
+  },
+  "groupOrdinarySpecies": {
+    "green-chromis": 36,
+    "lined-tang": 12,
+    "cleaner-wrasse": 12,
+    "honeycomb-grouper": 10,
+    "top-shell": 8,
+    "black-cucumber": 24,
+    "giant-clam": 12,
+    "cleaner-shrimp": 12,
+    "yellowtail-fusilier": 24,
+    "tube-sponge": 5,
+    "day-octopus": 5,
+    "spotted-reef-crab": 5,
+    "reef-squid": 9,
+    "blue-starfish": 4,
+    "spotted-jelly": 2
+  },
+  "activeOwnerCount": 9,
+  "sourceOwnerCount": 11,
+  "activeFeedingEvents": 118
+}

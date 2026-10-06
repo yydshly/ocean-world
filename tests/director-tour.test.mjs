@@ -69,12 +69,12 @@ test('the finite tour covers every existing entry without invented or destructiv
     assert.ok(!['reset', 'environment', 'record', 'download'].includes(step.action.kind));
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
-  assert.ok(duration >= 360000 && duration <= 480000, 'local moving observation stays approximately six to eight minutes');
-  assert.equal(duration, 474000); assert.equal(included.size, 34);
+  assert.ok(duration >= 360000 && duration <= 600000, 'local moving observation stays approximately six to ten minutes');
+  assert.equal(duration, 522000); assert.equal(included.size, 38);
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 40);
+  assert.equal(DIRECTOR_STEPS.length, 44);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));
@@ -100,7 +100,8 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     if (step.action.kind === 'local-life') observedBiomes.add(biome);
     if (step.action.kind === 'layer') layeredBiomes.add(biome);
   }
-  assert.deepEqual(routes, ['habitat-belt-reef', 'habitat-belt-meadow', 'seascape-transition', 'connected-seascape',
+  assert.deepEqual(routes, ['shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
+    'habitat-belt-reef', 'habitat-belt-meadow', 'seascape-transition', 'connected-seascape',
     'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
     'seagrass-meadow', 'sand-channel', 'reef-garden']);
   assert.deepEqual([...routes].sort(), DEMO_LIVING_STOPS.map(stop => stop.id).sort(), 'all ordinary route entries remain available');
@@ -124,10 +125,10 @@ test('the opening observes actual nearby life and discoveries before repositioni
     const action = directorStepAction(step);
     assert.equal(action.biome, 'reef'); assert.equal(action.profile, 'living-shallows-v1');
   }
-  assert.equal(DIRECTOR_STEPS[3].action.stopId, 'habitat-belt-reef');
+  assert.equal(DIRECTOR_STEPS[3].action.stopId, 'shallow-scene-reef');
   assert.deepEqual(DEMO_LIVING_STOPS.map(stop => stop.id), ['reef-garden', 'sand-channel', 'seagrass-meadow', 'outer-reef',
     'ridge-gully', 'patch-reef', 'meadow-edge', 'shelf-rise', 'sand-basin', 'connected-seascape', 'seascape-transition',
-    'habitat-belt-reef', 'habitat-belt-meadow'], 'ordinary capability buttons retain their original order');
+    'habitat-belt-reef', 'habitat-belt-meadow', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope'], 'ordinary capability buttons retain their original order, with the complete package appended');
 });
 
 test('opening actions resolve existing shallow, kelp and deep stops without changing their native action references', () => {
@@ -136,7 +137,7 @@ test('opening actions resolve existing shallow, kelp and deep stops without chan
     kelp: createKelpOceanGenerator('42', { forestBelt: true }), deep: createDeepOceanGenerator('42', { seascape: true }),
   };
   for (const [id, biome, expectedId, key] of [
-    ['shallows-opening', 'reef', 'habitat-belt-reef', 'routeStops'],
+    ['shallows-opening', 'reef', 'shallow-scene-reef', 'routeStops'],
     ['kelp-opening', 'kelp', 'forest-belt-interior', 'forestRouteStops'],
     ['deep-opening', 'deep', 'deep-plain-community', 'seascapeRouteStops'],
   ]) {
@@ -153,11 +154,13 @@ test('opening actions resolve existing shallow, kelp and deep stops without chan
 test('the real shallow landmark order reduces repeated relocation while retaining every distant native destination', () => {
   const generator = createLivingRidgeGenerator(createLivingShallowsGenerator(livingShallowsSeed('42')));
   const stops = new Map(generator.routeStops.map(stop => [stop.id, stop]));
-  const origin = stops.get(directorStepAction(DIRECTOR_STEPS[0]).entryStopId);
+  const origin = stops.get('habitat-belt-reef');
   const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
   const lengths = ids => ids.map((id, index) => distance(index ? stops.get(ids[index - 1]) : origin, stops.get(id)));
-  const oldIds = DEMO_LIVING_STOPS.map(stop => stop.id), ids = DIRECTOR_STEPS.filter(step => step.action.kind === 'living-stop').map(step => step.action.stopId);
-  assert.deepEqual([...ids].sort(), [...stops.keys()].sort());
+  const allIds = DIRECTOR_STEPS.filter(step => step.action.kind === 'living-stop').map(step => step.action.stopId);
+  assert.deepEqual([...allIds].sort(), [...stops.keys()].sort());
+  const oldIds = DEMO_LIVING_STOPS.filter(stop => !stop.id.startsWith('shallow-scene-')).map(stop => stop.id);
+  const ids = allIds.filter(id => !id.startsWith('shallow-scene-'));
   const oldLengths = lengths(oldIds), revisedLengths = lengths(ids), total = legs => legs.reduce((sum, value) => sum + value, 0);
   assert.ok(Math.abs(total(oldLengths) - 10780.567) < .001); assert.ok(Math.abs(total(revisedLengths) - 4977.384) < .001);
   assert.ok(total(revisedLengths) < total(oldLengths) * .47);
@@ -166,13 +169,13 @@ test('the real shallow landmark order reduces repeated relocation while retainin
   // simulated swimming. A repeated opening landmark is not a resident bridge.
 });
 
-test('the actual source-based opening tail remains too far from the habitat entry to invent a continuous bridge', async () => {
+test('the retained nearby source-based sample remains too far from its native entry to invent a continuous bridge', async () => {
   const seed = livingShallowsSeed('42'), generator = createLivingRidgeGenerator(createLivingShallowsGenerator(seed)), saved = new Map();
   const store = { available: true, async load(_world, id) { return structuredClone(saved.get(id) ?? null); },
     async saveMany(_world, rows) { for (const [id, record] of rows) saved.set(id, structuredClone(record)); } };
   const ecology = new OceanEcology(seed, generator, { store, turtles: true, livingGeology: true, habitatMosaic: true,
     seabedRelief: true, seascape: true, livingBelt: true, turtleGrazing: true });
-  const stop = generator.routeStops.find(stop => stop.id === directorStepAction(DIRECTOR_STEPS[0]).entryStopId);
+  const stop = generator.routeStops.find(stop => stop.id === 'habitat-belt-reef');
   const heading = stop.heading ?? 0, across = stop.entryAcrossM ?? 8;
   const entry = { x: stop.x - 7 * Math.cos(heading) + across * Math.sin(heading),
     z: stop.z + 7 * Math.sin(heading) + across * Math.cos(heading) };

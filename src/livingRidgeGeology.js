@@ -3,6 +3,8 @@ import { sceneElementHeight } from './oceanSceneElements.js';
 import { validateLivingHabitatMosaic } from './livingHabitatMosaic.js';
 import { validateLivingSeascapePlan } from './livingSeascape.js';
 import { validateLivingHabitatBeltPlan, sampleLivingHabitatBelt } from './livingHabitatBelt.js';
+import { validateLivingShallowSeascapePlan, sampleLivingShallowSeascape,
+  SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
 import { validateLivingSeabedRelief, sampleLivingSeabedRelief,
   livingSeabedFloorVertex, livingSeabedFloorSurface } from './livingSeabedRelief.js';
 
@@ -153,6 +155,7 @@ export function createLivingRidgePlan(baseGenerator, cx, cz) {
 
 export function validateLivingRidgePlan(plan, baseGenerator) {
   try {
+    if (plan?.version === 6) return validateLivingShallowSeascapePlan(baseGenerator.baseGenerator ?? baseGenerator, plan);
     if (plan?.version === 5) return validateLivingHabitatBeltPlan(plan, baseGenerator);
     if (plan?.version === 4) return validateLivingSeascapePlan(plan, baseGenerator);
     if (plan?.version === 3) return validateLivingSeabedRelief(plan, baseGenerator);
@@ -220,6 +223,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
   const base = baseGenerator.baseGenerator ?? baseGenerator;
   if (base.profile !== 'living-shallows-v1') throw new TypeError('Ridge facade requires living shallows.');
   const plans = new Map(), chunks = new Map(), ready = new Set(); let revision = 0, candidateBatchDepth = 0;
+  let queryPlans = plans, queryChunks = chunks;
   const checkOwnerId = id => {
     if (typeof id !== 'string') throw new TypeError('Ridge owner ID must be a coordinate pair.');
     const values = id.split(',').map(Number);
@@ -228,8 +232,8 @@ export function createLivingRidgeGenerator(baseGenerator) {
   };
   const floorPlanAt = (x, z) => {
     if (!Number.isFinite(x) || !Number.isFinite(z)) return null;
-    const plan = plans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
-    return plan?.version === 3 || plan?.version === 4 ? plan : null;
+    const plan = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+    return plan?.version === 3 || plan?.version === 4 || plan?.version === 6 ? plan : null;
   };
   const assertPublishable = () => {
     if (candidateBatchDepth) throw new TypeError('Cannot publish ridge owners inside a temporary plan batch.');
@@ -264,10 +268,12 @@ export function createLivingRidgeGenerator(baseGenerator) {
       Object.freeze({ id: 'connected-seascape', label: '连续海床', x: 3502.5, z: 544 }),
       Object.freeze({ id: 'seascape-transition', label: '相邻生境', x: 3502.5, z: 608 }),
       Object.freeze({ id: 'habitat-belt-reef', label: '生活带：礁群沙道', x: 4758, z: 150, heading: Math.PI / 2, entryAcrossM: 2 }),
-      Object.freeze({ id: 'habitat-belt-meadow', label: '生活带：草床水层', x: 4832, z: 224, heading: Math.atan2(.51, .86), entryAcrossM: 2 })]),
+      Object.freeze({ id: 'habitat-belt-meadow', label: '生活带：草床水层', x: 4832, z: 224, heading: Math.atan2(.51, .86), entryAcrossM: 2 }),
+      ...SHALLOW_SEASCAPE_ROUTE_STOPS]),
     sample(x, z) {
-      const belt = plans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+      const belt = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
       if (belt?.version === 5) return sampleLivingHabitatBelt(base, belt, x, z);
+      if (belt?.version === 6) return sampleLivingShallowSeascape(base, belt, x, z);
       const plan = floorPlanAt(x, z);
       return plan ? sampleLivingSeabedRelief(base, plan, x, z) : base.sample(x, z);
     },
@@ -280,8 +286,9 @@ export function createLivingRidgeGenerator(baseGenerator) {
       return plan ? livingSeabedFloorSurface(base, plan, x, z) : base.floorSurface(x, z);
     },
     coverAt(x, z, environment) {
-      const belt = plans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+      const belt = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
       if (belt?.version === 5) return base.coverAt(x, z, sampleLivingHabitatBelt(base, belt, x, z));
+      if (belt?.version === 6) return base.coverAt(x, z, sampleLivingShallowSeascape(base, belt, x, z));
       const plan = floorPlanAt(x, z);
       return plan ? base.coverAt(x, z, sampleLivingSeabedRelief(base, plan, x, z)) : base.coverAt(x, z, environment);
     },
@@ -297,16 +304,16 @@ export function createLivingRidgeGenerator(baseGenerator) {
       ready.add(id); revision++; return true;
     },
     chunk(cx, cz) {
-      const id = `${cx},${cz}`, plan = plans.get(id); if (!plan) return base.chunk(cx, cz);
-      if (!chunks.has(id)) {
+      const id = `${cx},${cz}`, plan = queryPlans.get(id); if (!plan) return base.chunk(cx, cz);
+      if (!queryChunks.has(id)) {
         const original = owner(base, cx, cz), counts = Object.fromEntries(KINDS.map(k => [k, 0]));
         const landform = Object.fromEntries(base.rockProfiles.map(k => [k, 0]));
         for (const e of plan.elements) { counts[e.kind]++; if (e.kind === 'rock') landform[e.profile]++; }
-        chunks.set(id, Object.freeze({ ...original, elements: plan.elements, counts: Object.freeze(counts),
+        queryChunks.set(id, Object.freeze({ ...original, elements: plan.elements, counts: Object.freeze(counts),
           landform: Object.freeze(landform), ridgePlan: plan, ridgeGeologyVersion: plan.version,
-          ...(plan.version === 3 || plan.version === 4 || plan.version === 5 ? { habitatComposition: plan.habitatComposition } : {}) }));
+          ...([3, 4, 5, 6].includes(plan.version) ? { habitatComposition: plan.habitatComposition } : {}) }));
       }
-      return chunks.get(id);
+      return queryChunks.get(id);
     },
     registerRidgePlan(plan) {
       assertPublishable();
@@ -323,6 +330,42 @@ export function createLivingRidgeGenerator(baseGenerator) {
       const committed = changes.map(plan => freeze(plan));
       for (const plan of committed) { plans.set(plan.id, plan); ready.add(plan.id); chunks.delete(plan.id); }
       revision++; return true;
+    },
+    // Complete large groups live on disk. Only the current support halo is
+    // published, so restoring one does not enlarge the 25-owner registry.
+    replaceRidgeOwners(input, legacyIds = []) {
+      assertPublishable();
+      if (!Array.isArray(input) || !Array.isArray(legacyIds)) throw new TypeError('Invalid ridge halo replacement.');
+      const next = new Map(), nextReady = new Set();
+      for (const plan of input) {
+        if (!validateLivingRidgePlan(plan, base) || nextReady.has(plan.id)) throw new TypeError('Invalid ridge halo plan.');
+        next.set(plan.id, freeze(plan)); nextReady.add(plan.id);
+      }
+      for (const id of legacyIds) { checkOwnerId(id); if (nextReady.has(id)) throw new TypeError('Duplicate ridge halo owner.'); nextReady.add(id); }
+      if (nextReady.size > LIMIT) throw new RangeError('Ridge registry exceeds its 25-owner halo.');
+      if (stamp([...ready]) === stamp([...nextReady]) && stamp([...plans]) === stamp([...next])) return false;
+      plans.clear(); chunks.clear(); ready.clear();
+      for (const [id, plan] of next) plans.set(id, plan);
+      for (const id of nextReady) ready.add(id);
+      revision++; return true;
+    },
+    withShallowSeascapePlans(input, fn) {
+      if (!Array.isArray(input) || input.length !== 12 || typeof fn !== 'function' || fn.constructor?.name === 'AsyncFunction')
+        throw new TypeError('A shallow seascape candidate requires twelve owners and a synchronous callback.');
+      const group = input[0]?.group, ids = new Set();
+      for (const plan of input) {
+        if (plan?.version !== 6 || !validateLivingRidgePlan(plan, base) || ids.has(plan.id) || stamp(plan.group) !== stamp(group))
+          throw new TypeError('Invalid complete shallow seascape candidate.');
+        ids.add(plan.id);
+      }
+      if (group?.ownerIds?.length !== 12 || group.ownerIds.some(id => !ids.has(id))) throw new TypeError('Incomplete shallow seascape candidate.');
+      const previousPlans = queryPlans, previousChunks = queryChunks;
+      queryPlans = new Map(input.map(plan => [plan.id, plan])); queryChunks = new Map(); candidateBatchDepth++;
+      try {
+        const result = fn(facade);
+        if (result && typeof result.then === 'function') throw new TypeError('Ridge candidate callback returned an asynchronous result.');
+        return result;
+      } finally { queryPlans = previousPlans; queryChunks = previousChunks; candidateBatchDepth--; }
     },
     unregisterRidgePlan(id) { assertPublishable(); if (!plans.delete(id)) return false; ready.delete(id); chunks.delete(id); revision++; return true; },
     retainRidgeOwners(ids) {

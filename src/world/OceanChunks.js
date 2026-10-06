@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { createOceanGenerator, OCEAN_CHUNK_SIZE, OCEAN_FORMATION_LIMIT } from '../oceanGeneration.js';
 import { createLivingRidgeGenerator } from '../livingRidgeGeology.js';
+import { shallowSeascapeFacies } from '../livingShallowSeascape.js';
 import { OCEAN_ROCK_PROFILES, OCEAN_ROCK_SURFACE_VERSION, oceanRockMesh } from '../oceanRockShape.js';
 import { habitatSceneMesh } from '../oceanHabitatScenes.js';
 import { enableStaticRayQueries } from './reefSpatialQueries.js';
@@ -40,6 +41,17 @@ export function oceanTerrainColor(x, z, sample, cover, rootEnvelope, target = [0
   target[1] = 1 - hard * .24 - grass * .32 + variation;
   target[2] = 1 - hard * .29 - grass * .68 + variation;
   return target;
+}
+
+// Only a committed complete seascape supplies this broad bottom treatment.
+// Facies are authored appearance, not additional raised rocks or vegetation;
+// the meadow contribution remains tied to the actual generated root envelope.
+function completeShallowTerrainColor(color, facies, rootEnvelope) {
+  const influence = facies.influence, grass = facies.meadow * rootEnvelope;
+  color[0] *= 1 + influence * (.015 * facies.sand - .12 * facies.reef - .07 * facies.slope - .11 * grass);
+  color[1] *= 1 + influence * (.009 * facies.sand - .105 * facies.reef - .075 * facies.slope - .06 * grass);
+  color[2] *= 1 + influence * (-.008 * facies.sand - .14 * facies.reef - .08 * facies.slope - .16 * grass);
+  return color;
 }
 
 // Landscape prototypes have their base at y=0, height 1 and approximately
@@ -283,6 +295,7 @@ export class OceanChunks {
     const { x: originX, z: originZ } = chunk.origin;
     const rootIndex = this._terrainCoverIndex(chunk), color = [0, 0, 0];
     const rubbleIndex = this._livingShallows ? createLivingReefSubstrateIndex(this.generator, chunk) : null;
+    const completeSeascape = this._livingShallows && chunk.ridgePlan?.version === 6 ? chunk.ridgePlan : null;
     for (let rz = 0; rz <= steps; rz++) for (let rx = 0; rx <= steps; rx++) {
       const i = rz * row + rx, x = originX + rx * spacing, z = originZ + rz * spacing;
       const sample = this.generator.sample(x, z);
@@ -295,8 +308,10 @@ export class OceanChunks {
       uvs[i * 2] = x / 70 + .5;
       uvs[i * 2 + 1] = .5 - z / 70;
       const terrainColor = this._livingShallows ? livingShallowsTerrainColor : oceanTerrainColor;
-      terrainColor(x, z, sample, this.generator.coverAt(x, z, sample), this._grassRootEnvelope(rootIndex, x, z), color);
+      const rootEnvelope = this._grassRootEnvelope(rootIndex, x, z);
+      terrainColor(x, z, sample, this.generator.coverAt(x, z, sample), rootEnvelope, color);
       if (rubbleIndex) livingReefSubstrateColor(color, livingReefSubstrateCover(rubbleIndex, x, z), color);
+      if (completeSeascape) completeShallowTerrainColor(color, shallowSeascapeFacies(completeSeascape, x, z), rootEnvelope);
       colors.set(color, i * 3);
       if (rz < steps && rx < steps) {
         const j = (rz * steps + rx) * 6, a = i, b = a + 1, c = a + row, d = c + 1;
@@ -610,6 +625,8 @@ export class OceanChunks {
         connectedSeascapeScope: '128m four-owner committed beds; shared interior seams; original outer supports; same real ecological births',
         habitatBeltOwners: activePlanVersions[5] ?? 0,
         habitatBeltScope: 'four atomically born owners; reef, sediment passage and meadow share scene descriptors with real ecology; unchanged bed',
+        completeShallowSeascapeOwners: activePlanVersions[6] ?? 0,
+        completeShallowSeascapeScope: 'committed 384m by 128m scene; shared physical floor, source instances and world-coordinate bottom facies; nine-owner active window',
         ridgeReadyOwners: ridge.size, ridgeReadyOwnerIds: Object.freeze([...ridge.ridgeReadyOwnerIds]),
         ridgePlanOwners: ridgePlanIds.length, ridgePlanOwnerIds: Object.freeze([...ridgePlanIds]),
         ridgeRenderedOwners: this._chunks.size, ridgeRenderedOwnerIds: Object.freeze([...this._chunks.keys()]),

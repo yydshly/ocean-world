@@ -54,7 +54,7 @@ function worldFixture({ biomeId = 'reef', living = true, entryKind = 'cut' } = {
   return { world, log, protectedState: clone(protectedState) };
 }
 
-function harness(world, { execute: executeOverride } = {}) {
+function harness(world, { execute: executeOverride, samplePreparation = false } = {}) {
   let state = createDirectorState(), refCursor = 0, dirty = true, now = 0, nextId = 1, api;
   const refs = [], committed = [], queued = [], events = [], execution = [], notices = [], controls = [];
   const frames = new Map(), cancelledFrames = [], timers = new Map();
@@ -66,10 +66,14 @@ function harness(world, { execute: executeOverride } = {}) {
   const useRef = value => refs[refCursor++] ?? (refs[refCursor - 1] = { current: value });
   const useReducer = () => [state, event => { events.push(clone(event)); const next = directorReducer(state, event); if (next !== state) { state = next; dirty = true; } }];
   const useEffect = (callback, dependencies) => queued.push({ callback, dependencies });
+  // The public opening now walks the complete scene directly. Keep the
+  // supported source-based nearby route's second-window contract covered too.
+  const testedSteps = samplePreparation ? [{ ...DIRECTOR_STEPS[0],
+    motion: { ...DIRECTOR_STEPS[0].motion, routeId: 'living-visual' } }, ...DIRECTOR_STEPS.slice(1)] : DIRECTOR_STEPS;
   const hook = new Function('useEffect', 'useReducer', 'useRef', 'createDirectorState', 'directorReducer',
     'DIRECTOR_STEPS', 'directorStepAction', 'directorSceneReady', 'isDirectorPlaybackRate', 'directorMotionCompletionEvent', 'directorTourProgress',
     'window', 'document', 'performance', 'requestAnimationFrame', 'cancelAnimationFrame', 'setTimeout', 'clearTimeout', 'setInterval', 'clearInterval',
-    `${source}\nreturn useDirectorTour;`)(useEffect, useReducer, useRef, createDirectorState, directorReducer, DIRECTOR_STEPS,
+    `${source}\nreturn useDirectorTour;`)(useEffect, useReducer, useRef, createDirectorState, directorReducer, testedSteps,
     directorStepAction, directorSceneReady, isDirectorPlaybackRate, directorMotionCompletionEvent, directorTourProgress,
     window, document, { now: () => now }, requestAnimationFrame, cancelAnimationFrame,
     (fn, delay) => setTimer(fn, delay), id => timers.delete(id), (fn, delay) => setTimer(fn, delay, true), id => timers.delete(id));
@@ -133,15 +137,14 @@ test('a distant reposition executes only under full cover and begins its shot on
   assert.equal(count(f.log, 'shot-begin'), 0);
   await run.until(() => run.state.phase === 'showing', 'the finite reveal must finish before observing');
   assert.equal(run.state.transition.phase, 'none'); assert.equal(run.state.transition.opacity, 0);
-  assert.equal(count(f.log, 'prepare'), 1); assert.equal(count(f.log, 'shot-begin'), 1);
-  assert.ok(f.log.findIndex(row => row[0] === 'prepare') < f.log.findIndex(row => row[0] === 'shot-begin'));
+  assert.equal(count(f.log, 'prepare'), 0); assert.equal(count(f.log, 'shot-begin'), 1);
   assert.equal(run.state.elapsedMs, 0); assert.deepEqual(f.world.protectedState, f.protectedState);
 });
 
 test('cross-world loading and a second physical window requested by preparation remain covered until truly ready', async () => {
   const old = worldFixture({ living: false }), fresh = worldFixture(); fresh.world.ready = false;
   let preparedUnder;
-  const run = harness(old.world, { execute(_action, h) { h.inputs.worldRef.current = fresh.world; h.publish(); } });
+  const run = harness(old.world, { samplePreparation: true, execute(_action, h) { h.inputs.worldRef.current = fresh.world; h.publish(); } });
   fresh.world.onPrepare = () => { preparedUnder = clone(run.state.transition); fresh.world.missingOwner = true; run.publish(); };
   await start(run); await run.until(() => run.execution.length === 1, 'cross-world cut must execute');
   assert.equal(run.execution[0].transition.kind, 'cross-world');
@@ -250,7 +253,7 @@ test('a failed entry cannot fabricate readiness, chapter time or a started obser
   assert.equal(count(f.log, 'shot-begin'), 0); assert.equal(count(f.log, 'prepare'), 0);
   assert.deepEqual(f.world.protectedState, f.protectedState);
   const unsafe = worldFixture(); unsafe.world.prepareResult = false;
-  const refused = harness(unsafe.world); await start(refused);
+  const refused = harness(unsafe.world, { samplePreparation: true }); await start(refused);
   await refused.until(() => refused.state.error !== null, 'a genuinely refused safe observation pose must fail while covered');
   assert.equal(refused.state.transition.phase, 'covered'); assert.equal(refused.state.transition.opacity, 1);
   assert.equal(refused.state.playing, false); assert.equal(refused.state.elapsedMs, 0);

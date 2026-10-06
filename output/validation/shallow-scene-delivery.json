@@ -1,0 +1,173 @@
+{
+  "schema": "complete-shallow-seascape-delivery-v1",
+  "createdAtUtc": "2026-10-06T14:18:04.269183+00:00",
+  "objective": "One complete shallow macro seascape, actual biology, ordinary exploration and director entry; whole scene before detail",
+  "sample": {
+    "seed": "living-shallows-v1|string:42",
+    "originOwner": [
+      96,
+      2
+    ],
+    "ownerCount": 12,
+    "widthM": 384,
+    "depthM": 128,
+    "outerOriginalBandM": 16,
+    "sharedVertexGrid": [
+      385,
+      129
+    ],
+    "exactInternalSeams": 16,
+    "deltaSpanM": 3.7065796852111816,
+    "maxGrade": 0.6492784264848582,
+    "bedDepthRangeM": [
+      14.628617286682129,
+      19.946187019348145
+    ],
+    "added": {
+      "rock": 11,
+      "coral": 23,
+      "algae": 10,
+      "seagrassRoots": 325,
+      "groundedFloodedBottle": 1
+    },
+    "retainedDriftwood": 1,
+    "verifiedSedimentPassage": {
+      "lengthM": 32,
+      "widthM": 4,
+      "locations": 51,
+      "bodyProbesPerLocation": 9,
+      "bodyRadiusM": 0.6
+    },
+    "route": [
+      {
+        "id": "shallow-scene-reef",
+        "x": 6220,
+        "z": 170
+      },
+      {
+        "id": "shallow-scene-sand",
+        "x": 6308,
+        "z": 192
+      },
+      {
+        "id": "shallow-scene-meadow",
+        "x": 6408,
+        "z": 170
+      },
+      {
+        "id": "shallow-scene-slope",
+        "x": 6504,
+        "z": 224
+      }
+    ]
+  },
+  "actualModel": {
+    "scope": "CPU full-record and shared-support verification; no browser or GPU acceptance",
+    "groupOwnerCount": 12,
+    "widthM": 384,
+    "depthM": 128,
+    "groupElementCounts": {
+      "rock": 85,
+      "coral": 169,
+      "algae": 228,
+      "seagrass": 1117,
+      "rubble": 860,
+      "driftwood": 1,
+      "bottle": 1
+    },
+    "groupOrdinarySpecies": {
+      "green-chromis": 36,
+      "lined-tang": 12,
+      "cleaner-wrasse": 12,
+      "honeycomb-grouper": 10,
+      "top-shell": 8,
+      "black-cucumber": 24,
+      "giant-clam": 12,
+      "cleaner-shrimp": 12,
+      "yellowtail-fusilier": 24,
+      "tube-sponge": 5,
+      "day-octopus": 5,
+      "spotted-reef-crab": 5,
+      "reef-squid": 9,
+      "blue-starfish": 4,
+      "spotted-jelly": 2
+    },
+    "activeOwnerCount": 9,
+    "sourceOwnerCount": 11,
+    "activeFeedingEvents": 118
+  },
+  "persistence": {
+    "atomicBirthOwnerCount": 12,
+    "publicOwnerLimit": 25,
+    "activeOwnerLimit": 9,
+    "animalRecordLimitPerOwner": 20,
+    "distinctReadLimitPerUpdate": 37,
+    "oldRecordsPreserved": true,
+    "offscreenFrozen": true,
+    "savedMemberPreventsReplacement": true,
+    "completeGroupMarkersValidated": true
+  },
+  "entries": {
+    "ordinaryButton": "浅海整景",
+    "directorOpeningStop": "shallow-scene-reef",
+    "directorChapters": 44,
+    "nativeActions": 38,
+    "observationSecondsAt1x": 522,
+    "loadingAndTransitionsAdditional": true
+  },
+  "localChecks": {
+    "fileCount": 58,
+    "tests": 425,
+    "pass": 425,
+    "fail": 0,
+    "log": "output/validation/shallow-scene-checks.log",
+    "initialFullBatch": {
+      "tests": 425,
+      "pass": 421,
+      "fail": 4,
+      "reason": "four old entry fixtures expected the previous living-visual opening; update new-opening checks and retain explicit old-route preparation regression",
+      "log": "output/validation/shallow-scene-checks-initial.log"
+    },
+    "entryRepair": {
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "log": "output/validation/shallow-scene-entry-repair.log"
+    }
+  },
+  "localBuild": {
+    "count": 1,
+    "success": true,
+    "basePath": "/ocean-world/",
+    "log": "output/validation/shallow-scene-build.log",
+    "artifacts": [
+      "dist/client/index.html",
+      "dist/server/index.js",
+      "dist/.openai/hosting.json"
+    ],
+    "existingLargeBundleWarning": true,
+    "sourceChangedAfterBuild": false
+  },
+  "sourceHashes": {
+    "src/livingShallowSeascape.js": "67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049",
+    "src/livingRidgeGeology.js": "34e0dd36630b853cdb36c73cff8db398697f9aa67ba650f2aa7b84e1c3052ea2",
+    "src/oceanEcology.js": "fbf0a3ad736a91655fec6fec9d600fabe234492e557988ce4ba39b2205d284b6",
+    "src/world/OceanChunks.js": "dcc648350856dcd9712a53a3715f8a961e3e4d5ad8c9a302e0377c1955343919",
+    "src/world/ReefWorld.js": "c09583719f37cb903ab89832eafe90185bcead8a8c6c893f69017503332841f9",
+    "src/OceanApp.jsx": "b7a693d6cb3a07972bdaf154906f1a807a4e6d66de1077e4e6920ac55ddd6c98",
+    "src/demoCapabilities.js": "3aa2822d363ab9ac9dd98b2fbf7830fa972dd18d733a243721e068d53ba77e8f",
+    "src/directorTour.js": "f1b9c7a13bd76d826f104783979525c7844e4720c4d96640aa728897ae1692fb"
+  },
+  "sourceCommit": null,
+  "publication": {
+    "status": "pending"
+  },
+  "limits": [
+    "CPU, native Three geometry and persistence evidence only; no current browser or WebGL visual acceptance",
+    "Programmatic representative assets and uncalibrated display lighting remain; documentary realism and frame performance are not accepted",
+    "The384m sample is not a world boundary; existing continuous generation elsewhere retains v1-v5",
+    "The real open sediment passage is32m, not a384m uninterrupted sand route",
+    "Heightfield terrain has no actual caves or overhangs; bottom bottle is flooded and stationary, not persistent advection",
+    "Complete saved groups or legacy members retain history, so an existing save can intentionally show its original scenery"
+  ]
+}

@@ -34,6 +34,7 @@ import { createLivingHabitatMosaic, selectLivingHabitatMosaicTheme } from './liv
 import { createLivingSeabedRelief, selectLivingSeabedReliefTheme } from './livingSeabedRelief.js';
 import { createLivingSeascapePlans } from './livingSeascape.js';
 import { createLivingHabitatBeltPlans } from './livingHabitatBelt.js';
+import { createLivingShallowSeascapePlans, SHALLOW_SEASCAPE_ANCHOR } from './livingShallowSeascape.js';
 
 const speciesById = { ...reefSpeciesById, ...oceanSlopeSpeciesById, ...oceanPelagicSpeciesById, ...oceanMantaSpeciesById, ...reefGuildSpeciesById, ...openWaterSpeciesById };
 
@@ -41,6 +42,12 @@ export const OCEAN_REGION_AGENT_LIMIT = 20;
 export const OCEAN_ACTIVE_REGION_LIMIT = 9;
 const STEP = .1;
 const VERSION = 1;
+// One explicit first sample; ordinary unbounded exploration keeps the existing
+// v1-v5 admission rules rather than eagerly tiling twelve-owner groups.
+const SHALLOW_SEASCAPE_OWNERS = [0, 1].flatMap(dz => Array.from({ length: 6 }, (_, dx) =>
+  `${SHALLOW_SEASCAPE_ANCHOR.cx + dx},${SHALLOW_SEASCAPE_ANCHOR.cz + dz}`));
+const shallowSeascapeMarked = row => row && (row.livingRidgePlan?.version === 6 ||
+  ['shallowSeascapeVersion', 'shallowSeascapeGroupId', 'shallowSeascapeInitializedAtSec'].some(key => Object.hasOwn(row, key)));
 const TAU = Math.PI * 2;
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const clone = value => structuredClone(value);
@@ -87,7 +94,7 @@ export function oceanSupportHeight(generator, x, z, { avoidCoral = false, includ
  * food pools are relative indices, not measured biomass. Unloaded regions
  * freeze, and changed state is restored from IndexedDB when they return. */
 export class OceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false, turtleGrazing = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false, turtleGrazing = false, shallowSeascape = false } = {}) {
     this.seed = seed;
     this.generator = generator;
     this.livingNetworkEnabled = generator.profile === LIVING_NETWORK_PROFILE;
@@ -101,6 +108,9 @@ export class OceanEcology {
     this.seascapeEnabled = seascape === true;
     this._livingBeltRequested = livingBelt === true;
     this.livingBeltEnabled = this._livingBeltRequested && this.livingGeologyEnabled;
+    this._shallowSeascapeRequested = shallowSeascape === true;
+    this.shallowSeascapeEnabled = this._shallowSeascapeRequested && this.livingGeologyEnabled &&
+      typeof generator.withShallowSeascapePlans === 'function' && typeof generator.replaceRidgeOwners === 'function';
     this.turtlesEnabled = turtles === true;
     this._turtleGrazingRequested = turtleGrazing === true;
     this.turtleGrazingEnabled = this._turtleGrazingRequested && this.turtlesEnabled && this.livingNetworkEnabled && typeof store.saveMany === 'function';
@@ -1142,21 +1152,67 @@ export class OceanEcology {
       const desired = new Map();
       for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) desired.set(`${cx + dx},${cz + dz}`, [cx + dx, cz + dz]);
       const prefetched = new Map();
+      const supportHaloIds = new Set();
       if (this.livingGeologyEnabled) {
         // Read the complete support halo before changing its source. A failed
         // read never means virgin terrain, and old records without a plan
         // retain their exact original floor, hosts and attachments.
         for (let dz = -2; dz <= 2; dz++) for (let dx = -2; dx <= 2; dx++) {
           const id = `${cx + dx},${cz + dz}`, errorsBefore = this._counts.persistenceErrors;
+          supportHaloIds.add(id);
           const saved = this._active.get(id) ?? await this._storage('load', world, id);
           if (!current()) return;
           if (this._counts.persistenceErrors > errorsBefore) { this._center = null; return false; }
+          if (this.shallowSeascapeEnabled && saved === undefined) {
+            this._storageError = 'A shallow seascape owner read returned no persistence result.';
+            this._counts.persistenceErrors++; this._center = null; return false;
+          }
           if (saved && Object.hasOwn(saved, 'livingRidgePlan') &&
               (!validateLivingRidgePlan(saved.livingRidgePlan, this.generator) || saved.livingRidgePlan.id !== id)) {
             this._center = null;
             throw new Error('Invalid saved ridge-gully plan; original terrain and population were not regenerated.');
           }
+          if (this.shallowSeascapeEnabled && shallowSeascapeMarked(saved) &&
+              !SHALLOW_SEASCAPE_OWNERS.includes(id)) {
+            this._center = null;
+            throw new Error('Invalid saved shallow seascape owner outside the admitted sample.');
+          }
           prefetched.set(id, saved);
+        }
+      }
+      const shallowCandidate = this.shallowSeascapeEnabled && SHALLOW_SEASCAPE_OWNERS.some(id => desired.has(id));
+      if (this.shallowSeascapeEnabled && (shallowCandidate ||
+          [...prefetched.values()].some(shallowSeascapeMarked))) {
+        // The public 5x5 support window and this one complete 6x2 group have
+        // at most 37 distinct owners. Disk completeness is independent of the
+        // smaller public registry and is checked before any source changes.
+        for (const id of SHALLOW_SEASCAPE_OWNERS) if (!prefetched.has(id)) {
+          const errorsBefore = this._counts.persistenceErrors;
+          const saved = this._active.get(id) ?? await this._storage('load', world, id);
+          if (!current()) return;
+          if (this._counts.persistenceErrors > errorsBefore || saved === undefined) {
+            if (saved === undefined) { this._counts.persistenceErrors++; this._storageError = 'A complete shallow seascape owner could not be read.'; }
+            this._center = null; return false;
+          }
+          prefetched.set(id, saved);
+        }
+        const marked = SHALLOW_SEASCAPE_OWNERS.map(id => prefetched.get(id)).filter(shallowSeascapeMarked);
+        if (marked.length) {
+          const group = marked[0].livingRidgePlan?.group;
+          const complete = marked.length === 12 && group?.cx === SHALLOW_SEASCAPE_ANCHOR.cx && group?.cz === SHALLOW_SEASCAPE_ANCHOR.cz &&
+            JSON.stringify(group.ownerIds) === JSON.stringify(SHALLOW_SEASCAPE_OWNERS) &&
+            SHALLOW_SEASCAPE_OWNERS.every(id => {
+              const row = prefetched.get(id), plan = row?.livingRidgePlan;
+              return row?.version === VERSION && row.id === id && row.cx === plan?.cx && row.cz === plan?.cz &&
+                Number.isInteger(row.ticks) && row.ticks >= 0 && Number.isFinite(row.timeSec) &&
+                Math.abs(row.timeSec - row.ticks * STEP) < 1e-8 &&
+                row.shallowSeascapeVersion === 1 && row.shallowSeascapeGroupId === `${group.cx},${group.cz}` &&
+                row.shallowSeascapeInitializedAtSec === 0 &&
+                plan?.version === 6 && plan.id === id && JSON.stringify(plan.group) === JSON.stringify(group) &&
+                validateLivingRidgePlan(plan, this.generator) && validateLivingNetworkRecord(row) &&
+                this._residentCount(row) <= OCEAN_REGION_AGENT_LIMIT;
+            });
+          if (!complete) { this._center = null; throw new Error('Incomplete saved shallow seascape group; historical terrain and populations were not regenerated.'); }
         }
       }
       if (typeof this.store.saveMany === 'function') {
@@ -1184,10 +1240,16 @@ export class OceanEcology {
         if (!current()) return;
       }
       if (this.livingGeologyEnabled) {
-        this.generator.retainRidgeOwners(prefetched.keys());
-        for (const [id, saved] of prefetched) if (saved) {
-          if (saved.livingRidgePlan) this.generator.registerRidgePlan(saved.livingRidgePlan);
-          else this.generator.registerLegacyRidgeOwner(id);
+        if (this.shallowSeascapeEnabled) {
+          const savedHalo = [...prefetched].filter(([id, saved]) => supportHaloIds.has(id) && saved);
+          this.generator.replaceRidgeOwners(savedHalo.filter(([, row]) => row.livingRidgePlan).map(([, row]) => row.livingRidgePlan),
+            savedHalo.filter(([, row]) => !row.livingRidgePlan).map(([id]) => id));
+        } else {
+          this.generator.retainRidgeOwners(prefetched.keys());
+          for (const [id, saved] of prefetched) if (saved) {
+            if (saved.livingRidgePlan) this.generator.registerRidgePlan(saved.livingRidgePlan);
+            else this.generator.registerLegacyRidgeOwner(id);
+          }
         }
         this._supportCells.clear();
       }
@@ -1232,6 +1294,44 @@ export class OceanEcology {
           turtleSupplemented, sceneSupplemented, habitatSupplemented, macroSupplemented,
           networkInitialized, guildInitialized, openWaterInitialized, turtleOrganicInitialized, turtleGrazingInitialized };
       };
+      if (shallowCandidate && SHALLOW_SEASCAPE_OWNERS.every(id => prefetched.get(id) === null)) {
+        try {
+          let plans;
+          try { plans = createLivingShallowSeascapePlans(this.generator.baseGenerator, SHALLOW_SEASCAPE_ANCHOR.cx, SHALLOW_SEASCAPE_ANCHOR.cz); }
+          catch (error) { if (!(error instanceof RangeError)) throw error; }
+          if (plans) {
+            let births;
+            this._supportCells.clear();
+            try {
+              births = this.generator.withShallowSeascapePlans(plans, () => plans.map(plan => {
+                const { region } = prepareRegion(null, [plan.cx, plan.cz], false);
+                region.livingRidgePlan = clone(plan);
+                region.shallowSeascapeVersion = 1; region.shallowSeascapeGroupId = `${plan.group.cx},${plan.group.cz}`;
+                region.shallowSeascapeInitializedAtSec = 0;
+                if (!SHALLOW_SEASCAPE_OWNERS.includes(region.id) || !validateLivingNetworkRecord(region) ||
+                    this._residentCount(region) > OCEAN_REGION_AGENT_LIMIT) throw new Error('Invalid fresh whole-shallow ecological network.');
+                return region;
+              }));
+            } finally { this._supportCells.clear(); }
+            if (!current()) return;
+            const result = await this._saveRecords(world, births.map(region => [region.id, clone(region)]));
+            if (result === null) { this._center = null; return false; }
+            if (!current()) return;
+            for (const region of births) prefetched.set(region.id, region);
+            const savedHalo = [...prefetched].filter(([id, saved]) => supportHaloIds.has(id) && saved);
+            this.generator.replaceRidgeOwners(savedHalo.filter(([, row]) => row.livingRidgePlan).map(([, row]) => row.livingRidgePlan),
+              savedHalo.filter(([, row]) => !row.livingRidgePlan).map(([id]) => id));
+            this._supportCells.clear();
+            for (const region of births) if (desired.has(region.id)) {
+              this._active.set(region.id, region);
+              if (region.sceneElementsVersion === 1) this._sceneSupports.set(region.id, region.sceneElements);
+              if (region.habitatSceneVersion === 1) this._habitatSupports.set(region.id, region.habitatSceneElements);
+              if (region.macroLandscapeVersion >= 1) this._registerMacroSupport(region);
+            }
+            this._counts.generated += births.length;
+          }
+        } catch (error) { this._supportCells.clear(); if (current()) this._center = null; throw error; }
+      }
       if (this.livingGeologyEnabled && (this.seascapeEnabled || this.livingBeltEnabled) &&
           typeof this.generator.withRidgePlans === 'function' && typeof this.generator.registerRidgePlans === 'function') {
         const groups = new Map();
@@ -1906,6 +2006,8 @@ export class OceanEcology {
     this.livingGeologyEnabled = this._livingGeologyRequested && this.livingNetworkEnabled &&
       typeof generator.withRidgePlan === 'function' && typeof this.store.saveMany === 'function';
     this.livingBeltEnabled = this._livingBeltRequested && this.livingGeologyEnabled;
+    this.shallowSeascapeEnabled = this._shallowSeascapeRequested && this.livingGeologyEnabled &&
+      typeof generator.withShallowSeascapePlans === 'function' && typeof generator.replaceRidgeOwners === 'function';
     if (this.livingGeologyEnabled) generator.retainRidgeOwners([]);
     this.environmentField = createOceanEnvironment(seed, generator);
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10;

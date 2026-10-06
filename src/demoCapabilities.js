@@ -2,6 +2,7 @@ import { LIVING_SHALLOWS_ROUTE } from './livingShallowsGeneration.js';
 import { LIVING_SHALLOWS_PROFILE } from './livingShallows.js';
 import { OCEAN_OBSERVATION_LAYERS } from './oceanLayerNavigation.js';
 import { DEEP_OCEAN_OBSERVATION_LAYERS } from './deepOceanNavigation.js';
+import { SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
 
 const action = data => Object.freeze(data);
 const entry = data => Object.freeze({ ...data, action: action(data.action) });
@@ -39,6 +40,10 @@ const stopHints = {
   'seascape-transition': '相邻地貌与生境过渡',
   'habitat-belt-reef': '完整生活带中的礁丘、珊瑚群落与开放砂道',
   'habitat-belt-meadow': '相邻草床、软底生命与上方真实水层动物',
+  'shallow-scene-reef': '浅海整景起点，观察成组岩礁、珊瑚与砂道的关系',
+  'shallow-scene-sand': '沿共享海床观察宽砂道、碎石带与相邻礁肩',
+  'shallow-scene-meadow': '观察宽草床、软底动物和上方游动生命',
+  'shallow-scene-slope': '沿整景末段观察外礁缓坡、稀疏岩体与开放水层',
 };
 
 // The first four IDs come from the generator. The additions match the
@@ -54,6 +59,7 @@ const stops = [...LIVING_SHALLOWS_ROUTE,
   { id: 'seascape-transition', label: '相邻生境' },
   { id: 'habitat-belt-reef', label: '生活带：礁群沙道' },
   { id: 'habitat-belt-meadow', label: '生活带：草床水层' },
+  ...SHALLOW_SEASCAPE_ROUTE_STOPS,
 ];
 
 export const DEMO_LIVING_STOPS = Object.freeze(stops.map((stop, index) => entry({

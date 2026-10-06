@@ -29,9 +29,13 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Check director route, camera ownership and saved ecosystems
+      - name: Check complete shallow scenery, native entries and saved ecosystems
         run: >-
           node --test
+          tests/living-shallow-seascape.test.mjs
+          tests/living-shallow-seascape-render.test.mjs
+          tests/living-shallow-seascape-ecology.test.mjs
+          tests/living-shallow-seascape-world.test.mjs
           tests/director-entry-motion.test.mjs
           tests/director-transition-hook.test.mjs
           tests/living-visual-route.test.mjs
