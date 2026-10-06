@@ -12,5 +12,5 @@
     "browser": "blocked before page read by browser URL policy; no workaround, new screenshot or realtime playback claim"
   },
   "previousRelease": {"run": 37366892941, "status": "completed", "conclusion": "failure", "build": "cancelled; runner_id 0; no steps", "deploy": "skipped"},
-  "newRelease": "pending commit and publication; follow docs/DEPLOYMENT.md"
+  "newRelease": {"source": "3deced6c1816396603b4dfeb8f01ddda825e4095", "run": 37403459202, "build": "success", "workflowChecks": {"passed": 77, "failed": 0, "includesLocal58": true}, "deploy": "success", "deploymentId": 6874045206, "deploymentStatus": "success", "url": "https://yydshly.github.io/ocean-world/?demo=director", "browserPlaybackAcceptance": "not performed this turn"}
 }
