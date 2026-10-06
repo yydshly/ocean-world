@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { DIRECTOR_STEPS, directorStepAction } from '../src/directorTour.js';
 import { demoWorldMatches, navigateDemoEntry } from '../src/demoNavigation.js';
 import { DEMO_ACTIONS, DEMO_KELP_STOPS, DEMO_DEEP_STOPS, demoLayerEntries } from '../src/demoCapabilities.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../src/livingShallows.js';
@@ -244,4 +245,24 @@ test('discovery entry starts only the living observation world and preserves an 
   const legacy = observationWorld();
   assert.equal(navigateDemoEntry(choice, legacy.world), false);
   assert.deepEqual(legacy.calls, []);
+});
+
+test('the existing director opening resolves the exact native reef sample while ordinary entry keeps its original start', () => {
+  const generator = createLivingRidgeGenerator(createLivingShallowsGenerator(livingShallowsSeed('42')));
+  const stops = [...generator.routeStops].reverse();
+  const opening = DIRECTOR_STEPS[0], action = directorStepAction(opening);
+  assert.equal(opening.id, 'shallows-opening');
+  assert.equal(opening.motion.routeId, 'living-visual');
+  assert.equal(action.entryStopId, 'habitat-belt-reef');
+  assert.equal(Object.hasOwn(opening.action, 'entryStopId'), false);
+  const { world, calls, protectedState } = observationWorld({ living: true, stops });
+  const before = structuredClone(protectedState);
+  assert.equal(navigateDemoEntry(action, world, { movingDirector: true }), true);
+  assert.deepEqual(calls, [['enterLivingShallows', stops.findIndex(stop => stop.id === action.entryStopId)]]);
+  calls.length = 0;
+  assert.equal(navigateDemoEntry({ ...action, entryStopId: 'missing-sample' }, world), false);
+  assert.deepEqual(calls, []);
+  assert.equal(navigateDemoEntry(opening.action, world), true);
+  assert.deepEqual(calls, [['enterLivingShallows', 0]]);
+  assert.deepEqual(protectedState, before);
 });

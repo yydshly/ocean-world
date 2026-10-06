@@ -29,9 +29,16 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Check deep seascape, saved ecosystems and hosting integration
+      - name: Check shallow presentation, observation routes, saved ecosystems and hosting
         run: >-
           node --test
+          tests/living-visual-route.test.mjs
+          tests/living-visual-world.test.mjs
+          tests/living-shallows-presentation.test.mjs
+          tests/living-coral-display-v4.test.mjs
+          tests/living-reef-assets.test.mjs
+          tests/living-meadow-assets.test.mjs
+          tests/living-shallows-render.test.mjs
           tests/deep-seascape.test.mjs
           tests/deep-seascape-render.test.mjs
           tests/deep-seascape-ecology.test.mjs

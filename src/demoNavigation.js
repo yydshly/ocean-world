@@ -21,7 +21,10 @@ export function navigateDemoEntry(choice, world, { movingDirector = false } = {}
     return index >= 0 && world.enterLivingShallows(index);
   }
   if (choice.kind === 'world') {
-    if (world.isLivingShallows) return world.enterLivingShallows(0);
+    if (world.isLivingShallows) {
+      const index=choice.entryStopId===undefined?0:world.oceanChunks?.generator.routeStops?.findIndex(stop=>stop.id===choice.entryStopId)??-1;
+      return index>=0&&world.enterLivingShallows(index);
+    }
     // The moving shot takes ownership as soon as this entry is ready. Place
     // its fixed starting view now, before it clears any unfinished transition.
     if (world.biomeId === 'reef') {

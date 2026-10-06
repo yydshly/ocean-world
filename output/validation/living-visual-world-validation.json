@@ -1,0 +1,93 @@
+{
+  "scope": "finite CPU production-World observation methods and real ecology; not WebGL, browser streaming or visual acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "loadedOwners": 9,
+  "actualDeathId": "ocean:73,1:black-cucumber:7",
+  "sourceChunkIds": [
+    "73,1"
+  ],
+  "sourceElementIds": [
+    "living-coral:living-rock:295,4:0",
+    "living-coral:living-rock:295,5:0",
+    "living-coral:living-rock:295,5:1",
+    "living-coral:living-rock:295,5:2",
+    "living-coral:living-rock:295,5:3",
+    "living-mosaic:73,1:grass:1573,27",
+    "living-mosaic:73,1:grass:1574,26",
+    "living-mosaic:73,1:grass:1574,30",
+    "living-mosaic:73,1:grass:1575,26",
+    "living-mosaic:73,1:grass:1575,30",
+    "living-mosaic:73,1:grass:1576,26",
+    "living-mosaic:73,1:grass:1576,30",
+    "living-rock:295,4",
+    "living-rock:295,5"
+  ],
+  "sourceAgentIds": [
+    "ocean:73,1:green-chromis:0",
+    "ocean:73,1:green-chromis:1",
+    "ocean:73,1:green-chromis:2",
+    "ocean:73,1:honeycomb-grouper:5"
+  ],
+  "routeStops": [
+    {
+      "id": "reef-edge-wide",
+      "position": {
+        "x": 4724.311651346672,
+        "y": -4.816261939944351,
+        "z": 95.14570961775672
+      },
+      "target": {
+        "x": 4726.2069789758,
+        "y": -6.801549048515331,
+        "z": 83.89858851152412
+      }
+    },
+    {
+      "id": "reef-edge-life",
+      "position": {
+        "x": 4729.8679142648925,
+        "y": -4.816261939944351,
+        "z": 92.8812135626479
+      },
+      "target": {
+        "x": 4726.2069789758,
+        "y": -6.801549048515331,
+        "z": 83.89858851152412
+      }
+    },
+    {
+      "id": "reef-edge-grass",
+      "position": {
+        "x": 4735.424177183113,
+        "y": -4.816261939944351,
+        "z": 90.61671750753908
+      },
+      "target": {
+        "x": 4726.2069789758,
+        "y": -6.801549048515331,
+        "z": 83.89858851152412
+      }
+    }
+  ],
+  "actualOriginalRecordsPreserved": 9,
+  "completeStatePreservedOnRead": true,
+  "completeStatePreservedOnEntry": true,
+  "actualDirectorTravelledM": 11.999999999999183,
+  "actualDirectorPathLengthM": 11.999999999999181,
+  "actualThreeStopCompletion": true,
+  "completeStatePreservedOnPlayback": true,
+  "pauseAndCameraRatesPreserveEcology": true,
+  "floatingOriginRetainsWorldPath": true,
+  "missingCompositionAndDeadSourcesRemainEmpty": true,
+  "asyncSampleEntryLoadsActualSavedOwners": true,
+  "sampleUsesExactExistingHabitatEntry": {
+    "id": "habitat-belt-reef",
+    "result": true,
+    "position": {
+      "x": 4760,
+      "y": -3.9515004103020814,
+      "z": 157
+    }
+  },
+  "manualCameraAndTargetRejectLateAsyncEntry": true
+}

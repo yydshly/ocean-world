@@ -54,6 +54,8 @@ import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../livingShallows.j
 import { createLivingWorldState } from '../livingWorldState.js';
 import { createDirectorCameraMotion, sampleDirectorCameraMotion, advanceDirectorCameraElapsed, isDirectorPlaybackRate } from '../directorCameraMotion.js';
 import { oceanKeyboardTargetConsumesInput } from '../oceanKeyboardInput.js';
+import { createLivingVisualRoute, sampleLivingVisualRoute } from '../livingVisualRoute.js';
+import { livingShallowsPresentation } from '../livingShallowsPresentation.js';
 
 const reefPresets = {
   wide: { position: [3, 2.8, 5], target: [-2.5, 0.65, -2] },
@@ -108,6 +110,7 @@ export class ReefWorld {
     this.oceanObservationLayer = 'bed'; this.oceanFreeDepthM = null;
     this.oceanRenderOrigin = { x: 0, z: 0 };
     this.oceanEcologyCenter = null; this.oceanEcologyResetting = false;
+    this.livingVisualRoute = null;
     this.disposed = false; this.elapsed = 0; this.visualTimeSec = 0; this.frameCount = 0; this.frameSeconds = 0; this.fps = 0;
     this.controlStartCount = 0; this.lastResourceInventory = -Infinity;
     this.actualFrameCount = 0; this.actualFrameSeconds = 0;
@@ -902,10 +905,49 @@ export class ReefWorld {
     this.requestOceanEcology();
   }
   oceanWorldPosition(){return this.camera.position.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z));}
-  beginDirectorMotion({durationSec=12,kind='walk',layer=null,distanceM,playbackRate=1}={}){
+  currentLivingVisualRoute(){
+    if(!this.isLivingShallows||!this.oceanExploring||this.oceanEcologyResetting||this.disposed||!this.oceanChunks||!this.oceanEcology)
+      return {status:'empty',reason:'当前尚未进入可观察的浅海群落。'};
+    return createLivingVisualRoute({generator:this.oceanChunks.generator,agents:this.oceanEcology.agents,
+      loadedChunkIds:this.oceanChunks.stats.loadedChunks,cameraPosition:this.oceanWorldPosition(),surfaceY:this.surfaceY,
+      fov:this.camera.fov,aspect:this.camera.aspect,
+      safeHeight:(x,z)=>this.habitatY(x,z)});
+  }
+  enterLivingVisualScene(){
+    const route=this.currentLivingVisualRoute();this.livingVisualRoute=route;
+    if(route.status!=='ready')return false;
+    const stop=route.stops[0];
+    return this.restoreOceanObservation({position:stop.position,target:stop.target,layer:'free',
+      freeDepthM:this.surfaceY-stop.position.y,habitat:this.oceanChunks.generator.sample(stop.position.x,stop.position.z).habitat});
+  }
+  async enterLivingVisualSample(){
+    if(!this.isLivingShallows||this.disposed||this.oceanEcologyResetting||!this.oceanEcology)return false;
+    const token=(this._livingVisualEntryToken??0)+1;this._livingVisualEntryToken=token;
+    if(this.enterLivingVisualScene())return true;
+    const index=this.oceanChunks.generator.routeStops.findIndex(stop=>stop.id==='habitat-belt-reef');
+    if(index<0||!this.enterLivingShallows(index))return false;
+    const position=this.oceanWorldPosition(),target=this.controls.target.clone(),seed=this.sim.seed;
+    const loaded=await this.oceanEcology.update(position);
+    if(loaded===false||this.disposed||this._livingVisualEntryToken!==token||this.sim.seed!==seed||
+      this.oceanWorldPosition().distanceTo(position)>.05||this.controls.target.distanceTo(target)>.05)return false;
+    this.oceanChunks.update(this.oceanWorldPosition());
+    return this.enterLivingVisualScene();
+  }
+  beginDirectorMotion({durationSec=12,kind='walk',layer=null,distanceM,playbackRate=1,routeId=null}={}){
     if(this.disposed||!this.camera||!this.controls)return false;
     if(!isDirectorPlaybackRate(playbackRate))return false;
     if(layer&&!['bed','midwater','surface','free'].includes(layer))return false;
+    let livingRoute=null;
+    if(routeId==='living-visual'&&this.isLivingShallows){
+      if(!Number.isFinite(durationSec)||durationSec<=0||durationSec>60||!['walk','orbit','follow'].includes(kind)||
+        (distanceM!==undefined&&(!Number.isFinite(distanceM)||distanceM<=0||distanceM>18)))return false;
+      const route=this.currentLivingVisualRoute();this.livingVisualRoute=route;
+      if(route.status==='ready'){
+        const stop=route.stops[0];
+        if(this.restoreOceanObservation({position:stop.position,target:stop.target,layer:'free',
+          freeDepthM:this.surfaceY-stop.position.y,habitat:this.oceanChunks.generator.sample(stop.position.x,stop.position.z).habitat}))livingRoute=route;
+      }
+    }
     const origin=new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z),position=this.oceanWorldPosition();
     const target=this.controls.target.clone().add(origin),selected=this.findAgent(this.selectedId);
     const following=kind==='follow'&&selected?.alive;
@@ -933,6 +975,7 @@ export class ReefWorld {
       // observation only, with no environment, animal or clock mutation.
       sampleDirectorCameraMotion(shot,0,this.directorMotionQueries(layer));
       this.directorMotion={shot,active:true,complete:false,elapsedSec:0,travelledM:0,error:null,playbackRate,
+        ...(livingRoute?{livingRoute}:{}),
         layer,agentId:following?selected.id:null,lastTrackingTarget:following?{x:focusTarget.x,y:focusTarget.y,z:focusTarget.z}:null,
         lastPosition:{x:position.x,y:position.y,z:position.z}};
       this.following=false;this.transition=null;this.oceanTravel=null;this.oceanCruising=false;this.keys.clear();
@@ -963,7 +1006,9 @@ export class ReefWorld {
       // Keep the last observed absolute location for this finite shot rather
       // than suddenly aiming back at its original chapter-entry position.
       const trackingTarget=motion.lastTrackingTarget;
-      const frame=sampleDirectorCameraMotion(motion.shot,elapsed,{...this.directorMotionQueries(motion.layer),trackingTarget});
+      const frame=motion.livingRoute?{
+        ...sampleLivingVisualRoute(motion.livingRoute,elapsed/motion.shot.durationSec),elapsedSec:elapsed,complete:elapsed>=motion.shot.durationSec
+      }:sampleDirectorCameraMotion(motion.shot,elapsed,{...this.directorMotionQueries(motion.layer),trackingTarget});
       const position=new THREE.Vector3(frame.position.x-this.oceanRenderOrigin.x,frame.position.y,frame.position.z-this.oceanRenderOrigin.z);
       const target=new THREE.Vector3(frame.target.x-this.oceanRenderOrigin.x,frame.target.y,frame.target.z-this.oceanRenderOrigin.z);
       this.camera.position.copy(position);this.controls.target.copy(target);
@@ -990,6 +1035,8 @@ export class ReefWorld {
     return {active:!!motion?.active,complete:!!motion?.complete,kind:shot?.kind??null,
       elapsedSec:motion?.elapsedSec??0,durationSec:shot?.durationSec??0,distanceM:shot?.distanceM??0,travelledM:motion?.travelledM??0,playbackRate:motion?.playbackRate??1,
       layer:motion?.layer??null,agentId:motion?.agentId??null,error:motion?.error??null,
+      ...(motion?.livingRoute?{observationRoute:{scope:motion.livingRoute.scope,sourceElementIds:[...motion.livingRoute.sourceElementIds],
+        sourceAgentIds:[...motion.livingRoute.sourceAgentIds],pathLengthM:motion.livingRoute.pathLengthM}}:{}),
       paused:!!this.paused,scope:'local-continuous-observation-shot',coordinateSpace:'absolute-world-metres',
       worldPosition:this.camera?{...this.oceanWorldPosition()}:null,
       worldTarget:this.controls?{x:this.controls.target.x+this.oceanRenderOrigin.x,y:this.controls.target.y,z:this.controls.target.z+this.oceanRenderOrigin.z}:null};
@@ -1481,6 +1528,9 @@ export class ReefWorld {
       ...(this.oceanMacroLandscape?{macroLandscapeRendering:this.oceanMacroLandscape.stats}:{}),
       ...(onSceneObservation?{sceneObservation:{...sceneObservation,scope:'ordinary-whole-scene-observation'}}:{}),
       localWater:this.oceanLocalWater?{...this.oceanLocalWater,currentVector:{...this.oceanLocalWater.currentVector},scope:'observer-world-position',depthM:Math.max(0,this.surfaceY-position.y)}:null,
+      ...(this.isLivingShallows&&this.livingVisualRoute?{visualRoute:{status:this.livingVisualRoute.status,reason:this.livingVisualRoute.reason??null,
+        sourceElementIds:[...(this.livingVisualRoute.sourceElementIds??[])],sourceAgentIds:[...(this.livingVisualRoute.sourceAgentIds??[])],
+        pathLengthM:this.livingVisualRoute.pathLengthM??0}}:{}),
       waterParticles:this.oceanWaterParticles?.stats};
   }
   updateOceanWater(dt){
@@ -1503,6 +1553,14 @@ export class ReefWorld {
     // nearby animals remain observable; these are not measured radiances.
     this.sun.intensity*=THREE.MathUtils.lerp(1,Math.max(this.isKelp?.18:.32,transmission),blend);
     this.ambient.intensity*=THREE.MathUtils.lerp(1,Math.max(this.isKelp?.45:.72,Math.sqrt(transmission)),blend);
+    if(this.isLivingShallows){
+      const presentation=livingShallowsPresentation({hour:env.hour,depthM,turbidity:water.turbidity,attenuationPerM:water.attenuationPerM});
+      this.scene.fog.density=presentation.fogDensity;
+      this.sun.intensity=presentation.sunIntensity;this.ambient.intensity=presentation.skyIntensity;
+      this.sun.color.setRGB(...presentation.sunColor);this.ambient.color.set(presentation.skyColor);this.ambient.groundColor.set(presentation.groundColor);
+      this.visualEnvironment.shallowPresentation={scope:presentation.scope,fogDensity:presentation.fogDensity,
+        daylight:presentation.daylight,transmission:presentation.transmission};
+    }
     this.waterColors.horizon.value.copy(this.scene.fog.color);this.waterColors.bottom.value.copy(this.scene.fog.color).multiplyScalar(this.isKelp?1:.60);
     palette.top.copy(palette.topClear).lerp(palette.topGreen,water.waterTint);
     palette.tone.copy(this.waterNightColor).lerp(palette.top,daylight);
@@ -1544,6 +1602,7 @@ export class ReefWorld {
   reset(seed=42){
     this.inputSeed=seed===''?42:seed;
     if(this.isLivingShallows){seed=livingShallowsSeed(this.inputSeed);this.livingWorldState=createLivingWorldState(seed);this.livingDiscoveries=createLivingDiscoveries(seed);this.livingClockSec=0;}
+    this.livingVisualRoute=null;
     this.sim.reset(seed===''?42:seed);this.selectedId=null;this.following=false;this.transition=null;this.followOffsetY=0;this.lastFocusAssessment=null;this.highlight.visible=false;this.visualTimeSec=0;this.deepParticleDrift=0;this.lastParticleSimTime=0;this.oceanExploring=false;this.oceanCruising=false;this.oceanTravel=null;this.oceanObservationLayer='bed';this.oceanFreeDepthM=null;
     if(this.oceanChunks){
       const revision=(this.oceanResetRevision||0)+1;this.oceanResetRevision=revision;

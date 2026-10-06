@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { oceanRockMesh } from '../oceanRockShape.js';
 import { sceneElementMesh } from '../oceanSceneElements.js';
 
-export const LIVING_SHALLOWS_ASSET_VERSION = 3;
+export const LIVING_SHALLOWS_ASSET_VERSION = 4;
 export const LIVING_SHALLOWS_CORAL_FORMS = Object.freeze(['branching', 'table', 'fan']);
 export const LIVING_SHALLOWS_PALETTE = Object.freeze({
   rock: '#a29a80', branching: '#a3997e', table: '#a88b83', fan: '#947659',
@@ -48,41 +48,75 @@ function lowColonyBase(positions, indices, radius, height, sectors = 18, depth =
 }
 
 function branchingColony(positions, indices) {
-  // The complete crown grows from many positions on one low connected crust.
-  // Its stout unequal branches do not converge into a central inverted cone.
-  lowColonyBase(positions, indices, .40, .15);
-  for (let stem = 0; stem < 23; stem++) {
-    const angle = stem * 2.3999632297, radius = .34 * Math.sqrt((stem + .5) / 23);
-    const root = [Math.cos(angle) * radius, .075, Math.sin(angle) * radius];
-    const shoulder = [root[0] + Math.cos(angle + .7) * .028,
-      .39 + .15 * (.5 + .5 * Math.sin(stem * 1.71)), root[2] + Math.sin(angle + .7) * .028];
-    tube(positions, indices, root, shoulder, .045, .038, 5);
-    for (let fork = 0; fork < 3; fork++) {
-      const direction = angle + fork * TAU / 3 + .31;
-      const top = .70 + .29 * (.5 + .5 * Math.sin(stem * 1.37 + fork * 2.09));
-      const joint = [shoulder[0] + Math.cos(direction) * .037, shoulder[1] + (top - shoulder[1]) * .52,
-        shoulder[2] + Math.sin(direction) * .037];
-      const tip = [shoulder[0] + Math.cos(direction) * .056, top, shoulder[2] + Math.sin(direction) * .056];
-      tube(positions, indices, shoulder, joint, .032, .025, 5);
-      tube(positions, indices, joint, tip, .025, .019, 5);
+  // Seven unequal outward-growing axes, each with two divergent forks and
+  // paired terminal twigs, form one spreading colony rather than a rod bundle.
+  lowColonyBase(positions, indices, .41, .095);
+  for (let axis = 0; axis < 7; axis++) {
+    const angle = axis * 2.3999632297 + .13 * Math.sin(axis * 1.91);
+    const rootRadius = .09 + .04 * (.5 + .5 * Math.sin(axis * 2.71));
+    const root = [Math.cos(angle) * rootRadius, .05, Math.sin(angle) * rootRadius];
+    const reach = .235 + .035 * Math.sin(axis * 1.37);
+    const shoulder = [Math.cos(angle) * reach, .40 + .09 * Math.sin(axis * 1.73), Math.sin(angle) * reach];
+    curvedBranch(positions, indices, root, [root[0] * .85, .27, root[2] * .85], shoulder, .048, .033, 4, 8);
+    for (const side of [-1, 1]) {
+      const direction = angle + side * (.43 + .13 * Math.sin(axis * 2.13));
+      const radius = .35 + .055 * (.5 + .5 * Math.sin(axis * 1.41 + side));
+      const tip = [Math.cos(direction) * radius, .69 + .13 * Math.sin(axis * 1.17 + side * .63), Math.sin(direction) * radius];
+      const bend = [(shoulder[0] + tip[0]) * .5 + Math.cos(angle) * .027,
+        shoulder[1] + (tip[1] - shoulder[1]) * .65, (shoulder[2] + tip[2]) * .5 + Math.sin(angle) * .027];
+      curvedBranch(positions, indices, shoulder, bend, tip, .032, .021, 3, 7);
+      for (const twig of [-1, 1]) {
+        const heading = direction + twig * .64, length = .048 + .018 * (.5 + .5 * Math.sin(axis + side + twig));
+        const end = [tip[0] + Math.cos(heading) * length, tip[1] + .10 + .06 * (.5 + .5 * Math.sin(axis * 2.1 + twig)),
+          tip[2] + Math.sin(heading) * length];
+        curvedBranch(positions, indices, tip, [(tip[0] + end[0]) * .5, tip[1] + .09, (tip[2] + end[2]) * .5], end, .020, .009, 2, 6);
+      }
     }
   }
 }
 
+function curvedBranch(positions, indices, a, bend, b, r0, r1, steps, sides) {
+  const curve = new THREE.QuadraticBezierCurve3(new THREE.Vector3(...a), new THREE.Vector3(...bend), new THREE.Vector3(...b));
+  const first = positions.length / 3;
+  for (let row = 0; row <= steps; row++) {
+    const t = row / steps, p = curve.getPoint(t), direction = curve.getTangent(t);
+    const reference = Math.abs(direction.y) > .94 ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 1, 0);
+    const u = new THREE.Vector3().crossVectors(direction, reference).normalize(), v = new THREE.Vector3().crossVectors(direction, u).normalize();
+    const radius = THREE.MathUtils.lerp(r0, r1, t) * (1 + .035 * Math.sin(t * Math.PI));
+    for (let side = 0; side < sides; side++) {
+      const angle = side * TAU / sides;
+      positions.push(p.x + radius * (u.x * Math.cos(angle) + v.x * Math.sin(angle)),
+        p.y + radius * (u.y * Math.cos(angle) + v.y * Math.sin(angle)),
+        p.z + radius * (u.z * Math.cos(angle) + v.z * Math.sin(angle)));
+    }
+  }
+  for (let row = 0; row < steps; row++) for (let side = 0; side < sides; side++) {
+    const a = first + row * sides + side, b = first + row * sides + (side + 1) % sides;
+    indices.push(a, b, b + sides, a, b + sides, a + sides);
+  }
+  const last = first + steps * sides;
+  for (let side = 1; side < sides - 1; side++) indices.push(last, last + side, last + side + 1);
+}
+
 function tableColony(positions, indices) {
-  lowColonyBase(positions, indices, .23, .16, 14);
-  const plates = [[-.10, .32, .05, .29], [.095, .55, -.065, .33], [-.025, .79, .015, .43]];
+  lowColonyBase(positions, indices, .19, .10, 14);
+  // Offset shallow lobed plates overlap into one canopy. Their thin margins
+  // and differently bowed surfaces replace three thick stacked discs.
+  const plates = [[-.10, .29, .08, .28], [.13, .45, -.08, .30], [-.11, .59, -.07, .32],
+    [.08, .75, .09, .35], [-.025, .91, .02, .40]];
   for (let tier = 0; tier < plates.length; tier++) {
-    const [x, y, z, radius] = plates[tier], sectors = 24, rings = 3;
-    tube(positions, indices, [x * .4, .11, z * .4], [x, y - .025, z], .046, .053, 5);
+    const [x, y, z, radius] = plates[tier], sectors = 30, rings = 3;
+    curvedBranch(positions, indices, [x * .2, .07, z * .2], [x * .6, y * .64, z * .45], [x, y - .015, z], .033, .023, 3, 6);
     const first = positions.length / 3;
-    positions.push(x, y + .085, z, x, y - .055, z);
+    positions.push(x, y + .032, z, x, y + .009, z);
     for (let ring = 1; ring <= rings; ring++) for (let sector = 0; sector < sectors; sector++) {
       const angle = sector / sectors * TAU, fraction = ring / rings;
-      const edge = radius * fraction * (1 + .12 * Math.sin(angle * 3 + tier * 1.1) + .035 * Math.sin(angle * 7));
-      const crown = y + .085 * (1 - fraction * fraction) + .030 * Math.sin(angle * 5 + fraction * 2 + tier);
-      positions.push(x + Math.cos(angle) * edge, crown, z + Math.sin(angle) * edge,
-        x + Math.cos(angle) * edge, crown - .10 - .022 * Math.cos(angle * 3), z + Math.sin(angle) * edge);
+      const lobes = 1 + .13 * Math.sin(angle * 3 + tier * .71) + .055 * Math.sin(angle * 7 + tier * 1.13);
+      const edge = radius * fraction * lobes;
+      const crown = y + .032 * (1 - fraction * fraction) + fraction * (.019 * Math.sin(angle * 4 + tier) + .023 * Math.cos(angle + tier * 1.7));
+      const depth = .92 + .05 * Math.sin(tier * 1.3), thickness = .020 + .008 * (1 - fraction);
+      positions.push(x + Math.cos(angle) * edge, crown, z + Math.sin(angle) * edge * depth,
+        x + Math.cos(angle) * edge, crown - thickness, z + Math.sin(angle) * edge * depth);
       const a = first + 2 + ((ring - 1) * sectors + sector) * 2;
       const b = first + 2 + ((ring - 1) * sectors + (sector + 1) % sectors) * 2;
       if (ring === 1) indices.push(first, b, a, first + 1, a + 1, b + 1);
@@ -91,42 +125,29 @@ function tableColony(positions, indices) {
           previousA + 1, a + 1, b + 1, previousA + 1, b + 1, previousB + 1); }
       if (ring === rings) indices.push(a, b, a + 1, a + 1, b, b + 1);
     }
-    // Thick short crowns and a lobed rim retain living volume from an ordinary
-    // side view. They belong to the same three connected horizontal layers.
-    for (let finger = 0; finger < 22; finger++) {
-      const angle = finger * 2.3999632297 + tier * .43, reach = radius * .88 * Math.sqrt((finger + .5) / 22);
-      const base = [x + Math.cos(angle) * reach, y + .035, z + Math.sin(angle) * reach];
-      const height = .10 + .050 * (.5 + .5 * Math.sin(finger * 1.63 + tier));
-      tube(positions, indices, base, [base[0] + Math.cos(angle) * .015, y + height, base[2] + Math.sin(angle) * .015], .021, .014, 5);
-    }
   }
 }
 
 function fanColony(positions, indices) {
   lowColonyBase(positions, indices, .12, .10, 10, .28);
-  tube(positions, indices, [0, .055, 0], [0, .35, 0], .033, .035, 5);
-  // A curved connected web with genuine openings has a broad fan silhouette,
-  // rather than a set of unattached radial wires. Each annular cell is closed
-  // around its opening; neighbours share the same finite outer edges.
-  const ribs = 11, rows = 5;
-  const point = (u, v, side) => {
-    const angle = -1.14 + u * 2.28, reach = .21 + v * .79;
-    return [Math.sin(angle) * .49 * reach, .10 + Math.cos(angle) * .89 * reach,
-      .017 * Math.sin(angle * 2 + v * 1.3) + side * .010];
+  curvedBranch(positions, indices, [0, .055, 0], [-.016, .22, .008], [0, .37, 0], .031, .024, 3, 7);
+  // Curved ribs and unequal cross-veins create a branching open fan rather
+  // than rectangular annular cells cut from one mechanical panel.
+  const ribs = 11;
+  const point = (rib, fraction) => {
+    const angle = -1.18 + rib / (ribs - 1) * 2.36 + .025 * Math.sin(rib * 1.7);
+    const reach = .17 + fraction * (.78 + .045 * Math.sin(rib * 2.1));
+    return [Math.sin(angle) * .52 * reach, .13 + Math.cos(angle) * .91 * reach,
+      .031 * Math.sin(angle * 1.7) * reach + .012 * Math.sin(fraction * 3.1 + rib * .7)];
   };
-  for (let row = 0; row < rows; row++) for (let rib = 0; rib < ribs; rib++) {
-    const u0 = rib / ribs, u1 = (rib + 1) / ribs, v0 = row / rows, v1 = (row + 1) / rows;
-    const inset = .23, corners = [[u0, v0], [u1, v0], [u1, v1], [u0, v1]];
-    const inner = [[u0 + (u1 - u0) * inset, v0 + (v1 - v0) * inset],
-      [u1 - (u1 - u0) * inset, v0 + (v1 - v0) * inset],
-      [u1 - (u1 - u0) * inset, v1 - (v1 - v0) * inset],
-      [u0 + (u1 - u0) * inset, v1 - (v1 - v0) * inset]];
-    const first = positions.length / 3;
-    for (const side of [-1, 1]) for (const [u, v] of [...corners, ...inner]) positions.push(...point(u, v, side));
-    for (let edge = 0; edge < 4; edge++) {
-      const next = (edge + 1) % 4, a = first + edge, b = first + next, i = first + 4 + edge, j = first + 4 + next;
-      indices.push(a, i, b, b, i, j, a + 8, b + 8, i + 8, b + 8, j + 8, i + 8,
-        a, b, a + 8, b, b + 8, a + 8, i, i + 8, j, j, i + 8, j + 8);
+  for (let rib = 0; rib < ribs; rib++) {
+    const end = point(rib, 1), mid = point(rib, .46);
+    curvedBranch(positions, indices, [0, .29, 0], mid, end, .019, .0085, 4, 6);
+    for (let row = 0; row < 4 && rib < ribs - 1; row++) {
+      const fraction = .25 + row * .19 + .025 * Math.sin(rib * 1.7 + row);
+      const a = point(rib, fraction), b = point(rib + 1, fraction + .035 * Math.sin(rib + row * 1.9));
+      const bend = [(a[0] + b[0]) * .5, (a[1] + b[1]) * .5 + .012 * Math.sin(rib * 2.1 + row), (a[2] + b[2]) * .5];
+      curvedBranch(positions, indices, a, bend, b, .0095, .008, 2, 5);
     }
   }
 }
@@ -147,15 +168,17 @@ function colonyGeometry(form) {
   const horizontal = .49 / Math.max(.49, radius), colors = [];
   for (let vertex = 0; vertex < positions.length; vertex += 3) {
     positions[vertex] *= horizontal; positions[vertex + 2] *= horizontal; positions[vertex + 1] /= top;
-    const height = positions[vertex + 1], brightness = .76 + .24 * height;
-    colors.push(brightness, brightness * .985, brightness * .95);
+    const height = positions[vertex + 1], variation = Math.sin(positions[vertex] * 13 + positions[vertex + 2] * 9 + height * 3.7);
+    const brightness = .82 + .13 * height + variation * .025;
+    colors.push(brightness, brightness * .985, brightness * .965);
   }
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
   geometry.setIndex(indices); geometry.computeVertexNormals(); geometry.computeBoundingBox(); geometry.computeBoundingSphere();
   geometry.userData = { assetVersion: LIVING_SHALLOWS_ASSET_VERSION, morphotype: form,
-    assetShape: form === 'branching' ? 'low-connected-multiroot-branch-crown' : form === 'table' ? 'layered-irregular-live-crown' : 'connected-perforated-fan',
+    assetShape: form === 'branching' ? 'spreading-multiroot-curved-fork-crown' : form === 'table' ? 'overlapping-thin-lobed-layered-crown' : 'curved-branching-perforated-fan',
+    colonyStructure: form === 'branching' ? { primaryAxes: 7, secondaryForks: 14, terminalTwigs: 28 } : form === 'table' ? { overlappingPlates: 5, thinMarginM: [.020, .028] } : { curvedRibs: 11, unequalCrossVeins: 40 },
     unitEnvelope: 'one attached root; y 0..1; radial XZ <= 0.5', role: 'representative-colony-display-not-biomass' };
   return geometry;
 }

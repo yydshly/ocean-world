@@ -1,0 +1,101 @@
+{
+  "package": "integrated-shallow-observation-v4",
+  "recordedAtUtc": "2026-10-06T12:15:00.497392+00:00",
+  "recordedAtLocal": "2026-10-06 15:15:00 Africa/Nairobi",
+  "scope": "procedural display asset replacement and actual-source local observation; CPU/Three/persistence evidence, no current browser visual acceptance",
+  "sourceCommit": null,
+  "publication": {
+    "state": "pending"
+  },
+  "localValidation": {
+    "tests": 371,
+    "passed": 371,
+    "failed": 0,
+    "testFiles": 51,
+    "sameCiFileSet": true,
+    "checksLog": "living-visual-checks.log",
+    "builds": 2,
+    "buildPassed": true,
+    "buildLog": "living-visual-build.log",
+    "buildReason": "initial integrated package, then actual camera FOV/aspect wiring; final logs record the final source",
+    "existingBundleSizeWarning": true
+  },
+  "modelReceipt": "living-visual-world-validation.json",
+  "assets": {
+    "version": 4,
+    "coralForms": [
+      "spreading branching",
+      "thin irregular layered table",
+      "curved open branched fan"
+    ],
+    "trianglesBefore": [
+      2165,
+      1817,
+      1813
+    ],
+    "trianglesAfter": [
+      2004,
+      2056,
+      1579
+    ],
+    "totalTrianglesBefore": 5795,
+    "totalTrianglesAfter": 5639,
+    "geometries": 10,
+    "materials": 7,
+    "coralPrototypes": 3,
+    "extraTextures": 0,
+    "meadowFeedingRubbleAndPropTypedBuffersUnchanged": true,
+    "physicalRockTrianglesUnchanged": true,
+    "photogrammetry": false
+  },
+  "sample": {
+    "coreDiameterM": 28,
+    "continuousPathLengthM": 12,
+    "stops": 3,
+    "actualSourceOwner": "73,1",
+    "sourceElementCount": 14,
+    "liveFishCount": 4,
+    "species": [
+      "green-chromis",
+      "honeycomb-grouper"
+    ],
+    "maximumSourceOwnerReads": 9,
+    "ordinaryEntry": "礁缘整景",
+    "existingNativeEntryStopId": "habitat-belt-reef",
+    "actualCameraFovAndAspectUsed": true,
+    "newEcologicalPlan": false,
+    "artificialAnimalScaling": false,
+    "wholeSavedRecordsPreserved": true,
+    "emptyCompositionDoesNotCreateAnimals": true,
+    "previous40To60mReviewRouteComplete": false
+  },
+  "director": {
+    "chapters": 40,
+    "distinctActions": 34,
+    "observationDurationAt1xSec": 474,
+    "loadingAdditional": true,
+    "modifiedExistingChapter": "shallows-opening",
+    "newChapters": 0,
+    "newActions": 0
+  },
+  "sourceHashes": {
+    "src/livingVisualRoute.js": "a9305ea4cb143ec859ae9d088011b18ede41bb1ef7d382a9592e786e2906af12",
+    "src/livingShallowsPresentation.js": "6790921e802b187a04955f0129f87b0596d7ede1bf40f13537ff83b20bcbb102",
+    "src/world/livingShallowsAssets.js": "1a7867e540bb74157c549a0b6004546e0cc4151af6748804334fd90703f31019",
+    "src/world/livingShallowsCoralMaterial.js": "99b6757abd2a19c16710753195ba2a9d7f4335fab407463c9365ed2ff0a761bb",
+    "src/world/OceanChunks.js": "325912b6ed48e0ffdc31a11ccbad00b96336a7757cb02b6303621c33eff56944",
+    "src/world/ReefWorld.js": "bc0142f5586ef39f9ffe080bd5dbabdd73153473ff046a955c22886356563f19",
+    "src/directorTour.js": "dfa2ab6123b2d95ae2ba52cded5db23d2b17886236efcbc00f9e0f2e5a8469cd",
+    "src/demoNavigation.js": "f553e1abc36ab3d1cbd6b8885696d13cbf1d9e6acbf00d32223ed735659fce34",
+    "src/OceanApp.jsx": "cb907d26f341d8794f169d7baf17db62de5c2101cd6520dee3e567a0240ccbc8"
+  },
+  "limits": {
+    "browserVisualAcceptance": false,
+    "gpuShaderCompilationVerified": false,
+    "currentRenderedOcclusionVerified": false,
+    "movingAnimalsGuaranteedInFrame": false,
+    "actualMobileRenderingVerified": false,
+    "fullDirectorPlaybackVerified": false,
+    "fullOceanGoalComplete": false
+  }
+}

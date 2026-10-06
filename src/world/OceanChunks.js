@@ -7,6 +7,7 @@ import { enableStaticRayQueries } from './reefSpatialQueries.js';
 import { oceanRockFootingMesh } from './oceanRockFooting.js';
 import { createOceanMacroSurfaceMaterial, macroSurfaceCoordinates, macroSurfaceOwnerPhase } from './oceanMacroSurfaceMaterial.js';
 import { createOceanEnvironment } from '../oceanEnvironment.js';
+import { createLivingShallowsCoralMaterial } from './livingShallowsCoralMaterial.js';
 import { createMeadowInstanceGeometry, disposeMeadowInstanceGeometry,
   MEADOW_SHADER_DECLARATIONS, MEADOW_SHADER_TRANSFORM } from './livingMeadowEnvironment.js';
 import { LIVING_REEF_SUBSTRATE_VERSION, createLivingReefSubstrateIndex,
@@ -232,7 +233,8 @@ export class OceanChunks {
     for (const profile of this._rockProfiles) this._geometries[`rock-${profile}`] = rockGeometry(profile);
     this._materials = {
       rock: createOceanMacroSurfaceMaterial({ map: this._textures.stone }),
-      coral: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .94, vertexColors: this._livingShallows }),
+      coral: this._livingShallows ? createLivingShallowsCoralMaterial()
+        : new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .94, vertexColors: false }),
       seagrass: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .92, vertexColors: true, side: THREE.DoubleSide }),
       rubble: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .99, map: this._textures.stone }),
       algae: new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .99, vertexColors: true, side: THREE.DoubleSide, map: this._textures.stone }),

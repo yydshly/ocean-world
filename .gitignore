@@ -91,3 +91,7 @@ output/validation/screenshots/*
 !output/validation/deep-seascape-checks.log
 !output/validation/deep-seascape-model.json
 !output/validation/deep-seascape-delivery.json
+!output/validation/living-visual-checks.log
+!output/validation/living-visual-build.log
+!output/validation/living-visual-world-validation.json
+!output/validation/living-visual-delivery.json

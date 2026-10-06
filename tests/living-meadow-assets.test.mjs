@@ -19,7 +19,7 @@ function hash(geometry) {
 
 test('the single meadow prototype has complete finite positions, normals, colours, UVs and indices in its unit height', t => {
   const grass = kitFor(t).seagrass, positions = grass.attributes.position;
-  assert.equal(LIVING_SHALLOWS_ASSET_VERSION, 3); assert.equal(grass.userData.assetVersion, LIVING_SHALLOWS_ASSET_VERSION);
+  assert.equal(LIVING_SHALLOWS_ASSET_VERSION, 4); assert.equal(grass.userData.assetVersion, LIVING_SHALLOWS_ASSET_VERSION);
   assert.equal(grass.boundingBox.min.y, 0); assert.equal(grass.boundingBox.max.y, 1);
   assert.ok(Number.isFinite(grass.boundingSphere.radius));
   for (const [name, attribute] of Object.entries(grass.attributes)) {

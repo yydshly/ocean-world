@@ -20,10 +20,10 @@ function hash(geometry) {
 }
 
 test('the complete outer-reef kit has finite triangles, normals and bounded attached metre envelopes', t => {
-  const kit = kitFor(t); assert.equal(LIVING_SHALLOWS_ASSET_VERSION, 3);
+  const kit = kitFor(t); assert.equal(LIVING_SHALLOWS_ASSET_VERSION, 4);
   for (const name of names) {
     const shape = kit[name], positions = shape.attributes.position;
-    assert.equal(shape.userData.assetVersion, 3); assert.ok(shape.userData.assetShape);
+    assert.equal(shape.userData.assetVersion, LIVING_SHALLOWS_ASSET_VERSION); assert.ok(shape.userData.assetShape);
     assert.equal(shape.boundingBox.min.y, 0); assert.equal(shape.boundingBox.max.y, 1);
     assert.ok(Number.isFinite(shape.boundingSphere.radius));
     for (const attribute of Object.values(shape.attributes)) {
@@ -51,7 +51,7 @@ test('the branching crown has a broad low connected foundation and distributed e
   assert.match(branching.userData.assetShape, /multiroot/);
 });
 
-test('table and fan remain distinct whole forms: layered thick horizontal crowns and a thin connected web with genuine holes', t => {
+test('table and fan remain distinct whole forms: thin overlapping horizontal crowns and a branching web with genuine holes', t => {
   const kit = kitFor(t), table = kit['coral-table'], fan = kit['coral-fan'];
   assert.notEqual(hash(table), hash(fan)); assert.notEqual(hash(table), hash(kit['coral-branching']));
   const tableSize = table.boundingBox.getSize(new THREE.Vector3()), fanSize = fan.boundingBox.getSize(new THREE.Vector3());

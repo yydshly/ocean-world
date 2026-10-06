@@ -4,9 +4,9 @@ import { isDirectorPlaybackRate } from './directorCameraMotion.js';
 export { DIRECTOR_PLAYBACK_RATES } from './directorCameraMotion.js';
 
 const actions = new Map(DEMO_ACTIONS.map(action => [action.id, action]));
-const step = (id, title, caption, actionId, durationMs, motionKind = 'walk') => Object.freeze({
+const step = (id, title, caption, actionId, durationMs, motionKind = 'walk', routeId = null) => Object.freeze({
   id, title, caption, action: actions.get(actionId), durationMs,
-  motion: Object.freeze({ kind: motionKind, durationSec: durationMs / 1000 }),
+  motion: Object.freeze({ kind: motionKind, durationSec: durationMs / 1000, ...(routeId?{routeId}:{}) }),
 });
 const layers = (biome, labels) => [
   step(`${biome}-bed`, labels[0], '镜头缓慢下降，靠近海床观察起伏与近底生活空间。', 'layer-bed', 12000),
@@ -33,7 +33,8 @@ function withStepContexts(steps) {
 // the step; the dispatcher receives this explicit contextual copy instead.
 export function directorStepAction(item) {
   if (!item?.action || !item?.context) throw new TypeError('A director action requires its chapter context.');
-  return Object.freeze({ ...item.action, ...item.context });
+  return Object.freeze({ ...item.action, ...item.context,
+    ...(item.motion?.routeId==='living-visual'?{entryStopId:'habitat-belt-reef'}:{}) });
 }
 
 // Every action goes through the same native entry dispatcher as the capability
@@ -42,7 +43,7 @@ export function directorStepAction(item) {
 // Independent worlds and distant stop jumps are not one geographic journey.
 // Time below is moving observation time; asynchronous loading does not consume it.
 export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
-  step('shallows-opening', '新浅海：先看整体', '先看礁群、草床与沙道。依次巡游各观察点，跨海域时切换场景。', 'world-living-shallows', 14000),
+  step('shallows-opening', '新浅海：先看整体', '先看礁群、草床与沙道。依次巡游各观察点，跨海域时切换场景。', 'world-living-shallows', 14000, 'walk', 'living-visual'),
   ...DEMO_LIVING_STOPS.map(stop => step(`shallows-${stop.id}`, stop.title,
     `${stop.description}。镜头沿海床缓慢前进，转向观察周围生境。`, stop.action.id, 12000)),
   step('shallows-life', '浅海：附近的真实生物', '在群落周围巡游，观察生物的运动与生活空间。', 'current-local-life', 14000, 'follow'),
