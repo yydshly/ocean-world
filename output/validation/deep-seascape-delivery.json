@@ -2,9 +2,27 @@
   "package": "deep-seascape-v1",
   "recordedAtUtc": "2026-10-06T11:25:44.299972+00:00",
   "scope": "finite macro content, CPU/Three geometry and persistence integration; no actual browser or WebGL viewing acceptance",
-  "sourceCommit": null,
+  "sourceCommit": "c420e5530e54f75e2f66c8d6d22025ca0d2da943",
   "publication": {
-    "state": "pending"
+    "state": "success",
+    "workflowRunId": 37456384772,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37456384772",
+    "buildJobId": 112244915928,
+    "deployJobId": 112245484834,
+    "deploymentId": 6882703873,
+    "deploymentStatusId": 19338230693,
+    "deploymentState": "success",
+    "completedAtUtc": "2026-10-06T11:28:46Z",
+    "completedAtLocal": "2026-10-06 19:28:46 Asia/Shanghai",
+    "site": "https://yydshly.github.io/ocean-world/",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "cloudChecks": {
+      "tests": 332,
+      "passed": 332,
+      "failed": 0,
+      "sameLocalSet": true
+    },
+    "verification": "GitHub workflow job logs and deployment status API for the exact source SHA; no frontend browser inspection"
   },
   "localValidation": {
     "tests": 332,
