@@ -14,5 +14,5 @@
     "browserPlayback": "not performed; earlier URL-policy refusal not bypassed",
     "limits": "CPU checks are not React mounting, native browser default activation, screenshots, saved-world WebGL tours or visual acceptance"
   },
-  "release": "pending commit/publication; follow docs/DEPLOYMENT.md"
+  "release": {"source": "fbde7089123148ad93e88145d254833180ece1f1", "run": 37415436017, "build": "success", "workflowTests": {"passed": 89, "failed": 0, "includesLocal70": true}, "deploymentId": 6875952422, "deploymentStatus": "success", "url": "https://yydshly.github.io/ocean-world/?demo=director"}
 }
