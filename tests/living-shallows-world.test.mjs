@@ -9,6 +9,8 @@ import { sceneCatalogs, sceneDefinitions, livingShallowsSpeciesCatalog } from '.
 import { REEF_ROCKS } from '../src/habitat.js';
 import { KELP_ROCKS } from '../src/kelpHabitat.js';
 import { createOceanGenerator } from '../src/oceanGeneration.js';
+import { createLivingRidgeGenerator } from '../src/livingRidgeGeology.js';
+import { createLivingHabitatBeltPlans } from '../src/livingHabitatBelt.js';
 import { oceanLayerHeight } from '../src/oceanLayerNavigation.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../src/livingShallows.js';
 import { createLivingWorldState } from '../src/livingWorldState.js';
@@ -116,7 +118,7 @@ test('new scene hides authored terrain and disables all three old additive scene
   const allocations = initializeScene(world);
   assert.equal(world.reefRoot.visible, false); assert.equal(world.floorMesh.visible, false); assert.equal(world.floorContinuation.visible, false);
   assert.deepEqual(world.cameraRocks, [], 'hidden original rocks must not remain as invisible camera collisions');
-  assert.deepEqual(world.oceanEcology.options, { turtles: true, sceneElements: false, habitatScenes: false, macroLandscape: false, livingGeology: true, habitatMosaic: true, seabedRelief: true, seascape: true });
+  assert.deepEqual(world.oceanEcology.options, { turtles: true, sceneElements: false, habitatScenes: false, macroLandscape: false, livingGeology: true, habitatMosaic: true, seabedRelief: true, seascape: true, livingBelt: true });
   assert.deepEqual(allocations, ['StubRenderer']);
   for (const key of ['oceanSceneElements', 'oceanHabitatScenes', 'oceanMacroLandscape']) assert.equal(world[key], undefined);
   const old = worldFixture({ profile: null }).world;
@@ -124,7 +126,7 @@ test('new scene hides authored terrain and disables all three old additive scene
   const oldAllocations = initializeScene(old);
   assert.equal(old.reefRoot.visible, true); assert.equal(old.floorMesh.visible, true);
   assert.strictEqual(old.cameraRocks, originalGuards);
-  assert.deepEqual(old.oceanEcology.options, { turtles: true, sceneElements: true, habitatScenes: true, macroLandscape: true, livingGeology: false, habitatMosaic: false, seabedRelief: false, seascape: false });
+  assert.deepEqual(old.oceanEcology.options, { turtles: true, sceneElements: true, habitatScenes: true, macroLandscape: true, livingGeology: false, habitatMosaic: false, seabedRelief: false, seascape: false, livingBelt: false });
   assert.deepEqual(oldAllocations, ['StubRenderer', 'SceneElements', 'HabitatScenes', 'MacroLandscape']);
 });
 
@@ -171,6 +173,24 @@ test('route controls use finite ordinary travel without teleport or ecology repl
   assert.equal(world.sim.seed, seed); assert.equal(world.oceanEcology, originalEcology);
   assert.equal(calls.some(call => call[0].includes('reset')), false);
   assert.equal(world.travelLivingShallows(-1), false); assert.equal(world.travelLivingShallows(.5), false);
+});
+
+test('the two living-belt entries face their planned local spaces and keep original ecological controls', () => {
+  const { world, calls } = worldFixture();
+  const generator = createLivingRidgeGenerator(world.oceanChunks.generator);
+  generator.registerRidgePlans(createLivingHabitatBeltPlans(generator, 74, 2));
+  world.oceanChunks.generator = generator;
+  const before = { paused: world.paused, time: world.sim.timeSec, environment: { ...world.sim.environment } };
+  for (const id of ['habitat-belt-reef', 'habitat-belt-meadow']) {
+    const index = generator.routeStops.findIndex(stop => stop.id === id), stop = generator.routeStops[index];
+    assert.ok(index >= 0); assert.equal(world.enterLivingShallows(index), true);
+    const delta = world.controls.target.clone().sub(world.camera.position);
+    assert.ok(delta.x * Math.cos(stop.heading) - delta.z * Math.sin(stop.heading) > 13);
+    assert.ok(world.camera.position.y < world.surfaceY);
+    assert.ok(world.camera.position.y >= generator.floorSurface(world.camera.position.x, world.camera.position.z).height + .8);
+  }
+  assert.deepEqual({ paused: world.paused, time: world.sim.timeSec, environment: { ...world.sim.environment } }, before);
+  assert.equal(calls.some(call => call[0].includes('reset') || call[0] === 'ecology-step'), false);
 });
 
 test('environment updates and pause save the actual global forcing and latest time', async () => {

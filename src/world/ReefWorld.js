@@ -180,7 +180,7 @@ export class ReefWorld {
         }
         if(this.isKelp||this.isDeep){this.floorMesh.visible=false;this.floorContinuation.visible=false;}
         this.scene.add(this.oceanChunks.root);this.oceanChunks.update(this.camera.position);
-        this.oceanEcology=this.isDeep?new DeepOceanEcology(seed,this.oceanChunks.generator):this.isKelp?new KelpOceanEcology(seed,this.oceanChunks.generator,{visitors:true,understory:true}):new OceanEcology(seed,this.oceanChunks.generator,{turtles:true,sceneElements:!this.isLivingShallows,habitatScenes:!this.isLivingShallows,macroLandscape:!this.isLivingShallows,livingGeology:this.isLivingShallows,habitatMosaic:this.isLivingShallows,seabedRelief:this.isLivingShallows,seascape:this.isLivingShallows});
+        this.oceanEcology=this.isDeep?new DeepOceanEcology(seed,this.oceanChunks.generator):this.isKelp?new KelpOceanEcology(seed,this.oceanChunks.generator,{visitors:true,understory:true}):new OceanEcology(seed,this.oceanChunks.generator,{turtles:true,sceneElements:!this.isLivingShallows,habitatScenes:!this.isLivingShallows,macroLandscape:!this.isLivingShallows,livingGeology:this.isLivingShallows,habitatMosaic:this.isLivingShallows,seabedRelief:this.isLivingShallows,seascape:this.isLivingShallows,livingBelt:this.isLivingShallows});
         if(this.isLivingShallows)this.oceanEcology.setEnvironment(this.sim.environment);
         this.oceanAnimals=this.isDeep?new DeepOceanAnimals([...this.catalog.values()]):this.isKelp?new KelpOceanAnimals([...this.catalog.values()]):new OceanAnimals([...this.catalog.values()]);this.scene.add(this.oceanAnimals.root);
         if(!this.isKelp&&!this.isDeep&&!this.isLivingShallows){this.oceanSceneElements=new OceanSceneElements();this.scene.add(this.oceanSceneElements.root);}
@@ -1004,10 +1004,14 @@ export class ReefWorld {
     const stops=this.oceanChunks.generator.routeStops;
     const stop=stops?.[index]||stops?.[0];
     if(!stop)return false;
-    const x=stop.x-7,z=stop.z+8;
+    const heading=Number.isFinite(stop.heading)?stop.heading:0;
+    const across=Number.isFinite(stop.entryAcrossM)?stop.entryAcrossM:8;
+    const c=Math.cos(heading),s=Math.sin(heading);
+    const x=stop.x-7*c+across*s,z=stop.z+7*s+across*c;
     const y=Math.min(this.surfaceY-.6,this.habitatY(x,z)+2.8);
-    return this.restoreOceanObservation({position:{x,y,z},target:{x:stop.x+7,
-      y:Math.min(y-.8,this.habitatY(stop.x+7,stop.z)+1.2),z:stop.z},
+    const targetX=stop.x+7*c,targetZ=stop.z-7*s;
+    return this.restoreOceanObservation({position:{x,y,z},target:{x:targetX,
+      y:Math.min(y-.8,this.habitatY(targetX,targetZ)+1.2),z:targetZ},
       layer:'bed',freeDepthM:this.surfaceY-y,habitat:this.oceanChunks.generator.sample(x,z).habitat});
   }
   travelLivingShallows(index){

@@ -29,9 +29,12 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-      - name: Check current seascape and hosting integration
+      - name: Check habitat belt, seascape and hosting integration
         run: >-
           node --test
+          tests/living-habitat-belt.test.mjs
+          tests/living-habitat-belt-render.test.mjs
+          tests/living-habitat-belt-ecology.test.mjs
           tests/living-seascape.test.mjs
           tests/living-seascape-render.test.mjs
           tests/living-seascape-ecology.test.mjs

@@ -2,6 +2,7 @@ import { oceanRockHeight, oceanRockSurface } from './oceanRockShape.js';
 import { sceneElementHeight } from './oceanSceneElements.js';
 import { validateLivingHabitatMosaic } from './livingHabitatMosaic.js';
 import { validateLivingSeascapePlan } from './livingSeascape.js';
+import { validateLivingHabitatBeltPlan, sampleLivingHabitatBelt } from './livingHabitatBelt.js';
 import { validateLivingSeabedRelief, sampleLivingSeabedRelief,
   livingSeabedFloorVertex, livingSeabedFloorSurface } from './livingSeabedRelief.js';
 
@@ -152,6 +153,7 @@ export function createLivingRidgePlan(baseGenerator, cx, cz) {
 
 export function validateLivingRidgePlan(plan, baseGenerator) {
   try {
+    if (plan?.version === 5) return validateLivingHabitatBeltPlan(plan, baseGenerator);
     if (plan?.version === 4) return validateLivingSeascapePlan(plan, baseGenerator);
     if (plan?.version === 3) return validateLivingSeabedRelief(plan, baseGenerator);
     if (plan?.version === 2) return validateLivingHabitatMosaic(plan, baseGenerator);
@@ -239,7 +241,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
       if (!validateLivingRidgePlan(plan, base)) throw new TypeError('Invalid ridge plan in batch.');
       if (ids.has(plan.id)) throw new TypeError('Ridge plan batch contains duplicate owners.');
       ids.add(plan.id);
-      if (plan.version === 4) {
+      if (plan.version === 4 || plan.version === 5) {
         const group = plan.group, key = `${group.cx},${group.cz}`, entry = groups.get(key);
         if (entry && stamp(entry.group) !== stamp(group)) throw new TypeError('Ridge batch has inconsistent seascape group metadata.');
         if (!entry) groups.set(key, { group, ids: new Set([plan.id]) }); else entry.ids.add(plan.id);
@@ -260,8 +262,12 @@ export function createLivingRidgeGenerator(baseGenerator) {
       Object.freeze({ id: 'shelf-rise', label: '海床缓坡', x: 2272, z: 480 }),
       Object.freeze({ id: 'sand-basin', label: '宽缓砂盆', x: 1760, z: 608 }),
       Object.freeze({ id: 'connected-seascape', label: '连续海床', x: 3502.5, z: 544 }),
-      Object.freeze({ id: 'seascape-transition', label: '相邻生境', x: 3502.5, z: 608 })]),
+      Object.freeze({ id: 'seascape-transition', label: '相邻生境', x: 3502.5, z: 608 }),
+      Object.freeze({ id: 'habitat-belt-reef', label: '生活带：礁群沙道', x: 4758, z: 150, heading: Math.PI / 2, entryAcrossM: 2 }),
+      Object.freeze({ id: 'habitat-belt-meadow', label: '生活带：草床水层', x: 4832, z: 224, heading: Math.atan2(.51, .86), entryAcrossM: 2 })]),
     sample(x, z) {
+      const belt = plans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+      if (belt?.version === 5) return sampleLivingHabitatBelt(base, belt, x, z);
       const plan = floorPlanAt(x, z);
       return plan ? sampleLivingSeabedRelief(base, plan, x, z) : base.sample(x, z);
     },
@@ -274,6 +280,8 @@ export function createLivingRidgeGenerator(baseGenerator) {
       return plan ? livingSeabedFloorSurface(base, plan, x, z) : base.floorSurface(x, z);
     },
     coverAt(x, z, environment) {
+      const belt = plans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+      if (belt?.version === 5) return base.coverAt(x, z, sampleLivingHabitatBelt(base, belt, x, z));
       const plan = floorPlanAt(x, z);
       return plan ? base.coverAt(x, z, sampleLivingSeabedRelief(base, plan, x, z)) : base.coverAt(x, z, environment);
     },
@@ -296,7 +304,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
         for (const e of plan.elements) { counts[e.kind]++; if (e.kind === 'rock') landform[e.profile]++; }
         chunks.set(id, Object.freeze({ ...original, elements: plan.elements, counts: Object.freeze(counts),
           landform: Object.freeze(landform), ridgePlan: plan, ridgeGeologyVersion: plan.version,
-          ...(plan.version === 3 || plan.version === 4 ? { habitatComposition: plan.habitatComposition } : {}) }));
+          ...(plan.version === 3 || plan.version === 4 || plan.version === 5 ? { habitatComposition: plan.habitatComposition } : {}) }));
       }
       return chunks.get(id);
     },

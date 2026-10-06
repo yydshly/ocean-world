@@ -62,11 +62,11 @@ test('the finite tour covers every existing entry without invented or destructiv
     assert.ok(!['reset', 'environment', 'record', 'download'].includes(step.action.kind));
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
-  assert.ok(duration >= 360000 && duration <= 420000, 'local moving observation stays approximately six to seven minutes');
+  assert.ok(duration >= 360000 && duration <= 450000, 'local moving observation stays approximately six to seven and a half minutes');
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 34);
+  assert.equal(DIRECTOR_STEPS.length, 36);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));

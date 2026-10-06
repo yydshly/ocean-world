@@ -30,6 +30,7 @@ import { createLivingRidgePlan, validateLivingRidgePlan } from './livingRidgeGeo
 import { createLivingHabitatMosaic, selectLivingHabitatMosaicTheme } from './livingHabitatMosaic.js';
 import { createLivingSeabedRelief, selectLivingSeabedReliefTheme } from './livingSeabedRelief.js';
 import { createLivingSeascapePlans } from './livingSeascape.js';
+import { createLivingHabitatBeltPlans } from './livingHabitatBelt.js';
 
 const speciesById = { ...reefSpeciesById, ...oceanSlopeSpeciesById, ...oceanPelagicSpeciesById, ...oceanMantaSpeciesById, ...reefGuildSpeciesById, ...openWaterSpeciesById };
 
@@ -83,7 +84,7 @@ export function oceanSupportHeight(generator, x, z, { avoidCoral = false, includ
  * food pools are relative indices, not measured biomass. Unloaded regions
  * freeze, and changed state is restored from IndexedDB when they return. */
 export class OceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false } = {}) {
     this.seed = seed;
     this.generator = generator;
     this.livingNetworkEnabled = generator.profile === LIVING_NETWORK_PROFILE;
@@ -95,6 +96,8 @@ export class OceanEcology {
     this.habitatMosaicEnabled = habitatMosaic === true;
     this.seabedReliefEnabled = seabedRelief === true;
     this.seascapeEnabled = seascape === true;
+    this._livingBeltRequested = livingBelt === true;
+    this.livingBeltEnabled = this._livingBeltRequested && this.livingGeologyEnabled;
     this.turtlesEnabled = turtles === true;
     this.sceneElementsEnabled = sceneElements === true;
     this.habitatScenesEnabled = habitatScenes === true;
@@ -1218,7 +1221,7 @@ export class OceanEcology {
           turtleSupplemented, sceneSupplemented, habitatSupplemented, macroSupplemented,
           networkInitialized, guildInitialized, openWaterInitialized };
       };
-      if (this.livingGeologyEnabled && this.seascapeEnabled &&
+      if (this.livingGeologyEnabled && (this.seascapeEnabled || this.livingBeltEnabled) &&
           typeof this.generator.withRidgePlans === 'function' && typeof this.generator.registerRidgePlans === 'function') {
         const groups = new Map();
         for (const coordinates of desired.values()) {
@@ -1233,12 +1236,20 @@ export class OceanEcology {
           // the existing per-owner path, with no historical floor upgrade.
           if (!ownerIds.every(id => prefetched.has(id) && prefetched.get(id) === null)) continue;
           let plans;
-          try { plans = createLivingSeascapePlans(this.generator.baseGenerator, gx, gz); }
-          catch (error) { if (error instanceof RangeError) continue; throw error; }
+          if (this.livingBeltEnabled) {
+            try { plans = createLivingHabitatBeltPlans(this.generator.baseGenerator, gx, gz); }
+            catch (error) { if (!(error instanceof RangeError)) throw error; }
+          }
+          if (!plans && this.seascapeEnabled) {
+            try { plans = createLivingSeascapePlans(this.generator.baseGenerator, gx, gz); }
+            catch (error) { if (!(error instanceof RangeError)) throw error; }
+          }
+          if (!plans) continue;
+          const planVersion = plans[0]?.version;
           if (!Array.isArray(plans) || plans.length !== 4 || new Set(plans.map(plan => plan.id)).size !== 4 ||
-              plans.some(plan => plan.version !== 4 || plan.group?.cx !== gx || plan.group?.cz !== gz || !ownerIds.includes(plan.id) ||
+              ![4, 5].includes(planVersion) || plans.some(plan => plan.version !== planVersion || plan.group?.cx !== gx || plan.group?.cz !== gz || !ownerIds.includes(plan.id) ||
                 !Array.isArray(plan.group.ownerIds) || plan.group.ownerIds.length !== 4 || ownerIds.some(id => !plan.group.ownerIds.includes(id))))
-            throw new TypeError('Invalid fresh seascape group.');
+            throw new TypeError('Invalid fresh living habitat group.');
           let births;
           this._supportCells.clear();
           try {
@@ -1857,6 +1868,7 @@ export class OceanEcology {
     this.livingNetworkEnabled = generator.profile === LIVING_NETWORK_PROFILE;
     this.livingGeologyEnabled = this._livingGeologyRequested && this.livingNetworkEnabled &&
       typeof generator.withRidgePlan === 'function' && typeof this.store.saveMany === 'function';
+    this.livingBeltEnabled = this._livingBeltRequested && this.livingGeologyEnabled;
     if (this.livingGeologyEnabled) generator.retainRidgeOwners([]);
     this.environmentField = createOceanEnvironment(seed, generator);
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10;

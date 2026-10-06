@@ -606,6 +606,8 @@ export class OceanChunks {
         seabedReliefScope: 'committed floor grids; compatible boundary supports; shared terrain and ecological queries',
         connectedSeascapeOwners: activePlanVersions[4] ?? 0,
         connectedSeascapeScope: '128m four-owner committed beds; shared interior seams; original outer supports; same real ecological births',
+        habitatBeltOwners: activePlanVersions[5] ?? 0,
+        habitatBeltScope: 'four atomically born owners; reef, sediment passage and meadow share scene descriptors with real ecology; unchanged bed',
         ridgeReadyOwners: ridge.size, ridgeReadyOwnerIds: Object.freeze([...ridge.ridgeReadyOwnerIds]),
         ridgePlanOwners: ridgePlanIds.length, ridgePlanOwnerIds: Object.freeze([...ridgePlanIds]),
         ridgeRenderedOwners: this._chunks.size, ridgeRenderedOwnerIds: Object.freeze([...this._chunks.keys()]),

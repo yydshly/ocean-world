@@ -76,3 +76,6 @@ output/validation/screenshots/*
 !output/validation/director-progress-build.log
 !output/validation/director-progress-checks.log
 !output/validation/director-progress-review.json
+!output/validation/living-belt-build.log
+!output/validation/living-belt-checks.log
+!output/validation/living-belt-delivery.json

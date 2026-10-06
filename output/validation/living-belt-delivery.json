@@ -1,0 +1,366 @@
+{
+  "scope": "CPU production configuration; actual persisted ecology and Three geometry tests; no fresh browser visual acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "group": {
+    "cx": 74,
+    "cz": 2,
+    "owners": [
+      "74,2",
+      "75,2",
+      "74,3",
+      "75,3"
+    ]
+  },
+  "initial": {
+    "activeOwners": 9,
+    "registryOwners": 14,
+    "windowRecords": 147,
+    "windowAlive": 147,
+    "beltRecords": 66,
+    "ownerCounts": {
+      "74,2": 20,
+      "75,2": 19,
+      "74,3": 17,
+      "75,3": 10
+    },
+    "bySpecies": {
+      "black-cucumber": 8,
+      "blue-starfish": 3,
+      "cleaner-shrimp": 4,
+      "cleaner-wrasse": 4,
+      "day-octopus": 2,
+      "giant-clam": 4,
+      "green-chromis": 12,
+      "honeycomb-grouper": 2,
+      "lined-tang": 4,
+      "reef-squid": 2,
+      "spotted-jelly": 3,
+      "spotted-reef-crab": 2,
+      "top-shell": 1,
+      "tube-sponge": 2,
+      "yellowtail-fusilier": 13
+    },
+    "externalOrganicInputUnits": 0.128
+  },
+  "scene": {
+    "id": "living-habitat-belt:74,2",
+    "cx": 74,
+    "cz": 2,
+    "ownerIds": [
+      "74,2",
+      "75,2",
+      "74,3",
+      "75,3"
+    ],
+    "widthM": 128,
+    "reefOwnerId": "74,2",
+    "meadowOwnerId": "75,3",
+    "corridorOwnerId": "75,2",
+    "waterOwnerId": "74,3",
+    "floorUnchanged": true,
+    "boundaryGuardM": 6,
+    "corridor": {
+      "ownerId": "75,2",
+      "center": {
+        "x": 4832,
+        "z": 142
+      },
+      "heading": 0,
+      "lengthM": 28,
+      "openingM": 4,
+      "bodyRadiusM": 0.6,
+      "spacingM": 2,
+      "clearSamples": 45,
+      "samples": [
+        {
+          "x": 4818,
+          "z": 140,
+          "y": -6.850645065307617
+        },
+        {
+          "x": 4818,
+          "z": 142,
+          "y": -6.827001571655273
+        },
+        {
+          "x": 4818,
+          "z": 144,
+          "y": -6.802326202392578
+        },
+        {
+          "x": 4820,
+          "z": 140,
+          "y": -6.854956150054932
+        },
+        {
+          "x": 4820,
+          "z": 142,
+          "y": -6.830299377441406
+        },
+        {
+          "x": 4820,
+          "z": 144,
+          "y": -6.80449914932251
+        },
+        {
+          "x": 4822,
+          "z": 140,
+          "y": -6.856555938720703
+        },
+        {
+          "x": 4822,
+          "z": 142,
+          "y": -6.830964088439941
+        },
+        {
+          "x": 4822,
+          "z": 144,
+          "y": -6.804136753082275
+        },
+        {
+          "x": 4824,
+          "z": 140,
+          "y": -6.854353904724121
+        },
+        {
+          "x": 4824,
+          "z": 142,
+          "y": -6.827949523925781
+        },
+        {
+          "x": 4824,
+          "z": 144,
+          "y": -6.800239562988281
+        },
+        {
+          "x": 4826,
+          "z": 140,
+          "y": -6.84726619720459
+        },
+        {
+          "x": 4826,
+          "z": 142,
+          "y": -6.820215225219727
+        },
+        {
+          "x": 4826,
+          "z": 144,
+          "y": -6.79181432723999
+        },
+        {
+          "x": 4828,
+          "z": 140,
+          "y": -6.834563255310059
+        },
+        {
+          "x": 4828,
+          "z": 142,
+          "y": -6.805726051330566
+        },
+        {
+          "x": 4828,
+          "z": 144,
+          "y": -6.775489330291748
+        },
+        {
+          "x": 4830,
+          "z": 140,
+          "y": -6.816835403442383
+        },
+        {
+          "x": 4830,
+          "z": 142,
+          "y": -6.784122467041016
+        },
+        {
+          "x": 4830,
+          "z": 144,
+          "y": -6.749939441680908
+        },
+        {
+          "x": 4832,
+          "z": 140,
+          "y": -6.794581890106201
+        },
+        {
+          "x": 4832,
+          "z": 142,
+          "y": -6.756470680236816
+        },
+        {
+          "x": 4832,
+          "z": 144,
+          "y": -6.716799259185791
+        },
+        {
+          "x": 4834,
+          "z": 140,
+          "y": -6.768547534942627
+        },
+        {
+          "x": 4834,
+          "z": 142,
+          "y": -6.724077224731445
+        },
+        {
+          "x": 4834,
+          "z": 144,
+          "y": -6.677942276000977
+        },
+        {
+          "x": 4836,
+          "z": 140,
+          "y": -6.740000247955322
+        },
+        {
+          "x": 4836,
+          "z": 142,
+          "y": -6.688785076141357
+        },
+        {
+          "x": 4836,
+          "z": 144,
+          "y": -6.635798454284668
+        },
+        {
+          "x": 4838,
+          "z": 140,
+          "y": -6.710200309753418
+        },
+        {
+          "x": 4838,
+          "z": 142,
+          "y": -6.652431011199951
+        },
+        {
+          "x": 4838,
+          "z": 144,
+          "y": -6.592791557312012
+        },
+        {
+          "x": 4840,
+          "z": 140,
+          "y": -6.680400848388672
+        },
+        {
+          "x": 4840,
+          "z": 142,
+          "y": -6.616842269897461
+        },
+        {
+          "x": 4840,
+          "z": 144,
+          "y": -6.55133581161499
+        },
+        {
+          "x": 4842,
+          "z": 140,
+          "y": -6.651844501495361
+        },
+        {
+          "x": 4842,
+          "z": 142,
+          "y": -6.583837985992432
+        },
+        {
+          "x": 4842,
+          "z": 144,
+          "y": -6.513836860656738
+        },
+        {
+          "x": 4844,
+          "z": 140,
+          "y": -6.625766754150391
+        },
+        {
+          "x": 4844,
+          "z": 142,
+          "y": -6.5552263259887695
+        },
+        {
+          "x": 4844,
+          "z": 144,
+          "y": -6.482689380645752
+        },
+        {
+          "x": 4846,
+          "z": 140,
+          "y": -6.602808475494385
+        },
+        {
+          "x": 4846,
+          "z": 142,
+          "y": -6.531913757324219
+        },
+        {
+          "x": 4846,
+          "z": 144,
+          "y": -6.45906925201416
+        }
+      ],
+      "floorUnchanged": true
+    },
+    "reefRockCount": 8,
+    "newReefRockCount": 4,
+    "reefCoralCount": 20,
+    "meadowRootCount": 210,
+    "addedMeadowRootCount": 210,
+    "route": [
+      {
+        "id": "belt-reef",
+        "label": "生活带礁群",
+        "x": 4758,
+        "z": 150
+      },
+      {
+        "id": "belt-sand",
+        "label": "生活带砂道",
+        "x": 4832,
+        "z": 142
+      },
+      {
+        "id": "belt-meadow",
+        "label": "生活带草床",
+        "x": 4832,
+        "z": 224
+      },
+      {
+        "id": "belt-water",
+        "label": "生活带水层",
+        "x": 4768,
+        "z": 224
+      }
+    ]
+  },
+  "afterTwoSimulationSeconds": {
+    "timesSec": {
+      "74,2": 2,
+      "75,2": 2,
+      "74,3": 2,
+      "75,3": 2
+    },
+    "movedActualAgents": 54,
+    "feedingEvents": 37,
+    "alive": 66,
+    "maximumAbsoluteMaterialImbalance": 2.4424906541753444e-15
+  },
+  "validation": {
+    "currentIntegrationTests": 119,
+    "passed": 119,
+    "failed": 0,
+    "productionBuild": "passed",
+    "browserVisualAcceptance": "not performed; prior browser URL policy refusal remains",
+    "evidence": [
+      "living-belt-checks.log",
+      "living-belt-build.log"
+    ]
+  },
+  "director": {
+    "chapters": 36,
+    "observationDurationSecondsAt1x": 422,
+    "addedEntryIds": [
+      "habitat-belt-reef",
+      "habitat-belt-meadow"
+    ]
+  }
+}

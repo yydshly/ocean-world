@@ -37,9 +37,11 @@ const stopHints = {
   'sand-basin': '下凹砂盆与周围海床',
   'connected-seascape': '四区共用的连续起伏',
   'seascape-transition': '相邻地貌与生境过渡',
+  'habitat-belt-reef': '完整生活带中的礁丘、珊瑚群落与开放砂道',
+  'habitat-belt-meadow': '相邻草床、软底生命与上方真实水层动物',
 };
 
-// The first four IDs come from the generator. The seven additions match the
+// The first four IDs come from the generator. The additions match the
 // public routeStops in livingRidgeGeology.js; these are observation shortcuts,
 // never a claim of ordinary travel or an assertion about saved terrain.
 const stops = [...LIVING_SHALLOWS_ROUTE,
@@ -50,6 +52,8 @@ const stops = [...LIVING_SHALLOWS_ROUTE,
   { id: 'sand-basin', label: '宽缓砂盆' },
   { id: 'connected-seascape', label: '连续海床' },
   { id: 'seascape-transition', label: '相邻生境' },
+  { id: 'habitat-belt-reef', label: '生活带：礁群沙道' },
+  { id: 'habitat-belt-meadow', label: '生活带：草床水层' },
 ];
 
 export const DEMO_LIVING_STOPS = Object.freeze(stops.map((stop, index) => entry({

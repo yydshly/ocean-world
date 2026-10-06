@@ -65,7 +65,7 @@ test('the public observation shortcuts cover the actual living generator route o
   const generator = createLivingRidgeGenerator(createLivingShallowsGenerator(livingShallowsSeed('42')));
   const choices = DEMO_ACTIONS.filter(action => action.kind === 'living-stop');
   assert.deepEqual(choices.map(action => action.stopId), generator.routeStops.map(stop => stop.id));
-  assert.equal(choices.length, 11);
+  assert.equal(choices.length, 13);
   assert.equal(new Set(choices.map(action => action.stopId)).size, choices.length);
   assert.equal(new Set(DEMO_ACTIONS.map(action => action.id)).size, DEMO_ACTIONS.length);
   for (const choice of choices) {
