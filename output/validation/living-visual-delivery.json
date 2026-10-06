@@ -3,9 +3,27 @@
   "recordedAtUtc": "2026-10-06T12:15:00.497392+00:00",
   "recordedAtLocal": "2026-10-06 15:15:00 Africa/Nairobi",
   "scope": "procedural display asset replacement and actual-source local observation; CPU/Three/persistence evidence, no current browser visual acceptance",
-  "sourceCommit": null,
+  "sourceCommit": "da1bb181ffe888f1051e1f6c8e371cdebd7ad0d1",
   "publication": {
-    "state": "pending"
+    "state": "success",
+    "workflowRunId": 37461953766,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37461953766",
+    "buildJobId": 112263451520,
+    "deployJobId": 112264675172,
+    "deploymentId": 6883697134,
+    "deploymentStatusId": 19340516942,
+    "deploymentState": "success",
+    "completedAtUtc": "2026-10-06T12:18:50Z",
+    "completedAtLocal": "2026-10-06 15:18:50 Africa/Nairobi",
+    "site": "https://yydshly.github.io/ocean-world/",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "cloudChecks": {
+      "tests": 371,
+      "passed": 371,
+      "failed": 0,
+      "sameLocalSet": true
+    },
+    "verification": "exact source SHA, GitHub workflow/job logs and deployment status API; no frontend browser inspection"
   },
   "localValidation": {
     "tests": 371,
