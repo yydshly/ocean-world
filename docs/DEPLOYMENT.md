@@ -1,3 +1,5 @@
+2026-10-06 巨藻整景源码 `a9ffe966a163a569ae7d4eee3c73b3bcdabad7fc` 已发布。[运行37496345393](https://github.com/yydshly/ocean-world/actions/runs/37496345393)的构建、同一448项检查（0失败）及Pages部署全部success，部署`6889670856`／状态`19354259162`于19:36:47（Africa/Nairobi）成功。八份构建源码的工作区与提交哈希一致；本机62文件／448项检查和一次生产构建通过，次数不与云端重复相加。384×128米首包保持原海床、252根巨藻与268岩体，追加49根实际硬底巨藻，接入141处林下植物与152条真实动物记录；普通探索“巨藻整景”和导演巨藻开场均使用实际四阶段入口，旧区域保留。记录见[本包交付](../output/validation/kelp-seascape-delivery.json)。发布不是当前浏览器整体观感或GPU性能验收。以下保留此前发布历史。
+
 # GitHub 与网页部署
 
 深海组合源码`c420e55`已发布：[运行37456384772](https://github.com/yydshly/ocean-world/actions/runs/37456384772)的构建、332项当前整合检查（0失败）及Pages部署全部success；部署`6882703873`状态success，时间2026-10-06 19:28:46（Asia/Shanghai）。本机与云端是同一332项，不相加。刷新[线上导演](https://yydshly.github.io/ocean-world/?demo=director)，选择“深海生活带：沉积平原 / 深海生活带：缓坡岩露头”查看新入口。旧访问点保留存档；发布成功不替代本轮实际浏览器画面验收。

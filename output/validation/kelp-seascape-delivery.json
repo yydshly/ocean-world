@@ -157,7 +157,15 @@
     "countsAreNotSummedAcrossRepeatedBatches": true,
     "browserVisualAcceptance": false,
     "gpuPerformanceAcceptance": false,
-    "completeTourViewed": false
+    "completeTourViewed": false,
+    "workingTreeAndCommittedSourceHashesExact": true,
+    "cloud": {
+      "tests": 448,
+      "pass": 448,
+      "fail": 0
+    },
+    "cloudBuildSuccess": true,
+    "cloudLog": "kelp-seascape-cloud-build.log"
   },
   "sourceHashes": {
     "src/kelpSeascape.js": "72440c8e5c42b2c4b6780f2d8897b737362793efbe1de4c2f97fcd151d46d880",
@@ -170,9 +178,21 @@
     ".github/workflows/pages.yml": "ce8b3a11109b200a8867775537defba725757b709262c068f395f8ee32cf0444"
   },
   "publication": {
-    "status": "awaiting-source-push-and-CI",
+    "status": "success",
     "site": "https://yydshly.github.io/ocean-world/",
-    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "sourceCommit": "a9ffe966a163a569ae7d4eee3c73b3bcdabad7fc",
+    "runId": 37496345393,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37496345393",
+    "buildJobId": 112381747629,
+    "deployJobId": 112384063698,
+    "deploymentId": 6889670856,
+    "deploymentStatusId": 19354259162,
+    "deploymentState": "success",
+    "publishedAtUtc": "2026-10-06T16:36:47Z",
+    "publishedAtLocal": "2026-10-06T19:36:47+03:00",
+    "displayTimezone": "Africa/Nairobi",
+    "sourceHashesStillExact": true
   },
   "limits": [
     "One explicit sample is not an ocean boundary; external regions continue native generation.",
