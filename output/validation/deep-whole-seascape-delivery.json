@@ -26,9 +26,10 @@
     "nativeElementsAndProtectedFootprintUnchanged": true,
     "originalOuterGuardM": 16,
     "entireOriginalPlainOwner": "133,8",
-    "bedDeltaSpanM": 1.032067060470581,
-    "maxTriangleGrade": 0.119873618,
-    "sampleIsWorldBoundary": false
+    "bedDeltaSpanM": 1.0320670381188393,
+    "maxTriangleGrade": 0.11987361822440425,
+    "sampleIsWorldBoundary": false,
+    "heightAmplitudeM": 1.0647515741916247
   },
   "actualModel": {
     "scope": "finite CPU actual-record, shared-support and persistence evidence; no browser or visual acceptance",
@@ -171,7 +172,16 @@
     "gpuPerformanceAcceptance": false,
     "completeTourViewed": false,
     "countsNotSummedAcrossRepeatedBatches": true,
-    "workingTreeBuildSourceHashesExact": true
+    "workingTreeBuildSourceHashesExact": true,
+    "workingTreeAndCommittedSourceHashesExact": true,
+    "localDurationMs": 126690.5943,
+    "cloud": {
+      "tests": 472,
+      "pass": 472,
+      "fail": 0
+    },
+    "cloudBuildSuccess": true,
+    "cloudLog": "deep-whole-seascape-cloud-build.log"
   },
   "sourceHashes": {
     "src/deepWholeSeascape.js": "deae8f6e0b71d7e718a80d788bc1b810a93ea051809c93ec022dc50855aaa2e5",
@@ -184,9 +194,21 @@
     ".github/workflows/pages.yml": "f1c52866660b6452ea5cadec13c4a252ae7b0a31435dbc9a5caec641569ddb0e"
   },
   "publication": {
-    "status": "pending",
+    "status": "success",
     "site": "https://yydshly.github.io/ocean-world/",
-    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "sourceCommit": "a29703053bdf6dd059bd4bdbb106c3b9b930831b",
+    "runId": 37570078484,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37570078484",
+    "buildJobId": 112626495989,
+    "deployJobId": 112628002112,
+    "deploymentId": 6901524693,
+    "deploymentStatusId": 19381087107,
+    "deploymentState": "success",
+    "publishedAtUtc": "2026-10-07T04:15:36Z",
+    "publishedAtLocal": "2026-10-07T12:15:36+08:00",
+    "displayTimezone": "Asia/Shanghai",
+    "sourceHashesStillExact": true
   },
   "limits": [
     "One explicit admitted sample is not a sea boundary; outside retains native procedural exploration.",

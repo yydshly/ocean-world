@@ -37,4 +37,4 @@
 
 动物、库存和窗口读数见[模型记录](../output/validation/deep-whole-seascape-model.json)。这些是有限CPU、Three几何和持久化证据；当前浏览器整景观感、实际GPU性能和完整导演播放尚未验收，不能据此宣称纪录片式写实已经达成。最终构建、发布和远端状态由后续交付记录补充。
 
-本轮最终66文件／472项检查全部通过，一次生产构建成功；八份构建源码哈希保持一致。线上发布进行中，发布结果将写入[交付记录](../output/validation/deep-whole-seascape-delivery.json)。
+本轮最终66文件／472项检查全部通过，一次生产构建成功；八份构建源码哈希保持一致。源码`a29703053bdf6dd059bd4bdbb106c3b9b930831b`已于2026-10-07 12:15:36（Asia/Shanghai）发布，[云端运行37570078484](https://github.com/yydshly/ocean-world/actions/runs/37570078484)的同一472项检查及构建、部署全部成功。部署`6901524693`／状态`19381087107`为success，工作区及提交源码与构建哈希仍一致；记录见[交付记录](../output/validation/deep-whole-seascape-delivery.json)。
