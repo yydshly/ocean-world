@@ -13,6 +13,7 @@ import { KELP_WATER_LIFE_ROUTE_STOPS } from './kelpWaterLifeRoutes.js';
 import { DEEP_WHOLE_SEASCAPE_ROUTE_STOPS } from './deepWholeSeascape.js';
 import { DEEP_BENTHIC_LIFE_ROUTE_STOPS } from './deepBenthicLifeRoutes.js';
 import { DEEP_HARD_LIFE_ROUTE_STOPS } from './deepHardLifeRoutes.js';
+import { DEEP_WATER_LIFE_ROUTE_STOPS } from './deepWaterLifeRoutes.js';
 
 const action = data => Object.freeze(data);
 const entry = data => Object.freeze({ ...data, action: action(data.action) });
@@ -120,6 +121,9 @@ export const DEMO_DEEP_STOPS = Object.freeze([
   ...DEEP_HARD_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+8).padStart(2,'0'),title:stop.label,
     description:'观察真实岩面上固定附着的海百合与黑珊瑚，以及随底流发生的悬浮摄食',
     action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id,deepHardLifeEntry:true}})),
+  ...DEEP_WATER_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+9).padStart(2,'0'),title:stop.label,
+    description:'观察带鳍章鱼与长体鼬鳚在真实海床上方缓游，以及接近原生底栖食物位置时的摄食',
+    action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id,deepWaterLifeEntry:true}})),
 ]);
 
 export const DEMO_LEGACY_VIEWS = Object.freeze([

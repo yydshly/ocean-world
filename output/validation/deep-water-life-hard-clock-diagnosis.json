@@ -1,0 +1,38 @@
+{
+  "kind": "actual-native-failure-diagnosis-not-reconstructed-TAP",
+  "seed": "42",
+  "ordinaryWindow": { "cx": 173, "cz": 8 },
+  "flags": { "seascape": true, "wholeSeascape": true, "benthicLife": true, "hardLife": true, "waterLife": true },
+  "environment": { "foodSupply": 1, "currentMps": 0.18, "hour": 12, "observerLight": 0.35 },
+  "failedOwner": "174,8",
+  "nativeTick": 162,
+  "nativeTimeSec": 16.2,
+  "hardLastTickSec": 16.1,
+  "oldPendingExpectedClockSec": 16.099999999999998,
+  "actualParcelCreatedAtSec": 16.1,
+  "actualParcels": ["deep-hard-parcel:174,8:17", "deep-hard-parcel:174,8:18"],
+  "floatingDifferenceSec": 3.552713678800501e-15,
+  "memoryInstrumentationRejectLines": [227, 238],
+  "cause": "The closed hard model validated its previous native tick by subtracting 0.1 from timeSec. At native tick 162 this yielded a value below the real preceding native tick 161. The strictly future-created parcel check rejected two legitimate 16.1-second releases, so the hard tick stopped while native time advanced. Physical support, food and condition budgets were valid; no window or food fixture was changed.",
+  "minimalFix": "Reconstruct expected validator time as (sim._ticks - (pending ? 1 : 0)) * 0.1 from the already validated integer native tick count. Preserve strict future timestamp, physical geometry and stock validation.",
+  "changedSource": "src/deepHardLife.js",
+  "sourceSHA256Before": "0502061AA3709206EB2DFF31FF320483A3C42AB4DB6FE61E55265FCC617FA8D1",
+  "sourceSHA256After": "E5F8EB0C3F76565AFE9FE90131076557AA16B26A55F16EC0C4BA35A8E9586D7E",
+  "regression": {
+    "file": "tests/deep-hard-life.test.mjs",
+    "existingCase": "actual native clocks advect only new logged inputs to fixed visible feeding organs and reconcile each typed pool and separate condition account",
+    "addedObservation": "Real owner 174,8 emits a parcel at native tick 161 / 16.1 seconds, then advances through tick 162 and validates without changing any donor stock, input rate, support or catalog.",
+    "caseCount": 8,
+    "finalPass": 8,
+    "finalFail": 0,
+    "finalSkipped": 0,
+    "testSHA256After": "BF76AD045974386D8A5B963766BC176FA870C7267F1DC23227C7B63EC1453474",
+    "firstRegressionAssertionCorrection": "The initial regression assertion manually added seconds to 16.1 and got a different floating value from the native integer tick clock. It was corrected to use (ticks + 1) * 0.1, matching the actual simulator. The source fix was unchanged."
+  },
+  "retainedActualEvidence": {
+    "sourceAgentInitialTAP": "output/validation/deep-water-life-ecology-initial.log",
+    "sourceAgentRawOwner": "output/validation/deep-water-life-hard-1748-diagnostic.json",
+    "sourceAgentReproduction": "output/validation/deep-water-life-hard-1748-diagnostic.mjs"
+  },
+  "remainingVerification": "Source agent reruns the existing six native ecology cases once; root runs the final complete suite and recalculates immutable references. New water model and assets stay frozen."
+}

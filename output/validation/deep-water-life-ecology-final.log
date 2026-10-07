@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: two ordinary all-feature deep windows move whole near-bottom animals and debit real existing food with complete condition and food ledgers
+ok 1 - two ordinary all-feature deep windows move whole near-bottom animals and debit real existing food with complete condition and food ledgers
+  ---
+  duration_ms: 49209.6275
+  type: 'test'
+  ...
+# Subtest: complete near-bottom death and empty rosters unload, revisit and cold restore without recruitment or native food refill
+ok 2 - complete near-bottom death and empty rosters unload, revisit and cold restore without recruitment or native food refill
+  ---
+  duration_ms: 3174.7426
+  type: 'test'
+  ...
+# Subtest: enabling swimmers on old all-feature histories preserves raw paused records and subsequent native steps exactly
+ok 3 - enabling swimmers on old all-feature histories preserves raw paused records and subsequent native steps exactly
+  ---
+  duration_ms: 3131.574
+  type: 'test'
+  ...
+# Subtest: pending and refused atomic swimmer births publish no actors or landscape revision before complete admission
+ok 4 - pending and refused atomic swimmer births publish no actors or landscape revision before complete admission
+  ---
+  duration_ms: 4577.9687
+  type: 'test'
+  ...
+# Subtest: undefined and thrown historical reads cannot be treated as strict-null fresh swimmer births
+ok 5 - undefined and thrown historical reads cannot be treated as strict-null fresh swimmer births
+  ---
+  duration_ms: 0.5679
+  type: 'test'
+  ...
+# Subtest: finite partial swimmer markers, native stocks and complete offscreen history corruptions reject without refill or publication
+ok 6 - finite partial swimmer markers, native stocks and complete offscreen history corruptions reject without refill or publication
+  ---
+  duration_ms: 3500.1159
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 63742.113

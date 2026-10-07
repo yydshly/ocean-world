@@ -1,0 +1,201 @@
+{
+  "owner": "173,8",
+  "nativeSeconds": 24,
+  "counters": {
+    "ticks": 240,
+    "feedings": 2,
+    "consumedUnits": 0.00024,
+    "deaths": 0
+  },
+  "nativeResources": {
+    "surfaceDetritus": 0.19228315471247406,
+    "benthicAnimalFood": 0.06042435944690529,
+    "suspendedPrey": 0.014699999999999998
+  },
+  "nativeFoodLedger": {
+    "initial": 0.273,
+    "input": 0.008687999999999786,
+    "ingested": 0.014140000000000003,
+    "transferred": 0.00010364055309401521,
+    "exported": 0.0001404858406219151,
+    "byPool": {
+      "surfaceDetritus": {
+        "initial": 0.19999999999999998,
+        "input": 0.0019199999999999378,
+        "ingested": 0.009600000000000003,
+        "transferredIn": 0.00010364055309401521,
+        "transferredOut": 0,
+        "exported": 0.0001404858406219151
+      },
+      "benthicAnimalFood": {
+        "initial": 0.064,
+        "input": 0.0007680000000000119,
+        "ingested": 0.004240000000000001,
+        "transferredIn": 0,
+        "transferredOut": 0.00010364055309401521,
+        "exported": 0
+      },
+      "suspendedPrey": {
+        "initial": 0.009,
+        "input": 0.006,
+        "ingested": 0.0003,
+        "transferredIn": 0,
+        "transferredOut": 0,
+        "exported": 0
+      }
+    }
+  },
+  "newEnergyLedger": {
+    "initial": 2.9161810193490236,
+    "feedingGain": 0.00048,
+    "maintenanceAndMotionDebit": 0.0033262080000155026,
+    "clampCorrection": 0,
+    "deathLoss": 0
+  },
+  "foodBudgetError": 2.0539125955565396e-15,
+  "energyBudgetError": 1.865174681370263e-14,
+  "individuals": [
+    {
+      "id": "deep-water:173,8:abyssal-dumbo-octopus:0",
+      "speciesId": "abyssal-dumbo-octopus",
+      "sizeM": 0.08256624259985984,
+      "sizeMeasure": "mantle-length",
+      "home": {
+        "x": 11125.482356104701,
+        "y": -0.9249996167611061,
+        "z": 566.4633946718722
+      },
+      "position": {
+        "x": 11125.390099344293,
+        "y": -0.9348008331738912,
+        "z": 565.7582822434023
+      },
+      "timeSec": 24,
+      "travelledM": 0.960000000007633,
+      "feedingCount": 1,
+      "lastWaterLifeIntake": {
+        "timeSec": 19,
+        "ownerId": "173,8",
+        "patchId": "deep-ocean:173,8:benthic-animal-3",
+        "pool": "benthicAnimalFood",
+        "stockBefore": 0.016130632503342946,
+        "stockAfter": 0.016010632503342948,
+        "removedUnits": 0.00012,
+        "energyBefore": 0.7514191991987975,
+        "energyAfter": 0.7516591991987975,
+        "agentPosition": {
+          "x": 11125.482356104701,
+          "y": -0.9419154568356248,
+          "z": 565.7035829489042
+        },
+        "agentHeading": 4.71238898038469,
+        "agentPitch": -0.06,
+        "feedingPosition": {
+          "x": 11125.482356104701,
+          "y": -0.9904633259636624,
+          "z": 565.6527345162293
+        },
+        "foodPosition": {
+          "x": 11125.482356104701,
+          "y": -1.0810606584736027,
+          "z": 565.6125462391973
+        },
+        "contactDistanceM": 0.09911091901864226,
+        "allowedDistanceM": 0.1,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Actual mouth contact with existing owner-local benthicAnimalFood selected benthic animal nutrition proxy; not floating food, rendered prey capture, complete natural diet or measured biomass. Octopus diet is a qualified congeneric inference retained in its catalog, not species stomach evidence. No observer light or hour input."
+      }
+    },
+    {
+      "id": "deep-water:173,8:giant-cusk-eel:0",
+      "speciesId": "giant-cusk-eel",
+      "sizeM": 0.8346716610714793,
+      "sizeMeasure": "standard-length",
+      "home": {
+        "x": 11083.505750323475,
+        "y": -0.42380181880254375,
+        "z": 566.4236938077212
+      },
+      "position": {
+        "x": 11083.866876712495,
+        "y": -0.454254765502263,
+        "z": 566.5982742804136
+      },
+      "timeSec": 24,
+      "travelledM": 1.919999999987805,
+      "feedingCount": 0,
+      "lastWaterLifeIntake": null
+    },
+    {
+      "id": "deep-water:173,8:abyssal-dumbo-octopus:1",
+      "speciesId": "abyssal-dumbo-octopus",
+      "sizeM": 0.07358876247890295,
+      "sizeMeasure": "mantle-length",
+      "home": {
+        "x": 11092.495720339244,
+        "y": -0.3126368368699004,
+        "z": 545.3149867515507
+      },
+      "position": {
+        "x": 11092.925707288787,
+        "y": -0.32366333825546917,
+        "z": 544.9163533966415
+      },
+      "timeSec": 24,
+      "travelledM": 0.9600000000106663,
+      "feedingCount": 0,
+      "lastWaterLifeIntake": null
+    },
+    {
+      "id": "deep-water:173,8:giant-cusk-eel:1",
+      "speciesId": "giant-cusk-eel",
+      "sizeM": 0.7481672718189657,
+      "sizeMeasure": "standard-length",
+      "home": {
+        "x": 11095.090832747741,
+        "y": -0.2081733617373616,
+        "z": 544.3637021040172
+      },
+      "position": {
+        "x": 11094.218734790995,
+        "y": -0.23291848363171558,
+        "z": 544.3310776795341
+      },
+      "timeSec": 24,
+      "travelledM": 1.9200000000974102,
+      "feedingCount": 1,
+      "lastWaterLifeIntake": {
+        "timeSec": 15.5,
+        "ownerId": "173,8",
+        "patchId": "deep-ocean:173,8:benthic-animal-2",
+        "pool": "benthicAnimalFood",
+        "stockBefore": 0.016106581674022024,
+        "stockAfter": 0.015986581674022025,
+        "removedUnits": 0.00012,
+        "energyBefore": 0.7439476678995806,
+        "energyAfter": 0.7441876678995806,
+        "agentPosition": {
+          "x": 11093.85116883102,
+          "y": -0.2370415754082708,
+          "z": 544.3637021040172
+        },
+        "agentHeading": 3.141592653589793,
+        "agentPitch": -0.06,
+        "feedingPosition": {
+          "x": 11093.507341070055,
+          "y": -0.37761859171239587,
+          "z": 544.3637021040172
+        },
+        "foodPosition": {
+          "x": 11093.447004986778,
+          "y": -0.45252480567863435,
+          "z": 544.3637021040172
+        },
+        "contactDistanceM": 0.09618411426019048,
+        "allowedDistanceM": 0.1,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Actual mouth contact with existing owner-local benthicAnimalFood selected benthic animal nutrition proxy; not floating food, rendered prey capture, complete natural diet or measured biomass. Octopus diet is a qualified congeneric inference retained in its catalog, not species stomach evidence. No observer light or hour input."
+      }
+    }
+  ]
+}

@@ -83,6 +83,13 @@ test('actual native clocks advect only new logged inputs to fixed visible feedin
   }
   const s = deepHardLifeSnapshot(f.region); assert.equal(s.counters.ticks, 140); assert.equal(s.counters.feedings, 2); close(s.foodLedger.input, .00112); close(s.foodLedger.ingested, .00016);
   assert.ok(validateDeepHardLifeRecord(record(f.region), f.region, { generator: f.generator }));
+  // A real 16.1s release must remain valid when the next native tick is 16.2s:
+  // subtraction produces 16.099999999999998, unlike the integer tick clock.
+  const release = born(174, 8); advance(release, 161, { currentMps: .18 });
+  assert.ok(release.region.deepHardLife.parcels.some(p => p.createdAtSec === 16.1));
+  assert.ok((release.region.sim._ticks + 1) * .1 - .1 < 16.1);
+  advance(release, 1); assert.equal(release.region.deepHardLife.counters.ticks, 162);
+  assert.ok(validateDeepHardLifeRecord(record(release.region), release.region, { generator: release.generator }));
   if (process.env.DEEP_HARD_LIFE_CONTINUATION_RECEIPT) await writeFile(process.env.DEEP_HARD_LIFE_CONTINUATION_RECEIPT, JSON.stringify({ owner: f.region.id, nativeSeconds: f.region.sim.timeSec,
     fixedHostPositions: home, resources: s.resources, foodLedger: s.foodLedger, counters: s.counters, foodBudgetError: s.foodBudgetError, energyBudgetError: s.energyBudgetError,
     individuals: f.region.deepHardLifeAgents.map(a => ({ id: a.id, speciesId: a.speciesId, host: a.deepHardHostId, timeSec: a.timeSec, lastHardLifeIntake: a.lastHardLifeIntake })) }, null, 2));

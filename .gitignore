@@ -194,3 +194,6 @@ output/validation/screenshots/*
 
 !output/validation/deep-hard-life-*.json
 !output/validation/deep-hard-life-*.log
+
+!output/validation/deep-water-life-*.json
+!output/validation/deep-water-life-*.log

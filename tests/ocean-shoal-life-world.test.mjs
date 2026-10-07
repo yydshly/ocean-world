@@ -173,8 +173,8 @@ test('URL, ordinary button and director share native admission and frame real li
   f.world.paused = false; f.world.updateDirectorMotion(8); assert.equal(f.world.directorMotion.elapsedSec, 16);
   assert.equal(f.world.directorMotion.complete, true); assert.equal(f.world.directorMotion.error, null);
   assert.deepEqual(f.ecology.snapshot(), snapshot); assert.deepEqual([...f.records], records, 'camera shot cannot advance, replenish or replace ecology');
-  assert.equal(DIRECTOR_STEPS.length, 60); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 54);
-  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 730000);
+  assert.equal(DIRECTOR_STEPS.length, 61); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 55);
+  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 746000);
 });
 
 test('ordinary and URL completion cannot overwrite a newer world, seed, control, disposal or entry toast', async () => {

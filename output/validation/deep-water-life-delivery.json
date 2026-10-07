@@ -1,0 +1,263 @@
+{
+  "scope": "Finite two sourced northeast-Pacific near-bottom swimmers, complete animal kits and actual native benthic food contact; CPU/Three/native/hook checks, no browser/GPU/whole-tour visual acceptance",
+  "files": {
+    ".github/workflows/pages.yml": "5fd7ca7ac3df6c85818bce9007a4c22bae3c2e4ad9e89951c6ebbc3ad2e738fe",
+    "docs/DEEP_WATER_LIFE_SOURCES.md": "b4ef3aad602be586cb6d51425898c01eb282dbe8aa2d79ce880b5a87624c5039",
+    "src/OceanApp.jsx": "812d4142466bffd4e5da8da8cc5af249955d79d17b471bb8d1985204850024b4",
+    "src/deepBenthicLife.js": "4ab750c9d3d7d4a2ec0e8a87e3ff0f5075bc011fc484c51779705b3da90574e0",
+    "src/deepBenthicLifeSpecies.js": "ed8fd46ed2d6d9632b3ffc1d1dbfd0ef91376e6c90294050660a3a7b31aa7f12",
+    "src/deepHabitat.js": "8dae6cd5f9b0c6b1dc95246b8a5d586d063ad36bf64fe087d8ef850e93cb0da1",
+    "src/deepHardLife.js": "e5f8eb0c3f76565afe9fe90131076557aa16b26a55f16ec0c4ba35a8e9586d7e",
+    "src/deepHardLifeSpecies.js": "2e1b45c90efcffa6f0e752e900232a28b53daf49b9358a3508f3e8984d4a6b75",
+    "src/deepOceanEcology.js": "61e079864cc2c83472d7b659ed9acfe454a95bba068be8a616c52785384b7591",
+    "src/deepOceanGeneration.js": "c42c5d17d1a6d27eaffcd967d578fe89cd53b9303dc5b221a561ec12f1cff7d0",
+    "src/deepPredatorEcology.js": "2430aee861189a3cb097d1fa1bfb83173ab37431d3417f5f199053ea0f084801",
+    "src/deepSeaSpiderGeometry.js": "2b93dcb618f913ed23d5bb2a67907e23b6d8f4526f8cd9a867e10dc6018b017d",
+    "src/deepSeascape.js": "8a31dc375ceda160d2c3e944c72daf30588f3f591bb064f7047695afd3820692",
+    "src/deepSimulation.js": "3ed350e678bb89002445d1c9c6b376aa7dcae5780a04c5d4d4a1c853bfe7623b",
+    "src/deepSpecies.js": "9da0e1b41bbb9c4b61c26d082bd8a3090b0d1350fef626836ecdb44ea2a88c8a",
+    "src/deepWaterLife.js": "260640c29177e033e2fe8d814e72f4256358971c9fa79e76de251f03f389fcfd",
+    "src/deepWaterLifeRoutes.js": "cce0a2b2e5d5e1ffd4cc4208c29dbf2f1cff10b6564b59936014e81a36870617",
+    "src/deepWaterLifeSpecies.js": "721e6ff5d88f4c21a24e7ee02327b17e0f2468f9ccbbf05cb87038803305b370",
+    "src/deepWholeSeascape.js": "deae8f6e0b71d7e718a80d788bc1b810a93ea051809c93ec022dc50855aaa2e5",
+    "src/demoCapabilities.js": "0751dfb5760f58edebc36cd4213d2676c7595629a231d59657db7b153f584b8f",
+    "src/directorTour.js": "880640ea506ea2f9a4969dcfc2a6756d316ec867d3df0e6b2cced889b4909386",
+    "src/sceneCatalog.js": "ce4df18bfb41e1f7a510ce760372e9106a168c045bcd267a25d12d0a4b55025a",
+    "src/useDirectorTour.js": "f70b7b453e354cdace54aa9dc27b095dea1a054b37aee22083fa7babff9c4373",
+    "src/world/DeepBenthicLifeAssets.js": "e75d7def429e3414c902206344beabc1704f9515d8ec75638c90e0513093459a",
+    "src/world/DeepHardLifeAssets.js": "284005116c79353ceeb16df0b2e038604ad83915d0c41eb4416a53890c948f0a",
+    "src/world/DeepOceanAnimals.js": "176206ba44a43ba6219a4f2e1a9bdc6743c768722ec9cef45919e33701f95a0b",
+    "src/world/DeepWaterLifeAssets.js": "0e9f0bdb641d051e57e8f351675a446e4efa0642f9af7632c9993feadab38607",
+    "src/world/ReefWorld.js": "27522cd7875216b7052ccdd8bc97636d4d375dcfa5693623d0686fdd4128774c",
+    "src/world/deepOrganisms.js": "afd05b3a2c5d3ddc9d6989ccd599c716a98640b7bd8307e5859689791345f950",
+    "src/world/deepSeaSpiderOrganism.js": "6d5a04a9caf54f826c33fb874c68fe8b754193648da45dd931c1b5533b3cab18",
+    "tests/deep-benthic-life-world.test.mjs": "95a8ce0ccc9b192f84ad317d591cfbc0fff6f9ce8441c8633200da1ef79374dc",
+    "tests/deep-hard-life-world.test.mjs": "08a399315c7fbd1e7c409007c87d4dc0f1bbf22ee6346f772a569fe471b897e0",
+    "tests/deep-hard-life.test.mjs": "bf76ad045974386d8a5b963766bc176fa870c7267f1dc23227c7b63ec1453474",
+    "tests/deep-water-life-ecology.test.mjs": "05b635d21c45777cfd36b094a1b77fdd9879ce548f2f755f7d4118c4bd21201f",
+    "tests/deep-water-life-render.test.mjs": "6f69ae9cf57af11eca0340c2d931837622d3cc40cf1bf0a291762399c05f8e15",
+    "tests/deep-water-life-world.test.mjs": "11d1e92f7846ad92038885d6d50d69db9bdf6c50a08b5d314022c8b9b1dd7810",
+    "tests/deep-water-life.test.mjs": "63bddd0ba48794f36563088a29223e7c6bf8f27938b214d9fb823f79cba7c5f5",
+    "tests/demo-navigation.test.mjs": "f161ecc29c40bcb71336ea28a32aad87995b3702fd970d04bf7c8a84f3f0345b",
+    "tests/director-player.test.mjs": "e76c4853cb7fdfc863a701f350784208e9203dcecab5dc35a077497c8af445b2",
+    "tests/director-tour.test.mjs": "20f103d1a3cc9fb9c5b08c440134ac680250bd61ce20830e20f1d1f6c73a5785",
+    "tests/director-transition-hook.test.mjs": "d86f05812c3827dc47b5c7188ffcd45713864c76c849a29c7d7eb4fc0fdb93a9",
+    "tests/kelp-benthic-life-world.test.mjs": "51ebc5ed9d020bec85b8014b3e37f4524d39ff31eff30218438b60784f490d6d",
+    "tests/kelp-water-life-world.test.mjs": "60623653b6aabdfa4d6a312f299ac9e354421da849b6489dcb72e500f177ebf6",
+    "tests/ocean-meadow-life-world.test.mjs": "4dcd10463ff359c2e9b723cc7894a903ebd7025cacb8a0b4b3c9167463f6ab90",
+    "tests/ocean-shoal-life-world.test.mjs": "99c5820a5d0ec74d1fa7f8b6e38b7ce77725da12d24e00b5dafe6d0b1ab39ea4"
+  },
+  "originalSourceBaseline": "c35ec9b27e73622abd32f04fbc73045e8a7a9fff",
+  "originalSourceExact": {
+    "src/deepSimulation.js": true,
+    "src/deepOceanGeneration.js": true,
+    "src/deepHabitat.js": true,
+    "src/deepWholeSeascape.js": true,
+    "src/deepBenthicLife.js": true,
+    "src/deepBenthicLifeSpecies.js": true,
+    "src/deepSeaSpiderGeometry.js": true,
+    "src/deepPredatorEcology.js": true,
+    "src/world/deepOrganisms.js": true,
+    "src/world/deepSeaSpiderOrganism.js": true,
+    "src/world/DeepBenthicLifeAssets.js": true,
+    "src/deepHardLifeSpecies.js": true,
+    "src/world/DeepHardLifeAssets.js": true,
+    "src/deepSpecies.js": true
+  },
+  "necessaryLegacyClockRepair": {
+    "kind": "actual-native-failure-diagnosis-not-reconstructed-TAP",
+    "seed": "42",
+    "ordinaryWindow": {
+      "cx": 173,
+      "cz": 8
+    },
+    "flags": {
+      "seascape": true,
+      "wholeSeascape": true,
+      "benthicLife": true,
+      "hardLife": true,
+      "waterLife": true
+    },
+    "environment": {
+      "foodSupply": 1,
+      "currentMps": 0.18,
+      "hour": 12,
+      "observerLight": 0.35
+    },
+    "failedOwner": "174,8",
+    "nativeTick": 162,
+    "nativeTimeSec": 16.2,
+    "hardLastTickSec": 16.1,
+    "oldPendingExpectedClockSec": 16.099999999999998,
+    "actualParcelCreatedAtSec": 16.1,
+    "actualParcels": [
+      "deep-hard-parcel:174,8:17",
+      "deep-hard-parcel:174,8:18"
+    ],
+    "floatingDifferenceSec": 3.552713678800501e-15,
+    "memoryInstrumentationRejectLines": [
+      227,
+      238
+    ],
+    "cause": "The closed hard model validated its previous native tick by subtracting 0.1 from timeSec. At native tick 162 this yielded a value below the real preceding native tick 161. The strictly future-created parcel check rejected two legitimate 16.1-second releases, so the hard tick stopped while native time advanced. Physical support, food and condition budgets were valid; no window or food fixture was changed.",
+    "minimalFix": "Reconstruct expected validator time as (sim._ticks - (pending ? 1 : 0)) * 0.1 from the already validated integer native tick count. Preserve strict future timestamp, physical geometry and stock validation.",
+    "changedSource": "src/deepHardLife.js",
+    "sourceSHA256Before": "0502061AA3709206EB2DFF31FF320483A3C42AB4DB6FE61E55265FCC617FA8D1",
+    "sourceSHA256After": "E5F8EB0C3F76565AFE9FE90131076557AA16B26A55F16EC0C4BA35A8E9586D7E",
+    "regression": {
+      "file": "tests/deep-hard-life.test.mjs",
+      "existingCase": "actual native clocks advect only new logged inputs to fixed visible feeding organs and reconcile each typed pool and separate condition account",
+      "addedObservation": "Real owner 174,8 emits a parcel at native tick 161 / 16.1 seconds, then advances through tick 162 and validates without changing any donor stock, input rate, support or catalog.",
+      "caseCount": 8,
+      "finalPass": 8,
+      "finalFail": 0,
+      "finalSkipped": 0,
+      "testSHA256After": "BF76AD045974386D8A5B963766BC176FA870C7267F1DC23227C7B63EC1453474",
+      "firstRegressionAssertionCorrection": "The initial regression assertion manually added seconds to 16.1 and got a different floating value from the native integer tick clock. It was corrected to use (ticks + 1) * 0.1, matching the actual simulator. The source fix was unchanged."
+    },
+    "retainedActualEvidence": {
+      "sourceAgentInitialTAP": "output/validation/deep-water-life-ecology-initial.log",
+      "sourceAgentRawOwner": "output/validation/deep-water-life-hard-1748-diagnostic.json",
+      "sourceAgentReproduction": "output/validation/deep-water-life-hard-1748-diagnostic.mjs"
+    },
+    "remainingVerification": "Source agent reruns the existing six native ecology cases once; root runs the final complete suite and recalculates immutable references. New water model and assets stay frozen."
+  },
+  "entries": {
+    "deepWaterLife": "https://yydshly.github.io/ocean-world/?demo=deep-water-life",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "actualNativeEntry": {
+      "ownerId": "173,8",
+      "x": 11093.79,
+      "z": 544.84,
+      "newIndividuals": 4,
+      "totalAnimalRecords": 15
+    }
+  },
+  "local": {
+    "validationFileCount": 112,
+    "checks": {
+      "tests": 780,
+      "pass": 780,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "durationMs": 297922.0342
+    },
+    "productionBuild": "success",
+    "buildCount": 1,
+    "currentSourceHashesExact": true,
+    "initialEcologyDiagnostic": {
+      "files": 1,
+      "tests": 6,
+      "pass": 3,
+      "fail": 3,
+      "resolution": "Actual previous hard-community pending clock subtraction rejected a valid release at tick162 by 3.55e-15 sec; replaced only the expected clock with integer native-tick reconstruction. Same 24/12 sec native windows and strict future-time, stock and terrain validation retained."
+    },
+    "afterLegacyFixEcologyDiagnostic": {
+      "tests": 6,
+      "pass": 5,
+      "fail": 1,
+      "resolution": "The final corruption test incorrectly required an old benthic animal in the same owner as swimmers; it now uses an actual complete marked history with a naturally empty roster. No production, native windows or stocks changed."
+    },
+    "narrowTestCorrections": "New asset test initially asserted clamping of an invalid .5-rad pitch, world test guessed the button label and model test mislabelled a legal above-bed target as corruption. Corrected expectations to legal native ±.12 endpoints, shipped UI label and actual below-bed corruption; no production asset/world repair for those assertions.",
+    "logs": [
+      "deep-water-life-integration.log",
+      "deep-water-life-ecology-initial.log",
+      "deep-water-life-ecology-after-hard-fix.log",
+      "deep-water-life-ecology-final.log",
+      "deep-water-life-build.log",
+      "deep-water-life-checks.log"
+    ]
+  },
+  "nativeModelReceipts": [
+    "deep-water-life-model.json",
+    "deep-water-life-continuation-model.json"
+  ],
+  "newAnimalIds": [
+    "abyssal-dumbo-octopus",
+    "giant-cusk-eel"
+  ],
+  "nativeSummary": {
+    "productionWindows": 2,
+    "observedSecPerWindow": [
+      24,
+      12
+    ],
+    "actualNewIndividuals": 16,
+    "movedIndividuals": 16,
+    "fedIndividuals": 3,
+    "successfulBites": 3,
+    "intakeUnits": 0.00036,
+    "newInitialFoodUnits": 0,
+    "newExternalInputUnits": 0,
+    "maxAllAnimalRecordsPerOwner": 17,
+    "maxFoodBalanceError": 2.0539125955565396e-15,
+    "maxCombinedFoodBalanceError": 1.1546319456101628e-14,
+    "maxConditionBalanceError": 2.842170943040401e-14
+  },
+  "defaultFlowContinuation": {
+    "owner": "173,8",
+    "nativeSeconds": 24,
+    "counters": {
+      "ticks": 240,
+      "feedings": 2,
+      "consumedUnits": 0.00024,
+      "deaths": 0
+    },
+    "nativeFoodLedger": {
+      "initial": 0.273,
+      "input": 0.008687999999999786,
+      "ingested": 0.014140000000000003,
+      "transferred": 0.00010364055309401521,
+      "exported": 0.0001404858406219151,
+      "byPool": {
+        "surfaceDetritus": {
+          "initial": 0.19999999999999998,
+          "input": 0.0019199999999999378,
+          "ingested": 0.009600000000000003,
+          "transferredIn": 0.00010364055309401521,
+          "transferredOut": 0,
+          "exported": 0.0001404858406219151
+        },
+        "benthicAnimalFood": {
+          "initial": 0.064,
+          "input": 0.0007680000000000119,
+          "ingested": 0.004240000000000001,
+          "transferredIn": 0,
+          "transferredOut": 0.00010364055309401521,
+          "exported": 0
+        },
+        "suspendedPrey": {
+          "initial": 0.009,
+          "input": 0.006,
+          "ingested": 0.0003,
+          "transferredIn": 0,
+          "transferredOut": 0,
+          "exported": 0
+        }
+      }
+    },
+    "actualIndividuals": 4
+  },
+  "catalogue": {
+    "deepAnimalRepresentativeRecords": 12,
+    "notStrictSpeciesCount": true
+  },
+  "director": {
+    "chapters": 61,
+    "distinctActions": 55,
+    "observationDurationSecAt1x": 746,
+    "newChapterDurationSec": 16,
+    "loadingAndTransitionsExtra": true
+  },
+  "publication": {
+    "status": "pending"
+  },
+  "limitations": [
+    "Depth-qualified representative combination, not reconstructed co-occurrence, measured density or full biodiversity.",
+    "Selected benthic animal nutrition proxy; octopus diet explicitly inferred from a congener, not this species stomach evidence. No new food inputs or duplicated stocks.",
+    "Finite whole-envelope and peer probes constrain new animal moves; old controllers may approach them, so no global collision proof.",
+    "Old histories, deaths and empty categories remain; only strict-null virgin owners can birth new animals after atomic save.",
+    "No browser/GPU/whole documentary appearance acceptance."
+  ]
+}

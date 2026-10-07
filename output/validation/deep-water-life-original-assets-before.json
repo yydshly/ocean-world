@@ -1,0 +1,2402 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-07T14:34:26.708Z",
+  "scope": "Before new deep water dispatcher: original ten native assets across five finite CPU animation inputs. Full attributes/index, every local/world node pose and materials. The fixed hard taxa have their actual attached states and zero velocity. No GPU/browser/anatomical-admission/whole-tour acceptance.",
+  "catalogIds": [
+    "sea-pig-group",
+    "rattail-family",
+    "pom-pom-anemone",
+    "giant-sea-spider-group",
+    "abyssal-brittle-star",
+    "pyramid-urchin",
+    "acorn-worm-group",
+    "deep-amphipod-group",
+    "sea-lily-thalassocrinus",
+    "alternating-quill-black-coral"
+  ],
+  "sourceHashes": {
+    "src/world/DeepOceanAnimals.js": "ed681e1ab14e388cdceb7d747e13bd6ac67e233ee97709357a8e3dd8cc4091e3",
+    "src/world/deepOrganisms.js": "afd05b3a2c5d3ddc9d6989ccd599c716a98640b7bd8307e5859689791345f950",
+    "src/world/deepSeaSpiderOrganism.js": "6d5a04a9caf54f826c33fb874c68fe8b754193648da45dd931c1b5533b3cab18",
+    "src/world/DeepBenthicLifeAssets.js": "e75d7def429e3414c902206344beabc1704f9515d8ec75638c90e0513093459a",
+    "src/deepSpecies.js": "9da0e1b41bbb9c4b61c26d082bd8a3090b0d1350fef626836ecdb44ea2a88c8a",
+    "src/deepPredatorSpecies.js": "642067883a2001d103ea4d386821add8daef9c1e30f0b29c6a0cfbe408a9c11d",
+    "src/deepBenthicLifeSpecies.js": "ed8fd46ed2d6d9632b3ffc1d1dbfd0ef91376e6c90294050660a3a7b31aa7f12",
+    "src/world/DeepHardLifeAssets.js": "284005116c79353ceeb16df0b2e038604ad83915d0c41eb4416a53890c948f0a",
+    "src/deepHardLifeSpecies.js": "2e1b45c90efcffa6f0e752e900232a28b53daf49b9358a3508f3e8984d4a6b75",
+    "src/sceneCatalog.js": "f665e26f2adfed4ed4a624f2f63c9c531f1d981d06c5e7ea0ebed0f2aea0b83c"
+  },
+  "renderTimeSec": 999,
+  "renderOrigin": {
+    "x": 8448,
+    "z": 576
+  },
+  "agents": [
+    {
+      "id": "baseline:sea-pig-group",
+      "speciesId": "sea-pig-group",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.12,
+      "position": {
+        "x": 8480,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:rattail-family",
+      "speciesId": "rattail-family",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.55,
+      "position": {
+        "x": 8482,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:pom-pom-anemone",
+      "speciesId": "pom-pom-anemone",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.2,
+      "position": {
+        "x": 8484,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:giant-sea-spider-group",
+      "speciesId": "giant-sea-spider-group",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.3,
+      "position": {
+        "x": 8486,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:abyssal-brittle-star",
+      "speciesId": "abyssal-brittle-star",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.14,
+      "position": {
+        "x": 8488,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:pyramid-urchin",
+      "speciesId": "pyramid-urchin",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.06,
+      "position": {
+        "x": 8490,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:acorn-worm-group",
+      "speciesId": "acorn-worm-group",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.18,
+      "position": {
+        "x": 8492,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:deep-amphipod-group",
+      "speciesId": "deep-amphipod-group",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.06,
+      "position": {
+        "x": 8494,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:sea-lily-thalassocrinus",
+      "speciesId": "sea-lily-thalassocrinus",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.135,
+      "position": {
+        "x": 8496,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    },
+    {
+      "id": "baseline:alternating-quill-black-coral",
+      "speciesId": "alternating-quill-black-coral",
+      "regionId": "132,8",
+      "alive": true,
+      "sizeM": 0.275,
+      "position": {
+        "x": 8498,
+        "y": -3500,
+        "z": 608
+      },
+      "velocity": {
+        "x": 0.008,
+        "y": 0.001,
+        "z": 0
+      },
+      "heading": 0.35,
+      "pitch": 0,
+      "timeSec": 8.2,
+      "state": "foraging",
+      "lastFeedAt": null,
+      "supportNormal": {
+        "x": 0.12,
+        "y": 0.98,
+        "z": 0.15
+      },
+      "localEnvironment": {
+        "currentMps": 0.04
+      }
+    }
+  ],
+  "frames": [
+    {
+      "input": {
+        "label": "native-original-compatible",
+        "timeSec": 8.2,
+        "state": "foraging",
+        "velocity": {
+          "x": 0.008,
+          "y": 0.001,
+          "z": 0
+        },
+        "lastFeedAt": null
+      },
+      "agents": [
+        {
+          "id": "baseline:sea-pig-group",
+          "speciesId": "sea-pig-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.12,
+          "position": {
+            "x": 8480,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:rattail-family",
+          "speciesId": "rattail-family",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.55,
+          "position": {
+            "x": 8482,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pom-pom-anemone",
+          "speciesId": "pom-pom-anemone",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.2,
+          "position": {
+            "x": 8484,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:giant-sea-spider-group",
+          "speciesId": "giant-sea-spider-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.3,
+          "position": {
+            "x": 8486,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:abyssal-brittle-star",
+          "speciesId": "abyssal-brittle-star",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.14,
+          "position": {
+            "x": 8488,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pyramid-urchin",
+          "speciesId": "pyramid-urchin",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8490,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:acorn-worm-group",
+          "speciesId": "acorn-worm-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.18,
+          "position": {
+            "x": 8492,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:deep-amphipod-group",
+          "speciesId": "deep-amphipod-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8494,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:sea-lily-thalassocrinus",
+          "speciesId": "sea-lily-thalassocrinus",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.135,
+          "position": {
+            "x": 8496,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "filtering",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:alternating-quill-black-coral",
+          "speciesId": "alternating-quill-black-coral",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.275,
+          "position": {
+            "x": 8498,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "filtering",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        }
+      ],
+      "species": {
+        "sea-pig-group": {
+          "geometry": "8c1ecbb62d9b0368bc8827b93b3c01fc0ad32c6b9208fdaf7be4b56bcaf93614",
+          "animationPose": "ac67bba1153ffb0df95f90e77e7ff2403e9fda516ced5b476d31203adc84699f",
+          "materials": "4a4ae9ca10e9c7665a7f5f34c1457817884111eee810dc289f4974a6f3cad07f",
+          "legacyMeshDigest": "65faf227dbbed5f4214ba2d107b6337172a6528620abc77fe186e515724a8c70",
+          "meshes": 3,
+          "vertices": 2797,
+          "triangles": 4336
+        },
+        "rattail-family": {
+          "geometry": "3fffd9b031ddf53fab0b5d1b06b3d261f707e6672313bcadf09aea3ee824f055",
+          "animationPose": "77bf047f09ee48c1abd1ecb8561b583a0914c48a1e01ae8dfefbd495410b4d37",
+          "materials": "9cb986c4e58bd46beb9f6d281158fb15aab91e279a280fa6a83323c455e0d254",
+          "legacyMeshDigest": "934b94c290e1a681edd082c84aa84b04d8675015125e412c6d13e2c1590eb8d1",
+          "meshes": 4,
+          "vertices": 3451,
+          "triangles": 6020
+        },
+        "pom-pom-anemone": {
+          "geometry": "4cc3ec783235be3eda445054f52547ee21646037a568bb916ab52ec61afa50a4",
+          "animationPose": "03707e2223858127d5f560077c185a9a5908aaab8134012751146a736ea14916",
+          "materials": "d586c5ec95057c9263635bdc421d582acb3f2040d7455ba941ba9e73c614f2e6",
+          "legacyMeshDigest": "7da70c5d3d00037d039e763c2f82ade1075316e83036a9a036147b007f840d22",
+          "meshes": 2,
+          "vertices": 5457,
+          "triangles": 7808
+        },
+        "giant-sea-spider-group": {
+          "geometry": "6a381a6f87b7486880d53b625a7ada88ce8a037ab5a377cbea243e3b207d89b9",
+          "animationPose": "c174b2ae125ed6db0ca01c26d2cfa75003530b672ae4c7031203a5b7bc8b776a",
+          "materials": "ca5de047232e2855ff68f0555bc75254a746acd412c180bc711209b0c788424d",
+          "legacyMeshDigest": "baa45d1a68f6db875f8673bd5b65d35ec4eeb09b3d447e6a847d87d85032c64b",
+          "meshes": 36,
+          "vertices": 810,
+          "triangles": 740
+        },
+        "abyssal-brittle-star": {
+          "geometry": "20f15ea36c847439c8cc382fe28b03aca0b59a3a576348691044a967f4ae9516",
+          "animationPose": "a330de0be9dd0ca6d3ca045e87acb5179eae297d6ff821e4dbba50c029d625b4",
+          "materials": "6beee2783a7a2480aa8268e75159756e5e4b9b82db2205eb5be7ccf6bd1f1b1f",
+          "legacyMeshDigest": "16016cc5a0bed89498e4490fe9089d5c7e2ad5f26c0c80e40b19e770dbc95a07",
+          "meshes": 6,
+          "vertices": 2044,
+          "triangles": 2600
+        },
+        "pyramid-urchin": {
+          "geometry": "a7a527fd276f1d79e2bdb8e35d79a02e31c5e8cb16134b4b85cf757cb4d8ef91",
+          "animationPose": "7743c1f6838ef67f320eb4022293abf9a26060577540d8789eea43ebab46d8ce",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "da2dbf12d14de1f4e8f5f2672a486e7b080b030ca31abed904da4c6bb56aec31",
+          "meshes": 2,
+          "vertices": 1490,
+          "triangles": 1712
+        },
+        "acorn-worm-group": {
+          "geometry": "adb57282a07788a2942bfc6d6a73f125c9a59eeeef0fdef4410ef29da415d916",
+          "animationPose": "cd64c240d502faf15cafcdcd2d85d74b990d78529abcc32b25d7f3a5aea659e4",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "60766bb25d9059387b6229520689640e79be18b51bc6dc29aac1c90673c7b518",
+          "meshes": 2,
+          "vertices": 1228,
+          "triangles": 2048
+        },
+        "deep-amphipod-group": {
+          "geometry": "b4504fa36e46911a07c657442b2785c56f248d3ffbfcce4d23ddbb97b7f73b7c",
+          "animationPose": "63bab6c35cfe9909837370f97581d0ed09b8e08a0e3475e8e137e2b1aa3b0a2b",
+          "materials": "0bc9749d42537df1411672157467688f970de101165b2c3e33cc2b22eb98a4ff",
+          "legacyMeshDigest": "0418c481df1e07a4780174261648f2a219a3e3ffb2ce389cc3704561d7b32139",
+          "meshes": 3,
+          "vertices": 2130,
+          "triangles": 3096
+        },
+        "sea-lily-thalassocrinus": {
+          "geometry": "c2da1beaac2007db468618cc272718ada120569301e5d9b0a46601ad720df7e9",
+          "animationPose": "65234687b773523c3cdf077505f91b34c6795fd58cf2728c4cbaad29900389d9",
+          "materials": "602d8a81e5716e1aa02f6fa6c8d9a8d7b5d7dd6b3590824bb3d980e5b018effd",
+          "legacyMeshDigest": "212be36da6b5190f16566e00e6f4633a26a6edf2a7bd2268434c815eaa99ec9e",
+          "meshes": 7,
+          "vertices": 2714,
+          "triangles": 4778
+        },
+        "alternating-quill-black-coral": {
+          "geometry": "d519dd150ab5f41e1c982233d266645c30b97e8527e4e6b51c464bb3f664a4f6",
+          "animationPose": "de10d35d0153ed952ad7052e8f5ea4666b3da517d2d0a8574dc6e987e6b91fad",
+          "materials": "4418e00fb1a09daa62747fd4034df895ae134ca71fb1f9151670a7da0489e9a1",
+          "legacyMeshDigest": "355ae1adc1be492d40600c9584e114d96b6e81018f26e69a5d27aab5fb555c12",
+          "meshes": 14,
+          "vertices": 9723,
+          "triangles": 14024
+        }
+      }
+    },
+    {
+      "input": {
+        "label": "native-resting",
+        "timeSec": 0,
+        "state": "resting",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "lastFeedAt": null
+      },
+      "agents": [
+        {
+          "id": "baseline:sea-pig-group",
+          "speciesId": "sea-pig-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.12,
+          "position": {
+            "x": 8480,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "resting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:rattail-family",
+          "speciesId": "rattail-family",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.55,
+          "position": {
+            "x": 8482,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "resting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pom-pom-anemone",
+          "speciesId": "pom-pom-anemone",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.2,
+          "position": {
+            "x": 8484,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "resting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:giant-sea-spider-group",
+          "speciesId": "giant-sea-spider-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.3,
+          "position": {
+            "x": 8486,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "resting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:abyssal-brittle-star",
+          "speciesId": "abyssal-brittle-star",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.14,
+          "position": {
+            "x": 8488,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "resting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pyramid-urchin",
+          "speciesId": "pyramid-urchin",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8490,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "resting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:acorn-worm-group",
+          "speciesId": "acorn-worm-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.18,
+          "position": {
+            "x": 8492,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "resting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:deep-amphipod-group",
+          "speciesId": "deep-amphipod-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8494,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "resting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:sea-lily-thalassocrinus",
+          "speciesId": "sea-lily-thalassocrinus",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.135,
+          "position": {
+            "x": 8496,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "attached-waiting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:alternating-quill-black-coral",
+          "speciesId": "alternating-quill-black-coral",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.275,
+          "position": {
+            "x": 8498,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 0,
+          "state": "attached-waiting",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        }
+      ],
+      "species": {
+        "sea-pig-group": {
+          "geometry": "10606e37724d94a75957b49a0c02dd872b2fc6b1757825ab616791ff8e5d04a1",
+          "animationPose": "ac67bba1153ffb0df95f90e77e7ff2403e9fda516ced5b476d31203adc84699f",
+          "materials": "4a4ae9ca10e9c7665a7f5f34c1457817884111eee810dc289f4974a6f3cad07f",
+          "legacyMeshDigest": "c7fd5ac759068ae0d2643cb941181cb3eea632bbaa2ad478656013c7b062ac0a",
+          "meshes": 3,
+          "vertices": 2797,
+          "triangles": 4336
+        },
+        "rattail-family": {
+          "geometry": "fa9b8860627e9dd50a906b566889dfd5ceb5a3a9c21b3afddb11d483d3ed9913",
+          "animationPose": "77bf047f09ee48c1abd1ecb8561b583a0914c48a1e01ae8dfefbd495410b4d37",
+          "materials": "9cb986c4e58bd46beb9f6d281158fb15aab91e279a280fa6a83323c455e0d254",
+          "legacyMeshDigest": "a627ea42605fea023f4d5afaa68ad295c67159a035ac76c419cdea043122e955",
+          "meshes": 4,
+          "vertices": 3451,
+          "triangles": 6020
+        },
+        "pom-pom-anemone": {
+          "geometry": "8eac5b1844dcd4a97dcc0e241384071f246e5d57e4a3d7b61a59447138a53ea4",
+          "animationPose": "03707e2223858127d5f560077c185a9a5908aaab8134012751146a736ea14916",
+          "materials": "d586c5ec95057c9263635bdc421d582acb3f2040d7455ba941ba9e73c614f2e6",
+          "legacyMeshDigest": "b3330ddac752911bf4dfd6e672ae3e74126a424d802b613d7ccb06e75eb7108d",
+          "meshes": 2,
+          "vertices": 5457,
+          "triangles": 7808
+        },
+        "giant-sea-spider-group": {
+          "geometry": "6a381a6f87b7486880d53b625a7ada88ce8a037ab5a377cbea243e3b207d89b9",
+          "animationPose": "7178f7f709fd49f571df3aa31c8c3bdf81f6983c42f55eaee408a1deb082f445",
+          "materials": "ca5de047232e2855ff68f0555bc75254a746acd412c180bc711209b0c788424d",
+          "legacyMeshDigest": "62cc6b33f6080106d6df07049d2f529cf04609eb07e8c82e34830bf588858781",
+          "meshes": 36,
+          "vertices": 810,
+          "triangles": 740
+        },
+        "abyssal-brittle-star": {
+          "geometry": "20f15ea36c847439c8cc382fe28b03aca0b59a3a576348691044a967f4ae9516",
+          "animationPose": "1a43e791da133c4cfaa56dd59a5e36b23df1cdd6edf029e2ed9c7744d5243021",
+          "materials": "6beee2783a7a2480aa8268e75159756e5e4b9b82db2205eb5be7ccf6bd1f1b1f",
+          "legacyMeshDigest": "16016cc5a0bed89498e4490fe9089d5c7e2ad5f26c0c80e40b19e770dbc95a07",
+          "meshes": 6,
+          "vertices": 2044,
+          "triangles": 2600
+        },
+        "pyramid-urchin": {
+          "geometry": "a7a527fd276f1d79e2bdb8e35d79a02e31c5e8cb16134b4b85cf757cb4d8ef91",
+          "animationPose": "7743c1f6838ef67f320eb4022293abf9a26060577540d8789eea43ebab46d8ce",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "da2dbf12d14de1f4e8f5f2672a486e7b080b030ca31abed904da4c6bb56aec31",
+          "meshes": 2,
+          "vertices": 1490,
+          "triangles": 1712
+        },
+        "acorn-worm-group": {
+          "geometry": "adb57282a07788a2942bfc6d6a73f125c9a59eeeef0fdef4410ef29da415d916",
+          "animationPose": "2a02a16420bf6c7aaf1cc2105cbb890e439544a6649a7efdfaea746524914632",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "60766bb25d9059387b6229520689640e79be18b51bc6dc29aac1c90673c7b518",
+          "meshes": 2,
+          "vertices": 1228,
+          "triangles": 2048
+        },
+        "deep-amphipod-group": {
+          "geometry": "b4504fa36e46911a07c657442b2785c56f248d3ffbfcce4d23ddbb97b7f73b7c",
+          "animationPose": "6932aa4853ee0bdda60ac81b7cd317d32f8dd92ef4d58ce5f50ff02f531e97b2",
+          "materials": "0bc9749d42537df1411672157467688f970de101165b2c3e33cc2b22eb98a4ff",
+          "legacyMeshDigest": "0418c481df1e07a4780174261648f2a219a3e3ffb2ce389cc3704561d7b32139",
+          "meshes": 3,
+          "vertices": 2130,
+          "triangles": 3096
+        },
+        "sea-lily-thalassocrinus": {
+          "geometry": "c2da1beaac2007db468618cc272718ada120569301e5d9b0a46601ad720df7e9",
+          "animationPose": "f49789558f25c7c301e0b9699cc7eee1b0c8a818a9d0c639282455eeca2013b6",
+          "materials": "602d8a81e5716e1aa02f6fa6c8d9a8d7b5d7dd6b3590824bb3d980e5b018effd",
+          "legacyMeshDigest": "212be36da6b5190f16566e00e6f4633a26a6edf2a7bd2268434c815eaa99ec9e",
+          "meshes": 7,
+          "vertices": 2714,
+          "triangles": 4778
+        },
+        "alternating-quill-black-coral": {
+          "geometry": "d519dd150ab5f41e1c982233d266645c30b97e8527e4e6b51c464bb3f664a4f6",
+          "animationPose": "02bf2ec1592a2379f892ae707d6fc7c98e5c08d31b3155f582a4c747ebbe5803",
+          "materials": "4418e00fb1a09daa62747fd4034df895ae134ca71fb1f9151670a7da0489e9a1",
+          "legacyMeshDigest": "355ae1adc1be492d40600c9584e114d96b6e81018f26e69a5d27aab5fb555c12",
+          "meshes": 14,
+          "vertices": 9723,
+          "triangles": 14024
+        }
+      }
+    },
+    {
+      "input": {
+        "label": "native-moving",
+        "timeSec": 3.7,
+        "state": "foraging",
+        "velocity": {
+          "x": 0.008,
+          "y": 0.001,
+          "z": 0
+        },
+        "lastFeedAt": null
+      },
+      "agents": [
+        {
+          "id": "baseline:sea-pig-group",
+          "speciesId": "sea-pig-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.12,
+          "position": {
+            "x": 8480,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:rattail-family",
+          "speciesId": "rattail-family",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.55,
+          "position": {
+            "x": 8482,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pom-pom-anemone",
+          "speciesId": "pom-pom-anemone",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.2,
+          "position": {
+            "x": 8484,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:giant-sea-spider-group",
+          "speciesId": "giant-sea-spider-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.3,
+          "position": {
+            "x": 8486,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:abyssal-brittle-star",
+          "speciesId": "abyssal-brittle-star",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.14,
+          "position": {
+            "x": 8488,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pyramid-urchin",
+          "speciesId": "pyramid-urchin",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8490,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:acorn-worm-group",
+          "speciesId": "acorn-worm-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.18,
+          "position": {
+            "x": 8492,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:deep-amphipod-group",
+          "speciesId": "deep-amphipod-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8494,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "foraging",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:sea-lily-thalassocrinus",
+          "speciesId": "sea-lily-thalassocrinus",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.135,
+          "position": {
+            "x": 8496,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "filtering",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:alternating-quill-black-coral",
+          "speciesId": "alternating-quill-black-coral",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.275,
+          "position": {
+            "x": 8498,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 3.7,
+          "state": "filtering",
+          "lastFeedAt": null,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        }
+      ],
+      "species": {
+        "sea-pig-group": {
+          "geometry": "abc418c02b181b7b245dcc653f5fa3757774e1416320d992b110f437cd4809a3",
+          "animationPose": "ac67bba1153ffb0df95f90e77e7ff2403e9fda516ced5b476d31203adc84699f",
+          "materials": "4a4ae9ca10e9c7665a7f5f34c1457817884111eee810dc289f4974a6f3cad07f",
+          "legacyMeshDigest": "dc59967f5c1dd00e75400cd9cfd96abce7c8f161d458a776e9ac59e5d0b23425",
+          "meshes": 3,
+          "vertices": 2797,
+          "triangles": 4336
+        },
+        "rattail-family": {
+          "geometry": "ec586c3fdbd0f668bfa62dd72f1334c2e67ca72e48bd3af726ea284d50f764da",
+          "animationPose": "77bf047f09ee48c1abd1ecb8561b583a0914c48a1e01ae8dfefbd495410b4d37",
+          "materials": "9cb986c4e58bd46beb9f6d281158fb15aab91e279a280fa6a83323c455e0d254",
+          "legacyMeshDigest": "e9e55427bc0ca9e2dece31ad7a42f8547ae6c069b8d39efd0c5e6dcd021b3c50",
+          "meshes": 4,
+          "vertices": 3451,
+          "triangles": 6020
+        },
+        "pom-pom-anemone": {
+          "geometry": "4264a83389033b7bd0a07c486a2f656e109986e5996a465d1bda5077bce6be0c",
+          "animationPose": "03707e2223858127d5f560077c185a9a5908aaab8134012751146a736ea14916",
+          "materials": "d586c5ec95057c9263635bdc421d582acb3f2040d7455ba941ba9e73c614f2e6",
+          "legacyMeshDigest": "3e2a5ddc7cff9fa580c5b7009d7110ca6228866938878d13605b9298aa16ee77",
+          "meshes": 2,
+          "vertices": 5457,
+          "triangles": 7808
+        },
+        "giant-sea-spider-group": {
+          "geometry": "6a381a6f87b7486880d53b625a7ada88ce8a037ab5a377cbea243e3b207d89b9",
+          "animationPose": "fb026fa3c4aae7d979b70662ab5c3f759535d4cd5f616c501f297e96c39eacad",
+          "materials": "ca5de047232e2855ff68f0555bc75254a746acd412c180bc711209b0c788424d",
+          "legacyMeshDigest": "166f5d2500847c7f2c1b889a89d1a79f896c43f3038f7a65cadadbb084a4f161",
+          "meshes": 36,
+          "vertices": 810,
+          "triangles": 740
+        },
+        "abyssal-brittle-star": {
+          "geometry": "20f15ea36c847439c8cc382fe28b03aca0b59a3a576348691044a967f4ae9516",
+          "animationPose": "497f492c35d2dc9a316739074aefeb0b1ef62072e5db48f8322210e07827c32a",
+          "materials": "6beee2783a7a2480aa8268e75159756e5e4b9b82db2205eb5be7ccf6bd1f1b1f",
+          "legacyMeshDigest": "16016cc5a0bed89498e4490fe9089d5c7e2ad5f26c0c80e40b19e770dbc95a07",
+          "meshes": 6,
+          "vertices": 2044,
+          "triangles": 2600
+        },
+        "pyramid-urchin": {
+          "geometry": "a7a527fd276f1d79e2bdb8e35d79a02e31c5e8cb16134b4b85cf757cb4d8ef91",
+          "animationPose": "7743c1f6838ef67f320eb4022293abf9a26060577540d8789eea43ebab46d8ce",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "da2dbf12d14de1f4e8f5f2672a486e7b080b030ca31abed904da4c6bb56aec31",
+          "meshes": 2,
+          "vertices": 1490,
+          "triangles": 1712
+        },
+        "acorn-worm-group": {
+          "geometry": "adb57282a07788a2942bfc6d6a73f125c9a59eeeef0fdef4410ef29da415d916",
+          "animationPose": "e98fa7da1648e7c245580209eb9ce4802620daae3ff9553163298a8ba6cfd8de",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "60766bb25d9059387b6229520689640e79be18b51bc6dc29aac1c90673c7b518",
+          "meshes": 2,
+          "vertices": 1228,
+          "triangles": 2048
+        },
+        "deep-amphipod-group": {
+          "geometry": "b4504fa36e46911a07c657442b2785c56f248d3ffbfcce4d23ddbb97b7f73b7c",
+          "animationPose": "e869ed84e23f882eb52ec3ccae6e1983a624da169e19d79f04816a30131d1fb1",
+          "materials": "0bc9749d42537df1411672157467688f970de101165b2c3e33cc2b22eb98a4ff",
+          "legacyMeshDigest": "0418c481df1e07a4780174261648f2a219a3e3ffb2ce389cc3704561d7b32139",
+          "meshes": 3,
+          "vertices": 2130,
+          "triangles": 3096
+        },
+        "sea-lily-thalassocrinus": {
+          "geometry": "c2da1beaac2007db468618cc272718ada120569301e5d9b0a46601ad720df7e9",
+          "animationPose": "1057a0f58c4279900ef4ecd8641fafc48a9c8a110bb713e7e62201b8be619417",
+          "materials": "602d8a81e5716e1aa02f6fa6c8d9a8d7b5d7dd6b3590824bb3d980e5b018effd",
+          "legacyMeshDigest": "212be36da6b5190f16566e00e6f4633a26a6edf2a7bd2268434c815eaa99ec9e",
+          "meshes": 7,
+          "vertices": 2714,
+          "triangles": 4778
+        },
+        "alternating-quill-black-coral": {
+          "geometry": "d519dd150ab5f41e1c982233d266645c30b97e8527e4e6b51c464bb3f664a4f6",
+          "animationPose": "4e7c046cb99d9efdc39d3fa910317aade4193b0810ebdf930e3793270bb4bd31",
+          "materials": "4418e00fb1a09daa62747fd4034df895ae134ca71fb1f9151670a7da0489e9a1",
+          "legacyMeshDigest": "355ae1adc1be492d40600c9584e114d96b6e81018f26e69a5d27aab5fb555c12",
+          "meshes": 14,
+          "vertices": 9723,
+          "triangles": 14024
+        }
+      }
+    },
+    {
+      "input": {
+        "label": "native-recorded-feeding",
+        "timeSec": 8.2,
+        "state": "deep-benthic-feeding",
+        "velocity": {
+          "x": 0.008,
+          "y": 0.001,
+          "z": 0
+        },
+        "lastFeedAt": 8
+      },
+      "agents": [
+        {
+          "id": "baseline:sea-pig-group",
+          "speciesId": "sea-pig-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.12,
+          "position": {
+            "x": 8480,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "deep-benthic-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:rattail-family",
+          "speciesId": "rattail-family",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.55,
+          "position": {
+            "x": 8482,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "deep-benthic-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pom-pom-anemone",
+          "speciesId": "pom-pom-anemone",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.2,
+          "position": {
+            "x": 8484,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "deep-benthic-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:giant-sea-spider-group",
+          "speciesId": "giant-sea-spider-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.3,
+          "position": {
+            "x": 8486,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "deep-benthic-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:abyssal-brittle-star",
+          "speciesId": "abyssal-brittle-star",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.14,
+          "position": {
+            "x": 8488,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "deep-benthic-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pyramid-urchin",
+          "speciesId": "pyramid-urchin",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8490,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "deep-benthic-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:acorn-worm-group",
+          "speciesId": "acorn-worm-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.18,
+          "position": {
+            "x": 8492,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "deep-benthic-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:deep-amphipod-group",
+          "speciesId": "deep-amphipod-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8494,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0.008,
+            "y": 0.001,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "deep-benthic-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:sea-lily-thalassocrinus",
+          "speciesId": "sea-lily-thalassocrinus",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.135,
+          "position": {
+            "x": 8496,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "attached-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:alternating-quill-black-coral",
+          "speciesId": "alternating-quill-black-coral",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.275,
+          "position": {
+            "x": 8498,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "attached-feeding",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        }
+      ],
+      "species": {
+        "sea-pig-group": {
+          "geometry": "2d399ef225d36daae16bc8b5d6058d2fe4ac2354933425c0d1c6d0547bac3f53",
+          "animationPose": "ac67bba1153ffb0df95f90e77e7ff2403e9fda516ced5b476d31203adc84699f",
+          "materials": "4a4ae9ca10e9c7665a7f5f34c1457817884111eee810dc289f4974a6f3cad07f",
+          "legacyMeshDigest": "f87daa7614a0beb8cb18e3d6da79f17c431fee9351bfb42453602b157644840d",
+          "meshes": 3,
+          "vertices": 2797,
+          "triangles": 4336
+        },
+        "rattail-family": {
+          "geometry": "596120041601687f17c32b6490aa3044677188dd575d2768ac669f5f3993e4c0",
+          "animationPose": "77bf047f09ee48c1abd1ecb8561b583a0914c48a1e01ae8dfefbd495410b4d37",
+          "materials": "9cb986c4e58bd46beb9f6d281158fb15aab91e279a280fa6a83323c455e0d254",
+          "legacyMeshDigest": "ce3a71d096aa75920de2b2ffbe26f33ddf7ce552afacceadf758d6268d3c1d98",
+          "meshes": 4,
+          "vertices": 3451,
+          "triangles": 6020
+        },
+        "pom-pom-anemone": {
+          "geometry": "c81053acc27ae8173e44f038e4a2eb130cfdb79941a33d83c3b6a3d0553d13cc",
+          "animationPose": "03707e2223858127d5f560077c185a9a5908aaab8134012751146a736ea14916",
+          "materials": "d586c5ec95057c9263635bdc421d582acb3f2040d7455ba941ba9e73c614f2e6",
+          "legacyMeshDigest": "9114071e24a36e77f8e9c2a5c2b67f983778e89cd07e4cb44bb7e07fd30dcf5b",
+          "meshes": 2,
+          "vertices": 5457,
+          "triangles": 7808
+        },
+        "giant-sea-spider-group": {
+          "geometry": "6a381a6f87b7486880d53b625a7ada88ce8a037ab5a377cbea243e3b207d89b9",
+          "animationPose": "c174b2ae125ed6db0ca01c26d2cfa75003530b672ae4c7031203a5b7bc8b776a",
+          "materials": "ca5de047232e2855ff68f0555bc75254a746acd412c180bc711209b0c788424d",
+          "legacyMeshDigest": "baa45d1a68f6db875f8673bd5b65d35ec4eeb09b3d447e6a847d87d85032c64b",
+          "meshes": 36,
+          "vertices": 810,
+          "triangles": 740
+        },
+        "abyssal-brittle-star": {
+          "geometry": "20f15ea36c847439c8cc382fe28b03aca0b59a3a576348691044a967f4ae9516",
+          "animationPose": "a330de0be9dd0ca6d3ca045e87acb5179eae297d6ff821e4dbba50c029d625b4",
+          "materials": "6beee2783a7a2480aa8268e75159756e5e4b9b82db2205eb5be7ccf6bd1f1b1f",
+          "legacyMeshDigest": "16016cc5a0bed89498e4490fe9089d5c7e2ad5f26c0c80e40b19e770dbc95a07",
+          "meshes": 6,
+          "vertices": 2044,
+          "triangles": 2600
+        },
+        "pyramid-urchin": {
+          "geometry": "a7a527fd276f1d79e2bdb8e35d79a02e31c5e8cb16134b4b85cf757cb4d8ef91",
+          "animationPose": "7743c1f6838ef67f320eb4022293abf9a26060577540d8789eea43ebab46d8ce",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "da2dbf12d14de1f4e8f5f2672a486e7b080b030ca31abed904da4c6bb56aec31",
+          "meshes": 2,
+          "vertices": 1490,
+          "triangles": 1712
+        },
+        "acorn-worm-group": {
+          "geometry": "adb57282a07788a2942bfc6d6a73f125c9a59eeeef0fdef4410ef29da415d916",
+          "animationPose": "cd64c240d502faf15cafcdcd2d85d74b990d78529abcc32b25d7f3a5aea659e4",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "60766bb25d9059387b6229520689640e79be18b51bc6dc29aac1c90673c7b518",
+          "meshes": 2,
+          "vertices": 1228,
+          "triangles": 2048
+        },
+        "deep-amphipod-group": {
+          "geometry": "b4504fa36e46911a07c657442b2785c56f248d3ffbfcce4d23ddbb97b7f73b7c",
+          "animationPose": "63bab6c35cfe9909837370f97581d0ed09b8e08a0e3475e8e137e2b1aa3b0a2b",
+          "materials": "0bc9749d42537df1411672157467688f970de101165b2c3e33cc2b22eb98a4ff",
+          "legacyMeshDigest": "0418c481df1e07a4780174261648f2a219a3e3ffb2ce389cc3704561d7b32139",
+          "meshes": 3,
+          "vertices": 2130,
+          "triangles": 3096
+        },
+        "sea-lily-thalassocrinus": {
+          "geometry": "c2da1beaac2007db468618cc272718ada120569301e5d9b0a46601ad720df7e9",
+          "animationPose": "65234687b773523c3cdf077505f91b34c6795fd58cf2728c4cbaad29900389d9",
+          "materials": "602d8a81e5716e1aa02f6fa6c8d9a8d7b5d7dd6b3590824bb3d980e5b018effd",
+          "legacyMeshDigest": "212be36da6b5190f16566e00e6f4633a26a6edf2a7bd2268434c815eaa99ec9e",
+          "meshes": 7,
+          "vertices": 2714,
+          "triangles": 4778
+        },
+        "alternating-quill-black-coral": {
+          "geometry": "d519dd150ab5f41e1c982233d266645c30b97e8527e4e6b51c464bb3f664a4f6",
+          "animationPose": "de10d35d0153ed952ad7052e8f5ea4666b3da517d2d0a8574dc6e987e6b91fad",
+          "materials": "4418e00fb1a09daa62747fd4034df895ae134ca71fb1f9151670a7da0489e9a1",
+          "legacyMeshDigest": "355ae1adc1be492d40600c9584e114d96b6e81018f26e69a5d27aab5fb555c12",
+          "meshes": 14,
+          "vertices": 9723,
+          "triangles": 14024
+        }
+      }
+    },
+    {
+      "input": {
+        "label": "native-blocked",
+        "timeSec": 8.2,
+        "state": "blocked",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "lastFeedAt": 8
+      },
+      "agents": [
+        {
+          "id": "baseline:sea-pig-group",
+          "speciesId": "sea-pig-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.12,
+          "position": {
+            "x": 8480,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "blocked",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:rattail-family",
+          "speciesId": "rattail-family",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.55,
+          "position": {
+            "x": 8482,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "blocked",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pom-pom-anemone",
+          "speciesId": "pom-pom-anemone",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.2,
+          "position": {
+            "x": 8484,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "blocked",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:giant-sea-spider-group",
+          "speciesId": "giant-sea-spider-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.3,
+          "position": {
+            "x": 8486,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "blocked",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:abyssal-brittle-star",
+          "speciesId": "abyssal-brittle-star",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.14,
+          "position": {
+            "x": 8488,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "blocked",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:pyramid-urchin",
+          "speciesId": "pyramid-urchin",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8490,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "blocked",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:acorn-worm-group",
+          "speciesId": "acorn-worm-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.18,
+          "position": {
+            "x": 8492,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "blocked",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:deep-amphipod-group",
+          "speciesId": "deep-amphipod-group",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.06,
+          "position": {
+            "x": 8494,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "blocked",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:sea-lily-thalassocrinus",
+          "speciesId": "sea-lily-thalassocrinus",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.135,
+          "position": {
+            "x": 8496,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "food-searching",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        },
+        {
+          "id": "baseline:alternating-quill-black-coral",
+          "speciesId": "alternating-quill-black-coral",
+          "regionId": "132,8",
+          "alive": true,
+          "sizeM": 0.275,
+          "position": {
+            "x": 8498,
+            "y": -3500,
+            "z": 608
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.35,
+          "pitch": 0,
+          "timeSec": 8.2,
+          "state": "food-searching",
+          "lastFeedAt": 8,
+          "supportNormal": {
+            "x": 0.12,
+            "y": 0.98,
+            "z": 0.15
+          },
+          "localEnvironment": {
+            "currentMps": 0.04
+          }
+        }
+      ],
+      "species": {
+        "sea-pig-group": {
+          "geometry": "cd6bd149049c3f057a6aea499dc4e20fdb83cc6afdea1302556d1ec5c34f76c2",
+          "animationPose": "ac67bba1153ffb0df95f90e77e7ff2403e9fda516ced5b476d31203adc84699f",
+          "materials": "4a4ae9ca10e9c7665a7f5f34c1457817884111eee810dc289f4974a6f3cad07f",
+          "legacyMeshDigest": "2230d683aa8e9ea6a599bd84773b6b0b91fa6d212a136be5de8b8dd5083b2dc1",
+          "meshes": 3,
+          "vertices": 2797,
+          "triangles": 4336
+        },
+        "rattail-family": {
+          "geometry": "5a946fd5af5ece2c69d72d2de6005beedaa009f8057a72cc4d78981fb15aa814",
+          "animationPose": "77bf047f09ee48c1abd1ecb8561b583a0914c48a1e01ae8dfefbd495410b4d37",
+          "materials": "9cb986c4e58bd46beb9f6d281158fb15aab91e279a280fa6a83323c455e0d254",
+          "legacyMeshDigest": "426b7984e1dbf74f1796be810ca7a4feb9bcba7b7e7e66fc0ae40f8b2c2969e9",
+          "meshes": 4,
+          "vertices": 3451,
+          "triangles": 6020
+        },
+        "pom-pom-anemone": {
+          "geometry": "c81053acc27ae8173e44f038e4a2eb130cfdb79941a33d83c3b6a3d0553d13cc",
+          "animationPose": "03707e2223858127d5f560077c185a9a5908aaab8134012751146a736ea14916",
+          "materials": "d586c5ec95057c9263635bdc421d582acb3f2040d7455ba941ba9e73c614f2e6",
+          "legacyMeshDigest": "9114071e24a36e77f8e9c2a5c2b67f983778e89cd07e4cb44bb7e07fd30dcf5b",
+          "meshes": 2,
+          "vertices": 5457,
+          "triangles": 7808
+        },
+        "giant-sea-spider-group": {
+          "geometry": "6a381a6f87b7486880d53b625a7ada88ce8a037ab5a377cbea243e3b207d89b9",
+          "animationPose": "7178f7f709fd49f571df3aa31c8c3bdf81f6983c42f55eaee408a1deb082f445",
+          "materials": "ca5de047232e2855ff68f0555bc75254a746acd412c180bc711209b0c788424d",
+          "legacyMeshDigest": "62cc6b33f6080106d6df07049d2f529cf04609eb07e8c82e34830bf588858781",
+          "meshes": 36,
+          "vertices": 810,
+          "triangles": 740
+        },
+        "abyssal-brittle-star": {
+          "geometry": "20f15ea36c847439c8cc382fe28b03aca0b59a3a576348691044a967f4ae9516",
+          "animationPose": "1a43e791da133c4cfaa56dd59a5e36b23df1cdd6edf029e2ed9c7744d5243021",
+          "materials": "6beee2783a7a2480aa8268e75159756e5e4b9b82db2205eb5be7ccf6bd1f1b1f",
+          "legacyMeshDigest": "16016cc5a0bed89498e4490fe9089d5c7e2ad5f26c0c80e40b19e770dbc95a07",
+          "meshes": 6,
+          "vertices": 2044,
+          "triangles": 2600
+        },
+        "pyramid-urchin": {
+          "geometry": "a7a527fd276f1d79e2bdb8e35d79a02e31c5e8cb16134b4b85cf757cb4d8ef91",
+          "animationPose": "7743c1f6838ef67f320eb4022293abf9a26060577540d8789eea43ebab46d8ce",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "da2dbf12d14de1f4e8f5f2672a486e7b080b030ca31abed904da4c6bb56aec31",
+          "meshes": 2,
+          "vertices": 1490,
+          "triangles": 1712
+        },
+        "acorn-worm-group": {
+          "geometry": "adb57282a07788a2942bfc6d6a73f125c9a59eeeef0fdef4410ef29da415d916",
+          "animationPose": "2a02a16420bf6c7aaf1cc2105cbb890e439544a6649a7efdfaea746524914632",
+          "materials": "64a035c53d3415cf96527855cbaa8eccf6f7d7f880eda8917b94ce04ac563796",
+          "legacyMeshDigest": "60766bb25d9059387b6229520689640e79be18b51bc6dc29aac1c90673c7b518",
+          "meshes": 2,
+          "vertices": 1228,
+          "triangles": 2048
+        },
+        "deep-amphipod-group": {
+          "geometry": "b4504fa36e46911a07c657442b2785c56f248d3ffbfcce4d23ddbb97b7f73b7c",
+          "animationPose": "6932aa4853ee0bdda60ac81b7cd317d32f8dd92ef4d58ce5f50ff02f531e97b2",
+          "materials": "0bc9749d42537df1411672157467688f970de101165b2c3e33cc2b22eb98a4ff",
+          "legacyMeshDigest": "0418c481df1e07a4780174261648f2a219a3e3ffb2ce389cc3704561d7b32139",
+          "meshes": 3,
+          "vertices": 2130,
+          "triangles": 3096
+        },
+        "sea-lily-thalassocrinus": {
+          "geometry": "c2da1beaac2007db468618cc272718ada120569301e5d9b0a46601ad720df7e9",
+          "animationPose": "65234687b773523c3cdf077505f91b34c6795fd58cf2728c4cbaad29900389d9",
+          "materials": "602d8a81e5716e1aa02f6fa6c8d9a8d7b5d7dd6b3590824bb3d980e5b018effd",
+          "legacyMeshDigest": "212be36da6b5190f16566e00e6f4633a26a6edf2a7bd2268434c815eaa99ec9e",
+          "meshes": 7,
+          "vertices": 2714,
+          "triangles": 4778
+        },
+        "alternating-quill-black-coral": {
+          "geometry": "d519dd150ab5f41e1c982233d266645c30b97e8527e4e6b51c464bb3f664a4f6",
+          "animationPose": "de10d35d0153ed952ad7052e8f5ea4666b3da517d2d0a8574dc6e987e6b91fad",
+          "materials": "4418e00fb1a09daa62747fd4034df895ae134ca71fb1f9151670a7da0489e9a1",
+          "legacyMeshDigest": "355ae1adc1be492d40600c9584e114d96b6e81018f26e69a5d27aab5fb555c12",
+          "meshes": 14,
+          "vertices": 9723,
+          "triangles": 14024
+        }
+      }
+    }
+  ],
+  "oldEightAllFortyReceiptsMatch": true,
+  "activeResources": {
+    "benthic": {
+      "resources": 10,
+      "instances": 4
+    },
+    "hard": {
+      "resources": 18,
+      "instances": 2
+    },
+    "seaSpider": {
+      "assets": 6,
+      "instances": 1
+    }
+  },
+  "afterDispose": {
+    "benthic": {
+      "resources": 0,
+      "instances": 0
+    },
+    "hard": {
+      "resources": 0,
+      "instances": 0
+    },
+    "seaSpider": {
+      "assets": 0,
+      "instances": 0
+    }
+  }
+}
