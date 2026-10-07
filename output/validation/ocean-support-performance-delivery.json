@@ -45,6 +45,23 @@
     "timingIsIsolatedSinglePairedSampleNotFPS": true
   },
   "publication": {
-    "status": "pending"
+    "status": "success",
+    "sourceCommit": "eb1a1fd28eef8e3743dd6d8b63273ffdb2109fd9",
+    "runId": 37589290068,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37589290068",
+    "buildJobId": 112686647273,
+    "deployJobId": 112688049653,
+    "cloudTests": 599,
+    "cloudPassed": 599,
+    "cloudFailed": 0,
+    "sameChecksNotAddedToLocalCount": true,
+    "deploymentId": 6904592605,
+    "deploymentStatusId": 19388183559,
+    "deployedAtUtc": "2026-10-07T07:49:37Z",
+    "deployedAtLocal": "2026-10-07 15:49:37",
+    "timezone": "Asia/Shanghai",
+    "currentCommittedSourceHashCount": 9,
+    "currentCommittedSourceHashesExact": true,
+    "browserGpuVisualAcceptance": false
   }
 }
