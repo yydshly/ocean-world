@@ -10,8 +10,9 @@ const byScore = (random, salt) => (a, b) => random(`${salt}:${a.id}`) - random(`
 /** Illustrative initial occupancy of actual local niches. This is neither a
  * measured density law nor a regeneration rule for existing saved populations.
  * Placement streams do not consume scenery seeds or use a camera/cell label. */
-export function createOceanCommunityPlan(generator, chunk, { random, surface }) {
+export function createOceanCommunityPlan(generator, chunk, { random, surface, biodiversity = false }) {
   const living = generator.profile === 'living-shallows-v1';
+  const diverse = living && biodiversity === true;
   const rocks = chunk.elements.filter(element => element.kind === 'rock');
   const hosts = new Map(rocks.map(rock => [rock.id, rock]));
   const grass = chunk.elements.filter(element => element.kind === 'seagrass');
@@ -113,11 +114,12 @@ export function createOceanCommunityPlan(generator, chunk, { random, surface }) 
     const requested = 3 + Math.floor(clamp(coral.scale.x * coral.scale.z / 4, 0, 1) * 2) +
       Math.floor(random(`${coral.id}:school-size`) * 2);
     const count = Math.min(requested, schoolBudget - (schoolCount - group - 1) * 3);
+    const schoolSpecies = diverse && random(`${coral.id}:resident-school`) < .35 ? 'blue-tang' : 'green-chromis';
     const offset = random(`${coral.id}:school-angle`) * TAU;
     for (let index = 0; index < count; index++) {
       const angle = offset + index / count * TAU;
       const radius = .40 + random(`${coral.id}:school-radius:${index}`) * .38;
-      push('green-chromis', { x: coral.x + Math.cos(angle) * radius, z: coral.z + Math.sin(angle) * radius,
+      push(schoolSpecies, { x: coral.x + Math.cos(angle) * radius, z: coral.z + Math.sin(angle) * radius,
         hostId: coral.id }, 'coral-refuge', coral.id);
     }
     schoolBudget -= count;
@@ -136,7 +138,8 @@ export function createOceanCommunityPlan(generator, chunk, { random, surface }) 
       // A resident ambush predator shares an actual school colony. This uses
       // habitat coordinates, never the observer or a timed encounter script.
       const coral = colonies[0];
-      push('honeycomb-grouper', { x: coral.x + .85, z: coral.z, hostId: coral.id }, 'reef-ambush');
+      const resident = diverse && random(`${coral.id}:reef-resident`) < .45 ? 'butterflyfish' : 'honeycomb-grouper';
+      push(resident, { x: coral.x + .85, z: coral.z, hostId: coral.id }, resident === 'butterflyfish' ? 'reef-benthic-feeder' : 'reef-ambush');
     } else placeHard('honeycomb-grouper', reefSites, predatorQuota, 'reef-ambush');
   }
   for (let index = 0; index < surfaceQuota; index++) {
@@ -151,7 +154,7 @@ export function createOceanCommunityPlan(generator, chunk, { random, surface }) 
     if (push('black-cucumber', site, site.grassNear ? 'sand-with-seagrass' : 'sand')) deposited++;
   }
   return Object.freeze({ version: OCEAN_COMMUNITY_VERSION,
-    ...(living ? { populationRecipeVersion: 'living-open-water-v2' } : {}), placements: Object.freeze(placements.map(Object.freeze)),
+    ...(living ? { populationRecipeVersion: diverse ? 'living-biodiversity-v1' : 'living-open-water-v2' } : {}), placements: Object.freeze(placements.map(Object.freeze)),
     niches: Object.freeze({ coralColonies: corals.length, separateCoralHosts: colonies.length, algaeHosts: algaeHosts.size,
       hardSites: hardSites.length, openSoftSites: softSites.length, grassSoftSites: softSites.filter(site => site.grassNear).length,
       schoolCount, softQuota, grassRatio }) });

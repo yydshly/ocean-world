@@ -125,3 +125,10 @@ output/validation/screenshots/*
 !output/validation/deep-whole-seascape-entry-initial.log
 !output/validation/deep-whole-seascape-cloud-build.log
 !output/validation/deep-whole-seascape-cloud-run.json
+
+!output/validation/ocean-biodiversity-checks.log
+!output/validation/ocean-biodiversity-build.log
+!output/validation/ocean-biodiversity-model.json
+!output/validation/ocean-biodiversity-delivery.json
+!output/validation/ocean-biodiversity-cloud-build.log
+!output/validation/ocean-biodiversity-cloud-run.json

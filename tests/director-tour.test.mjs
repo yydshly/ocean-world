@@ -70,11 +70,11 @@ test('the finite tour covers every existing entry without invented or destructiv
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
   assert.ok(duration >= 360000 && duration <= 660000, 'finite local moving observation stays approximately six to eleven minutes');
-  assert.equal(duration, 618000); assert.equal(included.size, 46);
+  assert.equal(duration, 630000); assert.equal(included.size, 47);
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 52);
+  assert.equal(DIRECTOR_STEPS.length, 53);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));
@@ -100,7 +100,7 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     if (step.action.kind === 'local-life') observedBiomes.add(biome);
     if (step.action.kind === 'layer') layeredBiomes.add(biome);
   }
-  assert.deepEqual(routes, ['shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
+  assert.deepEqual(routes, ['biodiversity-reef', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
     'habitat-belt-reef', 'habitat-belt-meadow', 'seascape-transition', 'connected-seascape',
     'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
     'seagrass-meadow', 'sand-channel', 'reef-garden']);
@@ -127,10 +127,10 @@ test('the opening observes actual nearby life and discoveries before repositioni
     const action = directorStepAction(step);
     assert.equal(action.biome, 'reef'); assert.equal(action.profile, 'living-shallows-v1');
   }
-  assert.equal(DIRECTOR_STEPS[3].action.stopId, 'shallow-scene-reef');
+  assert.equal(DIRECTOR_STEPS[3].action.stopId, 'biodiversity-reef');
   assert.deepEqual(DEMO_LIVING_STOPS.map(stop => stop.id), ['reef-garden', 'sand-channel', 'seagrass-meadow', 'outer-reef',
     'ridge-gully', 'patch-reef', 'meadow-edge', 'shelf-rise', 'sand-basin', 'connected-seascape', 'seascape-transition',
-    'habitat-belt-reef', 'habitat-belt-meadow', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope'], 'ordinary capability buttons retain their original order, with the complete package appended');
+    'habitat-belt-reef', 'habitat-belt-meadow', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope', 'biodiversity-reef'], 'ordinary capability buttons retain their original order, with the complete package appended');
 });
 
 test('opening actions resolve existing shallow, kelp and deep stops without changing their native action references', () => {
@@ -161,8 +161,8 @@ test('the real shallow landmark order reduces repeated relocation while retainin
   const lengths = ids => ids.map((id, index) => distance(index ? stops.get(ids[index - 1]) : origin, stops.get(id)));
   const allIds = DIRECTOR_STEPS.filter(step => step.action.kind === 'living-stop').map(step => step.action.stopId);
   assert.deepEqual([...allIds].sort(), [...stops.keys()].sort());
-  const oldIds = DEMO_LIVING_STOPS.filter(stop => !stop.id.startsWith('shallow-scene-')).map(stop => stop.id);
-  const ids = allIds.filter(id => !id.startsWith('shallow-scene-'));
+  const oldIds = DEMO_LIVING_STOPS.filter(stop => !stop.id.startsWith('shallow-scene-') && stop.id !== 'biodiversity-reef').map(stop => stop.id);
+  const ids = allIds.filter(id => !id.startsWith('shallow-scene-') && id !== 'biodiversity-reef');
   const oldLengths = lengths(oldIds), revisedLengths = lengths(ids), total = legs => legs.reduce((sum, value) => sum + value, 0);
   assert.ok(Math.abs(total(oldLengths) - 10780.567) < .001); assert.ok(Math.abs(total(revisedLengths) - 4977.384) < .001);
   assert.ok(total(revisedLengths) < total(oldLengths) * .47);

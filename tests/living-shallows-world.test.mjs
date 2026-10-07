@@ -118,7 +118,7 @@ test('new scene hides authored terrain and disables all three old additive scene
   const allocations = initializeScene(world);
   assert.equal(world.reefRoot.visible, false); assert.equal(world.floorMesh.visible, false); assert.equal(world.floorContinuation.visible, false);
   assert.deepEqual(world.cameraRocks, [], 'hidden original rocks must not remain as invisible camera collisions');
-  assert.deepEqual(world.oceanEcology.options, { turtles: true, sceneElements: false, habitatScenes: false, macroLandscape: false, livingGeology: true, habitatMosaic: true, seabedRelief: true, seascape: true, livingBelt: true, shallowSeascape: true, turtleGrazing: true });
+  assert.deepEqual(world.oceanEcology.options, { turtles: true, sceneElements: false, habitatScenes: false, macroLandscape: false, livingGeology: true, habitatMosaic: true, seabedRelief: true, seascape: true, livingBelt: true, shallowSeascape: true, turtleGrazing: true, biodiversity: true });
   assert.deepEqual(allocations, ['StubRenderer']);
   for (const key of ['oceanSceneElements', 'oceanHabitatScenes', 'oceanMacroLandscape']) assert.equal(world[key], undefined);
   const old = worldFixture({ profile: null }).world;
@@ -126,7 +126,7 @@ test('new scene hides authored terrain and disables all three old additive scene
   const oldAllocations = initializeScene(old);
   assert.equal(old.reefRoot.visible, true); assert.equal(old.floorMesh.visible, true);
   assert.strictEqual(old.cameraRocks, originalGuards);
-  assert.deepEqual(old.oceanEcology.options, { turtles: true, sceneElements: true, habitatScenes: true, macroLandscape: true, livingGeology: false, habitatMosaic: false, seabedRelief: false, seascape: false, livingBelt: false, shallowSeascape: false, turtleGrazing: false });
+  assert.deepEqual(old.oceanEcology.options, { turtles: true, sceneElements: true, habitatScenes: true, macroLandscape: true, livingGeology: false, habitatMosaic: false, seabedRelief: false, seascape: false, livingBelt: false, shallowSeascape: false, turtleGrazing: false, biodiversity: false });
   assert.deepEqual(oldAllocations, ['StubRenderer', 'SceneElements', 'HabitatScenes', 'MacroLandscape']);
 });
 

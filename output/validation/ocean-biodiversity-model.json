@@ -1,0 +1,929 @@
+{
+  "scope": "CPU production model observations, native supports and persisted food/material records; no browser/GPU acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "windows": [
+    {
+      "x": 12064,
+      "z": 928
+    },
+    {
+      "x": 11296,
+      "z": 288
+    },
+    {
+      "x": 11680,
+      "z": -992
+    }
+  ],
+  "activeOwnerLimit": 9,
+  "animalLimit": 20,
+  "staticPatchLimit": 20,
+  "liveTaxa": [
+    "tropical-urchin",
+    "feather-duster",
+    "sand-goby",
+    "reef-parrotfish",
+    "shallow-anemone",
+    "clown-anemonefish"
+  ],
+  "staticTaxa": [
+    "biodiversity-massive-coral",
+    "biodiversity-grape-algae"
+  ],
+  "taxonomicLevels": {
+    "biodiversity-massive-coral": "species-complex",
+    "biodiversity-grape-algae": "species",
+    "tropical-urchin": "species",
+    "feather-duster": "species",
+    "sand-goby": "species",
+    "reef-parrotfish": "species",
+    "shallow-anemone": "species",
+    "clown-anemonefish": "species"
+  },
+  "union": [
+    "shallow-anemone",
+    "clown-anemonefish",
+    "tropical-urchin",
+    "reef-parrotfish",
+    "biodiversity-massive-coral",
+    "biodiversity-grape-algae",
+    "feather-duster",
+    "sand-goby"
+  ],
+  "fed": [
+    "shallow-anemone",
+    "clown-anemonefish",
+    "tropical-urchin",
+    "reef-parrotfish",
+    "feather-duster",
+    "sand-goby"
+  ],
+  "moved": [
+    "clown-anemonefish",
+    "tropical-urchin",
+    "reef-parrotfish",
+    "sand-goby"
+  ],
+  "owners": [
+    {
+      "id": "187,13",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 32,
+          "sand": 32,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": "sand",
+        "minDepthM": 12.120810260665628,
+        "maxDepthM": 13.10759749903736
+      },
+      "individualRecordCount": 18,
+      "newAgents": [
+        "shallow-anemone",
+        "clown-anemonefish",
+        "tropical-urchin",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral"
+      ]
+    },
+    {
+      "id": "188,13",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.096187734829481,
+        "maxDepthM": 13.274800999366242
+      },
+      "individualRecordCount": 17,
+      "newAgents": [
+        "tropical-urchin",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "189,13",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 8,
+          "sand": 56,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 11.065053201720591,
+        "maxDepthM": 13.066714321228826
+      },
+      "individualRecordCount": 14,
+      "newAgents": [
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "187,14",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.5648818475409,
+        "maxDepthM": 12.818302477214585
+      },
+      "individualRecordCount": 15,
+      "newAgents": [
+        "shallow-anemone",
+        "tropical-urchin",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "188,14",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.063997206460714,
+        "maxDepthM": 12.568979224525458
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        "shallow-anemone",
+        "clown-anemonefish",
+        "tropical-urchin",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "189,14",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 14,
+          "sand": 50,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 11.092661208437452,
+        "maxDepthM": 12.415569861647963
+      },
+      "individualRecordCount": 18,
+      "newAgents": [
+        "shallow-anemone",
+        "clown-anemonefish",
+        "sand-goby",
+        "tropical-urchin"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "187,15",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.491392363230297,
+        "maxDepthM": 14.100805941848556
+      },
+      "individualRecordCount": 19,
+      "newAgents": [
+        "shallow-anemone",
+        "clown-anemonefish",
+        "tropical-urchin",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "188,15",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.45220045142812,
+        "maxDepthM": 12.970892094387366
+      },
+      "individualRecordCount": 18,
+      "newAgents": [
+        "shallow-anemone",
+        "clown-anemonefish",
+        "tropical-urchin",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "189,15",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 27,
+          "sand": 37,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 11.536731409623291,
+        "maxDepthM": 13.564199783149618
+      },
+      "individualRecordCount": 19,
+      "newAgents": [
+        "shallow-anemone",
+        "clown-anemonefish",
+        "sand-goby",
+        "tropical-urchin",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "175,3",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 4,
+          "sand": 31,
+          "seagrass": 29,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "seagrass",
+        "minDepthM": 15.427316666317715,
+        "maxDepthM": 16.747806543529727
+      },
+      "individualRecordCount": 15,
+      "newAgents": [
+        "sand-goby",
+        "tropical-urchin",
+        "feather-duster"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "175,4",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 1,
+          "sand": 10,
+          "seagrass": 53,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": null,
+        "minDepthM": 14.94065451535097,
+        "maxDepthM": 16.28788372012732
+      },
+      "individualRecordCount": 14,
+      "newAgents": [
+        "sand-goby",
+        "feather-duster"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "175,5",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 11,
+          "sand": 28,
+          "seagrass": 25,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "seagrass",
+        "minDepthM": 14.21334470742411,
+        "maxDepthM": 16.04636858116504
+      },
+      "individualRecordCount": 15,
+      "newAgents": [
+        "sand-goby",
+        "tropical-urchin",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "176,3",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 33,
+          "seagrass": 31,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "seagrass",
+        "minDepthM": 16.19198989291559,
+        "maxDepthM": 17.832947940266784
+      },
+      "individualRecordCount": 17,
+      "newAgents": [
+        "sand-goby",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral"
+      ]
+    },
+    {
+      "id": "177,3",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 28,
+          "seagrass": 11,
+          "slope": 25,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "slope",
+        "minDepthM": 17.668665452675786,
+        "maxDepthM": 19.211608888902486
+      },
+      "individualRecordCount": 11,
+      "newAgents": [
+        "sand-goby"
+      ],
+      "staticPatches": []
+    },
+    {
+      "id": "176,4",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 24,
+          "seagrass": 40,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": "sand",
+        "minDepthM": 15.792880292095862,
+        "maxDepthM": 17.811875061621528
+      },
+      "individualRecordCount": 4,
+      "newAgents": [
+        "sand-goby"
+      ],
+      "staticPatches": []
+    },
+    {
+      "id": "177,4",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 15,
+          "seagrass": 17,
+          "slope": 32,
+          "authored-reef": 0
+        },
+        "primary": "slope",
+        "secondary": "seagrass",
+        "minDepthM": 17.68641914989808,
+        "maxDepthM": 19.18575359753386
+      },
+      "individualRecordCount": 14,
+      "newAgents": [
+        "sand-goby",
+        "tropical-urchin",
+        "feather-duster"
+      ],
+      "staticPatches": []
+    },
+    {
+      "id": "176,5",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 20,
+          "seagrass": 44,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": "sand",
+        "minDepthM": 15.800901167331,
+        "maxDepthM": 17.668795089575944
+      },
+      "individualRecordCount": 15,
+      "newAgents": [
+        "sand-goby",
+        "tropical-urchin",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "177,5",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 15,
+          "seagrass": 16,
+          "slope": 33,
+          "authored-reef": 0
+        },
+        "primary": "slope",
+        "secondary": "seagrass",
+        "minDepthM": 17.537035562650324,
+        "maxDepthM": 19.45153731835606
+      },
+      "individualRecordCount": 18,
+      "newAgents": [
+        "sand-goby",
+        "tropical-urchin",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral"
+      ]
+    },
+    {
+      "id": "181,-17",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 16.22488653256841,
+        "maxDepthM": 18.315261265171902
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        "tropical-urchin",
+        "feather-duster"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "182,-17",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 16.129345698184864,
+        "maxDepthM": 17.412185472488595
+      },
+      "individualRecordCount": 17,
+      "newAgents": [
+        "tropical-urchin",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "183,-17",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 16.163584654249163,
+        "maxDepthM": 17.900437603842796
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "181,-16",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 45,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 19,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": "slope",
+        "minDepthM": 17.60383658896673,
+        "maxDepthM": 18.692516463216933
+      },
+      "individualRecordCount": 14,
+      "newAgents": [
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": []
+    },
+    {
+      "id": "182,-16",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 62,
+          "sand": 2,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 15.748813658936339,
+        "maxDepthM": 17.784819955869892
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        "sand-goby",
+        "feather-duster"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "183,-16",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 50,
+          "sand": 14,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": "sand",
+        "minDepthM": 15.65644101372661,
+        "maxDepthM": 16.464260764506278
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        "sand-goby",
+        "tropical-urchin",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "181,-15",
+      "communityType": "hard-reef",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 25,
+          "sand": 10,
+          "seagrass": 0,
+          "slope": 29,
+          "authored-reef": 0
+        },
+        "primary": "slope",
+        "secondary": "reef",
+        "minDepthM": 17.442070151636713,
+        "maxDepthM": 19.699328534359516
+      },
+      "individualRecordCount": 15,
+      "newAgents": [
+        "sand-goby",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "182,-15",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 7,
+          "sand": 57,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 14.007212162017822,
+        "maxDepthM": 17.426156727556787
+      },
+      "individualRecordCount": 14,
+      "newAgents": [
+        "sand-goby",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-grape-algae",
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    },
+    {
+      "id": "183,-15",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 64,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 14.568181991577148,
+        "maxDepthM": 16.666067441987614
+      },
+      "individualRecordCount": 15,
+      "newAgents": [
+        "sand-goby",
+        "feather-duster",
+        "reef-parrotfish"
+      ],
+      "staticPatches": [
+        "biodiversity-massive-coral",
+        "biodiversity-grape-algae",
+        "biodiversity-grape-algae"
+      ]
+    }
+  ]
+}

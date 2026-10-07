@@ -5,8 +5,11 @@ import { isReefGuildSpecies, createReefGuildOrganism, animateReefGuildOrganism,
   updateReefGuildDetail, disposeReefGuildOrganism } from './reefGuildAssets.js';
 import { isOpenWaterSpecies, createOpenWaterOrganism, animateOpenWaterOrganism,
   updateOpenWaterDetail, disposeOpenWaterOrganism } from './openWaterLifeAssets.js';
+import { isOceanBiodiversitySpecies, createOceanBiodiversityAsset, animateOceanBiodiversityAsset,
+  disposeOceanBiodiversityAsset, OceanBiodiversityPatches } from './OceanBiodiversityAssets.js';
 const isTurtle = entity => entity.speciesId === 'green-turtle';
 const disposeAnimal = entity => isTurtle(entity) ? disposeOceanTurtleOrganism(entity.object)
+  : isOceanBiodiversitySpecies(entity.speciesId) ? disposeOceanBiodiversityAsset(entity.object)
   : isReefGuildSpecies(entity.speciesId) ? disposeReefGuildOrganism(entity.object)
   : isOpenWaterSpecies(entity.speciesId) ? disposeOpenWaterOrganism(entity.object) : disposeOrganism(entity.object);
 
@@ -24,6 +27,7 @@ export class OceanAnimals {
     this._pickableObjects = [];
     this._disposed = false;
     this._position = new THREE.Vector3();
+    this._biodiversityPatches = null;
   }
 
   sync(agents) {
@@ -44,6 +48,7 @@ export class OceanAnimals {
       if (this.entities.has(id)) continue;
       const species = this.catalog.get(agent.speciesId);
       const object = agent.speciesId === 'green-turtle' ? createOceanTurtleOrganism(species)
+        : isOceanBiodiversitySpecies(agent.speciesId) ? createOceanBiodiversityAsset(species).group
         : isReefGuildSpecies(agent.speciesId) ? createReefGuildOrganism(species)
         : isOpenWaterSpecies(agent.speciesId) ? createOpenWaterOrganism(species) : createOrganism(species);
       object.userData.agentId = id;
@@ -82,9 +87,13 @@ export class OceanAnimals {
 
   // cameraPosition is in rendered scene coordinates, as is ReefWorld.camera.
   // The agent's Y is already its ecological support height and stays unchanged.
-  update(agents, timeSec, renderOrigin = this.renderOrigin, cameraPosition = null) {
+  update(agents, timeSec, renderOrigin = this.renderOrigin, cameraPosition = null, scenery = []) {
     if (this._disposed) return false;
-    const changed = this.sync(agents);
+    let changed = this.sync(agents);
+    if (Array.isArray(scenery) && scenery.length && !this._biodiversityPatches) {
+      this._biodiversityPatches = new OceanBiodiversityPatches(); this.root.add(this._biodiversityPatches.root);
+    }
+    if (this._biodiversityPatches) changed = this._biodiversityPatches.update(scenery, renderOrigin) || changed;
     this.setRenderOrigin(renderOrigin);
     for (const agent of agents) {
       const entity = this.entities.get(agent.id);
@@ -115,7 +124,8 @@ export class OceanAnimals {
       if (entity.kind === 'turtle') {
         object.rotation.z = Number.isFinite(agent.pitch) ? THREE.MathUtils.clamp(agent.pitch, -.15, .15) : 0;
         animateOceanTurtleOrganism(object, agentTimeSec, agent);
-      } else if (isReefGuildSpecies(entity.speciesId)) animateReefGuildOrganism(object, agentTimeSec, agent);
+      } else if (isOceanBiodiversitySpecies(entity.speciesId)) animateOceanBiodiversityAsset(object, agentTimeSec, agent);
+      else if (isReefGuildSpecies(entity.speciesId)) animateReefGuildOrganism(object, agentTimeSec, agent);
       else if (isOpenWaterSpecies(entity.speciesId)) {
         if (entity.speciesId === 'reef-squid') {
           const horizontalSpeed = Math.hypot(agent.velocity?.x || 0, agent.velocity?.z || 0);
@@ -149,18 +159,21 @@ export class OceanAnimals {
     for (const entity of this.entities.values()) {
       speciesCounts[entity.speciesId] = (speciesCounts[entity.speciesId] || 0) + 1;
     }
-    return { activeAnimals: this.entities.size, speciesCounts, renderOrigin: { ...this.renderOrigin } };
+    return { activeAnimals: this.entities.size, speciesCounts, renderOrigin: { ...this.renderOrigin },
+      ...(this._biodiversityPatches ? { biodiversityScenery: this._biodiversityPatches.stats } : {}) };
   }
 
   reset() {
     for (const entity of this.entities.values()) disposeAnimal(entity);
     this.entities.clear();
     this._pickableObjects = [];
+    this._biodiversityPatches?.reset();
   }
 
   dispose() {
     if (this._disposed) return;
     this.reset();
+    this._biodiversityPatches?.dispose(); this._biodiversityPatches = null;
     this._disposed = true;
     this.root.removeFromParent();
   }

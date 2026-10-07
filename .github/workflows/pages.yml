@@ -32,6 +32,14 @@ jobs:
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test
+          tests/ocean-biodiversity.test.mjs
+          tests/ocean-biodiversity-render.test.mjs
+          tests/ocean-biodiversity-ecology.test.mjs
+          tests/ocean-biodiversity-world.test.mjs
+          tests/ocean-animals.test.mjs
+          tests/ocean-community.test.mjs
+          tests/ocean-reef-guild.test.mjs
+          tests/ocean-open-water-life.test.mjs
           tests/living-shallow-seascape.test.mjs
           tests/living-shallow-seascape-render.test.mjs
           tests/living-shallow-seascape-ecology.test.mjs
