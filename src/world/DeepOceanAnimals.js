@@ -1,11 +1,12 @@
 import * as THREE from 'three';
+import { createDeepBenthicLifeAsset, animateDeepBenthicLifeAsset, disposeDeepBenthicLifeAsset, isDeepBenthicLifeSpecies } from './DeepBenthicLifeAssets.js';
 import { createDeepOrganism, animateDeepOrganism, disposeDeepOrganism } from './deepOrganisms.js';
 import { createDeepSeaSpiderOrganism, animateDeepSeaSpiderOrganism, disposeDeepSeaSpiderOrganism } from './deepSeaSpiderOrganism.js';
 import { DEEP_SEA_SPIDER_SPECIES_ID } from '../deepSeaSpiderGeometry.js';
 
 const supportedSpecies = new Set(['sea-pig-group', 'rattail-family', 'pom-pom-anemone', DEEP_SEA_SPIDER_SPECIES_ID]);
 const finite = (value, fallback = 0) => Number.isFinite(value) ? value : fallback;
-const disposeRegional = object => object.userData.speciesId === DEEP_SEA_SPIDER_SPECIES_ID
+const disposeRegional = object => isDeepBenthicLifeSpecies(object.userData.speciesId) ? disposeDeepBenthicLifeAsset(object) : object.userData.speciesId === DEEP_SEA_SPIDER_SPECIES_ID
   ? disposeDeepSeaSpiderOrganism(object) : disposeDeepOrganism(object);
 
 // Regional adapters retain the authored morphology and its support convention.
@@ -22,7 +23,7 @@ export class DeepOceanAnimals {
   }
   sync(agents) {
     if (this._disposed) return false;
-    const live = new Map(agents.filter(agent => agent.alive !== false && supportedSpecies.has(agent.speciesId) &&
+    const live = new Map(agents.filter(agent => agent.alive !== false && (supportedSpecies.has(agent.speciesId) || isDeepBenthicLifeSpecies(agent.speciesId)) &&
       this.catalog.has(agent.speciesId)).map(agent => [agent.id, agent]));
     let changed = false;
     for (const [id, entity] of this.entities) {
@@ -32,7 +33,7 @@ export class DeepOceanAnimals {
     }
     for (const [id, agent] of live) {
       if (this.entities.has(id)) continue;
-      const species = this.catalog.get(agent.speciesId), object = agent.speciesId === DEEP_SEA_SPIDER_SPECIES_ID
+      const species = this.catalog.get(agent.speciesId), object = isDeepBenthicLifeSpecies(agent.speciesId) ? createDeepBenthicLifeAsset(species) : agent.speciesId === DEEP_SEA_SPIDER_SPECIES_ID
         ? createDeepSeaSpiderOrganism(species) : createDeepOrganism(species);
       object.userData.agentId = id; object.userData.regionId = agent.regionId; object.userData.oceanStreaming = true;
       let hash = 2166136261; for (const char of id) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
@@ -63,8 +64,16 @@ export class DeepOceanAnimals {
       const object = entity.object;
       object.position.set(agent.position.x, agent.position.y, agent.position.z);
       object.scale.setScalar(Number.isFinite(agent.sizeM) && agent.sizeM > 0 ? agent.sizeM : .1);
-      object.rotation.set(0, -finite(agent.heading), 0); object.userData.regionId = agent.regionId;
-      if (agent.speciesId === DEEP_SEA_SPIDER_SPECIES_ID) animateDeepSeaSpiderOrganism(object, finite(agent.timeSec, finite(timeSec)), agent);
+      if (isDeepBenthicLifeSpecies(agent.speciesId)) {
+        const up = new THREE.Vector3(agent.supportNormal?.x ?? 0, agent.supportNormal?.y ?? 1, agent.supportNormal?.z ?? 0).normalize();
+        const forward = new THREE.Vector3(Math.cos(finite(agent.heading)), 0, Math.sin(finite(agent.heading)));
+        forward.addScaledVector(up, -forward.dot(up)).normalize();
+        const side = new THREE.Vector3().crossVectors(forward, up).normalize();
+        object.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(forward, up, side));
+      } else object.rotation.set(0, -finite(agent.heading), 0);
+      object.userData.regionId = agent.regionId;
+      if (isDeepBenthicLifeSpecies(agent.speciesId)) animateDeepBenthicLifeAsset(object, finite(agent.timeSec, finite(timeSec)), agent);
+      else if (agent.speciesId === DEEP_SEA_SPIDER_SPECIES_ID) animateDeepSeaSpiderOrganism(object, finite(agent.timeSec, finite(timeSec)), agent);
       else animateDeepOrganism(object, finite(agent.timeSec, finite(timeSec)), agent, agent.localEnvironment ?? {});
     }
     this.root.updateMatrixWorld(true); return changed;

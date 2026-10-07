@@ -14,10 +14,10 @@ const worldAction = biome => DEMO_ACTIONS.find(action => action.kind === 'world'
 
 test('deep belt and whole-scene shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries', () => {
   const generator=createDeepOceanGenerator('42',{seascape:true});
-  const stops=[...generator.seascapeRouteStops,...generator.wholeSeascapeRouteStops];
+  const stops=[...generator.seascapeRouteStops,...generator.wholeSeascapeRouteStops,...generator.deepBenthicLifeRouteStops];
   assert.deepEqual(DEMO_DEEP_STOPS.map(entry=>entry.id),stops.map(stop=>stop.id));
   assert.deepEqual(stops.map(stop=>stop.id),['deep-plain-community','deep-slope-outcrop',
-    'deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer']);
+    'deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer','deep-bottom-life']);
   for(const entry of DEMO_DEEP_STOPS){
     const {world,protectedState}=observationWorld({biomeId:'deep'}),calls=[];
     world.enterDeepSeascape=id=>{calls.push(id);return stops.some(stop=>stop.id===id);};

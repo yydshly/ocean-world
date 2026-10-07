@@ -1,3 +1,5 @@
+2026-10-07补充：新的原始分类和深度来源已支持Tergivelum属代表接入本轮深海软底群落，参考形态为T. baldwinae，不将4000米实例冒充本场记录；旧段落的暂缓结论对应当时资料。本轮还增加Ophiosphalma glabrum、Echinocrepis rostrata与Eurythenes属代表。见[本轮来源](DEEP_BENTHIC_LIFE_SOURCES.md)与[实施范围](DEEP_BENTHIC_LIFE.md)。
+
 # 深海软底首版：来源、形态准入与接口方案
 
 核查日期：2026-10-03（Asia/Shanghai）。状态：研究与实施方案；本文件没有接入任何场景或修改生态参数。

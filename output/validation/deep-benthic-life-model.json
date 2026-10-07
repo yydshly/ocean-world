@@ -1,0 +1,3211 @@
+{
+  "scope": "CPU actual native generation, whole support, existing food debits and persisted records; no browser/GPU/visual acceptance",
+  "seed": "42",
+  "activeOwnerLimit": 9,
+  "sourceOwnerLimit": 25,
+  "animalRecordLimit": 20,
+  "newAnimalLimit": 4,
+  "sourceSpecies": [
+    {
+      "id": "abyssal-brittle-star",
+      "scientificName": "Ophiosphalma glabrum",
+      "identityLevel": "species",
+      "measure": "arm-span"
+    },
+    {
+      "id": "pyramid-urchin",
+      "scientificName": "Echinocrepis rostrata",
+      "identityLevel": "species",
+      "measure": "test-length"
+    },
+    {
+      "id": "acorn-worm-group",
+      "scientificName": "Tergivelum spp.",
+      "identityLevel": "genus-group",
+      "measure": "body-length"
+    },
+    {
+      "id": "deep-amphipod-group",
+      "scientificName": "Eurythenes spp.",
+      "identityLevel": "genus-group",
+      "measure": "body-length"
+    }
+  ],
+  "windows": [
+    {
+      "x": 8992,
+      "z": 544
+    },
+    {
+      "x": 9248,
+      "z": 544
+    }
+  ],
+  "union": [
+    "abyssal-brittle-star",
+    "pyramid-urchin",
+    "acorn-worm-group",
+    "deep-amphipod-group"
+  ],
+  "fed": [
+    "abyssal-brittle-star",
+    "pyramid-urchin",
+    "acorn-worm-group",
+    "deep-amphipod-group"
+  ],
+  "moved": [
+    "abyssal-brittle-star",
+    "pyramid-urchin",
+    "acorn-worm-group",
+    "deep-amphipod-group"
+  ],
+  "owners": [
+    {
+      "id": "139,7",
+      "totalAnimalRecordCount": 12,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.175,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.013499999999999998
+      },
+      "sourceDepthM": 3501.664556388619,
+      "newAgents": [
+        {
+          "id": "deep-benthic:139,7:abyssal-brittle-star:deep-ocean:139,7:sediment-8938.674932141004-480.40309359773994:4:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.12443828599527479,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 8938.688756389744,
+            "y": -1.784849131867485,
+            "z": 480.38864056529616
+          },
+          "actualSupportDepthM": 3501.7848491318673,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,7:sediment-8938.674932141004-480.40309359773994",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:139,7:pyramid-urchin:deep-ocean:139,7:sediment-8938.657431720643-502.11059233665463:1:0.02",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.07490322809899225,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 8938.674054887731,
+            "y": -1.5059293314433724,
+            "z": 502.0994716210314
+          },
+          "actualSupportDepthM": 3501.5059293314434,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,7:sediment-8938.657431720643-502.11059233665463",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:139,7:acorn-worm-group:deep-ocean:139,7:sediment-8949.513893087358-489.8010250732303:1:0.08",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.21048590197227895,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8949.455713008067,
+            "y": -1.7525985336696603,
+            "z": 489.85593480254687
+          },
+          "actualSupportDepthM": 3501.7525985336697,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,7:sediment-8949.513893087358-489.8010250732303",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:139,7:deep-amphipod-group:deep-ocean:139,7:benthic-animal-2:9:0.16",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.04476893850369379,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8938.702630150945,
+            "y": -1.5049000585200125,
+            "z": 502.26407556667755
+          },
+          "actualSupportDepthM": 3501.50490005852,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,7:benthic-animal-2",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "140,7",
+      "totalAnimalRecordCount": 13,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.175,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.018
+      },
+      "sourceDepthM": 3501.901522232086,
+      "newAgents": [
+        {
+          "id": "deep-benthic:140,7:abyssal-brittle-star:deep-ocean:140,7:sediment-8992.391763723419-458.40696908928453:6:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.16621078832074998,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 8992.38688482214,
+            "y": -2.167056663775979,
+            "z": 458.38757330824075
+          },
+          "actualSupportDepthM": 3502.167056663776,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,7:sediment-8992.391763723419-458.40696908928453",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:140,7:pyramid-urchin:deep-ocean:140,7:sediment-8992.426764564141-501.961969930008:2:0.02",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.059270847612060605,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 8992.420174013507,
+            "y": -1.649448827199021,
+            "z": 501.94308701068064
+          },
+          "actualSupportDepthM": 3501.649448827199,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,7:sediment-8992.426764564141-501.961969930008",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:140,7:acorn-worm-group:deep-ocean:140,7:sediment-8992.426764564141-501.961969930008:6:0.28",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.210353761408478,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8992.70184164828,
+            "y": -1.647674047073277,
+            "z": 502.01424418544843
+          },
+          "actualSupportDepthM": 3501.6476740470735,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,7:sediment-8992.426764564141-501.961969930008",
+          "pool": "surfaceDetritus"
+        }
+      ]
+    },
+    {
+      "id": "141,7",
+      "totalAnimalRecordCount": 12,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.175,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.009
+      },
+      "sourceDepthM": 3501.5566487733145,
+      "newAgents": [
+        {
+          "id": "deep-benthic:141,7:abyssal-brittle-star:deep-ocean:141,7:sediment-9044.504483342691-457.4326018241793:11:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.15439450750127434,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 9044.495707311575,
+            "y": -1.9152136762562877,
+            "z": 457.4146301442957
+          },
+          "actualSupportDepthM": 3501.9152136762564,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,7:sediment-9044.504483342691-457.4326018241793",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:141,7:pyramid-urchin:deep-ocean:141,7:sediment-9044.539484183415-500.9876026649028:5:0.02",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.0675686070579104,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 9044.52701338065,
+            "y": -1.4597799678363075,
+            "z": 500.97196683814553
+          },
+          "actualSupportDepthM": 3501.4597799678363,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,7:sediment-9044.539484183415-500.9876026649028",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:141,7:acorn-worm-group:deep-ocean:141,7:sediment-9067.01966515161-457.7974469184131:10:0.08",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.13874108587391673,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9066.977268673349,
+            "y": -1.7269358906705417,
+            "z": 457.8652889306993
+          },
+          "actualSupportDepthM": 3501.7269358906706,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,7:sediment-9067.01966515161-457.7974469184131",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:141,7:deep-amphipod-group:deep-ocean:141,7:benthic-animal-2:6:0.02",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.07299678949057124,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9066.998248348096,
+            "y": -1.6496214347053784,
+            "z": 468.6532190658621
+          },
+          "actualSupportDepthM": 3501.6496214347053,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,7:benthic-animal-2",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "139,8",
+      "totalAnimalRecordCount": 13,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.175,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.009
+      },
+      "sourceDepthM": 3500.6355838841973,
+      "newAgents": [
+        {
+          "id": "deep-benthic:139,8:abyssal-brittle-star:deep-ocean:139,8:sediment-8938.551376372723-533.2576169848442:0:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.17053816437721253,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 8938.558234457927,
+            "y": -1.0556500991792976,
+            "z": 533.2388295776964
+          },
+          "actualSupportDepthM": 3501.0556500991793,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,8:sediment-8938.551376372723-533.2576169848442",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:139,8:pyramid-urchin:deep-ocean:139,8:sediment-8938.560126582905-522.3863671950251:0:0.02",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.07448128607589752,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 8938.575714311477,
+            "y": -1.2970482455747425,
+            "z": 522.3738363244258
+          },
+          "actualSupportDepthM": 3501.297048245575,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,8:sediment-8938.560126582905-522.3863671950251",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:139,8:acorn-worm-group:deep-ocean:139,8:sediment-8938.551376372723-533.2576169848442:6:0.28",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.2002553144842386,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8938.45536317987,
+            "y": -1.0469441841233844,
+            "z": 533.5206406849136
+          },
+          "actualSupportDepthM": 3501.0469441841233,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,8:sediment-8938.551376372723-533.2576169848442",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:139,8:deep-amphipod-group:deep-ocean:139,8:benthic-animal-3:9:0.28",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.06766275059431791,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8938.74799009179,
+            "y": -1.063251120167162,
+            "z": 533.0582604061337
+          },
+          "actualSupportDepthM": 3501.063251120167,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,8:benthic-animal-3",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "140,8",
+      "totalAnimalRecordCount": 14,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.15,
+        "benthicAnimalFood": 0.048,
+        "suspendedPrey": 0.013499999999999998
+      },
+      "sourceDepthM": 3501.1507220042927,
+      "newAgents": [
+        {
+          "id": "deep-benthic:140,8:abyssal-brittle-star:deep-ocean:140,8:sediment-8992.106782674939-566.6672719794511:4:0.16",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.1370831634104252,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 8992.227810430433,
+            "y": -0.7292857628778583,
+            "z": 566.5626188266075
+          },
+          "actualSupportDepthM": 3500.7292857628777,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,8:sediment-8992.106782674939-566.6672719794511",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:140,8:pyramid-urchin:deep-ocean:140,8:sediment-8992.106782674939-566.6672719794511:1:0.16",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.04842235554009676,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 8992.002129522094,
+            "y": -0.7306679299877719,
+            "z": 566.5462442239573
+          },
+          "actualSupportDepthM": 3500.7306679299877,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,8:sediment-8992.106782674939-566.6672719794511",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:140,8:acorn-worm-group:deep-ocean:140,8:sediment-8970.997629496156-522.2972620843351:8:0.28",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.19672848877497018,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8971.259393487693,
+            "y": -1.3806800039110299,
+            "z": 522.197865843284
+          },
+          "actualSupportDepthM": 3501.380680003911,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,8:sediment-8970.997629496156-522.2972620843351",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:140,8:deep-amphipod-group:deep-ocean:140,8:benthic-animal-1:2:0.28",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.0616560424072668,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8971.292552630339,
+            "y": -1.204699505489022,
+            "z": 544.00185865806
+          },
+          "actualSupportDepthM": 3501.204699505489,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,8:benthic-animal-1",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "141,8",
+      "totalAnimalRecordCount": 13,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.19999999999999998,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.018
+      },
+      "sourceDepthM": 3500.738154926768,
+      "newAgents": [
+        {
+          "id": "deep-benthic:141,8:abyssal-brittle-star:deep-ocean:141,8:sediment-9033.81460318558-565.9280505935103:5:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.17594059554859995,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 9033.809960736211,
+            "y": -0.6052807610223262,
+            "z": 565.9085968621496
+          },
+          "actualSupportDepthM": 3500.605280761022,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,8:sediment-9033.81460318558-565.9280505935103",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:141,8:pyramid-urchin:deep-ocean:141,8:sediment-9033.82335339576-555.0918016444147:5:0.02",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.04693820980377495,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 9033.813926301653,
+            "y": -0.7592210806714128,
+            "z": 555.0741627698269
+          },
+          "actualSupportDepthM": 3500.7592210806715,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,8:sediment-9033.82335339576-555.0918016444147",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:141,8:acorn-worm-group:deep-ocean:141,8:sediment-9055.242667171806-554.3124609652161:2:0.08",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.14391884702257812,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9055.319288177185,
+            "y": -0.6122686004493194,
+            "z": 554.2894561497451
+          },
+          "actualSupportDepthM": 3500.612268600449,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,8:sediment-9055.242667171806-554.3124609652161",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:141,8:deep-amphipod-group:deep-ocean:141,8:benthic-animal-2:4:0.02",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.07478839810239152,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9044.952611744711,
+            "y": -0.6891114649291397,
+            "z": 554.0728687519253
+          },
+          "actualSupportDepthM": 3500.6891114649293,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,8:benthic-animal-2",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "139,9",
+      "totalAnimalRecordCount": 12,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.175,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.013499999999999998
+      },
+      "sourceDepthM": 3499.4355555188477,
+      "newAgents": [
+        {
+          "id": "deep-benthic:139,9:abyssal-brittle-star:deep-ocean:139,9:sediment-8905.976572252735-586.5700196606666:6:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.11267982870340348,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 8905.989831160532,
+            "y": 0.4243774758020095,
+            "z": 586.5550463055298
+          },
+          "actualSupportDepthM": 3499.575622524198,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,9:sediment-8905.976572252735-586.5700196606666",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:139,9:pyramid-urchin:deep-ocean:139,9:sediment-8905.941571412011-630.055018819943:6:0.02",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.07369598302524537,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 8905.929575377935,
+            "y": 0.8736496626783201,
+            "z": 630.0390158462676
+          },
+          "actualSupportDepthM": 3499.1263503373216,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:139,9:sediment-8905.941571412011-630.055018819943",
+          "pool": "surfaceDetritus"
+        }
+      ]
+    },
+    {
+      "id": "140,9",
+      "totalAnimalRecordCount": 13,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.15,
+        "benthicAnimalFood": 0.048,
+        "suspendedPrey": 0.009
+      },
+      "sourceDepthM": 3499.375922553681,
+      "newAgents": [
+        {
+          "id": "deep-benthic:140,9:abyssal-brittle-star:deep-ocean:140,9:sediment-8971.138591484128-618.3714594982564:4:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.12730258541181683,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 8971.141638310191,
+            "y": 0.8511497482276718,
+            "z": 618.3516929393514
+          },
+          "actualSupportDepthM": 3499.1488502517723,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,9:sediment-8971.138591484128-618.3714594982564",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:140,9:pyramid-urchin:deep-ocean:140,9:sediment-8971.138591484128-618.3714594982564:6:0.28",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.06439867310458794,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 8971.399576056769,
+            "y": 0.8491330339456531,
+            "z": 618.2700343887209
+          },
+          "actualSupportDepthM": 3499.1508669660543,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,9:sediment-8971.138591484128-618.3714594982564",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:140,9:acorn-worm-group:deep-ocean:140,9:sediment-8971.138591484128-618.3714594982564:8:0.28",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.22622839909046888,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8971.356920491888,
+            "y": 0.856880421243735,
+            "z": 618.5467662133901
+          },
+          "actualSupportDepthM": 3499.1431195787563,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,9:sediment-8971.138591484128-618.3714594982564",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:140,9:deep-amphipod-group:deep-ocean:140,9:benthic-animal-2:0:0.16",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.07463021375006065,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 8971.307310065307,
+            "y": 0.5662989886070027,
+            "z": 607.4970284696371
+          },
+          "actualSupportDepthM": 3499.433701011393,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:140,9:benthic-animal-2",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "141,9",
+      "totalAnimalRecordCount": 14,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.125,
+        "benthicAnimalFood": 0.048,
+        "suspendedPrey": 0.018
+      },
+      "sourceDepthM": 3499.4518696896134,
+      "newAgents": [
+        {
+          "id": "deep-benthic:141,9:pyramid-urchin:deep-ocean:141,9:sediment-9056.522750437707-585.1296619471908:3:0.28",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.07449002793291584,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 9056.242751813983,
+            "y": -0.04242038309460753,
+            "z": 585.128784045053
+          },
+          "actualSupportDepthM": 3500.0424203830944,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,9:sediment-9056.522750437707-585.1296619471908",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:141,9:acorn-worm-group:deep-ocean:141,9:sediment-9056.531500647887-596.0184121573717:5:0.28",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.13333498022519052,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9056.720308746122,
+            "y": 0.2731503020268635,
+            "z": 596.2251765209368
+          },
+          "actualSupportDepthM": 3499.726849697973,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,9:sediment-9056.531500647887-596.0184121573717",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:141,9:deep-amphipod-group:deep-ocean:141,9:benthic-animal-1:3:0.16",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.06549944057827815,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9056.598531454356,
+            "y": -0.03450924246125759,
+            "z": 585.2705776578681
+          },
+          "actualSupportDepthM": 3500.0345092424614,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:141,9:benthic-animal-1",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "143,7",
+      "totalAnimalRecordCount": 12,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.175,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.009
+      },
+      "sourceDepthM": 3499.77061270652,
+      "newAgents": [
+        {
+          "id": "deep-benthic:143,7:abyssal-brittle-star:deep-ocean:143,7:sediment-9161.141630070955-480.5984178853035:5:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.1445963198505342,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 9161.129709611756,
+            "y": -0.13879422710365444,
+            "z": 480.5823585374808
+          },
+          "actualSupportDepthM": 3500.1387942271035,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,7:sediment-9161.141630070955-480.5984178853035",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:143,7:pyramid-urchin:deep-ocean:143,7:sediment-9161.150380281135-491.4871680954844:4:0.02",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.04541480138199404,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 9161.13495026959,
+            "y": 0.052174672591913954,
+            "z": 491.4744435230454
+          },
+          "actualSupportDepthM": 3499.9478253274083,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,7:sediment-9161.150380281135-491.4871680954844",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:143,7:acorn-worm-group:deep-ocean:143,7:sediment-9161.150380281135-491.4871680954844:8:0.16",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.12649868340231477,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9161.300258751186,
+            "y": 0.05356287475485954,
+            "z": 491.43116412941856
+          },
+          "actualSupportDepthM": 3499.946437125245,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,7:sediment-9161.150380281135-491.4871680954844",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:143,7:deep-amphipod-group:deep-ocean:143,7:benthic-animal-2:3:0.02",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.04660658077802509,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9184.560361818367,
+            "y": 0.4934031358239884,
+            "z": 502.19774608436
+          },
+          "actualSupportDepthM": 3499.506596864176,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,7:benthic-animal-2",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "144,7",
+      "totalAnimalRecordCount": 4,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0,
+        "benthicAnimalFood": 0,
+        "suspendedPrey": 0.018
+      },
+      "sourceDepthM": 3499.0786259410684,
+      "newAgents": []
+    },
+    {
+      "id": "145,7",
+      "totalAnimalRecordCount": 8,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.15,
+        "benthicAnimalFood": 0.048,
+        "suspendedPrey": 0.013499999999999998
+      },
+      "sourceDepthM": 3498.5433577863155,
+      "newAgents": []
+    },
+    {
+      "id": "143,8",
+      "totalAnimalRecordCount": 14,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.19999999999999998,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.018
+      },
+      "sourceDepthM": 3498.8594112458336,
+      "newAgents": [
+        {
+          "id": "deep-benthic:143,8:abyssal-brittle-star:deep-ocean:143,8:sediment-9172.661232998518-545.0026069509983:5:0.02",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.13732415869832038,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 9172.64830026869,
+            "y": 1.0318633232455894,
+            "z": 544.9873509849789
+          },
+          "actualSupportDepthM": 3498.9681366767545,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,8:sediment-9172.661232998518-545.0026069509983",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:143,8:pyramid-urchin:deep-ocean:143,8:sediment-9172.6699832087-555.8913571611791:9:0.02",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.046006505771074444,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 9172.65248021259,
+            "y": 1.1254495367325132,
+            "z": 555.8816801199376
+          },
+          "actualSupportDepthM": 3498.8745504632675,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,8:sediment-9172.6699832087-555.8913571611791",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:143,8:acorn-worm-group:deep-ocean:143,8:sediment-9172.678733418881-566.8151082120836:8:0.08",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.18272943045012652,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9172.623806167296,
+            "y": 1.1903869487520924,
+            "z": 566.7569446751096
+          },
+          "actualSupportDepthM": 3498.809613051248,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,8:sediment-9172.678733418881-566.8151082120836",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:143,8:deep-amphipod-group:deep-ocean:143,8:benthic-animal-3:10:0.16",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.06279920279281213,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9172.595855438873,
+            "y": 1.1240271385236238,
+            "z": 555.7495647998177
+          },
+          "actualSupportDepthM": 3498.8759728614764,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,8:benthic-animal-3",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    },
+    {
+      "id": "144,8",
+      "totalAnimalRecordCount": 8,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.175,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.009
+      },
+      "sourceDepthM": 3498.7583618808326,
+      "newAgents": []
+    },
+    {
+      "id": "145,8",
+      "totalAnimalRecordCount": 11,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.175,
+        "benthicAnimalFood": 0.064,
+        "suspendedPrey": 0.009
+      },
+      "sourceDepthM": 3498.510942608699,
+      "newAgents": []
+    },
+    {
+      "id": "143,9",
+      "totalAnimalRecordCount": 13,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.125,
+        "benthicAnimalFood": 0.048,
+        "suspendedPrey": 0.009
+      },
+      "sourceDepthM": 3498.234750519174,
+      "newAgents": [
+        {
+          "id": "deep-benthic:143,9:abyssal-brittle-star:deep-ocean:143,9:sediment-9204.715490561874-630.3342219084501:6:0.28",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.15949578532949088,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 9204.994500300836,
+            "y": 2.0474853897570857,
+            "z": 630.3577498825306
+          },
+          "actualSupportDepthM": 3497.952514610243,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,9:sediment-9204.715490561874-630.3342219084501",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:143,9:pyramid-urchin:deep-ocean:143,9:sediment-9204.715490561874-630.3342219084501:3:0.28",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.055048145740292966,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 9204.739018535955,
+            "y": 2.045664026019909,
+            "z": 630.0552121694881
+          },
+          "actualSupportDepthM": 3497.95433597398,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,9:sediment-9204.715490561874-630.3342219084501",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:143,9:acorn-worm-group:deep-ocean:143,9:sediment-9204.715490561874-630.3342219084501:8:0.28",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.16887987320311368,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9204.834619608102,
+            "y": 2.05261268756011,
+            "z": 630.5876154173347
+          },
+          "actualSupportDepthM": 3497.94738731244,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:143,9:sediment-9204.715490561874-630.3342219084501",
+          "pool": "surfaceDetritus"
+        }
+      ]
+    },
+    {
+      "id": "144,9",
+      "totalAnimalRecordCount": 9,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.15,
+        "benthicAnimalFood": 0.048,
+        "suspendedPrey": 0.009
+      },
+      "sourceDepthM": 3498.706747965396,
+      "newAgents": []
+    },
+    {
+      "id": "145,9",
+      "totalAnimalRecordCount": 15,
+      "initialFoodByPool": {
+        "surfaceDetritus": 0.15,
+        "benthicAnimalFood": 0.048,
+        "suspendedPrey": 0.013499999999999998
+      },
+      "sourceDepthM": 3498.9942043803617,
+      "newAgents": [
+        {
+          "id": "deep-benthic:145,9:abyssal-brittle-star:deep-ocean:145,9:sediment-9312.701773271561-608.9751713128388:10:0.28",
+          "speciesId": "abyssal-brittle-star",
+          "taxonomicLevel": "species",
+          "sizeM": 0.17435525033622978,
+          "sizeMeasure": "arm-span",
+          "position": {
+            "x": 9312.517381075213,
+            "y": 0.9975974927781367,
+            "z": 609.1858832439816
+          },
+          "actualSupportDepthM": 3499.002402507222,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:145,9:sediment-9312.701773271561-608.9751713128388",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:145,9:pyramid-urchin:deep-ocean:145,9:sediment-9312.701773271561-608.9751713128388:8:0.28",
+          "speciesId": "pyramid-urchin",
+          "taxonomicLevel": "species",
+          "sizeM": 0.06436862268252298,
+          "sizeMeasure": "test-length",
+          "position": {
+            "x": 9312.792059058636,
+            "y": 0.9980128146534805,
+            "z": 609.2402156047073
+          },
+          "actualSupportDepthM": 3499.0019871853465,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:145,9:sediment-9312.701773271561-608.9751713128388",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:145,9:acorn-worm-group:deep-ocean:145,9:sediment-9312.701773271561-608.9751713128388:6:0.28",
+          "speciesId": "acorn-worm-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.22688145272433757,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9312.976451254985,
+            "y": 1.0010744442169466,
+            "z": 609.0295036735646
+          },
+          "actualSupportDepthM": 3498.998925555783,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:145,9:sediment-9312.701773271561-608.9751713128388",
+          "pool": "surfaceDetritus"
+        },
+        {
+          "id": "deep-benthic:145,9:deep-amphipod-group:deep-ocean:145,9:benthic-animal-1:2:0.28",
+          "speciesId": "deep-amphipod-group",
+          "taxonomicLevel": "genus",
+          "sizeM": 0.07113911819760688,
+          "sizeMeasure": "body-length",
+          "position": {
+            "x": 9312.882218193648,
+            "y": 0.8787995354535466,
+            "z": 620.0851022769359
+          },
+          "actualSupportDepthM": 3499.1212004645463,
+          "actualSubstrate": "mud",
+          "foodPatchId": "deep-ocean:145,9:benthic-animal-1",
+          "pool": "benthicAnimalFood"
+        }
+      ]
+    }
+  ],
+  "windowActivity": [
+    {
+      "point": {
+        "x": 8992,
+        "z": 544
+      },
+      "observedSec": 24,
+      "activeOwnerCount": 9,
+      "sourceOwnerCount": 0,
+      "newAnimalRecordCount": 32,
+      "movedNewAnimals": 31,
+      "fedNewAnimals": 18,
+      "actualNewConsumedUnits": 0.01104,
+      "owners": [
+        {
+          "id": "139,7",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.16585873895813807,
+            "benthicAnimalFood": 0.05589903332974322,
+            "suspendedPrey": 0.012899999999999998
+          },
+          "foodLedger": {
+            "initial": 0.2525,
+            "input": 0,
+            "ingested": 0.017720000000000007,
+            "transferred": 0.00010096667025684508,
+            "exported": 0.00012222771211872424,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.175,
+                "input": 0,
+                "ingested": 0.009120000000000005,
+                "transferredIn": 0.00010096667025684508,
+                "transferredOut": 0,
+                "exported": 0.00012222771211872424
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.008,
+                "transferredIn": 0,
+                "transferredOut": 0.00010096667025684508,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.013499999999999998,
+                "input": 0,
+                "ingested": 0.0006,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 5.814460628211964,
+            "feedingGain": 0.052,
+            "maintenanceAndMotionDebit": 0.009670080000026449,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.2061234131827954,
+            "feedingGain": 0.00384,
+            "maintenanceAndMotionDebit": 0.0030194954579584768,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": -2.7755575615628914e-17,
+              "benthicAnimalFood": 6.245004513516506e-17,
+              "suspendedPrey": 0
+            },
+            "food": 2.7755575615628914e-17,
+            "native": 8.881784197001252e-16,
+            "predator": 0,
+            "newAnimals": -1.8207657603852567e-14
+          }
+        },
+        {
+          "id": "140,7",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.1664965485391353,
+            "benthicAnimalFood": 0.055901034190649075,
+            "suspendedPrey": 0.0168
+          },
+          "foodLedger": {
+            "initial": 0.257,
+            "input": 0,
+            "ingested": 0.01768,
+            "transferred": 0.00009896580935094981,
+            "exported": 0.00012241727021579195,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.175,
+                "input": 0,
+                "ingested": 0.008480000000000003,
+                "transferredIn": 0.00009896580935094981,
+                "transferredOut": 0,
+                "exported": 0.00012241727021579195
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.008,
+                "transferredIn": 0,
+                "transferredOut": 0.00009896580935094981,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.018,
+                "input": 0,
+                "ingested": 0.0012,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 7.416553498455324,
+            "feedingGain": 0.0544,
+            "maintenanceAndMotionDebit": 0.012957120000022693,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 1.7570495864190163,
+            "feedingGain": 0.00256,
+            "maintenanceAndMotionDebit": 0.002266912636744354,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 1.3877787807814457e-16,
+              "benthicAnimalFood": 2.7755575615628914e-17,
+              "suspendedPrey": 0
+            },
+            "food": 1.3877787807814457e-16,
+            "native": -5.329070518200751e-15,
+            "predator": 0,
+            "newAnimals": -4.6629367034256575e-15
+          }
+        },
+        {
+          "id": "141,7",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.16585666829679444,
+            "benthicAnimalFood": 0.055741078023983606,
+            "suspendedPrey": 0.0084
+          },
+          "foodLedger": {
+            "initial": 0.248,
+            "input": 0,
+            "ingested": 0.017880000000000007,
+            "transferred": 0.00009892197601644198,
+            "exported": 0.0001222536792220359,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.175,
+                "input": 0,
+                "ingested": 0.009120000000000005,
+                "transferredIn": 0.00009892197601644198,
+                "transferredOut": 0,
+                "exported": 0.0001222536792220359
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.00816,
+                "transferredIn": 0,
+                "transferredOut": 0.00009892197601644198,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.009,
+                "input": 0,
+                "ingested": 0.0006,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 5.7885561453760594,
+            "feedingGain": 0.052,
+            "maintenanceAndMotionDebit": 0.011805120000006775,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.432223529242911,
+            "feedingGain": 0.0041600000000000005,
+            "maintenanceAndMotionDebit": 0.0030157589927545347,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 5.551115123125783e-17,
+              "benthicAnimalFood": 4.163336342344337e-17,
+              "suspendedPrey": 0
+            },
+            "food": 8.326672684688674e-17,
+            "native": -4.085620730620576e-14,
+            "predator": 0,
+            "newAnimals": -2.398081733190338e-14
+          }
+        },
+        {
+          "id": "139,8",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.16409763233872532,
+            "benthicAnimalFood": 0.055900894279756856,
+            "suspendedPrey": 0.0084
+          },
+          "foodLedger": {
+            "initial": 0.248,
+            "input": 0,
+            "ingested": 0.019480000000000004,
+            "transferred": 0.0000991057202431614,
+            "exported": 0.00012147338151782817,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.175,
+                "input": 0,
+                "ingested": 0.010880000000000004,
+                "transferredIn": 0.0000991057202431614,
+                "transferredOut": 0,
+                "exported": 0.00012147338151782817
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.008,
+                "transferredIn": 0,
+                "transferredOut": 0.0000991057202431614,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.009,
+                "input": 0,
+                "ingested": 0.0006,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 6.548048268130515,
+            "feedingGain": 0.059199999999999996,
+            "maintenanceAndMotionDebit": 0.012645120000042254,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.3894435050338507,
+            "feedingGain": 0.00256,
+            "maintenanceAndMotionDebit": 0.0030488795069427738,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 0,
+              "benthicAnimalFood": 1.3877787807814457e-17,
+              "suspendedPrey": 0
+            },
+            "food": 0,
+            "native": -1.687538997430238e-14,
+            "predator": 0,
+            "newAnimals": -1.4654943925052066e-14
+          }
+        },
+        {
+          "id": "140,8",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.1355753687330398,
+            "benthicAnimalFood": 0.043922393348160005,
+            "suspendedPrey": 0.013199999999999998
+          },
+          "foodLedger": {
+            "initial": 0.21150000000000002,
+            "input": 0,
+            "ingested": 0.0187,
+            "transferred": 0.000077606651840042,
+            "exported": 0.00010223791880022007,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.15,
+                "input": 0,
+                "ingested": 0.014400000000000005,
+                "transferredIn": 0.000077606651840042,
+                "transferredOut": 0,
+                "exported": 0.00010223791880022007
+              },
+              "benthicAnimalFood": {
+                "initial": 0.048,
+                "input": 0,
+                "ingested": 0.004,
+                "transferredIn": 0,
+                "transferredOut": 0.000077606651840042,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.013499999999999998,
+                "input": 0,
+                "ingested": 0.0003,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 7.363509441784117,
+            "feedingGain": 0.058399999999999994,
+            "maintenanceAndMotionDebit": 0.0094790400000474,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.3850952336704356,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0.003030036338510741,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": -2.7755575615628914e-17,
+              "benthicAnimalFood": 4.163336342344337e-17,
+              "suspendedPrey": 0
+            },
+            "food": -2.7755575615628914e-17,
+            "native": 0,
+            "predator": 0,
+            "newAnimals": -6.217248937900877e-15
+          }
+        },
+        {
+          "id": "141,8",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.19084146723993542,
+            "benthicAnimalFood": 0.05925823188654553,
+            "suspendedPrey": 0.0168
+          },
+          "foodLedger": {
+            "initial": 0.28200000000000003,
+            "input": 0,
+            "ingested": 0.014960000000000008,
+            "transferred": 0.00010176811345447247,
+            "exported": 0.00014030087351909925,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.19999999999999998,
+                "input": 0,
+                "ingested": 0.009120000000000005,
+                "transferredIn": 0.00010176811345447247,
+                "transferredOut": 0,
+                "exported": 0.00014030087351909925
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.004640000000000001,
+                "transferredIn": 0,
+                "transferredOut": 0.00010176811345447247,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.018,
+                "input": 0,
+                "ingested": 0.0012,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 6.604500961443409,
+            "feedingGain": 0.0404,
+            "maintenanceAndMotionDebit": 0.010246080000016367,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.4523605120973664,
+            "feedingGain": 0.00512,
+            "maintenanceAndMotionDebit": 0.003012137620549563,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 8.326672684688674e-17,
+              "benthicAnimalFood": 0,
+              "suspendedPrey": 0
+            },
+            "food": 0,
+            "native": 8.881784197001252e-16,
+            "predator": 0,
+            "newAnimals": -2.6645352591003757e-14
+          }
+        },
+        {
+          "id": "139,9",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.16409716494125845,
+            "benthicAnimalFood": 0.053901509703232015,
+            "suspendedPrey": 0.012899999999999998
+          },
+          "foodLedger": {
+            "initial": 0.2525,
+            "input": 0,
+            "ingested": 0.021480000000000006,
+            "transferred": 0.00009849029676802354,
+            "exported": 0.00012132535550964609,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.175,
+                "input": 0,
+                "ingested": 0.010880000000000004,
+                "transferredIn": 0.00009849029676802354,
+                "transferredOut": 0,
+                "exported": 0.00012132535550964609
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.01,
+                "transferredIn": 0,
+                "transferredOut": 0.00009849029676802354,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.013499999999999998,
+                "input": 0,
+                "ingested": 0.0006,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 7.3284429023507975,
+            "feedingGain": 0.0662,
+            "maintenanceAndMotionDebit": 0.013221120000034947,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 1.1877996680280194,
+            "feedingGain": 0.00256,
+            "maintenanceAndMotionDebit": 0.0015086096021354309,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 8.326672684688674e-17,
+              "benthicAnimalFood": 3.469446951953614e-17,
+              "suspendedPrey": 0
+            },
+            "food": 1.1102230246251565e-16,
+            "native": -1.3322676295501878e-14,
+            "predator": 0,
+            "newAnimals": -2.220446049250313e-15
+          }
+        },
+        {
+          "id": "140,9",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.1373324665554689,
+            "benthicAnimalFood": 0.043924715937298235,
+            "suspendedPrey": 0.0087
+          },
+          "foodLedger": {
+            "initial": 0.20700000000000002,
+            "input": 0,
+            "ingested": 0.016940000000000004,
+            "transferred": 0.00007528406270180091,
+            "exported": 0.000102817507233,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.15,
+                "input": 0,
+                "ingested": 0.012640000000000005,
+                "transferredIn": 0.00007528406270180091,
+                "transferredOut": 0,
+                "exported": 0.000102817507233
+              },
+              "benthicAnimalFood": {
+                "initial": 0.048,
+                "input": 0,
+                "ingested": 0.004,
+                "transferredIn": 0,
+                "transferredOut": 0.00007528406270180091,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.009,
+                "input": 0,
+                "ingested": 0.0003,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 6.632628464035225,
+            "feedingGain": 0.051199999999999996,
+            "maintenanceAndMotionDebit": 0.010774080000061081,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.3698743838258087,
+            "feedingGain": 0.00128,
+            "maintenanceAndMotionDebit": 0.0030311726926798704,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 1.3877787807814457e-16,
+              "benthicAnimalFood": 3.469446951953614e-17,
+              "suspendedPrey": 0
+            },
+            "food": 1.6653345369377348e-16,
+            "native": 2.6645352591003757e-15,
+            "predator": 0,
+            "newAnimals": -1.199040866595169e-14
+          }
+        },
+        {
+          "id": "141,9",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.11299289113932995,
+            "benthicAnimalFood": 0.04592204371433284,
+            "suspendedPrey": 0.012599999999999998
+          },
+          "foodLedger": {
+            "initial": 0.19099999999999998,
+            "input": 0,
+            "ingested": 0.015200000000000003,
+            "transferred": 0.00007795628566721801,
+            "exported": 0.004285065146337259,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.125,
+                "input": 0,
+                "ingested": 0.012000000000000004,
+                "transferredIn": 0.00007795628566721801,
+                "transferredOut": 0,
+                "exported": 0.00008506514633726075
+              },
+              "benthicAnimalFood": {
+                "initial": 0.048,
+                "input": 0,
+                "ingested": 0.002,
+                "transferredIn": 0,
+                "transferredOut": 0.00007795628566721801,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.018,
+                "input": 0,
+                "ingested": 0.0012,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0.004200000000000001
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 7.374253084370866,
+            "feedingGain": 0.047799999999999995,
+            "maintenanceAndMotionDebit": 0.009215039999997066,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0.600881785992533,
+            "transferredIn": 0,
+            "metabolism": 0.0008400000000000017,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 1.8562474295776337,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0.002286918037868481,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": -1.3877787807814457e-17,
+              "benthicAnimalFood": 5.551115123125783e-17,
+              "suspendedPrey": 0
+            },
+            "food": 5.551115123125783e-17,
+            "native": -2.7533531010703882e-14,
+            "predator": -1.0880185641326534e-14,
+            "newAnimals": -1.176836406102666e-14
+          }
+        }
+      ],
+      "bites": [
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "139,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:139,7:sediment-8938.674932141004-480.40309359773994",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5472063665580713,
+          "energyAfter": 0.5475263665580713,
+          "agentPosition": {
+            "x": 8938.674932141004,
+            "y": -1.784476696253396,
+            "z": 480.40309359773994
+          },
+          "agentHeading": 6.283185307179586,
+          "supportNormal": {
+            "x": 0.01096019021286259,
+            "y": 0.9998231706247576,
+            "z": -0.015280762819801365
+          },
+          "supportOffset": 0.0030000000000085514,
+          "feedingPosition": {
+            "x": 8938.674966237686,
+            "y": -1.7813662892121234,
+            "z": 480.4030460599416
+          },
+          "foodPosition": {
+            "x": 8938.674932141004,
+            "y": -1.7874766962534059,
+            "z": 480.40309359773994
+          },
+          "contactDistanceM": 0.006110687083800935,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "pyramid-urchin",
+          "owner": "139,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:139,7:sediment-8938.657431720643-502.11059233665463",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024526855192367865,
+          "stockAfter": 0.024366855192367864,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5418140227334308,
+          "energyAfter": 0.5421340227334308,
+          "agentPosition": {
+            "x": 8938.671333848086,
+            "y": -1.5058953376906477,
+            "z": 502.0990288229025
+          },
+          "agentHeading": 3.034159943333875,
+          "supportNormal": {
+            "x": 0.013901394711175711,
+            "y": 0.9998658214108521,
+            "z": -0.008665471682833477
+          },
+          "supportOffset": 0.003000000000011438,
+          "feedingPosition": {
+            "x": 8938.671349466977,
+            "y": -1.5047719400253048,
+            "z": 502.0990190868255
+          },
+          "foodPosition": {
+            "x": 8938.657431720643,
+            "y": -1.5086018360471452,
+            "z": 502.11059233665463
+          },
+          "contactDistanceM": 0.01850167230676076,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "acorn-worm-group",
+          "owner": "139,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:139,7:sediment-8949.513893087358-489.8010250732303",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024526855192367865,
+          "stockAfter": 0.024366855192367864,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5758049306405129,
+          "energyAfter": 0.5761249306405128,
+          "agentPosition": {
+            "x": 8949.446540175177,
+            "y": -1.752405672557811,
+            "z": 489.8645774056323
+          },
+          "agentHeading": 5.526772536868578,
+          "supportNormal": {
+            "x": 0.009335708452070579,
+            "y": 0.999879966379057,
+            "z": -0.012365168074631332
+          },
+          "supportOffset": 0.0030003460161265316,
+          "feedingPosition": {
+            "x": 8949.513942213234,
+            "y": -1.7485589488889821,
+            "z": 489.8009600058914
+          },
+          "foodPosition": {
+            "x": 8949.513893087358,
+            "y": -1.756820810819783,
+            "z": 489.8010250732303
+          },
+          "contactDistanceM": 0.008262264197779416,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "140,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:140,7:sediment-8992.391763723419-458.40696908928453",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024526855192367865,
+          "stockAfter": 0.024366855192367864,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5972625319911118,
+          "energyAfter": 0.5975825319911118,
+          "agentPosition": {
+            "x": 8992.391763723419,
+            "y": -2.166785375045742,
+            "z": 458.40696908928453
+          },
+          "agentHeading": 0,
+          "supportNormal": {
+            "x": -0.002580404594058149,
+            "y": 0.9999077337838572,
+            "z": -0.013336619937675076
+          },
+          "supportOffset": 0.00300000000000189,
+          "feedingPosition": {
+            "x": 8992.391753001142,
+            "y": -2.162630488728736,
+            "z": 458.4069136720317
+          },
+          "foodPosition": {
+            "x": 8992.391763723419,
+            "y": -2.1697853750457448,
+            "z": 458.40696908928453
+          },
+          "contactDistanceM": 0.007155108961326014,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "pyramid-urchin",
+          "owner": "140,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:140,7:sediment-8992.426764564141-501.961969930008",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.582186856011516,
+          "energyAfter": 0.582506856011516,
+          "agentPosition": {
+            "x": 8992.423156237728,
+            "y": -1.6493621868364827,
+            "z": 501.9516315316827
+          },
+          "agentHeading": 1.2349932183680392,
+          "supportNormal": {
+            "x": -0.004073312044785375,
+            "y": 0.9999537035902653,
+            "z": -0.008717729354461058
+          },
+          "supportOffset": 0.0030000000000032223,
+          "feedingPosition": {
+            "x": 8992.423152616298,
+            "y": -1.6484731652827136,
+            "z": 501.9516237810746
+          },
+          "foodPosition": {
+            "x": 8992.426764564141,
+            "y": -1.6522573567852323,
+            "z": 501.961969930008
+          },
+          "contactDistanceM": 0.011593492584155873,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "141,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:141,7:sediment-9044.504483342691-457.4326018241793",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024526855192367865,
+          "stockAfter": 0.024366855192367864,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5950304942420647,
+          "energyAfter": 0.5953504942420647,
+          "agentPosition": {
+            "x": 9044.504483342691,
+            "y": -1.914680015844661,
+            "z": 457.4326018241793
+          },
+          "agentHeading": 1.1165317891760898,
+          "supportNormal": {
+            "x": -0.009848509556193628,
+            "y": 0.9996525585785092,
+            "z": -0.02444931465218985
+          },
+          "supportOffset": 0.003020138956380425,
+          "feedingPosition": {
+            "x": 9044.504445328796,
+            "y": -1.9108214942333082,
+            "z": 457.4325074531819
+          },
+          "foodPosition": {
+            "x": 9044.504483342691,
+            "y": -1.9177001548010415,
+            "z": 457.4326018241793
+          },
+          "contactDistanceM": 0.006879412921716341,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "pyramid-urchin",
+          "owner": "141,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:141,7:sediment-9044.539484183415-500.9876026649028",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.6238459530186111,
+          "energyAfter": 0.6241659530186111,
+          "agentPosition": {
+            "x": 9044.532656418964,
+            "y": -1.4596005288126273,
+            "z": 500.9790420497624
+          },
+          "agentHeading": 0.8975335205235923,
+          "supportNormal": {
+            "x": -0.009642145916238383,
+            "y": 0.9998044792351624,
+            "z": -0.017263612699424783
+          },
+          "supportOffset": 0.0030126688676024305,
+          "feedingPosition": {
+            "x": 9044.532646646368,
+            "y": -1.4585871978727445,
+            "z": 500.9790245525885
+          },
+          "foodPosition": {
+            "x": 9044.539484183415,
+            "y": -1.4623995344592593,
+            "z": 500.9876026649028
+          },
+          "contactDistanceM": 0.01161334723445933,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "acorn-worm-group",
+          "owner": "141,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:141,7:sediment-9067.01966515161-457.7974469184131",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.6180882567534314,
+          "energyAfter": 0.6184082567534314,
+          "agentPosition": {
+            "x": 9066.987315149236,
+            "y": -1.726915419485476,
+            "z": 457.8492165692404
+          },
+          "agentHeading": 5.270914936640656,
+          "supportNormal": {
+            "x": -0.007393686357609554,
+            "y": 0.9999635071170394,
+            "z": -0.004279934139195703
+          },
+          "supportOffset": 0.003119469040325784,
+          "feedingPosition": {
+            "x": 9067.019639933953,
+            "y": -1.7234293990536076,
+            "z": 457.7974323028273
+          },
+          "foodPosition": {
+            "x": 9067.01966515161,
+            "y": -1.7299885273842321,
+            "z": 457.7974469184131
+          },
+          "contactDistanceM": 0.006559193090862245,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "deep-amphipod-group",
+          "owner": "141,7",
+          "timeSec": 0.1,
+          "patchId": "deep-ocean:141,7:benthic-animal-2",
+          "pool": "benthicAnimalFood",
+          "stockBefore": 0.015999888,
+          "stockAfter": 0.015839888,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5964266201232832,
+          "energyAfter": 0.5967466201232832,
+          "agentPosition": {
+            "x": 9066.997931612428,
+            "y": -1.649626296533947,
+            "z": 468.6528321827829
+          },
+          "agentHeading": 1.0493048769189928,
+          "supportNormal": {
+            "x": -0.00006579947210890375,
+            "y": 0.9999383661748676,
+            "z": -0.011102230495070793
+          },
+          "supportOffset": 0.0030601393931943832,
+          "feedingPosition": {
+            "x": 9067.012478022245,
+            "y": -1.644964725058546,
+            "z": 468.67809914598666
+          },
+          "foodPosition": {
+            "x": 9067.01091494143,
+            "y": -1.652499033707904,
+            "z": 468.6686967082322
+          },
+          "contactDistanceM": 0.012149685764956362,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "139,8",
+          "timeSec": 18.5,
+          "patchId": "deep-ocean:139,8:sediment-8938.551376372723-533.2576169848442",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024527006377814208,
+          "stockAfter": 0.024367006377814207,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5908083685221143,
+          "energyAfter": 0.5911283685221143,
+          "agentPosition": {
+            "x": 8938.54676444278,
+            "y": -1.055346897390033,
+            "z": 533.2434394079049
+          },
+          "agentHeading": 0.875109102541612,
+          "supportNormal": {
+            "x": 0.01646683810505787,
+            "y": 0.9995575083236969,
+            "z": -0.024771572347035607
+          },
+          "supportOffset": 0.0030000000000147686,
+          "feedingPosition": {
+            "x": 8938.546834648389,
+            "y": -1.0510853298235585,
+            "z": 533.243333795443
+          },
+          "foodPosition": {
+            "x": 8938.551376372723,
+            "y": -1.0580715185680662,
+            "z": 533.2576169848442
+          },
+          "contactDistanceM": 0.01653612991522063,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "pyramid-urchin",
+          "owner": "139,8",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:139,8:sediment-8938.560126582905-522.3863671950251",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.6189967159351153,
+          "energyAfter": 0.6193167159351153,
+          "agentPosition": {
+            "x": 8938.568660864305,
+            "y": -1.2968274138714295,
+            "z": 522.3795065433706
+          },
+          "agentHeading": 2.464482251209989,
+          "supportNormal": {
+            "x": 0.017396697387731266,
+            "y": 0.9996990976743181,
+            "z": -0.017293612380124727
+          },
+          "supportOffset": 0.003000000000016101,
+          "feedingPosition": {
+            "x": 8938.56868030023,
+            "y": -1.295710530754174,
+            "z": 522.3794872226132
+          },
+          "foodPosition": {
+            "x": 8938.560126582905,
+            "y": -1.2995602197107756,
+            "z": 522.3863671950251
+          },
+          "contactDistanceM": 0.011632721329666631,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "141,8",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:141,8:sediment-9033.81460318558-565.9280505935103",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024526855192367865,
+          "stockAfter": 0.024366855192367864,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.6129785362346,
+          "energyAfter": 0.6132985362346,
+          "agentPosition": {
+            "x": 9033.809960736211,
+            "y": -0.6052807610223262,
+            "z": 565.9085968621496
+          },
+          "agentHeading": 4.369678393158838,
+          "supportNormal": {
+            "x": -0.0025137665891621697,
+            "y": 0.9998578719762206,
+            "z": -0.01667083755301882
+          },
+          "supportOffset": 0.0030191533316118457,
+          "feedingPosition": {
+            "x": 9033.809949679371,
+            "y": -0.60088287128584,
+            "z": 565.9085235352223
+          },
+          "foodPosition": {
+            "x": 9033.81460318558,
+            "y": -0.6079638865655435,
+            "z": 565.9280505935103
+          },
+          "contactDistanceM": 0.021286190424873515,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "pyramid-urchin",
+          "owner": "141,8",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:141,8:sediment-9033.82335339576-555.0918016444147",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.6110063657388247,
+          "energyAfter": 0.6113263657388247,
+          "agentPosition": {
+            "x": 9033.818192061724,
+            "y": -0.7590840785460212,
+            "z": 555.0821443605737
+          },
+          "agentHeading": 1.0799701324243993,
+          "supportNormal": {
+            "x": -0.0071292099640445274,
+            "y": 0.9998854347538686,
+            "z": -0.013352592720355421
+          },
+          "supportOffset": 0.003000000000006331,
+          "feedingPosition": {
+            "x": 9033.81818704224,
+            "y": -0.7583800860612779,
+            "z": 555.0821349593717
+          },
+          "foodPosition": {
+            "x": 9033.82335339576,
+            "y": -0.7619183135431778,
+            "z": 555.0918016444147
+          },
+          "contactDistanceM": 0.011517597931962558,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "acorn-worm-group",
+          "owner": "141,8",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:141,8:sediment-9055.242667171806-554.3124609652161",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.6349333980437477,
+          "energyAfter": 0.6352533980437477,
+          "agentPosition": {
+            "x": 9055.303312311904,
+            "y": -0.6123529690467874,
+            "z": 554.2942392515971
+          },
+          "agentHeading": 2.849767093758137,
+          "supportNormal": {
+            "x": -0.008103459599850302,
+            "y": 0.9999227152331653,
+            "z": -0.009428547250136199
+          },
+          "supportOffset": 0.003000000000007108,
+          "feedingPosition": {
+            "x": 9055.24263801579,
+            "y": -0.6090749317989972,
+            "z": 554.3124270415749
+          },
+          "foodPosition": {
+            "x": 9055.242667171806,
+            "y": -0.6156726249062,
+            "z": 554.3124609652161
+          },
+          "contactDistanceM": 0.006597844740784911,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "deep-amphipod-group",
+          "owner": "141,8",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:141,8:benthic-animal-2",
+          "pool": "benthicAnimalFood",
+          "stockBefore": 0.015500143769940414,
+          "stockAfter": 0.015340143769940414,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.595009250922311,
+          "energyAfter": 0.595329250922311,
+          "agentPosition": {
+            "x": 9044.962494917541,
+            "y": -0.6890354383740094,
+            "z": 554.0736561901092
+          },
+          "agentHeading": 3.2215679006900233,
+          "supportNormal": {
+            "x": -0.006895973772511448,
+            "y": 0.9999329447962406,
+            "z": -0.009303303544820809
+          },
+          "supportOffset": 0.0030016171909192924,
+          "feedingPosition": {
+            "x": 9044.932644939214,
+            "y": -0.684776297187348,
+            "z": 554.0712265553776
+          },
+          "foodPosition": {
+            "x": 9044.932675883545,
+            "y": -0.6922649173673314,
+            "z": 554.0712683021277
+          },
+          "contactDistanceM": 0.007488800474230274,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "139,9",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:139,9:sediment-8905.976572252735-586.5700196606666",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024526855192367865,
+          "stockAfter": 0.024366855192367864,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.6272646457844965,
+          "energyAfter": 0.6275846457844965,
+          "agentPosition": {
+            "x": 8905.976572252735,
+            "y": 0.42487086848081845,
+            "z": 586.5700196606666
+          },
+          "agentHeading": 1.7355424442691731,
+          "supportNormal": {
+            "x": 0.018094558259382526,
+            "y": 0.9996931280297978,
+            "z": -0.016918532187991414
+          },
+          "supportOffset": 0.003000000000016323,
+          "feedingPosition": {
+            "x": 8905.976623225028,
+            "y": 0.42768699974137764,
+            "z": 586.5699720012339
+          },
+          "foodPosition": {
+            "x": 8905.976572252735,
+            "y": 0.42187086848080246,
+            "z": 586.5700196606666
+          },
+          "contactDistanceM": 0.005816549873967081,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "pyramid-urchin",
+          "owner": "139,9",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:139,9:sediment-8905.941571412011-630.055018819943",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.561316295535367,
+          "energyAfter": 0.561636295535367,
+          "agentPosition": {
+            "x": 8905.935003583456,
+            "y": 0.8738113564523108,
+            "z": 630.0462571918704
+          },
+          "agentHeading": 7.210728377431548,
+          "supportNormal": {
+            "x": -0.011867998224688339,
+            "y": 0.9998492015908889,
+            "z": -0.012677724409415019
+          },
+          "supportOffset": 0.0030266130368376,
+          "feedingPosition": {
+            "x": 8905.934990464099,
+            "y": 0.8749166294991345,
+            "z": 630.0462431774099
+          },
+          "foodPosition": {
+            "x": 8905.941571412011,
+            "y": 0.870973796408083,
+            "z": 630.055018819943
+          },
+          "contactDistanceM": 0.011656187630829411,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "140,9",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:140,9:sediment-8971.138591484128-618.3714594982564",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5581421952787774,
+          "energyAfter": 0.5584621952787774,
+          "agentPosition": {
+            "x": 8971.138591484128,
+            "y": 0.8517028510103787,
+            "z": 618.3714594982564
+          },
+          "agentHeading": 6.283185307179586,
+          "supportNormal": {
+            "x": -0.0010928348259143128,
+            "y": 0.9996034198389938,
+            "z": -0.028139096613634795
+          },
+          "supportOffset": 0.003000000000001668,
+          "feedingPosition": {
+            "x": 8971.138588006112,
+            "y": 0.8548841535036786,
+            "z": 618.3713699437626
+          },
+          "foodPosition": {
+            "x": 8971.138591484128,
+            "y": 0.8487028510103769,
+            "z": 618.3714594982564
+          },
+          "contactDistanceM": 0.006181952168826524,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        }
+      ]
+    },
+    {
+      "point": {
+        "x": 9248,
+        "z": 544
+      },
+      "observedSec": 24,
+      "activeOwnerCount": 9,
+      "sourceOwnerCount": 0,
+      "newAnimalRecordCount": 15,
+      "movedNewAnimals": 15,
+      "fedNewAnimals": 6,
+      "actualNewConsumedUnits": 0.00336,
+      "owners": [
+        {
+          "id": "143,7",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.1664980791030513,
+            "benthicAnimalFood": 0.057739315715856,
+            "suspendedPrey": 0
+          },
+          "foodLedger": {
+            "initial": 0.248,
+            "input": 0,
+            "ingested": 0.014940000000000005,
+            "transferred": 0.00010068428414405576,
+            "exported": 0.008822605181092682,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.175,
+                "input": 0,
+                "ingested": 0.008480000000000003,
+                "transferredIn": 0.00010068428414405576,
+                "transferredOut": 0,
+                "exported": 0.0001226051810926873
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.0061600000000000005,
+                "transferredIn": 0,
+                "transferredOut": 0.00010068428414405576,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.009,
+                "input": 0,
+                "ingested": 0.0003,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0.0087
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 5.685530167783146,
+            "feedingGain": 0.0438,
+            "maintenanceAndMotionDebit": 0.011805120000048297,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.369236379968934,
+            "feedingGain": 0.00288,
+            "maintenanceAndMotionDebit": 0.003016192816302715,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": -2.7755575615628914e-17,
+              "benthicAnimalFood": 5.551115123125783e-17,
+              "suspendedPrey": 0
+            },
+            "food": 0,
+            "native": -8.881784197001252e-16,
+            "predator": 0,
+            "newAnimals": -2.6645352591003757e-14
+          }
+        },
+        {
+          "id": "144,7",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0,
+            "benthicAnimalFood": 0,
+            "suspendedPrey": 0.012599999999999998
+          },
+          "foodLedger": {
+            "initial": 0.018,
+            "input": 0,
+            "ingested": 0.0009,
+            "transferred": 0,
+            "exported": 0.0045000000000000005,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0,
+                "input": 0,
+                "ingested": 0,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              },
+              "benthicAnimalFood": {
+                "initial": 0,
+                "input": 0,
+                "ingested": 0,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.018,
+                "input": 0,
+                "ingested": 0.0009,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0.0045000000000000005
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 2.98347939029336,
+            "feedingGain": 0.0036,
+            "maintenanceAndMotionDebit": 0.0023039999999597827,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 0,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 0,
+              "benthicAnimalFood": 0,
+              "suspendedPrey": 1.734723475976807e-18
+            },
+            "food": 1.734723475976807e-18,
+            "native": 0,
+            "predator": 0,
+            "newAnimals": 0
+          }
+        },
+        {
+          "id": "145,7",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.14277038734714678,
+            "benthicAnimalFood": 0.0439246879661945,
+            "suspendedPrey": 0.012599999999999998
+          },
+          "foodLedger": {
+            "initial": 0.21150000000000002,
+            "input": 0,
+            "ingested": 0.012100000000000001,
+            "transferred": 0.00007531203380552335,
+            "exported": 0.00010492468665872887,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.15,
+                "input": 0,
+                "ingested": 0.0072000000000000015,
+                "transferredIn": 0.00007531203380552335,
+                "transferredOut": 0,
+                "exported": 0.00010492468665872887
+              },
+              "benthicAnimalFood": {
+                "initial": 0.048,
+                "input": 0,
+                "ingested": 0.004,
+                "transferredIn": 0,
+                "transferredOut": 0.00007531203380552335,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.013499999999999998,
+                "input": 0,
+                "ingested": 0.0009,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 5.990704413875937,
+            "feedingGain": 0.0392,
+            "maintenanceAndMotionDebit": 0.009670080000032,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 0,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 0,
+              "benthicAnimalFood": 2.7755575615628914e-17,
+              "suspendedPrey": 0
+            },
+            "food": 0,
+            "native": 7.105427357601002e-15,
+            "predator": 0,
+            "newAnimals": 0
+          }
+        },
+        {
+          "id": "143,8",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.19083836408912683,
+            "benthicAnimalFood": 0.053901453722714626,
+            "suspendedPrey": 0.017099999999999997
+          },
+          "foodLedger": {
+            "initial": 0.28200000000000003,
+            "input": 0,
+            "ingested": 0.02002000000000001,
+            "transferred": 0.00009854627728543493,
+            "exported": 0.00014018218815868685,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.19999999999999998,
+                "input": 0,
+                "ingested": 0.009120000000000005,
+                "transferredIn": 0.00009854627728543493,
+                "transferredOut": 0,
+                "exported": 0.00014018218815868685
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.01,
+                "transferredIn": 0,
+                "transferredOut": 0.00009854627728543493,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.018,
+                "input": 0,
+                "ingested": 0.0009,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 7.149156672367826,
+            "feedingGain": 0.0602,
+            "maintenanceAndMotionDebit": 0.012957120000028244,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.3258571315696464,
+            "feedingGain": 0.00384,
+            "maintenanceAndMotionDebit": 0.0030133963437044766,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 1.3877787807814457e-16,
+              "benthicAnimalFood": 6.245004513516506e-17,
+              "suspendedPrey": 0
+            },
+            "food": 1.6653345369377348e-16,
+            "native": 0,
+            "predator": 0,
+            "newAnimals": -1.4654943925052066e-14
+          }
+        },
+        {
+          "id": "144,8",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.1629834966400623,
+            "benthicAnimalFood": 0.0618953120186213,
+            "suspendedPrey": 0.0087
+          },
+          "foodLedger": {
+            "initial": 0.248,
+            "input": 0,
+            "ingested": 0.014300000000000004,
+            "transferred": 0.00010468798137877925,
+            "exported": 0.00012119134131639043,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.175,
+                "input": 0,
+                "ingested": 0.012000000000000004,
+                "transferredIn": 0.00010468798137877925,
+                "transferredOut": 0,
+                "exported": 0.00012119134131639043
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.002,
+                "transferredIn": 0,
+                "transferredOut": 0.00010468798137877925,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.009,
+                "input": 0,
+                "ingested": 0.0003,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 5.978749496070669,
+            "feedingGain": 0.044199999999999996,
+            "maintenanceAndMotionDebit": 0.00806304000004654,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 0,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": -8.326672684688674e-17,
+              "benthicAnimalFood": 7.632783294297951e-17,
+              "suspendedPrey": 0
+            },
+            "food": -2.7755575615628914e-17,
+            "native": -8.881784197001252e-16,
+            "predator": 0,
+            "newAnimals": 0
+          }
+        },
+        {
+          "id": "145,8",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.16057974724528257,
+            "benthicAnimalFood": 0.055900195137222754,
+            "suspendedPrey": 0.0084
+          },
+          "foodLedger": {
+            "initial": 0.248,
+            "input": 0,
+            "ingested": 0.022999999999999993,
+            "transferred": 0.00009980486277726167,
+            "exported": 0.00012005761749476564,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.175,
+                "input": 0,
+                "ingested": 0.014400000000000005,
+                "transferredIn": 0.00009980486277726167,
+                "transferredOut": 0,
+                "exported": 0.00012005761749476564
+              },
+              "benthicAnimalFood": {
+                "initial": 0.064,
+                "input": 0,
+                "ingested": 0.008,
+                "transferredIn": 0,
+                "transferredOut": 0.00009980486277726167,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.009,
+                "input": 0,
+                "ingested": 0.0006,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 7.984935273265002,
+            "feedingGain": 0.0736,
+            "maintenanceAndMotionDebit": 0.014325120000084346,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 0,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 5.551115123125783e-17,
+              "benthicAnimalFood": 1.3877787807814457e-17,
+              "suspendedPrey": 0
+            },
+            "food": 5.551115123125783e-17,
+            "native": 1.7763568394002505e-15,
+            "predator": 0,
+            "newAnimals": 0
+          }
+        },
+        {
+          "id": "143,9",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.11298883910410407,
+            "benthicAnimalFood": 0.041926269451843426,
+            "suspendedPrey": 0.0084
+          },
+          "foodLedger": {
+            "initial": 0.182,
+            "input": 0,
+            "ingested": 0.0186,
+            "transferred": 0.00007373054815656841,
+            "exported": 0.00008489144405251555,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.125,
+                "input": 0,
+                "ingested": 0.012000000000000004,
+                "transferredIn": 0.00007373054815656841,
+                "transferredOut": 0,
+                "exported": 0.00008489144405251555
+              },
+              "benthicAnimalFood": {
+                "initial": 0.048,
+                "input": 0,
+                "ingested": 0.006,
+                "transferredIn": 0,
+                "transferredOut": 0.00007373054815656841,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.009,
+                "input": 0,
+                "ingested": 0.0006,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 7.079624079016503,
+            "feedingGain": 0.059399999999999994,
+            "maintenanceAndMotionDebit": 0.01348512000007196,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 1.7833721944410352,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0.0022632227603764134,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 2.7755575615628914e-17,
+              "benthicAnimalFood": -6.938893903907228e-18,
+              "suspendedPrey": 0
+            },
+            "food": 0,
+            "native": 2.6645352591003757e-15,
+            "predator": 0,
+            "newAnimals": -2.042810365310288e-14
+          }
+        },
+        {
+          "id": "144,9",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.13797514704535993,
+            "benthicAnimalFood": 0.04392236536872568,
+            "suspendedPrey": 0.0084
+          },
+          "foodLedger": {
+            "initial": 0.20700000000000002,
+            "input": 0,
+            "ingested": 0.016600000000000004,
+            "transferred": 0.00007763463127438629,
+            "exported": 0.00010248758591444246,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.15,
+                "input": 0,
+                "ingested": 0.012000000000000004,
+                "transferredIn": 0.00007763463127438629,
+                "transferredOut": 0,
+                "exported": 0.00010248758591444246
+              },
+              "benthicAnimalFood": {
+                "initial": 0.048,
+                "input": 0,
+                "ingested": 0.004,
+                "transferredIn": 0,
+                "transferredOut": 0.00007763463127438629,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.009,
+                "input": 0,
+                "ingested": 0.0006,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 5.73398184980033,
+            "feedingGain": 0.052399999999999995,
+            "maintenanceAndMotionDebit": 0.00806304000004654,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0.633001646026969,
+            "transferredIn": 0,
+            "metabolism": 0.0008400000000000017,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 0,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 0,
+              "benthicAnimalFood": 6.938893903907228e-17,
+              "suspendedPrey": 0
+            },
+            "food": 2.7755575615628914e-17,
+            "native": 8.881784197001252e-16,
+            "predator": -1.0880185641326534e-14,
+            "newAnimals": 0
+          }
+        },
+        {
+          "id": "145,9",
+          "finalFoodByPool": {
+            "surfaceDetritus": 0.1379689306692497,
+            "benthicAnimalFood": 0.03592826924880127,
+            "suspendedPrey": 0.013199999999999998
+          },
+          "foodLedger": {
+            "initial": 0.21150000000000002,
+            "input": 0,
+            "ingested": 0.024300000000000002,
+            "transferred": 0.00007173075119873929,
+            "exported": 0.00010280008194901239,
+            "byPool": {
+              "surfaceDetritus": {
+                "initial": 0.15,
+                "input": 0,
+                "ingested": 0.012000000000000004,
+                "transferredIn": 0.00007173075119873929,
+                "transferredOut": 0,
+                "exported": 0.00010280008194901239
+              },
+              "benthicAnimalFood": {
+                "initial": 0.048,
+                "input": 0,
+                "ingested": 0.012,
+                "transferredIn": 0,
+                "transferredOut": 0.00007173075119873929,
+                "exported": 0
+              },
+              "suspendedPrey": {
+                "initial": 0.013499999999999998,
+                "input": 0,
+                "ingested": 0.0003,
+                "transferredIn": 0,
+                "transferredOut": 0,
+                "exported": 0
+              }
+            }
+          },
+          "nativeConditionLedger": {
+            "initial": 8.261877526144962,
+            "feedingGain": 0.0792,
+            "maintenanceAndMotionDebit": 0.014061120000060212,
+            "clampCorrection": 0
+          },
+          "predatorConditionLedger": {
+            "initial": 0,
+            "transferredIn": 0,
+            "metabolism": 0,
+            "loss": 0
+          },
+          "newConditionLedger": {
+            "initial": 2.2827748331381006,
+            "feedingGain": 0,
+            "maintenanceAndMotionDebit": 0.003021996596830699,
+            "clampCorrection": 0
+          },
+          "balanceErrors": {
+            "byPool": {
+              "surfaceDetritus": 0,
+              "benthicAnimalFood": 1.3877787807814457e-17,
+              "suspendedPrey": 0
+            },
+            "food": -5.551115123125783e-17,
+            "native": 0,
+            "predator": 0,
+            "newAnimals": -1.3766765505351941e-14
+          }
+        }
+      ],
+      "bites": [
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "143,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:143,7:sediment-9161.141630070955-480.5984178853035",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024526855192367865,
+          "stockAfter": 0.024366855192367864,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.623089148780083,
+          "energyAfter": 0.623409148780083,
+          "agentPosition": {
+            "x": 9161.141630070955,
+            "y": -0.13830660448055787,
+            "z": 480.5984178853035
+          },
+          "agentHeading": 0,
+          "supportNormal": {
+            "x": -0.01645807297447815,
+            "y": 0.9997000227606907,
+            "z": -0.018138255876503664
+          },
+          "supportOffset": 0.0030000000000136584,
+          "feedingPosition": {
+            "x": 9161.141570576536,
+            "y": -0.13469278087441558,
+            "z": 480.5983523171773
+          },
+          "foodPosition": {
+            "x": 9161.141630070955,
+            "y": -0.14130660448057203,
+            "z": 480.5984178853035
+          },
+          "contactDistanceM": 0.006614416184250623,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "pyramid-urchin",
+          "owner": "143,7",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:143,7:sediment-9161.150380281135-491.4871680954844",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.58384868649579,
+          "energyAfter": 0.58416868649579,
+          "agentPosition": {
+            "x": 9161.133574259466,
+            "y": 0.052159594684969945,
+            "z": 491.4745786394465
+          },
+          "agentHeading": 2.089396445505467,
+          "supportNormal": {
+            "x": -0.012491620624953672,
+            "y": 0.9997995980276028,
+            "z": -0.015643631228271282
+          },
+          "supportOffset": 0.0030000000000105567,
+          "feedingPosition": {
+            "x": 9161.133565749898,
+            "y": 0.05284068018746326,
+            "z": 491.47456798266046
+          },
+          "foodPosition": {
+            "x": 9161.150380281135,
+            "y": 0.049566555495236315,
+            "z": 491.4871680954844
+          },
+          "contactDistanceM": 0.021265257966336475,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "deep-amphipod-group",
+          "owner": "143,7",
+          "timeSec": 0.1,
+          "patchId": "deep-ocean:143,7:benthic-animal-2",
+          "pool": "benthicAnimalFood",
+          "stockBefore": 0.015999888,
+          "stockAfter": 0.015839888,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5905812771983587,
+          "energyAfter": 0.5909012771983587,
+          "agentPosition": {
+            "x": 9184.56039772785,
+            "y": 0.49339871868850227,
+            "z": 502.19724737551803
+          },
+          "agentHeading": 5.038033805112091,
+          "supportNormal": {
+            "x": -0.013950129847912525,
+            "y": 0.9998540732552352,
+            "z": -0.009860328196424153
+          },
+          "supportOffset": 0.0030000000000111604,
+          "feedingPosition": {
+            "x": 9184.566324204683,
+            "y": 0.4961037566670337,
+            "z": 502.17955762691867
+          },
+          "foodPosition": {
+            "x": 9184.544619579763,
+            "y": 0.4900618407292921,
+            "z": 502.1854098805785
+          },
+          "contactDistanceM": 0.02327755064463353,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "abyssal-brittle-star",
+          "owner": "143,8",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:143,8:sediment-9172.661232998518-545.0026069509983",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.6034765932318715,
+          "energyAfter": 0.6037965932318715,
+          "agentPosition": {
+            "x": 9172.658969770779,
+            "y": 1.032170325233242,
+            "z": 544.9999371569361
+          },
+          "agentHeading": 0.8676296092803819,
+          "supportNormal": {
+            "x": -0.012756041399580005,
+            "y": 0.9998264962330695,
+            "z": -0.013574271181760795
+          },
+          "supportOffset": 0.0030000000000081073,
+          "feedingPosition": {
+            "x": 9172.658925977963,
+            "y": 1.0356028335442293,
+            "z": 544.9998905550518
+          },
+          "foodPosition": {
+            "x": 9172.661232998518,
+            "y": 1.0292311920773434,
+            "z": 545.0026069509983
+          },
+          "contactDistanceM": 0.007300614067503855,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "pyramid-urchin",
+          "owner": "143,8",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:143,8:sediment-9172.6699832087-555.8913571611791",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024526855192367865,
+          "stockAfter": 0.024366855192367864,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5702480884678062,
+          "energyAfter": 0.5705680884678062,
+          "agentPosition": {
+            "x": 9172.660400318435,
+            "y": 1.1255630021782277,
+            "z": 555.8860589811127
+          },
+          "agentHeading": 6.788236297012608,
+          "supportNormal": {
+            "x": -0.010973425553914035,
+            "y": 0.9999214133215406,
+            "z": -0.006062269596899379
+          },
+          "supportOffset": 0.0030000000000101057,
+          "feedingPosition": {
+            "x": 9172.6603927457,
+            "y": 1.1262530455323168,
+            "z": 555.8860547975551
+          },
+          "foodPosition": {
+            "x": 9172.6699832087,
+            "y": 1.12270028909599,
+            "z": 555.8913571611791
+          },
+          "contactDistanceM": 0.011520161407192343,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "speciesId": "acorn-worm-group",
+          "owner": "143,8",
+          "timeSec": 18.1,
+          "patchId": "deep-ocean:143,8:sediment-9172.678733418881-566.8151082120836",
+          "pool": "surfaceDetritus",
+          "stockBefore": 0.024506601428570706,
+          "stockAfter": 0.024346601428570706,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.5449225415688012,
+          "energyAfter": 0.5452425415688011,
+          "agentPosition": {
+            "x": 9172.623536246965,
+            "y": 1.1903824564418986,
+            "z": 566.7566552269125
+          },
+          "agentHeading": 0.8140302701323524,
+          "supportNormal": {
+            "x": -0.008291184902212053,
+            "y": 0.99993530393029,
+            "z": -0.007787439037056666
+          },
+          "supportOffset": 0.003000000000007441,
+          "feedingPosition": {
+            "x": 9172.678695542794,
+            "y": 1.1958633047348066,
+            "z": 566.8150726372261
+          },
+          "foodPosition": {
+            "x": 9172.678733418881,
+            "y": 1.1882953645204448,
+            "z": 566.8151082120836
+          },
+          "contactDistanceM": 0.007568118607461413,
+          "allowedDistanceM": 0.025,
+          "unit": "relative-organic-food-proxy-unit"
+        }
+      ]
+    }
+  ]
+}

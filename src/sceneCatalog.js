@@ -15,6 +15,7 @@ import { DEFAULT_ENVIRONMENT as reefBaseline } from './simulation.js';
 import { DEFAULT_ENVIRONMENT as kelpBaseline } from './kelpSimulation.js';
 import { DEFAULT_ENVIRONMENT as deepBaseline, deepSpeciesCatalog } from './deepSimulation.js';
 import { deepPredatorSpeciesCatalog } from './deepPredatorSpecies.js';
+import { deepBenthicLifeSpeciesCatalog } from './deepBenthicLifeSpecies.js';
 const kelpPacket=Object.values(biomeById).find(b=>b.id.includes('kelp'));
 const kelp=(kelpPacket.organisms||kelpPacket.species).map(s=>({...s,commonName:s.commonName.replace('（描述性中文名）',''),nameNote:s.commonName.includes('（描述性中文名）')?'中文名为描述性译名，以学名辨认。':null,lengthM:(s.displaySizeM.range[0]+s.displaySizeM.range[1])/2,colors:s.kind==='kelp'?['#87754d']:['#829377'],description:s.shape,behavior:s.behaviorRules.join(' '),sources:s.sourceLinks}));
 const deepBehaviors={
@@ -26,7 +27,7 @@ const deepBehaviors={
 const deep=[...deepSpeciesCatalog,...deepPredatorSpeciesCatalog.map(s=>({...s,regionalOnly:true}))].map(s=>({...s,commonName:s.commonName.replace('（描述性中文名）',''),
   nameNote:(s.identityLevel==='genus-group'?'属层级代表模型，未辨认为具名物种。':s.identityLevel==='family-group'?'科层级代表模型，未辨认为具名物种。':'')+(s.commonName.includes('（描述性中文名）')?'中文名为描述性译名，以学名辨认。':''),
   description:s.shape,behavior:deepBehaviors[s.id],colors:s.kind==='fish'?['#796d67']:['#c4a0a1']}));
-export const sceneCatalogs={reef:[...speciesCatalog,...oceanSlopeSpeciesCatalog,...oceanPelagicSpeciesCatalog,...oceanMantaSpeciesCatalog,...oceanTurtleSpeciesCatalog],kelp:[...kelp,...kelpWaterSpeciesCatalog,...kelpVisitorSpeciesCatalog,...kelpBenthicLifeSpeciesCatalog],deep};
+export const sceneCatalogs={reef:[...speciesCatalog,...oceanSlopeSpeciesCatalog,...oceanPelagicSpeciesCatalog,...oceanMantaSpeciesCatalog,...oceanTurtleSpeciesCatalog],kelp:[...kelp,...kelpWaterSpeciesCatalog,...kelpVisitorSpeciesCatalog,...kelpBenthicLifeSpeciesCatalog],deep:[...deep,...deepBenthicLifeSpeciesCatalog]};
 export const livingShallowsSpeciesCatalog = Object.freeze([...sceneCatalogs.reef,...oceanReefGuildSpeciesCatalog,...openWaterSpeciesCatalog,...oceanBiodiversitySpeciesCatalog,...oceanBenthicLifeSpeciesCatalog]);
 export const sceneDefinitions={
   reef:{id:'reef',title:'在礁间，',label:'浅海珊瑚礁',eyebrow:'INDO-PACIFIC · SHALLOW REEF',subtitle:'热带浅海礁区',surfaceY:8,baseline:reefBaseline,views:{wide:'全景',reef:'礁边',coral:'珊瑚',skeleton:'骨架',crevice:'岩隙'}},

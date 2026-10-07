@@ -1,0 +1,116 @@
+{
+  "scope": "Finite four deep soft-bottom taxa in native persistent exploration; CPU and Three geometry; no browser/GPU/visual acceptance",
+  "files": {
+    "src/deepBenthicLife.js": "4ab750c9d3d7d4a2ec0e8a87e3ff0f5075bc011fc484c51779705b3da90574e0",
+    "src/deepBenthicLifeSpecies.js": "ed8fd46ed2d6d9632b3ffc1d1dbfd0ef91376e6c90294050660a3a7b31aa7f12",
+    "src/deepBenthicLifeRoutes.js": "5c621a776d497f7bd4a73adc03788a1653c83ba4d47b435893a9a2c05e5fd0c3",
+    "src/world/DeepBenthicLifeAssets.js": "e75d7def429e3414c902206344beabc1704f9515d8ec75638c90e0513093459a",
+    "src/deepOceanEcology.js": "5f7bb0879d452de2c0dd4dad218ee0b34d9e8280aece4e19cc8cabd22e81fcc7",
+    "src/deepSeascape.js": "e0ef00f41a35faf5559d5961238eedf113a86dfa4b37c45d8fac5ee188f15d78",
+    "src/sceneCatalog.js": "936f22f0cd720796a952dc593e82e2a13ca3d38820a8ed36fb274dffd9f1f000",
+    "src/world/DeepOceanAnimals.js": "0b15aa0bbd366f6bfbf912fb158f68b41a6ab90882dd4c709d547eba9ac79f38",
+    "src/world/ReefWorld.js": "9a99b167e66074405005ac557faad8c4e496012e7a5890818ebbf27e0f1cc36a",
+    "src/OceanApp.jsx": "98b15e219b25c1e4ef1527d762827b5ed9d68266b88c164f9be6ca0827e449e7",
+    "src/demoCapabilities.js": "934e42d867999d3a1d4d4991d6d84594cc6fd7c9728069fb3c2d54dd1d2e0504",
+    "src/directorTour.js": "b91458a4919d1bf18cd0a0e4cc00292d059d812a9802f44adb6ba9ff2b288fa1",
+    ".github/workflows/pages.yml": "b51ba7d4b530a285fd47a816e39dcbf86d0fe549107cd045fa830833447f43c6",
+    "src/deepSimulation.js": "3ed350e678bb89002445d1c9c6b376aa7dcae5780a04c5d4d4a1c853bfe7623b",
+    "src/deepHabitat.js": "8dae6cd5f9b0c6b1dc95246b8a5d586d063ad36bf64fe087d8ef850e93cb0da1",
+    "src/deepOceanGeneration.js": "c42c5d17d1a6d27eaffcd967d578fe89cd53b9303dc5b221a561ec12f1cff7d0",
+    "src/deepPredatorEcology.js": "2430aee861189a3cb097d1fa1bfb83173ab37431d3417f5f199053ea0f084801",
+    "src/deepSeaSpiderGeometry.js": "2b93dcb618f913ed23d5bb2a67907e23b6d8f4526f8cd9a867e10dc6018b017d",
+    "src/deepSpecies.js": "9da0e1b41bbb9c4b61c26d082bd8a3090b0d1350fef626836ecdb44ea2a88c8a",
+    "src/world/deepOrganisms.js": "afd05b3a2c5d3ddc9d6989ccd599c716a98640b7bd8307e5859689791345f950",
+    "src/world/deepSeaSpiderOrganism.js": "6d5a04a9caf54f826c33fb874c68fe8b754193648da45dd931c1b5533b3cab18",
+    "src/world/DeepOceanChunks.js": "12d3a8b0ffb513ac59df9b8b39e9d2af2299925143c2082f2061898acb63797e",
+    "src/oceanRockShape.js": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "tests/deep-benthic-life.test.mjs": "b591b9f6c064934942cf2af9bfabeff5059e90909273640c2617a204f38d35f5",
+    "tests/deep-benthic-life-render.test.mjs": "7643354f751b295340e92b0300451be0b80d50688b692f9c9e29393766fe2b5e",
+    "tests/deep-benthic-life-ecology.test.mjs": "c2bc0e53aa9edda1dd242c586d9e722ceeb2dfb35524f23d03e84021a349ef13",
+    "tests/deep-benthic-life-world.test.mjs": "8bd36c640c68897681136d52edb083407eadd91dacebb44d5ba1cb9aef66014a",
+    "tests/demo-navigation.test.mjs": "3b1b87a08043236ab08dd1b6f1f09544a2e5d8987c29db5244a5280382c918d8",
+    "tests/director-tour.test.mjs": "e0eb8ae599df3e6c2a340e146ea45857fb7fdb734e0d45c1b0a0444ecda82d51",
+    "tests/director-player.test.mjs": "4086631ddd253ed0cb219b7079aa3590311a6f6aba9cf5ae910d4948c9d1d4a6",
+    "tests/kelp-benthic-life-world.test.mjs": "794ac59e1db7b624b7d685a96577003dc7d2bf98b187aefb39534736e1a1ac2d"
+  },
+  "originalSourceBaseline": "b8fb6e68b46f85ec96fc41ba58590dc0b363174a",
+  "originalSourceExact": {
+    "src/deepSimulation.js": true,
+    "src/deepHabitat.js": true,
+    "src/deepOceanGeneration.js": true,
+    "src/deepPredatorEcology.js": true,
+    "src/deepSeaSpiderGeometry.js": true,
+    "src/deepSpecies.js": true,
+    "src/world/deepOrganisms.js": true,
+    "src/world/deepSeaSpiderOrganism.js": true,
+    "src/world/DeepOceanChunks.js": true,
+    "src/oceanRockShape.js": true
+  },
+  "entries": {
+    "deepLife": "https://yydshly.github.io/ocean-world/?demo=deep-life",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+  },
+  "local": {
+    "validationFileCount": 92,
+    "uniqueChecks": 653,
+    "fullBatch": {
+      "tests": 653,
+      "pass": 653,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "fullBatchDurationMs": 144729.8355,
+    "productionBuild": "success",
+    "buildCount": 1,
+    "productionUnchangedSinceBuild": true,
+    "currentSourceHashesExact": true,
+    "logs": [
+      "deep-benthic-life-checks.log",
+      "deep-benthic-life-build.log"
+    ]
+  },
+  "model": "deep-benthic-life-model.json",
+  "modelSummary": {
+    "windows": [
+      {
+        "point": {
+          "x": 8992,
+          "z": 544
+        },
+        "observedSec": 24,
+        "activeOwnerCount": 9,
+        "sourceOwnerCount": 0,
+        "newAnimalRecordCount": 32,
+        "movedNewAnimals": 31,
+        "fedNewAnimals": 18,
+        "actualNewConsumedUnits": 0.01104
+      },
+      {
+        "point": {
+          "x": 9248,
+          "z": 544
+        },
+        "observedSec": 24,
+        "activeOwnerCount": 9,
+        "sourceOwnerCount": 0,
+        "newAnimalRecordCount": 15,
+        "movedNewAnimals": 15,
+        "fedNewAnimals": 6,
+        "actualNewConsumedUnits": 0.00336
+      }
+    ],
+    "totalNewAnimalRecords": 47,
+    "maxBalanceError": 4.085620730620576e-14
+  },
+  "publication": {
+    "status": "pending",
+    "browserGpuVisualAcceptance": false
+  },
+  "director": {
+    "chapters": 56,
+    "distinctActions": 50,
+    "observationDurationSecAt1x": 670,
+    "loadingAndTransitionAdditional": true
+  }
+}

@@ -155,3 +155,11 @@ output/validation/screenshots/*
 !output/validation/kelp-benthic-life-delivery.json
 !output/validation/kelp-benthic-life-cloud-build.log
 !output/validation/kelp-benthic-life-cloud-run.json
+
+!output/validation/deep-benthic-life-model.json
+!output/validation/deep-benthic-life-source-hashes-before.json
+!output/validation/deep-benthic-life-checks.log
+!output/validation/deep-benthic-life-build.log
+!output/validation/deep-benthic-life-delivery.json
+!output/validation/deep-benthic-life-cloud-build.log
+!output/validation/deep-benthic-life-cloud-run.json

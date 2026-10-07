@@ -8,6 +8,7 @@ import { SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
 import { KELP_SEASCAPE_ROUTE_STOPS } from './kelpSeascape.js';
 import { KELP_BENTHIC_LIFE_ROUTE_STOPS } from './kelpBenthicLifeRoutes.js';
 import { DEEP_WHOLE_SEASCAPE_ROUTE_STOPS } from './deepWholeSeascape.js';
+import { DEEP_BENTHIC_LIFE_ROUTE_STOPS } from './deepBenthicLifeRoutes.js';
 
 const action = data => Object.freeze(data);
 const entry = data => Object.freeze({ ...data, action: action(data.action) });
@@ -102,6 +103,9 @@ export const DEMO_DEEP_STOPS = Object.freeze([
       'deep-scene-outcrop':'实际岩露头、周围沉积底和真实群落',
       'deep-scene-outer':'碎石与开放海床，继续向外探索'})[stop.id],
     action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id}})),
+  ...DEEP_BENTHIC_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+7).padStart(2,'0'),title:stop.label,
+    description:'观察适合当地软泥底与水深的沉积物利用者和底栖爬行动物；当地组合由生境与保存记录决定',
+    action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id,deepBenthicLifeEntry:true}})),
 ]);
 
 export const DEMO_LEGACY_VIEWS = Object.freeze([

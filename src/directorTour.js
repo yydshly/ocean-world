@@ -80,6 +80,7 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
     const stop=DEMO_DEEP_STOPS.find(row=>row.id===id);
     return step(`deep-${id}`,stop.title,`${stop.description}。沿实际海床缓行，观察周围整体环境。`,stop.action.id,12000);
   }),
+  step('deep-bottom-life', '深海：软底新群落', '镜头沿实际软泥底缓行，观察当地新增动物及其摄食生活空间。', 'stop-deep-bottom-life', 14000, 'walk', 'deep-benthic-life'),
   step('deep-plain-belt', '深海生活带：沉积平原', '沿软泥底缓行，观察实际底栖生命、近底鱼与食物活动。', 'stop-deep-plain-community', 14000),
   step('deep-outcrop-belt', '深海生活带：缓坡岩露头', '灯光随镜头扫过宽缓坡和稀疏岩露头，观察周围生活空间。', 'stop-deep-slope-outcrop', 12000),
   ...layers('deep', ['深海：近底观察', '深海：离底观察', '深海：上方观察']),
