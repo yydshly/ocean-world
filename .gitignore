@@ -139,3 +139,10 @@ output/validation/screenshots/*
 !output/validation/ocean-benthic-life-delivery.json
 !output/validation/ocean-benthic-life-cloud-build.log
 !output/validation/ocean-benthic-life-cloud-run.json
+
+!output/validation/ocean-support-performance-model.json
+!output/validation/ocean-support-performance-checks.log
+!output/validation/ocean-support-performance-build.log
+!output/validation/ocean-support-performance-delivery.json
+!output/validation/ocean-support-performance-cloud-build.log
+!output/validation/ocean-support-performance-cloud-run.json

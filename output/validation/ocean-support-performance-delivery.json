@@ -1,0 +1,50 @@
+{
+  "scope": "Finite exact native support-candidate acceleration; isolated paired CPU/native model, local checks/build; browser/GPU/FPS and whole-scene visual acceptance unavailable",
+  "files": {
+    "src/oceanEcology.js": "d570cb96edc16b0c5f0005d3d6d05e97e2c493ec1d0be8a6ff5867f06e57fb72",
+    "src/oceanSupportIndex.js": "91300549353ea9218465171f4524da81f46c706c2e7c092a80f6cf397bbb53cf",
+    "tests/ocean-support-index.test.mjs": "fe57fd554b293d38fc6be91799edc15a59922ba83c30ed682a489fb05a6a8adf",
+    "tests/ocean-support-index-equivalence.test.mjs": "e89d48ba07d21b4cafb3316ab46a5e2afd70a1313db9a89e45228567278bb6ca",
+    "scripts/benchmark-ocean-support.mjs": "16aa6233294e01011e15c3f1417f1f4acdd3e0a1a5da65deffcdd5829cbf4f87",
+    ".github/workflows/pages.yml": "b8550cbe653c8bc6048b9d880daea83a9a9df8fc1080549138022853982a3e79",
+    "src/oceanRockShape.js": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "src/oceanBenthicLife.js": "ec0484d5f41fceb09100a9b3741498615470726c7099c3504b6dc3b06649679e",
+    "src/oceanBiodiversity.js": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8"
+  },
+  "entries": {
+    "benthic": "https://yydshly.github.io/ocean-world/?demo=benthic",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+  },
+  "local": {
+    "validationFileCount": 83,
+    "tests": 599,
+    "pass": 599,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 135573.9865,
+    "productionBuild": "success",
+    "buildCount": 1
+  },
+  "model": "ocean-support-performance-model.json",
+  "modelComparison": {
+    "windowCount": 2,
+    "nightTimeReductionPercentRange": [
+      45.6,
+      52.7
+    ],
+    "exactCanonicalNightFinalPersistedRecords": true,
+    "exactSupportBedQueryCallCounts": true,
+    "unchangedNativeRockMeshAndBothSpeciesSimulationSources": true,
+    "unchangedClockStepSec": 0.1,
+    "activeOwnerLimit": 9,
+    "animalRecordLimit": 20,
+    "supportCacheOwnerLimit": 25,
+    "maxBinsPerSupportOwner": 256,
+    "supportBinSideM": 4,
+    "timingIsIsolatedSinglePairedSampleNotFPS": true
+  },
+  "publication": {
+    "status": "pending"
+  }
+}

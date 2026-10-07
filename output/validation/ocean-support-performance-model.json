@@ -1,0 +1,2683 @@
+{
+  "scope": "Two isolated native CPU runs from fixed actual persisted string42 owner records; no browser/GPU/FPS claim",
+  "timingProtocol": "One cold-restored fixture per window. Native restore/validation warms support caches before 8s night followed by 4s day. Queries remain fully enabled. Both phases count _surface/_bed calls. No repetitions or concurrent test batch.",
+  "baselineSourceHashes": {
+    "src/oceanEcology.js": "b5c1e5038ccac46fe0ebf79117c9ee7bb0fa420960f750d82413dd884aead14d",
+    "src/oceanRockShape.js": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "src/oceanBenthicLife.js": "ec0484d5f41fceb09100a9b3741498615470726c7099c3504b6dc3b06649679e",
+    "src/oceanBiodiversity.js": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8",
+    "scripts/benchmark-ocean-support.mjs": "16aa6233294e01011e15c3f1417f1f4acdd3e0a1a5da65deffcdd5829cbf4f87"
+  },
+  "optimizedSourceHashes": {
+    "src/oceanEcology.js": "d570cb96edc16b0c5f0005d3d6d05e97e2c493ec1d0be8a6ff5867f06e57fb72",
+    "src/oceanRockShape.js": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "src/oceanBenthicLife.js": "ec0484d5f41fceb09100a9b3741498615470726c7099c3504b6dc3b06649679e",
+    "src/oceanBiodiversity.js": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8",
+    "scripts/benchmark-ocean-support.mjs": "16aa6233294e01011e15c3f1417f1f4acdd3e0a1a5da65deffcdd5829cbf4f87",
+    "src/oceanSupportIndex.js": "91300549353ea9218465171f4524da81f46c706c2e7c092a80f6cf397bbb53cf"
+  },
+  "comparisons": [
+    {
+      "window": {
+        "cx": 176,
+        "cz": 8
+      },
+      "startingRecordDigest": "66b51d0ec3d208ca177d4986d56b3fbe52d6113c76e62c8de181d51bcd3ad83a",
+      "before": {
+        "window": {
+          "cx": 176,
+          "cz": 8
+        },
+        "startingRecordDigest": "66b51d0ec3d208ca177d4986d56b3fbe52d6113c76e62c8de181d51bcd3ad83a",
+        "activeOwnerCount": 9,
+        "supportOwnerCount": 11,
+        "supportCacheOwnerCount": 19,
+        "simulatedNightSec": 8,
+        "simulatedDaySec": 4,
+        "nightStepWallTimeMs": 9272.704899999999,
+        "dayStepWallTimeMs": 1597.5319000000018,
+        "nightCalls": {
+          "surface": 828822,
+          "bed": 1234084
+        },
+        "dayCalls": {
+          "surface": 121621,
+          "bed": 179562
+        },
+        "nightRecordDigest": "c7d7c9c3a9a57ba4d216244b838597cb2f064bb3aae412e9e97316edea536025",
+        "finalRecordDigest": "80273a44ad27828d79f891beb2f4cb7bef133e9720e8d3f33fa3d2b83b0e07f2",
+        "persistedRecordDigest": "3fa5af0b946e6550e9d55b1d95dd6ee3a32ffd0ae16e9a4afab95a1454001979",
+        "largestBalanceError": 6.217248937900877e-15,
+        "largestFoodError": 4.9960036108132044e-15,
+        "ownerCounters": [
+          {
+            "id": "175,7",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 33,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 6,
+              "consumedUnits": 0.00132
+            },
+            "resources": {
+              "algae": 0.5451588163854307,
+              "plankton": 0.49505344759698294,
+              "detritus": 0.1963898083814348
+            },
+            "ledger": {
+              "initial": 1.2548253285326065,
+              "input": 0.019057633084551457,
+              "ingested": 0.020339999999999997,
+              "exported": 0.010321603444180516,
+              "networkAdded": 0.006493265578184944,
+              "networkRemoved": 0.005214487951871405,
+              "transferredIn": 0.005869209212722914,
+              "transferredOut": 0.013767272648161553
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.3240660806947499,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.05978248505241224,
+              "ledger": {
+                "initial": 1.6748253285326067,
+                "externalInput": 0.04485763308455182,
+                "transferredIn": 0.005869209212722914,
+                "transferredOut": 0.013767272648161553,
+                "output": 0.014924319586240969
+              },
+              "processTotals": {
+                "primaryProduction": 0.0011427506305970033,
+                "externalInput": 0.04485763308455182,
+                "ingestion": 0.02130000000000003,
+                "feedingDetritus": 0.005325000000000008,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00021597338602075806,
+                "decomposition": 0.004734487951871411,
+                "mineralisation": 0.0034088313253474163,
+                "systemOutput": 0.014924319586240969
+              }
+            }
+          },
+          {
+            "id": "175,8",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 25,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0013599999999999999
+            },
+            "resources": {
+              "algae": 0.40662971583490626,
+              "plankton": 0.6105199352582825,
+              "detritus": 0.48703838288162626
+            },
+            "ledger": {
+              "initial": 1.52858480386436,
+              "input": 0.018912773800536156,
+              "ingested": 0.011849999999999998,
+              "exported": 0.006980199593810807,
+              "networkAdded": 0.004685000247859607,
+              "networkRemoved": 0.01232414019199031,
+              "transferredIn": 0.0049143134461836855,
+              "transferredOut": 0.02175451759832342
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.328572198029165,
+              "plantOrganicUnits": 0.06013528583474513,
+              "coralOrganicUnits": 0.060305796826462775,
+              "ledger": {
+                "initial": 2.00858480386436,
+                "externalInput": 0.04471277380053638,
+                "transferredIn": 0.0049143134461836855,
+                "transferredOut": 0.02175451759832342,
+                "output": 0.012227343764314237
+              },
+              "processTotals": {
+                "primaryProduction": 0.001755582909067623,
+                "externalInput": 0.04471277380053638,
+                "ingestion": 0.012330000000000013,
+                "feedingDetritus": 0.003082500000000003,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0004321116418145143,
+                "decomposition": 0.011844140191990298,
+                "mineralisation": 0.008527780938233013,
+                "systemOutput": 0.012227343764314237
+              }
+            }
+          },
+          {
+            "id": "175,9",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 27,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00101
+            },
+            "resources": {
+              "algae": 0.4065544818613293,
+              "plankton": 0.4983723738437676,
+              "detritus": 0.3028362395474003
+            },
+            "ledger": {
+              "initial": 1.231337323486805,
+              "input": 0.019140567982526325,
+              "ingested": 0.015229999999999994,
+              "exported": 0.005712766357361382,
+              "networkAdded": 0.005306548880104384,
+              "networkRemoved": 0.007829062059592603,
+              "transferredOut": 0.019249516679979244
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0.4583333333333333,
+                "coral": 1
+              },
+              "nutrients": 0.3256684016866506,
+              "plantOrganicUnits": 0.027547368381779104,
+              "coralOrganicUnits": 0.060284505734371954,
+              "ledger": {
+                "initial": 1.6788373234868053,
+                "externalInput": 0.04494056798252628,
+                "transferredIn": 0,
+                "transferredOut": 0.019249516679979244,
+                "output": 0.010208153551979243
+              },
+              "processTotals": {
+                "primaryProduction": 0.0014229229962556796,
+                "externalInput": 0.04494056798252628,
+                "ingestion": 0.01571000000000001,
+                "feedingDetritus": 0.003927500000000002,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0003151812193524645,
+                "decomposition": 0.007349062059592618,
+                "mineralisation": 0.005291324682906686,
+                "systemOutput": 0.010208153551979243
+              }
+            }
+          },
+          {
+            "id": "176,7",
+            "timeSec": 12,
+            "individualRecordCount": 17,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 31,
+              "escapes": 4,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 7,
+              "consumedUnits": 0.0018
+            },
+            "resources": {
+              "algae": 0.43970649504357695,
+              "plankton": 0.6160889716418488,
+              "detritus": 0.48734107216262795
+            },
+            "ledger": {
+              "initial": 1.5572827667556703,
+              "input": 0.018535672966382435,
+              "ingested": 0.015519999999999994,
+              "exported": 0.008179973197071108,
+              "networkAdded": 0.005058171439755024,
+              "networkRemoved": 0.012319038671560275,
+              "transferredIn": 0.014819092160190681,
+              "transferredOut": 0.016540152605308476
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.32938476724995974,
+              "plantOrganicUnits": 0.059972137730305096,
+              "coralOrganicUnits": 0.06019703142350272,
+              "ledger": {
+                "initial": 2.0372827667556703,
+                "externalInput": 0.048335672966382345,
+                "transferredIn": 0.014819092160190681,
+                "transferredOut": 0.016540152605308476,
+                "output": 0.013981301302759546
+              },
+              "processTotals": {
+                "primaryProduction": 0.0009393405935628047,
+                "externalInput": 0.048335672966382345,
+                "ingestion": 0.016000000000000004,
+                "feedingDetritus": 0.004000000000000001,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0004319443773798141,
+                "decomposition": 0.01183903867156026,
+                "mineralisation": 0.008524107843523388,
+                "systemOutput": 0.013981301302759546
+              }
+            }
+          },
+          {
+            "id": "176,8",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 27,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 1,
+              "deaths": 1
+            },
+            "benthicCounters": {
+              "feedings": 7,
+              "consumedUnits": 0.00154
+            },
+            "resources": {
+              "algae": 0.2997008018530876,
+              "plankton": 0.6421639039530028,
+              "detritus": 0.48877602447333834
+            },
+            "ledger": {
+              "initial": 1.439676530044526,
+              "input": 0.018499604979624468,
+              "ingested": 0.012979999999999997,
+              "exported": 0.0070848517542058806,
+              "networkAdded": 0.005347242556277366,
+              "networkRemoved": 0.012285506667520126,
+              "transferredIn": 0.016779579178370647,
+              "transferredOut": 0.017311868057639786
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 0.875
+              },
+              "nutrients": 0.3294691465633705,
+              "plantOrganicUnits": 0.05996204224284844,
+              "coralOrganicUnits": 0.05266651346121506,
+              "ledger": {
+                "initial": 1.9121765300445261,
+                "externalInput": 0.04429960497962433,
+                "transferredIn": 0.016779579178370647,
+                "transferredOut": 0.017311868057639786,
+                "output": 0.013096376242440982
+              },
+              "processTotals": {
+                "primaryProduction": 0.0008740182372423979,
+                "externalInput": 0.04429960497962433,
+                "ingestion": 0.0134,
+                "feedingDetritus": 0.00335,
+                "predation": 0.003999120092393842,
+                "deathDetritus": 0.0009997800230984605,
+                "plantLitter": 0.000404907796065414,
+                "decomposition": 0.011865506667520126,
+                "mineralisation": 0.008543164800614494,
+                "systemOutput": 0.013096376242440982
+              }
+            }
+          },
+          {
+            "id": "176,9",
+            "timeSec": 12,
+            "individualRecordCount": 14,
+            "newSpecies": [
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 26,
+              "escapes": 5,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00088
+            },
+            "resources": {
+              "algae": 0.5104438259421803,
+              "plankton": 0.658563309582012,
+              "detritus": 0.48887543610929696
+            },
+            "ledger": {
+              "initial": 1.6733836371451618,
+              "input": 0.019096065985087285,
+              "ingested": 0.015249999999999996,
+              "exported": 0.007540370963421555,
+              "networkAdded": 0.005164431518692514,
+              "networkRemoved": 0.012336362119698602,
+              "transferredIn": 0.014335203233795562,
+              "transferredOut": 0.018970033166126096
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3291366801051829,
+              "plantOrganicUnits": 0.06002421769940441,
+              "coralOrganicUnits": 0.060231751402902475,
+              "ledger": {
+                "initial": 2.153383637145162,
+                "externalInput": 0.036896065985087365,
+                "transferredIn": 0.014335203233795562,
+                "transferredOut": 0.018970033166126096,
+                "output": 0.01329092344222874
+              },
+              "processTotals": {
+                "primaryProduction": 0.0011999006209993755,
+                "externalInput": 0.036896065985087365,
+                "ingestion": 0.01573000000000001,
+                "feedingDetritus": 0.003932500000000003,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00043199777135960037,
+                "decomposition": 0.011856362119698588,
+                "mineralisation": 0.008536580726182984,
+                "systemOutput": 0.01329092344222874
+              }
+            }
+          },
+          {
+            "id": "177,7",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "tiger-cowrie"
+            ],
+            "counters": {
+              "feeding": 33,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00114
+            },
+            "resources": {
+              "algae": 0.5434110400424816,
+              "plankton": 0.6689717626420373,
+              "detritus": 0.19734738791673886
+            },
+            "ledger": {
+              "initial": 1.422198674082756,
+              "input": 0.01899558930842593,
+              "ingested": 0.019979999999999994,
+              "exported": 0.026746261409214257,
+              "networkAdded": 0.006119629636048988,
+              "networkRemoved": 0.005226283869322456,
+              "transferredIn": 0.016540152605308476,
+              "transferredOut": 0.002171309752749507
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.32441489504268095,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.05972579970718271,
+              "ledger": {
+                "initial": 1.842198674082756,
+                "externalInput": 0.044795589308426066,
+                "transferredIn": 0.016540152605308476,
+                "transferredOut": 0.002171309752749507,
+                "output": 0.0312984607945114
+              },
+              "processTotals": {
+                "primaryProduction": 0.0008024293432316318,
+                "externalInput": 0.044795589308426066,
+                "ingestion": 0.020940000000000028,
+                "feedingDetritus": 0.005235000000000007,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00021593851668927008,
+                "decomposition": 0.004746283869322458,
+                "mineralisation": 0.0034173243859121696,
+                "systemOutput": 0.0312984607945114
+              }
+            }
+          },
+          {
+            "id": "177,8",
+            "timeSec": 12,
+            "individualRecordCount": 18,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 29,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 7,
+              "consumedUnits": 0.0018
+            },
+            "resources": {
+              "algae": 0.3005582711590073,
+              "plankton": 0.6458316679446064,
+              "detritus": 0.48744956820534546
+            },
+            "ledger": {
+              "initial": 1.444356392286718,
+              "input": 0.018531237799050315,
+              "ingested": 0.012789999999999996,
+              "exported": 0.024445012243211026,
+              "networkAdded": 0.004338811945272592,
+              "networkRemoved": 0.012203765871132312,
+              "transferredIn": 0.018431358298360172,
+              "transferredOut": 0.0023795149061027763
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 0.75
+              },
+              "nutrients": 0.3293510698085108,
+              "plantOrganicUnits": 0.05998628331397063,
+              "coralOrganicUnits": 0.045154846359460245,
+              "ledger": {
+                "initial": 1.909356392286718,
+                "externalInput": 0.05233123779905055,
+                "transferredIn": 0.018431358298360172,
+                "transferredOut": 0.0023795149061027763,
+                "output": 0.029825086796923334
+              },
+              "processTotals": {
+                "primaryProduction": 0.0009764416187031385,
+                "externalInput": 0.05233123779905055,
+                "ingestion": 0.01314999999999999,
+                "feedingDetritus": 0.0032874999999999975,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0003779039323738939,
+                "decomposition": 0.011843765871132322,
+                "mineralisation": 0.008527511427215272,
+                "systemOutput": 0.029825086796923334
+              }
+            }
+          },
+          {
+            "id": "177,9",
+            "timeSec": 12,
+            "individualRecordCount": 14,
+            "newSpecies": [
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 21,
+              "escapes": 2,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00088
+            },
+            "resources": {
+              "algae": 0.33636223188703135,
+              "plankton": 0.5191757300454908,
+              "detritus": 0.48805299089603515
+            },
+            "ledger": {
+              "initial": 1.3465113945119083,
+              "input": 0.01862838147228722,
+              "ingested": 0.011209999999999996,
+              "exported": 0.02248816185463844,
+              "networkAdded": 0.0040231900271405835,
+              "networkRemoved": 0.012329128607602142,
+              "transferredIn": 0.02045527727945874
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3293282737208568,
+              "plantOrganicUnits": 0.05998488154770394,
+              "coralOrganicUnits": 0.06020552730176872,
+              "ledger": {
+                "initial": 1.8265113945119085,
+                "externalInput": 0.03642838147228724,
+                "transferredIn": 0.02045527727945874,
+                "transferredOut": 0,
+                "output": 0.027630519848080376
+              },
+              "processTotals": {
+                "primaryProduction": 0.0010030988766131376,
+                "externalInput": 0.03642838147228724,
+                "ingestion": 0.011690000000000006,
+                "feedingDetritus": 0.0029225000000000015,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00043195744273181736,
+                "decomposition": 0.011849128607602129,
+                "mineralisation": 0.008531372597473528,
+                "systemOutput": 0.027630519848080376
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "window": {
+          "cx": 176,
+          "cz": 8
+        },
+        "startingRecordDigest": "66b51d0ec3d208ca177d4986d56b3fbe52d6113c76e62c8de181d51bcd3ad83a",
+        "activeOwnerCount": 9,
+        "supportOwnerCount": 11,
+        "supportCacheOwnerCount": 19,
+        "simulatedNightSec": 8,
+        "simulatedDaySec": 4,
+        "nightStepWallTimeMs": 4385.6986,
+        "dayStepWallTimeMs": 737.6125999999995,
+        "nightCalls": {
+          "surface": 828822,
+          "bed": 1234084
+        },
+        "dayCalls": {
+          "surface": 121621,
+          "bed": 179562
+        },
+        "nightRecordDigest": "c7d7c9c3a9a57ba4d216244b838597cb2f064bb3aae412e9e97316edea536025",
+        "finalRecordDigest": "80273a44ad27828d79f891beb2f4cb7bef133e9720e8d3f33fa3d2b83b0e07f2",
+        "persistedRecordDigest": "3fa5af0b946e6550e9d55b1d95dd6ee3a32ffd0ae16e9a4afab95a1454001979",
+        "largestBalanceError": 6.217248937900877e-15,
+        "largestFoodError": 4.9960036108132044e-15,
+        "ownerCounters": [
+          {
+            "id": "175,7",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 33,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 6,
+              "consumedUnits": 0.00132
+            },
+            "resources": {
+              "algae": 0.5451588163854307,
+              "plankton": 0.49505344759698294,
+              "detritus": 0.1963898083814348
+            },
+            "ledger": {
+              "initial": 1.2548253285326065,
+              "input": 0.019057633084551457,
+              "ingested": 0.020339999999999997,
+              "exported": 0.010321603444180516,
+              "networkAdded": 0.006493265578184944,
+              "networkRemoved": 0.005214487951871405,
+              "transferredIn": 0.005869209212722914,
+              "transferredOut": 0.013767272648161553
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.3240660806947499,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.05978248505241224,
+              "ledger": {
+                "initial": 1.6748253285326067,
+                "externalInput": 0.04485763308455182,
+                "transferredIn": 0.005869209212722914,
+                "transferredOut": 0.013767272648161553,
+                "output": 0.014924319586240969
+              },
+              "processTotals": {
+                "primaryProduction": 0.0011427506305970033,
+                "externalInput": 0.04485763308455182,
+                "ingestion": 0.02130000000000003,
+                "feedingDetritus": 0.005325000000000008,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00021597338602075806,
+                "decomposition": 0.004734487951871411,
+                "mineralisation": 0.0034088313253474163,
+                "systemOutput": 0.014924319586240969
+              }
+            }
+          },
+          {
+            "id": "175,8",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 25,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0013599999999999999
+            },
+            "resources": {
+              "algae": 0.40662971583490626,
+              "plankton": 0.6105199352582825,
+              "detritus": 0.48703838288162626
+            },
+            "ledger": {
+              "initial": 1.52858480386436,
+              "input": 0.018912773800536156,
+              "ingested": 0.011849999999999998,
+              "exported": 0.006980199593810807,
+              "networkAdded": 0.004685000247859607,
+              "networkRemoved": 0.01232414019199031,
+              "transferredIn": 0.0049143134461836855,
+              "transferredOut": 0.02175451759832342
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.328572198029165,
+              "plantOrganicUnits": 0.06013528583474513,
+              "coralOrganicUnits": 0.060305796826462775,
+              "ledger": {
+                "initial": 2.00858480386436,
+                "externalInput": 0.04471277380053638,
+                "transferredIn": 0.0049143134461836855,
+                "transferredOut": 0.02175451759832342,
+                "output": 0.012227343764314237
+              },
+              "processTotals": {
+                "primaryProduction": 0.001755582909067623,
+                "externalInput": 0.04471277380053638,
+                "ingestion": 0.012330000000000013,
+                "feedingDetritus": 0.003082500000000003,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0004321116418145143,
+                "decomposition": 0.011844140191990298,
+                "mineralisation": 0.008527780938233013,
+                "systemOutput": 0.012227343764314237
+              }
+            }
+          },
+          {
+            "id": "175,9",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 27,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00101
+            },
+            "resources": {
+              "algae": 0.4065544818613293,
+              "plankton": 0.4983723738437676,
+              "detritus": 0.3028362395474003
+            },
+            "ledger": {
+              "initial": 1.231337323486805,
+              "input": 0.019140567982526325,
+              "ingested": 0.015229999999999994,
+              "exported": 0.005712766357361382,
+              "networkAdded": 0.005306548880104384,
+              "networkRemoved": 0.007829062059592603,
+              "transferredOut": 0.019249516679979244
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0.4583333333333333,
+                "coral": 1
+              },
+              "nutrients": 0.3256684016866506,
+              "plantOrganicUnits": 0.027547368381779104,
+              "coralOrganicUnits": 0.060284505734371954,
+              "ledger": {
+                "initial": 1.6788373234868053,
+                "externalInput": 0.04494056798252628,
+                "transferredIn": 0,
+                "transferredOut": 0.019249516679979244,
+                "output": 0.010208153551979243
+              },
+              "processTotals": {
+                "primaryProduction": 0.0014229229962556796,
+                "externalInput": 0.04494056798252628,
+                "ingestion": 0.01571000000000001,
+                "feedingDetritus": 0.003927500000000002,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0003151812193524645,
+                "decomposition": 0.007349062059592618,
+                "mineralisation": 0.005291324682906686,
+                "systemOutput": 0.010208153551979243
+              }
+            }
+          },
+          {
+            "id": "176,7",
+            "timeSec": 12,
+            "individualRecordCount": 17,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 31,
+              "escapes": 4,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 7,
+              "consumedUnits": 0.0018
+            },
+            "resources": {
+              "algae": 0.43970649504357695,
+              "plankton": 0.6160889716418488,
+              "detritus": 0.48734107216262795
+            },
+            "ledger": {
+              "initial": 1.5572827667556703,
+              "input": 0.018535672966382435,
+              "ingested": 0.015519999999999994,
+              "exported": 0.008179973197071108,
+              "networkAdded": 0.005058171439755024,
+              "networkRemoved": 0.012319038671560275,
+              "transferredIn": 0.014819092160190681,
+              "transferredOut": 0.016540152605308476
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.32938476724995974,
+              "plantOrganicUnits": 0.059972137730305096,
+              "coralOrganicUnits": 0.06019703142350272,
+              "ledger": {
+                "initial": 2.0372827667556703,
+                "externalInput": 0.048335672966382345,
+                "transferredIn": 0.014819092160190681,
+                "transferredOut": 0.016540152605308476,
+                "output": 0.013981301302759546
+              },
+              "processTotals": {
+                "primaryProduction": 0.0009393405935628047,
+                "externalInput": 0.048335672966382345,
+                "ingestion": 0.016000000000000004,
+                "feedingDetritus": 0.004000000000000001,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0004319443773798141,
+                "decomposition": 0.01183903867156026,
+                "mineralisation": 0.008524107843523388,
+                "systemOutput": 0.013981301302759546
+              }
+            }
+          },
+          {
+            "id": "176,8",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 27,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 1,
+              "deaths": 1
+            },
+            "benthicCounters": {
+              "feedings": 7,
+              "consumedUnits": 0.00154
+            },
+            "resources": {
+              "algae": 0.2997008018530876,
+              "plankton": 0.6421639039530028,
+              "detritus": 0.48877602447333834
+            },
+            "ledger": {
+              "initial": 1.439676530044526,
+              "input": 0.018499604979624468,
+              "ingested": 0.012979999999999997,
+              "exported": 0.0070848517542058806,
+              "networkAdded": 0.005347242556277366,
+              "networkRemoved": 0.012285506667520126,
+              "transferredIn": 0.016779579178370647,
+              "transferredOut": 0.017311868057639786
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 0.875
+              },
+              "nutrients": 0.3294691465633705,
+              "plantOrganicUnits": 0.05996204224284844,
+              "coralOrganicUnits": 0.05266651346121506,
+              "ledger": {
+                "initial": 1.9121765300445261,
+                "externalInput": 0.04429960497962433,
+                "transferredIn": 0.016779579178370647,
+                "transferredOut": 0.017311868057639786,
+                "output": 0.013096376242440982
+              },
+              "processTotals": {
+                "primaryProduction": 0.0008740182372423979,
+                "externalInput": 0.04429960497962433,
+                "ingestion": 0.0134,
+                "feedingDetritus": 0.00335,
+                "predation": 0.003999120092393842,
+                "deathDetritus": 0.0009997800230984605,
+                "plantLitter": 0.000404907796065414,
+                "decomposition": 0.011865506667520126,
+                "mineralisation": 0.008543164800614494,
+                "systemOutput": 0.013096376242440982
+              }
+            }
+          },
+          {
+            "id": "176,9",
+            "timeSec": 12,
+            "individualRecordCount": 14,
+            "newSpecies": [
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 26,
+              "escapes": 5,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00088
+            },
+            "resources": {
+              "algae": 0.5104438259421803,
+              "plankton": 0.658563309582012,
+              "detritus": 0.48887543610929696
+            },
+            "ledger": {
+              "initial": 1.6733836371451618,
+              "input": 0.019096065985087285,
+              "ingested": 0.015249999999999996,
+              "exported": 0.007540370963421555,
+              "networkAdded": 0.005164431518692514,
+              "networkRemoved": 0.012336362119698602,
+              "transferredIn": 0.014335203233795562,
+              "transferredOut": 0.018970033166126096
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3291366801051829,
+              "plantOrganicUnits": 0.06002421769940441,
+              "coralOrganicUnits": 0.060231751402902475,
+              "ledger": {
+                "initial": 2.153383637145162,
+                "externalInput": 0.036896065985087365,
+                "transferredIn": 0.014335203233795562,
+                "transferredOut": 0.018970033166126096,
+                "output": 0.01329092344222874
+              },
+              "processTotals": {
+                "primaryProduction": 0.0011999006209993755,
+                "externalInput": 0.036896065985087365,
+                "ingestion": 0.01573000000000001,
+                "feedingDetritus": 0.003932500000000003,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00043199777135960037,
+                "decomposition": 0.011856362119698588,
+                "mineralisation": 0.008536580726182984,
+                "systemOutput": 0.01329092344222874
+              }
+            }
+          },
+          {
+            "id": "177,7",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "tiger-cowrie"
+            ],
+            "counters": {
+              "feeding": 33,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00114
+            },
+            "resources": {
+              "algae": 0.5434110400424816,
+              "plankton": 0.6689717626420373,
+              "detritus": 0.19734738791673886
+            },
+            "ledger": {
+              "initial": 1.422198674082756,
+              "input": 0.01899558930842593,
+              "ingested": 0.019979999999999994,
+              "exported": 0.026746261409214257,
+              "networkAdded": 0.006119629636048988,
+              "networkRemoved": 0.005226283869322456,
+              "transferredIn": 0.016540152605308476,
+              "transferredOut": 0.002171309752749507
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.32441489504268095,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.05972579970718271,
+              "ledger": {
+                "initial": 1.842198674082756,
+                "externalInput": 0.044795589308426066,
+                "transferredIn": 0.016540152605308476,
+                "transferredOut": 0.002171309752749507,
+                "output": 0.0312984607945114
+              },
+              "processTotals": {
+                "primaryProduction": 0.0008024293432316318,
+                "externalInput": 0.044795589308426066,
+                "ingestion": 0.020940000000000028,
+                "feedingDetritus": 0.005235000000000007,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00021593851668927008,
+                "decomposition": 0.004746283869322458,
+                "mineralisation": 0.0034173243859121696,
+                "systemOutput": 0.0312984607945114
+              }
+            }
+          },
+          {
+            "id": "177,8",
+            "timeSec": 12,
+            "individualRecordCount": 18,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 29,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 7,
+              "consumedUnits": 0.0018
+            },
+            "resources": {
+              "algae": 0.3005582711590073,
+              "plankton": 0.6458316679446064,
+              "detritus": 0.48744956820534546
+            },
+            "ledger": {
+              "initial": 1.444356392286718,
+              "input": 0.018531237799050315,
+              "ingested": 0.012789999999999996,
+              "exported": 0.024445012243211026,
+              "networkAdded": 0.004338811945272592,
+              "networkRemoved": 0.012203765871132312,
+              "transferredIn": 0.018431358298360172,
+              "transferredOut": 0.0023795149061027763
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 0.75
+              },
+              "nutrients": 0.3293510698085108,
+              "plantOrganicUnits": 0.05998628331397063,
+              "coralOrganicUnits": 0.045154846359460245,
+              "ledger": {
+                "initial": 1.909356392286718,
+                "externalInput": 0.05233123779905055,
+                "transferredIn": 0.018431358298360172,
+                "transferredOut": 0.0023795149061027763,
+                "output": 0.029825086796923334
+              },
+              "processTotals": {
+                "primaryProduction": 0.0009764416187031385,
+                "externalInput": 0.05233123779905055,
+                "ingestion": 0.01314999999999999,
+                "feedingDetritus": 0.0032874999999999975,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0003779039323738939,
+                "decomposition": 0.011843765871132322,
+                "mineralisation": 0.008527511427215272,
+                "systemOutput": 0.029825086796923334
+              }
+            }
+          },
+          {
+            "id": "177,9",
+            "timeSec": 12,
+            "individualRecordCount": 14,
+            "newSpecies": [
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 21,
+              "escapes": 2,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00088
+            },
+            "resources": {
+              "algae": 0.33636223188703135,
+              "plankton": 0.5191757300454908,
+              "detritus": 0.48805299089603515
+            },
+            "ledger": {
+              "initial": 1.3465113945119083,
+              "input": 0.01862838147228722,
+              "ingested": 0.011209999999999996,
+              "exported": 0.02248816185463844,
+              "networkAdded": 0.0040231900271405835,
+              "networkRemoved": 0.012329128607602142,
+              "transferredIn": 0.02045527727945874
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3293282737208568,
+              "plantOrganicUnits": 0.05998488154770394,
+              "coralOrganicUnits": 0.06020552730176872,
+              "ledger": {
+                "initial": 1.8265113945119085,
+                "externalInput": 0.03642838147228724,
+                "transferredIn": 0.02045527727945874,
+                "transferredOut": 0,
+                "output": 0.027630519848080376
+              },
+              "processTotals": {
+                "primaryProduction": 0.0010030988766131376,
+                "externalInput": 0.03642838147228724,
+                "ingestion": 0.011690000000000006,
+                "feedingDetritus": 0.0029225000000000015,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00043195744273181736,
+                "decomposition": 0.011849128607602129,
+                "mineralisation": 0.008531372597473528,
+                "systemOutput": 0.027630519848080376
+              }
+            }
+          }
+        ]
+      },
+      "exactNightRecords": true,
+      "exactFinalRecords": true,
+      "exactPersistedRecords": true,
+      "nightTimeReductionFraction": 0.5270313627688076,
+      "dayTimeReductionFraction": 0.5382798928772573
+    },
+    {
+      "window": {
+        "cx": 188,
+        "cz": 17
+      },
+      "startingRecordDigest": "d6d3bdd7cc917d47115c4ad7bb8d38c0278ce4f499eff4025a8e0bf38089e39d",
+      "before": {
+        "window": {
+          "cx": 188,
+          "cz": 17
+        },
+        "startingRecordDigest": "d6d3bdd7cc917d47115c4ad7bb8d38c0278ce4f499eff4025a8e0bf38089e39d",
+        "activeOwnerCount": 9,
+        "supportOwnerCount": 12,
+        "supportCacheOwnerCount": 24,
+        "simulatedNightSec": 8,
+        "simulatedDaySec": 4,
+        "nightStepWallTimeMs": 8822.979199999998,
+        "dayStepWallTimeMs": 1805.8069000000032,
+        "nightCalls": {
+          "surface": 820134,
+          "bed": 1216037
+        },
+        "dayCalls": {
+          "surface": 165773,
+          "bed": 244803
+        },
+        "nightRecordDigest": "5db3ea3adb957f337ac5347c29948cdc72050b8d8ff649c8b0dae690e5156167",
+        "finalRecordDigest": "476c82ab8defd67055bd592140cd4eebfbc256e11f3cae1fc4861d982ab4c088",
+        "persistedRecordDigest": "25600f732319b136543d48b0bd218341c8bfd14cd69afce2c8bfa291c192fc25",
+        "largestBalanceError": 1.0436096431476471e-14,
+        "largestFoodError": 1.4710455076283324e-14,
+        "ownerCounters": [
+          {
+            "id": "187,16",
+            "timeSec": 12,
+            "individualRecordCount": 15,
+            "newSpecies": [
+              "reef-goatfish"
+            ],
+            "counters": {
+              "feeding": 26,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 1,
+              "consumedUnits": 0.00022
+            },
+            "resources": {
+              "algae": 0.43929044169349063,
+              "plankton": 0.6438839534657251,
+              "detritus": 0.19706427261121534
+            },
+            "ledger": {
+              "initial": 1.2998849773965777,
+              "input": 0.01882002641229787,
+              "ingested": 0.012639999999999997,
+              "exported": 0.007004325470525817,
+              "networkAdded": 0.004527547736036833,
+              "networkRemoved": 0.005243846494088054,
+              "transferredOut": 0.018105711809869085
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.32399242874234996,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.060277992997354785,
+              "ledger": {
+                "initial": 1.7198849773965779,
+                "externalInput": 0.040620026412297935,
+                "transferredIn": 0,
+                "transferredOut": 0.018105711809869085,
+                "output": 0.010381803970040496
+              },
+              "processTotals": {
+                "primaryProduction": 0.001237540733391703,
+                "externalInput": 0.040620026412297935,
+                "ingestion": 0.013120000000000014,
+                "feedingDetritus": 0.0032800000000000034,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00021626379154374365,
+                "decomposition": 0.0047638464940880565,
+                "mineralisation": 0.0034299694757434006,
+                "systemOutput": 0.010381803970040496
+              }
+            }
+          },
+          {
+            "id": "187,17",
+            "timeSec": 12,
+            "individualRecordCount": 14,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 30,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0013599999999999999
+            },
+            "resources": {
+              "algae": 0.4400957679539069,
+              "plankton": 0.5206872347988173,
+              "detritus": 0.19561851786999568
+            },
+            "ledger": {
+              "initial": 1.175681991633028,
+              "input": 0.01887112766641185,
+              "ingested": 0.01894,
+              "exported": 0.005831286039797841,
+              "networkAdded": 0.005967839628712491,
+              "networkRemoved": 0.005206453929033797,
+              "transferredIn": 0.0016180368379578335,
+              "transferredOut": 0.015759735174554403
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.3241271359515788,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.06025107124861113,
+              "ledger": {
+                "initial": 1.595681991633028,
+                "externalInput": 0.03667112766641177,
+                "transferredIn": 0.0016180368379578335,
+                "transferredOut": 0.015759735174554403,
+                "output": 0.010140069310937753
+              },
+              "processTotals": {
+                "primaryProduction": 0.0010759108773236192,
+                "externalInput": 0.03667112766641177,
+                "ingestion": 0.019420000000000007,
+                "feedingDetritus": 0.004855000000000002,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00021624723094280923,
+                "decomposition": 0.004726453929033799,
+                "mineralisation": 0.0034030468289043365,
+                "systemOutput": 0.010140069310937753
+              }
+            }
+          },
+          {
+            "id": "187,18",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 32,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0011
+            },
+            "resources": {
+              "algae": 0.23035672176553912,
+              "plankton": 0.5178320596715077,
+              "detritus": 0.48766652276696915
+            },
+            "ledger": {
+              "initial": 1.265914546586573,
+              "input": 0.018745360179992968,
+              "ingested": 0.018049999999999997,
+              "exported": 0.009835570430046011,
+              "networkAdded": 0.005298057884741084,
+              "networkRemoved": 0.011911291034151592,
+              "transferredIn": 0.001831607523126182,
+              "transferredOut": 0.01613740650623461
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 0.75,
+                "seagrass": 1,
+                "coral": 0.125
+              },
+              "nutrients": 0.3295972110578548,
+              "plantOrganicUnits": 0.05997619367837902,
+              "coralOrganicUnits": 0.007524966923610672,
+              "ledger": {
+                "initial": 1.6934145465865733,
+                "externalInput": 0.0445453601799932,
+                "transferredIn": 0.001831607523126182,
+                "transferredOut": 0.01613740650623461,
+                "output": 0.015952945501878004
+              },
+              "processTotals": {
+                "primaryProduction": 0.0007357184867307483,
+                "externalInput": 0.0445453601799932,
+                "ingestion": 0.018109999999999998,
+                "feedingDetritus": 0.004527499999999999,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0002427598399125071,
+                "decomposition": 0.011851291034151584,
+                "mineralisation": 0.008532929544589134,
+                "systemOutput": 0.015952945501878004
+              }
+            }
+          },
+          {
+            "id": "188,16",
+            "timeSec": 12,
+            "individualRecordCount": 18,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie"
+            ],
+            "counters": {
+              "feeding": 33,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0013599999999999999
+            },
+            "resources": {
+              "algae": 0.6149313239250165,
+              "plankton": 0.5884691165812288,
+              "detritus": 0.19632482611269264
+            },
+            "ledger": {
+              "initial": 1.4045234592445195,
+              "input": 0.018721801978945397,
+              "ingested": 0.018829999999999993,
+              "exported": 0.006621358990073866,
+              "networkAdded": 0.006196400705592121,
+              "networkRemoved": 0.005221623431044406,
+              "transferredIn": 0.016487674971911257,
+              "transferredOut": 0.015531087860908926
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.3239744679825063,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.05979860018225165,
+              "ledger": {
+                "initial": 1.8245234592445196,
+                "externalInput": 0.052521801978945765,
+                "transferredIn": 0.016487674971911257,
+                "transferredOut": 0.015531087860908926,
+                "output": 0.011009211223137578
+              },
+              "processTotals": {
+                "primaryProduction": 0.001239500887843737,
+                "externalInput": 0.052521801978945765,
+                "ingestion": 0.019790000000000023,
+                "feedingDetritus": 0.004947500000000006,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0002159832990556363,
+                "decomposition": 0.004741623431044411,
+                "mineralisation": 0.003413968870351974,
+                "systemOutput": 0.011009211223137578
+              }
+            }
+          },
+          {
+            "id": "188,17",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 31,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 6,
+              "consumedUnits": 0.00132
+            },
+            "resources": {
+              "algae": 0.44099719400658194,
+              "plankton": 0.6271189466559814,
+              "detritus": 0.48876055184187006
+            },
+            "ledger": {
+              "initial": 1.5731526644714178,
+              "input": 0.01880942268890449,
+              "ingested": 0.018879999999999997,
+              "exported": 0.00717099063887181,
+              "networkAdded": 0.0062184614533292125,
+              "networkRemoved": 0.012338373388969646,
+              "transferredIn": 0.014875986341052302,
+              "transferredOut": 0.017790478422435002
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3290979246348965,
+              "plantOrganicUnits": 0.06003225347312392,
+              "coralOrganicUnits": 0.059757389278707544,
+              "ledger": {
+                "initial": 2.0531526644714178,
+                "externalInput": 0.044609422688904346,
+                "transferredIn": 0.014875986341052302,
+                "transferredOut": 0.017790478422435002,
+                "output": 0.013548995772965077
+              },
+              "processTotals": {
+                "primaryProduction": 0.0012401042051607282,
+                "externalInput": 0.044609422688904346,
+                "ingestion": 0.019840000000000028,
+                "feedingDetritus": 0.004960000000000007,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00043172531655538856,
+                "decomposition": 0.011858373388969634,
+                "mineralisation": 0.008538028840058132,
+                "systemOutput": 0.013548995772965077
+              }
+            }
+          },
+          {
+            "id": "188,18",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 27,
+              "escapes": 2,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 7,
+              "consumedUnits": 0.0017999999999999997
+            },
+            "resources": {
+              "algae": 0.26614342097342103,
+              "plankton": 0.6033286576459987,
+              "detritus": 0.1937556244697659
+            },
+            "ledger": {
+              "initial": 1.070730611383915,
+              "input": 0.019264377899125443,
+              "ingested": 0.014879999999999996,
+              "exported": 0.011400735876318662,
+              "networkAdded": 0.004338741915546649,
+              "networkRemoved": 0.0049566846643060904,
+              "transferredIn": 0.017893752768166078,
+              "transferredOut": 0.01776236033694052
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 0.5
+              },
+              "nutrients": 0.3247003026716866,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.030080968371066833,
+              "ledger": {
+                "initial": 1.4607306113839151,
+                "externalInput": 0.04506437789912528,
+                "transferredIn": 0.017893752768166078,
+                "transferredOut": 0.01776236033694052,
+                "output": 0.015070857386520144
+              },
+              "processTotals": {
+                "primaryProduction": 0.0004957102866135755,
+                "externalInput": 0.04506437789912528,
+                "ingestion": 0.015120000000000012,
+                "feedingDetritus": 0.003780000000000003,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00010809620044340404,
+                "decomposition": 0.004716684664306089,
+                "mineralisation": 0.0033960129583003856,
+                "systemOutput": 0.015070857386520144
+              }
+            }
+          },
+          {
+            "id": "189,16",
+            "timeSec": 12,
+            "individualRecordCount": 17,
+            "newSpecies": [
+              "reef-goatfish",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 33,
+              "escapes": 3,
+              "cleaning": 2,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00088
+            },
+            "resources": {
+              "algae": 0.3694982104520083,
+              "plankton": 0.5987544266237053,
+              "detritus": 0.4881844299830468
+            },
+            "ledger": {
+              "initial": 1.4685532838664948,
+              "input": 0.018696231966065003,
+              "ingested": 0.017349999999999997,
+              "exported": 0.021269391775620934,
+              "networkAdded": 0.005811827574488436,
+              "networkRemoved": 0.012332594214101843,
+              "transferredIn": 0.014583229171284844,
+              "transferredOut": 0.00025551952984660805
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3289504295452897,
+              "plantOrganicUnits": 0.06006090266664637,
+              "coralOrganicUnits": 0.06025620804773004,
+              "ledger": {
+                "initial": 1.948553283866495,
+                "externalInput": 0.048496231966065305,
+                "transferredIn": 0.014583229171284844,
+                "transferredOut": 0.00025551952984660805,
+                "output": 0.02734917988473045
+              },
+              "processTotals": {
+                "primaryProduction": 0.001383438288864872,
+                "externalInput": 0.048496231966065305,
+                "ingestion": 0.017830000000000006,
+                "feedingDetritus": 0.004457500000000001,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0004320353819118572,
+                "decomposition": 0.011852594214101831,
+                "mineralisation": 0.008533867834153318,
+                "systemOutput": 0.02734917988473045
+              }
+            }
+          },
+          {
+            "id": "189,17",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie"
+            ],
+            "counters": {
+              "feeding": 32,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0013599999999999999
+            },
+            "resources": {
+              "algae": 0.4399180382424839,
+              "plankton": 0.6552360625528961,
+              "detritus": 0.48850409124016464
+            },
+            "ledger": {
+              "initial": 1.5979669422470035,
+              "input": 0.018667647321870765,
+              "ingested": 0.02005,
+              "exported": 0.02248621045078177,
+              "networkAdded": 0.006612391568753184,
+              "networkRemoved": 0.01232788926028722,
+              "transferredIn": 0.01628965169035014,
+              "transferredOut": 0.0010143410813691221
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3289382776411361,
+              "plantOrganicUnits": 0.0600626544565335,
+              "coralOrganicUnits": 0.0597776566009808,
+              "ledger": {
+                "initial": 2.0779669422470035,
+                "externalInput": 0.044467647321871084,
+                "transferredIn": 0.01628965169035014,
+                "transferredOut": 0.0010143410813691221,
+                "output": 0.0290374621806388
+              },
+              "processTotals": {
+                "primaryProduction": 0.0013922026262673485,
+                "externalInput": 0.044467647321871084,
+                "ingestion": 0.021010000000000032,
+                "feedingDetritus": 0.005252500000000008,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00043175648457491144,
+                "decomposition": 0.011847889260287205,
+                "mineralisation": 0.008530480267406782,
+                "systemOutput": 0.0290374621806388
+              }
+            }
+          },
+          {
+            "id": "189,18",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 29,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0011
+            },
+            "resources": {
+              "algae": 0.3368350390489194,
+              "plankton": 0.6610953201628468,
+              "detritus": 0.48896637488811345
+            },
+            "ledger": {
+              "initial": 1.5026811887696385,
+              "input": 0.018911798045970804,
+              "ingested": 0.018219999999999997,
+              "exported": 0.029016269661300536,
+              "networkAdded": 0.006029452975335385,
+              "networkRemoved": 0.012266137448068173,
+              "transferredIn": 0.01877670141830963
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 0.875
+              },
+              "nutrients": 0.3290832094261171,
+              "plantOrganicUnits": 0.06003765497785723,
+              "coralOrganicUnits": 0.05223090158329569,
+              "ledger": {
+                "initial": 1.9751811887696387,
+                "externalInput": 0.0447117980459709,
+                "transferredIn": 0.01877670141830963,
+                "transferredOut": 0,
+                "output": 0.03528314237800141
+              },
+              "processTotals": {
+                "primaryProduction": 0.0012460095364885961,
+                "externalInput": 0.0447117980459709,
+                "ingestion": 0.01912000000000002,
+                "feedingDetritus": 0.004780000000000005,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00040470074720751426,
+                "decomposition": 0.011846137448068169,
+                "mineralisation": 0.008529218962609077,
+                "systemOutput": 0.03528314237800141
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "window": {
+          "cx": 188,
+          "cz": 17
+        },
+        "startingRecordDigest": "d6d3bdd7cc917d47115c4ad7bb8d38c0278ce4f499eff4025a8e0bf38089e39d",
+        "activeOwnerCount": 9,
+        "supportOwnerCount": 12,
+        "supportCacheOwnerCount": 24,
+        "simulatedNightSec": 8,
+        "simulatedDaySec": 4,
+        "nightStepWallTimeMs": 4799.0506000000005,
+        "dayStepWallTimeMs": 961.5715,
+        "nightCalls": {
+          "surface": 820134,
+          "bed": 1216037
+        },
+        "dayCalls": {
+          "surface": 165773,
+          "bed": 244803
+        },
+        "nightRecordDigest": "5db3ea3adb957f337ac5347c29948cdc72050b8d8ff649c8b0dae690e5156167",
+        "finalRecordDigest": "476c82ab8defd67055bd592140cd4eebfbc256e11f3cae1fc4861d982ab4c088",
+        "persistedRecordDigest": "25600f732319b136543d48b0bd218341c8bfd14cd69afce2c8bfa291c192fc25",
+        "largestBalanceError": 1.0436096431476471e-14,
+        "largestFoodError": 1.4710455076283324e-14,
+        "ownerCounters": [
+          {
+            "id": "187,16",
+            "timeSec": 12,
+            "individualRecordCount": 15,
+            "newSpecies": [
+              "reef-goatfish"
+            ],
+            "counters": {
+              "feeding": 26,
+              "escapes": 3,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 1,
+              "consumedUnits": 0.00022
+            },
+            "resources": {
+              "algae": 0.43929044169349063,
+              "plankton": 0.6438839534657251,
+              "detritus": 0.19706427261121534
+            },
+            "ledger": {
+              "initial": 1.2998849773965777,
+              "input": 0.01882002641229787,
+              "ingested": 0.012639999999999997,
+              "exported": 0.007004325470525817,
+              "networkAdded": 0.004527547736036833,
+              "networkRemoved": 0.005243846494088054,
+              "transferredOut": 0.018105711809869085
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.32399242874234996,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.060277992997354785,
+              "ledger": {
+                "initial": 1.7198849773965779,
+                "externalInput": 0.040620026412297935,
+                "transferredIn": 0,
+                "transferredOut": 0.018105711809869085,
+                "output": 0.010381803970040496
+              },
+              "processTotals": {
+                "primaryProduction": 0.001237540733391703,
+                "externalInput": 0.040620026412297935,
+                "ingestion": 0.013120000000000014,
+                "feedingDetritus": 0.0032800000000000034,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00021626379154374365,
+                "decomposition": 0.0047638464940880565,
+                "mineralisation": 0.0034299694757434006,
+                "systemOutput": 0.010381803970040496
+              }
+            }
+          },
+          {
+            "id": "187,17",
+            "timeSec": 12,
+            "individualRecordCount": 14,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 30,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0013599999999999999
+            },
+            "resources": {
+              "algae": 0.4400957679539069,
+              "plankton": 0.5206872347988173,
+              "detritus": 0.19561851786999568
+            },
+            "ledger": {
+              "initial": 1.175681991633028,
+              "input": 0.01887112766641185,
+              "ingested": 0.01894,
+              "exported": 0.005831286039797841,
+              "networkAdded": 0.005967839628712491,
+              "networkRemoved": 0.005206453929033797,
+              "transferredIn": 0.0016180368379578335,
+              "transferredOut": 0.015759735174554403
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.3241271359515788,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.06025107124861113,
+              "ledger": {
+                "initial": 1.595681991633028,
+                "externalInput": 0.03667112766641177,
+                "transferredIn": 0.0016180368379578335,
+                "transferredOut": 0.015759735174554403,
+                "output": 0.010140069310937753
+              },
+              "processTotals": {
+                "primaryProduction": 0.0010759108773236192,
+                "externalInput": 0.03667112766641177,
+                "ingestion": 0.019420000000000007,
+                "feedingDetritus": 0.004855000000000002,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00021624723094280923,
+                "decomposition": 0.004726453929033799,
+                "mineralisation": 0.0034030468289043365,
+                "systemOutput": 0.010140069310937753
+              }
+            }
+          },
+          {
+            "id": "187,18",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 32,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0011
+            },
+            "resources": {
+              "algae": 0.23035672176553912,
+              "plankton": 0.5178320596715077,
+              "detritus": 0.48766652276696915
+            },
+            "ledger": {
+              "initial": 1.265914546586573,
+              "input": 0.018745360179992968,
+              "ingested": 0.018049999999999997,
+              "exported": 0.009835570430046011,
+              "networkAdded": 0.005298057884741084,
+              "networkRemoved": 0.011911291034151592,
+              "transferredIn": 0.001831607523126182,
+              "transferredOut": 0.01613740650623461
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 0.75,
+                "seagrass": 1,
+                "coral": 0.125
+              },
+              "nutrients": 0.3295972110578548,
+              "plantOrganicUnits": 0.05997619367837902,
+              "coralOrganicUnits": 0.007524966923610672,
+              "ledger": {
+                "initial": 1.6934145465865733,
+                "externalInput": 0.0445453601799932,
+                "transferredIn": 0.001831607523126182,
+                "transferredOut": 0.01613740650623461,
+                "output": 0.015952945501878004
+              },
+              "processTotals": {
+                "primaryProduction": 0.0007357184867307483,
+                "externalInput": 0.0445453601799932,
+                "ingestion": 0.018109999999999998,
+                "feedingDetritus": 0.004527499999999999,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0002427598399125071,
+                "decomposition": 0.011851291034151584,
+                "mineralisation": 0.008532929544589134,
+                "systemOutput": 0.015952945501878004
+              }
+            }
+          },
+          {
+            "id": "188,16",
+            "timeSec": 12,
+            "individualRecordCount": 18,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie"
+            ],
+            "counters": {
+              "feeding": 33,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0013599999999999999
+            },
+            "resources": {
+              "algae": 0.6149313239250165,
+              "plankton": 0.5884691165812288,
+              "detritus": 0.19632482611269264
+            },
+            "ledger": {
+              "initial": 1.4045234592445195,
+              "input": 0.018721801978945397,
+              "ingested": 0.018829999999999993,
+              "exported": 0.006621358990073866,
+              "networkAdded": 0.006196400705592121,
+              "networkRemoved": 0.005221623431044406,
+              "transferredIn": 0.016487674971911257,
+              "transferredOut": 0.015531087860908926
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 1
+              },
+              "nutrients": 0.3239744679825063,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.05979860018225165,
+              "ledger": {
+                "initial": 1.8245234592445196,
+                "externalInput": 0.052521801978945765,
+                "transferredIn": 0.016487674971911257,
+                "transferredOut": 0.015531087860908926,
+                "output": 0.011009211223137578
+              },
+              "processTotals": {
+                "primaryProduction": 0.001239500887843737,
+                "externalInput": 0.052521801978945765,
+                "ingestion": 0.019790000000000023,
+                "feedingDetritus": 0.004947500000000006,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0002159832990556363,
+                "decomposition": 0.004741623431044411,
+                "mineralisation": 0.003413968870351974,
+                "systemOutput": 0.011009211223137578
+              }
+            }
+          },
+          {
+            "id": "188,17",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 31,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 6,
+              "consumedUnits": 0.00132
+            },
+            "resources": {
+              "algae": 0.44099719400658194,
+              "plankton": 0.6271189466559814,
+              "detritus": 0.48876055184187006
+            },
+            "ledger": {
+              "initial": 1.5731526644714178,
+              "input": 0.01880942268890449,
+              "ingested": 0.018879999999999997,
+              "exported": 0.00717099063887181,
+              "networkAdded": 0.0062184614533292125,
+              "networkRemoved": 0.012338373388969646,
+              "transferredIn": 0.014875986341052302,
+              "transferredOut": 0.017790478422435002
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3290979246348965,
+              "plantOrganicUnits": 0.06003225347312392,
+              "coralOrganicUnits": 0.059757389278707544,
+              "ledger": {
+                "initial": 2.0531526644714178,
+                "externalInput": 0.044609422688904346,
+                "transferredIn": 0.014875986341052302,
+                "transferredOut": 0.017790478422435002,
+                "output": 0.013548995772965077
+              },
+              "processTotals": {
+                "primaryProduction": 0.0012401042051607282,
+                "externalInput": 0.044609422688904346,
+                "ingestion": 0.019840000000000028,
+                "feedingDetritus": 0.004960000000000007,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00043172531655538856,
+                "decomposition": 0.011858373388969634,
+                "mineralisation": 0.008538028840058132,
+                "systemOutput": 0.013548995772965077
+              }
+            }
+          },
+          {
+            "id": "188,18",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 27,
+              "escapes": 2,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 7,
+              "consumedUnits": 0.0017999999999999997
+            },
+            "resources": {
+              "algae": 0.26614342097342103,
+              "plankton": 0.6033286576459987,
+              "detritus": 0.1937556244697659
+            },
+            "ledger": {
+              "initial": 1.070730611383915,
+              "input": 0.019264377899125443,
+              "ingested": 0.014879999999999996,
+              "exported": 0.011400735876318662,
+              "networkAdded": 0.004338741915546649,
+              "networkRemoved": 0.0049566846643060904,
+              "transferredIn": 0.017893752768166078,
+              "transferredOut": 0.01776236033694052
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 0,
+                "coral": 0.5
+              },
+              "nutrients": 0.3247003026716866,
+              "plantOrganicUnits": 0,
+              "coralOrganicUnits": 0.030080968371066833,
+              "ledger": {
+                "initial": 1.4607306113839151,
+                "externalInput": 0.04506437789912528,
+                "transferredIn": 0.017893752768166078,
+                "transferredOut": 0.01776236033694052,
+                "output": 0.015070857386520144
+              },
+              "processTotals": {
+                "primaryProduction": 0.0004957102866135755,
+                "externalInput": 0.04506437789912528,
+                "ingestion": 0.015120000000000012,
+                "feedingDetritus": 0.003780000000000003,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00010809620044340404,
+                "decomposition": 0.004716684664306089,
+                "mineralisation": 0.0033960129583003856,
+                "systemOutput": 0.015070857386520144
+              }
+            }
+          },
+          {
+            "id": "189,16",
+            "timeSec": 12,
+            "individualRecordCount": 17,
+            "newSpecies": [
+              "reef-goatfish",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 33,
+              "escapes": 3,
+              "cleaning": 2,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 4,
+              "consumedUnits": 0.00088
+            },
+            "resources": {
+              "algae": 0.3694982104520083,
+              "plankton": 0.5987544266237053,
+              "detritus": 0.4881844299830468
+            },
+            "ledger": {
+              "initial": 1.4685532838664948,
+              "input": 0.018696231966065003,
+              "ingested": 0.017349999999999997,
+              "exported": 0.021269391775620934,
+              "networkAdded": 0.005811827574488436,
+              "networkRemoved": 0.012332594214101843,
+              "transferredIn": 0.014583229171284844,
+              "transferredOut": 0.00025551952984660805
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3289504295452897,
+              "plantOrganicUnits": 0.06006090266664637,
+              "coralOrganicUnits": 0.06025620804773004,
+              "ledger": {
+                "initial": 1.948553283866495,
+                "externalInput": 0.048496231966065305,
+                "transferredIn": 0.014583229171284844,
+                "transferredOut": 0.00025551952984660805,
+                "output": 0.02734917988473045
+              },
+              "processTotals": {
+                "primaryProduction": 0.001383438288864872,
+                "externalInput": 0.048496231966065305,
+                "ingestion": 0.017830000000000006,
+                "feedingDetritus": 0.004457500000000001,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.0004320353819118572,
+                "decomposition": 0.011852594214101831,
+                "mineralisation": 0.008533867834153318,
+                "systemOutput": 0.02734917988473045
+              }
+            }
+          },
+          {
+            "id": "189,17",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "blue-spotted-ray",
+              "reef-goatfish",
+              "tiger-cowrie"
+            ],
+            "counters": {
+              "feeding": 32,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0013599999999999999
+            },
+            "resources": {
+              "algae": 0.4399180382424839,
+              "plankton": 0.6552360625528961,
+              "detritus": 0.48850409124016464
+            },
+            "ledger": {
+              "initial": 1.5979669422470035,
+              "input": 0.018667647321870765,
+              "ingested": 0.02005,
+              "exported": 0.02248621045078177,
+              "networkAdded": 0.006612391568753184,
+              "networkRemoved": 0.01232788926028722,
+              "transferredIn": 0.01628965169035014,
+              "transferredOut": 0.0010143410813691221
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 1
+              },
+              "nutrients": 0.3289382776411361,
+              "plantOrganicUnits": 0.0600626544565335,
+              "coralOrganicUnits": 0.0597776566009808,
+              "ledger": {
+                "initial": 2.0779669422470035,
+                "externalInput": 0.044467647321871084,
+                "transferredIn": 0.01628965169035014,
+                "transferredOut": 0.0010143410813691221,
+                "output": 0.0290374621806388
+              },
+              "processTotals": {
+                "primaryProduction": 0.0013922026262673485,
+                "externalInput": 0.044467647321871084,
+                "ingestion": 0.021010000000000032,
+                "feedingDetritus": 0.005252500000000008,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00043175648457491144,
+                "decomposition": 0.011847889260287205,
+                "mineralisation": 0.008530480267406782,
+                "systemOutput": 0.0290374621806388
+              }
+            }
+          },
+          {
+            "id": "189,18",
+            "timeSec": 12,
+            "individualRecordCount": 16,
+            "newSpecies": [
+              "reef-goatfish",
+              "tiger-cowrie",
+              "spotted-hermit-crab"
+            ],
+            "counters": {
+              "feeding": 29,
+              "escapes": 0,
+              "cleaning": 0,
+              "predation": 0,
+              "deaths": 0
+            },
+            "benthicCounters": {
+              "feedings": 5,
+              "consumedUnits": 0.0011
+            },
+            "resources": {
+              "algae": 0.3368350390489194,
+              "plankton": 0.6610953201628468,
+              "detritus": 0.48896637488811345
+            },
+            "ledger": {
+              "initial": 1.5026811887696385,
+              "input": 0.018911798045970804,
+              "ingested": 0.018219999999999997,
+              "exported": 0.029016269661300536,
+              "networkAdded": 0.006029452975335385,
+              "networkRemoved": 0.012266137448068173,
+              "transferredIn": 0.01877670141830963
+            },
+            "basicNetwork": {
+              "version": 1,
+              "profile": "living-shallows-v1",
+              "units": "relative organic/nutrient reference units; not measured biomass; independent of energy",
+              "initializedAtSec": 0,
+              "habitat": {
+                "algae": 1,
+                "seagrass": 1,
+                "coral": 0.875
+              },
+              "nutrients": 0.3290832094261171,
+              "plantOrganicUnits": 0.06003765497785723,
+              "coralOrganicUnits": 0.05223090158329569,
+              "ledger": {
+                "initial": 1.9751811887696387,
+                "externalInput": 0.0447117980459709,
+                "transferredIn": 0.01877670141830963,
+                "transferredOut": 0,
+                "output": 0.03528314237800141
+              },
+              "processTotals": {
+                "primaryProduction": 0.0012460095364885961,
+                "externalInput": 0.0447117980459709,
+                "ingestion": 0.01912000000000002,
+                "feedingDetritus": 0.004780000000000005,
+                "predation": 0,
+                "deathDetritus": 0,
+                "plantLitter": 0.00040470074720751426,
+                "decomposition": 0.011846137448068169,
+                "mineralisation": 0.008529218962609077,
+                "systemOutput": 0.03528314237800141
+              }
+            }
+          }
+        ]
+      },
+      "exactNightRecords": true,
+      "exactFinalRecords": true,
+      "exactPersistedRecords": true,
+      "nightTimeReductionFraction": 0.45607368087187583,
+      "dayTimeReductionFraction": 0.4675114487601092
+    }
+  ],
+  "untimedBroadphaseSampling": {
+    "scope": "All 4m bin centers in the support-owner caches after restoring the exact benchmark inputs; candidate counts only, separate from timed runs. Each omitted descriptor still uses the existing exact query when included.",
+    "originalPool": "index.features is the identical ordered nine-neighbour feature list scanned by the baseline for every surface query.",
+    "rows": [
+      {
+        "window": {
+          "cx": 176,
+          "cz": 8
+        },
+        "coldRestoredSupportCacheOwners": 15,
+        "sampleCount": 3840,
+        "completePoolVisits": 734208,
+        "shortlistedVisits": 3037,
+        "meanCompletePoolCandidates": 191.2,
+        "meanShortlistedCandidates": 0.7908854166666667,
+        "candidateVisitReductionFraction": 0.9958635699965133,
+        "maxCompletePoolCandidates": 273,
+        "maxShortlistedCandidates": 5,
+        "medianShortlistedCandidates": 0,
+        "emptyBinCount": 1942,
+        "uniqueNativeDescriptorsByKind": {
+          "bottle": 1,
+          "coral": 541,
+          "driftwood": 4,
+          "rock": 279
+        }
+      },
+      {
+        "window": {
+          "cx": 188,
+          "cz": 17
+        },
+        "coldRestoredSupportCacheOwners": 20,
+        "sampleCount": 5120,
+        "completePoolVisits": 919552,
+        "shortlistedVisits": 4056,
+        "meanCompletePoolCandidates": 179.6,
+        "meanShortlistedCandidates": 0.7921875,
+        "candidateVisitReductionFraction": 0.9955891564587973,
+        "maxCompletePoolCandidates": 255,
+        "maxShortlistedCandidates": 5,
+        "medianShortlistedCandidates": 1,
+        "emptyBinCount": 2454,
+        "uniqueNativeDescriptorsByKind": {
+          "bottle": 1,
+          "coral": 577,
+          "driftwood": 4,
+          "rock": 315
+        }
+      }
+    ]
+  }
+}

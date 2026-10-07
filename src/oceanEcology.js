@@ -13,6 +13,7 @@ import { initializeOceanBenthicLife, validateOceanBenthicLifeRecord, isOceanBent
 import { OCEAN_CHUNK_SIZE, OCEAN_AUTHORED_RADIUS, OCEAN_SURFACE_Y } from './oceanGeneration.js';
 import { OceanEcologyStore } from './oceanEcologyStore.js';
 import { oceanRockHeight, OCEAN_ROCK_SURFACE_VERSION } from './oceanRockShape.js';
+import { createOceanSupportIndex, oceanSupportCandidates } from './oceanSupportIndex.js';
 import { createOceanEnvironment } from './oceanEnvironment.js';
 import { createOceanCommunityPlan, OCEAN_COMMUNITY_VERSION } from './oceanCommunity.js';
 import { createOceanSlopeCommunityPlan, OCEAN_SLOPE_COMMUNITY_VERSION } from './oceanSlopeCommunity.js';
@@ -294,9 +295,9 @@ export class OceanEcology {
 
   _surface(x, z, fish = false, includeFormations = true, actualFloor = true, includeScene = true, includeHabitat = true, includeMacro = true, includeBiodiversity = true) {
     const cx = Math.floor(x / OCEAN_CHUNK_SIZE), cz = Math.floor(z / OCEAN_CHUNK_SIZE), key = `${cx},${cz}`;
-    let features = this._supportCells.get(key);
-    if (!features) {
-      features = [];
+    let supportIndex = this._supportCells.get(key);
+    if (!supportIndex) {
+      const features = [];
       for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) {
         for (const element of this.generator.chunk(cx + dx, cz + dz).elements) {
           if (element.kind === 'rock' || element.kind === 'formation' || element.kind === 'coral' ||
@@ -305,11 +306,12 @@ export class OceanEcology {
             inverseX: 2 / element.scale.x, inverseZ: 2 / element.scale.z });
         }
       }
-      this._supportCells.set(key, features);
+      supportIndex = createOceanSupportIndex(features, cx, cz);
+      this._supportCells.set(key, supportIndex);
       if (this._supportCells.size > 25) this._supportCells.delete(this._supportCells.keys().next().value);
-    } else { this._supportCells.delete(key); this._supportCells.set(key, features); }
+    } else { this._supportCells.delete(key); this._supportCells.set(key, supportIndex); }
     let height = actualFloor ? this._bed(x, z) : this.generator.sample(x, z).floorY;
-    for (const { element, cos, sin, inverseX, inverseZ } of features) {
+    for (const { element, cos, sin, inverseX, inverseZ } of oceanSupportCandidates(supportIndex, x, z)) {
       if (element.kind === 'bottle' || element.kind === 'driftwood') {
         const propHeight = sceneElementHeight(element, x, z);
         if (propHeight !== null) height = Math.max(height, propHeight);
