@@ -4,7 +4,7 @@
 
 最终96文件／679项本机检查全部通过（0失败、0跳过），两次生产构建通过，36份最终源码及测试哈希一致。首次678项诊断批有一处旧开关期望未更新，已修复；同时补齐实际导演hook的原生准备、空群落拒绝、第二窗口等待和取消防护，17项集成专项与最终全套通过，原始日志保留。原10份地形/生态/资产源码逐字节保持，旧35类资产输出回归通过。本机与云端是同套检查，不累加重复次数。
 
-GitHub Pages 发布状态：待本次源码的同套云端检查与部署完成。
+源码`ffcbcf9`已于2026-10-07 18:10:11（Asia/Shanghai）发布；[运行37604323012](https://github.com/yydshly/ocean-world/actions/runs/37604323012)构建、同一679项云端检查（0失败、0跳过）及Pages部署全部成功。部署6907209594／状态19394271344为success，36份当前与提交源码、测试哈希一致。本有限群落包收口；本机与云端是同套检查，不相加。整体画面尚未实际验收。
 
 完整说明见[群落包](https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_MEADOW_LIFE.md)、[来源与界限](https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_MEADOW_LIFE_SOURCES.md)及 output/validation/ocean-meadow-life-delivery.json。有限包核验发布后收口，下一批继续整体生境和动物群落，不展开单体、材质或镜头细调；完整自然食谱、浏览器/GPU整体观感尚未验收。以下保留此前交付历史。
 
