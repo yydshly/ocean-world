@@ -1,0 +1,382 @@
+TAP version 13
+# Subtest: deep belt and whole-scene shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries
+ok 1 - deep belt and whole-scene shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries
+  ---
+  duration_ms: 1271.7725
+  type: 'test'
+  ...
+# Subtest: kelp belt and whole-scene shortcuts resolve native seed routes without changing protected ecology
+ok 2 - kelp belt and whole-scene shortcuts resolve native seed routes without changing protected ecology
+  ---
+  duration_ms: 309.7031
+  type: 'test'
+  ...
+# Subtest: matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+ok 3 - matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+  ---
+  duration_ms: 0.3343
+  type: 'test'
+  ...
+# Subtest: missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+ok 4 - missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+  ---
+  duration_ms: 0.1302
+  type: 'test'
+  ...
+# Subtest: the public observation shortcuts cover the actual living generator route once each
+ok 5 - the public observation shortcuts cover the actual living generator route once each
+  ---
+  duration_ms: 0.8691
+  type: 'test'
+  ...
+# Subtest: stop selection resolves the loaded route by ID and never substitutes the first stop
+ok 6 - stop selection resolves the loaded route by ID and never substitutes the first stop
+  ---
+  duration_ms: 0.2205
+  type: 'test'
+  ...
+# Subtest: kelp and deep world entries start continuous exploration and report an actual startup failure
+ok 7 - kelp and deep world entries start continuous exploration and report an actual startup failure
+  ---
+  duration_ms: 0.3542
+  type: 'test'
+  ...
+# Subtest: anchored kelp and deep openings use actual native habitat entries without a preliminary overview
+ok 8 - anchored kelp and deep openings use actual native habitat entries without a preliminary overview
+  ---
+  duration_ms: 0.4994
+  type: 'test'
+  ...
+# Subtest: director animal entry delegates selection and camera preparation while manual focus retains its native call
+ok 9 - director animal entry delegates selection and camera preparation while manual focus retains its native call
+  ---
+  duration_ms: 0.6414
+  type: 'test'
+  ...
+# Subtest: living and legacy world entries use their own observation operations without rebuilding populations
+ok 10 - living and legacy world entries use their own observation operations without rebuilding populations
+  ---
+  duration_ms: 0.609
+  type: 'test'
+  ...
+# Subtest: director fixed-view shots start at the requested view even before a slow transition could finish
+ok 11 - director fixed-view shots start at the requested view even before a slow transition could finish
+  ---
+  duration_ms: 0.4415
+  type: 'test'
+  ...
+# Subtest: water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+ok 12 - water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+  ---
+  duration_ms: 0.4358
+  type: 'test'
+  ...
+# Subtest: current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+ok 13 - current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+  ---
+  duration_ms: 0.2695
+  type: 'test'
+  ...
+# Subtest: director layer entry defers vertical movement to the rendered shot and leaves manual switching intact
+ok 14 - director layer entry defers vertical movement to the rendered shot and leaves manual switching intact
+  ---
+  duration_ms: 0.1633
+  type: 'test'
+  ...
+# Subtest: a missing local animal remains absent and the navigation adapter ignores UI-only tools
+ok 15 - a missing local animal remains absent and the navigation adapter ignores UI-only tools
+  ---
+  duration_ms: 0.1787
+  type: 'test'
+  ...
+# Subtest: discovery entry starts only the living observation world and preserves an existing exploration location
+ok 16 - discovery entry starts only the living observation world and preserves an existing exploration location
+  ---
+  duration_ms: 0.1118
+  type: 'test'
+  ...
+# Subtest: the director opening resolves the complete scene start while the ordinary default retains its original entry
+ok 17 - the director opening resolves the complete scene start while the ordinary default retains its original entry
+  ---
+  duration_ms: 0.3232
+  type: 'test'
+  ...
+# Subtest: the actual player exposes working camera-rate choices while loading or paused
+ok 18 - the actual player exposes working camera-rate choices while loading or paused
+  ---
+  duration_ms: 10.285
+  type: 'test'
+  ...
+# Subtest: the actual countdown scales with rate while progress retains rendered shot time
+ok 19 - the actual countdown scales with rate while progress retains rendered shot time
+  ---
+  duration_ms: 4.0676
+  type: 'test'
+  ...
+# Subtest: a completed player can select the last chapter again through its real seek handler
+ok 20 - a completed player can select the last chapter again through its real seek handler
+  ---
+  duration_ms: 3.5502
+  type: 'test'
+  ...
+# Subtest: route estimates respond to camera rate without changing completed coverage or paused wording
+ok 21 - route estimates respond to camera rate without changing completed coverage or paused wording
+  ---
+  duration_ms: 3.6707
+  type: 'test'
+  ...
+# Subtest: manual last-chapter skips and ending cannot claim that all chapters were played
+ok 22 - manual last-chapter skips and ending cannot claim that all chapters were played
+  ---
+  duration_ms: 5.6592
+  type: 'test'
+  ...
+# Subtest: the shipped player claims full completion only after every actual chapter clock completes
+ok 23 - the shipped player claims full completion only after every actual chapter clock completes
+  ---
+  duration_ms: 5.6179
+  type: 'test'
+  ...
+# Subtest: a scene-only sibling mask follows exact director opacity while pause, skip and seek stay usable
+ok 24 - a scene-only sibling mask follows exact director opacity while pause, skip and seek stay usable
+  ---
+  duration_ms: 8.9741
+  type: 'test'
+  ...
+# Subtest: nearby shot linking stays visible and completion or idle cannot retain a stale mask
+ok 25 - nearby shot linking stays visible and completion or idle cannot retain a stale mask
+  ---
+  duration_ms: 5.2116
+  type: 'test'
+  ...
+# Subtest: shipped mask styling sits below controls and adds no asynchronous opacity animation
+ok 26 - shipped mask styling sits below controls and adds no asynchronous opacity animation
+  ---
+  duration_ms: 7.6701
+  type: 'test'
+  ...
+# Subtest: the chosen camera rate survives chapter changes, pauses, completion and another tour
+ok 27 - the chosen camera rate survives chapter changes, pauses, completion and another tour
+  ---
+  duration_ms: 3.0396
+  type: 'test'
+  ...
+# Subtest: unsupported playback rates leave the actual shot and playback state untouched
+ok 28 - unsupported playback rates leave the actual shot and playback state untouched
+  ---
+  duration_ms: 0.2489
+  type: 'test'
+  ...
+# Subtest: the finite tour covers every existing entry without invented or destructive actions
+ok 29 - the finite tour covers every existing entry without invented or destructive actions
+  ---
+  duration_ms: 0.6285
+  type: 'test'
+  ...
+# Subtest: all chapters declare finite frozen camera motion, with enough time to walk through scenes
+ok 30 - all chapters declare finite frozen camera motion, with enough time to walk through scenes
+  ---
+  duration_ms: 0.3411
+  type: 'test'
+  ...
+# Subtest: macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds
+ok 31 - macro scenes and native route entries precede workbenches, and layers/animals run in their intended worlds
+  ---
+  duration_ms: 0.816
+  type: 'test'
+  ...
+# Subtest: the opening observes actual nearby life and discoveries before repositioning to the thirteen geographic stops
+ok 32 - the opening observes actual nearby life and discoveries before repositioning to the thirteen geographic stops
+  ---
+  duration_ms: 0.4754
+  type: 'test'
+  ...
+# Subtest: opening actions resolve existing shallow, kelp and deep stops without changing their native action references
+ok 33 - opening actions resolve existing shallow, kelp and deep stops without changing their native action references
+  ---
+  duration_ms: 860.5903
+  type: 'test'
+  ...
+# Subtest: the real shallow landmark order reduces repeated relocation while retaining every distant native destination
+ok 34 - the real shallow landmark order reduces repeated relocation while retaining every distant native destination
+  ---
+  duration_ms: 1.156
+  type: 'test'
+  ...
+# Subtest: the retained nearby source-based sample remains too far from its native entry to invent a continuous bridge
+ok 35 - the retained nearby source-based sample remains too far from its native entry to invent a continuous bridge
+  ---
+  duration_ms: 2649.8769
+  type: 'test'
+  ...
+# Subtest: direct chapter seeks resolve their intended world from any currently loaded world
+ok 36 - direct chapter seeks resolve their intended world from any currently loaded world
+  ---
+  duration_ms: 2.2283
+  type: 'test'
+  ...
+# Subtest: loading and pausing never consume viewing time
+ok 37 - loading and pausing never consume viewing time
+  ---
+  duration_ms: 0.4822
+  type: 'test'
+  ...
+# Subtest: late callbacks cannot enter, fail, or count a replaced step after seek, stop, or restart
+ok 38 - late callbacks cannot enter, fail, or count a replaced step after seek, stop, or restart
+  ---
+  duration_ms: 0.3015
+  type: 'test'
+  ...
+# Subtest: one slow tick cannot skip viewing/loading of the next scene
+ok 39 - one slow tick cannot skip viewing/loading of the next scene
+  ---
+  duration_ms: 0.2126
+  type: 'test'
+  ...
+# Subtest: an entry failure pauses visibly until a retry or explicit skip
+ok 40 - an entry failure pauses visibly until a retry or explicit skip
+  ---
+  duration_ms: 0.2259
+  type: 'test'
+  ...
+# Subtest: manual navigation stays finite and preserves a paused playback preference
+ok 41 - manual navigation stays finite and preserves a paused playback preference
+  ---
+  duration_ms: 0.2975
+  type: 'test'
+  ...
+# Subtest: a complete automatic traversal visits every step once and stops at its end
+ok 42 - a complete automatic traversal visits every step once and stops at its end
+  ---
+  duration_ms: 0.6837
+  type: 'test'
+  ...
+# Subtest: full-shot coverage does not treat loading, skips or a manual finish as completed observation
+ok 43 - full-shot coverage does not treat loading, skips or a manual finish as completed observation
+  ---
+  duration_ms: 0.2194
+  type: 'test'
+  ...
+# Subtest: an explicit native completion receipt is token guarded, idempotent and never advances the chapter
+ok 44 - an explicit native completion receipt is token guarded, idempotent and never advances the chapter
+  ---
+  duration_ms: 0.2411
+  type: 'test'
+  ...
+# Subtest: invalid timer input and duplicate readiness cannot distort a showing step
+ok 45 - invalid timer input and duplicate readiness cannot distort a showing step
+  ---
+  duration_ms: 0.1748
+  type: 'test'
+  ...
+# Subtest: a distant reposition executes only under full cover and begins its shot only after reveal
+ok 46 - a distant reposition executes only under full cover and begins its shot only after reveal
+  ---
+  duration_ms: 13.4703
+  type: 'test'
+  ...
+# Subtest: cross-world loading and a second physical window requested by preparation remain covered until truly ready
+ok 47 - cross-world loading and a second physical window requested by preparation remain covered until truly ready
+  ---
+  duration_ms: 9.6647
+  type: 'test'
+  ...
+# Subtest: a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window
+ok 48 - a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window
+  ---
+  duration_ms: 1.9419
+  type: 'test'
+  ...
+# Subtest: a keep entry opens its existing tool without fading or acquiring an entry camera path
+ok 49 - a keep entry opens its existing tool without fading or acquiring an entry camera path
+  ---
+  duration_ms: 1.6023
+  type: 'test'
+  ...
+# Subtest: playing, hidden state and playback rate control the transition while preserving chapter time
+ok 50 - playing, hidden state and playback rate control the transition while preserving chapter time
+  ---
+  duration_ms: 1.7695
+  type: 'test'
+  ...
+# Subtest: seek and stop invalidate old fades, pause promises and applied callbacks before they can reposition a new token
+ok 51 - seek and stop invalidate old fades, pause promises and applied callbacks before they can reposition a new token
+  ---
+  duration_ms: 3.4586
+  type: 'test'
+  ...
+# Subtest: a failed entry cannot fabricate readiness, chapter time or a started observation shot
+ok 52 - a failed entry cannot fabricate readiness, chapter time or a started observation shot
+  ---
+  duration_ms: 4.7265
+  type: 'test'
+  ...
+# Subtest: the real meadow and shoal chapters prepare actual life under cover and wait for their second native window
+ok 53 - the real meadow and shoal chapters prepare actual life under cover and wait for their second native window
+  ---
+  duration_ms: 19.0153
+  type: 'test'
+  ...
+# Subtest: scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+ok 54 - scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+  ---
+  duration_ms: 56.6707
+  type: 'test'
+  ...
+# Subtest: new scene hides authored terrain and disables all three old additive scenery systems
+ok 55 - new scene hides authored terrain and disables all three old additive scenery systems
+  ---
+  duration_ms: 25.6978
+  type: 'test'
+  ...
+# Subtest: world restores saved global forcing and clock before handing environment to regional ecology
+ok 56 - world restores saved global forcing and clock before handing environment to regional ecology
+  ---
+  duration_ms: 16.774
+  type: 'test'
+  ...
+# Subtest: new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+ok 57 - new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+  ---
+  duration_ms: 22.1653
+  type: 'test'
+  ...
+# Subtest: route controls use finite ordinary travel without teleport or ecology replacement
+ok 58 - route controls use finite ordinary travel without teleport or ecology replacement
+  ---
+  duration_ms: 355.116
+  type: 'test'
+  ...
+# Subtest: the two living-belt entries face their planned local spaces and keep original ecological controls
+ok 59 - the two living-belt entries face their planned local spaces and keep original ecological controls
+  ---
+  duration_ms: 480.2718
+  type: 'test'
+  ...
+# Subtest: environment updates and pause save the actual global forcing and latest time
+ok 60 - environment updates and pause save the actual global forcing and latest time
+  ---
+  duration_ms: 7.8775
+  type: 'test'
+  ...
+# Subtest: explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+ok 61 - explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+  ---
+  duration_ms: 381.0771
+  type: 'test'
+  ...
+# Subtest: new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+ok 62 - new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+  ---
+  duration_ms: 271.7263
+  type: 'test'
+  ...
+1..62
+# tests 62
+# suites 0
+# pass 62
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3818.3108

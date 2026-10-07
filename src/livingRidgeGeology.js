@@ -1,6 +1,7 @@
 import { OCEAN_BIODIVERSITY_ROUTE_STOPS } from './oceanBiodiversityRoutes.js';
 import { OCEAN_BENTHIC_LIFE_ROUTE_STOPS } from './oceanBenthicLifeRoutes.js';
 import { OCEAN_MEADOW_LIFE_ROUTE_STOPS } from './oceanMeadowLifeRoutes.js';
+import { OCEAN_SHOAL_LIFE_ROUTE_STOPS } from './oceanShoalLifeRoutes.js';
 import { oceanRockHeight, oceanRockSurface } from './oceanRockShape.js';
 import { sceneElementHeight } from './oceanSceneElements.js';
 import { validateLivingHabitatMosaic } from './livingHabitatMosaic.js';
@@ -272,7 +273,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
       Object.freeze({ id: 'seascape-transition', label: '相邻生境', x: 3502.5, z: 608 }),
       Object.freeze({ id: 'habitat-belt-reef', label: '生活带：礁群沙道', x: 4758, z: 150, heading: Math.PI / 2, entryAcrossM: 2 }),
       Object.freeze({ id: 'habitat-belt-meadow', label: '生活带：草床水层', x: 4832, z: 224, heading: Math.atan2(.51, .86), entryAcrossM: 2 }),
-      ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS]),
+      ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS, ...OCEAN_SHOAL_LIFE_ROUTE_STOPS]),
     sample(x, z) {
       const belt = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
       if (belt?.version === 5) return sampleLivingHabitatBelt(base, belt, x, z);

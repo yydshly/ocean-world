@@ -1,0 +1,3813 @@
+{
+  "scope": "finite actual CPU production generation, independent animals, stocks, native debit writes and persistence; no browser/GPU/visual acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "activeOwnerLimit": 9,
+  "sourceOwnerLimit": 25,
+  "animalRecordLimit": 20,
+  "newAnimalRecordLimit": 8,
+  "sourceSpecies": [
+    {
+      "id": "blue-and-gold-fusilier",
+      "scientificName": "Caesio teres",
+      "identityLevel": "species-representative",
+      "sizeMeasure": "total-length",
+      "selectedDepthM": [
+        5,
+        15
+      ],
+      "sourceLinks": [
+        "https://fishesofaustralia.net.au/Home/species/1233",
+        "https://churaumi.okinawa/sp/sc/fishbook/1489653956/"
+      ]
+    },
+    {
+      "id": "bigeye-trevally",
+      "scientificName": "Caranx sexfasciatus",
+      "identityLevel": "species-representative",
+      "sizeMeasure": "total-length",
+      "selectedDepthM": [
+        3,
+        15
+      ],
+      "sourceLinks": [
+        "https://www.kahaku.go.jp/research/db/zoology/FishGuide/data/fish207.html",
+        "https://fishesofaustralia.net.au/home/species/1654",
+        "https://fishdb.sinica.edu.tw/chi/species.php?gen=Caranx&spe=sexfasciatus",
+        "https://lifg.australian.museum/HotShot.html?resourceId=CMhpffGR"
+      ]
+    },
+    {
+      "id": "silver-stripe-herring",
+      "scientificName": "Spratelloides gracilis",
+      "identityLevel": "species-representative",
+      "sizeMeasure": "total-length",
+      "selectedDepthM": [
+        1,
+        3
+      ],
+      "sourceLinks": [
+        "https://repository.naturalis.nl/pub/317728/ZV1966084001.pdf",
+        "https://www.fao.org/4/ac482e/ac482e09.pdf",
+        "https://www.si.edu/es/object/spratelloides-gracilis%3Anmnhvz_5182417",
+        "https://www.tfrin.gov.tw/theme_data.php?id=1322&sub_theme=special_message&theme=book_data",
+        "https://www.museum.kagoshima-u.ac.jp/ichthy/INHFJ_2020_003_010.pdf",
+        "https://fishesofaustralia.net.au/home/species/2069"
+      ]
+    },
+    {
+      "id": "blacktip-reef-shark",
+      "scientificName": "Carcharhinus melanopterus",
+      "identityLevel": "species-representative",
+      "sizeMeasure": "total-length",
+      "selectedDepthM": [
+        3,
+        15
+      ],
+      "sourceLinks": [
+        "https://www.fao.org/4/ad123e/ad123e28.pdf",
+        "https://fish.gov.au/docs/SharkReport/2023_FRDC_Carcharhinus_melanopterus_final.pdf",
+        "https://fishesofaustralia.net.au/home/species/1952",
+        "https://australian.museum/learn/animals/fishes/blacktip-reef-shark-carcharhinus-melanopterus-quoy-gaimard-1824/"
+      ]
+    }
+  ],
+  "windows": [
+    {
+      "x": 13152,
+      "z": 1312
+    },
+    {
+      "x": 12064,
+      "z": 928
+    }
+  ],
+  "union": [
+    "silver-stripe-herring",
+    "bigeye-trevally",
+    "blacktip-reef-shark",
+    "blue-and-gold-fusilier"
+  ],
+  "countsBySpecies": {
+    "blue-and-gold-fusilier": {
+      "bornIndividuals": 17,
+      "aliveAfterObservation": 17,
+      "nativeClockObservedIndividuals": 17,
+      "fedIndividuals": 17,
+      "successfulBites": 18,
+      "movedIndividuals": 17
+    },
+    "bigeye-trevally": {
+      "bornIndividuals": 13,
+      "aliveAfterObservation": 13,
+      "nativeClockObservedIndividuals": 13,
+      "fedIndividuals": 7,
+      "successfulBites": 7,
+      "movedIndividuals": 13
+    },
+    "silver-stripe-herring": {
+      "bornIndividuals": 13,
+      "aliveAfterObservation": 13,
+      "nativeClockObservedIndividuals": 13,
+      "fedIndividuals": 13,
+      "successfulBites": 16,
+      "movedIndividuals": 13
+    },
+    "blacktip-reef-shark": {
+      "bornIndividuals": 2,
+      "aliveAfterObservation": 2,
+      "nativeClockObservedIndividuals": 2,
+      "fedIndividuals": 2,
+      "successfulBites": 2,
+      "movedIndividuals": 2
+    }
+  },
+  "owners": [
+    {
+      "id": "206,20",
+      "role": true,
+      "animalRecordCount": 16,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 16.412727483646215,
+        "maxDepthM": 17.868581656917975
+      },
+      "initialStocks": {
+        "algae": 0.585,
+        "plankton": 0.5046441858820617,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [
+        "ocean:206,20:shoal-life:silver-stripe-herring:0",
+        "ocean:206,20:shoal-life:silver-stripe-herring:1",
+        "ocean:206,20:shoal-life:silver-stripe-herring:2",
+        "ocean:206,20:shoal-life:silver-stripe-herring:3",
+        "ocean:206,20:shoal-life:silver-stripe-herring:4",
+        "ocean:206,20:shoal-life:silver-stripe-herring:5",
+        "ocean:206,20:shoal-life:silver-stripe-herring:6"
+      ],
+      "newAgents": [
+        {
+          "id": "ocean:206,20:shoal-life:silver-stripe-herring:0",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.0656040874379687,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13222.989360777881,
+            "y": 5.534257081989199,
+            "z": 1290.042538672075
+          },
+          "actualRootDepthM": 2.4657429180108013,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,20:silver-stripe-herring:column:2,0",
+          "slot": 0,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:206,20:shoal-life:silver-stripe-herring:1",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.07492455350118689,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13222.814033932978,
+            "y": 5.534257081989199,
+            "z": 1289.8339319908373
+          },
+          "actualRootDepthM": 2.4657429180108013,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,20:silver-stripe-herring:column:2,0",
+          "slot": 1,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:206,20:shoal-life:silver-stripe-herring:2",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.06930421024560929,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13222.780754096644,
+            "y": 5.534257081989199,
+            "z": 1290.2178655169764
+          },
+          "actualRootDepthM": 2.4657429180108013,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,20:silver-stripe-herring:column:2,0",
+          "slot": 2,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:206,20:shoal-life:silver-stripe-herring:3",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.06513971195323393,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13222.605427251741,
+            "y": 5.534257081989199,
+            "z": 1290.0092588357388
+          },
+          "actualRootDepthM": 2.4657429180108013,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,20:silver-stripe-herring:column:2,0",
+          "slot": 3,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:206,20:shoal-life:silver-stripe-herring:4",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.06027647206094116,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13222.572147415407,
+            "y": 5.534257081989199,
+            "z": 1290.393192361878
+          },
+          "actualRootDepthM": 2.4657429180108013,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,20:silver-stripe-herring:column:2,0",
+          "slot": 4,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:206,20:shoal-life:silver-stripe-herring:5",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.067822774926899,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13222.396820570504,
+            "y": 5.534257081989199,
+            "z": 1290.1845856806403
+          },
+          "actualRootDepthM": 2.4657429180108013,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,20:silver-stripe-herring:column:2,0",
+          "slot": 5,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:206,20:shoal-life:silver-stripe-herring:6",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.06971197576029226,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13222.36354073417,
+            "y": 5.534257081989199,
+            "z": 1290.5685192067795
+          },
+          "actualRootDepthM": 2.4657429180108013,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,20:silver-stripe-herring:column:2,0",
+          "slot": 6,
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "206,21",
+      "role": true,
+      "animalRecordCount": 19,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 17,
+          "sand": 42,
+          "seagrass": 0,
+          "slope": 5,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 16.875314712524414,
+        "maxDepthM": 20.53998374938965
+      },
+      "initialStocks": {
+        "algae": 0.44500000000000006,
+        "plankton": 0.5106979541480541,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [
+        "ocean:206,21:shoal-life:bigeye-trevally:0",
+        "ocean:206,21:shoal-life:bigeye-trevally:1",
+        "ocean:206,21:shoal-life:bigeye-trevally:2",
+        "ocean:206,21:shoal-life:bigeye-trevally:3",
+        "ocean:206,21:shoal-life:bigeye-trevally:4",
+        "ocean:206,21:shoal-life:bigeye-trevally:5",
+        "ocean:206,21:shoal-life:bigeye-trevally:6"
+      ],
+      "newAgents": [
+        {
+          "id": "ocean:206,21:shoal-life:bigeye-trevally:0",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.521918607549742,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13210.782921508506,
+            "y": 3.0058259398676457,
+            "z": 1397.3775375349194
+          },
+          "actualRootDepthM": 4.994174060132354,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,21:bigeye-trevally:column:1,3",
+          "slot": 0,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:206,21:shoal-life:bigeye-trevally:1",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.41555945174768566,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13210.23490257896,
+            "y": 3.0058259398676457,
+            "z": 1396.5590631902621
+          },
+          "actualRootDepthM": 4.994174060132354,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,21:bigeye-trevally:column:1,3",
+          "slot": 1,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:206,21:shoal-life:bigeye-trevally:2",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.40689486456103624,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13209.96444716385,
+            "y": 3.0058259398676457,
+            "z": 1397.925556464463
+          },
+          "actualRootDepthM": 4.994174060132354,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,21:bigeye-trevally:column:1,3",
+          "slot": 2,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:206,21:shoal-life:bigeye-trevally:3",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.49993431591428816,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13209.416428234304,
+            "y": 3.0058259398676457,
+            "z": 1397.1070821198057
+          },
+          "actualRootDepthM": 4.994174060132354,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,21:bigeye-trevally:column:1,3",
+          "slot": 3,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:206,21:shoal-life:bigeye-trevally:4",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.4727572217117995,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13209.145972819191,
+            "y": 3.0058259398676457,
+            "z": 1398.4735753940065
+          },
+          "actualRootDepthM": 4.994174060132354,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,21:bigeye-trevally:column:1,3",
+          "slot": 4,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:206,21:shoal-life:bigeye-trevally:5",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.36942320107482374,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13208.597953889646,
+            "y": 3.0058259398676457,
+            "z": 1397.6551010493492
+          },
+          "actualRootDepthM": 4.994174060132354,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,21:bigeye-trevally:column:1,3",
+          "slot": 5,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:206,21:shoal-life:bigeye-trevally:6",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.39347591153346,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13208.327498474535,
+            "y": 3.0058259398676457,
+            "z": 1399.02159432355
+          },
+          "actualRootDepthM": 4.994174060132354,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:206,21:bigeye-trevally:column:1,3",
+          "slot": 6,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:206,21:shoal-life:blacktip-reef-shark:0",
+          "speciesId": "blacktip-reef-shark",
+          "sizeM": 0.9545711727812887,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13212.708191724356,
+            "z": 1394.1494866384514,
+            "y": 2.9111482873559
+          },
+          "actualRootDepthM": 5.0888517126441,
+          "individualOrganicUnits": 0.004,
+          "groupId": null,
+          "slot": 0,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        }
+      ]
+    },
+    {
+      "id": "204,19",
+      "role": true,
+      "animalRecordCount": 16,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 1,
+          "seagrass": 0,
+          "slope": 63,
+          "authored-reef": 0
+        },
+        "primary": "slope",
+        "secondary": null,
+        "minDepthM": 18.448669117258834,
+        "maxDepthM": 19.456049942538662
+      },
+      "initialStocks": {
+        "algae": 0.585,
+        "plankton": 0.6733771316707134,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [
+        "ocean:204,19:shoal-life:blue-and-gold-fusilier:0",
+        "ocean:204,19:shoal-life:blue-and-gold-fusilier:1",
+        "ocean:204,19:shoal-life:blue-and-gold-fusilier:2",
+        "ocean:204,19:shoal-life:blue-and-gold-fusilier:3",
+        "ocean:204,19:shoal-life:blue-and-gold-fusilier:4",
+        "ocean:204,19:shoal-life:blue-and-gold-fusilier:5",
+        "ocean:204,19:shoal-life:blue-and-gold-fusilier:6"
+      ],
+      "newAgents": [
+        {
+          "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:0",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.27932102151215077,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13066.305877230116,
+            "y": 2.2415708986110987,
+            "z": 1242.2609289731583
+          },
+          "actualRootDepthM": 5.758429101388901,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,19:blue-and-gold-fusilier:column:0,1",
+          "slot": 0,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:1",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.2789442625455558,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13066.734954716947,
+            "y": 2.2415708986110987,
+            "z": 1242.6945100039877
+          },
+          "actualRootDepthM": 5.758429101388901,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,19:blue-and-gold-fusilier:column:0,1",
+          "slot": 1,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:2",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.22316231098026038,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13066.739458260945,
+            "y": 2.2415708986110987,
+            "z": 1241.8318514863274
+          },
+          "actualRootDepthM": 5.758429101388901,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,19:blue-and-gold-fusilier:column:0,1",
+          "slot": 2,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:3",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.24185959566384554,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13067.168535747776,
+            "y": 2.2415708986110987,
+            "z": 1242.2654325171568
+          },
+          "actualRootDepthM": 5.758429101388901,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,19:blue-and-gold-fusilier:column:0,1",
+          "slot": 3,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:4",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.277491480410099,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13067.173039291774,
+            "y": 2.2415708986110987,
+            "z": 1241.4027739994965
+          },
+          "actualRootDepthM": 5.758429101388901,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,19:blue-and-gold-fusilier:column:0,1",
+          "slot": 4,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:5",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.24792423633858562,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13067.602116778606,
+            "y": 2.2415708986110987,
+            "z": 1241.8363550303259
+          },
+          "actualRootDepthM": 5.758429101388901,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,19:blue-and-gold-fusilier:column:0,1",
+          "slot": 5,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:6",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.24981042401865125,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13067.606620322604,
+            "y": 2.2415708986110987,
+            "z": 1240.9736965126656
+          },
+          "actualRootDepthM": 5.758429101388901,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,19:blue-and-gold-fusilier:column:0,1",
+          "slot": 6,
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "205,19",
+      "role": false,
+      "animalRecordCount": 14,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 55,
+          "sand": 2,
+          "seagrass": 0,
+          "slope": 7,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 16.933850496677625,
+        "maxDepthM": 18.68643622670033
+      },
+      "initialStocks": {
+        "algae": 0.6200000000000001,
+        "plankton": 0.49133254699409007,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "206,19",
+      "role": false,
+      "animalRecordCount": 13,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 58,
+          "sand": 6,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 16.83804646308538,
+        "maxDepthM": 17.640173001080868
+      },
+      "initialStocks": {
+        "algae": 0.5150000000000001,
+        "plankton": 0.6706587993912398,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "204,20",
+      "role": true,
+      "animalRecordCount": 16,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 2,
+          "sand": 11,
+          "seagrass": 0,
+          "slope": 51,
+          "authored-reef": 0
+        },
+        "primary": "slope",
+        "secondary": null,
+        "minDepthM": 18.38206024963918,
+        "maxDepthM": 19.380125482131785
+      },
+      "initialStocks": {
+        "algae": 0.41000000000000003,
+        "plankton": 0.5762833613902331,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [
+        "ocean:204,20:shoal-life:silver-stripe-herring:0",
+        "ocean:204,20:shoal-life:silver-stripe-herring:1",
+        "ocean:204,20:shoal-life:silver-stripe-herring:2",
+        "ocean:204,20:shoal-life:silver-stripe-herring:3",
+        "ocean:204,20:shoal-life:silver-stripe-herring:4",
+        "ocean:204,20:shoal-life:silver-stripe-herring:5"
+      ],
+      "newAgents": [
+        {
+          "id": "ocean:204,20:shoal-life:silver-stripe-herring:0",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.06488828537520021,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13081.23529958627,
+            "y": 6.197392893442884,
+            "z": 1304.2555490443224
+          },
+          "actualRootDepthM": 1.802607106557116,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,20:silver-stripe-herring:column:1,1",
+          "slot": 0,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,20:shoal-life:silver-stripe-herring:1",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.07324604515568353,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13081.272744943524,
+            "y": 6.197392893442884,
+            "z": 1303.9856340665606
+          },
+          "actualRootDepthM": 1.802607106557116,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,20:silver-stripe-herring:column:1,1",
+          "slot": 1,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,20:shoal-life:silver-stripe-herring:2",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.07132868176675401,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13080.965384608508,
+            "y": 6.197392893442884,
+            "z": 1304.218103687068
+          },
+          "actualRootDepthM": 1.802607106557116,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,20:silver-stripe-herring:column:1,1",
+          "slot": 2,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,20:shoal-life:silver-stripe-herring:3",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.06965652813669294,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13081.002829965762,
+            "y": 6.197392893442884,
+            "z": 1303.9481887093061
+          },
+          "actualRootDepthM": 1.802607106557116,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,20:silver-stripe-herring:column:1,1",
+          "slot": 3,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,20:shoal-life:silver-stripe-herring:4",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.0650096660235431,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13080.695469630746,
+            "y": 6.197392893442884,
+            "z": 1304.1806583298135
+          },
+          "actualRootDepthM": 1.802607106557116,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,20:silver-stripe-herring:column:1,1",
+          "slot": 4,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:204,20:shoal-life:silver-stripe-herring:5",
+          "speciesId": "silver-stripe-herring",
+          "sizeM": 0.06528168263845145,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 13080.732914988,
+            "y": 6.197392893442884,
+            "z": 1303.9107433520517
+          },
+          "actualRootDepthM": 1.802607106557116,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:204,20:silver-stripe-herring:column:1,1",
+          "slot": 5,
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "205,20",
+      "role": false,
+      "animalRecordCount": 11,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 16.96752299796355,
+        "maxDepthM": 18.37992769366918
+      },
+      "initialStocks": {
+        "algae": 0.655,
+        "plankton": 0.5474910983070731,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "204,21",
+      "role": false,
+      "animalRecordCount": 11,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 63,
+          "seagrass": 0,
+          "slope": 1,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 17.88815743389261,
+        "maxDepthM": 18.509999772671605
+      },
+      "initialStocks": {
+        "algae": 0.55,
+        "plankton": 0.6302774996124207,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "205,21",
+      "role": false,
+      "animalRecordCount": 13,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 16,
+          "sand": 47,
+          "seagrass": 0,
+          "slope": 1,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 17.698781197854323,
+        "maxDepthM": 18.50254592340565
+      },
+      "initialStocks": {
+        "algae": 0.44500000000000006,
+        "plankton": 0.5409350150451064,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "187,13",
+      "role": true,
+      "animalRecordCount": 17,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 32,
+          "sand": 32,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": "sand",
+        "minDepthM": 12.120810260665628,
+        "maxDepthM": 13.10759749903736
+      },
+      "initialStocks": {
+        "algae": 0.55,
+        "plankton": 0.6602963621355593,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [
+        "ocean:187,13:shoal-life:blue-and-gold-fusilier:0",
+        "ocean:187,13:shoal-life:blue-and-gold-fusilier:1",
+        "ocean:187,13:shoal-life:blue-and-gold-fusilier:2",
+        "ocean:187,13:shoal-life:blue-and-gold-fusilier:3",
+        "ocean:187,13:shoal-life:blue-and-gold-fusilier:4"
+      ],
+      "newAgents": [
+        {
+          "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:0",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.2860933349095285,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12006.150646656428,
+            "y": 0.8466684923507275,
+            "z": 871.6006764306825
+          },
+          "actualRootDepthM": 7.1533315076492725,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:187,13:blue-and-gold-fusilier:column:2,2",
+          "slot": 0,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:1",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.26209710925817487,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12006.698701243142,
+            "y": 0.8466684923507275,
+            "z": 871.8685125185804
+          },
+          "actualRootDepthM": 7.1533315076492725,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:187,13:blue-and-gold-fusilier:column:2,2",
+          "slot": 1,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:2",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.26692738860845566,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12006.418482744326,
+            "y": 0.8466684923507275,
+            "z": 871.0526218439674
+          },
+          "actualRootDepthM": 7.1533315076492725,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:187,13:blue-and-gold-fusilier:column:2,2",
+          "slot": 2,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:3",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.2229340012744069,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12006.96653733104,
+            "y": 0.8466684923507275,
+            "z": 871.3204579318652
+          },
+          "actualRootDepthM": 7.1533315076492725,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:187,13:blue-and-gold-fusilier:column:2,2",
+          "slot": 3,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:4",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.2796528537757695,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12006.686318832224,
+            "y": 0.8466684923507275,
+            "z": 870.5045672572522
+          },
+          "actualRootDepthM": 7.1533315076492725,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:187,13:blue-and-gold-fusilier:column:2,2",
+          "slot": 4,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:187,13:shoal-life:blacktip-reef-shark:0",
+          "speciesId": "blacktip-reef-shark",
+          "sizeM": 1.1980734278447924,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12011.545744588855,
+            "z": 869.9839949235567,
+            "y": 2.289035110035911
+          },
+          "actualRootDepthM": 5.710964889964089,
+          "individualOrganicUnits": 0.004,
+          "groupId": null,
+          "slot": 0,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        }
+      ]
+    },
+    {
+      "id": "188,13",
+      "role": false,
+      "animalRecordCount": 13,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.096187734829481,
+        "maxDepthM": 13.274800999366242
+      },
+      "initialStocks": {
+        "algae": 0.6200000000000001,
+        "plankton": 0.522366929333657,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "189,13",
+      "role": false,
+      "animalRecordCount": 12,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 8,
+          "sand": 56,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 11.065053201720591,
+        "maxDepthM": 13.066714321228826
+      },
+      "initialStocks": {
+        "algae": 0.55,
+        "plankton": 0.5769560007378459,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "187,14",
+      "role": false,
+      "animalRecordCount": 11,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.5648818475409,
+        "maxDepthM": 12.818302477214585
+      },
+      "initialStocks": {
+        "algae": 0.655,
+        "plankton": 0.6370406981930137,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "188,14",
+      "role": true,
+      "animalRecordCount": 14,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.063997206460714,
+        "maxDepthM": 12.568979224525458
+      },
+      "initialStocks": {
+        "algae": 0.6200000000000001,
+        "plankton": 0.5260295797884464,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [
+        "ocean:188,14:shoal-life:blue-and-gold-fusilier:0",
+        "ocean:188,14:shoal-life:blue-and-gold-fusilier:1",
+        "ocean:188,14:shoal-life:blue-and-gold-fusilier:2",
+        "ocean:188,14:shoal-life:blue-and-gold-fusilier:3",
+        "ocean:188,14:shoal-life:blue-and-gold-fusilier:4"
+      ],
+      "newAgents": [
+        {
+          "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:0",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.26168305207043885,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12069.858847961614,
+            "y": 2.1763556234538557,
+            "z": 949.4518952231307
+          },
+          "actualRootDepthM": 5.823644376546144,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:188,14:blue-and-gold-fusilier:column:2,3",
+          "slot": 0,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:1",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.28953531255945564,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12070.462444800529,
+            "y": 2.1763556234538557,
+            "z": 949.5400476822734
+          },
+          "actualRootDepthM": 5.823644376546144,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:188,14:blue-and-gold-fusilier:column:2,3",
+          "slot": 1,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:2",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.28224144753068686,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12069.947000420756,
+            "y": 2.1763556234538557,
+            "z": 948.8482983842166
+          },
+          "actualRootDepthM": 5.823644376546144,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:188,14:blue-and-gold-fusilier:column:2,3",
+          "slot": 2,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:3",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.23929596913978457,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12070.550597259671,
+            "y": 2.1763556234538557,
+            "z": 948.9364508433594
+          },
+          "actualRootDepthM": 5.823644376546144,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:188,14:blue-and-gold-fusilier:column:2,3",
+          "slot": 3,
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:4",
+          "speciesId": "blue-and-gold-fusilier",
+          "sizeM": 0.22616534557193518,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12070.035152879898,
+            "y": 2.1763556234538557,
+            "z": 948.2447015453025
+          },
+          "actualRootDepthM": 5.823644376546144,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:188,14:blue-and-gold-fusilier:column:2,3",
+          "slot": 4,
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "189,14",
+      "role": true,
+      "animalRecordCount": 17,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 14,
+          "sand": 50,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 11.092661208437452,
+        "maxDepthM": 12.415569861647963
+      },
+      "initialStocks": {
+        "algae": 0.41000000000000003,
+        "plankton": 0.6295619878359139,
+        "detritus": 0.5,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0.06,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [
+        "ocean:189,14:shoal-life:bigeye-trevally:0",
+        "ocean:189,14:shoal-life:bigeye-trevally:1",
+        "ocean:189,14:shoal-life:bigeye-trevally:2",
+        "ocean:189,14:shoal-life:bigeye-trevally:3",
+        "ocean:189,14:shoal-life:bigeye-trevally:4",
+        "ocean:189,14:shoal-life:bigeye-trevally:5"
+      ],
+      "newAgents": [
+        {
+          "id": "ocean:189,14:shoal-life:bigeye-trevally:0",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.3915193530730903,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12120.318173251653,
+            "y": 3.7490908045321705,
+            "z": 934.7744484543152
+          },
+          "actualRootDepthM": 4.2509091954678295,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:189,14:bigeye-trevally:column:1,2",
+          "slot": 0,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,14:shoal-life:bigeye-trevally:1",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.4874030015897006,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12120.166383812848,
+            "y": 3.7490908045321705,
+            "z": 935.7476827355997
+          },
+          "actualRootDepthM": 4.2509091954678295,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:189,14:bigeye-trevally:column:1,2",
+          "slot": 1,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,14:shoal-life:bigeye-trevally:2",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.36809338615275916,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12121.291407532937,
+            "y": 3.7490908045321705,
+            "z": 934.9262378931205
+          },
+          "actualRootDepthM": 4.2509091954678295,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:189,14:bigeye-trevally:column:1,2",
+          "slot": 2,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,14:shoal-life:bigeye-trevally:3",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.36282400614582,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12121.139618094132,
+            "y": 3.7490908045321705,
+            "z": 935.899472174405
+          },
+          "actualRootDepthM": 4.2509091954678295,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:189,14:bigeye-trevally:column:1,2",
+          "slot": 3,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,14:shoal-life:bigeye-trevally:4",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.5219758172985167,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12122.264641814221,
+            "y": 3.7490908045321705,
+            "z": 935.0780273319258
+          },
+          "actualRootDepthM": 4.2509091954678295,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:189,14:bigeye-trevally:column:1,2",
+          "slot": 4,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,14:shoal-life:bigeye-trevally:5",
+          "speciesId": "bigeye-trevally",
+          "sizeM": 0.4051173926796764,
+          "sizeMeasure": "total-length",
+          "position": {
+            "x": 12122.112852375416,
+            "y": 3.7490908045321705,
+            "z": 936.0512616132103
+          },
+          "actualRootDepthM": 4.2509091954678295,
+          "individualOrganicUnits": 0.004,
+          "groupId": "shoal:189,14:bigeye-trevally:column:1,2",
+          "slot": 5,
+          "existingPool": "openWaterLife.preyOrganicUnits"
+        }
+      ]
+    },
+    {
+      "id": "187,15",
+      "role": false,
+      "animalRecordCount": 14,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.491392363230297,
+        "maxDepthM": 14.100805941848556
+      },
+      "initialStocks": {
+        "algae": 0.585,
+        "plankton": 0.6538145663961769,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "188,15",
+      "role": false,
+      "animalRecordCount": 13,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.45220045142812,
+        "maxDepthM": 12.970892094387366
+      },
+      "initialStocks": {
+        "algae": 0.655,
+        "plankton": 0.6157108987681568,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    },
+    {
+      "id": "189,15",
+      "role": false,
+      "animalRecordCount": 17,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 27,
+          "sand": 37,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 11.536731409623291,
+        "maxDepthM": 13.564199783149618
+      },
+      "initialStocks": {
+        "algae": 0.655,
+        "plankton": 0.6585888657532633,
+        "detritus": 0.27,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0.0175,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "roster": [],
+      "newAgents": []
+    }
+  ],
+  "windowActivity": [
+    {
+      "position": {
+        "x": 13152,
+        "z": 1312
+      },
+      "observedSec": 4,
+      "actualCpuWallTimeMs": 24916.101,
+      "activeOwnerCount": 9,
+      "sourceOwnerCount": 11,
+      "supportOwnerCount": 16,
+      "newAnimalCount": 28,
+      "actualFeedings": 32,
+      "nativeIntakeTraces": [
+        {
+          "owner": "206,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 0.2,
+          "agentId": "ocean:206,20:shoal-life:silver-stripe-herring:6",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5048332554386604,
+          "stockAfter": 0.5047132554386604,
+          "individualOrganicBefore": 0.0039999200004,
+          "individualOrganicAfter": 0.0040719200004,
+          "individualClockSec": 0.2,
+          "regionalClockSec": 0.2,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "204,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 0.30000000000000004,
+          "agentId": "ocean:204,20:shoal-life:silver-stripe-herring:2",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5762880428914608,
+          "stockAfter": 0.5761680428914608,
+          "individualOrganicBefore": 0.003999880001199996,
+          "individualOrganicAfter": 0.004071880001199996,
+          "individualClockSec": 0.30000000000000004,
+          "regionalClockSec": 0.30000000000000004,
+          "organicBalanceError": -4.440892098500626e-16
+        },
+        {
+          "owner": "204,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 0.30000000000000004,
+          "agentId": "ocean:204,20:shoal-life:silver-stripe-herring:4",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5761680428914608,
+          "stockAfter": 0.5760480428914608,
+          "individualOrganicBefore": 0.003999880001199996,
+          "individualOrganicAfter": 0.004071880001199996,
+          "individualClockSec": 0.30000000000000004,
+          "regionalClockSec": 0.30000000000000004,
+          "organicBalanceError": 0
+        },
+        {
+          "owner": "204,19",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 0.5,
+          "agentId": "ocean:204,19:shoal-life:blue-and-gold-fusilier:1",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6731190628237578,
+          "stockAfter": 0.6729990628237578,
+          "individualOrganicBefore": 0.00399980000399996,
+          "individualOrganicAfter": 0.00407180000399996,
+          "individualClockSec": 0.5,
+          "regionalClockSec": 0.5,
+          "organicBalanceError": 2.220446049250313e-16
+        },
+        {
+          "owner": "206,21",
+          "speciesId": "blacktip-reef-shark",
+          "timeSec": 0.6000000000000001,
+          "agentId": "ocean:206,21:shoal-life:blacktip-reef-shark:0",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.018024000000000002,
+          "stockAfter": 0.017904000000000003,
+          "individualOrganicBefore": 0.00399976000599992,
+          "individualOrganicAfter": 0.00407176000599992,
+          "individualClockSec": 0.6000000000000001,
+          "regionalClockSec": 0.6000000000000001,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "206,21",
+          "speciesId": "bigeye-trevally",
+          "timeSec": 0.7000000000000001,
+          "agentId": "ocean:206,21:shoal-life:bigeye-trevally:3",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.017908000000000004,
+          "stockAfter": 0.017788000000000005,
+          "individualOrganicBefore": 0.00399972000839986,
+          "individualOrganicAfter": 0.00407172000839986,
+          "individualClockSec": 0.7000000000000001,
+          "regionalClockSec": 0.7000000000000001,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "204,19",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 0.7000000000000001,
+          "agentId": "ocean:204,19:shoal-life:blue-and-gold-fusilier:2",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6728279218783075,
+          "stockAfter": 0.6727079218783075,
+          "individualOrganicBefore": 0.00399972000839986,
+          "individualOrganicAfter": 0.00407172000839986,
+          "individualClockSec": 0.7000000000000001,
+          "regionalClockSec": 0.7000000000000001,
+          "organicBalanceError": 4.440892098500626e-16
+        },
+        {
+          "owner": "206,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 0.8,
+          "agentId": "ocean:206,20:shoal-life:silver-stripe-herring:1",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5052561879620968,
+          "stockAfter": 0.5051361879620968,
+          "individualOrganicBefore": 0.003999680011199776,
+          "individualOrganicAfter": 0.004071680011199776,
+          "individualClockSec": 0.8,
+          "regionalClockSec": 0.8,
+          "organicBalanceError": -6.661338147750939e-16
+        },
+        {
+          "owner": "204,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 0.9,
+          "agentId": "ocean:204,20:shoal-life:silver-stripe-herring:5",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5757870421469077,
+          "stockAfter": 0.5756670421469077,
+          "individualOrganicBefore": 0.003999640014399663,
+          "individualOrganicAfter": 0.004071640014399663,
+          "individualClockSec": 0.9,
+          "regionalClockSec": 0.9,
+          "organicBalanceError": 4.440892098500626e-16
+        },
+        {
+          "owner": "206,21",
+          "speciesId": "bigeye-trevally",
+          "timeSec": 1,
+          "agentId": "ocean:206,21:shoal-life:bigeye-trevally:2",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.017800000000000007,
+          "stockAfter": 0.017680000000000008,
+          "individualOrganicBefore": 0.003999600017999519,
+          "individualOrganicAfter": 0.004071600017999519,
+          "individualClockSec": 1,
+          "regionalClockSec": 1,
+          "organicBalanceError": 6.661338147750939e-16
+        },
+        {
+          "owner": "206,21",
+          "speciesId": "bigeye-trevally",
+          "timeSec": 1.1,
+          "agentId": "ocean:206,21:shoal-life:bigeye-trevally:4",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.01768400000000001,
+          "stockAfter": 0.01756400000000001,
+          "individualOrganicBefore": 0.003999560021999339,
+          "individualOrganicAfter": 0.004071560021999339,
+          "individualClockSec": 1.1,
+          "regionalClockSec": 1.1,
+          "organicBalanceError": 4.440892098500626e-16
+        },
+        {
+          "owner": "206,21",
+          "speciesId": "bigeye-trevally",
+          "timeSec": 1.3,
+          "agentId": "ocean:206,21:shoal-life:bigeye-trevally:5",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.01757200000000001,
+          "stockAfter": 0.017452000000000013,
+          "individualOrganicBefore": 0.003999480031198856,
+          "individualOrganicAfter": 0.004071480031198856,
+          "individualClockSec": 1.3,
+          "regionalClockSec": 1.3,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "206,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 1.4000000000000001,
+          "agentId": "ocean:206,20:shoal-life:silver-stripe-herring:0",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5039607702183818,
+          "stockAfter": 0.5038407702183818,
+          "individualOrganicBefore": 0.003999440036398544,
+          "individualOrganicAfter": 0.004071440036398544,
+          "individualClockSec": 1.4000000000000001,
+          "regionalClockSec": 1.4000000000000001,
+          "organicBalanceError": -8.881784197001252e-16
+        },
+        {
+          "owner": "206,21",
+          "speciesId": "bigeye-trevally",
+          "timeSec": 1.6,
+          "agentId": "ocean:206,21:shoal-life:bigeye-trevally:1",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.017464000000000014,
+          "stockAfter": 0.017344000000000016,
+          "individualOrganicBefore": 0.003999360047997761,
+          "individualOrganicAfter": 0.004071360047997761,
+          "individualClockSec": 1.6,
+          "regionalClockSec": 1.6,
+          "organicBalanceError": 1.1102230246251565e-15
+        },
+        {
+          "owner": "206,21",
+          "speciesId": "bigeye-trevally",
+          "timeSec": 1.6,
+          "agentId": "ocean:206,21:shoal-life:bigeye-trevally:6",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.017344000000000016,
+          "stockAfter": 0.017224000000000017,
+          "individualOrganicBefore": 0.003999360047997761,
+          "individualOrganicAfter": 0.004071360047997761,
+          "individualClockSec": 1.6,
+          "regionalClockSec": 1.6,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "204,19",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 1.6,
+          "agentId": "ocean:204,19:shoal-life:blue-and-gold-fusilier:4",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6683439619529425,
+          "stockAfter": 0.6682239619529425,
+          "individualOrganicBefore": 0.003999360047997761,
+          "individualOrganicAfter": 0.004071360047997761,
+          "individualClockSec": 1.6,
+          "regionalClockSec": 1.6,
+          "organicBalanceError": 1.3322676295501878e-15
+        },
+        {
+          "owner": "204,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 1.6,
+          "agentId": "ocean:204,20:shoal-life:silver-stripe-herring:3",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5727167857068454,
+          "stockAfter": 0.5725967857068454,
+          "individualOrganicBefore": 0.003999360047997761,
+          "individualOrganicAfter": 0.004071360047997761,
+          "individualClockSec": 1.6,
+          "regionalClockSec": 1.6,
+          "organicBalanceError": 2.220446049250313e-16
+        },
+        {
+          "owner": "204,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 1.7000000000000002,
+          "agentId": "ocean:204,20:shoal-life:silver-stripe-herring:0",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5725543413645913,
+          "stockAfter": 0.5724343413645913,
+          "individualOrganicBefore": 0.003999320054397281,
+          "individualOrganicAfter": 0.004071320054397281,
+          "individualClockSec": 1.7000000000000002,
+          "regionalClockSec": 1.7000000000000002,
+          "organicBalanceError": 2.220446049250313e-16
+        },
+        {
+          "owner": "206,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 1.8,
+          "agentId": "ocean:206,20:shoal-life:silver-stripe-herring:3",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5030045405196668,
+          "stockAfter": 0.5028845405196668,
+          "individualOrganicBefore": 0.003999280061196737,
+          "individualOrganicAfter": 0.004071280061196737,
+          "individualClockSec": 1.8,
+          "regionalClockSec": 1.8,
+          "organicBalanceError": -8.881784197001252e-16
+        },
+        {
+          "owner": "204,19",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 1.9000000000000001,
+          "agentId": "ocean:204,19:shoal-life:blue-and-gold-fusilier:5",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6679720732878757,
+          "stockAfter": 0.6678520732878757,
+          "individualOrganicBefore": 0.003999240068396125,
+          "individualOrganicAfter": 0.004071240068396125,
+          "individualClockSec": 1.9000000000000001,
+          "regionalClockSec": 1.9000000000000001,
+          "organicBalanceError": 1.3322676295501878e-15
+        },
+        {
+          "owner": "204,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 2.1,
+          "agentId": "ocean:204,20:shoal-life:silver-stripe-herring:1",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5722648510809372,
+          "stockAfter": 0.5721448510809372,
+          "individualOrganicBefore": 0.003999160083994682,
+          "individualOrganicAfter": 0.004071160083994682,
+          "individualClockSec": 2.1,
+          "regionalClockSec": 2.1,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "204,19",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 2.4000000000000004,
+          "agentId": "ocean:204,19:shoal-life:blue-and-gold-fusilier:6",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6674330203373176,
+          "stockAfter": 0.6673130203373175,
+          "individualOrganicBefore": 0.003999040110391906,
+          "individualOrganicAfter": 0.004071040110391906,
+          "individualClockSec": 2.4000000000000004,
+          "regionalClockSec": 2.4000000000000004,
+          "organicBalanceError": 2.220446049250313e-15
+        },
+        {
+          "owner": "206,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 2.6,
+          "agentId": "ocean:206,20:shoal-life:silver-stripe-herring:4",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5024151363303883,
+          "stockAfter": 0.5022951363303882,
+          "individualOrganicBefore": 0.003998960129989602,
+          "individualOrganicAfter": 0.004070960129989602,
+          "individualClockSec": 2.6,
+          "regionalClockSec": 2.6,
+          "organicBalanceError": -1.3322676295501878e-15
+        },
+        {
+          "owner": "206,21",
+          "speciesId": "bigeye-trevally",
+          "timeSec": 2.6,
+          "agentId": "ocean:206,21:shoal-life:bigeye-trevally:0",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.017264000000000022,
+          "stockAfter": 0.017144000000000024,
+          "individualOrganicBefore": 0.003998960129989602,
+          "individualOrganicAfter": 0.004070960129989602,
+          "individualClockSec": 2.6,
+          "regionalClockSec": 2.6,
+          "organicBalanceError": 6.661338147750939e-16
+        },
+        {
+          "owner": "206,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 2.8000000000000003,
+          "agentId": "ocean:206,20:shoal-life:silver-stripe-herring:2",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5024774604053798,
+          "stockAfter": 0.5023574604053798,
+          "individualOrganicBefore": 0.003998880151186898,
+          "individualOrganicAfter": 0.004070880151186898,
+          "individualClockSec": 2.8000000000000003,
+          "regionalClockSec": 2.8000000000000003,
+          "organicBalanceError": -8.881784197001252e-16
+        },
+        {
+          "owner": "204,19",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 2.8000000000000003,
+          "agentId": "ocean:204,19:shoal-life:blue-and-gold-fusilier:3",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6669784196209539,
+          "stockAfter": 0.6668584196209539,
+          "individualOrganicBefore": 0.003998880151186898,
+          "individualOrganicAfter": 0.004070880151186898,
+          "individualClockSec": 2.8000000000000003,
+          "regionalClockSec": 2.8000000000000003,
+          "organicBalanceError": 2.4424906541753444e-15
+        },
+        {
+          "owner": "204,19",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 2.9000000000000004,
+          "agentId": "ocean:204,19:shoal-life:blue-and-gold-fusilier:0",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6667748799511716,
+          "stockAfter": 0.6666548799511716,
+          "individualOrganicBefore": 0.003998840162385386,
+          "individualOrganicAfter": 0.0040708401623853864,
+          "individualClockSec": 2.9000000000000004,
+          "regionalClockSec": 2.9000000000000004,
+          "organicBalanceError": 2.4424906541753444e-15
+        },
+        {
+          "owner": "206,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 3,
+          "agentId": "ocean:206,20:shoal-life:silver-stripe-herring:5",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5025392525065564,
+          "stockAfter": 0.5024192525065564,
+          "individualOrganicBefore": 0.0039988001739837626,
+          "individualOrganicAfter": 0.004070800173983763,
+          "individualClockSec": 3,
+          "regionalClockSec": 3,
+          "organicBalanceError": -8.881784197001252e-16
+        },
+        {
+          "owner": "206,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 3.7,
+          "agentId": "ocean:206,20:shoal-life:silver-stripe-herring:6",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5030546651704442,
+          "stockAfter": 0.5029346651704442,
+          "individualOrganicBefore": 0.004070495070652449,
+          "individualOrganicAfter": 0.004142495070652449,
+          "individualClockSec": 3.7,
+          "regionalClockSec": 3.7,
+          "organicBalanceError": -1.1102230246251565e-15
+        },
+        {
+          "owner": "204,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 3.8000000000000003,
+          "agentId": "ocean:204,20:shoal-life:silver-stripe-herring:2",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5702328202699044,
+          "stockAfter": 0.5701128202699044,
+          "individualOrganicBefore": 0.004070455085449785,
+          "individualOrganicAfter": 0.004142455085449785,
+          "individualClockSec": 3.8000000000000003,
+          "regionalClockSec": 3.8000000000000003,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "204,20",
+          "speciesId": "silver-stripe-herring",
+          "timeSec": 3.8000000000000003,
+          "agentId": "ocean:204,20:shoal-life:silver-stripe-herring:4",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5701128202699044,
+          "stockAfter": 0.5699928202699044,
+          "individualOrganicBefore": 0.004070455085449785,
+          "individualOrganicAfter": 0.004142455085449785,
+          "individualClockSec": 3.8000000000000003,
+          "regionalClockSec": 3.8000000000000003,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "204,19",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 4,
+          "agentId": "ocean:204,19:shoal-life:blue-and-gold-fusilier:1",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6657382301398157,
+          "stockAfter": 0.6656182301398157,
+          "individualOrganicBefore": 0.004070375116244014,
+          "individualOrganicAfter": 0.004142375116244014,
+          "individualClockSec": 4,
+          "regionalClockSec": 4,
+          "organicBalanceError": 3.1086244689504383e-15
+        }
+      ],
+      "owners": [
+        {
+          "id": "206,20",
+          "role": true,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.5851256588608374,
+            "plankton": 0.5031984751756189,
+            "detritus": 0.20058539041124376,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.060226612645650775,
+            "nutrients": 0.32053840084838525
+          },
+          "foodLedger": {
+            "initial": 1.2896441858820615,
+            "input": 0.006366727960290911,
+            "ingested": 0.005430000000000001,
+            "exported": 0.00697684843322926,
+            "networkAdded": 0.0024834125774590835,
+            "networkRemoved": 0.001924063988187137,
+            "transferredIn": 0.005748228358464952,
+            "transferredOut": 0.0010021179091615126
+          },
+          "organicLedger": {
+            "initial": 1.6816441858820617,
+            "externalInput": 0.07696672796029141,
+            "transferredIn": 0.005748228358464952,
+            "transferredOut": 0.0010021179091615126,
+            "output": 0.008290907810482402
+          },
+          "balanceErrors": {
+            "organic": -1.3322676295501878e-15,
+            "food": -1.8596235662471372e-15
+          },
+          "roster": [
+            "ocean:206,20:shoal-life:silver-stripe-herring:0",
+            "ocean:206,20:shoal-life:silver-stripe-herring:1",
+            "ocean:206,20:shoal-life:silver-stripe-herring:2",
+            "ocean:206,20:shoal-life:silver-stripe-herring:3",
+            "ocean:206,20:shoal-life:silver-stripe-herring:4",
+            "ocean:206,20:shoal-life:silver-stripe-herring:5",
+            "ocean:206,20:shoal-life:silver-stripe-herring:6"
+          ],
+          "counters": {
+            "feedings": 8,
+            "consumedUnits": 0.00096,
+            "deaths": 0,
+            "moved": 280,
+            "blocked": 0
+          },
+          "agents": [
+            {
+              "id": "ocean:206,20:shoal-life:silver-stripe-herring:0",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070381594300294,
+              "energy": 0.8033816070457545,
+              "lastFeedAt": 1.4000000000000001,
+              "position": {
+                "x": 13222.449616415302,
+                "y": 5.534257081989199,
+                "z": 1290.4509250507422
+              }
+            },
+            {
+              "id": "ocean:206,20:shoal-life:silver-stripe-herring:1",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070377275531328,
+              "energy": 0.82668598023463,
+              "lastFeedAt": 0.8,
+              "position": {
+                "x": 13222.197772172774,
+                "y": 5.534257081989199,
+                "z": 1290.346854269516
+              }
+            },
+            {
+              "id": "ocean:206,20:shoal-life:silver-stripe-herring:2",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070391672435669,
+              "energy": 0.8062840651649605,
+              "lastFeedAt": 2.8000000000000003,
+              "position": {
+                "x": 13222.345545634076,
+                "y": 5.534257081989199,
+                "z": 1290.7027692932709
+              }
+            },
+            {
+              "id": "ocean:206,20:shoal-life:silver-stripe-herring:3",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070384473623574,
+              "energy": 0.8223145533049103,
+              "lastFeedAt": 1.8,
+              "position": {
+                "x": 13222.093701391548,
+                "y": 5.534257081989199,
+                "z": 1290.5986985120446
+              }
+            },
+            {
+              "id": "ocean:206,20:shoal-life:silver-stripe-herring:4",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070390232615658,
+              "energy": 0.8141365560631822,
+              "lastFeedAt": 2.6,
+              "position": {
+                "x": 13222.241474852848,
+                "y": 5.534257081989199,
+                "z": 1290.9546135357998
+              }
+            },
+            {
+              "id": "ocean:206,20:shoal-life:silver-stripe-herring:5",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070393112284476,
+              "energy": 0.80542178539779,
+              "lastFeedAt": 3,
+              "position": {
+                "x": 13221.98963061032,
+                "y": 5.534257081989199,
+                "z": 1290.8505427545736
+              }
+            },
+            {
+              "id": "ocean:206,20:shoal-life:silver-stripe-herring:6",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004142370797043073,
+              "energy": 0.8151968566406514,
+              "lastFeedAt": 3.7,
+              "position": {
+                "x": 13222.137404071622,
+                "y": 5.534257081989199,
+                "z": 1291.2064577783285
+              }
+            }
+          ]
+        },
+        {
+          "id": "206,21",
+          "role": true,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.44510905075804647,
+            "plankton": 0.5082619109781829,
+            "detritus": 0.2005734355620807,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01720000000000003,
+            "plants": 0,
+            "coral": 0.060205889087645674,
+            "nutrients": 0.3206624361208038
+          },
+          "foodLedger": {
+            "initial": 1.155697954148054,
+            "input": 0.006347526397692365,
+            "ingested": 0.0060199999999999984,
+            "exported": 0.007365348057398314,
+            "networkAdded": 0.0027672183002974866,
+            "networkRemoved": 0.00192353265103835,
+            "transferredIn": 0.004971070055890675,
+            "transferredOut": 0.0005304908951872252
+          },
+          "organicLedger": {
+            "initial": 1.5476979541480542,
+            "externalInput": 0.08894752639769259,
+            "transferredIn": 0.004971070055890675,
+            "transferredOut": 0.0005304908951872252,
+            "output": 0.008916730494095337
+          },
+          "balanceErrors": {
+            "organic": 1.7763568394002505e-15,
+            "food": 1.0269562977782698e-15
+          },
+          "roster": [
+            "ocean:206,21:shoal-life:bigeye-trevally:0",
+            "ocean:206,21:shoal-life:bigeye-trevally:1",
+            "ocean:206,21:shoal-life:bigeye-trevally:2",
+            "ocean:206,21:shoal-life:bigeye-trevally:3",
+            "ocean:206,21:shoal-life:bigeye-trevally:4",
+            "ocean:206,21:shoal-life:bigeye-trevally:5",
+            "ocean:206,21:shoal-life:bigeye-trevally:6"
+          ],
+          "counters": {
+            "feedings": 8,
+            "consumedUnits": 0.00096,
+            "deaths": 0,
+            "moved": 320,
+            "blocked": 0
+          },
+          "agents": [
+            {
+              "id": "ocean:206,21:shoal-life:bigeye-trevally:0",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070390232615658,
+              "energy": 0.7884494658721235,
+              "lastFeedAt": 2.6,
+              "position": {
+                "x": 13210.133960693247,
+                "y": 3.0058259398676457,
+                "z": 1398.36217582997
+              }
+            },
+            {
+              "id": "ocean:206,21:shoal-life:bigeye-trevally:1",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.0040703830339475396,
+              "energy": 0.8408010145112496,
+              "lastFeedAt": 1.6,
+              "position": {
+                "x": 13210.025825093233,
+                "y": 3.0058259398676457,
+                "z": 1397.3831295123682
+              }
+            },
+            {
+              "id": "ocean:206,21:shoal-life:bigeye-trevally:2",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070378715092189,
+              "energy": 0.832591240985654,
+              "lastFeedAt": 1,
+              "position": {
+                "x": 13209.154914375646,
+                "y": 3.0058259398676457,
+                "z": 1398.4703114299846
+              }
+            },
+            {
+              "id": "ocean:206,21:shoal-life:bigeye-trevally:3",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070376555761689,
+              "energy": 0.8143836488177624,
+              "lastFeedAt": 0.7000000000000001,
+              "position": {
+                "x": 13209.046778775632,
+                "y": 3.0058259398676457,
+                "z": 1397.4912651123827
+              }
+            },
+            {
+              "id": "ocean:206,21:shoal-life:bigeye-trevally:4",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.00407037943488342,
+              "energy": 0.7644170602945235,
+              "lastFeedAt": 1.1,
+              "position": {
+                "x": 13208.175868058042,
+                "y": 3.0058259398676457,
+                "z": 1398.578447029999
+              }
+            },
+            {
+              "id": "ocean:206,21:shoal-life:bigeye-trevally:5",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070380874487473,
+              "energy": 0.8168238337546211,
+              "lastFeedAt": 1.3,
+              "position": {
+                "x": 13208.067732458028,
+                "y": 3.0058259398676457,
+                "z": 1397.5994007123973
+              }
+            },
+            {
+              "id": "ocean:206,21:shoal-life:bigeye-trevally:6",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.0040703830339475396,
+              "energy": 0.8262060569062453,
+              "lastFeedAt": 1.6,
+              "position": {
+                "x": 13207.196821740441,
+                "y": 3.0058259398676457,
+                "z": 1398.6865826300136
+              }
+            },
+            {
+              "id": "ocean:206,21:shoal-life:blacktip-reef-shark:0",
+              "speciesId": "blacktip-reef-shark",
+              "alive": true,
+              "state": "shark-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070375835999252,
+              "energy": 0.789161085027605,
+              "lastFeedAt": 0.6000000000000001,
+              "position": {
+                "x": 13212.936367540182,
+                "y": 2.9111482873559,
+                "z": 1392.9290491367335
+              }
+            }
+          ]
+        },
+        {
+          "id": "204,19",
+          "role": true,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.585181389460671,
+            "plankton": 0.665449754195731,
+            "detritus": 0.2002922571469125,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.06024254913489419,
+            "nutrients": 0.32044144975676075
+          },
+          "foodLedger": {
+            "initial": 1.4583771316707133,
+            "input": 0.006335884272677189,
+            "ingested": 0.005130000000000001,
+            "exported": 0.0029600851133550297,
+            "networkAdded": 0.0024881538425527696,
+            "networkRemoved": 0.001922295464179737,
+            "transferredIn": 0.00011534280306286876,
+            "transferredOut": 0.0063807312081559705
+          },
+          "organicLedger": {
+            "initial": 1.8503771316707134,
+            "externalInput": 0.07693588427267743,
+            "transferredIn": 0.00011534280306286876,
+            "transferredOut": 0.0063807312081559705,
+            "output": 0.004228600110533377
+          },
+          "balanceErrors": {
+            "organic": 2.886579864025407e-15,
+            "food": 6.106226635438361e-16
+          },
+          "roster": [
+            "ocean:204,19:shoal-life:blue-and-gold-fusilier:0",
+            "ocean:204,19:shoal-life:blue-and-gold-fusilier:1",
+            "ocean:204,19:shoal-life:blue-and-gold-fusilier:2",
+            "ocean:204,19:shoal-life:blue-and-gold-fusilier:3",
+            "ocean:204,19:shoal-life:blue-and-gold-fusilier:4",
+            "ocean:204,19:shoal-life:blue-and-gold-fusilier:5",
+            "ocean:204,19:shoal-life:blue-and-gold-fusilier:6"
+          ],
+          "counters": {
+            "feedings": 8,
+            "consumedUnits": 0.00096,
+            "deaths": 0,
+            "moved": 280,
+            "blocked": 0
+          },
+          "agents": [
+            {
+              "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:0",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.0040703923923564745,
+              "energy": 0.8449915477236357,
+              "lastFeedAt": 2.9000000000000004,
+              "position": {
+                "x": 13066.973826366959,
+                "y": 2.2415708986110987,
+                "z": 1242.004378170269
+              }
+            },
+            {
+              "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:1",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "shoal-proxy-feeding",
+              "timeSec": 4,
+              "organicUnits": 0.004142375116244014,
+              "energy": 0.8100098631283265,
+              "lastFeedAt": 4,
+              "position": {
+                "x": 13067.554634610204,
+                "y": 2.2415708986110987,
+                "z": 1242.1908232951157
+              }
+            },
+            {
+              "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:2",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070376555761689,
+              "energy": 0.7527623963238296,
+              "lastFeedAt": 0.7000000000000001,
+              "position": {
+                "x": 13067.160271491804,
+                "y": 2.2415708986110987,
+                "z": 1241.4235699270243
+              }
+            },
+            {
+              "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:3",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070391672435669,
+              "energy": 0.8016802579326179,
+              "lastFeedAt": 2.8000000000000003,
+              "position": {
+                "x": 13067.74107973505,
+                "y": 2.2415708986110987,
+                "z": 1241.610015051871
+              }
+            },
+            {
+              "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:4",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.0040703830339475396,
+              "energy": 0.7909293490158018,
+              "lastFeedAt": 1.6,
+              "position": {
+                "x": 13067.346716616652,
+                "y": 2.2415708986110987,
+                "z": 1240.8427616837798
+              }
+            },
+            {
+              "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:5",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070385193472387,
+              "energy": 0.8249395994631198,
+              "lastFeedAt": 1.9000000000000001,
+              "position": {
+                "x": 13067.927524859897,
+                "y": 2.2415708986110987,
+                "z": 1241.0292068086264
+              }
+            },
+            {
+              "id": "ocean:204,19:shoal-life:blue-and-gold-fusilier:6",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070388792824446,
+              "energy": 0.7877124650565531,
+              "lastFeedAt": 2.4000000000000004,
+              "position": {
+                "x": 13067.533161741498,
+                "y": 2.2415708986110987,
+                "z": 1240.261953440535
+              }
+            }
+          ]
+        },
+        {
+          "id": "205,19",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.6188510146597953,
+            "plankton": 0.4915727512065179,
+            "detritus": 0.20085556892937825,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.06029487439975767,
+            "nutrients": 0.32012848476130173
+          },
+          "foodLedger": {
+            "initial": 1.3113325469940902,
+            "input": 0.0063295936103956625,
+            "ingested": 0.007389999999999999,
+            "exported": 0.0021342767602181532,
+            "networkAdded": 0.0033149732905428547,
+            "networkRemoved": 0.0019239339605586594,
+            "transferredIn": 0.006493967712007594,
+            "transferredOut": 0.004743536090568372
+          },
+          "organicLedger": {
+            "initial": 1.7073325469940903,
+            "externalInput": 0.0649295936103958,
+            "transferredIn": 0.006493967712007594,
+            "transferredOut": 0.004743536090568372,
+            "output": 0.003739216622714732
+          },
+          "balanceErrors": {
+            "organic": -4.440892098500626e-16,
+            "food": -1.942890293094024e-16
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "206,19",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.5142058760032789,
+            "plankton": 0.668642508419842,
+            "detritus": 0.20046822224522873,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.06028424663535802,
+            "nutrients": 0.32019218095817265
+          },
+          "foodLedger": {
+            "initial": 1.38565879939124,
+            "input": 0.006370084850358471,
+            "ingested": 0.005839999999999999,
+            "exported": 0.009568445098469224,
+            "networkAdded": 0.002874295243269555,
+            "networkRemoved": 0.0019237817177793117,
+            "transferredIn": 0.005745653999729886
+          },
+          "organicLedger": {
+            "initial": 1.78165879939124,
+            "externalInput": 0.060970084850358444,
+            "transferredIn": 0.005745653999729886,
+            "transferredOut": 0,
+            "output": 0.01093918767994355
+          },
+          "balanceErrors": {
+            "organic": 6.661338147750939e-16,
+            "food": -3.0531133177191805e-16
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "204,20",
+          "role": true,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.4102213249782466,
+            "plankton": 0.5697755143176629,
+            "detritus": 0.20035402169399283,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.060233954708668117,
+            "nutrients": 0.32049354872482094
+          },
+          "foodLedger": {
+            "initial": 1.186283361390233,
+            "input": 0.006327212386881137,
+            "ingested": 0.005379999999999999,
+            "exported": 0.0020768969729601135,
+            "networkAdded": 0.0025076499908530283,
+            "networkRemoved": 0.0019229908671439416,
+            "transferredIn": 0.00011130035395848746,
+            "transferredOut": 0.005498775291921307
+          },
+          "organicLedger": {
+            "initial": 1.5782833613902332,
+            "externalInput": 0.07692721238688133,
+            "transferredIn": 0.00011130035395848746,
+            "transferredOut": 0.005498775291921307,
+            "output": 0.003383084849826917
+          },
+          "balanceErrors": {
+            "organic": 0,
+            "food": -1.8596235662471372e-15
+          },
+          "roster": [
+            "ocean:204,20:shoal-life:silver-stripe-herring:0",
+            "ocean:204,20:shoal-life:silver-stripe-herring:1",
+            "ocean:204,20:shoal-life:silver-stripe-herring:2",
+            "ocean:204,20:shoal-life:silver-stripe-herring:3",
+            "ocean:204,20:shoal-life:silver-stripe-herring:4",
+            "ocean:204,20:shoal-life:silver-stripe-herring:5"
+          ],
+          "counters": {
+            "feedings": 8,
+            "consumedUnits": 0.00096,
+            "deaths": 0,
+            "moved": 240,
+            "blocked": 0
+          },
+          "agents": [
+            {
+              "id": "ocean:204,20:shoal-life:silver-stripe-herring:0",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070383753781959,
+              "energy": 0.7916064640901607,
+              "lastFeedAt": 1.7000000000000002,
+              "position": {
+                "x": 13080.577130737414,
+                "y": 6.197392893442884,
+                "z": 1304.192788830362
+              }
+            },
+            {
+              "id": "ocean:204,20:shoal-life:silver-stripe-herring:1",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070386633191616,
+              "energy": 0.7676420060148087,
+              "lastFeedAt": 2.1,
+              "position": {
+                "x": 13080.485703463282,
+                "y": 6.197392893442884,
+                "z": 1303.9360841293044
+              }
+            },
+            {
+              "id": "ocean:204,20:shoal-life:silver-stripe-herring:2",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004142372236762322,
+              "energy": 0.8256892599103969,
+              "lastFeedAt": 3.8000000000000003,
+              "position": {
+                "x": 13080.320426036356,
+                "y": 6.197392893442884,
+                "z": 1304.2842161044925
+              }
+            },
+            {
+              "id": "ocean:204,20:shoal-life:silver-stripe-herring:3",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.0040703830339475396,
+              "energy": 0.8073363246092197,
+              "lastFeedAt": 1.6,
+              "position": {
+                "x": 13080.228998762224,
+                "y": 6.197392893442884,
+                "z": 1304.027511403435
+              }
+            },
+            {
+              "id": "ocean:204,20:shoal-life:silver-stripe-herring:4",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004142372236762322,
+              "energy": 0.7945663267917927,
+              "lastFeedAt": 3.8000000000000003,
+              "position": {
+                "x": 13080.063721335298,
+                "y": 6.197392893442884,
+                "z": 1304.3756433786232
+              }
+            },
+            {
+              "id": "ocean:204,20:shoal-life:silver-stripe-herring:5",
+              "speciesId": "silver-stripe-herring",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.00407037799530816,
+              "energy": 0.7878924224920195,
+              "lastFeedAt": 0.9,
+              "position": {
+                "x": 13079.972294061166,
+                "y": 6.197392893442884,
+                "z": 1304.1189386775657
+              }
+            }
+          ]
+        },
+        {
+          "id": "205,20",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.6551831742186829,
+            "plankton": 0.5449284128506972,
+            "detritus": 0.20094568062201917,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.06025105701702929,
+            "nutrients": 0.32039145570747574
+          },
+          "foodLedger": {
+            "initial": 1.402491098307073,
+            "input": 0.0063185786901939845,
+            "ingested": 0.0068699999999999985,
+            "exported": 0.002090566286605134,
+            "networkAdded": 0.002965724654377611,
+            "networkRemoved": 0.0019238019151156319,
+            "transferredIn": 0.005497208208603194,
+            "transferredOut": 0.005330973967129351
+          },
+          "organicLedger": {
+            "initial": 1.7984910983070732,
+            "externalInput": 0.05291857869019402,
+            "transferredIn": 0.005497208208603194,
+            "transferredOut": 0.005330973967129351,
+            "output": 0.003612522116849629
+          },
+          "balanceErrors": {
+            "organic": -6.661338147750939e-16,
+            "food": -1.27675647831893e-15
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "204,21",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.5470625331893031,
+            "plankton": 0.6231948132382713,
+            "detritus": 0.20118431037182374,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.06020440279894453,
+            "nutrients": 0.3206724731385043
+          },
+          "foodLedger": {
+            "initial": 1.3802774996124207,
+            "input": 0.0062737247858688314,
+            "ingested": 0.008549999999999999,
+            "exported": 0.0023059354427307998,
+            "networkAdded": 0.0031522813711530096,
+            "networkRemoved": 0.0017650795952794697,
+            "transferredOut": 0.0056408339320318055
+          },
+          "organicLedger": {
+            "initial": 1.7762774996124209,
+            "externalInput": 0.034873724785868844,
+            "transferredIn": 0,
+            "transferredOut": 0.0056408339320318055,
+            "output": 0.0040805196925082264
+          },
+          "balanceErrors": {
+            "organic": 1.7763568394002505e-15,
+            "food": 2.4147350785597155e-15
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "205,21",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.44208679309892013,
+            "plankton": 0.5406560279134287,
+            "detritus": 0.20087038435634466,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.060199409002449696,
+            "nutrients": 0.32070171578873596
+          },
+          "foodLedger": {
+            "initial": 1.1859350150451065,
+            "input": 0.0062824091452557285,
+            "ingested": 0.008169999999999998,
+            "exported": 0.001987146764012436,
+            "networkAdded": 0.0030322939574223234,
+            "networkRemoved": 0.001924053817513238,
+            "transferredIn": 0.005529533578073318,
+            "transferredOut": 0.005084845775635433
+          },
+          "organicLedger": {
+            "initial": 1.5819350150451066,
+            "externalInput": 0.06088240914525572,
+            "transferredIn": 0.005529533578073318,
+            "transferredOut": 0.005084845775635433,
+            "output": 0.00370756836361002
+          },
+          "balanceErrors": {
+            "organic": 5.10702591327572e-15,
+            "food": 3.524958103184872e-15
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        }
+      ]
+    },
+    {
+      "position": {
+        "x": 12064,
+        "z": 928
+      },
+      "observedSec": 4,
+      "actualCpuWallTimeMs": 27802.17700000001,
+      "activeOwnerCount": 9,
+      "sourceOwnerCount": 12,
+      "supportOwnerCount": 19,
+      "newAnimalCount": 17,
+      "actualFeedings": 11,
+      "nativeIntakeTraces": [
+        {
+          "owner": "188,14",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 0.8,
+          "agentId": "ocean:188,14:shoal-life:blue-and-gold-fusilier:1",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5241397471992802,
+          "stockAfter": 0.5240197471992802,
+          "individualOrganicBefore": 0.003999680011199776,
+          "individualOrganicAfter": 0.004071680011199776,
+          "individualClockSec": 0.8,
+          "regionalClockSec": 0.8,
+          "organicBalanceError": 6.661338147750939e-16
+        },
+        {
+          "owner": "188,14",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 1,
+          "agentId": "ocean:188,14:shoal-life:blue-and-gold-fusilier:3",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5242624593481903,
+          "stockAfter": 0.5241424593481903,
+          "individualOrganicBefore": 0.003999600017999519,
+          "individualOrganicAfter": 0.004071600017999519,
+          "individualClockSec": 1,
+          "regionalClockSec": 1,
+          "organicBalanceError": 6.661338147750939e-16
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 1.1,
+          "agentId": "ocean:187,13:shoal-life:blue-and-gold-fusilier:3",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6569892298834877,
+          "stockAfter": 0.6568692298834877,
+          "individualOrganicBefore": 0.003999560021999339,
+          "individualOrganicAfter": 0.004071560021999339,
+          "individualClockSec": 1.1,
+          "regionalClockSec": 1.1,
+          "organicBalanceError": -6.661338147750939e-16
+        },
+        {
+          "owner": "188,14",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 1.1,
+          "agentId": "ocean:188,14:shoal-life:blue-and-gold-fusilier:0",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5242637676732199,
+          "stockAfter": 0.5241437676732199,
+          "individualOrganicBefore": 0.003999560021999339,
+          "individualOrganicAfter": 0.004071560021999339,
+          "individualClockSec": 1.1,
+          "regionalClockSec": 1.1,
+          "organicBalanceError": 2.220446049250313e-16
+        },
+        {
+          "owner": "188,14",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 1.2000000000000002,
+          "agentId": "ocean:188,14:shoal-life:blue-and-gold-fusilier:4",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5242650573565789,
+          "stockAfter": 0.5241450573565789,
+          "individualOrganicBefore": 0.003999520026399119,
+          "individualOrganicAfter": 0.004071520026399119,
+          "individualClockSec": 1.2000000000000002,
+          "regionalClockSec": 1.2000000000000002,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 1.7000000000000002,
+          "agentId": "ocean:187,13:shoal-life:blue-and-gold-fusilier:0",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6562778134753792,
+          "stockAfter": 0.6561578134753792,
+          "individualOrganicBefore": 0.003999320054397281,
+          "individualOrganicAfter": 0.004071320054397281,
+          "individualClockSec": 1.7000000000000002,
+          "regionalClockSec": 1.7000000000000002,
+          "organicBalanceError": -4.440892098500626e-16
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "blacktip-reef-shark",
+          "timeSec": 1.7000000000000002,
+          "agentId": "ocean:187,13:shoal-life:blacktip-reef-shark:0",
+          "pool": "openWaterLife.preyOrganicUnits",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.018068000000000008,
+          "stockAfter": 0.01794800000000001,
+          "individualOrganicBefore": 0.003999320054397281,
+          "individualOrganicAfter": 0.004071320054397281,
+          "individualClockSec": 1.7000000000000002,
+          "regionalClockSec": 1.7000000000000002,
+          "organicBalanceError": -6.661338147750939e-16
+        },
+        {
+          "owner": "188,14",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 1.7000000000000002,
+          "agentId": "ocean:188,14:shoal-life:blue-and-gold-fusilier:2",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.5235524112652219,
+          "stockAfter": 0.5234324112652219,
+          "individualOrganicBefore": 0.003999320054397281,
+          "individualOrganicAfter": 0.004071320054397281,
+          "individualClockSec": 1.7000000000000002,
+          "regionalClockSec": 1.7000000000000002,
+          "organicBalanceError": 1.1102230246251565e-15
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 2.3000000000000003,
+          "agentId": "ocean:187,13:shoal-life:blue-and-gold-fusilier:1",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6538981615495699,
+          "stockAfter": 0.6537781615495699,
+          "individualOrganicBefore": 0.003999080101192918,
+          "individualOrganicAfter": 0.004071080101192918,
+          "individualClockSec": 2.3000000000000003,
+          "regionalClockSec": 2.3000000000000003,
+          "organicBalanceError": -1.1102230246251565e-15
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 2.3000000000000003,
+          "agentId": "ocean:187,13:shoal-life:blue-and-gold-fusilier:4",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6537781615495699,
+          "stockAfter": 0.6536581615495699,
+          "individualOrganicBefore": 0.003999080101192918,
+          "individualOrganicAfter": 0.004071080101192918,
+          "individualClockSec": 2.3000000000000003,
+          "regionalClockSec": 2.3000000000000003,
+          "organicBalanceError": -1.1102230246251565e-15
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "blue-and-gold-fusilier",
+          "timeSec": 2.4000000000000004,
+          "agentId": "ocean:187,13:shoal-life:blue-and-gold-fusilier:2",
+          "pool": "plankton",
+          "removedUnits": 0.00012,
+          "scope": "each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet",
+          "stockBefore": 0.6535606856559671,
+          "stockAfter": 0.6534406856559671,
+          "individualOrganicBefore": 0.003999040110391906,
+          "individualOrganicAfter": 0.004071040110391906,
+          "individualClockSec": 2.4000000000000004,
+          "regionalClockSec": 2.4000000000000004,
+          "organicBalanceError": -1.1102230246251565e-15
+        }
+      ],
+      "owners": [
+        {
+          "id": "187,13",
+          "role": true,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.5506118771865955,
+            "plankton": 0.6502861575717913,
+            "detritus": 0.2006168052733602,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01804000000000002,
+            "plants": 0,
+            "coral": 0.06026155261483981,
+            "nutrients": 0.32032767661348993
+          },
+          "foodLedger": {
+            "initial": 1.4102963621355593,
+            "input": 0.006330376564374666,
+            "ingested": 0.00631,
+            "exported": 0.004222957465921485,
+            "networkAdded": 0.002908241380899751,
+            "networkRemoved": 0.0019227369572627359,
+            "transferredIn": 0.0005543814846356188,
+            "transferredOut": 0.0061188271105403775
+          },
+          "organicLedger": {
+            "initial": 1.8022963621355594,
+            "externalInput": 0.08093037656437524,
+            "transferredIn": 0.0005543814846356188,
+            "transferredOut": 0.0061188271105403775,
+            "output": 0.005688275254523384
+          },
+          "balanceErrors": {
+            "organic": -1.7763568394002505e-15,
+            "food": -2.0816681711721685e-15
+          },
+          "roster": [
+            "ocean:187,13:shoal-life:blue-and-gold-fusilier:0",
+            "ocean:187,13:shoal-life:blue-and-gold-fusilier:1",
+            "ocean:187,13:shoal-life:blue-and-gold-fusilier:2",
+            "ocean:187,13:shoal-life:blue-and-gold-fusilier:3",
+            "ocean:187,13:shoal-life:blue-and-gold-fusilier:4"
+          ],
+          "counters": {
+            "feedings": 6,
+            "consumedUnits": 0.00072,
+            "deaths": 0,
+            "moved": 240,
+            "blocked": 0
+          },
+          "agents": [
+            {
+              "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:0",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070383753781959,
+              "energy": 0.7646290421414744,
+              "lastFeedAt": 1.7000000000000002,
+              "position": {
+                "x": 12006.554960291398,
+                "y": 0.8466684923507275,
+                "z": 871.1073389444109
+              }
+            },
+            {
+              "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:1",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070388072939638,
+              "energy": 0.8353088601188358,
+              "lastFeedAt": 2.3000000000000003,
+              "position": {
+                "x": 12007.16476305507,
+                "y": 0.8466684923507275,
+                "z": 871.0918279993084
+              }
+            },
+            {
+              "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:2",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070388792824446,
+              "energy": 0.8182564638483893,
+              "lastFeedAt": 2.4000000000000004,
+              "position": {
+                "x": 12006.539449346295,
+                "y": 0.8466684923507275,
+                "z": 870.4975361807388
+              }
+            },
+            {
+              "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:3",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.00407037943488342,
+              "energy": 0.7637656999913599,
+              "lastFeedAt": 1.1,
+              "position": {
+                "x": 12007.149252109968,
+                "y": 0.8466684923507275,
+                "z": 870.4820252356363
+              }
+            },
+            {
+              "id": "ocean:187,13:shoal-life:blue-and-gold-fusilier:4",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070388072939638,
+              "energy": 0.7893772552650046,
+              "lastFeedAt": 2.3000000000000003,
+              "position": {
+                "x": 12006.523938401193,
+                "y": 0.8466684923507275,
+                "z": 869.8877334170668
+              }
+            },
+            {
+              "id": "ocean:187,13:shoal-life:blacktip-reef-shark:0",
+              "speciesId": "blacktip-reef-shark",
+              "alive": true,
+              "state": "shark-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070383753781959,
+              "energy": 0.8020608189910274,
+              "lastFeedAt": 1.7000000000000002,
+              "position": {
+                "x": 12012.599661773776,
+                "y": 2.289035110035911,
+                "z": 870.5192090655344
+              }
+            }
+          ]
+        },
+        {
+          "id": "188,13",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.620464436696973,
+            "plankton": 0.5220017114845584,
+            "detritus": 0.20077344798750013,
+            "reefGuildAnimalNutrition": 0.011320000000000031,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.06037876982706763,
+            "nutrients": 0.319624578013811
+          },
+          "foodLedger": {
+            "initial": 1.342366929333657,
+            "input": 0.006324221826175684,
+            "ingested": 0.0058,
+            "exported": 0.0025714724963997035,
+            "networkAdded": 0.0035322600708763,
+            "networkRemoved": 0.0018636220996609222,
+            "transferredIn": 0.006256805103470392,
+            "transferredOut": 0.005005525569084047
+          },
+          "organicLedger": {
+            "initial": 1.7383669293336572,
+            "externalInput": 0.05492422182617558,
+            "transferredIn": 0.006256805103470392,
+            "transferredOut": 0.005005525569084047,
+            "output": 0.004053102548266368
+          },
+          "balanceErrors": {
+            "organic": 4.218847493575595e-15,
+            "food": 3.2751579226442118e-15
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "189,13",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.5489152234796104,
+            "plankton": 0.5753485842605254,
+            "detritus": 0.20064511230950996,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.06030521695408437,
+            "nutrients": 0.3200667087391024
+          },
+          "foodLedger": {
+            "initial": 1.326956000737846,
+            "input": 0.006375653674236895,
+            "ingested": 0.005669999999999999,
+            "exported": 0.008348070776148343,
+            "networkAdded": 0.002936724234788808,
+            "networkRemoved": 0.0019243748999681397,
+            "transferredIn": 0.005005525569084047,
+            "transferredOut": 0.0004225384901934735
+          },
+          "organicLedger": {
+            "initial": 1.7229560007378462,
+            "externalInput": 0.056975653674236855,
+            "transferredIn": 0.005005525569084047,
+            "transferredOut": 0.0004225384901934735,
+            "output": 0.009691855832401274
+          },
+          "balanceErrors": {
+            "organic": 1.7763568394002505e-15,
+            "food": 2.7755575615628914e-17
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "187,14",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.6554026411642245,
+            "plankton": 0.6248987168218243,
+            "detritus": 0.201577555496867,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0,
+            "coral": 0.06031373116042277,
+            "nutrients": 0.32001734892764133
+          },
+          "foodLedger": {
+            "initial": 1.4920406981930137,
+            "input": 0.0063185319111806505,
+            "ingested": 0.009409999999999998,
+            "exported": 0.002361585395418446,
+            "networkAdded": 0.003914326690971253,
+            "networkRemoved": 0.001926814970881129,
+            "transferredOut": 0.006696242945951658
+          },
+          "organicLedger": {
+            "initial": 1.8880406981930138,
+            "externalInput": 0.05291853191118058,
+            "transferredIn": 0,
+            "transferredOut": 0.006696242945951658,
+            "output": 0.004265747983631372
+          },
+          "balanceErrors": {
+            "organic": -2.4424906541753444e-15,
+            "food": -1.1657341758564144e-15
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "188,14",
+          "role": true,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.6206667410358567,
+            "plankton": 0.5250154477444706,
+            "detritus": 0.20073237126338891,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.06033660469844986,
+            "nutrients": 0.3198784449561785
+          },
+          "foodLedger": {
+            "initial": 1.3460295797884465,
+            "input": 0.006314656487728457,
+            "ingested": 0.006019999999999999,
+            "exported": 0.0020082598119605982,
+            "networkAdded": 0.0031812788034536374,
+            "networkRemoved": 0.0017646228584508234,
+            "transferredIn": 0.005914715038379018,
+            "transferredOut": 0.005232787403881166
+          },
+          "organicLedger": {
+            "initial": 1.7380295797884466,
+            "externalInput": 0.05091465648772843,
+            "transferredIn": 0.005914715038379018,
+            "transferredOut": 0.005232787403881166,
+            "output": 0.0034078438320601966
+          },
+          "balanceErrors": {
+            "organic": 1.7763568394002505e-15,
+            "food": -1.304512053934559e-15
+          },
+          "roster": [
+            "ocean:188,14:shoal-life:blue-and-gold-fusilier:0",
+            "ocean:188,14:shoal-life:blue-and-gold-fusilier:1",
+            "ocean:188,14:shoal-life:blue-and-gold-fusilier:2",
+            "ocean:188,14:shoal-life:blue-and-gold-fusilier:3",
+            "ocean:188,14:shoal-life:blue-and-gold-fusilier:4"
+          ],
+          "counters": {
+            "feedings": 5,
+            "consumedUnits": 0.0006000000000000001,
+            "deaths": 0,
+            "moved": 200,
+            "blocked": 0
+          },
+          "agents": [
+            {
+              "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:0",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.00407037943488342,
+              "energy": 0.8450432118888568,
+              "lastFeedAt": 1.1,
+              "position": {
+                "x": 12069.912368435242,
+                "y": 2.1763556234538557,
+                "z": 948.5476894866342
+              }
+            },
+            {
+              "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:1",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070377275531328,
+              "energy": 0.7759286601025235,
+              "lastFeedAt": 0.8,
+              "position": {
+                "x": 12070.40704879686,
+                "y": 2.1763556234538557,
+                "z": 948.9046087209574
+              }
+            },
+            {
+              "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:2",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070383753781959,
+              "energy": 0.8322493028988686,
+              "lastFeedAt": 1.7000000000000002,
+              "position": {
+                "x": 12070.269287669566,
+                "y": 2.1763556234538557,
+                "z": 948.0530091250166
+              }
+            },
+            {
+              "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:3",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070378715092189,
+              "energy": 0.8098479706024375,
+              "lastFeedAt": 1,
+              "position": {
+                "x": 12070.763968031184,
+                "y": 2.1763556234538557,
+                "z": 948.4099283593398
+              }
+            },
+            {
+              "id": "ocean:188,14:shoal-life:blue-and-gold-fusilier:4",
+              "speciesId": "blue-and-gold-fusilier",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.004070380154681847,
+              "energy": 0.7622641505369541,
+              "lastFeedAt": 1.2000000000000002,
+              "position": {
+                "x": 12070.62620690389,
+                "y": 2.1763556234538557,
+                "z": 947.558328763399
+              }
+            }
+          ]
+        },
+        {
+          "id": "189,14",
+          "role": true,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.41093943707135727,
+            "plankton": 0.6278709908108024,
+            "detritus": 0.4975670179189244,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0.060400736179051964,
+            "coral": 0.06033911247038672,
+            "nutrients": 0.3211082058765959
+          },
+          "foodLedger": {
+            "initial": 1.539561987835914,
+            "input": 0.006358971331250637,
+            "ingested": 0.00469,
+            "exported": 0.008957280133584699,
+            "networkAdded": 0.0029335755871675363,
+            "networkRemoved": 0.0041504584905624154,
+            "transferredIn": 0.005384116324655155,
+            "transferredOut": 0.00006346665375384189
+          },
+          "organicLedger": {
+            "initial": 1.991561987835914,
+            "externalInput": 0.06295897133125068,
+            "transferredIn": 0.005384116324655155,
+            "transferredOut": 0.00006346665375384189,
+            "output": 0.01082988142549211
+          },
+          "balanceErrors": {
+            "organic": 5.329070518200751e-15,
+            "food": 2.0539125955565396e-15
+          },
+          "roster": [
+            "ocean:189,14:shoal-life:bigeye-trevally:0",
+            "ocean:189,14:shoal-life:bigeye-trevally:1",
+            "ocean:189,14:shoal-life:bigeye-trevally:2",
+            "ocean:189,14:shoal-life:bigeye-trevally:3",
+            "ocean:189,14:shoal-life:bigeye-trevally:4",
+            "ocean:189,14:shoal-life:bigeye-trevally:5"
+          ],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 240,
+            "blocked": 0
+          },
+          "agents": [
+            {
+              "id": "ocean:189,14:shoal-life:bigeye-trevally:0",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.003998400311960484,
+              "energy": 0.820161431460939,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12121.372657616232,
+                "y": 3.7490908045321705,
+                "z": 934.7064443436674
+              }
+            },
+            {
+              "id": "ocean:189,14:shoal-life:bigeye-trevally:1",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.003998400311960484,
+              "energy": 0.7969360933558267,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12120.788601830658,
+                "y": 3.7490908045321705,
+                "z": 935.4996050079341
+              }
+            },
+            {
+              "id": "ocean:189,14:shoal-life:bigeye-trevally:2",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.003998400311960484,
+              "energy": 0.813083356610797,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12122.165818280499,
+                "y": 3.7490908045321705,
+                "z": 935.2905001292394
+              }
+            },
+            {
+              "id": "ocean:189,14:shoal-life:bigeye-trevally:3",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.003998400311960484,
+              "energy": 0.8175713561860096,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12121.581762494925,
+                "y": 3.7490908045321705,
+                "z": 936.083660793506
+              }
+            },
+            {
+              "id": "ocean:189,14:shoal-life:bigeye-trevally:4",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.003998400311960484,
+              "energy": 0.7721073185944182,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12122.958978944765,
+                "y": 3.7490908045321705,
+                "z": 935.8745559148114
+              }
+            },
+            {
+              "id": "ocean:189,14:shoal-life:bigeye-trevally:5",
+              "speciesId": "bigeye-trevally",
+              "alive": true,
+              "state": "school-cruising",
+              "timeSec": 4,
+              "organicUnits": 0.003998400311960484,
+              "energy": 0.7946986515226957,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12122.374923159192,
+                "y": 3.7490908045321705,
+                "z": 936.667716579078
+              }
+            }
+          ]
+        },
+        {
+          "id": "187,15",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.5853565527849705,
+            "plankton": 0.6456756542186326,
+            "detritus": 0.20089769257821996,
+            "reefGuildAnimalNutrition": 0.011320000000000031,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.060292558297015866,
+            "nutrients": 0.3201443613229948
+          },
+          "foodLedger": {
+            "initial": 1.4388145663961767,
+            "input": 0.006293837800518988,
+            "ingested": 0.00631,
+            "exported": 0.0027435939560797773,
+            "networkAdded": 0.0032283842284917133,
+            "networkRemoved": 0.0018666720118117573,
+            "transferredIn": 0.0002271464229370205,
+            "transferredOut": 0.005713769298410737
+          },
+          "organicLedger": {
+            "initial": 1.8348145663961768,
+            "externalInput": 0.058893837800519,
+            "transferredIn": 0.0002271464229370205,
+            "transferredOut": 0.005713769298410737,
+            "output": 0.004304545043025575
+          },
+          "balanceErrors": {
+            "organic": 1.3322676295501878e-15,
+            "food": -8.604228440844963e-16
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "188,15",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.6552139967484961,
+            "plankton": 0.6129582923502386,
+            "detritus": 0.20112649312150602,
+            "reefGuildAnimalNutrition": 0.011320000000000031,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.060311244092596035,
+            "nutrients": 0.32003129365572774
+          },
+          "foodLedger": {
+            "initial": 1.4707108987681567,
+            "input": 0.006272320963529969,
+            "ingested": 0.007219999999999999,
+            "exported": 0.0025293010155020925,
+            "networkAdded": 0.003549382172491609,
+            "networkRemoved": 0.001865444334466045,
+            "transferredIn": 0.005847000874900209,
+            "transferredOut": 0.0054660752088702075
+          },
+          "organicLedger": {
+            "initial": 1.8667108987681569,
+            "externalInput": 0.05487232096352992,
+            "transferredIn": 0.005847000874900209,
+            "transferredOut": 0.0054660752088702075,
+            "output": 0.004224660677902674
+          },
+          "balanceErrors": {
+            "organic": 0,
+            "food": -3.608224830031759e-16
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        },
+        {
+          "id": "189,15",
+          "role": false,
+          "clockSec": 4,
+          "ticks": 40,
+          "shoalClock": {
+            "ticks": 40,
+            "lastTickSec": 4
+          },
+          "finalStocks": {
+            "algae": 0.6534414139956628,
+            "plankton": 0.655326231721951,
+            "detritus": 0.2705922567246241,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01816000000000002,
+            "plants": 0.017591839323859573,
+            "coral": 0.06028187347222154,
+            "nutrients": 0.3204960648941657
+          },
+          "foodLedger": {
+            "initial": 1.5835888657532633,
+            "input": 0.006300988593243407,
+            "ingested": 0.008439999999999998,
+            "exported": 0.00867011672221699,
+            "networkAdded": 0.0035334777925565847,
+            "networkRemoved": 0.0024828548372307006,
+            "transferredIn": 0.005529541862624048
+          },
+          "organicLedger": {
+            "initial": 1.9970888657532635,
+            "externalInput": 0.07690098859324362,
+            "transferredIn": 0.005529541862624048,
+            "transferredOut": 0,
+            "output": 0.01059402079377808
+          },
+          "balanceErrors": {
+            "organic": 4.884981308350689e-15,
+            "food": 1.8318679906315083e-15
+          },
+          "roster": [],
+          "counters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 0,
+            "blocked": 0
+          },
+          "agents": []
+        }
+      ]
+    }
+  ]
+}

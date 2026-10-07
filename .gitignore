@@ -176,3 +176,15 @@ output/validation/screenshots/*
 !output/validation/ocean-meadow-life-cloud-build.log
 !output/validation/ocean-meadow-life-cloud-run.json
 !output/validation/ocean-meadow-life-test-format-recheck.log
+
+!output/validation/ocean-shoal-life-model.json
+!output/validation/ocean-shoal-life-source-hashes-before.json
+!output/validation/ocean-shoal-life-integration.log
+!output/validation/ocean-shoal-life-checks.log
+!output/validation/ocean-shoal-life-build.log
+!output/validation/ocean-shoal-life-delivery.json
+!output/validation/ocean-shoal-life-cloud-build.log
+!output/validation/ocean-shoal-life-cloud-run.json
+
+!output/validation/ocean-shoal-life-initial-source-hashes.json
+!output/validation/ocean-shoal-life-render-regression-repair.log

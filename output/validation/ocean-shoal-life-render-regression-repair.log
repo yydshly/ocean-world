@@ -1,0 +1,41 @@
+TAP version 13
+# Subtest: all 35 original shallow geometry and animation receipts remain exact after the new native dispatcher
+ok 1 - all 35 original shallow geometry and animation receipts remain exact after the new native dispatcher
+  ---
+  duration_ms: 331.0379
+  type: 'test'
+  ...
+# Subtest: four whole forms use source measurement semantics and complete finite state/size envelopes without emission
+ok 2 - four whole forms use source measurement semantics and complete finite state/size envelopes without emission
+  ---
+  duration_ms: 92.0281
+  type: 'test'
+  ...
+# {"prototypes":{"sand-edge-seahorse":{"triangles":1824,"meshes":4,"sizeMeasure":"straightened-height"},"reef-cuttlefish":{"triangles":2192,"meshes":14,"sizeMeasure":"mantle-length"},"barrel-sea-pen":{"triangles":2720,"meshes":3,"sizeMeasure":"colony-body-length"},"spider-conch":{"triangles":1489,"meshes":3,"sizeMeasure":"shell-length"}},"scope":"whole representative geometry; native CPU only"}
+# Subtest: native dispatch preserves real regional clocks, support conventions, floating origin and picking without model mutation
+ok 3 - native dispatch preserves real regional clocks, support conventions, floating origin and picking without model mutation
+  ---
+  duration_ms: 6.9965
+  type: 'test'
+  ...
+# Subtest: bounded shared resources retain active owners and release exactly once through replacement, unloading, reset and final disposal
+ok 4 - bounded shared resources retain active owners and release exactly once through replacement, unloading, reset and final disposal
+  ---
+  duration_ms: 20.2195
+  type: 'test'
+  ...
+# Subtest: actual colony extension and intake timestamps control display motion while ecological records and anchor references stay intact
+ok 5 - actual colony extension and intake timestamps control display motion while ecological records and anchor references stay intact
+  ---
+  duration_ms: 3.1212
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 563.3593

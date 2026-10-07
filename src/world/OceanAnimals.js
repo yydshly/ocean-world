@@ -11,9 +11,12 @@ import { isOceanBenthicLifeSpecies, createOceanBenthicLifeAsset, animateOceanBen
   disposeOceanBenthicLifeAsset } from './OceanBenthicLifeAssets.js';
 import { isOceanMeadowLifeSpecies, createOceanMeadowLifeAsset, animateOceanMeadowLifeAsset,
   disposeOceanMeadowLifeAsset } from './OceanMeadowLifeAssets.js';
+import { isOceanShoalLifeSpecies, createOceanShoalLifeAsset, animateOceanShoalLifeAsset,
+  disposeOceanShoalLifeAsset } from './OceanShoalLifeAssets.js';
 const isTurtle = entity => entity.speciesId === 'green-turtle';
 const disposeAnimal = entity => isTurtle(entity) ? disposeOceanTurtleOrganism(entity.object)
   : isOceanBiodiversitySpecies(entity.speciesId) ? disposeOceanBiodiversityAsset(entity.object)
+  : isOceanShoalLifeSpecies(entity.speciesId) ? disposeOceanShoalLifeAsset(entity.object)
   : isOceanMeadowLifeSpecies(entity.speciesId) ? disposeOceanMeadowLifeAsset(entity.object)
   : isOceanBenthicLifeSpecies(entity.speciesId) ? disposeOceanBenthicLifeAsset(entity.object)
   : isReefGuildSpecies(entity.speciesId) ? disposeReefGuildOrganism(entity.object)
@@ -55,6 +58,7 @@ export class OceanAnimals {
       const species = this.catalog.get(agent.speciesId);
       const object = agent.speciesId === 'green-turtle' ? createOceanTurtleOrganism(species)
         : isOceanBiodiversitySpecies(agent.speciesId) ? createOceanBiodiversityAsset(species).group
+        : isOceanShoalLifeSpecies(agent.speciesId) ? createOceanShoalLifeAsset(species).group
         : isOceanMeadowLifeSpecies(agent.speciesId) ? createOceanMeadowLifeAsset(species).group
         : isOceanBenthicLifeSpecies(agent.speciesId) ? createOceanBenthicLifeAsset(species).group
         : isReefGuildSpecies(agent.speciesId) ? createReefGuildOrganism(species)
@@ -115,7 +119,9 @@ export class OceanAnimals {
       const heading = Number.isFinite(agent.heading) ? agent.heading
         : Math.atan2(agent.velocity?.z || 0, agent.velocity?.x || 1);
       object.rotation.set(0, -heading, 0);
-      if (isOceanMeadowLifeSpecies(entity.speciesId)) {
+      if (isOceanShoalLifeSpecies(entity.speciesId)) {
+        object.rotation.z = Number.isFinite(agent.pitch) ? THREE.MathUtils.clamp(agent.pitch, -.12, .12) : 0;
+      } else if (isOceanMeadowLifeSpecies(entity.speciesId)) {
         if (entity.speciesId === 'barrel-sea-pen' || entity.speciesId === 'spider-conch') {
           const up = new THREE.Vector3(agent.supportNormal?.x ?? 0, agent.supportNormal?.y ?? 1, agent.supportNormal?.z ?? 0).normalize();
           const forward = new THREE.Vector3(Math.cos(heading), 0, Math.sin(heading));
@@ -145,7 +151,8 @@ export class OceanAnimals {
       if (entity.kind === 'turtle') {
         object.rotation.z = Number.isFinite(agent.pitch) ? THREE.MathUtils.clamp(agent.pitch, -.15, .15) : 0;
         animateOceanTurtleOrganism(object, agentTimeSec, agent);
-      } else if (isOceanMeadowLifeSpecies(entity.speciesId)) animateOceanMeadowLifeAsset(object, agentTimeSec, agent);
+      } else if (isOceanShoalLifeSpecies(entity.speciesId)) animateOceanShoalLifeAsset(object, agentTimeSec, agent);
+      else if (isOceanMeadowLifeSpecies(entity.speciesId)) animateOceanMeadowLifeAsset(object, agentTimeSec, agent);
       else if (isOceanBiodiversitySpecies(entity.speciesId)) animateOceanBiodiversityAsset(object, agentTimeSec, agent);
       else if (isOceanBenthicLifeSpecies(entity.speciesId)) animateOceanBenthicLifeAsset(object, agentTimeSec, agent);
       else if (isReefGuildSpecies(entity.speciesId)) animateReefGuildOrganism(object, agentTimeSec, agent);
