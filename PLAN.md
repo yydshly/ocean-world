@@ -6,7 +6,7 @@
 
 116文件／805项最终本机检查全部通过（0失败、0跳过），一次构建通过，45份最终源码、来源、测试和工作流哈希一致；原15份地形、模拟、食物和旧资产源码逐字节保持，旧15类动物及真实巨藻宿主80组完整输出保持。首轮测试曝光时刻差异已修正；实际正午运行定位owner53,-3第22次更新的茎摆动碰撞，并以统一低位茎扫掠净空约束修复，保留原12秒窗口、严格身体与存档校验。早期诊断保留，不累加为最终唯一检查。
 
-GitHub Pages 发布状态：待本次源码的同套云端检查与部署完成。
+源码`ee50a85`已于2026-10-08 00:43:17（Asia/Shanghai）发布；[运行37652626026](https://github.com/yydshly/ocean-world/actions/runs/37652626026)构建、同一805项云端检查（0失败、0跳过）及Pages部署全部成功。部署6915466976／状态19413293412为success，45份当前与提交源码、来源、测试哈希一致。本有限群落包收口；本机与云端是同套检查，不相加。整体画面尚未实际验收。
 
 说明见[群落包](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_NEAR_BOTTOM_LIFE.md)、[来源](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_NEAR_BOTTOM_LIFE_SOURCES.md)与 output/validation/kelp-near-bottom-life-delivery.json。本有限群落包核验发布后收口，后续继续宏观生境和缺失生命类群，不进入单体、材质或镜头细调。浏览器/GPU整体观感尚未验收，独立Goal保持暂停，已有浏览器拒绝不得绕过。以下保留此前交付历史。
 
