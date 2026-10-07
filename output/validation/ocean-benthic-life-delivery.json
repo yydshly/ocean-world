@@ -1,5 +1,5 @@
 {
-  "scope": "final local CPU/native Three/build checks; frozen sources; deployment pending; no browser/GPU acceptance",
+  "scope": "final local CPU/native Three/build and successful same-source cloud checks/deployment; no browser/GPU acceptance",
   "files": {
     ".github/workflows/pages.yml": "513d526bf60e67e06e5fb914daee79c88b7a6302bc33a32f6cf80a94a03f4b24",
     "src/OceanApp.jsx": "fc6f732eacf439d4508497301ccc711747ecb5534daef6e53095c46c4a3e3357",
@@ -155,7 +155,13 @@
   "fullDirectorTourViewed": false,
   "browserRestrictionBypassed": false,
   "deployment": {
-    "status": "pending"
+    "status": "success",
+    "deploymentId": 6903114329,
+    "statusId": 19384749729,
+    "sha": "a5cdff42970fbbc1f1227ef3ef833ad3ba862c1e",
+    "environmentUrl": "https://yydshly.github.io/ocean-world/",
+    "createdAtUtc": "2026-10-07T06:17:00Z",
+    "createdAtAsiaShanghai": "2026-10-07T14:17:00+08:00"
   },
   "validatedFiles": {
     ".github/workflows/pages.yml": "513d526bf60e67e06e5fb914daee79c88b7a6302bc33a32f6cf80a94a03f4b24",
@@ -204,5 +210,34 @@
     "src/world/OceanBenthicLifeAssets.js": "43af6c5977c4d4a8d26aa6f69ce93e402a4f539b65a5a119d2cd83d15045167b",
     "src/world/OceanBiodiversityAssets.js": "9a1fc6559722aa7c961bb99c0ef89017690750479aa9231c59474c83ebfb2a22",
     "src/world/ReefWorld.js": "d89214669324d3a00044eaf56a0ccc2ba8c492a389ca1e32c531b79ede585350"
+  },
+  "sourceCommit": "a5cdff42970fbbc1f1227ef3ef833ad3ba862c1e",
+  "cloud": {
+    "runId": 37579845754,
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/37579845754",
+    "sourceCommit": "a5cdff42970fbbc1f1227ef3ef833ad3ba862c1e",
+    "conclusion": "success",
+    "tests": 553,
+    "passed": 553,
+    "failed": 0,
+    "jobs": [
+      {
+        "id": 112656755416,
+        "name": "build",
+        "conclusion": "success"
+      },
+      {
+        "id": 112659246854,
+        "name": "deploy",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "sourceHashVerification": {
+    "currentAndCommittedFiles": 23,
+    "mismatches": 0,
+    "productionSourceAndWorkflowFiles": 15,
+    "productionUnchangedAfterBuild": true,
+    "testWhitespaceOnlyCleanupExplicitlyRecorded": true
   }
 }
