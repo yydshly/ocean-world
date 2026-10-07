@@ -200,3 +200,6 @@ output/validation/screenshots/*
 
 !output/validation/kelp-near-bottom-life-*.json
 !output/validation/kelp-near-bottom-life-*.log
+
+!output/validation/kelp-understory-life-*.json
+!output/validation/kelp-understory-life-*.log

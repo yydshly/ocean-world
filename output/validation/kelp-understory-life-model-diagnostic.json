@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "kind": "truthful-model-test-diagnostic-summary",
+  "originalOutputLocation": "Actual tool-call history in the macro_community_audit subagent; original TAP was not saved as a standalone file.",
+  "isCompleteTapLog": false,
+  "initialRun": {
+    "command": "D:/software/nodejs/node.exe --test tests/kelp-understory-life.test.mjs",
+    "tests": 8,
+    "passed": 6,
+    "failed": 2,
+    "skipped": 0,
+    "exitCode": 1,
+    "durationMs": 17639.1435,
+    "failures": [
+      {
+        "testNumber": 1,
+        "assertion": "kelpUnderstoryLifeRole(generator, 59, -4) was expected to equal false, but actually equalled true.",
+        "cause": "The source-qualified catalog replacement of Calliarthron tuberculosum with Calliarthron cheilosporioides introduced a legally suitable complete-form depth selection of 7-25m. The previously geometrically unsuitable 59,-4 rock owner now had an admissible plant candidate; geometry-only role therefore became true without changing the salt, terrain or model source."
+      },
+      {
+        "testNumber": 2,
+        "assertion": "The complete 59,-4 plants array was expected to equal [], but actually contained six naturally admitted Calliarthron cheilosporioides scenery descriptors.",
+        "cause": "This was the same outdated empty-owner expectation after the catalog replacement. The 59,-4 animal array remained naturally empty. Plant descriptors correctly occupied suitable original rocks and respected the final catalog depth range."
+      }
+    ],
+    "passingCoverage": [
+      "Actual single-owner 24-second native continuation, food transport, real incurrent intake, fixed roots and unchanged original stocks during new ticks",
+      "Complete-form, native attachment, vegetation and reserved-path collision checks",
+      "Zero input, fast flow, tiny positive intake and bounded food-accounting checks",
+      "Strict pending integer clock, duplicate/skipped/corrupt tick rejection before mutation",
+      "Cold replay, sealed plant history and frozen dead clocks without refill",
+      "Partial markers, unknown prefixes, controller disguise and damaged saved support/food/energy/receipt rejection"
+    ]
+  },
+  "targetedRerun": {
+    "command": "D:/software/nodejs/node.exe --test --test-name-pattern 'native seeded|strict fresh' tests/kelp-understory-life.test.mjs",
+    "tests": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "exitCode": 0,
+    "durationMs": 1573.7535,
+    "correction": "The two test expectations were aligned with the final source-qualified catalog: 59,-4 has role true and naturally admits plants while its animal category remains empty. A separate explicit zero-allocation record checks a complete sealed empty marker without claiming that it represents the ordinary natural 59,-4 group."
+  },
+  "subsequentTestOnlyClarification": "After the targeted rerun, the explicit zero-allocation test was clarified to pass capacity equal to the actual old record count along with maxAdded=0 and maxPlants=0, as requested by root. This final test-only clarification was not independently rerun in the subagent; the canonical complete workflow is owned by root.",
+  "modelSourceChangedAfterInitialRun": false,
+  "terrainStocksRngOrCatalogChangedToMakeTestsPass": false,
+  "modelSha256": "18CD93EB69CC1399C64F48C3C3B665F4B0B7BAF1A7A7642371ADBEAEA15BACEE",
+  "finalTestSha256": "6B305DEC932FA4D6AD2B72E306BD077CAC9C40CDBF98D98219044AC28D141494",
+  "scope": "This file reports actual returned results and diagnosis. It is not a reconstructed TAP transcript, not an additional test run, and not a claim that a complete final 8-case or project-wide canonical suite was rerun by this subagent."
+}

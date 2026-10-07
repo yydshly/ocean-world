@@ -116,7 +116,7 @@ test('direct URL, ordinary control and moving director use the native route and 
   const branchStart = app.indexOf('    if(choice.kelpNearBottomLifeEntry&&choice.directorToken===undefined)'), branchEnd = app.indexOf('    if(choice.kelpBenthicLifeEntry&&choice.directorToken===undefined)', branchStart);
   assert.ok(branchStart >= 0 && branchEnd > branchStart);
   assert.ok(app.slice(branchStart, branchEnd).includes('actual.enterKelpNearBottomLife()'));
-  assert.equal(sceneCatalogs.kelp.length, 20); assert.equal(sceneCatalogs.kelp.filter(species => species.kind !== 'kelp').length, 19);
+  assert.equal(sceneCatalogs.kelp.length, 24); assert.equal(sceneCatalogs.kelp.filter(species => species.kind !== 'kelp').length, 21);
   assert.deepEqual(KELP_NEAR_BOTTOM_LIFE_ROUTE_STOPS.map(stop => stop.id), ['kelp-near-bottom-life']);
   const entry = DEMO_KELP_STOPS.find(stop => stop.id === 'kelp-near-bottom-life'), chapter = DIRECTOR_STEPS.find(step => step.action.stopId === 'kelp-near-bottom-life');
   assert.ok(entry && chapter); assert.equal(chapter.motion.kind, 'walk'); assert.equal(chapter.durationMs, 16000);
@@ -162,8 +162,8 @@ test('direct URL, ordinary control and moving director use the native route and 
     const birth=structuredClone(life);f.ecology.step(16,{foodSupply:0,currentMps:.18,hour:12});await f.ecology.checkpoint();const advanced=f.ecology.agents.filter(a=>a.regionId===id&&a.kelpNearBottomIndividualVersion===1);assert.equal(f.ecology._active.get(id).kelpNearBottomLife.counters.ticks,160);assert.ok(advanced.every(a=>a.timeSec===16));assert.ok(advanced.some(a=>Math.hypot(...['x','y','z'].map(k=>a.position[k]-birth.find(b=>b.id===a.id).position[k]))>1e-6),'separately advanced native animals move through observation duration');
 
   } finally { f.animals.dispose(); }
-  assert.equal(DIRECTOR_STEPS.length, 62); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 56);
-  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 762000);
+  assert.equal(DIRECTOR_STEPS.length, 63); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 57);
+  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 778000);
 });
 
 test('ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast', async () => {

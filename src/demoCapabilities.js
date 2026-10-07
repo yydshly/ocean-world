@@ -9,6 +9,7 @@ import { DEEP_OCEAN_OBSERVATION_LAYERS } from './deepOceanNavigation.js';
 import { SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
 import { KELP_SEASCAPE_ROUTE_STOPS } from './kelpSeascape.js';
 import { KELP_BENTHIC_LIFE_ROUTE_STOPS } from './kelpBenthicLifeRoutes.js';
+import { KELP_UNDERSTORY_LIFE_ROUTE_STOPS } from './kelpUnderstoryLifeRoutes.js';
 import { KELP_NEAR_BOTTOM_LIFE_ROUTE_STOPS } from './kelpNearBottomLifeRoutes.js';
 import { KELP_WATER_LIFE_ROUTE_STOPS } from './kelpWaterLifeRoutes.js';
 import { DEEP_WHOLE_SEASCAPE_ROUTE_STOPS } from './deepWholeSeascape.js';
@@ -99,10 +100,13 @@ export const DEMO_KELP_STOPS = Object.freeze([
   ...KELP_BENTHIC_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+7).padStart(2,'0'),title:stop.label,
     description:'沿原生岩底寻找红鲍、北方藻蟹、幼体海兔和附着海葵；当地组合由底质、水深与保存记录决定',
     action:{id:`stop-${stop.id}`,kind:'kelp-stop',biome:'kelp',stopId:stop.id,kelpBenthicLifeEntry:true}})),
-  ...KELP_NEAR_BOTTOM_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+8).padStart(2,'0'),title:stop.label,
+  ...KELP_UNDERSTORY_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+8).padStart(2,'0'),title:stop.label,
+    description:'穿行林下岩面，观察棕榈状藻丛、分节珊瑚藻、团球海绵和带柄海鞘组成的实际附着群落',
+    action:{id:`stop-${stop.id}`,kind:'kelp-stop',biome:'kelp',stopId:stop.id,kelpUnderstoryLifeEntry:true}})),
+  ...KELP_NEAR_BOTTOM_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+9).padStart(2,'0'),title:stop.label,
     description:'沿岩底与相邻沙地观察红岩蟹、褐斑岩鱼、角鲨和圆盘鳐的实际活动；当地组合由底质、水深与保存记录决定',
     action:{id:`stop-${stop.id}`,kind:'kelp-stop',biome:'kelp',stopId:stop.id,kelpNearBottomLifeEntry:true}})),
-  ...KELP_WATER_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+9).padStart(2,'0'),title:stop.label,
+  ...KELP_WATER_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+10).padStart(2,'0'),title:stop.label,
     description:'沿真实巨藻林缘的水层移动，观察群游竹荚鱼、乌贼、海荨麻和近底岩藻取食者，实际组合由当地条件及存档决定',
     action:{id:`stop-${stop.id}`,kind:'kelp-stop',biome:'kelp',stopId:stop.id,kelpWaterLifeEntry:true}})),
 

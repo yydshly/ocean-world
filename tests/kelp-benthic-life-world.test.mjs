@@ -135,7 +135,7 @@ test('direct URL, ordinary control and moving director use the native route and 
   const branchStart = app.indexOf('    if(choice.kelpBenthicLifeEntry&&choice.directorToken===undefined)'), branchEnd = app.indexOf('    const entered=navigateDemoEntry', branchStart);
   assert.ok(branchStart >= 0 && branchEnd > branchStart);
   assert.ok(app.slice(branchStart, branchEnd).includes('actual.enterKelpBenthicLife()'));
-  assert.equal(sceneCatalogs.kelp.length, 20); assert.equal(sceneCatalogs.kelp.filter(species => species.kind !== 'kelp').length, 19);
+  assert.equal(sceneCatalogs.kelp.length, 24); assert.equal(sceneCatalogs.kelp.filter(species => species.kind !== 'kelp').length, 21);
   assert.deepEqual(KELP_BENTHIC_LIFE_ROUTE_STOPS.map(stop => stop.id), ['kelp-bottom-life']);
   const entry = DEMO_KELP_STOPS.find(stop => stop.id === 'kelp-bottom-life'), chapter = DIRECTOR_STEPS.find(step => step.action.stopId === 'kelp-bottom-life');
   assert.ok(entry && chapter); assert.equal(chapter.motion.kind, 'walk'); assert.equal(chapter.durationMs, 14000);
@@ -180,8 +180,8 @@ test('direct URL, ordinary control and moving director use the native route and 
     assert.equal(f.world.directorMotion.complete, true); assert.equal(f.world.directorMotion.error, null);
     assert.deepEqual(f.ecology.snapshot(), snapshot); assert.deepEqual([...f.records], records, 'director movement retains actual population, owner clocks and food history');
   } finally { f.animals.dispose(); }
-  assert.equal(DIRECTOR_STEPS.length, 62); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 56);
-  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 762000);
+  assert.equal(DIRECTOR_STEPS.length, 63); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 57);
+  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 778000);
 });
 
 test('ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast', async () => {

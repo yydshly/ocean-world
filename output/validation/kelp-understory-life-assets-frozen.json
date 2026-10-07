@@ -1,0 +1,72 @@
+{
+  "scope": "One complete kit per final source representative in an isolated CPU process; shared resources, no GPU claim",
+  "active": {
+    "resources": 26,
+    "instances": 4
+  },
+  "forms": [
+    {
+      "speciesId": "pterygophora-californica",
+      "meshes": 6,
+      "vertices": 530,
+      "triangles": 796,
+      "sizeMeasure": "thallus-height",
+      "anatomy": {
+        "bodyForm": "woody-stiped-palm-kelp",
+        "unbranchedStipe": true,
+        "terminalBlades": 1,
+        "lateralSporophylls": 4,
+        "forkedHoldfast": true
+      }
+    },
+    {
+      "speciesId": "calliarthron-cheilosporioides",
+      "meshes": 5,
+      "vertices": 3419,
+      "triangles": 5864,
+      "sizeMeasure": "branched-thallus-height",
+      "anatomy": {
+        "bodyForm": "articulated-coralline-tuft",
+        "calcifiedSegments": true,
+        "thinFlattenedWingedIntergenicula": true,
+        "flexibleGenicula": true,
+        "forkedFronds": 4
+      }
+    },
+    {
+      "speciesId": "orange-puffball-sponge",
+      "meshes": 5,
+      "vertices": 1521,
+      "triangles": 2664,
+      "sizeMeasure": "body-diameter",
+      "anatomy": {
+        "bodyForm": "globular-puffball-sponge",
+        "incurrentOstium": true,
+        "outflowOsculum": true,
+        "mouth": false
+      }
+    },
+    {
+      "speciesId": "monterey-stalked-tunicate",
+      "meshes": 14,
+      "vertices": 1670,
+      "triangles": 2396,
+      "sizeMeasure": "total-attached-height-including-stalk",
+      "anatomy": {
+        "bodyForm": "stalked-ribbed-solitary-ascidian",
+        "stalkAtLeastBodyLength": true,
+        "siphons": 2,
+        "inhalantDirection": "downturned",
+        "exhalantDirection": "upright",
+        "lobesPerSiphon": 4,
+        "mouth": false
+      }
+    }
+  ],
+  "after": {
+    "resources": 0,
+    "instances": 0
+  },
+  "uniqueResources": 26,
+  "eachReleasedOnce": true
+}

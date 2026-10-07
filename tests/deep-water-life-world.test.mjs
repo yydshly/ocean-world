@@ -206,8 +206,8 @@ test('direct URL, ordinary control and moving director use the native route and 
     await settle(f);assert.equal(f.world.errors.length,0);
     for(const a of moved)assert.equal(f.records.get(a.regionId).deepWaterLifeAgents.find(saved=>saved.id===a.id).timeSec,16,'the actual native checkpoint persists swimmer clocks');
   } finally { f.animals.dispose(); }
-  assert.equal(DIRECTOR_STEPS.length, 62); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 56);
-  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 762000);
+  assert.equal(DIRECTOR_STEPS.length, 63); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 57);
+  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 778000);
 });
 
 test('ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast', async () => {

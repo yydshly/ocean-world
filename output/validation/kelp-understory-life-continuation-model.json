@@ -1,0 +1,818 @@
+{
+  "version": 1,
+  "status": "passed-native-single-owner-continuation",
+  "ownerId": "58,-4",
+  "seed": "42",
+  "durationSec": 24,
+  "ticks": 240,
+  "source": "actual generated full-flags owner; independent initially-zero suspension control volumes; no browser/GPU claim",
+  "foodScope": "Independent zero-initialized bounded local upstream suspendedOrganicFood control volumes: selected unresolved suspended microalgal/organic-particle nutrition, with foodSupply/current-dependent external input, constant-Y positive-X transport, actual incurrent pore/siphon contact and accounted support-hit/outlet export. Not mouths, relocated host prey, DOM uptake, measured plankton, complete natural diets or animal/plant biomass.",
+  "counters": {
+    "ticks": 240,
+    "feedings": 16,
+    "consumedUnits": 0.00128,
+    "inputPulses": 48,
+    "deaths": 0
+  },
+  "foodLedger": {
+    "initial": 0,
+    "input": 0.003840000000000005,
+    "ingested": 0.00128,
+    "exported": 0.00192,
+    "byPool": {
+      "suspendedOrganicFood": {
+        "initial": 0,
+        "input": 0.003840000000000005,
+        "ingested": 0.00128,
+        "exported": 0.00192
+      }
+    }
+  },
+  "foodChannels": [
+    {
+      "id": "kelp-understory-life-channel:58,-4:orange-puffball-sponge:0",
+      "agentId": "kelp-understory-life:58,-4:orange-puffball-sponge:0",
+      "hostId": "kelp-rock:371,-21",
+      "pool": "suspendedOrganicFood",
+      "sourcePosition": {
+        "x": 3714.5437471919686,
+        "y": -6.908243551243182,
+        "z": -206.4968552266507
+      },
+      "feedingPosition": {
+        "x": 3715.1437471919685,
+        "y": -6.908243551243182,
+        "z": -206.4968552266507
+      },
+      "sourceDistanceM": 0.6,
+      "nextReleaseTick": 241,
+      "releaseChecks": 12,
+      "inputPulses": 12,
+      "inputUnits": 0.00096,
+      "ingestedUnits": 0.00032,
+      "exportedUnits": 0.00048
+    },
+    {
+      "id": "kelp-understory-life-channel:58,-4:monterey-stalked-tunicate:0",
+      "agentId": "kelp-understory-life:58,-4:monterey-stalked-tunicate:0",
+      "hostId": "kelp-rock:371,-24",
+      "pool": "suspendedOrganicFood",
+      "sourcePosition": {
+        "x": 3715.467097231546,
+        "y": -7.818428182336457,
+        "z": -234.65114125676314
+      },
+      "feedingPosition": {
+        "x": 3716.067097231546,
+        "y": -7.818428182336457,
+        "z": -234.65114125676314
+      },
+      "sourceDistanceM": 0.6,
+      "nextReleaseTick": 241,
+      "releaseChecks": 12,
+      "inputPulses": 12,
+      "inputUnits": 0.00096,
+      "ingestedUnits": 0.00032,
+      "exportedUnits": 0.00048
+    },
+    {
+      "id": "kelp-understory-life-channel:58,-4:orange-puffball-sponge:1",
+      "agentId": "kelp-understory-life:58,-4:orange-puffball-sponge:1",
+      "hostId": "kelp-rock:371,-24",
+      "pool": "suspendedOrganicFood",
+      "sourcePosition": {
+        "x": 3715.2658216499776,
+        "y": -7.932459541654797,
+        "z": -235.17452879123474
+      },
+      "feedingPosition": {
+        "x": 3715.8658216499775,
+        "y": -7.932459541654797,
+        "z": -235.17452879123474
+      },
+      "sourceDistanceM": 0.6,
+      "nextReleaseTick": 241,
+      "releaseChecks": 12,
+      "inputPulses": 12,
+      "inputUnits": 0.00096,
+      "ingestedUnits": 0.00032,
+      "exportedUnits": 0.00048
+    },
+    {
+      "id": "kelp-understory-life-channel:58,-4:monterey-stalked-tunicate:1",
+      "agentId": "kelp-understory-life:58,-4:monterey-stalked-tunicate:1",
+      "hostId": "kelp-rock:373,-25",
+      "pool": "suspendedOrganicFood",
+      "sourcePosition": {
+        "x": 3734.7310667751926,
+        "y": -7.6405160321795655,
+        "z": -245.5312199626364
+      },
+      "feedingPosition": {
+        "x": 3735.3310667751925,
+        "y": -7.6405160321795655,
+        "z": -245.5312199626364
+      },
+      "sourceDistanceM": 0.6,
+      "nextReleaseTick": 241,
+      "releaseChecks": 12,
+      "inputPulses": 12,
+      "inputUnits": 0.00096,
+      "ingestedUnits": 0.00032,
+      "exportedUnits": 0.00048
+    }
+  ],
+  "foodParcels": [
+    {
+      "id": "kelp-understory-life-parcel:58,-4:41",
+      "ordinal": 41,
+      "channelId": "kelp-understory-life-channel:58,-4:orange-puffball-sponge:0",
+      "pool": "suspendedOrganicFood",
+      "amount": 0.00008,
+      "position": {
+        "x": 3715.245747191969,
+        "y": -6.908243551243182,
+        "z": -206.4968552266507
+      },
+      "sourcePosition": {
+        "x": 3714.5437471919686,
+        "y": -6.908243551243182,
+        "z": -206.4968552266507
+      },
+      "travelM": 0.7020000000000003,
+      "createdAtSec": 20.1,
+      "lastTransportSec": 24
+    },
+    {
+      "id": "kelp-understory-life-parcel:58,-4:42",
+      "ordinal": 42,
+      "channelId": "kelp-understory-life-channel:58,-4:monterey-stalked-tunicate:0",
+      "pool": "suspendedOrganicFood",
+      "amount": 0.00008,
+      "position": {
+        "x": 3716.1690972315464,
+        "y": -7.818428182336457,
+        "z": -234.65114125676314
+      },
+      "sourcePosition": {
+        "x": 3715.467097231546,
+        "y": -7.818428182336457,
+        "z": -234.65114125676314
+      },
+      "travelM": 0.7020000000000003,
+      "createdAtSec": 20.1,
+      "lastTransportSec": 24
+    },
+    {
+      "id": "kelp-understory-life-parcel:58,-4:43",
+      "ordinal": 43,
+      "channelId": "kelp-understory-life-channel:58,-4:orange-puffball-sponge:1",
+      "pool": "suspendedOrganicFood",
+      "amount": 0.00008,
+      "position": {
+        "x": 3715.967821649978,
+        "y": -7.932459541654797,
+        "z": -235.17452879123474
+      },
+      "sourcePosition": {
+        "x": 3715.2658216499776,
+        "y": -7.932459541654797,
+        "z": -235.17452879123474
+      },
+      "travelM": 0.7020000000000003,
+      "createdAtSec": 20.1,
+      "lastTransportSec": 24
+    },
+    {
+      "id": "kelp-understory-life-parcel:58,-4:44",
+      "ordinal": 44,
+      "channelId": "kelp-understory-life-channel:58,-4:monterey-stalked-tunicate:1",
+      "pool": "suspendedOrganicFood",
+      "amount": 0.00008,
+      "position": {
+        "x": 3735.433066775193,
+        "y": -7.6405160321795655,
+        "z": -245.5312199626364
+      },
+      "sourcePosition": {
+        "x": 3734.7310667751926,
+        "y": -7.6405160321795655,
+        "z": -245.5312199626364
+      },
+      "travelM": 0.7020000000000003,
+      "createdAtSec": 20.1,
+      "lastTransportSec": 24
+    },
+    {
+      "id": "kelp-understory-life-parcel:58,-4:45",
+      "ordinal": 45,
+      "channelId": "kelp-understory-life-channel:58,-4:orange-puffball-sponge:0",
+      "pool": "suspendedOrganicFood",
+      "amount": 0.00008,
+      "position": {
+        "x": 3714.8857471919687,
+        "y": -6.908243551243182,
+        "z": -206.4968552266507
+      },
+      "sourcePosition": {
+        "x": 3714.5437471919686,
+        "y": -6.908243551243182,
+        "z": -206.4968552266507
+      },
+      "travelM": 0.342,
+      "createdAtSec": 22.1,
+      "lastTransportSec": 24
+    },
+    {
+      "id": "kelp-understory-life-parcel:58,-4:46",
+      "ordinal": 46,
+      "channelId": "kelp-understory-life-channel:58,-4:monterey-stalked-tunicate:0",
+      "pool": "suspendedOrganicFood",
+      "amount": 0.00008,
+      "position": {
+        "x": 3715.8090972315463,
+        "y": -7.818428182336457,
+        "z": -234.65114125676314
+      },
+      "sourcePosition": {
+        "x": 3715.467097231546,
+        "y": -7.818428182336457,
+        "z": -234.65114125676314
+      },
+      "travelM": 0.342,
+      "createdAtSec": 22.1,
+      "lastTransportSec": 24
+    },
+    {
+      "id": "kelp-understory-life-parcel:58,-4:47",
+      "ordinal": 47,
+      "channelId": "kelp-understory-life-channel:58,-4:orange-puffball-sponge:1",
+      "pool": "suspendedOrganicFood",
+      "amount": 0.00008,
+      "position": {
+        "x": 3715.6078216499777,
+        "y": -7.932459541654797,
+        "z": -235.17452879123474
+      },
+      "sourcePosition": {
+        "x": 3715.2658216499776,
+        "y": -7.932459541654797,
+        "z": -235.17452879123474
+      },
+      "travelM": 0.342,
+      "createdAtSec": 22.1,
+      "lastTransportSec": 24
+    },
+    {
+      "id": "kelp-understory-life-parcel:58,-4:48",
+      "ordinal": 48,
+      "channelId": "kelp-understory-life-channel:58,-4:monterey-stalked-tunicate:1",
+      "pool": "suspendedOrganicFood",
+      "amount": 0.00008,
+      "position": {
+        "x": 3735.0730667751927,
+        "y": -7.6405160321795655,
+        "z": -245.5312199626364
+      },
+      "sourcePosition": {
+        "x": 3734.7310667751926,
+        "y": -7.6405160321795655,
+        "z": -245.5312199626364
+      },
+      "travelM": 0.342,
+      "createdAtSec": 22.1,
+      "lastTransportSec": 24
+    }
+  ],
+  "energyLedger": {
+    "initial": 2.978958564437926,
+    "feedingGain": 0.00256,
+    "maintenanceAndMotionDebit": 0.0018057600000000145,
+    "clampCorrection": 0,
+    "deathLoss": 0
+  },
+  "foodBalanceError": 4.87890977618477e-18,
+  "energyBalanceError": 1.865174681370263e-14,
+  "plants": [
+    {
+      "id": "kelp-understory-life-plant:58,-4:pterygophora-californica:0",
+      "speciesId": "pterygophora-californica",
+      "slot": 0,
+      "sizeM": 1.3006952569121495,
+      "heading": 0.09938881541738519,
+      "pitch": 0,
+      "siteId": "kelp-rock:371,-21:2",
+      "hostId": "kelp-rock:371,-21",
+      "kelpUnderstorySiteId": "kelp-rock:371,-21:2",
+      "kelpUnderstoryHostId": "kelp-rock:371,-21",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3715.3602785988624,
+        "y": -6.953817658228406,
+        "z": -205.36876671538866
+      },
+      "supportNormal": {
+        "x": 0.2112482171090462,
+        "y": 0.9586565134876283,
+        "z": 0.1906616896914376
+      },
+      "supportOffset": 0.003000000000045411,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:calliarthron-cheilosporioides:0",
+      "speciesId": "calliarthron-cheilosporioides",
+      "slot": 0,
+      "sizeM": 0.08793909247964621,
+      "heading": 5.638091444522289,
+      "pitch": 0,
+      "siteId": "kelp-rock:376,-25:6",
+      "hostId": "kelp-rock:376,-25",
+      "kelpUnderstorySiteId": "kelp-rock:376,-25:6",
+      "kelpUnderstoryHostId": "kelp-rock:376,-25",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3766.0047675762967,
+        "y": -8.060311055725462,
+        "z": -246.9124648333
+      },
+      "supportNormal": {
+        "x": 0.10467862226529909,
+        "y": 0.9771542816321439,
+        "z": -0.18496458020012282
+      },
+      "supportOffset": 0.0030000002145413873,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:pterygophora-californica:1",
+      "speciesId": "pterygophora-californica",
+      "slot": 1,
+      "sizeM": 1.1795789406169206,
+      "heading": 5.81225404647659,
+      "pitch": 0,
+      "siteId": "kelp-rock:373,-25:5",
+      "hostId": "kelp-rock:373,-25",
+      "kelpUnderstorySiteId": "kelp-rock:373,-25:5",
+      "kelpUnderstoryHostId": "kelp-rock:373,-25",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3734.057934572174,
+        "y": -7.793017058216994,
+        "z": -244.35333524971637
+      },
+      "supportNormal": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      },
+      "supportOffset": 0.0030000000000001137,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:calliarthron-cheilosporioides:1",
+      "speciesId": "calliarthron-cheilosporioides",
+      "slot": 1,
+      "sizeM": 0.08691399003844709,
+      "heading": 4.022220369051756,
+      "pitch": 0,
+      "siteId": "kelp-rock:375,-25:6",
+      "hostId": "kelp-rock:375,-25",
+      "kelpUnderstorySiteId": "kelp-rock:375,-25:6",
+      "kelpUnderstoryHostId": "kelp-rock:375,-25",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3754.2343769181825,
+        "y": -8.305266184274393,
+        "z": -246.3078708992722
+      },
+      "supportNormal": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      },
+      "supportOffset": 0.0030000000000001137,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:pterygophora-californica:2",
+      "speciesId": "pterygophora-californica",
+      "slot": 2,
+      "sizeM": 1.437895391951315,
+      "heading": 1.7305492310188764,
+      "pitch": 0,
+      "siteId": "kelp-rock:371,-20:9",
+      "hostId": "kelp-rock:371,-20",
+      "kelpUnderstorySiteId": "kelp-rock:371,-20:9",
+      "kelpUnderstoryHostId": "kelp-rock:371,-20",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3716.1825030367645,
+        "y": -6.457678477833647,
+        "z": -195.28010492567077
+      },
+      "supportNormal": {
+        "x": 0.10988940306797335,
+        "y": 0.9905408034929705,
+        "z": -0.08217807316349479
+      },
+      "supportOffset": 0.0030000019711877712,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:calliarthron-cheilosporioides:2",
+      "speciesId": "calliarthron-cheilosporioides",
+      "slot": 2,
+      "sizeM": 0.13312065777368845,
+      "heading": 3.5859052025908875,
+      "pitch": 0,
+      "siteId": "kelp-rock:375,-25:9",
+      "hostId": "kelp-rock:375,-25",
+      "kelpUnderstorySiteId": "kelp-rock:375,-25:9",
+      "kelpUnderstoryHostId": "kelp-rock:375,-25",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3754.71679292988,
+        "y": -8.305266184274393,
+        "z": -245.22820878098193
+      },
+      "supportNormal": {
+        "x": 0,
+        "y": 1,
+        "z": 0
+      },
+      "supportOffset": 0.0030000000000001137,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:pterygophora-californica:3",
+      "speciesId": "pterygophora-californica",
+      "slot": 3,
+      "sizeM": 1.0713487011380494,
+      "heading": 5.713414877177029,
+      "pitch": 0,
+      "siteId": "kelp-rock:371,-20:4",
+      "hostId": "kelp-rock:371,-20",
+      "kelpUnderstorySiteId": "kelp-rock:371,-20:4",
+      "kelpUnderstoryHostId": "kelp-rock:371,-20",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3714.114268721789,
+        "y": -6.454902384468868,
+        "z": -194.4605546562083
+      },
+      "supportNormal": {
+        "x": -0.13506310838620988,
+        "y": 0.9901149003554439,
+        "z": 0.03782116929953691
+      },
+      "supportOffset": 0.0030000000000089955,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:calliarthron-cheilosporioides:3",
+      "speciesId": "calliarthron-cheilosporioides",
+      "slot": 3,
+      "sizeM": 0.09291984726209193,
+      "heading": 6.197468532068987,
+      "pitch": 0,
+      "siteId": "kelp-rock:371,-24:10",
+      "hostId": "kelp-rock:371,-24",
+      "kelpUnderstorySiteId": "kelp-rock:371,-24:10",
+      "kelpUnderstoryHostId": "kelp-rock:371,-24",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3714.4287343864644,
+        "y": -7.975452434190745,
+        "z": -234.32664159773262
+      },
+      "supportNormal": {
+        "x": -0.14444887396590236,
+        "y": 0.9880055244311837,
+        "z": 0.054585771987251744
+      },
+      "supportOffset": 0.0030000000000143245,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:calliarthron-cheilosporioides:4",
+      "speciesId": "calliarthron-cheilosporioides",
+      "slot": 4,
+      "sizeM": 0.09203174241818488,
+      "heading": 2.9009388859429803,
+      "pitch": 0,
+      "siteId": "kelp-rock:372,-24:12",
+      "hostId": "kelp-rock:372,-24",
+      "kelpUnderstorySiteId": "kelp-rock:372,-24:12",
+      "kelpUnderstoryHostId": "kelp-rock:372,-24",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3725.3282691611457,
+        "y": -7.98497014384297,
+        "z": -234.88538911817568
+      },
+      "supportNormal": {
+        "x": 0.06505373612167097,
+        "y": 0.9977037824241786,
+        "z": -0.018846059352003078
+      },
+      "supportOffset": 0.0030000000663177318,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    },
+    {
+      "id": "kelp-understory-life-plant:58,-4:calliarthron-cheilosporioides:5",
+      "speciesId": "calliarthron-cheilosporioides",
+      "slot": 5,
+      "sizeM": 0.09719930441118776,
+      "heading": 0.44143107729623215,
+      "pitch": 0,
+      "siteId": "kelp-rock:376,-22:2",
+      "hostId": "kelp-rock:376,-22",
+      "kelpUnderstorySiteId": "kelp-rock:376,-22:2",
+      "kelpUnderstoryHostId": "kelp-rock:376,-22",
+      "habitat": "native-kelp-rock-understory",
+      "attached": true,
+      "position": {
+        "x": 3763.1460122920644,
+        "y": -9.104785547139068,
+        "z": -214.3062618180135
+      },
+      "supportNormal": {
+        "x": -0.20425842462803603,
+        "y": 0.9760408496596976,
+        "z": -0.07498503693436687
+      },
+      "supportOffset": 0.003000000000046299,
+      "regionId": "58,-4",
+      "createdAtSec": 0,
+      "kelpUnderstoryPlantVersion": 1
+    }
+  ],
+  "kindSummary": {
+    "pterygophora-californica": {
+      "kind": "kelp",
+      "count": 4
+    },
+    "calliarthron-cheilosporioides": {
+      "kind": "kelp",
+      "count": 6
+    },
+    "orange-puffball-sponge": {
+      "kind": "sponge",
+      "count": 2
+    },
+    "monterey-stalked-tunicate": {
+      "kind": "tunicate",
+      "count": 2
+    }
+  },
+  "agents": [
+    {
+      "id": "kelp-understory-life:58,-4:orange-puffball-sponge:0",
+      "speciesId": "orange-puffball-sponge",
+      "sizeM": 0.06274540131445974,
+      "sizeMeasure": "body-diameter",
+      "timeSec": 24,
+      "state": "filtering",
+      "position": {
+        "x": 3715.111352527436,
+        "y": -6.953817658228388,
+        "z": -206.49204120637634
+      },
+      "feedingCount": 4,
+      "consumedUnits": 0.00032,
+      "lastUnderstoryIntake": {
+        "timeSec": 21.200000000000003,
+        "ownerId": "58,-4",
+        "channelId": "kelp-understory-life-channel:58,-4:orange-puffball-sponge:0",
+        "hostId": "kelp-rock:371,-21",
+        "pool": "suspendedOrganicFood",
+        "parcelId": "kelp-understory-life-parcel:58,-4:37",
+        "parcelOrdinal": 37,
+        "parcelCreatedAtSec": 18.1,
+        "parcelTravelM": 0.5580000000000002,
+        "sourcePosition": {
+          "x": 3714.5437471919686,
+          "y": -6.908243551243182,
+          "z": -206.4968552266507
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.7322020320975076,
+        "energyAfter": 0.7323620320975076,
+        "agentPosition": {
+          "x": 3715.111352527436,
+          "y": -6.953817658228388,
+          "z": -206.49204120637634
+        },
+        "feedingPosition": {
+          "x": 3715.1437471919685,
+          "y": -6.908243551243182,
+          "z": -206.4968552266507
+        },
+        "foodPosition": {
+          "x": 3715.1017471919686,
+          "y": -6.908243551243182,
+          "z": -206.4968552266507
+        },
+        "contactDistanceM": 0.041999999999916326,
+        "allowedDistanceM": 0.045,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent zero-initialized bounded local upstream suspendedOrganicFood control volumes: selected unresolved suspended microalgal/organic-particle nutrition, with foodSupply/current-dependent external input, constant-Y positive-X transport, actual incurrent pore/siphon contact and accounted support-hit/outlet export. Not mouths, relocated host prey, DOM uptake, measured plankton, complete natural diets or animal/plant biomass."
+      }
+    },
+    {
+      "id": "kelp-understory-life:58,-4:monterey-stalked-tunicate:0",
+      "speciesId": "monterey-stalked-tunicate",
+      "sizeM": 0.1814008422009647,
+      "sizeMeasure": "total-attached-height-including-stalk",
+      "timeSec": 24,
+      "state": "filtering",
+      "position": {
+        "x": 3716.055797401924,
+        "y": -7.975452434190751,
+        "z": -234.66521729976526
+      },
+      "feedingCount": 4,
+      "consumedUnits": 0.00032,
+      "lastUnderstoryIntake": {
+        "timeSec": 21.200000000000003,
+        "ownerId": "58,-4",
+        "channelId": "kelp-understory-life-channel:58,-4:monterey-stalked-tunicate:0",
+        "hostId": "kelp-rock:371,-24",
+        "pool": "suspendedOrganicFood",
+        "parcelId": "kelp-understory-life-parcel:58,-4:38",
+        "parcelOrdinal": 38,
+        "parcelCreatedAtSec": 18.1,
+        "parcelTravelM": 0.5580000000000002,
+        "sourcePosition": {
+          "x": 3715.467097231546,
+          "y": -7.818428182336457,
+          "z": -234.65114125676314
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.7931112884924602,
+        "energyAfter": 0.7932712884924602,
+        "agentPosition": {
+          "x": 3716.055797401924,
+          "y": -7.975452434190751,
+          "z": -234.66521729976526
+        },
+        "feedingPosition": {
+          "x": 3716.067097231546,
+          "y": -7.818428182336457,
+          "z": -234.65114125676314
+        },
+        "foodPosition": {
+          "x": 3716.025097231546,
+          "y": -7.818428182336457,
+          "z": -234.65114125676314
+        },
+        "contactDistanceM": 0.041999999999916326,
+        "allowedDistanceM": 0.045,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent zero-initialized bounded local upstream suspendedOrganicFood control volumes: selected unresolved suspended microalgal/organic-particle nutrition, with foodSupply/current-dependent external input, constant-Y positive-X transport, actual incurrent pore/siphon contact and accounted support-hit/outlet export. Not mouths, relocated host prey, DOM uptake, measured plankton, complete natural diets or animal/plant biomass."
+      }
+    },
+    {
+      "id": "kelp-understory-life:58,-4:orange-puffball-sponge:1",
+      "speciesId": "orange-puffball-sponge",
+      "sizeM": 0.06168877698946744,
+      "sizeMeasure": "body-diameter",
+      "timeSec": 24,
+      "state": "filtering",
+      "position": {
+        "x": 3715.839851334508,
+        "y": -7.977685785253559,
+        "z": -235.1565139704052
+      },
+      "feedingCount": 4,
+      "consumedUnits": 0.00032,
+      "lastUnderstoryIntake": {
+        "timeSec": 21.200000000000003,
+        "ownerId": "58,-4",
+        "channelId": "kelp-understory-life-channel:58,-4:orange-puffball-sponge:1",
+        "hostId": "kelp-rock:371,-24",
+        "pool": "suspendedOrganicFood",
+        "parcelId": "kelp-understory-life-parcel:58,-4:39",
+        "parcelOrdinal": 39,
+        "parcelCreatedAtSec": 18.1,
+        "parcelTravelM": 0.5580000000000002,
+        "sourcePosition": {
+          "x": 3715.2658216499776,
+          "y": -7.932459541654797,
+          "z": -235.17452879123474
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.720160165932853,
+        "energyAfter": 0.7203201659328531,
+        "agentPosition": {
+          "x": 3715.839851334508,
+          "y": -7.977685785253559,
+          "z": -235.1565139704052
+        },
+        "feedingPosition": {
+          "x": 3715.8658216499775,
+          "y": -7.932459541654797,
+          "z": -235.17452879123474
+        },
+        "foodPosition": {
+          "x": 3715.8238216499776,
+          "y": -7.932459541654797,
+          "z": -235.17452879123474
+        },
+        "contactDistanceM": 0.041999999999916326,
+        "allowedDistanceM": 0.045,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent zero-initialized bounded local upstream suspendedOrganicFood control volumes: selected unresolved suspended microalgal/organic-particle nutrition, with foodSupply/current-dependent external input, constant-Y positive-X transport, actual incurrent pore/siphon contact and accounted support-hit/outlet export. Not mouths, relocated host prey, DOM uptake, measured plankton, complete natural diets or animal/plant biomass."
+      }
+    },
+    {
+      "id": "kelp-understory-life:58,-4:monterey-stalked-tunicate:1",
+      "speciesId": "monterey-stalked-tunicate",
+      "sizeM": 0.1773267744621262,
+      "sizeMeasure": "total-attached-height-including-stalk",
+      "timeSec": 24,
+      "state": "filtering",
+      "position": {
+        "x": 3735.3186284753688,
+        "y": -7.793017058216994,
+        "z": -245.5527049918973
+      },
+      "feedingCount": 4,
+      "consumedUnits": 0.00032,
+      "lastUnderstoryIntake": {
+        "timeSec": 21.200000000000003,
+        "ownerId": "58,-4",
+        "channelId": "kelp-understory-life-channel:58,-4:monterey-stalked-tunicate:1",
+        "hostId": "kelp-rock:373,-25",
+        "pool": "suspendedOrganicFood",
+        "parcelId": "kelp-understory-life-parcel:58,-4:40",
+        "parcelOrdinal": 40,
+        "parcelCreatedAtSec": 18.1,
+        "parcelTravelM": 0.5580000000000002,
+        "sourcePosition": {
+          "x": 3734.7310667751926,
+          "y": -7.6405160321795655,
+          "z": -245.5312199626364
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.7338099899151217,
+        "energyAfter": 0.7339699899151217,
+        "agentPosition": {
+          "x": 3735.3186284753688,
+          "y": -7.793017058216994,
+          "z": -245.5527049918973
+        },
+        "feedingPosition": {
+          "x": 3735.3310667751925,
+          "y": -7.6405160321795655,
+          "z": -245.5312199626364
+        },
+        "foodPosition": {
+          "x": 3735.2890667751926,
+          "y": -7.6405160321795655,
+          "z": -245.5312199626364
+        },
+        "contactDistanceM": 0.041999999999916326,
+        "allowedDistanceM": 0.045,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent zero-initialized bounded local upstream suspendedOrganicFood control volumes: selected unresolved suspended microalgal/organic-particle nutrition, with foodSupply/current-dependent external input, constant-Y positive-X transport, actual incurrent pore/siphon contact and accounted support-hit/outlet export. Not mouths, relocated host prey, DOM uptake, measured plankton, complete natural diets or animal/plant biomass."
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: ordinary entry atomically exposes saved plant groups and attached animals, retains native and dead clocks and exact cold roots
+not ok 1 - ordinary entry atomically exposes saved plant groups and attached animals, retains native and dead clocks and exact cold roots
+  ---
+  duration_ms: 14077.9177
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-understory-life-world.test.mjs:67:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    every saved field stays exact across cold entry
+    + actual - expected
+    
+    + 'owner 57,-5.state.agents.3.timeSec: actual=0.7000000000000001, expected=0'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: 'owner 57,-5.state.agents.3.timeSec: actual=0.7000000000000001, expected=0'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-understory-life-world.test.mjs:86:125)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14222.3805

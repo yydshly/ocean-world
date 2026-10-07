@@ -1,0 +1,62 @@
+TAP version 13
+# Subtest: two ordinary windows preserve all original births and host four source-qualified forms with real suspended-food transport, inlet contact and accounting
+ok 1 - two ordinary windows preserve all original births and host four source-qualified forms with real suspended-food transport, inlet contact and accounting
+  ---
+  duration_ms: 57763.6155
+  type: 'test'
+  ...
+# Subtest: complete plants, empty categories, dead filter actors and source histories remain exact through unload and cold restore without recruitment
+ok 2 - complete plants, empty categories, dead filter actors and source histories remain exact through unload and cold restore without recruitment
+  ---
+  duration_ms: 7307.9273
+  type: 'test'
+  ...
+# Subtest: enabling on historical owners preserves every raw old record, paused state and exact following native steps without adding scenery or animals
+ok 3 - enabling on historical owners preserves every raw old record, paused state and exact following native steps without adding scenery or animals
+  ---
+  duration_ms: 3027.0171
+  type: 'test'
+  ...
+# Subtest: strict-null atomic scenery and animal births stay private while pending and publish nothing after refused or thrown commits
+ok 4 - strict-null atomic scenery and animal births stay private while pending and publish nothing after refused or thrown commits
+  ---
+  duration_ms: 17425.1843
+  type: 'test'
+  ...
+# Subtest: undefined and thrown historical reads never become fresh attached communities
+ok 5 - undefined and thrown historical reads never become fresh attached communities
+  ---
+  duration_ms: 0.6778
+  type: 'test'
+  ...
+# Subtest: fifteen offscreen plant, animal, source, parcel and original-history corruptions reject the whole atomic halo without repair or refill
+not ok 6 - fifteen offscreen plant, animal, source, parcel and original-history corruptions reject the whole atomic halo without repair or refill
+  ---
+  duration_ms: 6806.8778
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-understory-life-ecology.test.mjs:348:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    unknown-top-prefix
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-understory-life-ecology.test.mjs:371:62)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 92442.0758

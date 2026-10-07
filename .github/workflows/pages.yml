@@ -31,7 +31,11 @@ jobs:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
-          node --test
+          node --test --test-concurrency=2
+          tests/kelp-understory-life.test.mjs
+          tests/kelp-understory-life-render.test.mjs
+          tests/kelp-understory-life-ecology.test.mjs
+          tests/kelp-understory-life-world.test.mjs
           tests/kelp-near-bottom-life.test.mjs
           tests/kelp-near-bottom-life-render.test.mjs
           tests/kelp-near-bottom-life-ecology.test.mjs

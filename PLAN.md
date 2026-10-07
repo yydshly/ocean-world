@@ -1,3 +1,15 @@
+2026-10-08 当前有限续包：巨藻林增加岩附着的加州翼柄藻 Pterygophora californica、宽翼分节珊瑚藻 Calliarthron cheilosporioides、橙球海绵 Tethya californiana 和蒙特雷细柄海鞘 Styela montereyensis 四条来源具名代表记录，补整片林下与岩面滤食层。翼柄藻已有旧景观，本包新增来源目录和独立自然空余岩根，不称四种首次新增物种。真实岩面支持和全形净空控制生成，植物为持久景观，动物为独立固定滤食个体。
+
+打开[林下附着群落](https://yydshly.github.io/ocean-world/?demo=kelp-understory-life)，或在[导演入口](https://yydshly.github.io/ocean-world/?demo=director)选择“巨藻林：林下附着群落”，沿实际宿主群落进行16秒移动观察。string42原生入口58,-4（3744,-224）有10株新景观、4只滤食动物，含原动物合计20条记录。巨藻目录24条代表记录，其中21动物、3植物；导演63章、57动作、778秒1×观察，加载转场另计。其他种子与旧历史不保证类别齐全。
+
+两个普通九区窗口58,-4与59,-4各12秒，重叠owner延续真实时钟，去重后12个owner实际有81株新景观、19只新动物；19只都发生真实入水孔／虹吸接触摄食，56次共0.00448相对单位。新悬浮有机营养初始为零，外部输入、恒高世界+X运输、入水器官接触、库存扣除和输出单独记账，原食物与账保持；合并误差最大约6.22e-15。另单owner24秒继续验证，不累计为普通探索规模。植物无生物量、光合或增长模拟；该营养代理不构成完整自然食物网。
+
+120文件／830项最终本机检查全部通过（0失败、0跳过），一次生产构建通过，51份最终源码、来源、测试与工作流哈希一致；原19份地形、模拟、食物和旧资产源码逐字节保持，旧19类动物及真实巨藻宿主100组完整输出保持。早期目录、flatMap和halo读取测试断言已修正；新观察入口改以实际目标owner优先，避免相机合法跨区后重复准备转向另一宿主，路线与观察距离保持。诊断保留，不累加为最终唯一检查。
+
+GitHub Pages 发布状态：待本次源码的同套云端检查与部署完成。
+
+说明见[群落包](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_UNDERSTORY_LIFE.md)、[来源](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_UNDERSTORY_LIFE_SOURCES.md)及 output/validation/kelp-understory-life-delivery.json。本有限包核验发布后收口，后续继续整片生境和缺失生命类群，不进入单体、材质或镜头细调。整体画面尚未实际验收；独立Goal保持暂停，已有浏览器拒绝不得绕过。以下保留此前交付历史。
+
 2026-10-08 当前有限续包：温带巨藻林岩沙底层新增红岩蟹 Cancer productus、褐斑岩鱼 Sebastes carnatus、加州角鲨 Heterodontus francisci 与哈氏圆魟 Urobatis halleri 四种完整动物。圆魟限定相邻实际软沉积底；蟹使用真实足底法线，鱼、鲨和魟在实际近底水体活动。未访问owner自然余量最多增加4条，不改旧配方；9活区、25来源区、20条全部动物记录/区上限保持。已有历史、死亡和空类别不补货。
 
 打开[岩沙底层群落](https://yydshly.github.io/ocean-world/?demo=kelp-near-bottom-life)，或在[导演入口](https://yydshly.github.io/ocean-world/?demo=director)选择“巨藻林：岩沙底层群落”，沿真实群落做16秒移动观察。string42原生入口53,-4（x3424,z-224）实际有4条新动物与11条旧动物，合计15条；其他种子和历史不保证四类齐全。巨藻目录20条代表记录，其中19动物；导演62章、56动作、762秒1×观察，加载转场另计。

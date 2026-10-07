@@ -39,14 +39,14 @@ test('deep belt and whole-scene shortcuts match native seed routes and preserve 
 
 test('kelp belt and whole-scene shortcuts resolve native seed routes without changing protected ecology', () => {
   const generator=createKelpOceanGenerator('42',{forestBelt:true});
-  assert.deepEqual(DEMO_KELP_STOPS.map(entry=>entry.id),[...generator.forestRouteStops,...generator.kelpSeascapeRouteStops,...generator.kelpBenthicLifeRouteStops,...generator.kelpNearBottomLifeRouteStops,...generator.kelpWaterLifeRouteStops].map(stop=>stop.id));
+  assert.deepEqual(DEMO_KELP_STOPS.map(entry=>entry.id),[...generator.forestRouteStops,...generator.kelpSeascapeRouteStops,...generator.kelpBenthicLifeRouteStops,...generator.kelpUnderstoryLifeRouteStops,...generator.kelpNearBottomLifeRouteStops,...generator.kelpWaterLifeRouteStops].map(stop=>stop.id));
   const near = DEMO_KELP_STOPS.find(entry => entry.id === 'kelp-near-bottom-life');
   const chapter = DIRECTOR_STEPS.find(step => step.action.stopId === near.id);
   assert.equal(near.action.kelpNearBottomLifeEntry, true); assert.equal(near.action.biome, 'kelp');
   assert.equal(chapter.motion.routeId, 'kelp-near-bottom-life'); assert.equal(chapter.durationMs, 16000);
   for(const entry of DEMO_KELP_STOPS){
     const {world,protectedState}=observationWorld({biomeId:'kelp'}),calls=[];
-    world.enterKelpForestBelt=id=>{calls.push(id);return [...generator.forestRouteStops,...generator.kelpSeascapeRouteStops,...generator.kelpBenthicLifeRouteStops,...generator.kelpNearBottomLifeRouteStops,...generator.kelpWaterLifeRouteStops].some(stop=>stop.id===id);};
+    world.enterKelpForestBelt=id=>{calls.push(id);return [...generator.forestRouteStops,...generator.kelpSeascapeRouteStops,...generator.kelpBenthicLifeRouteStops,...generator.kelpUnderstoryLifeRouteStops,...generator.kelpNearBottomLifeRouteStops,...generator.kelpWaterLifeRouteStops].some(stop=>stop.id===id);};
     assert.equal(navigateDemoEntry(entry.action,world),true);
     assert.deepEqual(calls,[entry.id]);assert.strictEqual(world.protectedState,protectedState);
     assert.equal(navigateDemoEntry({...entry.action,stopId:'missing'},world),false);

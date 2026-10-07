@@ -1,0 +1,779 @@
+TAP version 13
+# Subtest: two ordinary deep windows admit deterministic whole soft-bottom animals, move and debit original local stocks with three condition ledgers
+ok 1 - two ordinary deep windows admit deterministic whole soft-bottom animals, move and debit original local stocks with three condition ledgers
+  ---
+  duration_ms: 30596.8443
+  type: 'test'
+  ...
+# Subtest: new death clocks, complete empty predators and new categories survive unload, revisit and cold restore without refill
+ok 2 - new death clocks, complete empty predators and new categories survive unload, revisit and cold restore without refill
+  ---
+  duration_ms: 3024.4965
+  type: 'test'
+  ...
+# Subtest: enabling the package on old saved complete communities preserves original history and next ordinary native steps exactly
+ok 3 - enabling the package on old saved complete communities preserves original history and next ordinary native steps exactly
+  ---
+  duration_ms: 384.4723
+  type: 'test'
+  ...
+# Subtest: pending and refused atomic new births reveal no new actors, saved records or scenery revision before a complete commit
+ok 4 - pending and refused atomic new births reveal no new actors, saved records or scenery revision before a complete commit
+  ---
+  duration_ms: 9049.5998
+  type: 'test'
+  ...
+# Subtest: undefined and thrown historical reads never become strict-null fresh deep births
+ok 5 - undefined and thrown historical reads never become strict-null fresh deep births
+  ---
+  duration_ms: 0.5801
+  type: 'test'
+  ...
+# Subtest: partial and reserved markers, stocks, taxonomy and actual offscreen prefetched history corruptions reject without publication
+ok 6 - partial and reserved markers, stocks, taxonomy and actual offscreen prefetched history corruptions reject without publication
+  ---
+  duration_ms: 2874.1584
+  type: 'test'
+  ...
+# Subtest: four whole native kits preserve declared size measures and complete finite state envelopes
+ok 7 - four whole native kits preserve declared size measures and complete finite state envelopes
+  ---
+  duration_ms: 89.4109
+  type: 'test'
+  ...
+# {"prototypes":{"abyssal-brittle-star":{"triangles":2600,"meshes":6,"sizeMeasure":"arm-span"},"pyramid-urchin":{"triangles":1712,"meshes":2,"sizeMeasure":"test-length"},"acorn-worm-group":{"triangles":2048,"meshes":2,"sizeMeasure":"body-length"},"deep-amphipod-group":{"triangles":3096,"meshes":3,"sizeMeasure":"body-length"}},"scope":"whole procedural representatives; native CPU geometry only"}
+# Subtest: native dispatcher follows recorded support normals, regional clocks, stable identity and picking without model mutation
+ok 8 - native dispatcher follows recorded support normals, regional clocks, stable identity and picking without model mutation
+  ---
+  duration_ms: 10.7922
+  type: 'test'
+  ...
+# Subtest: bounded shared kits retain active references and release every resource exactly once at final disposal
+ok 9 - bounded shared kits retain active references and release every resource exactly once at final disposal
+  ---
+  duration_ms: 3.8501
+  type: 'test'
+  ...
+# Subtest: dead/unsupported animals stay absent; replacement, unload/revisit, reset and disposal release the correct kit
+ok 10 - dead/unsupported animals stay absent; replacement, unload/revisit, reset and disposal release the correct kit
+  ---
+  duration_ms: 24.4247
+  type: 'test'
+  ...
+# Subtest: four original native deep geometry and animation receipts remain exact with the additional dispatcher
+ok 11 - four original native deep geometry and animation receipts remain exact with the additional dispatcher
+  ---
+  duration_ms: 57.3056
+  type: 'test'
+  ...
+# Subtest: ordinary deep-bottom entry awaits persisted native life and focuses a real animal, with exact cold revisit records
+ok 12 - ordinary deep-bottom entry awaits persisted native life and focuses a real animal, with exact cold revisit records
+  ---
+  duration_ms: 4165.3079
+  type: 'test'
+  ...
+# Subtest: an old native deep bottom remains exact and cannot report new life entry success or refill a complete saved population
+ok 13 - an old native deep bottom remains exact and cannot report new life entry success or refill a complete saved population
+  ---
+  duration_ms: 8861.3607
+  type: 'test'
+  ...
+# Subtest: pending actual stored preparation respects control, seed, view, reset, disposal and newer native navigation
+ok 14 - pending actual stored preparation respects control, seed, view, reset, disposal and newer native navigation
+  ---
+  duration_ms: 22879.468
+  type: 'test'
+  ...
+# Subtest: failed actual reads/commits and invalid world state never invent new animals or an observation focus
+ok 15 - failed actual reads/commits and invalid world state never invent new animals or an observation focus
+  ---
+  duration_ms: 6578.8244
+  type: 'test'
+  ...
+# Subtest: direct URL, ordinary control and moving director use the native route and frame actual life before a finite moving shot
+not ok 16 - direct URL, ordinary control and moving director use the native route and frame actual life before a finite moving shot
+  ---
+  duration_ms: 4493.5018
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-benthic-life-world.test.mjs:164:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    63 !== 62
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 62
+  actual: 63
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-benthic-life-world.test.mjs:216:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast
+ok 17 - ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast
+  ---
+  duration_ms: 2.5312
+  type: 'test'
+  ...
+# Subtest: four source-qualified selected measures yield frozen deterministic native soft-bottom plans without old RNG or stock draws
+ok 18 - four source-qualified selected measures yield frozen deterministic native soft-bottom plans without old RNG or stock draws
+  ---
+  duration_ms: 2056.1771
+  type: 'test'
+  ...
+# Subtest: strict fresh-only birth preserves all original/predator fields and counts every dead slot toward the combined 20 animal cap
+ok 19 - strict fresh-only birth preserves all original/predator fields and counts every dead slot toward the combined 20 animal cap
+  ---
+  duration_ms: 267.8761
+  type: 'test'
+  ...
+# Subtest: actual 0.1s native steps move complete new bodies and reconcile original organic stocks and separate original/new condition ledgers
+ok 20 - actual 0.1s native steps move complete new bodies and reconcile original organic stocks and separate original/new condition ledgers
+  ---
+  duration_ms: 3863.3174
+  type: 'test'
+  ...
+# Subtest: complete rotated foot and upper-volume references reject a non-centre native terrain obstruction and hard or mixed habitat
+ok 21 - complete rotated foot and upper-volume references reject a non-centre native terrain obstruction and hard or mixed habitat
+  ---
+  duration_ms: 441.2746
+  type: 'test'
+  ...
+# Subtest: existing whole animal envelopes block newcontroller contact and cannot grant food by remote root, shadow, span or observer illumination
+ok 22 - existing whole animal envelopes block newcontroller contact and cannot grant food by remote root, shadow, span or observer illumination
+  ---
+  duration_ms: 1041.9068
+  type: 'test'
+  ...
+# Subtest: empty local food and duplicate or skipped native clocks produce no condition gain or hidden stock, and starvation removes no organic inventory
+ok 23 - empty local food and duplicate or skipped native clocks produce no condition gain or hidden stock, and starvation removes no organic inventory
+  ---
+  duration_ms: 342.7598
+  type: 'test'
+  ...
+# Subtest: partial reserved markers, invented taxonomy, condition balance, food witnesses or support targets reject without normalization
+ok 24 - partial reserved markers, invented taxonomy, condition balance, food witnesses or support targets reject without normalization
+  ---
+  duration_ms: 409.215
+  type: 'test'
+  ...
+# Subtest: condition-ledger-owned starvation freezes dead identities and clocks, retains cap occupancy and never refills on later ticks
+ok 25 - condition-ledger-owned starvation freezes dead identities and clocks, retains cap occupancy and never refills on later ticks
+  ---
+  duration_ms: 371.8175
+  type: 'test'
+  ...
+# Subtest: two ordinary deep windows admit whole fixed hard-host animals and real external parcels with independent and complete combined ledgers
+ok 26 - two ordinary deep windows admit whole fixed hard-host animals and real external parcels with independent and complete combined ledgers
+  ---
+  duration_ms: 14653.7494
+  type: 'test'
+  ...
+# Subtest: new death clocks and actual complete empty categories survive unload, revisit and cold restore without animal or food refill
+ok 27 - new death clocks and actual complete empty categories survive unload, revisit and cold restore without animal or food refill
+  ---
+  duration_ms: 3307.5863
+  type: 'test'
+  ...
+# Subtest: enabling new hard life on old stored communities retains original raw and paused history and the next ordinary steps exactly
+ok 28 - enabling new hard life on old stored communities retains original raw and paused history and the next ordinary steps exactly
+  ---
+  duration_ms: 3104.6481
+  type: 'test'
+  ...
+# Subtest: pending and refused atomic hard-life births publish no actors, food or scenery revision before a complete commit
+ok 29 - pending and refused atomic hard-life births publish no actors, food or scenery revision before a complete commit
+  ---
+  duration_ms: 6181.2711
+  type: 'test'
+  ...
+# Subtest: undefined and thrown historical owner reads do not turn into strict-null fresh hard-life births
+ok 30 - undefined and thrown historical owner reads do not turn into strict-null fresh hard-life births
+  ---
+  duration_ms: 0.5529
+  type: 'test'
+  ...
+# Subtest: finite partial markers, parcel and old-stock corruption and complete offscreen history reject without refill or publication
+ok 31 - finite partial markers, parcel and old-stock corruption and complete offscreen history reject without refill or publication
+  ---
+  duration_ms: 3640.3877
+  type: 'test'
+  ...
+# Subtest: all eight pre-existing deep assets retain complete geometry, every animated pose, materials and original source bytes
+ok 32 - all eight pre-existing deep assets retain complete geometry, every animated pose, materials and original source bytes
+  ---
+  duration_ms: 104.5133
+  type: 'test'
+  ...
+# Subtest: two source-qualified whole forms preserve actual measurement definitions, connected appendages, feeding surfaces and every full-envelope vertex
+ok 33 - two source-qualified whole forms preserve actual measurement definitions, connected appendages, feeding surfaces and every full-envelope vertex
+  ---
+  duration_ms: 103.1745
+  type: 'test'
+  ...
+# Subtest: native dispatcher uses exact fixed support frames and individual clocks, picking and origin shifts without model mutation
+ok 34 - native dispatcher uses exact fixed support frames and individual clocks, picking and origin shifts without model mutation
+  ---
+  duration_ms: 8.3879
+  type: 'test'
+  ...
+# Subtest: finite native-flow posture leaves base and actual feeding parts fixed, repeats clocks exactly and freezes dead poses
+ok 35 - finite native-flow posture leaves base and actual feeding parts fixed, repeats clocks exactly and freezes dead poses
+  ---
+  duration_ms: 4.96
+  type: 'test'
+  ...
+# Subtest: bounded shared whole kits release each resource once across repeat disposal, replacement, reset and revisit
+ok 36 - bounded shared whole kits release each resource once across repeat disposal, replacement, reset and revisit
+  ---
+  duration_ms: 13.6192
+  type: 'test'
+  ...
+# Subtest: ordinary deep-hard entry awaits persisted native life and focuses a real animal, with exact cold revisit records
+ok 37 - ordinary deep-hard entry awaits persisted native life and focuses a real animal, with exact cold revisit records
+  ---
+  duration_ms: 3276.1271
+  type: 'test'
+  ...
+# Subtest: an old native deep hard-substrate remains exact and cannot report new life entry success or refill a complete saved population
+ok 38 - an old native deep hard-substrate remains exact and cannot report new life entry success or refill a complete saved population
+  ---
+  duration_ms: 4951.8388
+  type: 'test'
+  ...
+# Subtest: pending actual stored preparation respects control, seed, view, reset, disposal and newer native navigation
+ok 39 - pending actual stored preparation respects control, seed, view, reset, disposal and newer native navigation
+  ---
+  duration_ms: 22250.8005
+  type: 'test'
+  ...
+# Subtest: failed actual reads/commits and invalid world state never invent new animals or an observation focus
+ok 40 - failed actual reads/commits and invalid world state never invent new animals or an observation focus
+  ---
+  duration_ms: 5709.2405
+  type: 'test'
+  ...
+# Subtest: direct URL, ordinary control and moving director use the native route and frame actual life before a finite moving shot
+not ok 41 - direct URL, ordinary control and moving director use the native route and frame actual life before a finite moving shot
+  ---
+  duration_ms: 3591.0899
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-hard-life-world.test.mjs:148:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    63 !== 62
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 62
+  actual: 63
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-hard-life-world.test.mjs:200:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast
+ok 42 - ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast
+  ---
+  duration_ms: 2.6053
+  type: 'test'
+  ...
+# Subtest: frozen sourced measures produce deterministic actual-rock full-body and upstream-channel plans without native stock or RNG draws
+ok 43 - frozen sourced measures produce deterministic actual-rock full-body and upstream-channel plans without native stock or RNG draws
+  ---
+  duration_ms: 182.1597
+  type: 'test'
+  ...
+# Subtest: strict fresh time-zero initialization preserves native records, counts dead old slots, and seals full and empty histories
+ok 44 - strict fresh time-zero initialization preserves native records, counts dead old slots, and seals full and empty histories
+  ---
+  duration_ms: 88.0252
+  type: 'test'
+  ...
+# Subtest: actual native clocks advect only new logged inputs to fixed visible feeding organs and reconcile each typed pool and separate condition account
+ok 45 - actual native clocks advect only new logged inputs to fixed visible feeding organs and reconcile each typed pool and separate condition account
+  ---
+  duration_ms: 575.4016
+  type: 'test'
+  ...
+# Subtest: holdfast, whole crown and species depth checks reject support substitution and off-centre native obstructions
+ok 46 - holdfast, whole crown and species depth checks reject support substitution and off-centre native obstructions
+  ---
+  duration_ms: 22.5407
+  type: 'test'
+  ...
+# Subtest: foodSupply zero and observer light provide no food while stationary flow exports bounded overflow after exactly four parcels per channel
+ok 47 - foodSupply zero and observer light provide no food while stationary flow exports bounded overflow after exactly four parcels per channel
+  ---
+  duration_ms: 449.0545
+  type: 'test'
+  ...
+# Subtest: duplicate, skipped, invalid duration and unknown runtime markers reject before any new history mutation
+ok 48 - duplicate, skipped, invalid duration and unknown runtime markers reject before any new history mutation
+  ---
+  duration_ms: 58.9403
+  type: 'test'
+  ...
+# Subtest: finite intermediate support collision and real owner outlets export actual travelling parcel amounts with no native ledger draws
+ok 49 - finite intermediate support collision and real owner outlets export actual travelling parcel amounts with no native ledger draws
+  ---
+  duration_ms: 735.1104
+  type: 'test'
+  ...
+# Subtest: cold histories reproduce the exact next native step and preserve dead clocks while malformed roster, channel, parcel, intake or energy fails closed
+ok 50 - cold histories reproduce the exact next native step and preserve dead clocks while malformed roster, channel, parcel, intake or energy fails closed
+  ---
+  duration_ms: 240.3393
+  type: 'test'
+  ...
+# Subtest: three admitted morphologies retain taxonomy, stable objects and live picking metadata
+ok 51 - three admitted morphologies retain taxonomy, stable objects and live picking metadata
+  ---
+  duration_ms: 73.6825
+  type: 'test'
+  ...
+# Subtest: regional clocks freeze anatomy despite display time and observer-light changes
+ok 52 - regional clocks freeze anatomy despite display time and observer-light changes
+  ---
+  duration_ms: 43.3385
+  type: 'test'
+  ...
+# Subtest: stable ID determines phase across reload order, independently of factory serial
+ok 53 - stable ID determines phase across reload order, independently of factory serial
+  ---
+  duration_ms: 45.8943
+  type: 'test'
+  ...
+# Subtest: floating origins translate all three animals without changing logical pose or clock
+ok 54 - floating origins translate all three animals without changing logical pose or clock
+  ---
+  duration_ms: 32.0831
+  type: 'test'
+  ...
+# Subtest: all twelve actual sea-pig foot endpoints follow model terrain contacts under yaw and rebase
+ok 55 - all twelve actual sea-pig foot endpoints follow model terrain contacts under yaw and rebase
+  ---
+  duration_ms: 35.093
+  type: 'test'
+  ...
+# Subtest: removing one animal retains shared assets until the last live instance and disposal is idempotent
+ok 56 - removing one animal retains shared assets until the last live instance and disposal is idempotent
+  ---
+  duration_ms: 12.0903
+  type: 'test'
+  ...
+# Subtest: actual shared terrain edges match heights, normals, colour and UVs in negative and positive cells
+ok 57 - actual shared terrain edges match heights, normals, colour and UVs in negative and positive cells
+  ---
+  duration_ms: 168.2852
+  type: 'test'
+  ...
+# Subtest: actual ground triangles expose the same metre-scale height and support normals as the generator
+ok 58 - actual ground triangles expose the same metre-scale height and support normals as the generator
+  ---
+  duration_ms: 165.2706
+  type: 'test'
+  ...
+# Subtest: rock instance transforms and rotated support queries describe the same actual triangles
+ok 59 - rock instance transforms and rotated support queries describe the same actual triangles
+  ---
+  duration_ms: 163.081
+  type: 'test'
+  ...
+# Subtest: positive, negative and far routes retain nine scenery regions and a bounded cache without adding illumination or plants
+ok 60 - positive, negative and far routes retain nine scenery regions and a bounded cache without adding illumination or plants
+  ---
+  duration_ms: 926.4644
+  type: 'test'
+  ...
+# Subtest: floating origins and environmental controls leave local geometry and scenery seeds stable
+ok 61 - floating origins and environmental controls leave local geometry and scenery seeds stable
+  ---
+  duration_ms: 173.1924
+  type: 'test'
+  ...
+# Subtest: eviction, reset and repeated disposal release owned resources once and preserve borrowed materials/textures
+ok 62 - eviction, reset and repeated disposal release owned resources once and preserve borrowed materials/textures
+  ---
+  duration_ms: 537.6278
+  type: 'test'
+  ...
+# Subtest: authored configuration retains identities and initial random order while corrected prey transport applies to both models
+ok 63 - authored configuration retains identities and initial random order while corrected prey transport applies to both models
+  ---
+  duration_ms: 4.9546
+  type: 'test'
+  ...
+# Subtest: coordinate-seeded habitats allocate sparse admitted animals within owners and independent of visit order
+ok 64 - coordinate-seeded habitats allocate sparse admitted animals within owners and independent of visit order
+  ---
+  duration_ms: 228.4158
+  type: 'test'
+  ...
+# Subtest: fixed frame partitions and reversed active Maps preserve complete regional state
+ok 65 - fixed frame partitions and reversed active Maps preserve complete regional state
+  ---
+  duration_ms: 268.9562
+  type: 'test'
+  ...
+# Subtest: generated ground, all twelve sea-pig feet and fish nine-point support obey bounded full-XYZ movements
+ok 66 - generated ground, all twelve sea-pig feet and fish nine-point support obey bounded full-XYZ movements
+  ---
+  duration_ms: 580.0638
+  type: 'test'
+  ...
+# Subtest: all three foods have reachable positive ingestion, real resource debit, and closed per-pool and condition ledgers
+ok 67 - all three foods have reachable positive ingestion, real resource debit, and closed per-pool and condition ledgers
+  ---
+  duration_ms: 1334.8202
+  type: 'test'
+  ...
+# Subtest: suspended prey advances from its real local position and exits with a ledger debit instead of wrapping
+ok 68 - suspended prey advances from its real local position and exits with a ledger debit instead of wrapping
+  ---
+  duration_ms: 52.235
+  type: 'test'
+  ...
+# Subtest: actual seeded rock shoulders cannot lift suspended prey beyond the current movement budget
+ok 69 - actual seeded rock shoulders cannot lift suspended prey beyond the current movement budget
+  ---
+  duration_ms: 17.4179
+  type: 'test'
+  ...
+# Subtest: old regional heightM records resume unchanged without rewriting identity, food, timers or ledger
+ok 70 - old regional heightM records resume unchanged without rewriting identity, food, timers or ledger
+  ---
+  duration_ms: 224.7254
+  type: 'test'
+  ...
+# Subtest: zero-step pause is exact and light, hour and turbidity do not create food, energy or photosynthesis
+ok 71 - zero-step pause is exact and light, hour and turbidity do not create food, energy or photosynthesis
+  ---
+  duration_ms: 799.3666
+  type: 'test'
+  ...
+# Subtest: unload freezes complete food, random and animal records, including deaths, and reopen resumes the identical next step
+ok 72 - unload freezes complete food, random and animal records, including deaths, and reopen resumes the identical next step
+  ---
+  duration_ms: 1075.9278
+  type: 'test'
+  ...
+# Subtest: failed reads, corrupted food/ownership and oversized cohorts do not regenerate or publish altered records
+ok 73 - failed reads, corrupted food/ownership and oversized cohorts do not regenerate or publish altered records
+  ---
+  duration_ms: 973.5807
+  type: 'test'
+  ...
+# Subtest: fresh save failures never activate unsaved animals and blocked unload freezes outgoing records until a retry
+ok 74 - fresh save failures never activate unsaved animals and blocked unload freezes outgoing records until a retry
+  ---
+  duration_ms: 196.5455
+  type: 'test'
+  ...
+# Subtest: typed deep namespaces and explicit reset never overwrite reef or kelp records; dispose freezes and saves before clearing
+ok 75 - typed deep namespaces and explicit reset never overwrite reef or kelp records; dispose freezes and saves before clearing
+  ---
+  duration_ms: 255.1802
+  type: 'test'
+  ...
+# Subtest: the forty metre authored floor survives and generated footprints stay outside it
+ok 76 - the forty metre authored floor survives and generated footprints stay outside it
+  ---
+  duration_ms: 26.5553
+  type: 'test'
+  ...
+# Subtest: typed coordinate seeds reproduce terrain and immutable scenery independently of visiting order and eviction
+ok 77 - typed coordinate seeds reproduce terrain and immutable scenery independently of visiting order and eviction
+  ---
+  duration_ms: 165.4292
+  type: 'test'
+  ...
+# Subtest: floor, retention and hard-site fields join without a chunk rim or an authored transition cliff
+ok 78 - floor, retention and hard-site fields join without a chunk rim or an authored transition cliff
+  ---
+  duration_ms: 114.499
+  type: 'test'
+  ...
+# Subtest: deep reference depth is independent of local relief and chunks remain mostly open sediment scenery
+ok 79 - deep reference depth is independent of local relief and chunks remain mostly open sediment scenery
+  ---
+  duration_ms: 6.441
+  type: 'test'
+  ...
+# Subtest: support heights and normals agree with actual shared rock triangles under unequal scales and rotations
+ok 80 - support heights and normals agree with actual shared rock triangles under unequal scales and rotations
+  ---
+  duration_ms: 31.3917
+  type: 'test'
+  ...
+# Subtest: far and negative exploration stays finite with a bounded cache; missing rock intersections never become zero support
+ok 81 - far and negative exploration stays finite with a bounded cache; missing rock intersections never become zero support
+  ---
+  duration_ms: 74.1445
+  type: 'test'
+  ...
+# Subtest: bounded support caches preserve all pre-cache sample and actual-triangle query fields before and after eviction
+ok 82 - bounded support caches preserve all pre-cache sample and actual-triangle query fields before and after eviction
+  ---
+  duration_ms: 847.9849
+  type: 'test'
+  ...
+# Subtest: native deep seascape arrival and ordinary travel preserve full ecology and use bounded near-bed coordinates
+ok 83 - native deep seascape arrival and ordinary travel preserve full ecology and use bounded near-bed coordinates
+  ---
+  duration_ms: 719.0471
+  type: 'test'
+  ...
+# Subtest: real deep World layers remain 1.8, 3.5 and 6 metres above local floor, never halfway to the sea surface
+ok 84 - real deep World layers remain 1.8, 3.5 and 6 metres above local floor, never halfway to the sea surface
+  ---
+  duration_ms: 58.9684
+  type: 'test'
+  ...
+# Subtest: deep Q/E and free navigation clamp to actual support and the local eight metre observer ceiling
+ok 85 - deep Q/E and free navigation clamp to actual support and the local eight metre observer ceiling
+  ---
+  duration_ms: 18.9506
+  type: 'test'
+  ...
+# Subtest: real deep neighbor travel and floating rebasing preserve model records and logical camera coordinates
+ok 86 - real deep neighbor travel and floating rebasing preserve model records and logical camera coordinates
+  ---
+  duration_ms: 141.3611
+  type: 'test'
+  ...
+# Subtest: deep capture and restore retain physical depth and flush real pending OrbitControls damping
+ok 87 - deep capture and restore retain physical depth and flush real pending OrbitControls damping
+  ---
+  duration_ms: 129.7744
+  type: 'test'
+  ...
+# Subtest: saved deep views outside the local viewing volume restore above real rocks and below the near-bed ceiling
+ok 88 - saved deep views outside the local viewing volume restore above real rocks and below the near-bed ceiling
+  ---
+  duration_ms: 35.9172
+  type: 'test'
+  ...
+# Subtest: real deep snapshot observation adapters report 3500 minus Y depth through floating origins
+ok 89 - real deep snapshot observation adapters report 3500 minus Y depth through floating origins
+  ---
+  duration_ms: 15.9237
+  type: 'test'
+  ...
+# Subtest: deep observation memory stays isolated from reef, kelp and differently typed seeds
+ok 90 - deep observation memory stays isolated from reef, kelp and differently typed seeds
+  ---
+  duration_ms: 0.7573
+  type: 'test'
+  ...
+# Subtest: actual deep lighting and observer-local marine snow never create sunlight, a surface or ecological food
+ok 91 - actual deep lighting and observer-local marine snow never create sunlight, a surface or ecological food
+  ---
+  duration_ms: 19.6563
+  type: 'test'
+  ...
+# Subtest: 16 shared Liponema references remain actual canonical animated vertices under yaw, flow and feeding
+ok 92 - 16 shared Liponema references remain actual canonical animated vertices under yaw, flow and feeding
+  ---
+  duration_ms: 68.2984
+  type: 'test'
+  ...
+# Subtest: all eight actual sea-spider toe vertices and the actual mouth follow model support under yaw and rebase
+ok 93 - all eight actual sea-spider toe vertices and the actual mouth follow model support under yaw and rebase
+  ---
+  duration_ms: 21.2466
+  type: 'test'
+  ...
+# Subtest: model feeding freezes middle joints and regional clocks freeze walking independently of display time
+ok 94 - model feeding freezes middle joints and regional clocks freeze walking independently of display time
+  ---
+  duration_ms: 17.1488
+  type: 'test'
+  ...
+# Subtest: the shipped World focusTarget aims at the shared tiny body through floating origins
+ok 95 - the shipped World focusTarget aims at the shared tiny body through floating origins
+  ---
+  duration_ms: 16.1556
+  type: 'test'
+  ...
+# Subtest: shared sea-spider assets are bounded and released once after the final animal
+ok 96 - shared sea-spider assets are bounded and released once after the final animal
+  ---
+  duration_ms: 14.5818
+  type: 'test'
+  ...
+# Subtest: disabled deep composition preserves complete default records and their next ordinary steps
+ok 97 - disabled deep composition preserves complete default records and their next ordinary steps
+  ---
+  duration_ms: 179.6049
+  type: 'test'
+  ...
+# Subtest: a natural fresh group commits actual sediment, hard supports and existing living food consumers together
+ok 98 - a natural fresh group commits actual sediment, hard supports and existing living food consumers together
+  ---
+  duration_ms: 291.8326
+  type: 'test'
+  ...
+# Subtest: one visited member blocks macro replacement and preserves full old deaths, ledgers and opaque histories
+ok 99 - one visited member blocks macro replacement and preserves full old deaths, ledgers and opaque histories
+  ---
+  duration_ms: 126.6485
+  type: 'test'
+  ...
+# Subtest: pending, rejected or unreadable complete saves never expose candidate terrain or unsaved populations
+ok 100 - pending, rejected or unreadable complete saves never expose candidate terrain or unsaved populations
+  ---
+  duration_ms: 439.2614
+  type: 'test'
+  ...
+# Subtest: all nine owners unload, revisit and cold restore full plans and stocks without reviving deaths or refilling food
+ok 101 - all nine owners unload, revisit and cold restore full plans and stocks without reviving deaths or refilling food
+  ---
+  duration_ms: 489.228
+  type: 'test'
+  ...
+# Subtest: corrupt plans, missing group members and wholly stripped markers reject without replacing stored history
+ok 102 - corrupt plans, missing group members and wholly stripped markers reject without replacing stored history
+  ---
+  duration_ms: 456.6863
+  type: 'test'
+  ...
+# Subtest: ordinary repeated long-distance exploration keeps actual ecology and registered sources bounded
+ok 103 - ordinary repeated long-distance exploration keeps actual ecology and registered sources bounded
+  ---
+  duration_ms: 443.9192
+  type: 'test'
+  ...
+# Subtest: same-center committed bed revision refreshes four owners without altering native matrices, prototype assets or outer floor bands
+ok 104 - same-center committed bed revision refreshes four owners without altering native matrices, prototype assets or outer floor bands
+  ---
+  duration_ms: 554.5024
+  type: 'test'
+  ...
+# Subtest: actual re-based 1m floor triangles and two real wide instanced rock caps agree with physical height and normals
+ok 105 - actual re-based 1m floor triangles and two real wide instanced rock caps agree with physical height and normals
+  ---
+  duration_ms: 227.304
+  type: 'test'
+  ...
+# seed=string:42 group=-6,-10 floor triangle max error=3.9968028886505635e-15m wide-rock cap max error=2.635306811660243e-7m
+# Subtest: temporary complete birth views are undrawn; unload/revisit/reset preserve opt-in and release owned resources exactly once
+ok 106 - temporary complete birth views are undrawn; unload/revisit/reset preserve opt-in and release owned resources exactly once
+  ---
+  duration_ms: 1134.0808
+  type: 'test'
+  ...
+# Subtest: one 128m shared bed preserves external bands, every native element footprint and a complete low-slope plain
+ok 107 - one 128m shared bed preserves external bands, every native element footprint and a complete low-slope plain
+  ---
+  duration_ms: 195.1539
+  type: 'test'
+  ...
+# Subtest: two sparse wide solids keep original counts within budget and are actual same-source hard support and camera obstacles
+ok 108 - two sparse wide solids keep original counts within budget and are actual same-source hard support and camera obstacles
+  ---
+  duration_ms: 100.4861
+  type: 'test'
+  ...
+# Subtest: temporary complete replacement and failed publication preserve original public source, revision and physical caches
+ok 109 - temporary complete replacement and failed publication preserve original public source, revision and physical caches
+  ---
+  duration_ms: 140.5657
+  type: 'test'
+  ...
+# Subtest: default source remains exact and bounded route discovery never publishes new terrain or resources
+ok 110 - default source remains exact and bounded route discovery never publishes new terrain or resources
+  ---
+  duration_ms: 466.709
+  type: 'test'
+  ...
+# Subtest: only admitted identities, source ceilings and representative display sizes enter the deep model
+ok 111 - only admitted identities, source ceilings and representative display sizes enter the deep model
+  ---
+  duration_ms: 2.6898
+  type: 'test'
+  ...
+# Subtest: deterministic seed, fixed 0.1-second updates and reset are independent of frame batching
+ok 112 - deterministic seed, fixed 0.1-second updates and reset are independent of frame batching
+  ---
+  duration_ms: 59.4507
+  type: 'test'
+  ...
+# Subtest: finite and atomic environment validation, fractional steps and clock-only hour remain explicit
+ok 113 - finite and atomic environment validation, fractional steps and clock-only hour remain explicit
+  ---
+  duration_ms: 2.2007
+  type: 'test'
+  ...
+# Subtest: sea-pig representative foot contacts and fixed anemone bases share the exact soft bottom
+ok 114 - sea-pig representative foot contacts and fixed anemone bases share the exact soft bottom
+  ---
+  duration_ms: 129.5627
+  type: 'test'
+  ...
+# Subtest: empty resources with stopped external input cannot fabricate feeding or timestamps
+ok 115 - empty resources with stopped external input cannot fabricate feeding or timestamps
+  ---
+  duration_ms: 27.4556
+  type: 'test'
+  ...
+# Subtest: positive intake is gated by the actual mouth/capture volume, including direct calls with remote food
+ok 116 - positive intake is gated by the actual mouth/capture volume, including direct calls with remote food
+  ---
+  duration_ms: 11.1435
+  type: 'test'
+  ...
+# Subtest: external organic input enters finite resources first and enables real feeding from an initially empty bed
+ok 117 - external organic input enters finite resources first and enables real feeding from an initially empty bed
+  ---
+  duration_ms: 296.1575
+  type: 'test'
+  ...
+# Subtest: current advects finite parcels to an explicit outlet and changes cost without moving attached bases
+ok 118 - current advects finite parcels to an explicit outlet and changes cost without moving attached bases
+  ---
+  duration_ms: 35.2196
+  type: 'test'
+  ...
+# Subtest: suspended prey keeps its world height over falling ground and detects a ridge between clear endpoints
+ok 119 - suspended prey keeps its world height over falling ground and detects a ridge between clear endpoints
+  ---
+  duration_ms: 0.5147
+  type: 'test'
+  ...
+# Subtest: 3500m sunlight and photosynthesis stay zero; observer light and hour have no ecological effect
+ok 120 - 3500m sunlight and photosynthesis stay zero; observer light and hour have no ecological effect
+  ---
+  duration_ms: 449.9551
+  type: 'test'
+  ...
+# Subtest: turbidity attenuates observation without penalising all nonvisual food mechanisms
+ok 121 - turbidity attenuates observation without penalising all nonvisual food mechanisms
+  ---
+  duration_ms: 443.0125
+  type: 'test'
+  ...
+# Subtest: resource and condition ledgers close per pool and total under all paired 600-second cases
+ok 122 - resource and condition ledgers close per pool and total under all paired 600-second cases
+  ---
+  duration_ms: 2390.1805
+  type: 'test'
+  ...
+# Subtest: zero-flow long runs bound parcel storage while retaining every incoming relative unit in the ledger
+ok 123 - zero-flow long runs bound parcel storage while retaining every incoming relative unit in the ledger
+  ---
+  duration_ms: 1182.2267
+  type: 'test'
+  ...
+# Subtest: a full suspended channel with an empty lane accounts overflow without throwing or exceeding storage
+ok 124 - a full suspended channel with an empty lane accounts overflow without throwing or exceeding storage
+  ---
+  duration_ms: 3.7482
+  type: 'test'
+  ...

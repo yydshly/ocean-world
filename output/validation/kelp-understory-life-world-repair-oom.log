@@ -1,0 +1,39 @@
+TAP version 13
+# <--- Last few GCs --->
+# [10572:00000229C3A93000]    23671 ms: Mark-Compact (reduce) 66.0 (70.0) -> 66.0 (68.7) MB, pooled: 0 MB, 20.25 / 0.00 ms  (average mu = 0.047, current mu = 0.013) external memory pressure; GC in old space requested
+# [10572:00000229C3A93000]    23691 ms: Mark-Compact (reduce) 66.0 (68.7) -> 66.0 (68.7) MB, pooled: 0 MB, 20.05 / 0.00 ms  (average mu = 0.025, current mu = 0.001) external memory pressure; GC in old space requested
+# <--- JS stacktrace --->
+# FATAL ERROR: Committing semi space failed. Allocation failed - JavaScript heap out of memory
+# ----- Native stack trace -----
+#  1: 00007FF7EDA1A2ED 
+#  2: 00007FF7ED981EA8 
+#  3: 00007FF7EE502EE1 
+#  4: 00007FF7EE4EFB66 
+#  5: 00007FF7EE33CDC0 
+#  6: 00007FF7EE2F58D3 
+#  7: 00007FF7EE345F0F 
+#  8: 00007FF7EE336752 
+#  9: 00007FF7EE332155 
+# 10: 00007FF7EDCB54CD 
+# Subtest: tests\\kelp-understory-life-world.test.mjs
+not ok 1 - tests\\kelp-understory-life-world.test.mjs
+  ---
+  duration_ms: 24070.1097
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-understory-life-world.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 134
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 24075.9341
+

@@ -92,16 +92,16 @@ test('route estimates respond to camera rate without changing completed coverage
   state = send(state, 'tick', { token: state.token, deltaMs: 3000 });
   const normal = byLabel(render(state), '导演路线进度');
   assert.equal(normal.props['aria-valuenow'], 0);
-  assert.equal(normal.props['aria-valuetext'], '路线位置 0% · 完整播放 0/62 · 剩余约 12:39（另加转场和加载）');
+  assert.equal(normal.props['aria-valuetext'], '路线位置 0% · 完整播放 0/63 · 剩余约 12:55（另加转场和加载）');
 
   state = send(state, 'set-rate', { playbackRate: 4 });
   const fast = byLabel(render(state), '导演路线进度');
   assert.equal(fast.props['aria-valuenow'], normal.props['aria-valuenow']);
-  assert.equal(fast.props['aria-valuetext'], '路线位置 0% · 完整播放 0/62 · 剩余约 3:10（另加转场和加载）');
+  assert.equal(fast.props['aria-valuetext'], '路线位置 0% · 完整播放 0/63 · 剩余约 3:14（另加转场和加载）');
 
   state = send(send(state, 'pause'), 'set-rate', { playbackRate: 0.5 });
   assert.equal(byLabel(render(state), '导演路线进度').props['aria-valuetext'],
-    '路线位置 0% · 完整播放 0/62 · 继续播放约 25:18（另加转场和加载）');
+    '路线位置 0% · 完整播放 0/63 · 继续播放约 25:50（另加转场和加载）');
 });
 
 test('manual last-chapter skips and ending cannot claim that all chapters were played', () => {
@@ -110,20 +110,20 @@ test('manual last-chapter skips and ending cannot claim that all chapters were p
   skipped = send(skipped, 'tick', { token: skipped.token, deltaMs: DIRECTOR_STEPS[0].durationMs });
   skipped = send(skipped, 'seek', { index: lastIndex });
   const seekingTree = render(skipped);
-  assert.match(byLabel(seekingTree, '导演路线进度').props['aria-valuetext'], /完整播放 1\/62/);
+  assert.match(byLabel(seekingTree, '导演路线进度').props['aria-valuetext'], /完整播放 1\/63/);
   assert.ok(content(seekingTree).includes('加载中…'));
 
   skipped = send(enter(skipped), 'next');
   const manualEnd = render(skipped);
-  assert.ok(content(manualEnd).includes('完整播放 1/62 · 尚有 61 章未完整播放'));
+  assert.ok(content(manualEnd).includes('完整播放 1/63 · 尚有 62 章未完整播放'));
   assert.equal(byLabel(manualEnd, '当前章节巡游进度').props['aria-valuenow'], 0,
     'ending the tour does not fill an unseen final chapter');
-  assert.ok(!content(manualEnd).includes('全部 62 章已完整播放'));
+  assert.ok(!content(manualEnd).includes('全部 63 章已完整播放'));
 
   let lastOnly = enter(send(createDirectorState(), 'start', { index: lastIndex }));
   lastOnly = send(lastOnly, 'tick', { token: lastOnly.token, deltaMs: DIRECTOR_STEPS[lastIndex].durationMs });
-  assert.ok(content(render(lastOnly)).includes('完整播放 1/62 · 尚有 61 章未完整播放'));
-  assert.ok(!content(render(lastOnly)).includes('全部 62 章已完整播放'));
+  assert.ok(content(render(lastOnly)).includes('完整播放 1/63 · 尚有 62 章未完整播放'));
+  assert.ok(!content(render(lastOnly)).includes('全部 63 章已完整播放'));
 });
 
 test('the shipped player claims full completion only after every actual chapter clock completes', () => {
@@ -134,8 +134,8 @@ test('the shipped player claims full completion only after every actual chapter 
   }
   assert.equal(state.phase, 'complete');
   const tree = render(state);
-  assert.ok(content(tree).includes('全部 62 章已完整播放'));
-  assert.ok(content(tree).includes('完整播放 62/62'));
+  assert.ok(content(tree).includes('全部 63 章已完整播放'));
+  assert.ok(content(tree).includes('完整播放 63/63'));
   assert.ok(!content(tree).includes('尚有'));
   assert.equal(byLabel(tree, '当前章节巡游进度').props['aria-valuenow'], 100);
 });

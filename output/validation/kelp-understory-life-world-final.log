@@ -1,0 +1,17 @@
+TAP version 13
+# Subtest: ordinary entry atomically exposes saved plant groups and attached animals, retains native and dead clocks and exact cold roots
+ok 1 - ordinary entry atomically exposes saved plant groups and attached animals, retains native and dead clocks and exact cold roots
+  ---
+  duration_ms: 14129.139
+  type: 'test'
+  ...
+# Cold plant-only focus retained 16 saved owners; actual new first-load owners: 56,-2,57,-2,56,-1,57,-1,58,-2
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14267.6985

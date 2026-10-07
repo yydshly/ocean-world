@@ -1,0 +1,16 @@
+{
+  "kind": "diagnostic-tool-output-excerpt-not-complete-TAP",
+  "command": "node --test tests/kelp-understory-life-world.test.mjs",
+  "scope": "First narrow six-case run, before fixing the owned fixture callback",
+  "tests": 6,
+  "passed": 4,
+  "failed": 2,
+  "skipped": 0,
+  "durationMs": 43274.6631,
+  "failures": [
+    { "case": 1, "message": "observe complete real host community bounds", "fileLine": 70 },
+    { "case": 5, "message": "assert.ok(Math.hypot(view.target.x - anchor.x, view.target.z - anchor.z) < .05)", "fileLine": 134 }
+  ],
+  "diagnosis": "The test helper passed kelpUnderstoryLifeBodyPoints directly to flatMap. The callback index was incorrectly passed as its alternate root argument. Changed only the owned test helper to a single-argument arrow callback. No production fix was made for these failures.",
+  "evidenceLimit": "Preserved excerpt from the existing tool result; this is not reconstructed or claimed to be a complete TAP log. No rerun of the failing version."
+}

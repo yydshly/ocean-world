@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { isKelpUnderstoryLifeSpecies, createKelpUnderstoryLifeAsset, animateKelpUnderstoryLifeAsset, disposeKelpUnderstoryLifeAsset } from './KelpUnderstoryLifeAssets.js';
 import { isKelpNearBottomLifeSpecies, createKelpNearBottomLifeAsset, animateKelpNearBottomLifeAsset, disposeKelpNearBottomLifeAsset } from './KelpNearBottomLifeAssets.js';
 import { createKelpBenthicLifeAsset, animateKelpBenthicLifeAsset, disposeKelpBenthicLifeAsset, isKelpBenthicLifeSpecies } from './KelpBenthicLifeAssets.js';
 import { createKelpOrganism, animateKelpOrganism, disposeKelpOrganism } from './kelpOrganisms.js';
@@ -9,7 +10,7 @@ import { isKelpWaterLifeSpecies, createKelpWaterLifeAsset, animateKelpWaterLifeA
 
 const waterSpecies = id => id === 'blue-rockfish';
 const visitorSpecies = id => id === 'leopard-shark';
-const disposeAnimal = entity => isKelpNearBottomLifeSpecies(entity.speciesId) ? disposeKelpNearBottomLifeAsset(entity.object) : isKelpWaterLifeSpecies(entity.speciesId) ? disposeKelpWaterLifeAsset(entity.object) : isKelpBenthicLifeSpecies(entity.speciesId) ? disposeKelpBenthicLifeAsset(entity.object) :
+const disposeAnimal = entity => isKelpUnderstoryLifeSpecies(entity.speciesId) ? disposeKelpUnderstoryLifeAsset(entity.object) : isKelpNearBottomLifeSpecies(entity.speciesId) ? disposeKelpNearBottomLifeAsset(entity.object) : isKelpWaterLifeSpecies(entity.speciesId) ? disposeKelpWaterLifeAsset(entity.object) : isKelpBenthicLifeSpecies(entity.speciesId) ? disposeKelpBenthicLifeAsset(entity.object) :
   visitorSpecies(entity.speciesId) ? disposeKelpVisitorOrganism(entity.object) :
   waterSpecies(entity.speciesId) ? disposeKelpWaterOrganism(entity.object) : disposeKelpOrganism(entity.object);
 
@@ -38,7 +39,7 @@ export class KelpOceanAnimals {
     for (const [id, agent] of live) {
       if (this.entities.has(id)) continue;
       const species = this.catalog.get(agent.speciesId);
-      const object = isKelpNearBottomLifeSpecies(agent.speciesId) ? createKelpNearBottomLifeAsset(species) : isKelpWaterLifeSpecies(agent.speciesId) ? createKelpWaterLifeAsset(species) : isKelpBenthicLifeSpecies(agent.speciesId) ? createKelpBenthicLifeAsset(species) :
+      const object = isKelpUnderstoryLifeSpecies(agent.speciesId) ? createKelpUnderstoryLifeAsset(species) : isKelpNearBottomLifeSpecies(agent.speciesId) ? createKelpNearBottomLifeAsset(species) : isKelpWaterLifeSpecies(agent.speciesId) ? createKelpWaterLifeAsset(species) : isKelpBenthicLifeSpecies(agent.speciesId) ? createKelpBenthicLifeAsset(species) :
         visitorSpecies(agent.speciesId) ? createKelpVisitorOrganism(species) :
         waterSpecies(agent.speciesId) ? createKelpWaterOrganism(species) : createKelpOrganism(species);
       object.userData.agentId = id; object.userData.regionId = agent.regionId; object.userData.oceanStreaming = true;
@@ -101,7 +102,13 @@ export class KelpOceanAnimals {
       const object = entity.object, heading = Number.isFinite(agent.heading) ? agent.heading : 0;
       object.position.set(agent.position.x, agent.position.y, agent.position.z); object.scale.setScalar(agent.sizeM || .1);
       object.rotation.set(0, -heading, 0); object.userData.regionId = agent.regionId;
-      if (isKelpNearBottomLifeSpecies(entity.speciesId)) {
+      if (isKelpUnderstoryLifeSpecies(entity.speciesId) && agent.supportNormal) {
+        const up = new THREE.Vector3(agent.supportNormal.x, agent.supportNormal.y, agent.supportNormal.z).normalize();
+        const forward = new THREE.Vector3(Math.cos(heading), 0, Math.sin(heading));
+        forward.addScaledVector(up, -forward.dot(up)).normalize();
+        const side = new THREE.Vector3().crossVectors(forward, up).normalize();
+        object.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(forward, up, side));
+      } else if (isKelpNearBottomLifeSpecies(entity.speciesId)) {
         if (entity.speciesId === 'red-rock-crab' && agent.supportNormal) {
           const up = new THREE.Vector3(agent.supportNormal.x, agent.supportNormal.y, agent.supportNormal.z).normalize();
           const forward = new THREE.Vector3(Math.cos(heading), 0, Math.sin(heading));
@@ -124,7 +131,8 @@ export class KelpOceanAnimals {
         object.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(forward, up, side));
       }
       const clock = Number.isFinite(agent.timeSec) ? agent.timeSec : timeSec;
-      if (isKelpNearBottomLifeSpecies(entity.speciesId)) animateKelpNearBottomLifeAsset(object, clock, agent);
+      if (isKelpUnderstoryLifeSpecies(entity.speciesId)) animateKelpUnderstoryLifeAsset(object, clock, agent);
+      else if (isKelpNearBottomLifeSpecies(entity.speciesId)) animateKelpNearBottomLifeAsset(object, clock, agent);
       else if (isKelpWaterLifeSpecies(entity.speciesId)) animateKelpWaterLifeAsset(object, clock, agent);
       else if (isKelpBenthicLifeSpecies(entity.speciesId)) animateKelpBenthicLifeAsset(object, clock, agent);
       else if (visitorSpecies(entity.speciesId)) animateKelpVisitorOrganism(object, clock, agent);

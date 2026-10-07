@@ -1,0 +1,59 @@
+TAP version 13
+# Subtest: ordinary entry atomically exposes saved plant groups and attached animals, retains native and dead clocks and exact cold roots
+not ok 1 - ordinary entry atomically exposes saved plant groups and attached animals, retains native and dead clocks and exact cold roots
+  ---
+  duration_ms: 7058.2389
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-understory-life-world.test.mjs:65:1'
+  failureType: 'testCodeFailure'
+  error: 'observe complete real host community bounds'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-understory-life-world.test.mjs:70:76)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: historical forest owners retain all animals hosts food and clocks without understory-life refill or empty director success
+ok 2 - historical forest owners retain all animals hosts food and clocks without understory-life refill or empty director success
+  ---
+  duration_ms: 1839.0813
+  type: 'test'
+  ...
+# Subtest: both actual preparation windows respect late view control seed keys reset disposal and newer navigation
+ok 3 - both actual preparation windows respect late view control seed keys reset disposal and newer navigation
+  ---
+  duration_ms: 21403.4945
+  type: 'test'
+  ...
+# Subtest: failed actual reads and commits never expose a fresh community or invented observation focus
+ok 4 - failed actual reads and commits never expose a fresh community or invented observation focus
+  ---
+  duration_ms: 6661.6778
+  type: 'test'
+  ...
+# Subtest: direct URL, ordinary control and moving director use the native route and frame actual life before a finite moving shot
+ok 5 - direct URL, ordinary control and moving director use the native route and frame actual life before a finite moving shot
+  ---
+  duration_ms: 45034.1209
+  type: 'test'
+  ...
+# Subtest: ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast
+ok 6 - ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast
+  ---
+  duration_ms: 2.6317
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82221.0474
+
