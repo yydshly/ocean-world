@@ -6,7 +6,7 @@
 
 108文件／755项最终本机检查全部通过（0失败、0跳过），两次构建通过，39份最终源码、来源、测试和工作流哈希一致；原11份地形、模拟与旧资产源码逐字节保持，旧8类资产40组完整输出保持。初期83项集成有两项旧目录数量/章节顺序期望未更新，已修复并由最终整套检查通过；保留原日志，不累加重复检查。
 
-GitHub Pages 发布状态：待本次源码的同套云端检查与部署完成。
+源码`6926a01`已于2026-10-07 21:17:59（Asia/Shanghai）发布；[运行37625772256](https://github.com/yydshly/ocean-world/actions/runs/37625772256)构建、同一755项云端检查（0失败、0跳过）及Pages部署全部成功。部署6910974507／状态19402852659为success，39份当前与提交源码、来源、测试哈希一致。本有限群落包收口；本机与云端是同套检查，不相加。整体画面尚未实际验收。
 
 说明见[群落包](https://github.com/yydshly/ocean-world/blob/main/docs/DEEP_HARD_LIFE.md)、[来源](https://github.com/yydshly/ocean-world/blob/main/docs/DEEP_HARD_LIFE_SOURCES.md)与 output/validation/deep-hard-life-delivery.json。本有限包核验发布后收口，后续继续宏观生境和缺失生命类群，不进入单体、材质或镜头细调。浏览器/GPU整景观感尚未验收，独立Goal保持暂停，已有浏览器拒绝不得绕过。以下保留此前交付历史。
 
