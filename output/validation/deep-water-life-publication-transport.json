@@ -1,0 +1,10 @@
+{
+  "transport": "GitHub official Git database API after three git receive-pack HTTP 500 server errors",
+  "originalReviewedCommit": "2ae8499aae94e48e35ba0774bc63e3444f383964",
+  "publishedCommit": "2ae8499aae94e48e35ba0774bc63e3444f383964",
+  "parent": "c35ec9b27e73622abd32f04fbc73045e8a7a9fff",
+  "wholeTreeSha": "326239935300a2925a8fee0e96720a0462fffb3a",
+  "wholeTreeExact": true,
+  "changedFiles": 53,
+  "force": false
+}

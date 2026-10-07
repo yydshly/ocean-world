@@ -6,7 +6,7 @@
 
 112文件／780项最终本机检查全部通过（0失败、0跳过），一次构建通过，45份最终源码、来源、测试和工作流哈希一致；原14份地形、模拟与旧资产源码逐字节保持，旧十类资产50组完整输出保持。首轮6项生态诊断3通过/3失败，定位旧岩附着群落162次更新的浮点时钟误判并以整数更新数还原修复；随后修正一处测试对自然空底栖类别的筛选期望。保留严格未来时间、地形与收支校验，原24/12秒观察窗口不变。最终整套检查覆盖回归，诊断保留且不重复累加。
 
-GitHub Pages 发布状态：待本次源码的同套云端检查与部署完成。
+源码`2ae8499`已于2026-10-07 23:33:00（Asia/Shanghai）发布；[运行37642615211](https://github.com/yydshly/ocean-world/actions/runs/37642615211)构建、同一780项云端检查（0失败、0跳过）及Pages部署全部成功。部署6913958419／状态19409682734为success，45份当前与提交源码、来源、测试哈希一致。本有限群落包收口；本机与云端是同套检查，不相加。整体画面尚未实际验收。
 
 说明见[群落包](https://github.com/yydshly/ocean-world/blob/main/docs/DEEP_WATER_LIFE.md)、[来源](https://github.com/yydshly/ocean-world/blob/main/docs/DEEP_WATER_LIFE_SOURCES.md)与 output/validation/deep-water-life-delivery.json。本有限包核验发布后收口，后续继续宏观生境与缺失生命类群，不进入单体、材质或镜头细调。浏览器/GPU整体观感尚未验收，独立Goal保持暂停，已有浏览器拒绝不得绕过。以下保留此前交付历史。
 
