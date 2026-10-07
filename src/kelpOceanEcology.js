@@ -1,5 +1,6 @@
 import { KelpSimulation, DEFAULT_ENVIRONMENT } from './kelpSimulation.js';
 import { initializeKelpBenthicLife, tickKelpBenthicLife, validateKelpBenthicLifeRecord, captureKelpBenthicLife, KELP_BENTHIC_LIFE_IDS } from './kelpBenthicLife.js';
+import { initializeKelpWaterLife, tickKelpWaterLife, validateKelpWaterLifeRecord, captureKelpWaterLife, kelpWaterLifeRole, KELP_WATER_LIFE_IDS } from './kelpWaterLife.js';
 import { KELP_SURFACE_Y, kelpLeafNormal } from './kelpHabitat.js';
 import { KELP_OCEAN_SUPPORT_GEOMETRY_VERSION, createKelpOceanGenerator } from './kelpOceanGeneration.js';
 import { migrateKelpSupport } from './kelpSupportMigration.js';
@@ -22,6 +23,9 @@ const kelpBenthicIds = new Set(KELP_BENTHIC_LIFE_IDS);
 const benthicMarked = record => record && (['kelpBenthicLifeVersion', 'kelpBenthicLifeInitializedAtSec', 'kelpBenthicLife', 'kelpBenthicAgents'].some(key => Object.hasOwn(record, key)) ||
   [record.state?.agents, record.waterAgents, record.visitorAgents].filter(Array.isArray).flat().some(agent => agent && (kelpBenthicIds.has(agent.speciesId) ||
     ['kelpBenthicIndividualVersion', 'kelpBenthicHostId', 'kelpBenthicSiteId', 'kelpBenthicFoodPatchId'].some(key => Object.hasOwn(agent, key)))));
+const waterLifeIds = new Set(KELP_WATER_LIFE_IDS);
+const waterLifeMarked = record => record && (Object.keys(record).some(key => key.startsWith('kelpWaterLife')) ||
+  [record.state?.agents, record.waterAgents, record.visitorAgents, record.kelpBenthicAgents, record.kelpWaterLifeAgents].filter(Array.isArray).flat().some(agent => agent && (waterLifeIds.has(agent.speciesId) || Object.keys(agent).some(key => key.startsWith('kelpWaterLife')))));
 const animalIds = new Set(['purple-urchin', 'gumboot-chiton', 'bat-star', 'brown-turban-snail', 'giant-kelpfish']);
 const stateFields = ['_rngState', '_ticks', '_accumulator', 'timeSec', 'environment', 'events', 'agents',
   'primaryProduction', 'totalPrimaryProduction', 'counters', 'ledger', '_nextSummary',
@@ -51,12 +55,15 @@ function normalAt(generator, x, z) {
  * qualitative. Only up to three selected plant hosts are simulated per cell.
  * All other streamed kelp is scenery and is excluded from animal counts. */
 export class KelpOceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), visitors = false, understory = false, forestBelt = false, kelpSeascape = false, benthicLife = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), visitors = false, understory = false, forestBelt = false, kelpSeascape = false, benthicLife = false, waterLife = false } = {}) {
     this.seed = seed; this.generator = generator; this.store = store; this._world = worldKey(seed);
     this.visitorsEnabled = visitors === true;
     this._benthicLifeRequested = benthicLife === true;
     this.benthicLifeEnabled = this._benthicLifeRequested && generator.supportVersion >= 2 && typeof store.saveMany === 'function';
     this._benthicLifeBirths = new WeakSet();
+    this._waterLifeRequested = waterLife === true;
+    this.waterLifeEnabled = this._waterLifeRequested && generator.supportVersion === 2 && typeof store.saveMany === 'function';
+    this._waterLifeBirths = new WeakMap();
     this.understoryEnabled = understory === true;
     this._forestBeltRequested = forestBelt === true;
     this.forestBeltEnabled = this._forestBeltRequested && this._forestBeltAvailable(generator);
@@ -138,16 +145,28 @@ export class KelpOceanEcology {
     } };
   }
 
-  _create(cx, cz) {
+  _create(cx, cz, { waterLifeFresh = false } = {}) {
     const id = `${cx},${cz}`, plan = this._plan(cx, cz);
+    const waterRole = waterLifeFresh && this.waterLifeEnabled && kelpWaterLifeRole(this.generator, cx, cz);
+    // Only the unvisited role recipe changes: six native animals at most,
+    // four old schooling fish, one visitor, two bottom representatives and
+    // seven new water animals share the original twenty-record budget.
+    if (waterRole) {
+      plan.options = { ...plan.options, anchors: plan.options.anchors.slice(0, 2),
+        floorSites: plan.options.floorSites.slice(0, 1),
+        fishHostIndices: plan.options.fishHostIndices.filter(index => index < 2).slice(0, 1),
+        groundCounts: [['purple-urchin', plan.rocks.length ? 1 : 0], ['gumboot-chiton', plan.rocks.length ? 1 : 0]] };
+    }
     const sim = new KelpSimulation(`${this._world}|${id}`, plan.options);
     for (const agent of sim.agents) {
       agent.regionId = id;
       if (agent.speciesId === 'giant-kelp') agent.sceneryId = agent.anchor.sceneryId;
       else if (agent.speciesId !== 'giant-kelpfish' && !agent.attachment) agent.supportNormal = normalAt(this.generator, agent.position.x, agent.position.z);
     }
-    return { id, cx, cz, habitat: this.generator.sample((cx + .5) * SIZE, (cz + .5) * SIZE).habitat, sim, waterAgents: [], visitorAgents: [], understoryPlants: [],
+    const region = { id, cx, cz, habitat: this.generator.sample((cx + .5) * SIZE, (cz + .5) * SIZE).habitat, sim, waterAgents: [], visitorAgents: [], understoryPlants: [],
       supportGeometryVersion: this.generator.supportVersion ?? KELP_OCEAN_SUPPORT_GEOMETRY_VERSION };
+    if (waterLifeFresh && this.waterLifeEnabled) this._waterLifeBirths.set(region, waterRole);
+    return region;
   }
 
   _legacySupport(cx, cz) {
@@ -162,7 +181,7 @@ export class KelpOceanEcology {
 
   _record(region) {
     const state = { ...clone(region._savedState ?? {}), ...Object.fromEntries(stateFields.map(field => [field, clone(region.sim[field])])) };
-    return { ...clone(region._savedRecord ?? {}), ...captureKelpBenthicLife(region), version: 1, id: region.id, cx: region.cx, cz: region.cz, habitat: region.habitat, state,
+    return { ...clone(region._savedRecord ?? {}), ...captureKelpBenthicLife(region), ...captureKelpWaterLife(region), version: 1, id: region.id, cx: region.cx, cz: region.cz, habitat: region.habitat, state,
       ...(region.driftCommunityVersion !== undefined ? { driftCommunityVersion: region.driftCommunityVersion,
         driftPatches: clone(region.driftPatches), driftLedger: clone(region.driftLedger) } : {}),
       ...(region.supportGeometryVersion!==undefined?{supportGeometryVersion:region.supportGeometryVersion}:{}),
@@ -349,22 +368,38 @@ export class KelpOceanEcology {
     if (record.kelpBenthicLifeVersion !== undefined) {
       for (const key of ['kelpBenthicLifeVersion', 'kelpBenthicLifeInitializedAtSec', 'kelpBenthicLife', 'kelpBenthicAgents']) region[key] = clone(record[key]);
     }
+    if (!validateKelpWaterLifeRecord(record, region, { generator: savedGenerator, capacity: KELP_OCEAN_REGION_ANIMAL_LIMIT }))
+      throw new Error('Invalid saved kelp water-life community; original animals and inventory were not regenerated.');
+    if (record.kelpWaterLifeVersion !== undefined) {
+      for (const key of ['kelpWaterLifeVersion', 'kelpWaterLifeInitializedAtSec', 'kelpWaterLife', 'kelpWaterLifeAgents']) region[key] = clone(record[key]);
+    }
     if (this._waterRegionCount(region) > KELP_OCEAN_REGION_ANIMAL_LIMIT) throw new Error('Saved complete kelp community exceeds the regional cap.');
     return region;
   }
 
-  _initialAnimalCapacity(region) { return KELP_OCEAN_REGION_ANIMAL_LIMIT - (this._benthicLifeBirths.has(region) ? 4 : 0); }
+  _initialAnimalCapacity(region) { return this._waterLifeBirths.get(region) === true ?
+    KELP_OCEAN_REGION_ANIMAL_LIMIT - 7 - (this._benthicLifeBirths.has(region) ? 2 : 0) :
+    KELP_OCEAN_REGION_ANIMAL_LIMIT - (this._benthicLifeBirths.has(region) ? 4 : 0); }
 
   _initializeBenthicLife(region, fresh) {
-    const changed = initializeKelpBenthicLife(this.generator, region, { fresh: fresh && this.benthicLifeEnabled, capacity: KELP_OCEAN_REGION_ANIMAL_LIMIT, maxAdded: 4 });
+    const changed = initializeKelpBenthicLife(this.generator, region, { fresh: fresh && this.benthicLifeEnabled, capacity: KELP_OCEAN_REGION_ANIMAL_LIMIT - (this._waterLifeBirths.get(region) === true ? 7 : 0), maxAdded: this._waterLifeBirths.get(region) === true ? 2 : 4 });
     this._benthicLifeBirths.delete(region);
     if (changed && !validateKelpBenthicLifeRecord(this._record(region), region, { generator: this.generator, capacity: KELP_OCEAN_REGION_ANIMAL_LIMIT }))
       throw new Error('Invalid fresh kelp bottom-life community; no population was published.');
     return changed;
   }
 
+  _initializeWaterLife(region, fresh) {
+    const changed = initializeKelpWaterLife(this.generator, region, { fresh: fresh && this.waterLifeEnabled,
+      role: this._waterLifeBirths.get(region) === true, capacity: KELP_OCEAN_REGION_ANIMAL_LIMIT, maxAdded: 7 });
+    this._waterLifeBirths.delete(region);
+    if (changed && !validateKelpWaterLifeRecord(this._record(region), region, { generator: this.generator, capacity: KELP_OCEAN_REGION_ANIMAL_LIMIT }))
+      throw new Error('Invalid fresh kelp water-life community; no population was published.');
+    return changed;
+  }
+
   _upgradeUnderstory(region) {
-    if (region.kelpBenthicLifeVersion === 1) return false;
+    if (region.kelpBenthicLifeVersion === 1 || region.kelpWaterLifeVersion === 1) return false;
     if (!this.understoryEnabled || typeof this.store.saveMany !== 'function' ||
         (this.generator.supportVersion ?? KELP_OCEAN_SUPPORT_GEOMETRY_VERSION) < 2 || region.understorySceneryVersion !== undefined) return false;
     const nativePlan = this._plan(region.cx, region.cz);
@@ -384,10 +419,10 @@ export class KelpOceanEcology {
   }
 
   _upgradeVisitors(region) {
-    if (region.kelpBenthicLifeVersion === 1) return false;
+    if (region.kelpBenthicLifeVersion === 1 || region.kelpWaterLifeVersion === 1) return false;
     if (!this.visitorsEnabled || (this.generator.supportVersion ?? KELP_OCEAN_SUPPORT_GEOMETRY_VERSION) < 2 || typeof this.store.saveMany !== 'function' ||
         region.visitorCommunityVersion >= KELP_VISITOR_COMMUNITY_VERSION) return false;
-    const capacity = this._initialAnimalCapacity(region) - this._waterRegionCount(region);
+    const capacity = Math.min(this._waterLifeBirths.get(region) === true ? 1 : Infinity, this._initialAnimalCapacity(region) - this._waterRegionCount(region));
     const plan = createKelpVisitorPlan(this.generator, region, { seed: this.seed, capacity });
     region.visitorAgents.push(...plan.placements);
     region.visitorCommunityVersion = KELP_VISITOR_COMMUNITY_VERSION;
@@ -403,9 +438,9 @@ export class KelpOceanEcology {
   }
 
   _upgradeWater(region) {
-    if (region.kelpBenthicLifeVersion === 1) return false;
+    if (region.kelpBenthicLifeVersion === 1 || region.kelpWaterLifeVersion === 1) return false;
     if (region.waterCommunityVersion >= KELP_WATER_COMMUNITY_VERSION) return false;
-    const capacity = this._initialAnimalCapacity(region) - this._waterRegionCount(region);
+    const capacity = Math.min(this._waterLifeBirths.get(region) === true ? 4 : Infinity, this._initialAnimalCapacity(region) - this._waterRegionCount(region));
     const hosts = [...region.sim.hostById.values()].map(plant => ({ id: plant.id, sceneryId: plant.sceneryId,
       anchor: region.sim.getKelpAnchor(plant.id), preyFraction: region.sim.preyPatches.find(patch => patch.hostId === plant.id)?.fraction ?? .36 }));
     const plan = region.waterAgents.length || region.waterEverOccupied ? { placements: [] } : createKelpWaterCommunityPlan(this.generator,
@@ -516,7 +551,7 @@ export class KelpOceanEcology {
   }
 
   _waterRegionCount(region) {
-    return region.sim.agents.filter(agent => animalIds.has(agent.speciesId)).length + region.waterAgents.length + region.visitorAgents.length + (region.kelpBenthicAgents?.length ?? 0);
+    return region.sim.agents.filter(agent => animalIds.has(agent.speciesId)).length + region.waterAgents.length + region.visitorAgents.length + (region.kelpBenthicAgents?.length ?? 0) + (region.kelpWaterLifeAgents?.length ?? 0);
   }
 
   _waterRouteSite(agent, x, z, y) {
@@ -657,14 +692,15 @@ export class KelpOceanEcology {
 
   _prepareForestOwner(saved, cx, cz) {
     const fresh = saved === null;
-    const region = fresh ? this._create(cx, cz) : this._restore(saved, cx, cz);
+    const region = fresh ? this._create(cx, cz, { waterLifeFresh: true }) : this._restore(saved, cx, cz);
     if (fresh && this.benthicLifeEnabled) this._benthicLifeBirths.add(region);
     const supportUpdated = this._upgradeSupport(region), waterUpdated = this._upgradeWater(region);
     const mobilityUpdated = this._upgradeWaterMobility(region);
     const driftUpdated = upgradeKelpDrift(region, { generator: this.generator });
     const visitorUpdated = this._upgradeVisitors(region), understoryUpdated = this._upgradeUnderstory(region);
     const benthicUpdated = this._initializeBenthicLife(region, fresh);
-    return { region, fresh, changed: fresh || supportUpdated || waterUpdated || mobilityUpdated || driftUpdated || visitorUpdated || understoryUpdated || benthicUpdated };
+    const waterLifeUpdated = this._initializeWaterLife(region, fresh);
+    return { region, fresh, changed: fresh || supportUpdated || waterUpdated || mobilityUpdated || driftUpdated || visitorUpdated || understoryUpdated || benthicUpdated || waterLifeUpdated };
   }
 
   async _updateForestWindow(world, desired, current) {
@@ -780,7 +816,7 @@ export class KelpOceanEcology {
         // including unloaded owners' death histories and food ledgers. These
         // private simulations never tick, publish or add inventory.
         for (const record of savedSeascape) this._restore(record, record.cx, record.cz);
-        for (const [id, record] of savedRows) if (benthicMarked(record) && !savedSeascape.includes(record)) {
+        for (const [id, record] of savedRows) if ((benthicMarked(record) || waterLifeMarked(record)) && !savedSeascape.includes(record)) {
           const [x, z] = id.split(',').map(Number); this._restore(record, x, z);
         }
         for (const plan of freshPlans) {
@@ -857,21 +893,22 @@ export class KelpOceanEcology {
         try {
           const saved = await this.store.load(world, id);
           if (!current()) return;
-          if (this.benthicLifeEnabled && saved === undefined) throw new Error('Kelp bottom-life owner read returned no result.');
+          if ((this.benthicLifeEnabled || this.waterLifeEnabled) && saved === undefined) throw new Error('Kelp community owner read returned no result.');
           const fresh = saved === null || saved === undefined;
-          let region = fresh ? this._create(x, z) : this._restore(saved, x, z);
+          let region = fresh ? this._create(x, z, { waterLifeFresh: saved === null }) : this._restore(saved, x, z);
           if (saved === null && this.benthicLifeEnabled) this._benthicLifeBirths.add(region);
           const supportUpdated=this._upgradeSupport(region),waterUpdated=this._upgradeWater(region), mobilityUpdated=this._upgradeWaterMobility(region);
           const driftUpdated = typeof this.store.saveMany === 'function' && upgradeKelpDrift(region, { generator: this.generator });
           const visitorUpdated = this._upgradeVisitors(region);
           const understoryUpdated = this._upgradeUnderstory(region);
           const benthicUpdated = this._initializeBenthicLife(region, saved === null);
-          if (supportUpdated||waterUpdated||mobilityUpdated||driftUpdated||visitorUpdated||understoryUpdated||benthicUpdated) {
+          const waterLifeUpdated = this._initializeWaterLife(region, saved === null);
+          if (supportUpdated||waterUpdated||mobilityUpdated||driftUpdated||visitorUpdated||understoryUpdated||benthicUpdated||waterLifeUpdated) {
             const committed = await this._save(world, [[id, this._record(region)]]);
             if (!current()) return;
             if (!committed) {
               if (fresh) { this._center = null; return false; }
-              if(supportUpdated||driftUpdated||visitorUpdated||understoryUpdated||benthicUpdated){
+              if(supportUpdated||driftUpdated||visitorUpdated||understoryUpdated||benthicUpdated||waterLifeUpdated){
                 // Never publish corrected coordinates without preserving the
                 // complete old record and its geometry marker first.
                 this._center=null;return false;
@@ -925,6 +962,8 @@ export class KelpOceanEcology {
         }
       } finally { this._clearWaterContextMemo(); }
       this._applyWaterTransfers();
+      for (const region of this._active.values()) if (!this._locked.has(region.id) && region.kelpWaterLifeVersion === 1)
+        tickKelpWaterLife(region, this.generator, STEP);
     }
     if (this._activeTime >= this._checkpointAt) { this._checkpointAt = this._activeTime + 10; this.checkpoint(); }
   }
@@ -943,7 +982,8 @@ export class KelpOceanEcology {
       }
       return agent;
     }).concat(region.visitorAgents.map(agent => ({ ...agent, localEnvironment: { ...region.sim.environment } })),
-      (region.kelpBenthicAgents ?? []).map(agent => ({ ...agent, timeSec: agent.alive ? region.sim.timeSec : agent.timeSec, localEnvironment: { ...region.sim.environment } }))));
+      (region.kelpBenthicAgents ?? []).map(agent => ({ ...agent, timeSec: agent.alive ? region.sim.timeSec : agent.timeSec, localEnvironment: { ...region.sim.environment } })),
+      (region.kelpWaterLifeAgents ?? []).map(agent => ({ ...agent, localEnvironment: { ...region.sim.environment } }))));
   }
   get driftFoodPatches() {
     return [...this._active.values()].flatMap(region => (region.driftPatches ?? []).map(patch => ({ ...clone(patch),
@@ -1094,7 +1134,7 @@ export class KelpOceanEcology {
         forestBeltInitializedAtSec: region.forestBeltInitializedAtSec, forestBelt: clone(region.forestBeltPlan.group) } : {}),
       ...(region.kelpSeascapeVersion !== undefined ? { kelpSeascapeVersion: region.kelpSeascapeVersion,
         kelpSeascapeGroupId: region.kelpSeascapeGroupId, kelpSeascapeInitializedAtSec: region.kelpSeascapeInitializedAtSec } : {}),
-      alive: region.sim.agents.filter(agent => animalIds.has(agent.speciesId) && agent.alive).length + region.waterAgents.filter(agent => agent.alive).length + region.visitorAgents.filter(agent => agent.alive).length + (region.kelpBenthicAgents ?? []).filter(agent => agent.alive).length,
+      alive: region.sim.agents.filter(agent => animalIds.has(agent.speciesId) && agent.alive).length + region.waterAgents.filter(agent => agent.alive).length + region.visitorAgents.filter(agent => agent.alive).length + (region.kelpBenthicAgents ?? []).filter(agent => agent.alive).length + (region.kelpWaterLifeAgents ?? []).filter(agent => agent.alive).length,
       ...captureKelpBenthicLife(region),
       ...(region.visitorCommunityVersion !== undefined ? { visitorCommunityVersion: region.visitorCommunityVersion,
         visitorInitializedAtSec: region.visitorInitializedAtSec, visitorAgentCount: region.visitorAgents.length } : {}),
@@ -1107,6 +1147,7 @@ export class KelpOceanEcology {
       driftCommunityVersion: region.driftCommunityVersion ?? 0, driftPatches: clone(region.driftPatches ?? []),
       driftLedger: clone(region.driftLedger ?? { transferredIn: 0, ingested: 0, returnedToDetritus: 0 }),
       driftStock: (region.driftPatches ?? []).reduce((sum, patch) => sum + patch.stock, 0), driftBalanceError: kelpDriftBalanceError(region),
+      ...captureKelpWaterLife(region),
       ledger: { ...region.sim.ledger }, counters: { ...region.sim.counters }, balanceError: region.sim.metrics.resourceBudgetError,
       localEnvironment: { ...region.sim.environment, lightLevel: region.sim.lightLevel, visibilityM: region.sim.visibilityM } }));
     const rawResources = regions.reduce((total, region) => {
@@ -1142,6 +1183,8 @@ export class KelpOceanEcology {
     this._waterFrames.clear(); this._waterPlantFrames.clear(); this._waterTransfers.length = 0;
     this.benthicLifeEnabled = this._benthicLifeRequested && generator.supportVersion >= 2 && typeof this.store.saveMany === 'function';
     this._benthicLifeBirths = new WeakSet();
+    this.waterLifeEnabled = this._waterLifeRequested && generator.supportVersion === 2 && typeof this.store.saveMany === 'function';
+    this._waterLifeBirths = new WeakMap();
     this.seed = seed; this.generator = generator; this._legacyGenerator = null; this._world = next; this._disposed = false;
     this.forestBeltEnabled = this._forestBeltRequested && this._forestBeltAvailable(generator);
     this.kelpSeascapeEnabled = this._kelpSeascapeRequested && this.forestBeltEnabled;

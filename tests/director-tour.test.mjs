@@ -70,18 +70,18 @@ test('the finite tour covers every existing entry without invented or destructiv
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
   assert.ok(duration >= 360000 && duration <= 720000, 'finite local moving observation stays approximately six to twelve minutes');
-  assert.equal(duration, 700000); assert.equal(included.size, 52);
+  assert.equal(duration, 716000); assert.equal(included.size, 53);
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 58);
+  assert.equal(DIRECTOR_STEPS.length, 59);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));
     assert.ok(Number.isFinite(step.motion.durationSec) && step.motion.durationSec > 0);
     assert.equal(step.motion.durationSec * 1000, step.durationMs);
     const scene = ['world', 'living-stop', 'kelp-stop', 'deep-stop', 'view', 'layer', 'local-life', 'discoveries'].includes(step.action.kind);
-    assert.ok(scene ? step.durationMs >= 12000 && step.durationMs <= (step.motion.routeId === 'shoal-life' ? 16000 : 14000)
+    assert.ok(scene ? step.durationMs >= 12000 && step.durationMs <= (['shoal-life', 'kelp-water-life'].includes(step.motion.routeId) ? 16000 : 14000)
       : step.durationMs >= 6000 && step.durationMs <= 8000, `${step.id} has appropriate walkthrough/read time`);
   }
 });
@@ -106,7 +106,7 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     'seagrass-meadow', 'sand-channel', 'reef-garden']);
   assert.deepEqual([...routes].sort(), DEMO_LIVING_STOPS.map(stop => stop.id).sort(), 'all ordinary route entries remain available');
   assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').map(step=>step.action.stopId),
-    ['kelp-scene-forest','kelp-scene-rockbed','kelp-scene-opening','kelp-scene-outer', 'kelp-bottom-life','forest-belt-interior','forest-belt-opening']);
+    ['kelp-scene-forest','kelp-scene-rockbed','kelp-scene-opening','kelp-scene-outer', 'kelp-water-life', 'kelp-bottom-life','forest-belt-interior','forest-belt-opening']);
   assert.ok(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').every(step=>step.action.biome==='kelp'));
   assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='deep-stop').map(step=>step.action.stopId),
     ['deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer','deep-bottom-life','deep-plain-community','deep-slope-outcrop']);

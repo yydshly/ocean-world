@@ -171,3 +171,42 @@ test('dead full identities freeze on actual later ticks, remain in capture and c
   const snapshot = captureKelpBenthicLife(region); snapshot.kelpBenthicAgents[0].position.x += 100;
   assert.deepEqual(agent, dead);
 });
+
+test('actual forest sea-hare movement stays inside the saved speed budget and cold restores every native record', async () => {
+  class MemoryStore {
+    available = true; records = new Map();
+    async load(world, id) { return clone(this.records.get(`${world}|${id}`) ?? null); }
+    async save(world, id, saved) { return this.saveMany(world, [[id, saved]]); }
+    async saveMany(world, entries) { for (const [id, saved] of entries) this.records.set(`${world}|${id}`, clone(saved)); }
+  }
+  const at = { x: 2080, z: -224 }, snapshots = model => [...model._active.values()].map(row => model._record(row)).sort((a, b) => a.id.localeCompare(b.id));
+  for (const waterLife of [false, true]) {
+    const store = new MemoryStore(), create = () => {
+      const generator = createKelpOceanGenerator('42', { forestBelt: true, kelpSeascape: true });
+      const ecology = new KelpOceanEcology('42', generator, { store, visitors: true, understory: true,
+        forestBelt: true, kelpSeascape: true, benthicLife: true, waterLife });
+      return { generator, ecology };
+    };
+    const { generator, ecology } = create(); assert.equal(await ecology.update(at), true);
+    const owner = ecology._active.get('33,-4'), hare = owner.kelpBenthicAgents.find(a => a.speciesId === 'california-sea-hare');
+    assert.ok(hare, 'actual failing owner has its original sea hare'); const initial = clone(hare.position);
+    for (let tick = 0; tick < 40; tick++) {
+      ecology.step(.1, { foodSupply: 0, currentMps: .18, hour: 12 });
+      assert.ok(Math.hypot(hare.velocity.x, hare.velocity.y, hare.velocity.z) <= KELP_BENTHIC_LIFE_MODEL.traits[hare.speciesId].speedMps + 1e-8,
+        `native tick ${tick + 1} retains the original saved speed limit`);
+      for (const row of ecology._active.values()) assert.equal(validateKelpBenthicLifeRecord(ecology._record(row), row, { generator }), true, `${row.id} tick ${tick + 1}`);
+    }
+    assert.notDeepEqual(hare.position, initial); assert.equal(hare.timeSec, owner.sim.timeSec);
+    assert.ok(hare.lastBenthicIntake?.removedUnits > 0, 'movement still reaches existing native algae');
+    assert.ok(Math.abs(owner.sim.metrics.resourceBudgetError) < 1e-8);
+    const good = ecology._record(owner), overspeed = clone(good);
+    overspeed.kelpBenthicAgents.find(a => a.id === hare.id).velocity = { x: .0040001, y: 0, z: 0 };
+    assert.equal(validateKelpBenthicLifeRecord(overspeed, owner, { generator }), false, 'strict saved velocity validation is preserved');
+    const unsupported = clone(good); unsupported.kelpBenthicAgents.find(a => a.id === hare.id).target.y += .02;
+    assert.equal(validateKelpBenthicLifeRecord(unsupported, owner, { generator }), false, 'whole target support is still required');
+    await ecology.checkpoint(); const before = snapshots(ecology), persisted = clone([...store.records]);
+    const cold = create(); assert.equal(await cold.ecology.update(at), true);
+    assert.deepEqual(snapshots(cold.ecology), before, 'cold restore preserves clocks, identities, full poses, receipts and all original inventories');
+    assert.deepEqual([...store.records], persisted, 'restore does not rewrite or refill persisted records');
+  }
+});

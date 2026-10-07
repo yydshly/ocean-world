@@ -188,3 +188,6 @@ output/validation/screenshots/*
 
 !output/validation/ocean-shoal-life-initial-source-hashes.json
 !output/validation/ocean-shoal-life-render-regression-repair.log
+
+!output/validation/kelp-water-life-*.json
+!output/validation/kelp-water-life-*.log

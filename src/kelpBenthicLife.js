@@ -227,7 +227,7 @@ export function tickKelpBenthicLife(region, generator, dt) {
       const step = Math.min(horizontal, trait.speedMps * dt) * fraction;
       const p = { x: previous.x + dx / horizontal * step, y: previous.y, z: previous.z + dz / horizontal * step }, heading = agent.targetHeading;
       const next = supportFor(generator, region, agent, p, heading, plants), turn = supportFor(generator, region, agent, previous, heading, plants);
-      if (!next || !turn || previous.y < turn.position.y - 1e-8 || distance(next.position, previous) > trait.speedMps * dt + 1e-8) continue;
+      if (!next || !turn || previous.y < turn.position.y - 1e-8 || distance(next.position, previous) / dt > trait.speedMps + 1e-8) continue;
       const mid = { x: (previous.x + next.position.x) / 2, y: (previous.y + next.position.y) / 2, z: (previous.z + next.position.z) / 2 };
       const middle = supportFor(generator, region, agent, mid, heading, plants);
       if (!middle || mid.y < middle.position.y - 1e-8) continue;

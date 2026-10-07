@@ -1,0 +1,407 @@
+{
+  "version": 1,
+  "status": "passed-native-model-continuation",
+  "ownerId": "41,-5",
+  "seed": "42",
+  "durationSec": 24,
+  "source": "actual generated owner and original KelpSimulation; no GPU/browser inspection",
+  "ticks": 240,
+  "counters": {
+    "ticks": 240,
+    "feedings": 9,
+    "consumedUnits": 0.0016200000000000001,
+    "deaths": 0
+  },
+  "groups": [
+    {
+      "id": "kelp-water-life-school:41,-5:prey-food-0",
+      "speciesId": "pacific-jack-mackerel",
+      "leaderId": "kelp-water-life:41,-5:pacific-jack-mackerel:0",
+      "memberIds": [
+        "kelp-water-life:41,-5:pacific-jack-mackerel:0",
+        "kelp-water-life:41,-5:pacific-jack-mackerel:1",
+        "kelp-water-life:41,-5:pacific-jack-mackerel:2",
+        "kelp-water-life:41,-5:pacific-jack-mackerel:3"
+      ],
+      "foodPatchId": "prey-food-0",
+      "home": {
+        "x": 2643.432354946955,
+        "y": 1.7987536263918222,
+        "z": -266.7396066343161
+      }
+    }
+  ],
+  "totalAnimalRecords": 12,
+  "traits": {
+    "maximumPitchRad": 0.12,
+    "maximumTurnRadSec": 0.65,
+    "contactDistanceM": 0.2
+  },
+  "actualFoodLedger": {
+    "initial": 2.2249999999999996,
+    "input": 0.003455707102833834,
+    "ingested": 0.010499999999999995,
+    "exported": 0.00022335263868754172
+  },
+  "actualFoodTotals": {
+    "algae": 0.7590998118911911,
+    "biofilm": 0.208940887825652,
+    "detritus": 0.5005640800349133,
+    "smallPrey": 0.04909943088379466,
+    "kelpTissue": 0.7000281438285905
+  },
+  "resourceBudgetError": -4.440892098500626e-15,
+  "intakeSpecies": [
+    "pacific-jack-mackerel",
+    "california-market-squid",
+    "opaleye",
+    "pacific-sea-nettle"
+  ],
+  "agents": [
+    {
+      "id": "kelp-water-life:41,-5:pacific-jack-mackerel:0",
+      "speciesId": "pacific-jack-mackerel",
+      "timeSec": 24,
+      "state": "blocked",
+      "sizeM": 0.16180337684229018,
+      "sizeMeasure": "total-length",
+      "movedM": 0.22535683774014834,
+      "position": {
+        "x": 2644.8759506073407,
+        "y": 1.6199407616328074,
+        "z": -265.1586981398347
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "heading": 4.277399471891927,
+      "pitch": 0,
+      "energy": 0.7067529194116988,
+      "lastFeedAt": 12.5,
+      "lastWaterLifeIntake": {
+        "timeSec": 12.5,
+        "ownerId": "41,-5",
+        "patchId": "prey-food-0",
+        "hostId": "kelp-ocean:41,-5:giant-kelp-1",
+        "pool": "smallPrey",
+        "stockBefore": 0.024028166896353367,
+        "stockAfter": 0.023848166896353367,
+        "removedUnits": 0.00018,
+        "energyBefore": 0.7069183234116987,
+        "energyAfter": 0.7071703234116987,
+        "agentPosition": {
+          "x": 2644.9494586857577,
+          "y": 1.59872996766083,
+          "z": -264.94200548436777
+        },
+        "heading": 5.608622915884328,
+        "pitch": 0,
+        "feedingPosition": {
+          "x": 2645.0126413136345,
+          "y": 1.59872996766083,
+          "z": -264.99253308795187
+        },
+        "foodPosition": {
+          "x": 2645.0173756918675,
+          "y": 1.5987325456426804,
+          "z": -264.8021139247391
+        },
+        "hostAnchor": {
+          "id": "kelp:kelp-rock:264,-27:0",
+          "x": 2644.718060459859,
+          "y": -2.750660403477249,
+          "z": -265.00699819791186,
+          "lengthM": 13.592209442552209,
+          "phase": 4.540684676211216,
+          "hostId": "kelp-rock:264,-27",
+          "rockIndex": 1,
+          "sceneryId": "kelp:kelp-rock:264,-27:0"
+        },
+        "environment": {
+          "currentMps": 0.18,
+          "deformationCurrentMps": 0.18
+        },
+        "contactDistanceM": 0.19047800939360285,
+        "allowedDistanceM": 0.2,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Actual owner-local simulated-host smallPrey point for jack mackerel, squid and sea nettle; actual rock-patch algae point for opaleye. Selected incomplete nutrition proxies, not ambient plankton, rendered prey capture, measured biomass or complete natural diets. No added food inventory."
+      }
+    },
+    {
+      "id": "kelp-water-life:41,-5:pacific-jack-mackerel:1",
+      "speciesId": "pacific-jack-mackerel",
+      "timeSec": 24,
+      "state": "searching",
+      "sizeM": 0.16180337684229018,
+      "sizeMeasure": "total-length",
+      "movedM": 0.8601198458310826,
+      "position": {
+        "x": 2643.7785956871344,
+        "y": 1.782644795675022,
+        "z": -266.1489593985436
+      },
+      "velocity": {
+        "x": 0.10158639138353465,
+        "y": -0.01636524179427168,
+        "z": 0.10914386811350596
+      },
+      "heading": 2.1146891175188705,
+      "pitch": 0,
+      "energy": 0.7488740214399495,
+      "lastFeedAt": null,
+      "lastWaterLifeIntake": null
+    },
+    {
+      "id": "kelp-water-life:41,-5:pacific-jack-mackerel:2",
+      "speciesId": "pacific-jack-mackerel",
+      "timeSec": 24,
+      "state": "schooling",
+      "sizeM": 0.16180337684229018,
+      "sizeMeasure": "total-length",
+      "movedM": 0.41129670876267455,
+      "position": {
+        "x": 2643.445738547065,
+        "y": 1.7987536263918222,
+        "z": -266.08974443411665
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "heading": 9.756243812527304,
+      "pitch": 0,
+      "energy": 0.7702459692975008,
+      "lastFeedAt": null,
+      "lastWaterLifeIntake": null
+    },
+    {
+      "id": "kelp-water-life:41,-5:pacific-jack-mackerel:3",
+      "speciesId": "pacific-jack-mackerel",
+      "timeSec": 24,
+      "state": "schooling",
+      "sizeM": 0.16180337684229018,
+      "sizeMeasure": "total-length",
+      "movedM": 1.0235262622381323,
+      "position": {
+        "x": 2643.604312431324,
+        "y": 1.7987536263918222,
+        "z": -267.3664484194337
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "heading": 18.050165287096785,
+      "pitch": 0,
+      "energy": 0.7306336683241152,
+      "lastFeedAt": null,
+      "lastWaterLifeIntake": null
+    },
+    {
+      "id": "kelp-water-life:41,-5:california-market-squid:0",
+      "speciesId": "california-market-squid",
+      "timeSec": 24,
+      "state": "foraging",
+      "sizeM": 0.17555541292764246,
+      "sizeMeasure": "dorsal-mantle-length",
+      "movedM": 0.5308985539024974,
+      "position": {
+        "x": 2645.403857036538,
+        "y": 1.5942863306574444,
+        "z": -264.78256718645287
+      },
+      "velocity": {
+        "x": 0.019580721495913167,
+        "y": 0.00005809283417423927,
+        "z": -0.09806422370502332
+      },
+      "heading": 4.909469545874205,
+      "pitch": 0,
+      "energy": 0.7070812069774518,
+      "lastFeedAt": 20.1,
+      "lastWaterLifeIntake": {
+        "timeSec": 20.1,
+        "ownerId": "41,-5",
+        "patchId": "prey-food-0",
+        "hostId": "kelp-ocean:41,-5:giant-kelp-1",
+        "pool": "smallPrey",
+        "stockBefore": 0.02419347683003569,
+        "stockAfter": 0.024013476830035692,
+        "removedUnits": 0.00018,
+        "energyBefore": 0.7069707613774517,
+        "energyAfter": 0.7072227613774518,
+        "agentPosition": {
+          "x": 2645.352947160639,
+          "y": 1.5941352892885947,
+          "z": -264.5276002048203
+        },
+        "heading": 3.52074818349925,
+        "pitch": 0,
+        "feedingPosition": {
+          "x": 2645.108316608331,
+          "y": 1.5985241746117858,
+          "z": -264.62506930067093
+        },
+        "foodPosition": {
+          "x": 2645.0460334052736,
+          "y": 1.5985241746117858,
+          "z": -264.8044543439501
+        },
+        "hostAnchor": {
+          "id": "kelp:kelp-rock:264,-27:0",
+          "x": 2644.718060459859,
+          "y": -2.750660403477249,
+          "z": -265.00699819791186,
+          "lengthM": 13.592211164025086,
+          "phase": 4.540684676211216,
+          "hostId": "kelp-rock:264,-27",
+          "rockIndex": 1,
+          "sceneryId": "kelp:kelp-rock:264,-27:0"
+        },
+        "environment": {
+          "currentMps": 0.18,
+          "deformationCurrentMps": 0.18
+        },
+        "contactDistanceM": 0.18988994479786403,
+        "allowedDistanceM": 0.2,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Actual owner-local simulated-host smallPrey point for jack mackerel, squid and sea nettle; actual rock-patch algae point for opaleye. Selected incomplete nutrition proxies, not ambient plankton, rendered prey capture, measured biomass or complete natural diets. No added food inventory."
+      }
+    },
+    {
+      "id": "kelp-water-life:41,-5:pacific-sea-nettle:0",
+      "speciesId": "pacific-sea-nettle",
+      "timeSec": 24,
+      "state": "searching",
+      "sizeM": 0.19369324018713086,
+      "sizeMeasure": "bell-diameter",
+      "movedM": 0.17999999999983343,
+      "position": {
+        "x": 2643.7939607827216,
+        "y": 3.688810182682368,
+        "z": -265.3597429351695
+      },
+      "velocity": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "heading": 0.10639297260932098,
+      "pitch": 0,
+      "energy": 0.7416246189193749,
+      "lastFeedAt": 2,
+      "lastWaterLifeIntake": {
+        "timeSec": 2,
+        "ownerId": "41,-5",
+        "patchId": "prey-food-1",
+        "hostId": "kelp-ocean:41,-5:giant-kelp-2",
+        "pool": "smallPrey",
+        "stockBefore": 0.024090861698372826,
+        "stockAfter": 0.023910861698372827,
+        "removedUnits": 0.00018,
+        "energyBefore": 0.7421711309193747,
+        "energyAfter": 0.7424231309193747,
+        "agentPosition": {
+          "x": 2643.6421450003236,
+          "y": 3.688810182682368,
+          "z": -265.4564485100596
+        },
+        "heading": 2.8645268900600547,
+        "pitch": 0,
+        "feedingPosition": {
+          "x": 2643.5545810841018,
+          "y": 2.2361108812788864,
+          "z": -265.4315470718532
+        },
+        "foodPosition": {
+          "x": 2643.4163650532337,
+          "y": 2.236068988483514,
+          "z": -265.38599981933123
+        },
+        "hostAnchor": {
+          "id": "kelp:kelp-rock:264,-27:1",
+          "x": 2643.061002445847,
+          "y": -2.750660403477249,
+          "z": -265.51757208366445,
+          "lengthM": 13.664476546343225,
+          "phase": 4.105626260247622,
+          "hostId": "kelp-rock:264,-27",
+          "rockIndex": 1,
+          "sceneryId": "kelp:kelp-rock:264,-27:1"
+        },
+        "environment": {
+          "currentMps": 0.18,
+          "deformationCurrentMps": 0.18
+        },
+        "contactDistanceM": 0.145527403454572,
+        "allowedDistanceM": 0.2,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Actual owner-local simulated-host smallPrey point for jack mackerel, squid and sea nettle; actual rock-patch algae point for opaleye. Selected incomplete nutrition proxies, not ambient plankton, rendered prey capture, measured biomass or complete natural diets. No added food inventory."
+      }
+    },
+    {
+      "id": "kelp-water-life:41,-5:opaleye:0",
+      "speciesId": "opaleye",
+      "timeSec": 24,
+      "state": "foraging",
+      "sizeM": 0.24369138453155756,
+      "sizeMeasure": "total-length",
+      "movedM": 0.017921611444387746,
+      "position": {
+        "x": 2644.8184853661164,
+        "y": -2.6260739867074663,
+        "z": -265.4472376558869
+      },
+      "velocity": {
+        "x": 0.06276527830777923,
+        "y": 0,
+        "z": -0.049603627278429485
+      },
+      "heading": -0.6688004930404547,
+      "pitch": 0,
+      "energy": 0.7591139219664881,
+      "lastFeedAt": 19.200000000000003,
+      "lastWaterLifeIntake": {
+        "timeSec": 19.200000000000003,
+        "ownerId": "41,-5",
+        "patchId": "rock-food-1-0",
+        "hostId": null,
+        "pool": "algae",
+        "stockBefore": 0.08464344222728386,
+        "stockAfter": 0.08446344222728386,
+        "removedUnits": 0.00018,
+        "energyBefore": 0.759036142766488,
+        "energyAfter": 0.759288142766488,
+        "agentPosition": {
+          "x": 2644.661502699029,
+          "y": -2.6260739867074663,
+          "z": -265.2925008316688
+        },
+        "heading": -2.402246010705976,
+        "pitch": -0.12,
+        "feedingPosition": {
+          "x": 2644.5721172854383,
+          "y": -2.640660403477249,
+          "z": -265.37401069000964
+        },
+        "foodPosition": {
+          "x": 2644.709999871093,
+          "y": -2.750660403477249,
+          "z": -265.44867688132683
+        },
+        "hostAnchor": null,
+        "environment": null,
+        "contactDistanceM": 0.19153758783225894,
+        "allowedDistanceM": 0.2,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Actual owner-local simulated-host smallPrey point for jack mackerel, squid and sea nettle; actual rock-patch algae point for opaleye. Selected incomplete nutrition proxies, not ambient plankton, rendered prey capture, measured biomass or complete natural diets. No added food inventory."
+      }
+    }
+  ],
+  "foodScope": "Actual owner-local simulated-host smallPrey point for jack mackerel, squid and sea nettle; actual rock-patch algae point for opaleye. Selected incomplete nutrition proxies, not ambient plankton, rendered prey capture, measured biomass or complete natural diets. No added food inventory.",
+  "scope": "Sparse independent real individuals, not field density. Uncalibrated speed, turn, intake and relative condition. Finite whole-envelope native bed/surface probes, actual four-frond stipe and blade references at current and predicted local clocks; unloaded neighbouring plants use a conservative crown envelope. Checked new-body turns, midpoints and peer boxes do not establish global collision safety for legacy controllers. No recruitment, migration, offline evolution or population refill."
+}

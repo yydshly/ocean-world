@@ -1,0 +1,131 @@
+{
+  "scope": "Finite four sourced kelp forest-edge water representatives and independent schools; CPU/Three/native world + actual production hook checks; no browser/GPU/full-tour visual acceptance",
+  "files": {
+    ".github/workflows/pages.yml": "42ca40cb2ac8dc69a430fb41930465323c245701d984b46d6102d7fa19b8b085",
+    "docs/KELP_WATER_LIFE_SOURCES.md": "b90d9b8986f656e7be1cba4518b12e956ffc0e103cdde9d03b5e6179470b88ab",
+    "src/OceanApp.jsx": "86f84aabbd5abc8e256ecff20890652f27eb600cc27ef980db18dfbf169f4b40",
+    "src/demoCapabilities.js": "e6f894542dd6372e95004379bb3fec2e27de087936f185db4bd5422faca7d048",
+    "src/directorTour.js": "cf564fe70d739b22459dc189f29a97affdde3dbbc6e3b7379f0a07da3291dad7",
+    "src/kelpBenthicLife.js": "391a164b67c08c17377a1da731404570a82160d905364e212b1c94946f4c637a",
+    "src/kelpDriftEcology.js": "d3665c9c3144b1bb2573c80a23c918034b8a0de572bc90556966bcfcc84564d8",
+    "src/kelpForestBelt.js": "41b7ae85e3ec23db18e2e2cf59e065d2a636d95904cc757151dc801ec87d686c",
+    "src/kelpHabitat.js": "d89b5f5a8c1c4150f2725c877c79c818e0a1daaab65b138132ab46c822d0ca43",
+    "src/kelpOceanEcology.js": "2448befba350b7903346ee3adbe08297bbf621f962583f80ffc72ccee1203afb",
+    "src/kelpOceanGeneration.js": "090ffead8a86da577492dd05e2d7824348e0414dfee2ad5f2c4d1c2d4a9c4cad",
+    "src/kelpSeascape.js": "72440c8e5c42b2c4b6780f2d8897b737362793efbe1de4c2f97fcd151d46d880",
+    "src/kelpSimulation.js": "eaf562abfa990d3ddb1a8b6e98f4918c4d31d940481b805724d06d83131dc86b",
+    "src/kelpUnderstory.js": "a3ecd864e83d46b9b26f326c7caf9d9bd80677a4be8869dcac079795aafb5012",
+    "src/kelpVisitorCommunity.js": "0a7abedc3437079ae2a3c66c64601c9d5d878c10ac9cc2b98e1d2522a8a08b96",
+    "src/kelpWaterCommunity.js": "1e86a08bb29bd4f88247b07978d72dfb100c6b5327394d9bc9548abd585cb314",
+    "src/kelpWaterLife.js": "3b6e2cccb17f895594eecfe77f1ebc4603734b5b42592b213dab0532ba4e7eb2",
+    "src/kelpWaterLifeRoutes.js": "c8575537270235b3fc2d56e85722a4cd5c7c7e4e1806338acd6f4a14941e97af",
+    "src/kelpWaterLifeSpecies.js": "1dd923a4a97a17884fdbb9172e446e0cde9d9712cd76ffe9c29461392d5b1253",
+    "src/sceneCatalog.js": "250589d5fe18bd88a54d128368a2b806f481285f9bc60a6caa87941ff63b3158",
+    "src/useDirectorTour.js": "82a64b939e8248fdbc660e567258f3d1ee004ed4086d0b1767781f338924ca41",
+    "src/world/KelpBenthicLifeAssets.js": "4cbf1bfb3689e524ab085b224bb48c4f3615749dfdf7a5cdf8ba2e9999c6e62d",
+    "src/world/KelpOceanAnimals.js": "cdeecddb43866ea2a923339d0c2a4c658db2f30a35e54f3d308be3e410284e3e",
+    "src/world/KelpWaterLifeAssets.js": "ef3ab91c412143fedb242a1436cb600e210858e55a7818f269a4b5551dcac735",
+    "src/world/ReefWorld.js": "2fd6d78e5c925b9e503751aed141797e15ba42d87639bd8add92b2b6203a3e9a",
+    "src/world/kelpOrganisms.js": "8b03d9fd0040257cb86ec82b61d98f0572804012d3f02fab9fc92c5c8afa03cc",
+    "src/world/kelpVisitorOrganism.js": "c9655060f84b8e667936cdc33399c9a409b70ee00a384d1df26b424b1ae0469c",
+    "src/world/kelpWaterOrganisms.js": "ba73ae4a647dfecaccb860a7c55ca3f758b1280d7b446c0c6603199a60267218",
+    "tests/deep-benthic-life-world.test.mjs": "7a9a0f8ca27b95cc2c820d25850ce0ff32e266331ffddc1772a2d7580a96f46a",
+    "tests/demo-navigation.test.mjs": "5fa466139d6152a7f62aa9728bd956a939758df70cce2ec8c292d307437876bb",
+    "tests/director-player.test.mjs": "e51d5e20a685e11f24f08c47a91a64538ab485b5df2416f3fe2a71a4ac2e0412",
+    "tests/director-tour.test.mjs": "edb09a3bf579207f8b08778c14de7e931022a0b7fab12e686c586127c55c0fb0",
+    "tests/director-transition-hook.test.mjs": "6b230c46e91b79627cf6653ecdf294fb6d9cc0f8e664348a553ff48a79d61747",
+    "tests/kelp-benthic-life-world.test.mjs": "721cf9d9365e8190e534adf461e00687c6f96239ee9f58a5a1eecba0a54413b5",
+    "tests/kelp-benthic-life.test.mjs": "7aad9ba9105e7ea87285fca790e46fd7b3305f2de3bbddafbee8be6f092c2af7",
+    "tests/kelp-water-life-ecology.test.mjs": "392b7ccceebd8bdebedb76a9f49da3b593823036bb9ff7f71bf580c029bffcc2",
+    "tests/kelp-water-life-render.test.mjs": "667c0a394ceba22a1965d09eb2cde357c130feffa92e2bc7b651195b655a812d",
+    "tests/kelp-water-life-world.test.mjs": "9b56edda211547d86f8a9097b30deb6198458fbe55a4e21877e837b0c6d0fb69",
+    "tests/kelp-water-life.test.mjs": "b6d908c41f3253673866f8b8a0a514b3296dc2befeff9d78833bf6422c57394a",
+    "tests/ocean-meadow-life-world.test.mjs": "568da951abc2f881fd0f1953eb5d6f5577bb215b57a2aca20d1565f739e1225e",
+    "tests/ocean-shoal-life-world.test.mjs": "6510c6d4107fc309d1e120b8deb15dfc2b1affd3de7c67230b933ffe9d0ca528"
+  },
+  "originalSourceBaseline": "16485e152ad9141e2bd2076c43346560fa26bd8d",
+  "originalSourceExact": {
+    "src/kelpOceanGeneration.js": true,
+    "src/kelpHabitat.js": true,
+    "src/kelpSimulation.js": true,
+    "src/kelpWaterCommunity.js": true,
+    "src/kelpVisitorCommunity.js": true,
+    "src/kelpDriftEcology.js": true,
+    "src/kelpSeascape.js": true,
+    "src/kelpUnderstory.js": true,
+    "src/world/kelpOrganisms.js": true,
+    "src/world/kelpWaterOrganisms.js": true,
+    "src/world/kelpVisitorOrganism.js": true,
+    "src/world/KelpBenthicLifeAssets.js": true
+  },
+  "legacyCorrection": "California sea-hare three-dimensional accepted movement now uses the same speed tolerance as the unchanged strict saved-record validator. Finite actual movement/cold-recovery regression; no invalid historical-record rewriting or weaker support validation.",
+  "entries": {
+    "kelpWaterLife": "https://yydshly.github.io/ocean-world/?demo=kelp-water-life",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+  },
+  "local": {
+    "validationFileCount": 104,
+    "checks": {
+      "tests": 730,
+      "pass": 730,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "durationMs": 272849.2816
+    },
+    "productionBuild": "success",
+    "buildCount": 1,
+    "currentSourceHashesExact": true,
+    "logs": [
+      "kelp-water-life-integration.log",
+      "kelp-water-life-integration-repair.log",
+      "kelp-water-life-build.log",
+      "kelp-water-life-checks.log"
+    ]
+  },
+  "nativeModelReceipts": [
+    "kelp-water-life-model.json",
+    "kelp-water-life-continuation-model.json"
+  ],
+  "newAnimalIds": [
+    "pacific-jack-mackerel",
+    "california-market-squid",
+    "pacific-sea-nettle",
+    "opaleye"
+  ],
+  "nativeSummary": {
+    "productionWindows": 2,
+    "observedSecPerWindow": 4,
+    "actualNewIndividuals": 25,
+    "movedIndividuals": 25,
+    "fedIndividuals": 9,
+    "successfulBites": 9,
+    "maxAllAnimalRecordsPerOwner": 20,
+    "maxFoodBalanceError": 8.881784197001252e-16,
+    "singleNativeOwnerContinuationSec": 24,
+    "continuationTicks": 240,
+    "continuationActualIndividuals": 7,
+    "continuationBites": 9,
+    "continuationIntakeUnits": 0.0016200000000000001
+  },
+  "catalogue": {
+    "kelpRepresentativeRecords": 16,
+    "kelpAnimalRepresentativeRecords": 15,
+    "notStrictSpeciesCount": true
+  },
+  "director": {
+    "chapters": 59,
+    "distinctActions": 53,
+    "observationDurationSecAt1x": 716,
+    "newChapterDurationSec": 16,
+    "loadingAndTransitionsExtra": true
+  },
+  "publication": {
+    "status": "pending"
+  },
+  "limitations": [
+    "Finite owner-local water motion; no cross-owner schooling migration or global collision proof.",
+    "Uncalibrated nutrition proxies and relative body condition; no reconstructed natural density, full diet or body-carbon pool.",
+    "No frontend/browser/GPU/whole documentary appearance acceptance."
+  ]
+}

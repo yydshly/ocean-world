@@ -261,15 +261,15 @@ test('a failed entry cannot fabricate readiness, chapter time or a started obser
   assert.deepEqual(unsafe.world.protectedState, unsafe.protectedState);
 });
 
-test('the real meadow and shoal chapters prepare actual life under cover and wait for their second native window', async () => {
-  for (const { id, route, duration } of [{ id: 'meadow-life-community', route: 'meadow-life', duration: 14 }, { id: 'shoal-life-community', route: 'shoal-life', duration: 16 }]) {
-  const index = DIRECTOR_STEPS.findIndex(step => step.id === `shallows-${id}`);
+test('the real meadow, shoal and kelp water chapters prepare actual life under cover and wait for their second native window', async () => {
+  for (const { id, route, duration, biomeId = 'reef', living = true } of [{ id: 'shallows-meadow-life-community', route: 'meadow-life', duration: 14 }, { id: 'shallows-shoal-life-community', route: 'shoal-life', duration: 16 }, { id: 'kelp-water-life', route: 'kelp-water-life', duration: 16, biomeId: 'kelp', living: false }]) {
+  const index = DIRECTOR_STEPS.findIndex(step => step.id === id);
   assert.ok(index >= 0); assert.equal(DIRECTOR_STEPS[index].motion.routeId, route);
 
   // Missing new life in an empty or historical owner makes the production
   // world helper refuse preparation. The actual hook must never reveal or
   // start a chapter merely because the ordinary nine-owner window is ready.
-  const empty = worldFixture({ entryKind: 'continuous' }); empty.world.prepareResult = false;
+  const empty = worldFixture({ biomeId, living, entryKind: 'continuous' }); empty.world.prepareResult = false;
   const refused = harness(empty.world); await start(refused, index);
   await refused.until(() => refused.state.error !== null, 'the actual meadow helper refusal must remain covered');
   assert.equal(count(empty.log, 'plan'), 0, 'the source-based meadow observation cannot accept an unprepared nearby bridge');
@@ -280,7 +280,7 @@ test('the real meadow and shoal chapters prepare actual life under cover and wai
   assert.ok(!refused.events.some(event => event.type === 'transition-stage' && event.phase === 'in'));
   assert.deepEqual(empty.world.protectedState, empty.protectedState);
 
-  const f = worldFixture({ entryKind: 'continuous' }), run = harness(f.world); let preparedUnder;
+  const f = worldFixture({ biomeId, living, entryKind: 'continuous' }), run = harness(f.world); let preparedUnder;
   f.world.onPrepare = () => {
     preparedUnder = clone(run.state.transition);
     f.world.center = [4, 3]; f.world.missingOwner = true; run.publish();
@@ -306,7 +306,7 @@ test('the real meadow and shoal chapters prepare actual life under cover and wai
 
   // A cancelled meadow token cannot use late old applied/readiness events to
   // reveal the prepared window or acquire a camera after free observation.
-  const cancelled = worldFixture({ entryKind: 'continuous' }), late = harness(cancelled.world);
+  const cancelled = worldFixture({ biomeId, living, entryKind: 'continuous' }), late = harness(cancelled.world);
   cancelled.world.onPrepare = () => { cancelled.world.missingOwner = true; late.publish(); };
   await start(late, index); await late.until(() => count(cancelled.log, 'prepare') === 1, 'a pending meadow window must be cancellable');
   const token = late.state.token, oldApplied = late.api.applied;
