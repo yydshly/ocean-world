@@ -7,7 +7,7 @@ const actions = new Map(DEMO_ACTIONS.map(action => [action.id, action]));
 const livingStops = new Map(DEMO_LIVING_STOPS.map(stop => [stop.id, stop]));
 // The capability list retains its familiar button order. The director visits
 // the existing geographic stops from its opening area back towards the reef.
-const livingStopOrder = ['biodiversity-reef', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
+const livingStopOrder = ['biodiversity-reef', 'benthic-community', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
   'habitat-belt-reef', 'habitat-belt-meadow', 'seascape-transition', 'connected-seascape',
   'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
   'seagrass-meadow', 'sand-channel', 'reef-garden'];

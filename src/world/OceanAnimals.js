@@ -7,9 +7,12 @@ import { isOpenWaterSpecies, createOpenWaterOrganism, animateOpenWaterOrganism,
   updateOpenWaterDetail, disposeOpenWaterOrganism } from './openWaterLifeAssets.js';
 import { isOceanBiodiversitySpecies, createOceanBiodiversityAsset, animateOceanBiodiversityAsset,
   disposeOceanBiodiversityAsset, OceanBiodiversityPatches } from './OceanBiodiversityAssets.js';
+import { isOceanBenthicLifeSpecies, createOceanBenthicLifeAsset, animateOceanBenthicLifeAsset,
+  disposeOceanBenthicLifeAsset } from './OceanBenthicLifeAssets.js';
 const isTurtle = entity => entity.speciesId === 'green-turtle';
 const disposeAnimal = entity => isTurtle(entity) ? disposeOceanTurtleOrganism(entity.object)
   : isOceanBiodiversitySpecies(entity.speciesId) ? disposeOceanBiodiversityAsset(entity.object)
+  : isOceanBenthicLifeSpecies(entity.speciesId) ? disposeOceanBenthicLifeAsset(entity.object)
   : isReefGuildSpecies(entity.speciesId) ? disposeReefGuildOrganism(entity.object)
   : isOpenWaterSpecies(entity.speciesId) ? disposeOpenWaterOrganism(entity.object) : disposeOrganism(entity.object);
 
@@ -49,6 +52,7 @@ export class OceanAnimals {
       const species = this.catalog.get(agent.speciesId);
       const object = agent.speciesId === 'green-turtle' ? createOceanTurtleOrganism(species)
         : isOceanBiodiversitySpecies(agent.speciesId) ? createOceanBiodiversityAsset(species).group
+        : isOceanBenthicLifeSpecies(agent.speciesId) ? createOceanBenthicLifeAsset(species).group
         : isReefGuildSpecies(agent.speciesId) ? createReefGuildOrganism(species)
         : isOpenWaterSpecies(agent.speciesId) ? createOpenWaterOrganism(species) : createOrganism(species);
       object.userData.agentId = id;
@@ -116,15 +120,21 @@ export class OceanAnimals {
           if (since >= 0 && since < .7) object.rotation.z -= .18 * Math.sin(since / .7 * Math.PI);
         }
       } else if (entity.kind === 'ray') {
-        const horizontalSpeed = Math.hypot(agent.velocity?.x || 0, agent.velocity?.z || 0);
-        object.rotation.z = THREE.MathUtils.clamp(
-          Math.atan2(agent.velocity?.y || 0, Math.max(.08, horizontalSpeed)), -.2, .2);
+        // This bottom ray admits its whole long tail in a horizontal pose;
+        // sampled floor-height changes are translation, not body pitch.
+        if (entity.speciesId === 'blue-spotted-ray') object.rotation.z = 0;
+        else {
+          const horizontalSpeed = Math.hypot(agent.velocity?.x || 0, agent.velocity?.z || 0);
+          object.rotation.z = THREE.MathUtils.clamp(
+            Math.atan2(agent.velocity?.y || 0, Math.max(.08, horizontalSpeed)), -.2, .2);
+        }
       }
       object.userData.regionId = agent.regionId;
       if (entity.kind === 'turtle') {
         object.rotation.z = Number.isFinite(agent.pitch) ? THREE.MathUtils.clamp(agent.pitch, -.15, .15) : 0;
         animateOceanTurtleOrganism(object, agentTimeSec, agent);
       } else if (isOceanBiodiversitySpecies(entity.speciesId)) animateOceanBiodiversityAsset(object, agentTimeSec, agent);
+      else if (isOceanBenthicLifeSpecies(entity.speciesId)) animateOceanBenthicLifeAsset(object, agentTimeSec, agent);
       else if (isReefGuildSpecies(entity.speciesId)) animateReefGuildOrganism(object, agentTimeSec, agent);
       else if (isOpenWaterSpecies(entity.speciesId)) {
         if (entity.speciesId === 'reef-squid') {

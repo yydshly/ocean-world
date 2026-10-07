@@ -1,0 +1,208 @@
+{
+  "scope": "final local CPU/native Three/build checks; frozen sources; deployment pending; no browser/GPU acceptance",
+  "files": {
+    ".github/workflows/pages.yml": "513d526bf60e67e06e5fb914daee79c88b7a6302bc33a32f6cf80a94a03f4b24",
+    "src/OceanApp.jsx": "fc6f732eacf439d4508497301ccc711747ecb5534daef6e53095c46c4a3e3357",
+    "src/demoCapabilities.js": "0fdd0594d3a5a074dc9e8803a79b0ce67e8784fecceaee934289c0a33671de27",
+    "src/directorTour.js": "ca1ebcb1521a01974d87ce29f579ffa05b8f2976610791ed198166d45e61bf7b",
+    "src/livingRidgeGeology.js": "259b6de48eea4afd39c2d3292785d8cca89034eb8213dd8432b6703189a2616a",
+    "src/oceanBenthicLife.js": "ec0484d5f41fceb09100a9b3741498615470726c7099c3504b6dc3b06649679e",
+    "src/oceanBenthicLifeRoutes.js": "a225927e17192e436b5c241dc62581e7ef5ae7ff3c0c13524a2e06bb112b4380",
+    "src/oceanBenthicLifeSpecies.js": "0598a61fb00e3dcf7e9780b5a97dd90fb9fe7a6ec57ce6c9f0e44fa3963ae3e1",
+    "src/oceanBiodiversity.js": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8",
+    "src/oceanEcology.js": "b5c1e5038ccac46fe0ebf79117c9ee7bb0fa420960f750d82413dd884aead14d",
+    "src/sceneCatalog.js": "cfa26db62877332f0f44e80c09028202cce18cb50cb77e799c1301c2651df11f",
+    "src/world/OceanAnimals.js": "cf5849650266903b8727103316cdb77ce5d9e5094f36a902b8766e62af67b132",
+    "src/world/OceanBenthicLifeAssets.js": "43af6c5977c4d4a8d26aa6f69ce93e402a4f539b65a5a119d2cd83d15045167b",
+    "src/world/OceanBiodiversityAssets.js": "9a1fc6559722aa7c961bb99c0ef89017690750479aa9231c59474c83ebfb2a22",
+    "src/world/ReefWorld.js": "d89214669324d3a00044eaf56a0ccc2ba8c492a389ca1e32c531b79ede585350",
+    "tests/demo-navigation.test.mjs": "1f28d034d88a9279f65d70a3f7f488bf33c3a39cec282156e356b7e2b9aa42f3",
+    "tests/director-player.test.mjs": "f725b5b8a92b7c42b1bc50ca59c97f0b76802b2d216652d4b044270f7ff5e1ec",
+    "tests/director-tour.test.mjs": "5b9294b5f8c8832a6a5f57d2dcdafa4b5d95d210b78a99be66a0434e9d951c87",
+    "tests/living-shallows-world.test.mjs": "a5cb1ac3ae882dd88c20e2c3982b2d4c6df1752ed62bac5b6e7afd4aab1066b4",
+    "tests/ocean-benthic-life-ecology.test.mjs": "5b13e1cce130cfe7ef16c38fa957e6b6102bededfb61779fdda4e82ed288ed97",
+    "tests/ocean-benthic-life-render.test.mjs": "58c3d31159f7813cd876fb757e6993931533499dad2fae4575a700630548c477",
+    "tests/ocean-benthic-life-world.test.mjs": "c9e9851836b5cb516c161e642115a72d044b4f79343e7c638978068286e283a5",
+    "tests/ocean-benthic-life.test.mjs": "9631ce24534ca295faf7d2b1277feb3f90d12a8b68595ca9525c8b2a2fbac43f"
+  },
+  "entry": "https://yydshly.github.io/ocean-world/?demo=benthic",
+  "director": "https://yydshly.github.io/ocean-world/?demo=director",
+  "local": {
+    "validationFileCount": 78,
+    "tests": 553,
+    "passed": 553,
+    "failed": 0,
+    "productionBuild": "success",
+    "buildCount": 1,
+    "durationMs": 255140.9425
+  },
+  "model": {
+    "seed": "living-shallows-v1|string:42",
+    "sampledActiveOwners": 18,
+    "newIndividualRecords": 51,
+    "maxTotalIndividualRecordsPerOwner": 18,
+    "firstPackageStaticPatches": 91,
+    "newPackageStaticPatches": 0,
+    "fedTaxa": [
+      "blue-spotted-ray",
+      "reef-goatfish",
+      "tiger-cowrie",
+      "spotted-hermit-crab"
+    ],
+    "movedTaxa": [
+      "blue-spotted-ray",
+      "reef-goatfish",
+      "spotted-hermit-crab",
+      "tiger-cowrie"
+    ],
+    "nativeEntryOwner": {
+      "id": "176,7",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 9,
+          "sand": 25,
+          "seagrass": 30,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": "sand",
+        "minDepthM": 15.620832859948866,
+        "maxDepthM": 17.47988727882195
+      },
+      "individualRecordCount": 17,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.31816534275421876,
+          "position": {
+            "x": 11286.151077918708,
+            "y": -8.543789589561024,
+            "z": 505.844527836144
+          }
+        },
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.31525322086177765,
+          "position": {
+            "x": 11283.59936356917,
+            "y": -7.6757812349445365,
+            "z": 476.4633507076651
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.05879375593736768,
+          "position": {
+            "x": 11271.236312058043,
+            "y": -7.89128414612251,
+            "z": 502.8433521120988
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.09119961210526527,
+          "position": {
+            "x": 11290.484822591767,
+            "y": -8.151612644658472,
+            "z": 475.88721847087146
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 2
+    }
+  },
+  "history": {
+    "coldDeathUnloadExactRestore": "pass",
+    "oldFirstPackageNextStepExact": "pass",
+    "atomicBirthBeforePublic": "pass",
+    "corruptOffscreenOwnerRejected": "pass",
+    "legacyCategoryRefillPrevented": true
+  },
+  "performance": {
+    "queryDuplicationRegression": "pass",
+    "rawModelTimings": [
+      {
+        "position": {
+          "x": 11296,
+          "z": 544
+        },
+        "simulatedNightSec": 8,
+        "simulatedDaySec": 4,
+        "nightStepWallTimeMs": 38174.063599999994,
+        "dayStepWallTimeMs": 5764.722099999999,
+        "scope": "one actual CPU simulation timing; not browser/GPU/FPS evidence"
+      },
+      {
+        "position": {
+          "x": 12064,
+          "z": 1120
+        },
+        "simulatedNightSec": 8,
+        "simulatedDaySec": 4,
+        "nightStepWallTimeMs": 20310.2157,
+        "dayStepWallTimeMs": 4118.014899999995,
+        "scope": "one actual CPU simulation timing; not browser/GPU/FPS evidence"
+      }
+    ],
+    "conditions": "concurrent 78-file local test batch; not an isolated benchmark",
+    "acceptance": false,
+    "remainingIssue": "night-time CPU simulation remains heavy; do not infer rendered FPS or production speed from these timings"
+  },
+  "browserGpuAcceptance": false,
+  "fullDirectorTourViewed": false,
+  "browserRestrictionBypassed": false,
+  "deployment": {
+    "status": "pending"
+  },
+  "validatedFiles": {
+    ".github/workflows/pages.yml": "513d526bf60e67e06e5fb914daee79c88b7a6302bc33a32f6cf80a94a03f4b24",
+    "src/OceanApp.jsx": "fc6f732eacf439d4508497301ccc711747ecb5534daef6e53095c46c4a3e3357",
+    "src/demoCapabilities.js": "0fdd0594d3a5a074dc9e8803a79b0ce67e8784fecceaee934289c0a33671de27",
+    "src/directorTour.js": "ca1ebcb1521a01974d87ce29f579ffa05b8f2976610791ed198166d45e61bf7b",
+    "src/livingRidgeGeology.js": "259b6de48eea4afd39c2d3292785d8cca89034eb8213dd8432b6703189a2616a",
+    "src/oceanBenthicLife.js": "ec0484d5f41fceb09100a9b3741498615470726c7099c3504b6dc3b06649679e",
+    "src/oceanBenthicLifeRoutes.js": "a225927e17192e436b5c241dc62581e7ef5ae7ff3c0c13524a2e06bb112b4380",
+    "src/oceanBenthicLifeSpecies.js": "0598a61fb00e3dcf7e9780b5a97dd90fb9fe7a6ec57ce6c9f0e44fa3963ae3e1",
+    "src/oceanBiodiversity.js": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8",
+    "src/oceanEcology.js": "b5c1e5038ccac46fe0ebf79117c9ee7bb0fa420960f750d82413dd884aead14d",
+    "src/sceneCatalog.js": "cfa26db62877332f0f44e80c09028202cce18cb50cb77e799c1301c2651df11f",
+    "src/world/OceanAnimals.js": "cf5849650266903b8727103316cdb77ce5d9e5094f36a902b8766e62af67b132",
+    "src/world/OceanBenthicLifeAssets.js": "43af6c5977c4d4a8d26aa6f69ce93e402a4f539b65a5a119d2cd83d15045167b",
+    "src/world/OceanBiodiversityAssets.js": "9a1fc6559722aa7c961bb99c0ef89017690750479aa9231c59474c83ebfb2a22",
+    "src/world/ReefWorld.js": "d89214669324d3a00044eaf56a0ccc2ba8c492a389ca1e32c531b79ede585350",
+    "tests/demo-navigation.test.mjs": "1f28d034d88a9279f65d70a3f7f488bf33c3a39cec282156e356b7e2b9aa42f3",
+    "tests/director-player.test.mjs": "f725b5b8a92b7c42b1bc50ca59c97f0b76802b2d216652d4b044270f7ff5e1ec",
+    "tests/director-tour.test.mjs": "5b9294b5f8c8832a6a5f57d2dcdafa4b5d95d210b78a99be66a0434e9d951c87",
+    "tests/living-shallows-world.test.mjs": "a5cb1ac3ae882dd88c20e2c3982b2d4c6df1752ed62bac5b6e7afd4aab1066b4",
+    "tests/ocean-benthic-life-ecology.test.mjs": "5b13e1cce130cfe7ef16c38fa957e6b6102bededfb61779fdda4e82ed288ed97",
+    "tests/ocean-benthic-life-render.test.mjs": "58c3d31159f7813cd876fb757e6993931533499dad2fae4575a700630548c477",
+    "tests/ocean-benthic-life-world.test.mjs": "133fe5b4d1e7d009e91998ff90320dd44abc44bfb39f3e793c83612d1f20762d",
+    "tests/ocean-benthic-life.test.mjs": "9631ce24534ca295faf7d2b1277feb3f90d12a8b68595ca9525c8b2a2fbac43f"
+  },
+  "validationCosmeticCleanup": {
+    "file": "tests/ocean-benthic-life-world.test.mjs",
+    "testedSha256": "133fe5b4d1e7d009e91998ff90320dd44abc44bfb39f3e793c83612d1f20762d",
+    "publishedSha256": "c9e9851836b5cb516c161e642115a72d044b4f79343e7c638978068286e283a5",
+    "difference": "one trailing space only; all executable text and production sources unchanged"
+  },
+  "productionFiles": {
+    ".github/workflows/pages.yml": "513d526bf60e67e06e5fb914daee79c88b7a6302bc33a32f6cf80a94a03f4b24",
+    "src/OceanApp.jsx": "fc6f732eacf439d4508497301ccc711747ecb5534daef6e53095c46c4a3e3357",
+    "src/demoCapabilities.js": "0fdd0594d3a5a074dc9e8803a79b0ce67e8784fecceaee934289c0a33671de27",
+    "src/directorTour.js": "ca1ebcb1521a01974d87ce29f579ffa05b8f2976610791ed198166d45e61bf7b",
+    "src/livingRidgeGeology.js": "259b6de48eea4afd39c2d3292785d8cca89034eb8213dd8432b6703189a2616a",
+    "src/oceanBenthicLife.js": "ec0484d5f41fceb09100a9b3741498615470726c7099c3504b6dc3b06649679e",
+    "src/oceanBenthicLifeRoutes.js": "a225927e17192e436b5c241dc62581e7ef5ae7ff3c0c13524a2e06bb112b4380",
+    "src/oceanBenthicLifeSpecies.js": "0598a61fb00e3dcf7e9780b5a97dd90fb9fe7a6ec57ce6c9f0e44fa3963ae3e1",
+    "src/oceanBiodiversity.js": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8",
+    "src/oceanEcology.js": "b5c1e5038ccac46fe0ebf79117c9ee7bb0fa420960f750d82413dd884aead14d",
+    "src/sceneCatalog.js": "cfa26db62877332f0f44e80c09028202cce18cb50cb77e799c1301c2651df11f",
+    "src/world/OceanAnimals.js": "cf5849650266903b8727103316cdb77ce5d9e5094f36a902b8766e62af67b132",
+    "src/world/OceanBenthicLifeAssets.js": "43af6c5977c4d4a8d26aa6f69ce93e402a4f539b65a5a119d2cd83d15045167b",
+    "src/world/OceanBiodiversityAssets.js": "9a1fc6559722aa7c961bb99c0ef89017690750479aa9231c59474c83ebfb2a22",
+    "src/world/ReefWorld.js": "d89214669324d3a00044eaf56a0ccc2ba8c492a389ca1e32c531b79ede585350"
+  }
+}

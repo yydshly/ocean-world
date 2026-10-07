@@ -1,0 +1,939 @@
+{
+  "scope": "CPU production model and persisted owner records; no browser/GPU acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "activeOwnerLimit": 9,
+  "animalLimit": 20,
+  "firstPackageStaticPatchLimit": 20,
+  "newPackageStaticPatches": 0,
+  "sourceSpecies": [
+    {
+      "id": "tiger-cowrie",
+      "scientificName": "Cypraea tigris",
+      "measure": "shell-length"
+    },
+    {
+      "id": "spotted-hermit-crab",
+      "scientificName": "Dardanus megistos",
+      "measure": "borrowed-shell-length"
+    },
+    {
+      "id": "blue-spotted-ray",
+      "scientificName": "Taeniura lymma",
+      "measure": "disc-width"
+    },
+    {
+      "id": "reef-goatfish",
+      "scientificName": "Parupeneus barberinus",
+      "measure": "total-length"
+    }
+  ],
+  "windows": [
+    {
+      "x": 11296,
+      "z": 544
+    },
+    {
+      "x": 12064,
+      "z": 1120
+    }
+  ],
+  "union": [
+    "blue-spotted-ray",
+    "reef-goatfish",
+    "tiger-cowrie",
+    "spotted-hermit-crab"
+  ],
+  "fed": [
+    "blue-spotted-ray",
+    "reef-goatfish",
+    "tiger-cowrie",
+    "spotted-hermit-crab"
+  ],
+  "moved": [
+    "blue-spotted-ray",
+    "reef-goatfish",
+    "spotted-hermit-crab",
+    "tiger-cowrie"
+  ],
+  "owners": [
+    {
+      "id": "176,7",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 9,
+          "sand": 25,
+          "seagrass": 30,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": "sand",
+        "minDepthM": 15.620832859948866,
+        "maxDepthM": 17.47988727882195
+      },
+      "individualRecordCount": 17,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.31816534275421876,
+          "position": {
+            "x": 11286.151077918708,
+            "y": -8.543789589561024,
+            "z": 505.844527836144
+          }
+        },
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.31525322086177765,
+          "position": {
+            "x": 11283.59936356917,
+            "y": -7.6757812349445365,
+            "z": 476.4633507076651
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.05879375593736768,
+          "position": {
+            "x": 11271.236312058043,
+            "y": -7.89128414612251,
+            "z": 502.8433521120988
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.09119961210526527,
+          "position": {
+            "x": 11290.484822591767,
+            "y": -8.151612644658472,
+            "z": 475.88721847087146
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 2
+    },
+    {
+      "id": "177,7",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 10,
+          "sand": 40,
+          "seagrass": 0,
+          "slope": 14,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "slope",
+        "minDepthM": 17.457593194419523,
+        "maxDepthM": 18.985858184684822
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.3373693037731573,
+          "position": {
+            "x": 11347.145349579678,
+            "y": -9.9044598656198,
+            "z": 509.3981786843389
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.07888850471004843,
+          "position": {
+            "x": 11359.717395118005,
+            "y": -9.95176590683592,
+            "z": 456.7243481026723
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 4
+    },
+    {
+      "id": "176,8",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 2,
+          "sand": 28,
+          "seagrass": 34,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": "sand",
+        "minDepthM": 16.20059097154063,
+        "maxDepthM": 17.412974948955572
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.22599294736981393,
+          "position": {
+            "x": 11278.169119125978,
+            "y": -8.192234273911392,
+            "z": 564.5553182970732
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.08819118772633373,
+          "position": {
+            "x": 11312.17434703069,
+            "y": -8.69588494449237,
+            "z": 520.1683972697784
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.08739436532370747,
+          "position": {
+            "x": 11276.2110130433,
+            "y": -8.421428290022982,
+            "z": 558.3005342818797
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 13
+    },
+    {
+      "id": "177,8",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 1,
+          "sand": 30,
+          "seagrass": 21,
+          "slope": 12,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "seagrass",
+        "minDepthM": 17.255830362995177,
+        "maxDepthM": 18.761070588149416
+      },
+      "individualRecordCount": 18,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.30728811991401017,
+          "position": {
+            "x": 11330.079287040233,
+            "y": -9.201128756383472,
+            "z": 564.301690401882
+          }
+        },
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.20013243468478323,
+          "position": {
+            "x": 11386.69382583797,
+            "y": -10.523696028852898,
+            "z": 573.5690672095865
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.06681091612204909,
+          "position": {
+            "x": 11329.873248722404,
+            "y": -9.282578076776407,
+            "z": 542.2302719626575
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.062072452409192916,
+          "position": {
+            "x": 11361.78688859716,
+            "y": -9.903502297638896,
+            "z": 548.0196497738361
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 1
+    },
+    {
+      "id": "176,9",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 4,
+          "sand": 52,
+          "seagrass": 8,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 15.697041898248528,
+        "maxDepthM": 17.707333675517397
+      },
+      "individualRecordCount": 14,
+      "newAgents": [
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.0716457640286535,
+          "position": {
+            "x": 11266.345984836858,
+            "y": -5.208253465060066,
+            "z": 613.398439806674
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.09065093014389278,
+          "position": {
+            "x": 11309.873146127537,
+            "y": -8.888850929370134,
+            "z": 578.1092005684972
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 4
+    },
+    {
+      "id": "177,9",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 3,
+          "sand": 21,
+          "seagrass": 30,
+          "slope": 10,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": "sand",
+        "minDepthM": 17.380498392461952,
+        "maxDepthM": 18.812968768360584
+      },
+      "individualRecordCount": 14,
+      "newAgents": [
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.05386726846918464,
+          "position": {
+            "x": 11357.511883548377,
+            "y": -8.342916372749942,
+            "z": 630.9450302490147
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.0950067365076393,
+          "position": {
+            "x": 11334.064931976794,
+            "y": -9.542661705024228,
+            "z": 595.239205429703
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 0
+    },
+    {
+      "id": "175,7",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 44,
+          "sand": 20,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": "sand",
+        "minDepthM": 14.691076873412396,
+        "maxDepthM": 15.974627472038867
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.30473174727521835,
+          "position": {
+            "x": 11260.667935611307,
+            "y": -7.695477357411304,
+            "z": 507.185188517347
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.06530424325726926,
+          "position": {
+            "x": 11211.007781041595,
+            "y": -6.892153166520418,
+            "z": 481.49177921460733
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.09721574418246746,
+          "position": {
+            "x": 11213.487017507106,
+            "y": -6.766825726116457,
+            "z": 508.4674699246883
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 13
+    },
+    {
+      "id": "175,8",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 64,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 14.497605663920595,
+        "maxDepthM": 16.128014558878967
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.27640573715092615,
+          "position": {
+            "x": 11252.926474263519,
+            "y": -7.882339084333975,
+            "z": 565.0361726660282
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.07596195510588587,
+          "position": {
+            "x": 11205.761970527314,
+            "y": -6.419560687591314,
+            "z": 520.6078017214014
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.09772786910645664,
+          "position": {
+            "x": 11254.138268646226,
+            "y": -7.956062990807462,
+            "z": 516.7783371537923
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 5
+    },
+    {
+      "id": "175,9",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 64,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 14.964687349218849,
+        "maxDepthM": 16.453405380249023
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.28945420441683384,
+          "position": {
+            "x": 11249.606547483429,
+            "y": -7.750917762061918,
+            "z": 588.1848441436887
+          }
+        },
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.20551871523261073,
+          "position": {
+            "x": 11259.115495298058,
+            "y": -7.78999819389065,
+            "z": 579.3631084602326
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.08624388514086605,
+          "position": {
+            "x": 11236.343222089485,
+            "y": -7.691005617046016,
+            "z": 579.8863431084901
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 6
+    },
+    {
+      "id": "187,18",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 1,
+          "sand": 28,
+          "seagrass": 35,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": "sand",
+        "minDepthM": 16.21476254087115,
+        "maxDepthM": 17.770415313566716
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.21258915638551118,
+          "position": {
+            "x": 11996.284013762697,
+            "y": -8.738922050065966,
+            "z": 1180.4069459430873
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.07711853252723813,
+          "position": {
+            "x": 12003.65939594321,
+            "y": -9.163186057941138,
+            "z": 1195.8124385673552
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.07029002575203776,
+          "position": {
+            "x": 12012.285748092458,
+            "y": -9.487459482046056,
+            "z": 1210.7412925355136
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 0
+    },
+    {
+      "id": "187,16",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 12.994473685006067,
+        "maxDepthM": 15.190007050831685
+      },
+      "individualRecordCount": 15,
+      "newAgents": [
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.21235984296537938,
+          "position": {
+            "x": 12025.752292851732,
+            "y": -6.915880350282,
+            "z": 1086.2630833372473
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 6
+    },
+    {
+      "id": "188,16",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 53,
+          "sand": 11,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 12.487535359202358,
+        "maxDepthM": 15.313214997885193
+      },
+      "individualRecordCount": 18,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.2829545336053707,
+          "position": {
+            "x": 12069.66674104333,
+            "y": -6.819596137452363,
+            "z": 1082.6692079704255
+          }
+        },
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.3179049990978092,
+          "position": {
+            "x": 12077.603760937229,
+            "y": -6.451280084865713,
+            "z": 1085.9921288445591
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.056846494376659396,
+          "position": {
+            "x": 12074.949101151293,
+            "y": -4.777048148580082,
+            "z": 1036.6617706654754
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 12
+    },
+    {
+      "id": "189,16",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 9,
+          "sand": 53,
+          "seagrass": 2,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 13.285730080886118,
+        "maxDepthM": 15.994765758514404
+      },
+      "individualRecordCount": 17,
+      "newAgents": [
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.29525980791077017,
+          "position": {
+            "x": 12149.51619264111,
+            "y": -6.754182275372908,
+            "z": 1083.756989036873
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.07546261184848845,
+          "position": {
+            "x": 12148.846623391286,
+            "y": -6.782446787455896,
+            "z": 1076.5358184710144
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 6
+    },
+    {
+      "id": "187,17",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 2,
+          "sand": 62,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 14.924035050346607,
+        "maxDepthM": 17.553205490112305
+      },
+      "individualRecordCount": 14,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.2875513960770332,
+          "position": {
+            "x": 12010.932021439075,
+            "y": -7.676955961592481,
+            "z": 1099.838438168168
+          }
+        },
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.2737295261863619,
+          "position": {
+            "x": 11996.231188516691,
+            "y": -7.777845222463357,
+            "z": 1131.4584132630378
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.09420046713203192,
+          "position": {
+            "x": 12019.55987391323,
+            "y": -8.487198384516292,
+            "z": 1140.8505782257766
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 3
+    },
+    {
+      "id": "188,17",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 64,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 14.684698648482168,
+        "maxDepthM": 16.68511878147763
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.3154480108432472,
+          "position": {
+            "x": 12038.363682509958,
+            "y": -8.295743259231081,
+            "z": 1139.9201957892626
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.08429635803215205,
+          "position": {
+            "x": 12072.430549601846,
+            "y": -6.847984611095379,
+            "z": 1091.635906259919
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.08234903557226061,
+          "position": {
+            "x": 12060.310616214574,
+            "y": -8.238494008725631,
+            "z": 1130.6286953613162
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 7
+    },
+    {
+      "id": "189,17",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 35,
+          "seagrass": 29,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "seagrass",
+        "minDepthM": 14.574827756387055,
+        "maxDepthM": 16.645544342127206
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.3211554933153093,
+          "position": {
+            "x": 12130.59208918847,
+            "y": -8.515669918613257,
+            "z": 1150.2940009504557
+          }
+        },
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.3110565756447613,
+          "position": {
+            "x": 12109.732660556585,
+            "y": -8.351470587126718,
+            "z": 1150.2108266927303
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.08489467471837997,
+          "position": {
+            "x": 12151.932362155725,
+            "y": -7.2287396206697165,
+            "z": 1110.6894125947958
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 6
+    },
+    {
+      "id": "188,18",
+      "communityType": "reef-sand-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 60,
+          "seagrass": 0,
+          "slope": 4,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 16.625126961398266,
+        "maxDepthM": 20.92131996154785
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "blue-spotted-ray",
+          "sizeM": 0.32672092572785916,
+          "position": {
+            "x": 12065.743159626052,
+            "y": -9.69375764689243,
+            "z": 1203.3105369210243
+          }
+        },
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.2934906222578138,
+          "position": {
+            "x": 12067.730481317267,
+            "y": -12.34436971555431,
+            "z": 1179.0778303321451
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.0783146570250392,
+          "position": {
+            "x": 12036.514669579268,
+            "y": -9.309085373889685,
+            "z": 1189.3920669279992
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.07396602286957205,
+          "position": {
+            "x": 12042.787183180451,
+            "y": -9.330669831739367,
+            "z": 1186.1632707048207
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 2
+    },
+    {
+      "id": "189,18",
+      "communityType": "meadow-edge",
+      "habitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 31,
+          "seagrass": 33,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": "sand",
+        "minDepthM": 16.408708887384456,
+        "maxDepthM": 17.754643010132344
+      },
+      "individualRecordCount": 16,
+      "newAgents": [
+        {
+          "speciesId": "reef-goatfish",
+          "sizeM": 0.2004263716284186,
+          "position": {
+            "x": 12157.677181589976,
+            "y": -8.614331669170456,
+            "z": 1188.3800723545253
+          }
+        },
+        {
+          "speciesId": "tiger-cowrie",
+          "sizeM": 0.06436325863935054,
+          "position": {
+            "x": 12131.573206844956,
+            "y": -7.257357613674022,
+            "z": 1206.0641489623422
+          }
+        },
+        {
+          "speciesId": "spotted-hermit-crab",
+          "sizeM": 0.08634285894222557,
+          "position": {
+            "x": 12109.94794337824,
+            "y": -9.67449262340101,
+            "z": 1205.9273448813706
+          }
+        }
+      ],
+      "firstPackageStaticPatchCount": 1
+    }
+  ],
+  "timing": [
+    {
+      "position": {
+        "x": 11296,
+        "z": 544
+      },
+      "simulatedNightSec": 8,
+      "simulatedDaySec": 4,
+      "nightStepWallTimeMs": 38174.063599999994,
+      "dayStepWallTimeMs": 5764.722099999999,
+      "scope": "one actual CPU simulation timing; not browser/GPU/FPS evidence"
+    },
+    {
+      "position": {
+        "x": 12064,
+        "z": 1120
+      },
+      "simulatedNightSec": 8,
+      "simulatedDaySec": 4,
+      "nightStepWallTimeMs": 20310.2157,
+      "dayStepWallTimeMs": 4118.014899999995,
+      "scope": "one actual CPU simulation timing; not browser/GPU/FPS evidence"
+    }
+  ]
+}

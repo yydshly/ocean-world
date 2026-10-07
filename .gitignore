@@ -132,3 +132,10 @@ output/validation/screenshots/*
 !output/validation/ocean-biodiversity-delivery.json
 !output/validation/ocean-biodiversity-cloud-build.log
 !output/validation/ocean-biodiversity-cloud-run.json
+
+!output/validation/ocean-benthic-life-checks.log
+!output/validation/ocean-benthic-life-build.log
+!output/validation/ocean-benthic-life-model.json
+!output/validation/ocean-benthic-life-delivery.json
+!output/validation/ocean-benthic-life-cloud-build.log
+!output/validation/ocean-benthic-life-cloud-run.json

@@ -1,4 +1,5 @@
 import { OCEAN_BIODIVERSITY_ROUTE_STOPS } from './oceanBiodiversityRoutes.js';
+import { OCEAN_BENTHIC_LIFE_ROUTE_STOPS } from './oceanBenthicLifeRoutes.js';
 import { LIVING_SHALLOWS_ROUTE } from './livingShallowsGeneration.js';
 import { LIVING_SHALLOWS_PROFILE } from './livingShallows.js';
 import { OCEAN_OBSERVATION_LAYERS } from './oceanLayerNavigation.js';
@@ -30,6 +31,7 @@ export const DEMO_WORLDS = Object.freeze([
 ]);
 
 const stopHints = {
+  'benthic-community': '沿沙地与礁底观察魟、羊鱼、宝螺和寄居蟹，实际组合由当地底质与水深决定',
   'biodiversity-reef': '普通探索中的礁缘丰富群落，观察团块珊瑚、附着生物与近底动物；当地组合随生境而变',
   'reef-garden': '珊瑚岩礁与相邻生活空间',
   'sand-channel': '礁群之间的开放沙道',
@@ -63,7 +65,7 @@ const stops = [...LIVING_SHALLOWS_ROUTE,
   { id: 'seascape-transition', label: '相邻生境' },
   { id: 'habitat-belt-reef', label: '生活带：礁群沙道' },
   { id: 'habitat-belt-meadow', label: '生活带：草床水层' },
-  ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS,
+  ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS,
 ];
 
 export const DEMO_LIVING_STOPS = Object.freeze(stops.map((stop, index) => entry({

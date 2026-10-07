@@ -185,7 +185,7 @@ export class ReefWorld {
         }
         if(this.isKelp||this.isDeep){this.floorMesh.visible=false;this.floorContinuation.visible=false;}
         this.scene.add(this.oceanChunks.root);this.oceanChunks.update(this.camera.position);
-        this.oceanEcology=this.isDeep?new DeepOceanEcology(seed,this.oceanChunks.generator,{seascape:true,wholeSeascape:true}):this.isKelp?new KelpOceanEcology(seed,this.oceanChunks.generator,{visitors:true,understory:true,forestBelt:true,kelpSeascape:true}):new OceanEcology(seed,this.oceanChunks.generator,{turtles:true,sceneElements:!this.isLivingShallows,habitatScenes:!this.isLivingShallows,macroLandscape:!this.isLivingShallows,livingGeology:this.isLivingShallows,habitatMosaic:this.isLivingShallows,seabedRelief:this.isLivingShallows,seascape:this.isLivingShallows,livingBelt:this.isLivingShallows,shallowSeascape:this.isLivingShallows,turtleGrazing:this.isLivingShallows,biodiversity:this.isLivingShallows});
+        this.oceanEcology=this.isDeep?new DeepOceanEcology(seed,this.oceanChunks.generator,{seascape:true,wholeSeascape:true}):this.isKelp?new KelpOceanEcology(seed,this.oceanChunks.generator,{visitors:true,understory:true,forestBelt:true,kelpSeascape:true}):new OceanEcology(seed,this.oceanChunks.generator,{turtles:true,sceneElements:!this.isLivingShallows,habitatScenes:!this.isLivingShallows,macroLandscape:!this.isLivingShallows,livingGeology:this.isLivingShallows,habitatMosaic:this.isLivingShallows,seabedRelief:this.isLivingShallows,seascape:this.isLivingShallows,livingBelt:this.isLivingShallows,shallowSeascape:this.isLivingShallows,turtleGrazing:this.isLivingShallows,biodiversity:this.isLivingShallows,benthicLife:this.isLivingShallows});
         if(this.isLivingShallows)this.oceanEcology.setEnvironment(this.sim.environment);
         this.oceanAnimals=this.isDeep?new DeepOceanAnimals([...this.catalog.values()]):this.isKelp?new KelpOceanAnimals([...this.catalog.values()]):new OceanAnimals([...this.catalog.values()]);this.scene.add(this.oceanAnimals.root);
         if(!this.isKelp&&!this.isDeep&&!this.isLivingShallows){this.oceanSceneElements=new OceanSceneElements();this.scene.add(this.oceanSceneElements.root);}
@@ -985,6 +985,28 @@ export class ReefWorld {
     const patches=row.biodiversity.patches;
     const anchor=life.find(agent=>agent.speciesId==='shallow-anemone')?.position||
       patches.find(patch=>patch.speciesId==='biodiversity-massive-coral')||life[0]?.position||patches[0];
+    if(!anchor)return false;
+    const x=anchor.x-4,z=anchor.z+4,y=Math.min(this.surfaceY-.6,this.habitatY(x,z)+2.5);
+    this.oceanChunks.update(position);
+    return this.restoreOceanObservation({position:{x,y,z},target:{x:anchor.x,
+      y:Math.min(y-.5,Math.max(anchor.y+.3,this.habitatY(anchor.x,anchor.z)+.3)),z:anchor.z},
+      layer:'bed',freeDepthM:this.surfaceY-y,habitat:this.oceanChunks.generator.sample(x,z).habitat});
+  }
+  async enterOceanBenthicLife(){
+    if(!this.isLivingShallows||this.disposed||this.oceanEcologyResetting||!this.oceanEcology)return false;
+    const index=this.oceanChunks?.generator.routeStops.findIndex(stop=>stop.id==='benthic-community')??-1;
+    if(index<0||!this.enterLivingShallows(index))return false;
+    const token=this._shallowSceneEntryToken,position=this.oceanWorldPosition(),target=this.controls.target.clone();
+    const seed=this.sim.seed,controlCount=this.controlStartCount;
+    const loaded=await this.oceanEcology.update(position);
+    if(loaded===false||this.disposed||this.oceanEcologyResetting||this.sim.seed!==seed||this.controlStartCount!==controlCount||
+      this._shallowSceneEntryToken!==token||this.directorEntry?.active||this.directorMotion||this.keys.size||
+      this.oceanWorldPosition().distanceTo(position)>.05||this.controls.target.distanceTo(target)>.05)return false;
+    const centre=`${Math.floor(position.x/64)},${Math.floor(position.z/64)}`;
+    const row=this.oceanEcology.snapshot().regions.find(region=>region.id===centre&&region.benthicLifeVersion===1);
+    if(!row)return false;
+    const life=this.oceanEcology.agents.filter(agent=>agent.regionId===centre&&agent.alive&&agent.benthicLifeIndividualVersion===1);
+    const anchor=life.find(agent=>agent.speciesId==='blue-spotted-ray')?.position||life.find(agent=>agent.speciesId==='reef-goatfish')?.position||life[0]?.position;
     if(!anchor)return false;
     const x=anchor.x-4,z=anchor.z+4,y=Math.min(this.surfaceY-.6,this.habitatY(x,z)+2.5);
     this.oceanChunks.update(position);
