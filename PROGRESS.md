@@ -6,7 +6,7 @@
 
 104文件／730项最终本机检查全部通过（0失败、0跳过），一次生产构建通过，41份最终源码、来源、测试和工作流哈希一致。原12份地形、模拟、食物、旧资产源码逐字节保持，旧11类动物及原巨藻宿主资产输出保持。首轮集成中一项旧导航期望漏列新入口，已修复并由同53项集成专项通过；原始日志保留，不重复累加。同套云端结果待发布核验。
 
-GitHub Pages 发布状态：待本次源码的同套云端检查与部署完成。
+源码`186c6ab`已于2026-10-07 20:22:24（Asia/Shanghai）发布；[运行37619089526](https://github.com/yydshly/ocean-world/actions/runs/37619089526)构建、同一730项云端检查（0失败、0跳过）及Pages部署全部成功。部署6909751139／状态19400070039为success，41份当前与提交源码、来源、测试哈希一致。本有限群落包收口；本机与云端是同套检查，不相加。整体画面尚未实际验收。
 
 说明见[林缘群落包](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_WATER_LIFE.md)、[来源](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_WATER_LIFE_SOURCES.md)与 output/validation/kelp-water-life-delivery.json。本有限包核验发布后收口，后续继续宏观生境群落，不转入单体、材质或镜头细调。完整自然食谱、跨区迁群、浏览器/GPU整体观感仍未验收。以下保留此前交付历史。
 
