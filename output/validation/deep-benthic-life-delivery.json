@@ -104,8 +104,27 @@
     "maxBalanceError": 4.085620730620576e-14
   },
   "publication": {
-    "status": "pending",
-    "browserGpuVisualAcceptance": false
+    "status": "success",
+    "browserGpuVisualAcceptance": false,
+    "sourceCommit": "a093614f2e88c28d39dc8511711cd57cd9d06448",
+    "runId": 37597320393,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37597320393",
+    "buildJobId": 112713014764,
+    "deployJobId": 112714857257,
+    "cloudTests": 653,
+    "cloudPassed": 653,
+    "cloudFailed": 0,
+    "cloudSkipped": 0,
+    "sameUniqueChecksNotAddedToLocalCount": true,
+    "deploymentId": 6905929191,
+    "deploymentStatusId": 19391309531,
+    "deployedAtUtc": "2026-10-07T09:03:23Z",
+    "deployedAtLocal": "2026-10-07 17:03:23",
+    "timezone": "Asia/Shanghai",
+    "currentCommittedSourceHashCount": 31,
+    "currentCommittedSourceHashesExact": true,
+    "sourceCommitHashesExact": true,
+    "siteUrl": "https://yydshly.github.io/ocean-world/"
   },
   "director": {
     "chapters": 56,
