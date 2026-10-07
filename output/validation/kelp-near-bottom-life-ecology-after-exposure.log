@@ -1,0 +1,91 @@
+TAP version 13
+# Subtest: two ordinary windows preserve all old birth data and add four whole forms with actual bed-food input, contact, debit and gain
+not ok 1 - two ordinary windows preserve all old birth data and add four whole forms with actual bed-food input, contact, debit and gain
+  ---
+  duration_ms: 19449.1573
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-near-bottom-life-ecology.test.mjs:217:1'
+  failureType: 'testCodeFailure'
+  error: '53,-3 complete new history'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    bounded (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:64:12)
+    file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:178:7
+    async sample (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:214:16)
+    async TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:218:18)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: dead rosters, initial-zero bed pools and naturally empty roles unload and cold restore exactly without replacement or refill
+not ok 2 - dead rosters, initial-zero bed pools and naturally empty roles unload and cold restore exactly without replacement or refill
+  ---
+  duration_ms: 0.2096
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-near-bottom-life-ecology.test.mjs:244:1'
+  failureType: 'testCodeFailure'
+  error: '53,-3 complete new history'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    bounded (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:64:12)
+    file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:178:7
+    async sample (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:214:16)
+    async TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:218:18)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: enabling on historical owners preserves all raw records, paused state and the exact following native steps
+ok 3 - enabling on historical owners preserves all raw records, paused state and the exact following native steps
+  ---
+  duration_ms: 1765.3144
+  type: 'test'
+  ...
+# Subtest: strict-null atomic births remain private while pending and publish nothing after refused or thrown commits
+ok 4 - strict-null atomic births remain private while pending and publish nothing after refused or thrown commits
+  ---
+  duration_ms: 6022.464
+  type: 'test'
+  ...
+# Subtest: undefined and thrown historical reads cannot become new near-bottom communities
+ok 5 - undefined and thrown historical reads cannot become new near-bottom communities
+  ---
+  duration_ms: 1.2627
+  type: 'test'
+  ...
+# Subtest: fifteen offscreen prefix, food, support, roster and original-category corruptions reject the entire historical halo without repair
+not ok 6 - fifteen offscreen prefix, food, support, roster and original-category corruptions reject the entire historical halo without repair
+  ---
+  duration_ms: 0.5145
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-near-bottom-life-ecology.test.mjs:316:1'
+  failureType: 'testCodeFailure'
+  error: '53,-3 complete new history'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    bounded (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:64:12)
+    file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:178:7
+    async sample (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:214:16)
+    async TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:218:18)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 3
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27392.5642

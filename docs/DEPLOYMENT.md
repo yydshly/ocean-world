@@ -1,3 +1,15 @@
+2026-10-08 当前有限续包：温带巨藻林岩沙底层新增红岩蟹 Cancer productus、褐斑岩鱼 Sebastes carnatus、加州角鲨 Heterodontus francisci 与哈氏圆魟 Urobatis halleri 四种完整动物。圆魟限定相邻实际软沉积底；蟹使用真实足底法线，鱼、鲨和魟在实际近底水体活动。未访问owner自然余量最多增加4条，不改旧配方；9活区、25来源区、20条全部动物记录/区上限保持。已有历史、死亡和空类别不补货。
+
+打开[岩沙底层群落](https://yydshly.github.io/ocean-world/?demo=kelp-near-bottom-life)，或在[导演入口](https://yydshly.github.io/ocean-world/?demo=director)选择“巨藻林：岩沙底层群落”，沿真实群落做16秒移动观察。string42原生入口53,-4（x3424,z-224）实际有4条新动物与11条旧动物，合计15条；其他种子和历史不保证四类齐全。巨藻目录20条代表记录，其中19动物；导演62章、56动作、762秒1×观察，加载转场另计。
+
+新床面动物营养控制体初始为零，绑定原生真实岩底／沉积底食点，单独记录受foodSupply控制的有界外部输入、实际口部摄入和输出；旧藻、碎屑与水层smallPrey的点位、库存和账保持。两个普通九区窗口53,-4与54,-4各12秒，重叠owner延续真实时钟，去重后实际17条新动物、17条有位移、10个摄食个体、24次摄入，共0.00288相对单位；最多20条全部记录/区，合并食物账误差上限约5.33e-15。未摄入个体继续自然觅食，未强制喂食。该代理不模拟完整食物网或可见猎物捕杀。
+
+116文件／805项最终本机检查全部通过（0失败、0跳过），一次构建通过，45份最终源码、来源、测试和工作流哈希一致；原15份地形、模拟、食物和旧资产源码逐字节保持，旧15类动物及真实巨藻宿主80组完整输出保持。首轮测试曝光时刻差异已修正；实际正午运行定位owner53,-3第22次更新的茎摆动碰撞，并以统一低位茎扫掠净空约束修复，保留原12秒窗口、严格身体与存档校验。早期诊断保留，不累加为最终唯一检查。
+
+GitHub Pages 发布状态：待本次源码的同套云端检查与部署完成。
+
+说明见[群落包](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_NEAR_BOTTOM_LIFE.md)、[来源](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_NEAR_BOTTOM_LIFE_SOURCES.md)与 output/validation/kelp-near-bottom-life-delivery.json。本有限群落包核验发布后收口，后续继续宏观生境和缺失生命类群，不进入单体、材质或镜头细调。浏览器/GPU整体观感尚未验收，独立Goal保持暂停，已有浏览器拒绝不得绕过。以下保留此前交付历史。
+
 2026-10-07 当前有限续包：深海近底水层增加具名带鳍章鱼 Grimpoteuthis bathynectes 与大型鼬鳚 Spectrunculus grandis，补两种完整动物轮廓。按实际软泥底、完整身体净空与所选3400–3600米水深在明确未访问区域生成，每区最多4条新增记录；9活区、25来源区、20动物记录/区上限保持。已有历史、死亡与空类别不补货。
 
 打开[近底游泳群落](https://yydshly.github.io/ocean-world/?demo=deep-water-life)，或在[导演入口](https://yydshly.github.io/ocean-world/?demo=director)选择“深海：近底游泳群落”进行16秒实际移动观察。string42原生入口173,8（x11093.79,z544.84）两类各2条、含旧动物共15条；其他种子或历史不保证都有两类。深海目录12条动物代表记录，非严格物种普查；导演61章、55动作、746秒1×观察，加载转场另计。

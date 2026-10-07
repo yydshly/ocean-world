@@ -197,3 +197,6 @@ output/validation/screenshots/*
 
 !output/validation/deep-water-life-*.json
 !output/validation/deep-water-life-*.log
+
+!output/validation/kelp-near-bottom-life-*.json
+!output/validation/kelp-near-bottom-life-*.log

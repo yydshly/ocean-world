@@ -32,6 +32,10 @@ jobs:
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test
+          tests/kelp-near-bottom-life.test.mjs
+          tests/kelp-near-bottom-life-render.test.mjs
+          tests/kelp-near-bottom-life-ecology.test.mjs
+          tests/kelp-near-bottom-life-world.test.mjs
           tests/kelp-water-life.test.mjs
           tests/kelp-water-life-render.test.mjs
           tests/kelp-water-life-ecology.test.mjs

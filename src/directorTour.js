@@ -71,6 +71,7 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
     const stop=DEMO_KELP_STOPS.find(row=>row.id===id);
     return step(`kelp-${id}`,stop.title,`${stop.description}。沿海床缓行，转看周围的整体生境。`,stop.action.id,12000);
   }),
+  step('kelp-near-bottom-life', '巨藻林：岩沙底层群落', '镜头沿真实海床缓行，观察红岩蟹爬行、近底鱼与角鲨游动，以及沙底圆盘鳐的觅食空间。', 'stop-kelp-near-bottom-life', 16000, 'walk', 'kelp-near-bottom-life'),
   step('kelp-water-life', '巨藻林：林缘水层群落', '穿行实际鱼群的水层，观察竹荚鱼共同转向、乌贼缓游与海荨麻漂游，再留意岩藻旁的取食者。', 'stop-kelp-water-life', 16000, 'walk', 'kelp-water-life'),
   step('kelp-bottom-life', '巨藻林：林底新群落', '沿岩底缓行，寻找当地实际生成的红鲍、藻蟹、海兔和附着海葵。', 'stop-kelp-bottom-life', 14000, 'walk', 'kelp-benthic-life'),
   step('kelp-forest-belt', '林缘生活带：巨藻群', '沿硬底巨藻群缓行，观察高冠、林下低冠和真实动物。', 'stop-forest-belt-interior', 14000),

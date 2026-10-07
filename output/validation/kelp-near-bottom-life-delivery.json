@@ -1,0 +1,509 @@
+{
+  "scope": "Finite four sourced Monterey/central-California rocky-bed and adjacent-sediment representatives, complete animal kits and native bed-food contact; CPU/Three/native/hook checks, no browser/GPU/whole-tour visual acceptance",
+  "files": {
+    ".github/workflows/pages.yml": "06809bed35103ac6c4af9d58826d4b8203408fa5cb184b283a1f442ff4c84663",
+    "docs/KELP_NEAR_BOTTOM_LIFE_SOURCES.md": "ee1b42130f0cda7658b2e3adca3effc5ad200283f64eac6712bd23768d52a12e",
+    "src/OceanApp.jsx": "04109e799098a20eae943928c0094fa686b8dcff5345a38f27cb26fc5f408ae9",
+    "src/demoCapabilities.js": "a561fdef0ba9ef710273fd592026e1a7fd1953488ef1e1ea673866dfcec6cd48",
+    "src/directorTour.js": "d9bd6a3b144a0ea6904d7c41b788e1584dfda4861075c0a5435b40730d3f7b26",
+    "src/kelpBenthicLife.js": "391a164b67c08c17377a1da731404570a82160d905364e212b1c94946f4c637a",
+    "src/kelpBenthicLifeSpecies.js": "47db651f4c5c614adeced43dcd7a69602866709cd8b58aaa1bb8901ce169e4ba",
+    "src/kelpForestBelt.js": "2a557b0f63005c0db9c1bf31b2bc8b7cf5443b18b98976817e378d4e6ba8cd80",
+    "src/kelpHabitat.js": "d89b5f5a8c1c4150f2725c877c79c818e0a1daaab65b138132ab46c822d0ca43",
+    "src/kelpNearBottomLife.js": "a19223aae752dc038920ac06cb5b347dc61fe597d8aa715f1f3721384e000a0b",
+    "src/kelpNearBottomLifeRoutes.js": "ce4d170585930c03652e52bec43abf44ae9215facfaa235f0ff5ce9180ae6ff1",
+    "src/kelpNearBottomLifeSpecies.js": "3cec30055cca8e837596b1b6e54dd3984579c6fe275dd7b415458615d7570f2e",
+    "src/kelpOceanEcology.js": "b926ea841591add3dd7262eaa07fb8fd51e0b55073063508f3f6618e3d7245d3",
+    "src/kelpOceanGeneration.js": "090ffead8a86da577492dd05e2d7824348e0414dfee2ad5f2c4d1c2d4a9c4cad",
+    "src/kelpSimulation.js": "eaf562abfa990d3ddb1a8b6e98f4918c4d31d940481b805724d06d83131dc86b",
+    "src/kelpUnderstory.js": "a3ecd864e83d46b9b26f326c7caf9d9bd80677a4be8869dcac079795aafb5012",
+    "src/kelpVisitorCommunity.js": "0a7abedc3437079ae2a3c66c64601c9d5d878c10ac9cc2b98e1d2522a8a08b96",
+    "src/kelpWaterCommunity.js": "1e86a08bb29bd4f88247b07978d72dfb100c6b5327394d9bc9548abd585cb314",
+    "src/kelpWaterLife.js": "3b6e2cccb17f895594eecfe77f1ebc4603734b5b42592b213dab0532ba4e7eb2",
+    "src/kelpWaterLifeSpecies.js": "1dd923a4a97a17884fdbb9172e446e0cde9d9712cd76ffe9c29461392d5b1253",
+    "src/sceneCatalog.js": "dc2fc544eccdfe9544592b87cc3970c4a7983eab772bde6995939f3cfcb51730",
+    "src/useDirectorTour.js": "4cd27aeac1da9fb0eaa0a010c4fa5ac366ead0fdd95d6632479a4b07367de1a4",
+    "src/world/KelpBenthicLifeAssets.js": "4cbf1bfb3689e524ab085b224bb48c4f3615749dfdf7a5cdf8ba2e9999c6e62d",
+    "src/world/KelpNearBottomLifeAssets.js": "54e8ae87c49dd020f01c89cda40b41571ccfa0636cf49cc23a1414baf10d3594",
+    "src/world/KelpOceanAnimals.js": "9de2305dabb41a5a6026b1e2f09477f706b0a851f90968a6bf172a5ca0b052dd",
+    "src/world/KelpWaterLifeAssets.js": "ef3ab91c412143fedb242a1436cb600e210858e55a7818f269a4b5551dcac735",
+    "src/world/ReefWorld.js": "ec10ef416fb61121617411a4372a980a9e96d177364570b38cf75b2250966e1e",
+    "src/world/kelpOrganisms.js": "8b03d9fd0040257cb86ec82b61d98f0572804012d3f02fab9fc92c5c8afa03cc",
+    "src/world/kelpVisitorOrganism.js": "c9655060f84b8e667936cdc33399c9a409b70ee00a384d1df26b424b1ae0469c",
+    "src/world/kelpWaterOrganisms.js": "ba73ae4a647dfecaccb860a7c55ca3f758b1280d7b446c0c6603199a60267218",
+    "tests/deep-benthic-life-world.test.mjs": "3e82aac31d3ae8cd6c778d4e3598740dc56a273b2876f492d0b430ec77800712",
+    "tests/deep-hard-life-world.test.mjs": "6be5005f6b1d30234efe4263568a46939dad66749b6b068623a14269940c435c",
+    "tests/deep-water-life-world.test.mjs": "a1164c9e23c7fc8966aabe100b767cd68ceab1ca0330cb726d0a4fa29f77967d",
+    "tests/demo-navigation.test.mjs": "0243b4d10d40ea6582348769962e5a25f70797dacecca4df979efe13ec425589",
+    "tests/director-player.test.mjs": "533e0a315c947a6d69cb247e61b6f49d7739eed773f1e49a91431a9d8a3eabc0",
+    "tests/director-tour.test.mjs": "fb41c10812df702eae12e1891dcdc03c953570b24f9ee2a8551e930ba92bccc8",
+    "tests/director-transition-hook.test.mjs": "c029d5d3ea4db481fb1953276ee027cb2022ce0700127993937295ea2e4bd566",
+    "tests/kelp-benthic-life-world.test.mjs": "17c53889ccc26ec49003a45dddca528246c9a1d6dcd2fa861a6327fe26608a57",
+    "tests/kelp-near-bottom-life-ecology.test.mjs": "1daa8c84783969f51ed2d443a21909854da0054a177afb4b4dac4c9444fdad32",
+    "tests/kelp-near-bottom-life-render.test.mjs": "4eb30391e2004fbeee309c40e807029669f1e3b9f55c86955969ccf26fcf142f",
+    "tests/kelp-near-bottom-life-world.test.mjs": "2610372c1bca756d1f8e2b5d71a7798c514e04f6eadd2c1d7c5624444f65e8af",
+    "tests/kelp-near-bottom-life.test.mjs": "9b0c6896e81bb9e441e5d8327c36bd51ee3b529daf80044b088e7dbd0cc838e5",
+    "tests/kelp-water-life-world.test.mjs": "3bfacde813788a69b2a6f8774ff8582dfbbbc5819213bc7026bae85e95d853e6",
+    "tests/ocean-meadow-life-world.test.mjs": "49998355c1533d40347849c261c123a3d43ca6f846eddc42b5d339f3ba1f703d",
+    "tests/ocean-shoal-life-world.test.mjs": "62ed7d545e692e16395de28fa832b290cdfee326b59a248b179d94a4e17d3a9b"
+  },
+  "originalSourceBaseline": "44d0abdde3552068c1e0f999457be45b04b57351",
+  "originalSourceExact": {
+    "src/kelpSimulation.js": true,
+    "src/kelpOceanGeneration.js": true,
+    "src/kelpHabitat.js": true,
+    "src/kelpBenthicLife.js": true,
+    "src/kelpBenthicLifeSpecies.js": true,
+    "src/kelpWaterLife.js": true,
+    "src/kelpWaterLifeSpecies.js": true,
+    "src/kelpWaterCommunity.js": true,
+    "src/kelpVisitorCommunity.js": true,
+    "src/kelpUnderstory.js": true,
+    "src/world/kelpOrganisms.js": true,
+    "src/world/kelpWaterOrganisms.js": true,
+    "src/world/kelpVisitorOrganism.js": true,
+    "src/world/KelpBenthicLifeAssets.js": true,
+    "src/world/KelpWaterLifeAssets.js": true
+  },
+  "entries": {
+    "nearBottomLife": "https://yydshly.github.io/ocean-world/?demo=kelp-near-bottom-life",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "actualNativeEntry": {
+      "owner": "53,-4",
+      "x": 3424,
+      "z": -224,
+      "oldAnimalRecords": 11,
+      "totalAnimalRecords": 15,
+      "newSpeciesIds": [
+        "red-rock-crab",
+        "gopher-rockfish",
+        "horn-shark",
+        "round-stingray"
+      ],
+      "initialNewFoodUnits": 0
+    }
+  },
+  "local": {
+    "validationFileCount": 116,
+    "checks": {
+      "tests": 805,
+      "pass": 805,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "durationMs": 285418.3348
+    },
+    "productionBuild": "success",
+    "buildCount": 1,
+    "currentSourceHashesExact": true,
+    "builtRuntimeFilesUnchanged": 193,
+    "diagnostics": "Initial ecology birth comparison exposed mismatched old public-agent display exposure in the test control; original atomic raw was retained. Subsequent true noon run exposed an actual moving native stipe intruding into a stationary horn shark at owner53,-3 tick22. New unified support kernel now excludes the conservative native low-stipe sweep, retaining actual dynamic probes, strict body/storage checks, original windows and stocks. Final workflow covers the finite repairs; diagnostics are retained and are not added to unique final checks.",
+    "logs": [
+      "kelp-near-bottom-life-build.log",
+      "kelp-near-bottom-life-checks.log",
+      "kelp-near-bottom-life-ecology-after-exposure.log",
+      "kelp-near-bottom-life-ecology-after-sweep-fix.log",
+      "kelp-near-bottom-life-ecology-final.log",
+      "kelp-near-bottom-life-ecology-initial.log"
+    ]
+  },
+  "nativeModelReceipts": [
+    "kelp-near-bottom-life-model.json",
+    "kelp-near-bottom-life-continuation-model.json"
+  ],
+  "newAnimalIds": [
+    "red-rock-crab",
+    "gopher-rockfish",
+    "horn-shark",
+    "round-stingray"
+  ],
+  "nativeSummary": {
+    "productionWindows": 2,
+    "uniqueProductionOwners": 12,
+    "observedSecPerWindow": 12,
+    "actualNewIndividuals": 17,
+    "movedIndividuals": 17,
+    "fedIndividuals": 10,
+    "successfulBites": 24,
+    "intakeUnits": 0.0028799999999999997,
+    "initialNewFoodUnits": 0,
+    "externalInputUnits": 0.015119999999999901,
+    "exportedUnits": 0.001853272845138939,
+    "maxAllAnimalRecordsPerOwner": 20,
+    "maxFoodBalanceError": 5.329070518200751e-15,
+    "maxNewFoodBalanceError": 6.895525817007808e-17,
+    "maxCombinedFoodBalanceError": 5.334491529063179e-15,
+    "maxConditionBalanceError": 2.0872192862952943e-14
+  },
+  "countsBySpecies": {
+    "red-rock-crab": {
+      "bornIndividuals": 5,
+      "movedIndividuals": 5,
+      "fedIndividuals": 5,
+      "successfulBites": 13
+    },
+    "gopher-rockfish": {
+      "bornIndividuals": 6,
+      "movedIndividuals": 6,
+      "fedIndividuals": 2,
+      "successfulBites": 4
+    },
+    "horn-shark": {
+      "bornIndividuals": 5,
+      "movedIndividuals": 5,
+      "fedIndividuals": 2,
+      "successfulBites": 5
+    },
+    "round-stingray": {
+      "bornIndividuals": 1,
+      "movedIndividuals": 1,
+      "fedIndividuals": 1,
+      "successfulBites": 2
+    }
+  },
+  "singleOwnerContinuation": {
+    "version": 1,
+    "status": "passed-native-single-owner-continuation",
+    "ownerId": "53,-4",
+    "seed": "42",
+    "durationSec": 24,
+    "ticks": 240,
+    "source": "actual generated owner and KelpSimulation; selected new bed control volumes initially zero; no browser/GPU claim",
+    "counters": {
+      "ticks": 240,
+      "feedings": 9,
+      "consumedUnits": 0.00108,
+      "deaths": 0
+    },
+    "foodLedger": {
+      "initial": 0,
+      "input": 0.005759999999999947,
+      "ingested": 0.00108,
+      "exported": 0.0007699540769395769,
+      "byPool": {
+        "benthicAnimalFood": {
+          "initial": 0,
+          "input": 0.005759999999999947,
+          "ingested": 0.00108,
+          "exported": 0.0007699540769395769
+        }
+      }
+    },
+    "foodPatches": [
+      {
+        "id": "kelp-near-bottom-food:53,-4:rock-food-2-1",
+        "nativePatchId": "rock-food-2-1",
+        "sourceType": "native-rock",
+        "pool": "benthicAnimalFood",
+        "heightM": 0.055,
+        "position": {
+          "x": 3443.737542367226,
+          "y": 0.06885405697708841,
+          "z": -215.14357913887488
+        },
+        "amount": 0.0009052365125652283
+      },
+      {
+        "id": "kelp-near-bottom-food:53,-4:rock-food-1-2",
+        "nativePatchId": "rock-food-1-2",
+        "sourceType": "native-rock",
+        "pool": "benthicAnimalFood",
+        "heightM": 0.055,
+        "position": {
+          "x": 3444.960561658298,
+          "y": -0.21282642961112208,
+          "z": -236.73517975991163
+        },
+        "amount": 0.0009900369531054792
+      },
+      {
+        "id": "kelp-near-bottom-food:53,-4:rock-food-2-0",
+        "nativePatchId": "rock-food-2-0",
+        "sourceType": "native-rock",
+        "pool": "benthicAnimalFood",
+        "heightM": 0.055,
+        "position": {
+          "x": 3445.04019805003,
+          "y": 0.06885405697708841,
+          "z": -215.12221207475415
+        },
+        "amount": 0.001009722530882189
+      },
+      {
+        "id": "kelp-near-bottom-food:53,-4:floor-food-0",
+        "nativePatchId": "floor-food-0",
+        "sourceType": "native-floor",
+        "pool": "benthicAnimalFood",
+        "heightM": 0.055,
+        "position": {
+          "x": 3411.2,
+          "y": -2.9089438629150783,
+          "z": -236.8
+        },
+        "amount": 0.0010050499265075422
+      }
+    ],
+    "energyLedger": {
+      "initial": 3.0719155870284887,
+      "feedingGain": 0.00216,
+      "maintenanceAndMotionDebit": 0.0035001077358658584,
+      "clampCorrection": 0,
+      "deathLoss": 0
+    },
+    "foodBalanceError": 6.852157730108388e-17,
+    "energyBalanceError": 1.3322676295501878e-15,
+    "foodScope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills.",
+    "agents": [
+      {
+        "id": "kelp-near-bottom:53,-4:red-rock-crab",
+        "speciesId": "red-rock-crab",
+        "sizeM": 0.10275024063885213,
+        "sizeMeasure": "carapace-width",
+        "timeSec": 24,
+        "state": "foraging",
+        "travelledM": 0.28799999998324416,
+        "displacementM": 0.18824968715485446,
+        "position": {
+          "x": 3443.789325186334,
+          "y": 0.016854056977088524,
+          "z": -215.16257609888007
+        },
+        "feedingCount": 3,
+        "consumedUnits": 0.00036,
+        "lastNearBottomIntake": {
+          "timeSec": 20.1,
+          "ownerId": "53,-4",
+          "patchId": "kelp-near-bottom-food:53,-4:rock-food-2-1",
+          "nativePatchId": "rock-food-2-1",
+          "pool": "benthicAnimalFood",
+          "stockBefore": 0.0008389732203099027,
+          "stockAfter": 0.0007189732203099027,
+          "removedUnits": 0.00012,
+          "energyBefore": 0.74285572962513,
+          "energyAfter": 0.74309572962513,
+          "agentPosition": {
+            "x": 3443.8238381450815,
+            "y": 0.016854056977088524,
+            "z": -215.13113494285193
+          },
+          "heading": 4.24109719685674,
+          "pitch": 0,
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "feedingPosition": {
+            "x": 3443.812175026392,
+            "y": 0.029184085853750777,
+            "z": -215.15402210976697
+          },
+          "foodPosition": {
+            "x": 3443.737542367226,
+            "y": 0.06885405697708841,
+            "z": -215.14357913887488
+          },
+          "contactDistanceM": 0.08516334930113258,
+          "allowedDistanceM": 0.16,
+          "unit": "relative-organic-food-proxy-unit",
+          "scope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills."
+        }
+      },
+      {
+        "id": "kelp-near-bottom:53,-4:gopher-rockfish",
+        "speciesId": "gopher-rockfish",
+        "sizeM": 0.29663121768506245,
+        "sizeMeasure": "total-length",
+        "timeSec": 24,
+        "state": "foraging",
+        "travelledM": 1.3886797773519832,
+        "displacementM": 0.7139289407193494,
+        "position": {
+          "x": 3444.828737571075,
+          "y": -0.039035776617843826,
+          "z": -236.74724707005635
+        },
+        "feedingCount": 2,
+        "consumedUnits": 0.00024,
+        "lastNearBottomIntake": {
+          "timeSec": 23.200000000000003,
+          "ownerId": "53,-4",
+          "patchId": "kelp-near-bottom-food:53,-4:rock-food-1-2",
+          "nativePatchId": "rock-food-1-2",
+          "pool": "benthicAnimalFood",
+          "stockBefore": 0.0010737360175395309,
+          "stockAfter": 0.0009537360175395309,
+          "removedUnits": 0.00012,
+          "energyBefore": 0.7487229262000894,
+          "energyAfter": 0.7489629262000894,
+          "agentPosition": {
+            "x": 3444.8381904402827,
+            "y": -0.03268307347818675,
+            "z": -236.76715831642352
+          },
+          "heading": -0.0907259828602948,
+          "pitch": -0.06,
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "feedingPosition": {
+            "x": 3444.978581263477,
+            "y": -0.060467261390203926,
+            "z": -236.77993047450016
+          },
+          "foodPosition": {
+            "x": 3444.960561658298,
+            "y": -0.21282642961112208,
+            "z": -236.73517975991163
+          },
+          "contactDistanceM": 0.15981441977479155,
+          "allowedDistanceM": 0.16,
+          "unit": "relative-organic-food-proxy-unit",
+          "scope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills."
+        }
+      },
+      {
+        "id": "kelp-near-bottom:53,-4:horn-shark",
+        "speciesId": "horn-shark",
+        "sizeM": 0.7379585836082697,
+        "sizeMeasure": "total-length",
+        "timeSec": 24,
+        "state": "foraging",
+        "travelledM": 2.3019440436820364,
+        "displacementM": 0.40507503397129013,
+        "position": {
+          "x": 3444.7744176305496,
+          "y": 0.23081110998727997,
+          "z": -214.8956946233589
+        },
+        "feedingCount": 2,
+        "consumedUnits": 0.00024,
+        "lastNearBottomIntake": {
+          "timeSec": 18.3,
+          "ownerId": "53,-4",
+          "patchId": "kelp-near-bottom-food:53,-4:rock-food-2-0",
+          "nativePatchId": "rock-food-2-0",
+          "pool": "benthicAnimalFood",
+          "stockBefore": 0.000863073412874614,
+          "stockAfter": 0.000743073412874614,
+          "removedUnits": 0.00012,
+          "energyBefore": 0.7980119921508881,
+          "energyAfter": 0.7982519921508882,
+          "agentPosition": {
+            "x": 3444.894108359698,
+            "y": 0.23878559947543163,
+            "z": -215.16079217775888
+          },
+          "heading": 7.116945163345379,
+          "pitch": -0.06,
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "feedingPosition": {
+            "x": 3445.058868986917,
+            "y": 0.13534459656424408,
+            "z": -214.97927174397543
+          },
+          "foodPosition": {
+            "x": 3445.04019805003,
+            "y": 0.06885405697708841,
+            "z": -215.12221207475415
+          },
+          "contactDistanceM": 0.15874990992737564,
+          "allowedDistanceM": 0.16,
+          "unit": "relative-organic-food-proxy-unit",
+          "scope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills."
+        }
+      },
+      {
+        "id": "kelp-near-bottom:53,-4:round-stingray",
+        "speciesId": "round-stingray",
+        "sizeM": 0.2383862417936325,
+        "sizeMeasure": "disc-width",
+        "timeSec": 24,
+        "state": "foraging",
+        "travelledM": 1.0514277514217851,
+        "displacementM": 0.3487390594654127,
+        "position": {
+          "x": 3411.2147915448936,
+          "y": -2.7989483298529807,
+          "z": -236.57054016489295
+        },
+        "feedingCount": 2,
+        "consumedUnits": 0.00024,
+        "lastNearBottomIntake": {
+          "timeSec": 17.900000000000002,
+          "ownerId": "53,-4",
+          "patchId": "kelp-near-bottom-food:53,-4:floor-food-0",
+          "nativePatchId": "floor-food-0",
+          "pool": "benthicAnimalFood",
+          "stockBefore": 0.0008383708425779004,
+          "stockAfter": 0.0007183708425779004,
+          "removedUnits": 0.00012,
+          "energyBefore": 0.7806321306477723,
+          "energyAfter": 0.7808721306477723,
+          "agentPosition": {
+            "x": 3411.2343244682484,
+            "y": -2.789457940424394,
+            "z": -236.71663937052168
+          },
+          "heading": 2.541198627417746,
+          "pitch": 0,
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "feedingPosition": {
+            "x": 3411.1812166554164,
+            "y": -2.80495304614098,
+            "z": -236.68027563258994
+          },
+          "foodPosition": {
+            "x": 3411.2,
+            "y": -2.9089438629150783,
+            "z": -236.8
+          },
+          "contactDistanceM": 0.1596897872715273,
+          "allowedDistanceM": 0.16,
+          "unit": "relative-organic-food-proxy-unit",
+          "scope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills."
+        }
+      }
+    ]
+  },
+  "legacyAssetRegression": {
+    "originalAnimals": 15,
+    "originalKelpHost": 1,
+    "wholeOutputPoses": 80,
+    "baselineReceipt": "kelp-near-bottom-life-original-assets-before.json",
+    "geometryAndIndicesAttributesAllNodeLocalAndWorldMatricesMaterialShaderAndInstanceBuffers": true,
+    "actualOriginalSnailHostAttachmentClock": true
+  },
+  "catalogue": {
+    "kelpRepresentativeRecords": 20,
+    "animalRepresentativeRecords": 19,
+    "notStrictSpeciesCount": true
+  },
+  "director": {
+    "chapters": 62,
+    "distinctActions": 56,
+    "observationDurationSecAt1x": 762,
+    "newChapterDurationSec": 16,
+    "loadingAndTransitionsExtra": true
+  },
+  "publication": {
+    "status": "pending"
+  },
+  "limitations": [
+    "Representative combination, not reconstructed co-occurrence, measured density or full biodiversity.",
+    "Independent zero-initial bed-animal nutrition proxy with accounted input/ingestion/export, not relocated old kelp host prey, resolved animal biomass or full natural food webs.",
+    "Finite whole-envelope and peer probes plus conservative native low-stipe sweep constrain new moves; old controllers may approach them, so no global collision proof.",
+    "Old histories, deaths and empty categories remain; only strict-null virgin owners can birth new animals after atomic save.",
+    "No browser/GPU/whole documentary appearance acceptance."
+  ]
+}

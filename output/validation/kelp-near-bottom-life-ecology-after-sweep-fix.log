@@ -1,0 +1,78 @@
+TAP version 13
+# Subtest: two ordinary windows preserve all old birth data and add four whole forms with actual bed-food input, contact, debit and gain
+not ok 1 - two ordinary windows preserve all old birth data and add four whole forms with actual bed-food input, contact, debit and gain
+  ---
+  duration_ms: 60342.6356
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-near-bottom-life-ecology.test.mjs:217:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:225:64)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: dead rosters, initial-zero bed pools and naturally empty roles unload and cold restore exactly without replacement or refill
+not ok 2 - dead rosters, initial-zero bed pools and naturally empty roles unload and cold restore exactly without replacement or refill
+  ---
+  duration_ms: 74.2253
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\kelp-near-bottom-life-ecology.test.mjs:246:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/kelp-near-bottom-life-ecology.test.mjs:247:79)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: enabling on historical owners preserves all raw records, paused state and the exact following native steps
+ok 3 - enabling on historical owners preserves all raw records, paused state and the exact following native steps
+  ---
+  duration_ms: 2469.142
+  type: 'test'
+  ...
+# Subtest: strict-null atomic births remain private while pending and publish nothing after refused or thrown commits
+ok 4 - strict-null atomic births remain private while pending and publish nothing after refused or thrown commits
+  ---
+  duration_ms: 8271.1062
+  type: 'test'
+  ...
+# Subtest: undefined and thrown historical reads cannot become new near-bottom communities
+ok 5 - undefined and thrown historical reads cannot become new near-bottom communities
+  ---
+  duration_ms: 0.8463
+  type: 'test'
+  ...
+# Subtest: fifteen offscreen prefix, food, support, roster and original-category corruptions reject the entire historical halo without repair
+ok 6 - fifteen offscreen prefix, food, support, roster and original-category corruptions reject the entire historical halo without repair
+  ---
+  duration_ms: 1226.7368
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 4
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 72571.2287

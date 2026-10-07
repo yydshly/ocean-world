@@ -1,0 +1,1977 @@
+{
+  "tick": 22,
+  "owner": "53,-3",
+  "ownerClock": 2.2,
+  "descriptorClock": 2.1,
+  "agents": [
+    {
+      "id": "kelp-near-bottom:53,-3:red-rock-crab",
+      "speciesId": "red-rock-crab",
+      "clock": 2.1,
+      "speed": 0.01199999999923837,
+      "allowedSpeed": 0.012,
+      "positionValid": true,
+      "targetValid": true,
+      "intake": null
+    },
+    {
+      "id": "kelp-near-bottom:53,-3:gopher-rockfish",
+      "speciesId": "gopher-rockfish",
+      "clock": 2.1,
+      "speed": 0.05500641647779716,
+      "allowedSpeed": 0.075,
+      "positionValid": true,
+      "targetValid": true,
+      "intake": null
+    },
+    {
+      "id": "kelp-near-bottom:53,-3:horn-shark",
+      "speciesId": "horn-shark",
+      "clock": 2.1,
+      "speed": 0,
+      "allowedSpeed": 0.1,
+      "positionValid": false,
+      "targetValid": true,
+      "intake": null
+    }
+  ],
+  "raw": {
+    "kelpBenthicLifeVersion": 1,
+    "kelpBenthicLifeInitializedAtSec": 0,
+    "kelpBenthicLife": {
+      "version": 1,
+      "birthPlacements": [
+        {
+          "id": "kelp-benthic:53,-3:red-abalone:rock-food-2-2:8:0.22",
+          "speciesId": "red-abalone",
+          "siteId": "rock-food-2-2:8:0.22",
+          "hostId": "kelp-rock:340,-16",
+          "foodPatchId": "rock-food-2-2",
+          "sizeM": 0.12946525647304952,
+          "heading": 2.8290576161424257,
+          "position": {
+            "x": 3404.295629155435,
+            "y": 0.1531101806425712,
+            "z": -156.0186381222827
+          },
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "supportOffset": 0.004000000000000115,
+          "habitat": "kelp-native-hard-bottom"
+        },
+        {
+          "id": "kelp-benthic:53,-3:northern-kelp-crab:rock-food-2-2:11:0.22",
+          "speciesId": "northern-kelp-crab",
+          "siteId": "rock-food-2-2:11:0.22",
+          "hostId": "kelp-rock:340,-16",
+          "foodPatchId": "rock-food-2-2",
+          "sizeM": 0.046714406681712714,
+          "heading": 0.812968479903224,
+          "position": {
+            "x": 3404.465475741659,
+            "y": 0.1531101806425712,
+            "z": -156.279314429507
+          },
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "supportOffset": 0.004000000000000115,
+          "habitat": "kelp-native-hard-bottom"
+        },
+        {
+          "id": "kelp-benthic:53,-3:california-sea-hare:rock-food-1-0:6:0.22",
+          "speciesId": "california-sea-hare",
+          "siteId": "rock-food-1-0:6:0.22",
+          "hostId": "kelp-rock:340,-18",
+          "foodPatchId": "rock-food-1-0",
+          "sizeM": 0.14604633778333664,
+          "heading": 3.534374006875459,
+          "position": {
+            "x": 3405.7667413614463,
+            "y": 0.07910250826196281,
+            "z": -174.31913429046799
+          },
+          "supportNormal": {
+            "x": 0.12802927185157753,
+            "y": 0.9914309035705902,
+            "z": -0.02594742750944621
+          },
+          "supportOffset": 0.004000000000026052,
+          "habitat": "kelp-native-hard-bottom"
+        }
+      ],
+      "addedIds": [
+        "kelp-benthic:53,-3:red-abalone:rock-food-2-2:8:0.22",
+        "kelp-benthic:53,-3:northern-kelp-crab:rock-food-2-2:11:0.22",
+        "kelp-benthic:53,-3:california-sea-hare:rock-food-1-0:6:0.22"
+      ],
+      "foodScope": "existing owner-local rock algae nutrition proxy for abalone, crab and juvenile sea hare; existing near-bed detritus nutrition proxy for anemone, not plankton or rendered prey capture; no extra food input, measured biomass or complete natural diet",
+      "scope": "Uncalibrated sparse representatives and movement/intake/condition rates; anemone stays attached. Finite whole-envelope native support probes and conservative birth/new-animal movement avoidance; legacy animals retain their old controllers and can approach shared food patches, so no global pair-collision proof. No reproduction, migration, starvation forecast, offline evolution or population refill.",
+      "lastTickSec": 2.2,
+      "counters": {
+        "ticks": 22,
+        "feedings": 3,
+        "consumedUnits": 0.00048000000000000007
+      }
+    },
+    "kelpBenthicAgents": [
+      {
+        "id": "kelp-benthic:53,-3:red-abalone:rock-food-2-2:8:0.22",
+        "regionId": "53,-3",
+        "speciesId": "red-abalone",
+        "position": {
+          "x": 3404.2989014732216,
+          "y": 0.1531101806425712,
+          "z": -156.01821158232474
+        },
+        "home": {
+          "x": 3404.295629155435,
+          "y": 0.1531101806425712,
+          "z": -156.0186381222827
+        },
+        "target": {
+          "x": 3404.374868062437,
+          "y": 0.1531101806425712,
+          "z": -156.00830949214412
+        },
+        "velocity": {
+          "x": 0.0014874171756673604,
+          "y": 0,
+          "z": 0.00019388179907764425
+        },
+        "heading": 0.1296171692242092,
+        "targetHeading": 0.1296171692242092,
+        "pitch": 0,
+        "sizeM": 0.12946525647304952,
+        "supportNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "supportOffset": 0.004000000000000115,
+        "energy": 0.7567457261082456,
+        "alive": true,
+        "state": "foraging",
+        "stateSince": 1.1,
+        "createdAtSec": 0,
+        "timeSec": 2.2,
+        "lastFeedAt": 1,
+        "nextBite": 7,
+        "nextDecision": 8.064017700403928,
+        "decisions": 1,
+        "kelpBenthicIndividualVersion": 1,
+        "kelpBenthicHostId": "kelp-rock:340,-16",
+        "kelpBenthicSiteId": "rock-food-2-2:8:0.22",
+        "kelpBenthicFoodPatchId": "rock-food-2-2",
+        "habitat": "kelp-native-hard-bottom",
+        "foodScope": "existing owner-local rock algae nutrition proxy for abalone, crab and juvenile sea hare; existing near-bed detritus nutrition proxy for anemone, not plankton or rendered prey capture; no extra food input, measured biomass or complete natural diet",
+        "nutritionPool": "algae",
+        "conditionScope": "relative condition index; no new biomass or food inventory",
+        "lastBenthicIntake": {
+          "timeSec": 1,
+          "patchId": "rock-food-2-2",
+          "pool": "algae",
+          "stockBefore": 0.08500024704774212,
+          "stockAfter": 0.08484024704774212,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.7564572813082453,
+          "energyAfter": 0.7567772813082453,
+          "agentPosition": {
+            "x": 3404.297116572611,
+            "y": 0.1531101806425712,
+            "z": -156.01844424048363
+          },
+          "foodPosition": {
+            "x": 3404.510890602159,
+            "y": 0.1491101806425711,
+            "z": -156.06405298278293
+          },
+          "contactDistanceM": 0.21862180376962662,
+          "allowedDistanceM": 0.32,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        "hasExplainedBenthicFeeding": true
+      },
+      {
+        "id": "kelp-benthic:53,-3:northern-kelp-crab:rock-food-2-2:11:0.22",
+        "regionId": "53,-3",
+        "speciesId": "northern-kelp-crab",
+        "position": {
+          "x": 3404.4827280556506,
+          "y": 0.1531101806425712,
+          "z": -156.27583338629498
+        },
+        "home": {
+          "x": 3404.465475741659,
+          "y": 0.1531101806425712,
+          "z": -156.279314429507
+        },
+        "target": {
+          "x": 3404.588159058756,
+          "y": 0.1531101806425712,
+          "z": -156.25456030502605
+        },
+        "velocity": {
+          "x": 0.007841960905352607,
+          "y": 0,
+          "z": 0.0015822923688801893
+        },
+        "heading": 0.19909934261280643,
+        "targetHeading": 0.19909934261280643,
+        "pitch": 0,
+        "sizeM": 0.046714406681712714,
+        "supportNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "supportOffset": 0.004000000000000115,
+        "energy": 0.7629713509983123,
+        "alive": true,
+        "state": "foraging",
+        "stateSince": 1.2000000000000002,
+        "createdAtSec": 0,
+        "timeSec": 2.2,
+        "lastFeedAt": 1.1,
+        "nextBite": 7.1,
+        "nextDecision": 4.5247135641053315,
+        "decisions": 1,
+        "kelpBenthicIndividualVersion": 1,
+        "kelpBenthicHostId": "kelp-rock:340,-16",
+        "kelpBenthicSiteId": "rock-food-2-2:11:0.22",
+        "kelpBenthicFoodPatchId": "rock-food-2-2",
+        "habitat": "kelp-native-hard-bottom",
+        "foodScope": "existing owner-local rock algae nutrition proxy for abalone, crab and juvenile sea hare; existing near-bed detritus nutrition proxy for anemone, not plankton or rendered prey capture; no extra food input, measured biomass or complete natural diet",
+        "nutritionPool": "algae",
+        "conditionScope": "relative condition index; no new biomass or food inventory",
+        "lastBenthicIntake": {
+          "timeSec": 1.1,
+          "patchId": "rock-food-2-2",
+          "pool": "algae",
+          "stockBefore": 0.08484027181109607,
+          "stockAfter": 0.08468027181109608,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.762680276598312,
+          "energyAfter": 0.7630002765983119,
+          "agentPosition": {
+            "x": 3404.4741018986547,
+            "y": 0.1531101806425712,
+            "z": -156.27757390790092
+          },
+          "foodPosition": {
+            "x": 3404.510890602159,
+            "y": 0.1491101806425711,
+            "z": -156.06405298278293
+          },
+          "contactDistanceM": 0.2167039320565833,
+          "allowedDistanceM": 0.32,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        "hasExplainedBenthicFeeding": true
+      },
+      {
+        "id": "kelp-benthic:53,-3:california-sea-hare:rock-food-1-0:6:0.22",
+        "regionId": "53,-3",
+        "speciesId": "california-sea-hare",
+        "position": {
+          "x": 3405.7626744008585,
+          "y": 0.07958375023431788,
+          "z": -174.3208135258836
+        },
+        "home": {
+          "x": 3405.7667413614463,
+          "y": 0.07910250826196281,
+          "z": -174.31913429046799
+        },
+        "target": {
+          "x": 3405.4635017251726,
+          "y": 0.10481169408264122,
+          "z": -174.44434099602032
+        },
+        "velocity": {
+          "x": -0.00184861844900297,
+          "y": 0.00021874635107166363,
+          "z": -0.0007632888252828707
+        },
+        "heading": -2.7500179370798072,
+        "targetHeading": -2.7500179370798072,
+        "pitch": 0,
+        "sizeM": 0.14604633778333664,
+        "supportNormal": {
+          "x": 0.12802927185157753,
+          "y": 0.9914309035705902,
+          "z": -0.02594742750944621
+        },
+        "supportOffset": 0.004000000000026455,
+        "energy": 0.7718512210814953,
+        "alive": true,
+        "state": "foraging",
+        "stateSince": 2.1,
+        "createdAtSec": 0,
+        "timeSec": 2.2,
+        "lastFeedAt": 2,
+        "nextBite": 8,
+        "nextDecision": 6.5052773043513294,
+        "decisions": 1,
+        "kelpBenthicIndividualVersion": 1,
+        "kelpBenthicHostId": "kelp-rock:340,-18",
+        "kelpBenthicSiteId": "rock-food-1-0:6:0.22",
+        "kelpBenthicFoodPatchId": "rock-food-1-0",
+        "habitat": "kelp-native-hard-bottom",
+        "foodScope": "existing owner-local rock algae nutrition proxy for abalone, crab and juvenile sea hare; existing near-bed detritus nutrition proxy for anemone, not plankton or rendered prey capture; no extra food input, measured biomass or complete natural diet",
+        "nutritionPool": "algae",
+        "conditionScope": "relative condition index; no new biomass or food inventory",
+        "lastBenthicIntake": {
+          "timeSec": 2,
+          "patchId": "rock-food-1-0",
+          "pool": "algae",
+          "stockBefore": 0.08500049167245984,
+          "stockAfter": 0.08484049167245984,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.7715364802814952,
+          "energyAfter": 0.7718564802814952,
+          "agentPosition": {
+            "x": 3405.7630441245483,
+            "y": 0.07954000096410366,
+            "z": -174.32066086811855
+          },
+          "foodPosition": {
+            "x": 3405.8556671428246,
+            "y": 0.06480892930126103,
+            "z": -174.11790753924868
+          },
+          "contactDistanceM": 0.22339413679585038,
+          "allowedDistanceM": 0.32,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        "hasExplainedBenthicFeeding": true
+      }
+    ],
+    "kelpWaterLifeVersion": 1,
+    "kelpWaterLifeInitializedAtSec": 0,
+    "kelpWaterLife": {
+      "version": 1,
+      "role": false,
+      "foodScope": "Actual owner-local simulated-host smallPrey point for jack mackerel, squid and sea nettle; actual rock-patch algae point for opaleye. Selected incomplete nutrition proxies, not ambient plankton, rendered prey capture, measured biomass or complete natural diets. No added food inventory.",
+      "scope": "Sparse independent real individuals, not field density. Uncalibrated speed, turn, intake and relative condition. Finite whole-envelope native bed/surface probes, actual four-frond stipe and blade references at current and predicted local clocks; unloaded neighbouring plants use a conservative crown envelope. Checked new-body turns, midpoints and peer boxes do not establish global collision safety for legacy controllers. No recruitment, migration, offline evolution or population refill.",
+      "birthPlacements": [],
+      "addedIds": [],
+      "groups": [],
+      "lastTickSec": 2.2,
+      "counters": {
+        "ticks": 22,
+        "feedings": 0,
+        "consumedUnits": 0,
+        "deaths": 0
+      }
+    },
+    "kelpWaterLifeAgents": [],
+    "kelpNearBottomLifeVersion": 1,
+    "kelpNearBottomLifeInitializedAtSec": 0,
+    "kelpNearBottomLife": {
+      "version": 1,
+      "role": true,
+      "scope": "Sparse independent representatives with uncalibrated movement, capture distance, intake, supply/export and relative condition. One whole-envelope pose kernel checks actual supports, feet, bounded turns, intermediate positions, targets and native plants at current/predicted clocks. Legacy controllers are unchanged, so this is not a global collision proof. Fixed bed control-volume input is an explicit external selected nutrition flux, not a resolved prey population. No recruitment, migration, offline growth or refill.",
+      "foodScope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills.",
+      "birthPlacements": [
+        {
+          "id": "kelp-near-bottom:53,-3:red-rock-crab",
+          "speciesId": "red-rock-crab",
+          "sizeM": 0.13369390750303867,
+          "alive": true,
+          "heading": 8.345874578238595,
+          "pitch": 0,
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "nutritionPool": "benthicAnimalFood",
+          "position": {
+            "x": 3414.25462366111,
+            "y": -3.543674765687781,
+            "z": -146.40535342421987
+          },
+          "siteId": "kelp-near-bottom-food:53,-3:rock-food-0-2:9",
+          "kelpNearBottomSiteId": "kelp-near-bottom-food:53,-3:rock-food-0-2:9",
+          "kelpNearBottomFoodPatchId": "kelp-near-bottom-food:53,-3:rock-food-0-2",
+          "home": {
+            "x": 3414.25462366111,
+            "y": -3.543674765687781,
+            "z": -146.40535342421987
+          },
+          "habitat": "native-kelp-near-bottom"
+        },
+        {
+          "id": "kelp-near-bottom:53,-3:gopher-rockfish",
+          "speciesId": "gopher-rockfish",
+          "sizeM": 0.2848137699300423,
+          "alive": true,
+          "heading": 3.8693978987881685,
+          "pitch": -0.06,
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "nutritionPool": "benthicAnimalFood",
+          "position": {
+            "x": 3415.4696647723517,
+            "y": -3.555886774761098,
+            "z": -145.30875692958935
+          },
+          "siteId": "kelp-near-bottom-food:53,-3:rock-food-0-0:0",
+          "kelpNearBottomSiteId": "kelp-near-bottom-food:53,-3:rock-food-0-0:0",
+          "kelpNearBottomFoodPatchId": "kelp-near-bottom-food:53,-3:rock-food-0-0",
+          "home": {
+            "x": 3415.4696647723517,
+            "y": -3.555886774761098,
+            "z": -145.30875692958935
+          },
+          "habitat": "native-kelp-near-bottom"
+        },
+        {
+          "id": "kelp-near-bottom:53,-3:horn-shark",
+          "speciesId": "horn-shark",
+          "sizeM": 0.7071310651488603,
+          "alive": true,
+          "heading": 2.6747667491713645,
+          "pitch": -0.06,
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "nutritionPool": "benthicAnimalFood",
+          "position": {
+            "x": 3415.6515559949003,
+            "y": -3.3282988892263807,
+            "z": -146.06216181005135
+          },
+          "siteId": "kelp-near-bottom-food:53,-3:rock-food-0-0:0",
+          "kelpNearBottomSiteId": "kelp-near-bottom-food:53,-3:rock-food-0-0:0",
+          "kelpNearBottomFoodPatchId": "kelp-near-bottom-food:53,-3:rock-food-0-0",
+          "home": {
+            "x": 3415.6515559949003,
+            "y": -3.3282988892263807,
+            "z": -146.06216181005135
+          },
+          "habitat": "native-kelp-near-bottom"
+        }
+      ],
+      "addedIds": [
+        "kelp-near-bottom:53,-3:red-rock-crab",
+        "kelp-near-bottom:53,-3:gopher-rockfish",
+        "kelp-near-bottom:53,-3:horn-shark"
+      ],
+      "foodPatches": [
+        {
+          "id": "kelp-near-bottom-food:53,-3:rock-food-0-2",
+          "nativePatchId": "rock-food-0-2",
+          "sourceType": "native-rock",
+          "pool": "benthicAnimalFood",
+          "heightM": 0.055,
+          "position": {
+            "x": 3414.153824766548,
+            "y": -3.491674765687781,
+            "z": -146.2172333473095
+          },
+          "amount": 0.00012394317031118427
+        },
+        {
+          "id": "kelp-near-bottom-food:53,-3:rock-food-0-0",
+          "nativePatchId": "rock-food-0-0",
+          "sourceType": "native-rock",
+          "pool": "benthicAnimalFood",
+          "heightM": 0.055,
+          "position": {
+            "x": 3414.995286091282,
+            "y": -3.491674765687781,
+            "z": -145.7314154249616
+          },
+          "amount": 0.00012394317031118427
+        }
+      ],
+      "foodLedger": {
+        "initial": 0,
+        "input": 0.00025200000000000016,
+        "ingested": 0,
+        "exported": 0.0000041136593776314466,
+        "byPool": {
+          "benthicAnimalFood": {
+            "initial": 0,
+            "input": 0.00025200000000000016,
+            "ingested": 0,
+            "exported": 0.0000041136593776314466
+          }
+        }
+      },
+      "lastTickSec": 2.1,
+      "counters": {
+        "ticks": 21,
+        "feedings": 0,
+        "consumedUnits": 0,
+        "deaths": 0
+      },
+      "events": []
+    },
+    "kelpNearBottomLifeAgents": [
+      {
+        "id": "kelp-near-bottom:53,-3:red-rock-crab",
+        "speciesId": "red-rock-crab",
+        "sizeM": 0.13369390750303867,
+        "alive": true,
+        "heading": 8.345874578238595,
+        "pitch": 0,
+        "supportNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "nutritionPool": "benthicAnimalFood",
+        "position": {
+          "x": 3414.24272182079,
+          "y": -3.543674765687781,
+          "z": -146.38314112589413
+        },
+        "siteId": "kelp-near-bottom-food:53,-3:rock-food-0-2:9",
+        "kelpNearBottomSiteId": "kelp-near-bottom-food:53,-3:rock-food-0-2:9",
+        "kelpNearBottomFoodPatchId": "kelp-near-bottom-food:53,-3:rock-food-0-2",
+        "home": {
+          "x": 3414.25462366111,
+          "y": -3.543674765687781,
+          "z": -146.40535342421987
+        },
+        "habitat": "native-kelp-near-bottom",
+        "kelpNearBottomIndividualVersion": 1,
+        "regionId": "53,-3",
+        "createdAtSec": 0,
+        "timeSec": 2.1,
+        "state": "foraging",
+        "stateSince": 0,
+        "energy": 0.7480073438416766,
+        "target": {
+          "x": 3414.1696105159454,
+          "y": -3.543674765687781,
+          "z": -146.24669415046256
+        },
+        "targetHeading": 8.345874578238595,
+        "targetPitch": 0,
+        "targetNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "velocity": {
+          "x": -0.0056675430096220225,
+          "y": 0,
+          "z": 0.01057728491701937
+        },
+        "travelledM": 0.025199999998400585,
+        "nextDecision": 3.1,
+        "decisions": 1,
+        "nextBite": 0,
+        "feedingCount": 0,
+        "consumedUnits": 0,
+        "lastFeedAt": null,
+        "lastNearBottomIntake": null,
+        "foodScope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills.",
+        "conditionScope": "dimensionless relative condition; independent condition ledger, not food or biomass",
+        "localEnvironment": {
+          "currentMps": 0.18,
+          "deformationCurrentMps": 0.18,
+          "turbidity": 0.35,
+          "foodSupply": 1,
+          "hour": 12.000027777777778
+        }
+      },
+      {
+        "id": "kelp-near-bottom:53,-3:gopher-rockfish",
+        "speciesId": "gopher-rockfish",
+        "sizeM": 0.2848137699300423,
+        "alive": true,
+        "heading": 4.38942182743668,
+        "pitch": -0.06,
+        "supportNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "nutritionPool": "benthicAnimalFood",
+        "position": {
+          "x": 3415.4066046739467,
+          "y": -3.46314028152694,
+          "z": -145.35170668554846
+        },
+        "siteId": "kelp-near-bottom-food:53,-3:rock-food-0-0:0",
+        "kelpNearBottomSiteId": "kelp-near-bottom-food:53,-3:rock-food-0-0:0",
+        "kelpNearBottomFoodPatchId": "kelp-near-bottom-food:53,-3:rock-food-0-0",
+        "home": {
+          "x": 3415.4696647723517,
+          "y": -3.555886774761098,
+          "z": -145.30875692958935
+        },
+        "habitat": "native-kelp-near-bottom",
+        "kelpNearBottomIndividualVersion": 1,
+        "regionId": "53,-3",
+        "createdAtSec": 0,
+        "timeSec": 2.1,
+        "state": "foraging",
+        "stateSince": 0,
+        "energy": 0.7533819030355279,
+        "target": {
+          "x": 3415.037786003467,
+          "y": -3.3839911719002003,
+          "z": -145.60290629181426
+        },
+        "targetHeading": 4.392996674386468,
+        "targetPitch": -0.06,
+        "targetNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "velocity": {
+          "x": -0.03047691003757791,
+          "y": 0.04081649356356465,
+          "z": -0.02075759286299217
+        },
+        "travelledM": 0.12049378263420407,
+        "nextDecision": 3.1,
+        "decisions": 1,
+        "nextBite": 0,
+        "feedingCount": 0,
+        "consumedUnits": 0,
+        "lastFeedAt": null,
+        "lastNearBottomIntake": null,
+        "foodScope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills.",
+        "conditionScope": "dimensionless relative condition; independent condition ledger, not food or biomass",
+        "localEnvironment": {
+          "currentMps": 0.18,
+          "deformationCurrentMps": 0.18,
+          "turbidity": 0.35,
+          "foodSupply": 1,
+          "hour": 12.000027777777778
+        }
+      },
+      {
+        "id": "kelp-near-bottom:53,-3:horn-shark",
+        "speciesId": "horn-shark",
+        "sizeM": 0.7071310651488603,
+        "alive": true,
+        "heading": 2.8810167491713647,
+        "pitch": -0.06,
+        "supportNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "nutritionPool": "benthicAnimalFood",
+        "position": {
+          "x": 3415.620423883837,
+          "y": -3.3282988892263807,
+          "z": -146.04125626866312
+        },
+        "siteId": "kelp-near-bottom-food:53,-3:rock-food-0-0:0",
+        "kelpNearBottomSiteId": "kelp-near-bottom-food:53,-3:rock-food-0-0:0",
+        "kelpNearBottomFoodPatchId": "kelp-near-bottom-food:53,-3:rock-food-0-0",
+        "home": {
+          "x": 3415.6515559949003,
+          "y": -3.3282988892263807,
+          "z": -146.06216181005135
+        },
+        "habitat": "native-kelp-near-bottom",
+        "kelpNearBottomIndividualVersion": 1,
+        "regionId": "53,-3",
+        "createdAtSec": 0,
+        "timeSec": 2.1,
+        "state": "foraging",
+        "stateSince": 0,
+        "energy": 0.6943347935083226,
+        "target": {
+          "x": 3414.866480259348,
+          "y": -3.3282988892263807,
+          "z": -145.53497516186627
+        },
+        "targetHeading": 5.292760627162859,
+        "targetPitch": -0.06,
+        "targetNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "travelledM": 0.03750000000004432,
+        "nextDecision": 3.1,
+        "decisions": 1,
+        "nextBite": 0,
+        "feedingCount": 0,
+        "consumedUnits": 0,
+        "lastFeedAt": null,
+        "lastNearBottomIntake": null,
+        "foodScope": "Independent bounded owner-local bed control volumes for unresolved benthic small-animal nutrition. Initially zero, with foodSupply-dependent accounted external input, actual fixed-mouth contact and accounted export. Actual native floor/rock supports; no changes to legacy host prey, algae, detritus, food points or ledgers. Selected dietary component, not measured density, biomass, complete food webs or visible prey kills.",
+        "conditionScope": "dimensionless relative condition; independent condition ledger, not food or biomass",
+        "localEnvironment": {
+          "currentMps": 0.18,
+          "deformationCurrentMps": 0.18,
+          "turbidity": 0.35,
+          "foodSupply": 1,
+          "hour": 12.000027777777778
+        }
+      }
+    ],
+    "kelpNearBottomEnergyLedger": {
+      "initial": 2.195931699452922,
+      "feedingGain": 0,
+      "maintenanceAndMotionDebit": 0.00020765906739489748,
+      "clampCorrection": 0,
+      "deathLoss": 0
+    },
+    "version": 1,
+    "id": "53,-3",
+    "cx": 53,
+    "cz": -3,
+    "habitat": "kelp-forest",
+    "state": {
+      "_rngState": 3146476896,
+      "_ticks": 22,
+      "_accumulator": 0,
+      "timeSec": 2.2,
+      "environment": {
+        "currentMps": 0.18,
+        "deformationCurrentMps": 0.18,
+        "turbidity": 0.35,
+        "foodSupply": 1,
+        "hour": 12.000027777777778
+      },
+      "events": [
+        {
+          "timeSec": 0,
+          "type": "initial",
+          "label": "独立海带林已建立：6 个候选物种",
+          "cause": "巨藻固着岩底；林底刮食者、冠层小螺和藻间鱼采用不同支持面与食物池，数量为展示选择。"
+        },
+        {
+          "timeSec": 0.7000000000000001,
+          "type": "feeding",
+          "label": "巨型海藻鱼（描述性中文名）实际摄食",
+          "cause": "接近局部 smallPrey 斑块后移出 0.0030 相对资源，进入个体体能代理；不是远距离免费供能。"
+        },
+        {
+          "timeSec": 1,
+          "type": "kelp-benthic-feeding",
+          "label": "红鲍摄食局部营养代理",
+          "agentId": "kelp-benthic:53,-3:red-abalone:rock-food-2-2:8:0.22",
+          "cause": "existing owner-local rock algae nutrition proxy for abalone, crab and juvenile sea hare; existing near-bed detritus nutrition proxy for anemone, not plankton or rendered prey capture; no extra food input, measured biomass or complete natural diet",
+          "patchId": "rock-food-2-2",
+          "pool": "algae",
+          "stockBefore": 0.08500024704774212,
+          "stockAfter": 0.08484024704774212,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.7564572813082453,
+          "energyAfter": 0.7567772813082453,
+          "agentPosition": {
+            "x": 3404.297116572611,
+            "y": 0.1531101806425712,
+            "z": -156.01844424048363
+          },
+          "foodPosition": {
+            "x": 3404.510890602159,
+            "y": 0.1491101806425711,
+            "z": -156.06405298278293
+          },
+          "contactDistanceM": 0.21862180376962662,
+          "allowedDistanceM": 0.32,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "timeSec": 1.1,
+          "type": "kelp-benthic-feeding",
+          "label": "北方藻蟹摄食局部营养代理",
+          "agentId": "kelp-benthic:53,-3:northern-kelp-crab:rock-food-2-2:11:0.22",
+          "cause": "existing owner-local rock algae nutrition proxy for abalone, crab and juvenile sea hare; existing near-bed detritus nutrition proxy for anemone, not plankton or rendered prey capture; no extra food input, measured biomass or complete natural diet",
+          "patchId": "rock-food-2-2",
+          "pool": "algae",
+          "stockBefore": 0.08484027181109607,
+          "stockAfter": 0.08468027181109608,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.762680276598312,
+          "energyAfter": 0.7630002765983119,
+          "agentPosition": {
+            "x": 3404.4741018986547,
+            "y": 0.1531101806425712,
+            "z": -156.27757390790092
+          },
+          "foodPosition": {
+            "x": 3404.510890602159,
+            "y": 0.1491101806425711,
+            "z": -156.06405298278293
+          },
+          "contactDistanceM": 0.2167039320565833,
+          "allowedDistanceM": 0.32,
+          "unit": "relative-organic-food-proxy-unit"
+        },
+        {
+          "timeSec": 1.2000000000000002,
+          "type": "feeding",
+          "label": "蝙蝠海星实际摄食",
+          "cause": "接近局部 detritus 斑块后移出 0.0012 相对资源，进入个体体能代理；不是远距离免费供能。"
+        },
+        {
+          "timeSec": 1.8,
+          "type": "feeding",
+          "label": "褐色钟螺（描述性中文名）实际摄食",
+          "cause": "接近局部 biofilm 斑块后移出 0.0002 相对资源，进入个体体能代理；不是远距离免费供能。"
+        },
+        {
+          "timeSec": 2,
+          "type": "kelp-benthic-feeding",
+          "label": "加州褐海兔摄食局部营养代理",
+          "agentId": "kelp-benthic:53,-3:california-sea-hare:rock-food-1-0:6:0.22",
+          "cause": "existing owner-local rock algae nutrition proxy for abalone, crab and juvenile sea hare; existing near-bed detritus nutrition proxy for anemone, not plankton or rendered prey capture; no extra food input, measured biomass or complete natural diet",
+          "patchId": "rock-food-1-0",
+          "pool": "algae",
+          "stockBefore": 0.08500049167245984,
+          "stockAfter": 0.08484049167245984,
+          "removedUnits": 0.00016,
+          "energyBefore": 0.7715364802814952,
+          "energyAfter": 0.7718564802814952,
+          "agentPosition": {
+            "x": 3405.7630441245483,
+            "y": 0.07954000096410366,
+            "z": -174.32066086811855
+          },
+          "foodPosition": {
+            "x": 3405.8556671428246,
+            "y": 0.06480892930126103,
+            "z": -174.11790753924868
+          },
+          "contactDistanceM": 0.22339413679585038,
+          "allowedDistanceM": 0.32,
+          "unit": "relative-organic-food-proxy-unit"
+        }
+      ],
+      "agents": [
+        {
+          "id": "kelp-ocean:53,-3:giant-kelp-1",
+          "speciesId": "giant-kelp",
+          "position": {
+            "x": 3414.2960978969377,
+            "y": -3.546674765687781,
+            "z": -145.39598731169738
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 1.316533190251814,
+          "sizeM": 14.790245106721027,
+          "energy": 0.8005654011308473,
+          "state": "fixed",
+          "alive": true,
+          "stateSince": 0,
+          "lastFeedAt": null,
+          "nextBite": 1.0966015374287963,
+          "nextDecision": 0,
+          "home": {
+            "x": 3414.2960978969377,
+            "y": -3.546674765687781,
+            "z": -145.39598731169738
+          },
+          "target": {
+            "x": 3414.2960978969377,
+            "y": -3.546674765687781,
+            "z": -145.39598731169738
+          },
+          "stress": 0,
+          "hunger": 0.1994345988691527,
+          "anchor": {
+            "id": "kelp:kelp-rock:341,-15:2",
+            "x": 3414.2960978969377,
+            "y": -3.546674765687781,
+            "z": -145.39598731169738,
+            "lengthM": 14.790244540416525,
+            "phase": 4.369208793529557,
+            "hostId": "kelp-rock:341,-15",
+            "rockIndex": 0,
+            "sceneryId": "kelp:kelp-rock:341,-15:2"
+          },
+          "initialSizeM": 14.790244540416525,
+          "regionId": "53,-3",
+          "sceneryId": "kelp:kelp-rock:341,-15:2"
+        },
+        {
+          "id": "kelp-ocean:53,-3:giant-kelp-2",
+          "speciesId": "giant-kelp",
+          "position": {
+            "x": 3414.106462384176,
+            "y": -3.546674765687781,
+            "z": -145.97941865124002
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.1466352235570696,
+          "sizeM": 14.347012562614445,
+          "energy": 0.7823331912621182,
+          "state": "fixed",
+          "alive": true,
+          "stateSince": 0,
+          "lastFeedAt": null,
+          "nextBite": 2.720326093956828,
+          "nextDecision": 0,
+          "home": {
+            "x": 3414.106462384176,
+            "y": -3.546674765687781,
+            "z": -145.97941865124002
+          },
+          "target": {
+            "x": 3414.106462384176,
+            "y": -3.546674765687781,
+            "z": -145.97941865124002
+          },
+          "stress": 0,
+          "hunger": 0.2176668087378818,
+          "anchor": {
+            "id": "kelp:kelp-rock:341,-15:0",
+            "x": 3414.106462384176,
+            "y": -3.546674765687781,
+            "z": -145.97941865124002,
+            "lengthM": 14.347012009207063,
+            "phase": 6.001053926475131,
+            "hostId": "kelp-rock:341,-15",
+            "rockIndex": 0,
+            "sceneryId": "kelp:kelp-rock:341,-15:0"
+          },
+          "initialSizeM": 14.347012009207063,
+          "regionId": "53,-3",
+          "sceneryId": "kelp:kelp-rock:341,-15:0"
+        },
+        {
+          "id": "kelp-ocean:53,-3:giant-kelp-3",
+          "speciesId": "giant-kelp",
+          "position": {
+            "x": 3415.2075815983267,
+            "y": -3.546674765687781,
+            "z": -145.8648955823061
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 3.0255009666136212,
+          "sizeM": 13.71983001005131,
+          "energy": 0.7747119436799806,
+          "state": "fixed",
+          "alive": true,
+          "stateSince": 0,
+          "lastFeedAt": null,
+          "nextBite": 1.0188836017623544,
+          "nextDecision": 0,
+          "home": {
+            "x": 3415.2075815983267,
+            "y": -3.546674765687781,
+            "z": -145.8648955823061
+          },
+          "target": {
+            "x": 3415.2075815983267,
+            "y": -3.546674765687781,
+            "z": -145.8648955823061
+          },
+          "stress": 0,
+          "hunger": 0.22528805632001936,
+          "anchor": {
+            "id": "kelp:kelp-rock:341,-15:1",
+            "x": 3415.2075815983267,
+            "y": -3.546674765687781,
+            "z": -145.8648955823061,
+            "lengthM": 13.719829462035056,
+            "phase": 1.2872117739714184,
+            "hostId": "kelp-rock:341,-15",
+            "rockIndex": 0,
+            "sceneryId": "kelp:kelp-rock:341,-15:1"
+          },
+          "initialSizeM": 13.719829462035056,
+          "regionId": "53,-3",
+          "sceneryId": "kelp:kelp-rock:341,-15:1"
+        },
+        {
+          "id": "kelp-ocean:53,-3:purple-urchin-1",
+          "speciesId": "purple-urchin",
+          "position": {
+            "x": 3413.917976564543,
+            "y": -3.543674765687781,
+            "z": -146.0621580690849
+          },
+          "velocity": {
+            "x": 0.0005013361351302592,
+            "y": 0,
+            "z": -0.00032963931829499415
+          },
+          "heading": -0.5816446261853976,
+          "sizeM": 0.06094375941203908,
+          "energy": 0.8091388820753305,
+          "state": "surface-searching",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 1.0476515796035528,
+          "nextDecision": 0,
+          "home": {
+            "x": 3413.916873625046,
+            "y": -3.543674765687781,
+            "z": -146.06143286258464
+          },
+          "target": {
+            "x": 3414.153824766548,
+            "y": -3.546674765687781,
+            "z": -146.2172333473095
+          },
+          "stress": 0,
+          "hunger": 0.19086111792466953,
+          "rockIndex": 0,
+          "regionId": "53,-3",
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          }
+        },
+        {
+          "id": "kelp-ocean:53,-3:purple-urchin-2",
+          "speciesId": "purple-urchin",
+          "position": {
+            "x": 3405.4746359016854,
+            "y": 0.07504191297776885,
+            "z": -174.70629991963693
+          },
+          "velocity": {
+            "x": -0.00027059344574809074,
+            "y": -0.000005596538419361252,
+            "z": -0.0001295345032303885
+          },
+          "heading": -2.695125509491798,
+          "sizeM": 0.040199518240988254,
+          "energy": 0.7050337796927303,
+          "state": "surface-searching",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 3.1022148383781314,
+          "nextDecision": 0,
+          "home": {
+            "x": 3405.475231207266,
+            "y": 0.07505422536229489,
+            "z": -174.7060149437298
+          },
+          "target": {
+            "x": 3405.100801765386,
+            "y": 0.05586123963804668,
+            "z": -174.88525628422875
+          },
+          "stress": 0,
+          "hunger": 0.2949662203072697,
+          "rockIndex": 1,
+          "regionId": "53,-3",
+          "supportNormal": {
+            "x": 0.046358346315125976,
+            "y": 0.9891255563976438,
+            "z": -0.13957627809903148
+          }
+        },
+        {
+          "id": "kelp-ocean:53,-3:purple-urchin-3",
+          "speciesId": "purple-urchin",
+          "position": {
+            "x": 3404.7324607182986,
+            "y": 0.1521101806425711,
+            "z": -155.70823386243725
+          },
+          "velocity": {
+            "x": -0.00031715813747723587,
+            "y": 0,
+            "z": -0.0005093237825803953
+          },
+          "heading": -2.127743137712415,
+          "sizeM": 0.05355030239094049,
+          "energy": 0.6693843000651211,
+          "state": "surface-searching",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 1.9722462575882673,
+          "nextDecision": 0,
+          "home": {
+            "x": 3404.733158466201,
+            "y": 0.1521101806425711,
+            "z": -155.70711335011558
+          },
+          "target": {
+            "x": 3404.510890602159,
+            "y": 0.1491101806425711,
+            "z": -156.06405298278293
+          },
+          "stress": 0,
+          "hunger": 0.33061569993487894,
+          "rockIndex": 2,
+          "regionId": "53,-3",
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          }
+        },
+        {
+          "id": "kelp-ocean:53,-3:gumboot-chiton-1",
+          "speciesId": "gumboot-chiton",
+          "position": {
+            "x": 3413.9943905381656,
+            "y": -3.543674765687781,
+            "z": -145.43484110759738
+          },
+          "velocity": {
+            "x": 0.0002577216264398885,
+            "y": 0,
+            "z": 0.0003059077707234792
+          },
+          "heading": 0.8706833870117763,
+          "sizeM": 0.20911802500253546,
+          "energy": 0.7583566034854262,
+          "state": "surface-searching",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 3.01134127471596,
+          "nextDecision": 0,
+          "home": {
+            "x": 3413.9938235505874,
+            "y": -3.543674765687781,
+            "z": -145.43551410469297
+          },
+          "target": {
+            "x": 3414.153824766548,
+            "y": -3.546674765687781,
+            "z": -145.2455975026137
+          },
+          "stress": 0,
+          "hunger": 0.24164339651457378,
+          "rockIndex": 0,
+          "activityPhaseSec": 0,
+          "regionId": "53,-3",
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "activityLevel": 0.08000000002432711
+        },
+        {
+          "id": "kelp-ocean:53,-3:bat-star-1",
+          "speciesId": "bat-star",
+          "position": {
+            "x": 3411.131521252319,
+            "y": -0.6469999761581421,
+            "z": -172.71166228674355
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": -2.122973149530235,
+          "sizeM": 0.15063329363241793,
+          "energy": 0.8124604179418892,
+          "state": "scavenging",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": 1.2000000000000002,
+          "nextBite": 13.2,
+          "nextDecision": 0,
+          "home": {
+            "x": 3411.131521252319,
+            "y": 0,
+            "z": -172.71166228674355
+          },
+          "target": {
+            "x": 3411.131521252319,
+            "y": 0,
+            "z": -172.71166228674355
+          },
+          "stress": 0,
+          "hunger": 0.18753958205811083,
+          "rockIndex": null,
+          "regionId": "53,-3",
+          "supportNormal": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "hasExplainedFeeding": true
+        },
+        {
+          "id": "kelp-ocean:53,-3:bat-star-2",
+          "speciesId": "bat-star",
+          "position": {
+            "x": 3411.2496025871483,
+            "y": -3.29434098050037,
+            "z": -147.0874760841578
+          },
+          "velocity": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "heading": 0.7506723941869176,
+          "sizeM": 0.15057893827557564,
+          "energy": 0.7469575242594688,
+          "state": "scavenging",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 3.1938599068671465,
+          "nextDecision": 0,
+          "home": {
+            "x": 3411.2496025871483,
+            "y": 0,
+            "z": -147.0874760841578
+          },
+          "target": {
+            "x": 3411.2496025871483,
+            "y": 0,
+            "z": -147.0874760841578
+          },
+          "stress": 0,
+          "hunger": 0.2530424757405312,
+          "rockIndex": null,
+          "regionId": "53,-3",
+          "supportNormal": {
+            "x": 0.15419039399993173,
+            "y": 0.9769699619474544,
+            "z": 0.14749581638316103
+          }
+        },
+        {
+          "id": "kelp-ocean:53,-3:brown-turban-snail-1",
+          "speciesId": "brown-turban-snail",
+          "position": {
+            "x": 3413.842786864516,
+            "y": 7.801323062233863,
+            "z": -145.42511652452757
+          },
+          "velocity": {
+            "x": 0.042720691494650964,
+            "y": 0.0009101781006659593,
+            "z": 0.011607574367928919
+          },
+          "heading": 0.26530354795114486,
+          "sizeM": 0.01983657643198967,
+          "energy": 0.7764385581012359,
+          "state": "leaf-grazing",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 3.3960170401260257,
+          "nextDecision": 0,
+          "home": {
+            "x": 3413.7571686099063,
+            "y": 7.792322388942745,
+            "z": -145.4552410378235
+          },
+          "target": {
+            "x": 3413.7571686099063,
+            "y": 7.792322388942745,
+            "z": -145.4552410378235
+          },
+          "stress": 0,
+          "hunger": 0.22356144189876415,
+          "attachment": {
+            "hostId": "kelp-ocean:53,-3:giant-kelp-1",
+            "leafIndex": 12,
+            "along": 0.6276906294553231,
+            "clearanceM": 0.003
+          },
+          "regionId": "53,-3"
+        },
+        {
+          "id": "kelp-ocean:53,-3:brown-turban-snail-2",
+          "speciesId": "brown-turban-snail",
+          "position": {
+            "x": 3414.884505927219,
+            "y": 8.99985085024432,
+            "z": -146.09557950257465
+          },
+          "velocity": {
+            "x": -0.01608301040960214,
+            "y": 0.008697763875620268,
+            "z": -0.012580982594556644
+          },
+          "heading": -2.4777671396457617,
+          "sizeM": 0.019786623311229053,
+          "energy": 0.7673485151674141,
+          "state": "leaf-grazing",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 3.527714158408344,
+          "nextDecision": 0,
+          "home": {
+            "x": 3414.866686498158,
+            "y": 8.993374500852509,
+            "z": -146.0767329647414
+          },
+          "target": {
+            "x": 3414.866686498158,
+            "y": 8.993374500852509,
+            "z": -146.0767329647414
+          },
+          "stress": 0,
+          "hunger": 0.2326514848325859,
+          "attachment": {
+            "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+            "leafIndex": 15,
+            "along": 0.643855637879389,
+            "clearanceM": 0.003
+          },
+          "regionId": "53,-3"
+        },
+        {
+          "id": "kelp-ocean:53,-3:brown-turban-snail-3",
+          "speciesId": "brown-turban-snail",
+          "position": {
+            "x": 3414.964364205751,
+            "y": 9.28216591864261,
+            "z": -145.2011048127562
+          },
+          "velocity": {
+            "x": -0.05794801031697716,
+            "y": -0.007843386094066318,
+            "z": -0.01903076491629463
+          },
+          "heading": -2.8242787076662665,
+          "sizeM": 0.02284892723429948,
+          "energy": 0.7154360975785842,
+          "state": "leaf-grazing",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": 1.8,
+          "nextBite": 11.8,
+          "nextDecision": 0,
+          "home": {
+            "x": 3415.0973972112147,
+            "y": 9.286132956299443,
+            "z": -145.16150212801816
+          },
+          "target": {
+            "x": 3415.0973972112147,
+            "y": 9.286132956299443,
+            "z": -145.16150212801816
+          },
+          "stress": 0,
+          "hunger": 0.2845639024214158,
+          "attachment": {
+            "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+            "leafIndex": 17,
+            "along": 0.6679491453229706,
+            "clearanceM": 0.003
+          },
+          "regionId": "53,-3",
+          "hasExplainedFeeding": true
+        },
+        {
+          "id": "kelp-ocean:53,-3:giant-kelpfish-1",
+          "speciesId": "giant-kelpfish",
+          "position": {
+            "x": 3414.5666649504337,
+            "y": 2.292373140014692,
+            "z": -145.35006044031513
+          },
+          "velocity": {
+            "x": -0.01601784838385356,
+            "y": -0.043344377241201215,
+            "z": -0.04328758274056099
+          },
+          "heading": -1.9252055620554895,
+          "sizeM": 0.3840224331710488,
+          "energy": 0.7888391369739899,
+          "state": "approaching-prey",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 1.5224548997357488,
+          "nextDecision": 0,
+          "home": {
+            "x": 3414.595438251654,
+            "y": 2.3692861376599677,
+            "z": -145.27329075369857
+          },
+          "target": {
+            "x": 3414.298776700931,
+            "y": 1.6869371037533352,
+            "z": -145.95505166149684
+          },
+          "stress": 0.006841611962042728,
+          "hunger": 0.21116086302601011,
+          "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+          "regionId": "53,-3"
+        },
+        {
+          "id": "kelp-ocean:53,-3:giant-kelpfish-2",
+          "speciesId": "giant-kelpfish",
+          "position": {
+            "x": 3414.3514183260686,
+            "y": 2.0775290876623154,
+            "z": -146.0201249692305
+          },
+          "velocity": {
+            "x": -0.005347552946659562,
+            "y": -0.0627567397644313,
+            "z": 0.010506046789089396
+          },
+          "heading": 2.0416161056617037,
+          "sizeM": 0.3897336547262967,
+          "energy": 0.804043724291993,
+          "state": "approaching-prey",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": null,
+          "nextBite": 3.128127253614366,
+          "nextDecision": 0,
+          "home": {
+            "x": 3414.3616532761994,
+            "y": 2.1888522657002527,
+            "z": -146.03882892461365
+          },
+          "target": {
+            "x": 3414.298776700931,
+            "y": 1.6869371037533352,
+            "z": -145.95505166149684
+          },
+          "stress": 0.006348983332939427,
+          "hunger": 0.195956275708007,
+          "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+          "regionId": "53,-3"
+        },
+        {
+          "id": "kelp-ocean:53,-3:giant-kelpfish-3",
+          "speciesId": "giant-kelpfish",
+          "position": {
+            "x": 3415.6476951336617,
+            "y": 1.978380713574835,
+            "z": -145.67076784170416
+          },
+          "velocity": {
+            "x": -0.0016058012215580675,
+            "y": 0.022233691481094997,
+            "z": 0.009538077550246271
+          },
+          "heading": 1.7375891088727156,
+          "sizeM": 0.2988243610132486,
+          "energy": 0.792222260088695,
+          "state": "prey-feeding",
+          "alive": true,
+          "stateSince": 0.1,
+          "lastFeedAt": 0.7000000000000001,
+          "nextBite": 15.7,
+          "nextDecision": 0,
+          "home": {
+            "x": 3415.647317464351,
+            "y": 1.9387132362790407,
+            "z": -145.6885503816648
+          },
+          "target": {
+            "x": 3415.6204630243597,
+            "y": 2.0766173031133626,
+            "z": -145.62994311271223
+          },
+          "stress": 0.006731998773126281,
+          "hunger": 0.207777739911305,
+          "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+          "regionId": "53,-3",
+          "hasExplainedFeeding": true
+        }
+      ],
+      "primaryProduction": 0.000005992849772663377,
+      "totalPrimaryProduction": 0.000013179879735668382,
+      "counters": {
+        "grazingCount": 0,
+        "feedingCount": 6,
+        "approachCount": 2,
+        "shelterCount": 0,
+        "deathCount": 0
+      },
+      "ledger": {
+        "initial": 2.774,
+        "input": 0.0004399798797356706,
+        "ingested": 0.00486,
+        "exported": 0.00002959825007755864
+      },
+      "_nextSummary": 30,
+      "rockPatches": [
+        {
+          "id": "rock-food-0-0",
+          "rockIndex": 0,
+          "position": {
+            "x": 3414.995286091282,
+            "y": -3.546674765687781,
+            "z": -145.7314154249616
+          },
+          "algae": 0.08500043756003238,
+          "detritus": 0.04800904861984569
+        },
+        {
+          "id": "rock-food-0-1",
+          "rockIndex": 0,
+          "position": {
+            "x": 3414.153824766548,
+            "y": -3.546674765687781,
+            "z": -145.2455975026137
+          },
+          "algae": 0.08500043756003238,
+          "detritus": 0.04800880801857591
+        },
+        {
+          "id": "rock-food-0-2",
+          "rockIndex": 0,
+          "position": {
+            "x": 3414.153824766548,
+            "y": -3.546674765687781,
+            "z": -146.2172333473095
+          },
+          "algae": 0.08500043756003238,
+          "detritus": 0.04800880801857591
+        },
+        {
+          "id": "rock-food-1-0",
+          "rockIndex": 1,
+          "position": {
+            "x": 3405.8556671428246,
+            "y": 0.06480892930126103,
+            "z": -174.11790753924868
+          },
+          "algae": 0.08484054095625083,
+          "detritus": 0.04800880801304099
+        },
+        {
+          "id": "rock-food-1-1",
+          "rockIndex": 1,
+          "position": {
+            "x": 3404.8136909473906,
+            "y": 0.0457985065029779,
+            "z": -173.84784931843961
+          },
+          "algae": 0.08500054024039176,
+          "detritus": 0.04800880801859641
+        },
+        {
+          "id": "rock-food-1-2",
+          "rockIndex": 1,
+          "position": {
+            "x": 3405.100801765386,
+            "y": 0.05586123963804668,
+            "z": -174.88525628422875
+          },
+          "algae": 0.08500054055744247,
+          "detritus": 0.04800880801859648
+        },
+        {
+          "id": "rock-food-2-0",
+          "rockIndex": 2,
+          "position": {
+            "x": 3405.207188150992,
+            "y": 0.1491101806425711,
+            "z": -154.8110097588012
+          },
+          "algae": 0.08500054350383768,
+          "detritus": 0.04800880801859707
+        },
+        {
+          "id": "rock-food-2-1",
+          "rockIndex": 2,
+          "position": {
+            "x": 3403.7738721125675,
+            "y": 0.1491101806425711,
+            "z": -154.83452000491042
+          },
+          "algae": 0.08500054350383768,
+          "detritus": 0.04800880801859707
+        },
+        {
+          "id": "rock-food-2-2",
+          "rockIndex": 2,
+          "position": {
+            "x": 3404.510890602159,
+            "y": 0.1491101806425711,
+            "z": -156.06405298278293
+          },
+          "algae": 0.08468054485231433,
+          "detritus": 0.04800880795470833
+        }
+      ],
+      "floorPatches": [
+        {
+          "id": "floor-food-0",
+          "rockIndex": null,
+          "position": {
+            "x": 3411.2,
+            "y": -0.6499999761581421,
+            "z": -172.8
+          },
+          "algae": 0,
+          "detritus": 0.06880876462729558
+        },
+        {
+          "id": "floor-food-1",
+          "rockIndex": null,
+          "position": {
+            "x": 3411.2,
+            "y": -3.272524404525726,
+            "z": -147.2
+          },
+          "algae": 0,
+          "detritus": 0.07000876434951786
+        }
+      ],
+      "kelpPatches": [
+        {
+          "id": "kelp-food-0",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-1",
+          "kelpTissue": 0.35000150248431455
+        },
+        {
+          "id": "kelp-food-1",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+          "kelpTissue": 0.35000150248431455
+        },
+        {
+          "id": "kelp-food-2",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+          "kelpTissue": 0.35000150248431455
+        }
+      ],
+      "leafPatches": [
+        {
+          "id": "leaf-food-0-12",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-1",
+          "leafIndex": 12,
+          "biofilm": 0.03500034783560567
+        },
+        {
+          "id": "leaf-food-0-15",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-1",
+          "leafIndex": 15,
+          "biofilm": 0.03500037785603081
+        },
+        {
+          "id": "leaf-food-0-17",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-1",
+          "leafIndex": 17,
+          "biofilm": 0.03500040156693074
+        },
+        {
+          "id": "leaf-food-1-12",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+          "leafIndex": 12,
+          "biofilm": 0.03500034193255749
+        },
+        {
+          "id": "leaf-food-1-15",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+          "leafIndex": 15,
+          "biofilm": 0.03500037302360012
+        },
+        {
+          "id": "leaf-food-1-17",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+          "leafIndex": 17,
+          "biofilm": 0.03500038966264584
+        },
+        {
+          "id": "leaf-food-2-12",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+          "leafIndex": 12,
+          "biofilm": 0.035000333577879426
+        },
+        {
+          "id": "leaf-food-2-15",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+          "leafIndex": 15,
+          "biofilm": 0.03500036036507804
+        },
+        {
+          "id": "leaf-food-2-17",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+          "leafIndex": 17,
+          "biofilm": 0.03482038023027734
+        }
+      ],
+      "preyPatches": [
+        {
+          "id": "prey-food-0",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-1",
+          "fraction": 0.32,
+          "smallPrey": 0.024099945969326898
+        },
+        {
+          "id": "prey-food-1",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+          "fraction": 0.365,
+          "smallPrey": 0.024099945969326898
+        },
+        {
+          "id": "prey-food-2",
+          "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+          "fraction": 0.41000000000000003,
+          "smallPrey": 0.021100800855621264
+        }
+      ]
+    },
+    "driftCommunityVersion": 1,
+    "driftPatches": [
+      {
+        "id": "kelp-drift:53,-3:kelp-ocean:53,-3:giant-kelp-1:rock-food-0-0",
+        "hostId": "kelp-ocean:53,-3:giant-kelp-1",
+        "sourcePatchId": "kelp-food-0",
+        "rockPatchId": "rock-food-0-0",
+        "rockIndex": 0,
+        "regionId": "53,-3",
+        "position": {
+          "x": 3414.995286091282,
+          "y": -3.546674765687781,
+          "z": -145.7314154249616
+        },
+        "supportNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "stock": 8.912057138542373e-8,
+        "transferredIn": 8.912057138542373e-8,
+        "ingested": 0,
+        "returnedToDetritus": 0,
+        "lastTransfer": {
+          "timeSec": 2.2,
+          "hostId": "kelp-ocean:53,-3:giant-kelp-1",
+          "sourcePatchId": "kelp-food-0",
+          "sourceStockBefore": 0.3500015065352579,
+          "sourceStockAfter": 0.35000150248431455,
+          "stockBefore": 8.506962802274714e-8,
+          "stockAfter": 8.912057138542373e-8,
+          "sourceRemovedUnits": 4.050943362676597e-9,
+          "transferredUnits": 4.050943362676597e-9,
+          "fallbackDetritusUnits": 0,
+          "unit": "relative-organic-food-proxy-unit"
+        }
+      },
+      {
+        "id": "kelp-drift:53,-3:kelp-ocean:53,-3:giant-kelp-2:rock-food-0-0",
+        "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+        "sourcePatchId": "kelp-food-1",
+        "rockPatchId": "rock-food-0-0",
+        "rockIndex": 0,
+        "regionId": "53,-3",
+        "position": {
+          "x": 3414.995286091282,
+          "y": -3.546674765687781,
+          "z": -145.7314154249616
+        },
+        "supportNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "stock": 8.912057138542373e-8,
+        "transferredIn": 8.912057138542373e-8,
+        "ingested": 0,
+        "returnedToDetritus": 0,
+        "lastTransfer": {
+          "timeSec": 2.2,
+          "hostId": "kelp-ocean:53,-3:giant-kelp-2",
+          "sourcePatchId": "kelp-food-1",
+          "sourceStockBefore": 0.3500015065352579,
+          "sourceStockAfter": 0.35000150248431455,
+          "stockBefore": 8.506962802274714e-8,
+          "stockAfter": 8.912057138542373e-8,
+          "sourceRemovedUnits": 4.050943362676597e-9,
+          "transferredUnits": 4.050943362676597e-9,
+          "fallbackDetritusUnits": 0,
+          "unit": "relative-organic-food-proxy-unit"
+        }
+      },
+      {
+        "id": "kelp-drift:53,-3:kelp-ocean:53,-3:giant-kelp-3:rock-food-0-0",
+        "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+        "sourcePatchId": "kelp-food-2",
+        "rockPatchId": "rock-food-0-0",
+        "rockIndex": 0,
+        "regionId": "53,-3",
+        "position": {
+          "x": 3414.995286091282,
+          "y": -3.546674765687781,
+          "z": -145.7314154249616
+        },
+        "supportNormal": {
+          "x": 0,
+          "y": 1,
+          "z": 0
+        },
+        "stock": 8.912057138542373e-8,
+        "transferredIn": 8.912057138542373e-8,
+        "ingested": 0,
+        "returnedToDetritus": 0,
+        "lastTransfer": {
+          "timeSec": 2.2,
+          "hostId": "kelp-ocean:53,-3:giant-kelp-3",
+          "sourcePatchId": "kelp-food-2",
+          "sourceStockBefore": 0.3500015065352579,
+          "sourceStockAfter": 0.35000150248431455,
+          "stockBefore": 8.506962802274714e-8,
+          "stockAfter": 8.912057138542373e-8,
+          "sourceRemovedUnits": 4.050943362676597e-9,
+          "transferredUnits": 4.050943362676597e-9,
+          "fallbackDetritusUnits": 0,
+          "unit": "relative-organic-food-proxy-unit"
+        }
+      }
+    ],
+    "driftLedger": {
+      "transferredIn": 2.673617141562713e-7,
+      "ingested": 0,
+      "returnedToDetritus": 0
+    },
+    "supportGeometryVersion": 2,
+    "waterCommunityVersion": 1,
+    "waterCommunityAdded": 0,
+    "waterInitializedAtSec": 0,
+    "waterAgents": [],
+    "visitorCommunityVersion": 1,
+    "visitorInitializedAtSec": 0,
+    "visitorAgents": [],
+    "understorySceneryVersion": 1,
+    "understoryInitializedAtSec": 0,
+    "understoryPlants": [
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:339,-15:0",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:339,-15",
+        "x": 3396.8240541129344,
+        "y": 0.12081355577807529,
+        "z": -145.77648394431546,
+        "heightM": 1.5753221497870982,
+        "radiusM": 0.9451259870082139,
+        "phase": 3.4658108444759677
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:341,-19:0",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:341,-19",
+        "x": 3416.228779256688,
+        "y": 0.015248427242440238,
+        "z": -185.21922407128622,
+        "heightM": 1.6518380312249064,
+        "radiusM": 0.9761213257326744,
+        "phase": 3.238449034926848
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:341,-19:1",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:341,-19",
+        "x": 3414.1882578931622,
+        "y": 0.02737540454688902,
+        "z": -184.82873733309577,
+        "heightM": 1.4445647473912686,
+        "radiusM": 0.7523722624406218,
+        "phase": 4.5320277312032795
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:341,-19:2",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:341,-19",
+        "x": 3414.969511714339,
+        "y": 0.010651951559420997,
+        "z": -187.01283771293447,
+        "heightM": 1.777089014276862,
+        "radiusM": 0.9030706618563271,
+        "phase": 5.825864228755312
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:343,-15:0",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:343,-15",
+        "x": 3436.854318398855,
+        "y": -3.5490470119513056,
+        "z": -144.91576135712282,
+        "heightM": 1.7592368500772864,
+        "radiusM": 0.8763750106096267,
+        "phase": 3.505841485261407
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:343,-15:1",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:343,-15",
+        "x": 3434.725614525791,
+        "y": -3.5410433608297227,
+        "z": -143.9555010442557,
+        "heightM": 1.5439347204286604,
+        "radiusM": 0.7847646956797689,
+        "phase": 4.839026349327988
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:343,-15:2",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:343,-15",
+        "x": 3435.3061189604387,
+        "y": -3.549737763540192,
+        "z": -146.51923345561255,
+        "heightM": 1.6667113272473215,
+        "radiusM": 0.8019631743081845,
+        "phase": 2.696547317219449
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:343,-17:0",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:343,-17",
+        "x": 3435.905818705186,
+        "y": -3.2601680908751334,
+        "z": -163.9205178021741,
+        "heightM": 1.364606155268848,
+        "radiusM": 1.0426127620157786,
+        "phase": 4.563356224275052
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:343,-17:2",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:343,-17",
+        "x": 3433.697667868936,
+        "y": -3.2673008335709315,
+        "z": -165.71934777930053,
+        "heightM": 1.2248558923602104,
+        "radiusM": 1.0259392734500579,
+        "phase": 2.948493023289393
+      },
+      {
+        "id": "kelp-understory:53,-3:kelp-rock:343,-18:2",
+        "regionId": "53,-3",
+        "hostId": "kelp-rock:343,-18",
+        "x": 3434.4623423489616,
+        "y": -1.9120125917587154,
+        "z": -177.0254496426314,
+        "heightM": 1.6323102557100355,
+        "radiusM": 0.9996899416088125,
+        "phase": 2.185298591623638
+      }
+    ]
+  }
+}
