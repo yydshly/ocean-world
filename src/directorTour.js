@@ -70,6 +70,7 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
     const stop=DEMO_KELP_STOPS.find(row=>row.id===id);
     return step(`kelp-${id}`,stop.title,`${stop.description}。沿海床缓行，转看周围的整体生境。`,stop.action.id,12000);
   }),
+  step('kelp-bottom-life', '巨藻林：林底新群落', '沿岩底缓行，寻找当地实际生成的红鲍、藻蟹、海兔和附着海葵。', 'stop-kelp-bottom-life', 14000, 'walk', 'kelp-benthic-life'),
   step('kelp-forest-belt', '林缘生活带：巨藻群', '沿硬底巨藻群缓行，观察高冠、林下低冠和真实动物。', 'stop-forest-belt-interior', 14000),
   step('kelp-forest-opening', '林缘生活带：开放沙地', '在相邻的天然沉积空隙移动，回望巨藻林缘与上方水域。', 'stop-forest-belt-opening', 12000),
   ...layers('kelp', ['海带林：林底', '海带林：藻间水层', '海带林：上部水域']),

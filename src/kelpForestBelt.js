@@ -1,5 +1,6 @@
 import { oceanRockHeight } from './oceanRockShape.js';
 import { validateKelpSeascapePlan, kelpSeascapeRoute } from './kelpSeascape.js';
+import { KELP_BENTHIC_LIFE_ROUTE_STOPS } from './kelpBenthicLifeRoutes.js';
 
 export const KELP_FOREST_BELT_VERSION = 1;
 export const KELP_FOREST_BELT_OWNER_LIMIT = 25;
@@ -177,6 +178,7 @@ export function createKelpForestBeltGenerator(baseGenerator) {
   const facade = { ...base, baseGenerator: base,
     get forestRouteStops() { return kelpForestBeltRoute(base); },
     get kelpSeascapeRouteStops() { return kelpSeascapeRoute(base); },
+    get kelpBenthicLifeRouteStops() { return KELP_BENTHIC_LIFE_ROUTE_STOPS; },
     get forestBeltRevision() { return revision; },
     get forestBeltCandidatesActive() { return temporaryDepth > 0; },
     forestBeltPlan: (cx, cz) => committed.get(`${cx},${cz}`),

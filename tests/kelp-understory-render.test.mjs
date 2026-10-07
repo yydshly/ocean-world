@@ -80,9 +80,9 @@ test('nine owners and 288 plants share one geometry/material and release only ev
 });
 
 test('the original landscape triangles, roots and all native/water/visitor body prototypes remain byte-exact beside the new layer', t => {
-  const before = JSON.parse(readFileSync(new URL('../output/validation/kelp-understory-source-hashes-before.json', import.meta.url), 'utf8'));
+  const before = JSON.parse(readFileSync(new URL('../output/validation/kelp-benthic-life-source-hashes-before.json', import.meta.url), 'utf8'));
   for (const file of ['src/kelpOceanGeneration.js', 'src/kelpHabitat.js', 'src/kelpSimulation.js', 'src/oceanRockShape.js',
-    'src/world/KelpOceanChunks.js', 'src/world/kelpOrganisms.js', 'src/world/kelpWaterOrganisms.js', 'src/world/kelpVisitorOrganism.js', 'src/world/KelpOceanAnimals.js']) {
+    'src/world/KelpOceanChunks.js', 'src/world/kelpOrganisms.js', 'src/world/kelpWaterOrganisms.js', 'src/world/kelpVisitorOrganism.js']) {
     const entry = before.find(row => row.file === file); assert.ok(entry, `${file} was independently frozen before this milestone`);
     assert.equal(createHash('sha256').update(readFileSync(new URL(`../${file}`, import.meta.url))).digest('hex'), entry.sha256, `${file} preserves the delivered original body/landscape`);
   }

@@ -146,3 +146,12 @@ output/validation/screenshots/*
 !output/validation/ocean-support-performance-delivery.json
 !output/validation/ocean-support-performance-cloud-build.log
 !output/validation/ocean-support-performance-cloud-run.json
+
+!output/validation/kelp-benthic-life-model.json
+!output/validation/kelp-benthic-life-source-hashes-before.json
+!output/validation/kelp-benthic-life-checks.log
+!output/validation/kelp-benthic-life-packaging-retry.log
+!output/validation/kelp-benthic-life-build.log
+!output/validation/kelp-benthic-life-delivery.json
+!output/validation/kelp-benthic-life-cloud-build.log
+!output/validation/kelp-benthic-life-cloud-run.json

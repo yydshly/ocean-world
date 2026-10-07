@@ -1,0 +1,855 @@
+{
+  "scope": "CPU native generation, actual model and persisted records; no browser/GPU/visual acceptance",
+  "seed": "42",
+  "activeOwnerLimit": 9,
+  "sourceOwnerLimit": 25,
+  "animalRecordLimit": 20,
+  "newAnimalLimit": 4,
+  "sourceSpecies": [
+    {
+      "id": "red-abalone",
+      "scientificName": "Haliotis rufescens",
+      "measure": "shell-length"
+    },
+    {
+      "id": "northern-kelp-crab",
+      "scientificName": "Pugettia producta",
+      "measure": "carapace-width"
+    },
+    {
+      "id": "california-sea-hare",
+      "scientificName": "Aplysia californica",
+      "measure": "body-length"
+    },
+    {
+      "id": "giant-plumose-anemone",
+      "scientificName": "Metridium farcimen",
+      "measure": "expanded-column-height"
+    }
+  ],
+  "windows": [
+    {
+      "x": 416,
+      "z": -96
+    },
+    {
+      "x": 928,
+      "z": -96
+    }
+  ],
+  "union": [
+    "red-abalone",
+    "northern-kelp-crab",
+    "california-sea-hare",
+    "giant-plumose-anemone"
+  ],
+  "fed": [
+    "red-abalone",
+    "northern-kelp-crab",
+    "california-sea-hare",
+    "giant-plumose-anemone"
+  ],
+  "moved": [
+    "red-abalone",
+    "northern-kelp-crab",
+    "california-sea-hare"
+  ],
+  "owners": [
+    {
+      "id": "6,-2",
+      "totalAnimalRecordCount": 16,
+      "sourceDepthM": 19.09612863133017,
+      "initialFoodUnits": 2.774,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.15804883712902665,
+          "position": {
+            "x": 405.4454956110876,
+            "y": -6.2061133388618295,
+            "z": -84.37911430987656
+          },
+          "actualSupportDepthM": 18.20611333886183,
+          "hostId": "kelp-rock:40,-9",
+          "foodPatchId": "rock-food-2-0",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.0702777773933485,
+          "position": {
+            "x": 403.65877988411455,
+            "y": -6.19569410253615,
+            "z": -84.5119695014368
+          },
+          "actualSupportDepthM": 18.19569410253615,
+          "hostId": "kelp-rock:40,-9",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "carapace-width"
+        }
+      ]
+    },
+    {
+      "id": "7,-2",
+      "totalAnimalRecordCount": 17,
+      "sourceDepthM": 15.555362917016524,
+      "initialFoodUnits": 2.774,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.12601498663891106,
+          "position": {
+            "x": 465.0544317710521,
+            "y": -4.568663744397479,
+            "z": -115.73288805146768
+          },
+          "actualSupportDepthM": 16.56866374439748,
+          "hostId": "kelp-rock:46,-12",
+          "foodPatchId": "rock-food-1-0",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "california-sea-hare",
+          "sizeM": 0.13915854873135686,
+          "position": {
+            "x": 474.85040437701815,
+            "y": -0.7147403223660841,
+            "z": -73.60761061869705
+          },
+          "actualSupportDepthM": 12.714740322366085,
+          "hostId": "kelp-rock:47,-8",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "body-length"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.1960195960989222,
+          "position": {
+            "x": 464.18049269397153,
+            "y": -4.564438662377529,
+            "z": -116.70238976619191
+          },
+          "actualSupportDepthM": 16.56443866237753,
+          "hostId": "kelp-rock:46,-12",
+          "foodPatchId": "rock-food-1-2",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "6,-1",
+      "totalAnimalRecordCount": 15,
+      "sourceDepthM": 18.8204119605341,
+      "initialFoodUnits": 2.774,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.17912349235732108,
+          "position": {
+            "x": 424.12339415494523,
+            "y": -4.945777699068315,
+            "z": -24.192811805848134
+          },
+          "actualSupportDepthM": 16.945777699068316,
+          "hostId": "kelp-rock:42,-3",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.05958930477965623,
+          "position": {
+            "x": 427.2898441512812,
+            "y": -4.824091990644851,
+            "z": -45.42588711889566
+          },
+          "actualSupportDepthM": 16.824091990644853,
+          "hostId": "kelp-rock:42,-5",
+          "foodPatchId": "rock-food-0-0",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.2201280241413042,
+          "position": {
+            "x": 424.79753187684935,
+            "y": -4.945777699068315,
+            "z": -25.570358917294072
+          },
+          "actualSupportDepthM": 16.945777699068316,
+          "hostId": "kelp-rock:42,-3",
+          "foodPatchId": "rock-food-2-2",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "7,-1",
+      "totalAnimalRecordCount": 19,
+      "sourceDepthM": 15.7241089553578,
+      "initialFoodUnits": 2.774,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.14985358082223682,
+          "position": {
+            "x": 505.9548551245954,
+            "y": -6.247899514399159,
+            "z": -5.824611313972551
+          },
+          "actualSupportDepthM": 18.24789951439916,
+          "hostId": "kelp-rock:50,-1",
+          "foodPatchId": "rock-food-1-2",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.07451298710424453,
+          "position": {
+            "x": 506.93495173560297,
+            "y": -6.2953546600195045,
+            "z": -4.817673878302204
+          },
+          "actualSupportDepthM": 18.295354660019505,
+          "hostId": "kelp-rock:50,-1",
+          "foodPatchId": "rock-food-1-0",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "california-sea-hare",
+          "sizeM": 0.14161822633817792,
+          "position": {
+            "x": 484.50177611850194,
+            "y": -0.25915603855284064,
+            "z": -53.91047070413581
+          },
+          "actualSupportDepthM": 12.25915603855284,
+          "hostId": "kelp-rock:48,-6",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "body-length"
+        }
+      ]
+    },
+    {
+      "id": "5,-3",
+      "totalAnimalRecordCount": 16,
+      "sourceDepthM": 18.87262128494152,
+      "initialFoodUnits": 2.774,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.17667176084127276,
+          "position": {
+            "x": 375.1885698855631,
+            "y": -5.950188194486059,
+            "z": -184.61850210577467
+          },
+          "actualSupportDepthM": 17.95018819448606,
+          "hostId": "kelp-rock:37,-19",
+          "foodPatchId": "rock-food-2-2",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.05933300476055592,
+          "position": {
+            "x": 376.1190272719712,
+            "y": -6.035613720043452,
+            "z": -183.47977314602105
+          },
+          "actualSupportDepthM": 18.03561372004345,
+          "hostId": "kelp-rock:37,-19",
+          "foodPatchId": "rock-food-2-0",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.2880926698353142,
+          "position": {
+            "x": 336.67373843579315,
+            "y": -6.020682095642919,
+            "z": -155.74578150295224
+          },
+          "actualSupportDepthM": 18.02068209564292,
+          "hostId": "kelp-rock:33,-16",
+          "foodPatchId": "rock-food-0-0",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "6,-3",
+      "totalAnimalRecordCount": 17,
+      "sourceDepthM": 15.420826587311073,
+      "initialFoodUnits": 2.774,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.17438787961844354,
+          "position": {
+            "x": 413.8655420810278,
+            "y": -2.6936467795628993,
+            "z": -164.65131183368177
+          },
+          "actualSupportDepthM": 14.693646779562899,
+          "hostId": "kelp-rock:41,-17",
+          "foodPatchId": "rock-food-0-1",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.07483381460420788,
+          "position": {
+            "x": 413.81748091128526,
+            "y": -2.687511755797869,
+            "z": -166.5062475574571
+          },
+          "actualSupportDepthM": 14.68751175579787,
+          "hostId": "kelp-rock:41,-17",
+          "foodPatchId": "rock-food-0-2",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "california-sea-hare",
+          "sizeM": 0.16603839227929712,
+          "position": {
+            "x": 414.98088779947363,
+            "y": -2.6800477947722134,
+            "z": -165.799921952119
+          },
+          "actualSupportDepthM": 14.680047794772214,
+          "hostId": "kelp-rock:41,-17",
+          "foodPatchId": "rock-food-0-0",
+          "sizeMeasure": "body-length"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.2525982832722366,
+          "position": {
+            "x": 395.03880715875573,
+            "y": -5.713688042950655,
+            "z": -183.40286584348812
+          },
+          "actualSupportDepthM": 17.713688042950654,
+          "hostId": "kelp-rock:39,-19",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "7,-3",
+      "totalAnimalRecordCount": 18,
+      "sourceDepthM": 16.643174693547273,
+      "initialFoodUnits": 2.774,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.13538328136783093,
+          "position": {
+            "x": 485.75227771563397,
+            "y": -3.3693600914206514,
+            "z": -174.3591617588712
+          },
+          "actualSupportDepthM": 15.369360091420651,
+          "hostId": "kelp-rock:48,-18",
+          "foodPatchId": "rock-food-0-1",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.06087573333643377,
+          "position": {
+            "x": 454.12247253693755,
+            "y": -4.59793146341469,
+            "z": -133.75824385163986
+          },
+          "actualSupportDepthM": 16.59793146341469,
+          "hostId": "kelp-rock:45,-14",
+          "foodPatchId": "rock-food-1-1",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.26160607683472337,
+          "position": {
+            "x": 454.2601073231835,
+            "y": -4.59793146341469,
+            "z": -134.9362281542212
+          },
+          "actualSupportDepthM": 16.59793146341469,
+          "hostId": "kelp-rock:45,-14",
+          "foodPatchId": "rock-food-1-2",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "5,-2",
+      "totalAnimalRecordCount": 10,
+      "sourceDepthM": 19.915987721482416,
+      "initialFoodUnits": 1.8159999999999998,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.1701503043528646,
+          "position": {
+            "x": 355.8041791842487,
+            "y": -7.079494214689147,
+            "z": -85.91955609916195
+          },
+          "actualSupportDepthM": 19.07949421468915,
+          "hostId": "kelp-rock:35,-9",
+          "foodPatchId": "rock-food-2-2",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.05415341159328818,
+          "position": {
+            "x": 355.01825180115367,
+            "y": -7.079494214689147,
+            "z": -84.387424638029
+          },
+          "actualSupportDepthM": 19.07949421468915,
+          "hostId": "kelp-rock:35,-9",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.26701549043878914,
+          "position": {
+            "x": 326.75547085336785,
+            "y": -6.856904154306479,
+            "z": -94.43249672171409
+          },
+          "actualSupportDepthM": 18.856904154306477,
+          "hostId": "kelp-rock:32,-10",
+          "foodPatchId": "rock-food-1-0",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "5,-1",
+      "totalAnimalRecordCount": 12,
+      "sourceDepthM": 19.870345986020716,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.14522319942712783,
+          "position": {
+            "x": 375.01114167179736,
+            "y": -7.500228526459207,
+            "z": -34.7059401957073
+          },
+          "actualSupportDepthM": 19.500228526459207,
+          "hostId": "kelp-rock:37,-4",
+          "foodPatchId": "rock-food-0-2",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.06476893095066771,
+          "position": {
+            "x": 375.06265674623376,
+            "y": -7.455612987473679,
+            "z": -33.25037877693442
+          },
+          "actualSupportDepthM": 19.45561298747368,
+          "hostId": "kelp-rock:37,-4",
+          "foodPatchId": "rock-food-0-1",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.3062121798982844,
+          "position": {
+            "x": 376.3876685285889,
+            "y": -7.466571403272596,
+            "z": -33.74787908144775
+          },
+          "actualSupportDepthM": 19.466571403272596,
+          "hostId": "kelp-rock:37,-4",
+          "foodPatchId": "rock-food-0-0",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "13,-3",
+      "totalAnimalRecordCount": 12,
+      "sourceDepthM": 19.08282086297673,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.17534301843959837,
+          "position": {
+            "x": 855.2436568050923,
+            "y": -6.530013516032952,
+            "z": -165.67891202883757
+          },
+          "actualSupportDepthM": 18.53001351603295,
+          "hostId": "kelp-rock:85,-17",
+          "foodPatchId": "rock-food-1-1",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.04941362627316266,
+          "position": {
+            "x": 855.615320896082,
+            "y": -6.571561950783327,
+            "z": -157.4409575187868
+          },
+          "actualSupportDepthM": 18.571561950783327,
+          "hostId": "kelp-rock:85,-16",
+          "foodPatchId": "rock-food-2-2",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.1829735919367522,
+          "position": {
+            "x": 854.8250223136982,
+            "y": -6.571561950783327,
+            "z": -155.5704270299571
+          },
+          "actualSupportDepthM": 18.571561950783327,
+          "hostId": "kelp-rock:85,-16",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "14,-3",
+      "totalAnimalRecordCount": 11,
+      "sourceDepthM": 18.860012353185343,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.13473897974006832,
+          "position": {
+            "x": 913.9576438776174,
+            "y": -6.412739262263508,
+            "z": -165.2133636617377
+          },
+          "actualSupportDepthM": 18.412739262263507,
+          "hostId": "kelp-rock:91,-17",
+          "foodPatchId": "rock-food-2-2",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.05159614514093846,
+          "position": {
+            "x": 914.5061970259893,
+            "y": -6.39866985837682,
+            "z": -163.69739509114385
+          },
+          "actualSupportDepthM": 18.39866985837682,
+          "hostId": "kelp-rock:91,-17",
+          "foodPatchId": "rock-food-2-0",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.23760832499712706,
+          "position": {
+            "x": 912.9535476350279,
+            "y": -6.4322526523083035,
+            "z": -163.7131514014746
+          },
+          "actualSupportDepthM": 18.432252652308303,
+          "hostId": "kelp-rock:91,-17",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "15,-3",
+      "totalAnimalRecordCount": 9,
+      "sourceDepthM": 19.04408499072273,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.13387001065537332,
+          "position": {
+            "x": 974.7841750127762,
+            "y": -6.699254038577212,
+            "z": -176.24739466138865
+          },
+          "actualSupportDepthM": 18.699254038577212,
+          "hostId": "kelp-rock:97,-18",
+          "foodPatchId": "rock-food-0-0",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.05799924787133932,
+          "position": {
+            "x": 995.6492254891212,
+            "y": -6.904989857007482,
+            "z": -183.98947672662987
+          },
+          "actualSupportDepthM": 18.904989857007482,
+          "hostId": "kelp-rock:99,-19",
+          "foodPatchId": "rock-food-2-0",
+          "sizeMeasure": "carapace-width"
+        }
+      ]
+    },
+    {
+      "id": "13,-2",
+      "totalAnimalRecordCount": 9,
+      "sourceDepthM": 20.23665948376808,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.15298563656397163,
+          "position": {
+            "x": 866.6883726890741,
+            "y": -7.87867738210603,
+            "z": -85.06456413569069
+          },
+          "actualSupportDepthM": 19.87867738210603,
+          "hostId": "kelp-rock:86,-9",
+          "foodPatchId": "rock-food-0-0",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.2168802097532898,
+          "position": {
+            "x": 835.9803970014132,
+            "y": -7.34148380037904,
+            "z": -77.07260569958676
+          },
+          "actualSupportDepthM": 19.341483800379038,
+          "hostId": "kelp-rock:83,-8",
+          "foodPatchId": "rock-food-2-2",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "14,-2",
+      "totalAnimalRecordCount": 11,
+      "sourceDepthM": 19.602009961523812,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.16450526632368564,
+          "position": {
+            "x": 905.3989956671338,
+            "y": -6.998720625571386,
+            "z": -114.91553170487754
+          },
+          "actualSupportDepthM": 18.998720625571387,
+          "hostId": "kelp-rock:90,-12",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.2930857407394797,
+          "position": {
+            "x": 906.3775891329183,
+            "y": -6.976205808566858,
+            "z": -115.02006077844325
+          },
+          "actualSupportDepthM": 18.97620580856686,
+          "hostId": "kelp-rock:90,-12",
+          "foodPatchId": "rock-food-2-0",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "15,-2",
+      "totalAnimalRecordCount": 7,
+      "sourceDepthM": 20.751819019870354,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.16954211900476365,
+          "position": {
+            "x": 986.1978936863129,
+            "y": -7.875965231714037,
+            "z": -94.1356290749986
+          },
+          "actualSupportDepthM": 19.875965231714037,
+          "hostId": "kelp-rock:98,-10",
+          "foodPatchId": "rock-food-0-0",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.2030444566439837,
+          "position": {
+            "x": 1005.2015178173109,
+            "y": -9.334828571036606,
+            "z": -74.53316545239623
+          },
+          "actualSupportDepthM": 21.334828571036606,
+          "hostId": "kelp-rock:100,-8",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "13,-1",
+      "totalAnimalRecordCount": 8,
+      "sourceDepthM": 19.823268438418605,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.1654892707709223,
+          "position": {
+            "x": 864.9621321337077,
+            "y": -7.1863076975565425,
+            "z": -34.30482500728592
+          },
+          "actualSupportDepthM": 19.186307697556543,
+          "hostId": "kelp-rock:86,-4",
+          "foodPatchId": "rock-food-1-0",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.05427134687080979,
+          "position": {
+            "x": 865.5057888250349,
+            "y": -7.549069817624166,
+            "z": -54.55896637447117
+          },
+          "actualSupportDepthM": 19.549069817624165,
+          "hostId": "kelp-rock:86,-6",
+          "foodPatchId": "rock-food-2-0",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.19219319713767619,
+          "position": {
+            "x": 863.8651249487087,
+            "y": -7.1863076975565425,
+            "z": -34.129683112765015
+          },
+          "actualSupportDepthM": 19.186307697556543,
+          "hostId": "kelp-rock:86,-4",
+          "foodPatchId": "rock-food-1-1",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "14,-1",
+      "totalAnimalRecordCount": 11,
+      "sourceDepthM": 20.051708181268637,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "red-abalone",
+          "sizeM": 0.15726872584316878,
+          "position": {
+            "x": 904.9727967127808,
+            "y": -7.057491590885771,
+            "z": -14.716250320535185
+          },
+          "actualSupportDepthM": 19.05749159088577,
+          "hostId": "kelp-rock:90,-2",
+          "foodPatchId": "rock-food-2-2",
+          "sizeMeasure": "shell-length"
+        },
+        {
+          "speciesId": "northern-kelp-crab",
+          "sizeM": 0.07234459192492068,
+          "position": {
+            "x": 904.3461656535064,
+            "y": -7.103059656250026,
+            "z": -13.691121797364788
+          },
+          "actualSupportDepthM": 19.103059656250025,
+          "hostId": "kelp-rock:90,-2",
+          "foodPatchId": "rock-food-2-1",
+          "sizeMeasure": "carapace-width"
+        },
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.25076699507422745,
+          "position": {
+            "x": 954.6841018154627,
+            "y": -8.45275398241626,
+            "z": -44.62383054635478
+          },
+          "actualSupportDepthM": 20.45275398241626,
+          "hostId": "kelp-rock:95,-5",
+          "foodPatchId": "rock-food-1-1",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    },
+    {
+      "id": "15,-1",
+      "totalAnimalRecordCount": 7,
+      "sourceDepthM": 22.735957502873166,
+      "initialFoodUnits": 1.337,
+      "newAgents": [
+        {
+          "speciesId": "giant-plumose-anemone",
+          "sizeM": 0.21989144369028507,
+          "position": {
+            "x": 986.431956356802,
+            "y": -10.435924618937278,
+            "z": -5.424552535368598
+          },
+          "actualSupportDepthM": 22.43592461893728,
+          "hostId": "kelp-rock:98,-1",
+          "foodPatchId": "rock-food-2-2",
+          "sizeMeasure": "expanded-column-height"
+        }
+      ]
+    }
+  ],
+  "windowActivity": [
+    {
+      "position": {
+        "x": 416,
+        "z": -96
+      },
+      "observedSec": 4,
+      "newAnimalRecordCount": 27,
+      "movedNewAnimals": 20,
+      "fedNewAnimals": 27,
+      "actualNewConsumedUnits": 0.00432
+    },
+    {
+      "position": {
+        "x": 928,
+        "z": -96
+      },
+      "observedSec": 4,
+      "newAnimalRecordCount": 21,
+      "movedNewAnimals": 13,
+      "fedNewAnimals": 21,
+      "actualNewConsumedUnits": 0.00336
+    }
+  ],
+  "activeOwnerCount": 9,
+  "sourceOwnerCount": 0,
+  "maxFoodBalanceError": 2.220446049250313e-16,
+  "maxDriftBalanceError": 0
+}

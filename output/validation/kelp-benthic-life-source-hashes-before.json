@@ -1,0 +1,50 @@
+[
+  {
+    "file": "src/kelpOceanGeneration.js",
+    "sha256": "090ffead8a86da577492dd05e2d7824348e0414dfee2ad5f2c4d1c2d4a9c4cad",
+    "sourceCommit": "a8055ce",
+    "scope": "published-before-kelp-benthic-life-package"
+  },
+  {
+    "file": "src/kelpHabitat.js",
+    "sha256": "d89b5f5a8c1c4150f2725c877c79c818e0a1daaab65b138132ab46c822d0ca43",
+    "sourceCommit": "a8055ce",
+    "scope": "published-before-kelp-benthic-life-package"
+  },
+  {
+    "file": "src/kelpSimulation.js",
+    "sha256": "eaf562abfa990d3ddb1a8b6e98f4918c4d31d940481b805724d06d83131dc86b",
+    "sourceCommit": "a8055ce",
+    "scope": "published-before-kelp-benthic-life-package"
+  },
+  {
+    "file": "src/oceanRockShape.js",
+    "sha256": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "sourceCommit": "a8055ce",
+    "scope": "published-before-kelp-benthic-life-package"
+  },
+  {
+    "file": "src/world/KelpOceanChunks.js",
+    "sha256": "a3cf0f7931d922d293aebaff35b4311407fe05ec789d344f1bbce33e058d25e9",
+    "sourceCommit": "a8055ce",
+    "scope": "published-before-kelp-benthic-life-package"
+  },
+  {
+    "file": "src/world/kelpOrganisms.js",
+    "sha256": "8b03d9fd0040257cb86ec82b61d98f0572804012d3f02fab9fc92c5c8afa03cc",
+    "sourceCommit": "a8055ce",
+    "scope": "published-before-kelp-benthic-life-package"
+  },
+  {
+    "file": "src/world/kelpWaterOrganisms.js",
+    "sha256": "ba73ae4a647dfecaccb860a7c55ca3f758b1280d7b446c0c6603199a60267218",
+    "sourceCommit": "a8055ce",
+    "scope": "published-before-kelp-benthic-life-package"
+  },
+  {
+    "file": "src/world/kelpVisitorOrganism.js",
+    "sha256": "c9655060f84b8e667936cdc33399c9a409b70ee00a384d1df26b424b1ae0469c",
+    "sourceCommit": "a8055ce",
+    "scope": "published-before-kelp-benthic-life-package"
+  }
+]

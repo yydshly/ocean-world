@@ -1,0 +1,84 @@
+{
+  "scope": "Finite four kelp-bottom taxa through native persistent exploration; CPU and Three geometry, no browser/GPU/visual acceptance",
+  "files": {
+    "src/kelpBenthicLife.js": "d26d81d9d530d8662e69f675b6ee22bc621511b698f08a24af13e79f6360d4f6",
+    "src/kelpBenthicLifeSpecies.js": "47db651f4c5c614adeced43dcd7a69602866709cd8b58aaa1bb8901ce169e4ba",
+    "src/kelpBenthicLifeRoutes.js": "bb03cede46124a7b73e3f2fb3d9da4ab780f0c8193309ea42f1a45bf28d2ebb9",
+    "src/world/KelpBenthicLifeAssets.js": "4cbf1bfb3689e524ab085b224bb48c4f3615749dfdf7a5cdf8ba2e9999c6e62d",
+    "src/kelpOceanEcology.js": "b179053386b69d29d6c2a7670580d00cdb889b8fbbd68f70b13f28cda6795d05",
+    "src/kelpForestBelt.js": "1f15bbf758094e72ad92ed26d4f1334690d87e5347444df41fa2a1d1279e4c17",
+    "src/sceneCatalog.js": "ce85ea16ca14466275173265c69e4ed7b3decf4b977ff8dd84d81977ead47691",
+    "src/world/KelpOceanAnimals.js": "cb31926bda56da9d12185fd0fd966bb0c7d31ad7c501f6fca5fda55675cbf14a",
+    "src/world/ReefWorld.js": "e494dfffd02c1fcbbaa89339faef43fc54e132af6f74a5f90b4f7ecd78559281",
+    "src/OceanApp.jsx": "74c7d5fb4625f3f6f733620b4c67a6019d176564d61357ab9f95fd1c93daf84f",
+    "src/demoCapabilities.js": "d9dcf17cdfc28964a12e6c83a974e591600d0ed371c47742b86e566136de01f9",
+    "src/directorTour.js": "7801b5e7c083d1908ea713158ea3688eb5fbefa9d7d26c37c9e8b42b2d5b7651",
+    ".github/workflows/pages.yml": "467a64192220f2ba8c1259f9855298a0292c9762573dbb9dad752d55e2ebd2e8",
+    "src/kelpOceanGeneration.js": "090ffead8a86da577492dd05e2d7824348e0414dfee2ad5f2c4d1c2d4a9c4cad",
+    "src/kelpHabitat.js": "d89b5f5a8c1c4150f2725c877c79c818e0a1daaab65b138132ab46c822d0ca43",
+    "src/kelpSimulation.js": "eaf562abfa990d3ddb1a8b6e98f4918c4d31d940481b805724d06d83131dc86b",
+    "src/oceanRockShape.js": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "src/world/KelpOceanChunks.js": "a3cf0f7931d922d293aebaff35b4311407fe05ec789d344f1bbce33e058d25e9",
+    "src/world/kelpOrganisms.js": "8b03d9fd0040257cb86ec82b61d98f0572804012d3f02fab9fc92c5c8afa03cc",
+    "src/world/kelpWaterOrganisms.js": "ba73ae4a647dfecaccb860a7c55ca3f758b1280d7b446c0c6603199a60267218",
+    "src/world/kelpVisitorOrganism.js": "c9655060f84b8e667936cdc33399c9a409b70ee00a384d1df26b424b1ae0469c",
+    "tests/kelp-benthic-life.test.mjs": "e70a17f28d91555a9da3df2eae67410aa22cd25ea108b822b5fdea922c7bb9f9",
+    "tests/kelp-benthic-life-render.test.mjs": "bf5b74d87f5733656a449ed75144969d9b611ef342ef983dadfc5389e2d218b2",
+    "tests/kelp-benthic-life-ecology.test.mjs": "ee2221ce82048d221009612754617c95dc9f3aee8f2e724711cf7c395fb79125",
+    "tests/kelp-benthic-life-world.test.mjs": "76ba025fed0749a937c1331823992e6a2677b9d5e04de54824e55d04e8f18129",
+    "tests/demo-navigation.test.mjs": "59dbf8da5f9efc8289d1bf52d1aa6129ec9f23d5cb8c98d1477503a6e58338bd",
+    "tests/director-tour.test.mjs": "0b84a4cc927095e0d97858d1e14c2cb0d237f4de9963b45bf2d7f92a0b408149",
+    "tests/director-player.test.mjs": "af6b22b4cd601dd978e6e19a9a366432135fb22112c055fb8f14bebc1c54c264",
+    "tests/kelp-understory-render.test.mjs": "e043387f5f56e656eddde84e4281e37da34019fe3f4e564461a1fdde5ef6c7fb"
+  },
+  "entries": {
+    "kelpLife": "https://yydshly.github.io/ocean-world/?demo=kelp-life",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+  },
+  "local": {
+    "validationFileCount": 88,
+    "status": "complete",
+    "priorIntegrationTests": 628,
+    "priorIntegrationPassed": 628,
+    "priorBuild": "success",
+    "buildCount": 2,
+    "repairReason": "actual director framing and public dead clock found by independent review",
+    "uniqueChecks": 628,
+    "uniquePassedAfterPackagingRetry": 628,
+    "unresolvedFailures": 0,
+    "fullBatch": {
+      "tests": 628,
+      "pass": 627,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "postBuildPackagingRetry": {
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "fullBatchDurationMs": 187793.8645,
+    "productionBuild": "success",
+    "retryReason": "Concurrent Vite build recreates dist; Sites packaging check read before index.html existed. Unchanged build completed, all four packaging cases then pass. Cloud already builds before checks.",
+    "logs": [
+      "kelp-benthic-life-checks.log",
+      "kelp-benthic-life-packaging-retry.log",
+      "kelp-benthic-life-build.log"
+    ],
+    "currentSourceHashesExact": true
+  },
+  "model": "kelp-benthic-life-model.json",
+  "publication": {
+    "status": "pending",
+    "browserGpuVisualAcceptance": false
+  },
+  "director": {
+    "chapters": 55,
+    "distinctActions": 49,
+    "observationDurationSecAt1x": 656,
+    "loadingAndTransitionAdditional": true
+  }
+}

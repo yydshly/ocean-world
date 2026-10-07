@@ -70,11 +70,11 @@ test('the finite tour covers every existing entry without invented or destructiv
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
   assert.ok(duration >= 360000 && duration <= 660000, 'finite local moving observation stays approximately six to eleven minutes');
-  assert.equal(duration, 642000); assert.equal(included.size, 48);
+  assert.equal(duration, 656000); assert.equal(included.size, 49);
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 54);
+  assert.equal(DIRECTOR_STEPS.length, 55);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));
@@ -106,7 +106,7 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     'seagrass-meadow', 'sand-channel', 'reef-garden']);
   assert.deepEqual([...routes].sort(), DEMO_LIVING_STOPS.map(stop => stop.id).sort(), 'all ordinary route entries remain available');
   assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').map(step=>step.action.stopId),
-    ['kelp-scene-forest','kelp-scene-rockbed','kelp-scene-opening','kelp-scene-outer','forest-belt-interior','forest-belt-opening']);
+    ['kelp-scene-forest','kelp-scene-rockbed','kelp-scene-opening','kelp-scene-outer', 'kelp-bottom-life','forest-belt-interior','forest-belt-opening']);
   assert.ok(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').every(step=>step.action.biome==='kelp'));
   assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='deep-stop').map(step=>step.action.stopId),
     ['deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer','deep-plain-community','deep-slope-outcrop']);

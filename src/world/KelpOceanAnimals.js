@@ -1,11 +1,13 @@
 import * as THREE from 'three';
+import { createKelpBenthicLifeAsset, animateKelpBenthicLifeAsset, disposeKelpBenthicLifeAsset, isKelpBenthicLifeSpecies } from './KelpBenthicLifeAssets.js';
 import { createKelpOrganism, animateKelpOrganism, disposeKelpOrganism } from './kelpOrganisms.js';
 import { createKelpWaterOrganism, animateKelpWaterOrganism, disposeKelpWaterOrganism } from './kelpWaterOrganisms.js';
 import { createKelpVisitorOrganism, animateKelpVisitorOrganism, disposeKelpVisitorOrganism } from './kelpVisitorOrganism.js';
 
 const waterSpecies = id => id === 'blue-rockfish';
 const visitorSpecies = id => id === 'leopard-shark';
-const disposeAnimal = entity => visitorSpecies(entity.speciesId) ? disposeKelpVisitorOrganism(entity.object) :
+const disposeAnimal = entity => isKelpBenthicLifeSpecies(entity.speciesId) ? disposeKelpBenthicLifeAsset(entity.object) :
+  visitorSpecies(entity.speciesId) ? disposeKelpVisitorOrganism(entity.object) :
   waterSpecies(entity.speciesId) ? disposeKelpWaterOrganism(entity.object) : disposeKelpOrganism(entity.object);
 
 // Only animals enter entities/picking/counts. Every visible attached snail's
@@ -33,7 +35,8 @@ export class KelpOceanAnimals {
     for (const [id, agent] of live) {
       if (this.entities.has(id)) continue;
       const species = this.catalog.get(agent.speciesId);
-      const object = visitorSpecies(agent.speciesId) ? createKelpVisitorOrganism(species) :
+      const object = isKelpBenthicLifeSpecies(agent.speciesId) ? createKelpBenthicLifeAsset(species) :
+        visitorSpecies(agent.speciesId) ? createKelpVisitorOrganism(species) :
         waterSpecies(agent.speciesId) ? createKelpWaterOrganism(species) : createKelpOrganism(species);
       object.userData.agentId = id; object.userData.regionId = agent.regionId; object.userData.oceanStreaming = true;
       let hash = 2166136261; for (const char of id) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
@@ -106,7 +109,8 @@ export class KelpOceanAnimals {
         object.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(forward, up, side));
       }
       const clock = Number.isFinite(agent.timeSec) ? agent.timeSec : timeSec;
-      if (visitorSpecies(entity.speciesId)) animateKelpVisitorOrganism(object, clock, agent);
+      if (isKelpBenthicLifeSpecies(entity.speciesId)) animateKelpBenthicLifeAsset(object, clock, agent);
+      else if (visitorSpecies(entity.speciesId)) animateKelpVisitorOrganism(object, clock, agent);
       else if (waterSpecies(entity.speciesId)) animateKelpWaterOrganism(object, clock, agent);
       else animateKelpOrganism(object, clock, agent.localEnvironment ?? {});
     }

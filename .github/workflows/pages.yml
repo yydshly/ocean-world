@@ -32,6 +32,11 @@ jobs:
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test
+          tests/kelp-benthic-life.test.mjs
+          tests/kelp-benthic-life-render.test.mjs
+          tests/kelp-benthic-life-ecology.test.mjs
+          tests/kelp-benthic-life-world.test.mjs
+          tests/kelp-understory-render.test.mjs
           tests/ocean-support-index.test.mjs
           tests/ocean-support-index-equivalence.test.mjs
           tests/ocean-ecology.test.mjs

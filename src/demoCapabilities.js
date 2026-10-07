@@ -6,6 +6,7 @@ import { OCEAN_OBSERVATION_LAYERS } from './oceanLayerNavigation.js';
 import { DEEP_OCEAN_OBSERVATION_LAYERS } from './deepOceanNavigation.js';
 import { SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
 import { KELP_SEASCAPE_ROUTE_STOPS } from './kelpSeascape.js';
+import { KELP_BENTHIC_LIFE_ROUTE_STOPS } from './kelpBenthicLifeRoutes.js';
 import { DEEP_WHOLE_SEASCAPE_ROUTE_STOPS } from './deepWholeSeascape.js';
 
 const action = data => Object.freeze(data);
@@ -85,6 +86,9 @@ export const DEMO_KELP_STOPS = Object.freeze([
       'kelp-scene-opening':'天然沉积空隙、林缘与藻间水层',
       'kelp-scene-outer':'稀疏林缘、开放海床与上方水域' })[stop.id],
     action:{id:`stop-${stop.id}`,kind:'kelp-stop',biome:'kelp',stopId:stop.id}})),
+  ...KELP_BENTHIC_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+7).padStart(2,'0'),title:stop.label,
+    description:'沿原生岩底寻找红鲍、北方藻蟹、幼体海兔和附着海葵；当地组合由底质、水深与保存记录决定',
+    action:{id:`stop-${stop.id}`,kind:'kelp-stop',biome:'kelp',stopId:stop.id,kelpBenthicLifeEntry:true}})),
 ]);
 
 export const DEMO_DEEP_STOPS = Object.freeze([
