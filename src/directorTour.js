@@ -7,7 +7,7 @@ const actions = new Map(DEMO_ACTIONS.map(action => [action.id, action]));
 const livingStops = new Map(DEMO_LIVING_STOPS.map(stop => [stop.id, stop]));
 // The capability list retains its familiar button order. The director visits
 // the existing geographic stops from its opening area back towards the reef.
-const livingStopOrder = ['biodiversity-reef', 'benthic-community', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
+const livingStopOrder = ['meadow-life-community', 'biodiversity-reef', 'benthic-community', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
   'habitat-belt-reef', 'habitat-belt-meadow', 'seascape-transition', 'connected-seascape',
   'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
   'seagrass-meadow', 'sand-channel', 'reef-garden'];
@@ -60,7 +60,8 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
     const stop = livingStops.get(id);
     if (!stop) throw new TypeError(`Missing director observation stop: ${id}`);
     return step(`shallows-${stop.id}`, stop.title,
-      `${stop.description}。镜头沿海床缓慢前进，转向观察周围生境。`, stop.action.id, 12000);
+      `${stop.description}。镜头沿海床缓慢前进，转向观察周围生境。`, stop.action.id,
+      id==='meadow-life-community'?14000:12000, 'walk', id==='meadow-life-community'?'meadow-life':null);
   }),
   step('legacy-opening', '原浅礁：固定礁区', '在珊瑚、鱼群与岩隙之间缓行，观察原礁区的整体关系。', 'world-legacy-reef', 14000),
   step('legacy-wide', '原浅礁：全景入口', '绕礁群缓慢转看，留意开放水域与岩面的层次。', 'legacy-wide', 12000, 'orbit'),

@@ -1,0 +1,205 @@
+{
+  "scope": "Finite four sourced grass/sand/reef-edge animal forms in native persistent exploration; CPU/Three and hook tests; no browser/GPU/whole-tour visual acceptance",
+  "files": {
+    ".github/workflows/pages.yml": "8e58edd4d17251bcf9bbf9db2b2f88601913428955b3a235dfd8bedfc316fab0",
+    "src/OceanApp.jsx": "b274da00ef8ae7f3ab08635ecb46245e21ec508a3d6215470524c042fae8fe04",
+    "src/demoCapabilities.js": "23d3088292181c146868ceb49a1b9c424c39a69a3c9a66727fa94b9526581fcd",
+    "src/directorTour.js": "84115fae889aa0b02ab3dc669fa4e61c8d91db2d8c474a5192aa63c948156bcf",
+    "src/livingEcologyNetwork.js": "1f4fe4fa12882ee779f3c0379049a0ca539582db08181932195f93d48e87a562",
+    "src/livingRidgeGeology.js": "a28a6a21cd0b256855cd67b395e7b33f7bdc3fc27c9c797f3161d56daad88456",
+    "src/livingShallowsGeneration.js": "7ec1c1966adc08dc7298d73f5be23ce67ffdfbb9f93119ed5fef77b72aab4f24",
+    "src/oceanBenthicLife.js": "ec0484d5f41fceb09100a9b3741498615470726c7099c3504b6dc3b06649679e",
+    "src/oceanBiodiversity.js": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8",
+    "src/oceanEcology.js": "6a980d75468f6456ac2e4bb527d33fac0e7b754484b9bfe3901d1a9adc943eab",
+    "src/oceanGeneration.js": "a0575a489c61d518213225212687aab5692f1433ef599bca3442a0ef329e0c60",
+    "src/oceanMeadowLife.js": "eb26791b2c1e652c402ed53d19da4f4a760066ceb37060787ec4c069a23a38a6",
+    "src/oceanMeadowLifeRoutes.js": "596f65e62991e8979e413da2ab534a9455d0ef861402dd16e7bb85f7e5adb7bd",
+    "src/oceanMeadowLifeSpecies.js": "753974bf36d7501e1a0d151b251e343fb75cd419b89fd443092c6d2451f6ad68",
+    "src/oceanOpenWaterLife.js": "6175afdf93c611ec4b41b26767bf558d4b8ad0b691fd354c9b853eb7b4c89350",
+    "src/oceanReefGuild.js": "a036d7fb33d2455fa9ced7f0460ef007d48df5e694740e5b3f9c1cff59985e85",
+    "src/oceanRockShape.js": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "src/sceneCatalog.js": "d2c7984c55404a754fbc0b0d80929d62a66aa79d1d2d873ebbb35f996ca1192e",
+    "src/useDirectorTour.js": "47eb5a8c32cf10ba2214fb1928c8c8c507d072f654de8d5947d05c09f8784dc8",
+    "src/world/OceanAnimals.js": "a585072abdc239d77e9cc0c7ad0faf064322657a085d356282fbaf5030fd5a50",
+    "src/world/OceanBenthicLifeAssets.js": "43af6c5977c4d4a8d26aa6f69ce93e402a4f539b65a5a119d2cd83d15045167b",
+    "src/world/OceanBiodiversityAssets.js": "9a1fc6559722aa7c961bb99c0ef89017690750479aa9231c59474c83ebfb2a22",
+    "src/world/OceanMeadowLifeAssets.js": "366fc9d07a96bf01cfaeef1faa3d6f239fb2289e73c6b936e08d6bd63a3ac789",
+    "src/world/ReefWorld.js": "e7cf2b844b59c90b77e89831372f4a4412e9793a67228676fe9d38541abb4d76",
+    "tests/deep-benthic-life-world.test.mjs": "c2eb27c4924bcd8cfed85a812a53b2fda2cbd9a314768f00e4372cee7520157f",
+    "tests/demo-navigation.test.mjs": "39bc5a12fe2202b0d8ed8097d196ceca14786dfdbd9c6af927fa06e411d9250b",
+    "tests/director-player.test.mjs": "97416a506106169637f8949adf678eb49dd5595122749f6ad6e77140f8faa58a",
+    "tests/director-tour.test.mjs": "6a3c48b459ca447d58c0ee8e52b91a3e7dd3a88845583d3eb9f91acc7a996f0c",
+    "tests/director-transition-hook.test.mjs": "2b7f3cc2d5e87f02adfd1d74b5690bcbf937dbe15b91692833011a90321d928a",
+    "tests/kelp-benthic-life-world.test.mjs": "21186dcad2243dd13116e2110d7421713eab2e4311d0f3bc76083397a24706a1",
+    "tests/living-shallows-world.test.mjs": "a458a30080a6d00698e32a687a9576e257050901fe2ed4da10a12e77233406f6",
+    "tests/ocean-benthic-life-world.test.mjs": "c67ac12e36c4aedb92611948aef3896a0e4b3883b8708d0e5a6dd57f24cf4e39",
+    "tests/ocean-meadow-life-ecology.test.mjs": "cf7c64caf6b05c2a028431fcb85d0a21b417ed40f08fb6a1f5d0338382ff9798",
+    "tests/ocean-meadow-life-render.test.mjs": "e59eda5358da8d22f30734190631d3276fce2e910b88f4691c788e1e97a038c0",
+    "tests/ocean-meadow-life-world.test.mjs": "0a5398ea2746a7150b0cf4a8ce74bce7d1e8d5e0f61c39f0892bf511263b34c6",
+    "tests/ocean-meadow-life.test.mjs": "5ae1bcdfdaeb77b99cb10c7e18330e84b68c4454b028560261a0bfd343dd5d39"
+  },
+  "originalSourceBaseline": "1786a7fd99b3765cb7e6c54162cce57862a25272",
+  "originalSourceExact": {
+    "src/oceanGeneration.js": true,
+    "src/livingShallowsGeneration.js": true,
+    "src/livingEcologyNetwork.js": true,
+    "src/oceanReefGuild.js": true,
+    "src/oceanOpenWaterLife.js": true,
+    "src/oceanBiodiversity.js": true,
+    "src/oceanBenthicLife.js": true,
+    "src/oceanRockShape.js": true,
+    "src/world/OceanBiodiversityAssets.js": true,
+    "src/world/OceanBenthicLifeAssets.js": true
+  },
+  "entries": {
+    "meadowLife": "https://yydshly.github.io/ocean-world/?demo=meadow-life",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+  },
+  "local": {
+    "validationFileCount": 96,
+    "uniqueChecks": 679,
+    "fullBatch": {
+      "tests": 679,
+      "pass": 679,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "durationMs": 167827.31
+    },
+    "productionBuild": "success",
+    "buildCount": 2,
+    "productionUnchangedSinceFinalBuild": true,
+    "currentSourceHashesExact": true,
+    "diagnosticInitialBatch": {
+      "tests": 678,
+      "pass": 677,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0,
+      "durationMs": 167814.949
+    },
+    "diagnosticInitialBatchFrozenSource": false,
+    "initialFailure": "Existing living/legacy world constructor expected-option fixture omitted the newly added meadowLife option. Expectations updated exactly.",
+    "integrationRepair": {
+      "checks": {
+        "tests": 17,
+        "pass": 17,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "durationMs": 1023.8467
+      },
+      "directorPreparation": "Wire actual production hook to native meadow-life preparation under full cover, wait for actual second owner window before reveal, reject unavailable historical/empty native community, and prevent stale token takeover."
+    },
+    "logs": [
+      "ocean-meadow-life-build-initial.log",
+      "ocean-meadow-life-checks-initial.log",
+      "ocean-meadow-life-integration-repair.log",
+      "ocean-meadow-life-build.log",
+      "ocean-meadow-life-checks.log"
+    ],
+    "postCheckTestOnlyNormalization": {
+      "tests/ocean-meadow-life-render.test.mjs": {
+        "before": "f958db75c0b7b290d85199887e6a3202b40faedad3e24b30db562fc0cbad0d07",
+        "after": "e59eda5358da8d22f30734190631d3276fce2e910b88f4691c788e1e97a038c0",
+        "change": "Remove one trailing blank line at EOF only; no production change or executable token change."
+      }
+    },
+    "testOnlyFormatRecheck": {
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "log": "ocean-meadow-life-test-format-recheck.log",
+      "countedAsNewUniqueChecks": false
+    }
+  },
+  "model": "ocean-meadow-life-model.json",
+  "modelSummary": {
+    "windows": [
+      {
+        "position": {
+          "x": 12448,
+          "z": 1312
+        },
+        "simulatedNightSec": 8,
+        "simulatedDaySec": 4,
+        "observedSec": 12,
+        "activeOwnerCount": 9,
+        "sourceOwnerCount": 11,
+        "supportOwnerCount": 16,
+        "newAnimalCount": 22,
+        "actualFeedings": 36
+      },
+      {
+        "position": {
+          "x": 12064,
+          "z": 928
+        },
+        "simulatedNightSec": 8,
+        "simulatedDaySec": 4,
+        "observedSec": 12,
+        "activeOwnerCount": 9,
+        "sourceOwnerCount": 12,
+        "supportOwnerCount": 19,
+        "newAnimalCount": 17,
+        "actualFeedings": 36
+      }
+    ],
+    "countsBySpecies": {
+      "sand-edge-seahorse": {
+        "bornIndividuals": 7,
+        "aliveAfterObservation": 7,
+        "nativeClockObservedIndividuals": 7,
+        "fedIndividuals": 4,
+        "successfulBites": 12,
+        "movedIndividuals": 0
+      },
+      "reef-cuttlefish": {
+        "bornIndividuals": 16,
+        "aliveAfterObservation": 16,
+        "nativeClockObservedIndividuals": 16,
+        "fedIndividuals": 8,
+        "successfulBites": 24,
+        "movedIndividuals": 16
+      },
+      "barrel-sea-pen": {
+        "bornIndividuals": 12,
+        "aliveAfterObservation": 12,
+        "nativeClockObservedIndividuals": 12,
+        "fedIndividuals": 12,
+        "successfulBites": 24,
+        "movedIndividuals": 0
+      },
+      "spider-conch": {
+        "bornIndividuals": 4,
+        "aliveAfterObservation": 4,
+        "nativeClockObservedIndividuals": 4,
+        "fedIndividuals": 4,
+        "successfulBites": 12,
+        "movedIndividuals": 4
+      }
+    },
+    "totalBornIndividuals": 39,
+    "totalFedIndividuals": 28,
+    "totalSuccessfulBites": 72,
+    "movedIndividuals": 20,
+    "maxMaterialBalanceError": 1.0880185641326534e-14
+  },
+  "limits": {
+    "activeOwners": 9,
+    "sourceOwners": 25,
+    "animalRecordsPerOwner": 20,
+    "newAnimalRecordsPerOwner": 4
+  },
+  "director": {
+    "chapters": 57,
+    "uniqueActions": 51,
+    "observationSecAt1x": 684,
+    "newChapterSec": 14,
+    "loadingAndTransitions": "additional"
+  },
+  "publication": {
+    "status": "pending"
+  }
+}

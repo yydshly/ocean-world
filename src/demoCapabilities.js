@@ -1,5 +1,6 @@
 import { OCEAN_BIODIVERSITY_ROUTE_STOPS } from './oceanBiodiversityRoutes.js';
 import { OCEAN_BENTHIC_LIFE_ROUTE_STOPS } from './oceanBenthicLifeRoutes.js';
+import { OCEAN_MEADOW_LIFE_ROUTE_STOPS } from './oceanMeadowLifeRoutes.js';
 import { LIVING_SHALLOWS_ROUTE } from './livingShallowsGeneration.js';
 import { LIVING_SHALLOWS_PROFILE } from './livingShallows.js';
 import { OCEAN_OBSERVATION_LAYERS } from './oceanLayerNavigation.js';
@@ -33,6 +34,7 @@ export const DEMO_WORLDS = Object.freeze([
 ]);
 
 const stopHints = {
+  'meadow-life-community': '观察实际海草间的抓附生命、礁缘游动动物和砂地附着群落；当地组合由水深、底质与保存记录决定',
   'benthic-community': '沿沙地与礁底观察魟、羊鱼、宝螺和寄居蟹，实际组合由当地底质与水深决定',
   'biodiversity-reef': '普通探索中的礁缘丰富群落，观察团块珊瑚、附着生物与近底动物；当地组合随生境而变',
   'reef-garden': '珊瑚岩礁与相邻生活空间',
@@ -67,13 +69,14 @@ const stops = [...LIVING_SHALLOWS_ROUTE,
   { id: 'seascape-transition', label: '相邻生境' },
   { id: 'habitat-belt-reef', label: '生活带：礁群沙道' },
   { id: 'habitat-belt-meadow', label: '生活带：草床水层' },
-  ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS,
+  ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS,
 ];
 
 export const DEMO_LIVING_STOPS = Object.freeze(stops.map((stop, index) => entry({
   id: stop.id, number: String(index + 1).padStart(2, '0'), title: stop.label,
   description: stopHints[stop.id],
-  action: { id: `stop-${stop.id}`, kind: 'living-stop', biome: 'reef', profile: LIVING_SHALLOWS_PROFILE, stopId: stop.id },
+  action: { id: `stop-${stop.id}`, kind: 'living-stop', biome: 'reef', profile: LIVING_SHALLOWS_PROFILE, stopId: stop.id,
+    ...(stop.id==='meadow-life-community'?{meadowLifeEntry:true}:{}) },
 })));
 
 export const DEMO_KELP_STOPS = Object.freeze([

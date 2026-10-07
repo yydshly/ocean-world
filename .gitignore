@@ -163,3 +163,16 @@ output/validation/screenshots/*
 !output/validation/deep-benthic-life-delivery.json
 !output/validation/deep-benthic-life-cloud-build.log
 !output/validation/deep-benthic-life-cloud-run.json
+
+!output/validation/ocean-meadow-life-model.json
+!output/validation/ocean-meadow-life-source-hashes-before.json
+!output/validation/ocean-meadow-life-initial-source-hashes.json
+!output/validation/ocean-meadow-life-checks-initial.log
+!output/validation/ocean-meadow-life-checks.log
+!output/validation/ocean-meadow-life-integration-repair.log
+!output/validation/ocean-meadow-life-build-initial.log
+!output/validation/ocean-meadow-life-build.log
+!output/validation/ocean-meadow-life-delivery.json
+!output/validation/ocean-meadow-life-cloud-build.log
+!output/validation/ocean-meadow-life-cloud-run.json
+!output/validation/ocean-meadow-life-test-format-recheck.log

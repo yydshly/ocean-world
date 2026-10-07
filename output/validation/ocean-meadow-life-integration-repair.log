@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: a distant reposition executes only under full cover and begins its shot only after reveal
+ok 1 - a distant reposition executes only under full cover and begins its shot only after reveal
+  ---
+  duration_ms: 6.2538
+  type: 'test'
+  ...
+# Subtest: cross-world loading and a second physical window requested by preparation remain covered until truly ready
+ok 2 - cross-world loading and a second physical window requested by preparation remain covered until truly ready
+  ---
+  duration_ms: 4.2923
+  type: 'test'
+  ...
+# Subtest: a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window
+ok 3 - a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window
+  ---
+  duration_ms: 0.9403
+  type: 'test'
+  ...
+# Subtest: a keep entry opens its existing tool without fading or acquiring an entry camera path
+ok 4 - a keep entry opens its existing tool without fading or acquiring an entry camera path
+  ---
+  duration_ms: 0.853
+  type: 'test'
+  ...
+# Subtest: playing, hidden state and playback rate control the transition while preserving chapter time
+ok 5 - playing, hidden state and playback rate control the transition while preserving chapter time
+  ---
+  duration_ms: 0.8814
+  type: 'test'
+  ...
+# Subtest: seek and stop invalidate old fades, pause promises and applied callbacks before they can reposition a new token
+ok 6 - seek and stop invalidate old fades, pause promises and applied callbacks before they can reposition a new token
+  ---
+  duration_ms: 1.318
+  type: 'test'
+  ...
+# Subtest: a failed entry cannot fabricate readiness, chapter time or a started observation shot
+ok 7 - a failed entry cannot fabricate readiness, chapter time or a started observation shot
+  ---
+  duration_ms: 2.7746
+  type: 'test'
+  ...
+# Subtest: the real meadow chapter prepares actual life under cover, forces a safe cut, and waits for its second native window
+ok 8 - the real meadow chapter prepares actual life under cover, forces a safe cut, and waits for its second native window
+  ---
+  duration_ms: 6.264
+  type: 'test'
+  ...
+# Subtest: scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+ok 9 - scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+  ---
+  duration_ms: 27.5792
+  type: 'test'
+  ...
+# Subtest: new scene hides authored terrain and disables all three old additive scenery systems
+ok 10 - new scene hides authored terrain and disables all three old additive scenery systems
+  ---
+  duration_ms: 7.2504
+  type: 'test'
+  ...
+# Subtest: world restores saved global forcing and clock before handing environment to regional ecology
+ok 11 - world restores saved global forcing and clock before handing environment to regional ecology
+  ---
+  duration_ms: 7.5512
+  type: 'test'
+  ...
+# Subtest: new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+ok 12 - new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+  ---
+  duration_ms: 7.6507
+  type: 'test'
+  ...
+# Subtest: route controls use finite ordinary travel without teleport or ecology replacement
+ok 13 - route controls use finite ordinary travel without teleport or ecology replacement
+  ---
+  duration_ms: 194.9867
+  type: 'test'
+  ...
+# Subtest: the two living-belt entries face their planned local spaces and keep original ecological controls
+ok 14 - the two living-belt entries face their planned local spaces and keep original ecological controls
+  ---
+  duration_ms: 270.6456
+  type: 'test'
+  ...
+# Subtest: environment updates and pause save the actual global forcing and latest time
+ok 15 - environment updates and pause save the actual global forcing and latest time
+  ---
+  duration_ms: 2.7903
+  type: 'test'
+  ...
+# Subtest: explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+ok 16 - explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+  ---
+  duration_ms: 197.5145
+  type: 'test'
+  ...
+# Subtest: new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+ok 17 - new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+  ---
+  duration_ms: 158.7554
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1023.8467

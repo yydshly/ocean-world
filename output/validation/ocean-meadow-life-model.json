@@ -1,0 +1,3799 @@
+{
+  "scope": "finite actual CPU production generation, stocks, native intake writes and persistence; no browser/GPU/visual acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "activeOwnerLimit": 9,
+  "sourceOwnerLimit": 25,
+  "animalRecordLimit": 20,
+  "newAnimalRecordLimit": 4,
+  "sourceSpecies": [
+    {
+      "id": "sand-edge-seahorse",
+      "scientificName": "Hippocampus kuda s.l.",
+      "identityLevel": "species-complex-representative",
+      "sizeMeasure": "straightened-height",
+      "selectedDepthM": [
+        3,
+        15
+      ],
+      "sourceLinks": [
+        "https://projectseahorse.org/wp-content/uploads/2021/06/Seahorse_ID_Guide_2004.pdf",
+        "https://www.si.edu/object/hippocampus-kuda%3Anmnhvz_5294935",
+        "https://ija.scholasticahq.com/article/20489.pdf"
+      ]
+    },
+    {
+      "id": "reef-cuttlefish",
+      "scientificName": "Ascarosepion latimanus",
+      "identityLevel": "species",
+      "sizeMeasure": "mantle-length",
+      "selectedDepthM": [
+        3,
+        18
+      ],
+      "sourceLinks": [
+        "https://www.marinespecies.org/aphia.php?id=1667002&p=taxdetails",
+        "https://www.fao.org/4/a0150e/a0150e10.pdf",
+        "https://lifg.australian.museum/Group.html?groupId=06x7MW0Y&hierarchyId=qBHH2Q3E"
+      ]
+    },
+    {
+      "id": "barrel-sea-pen",
+      "scientificName": "Cavernularia obesa",
+      "identityLevel": "species",
+      "sizeMeasure": "colony-body-length",
+      "selectedDepthM": [
+        5,
+        15
+      ],
+      "sourceLinks": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12971188/",
+        "https://www.mof.go.kr/doc/ko/selectDoc.do?=&bbsSeq=10&docSeq=49396&menuSeq=971",
+        "https://repository.kulib.kyoto-u.ac.jp/dspace/bitstream/2433/175765/1/fia020_455.pdf",
+        "https://ukmpa.marinebiodiversity.org/uk_sacs/communities/seapens/sp1_2.htm",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3884763/"
+      ]
+    },
+    {
+      "id": "spider-conch",
+      "scientificName": "Lambis lambis",
+      "identityLevel": "species",
+      "sizeMeasure": "shell-length",
+      "selectedDepthM": [
+        3,
+        10
+      ],
+      "sourceLinks": [
+        "https://www.fao.org/4/i2741e/i2741e05.pdf",
+        "https://openknowledge.fao.org/server/api/core/bitstreams/f32d004b-6358-44f3-8242-b9d23e5346d0/content",
+        "https://www.researchgate.net/publication/373113694_Conchylia_54_1-2_Juli_July_2023_43_An_interesting_form_of_Lambis_lambis_LINNAEUS_1758_and_remarks_on_Lambis_vertriesti_DEKKERS_MAXWELL_2022_Caenogastropoda_Littorinimorpha_Strombidae",
+        "https://lifg.australian.museum/Group.html?groupId=PT5tJtG5&hierarchyId=PVWrQCLG",
+        "https://www.int-res.com/articles/meps2011/432/m432p083.pdf"
+      ]
+    }
+  ],
+  "windows": [
+    {
+      "x": 12448,
+      "z": 1312
+    },
+    {
+      "x": 12064,
+      "z": 928
+    }
+  ],
+  "union": [
+    "sand-edge-seahorse",
+    "reef-cuttlefish",
+    "barrel-sea-pen",
+    "spider-conch"
+  ],
+  "fed": [
+    "sand-edge-seahorse",
+    "reef-cuttlefish",
+    "barrel-sea-pen",
+    "spider-conch"
+  ],
+  "moved": [
+    "reef-cuttlefish",
+    "spider-conch"
+  ],
+  "active": [
+    "sand-edge-seahorse",
+    "reef-cuttlefish",
+    "barrel-sea-pen",
+    "spider-conch"
+  ],
+  "countsBySpecies": {
+    "sand-edge-seahorse": {
+      "bornIndividuals": 7,
+      "aliveAfterObservation": 7,
+      "nativeClockObservedIndividuals": 7,
+      "fedIndividuals": 4,
+      "successfulBites": 12,
+      "movedIndividuals": 0
+    },
+    "reef-cuttlefish": {
+      "bornIndividuals": 16,
+      "aliveAfterObservation": 16,
+      "nativeClockObservedIndividuals": 16,
+      "fedIndividuals": 8,
+      "successfulBites": 24,
+      "movedIndividuals": 16
+    },
+    "barrel-sea-pen": {
+      "bornIndividuals": 12,
+      "aliveAfterObservation": 12,
+      "nativeClockObservedIndividuals": 12,
+      "fedIndividuals": 12,
+      "successfulBites": 24,
+      "movedIndividuals": 0
+    },
+    "spider-conch": {
+      "bornIndividuals": 4,
+      "aliveAfterObservation": 4,
+      "nativeClockObservedIndividuals": 4,
+      "fedIndividuals": 4,
+      "successfulBites": 12,
+      "movedIndividuals": 4
+    }
+  },
+  "owners": [
+    {
+      "id": "194,19",
+      "animalRecordCount": 16,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 6,
+          "sand": 35,
+          "seagrass": 23,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "seagrass",
+        "minDepthM": 12.026286257085184,
+        "maxDepthM": 13.652863078793988
+      },
+      "initialStocks": {
+        "algae": 0.41000000000000003,
+        "plankton": 0.46075401110574604,
+        "detritus": 0.5,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0.06,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:194,19:meadow-life:sand-edge-seahorse:grass:living-grass:4139,415:0",
+          "speciesId": "sand-edge-seahorse",
+          "sizeM": 0.10783132864162326,
+          "sizeMeasure": "straightened-height",
+          "position": {
+            "x": 12417.600249881847,
+            "z": 1244.8923279845665,
+            "y": -3.3290448879124934
+          },
+          "actualRootDepthM": 11.329044887912493,
+          "actualSubstrate": "sand",
+          "hostId": "living-grass:4139,415",
+          "mode": "grass-tail",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:194,19:meadow-life:reef-cuttlefish:edge:living-rubble:3106,314:3",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.18818807246163488,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12426.955188638181,
+            "z": 1258.2361054214673,
+            "y": -3.5841412497067395
+          },
+          "actualRootDepthM": 11.58414124970674,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:194,19:meadow-life:barrel-sea-pen:edge:living-rubble:3106,314:3",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.09280893664807081,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12426.955188638181,
+            "y": -4.0403614328944535,
+            "z": 1258.2361054214673
+          },
+          "actualRootDepthM": 12.040361432894453,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "195,19",
+      "animalRecordCount": 15,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 4,
+          "sand": 60,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 13.82895202396681,
+        "maxDepthM": 16.138647538425065
+      },
+      "initialStocks": {
+        "algae": 0.41000000000000003,
+        "plankton": 0.6412742947228253,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:195,19:meadow-life:reef-cuttlefish:edge:living-rubble:3134,316:3",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.1864476718008518,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12537.807301037356,
+            "z": 1264.3590545788165,
+            "y": -7.221639802683119
+          },
+          "actualRootDepthM": 15.221639802683118,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:195,19:meadow-life:barrel-sea-pen:edge:living-rubble:3128,316:2",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.09333044413477182,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12514.030991812144,
+            "y": -6.860835480440444,
+            "z": 1265.2620998282841
+          },
+          "actualRootDepthM": 14.860835480440443,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "193,19",
+      "animalRecordCount": 16,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 0,
+          "seagrass": 64,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": null,
+        "minDepthM": 12.069254676743483,
+        "maxDepthM": 12.76612908330187
+      },
+      "initialStocks": {
+        "algae": 0.34,
+        "plankton": 0.47343417797237636,
+        "detritus": 0.5,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0.06,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:193,19:meadow-life:sand-edge-seahorse:grass:living-grass:4118,423:0",
+          "speciesId": "sand-edge-seahorse",
+          "sizeM": 0.15260017065797002,
+          "sizeMeasure": "straightened-height",
+          "position": {
+            "x": 12354.291119756082,
+            "z": 1268.9620768725033,
+            "y": -4.124998751379965
+          },
+          "actualRootDepthM": 12.124998751379966,
+          "actualSubstrate": "sand",
+          "hostId": "living-grass:4118,423",
+          "mode": "grass-tail",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:193,19:meadow-life:reef-cuttlefish:edge:living-rubble:3095,313:3",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.20244404677301645,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12381.021420938656,
+            "z": 1252.4290288625534,
+            "y": -3.8648287918782867
+          },
+          "actualRootDepthM": 11.864828791878287,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:193,19:meadow-life:barrel-sea-pen:edge:living-rubble:3101,315:0",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.09564758962020278,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12405.122582800777,
+            "y": -4.1851055779092174,
+            "z": 1261.2870156238343
+          },
+          "actualRootDepthM": 12.185105577909217,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "193,20",
+      "animalRecordCount": 11,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 0,
+          "seagrass": 64,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": null,
+        "minDepthM": 12.047071535089882,
+        "maxDepthM": 12.774416664184763
+      },
+      "initialStocks": {
+        "algae": 0.30500000000000005,
+        "plankton": 0.5494199935533106,
+        "detritus": 0.5,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0.06,
+        "coral": 0.0225,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:193,20:meadow-life:sand-edge-seahorse:grass:living-grass:4118,437:0",
+          "speciesId": "sand-edge-seahorse",
+          "sizeM": 0.1396643844526261,
+          "sizeMeasure": "straightened-height",
+          "position": {
+            "x": 12354.105164322831,
+            "z": 1311.1009883254972,
+            "y": -3.8306737578276633
+          },
+          "actualRootDepthM": 11.830673757827663,
+          "actualSubstrate": "sand",
+          "hostId": "living-grass:4118,437",
+          "mode": "grass-tail",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:193,20:meadow-life:barrel-sea-pen:edge:living-rubble:3089,326:0",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.08594157467596233,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12359.538598259685,
+            "y": -4.62447875749983,
+            "z": 1305.7582847715755
+          },
+          "actualRootDepthM": 12.62447875749983,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "194,20",
+      "animalRecordCount": 15,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 64,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 11.065993070602417,
+        "maxDepthM": 13.628811354072287
+      },
+      "initialStocks": {
+        "algae": 0.375,
+        "plankton": 0.5632235658913851,
+        "detritus": 0.5,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0.06,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:194,20:meadow-life:sand-edge-seahorse:grass:living-grass:4140,443:0",
+          "speciesId": "sand-edge-seahorse",
+          "sizeM": 0.15623384511098265,
+          "sizeMeasure": "straightened-height",
+          "position": {
+            "x": 12419.465947289584,
+            "z": 1328.9082509608115,
+            "y": -3.7991740101017433
+          },
+          "actualRootDepthM": 11.799174010101744,
+          "actualSubstrate": "mixed",
+          "hostId": "living-grass:4140,443",
+          "mode": "grass-tail",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:194,20:meadow-life:reef-cuttlefish:grid:6,5",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.1742164434492588,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12469.597114537284,
+            "z": 1324.2007876645773,
+            "y": -1.8683603219996883
+          },
+          "actualRootDepthM": 9.868360321999688,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:194,20:meadow-life:barrel-sea-pen:grid:0,4",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.09471460322849452,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12421.368123412505,
+            "y": -4.513263321336101,
+            "z": 1318.392030417174
+          },
+          "actualRootDepthM": 12.513263321336101,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "195,20",
+      "animalRecordCount": 13,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 64,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 11.315105676651001,
+        "maxDepthM": 16.163236122460034
+      },
+      "initialStocks": {
+        "algae": 0.44500000000000006,
+        "plankton": 0.49634765708819034,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:195,20:meadow-life:reef-cuttlefish:edge:living-algae:living-rock:783,81:1:1",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.22008595110848544,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12536.417977526045,
+            "z": 1296.9968213731809,
+            "y": -5.948538485590957
+          },
+          "actualRootDepthM": 13.948538485590957,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:195,20:meadow-life:barrel-sea-pen:edge:living-rubble:3123,325:0",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.08075938493013382,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12493.739061381473,
+            "y": -6.103328279858432,
+            "z": 1300.5331293151082
+          },
+          "actualRootDepthM": 14.103328279858431,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "193,21",
+      "animalRecordCount": 11,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 0,
+          "sand": 11,
+          "seagrass": 53,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "seagrass",
+        "secondary": null,
+        "minDepthM": 12.467295874803568,
+        "maxDepthM": 12.959859113198304
+      },
+      "initialStocks": {
+        "algae": 0.27,
+        "plankton": 0.5186223297938705,
+        "detritus": 0.5,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0.06,
+        "coral": 0.03,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:193,21:meadow-life:reef-cuttlefish:edge:living-rubble:3098,342:1",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.1890460467711091,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12394.14021245151,
+            "z": 1368.792864124604,
+            "y": -4.44829530097416
+          },
+          "actualRootDepthM": 12.44829530097416,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:193,21:meadow-life:barrel-sea-pen:edge:living-rubble:3098,342:1",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.10655565375462174,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12394.14021245151,
+            "y": -4.904790035940909,
+            "z": 1368.792864124604
+          },
+          "actualRootDepthM": 12.90479003594091,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "194,21",
+      "animalRecordCount": 19,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 17,
+          "sand": 47,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 9.680159211158752,
+        "maxDepthM": 13.533040814286505
+      },
+      "initialStocks": {
+        "algae": 0.34,
+        "plankton": 0.5592505443468689,
+        "detritus": 0.35,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0.0375,
+        "coral": 0.0525,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:194,21:meadow-life:sand-edge-seahorse:grass:living-grass:4139,449:0",
+          "speciesId": "sand-edge-seahorse",
+          "sizeM": 0.1312811274640262,
+          "sizeMeasure": "straightened-height",
+          "position": {
+            "x": 12416.457023059025,
+            "z": 1347.0479812350868,
+            "y": -4.254969272240878
+          },
+          "actualRootDepthM": 12.254969272240878,
+          "actualSubstrate": "mixed",
+          "hostId": "living-grass:4139,449",
+          "mode": "grass-tail",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:194,21:meadow-life:reef-cuttlefish:edge:living-rock:777,84:0",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.18580662170425058,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12454.9774935551,
+            "z": 1352.7683315125323,
+            "y": -4.179321317186637
+          },
+          "actualRootDepthM": 12.179321317186638,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:194,21:meadow-life:barrel-sea-pen:edge:living-rock:777,84:0",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.11981251075863839,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12454.9774935551,
+            "y": -4.634779436131997,
+            "z": 1352.7683315125323
+          },
+          "actualRootDepthM": 12.634779436131996,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "195,21",
+      "animalRecordCount": 14,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 48,
+          "sand": 16,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": "sand",
+        "minDepthM": 13.281820506575391,
+        "maxDepthM": 16.186214839725125
+      },
+      "initialStocks": {
+        "algae": 0.55,
+        "plankton": 0.6165114608220756,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:195,21:meadow-life:reef-cuttlefish:edge:living-rubble:3132,351:1",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.18300671575590968,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12531.047451623768,
+            "z": 1405.2016024086024,
+            "y": -6.868014389962077
+          },
+          "actualRootDepthM": 14.868014389962077,
+          "actualSubstrate": "rock",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:195,21:meadow-life:barrel-sea-pen:edge:living-rock:780,84:1",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.10266084147617222,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12484.51693843032,
+            "y": -5.2957941554539785,
+            "z": 1364.5579013868603
+          },
+          "actualRootDepthM": 13.29579415545398,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "187,13",
+      "animalRecordCount": 15,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 32,
+          "sand": 32,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": "sand",
+        "minDepthM": 12.120810260665628,
+        "maxDepthM": 13.10759749903736
+      },
+      "initialStocks": {
+        "algae": 0.55,
+        "plankton": 0.6602963621355593,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:187,13:meadow-life:reef-cuttlefish:edge:living-rubble:2996,216:0",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.2087933986634016,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 11984.961835646574,
+            "z": 866.6360823620299,
+            "y": -4.455236405464756
+          },
+          "actualRootDepthM": 12.455236405464756,
+          "actualSubstrate": "sand",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        }
+      ]
+    },
+    {
+      "id": "188,13",
+      "animalRecordCount": 13,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.096187734829481,
+        "maxDepthM": 13.274800999366242
+      },
+      "initialStocks": {
+        "algae": 0.6200000000000001,
+        "plankton": 0.522366929333657,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:188,13:meadow-life:reef-cuttlefish:edge:living-rubble:3012,216:3",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.21735459670424462,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12049.414772506929,
+            "z": 867.225478870944,
+            "y": -3.074197844380486
+          },
+          "actualRootDepthM": 11.074197844380485,
+          "actualSubstrate": "rock",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:188,13:meadow-life:spider-conch:hard:living-rock:754,52:0,-1",
+          "speciesId": "spider-conch",
+          "sizeM": 0.1368389951996505,
+          "sizeMeasure": "shell-length",
+          "position": {
+            "x": 12068.85566002219,
+            "y": -1.7405004978264547,
+            "z": 835.6648512885637
+          },
+          "actualRootDepthM": 9.740500497826455,
+          "actualSubstrate": "rock",
+          "hostId": "living-rock:754,52",
+          "mode": "rubble-floor",
+          "existingPool": "algae"
+        }
+      ]
+    },
+    {
+      "id": "189,13",
+      "animalRecordCount": 12,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 8,
+          "sand": 56,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": null,
+        "minDepthM": 11.065053201720591,
+        "maxDepthM": 13.066714321228826
+      },
+      "initialStocks": {
+        "algae": 0.55,
+        "plankton": 0.5769560007378459,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:189,13:meadow-life:reef-cuttlefish:edge:living-rubble:3031,214:0",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.20283545218408108,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12126.721680262119,
+            "z": 857.0388239233757,
+            "y": -3.9254710698869086
+          },
+          "actualRootDepthM": 11.925471069886909,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,13:meadow-life:barrel-sea-pen:edge:living-rubble:3031,214:0",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.0808852293342352,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12126.721680262119,
+            "y": -4.386378414585813,
+            "z": 857.0388239233757
+          },
+          "actualRootDepthM": 12.386378414585813,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    },
+    {
+      "id": "187,14",
+      "animalRecordCount": 11,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.5648818475409,
+        "maxDepthM": 12.818302477214585
+      },
+      "initialStocks": {
+        "algae": 0.655,
+        "plankton": 0.6370406981930137,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:187,14:meadow-life:reef-cuttlefish:edge:living-algae:living-rock:751,56:1:0",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.1672413025982678,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12018.591969508057,
+            "z": 906.9321222501924,
+            "y": -3.887916791796847
+          },
+          "actualRootDepthM": 11.887916791796847,
+          "actualSubstrate": "rock",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        }
+      ]
+    },
+    {
+      "id": "188,14",
+      "animalRecordCount": 12,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.063997206460714,
+        "maxDepthM": 12.568979224525458
+      },
+      "initialStocks": {
+        "algae": 0.6200000000000001,
+        "plankton": 0.5260295797884464,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:188,14:meadow-life:spider-conch:hard:living-rock:755,56:1,-2",
+          "speciesId": "spider-conch",
+          "sizeM": 0.13451874401886016,
+          "sizeMeasure": "shell-length",
+          "position": {
+            "x": 12087.757016822698,
+            "y": -1.7152557870875278,
+            "z": 904.7662505224632
+          },
+          "actualRootDepthM": 9.715255787087528,
+          "actualSubstrate": "rock",
+          "hostId": "living-rock:755,56",
+          "mode": "rubble-floor",
+          "existingPool": "algae"
+        }
+      ]
+    },
+    {
+      "id": "189,14",
+      "animalRecordCount": 16,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 14,
+          "sand": 50,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 11.092661208437452,
+        "maxDepthM": 12.415569861647963
+      },
+      "initialStocks": {
+        "algae": 0.41000000000000003,
+        "plankton": 0.6295619878359139,
+        "detritus": 0.5,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0.06,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:189,14:meadow-life:sand-edge-seahorse:grass:living-grass:4053,312:0",
+          "speciesId": "sand-edge-seahorse",
+          "sizeM": 0.1267279235739261,
+          "sizeMeasure": "straightened-height",
+          "position": {
+            "x": 12159.048477357257,
+            "z": 935.5423075421731,
+            "y": -3.564736071983828
+          },
+          "actualRootDepthM": 11.564736071983829,
+          "actualSubstrate": "sand",
+          "hostId": "living-grass:4053,312",
+          "mode": "grass-tail",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,14:meadow-life:reef-cuttlefish:edge:living-rubble:3034,228:2",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.2362417512014508,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12138.420393695857,
+            "z": 914.0481813162511,
+            "y": -3.2566896070814733
+          },
+          "actualRootDepthM": 11.256689607081473,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,14:meadow-life:barrel-sea-pen:edge:living-rubble:3034,228:2",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.10653049087151885,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12138.420393695857,
+            "y": -3.728286967465921,
+            "z": 914.0481813162511
+          },
+          "actualRootDepthM": 11.728286967465921,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        },
+        {
+          "id": "ocean:189,14:meadow-life:spider-conch:hard:living-rock:757,59:1,-2",
+          "speciesId": "spider-conch",
+          "sizeM": 0.12088077264837921,
+          "sizeMeasure": "shell-length",
+          "position": {
+            "x": 12118.692303248636,
+            "y": -1.6473264732409993,
+            "z": 947.978050773883
+          },
+          "actualRootDepthM": 9.647326473241,
+          "actualSubstrate": "mixed",
+          "hostId": "living-rock:757,59",
+          "mode": "rubble-floor",
+          "existingPool": "algae"
+        }
+      ]
+    },
+    {
+      "id": "187,15",
+      "animalRecordCount": 14,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.491392363230297,
+        "maxDepthM": 14.100805941848556
+      },
+      "initialStocks": {
+        "algae": 0.585,
+        "plankton": 0.6538145663961769,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:187,15:meadow-life:reef-cuttlefish:edge:living-rubble:2992,242:1",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.20257094072178006,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 11970.267028832504,
+            "z": 969.6254966555172,
+            "y": -4.660218866310527
+          },
+          "actualRootDepthM": 12.660218866310526,
+          "actualSubstrate": "rock",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        }
+      ]
+    },
+    {
+      "id": "188,15",
+      "animalRecordCount": 13,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 64,
+          "sand": 0,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "reef",
+        "secondary": null,
+        "minDepthM": 11.45220045142812,
+        "maxDepthM": 12.970892094387366
+      },
+      "initialStocks": {
+        "algae": 0.655,
+        "plankton": 0.6157108987681568,
+        "detritus": 0.2,
+        "reefGuildAnimalNutrition": 0.012,
+        "openWaterAnimalNutrition": 0,
+        "plants": 0,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:188,15:meadow-life:reef-cuttlefish:edge:living-rubble:3008,249:2",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.1840256128832698,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12034.57834624495,
+            "z": 998.3650310315643,
+            "y": -3.1540820122396047
+          },
+          "actualRootDepthM": 11.154082012239606,
+          "actualSubstrate": "rock",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:188,15:meadow-life:spider-conch:hard:living-rock:753,62:-2,1",
+          "speciesId": "spider-conch",
+          "sizeM": 0.15616614764090628,
+          "sizeMeasure": "shell-length",
+          "position": {
+            "x": 12052.27162067641,
+            "y": -1.841633557903082,
+            "z": 998.9341824813516
+          },
+          "actualRootDepthM": 9.841633557903082,
+          "actualSubstrate": "rock",
+          "hostId": "living-rock:753,62",
+          "mode": "rubble-floor",
+          "existingPool": "algae"
+        }
+      ]
+    },
+    {
+      "id": "189,15",
+      "animalRecordCount": 17,
+      "actualHabitatComposition": {
+        "samples": 64,
+        "habitats": {
+          "reef": 27,
+          "sand": 37,
+          "seagrass": 0,
+          "slope": 0,
+          "authored-reef": 0
+        },
+        "primary": "sand",
+        "secondary": "reef",
+        "minDepthM": 11.536731409623291,
+        "maxDepthM": 13.564199783149618
+      },
+      "initialStocks": {
+        "algae": 0.655,
+        "plankton": 0.6585888657532633,
+        "detritus": 0.27,
+        "reefGuildAnimalNutrition": 0,
+        "openWaterAnimalNutrition": 0.018,
+        "plants": 0.0175,
+        "coral": 0.06,
+        "nutrients": 0.32
+      },
+      "newAgents": [
+        {
+          "id": "ocean:189,15:meadow-life:sand-edge-seahorse:grass:living-grass:4053,321:0",
+          "speciesId": "sand-edge-seahorse",
+          "sizeM": 0.14376247465144842,
+          "sizeMeasure": "straightened-height",
+          "position": {
+            "x": 12158.695016839367,
+            "z": 962.744921159735,
+            "y": -3.869377406081435
+          },
+          "actualRootDepthM": 11.869377406081435,
+          "actualSubstrate": "mixed",
+          "hostId": "living-grass:4053,321",
+          "mode": "grass-tail",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,15:meadow-life:reef-cuttlefish:edge:living-rubble:3033,251:0",
+          "speciesId": "reef-cuttlefish",
+          "sizeM": 0.20872804705053566,
+          "sizeMeasure": "mantle-length",
+          "position": {
+            "x": 12135.376128098485,
+            "z": 1006.6939433871994,
+            "y": -4.574932015047867
+          },
+          "actualRootDepthM": 12.574932015047867,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "reef-water",
+          "existingPool": "reefGuild.preyOrganicUnits"
+        },
+        {
+          "id": "ocean:189,15:meadow-life:barrel-sea-pen:edge:living-rubble:3033,251:0",
+          "speciesId": "barrel-sea-pen",
+          "sizeM": 0.11379259448498487,
+          "sizeMeasure": "colony-body-length",
+          "position": {
+            "x": 12135.376128098485,
+            "y": -5.037724990104032,
+            "z": 1006.6939433871994
+          },
+          "actualRootDepthM": 13.037724990104032,
+          "actualSubstrate": "mixed",
+          "hostId": null,
+          "mode": "soft-buried",
+          "existingPool": "plankton"
+        }
+      ]
+    }
+  ],
+  "windowActivity": [
+    {
+      "position": {
+        "x": 12448,
+        "z": 1312
+      },
+      "simulatedNightSec": 8,
+      "simulatedDaySec": 4,
+      "observedSec": 12,
+      "actualCpuWallTimeMs": 50042.125,
+      "activeOwnerCount": 9,
+      "sourceOwnerCount": 11,
+      "supportOwnerCount": 16,
+      "newAnimalCount": 22,
+      "actualFeedings": 36,
+      "nativeIntakeTraces": [
+        {
+          "owner": "193,19",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 0.6000000000000001,
+          "agentId": "ocean:193,19:meadow-life:sand-edge-seahorse:grass:living-grass:4118,423:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.012015000000000005,
+          "stockAfter": 0.011835000000000005,
+          "individualOrganicUnits": 0.0041077600059999195,
+          "regionalClockSec": 0.6000000000000001,
+          "organicBalanceError": 2.220446049250313e-16
+        },
+        {
+          "owner": "193,19",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 1.5,
+          "agentId": "ocean:193,19:meadow-life:reef-cuttlefish:edge:living-rubble:3095,313:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011857500000000012,
+          "stockAfter": 0.011677500000000013,
+          "individualOrganicUnits": 0.00410740004199818,
+          "regionalClockSec": 1.5,
+          "organicBalanceError": 1.3322676295501878e-15
+        },
+        {
+          "owner": "194,20",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 1.5,
+          "agentId": "ocean:194,20:meadow-life:sand-edge-seahorse:grass:living-grass:4140,443:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.012037500000000012,
+          "stockAfter": 0.011857500000000012,
+          "individualOrganicUnits": 0.00410740004199818,
+          "regionalClockSec": 1.5,
+          "organicBalanceError": 6.661338147750939e-16
+        },
+        {
+          "owner": "194,19",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 1.7000000000000002,
+          "agentId": "ocean:194,19:meadow-life:sand-edge-seahorse:grass:living-grass:4139,415:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.012042500000000013,
+          "stockAfter": 0.011862500000000014,
+          "individualOrganicUnits": 0.00410732005439728,
+          "regionalClockSec": 1.7000000000000002,
+          "organicBalanceError": 6.661338147750939e-16
+        },
+        {
+          "owner": "193,20",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 1.8,
+          "agentId": "ocean:193,20:meadow-life:barrel-sea-pen:edge:living-rubble:3089,326:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5482068668264832,
+          "stockAfter": 0.5480268668264833,
+          "individualOrganicUnits": 0.0041072800611967365,
+          "regionalClockSec": 1.8,
+          "organicBalanceError": -6.661338147750939e-16
+        },
+        {
+          "owner": "193,21",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 1.8,
+          "agentId": "ocean:193,21:meadow-life:barrel-sea-pen:edge:living-rubble:3098,342:1",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5179562137580044,
+          "stockAfter": 0.5177762137580044,
+          "individualOrganicUnits": 0.0041072800611967365,
+          "regionalClockSec": 1.8,
+          "organicBalanceError": -1.1102230246251565e-15
+        },
+        {
+          "owner": "195,21",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 1.8,
+          "agentId": "ocean:195,21:meadow-life:barrel-sea-pen:edge:living-rock:780,84:1",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6171382021885213,
+          "stockAfter": 0.6169582021885214,
+          "individualOrganicUnits": 0.0041072800611967365,
+          "regionalClockSec": 1.8,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "194,20",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 2,
+          "agentId": "ocean:194,20:meadow-life:reef-cuttlefish:grid:6,5",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011870000000000016,
+          "stockAfter": 0.011690000000000016,
+          "individualOrganicUnits": 0.004107200075995441,
+          "regionalClockSec": 2,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "194,20",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 2.1,
+          "agentId": "ocean:194,20:meadow-life:barrel-sea-pen:grid:0,4",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5645982470460156,
+          "stockAfter": 0.5644182470460156,
+          "individualOrganicUnits": 0.004107160083994681,
+          "regionalClockSec": 2.1,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "195,20",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 2.1,
+          "agentId": "ocean:195,20:meadow-life:barrel-sea-pen:edge:living-rubble:3123,325:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.49871370862769937,
+          "stockAfter": 0.49853370862769936,
+          "individualOrganicUnits": 0.004107160083994681,
+          "regionalClockSec": 2.1,
+          "organicBalanceError": 4.440892098500626e-16
+        },
+        {
+          "owner": "194,19",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 2.4000000000000004,
+          "agentId": "ocean:194,19:meadow-life:barrel-sea-pen:edge:living-rubble:3106,314:3",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.46333395708514225,
+          "stockAfter": 0.46315395708514223,
+          "individualOrganicUnits": 0.004107040110391906,
+          "regionalClockSec": 2.4000000000000004,
+          "organicBalanceError": 6.661338147750939e-16
+        },
+        {
+          "owner": "195,19",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 2.4000000000000004,
+          "agentId": "ocean:195,19:meadow-life:barrel-sea-pen:edge:living-rubble:3128,316:2",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6421523146504302,
+          "stockAfter": 0.6419723146504303,
+          "individualOrganicUnits": 0.004107040110391906,
+          "regionalClockSec": 2.4000000000000004,
+          "organicBalanceError": 2.4424906541753444e-15
+        },
+        {
+          "owner": "194,21",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 2.7,
+          "agentId": "ocean:194,21:meadow-life:barrel-sea-pen:edge:living-rock:777,84:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5597543777036553,
+          "stockAfter": 0.5595743777036554,
+          "individualOrganicUnits": 0.004106920140388302,
+          "regionalClockSec": 2.7,
+          "organicBalanceError": 1.5543122344752192e-15
+        },
+        {
+          "owner": "194,19",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 2.8000000000000003,
+          "agentId": "ocean:194,19:meadow-life:reef-cuttlefish:edge:living-rubble:3106,314:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011890000000000022,
+          "stockAfter": 0.011710000000000022,
+          "individualOrganicUnits": 0.0041068801511868975,
+          "regionalClockSec": 2.8000000000000003,
+          "organicBalanceError": 6.661338147750939e-16
+        },
+        {
+          "owner": "193,19",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 2.9000000000000004,
+          "agentId": "ocean:193,19:meadow-life:barrel-sea-pen:edge:living-rubble:3101,315:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.47127755271416,
+          "stockAfter": 0.47109755271416,
+          "individualOrganicUnits": 0.004106840162385386,
+          "regionalClockSec": 2.9000000000000004,
+          "organicBalanceError": 1.9984014443252818e-15
+        },
+        {
+          "owner": "193,19",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 4.6000000000000005,
+          "agentId": "ocean:193,19:meadow-life:sand-edge-seahorse:grass:living-grass:4118,423:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011755000000000036,
+          "stockAfter": 0.011575000000000037,
+          "individualOrganicUnits": 0.004214117222362218,
+          "regionalClockSec": 4.6000000000000005,
+          "organicBalanceError": 3.552713678800501e-15
+        },
+        {
+          "owner": "193,19",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 5.5,
+          "agentId": "ocean:193,19:meadow-life:reef-cuttlefish:edge:living-rubble:3095,313:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011597500000000044,
+          "stockAfter": 0.011417500000000044,
+          "individualOrganicUnits": 0.004213757402318005,
+          "regionalClockSec": 5.5,
+          "organicBalanceError": 3.774758283725532e-15
+        },
+        {
+          "owner": "194,20",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 5.5,
+          "agentId": "ocean:194,20:meadow-life:sand-edge-seahorse:grass:living-grass:4140,443:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011777500000000043,
+          "stockAfter": 0.011597500000000044,
+          "individualOrganicUnits": 0.004213757402318005,
+          "regionalClockSec": 5.5,
+          "organicBalanceError": 1.7763568394002505e-15
+        },
+        {
+          "owner": "194,19",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 5.7,
+          "agentId": "ocean:194,19:meadow-life:sand-edge-seahorse:grass:living-grass:4139,415:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011782500000000045,
+          "stockAfter": 0.011602500000000045,
+          "individualOrganicUnits": 0.004213677446705907,
+          "regionalClockSec": 5.7,
+          "organicBalanceError": 2.220446049250313e-15
+        },
+        {
+          "owner": "193,20",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 5.800000000000001,
+          "agentId": "ocean:193,20:meadow-life:barrel-sea-pen:edge:living-rubble:3089,326:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5449477244173274,
+          "stockAfter": 0.5447677244173275,
+          "individualOrganicUnits": 0.0042136374694995244,
+          "regionalClockSec": 5.800000000000001,
+          "organicBalanceError": -2.886579864025407e-15
+        },
+        {
+          "owner": "193,21",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 5.800000000000001,
+          "agentId": "ocean:193,21:meadow-life:barrel-sea-pen:edge:living-rubble:3098,342:1",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5165191915120462,
+          "stockAfter": 0.5163391915120462,
+          "individualOrganicUnits": 0.0042136374694995244,
+          "regionalClockSec": 5.800000000000001,
+          "organicBalanceError": -2.886579864025407e-15
+        },
+        {
+          "owner": "195,21",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 5.800000000000001,
+          "agentId": "ocean:195,21:meadow-life:barrel-sea-pen:edge:living-rock:780,84:1",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6174185744406031,
+          "stockAfter": 0.6172385744406031,
+          "individualOrganicUnits": 0.0042136374694995244,
+          "regionalClockSec": 5.800000000000001,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "194,20",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 6,
+          "agentId": "ocean:194,20:meadow-life:reef-cuttlefish:grid:6,5",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011610000000000047,
+          "stockAfter": 0.011430000000000048,
+          "individualOrganicUnits": 0.004213557516286073,
+          "regionalClockSec": 6,
+          "organicBalanceError": 2.220446049250313e-15
+        },
+        {
+          "owner": "194,20",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 6.1000000000000005,
+          "agentId": "ocean:194,20:meadow-life:barrel-sea-pen:grid:0,4",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5669544981549663,
+          "stockAfter": 0.5667744981549664,
+          "individualOrganicUnits": 0.004213517540278994,
+          "regionalClockSec": 6.1000000000000005,
+          "organicBalanceError": 2.886579864025407e-15
+        },
+        {
+          "owner": "195,20",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 6.1000000000000005,
+          "agentId": "ocean:195,20:meadow-life:barrel-sea-pen:edge:living-rubble:3123,325:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5028196886794989,
+          "stockAfter": 0.5026396886794989,
+          "individualOrganicUnits": 0.004213517540278994,
+          "regionalClockSec": 6.1000000000000005,
+          "organicBalanceError": 2.220446049250313e-16
+        },
+        {
+          "owner": "194,19",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 6.4,
+          "agentId": "ocean:194,19:meadow-life:barrel-sea-pen:edge:living-rubble:3106,314:3",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.46773291025966385,
+          "stockAfter": 0.46755291025966383,
+          "individualOrganicUnits": 0.004213397614656301,
+          "regionalClockSec": 6.4,
+          "organicBalanceError": 2.220446049250313e-15
+        },
+        {
+          "owner": "195,19",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 6.4,
+          "agentId": "ocean:195,19:meadow-life:barrel-sea-pen:edge:living-rubble:3128,316:2",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.643174434858456,
+          "stockAfter": 0.6429944348584561,
+          "individualOrganicUnits": 0.004213397614656301,
+          "regionalClockSec": 6.4,
+          "organicBalanceError": 5.995204332975845e-15
+        },
+        {
+          "owner": "194,21",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 6.7,
+          "agentId": "ocean:194,21:meadow-life:barrel-sea-pen:edge:living-rock:777,84:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5605868102488011,
+          "stockAfter": 0.5604068102488011,
+          "individualOrganicUnits": 0.004213277692631344,
+          "regionalClockSec": 6.7,
+          "organicBalanceError": 2.886579864025407e-15
+        },
+        {
+          "owner": "194,19",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 6.800000000000001,
+          "agentId": "ocean:194,19:meadow-life:reef-cuttlefish:edge:living-rubble:3106,314:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011630000000000053,
+          "stockAfter": 0.011450000000000054,
+          "individualOrganicUnits": 0.004213237719422501,
+          "regionalClockSec": 6.800000000000001,
+          "organicBalanceError": 2.4424906541753444e-15
+        },
+        {
+          "owner": "193,19",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 6.9,
+          "agentId": "ocean:193,19:meadow-life:barrel-sea-pen:edge:living-rubble:3101,315:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.46821514140874454,
+          "stockAfter": 0.4680351414087445,
+          "individualOrganicUnits": 0.004213197746613392,
+          "regionalClockSec": 6.9,
+          "organicBalanceError": 5.329070518200751e-15
+        },
+        {
+          "owner": "193,19",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 8.700000000000001,
+          "agentId": "ocean:193,19:meadow-life:sand-edge-seahorse:grass:living-grass:4118,423:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.010897500000000069,
+          "stockAfter": 0.010717500000000069,
+          "individualOrganicUnits": 0.004320389779813741,
+          "regionalClockSec": 8.700000000000001,
+          "organicBalanceError": 6.439293542825908e-15
+        },
+        {
+          "owner": "193,19",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 9.5,
+          "agentId": "ocean:193,19:meadow-life:reef-cuttlefish:edge:living-rubble:3095,313:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.010737500000000075,
+          "stockAfter": 0.010557500000000076,
+          "individualOrganicUnits": 0.004320072227988529,
+          "regionalClockSec": 9.5,
+          "organicBalanceError": 6.661338147750939e-15
+        },
+        {
+          "owner": "194,20",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 9.5,
+          "agentId": "ocean:194,20:meadow-life:sand-edge-seahorse:grass:living-grass:4140,443:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.010917500000000075,
+          "stockAfter": 0.010737500000000075,
+          "individualOrganicUnits": 0.004320072227988529,
+          "regionalClockSec": 9.5,
+          "organicBalanceError": 3.552713678800501e-15
+        },
+        {
+          "owner": "194,19",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 9.700000000000001,
+          "agentId": "ocean:194,19:meadow-life:sand-edge-seahorse:grass:living-grass:4139,415:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.010922500000000076,
+          "stockAfter": 0.010742500000000077,
+          "individualOrganicUnits": 0.004319992304352439,
+          "regionalClockSec": 9.700000000000001,
+          "organicBalanceError": 3.1086244689504383e-15
+        },
+        {
+          "owner": "194,20",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 10,
+          "agentId": "ocean:194,20:meadow-life:reef-cuttlefish:grid:6,5",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.010750000000000079,
+          "stockAfter": 0.01057000000000008,
+          "individualOrganicUnits": 0.0043198724218954185,
+          "regionalClockSec": 10,
+          "organicBalanceError": 3.9968028886505635e-15
+        },
+        {
+          "owner": "194,19",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 10.8,
+          "agentId": "ocean:194,19:meadow-life:reef-cuttlefish:edge:living-rubble:3106,314:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.010770000000000085,
+          "stockAfter": 0.010590000000000085,
+          "individualOrganicUnits": 0.004319552752925649,
+          "regionalClockSec": 10.8,
+          "organicBalanceError": 3.552713678800501e-15
+        }
+      ],
+      "owners": [
+        {
+          "id": "194,19",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.4062018065213953,
+            "plankton": 0.4683301153709429,
+            "detritus": 0.4925766859511689,
+            "reefGuildAnimalNutrition": 0.010620000000000095,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0.06010224891260516,
+            "coral": 0.06028377221170269,
+            "nutrients": 0.32877462498897375
+          },
+          "foodLedger": {
+            "initial": 1.3707540111057461,
+            "input": 0.019273165517960527,
+            "ingested": 0.013099999999999997,
+            "exported": 0.008653284598001255,
+            "networkAdded": 0.005307275562665505,
+            "networkRemoved": 0.012675724549928448,
+            "transferredIn": 0.021923988121810765,
+            "transferredOut": 0.015720823316744858
+          },
+          "organicLedger": {
+            "initial": 1.8267540111057463,
+            "externalInput": 0.0810731655179617,
+            "transferredIn": 0.021923988121810765,
+            "transferredOut": 0.015720823316744858,
+            "output": 0.014353406032221938
+          },
+          "balanceErrors": {
+            "organic": 3.9968028886505635e-15,
+            "food": 1.3877787807814457e-15
+          },
+          "newCounters": {
+            "feedings": 8,
+            "consumedUnits": 0.00144,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:194,19:meadow-life:sand-edge-seahorse:grass:living-grass:4139,415:0",
+              "speciesId": "sand-edge-seahorse",
+              "alive": true,
+              "state": "tail-holding",
+              "timeSec": 12,
+              "organicUnits": 0.0043189988154105925,
+              "energy": 0.7637357126106302,
+              "lastFeedAt": 9.700000000000001,
+              "position": {
+                "x": 12417.600249881847,
+                "z": 1244.8923279845665,
+                "y": -3.3290448879124934
+              }
+            },
+            {
+              "id": "ocean:194,19:meadow-life:reef-cuttlefish:edge:living-rubble:3106,314:3",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004319034435103396,
+              "energy": 0.7600661205673953,
+              "lastFeedAt": 10.8,
+              "position": {
+                "x": 12427.04355472008,
+                "y": -3.5841412497067395,
+                "z": 1258.0884547113226
+              }
+            },
+            {
+              "id": "ocean:194,19:meadow-life:barrel-sea-pen:edge:living-rubble:3106,314:3",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211038760738548,
+              "energy": 0.793830518457962,
+              "lastFeedAt": 6.4,
+              "position": {
+                "x": 12426.955188638181,
+                "y": -4.0403614328944535,
+                "z": 1258.2361054214673
+              }
+            }
+          ]
+        },
+        {
+          "id": "195,19",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.40815449445920404,
+            "plankton": 0.6379085873990579,
+            "detritus": 0.19966090628726438,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01748000000000006,
+            "plants": 0,
+            "coral": 0.060313239921994534,
+            "nutrients": 0.32379342614236517
+          },
+          "foodLedger": {
+            "initial": 1.2512742947228253,
+            "input": 0.019487947194817695,
+            "ingested": 0.012939999999999997,
+            "exported": 0.03158780790704514,
+            "networkAdded": 0.005028912449652739,
+            "networkRemoved": 0.005741359047242891,
+            "transferredIn": 0.02020200073252537
+          },
+          "organicLedger": {
+            "initial": 1.6472742947228254,
+            "externalInput": 0.08328794719481904,
+            "transferredIn": 0.02020200073252537,
+            "transferredOut": 0,
+            "output": 0.03516510735189486
+          },
+          "balanceErrors": {
+            "organic": 1.0658141036401503e-14,
+            "food": 7.022160630754115e-15
+          },
+          "newCounters": {
+            "feedings": 2,
+            "consumedUnits": 0.00036,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:195,19:meadow-life:reef-cuttlefish:edge:living-rubble:3134,316:3",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.8067579963979861,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12537.519917519483,
+                "y": -7.221639802683119,
+                "z": 1264.486400523408
+              }
+            },
+            {
+              "id": "ocean:195,19:meadow-life:barrel-sea-pen:edge:living-rubble:3128,316:2",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211038760738548,
+              "energy": 0.7796067079398016,
+              "lastFeedAt": 6.4,
+              "position": {
+                "x": 12514.030991812144,
+                "y": -6.860835480440444,
+                "z": 1265.2620998282841
+              }
+            }
+          ]
+        },
+        {
+          "id": "193,19",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.3375427021083356,
+            "plankton": 0.4596955111103748,
+            "detritus": 0.4921010660565812,
+            "reefGuildAnimalNutrition": 0.010620000000000095,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0.06019127521740255,
+            "coral": 0.06034312308156759,
+            "nutrients": 0.3283245644034494
+          },
+          "foodLedger": {
+            "initial": 1.3134341779723764,
+            "input": 0.01936545827829791,
+            "ingested": 0.012209999999999997,
+            "exported": 0.005491910042451616,
+            "networkAdded": 0.0053818037294749415,
+            "networkRemoved": 0.012669258933191534,
+            "transferredOut": 0.018470991729211027
+          },
+          "organicLedger": {
+            "initial": 1.7694341779723766,
+            "externalInput": 0.08116545827829921,
+            "transferredIn": 0,
+            "transferredOut": 0.018470991729211027,
+            "output": 0.011056757384421401
+          },
+          "balanceErrors": {
+            "organic": 8.43769498715119e-15,
+            "food": 3.2751579226442118e-15
+          },
+          "newCounters": {
+            "feedings": 8,
+            "consumedUnits": 0.00144,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:193,19:meadow-life:sand-edge-seahorse:grass:living-grass:4118,423:0",
+              "speciesId": "sand-edge-seahorse",
+              "alive": true,
+              "state": "tail-holding",
+              "timeSec": 12,
+              "organicUnits": 0.004318964279279414,
+              "energy": 0.7294520902563612,
+              "lastFeedAt": 8.700000000000001,
+              "position": {
+                "x": 12354.291119756082,
+                "z": 1268.9620768725033,
+                "y": -4.124998751379965
+              }
+            },
+            {
+              "id": "ocean:193,19:meadow-life:reef-cuttlefish:edge:living-rubble:3095,313:3",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004318992339523763,
+              "energy": 0.7449722507816171,
+              "lastFeedAt": 9.5,
+              "position": {
+                "x": 12381.065103886043,
+                "y": -3.8648287918782867,
+                "z": 1252.3214585408273
+              }
+            },
+            {
+              "id": "ocean:193,19:meadow-life:barrel-sea-pen:edge:living-rubble:3101,315:0",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.0042110495528576005,
+              "energy": 0.8113774189128706,
+              "lastFeedAt": 6.9,
+              "position": {
+                "x": 12405.122582800777,
+                "y": -4.1851055779092174,
+                "z": 1261.2870156238343
+              }
+            }
+          ]
+        },
+        {
+          "id": "193,20",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.3025755942267146,
+            "plankton": 0.5359085130162489,
+            "detritus": 0.4919671682352375,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0.060187332737723656,
+            "coral": 0.022627685535668313,
+            "nutrients": 0.3285131132644562
+          },
+          "foodLedger": {
+            "initial": 1.3544199935533108,
+            "input": 0.019240027767287896,
+            "ingested": 0.011079999999999998,
+            "exported": 0.00617950691982734,
+            "networkAdded": 0.004455961105456198,
+            "networkRemoved": 0.012070406449036026,
+            "transferredIn": 0.0019083247836028244,
+            "transferredOut": 0.0202431183626021
+          },
+          "organicLedger": {
+            "initial": 1.7729199935533109,
+            "externalInput": 0.04904002776728765,
+            "transferredIn": 0.0019083247836028244,
+            "transferredOut": 0.0202431183626021,
+            "output": 0.011253286603301724
+          },
+          "balanceErrors": {
+            "organic": -7.549516567451064e-15,
+            "food": -8.604228440844963e-15
+          },
+          "newCounters": {
+            "feedings": 2,
+            "consumedUnits": 0.00036,
+            "deaths": 0,
+            "moved": 0
+          },
+          "agents": [
+            {
+              "id": "ocean:193,20:meadow-life:sand-edge-seahorse:grass:living-grass:4118,437:0",
+              "speciesId": "sand-edge-seahorse",
+              "alive": true,
+              "state": "tail-holding",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.8040078430742006,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12354.105164322831,
+                "z": 1311.1009883254972,
+                "y": -3.8306737578276633
+              }
+            },
+            {
+              "id": "ocean:193,20:meadow-life:barrel-sea-pen:edge:living-rubble:3089,326:0",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211025810907943,
+              "energy": 0.77424667755693,
+              "lastFeedAt": 5.800000000000001,
+              "position": {
+                "x": 12359.538598259685,
+                "y": -4.62447875749983,
+                "z": 1305.7582847715755
+              }
+            }
+          ]
+        },
+        {
+          "id": "194,20",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.37325878496124476,
+            "plankton": 0.5669144551077189,
+            "detritus": 0.49144424602125003,
+            "reefGuildAnimalNutrition": 0.010620000000000095,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0.06017311919193837,
+            "coral": 0.06033101906459159,
+            "nutrients": 0.32841834994718455
+          },
+          "foodLedger": {
+            "initial": 1.4382235658913851,
+            "input": 0.019499445384838637,
+            "ingested": 0.009279999999999998,
+            "exported": 0.006473483372594917,
+            "networkAdded": 0.004588727802253562,
+            "networkRemoved": 0.012673355563842909,
+            "transferredIn": 0.02188220493165778,
+            "transferredOut": 0.024149618983479195
+          },
+          "organicLedger": {
+            "initial": 1.8942235658913853,
+            "externalInput": 0.07729944538483893,
+            "transferredIn": 0.02188220493165778,
+            "transferredOut": 0.024149618983479195,
+            "output": 0.01159495361277911
+          },
+          "balanceErrors": {
+            "organic": 3.9968028886505635e-15,
+            "food": 4.551914400963142e-15
+          },
+          "newCounters": {
+            "feedings": 8,
+            "consumedUnits": 0.00144,
+            "deaths": 0,
+            "moved": 104
+          },
+          "agents": [
+            {
+              "id": "ocean:194,20:meadow-life:sand-edge-seahorse:grass:living-grass:4140,443:0",
+              "speciesId": "sand-edge-seahorse",
+              "alive": true,
+              "state": "tail-holding",
+              "timeSec": 12,
+              "organicUnits": 0.004318992339523763,
+              "energy": 0.747338883543832,
+              "lastFeedAt": 9.5,
+              "position": {
+                "x": 12419.465947289584,
+                "z": 1328.9082509608115,
+                "y": -3.7991740101017433
+              }
+            },
+            {
+              "id": "ocean:194,20:meadow-life:reef-cuttlefish:grid:6,5",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004319008529483691,
+              "energy": 0.8098363900171955,
+              "lastFeedAt": 10,
+              "position": {
+                "x": 12469.633526627644,
+                "y": -1.8683603219996883,
+                "z": 1324.1915242698751
+              }
+            },
+            {
+              "id": "ocean:194,20:meadow-life:barrel-sea-pen:grid:0,4",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211032285726126,
+              "energy": 0.7586357627631332,
+              "lastFeedAt": 6.1000000000000005,
+              "position": {
+                "x": 12421.368123412505,
+                "y": -4.513263321336101,
+                "z": 1318.392030417174
+              }
+            }
+          ]
+        },
+        {
+          "id": "195,20",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.4430972389341866,
+            "plankton": 0.5033053276987933,
+            "detritus": 0.19893230731676376,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.06040875293491313,
+            "nutrients": 0.323213932209968
+          },
+          "foodLedger": {
+            "initial": 1.1413476570881904,
+            "input": 0.019334362296486867,
+            "ingested": 0.011149999999999998,
+            "exported": 0.021887059326761698,
+            "networkAdded": 0.004809330036565511,
+            "networkRemoved": 0.005252937752012284,
+            "transferredIn": 0.022614699023053242,
+            "transferredOut": 0.0044811774157805075
+          },
+          "organicLedger": {
+            "initial": 1.5373476570881905,
+            "externalInput": 0.05713436229648658,
+            "transferredIn": 0.022614699023053242,
+            "transferredOut": 0.0044811774157805075,
+            "output": 0.025033189363461265
+          },
+          "balanceErrors": {
+            "organic": -2.220446049250313e-16,
+            "food": -2.1649348980190553e-15
+          },
+          "newCounters": {
+            "feedings": 2,
+            "consumedUnits": 0.00036,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:195,20:meadow-life:reef-cuttlefish:edge:living-algae:living-rock:783,81:1:1",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.804981810766234,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12536.48798888385,
+                "y": -5.948538485590957,
+                "z": 1296.7328399412108
+              }
+            },
+            {
+              "id": "ocean:195,20:meadow-life:barrel-sea-pen:edge:living-rubble:3123,325:0",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211032285726126,
+              "energy": 0.7708734191590155,
+              "lastFeedAt": 6.1000000000000005,
+              "position": {
+                "x": 12493.739061381473,
+                "y": -6.103328279858432,
+                "z": 1300.5331293151082
+              }
+            }
+          ]
+        },
+        {
+          "id": "193,21",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.26755908432244113,
+            "plankton": 0.5070962356995767,
+            "detritus": 0.4920502130690483,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0.06016231659560971,
+            "coral": 0.030161908666852904,
+            "nutrients": 0.32859390851897763
+          },
+          "foodLedger": {
+            "initial": 1.2886223297938706,
+            "input": 0.01900860602030014,
+            "ingested": 0.012629999999999997,
+            "exported": 0.006745519502824298,
+            "networkAdded": 0.004802039932440769,
+            "networkRemoved": 0.012127046824835874,
+            "transferredIn": 0.0016276200040321353,
+            "transferredOut": 0.015852496331928267
+          },
+          "organicLedger": {
+            "initial": 1.7146223297938707,
+            "externalInput": 0.048808606020300266,
+            "transferredIn": 0.0016276200040321353,
+            "transferredOut": 0.015852496331928267,
+            "output": 0.012059522083484093
+          },
+          "balanceErrors": {
+            "organic": -9.769962616701378e-15,
+            "food": -1.0880185641326534e-14
+          },
+          "newCounters": {
+            "feedings": 2,
+            "consumedUnits": 0.00036,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:193,21:meadow-life:reef-cuttlefish:edge:living-rubble:3098,342:1",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.7437706133620431,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12393.922224495374,
+                "y": -4.44829530097416,
+                "z": 1368.9496520781292
+              }
+            },
+            {
+              "id": "ocean:193,21:meadow-life:barrel-sea-pen:edge:living-rubble:3098,342:1",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211025810907943,
+              "energy": 0.7982800417914222,
+              "lastFeedAt": 5.800000000000001,
+              "position": {
+                "x": 12394.14021245151,
+                "y": -4.904790035940909,
+                "z": 1368.792864124604
+              }
+            }
+          ]
+        },
+        {
+          "id": "194,21",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.3363686577913904,
+            "plankton": 0.5562006566219386,
+            "detritus": 0.34614072765223036,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01748000000000006,
+            "plants": 0.03767986673056361,
+            "coral": 0.05285653110141262,
+            "nutrients": 0.3255147858544752
+          },
+          "foodLedger": {
+            "initial": 1.2492505443468689,
+            "input": 0.019185466923528627,
+            "ingested": 0.015179999999999996,
+            "exported": 0.006192336050903687,
+            "networkAdded": 0.006153291103069281,
+            "networkRemoved": 0.009236770541006429,
+            "transferredIn": 0.015852496331928267,
+            "transferredOut": 0.021122650047923956
+          },
+          "organicLedger": {
+            "initial": 1.675250544346869,
+            "externalInput": 0.09898546692352876,
+            "transferredIn": 0.015852496331928267,
+            "transferredOut": 0.021122650047923956,
+            "output": 0.011112030949832636
+          },
+          "balanceErrors": {
+            "organic": 5.551115123125783e-15,
+            "food": 1.3322676295501878e-15
+          },
+          "newCounters": {
+            "feedings": 2,
+            "consumedUnits": 0.00036,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:194,21:meadow-life:sand-edge-seahorse:grass:living-grass:4139,449:0",
+              "speciesId": "sand-edge-seahorse",
+              "alive": true,
+              "state": "tail-holding",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.7604993255881572,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12416.457023059025,
+                "z": 1347.0479812350868,
+                "y": -4.254969272240878
+              }
+            },
+            {
+              "id": "ocean:194,21:meadow-life:reef-cuttlefish:edge:living-rock:777,84:0",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.730398542367815,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12454.86958349793,
+                "y": -4.179321317186637,
+                "z": 1352.909327988028
+              }
+            },
+            {
+              "id": "ocean:194,21:meadow-life:barrel-sea-pen:edge:living-rock:777,84:0",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211045235945232,
+              "energy": 0.7726169925051908,
+              "lastFeedAt": 6.7,
+              "position": {
+                "x": 12454.9774935551,
+                "y": -4.634779436131997,
+                "z": 1352.7683315125323
+              }
+            }
+          ]
+        },
+        {
+          "id": "195,21",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.5461153248322544,
+            "plankton": 0.6128011537040918,
+            "detritus": 0.20020964123066798,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01648000000000006,
+            "plants": 0,
+            "coral": 0.06030703750386618,
+            "nutrients": 0.32383667130871313
+          },
+          "foodLedger": {
+            "initial": 1.3665114608220756,
+            "input": 0.01931017338077788,
+            "ingested": 0.013289999999999998,
+            "exported": 0.02702073099584368,
+            "networkAdded": 0.005335377466937301,
+            "networkRemoved": 0.005749703165997438,
+            "transferredIn": 0.017855943474836156,
+            "transferredOut": 0.0038264012157766293
+          },
+          "organicLedger": {
+            "initial": 1.7625114608220758,
+            "externalInput": 0.07911017338077912,
+            "transferredIn": 0.017855943474836156,
+            "transferredOut": 0.0038264012157766293,
+            "output": 0.03079847585372947
+          },
+          "balanceErrors": {
+            "organic": -1.9984014443252818e-15,
+            "food": -4.9960036108132044e-15
+          },
+          "newCounters": {
+            "feedings": 2,
+            "consumedUnits": 0.00036,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:195,21:meadow-life:reef-cuttlefish:edge:living-rubble:3132,351:1",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.7221180234141266,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12531.036298015479,
+                "y": -6.868014389962077,
+                "z": 1405.2384103168033
+              }
+            },
+            {
+              "id": "ocean:195,21:meadow-life:barrel-sea-pen:edge:living-rock:780,84:1",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211025810907943,
+              "energy": 0.7782723690484816,
+              "lastFeedAt": 5.800000000000001,
+              "position": {
+                "x": 12484.51693843032,
+                "y": -5.2957941554539785,
+                "z": 1364.5579013868603
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "position": {
+        "x": 12064,
+        "z": 928
+      },
+      "simulatedNightSec": 8,
+      "simulatedDaySec": 4,
+      "observedSec": 12,
+      "actualCpuWallTimeMs": 21295.694499999998,
+      "activeOwnerCount": 9,
+      "sourceOwnerCount": 12,
+      "supportOwnerCount": 19,
+      "newAnimalCount": 17,
+      "actualFeedings": 36,
+      "nativeIntakeTraces": [
+        {
+          "owner": "189,14",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 0.1,
+          "agentId": "ocean:189,14:meadow-life:sand-edge-seahorse:grass:living-grass:4053,312:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.012002500000000001,
+          "stockAfter": 0.011822500000000001,
+          "individualOrganicUnits": 0.00410796,
+          "regionalClockSec": 0.1,
+          "organicBalanceError": 0
+        },
+        {
+          "owner": "188,14",
+          "speciesId": "spider-conch",
+          "timeSec": 0.2,
+          "agentId": "ocean:188,14:meadow-life:spider-conch:hard:living-rock:755,56:1,-2",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6199876000620002,
+          "stockAfter": 0.6198076000620002,
+          "individualOrganicUnits": 0.0041079200004,
+          "regionalClockSec": 0.2,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 0.2,
+          "agentId": "ocean:189,14:meadow-life:reef-cuttlefish:edge:living-rubble:3034,228:2",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011825000000000002,
+          "stockAfter": 0.011645000000000003,
+          "individualOrganicUnits": 0.0041079200004,
+          "regionalClockSec": 0.2,
+          "organicBalanceError": 0
+        },
+        {
+          "owner": "188,13",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 1.2000000000000002,
+          "agentId": "ocean:188,13:meadow-life:reef-cuttlefish:edge:living-rubble:3012,216:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.01203000000000001,
+          "stockAfter": 0.01185000000000001,
+          "individualOrganicUnits": 0.004107520026399119,
+          "regionalClockSec": 1.2000000000000002,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "188,13",
+          "speciesId": "spider-conch",
+          "timeSec": 1.3,
+          "agentId": "ocean:188,13:meadow-life:spider-conch:hard:living-rock:754,52:0,-1",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6195694083358231,
+          "stockAfter": 0.6193894083358231,
+          "individualOrganicUnits": 0.004107480031198855,
+          "regionalClockSec": 1.3,
+          "organicBalanceError": -2.220446049250313e-16
+        },
+        {
+          "owner": "189,13",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 1.8,
+          "agentId": "ocean:189,13:meadow-life:barrel-sea-pen:edge:living-rubble:3031,214:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5775771616687129,
+          "stockAfter": 0.5773971616687129,
+          "individualOrganicUnits": 0.0041072800611967365,
+          "regionalClockSec": 1.8,
+          "organicBalanceError": 4.440892098500626e-16
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 1.8,
+          "agentId": "ocean:189,14:meadow-life:barrel-sea-pen:edge:living-rubble:3034,228:2",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6300814594138534,
+          "stockAfter": 0.6299014594138534,
+          "individualOrganicUnits": 0.0041072800611967365,
+          "regionalClockSec": 1.8,
+          "organicBalanceError": 0
+        },
+        {
+          "owner": "188,15",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 1.8,
+          "agentId": "ocean:188,15:meadow-life:reef-cuttlefish:edge:living-rubble:3008,249:2",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.012045000000000014,
+          "stockAfter": 0.011865000000000014,
+          "individualOrganicUnits": 0.0041072800611967365,
+          "regionalClockSec": 1.8,
+          "organicBalanceError": 1.3322676295501878e-15
+        },
+        {
+          "owner": "189,15",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 1.8,
+          "agentId": "ocean:189,15:meadow-life:barrel-sea-pen:edge:living-rubble:3033,251:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.65938528911652,
+          "stockAfter": 0.65920528911652,
+          "individualOrganicUnits": 0.0041072800611967365,
+          "regionalClockSec": 1.8,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "188,15",
+          "speciesId": "spider-conch",
+          "timeSec": 2.2,
+          "agentId": "ocean:188,15:meadow-life:spider-conch:hard:living-rock:753,62:-2,1",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.654855915129491,
+          "stockAfter": 0.6546759151294911,
+          "individualOrganicUnits": 0.004107120092393841,
+          "regionalClockSec": 2.2,
+          "organicBalanceError": 1.3322676295501878e-15
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "spider-conch",
+          "timeSec": 2.9000000000000004,
+          "agentId": "ocean:189,14:meadow-life:spider-conch:hard:living-rock:757,59:1,-2",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.4095312006348426,
+          "stockAfter": 0.4093512006348426,
+          "individualOrganicUnits": 0.004106840162385386,
+          "regionalClockSec": 2.9000000000000004,
+          "organicBalanceError": 1.3322676295501878e-15
+        },
+        {
+          "owner": "187,15",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 2.9000000000000004,
+          "agentId": "ocean:187,15:meadow-life:reef-cuttlefish:edge:living-rubble:2992,242:1",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.012072500000000022,
+          "stockAfter": 0.011892500000000023,
+          "individualOrganicUnits": 0.004106840162385386,
+          "regionalClockSec": 2.9000000000000004,
+          "organicBalanceError": -1.1102230246251565e-15
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 3,
+          "agentId": "ocean:187,13:meadow-life:reef-cuttlefish:edge:living-rubble:2996,216:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.012075000000000023,
+          "stockAfter": 0.011895000000000024,
+          "individualOrganicUnits": 0.004106800173983762,
+          "regionalClockSec": 3,
+          "organicBalanceError": -4.440892098500626e-16
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 4.1000000000000005,
+          "agentId": "ocean:189,14:meadow-life:sand-edge-seahorse:grass:living-grass:4053,312:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011742500000000032,
+          "stockAfter": 0.011562500000000033,
+          "individualOrganicUnits": 0.004214317136380297,
+          "regionalClockSec": 4.1000000000000005,
+          "organicBalanceError": 1.7763568394002505e-15
+        },
+        {
+          "owner": "188,14",
+          "speciesId": "spider-conch",
+          "timeSec": 4.2,
+          "agentId": "ocean:188,14:meadow-life:spider-conch:hard:living-rock:755,56:1,-2",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6192098198485614,
+          "stockAfter": 0.6190298198485614,
+          "individualOrganicUnits": 0.004214277152777016,
+          "regionalClockSec": 4.2,
+          "organicBalanceError": -1.7763568394002505e-15
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 4.2,
+          "agentId": "ocean:189,14:meadow-life:reef-cuttlefish:edge:living-rubble:3034,228:2",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011565000000000034,
+          "stockAfter": 0.011385000000000034,
+          "individualOrganicUnits": 0.004214277152777016,
+          "regionalClockSec": 4.2,
+          "organicBalanceError": 1.7763568394002505e-15
+        },
+        {
+          "owner": "188,13",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 5.2,
+          "agentId": "ocean:188,13:meadow-life:reef-cuttlefish:edge:living-rubble:3012,216:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.01195000000000004,
+          "stockAfter": 0.01177000000000004,
+          "individualOrganicUnits": 0.004213877338734541,
+          "regionalClockSec": 5.2,
+          "organicBalanceError": -1.3322676295501878e-15
+        },
+        {
+          "owner": "188,13",
+          "speciesId": "spider-conch",
+          "timeSec": 5.300000000000001,
+          "agentId": "ocean:188,13:meadow-life:spider-conch:hard:living-rock:754,52:0,-1",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6191417008787435,
+          "stockAfter": 0.6189617008787436,
+          "individualOrganicUnits": 0.0042138373595292395,
+          "regionalClockSec": 5.300000000000001,
+          "organicBalanceError": -1.1102230246251565e-15
+        },
+        {
+          "owner": "189,13",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 5.800000000000001,
+          "agentId": "ocean:189,13:meadow-life:barrel-sea-pen:edge:living-rubble:3031,214:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.5789673345290486,
+          "stockAfter": 0.5787873345290486,
+          "individualOrganicUnits": 0.0042136374694995244,
+          "regionalClockSec": 5.800000000000001,
+          "organicBalanceError": 1.1102230246251565e-15
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 5.800000000000001,
+          "agentId": "ocean:189,14:meadow-life:barrel-sea-pen:edge:living-rubble:3034,228:2",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6317954410099889,
+          "stockAfter": 0.6316154410099889,
+          "individualOrganicUnits": 0.0042136374694995244,
+          "regionalClockSec": 5.800000000000001,
+          "organicBalanceError": 2.6645352591003757e-15
+        },
+        {
+          "owner": "188,15",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 5.800000000000001,
+          "agentId": "ocean:188,15:meadow-life:reef-cuttlefish:edge:living-rubble:3008,249:2",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011965000000000045,
+          "stockAfter": 0.011785000000000045,
+          "individualOrganicUnits": 0.0042136374694995244,
+          "regionalClockSec": 5.800000000000001,
+          "organicBalanceError": 2.6645352591003757e-15
+        },
+        {
+          "owner": "189,15",
+          "speciesId": "barrel-sea-pen",
+          "timeSec": 5.800000000000001,
+          "agentId": "ocean:189,15:meadow-life:barrel-sea-pen:edge:living-rubble:3033,251:0",
+          "pool": "plankton",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6608720649126464,
+          "stockAfter": 0.6606920649126464,
+          "individualOrganicUnits": 0.0042136374694995244,
+          "regionalClockSec": 5.800000000000001,
+          "organicBalanceError": 8.881784197001252e-16
+        },
+        {
+          "owner": "188,15",
+          "speciesId": "spider-conch",
+          "timeSec": 6.2,
+          "agentId": "ocean:188,15:meadow-life:spider-conch:hard:living-rock:753,62:-2,1",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6540642287970907,
+          "stockAfter": 0.6538842287970907,
+          "individualOrganicUnits": 0.004213477564671676,
+          "regionalClockSec": 6.2,
+          "organicBalanceError": 2.886579864025407e-15
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "spider-conch",
+          "timeSec": 6.9,
+          "agentId": "ocean:189,14:meadow-life:spider-conch:hard:living-rock:757,59:1,-2",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.4088376005636648,
+          "stockAfter": 0.4086576005636648,
+          "individualOrganicUnits": 0.004213197746613392,
+          "regionalClockSec": 6.9,
+          "organicBalanceError": 2.220446049250313e-15
+        },
+        {
+          "owner": "187,15",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 6.9,
+          "agentId": "ocean:187,15:meadow-life:reef-cuttlefish:edge:living-rubble:2992,242:1",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011992500000000053,
+          "stockAfter": 0.011812500000000054,
+          "individualOrganicUnits": 0.004213197746613392,
+          "regionalClockSec": 6.9,
+          "organicBalanceError": -2.6645352591003757e-15
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 7,
+          "agentId": "ocean:187,13:meadow-life:reef-cuttlefish:edge:living-rubble:2996,216:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011995000000000054,
+          "stockAfter": 0.011815000000000055,
+          "individualOrganicUnits": 0.00421315777420401,
+          "regionalClockSec": 7,
+          "organicBalanceError": -6.661338147750939e-16
+        },
+        {
+          "owner": "188,14",
+          "speciesId": "spider-conch",
+          "timeSec": 8.200000000000001,
+          "agentId": "ocean:188,14:meadow-life:spider-conch:hard:living-rock:755,56:1,-2",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6181370538094962,
+          "stockAfter": 0.6179570538094963,
+          "individualOrganicUnits": 0.004320591770587889,
+          "regionalClockSec": 8.200000000000001,
+          "organicBalanceError": -3.1086244689504383e-15
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "sand-edge-seahorse",
+          "timeSec": 8.200000000000001,
+          "agentId": "ocean:189,14:meadow-life:sand-edge-seahorse:grass:living-grass:4053,312:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.010885000000000065,
+          "stockAfter": 0.010705000000000065,
+          "individualOrganicUnits": 0.004320589611883466,
+          "regionalClockSec": 8.200000000000001,
+          "organicBalanceError": 3.552713678800501e-15
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 8.200000000000001,
+          "agentId": "ocean:189,14:meadow-life:reef-cuttlefish:edge:living-rubble:3034,228:2",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.010705000000000065,
+          "stockAfter": 0.010525000000000066,
+          "individualOrganicUnits": 0.004320591770587889,
+          "regionalClockSec": 8.200000000000001,
+          "organicBalanceError": 3.1086244689504383e-15
+        },
+        {
+          "owner": "188,13",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 9.200000000000001,
+          "agentId": "ocean:188,13:meadow-life:reef-cuttlefish:edge:living-rubble:3012,216:3",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011270000000000072,
+          "stockAfter": 0.011090000000000072,
+          "individualOrganicUnits": 0.0043201921164398496,
+          "regionalClockSec": 9.200000000000001,
+          "organicBalanceError": 0
+        },
+        {
+          "owner": "188,13",
+          "speciesId": "spider-conch",
+          "timeSec": 9.3,
+          "agentId": "ocean:188,13:meadow-life:spider-conch:hard:living-rock:754,52:0,-1",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6184180733629056,
+          "stockAfter": 0.6182380733629056,
+          "individualOrganicUnits": 0.00432015215322311,
+          "regionalClockSec": 9.3,
+          "organicBalanceError": -4.440892098500626e-16
+        },
+        {
+          "owner": "188,15",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 9.8,
+          "agentId": "ocean:188,15:meadow-life:reef-cuttlefish:edge:living-rubble:3008,249:2",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011285000000000076,
+          "stockAfter": 0.011105000000000077,
+          "individualOrganicUnits": 0.004319952343133819,
+          "regionalClockSec": 9.8,
+          "organicBalanceError": 3.1086244689504383e-15
+        },
+        {
+          "owner": "188,15",
+          "speciesId": "spider-conch",
+          "timeSec": 10.200000000000001,
+          "agentId": "ocean:188,15:meadow-life:spider-conch:hard:living-rock:753,62:-2,1",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.6534761305529617,
+          "stockAfter": 0.6532961305529618,
+          "individualOrganicUnits": 0.004319792502255432,
+          "regionalClockSec": 10.200000000000001,
+          "organicBalanceError": 3.3306690738754696e-15
+        },
+        {
+          "owner": "189,14",
+          "speciesId": "spider-conch",
+          "timeSec": 10.9,
+          "agentId": "ocean:189,14:meadow-life:spider-conch:hard:living-rock:757,59:1,-2",
+          "pool": "algae",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.4077946020293487,
+          "stockAfter": 0.4076146020293487,
+          "individualOrganicUnits": 0.004319512796102546,
+          "regionalClockSec": 10.9,
+          "organicBalanceError": 7.105427357601002e-15
+        },
+        {
+          "owner": "187,15",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 10.9,
+          "agentId": "ocean:187,15:meadow-life:reef-cuttlefish:edge:living-rubble:2992,242:1",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011312500000000085,
+          "stockAfter": 0.011132500000000085,
+          "individualOrganicUnits": 0.004319512796102546,
+          "regionalClockSec": 10.9,
+          "organicBalanceError": -1.9984014443252818e-15
+        },
+        {
+          "owner": "187,13",
+          "speciesId": "reef-cuttlefish",
+          "timeSec": 11,
+          "agentId": "ocean:187,13:meadow-life:reef-cuttlefish:edge:living-rubble:2996,216:0",
+          "pool": "reefGuild.preyOrganicUnits",
+          "removedUnits": 0.00018,
+          "scope": "existing owner-local mixed fields: unresolved reefGuild animal nutrition for seahorse/cuttlefish, plankton for sea pen, algae for conch; no resolved prey capture, new pool, seagrass consumption or complete natural diet",
+          "stockBefore": 0.011315000000000085,
+          "stockAfter": 0.011135000000000086,
+          "individualOrganicUnits": 0.0043194728396790125,
+          "regionalClockSec": 11,
+          "organicBalanceError": -3.1086244689504383e-15
+        }
+      ],
+      "owners": [
+        {
+          "id": "187,13",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.5457736104073032,
+            "plankton": 0.6410111421643728,
+            "detritus": 0.19931647592065055,
+            "reefGuildAnimalNutrition": 0.011160000000000093,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.06030943253474673,
+            "nutrients": 0.3238073207925938
+          },
+          "foodLedger": {
+            "initial": 1.4102963621355593,
+            "input": 0.018991129693123932,
+            "ingested": 0.013609999999999997,
+            "exported": 0.012616770256522974,
+            "networkAdded": 0.005212361460992794,
+            "networkRemoved": 0.005548909428242093,
+            "transferredIn": 0.001659837016124982,
+            "transferredOut": 0.018282782128715435
+          },
+          "organicLedger": {
+            "initial": 1.8062963621355594,
+            "externalInput": 0.07679112969312518,
+            "transferredIn": 0.001659837016124982,
+            "transferredOut": 0.018282782128715435,
+            "output": 0.016311866211089047
+          },
+          "balanceErrors": {
+            "organic": -3.552713678800501e-15,
+            "food": -6.161737786669619e-15
+          },
+          "newCounters": {
+            "feedings": 3,
+            "consumedUnits": 0.00054,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:187,13:meadow-life:reef-cuttlefish:edge:living-rubble:2996,216:0",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004319040911832154,
+              "energy": 0.7977495270628845,
+              "lastFeedAt": 11,
+              "position": {
+                "x": 11984.873816825206,
+                "y": -4.455236405464756,
+                "z": 866.3209236968939
+              }
+            }
+          ]
+        },
+        {
+          "id": "188,13",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.6189097526460372,
+            "plankton": 0.5259452045605406,
+            "detritus": 0.19972920945041647,
+            "reefGuildAnimalNutrition": 0.011160000000000093,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.060426649746974544,
+            "nutrients": 0.3231103314060974
+          },
+          "foodLedger": {
+            "initial": 1.342366929333657,
+            "input": 0.01897266547852703,
+            "ingested": 0.012499999999999997,
+            "exported": 0.007770195079872822,
+            "networkAdded": 0.005521380150969351,
+            "networkRemoved": 0.0055582795889487155,
+            "transferredIn": 0.0187007326922483,
+            "transferredOut": 0.015149066329585363
+          },
+          "organicLedger": {
+            "initial": 1.7383669293336572,
+            "externalInput": 0.06877266547852726,
+            "transferredIn": 0.0187007326922483,
+            "transferredOut": 0.015149066329585363,
+            "output": 0.011291746556096816
+          },
+          "balanceErrors": {
+            "organic": 2.6645352591003757e-15,
+            "food": 5.828670879282072e-16
+          },
+          "newCounters": {
+            "feedings": 6,
+            "consumedUnits": 0.00108,
+            "deaths": 0,
+            "moved": 240
+          },
+          "agents": [
+            {
+              "id": "ocean:188,13:meadow-life:reef-cuttlefish:edge:living-rubble:3012,216:3",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.0043189826259363556,
+              "energy": 0.804206201418898,
+              "lastFeedAt": 9.200000000000001,
+              "position": {
+                "x": 12049.600385563373,
+                "y": -3.074197844380486,
+                "z": 866.9839161957512
+              }
+            },
+            {
+              "id": "ocean:188,13:meadow-life:spider-conch:hard:living-rock:754,52:0,-1",
+              "speciesId": "spider-conch",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004318985863766443,
+              "energy": 0.8001388765253489,
+              "lastFeedAt": 9.3,
+              "position": {
+                "x": 12068.8225123727,
+                "y": -1.7413170187127593,
+                "z": 835.656224053923
+              }
+            }
+          ]
+        },
+        {
+          "id": "189,13",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.546625918050644,
+            "plankton": 0.575766751900958,
+            "detritus": 0.1997153904096172,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01648000000000006,
+            "plants": 0,
+            "coral": 0.06035309687399125,
+            "nutrients": 0.32355107928128696
+          },
+          "foodLedger": {
+            "initial": 1.326956000737846,
+            "input": 0.019126961022710623,
+            "ingested": 0.012299999999999997,
+            "exported": 0.025132814699475977,
+            "networkAdded": 0.005318344314881857,
+            "networkRemoved": 0.005737111764114785,
+            "transferredIn": 0.015149066329585363,
+            "transferredOut": 0.0012723855802132375
+          },
+          "organicLedger": {
+            "initial": 1.7229560007378462,
+            "externalInput": 0.07092696102271091,
+            "transferredIn": 0.015149066329585363,
+            "transferredOut": 0.0012723855802132375,
+            "output": 0.028748624740109033
+          },
+          "balanceErrors": {
+            "organic": 3.9968028886505635e-15,
+            "food": 8.604228440844963e-16
+          },
+          "newCounters": {
+            "feedings": 2,
+            "consumedUnits": 0.00036,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:189,13:meadow-life:reef-cuttlefish:edge:living-rubble:3031,214:0",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.8039042728757103,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12127.17976121379,
+                "y": -3.9254710698869086,
+                "z": 856.8362868364144
+              }
+            },
+            {
+              "id": "ocean:189,13:meadow-life:barrel-sea-pen:edge:living-rubble:3031,214:0",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211025810907943,
+              "energy": 0.7437555950935165,
+              "lastFeedAt": 5.800000000000001,
+              "position": {
+                "x": 12126.721680262119,
+                "y": -4.386378414585813,
+                "z": 857.0388239233757
+              }
+            }
+          ]
+        },
+        {
+          "id": "187,14",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.654179774745878,
+            "plankton": 0.617258363723518,
+            "detritus": 0.20056492099862133,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01648000000000006,
+            "plants": 0,
+            "coral": 0.06036161108032971,
+            "nutrients": 0.32351228820935146
+          },
+          "foodLedger": {
+            "initial": 1.4920406981930137,
+            "input": 0.018955595733541906,
+            "ingested": 0.011209999999999998,
+            "exported": 0.007068671511200947,
+            "networkAdded": 0.005088446771064307,
+            "networkRemoved": 0.0057542306399240295,
+            "transferredOut": 0.020048779078474726
+          },
+          "organicLedger": {
+            "initial": 1.8880406981930138,
+            "externalInput": 0.06675559573354192,
+            "transferredIn": 0,
+            "transferredOut": 0.020048779078474726,
+            "output": 0.010520574252540516
+          },
+          "balanceErrors": {
+            "organic": 2.6645352591003757e-15,
+            "food": 2.886579864025407e-15
+          },
+          "newCounters": {
+            "feedings": 0,
+            "consumedUnits": 0,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:187,14:meadow-life:reef-cuttlefish:edge:living-algae:living-rock:751,56:1:0",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.7355567834842568,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12018.854039905042,
+                "y": -3.887916791796847,
+                "z": 907.1615873246661
+              }
+            }
+          ]
+        },
+        {
+          "id": "188,14",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.6187621770444776,
+            "plankton": 0.5279727294979213,
+            "detritus": 0.20029136658278907,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.060384484618356785,
+            "nutrients": 0.32336712373187887
+          },
+          "foodLedger": {
+            "initial": 1.3460295797884465,
+            "input": 0.018943969463185335,
+            "ingested": 0.013829999999999997,
+            "exported": 0.006069999204385527,
+            "networkAdded": 0.005357898883546688,
+            "networkRemoved": 0.005263343380258235,
+            "transferredIn": 0.017708857948214776,
+            "transferredOut": 0.015850690373566095
+          },
+          "organicLedger": {
+            "initial": 1.7420295797884466,
+            "externalInput": 0.0527439694631853,
+            "transferredIn": 0.017708857948214776,
+            "transferredOut": 0.015850690373566095,
+            "output": 0.009616423383996618
+          },
+          "balanceErrors": {
+            "organic": -6.661338147750939e-16,
+            "food": -4.274358644806853e-15
+          },
+          "newCounters": {
+            "feedings": 3,
+            "consumedUnits": 0.00054,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:188,14:meadow-life:spider-conch:hard:living-rock:755,56:1,-2",
+              "speciesId": "spider-conch",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004318950249416221,
+              "energy": 0.7748596721409251,
+              "lastFeedAt": 8.200000000000001,
+              "position": {
+                "x": 12087.725635519524,
+                "y": -1.7142066974722547,
+                "z": 904.7780266093582
+              }
+            }
+          ]
+        },
+        {
+          "id": "189,14",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.40637338206059387,
+            "plankton": 0.6282792758630628,
+            "detritus": 0.4930566973621667,
+            "reefGuildAnimalNutrition": 0.010620000000000095,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0.06025707918049133,
+            "coral": 0.06038699239029365,
+            "nutrients": 0.3280052413697849
+          },
+          "foodLedger": {
+            "initial": 1.539561987835914,
+            "input": 0.019076913993751894,
+            "ingested": 0.013289999999999996,
+            "exported": 0.026938506109528144,
+            "networkAdded": 0.005871352665821281,
+            "networkRemoved": 0.012683007786659962,
+            "transferredIn": 0.016301552245778516,
+            "transferredOut": 0.00019093755925006498
+          },
+          "organicLedger": {
+            "initial": 1.995561987835914,
+            "externalInput": 0.08087691399375203,
+            "transferredIn": 0.016301552245778516,
+            "transferredOut": 0.00019093755925006498,
+            "output": 0.03266933135541125
+          },
+          "balanceErrors": {
+            "organic": 8.43769498715119e-15,
+            "food": 3.83026943495679e-15
+          },
+          "newCounters": {
+            "feedings": 11,
+            "consumedUnits": 0.00198,
+            "deaths": 0,
+            "moved": 125
+          },
+          "agents": [
+            {
+              "id": "ocean:189,14:meadow-life:sand-edge-seahorse:grass:living-grass:4053,312:0",
+              "speciesId": "sand-edge-seahorse",
+              "alive": true,
+              "state": "tail-holding",
+              "timeSec": 12,
+              "organicUnits": 0.004318948091531955,
+              "energy": 0.7689854768686721,
+              "lastFeedAt": 8.200000000000001,
+              "position": {
+                "x": 12159.048477357257,
+                "z": 935.5423075421731,
+                "y": -3.564736071983828
+              }
+            },
+            {
+              "id": "ocean:189,14:meadow-life:reef-cuttlefish:edge:living-rubble:3034,228:2",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004318950249416221,
+              "energy": 0.7615430824539056,
+              "lastFeedAt": 8.200000000000001,
+              "position": {
+                "x": 12138.591752917355,
+                "y": -3.2566896070814733,
+                "z": 914.1652640634059
+              }
+            },
+            {
+              "id": "ocean:189,14:meadow-life:barrel-sea-pen:edge:living-rubble:3034,228:2",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211025810907943,
+              "energy": 0.8002245092400516,
+              "lastFeedAt": 5.800000000000001,
+              "position": {
+                "x": 12138.420393695857,
+                "y": -3.728286967465921,
+                "z": 914.0481813162511
+              }
+            },
+            {
+              "id": "ocean:189,14:meadow-life:spider-conch:hard:living-rock:757,59:1,-2",
+              "speciesId": "spider-conch",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00431903767345158,
+              "energy": 0.7484311428467174,
+              "lastFeedAt": 10.9,
+              "position": {
+                "x": 12118.716044002233,
+                "y": -1.6453672631835425,
+                "z": 947.9769859229925
+              }
+            }
+          ]
+        },
+        {
+          "id": "187,15",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.5841894354941621,
+            "plankton": 0.6355907513059524,
+            "detritus": 0.20003707226728787,
+            "reefGuildAnimalNutrition": 0.011160000000000093,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.060340438216922795,
+            "nutrients": 0.3236310622263723
+          },
+          "foodLedger": {
+            "initial": 1.4388145663961767,
+            "input": 0.0188815134015569,
+            "ingested": 0.012869999999999998,
+            "exported": 0.008209518649735596,
+            "networkAdded": 0.005182504308584769,
+            "networkRemoved": 0.005562645488726419,
+            "transferredIn": 0.000680084114134975,
+            "transferredOut": 0.01709924501459392
+          },
+          "organicLedger": {
+            "initial": 1.8348145663961768,
+            "externalInput": 0.072681513401557,
+            "transferredIn": 0.000680084114134975,
+            "transferredOut": 0.01709924501459392,
+            "output": 0.011792674079477886
+          },
+          "balanceErrors": {
+            "organic": -1.7763568394002505e-15,
+            "food": -4.801714581503802e-15
+          },
+          "newCounters": {
+            "feedings": 3,
+            "consumedUnits": 0.00054,
+            "deaths": 0,
+            "moved": 120
+          },
+          "agents": [
+            {
+              "id": "ocean:187,15:meadow-life:reef-cuttlefish:edge:living-rubble:2992,242:1",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00431903767345158,
+              "energy": 0.7602018568046753,
+              "lastFeedAt": 10.9,
+              "position": {
+                "x": 11969.928311779788,
+                "y": -4.660218866310527,
+                "z": 969.4119927840121
+              }
+            }
+          ]
+        },
+        {
+          "id": "188,15",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.6532812396329906,
+            "plankton": 0.6171619316136775,
+            "detritus": 0.20017597151821553,
+            "reefGuildAnimalNutrition": 0.011160000000000093,
+            "openWaterAnimalNutrition": 0,
+            "plants": 0,
+            "coral": 0.06035912401250295,
+            "nutrients": 0.323521355477303
+          },
+          "foodLedger": {
+            "initial": 1.4707108987681567,
+            "input": 0.018816962890589883,
+            "ingested": 0.011679999999999996,
+            "exported": 0.007630362899316923,
+            "networkAdded": 0.004978502252584661,
+            "networkRemoved": 0.005566085753321583,
+            "transferredIn": 0.017502818159061906,
+            "transferredOut": 0.016513590652869108
+          },
+          "organicLedger": {
+            "initial": 1.8667108987681569,
+            "externalInput": 0.06861696289059,
+            "transferredIn": 0.017502818159061906,
+            "transferredOut": 0.016513590652869108,
+            "output": 0.011030808592387203
+          },
+          "balanceErrors": {
+            "organic": 3.1086244689504383e-15,
+            "food": 2.220446049250313e-15
+          },
+          "newCounters": {
+            "feedings": 6,
+            "consumedUnits": 0.00108,
+            "deaths": 0,
+            "moved": 223
+          },
+          "agents": [
+            {
+              "id": "ocean:188,15:meadow-life:reef-cuttlefish:edge:living-rubble:3008,249:2",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004319002053402576,
+              "energy": 0.757171314497142,
+              "lastFeedAt": 9.8,
+              "position": {
+                "x": 12034.3749843771,
+                "y": -3.1540820122396047,
+                "z": 998.0078470549803
+              }
+            },
+            {
+              "id": "ocean:188,15:meadow-life:spider-conch:hard:living-rock:753,62:-2,1",
+              "speciesId": "spider-conch",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.004319015005694326,
+              "energy": 0.816649264314807,
+              "lastFeedAt": 10.200000000000001,
+              "position": {
+                "x": 12052.275615386692,
+                "y": -1.8452535143732707,
+                "z": 998.9531547826483
+              }
+            }
+          ]
+        },
+        {
+          "id": "189,15",
+          "clockSec": 12,
+          "ticks": 120,
+          "newClock": {
+            "ticks": 120,
+            "lastTickSec": 12
+          },
+          "finalStocks": {
+            "algae": 0.6522188190119981,
+            "plankton": 0.6585263249071022,
+            "detritus": 0.26818177648710717,
+            "reefGuildAnimalNutrition": 0,
+            "openWaterAnimalNutrition": 0.01648000000000006,
+            "plants": 0.017549939365946034,
+            "coral": 0.06032975339212844,
+            "nutrients": 0.32478283733807084
+          },
+          "foodLedger": {
+            "initial": 1.5835888657532633,
+            "input": 0.01890296577973018,
+            "ingested": 0.011899999999999997,
+            "exported": 0.02612389838236565,
+            "networkAdded": 0.005164497830563161,
+            "networkRemoved": 0.007410038787099998,
+            "transferredIn": 0.01670452821211918
+          },
+          "organicLedger": {
+            "initial": 1.9970888657532635,
+            "externalInput": 0.09070296577973086,
+            "transferredIn": 0.01670452821211918,
+            "transferredOut": 0,
+            "output": 0.030172948705798695
+          },
+          "balanceErrors": {
+            "organic": 7.105427357601002e-15,
+            "food": 2.7755575615628914e-15
+          },
+          "newCounters": {
+            "feedings": 2,
+            "consumedUnits": 0.00036,
+            "deaths": 0,
+            "moved": 111
+          },
+          "agents": [
+            {
+              "id": "ocean:189,15:meadow-life:sand-edge-seahorse:grass:living-grass:4053,321:0",
+              "speciesId": "sand-edge-seahorse",
+              "alive": true,
+              "state": "tail-holding",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.7423371511584128,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12158.695016839367,
+                "z": 962.744921159735,
+                "y": -3.869377406081435
+              }
+            },
+            {
+              "id": "ocean:189,15:meadow-life:reef-cuttlefish:edge:living-rubble:3033,251:0",
+              "speciesId": "reef-cuttlefish",
+              "alive": true,
+              "state": "foraging",
+              "timeSec": 12,
+              "organicUnits": 0.00399520285487697,
+              "energy": 0.7339683346487199,
+              "lastFeedAt": null,
+              "position": {
+                "x": 12135.605876396974,
+                "y": -4.574932015047867,
+                "z": 1006.5986500913632
+              }
+            },
+            {
+              "id": "ocean:189,15:meadow-life:barrel-sea-pen:edge:living-rubble:3033,251:0",
+              "speciesId": "barrel-sea-pen",
+              "alive": true,
+              "state": "contracted",
+              "timeSec": 12,
+              "organicUnits": 0.004211025810907943,
+              "energy": 0.7460917233591134,
+              "lastFeedAt": 5.800000000000001,
+              "position": {
+                "x": 12135.376128098485,
+                "y": -5.037724990104032,
+                "z": 1006.6939433871994
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -260,3 +260,57 @@ test('a failed entry cannot fabricate readiness, chapter time or a started obser
   assert.equal(count(unsafe.log, 'prepare'), 1); assert.equal(count(unsafe.log, 'shot-begin'), 0);
   assert.deepEqual(unsafe.world.protectedState, unsafe.protectedState);
 });
+
+test('the real meadow chapter prepares actual life under cover, forces a safe cut, and waits for its second native window', async () => {
+  const index = DIRECTOR_STEPS.findIndex(step => step.id === 'shallows-meadow-life-community');
+  assert.ok(index >= 0); assert.equal(DIRECTOR_STEPS[index].motion.routeId, 'meadow-life');
+
+  // Missing new life in an empty or historical owner makes the production
+  // world helper refuse preparation. The actual hook must never reveal or
+  // start a chapter merely because the ordinary nine-owner window is ready.
+  const empty = worldFixture({ entryKind: 'continuous' }); empty.world.prepareResult = false;
+  const refused = harness(empty.world); await start(refused, index);
+  await refused.until(() => refused.state.error !== null, 'the actual meadow helper refusal must remain covered');
+  assert.equal(count(empty.log, 'plan'), 0, 'the source-based meadow observation cannot accept an unprepared nearby bridge');
+  assert.equal(refused.execution.length, 1); assert.equal(refused.execution[0].action.directorEntryPlan, undefined);
+  assert.equal(refused.execution[0].transition.phase, 'covered'); assert.equal(refused.execution[0].transition.opacity, 1);
+  assert.equal(count(empty.log, 'prepare'), 1); assert.equal(count(empty.log, 'bridge-begin'), 0); assert.equal(count(empty.log, 'shot-begin'), 0);
+  assert.equal(refused.state.transition.phase, 'covered'); assert.equal(refused.state.playing, false); assert.equal(refused.state.elapsedMs, 0);
+  assert.ok(!refused.events.some(event => event.type === 'transition-stage' && event.phase === 'in'));
+  assert.deepEqual(empty.world.protectedState, empty.protectedState);
+
+  const f = worldFixture({ entryKind: 'continuous' }), run = harness(f.world); let preparedUnder;
+  f.world.onPrepare = () => {
+    preparedUnder = clone(run.state.transition);
+    f.world.center = [4, 3]; f.world.missingOwner = true; run.publish();
+  };
+  await start(run, index); await run.until(() => count(f.log, 'prepare') === 1, 'the actual meadow hook must prepare its native animal view');
+  assert.equal(count(f.log, 'plan'), 0); assert.equal(count(f.log, 'bridge-begin'), 0);
+  assert.equal(preparedUnder.phase, 'covered'); assert.equal(preparedUnder.opacity, 1);
+  assert.equal(f.log.find(row => row[0] === 'prepare')[1].routeId, 'meadow-life');
+  assert.equal(directorSceneReady(run.execution[0].action, f.world, run.inputs.snapshot), false);
+  await run.advance(1000); assert.equal(run.state.phase, 'loading'); assert.equal(run.state.transition.phase, 'covered');
+  assert.equal(count(f.log, 'shot-begin'), 0); assert.equal(run.state.elapsedMs, 0);
+
+  // A paused observer stays fully covered even when the true second window
+  // arrives. Resume admits one reveal and the existing moving camera path.
+  run.api.pause(); await run.flush(); f.world.missingOwner = false; run.publish(); await run.flush(); await run.advance(1000);
+  assert.equal(directorSceneReady(run.execution[0].action, f.world, run.inputs.snapshot), true);
+  assert.equal(run.state.transition.opacity, 1); assert.equal(count(f.log, 'shot-begin'), 0); assert.equal(run.state.elapsedMs, 0);
+  run.api.resume(); await run.flush(); await run.until(() => run.state.phase === 'showing', 'the complete new window must allow one resumed meadow shot');
+  assert.equal(count(f.log, 'prepare'), 1); assert.equal(count(f.log, 'shot-begin'), 1); assert.equal(run.state.transition.opacity, 0);
+  const shot = f.log.find(row => row[0] === 'shot-begin')[1]; assert.equal(shot.routeId, 'meadow-life'); assert.equal(shot.kind, 'walk'); assert.equal(shot.durationSec, 14);
+  assert.equal(run.api.diagnostics.entered.at(-1).absence, false, 'real new life does not inherit an unrelated route absence flag');
+  assert.deepEqual(f.world.protectedState, f.protectedState);
+
+  // A cancelled meadow token cannot use late old applied/readiness events to
+  // reveal the prepared window or acquire a camera after free observation.
+  const cancelled = worldFixture({ entryKind: 'continuous' }), late = harness(cancelled.world);
+  cancelled.world.onPrepare = () => { cancelled.world.missingOwner = true; late.publish(); };
+  await start(late, index); await late.until(() => count(cancelled.log, 'prepare') === 1, 'a pending meadow window must be cancellable');
+  const token = late.state.token, oldApplied = late.api.applied;
+  late.api.stop(); await late.flush(); cancelled.world.missingOwner = false; late.publish(); oldApplied(token);
+  await late.runCancelledFrames(); await late.flush(); await late.advance(1000);
+  assert.equal(late.state.active, false); assert.equal(late.state.phase, 'idle'); assert.equal(count(cancelled.log, 'shot-begin'), 0);
+  assert.equal(count(cancelled.log, 'prepare'), 1); assert.deepEqual(cancelled.world.protectedState, cancelled.protectedState);
+});
