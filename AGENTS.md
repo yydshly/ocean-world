@@ -6,7 +6,7 @@
 
 120文件／830项最终本机检查全部通过（0失败、0跳过），一次生产构建通过，51份最终源码、来源、测试与工作流哈希一致；原19份地形、模拟、食物和旧资产源码逐字节保持，旧19类动物及真实巨藻宿主100组完整输出保持。早期目录、flatMap和halo读取测试断言已修正；新观察入口改以实际目标owner优先，避免相机合法跨区后重复准备转向另一宿主，路线与观察距离保持。诊断保留，不累加为最终唯一检查。
 
-GitHub Pages 发布状态：待本次源码的同套云端检查与部署完成。
+源码`ea0c404`已于2026-10-08 02:43:53（Asia/Shanghai）发布；[运行37667385736](https://github.com/yydshly/ocean-world/actions/runs/37667385736)构建、同一830项云端检查（0失败、0跳过）及Pages部署全部成功。部署6917936123／状态19418693294为success，51份当前与提交源码、来源、测试哈希一致。本有限群落包收口；本机与云端是同套检查，不相加。整体画面尚未实际验收。
 
 说明见[群落包](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_UNDERSTORY_LIFE.md)、[来源](https://github.com/yydshly/ocean-world/blob/main/docs/KELP_UNDERSTORY_LIFE_SOURCES.md)及 output/validation/kelp-understory-life-delivery.json。本有限包核验发布后收口，后续继续整片生境和缺失生命类群，不进入单体、材质或镜头细调。整体画面尚未实际验收；独立Goal保持暂停，已有浏览器拒绝不得绕过。以下保留此前交付历史。
 
