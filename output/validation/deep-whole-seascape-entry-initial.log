@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: ordinary deep whole-scene entry awaits all actual plans, births and safe observation before success
+ok 1 - ordinary deep whole-scene entry awaits all actual plans, births and safe observation before success
+  ---
+  duration_ms: 940.7494
+  type: 'test'
+  ...
+# Subtest: an already visited deep owner declines replacement and cannot report a new whole scene
+ok 2 - an already visited deep owner declines replacement and cannot report a new whole scene
+  ---
+  duration_ms: 918.0243
+  type: 'test'
+  ...
+# Subtest: late deep scene preparation respects movement, manual control, seed, disposal and newer entries
+ok 3 - late deep scene preparation respects movement, manual control, seed, disposal and newer entries
+  ---
+  duration_ms: 8930.9598
+  type: 'test'
+  ...
+# Subtest: unreadable or absent committed deep plans cannot report successful scenery
+ok 4 - unreadable or absent committed deep plans cannot report successful scenery
+  ---
+  duration_ms: 2300.6963
+  type: 'test'
+  ...
+# Subtest: director deep opening and four moving chapters reach the native scene while old routes remain
+ok 5 - director deep opening and four moving chapters reach the native scene while old routes remain
+  ---
+  duration_ms: 1325.2736
+  type: 'test'
+  ...
+# Subtest: ordinary UI exposes deep whole scene, travel routes and production ecology option
+ok 6 - ordinary UI exposes deep whole scene, travel routes and production ecology option
+  ---
+  duration_ms: 31.9052
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14641.916

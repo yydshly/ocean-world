@@ -1,4 +1,4 @@
-import { DEMO_ACTIONS, DEMO_LIVING_STOPS, DEMO_KELP_STOPS } from './demoCapabilities.js';
+import { DEMO_ACTIONS, DEMO_LIVING_STOPS, DEMO_KELP_STOPS, DEMO_DEEP_STOPS } from './demoCapabilities.js';
 import { isDirectorPlaybackRate } from './directorCameraMotion.js';
 
 export { DIRECTOR_PLAYBACK_RATES } from './directorCameraMotion.js';
@@ -12,7 +12,7 @@ const livingStopOrder = ['shallow-scene-reef', 'shallow-scene-sand', 'shallow-sc
   'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
   'seagrass-meadow', 'sand-channel', 'reef-garden'];
 const openingEntryStops = Object.freeze({ 'shallows-opening': 'shallow-scene-reef',
-  'kelp-opening': 'kelp-scene-forest', 'deep-opening': 'deep-plain-community' });
+  'kelp-opening': 'kelp-scene-forest', 'deep-opening': 'deep-scene-plain' });
 const step = (id, title, caption, actionId, durationMs, motionKind = 'walk', routeId = null) => Object.freeze({
   id, title, caption, action: actions.get(actionId), durationMs,
   motion: Object.freeze({ kind: motionKind, durationSec: durationMs / 1000, ...(routeId?{routeId}:{}) }),
@@ -74,7 +74,11 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
   step('kelp-forest-opening', '林缘生活带：开放沙地', '在相邻的天然沉积空隙移动，回望巨藻林缘与上方水域。', 'stop-forest-belt-opening', 12000),
   ...layers('kelp', ['海带林：林底', '海带林：藻间水层', '海带林：上部水域']),
   step('kelp-life', '海带林：附近的真实动物', '在林下群落周围巡游，留意动物与藻体之间的生活空间。', 'current-local-life', 14000, 'follow'),
-  step('deep-opening', '深海：软底与观察器照明', '观察器沿软底缓行，灯光扫过沉积平原、缓坡和岩露头。', 'world-deep', 14000),
+  step('deep-opening', '深海整景：先看整体', '观察器从沉积平原起步，灯光依次扫过宽缓坡、岩露头和开放海床。', 'world-deep', 14000),
+  ...['deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer'].map(id=>{
+    const stop=DEMO_DEEP_STOPS.find(row=>row.id===id);
+    return step(`deep-${id}`,stop.title,`${stop.description}。沿实际海床缓行，观察周围整体环境。`,stop.action.id,12000);
+  }),
   step('deep-plain-belt', '深海生活带：沉积平原', '沿软泥底缓行，观察实际底栖生命、近底鱼与食物活动。', 'stop-deep-plain-community', 14000),
   step('deep-outcrop-belt', '深海生活带：缓坡岩露头', '灯光随镜头扫过宽缓坡和稀疏岩露头，观察周围生活空间。', 'stop-deep-slope-outcrop', 12000),
   ...layers('deep', ['深海：近底观察', '深海：离底观察', '深海：上方观察']),

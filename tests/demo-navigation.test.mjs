@@ -12,12 +12,15 @@ import { createDeepOceanGenerator } from '../src/deepOceanGeneration.js';
 const worldAction = biome => DEMO_ACTIONS.find(action => action.kind === 'world' && action.biome === biome &&
   (biome !== 'reef' || action.profile === LIVING_SHALLOWS_PROFILE));
 
-test('deep seascape shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries', () => {
+test('deep belt and whole-scene shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries', () => {
   const generator=createDeepOceanGenerator('42',{seascape:true});
-  assert.deepEqual(DEMO_DEEP_STOPS.map(entry=>entry.id),generator.seascapeRouteStops.map(stop=>stop.id));
+  const stops=[...generator.seascapeRouteStops,...generator.wholeSeascapeRouteStops];
+  assert.deepEqual(DEMO_DEEP_STOPS.map(entry=>entry.id),stops.map(stop=>stop.id));
+  assert.deepEqual(stops.map(stop=>stop.id),['deep-plain-community','deep-slope-outcrop',
+    'deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer']);
   for(const entry of DEMO_DEEP_STOPS){
     const {world,protectedState}=observationWorld({biomeId:'deep'}),calls=[];
-    world.enterDeepSeascape=id=>{calls.push(id);return generator.seascapeRouteStops.some(stop=>stop.id===id);};
+    world.enterDeepSeascape=id=>{calls.push(id);return stops.some(stop=>stop.id===id);};
     assert.equal(navigateDemoEntry(entry.action,world),true);
     assert.deepEqual(calls,[entry.id]);assert.strictEqual(world.protectedState,protectedState);
     assert.equal(navigateDemoEntry({...entry.action,stopId:'missing'},world),false);
@@ -137,6 +140,7 @@ test('anchored kelp and deep openings use actual native habitat entries without 
   for (const [biomeId, entryStopId, methodName] of [
     ['kelp', 'forest-belt-interior', 'enterKelpForestBelt'],
     ['deep', 'deep-plain-community', 'enterDeepSeascape'],
+    ['deep', 'deep-scene-plain', 'enterDeepSeascape'],
   ]) {
     const { world, calls, protectedState } = observationWorld({ biomeId });
     const before = structuredClone(protectedState);

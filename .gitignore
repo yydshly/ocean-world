@@ -117,3 +117,11 @@ output/validation/screenshots/*
 !output/validation/kelp-seascape-entry-initial.log
 !output/validation/kelp-seascape-cloud-build.log
 !output/validation/kelp-seascape-cloud-run.json
+
+!output/validation/deep-whole-seascape-checks.log
+!output/validation/deep-whole-seascape-build.log
+!output/validation/deep-whole-seascape-model.json
+!output/validation/deep-whole-seascape-delivery.json
+!output/validation/deep-whole-seascape-entry-initial.log
+!output/validation/deep-whole-seascape-cloud-build.log
+!output/validation/deep-whole-seascape-cloud-run.json

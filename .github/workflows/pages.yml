@@ -46,6 +46,10 @@ jobs:
           tests/living-meadow-assets.test.mjs
           tests/living-shallows-render.test.mjs
           tests/deep-seascape.test.mjs
+          tests/deep-whole-seascape.test.mjs
+          tests/deep-whole-seascape-render.test.mjs
+          tests/deep-whole-seascape-ecology.test.mjs
+          tests/deep-whole-seascape-world.test.mjs
           tests/deep-seascape-render.test.mjs
           tests/deep-seascape-ecology.test.mjs
           tests/deep-ocean-generation.test.mjs

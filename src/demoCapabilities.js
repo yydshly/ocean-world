@@ -4,6 +4,7 @@ import { OCEAN_OBSERVATION_LAYERS } from './oceanLayerNavigation.js';
 import { DEEP_OCEAN_OBSERVATION_LAYERS } from './deepOceanNavigation.js';
 import { SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
 import { KELP_SEASCAPE_ROUTE_STOPS } from './kelpSeascape.js';
+import { DEEP_WHOLE_SEASCAPE_ROUTE_STOPS } from './deepWholeSeascape.js';
 
 const action = data => Object.freeze(data);
 const entry = data => Object.freeze({ ...data, action: action(data.action) });
@@ -87,6 +88,12 @@ export const DEMO_DEEP_STOPS = Object.freeze([
     action:{id:'stop-deep-plain-community',kind:'deep-stop',biome:'deep',stopId:'deep-plain-community'}}),
   entry({id:'deep-slope-outcrop',number:'02',title:'深海生活带：缓坡岩露头',description:'共享床面的宽缓坡、稀疏硬底和周围真实群落',
     action:{id:'stop-deep-slope-outcrop',kind:'deep-stop',biome:'deep',stopId:'deep-slope-outcrop'}}),
+  ...DEEP_WHOLE_SEASCAPE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+3).padStart(2,'0'),title:stop.label,
+    description:({'deep-scene-plain':'连续软泥海床、沉积平原与实际底栖生命',
+      'deep-scene-slope':'共享海床上的宽缓坡与近底生活空间',
+      'deep-scene-outcrop':'实际岩露头、周围沉积底和真实群落',
+      'deep-scene-outer':'碎石与开放海床，继续向外探索'})[stop.id],
+    action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id}})),
 ]);
 
 export const DEMO_LEGACY_VIEWS = Object.freeze([

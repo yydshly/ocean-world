@@ -69,12 +69,12 @@ test('the finite tour covers every existing entry without invented or destructiv
     assert.ok(!['reset', 'environment', 'record', 'download'].includes(step.action.kind));
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
-  assert.ok(duration >= 360000 && duration <= 600000, 'local moving observation stays approximately six to ten minutes');
-  assert.equal(duration, 570000); assert.equal(included.size, 42);
+  assert.ok(duration >= 360000 && duration <= 660000, 'finite local moving observation stays approximately six to eleven minutes');
+  assert.equal(duration, 618000); assert.equal(included.size, 46);
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 48);
+  assert.equal(DIRECTOR_STEPS.length, 52);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow'].includes(step.motion.kind));
@@ -109,7 +109,9 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     ['kelp-scene-forest','kelp-scene-rockbed','kelp-scene-opening','kelp-scene-outer','forest-belt-interior','forest-belt-opening']);
   assert.ok(DIRECTOR_STEPS.filter(step=>step.action.kind==='kelp-stop').every(step=>step.action.biome==='kelp'));
   assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='deep-stop').map(step=>step.action.stopId),
-    DEMO_DEEP_STOPS.map(stop=>stop.id));
+    ['deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer','deep-plain-community','deep-slope-outcrop']);
+  assert.deepEqual(DIRECTOR_STEPS.filter(step=>step.action.kind==='deep-stop').map(step=>step.action.stopId).sort(),
+    DEMO_DEEP_STOPS.map(stop=>stop.id).sort(), 'both original deep entries and all four new macro entries remain covered');
   assert.ok(DIRECTOR_STEPS.filter(step=>step.action.kind==='deep-stop').every(step=>step.action.biome==='deep'));
   assert.deepEqual([...observedBiomes].sort(), ['deep', 'kelp', 'reef']);
   assert.deepEqual([...layeredBiomes].sort(), ['deep', 'kelp']);
@@ -139,7 +141,7 @@ test('opening actions resolve existing shallow, kelp and deep stops without chan
   for (const [id, biome, expectedId, key] of [
     ['shallows-opening', 'reef', 'shallow-scene-reef', 'routeStops'],
     ['kelp-opening', 'kelp', 'kelp-scene-forest', 'kelpSeascapeRouteStops'],
-    ['deep-opening', 'deep', 'deep-plain-community', 'seascapeRouteStops'],
+    ['deep-opening', 'deep', 'deep-scene-plain', 'wholeSeascapeRouteStops'],
   ]) {
     const step = DIRECTOR_STEPS.find(step => step.id === id), action = directorStepAction(step);
     assert.equal(step.action.kind, 'world'); assert.ok(DEMO_ACTIONS.includes(step.action));
@@ -195,6 +197,7 @@ test('direct chapter seeks resolve their intended world from any currently loade
   const currentWorlds = [{ biome: 'reef', profile: 'legacy' }, { biome: 'reef', profile: 'living-shallows-v1' },
     { biome: 'kelp' }, { biome: 'deep' }];
   const chapters = [
+    ...['deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer'].map(stop=>({id:`deep-${stop}`,biome:'deep'})),
     ...['deep-plain-belt','deep-outcrop-belt'].map(id=>({id,biome:'deep'})),
     ...['kelp-forest-belt','kelp-forest-opening'].map(id=>({id,biome:'kelp'})),
     ...['kelp', 'deep'].flatMap(biome => ['bed', 'midwater', 'surface', 'life'].map(name => ({ id: `${biome}-${name}`, biome }))),

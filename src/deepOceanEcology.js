@@ -3,6 +3,8 @@ import { deepSpeciesById } from './deepSpecies.js';
 import { OceanEcologyStore } from './oceanEcologyStore.js';
 import { upgradeDeepPredators, advanceDeepPredators, validateDeepPredatorRecord, predatorEnergyBudgetError } from './deepPredatorEcology.js';
 import { createDeepSeascapePlans, validateDeepSeascapePlan } from './deepSeascape.js';
+import { createDeepWholeSeascapePlans, validateDeepWholeSeascapePlan,
+  DEEP_WHOLE_SEASCAPE_ANCHOR, DEEP_WHOLE_SEASCAPE_OWNERS } from './deepWholeSeascape.js';
 
 export const DEEP_OCEAN_REGION_ANIMAL_LIMIT = 20;
 export const DEEP_OCEAN_ACTIVE_REGION_LIMIT = 9;
@@ -15,6 +17,8 @@ const clone = value => structuredClone(value);
 const keyFor = seed => `deep-ecology-v1:${typeof seed}:${seed}`;
 const vector = value => value && ['x', 'y', 'z'].every(axis => Number.isFinite(value[axis]));
 const nonnegative = value => Number.isFinite(value) && value >= 0;
+const wholeSeascapeMarked = record => record && (record.seascapeVersion === 2 || record.seascapePlan?.version === 2 ||
+  ['wholeSeascapeVersion', 'wholeSeascapeGroupId', 'wholeSeascapeInitializedAtSec'].some(key => Object.hasOwn(record, key)));
 const close = (a, b) => Math.abs(a - b) <= 1e-8 * Math.max(1, Math.abs(a), Math.abs(b));
 function hash(value) {
   let state = 2166136261;
@@ -26,10 +30,12 @@ function hash(value) {
  * local organic-food/condition ledgers are retained; unloaded cells freeze.
  * All allocation rates, occupancy and food quantities remain display proxies. */
 export class DeepOceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), seascape = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), seascape = false, wholeSeascape = false } = {}) {
     this.seed = seed; this.generator = generator; this.store = store; this._world = keyFor(seed);
     this._seascapeRequested = seascape === true;
     this.seascapeEnabled = this._seascapeRequested && this._seascapeAvailable(generator);
+    this._wholeSeascapeRequested = wholeSeascape === true;
+    this.wholeSeascapeEnabled = this._wholeSeascapeRequested && this.seascapeEnabled;
     this._active = new Map(); this._locked = new Set(); this._center = null;
     this._queue = Promise.resolve(); this._pending = this._queue; this._revision = 0; this._generation = 0;
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10; this._disposed = false;
@@ -45,6 +51,16 @@ export class DeepOceanEcology {
   }
 
   _savedSeascapePlan(record, cx, cz) {
+    if (wholeSeascapeMarked(record)) {
+      const plan = record.seascapePlan;
+      if (!this.wholeSeascapeEnabled || record.seascapeVersion !== 2 || record.seascapeInitializedAtSec !== 0 ||
+          record.wholeSeascapeVersion !== 1 || record.wholeSeascapeInitializedAtSec !== 0 ||
+          record.wholeSeascapeGroupId !== `${DEEP_WHOLE_SEASCAPE_ANCHOR.cx},${DEEP_WHOLE_SEASCAPE_ANCHOR.cz}` ||
+          !DEEP_WHOLE_SEASCAPE_OWNERS.includes(`${cx},${cz}`) || plan?.version !== 2 || plan.id !== `${cx},${cz}` ||
+          plan.cx !== cx || plan.cz !== cz || !validateDeepWholeSeascapePlan(this.generator.baseGenerator, plan))
+        throw new Error('Invalid saved whole deep seascape; original landscape and population were not regenerated.');
+      return plan;
+    }
     const has = record && ['seascapeVersion', 'seascapeInitializedAtSec', 'seascapePlan'].some(key => Object.hasOwn(record, key));
     if (!has) return null;
     if (!this.seascapeEnabled || record.seascapeVersion !== 1 ||
@@ -99,6 +115,8 @@ export class DeepOceanEcology {
       record.seascapeInitializedAtSec = region.seascapeInitializedAtSec;
       record.seascapePlan = clone(region.seascapePlan);
     }
+    if (region.wholeSeascapeVersion !== undefined) for (const key of ['wholeSeascapeVersion', 'wholeSeascapeGroupId', 'wholeSeascapeInitializedAtSec'])
+      record[key] = clone(region[key]);
     return record;
   }
   _restore(record, cx, cz) {
@@ -186,6 +204,8 @@ export class DeepOceanEcology {
       region.seascapeVersion = record.seascapeVersion;
       region.seascapeInitializedAtSec = record.seascapeInitializedAtSec;
       region.seascapePlan = clone(seascapePlan);
+      if (seascapePlan.version === 2) for (const key of ['wholeSeascapeVersion', 'wholeSeascapeGroupId', 'wholeSeascapeInitializedAtSec'])
+        region[key] = clone(record[key]);
     }
     return region;
   }
@@ -221,9 +241,9 @@ export class DeepOceanEcology {
       }
       if (halo.size > 16) throw new Error('Deep seascape admission exceeded the bounded owner read halo.');
       const savedRows = new Map(), savedPlans = [];
-      for (const [id, [x, z]] of halo) {
+      const readOwner = async (id, x, z) => {
         const active = this._active.get(id), saved = active ? this._record(active) : await this.store.load(world, id);
-        if (!current()) return;
+        if (!current()) return false;
         // A failed or undefined read is not an empty ocean. Only a successful
         // null permits new landscape, population and initial food inventory.
         if (saved === undefined) throw new Error('Deep seascape owner read returned no result.');
@@ -232,11 +252,63 @@ export class DeepOceanEcology {
           const plan = this._savedSeascapePlan(saved, x, z);
           if (plan) savedPlans.push(plan);
         }
+        return true;
+      };
+      for (const [id, [x, z]] of halo) {
+        if (!await readOwner(id, x, z)) return;
       }
       const freshPlans = [];
+      const wantsWhole = this.wholeSeascapeEnabled && DEEP_WHOLE_SEASCAPE_OWNERS.some(id => desired.has(id));
+      let savedWhole = [];
+      if (this.wholeSeascapeEnabled && (wantsWhole || [...savedRows.values()].some(wholeSeascapeMarked))) {
+        // This one 6x2 sample overlaps the aligned 2x2 read halo in at least
+        // four owners: 16+12-4 <=24, independently of the nine active owners.
+        for (const id of DEEP_WHOLE_SEASCAPE_OWNERS) if (!savedRows.has(id)) {
+          const [x, z] = id.split(',').map(Number); halo.set(id, [x, z]);
+          if (!await readOwner(id, x, z)) return;
+        }
+        if (halo.size > 24) throw new Error('Whole deep seascape admission exceeded its 24-owner read halo.');
+        const rows = DEEP_WHOLE_SEASCAPE_OWNERS.map(id => savedRows.get(id)), marked = rows.filter(wholeSeascapeMarked);
+        if (marked.length) {
+          const group = marked[0].seascapePlan?.group;
+          if (marked.length !== 12 || group?.cx !== DEEP_WHOLE_SEASCAPE_ANCHOR.cx || group?.cz !== DEEP_WHOLE_SEASCAPE_ANCHOR.cz ||
+              JSON.stringify(group.ownerIds) !== JSON.stringify(DEEP_WHOLE_SEASCAPE_OWNERS) || rows.some(row =>
+                row.seascapeVersion !== 2 || row.seascapeInitializedAtSec !== 0 || row.wholeSeascapeVersion !== 1 ||
+                row.wholeSeascapeGroupId !== `${group.cx},${group.cz}` || row.wholeSeascapeInitializedAtSec !== 0 ||
+                JSON.stringify(row.seascapePlan?.group) !== JSON.stringify(group)))
+            throw new Error('Saved whole deep seascape group is incomplete or inconsistent; no landscape or population was regenerated.');
+          savedWhole = rows;
+        } else if (wantsWhole && rows.every(row => row === null)) {
+          let plans;
+          try { plans = createDeepWholeSeascapePlans(this.generator.baseGenerator, DEEP_WHOLE_SEASCAPE_ANCHOR.cx, DEEP_WHOLE_SEASCAPE_ANCHOR.cz); }
+          catch (error) { if (!(error instanceof RangeError)) throw error; }
+          if (plans) {
+            if (!Array.isArray(plans) || plans.length !== 12 || new Set(plans.map(plan => plan.id)).size !== 12 ||
+                plans.some(plan => plan.version !== 2 || !DEEP_WHOLE_SEASCAPE_OWNERS.includes(plan.id) ||
+                  JSON.stringify(plan.group?.ownerIds) !== JSON.stringify(DEEP_WHOLE_SEASCAPE_OWNERS) ||
+                  !validateDeepWholeSeascapePlan(this.generator.baseGenerator, plan)))
+              throw new Error('Invalid fresh whole deep seascape.');
+            freshPlans.push(...plans);
+          }
+        }
+      }
+      if (this.wholeSeascapeEnabled) {
+        const historicalGroups = new Map();
+        for (const row of savedRows.values()) if (row?.seascapeVersion === 1) {
+          const group = row.seascapePlan.group; historicalGroups.set(`${group.cx},${group.cz}`, group);
+        }
+        for (const group of historicalGroups.values()) {
+          const rows = group.ownerIds.map(id => savedRows.get(id));
+          if (rows.length !== 4 || rows.some(row => !row || row.seascapeVersion !== 1 ||
+              row.seascapeInitializedAtSec !== rows[0]?.seascapeInitializedAtSec ||
+              JSON.stringify(row.seascapePlan?.group) !== JSON.stringify(group)))
+            throw new Error('Saved deep seascape group is incomplete or inconsistent; no landscape or population was regenerated.');
+        }
+      }
       for (const [gx, gz] of groups.values()) {
         const ids = [0, 1].flatMap(dz => [0, 1].map(dx => `${gx + dx},${gz + dz}`));
         const rows = ids.map(id => savedRows.get(id));
+        if (rows.some(wholeSeascapeMarked) || freshPlans.some(plan => plan.version === 2 && ids.includes(plan.id))) continue;
         const marked = rows.filter(row => row && ['seascapeVersion', 'seascapeInitializedAtSec', 'seascapePlan'].some(key => Object.hasOwn(row, key)));
         if (marked.length) {
           // All four owners were committed together. Missing records or
@@ -264,9 +336,17 @@ export class DeepOceanEcology {
       // conditional predator and every real food patch once, without exposing
       // scenery revisions before the complete birth records are committed.
       this.generator.withSeascapePlans(allPlans, () => {
+        // Restore every saved member privately, including offscreen food,
+        // native/predator energy and death records. None of these copies tick,
+        // receive new inventory or become public during validation.
+        for (const record of savedWhole) this._restore(record, record.cx, record.cz);
         for (const plan of freshPlans) {
           const item = this._prepareSeascapeOwner(null, plan.cx, plan.cz);
-          item.region.seascapeVersion = 1; item.region.seascapeInitializedAtSec = item.region.sim.timeSec;
+          item.region.seascapeVersion = plan.version; item.region.seascapeInitializedAtSec = item.region.sim.timeSec;
+          if (plan.version === 2) {
+            item.region.wholeSeascapeVersion = 1; item.region.wholeSeascapeGroupId = `${plan.group.cx},${plan.group.cz}`;
+            item.region.wholeSeascapeInitializedAtSec = 0;
+          }
           item.region.seascapePlan = clone(plan); prepared.set(plan.id, item);
         }
         for (const [id, [x, z]] of desired) {
@@ -389,6 +469,8 @@ export class DeepOceanEcology {
       predatorEnergyBalanceError: predatorEnergyBudgetError(region),
       ...(region.seascapeVersion !== undefined ? { seascapeVersion: region.seascapeVersion,
         seascapeInitializedAtSec: region.seascapeInitializedAtSec, seascape: clone(region.seascapePlan.group) } : {}),
+      ...(region.wholeSeascapeVersion !== undefined ? { wholeSeascapeVersion: region.wholeSeascapeVersion,
+        wholeSeascapeGroupId: region.wholeSeascapeGroupId, wholeSeascapeInitializedAtSec: region.wholeSeascapeInitializedAtSec } : {}),
       suspendedParcelCount: region.sim.suspendedPatches.length, primaryProduction: 0,
       localEnvironment: { ...region.sim.environment, lightLevel: 0, naturalLightLevel: 0, visibilityM: region.sim.visibilityM } }));
     const resources = Object.fromEntries(pools.map(pool => [pool, regions.reduce((sum, region) => sum + region.resources[pool], 0)]));
@@ -419,6 +501,7 @@ export class DeepOceanEcology {
     this._generation++; this._revision++; this._active.clear(); this._locked.clear(); this._center = null;
     this.seed = seed; this.generator = generator; this._world = next; this._disposed = false;
     this.seascapeEnabled = this._seascapeRequested && this._seascapeAvailable(generator);
+    this.wholeSeascapeEnabled = this._wholeSeascapeRequested && this.seascapeEnabled;
     if (this.seascapeEnabled) this.generator.setSeascapePlans([]);
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10;
     return this._pending = this._enqueue(async () => {

@@ -1,0 +1,199 @@
+{
+  "schema": "complete-deep-whole-seascape-delivery-v1",
+  "createdAtUtc": "2026-10-07T04:08:53.295656+00:00",
+  "displayTimezone": "Asia/Shanghai",
+  "objective": "One finite macro deep continuous bed, actual existing animals and ecology, ordinary exploration and moving director; whole scene before details",
+  "sample": {
+    "seed": "42",
+    "originOwner": [
+      132,
+      8
+    ],
+    "ownerCount": 12,
+    "widthM": 384,
+    "depthM": 128,
+    "sharedGrid": [
+      385,
+      129
+    ],
+    "ownerGrid": [
+      65,
+      65
+    ],
+    "nativeRocks": 52,
+    "addedRocks": 4,
+    "nativeRubble": 142,
+    "nativeElementsAndProtectedFootprintUnchanged": true,
+    "originalOuterGuardM": 16,
+    "entireOriginalPlainOwner": "133,8",
+    "bedDeltaSpanM": 1.032067060470581,
+    "maxTriangleGrade": 0.119873618,
+    "sampleIsWorldBoundary": false
+  },
+  "actualModel": {
+    "scope": "finite CPU actual-record, shared-support and persistence evidence; no browser or visual acceptance",
+    "seed": "42",
+    "group": {
+      "cx": 132,
+      "cz": 8,
+      "widthM": 384,
+      "depthM": 128,
+      "ownerIds": [
+        "132,8",
+        "133,8",
+        "134,8",
+        "135,8",
+        "136,8",
+        "137,8",
+        "132,9",
+        "133,9",
+        "134,9",
+        "135,9",
+        "136,9",
+        "137,9"
+      ]
+    },
+    "groupOwnerCount": 12,
+    "groupSpeciesCounts": {
+      "sea-pig-group": 50,
+      "rattail-family": 20,
+      "pom-pom-anemone": 35,
+      "giant-sea-spider-group": 3
+    },
+    "groupRocks": 56,
+    "groupAddedRocks": 4,
+    "groupRubble": 142,
+    "changedBedSamples": 467,
+    "groupInitialFoodUnits": 2.4655,
+    "groupInitialFoodByPool": {
+      "surfaceDetritus": 1.6999999999999997,
+      "benthicAnimalFood": 0.608,
+      "suspendedPrey": 0.15749999999999995
+    },
+    "activeOwnerCount": 9,
+    "sourceOwnerCount": 12,
+    "observedSec": 3,
+    "activeMovedAnimals": 23,
+    "activeIngestedUnits": 0.0306,
+    "activeFeedingEvents": 48,
+    "maxFoodBalanceError": 5.551115123125783e-17,
+    "maxNativeEnergyBalanceError": 1.7763568394002505e-15,
+    "maxPredatorEnergyBalanceError": 1.3322676295501878e-15,
+    "transitions": [
+      {
+        "x": 8480,
+        "z": 544,
+        "diskReads": 24,
+        "sourceOwners": 12,
+        "activeOwners": 9
+      },
+      {
+        "x": 8608,
+        "z": 544,
+        "diskReads": 17,
+        "sourceOwners": 12,
+        "activeOwners": 9
+      },
+      {
+        "x": 8800,
+        "z": 608,
+        "diskReads": 24,
+        "sourceOwners": 12,
+        "activeOwners": 9
+      },
+      {
+        "x": -2400,
+        "z": 1600,
+        "diskReads": 16,
+        "sourceOwners": 0,
+        "activeOwners": 9
+      },
+      {
+        "x": 8480,
+        "z": 544,
+        "diskReads": 24,
+        "sourceOwners": 12,
+        "activeOwners": 9
+      }
+    ]
+  },
+  "bounds": {
+    "diskReadOwnerLimit": 24,
+    "publicPlanOwnerLimit": 25,
+    "activeOwnerLimit": 9,
+    "animalRecordsPerOwnerIncludingDeaths": 20,
+    "nativeRockLimitPerOwner": 8,
+    "landscapeDrawCallLimit": 36,
+    "sharedLandscapeGeometries": 2,
+    "sharedLandscapeMaterials": 3
+  },
+  "nativeGeometry": {
+    "ownerVerticesChecked": 50700,
+    "internalSeams": 16,
+    "positionNormalColorUvExact": true,
+    "actualChangedRenderedBedVertices": 29351,
+    "fractionalBedRays": 36,
+    "maximumBedRayErrorM": 3.9968e-15,
+    "addedRockCapRays": 12,
+    "maximumRockCapRayErrorM": 2.98708e-07,
+    "oldNativeAndV1IndependentGoldens": 8,
+    "productionDeepRendererUnchanged": true
+  },
+  "navigation": {
+    "ordinaryButton": "深海整景",
+    "routeIds": [
+      "deep-scene-plain",
+      "deep-scene-slope",
+      "deep-scene-outcrop",
+      "deep-scene-outer"
+    ],
+    "directorDeepOpeningStop": "deep-scene-plain",
+    "oldDeepEntriesRetained": true,
+    "directorChapterCount": 52,
+    "distinctNativeActions": 46,
+    "observationAt1xSec": 618,
+    "transitionsAndLoadingAdditional": true
+  },
+  "validation": {
+    "workflowFileCount": 66,
+    "local": {
+      "tests": 472,
+      "pass": 472,
+      "fail": 0
+    },
+    "localBuildCount": 1,
+    "entryFocusedCases": 6,
+    "entryFocusedFailures": 0,
+    "initialEntryLog": "deep-whole-seascape-entry-initial.log",
+    "finalLog": "deep-whole-seascape-checks.log",
+    "buildLog": "deep-whole-seascape-build.log",
+    "browserVisualAcceptance": false,
+    "gpuPerformanceAcceptance": false,
+    "completeTourViewed": false,
+    "countsNotSummedAcrossRepeatedBatches": true,
+    "workingTreeBuildSourceHashesExact": true
+  },
+  "sourceHashes": {
+    "src/deepWholeSeascape.js": "deae8f6e0b71d7e718a80d788bc1b810a93ea051809c93ec022dc50855aaa2e5",
+    "src/deepSeascape.js": "2e9f61b39249e62dd8d00e83f55d393af91db3a8f2cafc0fde0eee0572248c9f",
+    "src/deepOceanEcology.js": "aed714af2945c69ede6d69f6a81b872e0ceb8b398420de708fa3f753641fe616",
+    "src/world/ReefWorld.js": "4d241280067fd2a6e1c24d43b630e4548c34710cd1883a68d742b80fe292ef15",
+    "src/OceanApp.jsx": "c9ef61e92d08d679cc86d01d25f20deba088bd18112ed46baa3dccdf91ca56f2",
+    "src/demoCapabilities.js": "91880065acb5f02ca30082e3848aa8a64c6abe369afe2bb4abbc65c03cbcdb98",
+    "src/directorTour.js": "913c14d73422d791a9cbe22fa0e3f399d7a8b615459f093cba09eb911b65d9ce",
+    ".github/workflows/pages.yml": "f1c52866660b6452ea5cadec13c4a252ae7b0a31435dbc9a5caec641569ddb0e"
+  },
+  "publication": {
+    "status": "pending",
+    "site": "https://yydshly.github.io/ocean-world/",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director"
+  },
+  "limits": [
+    "One explicit admitted sample is not a sea boundary; outside retains native procedural exploration.",
+    "Existing saved members prevent replacement, with identities, deaths, histories, food and clocks retained.",
+    "Unsuitable seeds and bed/rock combinations decline finitely; no relaxed physics or invented organisms.",
+    "Current procedural animals and ecological rates/food units remain display proxies, not field calibrated marine population predictions.",
+    "All completely removed external markers cannot be reconstructed as a known whole-group record.",
+    "Browser URL policy refusal remains; no indirect browser capture bypass or current visual/GPU/full-tour acceptance."
+  ]
+}

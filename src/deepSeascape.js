@@ -1,4 +1,5 @@
 import { oceanRockHeight, oceanRockSurface } from './oceanRockShape.js';
+import { validateDeepWholeSeascapePlan, deepWholeSeascapeRoute } from './deepWholeSeascape.js';
 
 export const DEEP_SEASCAPE_VERSION = 1;
 export const DEEP_SEASCAPE_OWNER_LIMIT = 25;
@@ -110,7 +111,7 @@ export function deepSeascapeRoute(baseGenerator){const base=baseGenerator.baseGe
 export function createDeepSeascapeGenerator(baseGenerator){const base=baseGenerator.baseGenerator??baseGenerator;
   if(base.surfaceY!==3500)throw new TypeError('A deep source is required.');let committed=new Map(),view=committed,revision=0,temporaryDepth=0;const chunks=new Map(),neighbors=new Map();
   const inspect=input=>{if(!Array.isArray(input)||input.length>25)throw new TypeError('Deep seascape registry must contain at most 25 owners.');const next=new Map();
-    for(const p of input){if(!validateDeepSeascapePlan(p,base)||next.has(p.id))throw new TypeError('Invalid or duplicate deep seascape owner.');next.set(p.id,freeze(p));}return next;};
+    for(const p of input){if(!(p?.version===2?validateDeepWholeSeascapePlan(base,p):validateDeepSeascapePlan(p,base))||next.has(p.id))throw new TypeError('Invalid or duplicate deep seascape owner.');next.set(p.id,freeze(p));}return next;};
   function vertexPlan(x,z){const cx=Math.floor(x/64),cz=Math.floor(z/64),xs=x%64===0?[cx,cx-1]:[cx],zs=z%64===0?[cz,cz-1]:[cz];
     for(const az of zs)for(const ax of xs){const p=view.get(`${ax},${az}`);if(p)return p;}return null;}
   function floorVertex(x,z){if(!Number.isFinite(x)||!Number.isFinite(z))throw new RangeError('Deep coordinates must be finite.');const p=vertexPlan(x,z);
@@ -137,6 +138,7 @@ export function createDeepSeascapeGenerator(baseGenerator){const base=baseGenera
     for(const rock of elementsNear(x,z))if(Number.isFinite(oceanRockHeight(rock,x,z)))height=Math.max(height,rock.y+rock.scale.y);return height;}
   const facade={...base,baseGenerator:base,floorVertex,floorSurface,supportAt,sample,heightAt:(x,z)=>supportAt(x,z).height,floorNormal:(x,z)=>supportAt(x,z).normal,heightForCamera,
     get seascapeRouteStops(){return deepSeascapeRoute(base);},get seascapeRevision(){return revision;},get seascapeCandidatesActive(){return temporaryDepth>0;},
+    get wholeSeascapeRouteStops(){return deepWholeSeascapeRoute(base);},
     seascapePlan:(cx,cz)=>committed.get(`${cx},${cz}`),seascapeRegistryStats:()=>({size:committed.size,limit:25,revision,ids:[...committed.keys()]}),
     setSeascapePlans(input){if(temporaryDepth)throw new TypeError('Cannot publish inside a temporary deep birth view.');const next=inspect(input);
       if(next.size===committed.size&&[...next].every(([id,p])=>stamp(p)===stamp(committed.get(id))))return false;
