@@ -12,6 +12,7 @@ import { KELP_BENTHIC_LIFE_ROUTE_STOPS } from './kelpBenthicLifeRoutes.js';
 import { KELP_WATER_LIFE_ROUTE_STOPS } from './kelpWaterLifeRoutes.js';
 import { DEEP_WHOLE_SEASCAPE_ROUTE_STOPS } from './deepWholeSeascape.js';
 import { DEEP_BENTHIC_LIFE_ROUTE_STOPS } from './deepBenthicLifeRoutes.js';
+import { DEEP_HARD_LIFE_ROUTE_STOPS } from './deepHardLifeRoutes.js';
 
 const action = data => Object.freeze(data);
 const entry = data => Object.freeze({ ...data, action: action(data.action) });
@@ -116,6 +117,9 @@ export const DEMO_DEEP_STOPS = Object.freeze([
   ...DEEP_BENTHIC_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+7).padStart(2,'0'),title:stop.label,
     description:'观察适合当地软泥底与水深的沉积物利用者和底栖爬行动物；当地组合由生境与保存记录决定',
     action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id,deepBenthicLifeEntry:true}})),
+  ...DEEP_HARD_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+8).padStart(2,'0'),title:stop.label,
+    description:'观察真实岩面上固定附着的海百合与黑珊瑚，以及随底流发生的悬浮摄食',
+    action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id,deepHardLifeEntry:true}})),
 ]);
 
 export const DEMO_LEGACY_VIEWS = Object.freeze([

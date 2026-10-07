@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { createDeepHardLifeAsset, animateDeepHardLifeAsset, disposeDeepHardLifeAsset, isDeepHardLifeSpecies } from './DeepHardLifeAssets.js';
 import { createDeepBenthicLifeAsset, animateDeepBenthicLifeAsset, disposeDeepBenthicLifeAsset, isDeepBenthicLifeSpecies } from './DeepBenthicLifeAssets.js';
 import { createDeepOrganism, animateDeepOrganism, disposeDeepOrganism } from './deepOrganisms.js';
 import { createDeepSeaSpiderOrganism, animateDeepSeaSpiderOrganism, disposeDeepSeaSpiderOrganism } from './deepSeaSpiderOrganism.js';
@@ -6,7 +7,7 @@ import { DEEP_SEA_SPIDER_SPECIES_ID } from '../deepSeaSpiderGeometry.js';
 
 const supportedSpecies = new Set(['sea-pig-group', 'rattail-family', 'pom-pom-anemone', DEEP_SEA_SPIDER_SPECIES_ID]);
 const finite = (value, fallback = 0) => Number.isFinite(value) ? value : fallback;
-const disposeRegional = object => isDeepBenthicLifeSpecies(object.userData.speciesId) ? disposeDeepBenthicLifeAsset(object) : object.userData.speciesId === DEEP_SEA_SPIDER_SPECIES_ID
+const disposeRegional = object => isDeepHardLifeSpecies(object.userData.speciesId) ? disposeDeepHardLifeAsset(object) : isDeepBenthicLifeSpecies(object.userData.speciesId) ? disposeDeepBenthicLifeAsset(object) : object.userData.speciesId === DEEP_SEA_SPIDER_SPECIES_ID
   ? disposeDeepSeaSpiderOrganism(object) : disposeDeepOrganism(object);
 
 // Regional adapters retain the authored morphology and its support convention.
@@ -23,7 +24,7 @@ export class DeepOceanAnimals {
   }
   sync(agents) {
     if (this._disposed) return false;
-    const live = new Map(agents.filter(agent => agent.alive !== false && (supportedSpecies.has(agent.speciesId) || isDeepBenthicLifeSpecies(agent.speciesId)) &&
+    const live = new Map(agents.filter(agent => agent.alive !== false && (supportedSpecies.has(agent.speciesId) || isDeepBenthicLifeSpecies(agent.speciesId) || isDeepHardLifeSpecies(agent.speciesId)) &&
       this.catalog.has(agent.speciesId)).map(agent => [agent.id, agent]));
     let changed = false;
     for (const [id, entity] of this.entities) {
@@ -33,7 +34,7 @@ export class DeepOceanAnimals {
     }
     for (const [id, agent] of live) {
       if (this.entities.has(id)) continue;
-      const species = this.catalog.get(agent.speciesId), object = isDeepBenthicLifeSpecies(agent.speciesId) ? createDeepBenthicLifeAsset(species) : agent.speciesId === DEEP_SEA_SPIDER_SPECIES_ID
+      const species = this.catalog.get(agent.speciesId), object = isDeepHardLifeSpecies(agent.speciesId) ? createDeepHardLifeAsset(species) : isDeepBenthicLifeSpecies(agent.speciesId) ? createDeepBenthicLifeAsset(species) : agent.speciesId === DEEP_SEA_SPIDER_SPECIES_ID
         ? createDeepSeaSpiderOrganism(species) : createDeepOrganism(species);
       object.userData.agentId = id; object.userData.regionId = agent.regionId; object.userData.oceanStreaming = true;
       let hash = 2166136261; for (const char of id) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
@@ -64,7 +65,7 @@ export class DeepOceanAnimals {
       const object = entity.object;
       object.position.set(agent.position.x, agent.position.y, agent.position.z);
       object.scale.setScalar(Number.isFinite(agent.sizeM) && agent.sizeM > 0 ? agent.sizeM : .1);
-      if (isDeepBenthicLifeSpecies(agent.speciesId)) {
+      if (isDeepBenthicLifeSpecies(agent.speciesId) || isDeepHardLifeSpecies(agent.speciesId)) {
         const up = new THREE.Vector3(agent.supportNormal?.x ?? 0, agent.supportNormal?.y ?? 1, agent.supportNormal?.z ?? 0).normalize();
         const forward = new THREE.Vector3(Math.cos(finite(agent.heading)), 0, Math.sin(finite(agent.heading)));
         forward.addScaledVector(up, -forward.dot(up)).normalize();
@@ -72,7 +73,8 @@ export class DeepOceanAnimals {
         object.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(forward, up, side));
       } else object.rotation.set(0, -finite(agent.heading), 0);
       object.userData.regionId = agent.regionId;
-      if (isDeepBenthicLifeSpecies(agent.speciesId)) animateDeepBenthicLifeAsset(object, finite(agent.timeSec, finite(timeSec)), agent);
+      if (isDeepHardLifeSpecies(agent.speciesId)) animateDeepHardLifeAsset(object, finite(agent.timeSec, finite(timeSec)), agent);
+      else if (isDeepBenthicLifeSpecies(agent.speciesId)) animateDeepBenthicLifeAsset(object, finite(agent.timeSec, finite(timeSec)), agent);
       else if (agent.speciesId === DEEP_SEA_SPIDER_SPECIES_ID) animateDeepSeaSpiderOrganism(object, finite(agent.timeSec, finite(timeSec)), agent);
       else animateDeepOrganism(object, finite(agent.timeSec, finite(timeSec)), agent, agent.localEnvironment ?? {});
     }

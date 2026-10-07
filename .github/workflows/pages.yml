@@ -48,6 +48,10 @@ jobs:
           tests/deep-benthic-life-render.test.mjs
           tests/deep-benthic-life-ecology.test.mjs
           tests/deep-benthic-life-world.test.mjs
+          tests/deep-hard-life.test.mjs
+          tests/deep-hard-life-render.test.mjs
+          tests/deep-hard-life-ecology.test.mjs
+          tests/deep-hard-life-world.test.mjs
           tests/kelp-benthic-life.test.mjs
           tests/kelp-benthic-life-render.test.mjs
           tests/kelp-benthic-life-ecology.test.mjs

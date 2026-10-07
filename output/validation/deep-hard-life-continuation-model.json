@@ -1,0 +1,143 @@
+{
+  "owner": "156,8",
+  "nativeSeconds": 14,
+  "fixedHostPositions": [
+    {
+      "x": 10019.738556258459,
+      "y": 0.8623596144181187,
+      "z": 515.141732953465
+    },
+    {
+      "x": 10019.414298938576,
+      "y": 0.8609280430709291,
+      "z": 515.653503610917
+    }
+  ],
+  "resources": {
+    "particulateOrganicFood": 0.00032,
+    "smallSuspendedAnimals": 0.00032
+  },
+  "foodLedger": {
+    "initial": 0,
+    "input": 0.0011200000000000001,
+    "ingested": 0.00016,
+    "exported": 0.00032,
+    "byPool": {
+      "particulateOrganicFood": {
+        "initial": 0,
+        "input": 0.0005600000000000001,
+        "ingested": 0.00008,
+        "exported": 0.00016
+      },
+      "smallSuspendedAnimals": {
+        "initial": 0,
+        "input": 0.0005600000000000001,
+        "ingested": 0.00008,
+        "exported": 0.00016
+      }
+    }
+  },
+  "counters": {
+    "ticks": 140,
+    "feedings": 2,
+    "consumedUnits": 0.00016,
+    "inputPulses": 14,
+    "deaths": 0
+  },
+  "foodBudgetError": 1.0842021724855044e-19,
+  "energyBudgetError": -5.329070518200751e-15,
+  "individuals": [
+    {
+      "id": "deep-hard:156,8:sea-lily-thalassocrinus:0",
+      "speciesId": "sea-lily-thalassocrinus",
+      "host": "deep-rock:1252,64",
+      "timeSec": 14,
+      "lastHardLifeIntake": {
+        "timeSec": 11.5,
+        "ownerId": "156,8",
+        "channelId": "deep-hard-channel:156,8:sea-lily-thalassocrinus:0",
+        "hostId": "deep-rock:1252,64",
+        "pool": "particulateOrganicFood",
+        "parcelId": "deep-hard-parcel:156,8:1",
+        "parcelOrdinal": 1,
+        "parcelCreatedAtSec": 0.1,
+        "parcelTravelM": 0.6840000000000005,
+        "sourcePosition": {
+          "x": 10019.049408129242,
+          "y": 1.098066912459127,
+          "z": 515.0079325518067
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.7095738974675926,
+        "energyAfter": 0.7097338974675926,
+        "agentPosition": {
+          "x": 10019.738556258459,
+          "y": 0.8623596144181187,
+          "z": 515.141732953465
+        },
+        "feedingPosition": {
+          "x": 10019.849408129241,
+          "y": 1.098066912459127,
+          "z": 515.0079325518067
+        },
+        "foodPosition": {
+          "x": 10019.733408129174,
+          "y": 1.098066912459127,
+          "z": 515.0079325518067
+        },
+        "contactDistanceM": 0.11600000006728806,
+        "allowedDistanceM": 0.12,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent bounded external local control-volume input at actual hard-host feeding-organ height: selected particulate organic or small suspended animal nutrition components, not lifted legacy anemone food, measured biomass or complete natural diets. Zero initial stock; observer light and hour provide no food."
+      }
+    },
+    {
+      "id": "deep-hard:156,8:alternating-quill-black-coral:0",
+      "speciesId": "alternating-quill-black-coral",
+      "host": "deep-rock:1252,64",
+      "timeSec": 14,
+      "lastHardLifeIntake": {
+        "timeSec": 11.5,
+        "ownerId": "156,8",
+        "channelId": "deep-hard-channel:156,8:alternating-quill-black-coral:0",
+        "hostId": "deep-rock:1252,64",
+        "pool": "smallSuspendedAnimals",
+        "parcelId": "deep-hard-parcel:156,8:2",
+        "parcelOrdinal": 2,
+        "parcelCreatedAtSec": 0.1,
+        "parcelTravelM": 0.6840000000000005,
+        "sourcePosition": {
+          "x": 10018.500136272309,
+          "y": 0.9144969120072866,
+          "z": 515.7819478909819
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.7784666048266383,
+        "energyAfter": 0.7786266048266384,
+        "agentPosition": {
+          "x": 10019.414298938576,
+          "y": 0.8609280430709291,
+          "z": 515.653503610917
+        },
+        "feedingPosition": {
+          "x": 10019.300136272308,
+          "y": 0.9144969120072866,
+          "z": 515.7819478909819
+        },
+        "foodPosition": {
+          "x": 10019.18413627224,
+          "y": 0.9144969120072866,
+          "z": 515.7819478909819
+        },
+        "contactDistanceM": 0.11600000006728806,
+        "allowedDistanceM": 0.12,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent bounded external local control-volume input at actual hard-host feeding-organ height: selected particulate organic or small suspended animal nutrition components, not lifted legacy anemone food, measured biomass or complete natural diets. Zero initial stock; observer light and hour provide no food."
+      }
+    }
+  ]
+}

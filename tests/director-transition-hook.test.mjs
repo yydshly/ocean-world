@@ -261,8 +261,8 @@ test('a failed entry cannot fabricate readiness, chapter time or a started obser
   assert.deepEqual(unsafe.world.protectedState, unsafe.protectedState);
 });
 
-test('the real meadow, shoal and kelp water chapters prepare actual life under cover and wait for their second native window', async () => {
-  for (const { id, route, duration, biomeId = 'reef', living = true } of [{ id: 'shallows-meadow-life-community', route: 'meadow-life', duration: 14 }, { id: 'shallows-shoal-life-community', route: 'shoal-life', duration: 16 }, { id: 'kelp-water-life', route: 'kelp-water-life', duration: 16, biomeId: 'kelp', living: false }]) {
+test('the real meadow, shoal, kelp water and deep hard chapters prepare actual life under cover and wait for their second native window', async () => {
+  for (const { id, route, duration, biomeId = 'reef', living = true } of [{ id: 'shallows-meadow-life-community', route: 'meadow-life', duration: 14 }, { id: 'shallows-shoal-life-community', route: 'shoal-life', duration: 16 }, { id: 'kelp-water-life', route: 'kelp-water-life', duration: 16, biomeId: 'kelp', living: false }, { id: 'deep-hard-life', route: 'deep-hard-life', duration: 14, biomeId: 'deep', living: false }]) {
   const index = DIRECTOR_STEPS.findIndex(step => step.id === id);
   assert.ok(index >= 0); assert.equal(DIRECTOR_STEPS[index].motion.routeId, route);
 
