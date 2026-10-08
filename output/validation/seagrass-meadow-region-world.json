@@ -1,0 +1,51 @@
+{
+  "scope": "native CPU Three camera, model and saved history; GPU appearance not accepted",
+  "entrySeconds": 38.8394967,
+  "plannedDistanceM": 393.6777282783832,
+  "travelledM": 392.1255179270791,
+  "centres": [
+    "228,5",
+    "228,4",
+    "229,5",
+    "229,4",
+    "230,4",
+    "230,5",
+    "231,5",
+    "232,5",
+    "232,4",
+    "233,4"
+  ],
+  "maximumMeasuredWindowSeconds": 24.818235999999988,
+  "initialAliveAnimals": 107,
+  "initialSpecies": [
+    "green-chromis",
+    "lined-tang",
+    "reef-squid",
+    "spotted-jelly",
+    "tropical-urchin",
+    "feather-duster",
+    "reef-parrotfish",
+    "reef-goatfish",
+    "spotted-hermit-crab",
+    "sand-goby",
+    "blue-spotted-ray",
+    "tiger-cowrie",
+    "blue-tang",
+    "sand-edge-seahorse",
+    "reef-cuttlefish",
+    "barrel-sea-pen",
+    "green-turtle"
+  ],
+  "durationSec": 200,
+  "routeExit": {
+    "x": 14952,
+    "z": 318,
+    "y": -5.129141807556152,
+    "bedY": -7.129141807556152,
+    "sM": 393.6777282783832,
+    "heading": 0,
+    "scope": "interior-safe-observation-end"
+  },
+  "eastBoundaryPortConnected": false,
+  "oldHistoryPreserved": true
+}

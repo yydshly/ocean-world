@@ -1,0 +1,115 @@
+{
+  "scope": "native ordinary-window ecology; no camera, browser or GPU appearance acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "sampleGroupId": "seagrass-meadow-region:228,4",
+  "actualRouteLengthM": 393.6777282783832,
+  "ownedRecordCount": 12,
+  "actualAnimalRecordCount": 157,
+  "actualSpeciesIds": [
+    "blue-tang",
+    "lined-tang",
+    "sand-goby",
+    "tropical-urchin",
+    "blue-spotted-ray",
+    "reef-goatfish",
+    "spotted-hermit-crab",
+    "sand-edge-seahorse",
+    "reef-cuttlefish",
+    "barrel-sea-pen",
+    "reef-squid",
+    "reef-parrotfish",
+    "tiger-cowrie",
+    "feather-duster",
+    "green-chromis",
+    "spotted-jelly",
+    "green-turtle"
+  ],
+  "guildTotals": {
+    "native": 48,
+    "guild": 0,
+    "openWater": 14,
+    "diversity": 31,
+    "benthic": 30,
+    "meadow": 32,
+    "turtles": 2,
+    "shoal": 0
+  },
+  "coldEntry": {
+    "wallMs": 28260.4432,
+    "totalMs": 28256.7817,
+    "prefetchMs": 2.764699999999891,
+    "canonicalValidationMs": 0,
+    "historicalValidationMs": 0,
+    "generationMs": 11004.313000000002,
+    "birthEcologyMs": 16144.605999999998,
+    "persistenceMs": 706.1540000000014,
+    "publicationMs": 386.9120000000035,
+    "otherMs": 12.031999999991967
+  },
+  "ordinaryWindows": [
+    {
+      "centre": "228,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 53,
+      "loadingTimingMs": {
+        "totalMs": 28256.7817,
+        "prefetchMs": 2.764699999999891,
+        "canonicalValidationMs": 0,
+        "historicalValidationMs": 0,
+        "generationMs": 11004.313000000002,
+        "birthEcologyMs": 16144.605999999998,
+        "persistenceMs": 706.1540000000014,
+        "publicationMs": 386.9120000000035,
+        "otherMs": 12.031999999991967
+      }
+    },
+    {
+      "centre": "230,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 29,
+      "loadingTimingMs": {
+        "totalMs": 8488.516499999998,
+        "prefetchMs": 160.03780000000552,
+        "canonicalValidationMs": 676.1912999999913,
+        "historicalValidationMs": 5577.001800000002,
+        "generationMs": 0,
+        "birthEcologyMs": 0,
+        "persistenceMs": 0,
+        "publicationMs": 184.05630000000383,
+        "otherMs": 1891.2292999999954
+      }
+    },
+    {
+      "centre": "233,4",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 23,
+      "privateOwnerCount": 62,
+      "loadingTimingMs": {
+        "totalMs": 26197.527499999997,
+        "prefetchMs": 124.89419999998063,
+        "canonicalValidationMs": 515.963800000005,
+        "historicalValidationMs": 4888.455299999994,
+        "generationMs": 8372.075400000009,
+        "birthEcologyMs": 7799.473800000007,
+        "persistenceMs": 311.14100000000326,
+        "publicationMs": 312.6345000000001,
+        "otherMs": 3872.8894999999975
+      }
+    }
+  ],
+  "modelAdvanceSec": 1.2000000000000002,
+  "movedIndividualCount": 190,
+  "feedingIndividualCount": 32,
+  "limits": {
+    "active": 9,
+    "public": 25,
+    "privatePrefetch": 97,
+    "animalsIncludingDeadPerOwner": 20
+  },
+  "naturalAdmissionScope": "seeded native presence and complete physical clearance, category ceilings; not forced full catalogue or measured population density"
+}

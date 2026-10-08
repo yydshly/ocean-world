@@ -1,0 +1,71 @@
+{
+  "scope": "one actual ordinary window with native fresh44 births, .4 model seconds and complete cold restore equality; no camera/browser/GPU acceptance",
+  "seed": "living-shallows-v1|string:44",
+  "ownerGroupId": "228,4",
+  "durableOwners": 12,
+  "actualAnimalRecordCount": 177,
+  "actualRepresentativeAnimalIds": [
+    "green-chromis",
+    "sand-goby",
+    "feather-duster",
+    "reef-parrotfish",
+    "reef-goatfish",
+    "tiger-cowrie",
+    "spotted-hermit-crab",
+    "sand-edge-seahorse",
+    "reef-cuttlefish",
+    "barrel-sea-pen",
+    "lined-tang",
+    "reef-squid",
+    "spotted-jelly",
+    "tropical-urchin",
+    "blue-spotted-ray",
+    "blue-tang",
+    "tube-sponge",
+    "day-octopus",
+    "shallow-anemone",
+    "clown-anemonefish",
+    "green-turtle"
+  ],
+  "actualTurtleCount": 1,
+  "actualTurtleOwnerIds": [
+    "228,5"
+  ],
+  "firstWallMs": 15210.332199999999,
+  "firstTimingMs": {
+    "totalMs": 15208.256300000001,
+    "prefetchMs": 0.39950000000007435,
+    "canonicalValidationMs": 0,
+    "historicalValidationMs": 0,
+    "generationMs": 5793.5509,
+    "birthEcologyMs": 8756.7676,
+    "persistenceMs": 420.2586999999994,
+    "publicationMs": 230.3268999999999,
+    "otherMs": 6.9527000000016415
+  },
+  "actualModelAdvanceSec": 0.4,
+  "movedIndividualCount": 74,
+  "feedingIndividualCount": 12,
+  "coldRestoreWallMs": 7931.052299999999,
+  "coldRestoreTimingMs": {
+    "totalMs": 7930.402699999999,
+    "prefetchMs": 180.75830000001588,
+    "canonicalValidationMs": 550.0057999999917,
+    "historicalValidationMs": 4765.443099999997,
+    "generationMs": 0,
+    "birthEcologyMs": 0,
+    "persistenceMs": 0,
+    "publicationMs": 154.97669999999925,
+    "otherMs": 2279.218799999995
+  },
+  "completeColdActiveAndDiskEquality": true,
+  "limits": {
+    "active": 9,
+    "public": 25,
+    "privatePrefetch": 97,
+    "animalsIncludingDeadPerOwner": 20
+  },
+  "firstPrivateOwners": 29,
+  "coldPrivateOwners": 29,
+  "maximumActualRecordsPerOwner": 17
+}

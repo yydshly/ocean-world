@@ -23,7 +23,7 @@ function initializer(name,setter){
   return new Function('window','localStorage','URLSearchParams','LIVING_SHALLOWS_PROFILE',`return (${source.slice(start,i)});`);
 }
 const factories=[['pendingDemo','setPendingDemo'],['biome','setBiome'],['reefProfile','setReefProfile']].map(([a,b])=>initializer(a,b));
-const begin=source.indexOf('    if(choice.reefValleyRegionEntry){'),end=source.indexOf('    if(choice.coastalLifeBeltEntry',begin);
+const begin=source.indexOf('    if(choice.reefValleyRegionEntry||choice.seagrassMeadowRegionEntry){'),end=source.indexOf('    if(choice.coastalLifeBeltEntry',begin);
 assert.ok(begin>=0&&end>begin);
 const runEntry=new Function('choice','world','director','setView','setOceanToolsOpen','setPanel','rememberOcean','setToast',source.slice(begin,end));
 const wait=async()=>{for(let i=0;i<5;i++)await Promise.resolve();};

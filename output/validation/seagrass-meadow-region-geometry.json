@@ -1,0 +1,283 @@
+{
+  "scope": "Fixed native CPU macro geometry and existing turtle-controller admission; no GPU appearance or persistent animal population claim",
+  "seed": "living-shallows-v1|string:42",
+  "generationMs": 3069.2241,
+  "anchor": {
+    "cx": 228,
+    "cz": 4
+  },
+  "metrics": {
+    "rockCount": 55,
+    "coralCount": 99,
+    "grassCount": 1224,
+    "addedRockCount": 8,
+    "addedCoralCount": 4,
+    "addedAlgaeCount": 1,
+    "addedGrassCount": 1067,
+    "hardIslandCount": 8,
+    "driftwoodCount": 1,
+    "bottleCount": 1,
+    "denseGrassCount": 907,
+    "edgeGrassCount": 160,
+    "byFacies": {
+      "reef": {
+        "rock": 0,
+        "coral": 0,
+        "seagrass": 0,
+        "algae": 0,
+        "rubble": 0
+      },
+      "sand": {
+        "rock": 43,
+        "coral": 84,
+        "seagrass": 221,
+        "algae": 124,
+        "rubble": 341
+      },
+      "meadow": {
+        "rock": 12,
+        "coral": 15,
+        "seagrass": 1003,
+        "algae": 18,
+        "rubble": 224
+      },
+      "slope": {
+        "rock": 0,
+        "coral": 0,
+        "seagrass": 0,
+        "algae": 0,
+        "rubble": 0
+      }
+    }
+  },
+  "ownerAllocations": [
+    {
+      "id": "228,4",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "229,4",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "230,4",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "231,4",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "232,4",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "233,4",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "228,5",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "229,5",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "230,5",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "231,5",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "232,5",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    },
+    {
+      "id": "233,5",
+      "allocation": {
+        "facies": "grassCore",
+        "native": 4,
+        "guild": 2,
+        "openWater": 2,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 1,
+        "shoal": 0,
+        "total": 20
+      }
+    }
+  ],
+  "bed": {
+    "maximumSlope": 0.649238761557741,
+    "preservedOuterGuardM": 16,
+    "retainedHostCount": 666
+  },
+  "route": {
+    "lengthM": 393.6777282783832,
+    "pointCount": 724,
+    "branchLengthsM": [
+      67.76040919276566,
+      71.72232538387966
+    ],
+    "maximumGapM": 0.7689465634815754,
+    "oneMetreProbes": 24609,
+    "westSeamExact": true,
+    "eastBoundaryPortConnected": false,
+    "actualSafeEnd": {
+      "x": 14952,
+      "z": 318,
+      "y": -5.129141807556152,
+      "bedY": -7.129141807556152,
+      "sM": 393.6777282783832,
+      "heading": 0,
+      "scope": "interior-safe-observation-end"
+    }
+  },
+  "plants": {
+    "addedRootedGrass": 1067,
+    "denseCore": 907,
+    "thinEdge": 160,
+    "scope": "persistent scenery, without simulated biomass or forced ecological births"
+  },
+  "turtleAdmission": {
+    "naturallySelectedAdmissiblePatrols": 2,
+    "animalBirthClaim": false,
+    "owners": [
+      "233,4",
+      "229,5"
+    ],
+    "wholeWaypointsPerPatrol": 16,
+    "unchangedExistingController": true
+  },
+  "immutableSources": {
+    "reefValleyRegion.js": "8c3a7e94a78e085986e49601c1dbaa374d57cdd58976edf206a71259ece66439",
+    "livingCoastalSeascape.js": "32bbf2cd2a4d413be439f1c26da1d3dd4e706394171c9edcef52e494c53e9d88",
+    "livingShallowSeascape.js": "67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049"
+  },
+  "planHash": "a230221ad1a86a4b260986b9b6ffa0a89665fa0284ac5f62bb8e5fae905d5efb"
+}

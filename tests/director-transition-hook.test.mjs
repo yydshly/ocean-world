@@ -261,6 +261,40 @@ test('a failed entry cannot fabricate readiness, chapter time or a started obser
   assert.deepEqual(unsafe.world.protectedState, unsafe.protectedState);
 });
 
+test('only the complete meadow entry receives 120 seconds of effective loading while pause and hidden time remain excluded', async () => {
+  const meadowIndex = DIRECTOR_STEPS.findIndex(step => step.id === 'seagrass-meadow-region');
+  assert.ok(meadowIndex >= 0);
+  const f = worldFixture(); f.world.ready = false;
+  const run = harness(f.world); await start(run, meadowIndex);
+  await run.until(() => run.execution.length === 1, 'the meadow entry must execute under its native loading cover');
+  assert.equal(run.execution[0].action.seagrassMeadowRegionEntry, true);
+  await run.advance(46000);
+  assert.equal(run.state.error, null, 'a pending native meadow entry remains allowed after the old 45-second gate');
+  assert.equal(run.state.phase, 'loading'); assert.equal(run.state.transition.phase, 'covered');
+  assert.equal(run.state.elapsedMs, 0); assert.equal(count(f.log, 'shot-begin'), 0);
+
+  run.api.pause(); await run.flush(); await run.advance(300000);
+  assert.equal(run.state.error, null, 'paused wall time cannot spend the meadow loading allowance');
+  run.api.resume(); await run.flush(); run.document.visibilityState = 'hidden'; await run.advance(300000);
+  assert.equal(run.state.error, null, 'hidden wall time cannot spend the meadow loading allowance');
+  run.document.visibilityState = 'visible'; await run.advance(72000);
+  assert.equal(run.state.error, null, '118 seconds of effective loading still permits the pending meadow');
+  await run.advance(2000);
+  assert.match(run.state.error, /120 秒有效加载时间/);
+  assert.equal(run.state.playing, false); assert.equal(run.state.elapsedMs, 0);
+  assert.deepEqual(run.state.completedStepIds, []); assert.equal(count(f.log, 'shot-begin'), 0);
+  assert.equal(count(f.log, 'prepare'), 0); assert.deepEqual(f.world.protectedState, f.protectedState);
+
+  const old = worldFixture(); old.world.ready = false;
+  const retained = harness(old.world); await start(retained, 0);
+  await retained.until(() => retained.execution.length === 1, 'the existing reef entry must reach its unchanged gate');
+  assert.equal(retained.execution[0].action.reefValleyRegionEntry, true);
+  await retained.advance(44000); assert.equal(retained.state.error, null);
+  await retained.advance(1000); assert.match(retained.state.error, /45 秒有效加载时间/);
+  assert.equal(retained.state.elapsedMs, 0); assert.deepEqual(retained.state.completedStepIds, []);
+  assert.equal(count(old.log, 'shot-begin'), 0); assert.deepEqual(old.world.protectedState, old.protectedState);
+});
+
 test('the real meadow, shoal, kelp water and deep hard chapters prepare actual life under cover and wait for their second native window', async () => {
   for (const { id, route, duration, biomeId = 'reef', living = true } of [{ id: 'shallows-meadow-life-community', route: 'meadow-life', duration: 14 }, { id: 'shallows-shoal-life-community', route: 'shoal-life', duration: 16 }, { id: 'kelp-understory-life', route: 'kelp-understory-life', duration: 16, biomeId: 'kelp', living: false }, { id: 'kelp-near-bottom-life', route: 'kelp-near-bottom-life', duration: 16, biomeId: 'kelp', living: false }, { id: 'kelp-water-life', route: 'kelp-water-life', duration: 16, biomeId: 'kelp', living: false }, { id: 'deep-hard-life', route: 'deep-hard-life', duration: 14, biomeId: 'deep', living: false }, { id: 'deep-water-life', route: 'deep-water-life', duration: 16, biomeId: 'deep', living: false }]) {
   const index = DIRECTOR_STEPS.findIndex(step => step.id === id);

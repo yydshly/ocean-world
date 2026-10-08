@@ -69,19 +69,19 @@ test('the finite tour covers every existing entry without invented or destructiv
     assert.ok(!['reset', 'environment', 'record', 'download'].includes(step.action.kind));
   }
   const duration = DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0);
-  assert.ok(duration >= 360000 && duration <= 1800000, 'four continuous reef-valley regions and retained observations stay below thirty minutes at1x');
-  assert.equal(duration, 1794000); assert.equal(included.size, 60);
+  assert.ok(duration >= 360000 && duration <= 2160000, 'connected reef valleys, meadow and retained observations stay below thirty-six minutes at1x');
+  assert.equal(duration, 1994000); assert.equal(included.size, 61);
 });
 
 test('all chapters declare finite frozen camera motion, with enough time to walk through scenes', () => {
-  assert.equal(DIRECTOR_STEPS.length, 66);
+  assert.equal(DIRECTOR_STEPS.length, 67);
   for (const step of DIRECTOR_STEPS) {
     assert.ok(Object.isFrozen(step.motion), `${step.id} motion is immutable`);
     assert.ok(['walk', 'orbit', 'follow', 'coastal-route', 'reef-valley-route'].includes(step.motion.kind));
     assert.ok(Number.isFinite(step.motion.durationSec) && step.motion.durationSec > 0);
     assert.equal(step.motion.durationSec * 1000, step.durationMs);
     const scene = ['world', 'living-stop', 'kelp-stop', 'deep-stop', 'view', 'layer', 'local-life', 'discoveries'].includes(step.action.kind);
-    assert.ok(step.motion.routeId==='reef-valley-region' ? step.durationMs===800000 : step.motion.routeId==='coastal-life-belt' ? step.durationMs===200000 : scene ? step.durationMs >= 12000 && step.durationMs <= (['shoal-life', 'kelp-understory-life', 'kelp-near-bottom-life', 'kelp-water-life', 'deep-water-life', 'deep-midwater-life'].includes(step.motion.routeId) ? 16000 : 14000)
+    assert.ok(step.motion.routeId==='reef-valley-region' ? step.durationMs===800000 : ['coastal-life-belt','seagrass-meadow-region'].includes(step.motion.routeId) ? step.durationMs===200000 : scene ? step.durationMs >= 12000 && step.durationMs <= (['shoal-life', 'kelp-understory-life', 'kelp-near-bottom-life', 'kelp-water-life', 'deep-water-life', 'deep-midwater-life'].includes(step.motion.routeId) ? 16000 : 14000)
       : step.durationMs >= 6000 && step.durationMs <= 8000, `${step.id} has appropriate walkthrough/read time`);
   }
 });
@@ -100,7 +100,7 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
     if (step.action.kind === 'local-life') observedBiomes.add(biome);
     if (step.action.kind === 'layer') layeredBiomes.add(biome);
   }
-  assert.deepEqual(routes, ['reef-valley-region', 'coastal-life-belt', 'shoal-life-community', 'meadow-life-community', 'biodiversity-reef', 'benthic-community', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
+  assert.deepEqual(routes, ['reef-valley-region', 'seagrass-meadow-region', 'coastal-life-belt', 'shoal-life-community', 'meadow-life-community', 'biodiversity-reef', 'benthic-community', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope',
     'habitat-belt-reef', 'habitat-belt-meadow', 'seascape-transition', 'connected-seascape',
     'shelf-rise', 'sand-basin', 'patch-reef', 'meadow-edge', 'ridge-gully', 'outer-reef',
     'seagrass-meadow', 'sand-channel', 'reef-garden']);
@@ -121,16 +121,16 @@ test('macro scenes and native route entries precede workbenches, and layers/anim
 });
 
 test('the opening crosses the committed whole habitat before retained life and landmark observations', () => {
-  assert.deepEqual(DIRECTOR_STEPS.slice(0, 5).map(step => step.id), ['reef-valley-region', 'coastal-life-belt', 'shallows-opening', 'shallows-life', 'shallows-discoveries']);
-  assert.deepEqual(DIRECTOR_STEPS.slice(3, 5).map(step => step.action.kind), ['local-life', 'discoveries']);
+  assert.deepEqual(DIRECTOR_STEPS.slice(0, 6).map(step => step.id), ['reef-valley-region', 'seagrass-meadow-region', 'coastal-life-belt', 'shallows-opening', 'shallows-life', 'shallows-discoveries']);
+  assert.deepEqual(DIRECTOR_STEPS.slice(4, 6).map(step => step.action.kind), ['local-life', 'discoveries']);
   for (const step of DIRECTOR_STEPS.slice(0, 3)) {
     const action = directorStepAction(step);
     assert.equal(action.biome, 'reef'); assert.equal(action.profile, 'living-shallows-v1');
   }
-  assert.equal(DIRECTOR_STEPS[5].action.stopId, 'shoal-life-community');
+  assert.equal(DIRECTOR_STEPS[6].action.stopId, 'shoal-life-community');
   assert.deepEqual(DEMO_LIVING_STOPS.map(stop => stop.id), ['reef-garden', 'sand-channel', 'seagrass-meadow', 'outer-reef',
     'ridge-gully', 'patch-reef', 'meadow-edge', 'shelf-rise', 'sand-basin', 'connected-seascape', 'seascape-transition',
-    'habitat-belt-reef', 'habitat-belt-meadow', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope', 'biodiversity-reef', 'benthic-community', 'meadow-life-community', 'shoal-life-community', 'coastal-life-belt', 'reef-valley-region'], 'ordinary capability buttons retain their original order, with the complete package appended');
+    'habitat-belt-reef', 'habitat-belt-meadow', 'shallow-scene-reef', 'shallow-scene-sand', 'shallow-scene-meadow', 'shallow-scene-slope', 'biodiversity-reef', 'benthic-community', 'meadow-life-community', 'shoal-life-community', 'coastal-life-belt', 'reef-valley-region', 'seagrass-meadow-region'], 'ordinary capability buttons retain their original order, with the complete package appended');
 });
 
 test('opening actions resolve existing shallow, kelp and deep stops without changing their native action references', () => {
@@ -161,8 +161,8 @@ test('the real shallow landmark order reduces repeated relocation while retainin
   const lengths = ids => ids.map((id, index) => distance(index ? stops.get(ids[index - 1]) : origin, stops.get(id)));
   const allIds = DIRECTOR_STEPS.filter(step => step.action.kind === 'living-stop').map(step => step.action.stopId);
   assert.deepEqual([...allIds].sort(), [...stops.keys()].sort());
-  const oldIds = DEMO_LIVING_STOPS.filter(stop => !stop.id.startsWith('shallow-scene-') && !['reef-valley-region', 'coastal-life-belt', 'biodiversity-reef', 'benthic-community', 'meadow-life-community', 'shoal-life-community'].includes(stop.id)).map(stop => stop.id);
-  const ids = allIds.filter(id => !id.startsWith('shallow-scene-') && !['reef-valley-region', 'coastal-life-belt', 'biodiversity-reef', 'benthic-community', 'meadow-life-community', 'shoal-life-community'].includes(id));
+  const oldIds = DEMO_LIVING_STOPS.filter(stop => !stop.id.startsWith('shallow-scene-') && !['reef-valley-region', 'seagrass-meadow-region', 'coastal-life-belt', 'biodiversity-reef', 'benthic-community', 'meadow-life-community', 'shoal-life-community'].includes(stop.id)).map(stop => stop.id);
+  const ids = allIds.filter(id => !id.startsWith('shallow-scene-') && !['reef-valley-region', 'seagrass-meadow-region', 'coastal-life-belt', 'biodiversity-reef', 'benthic-community', 'meadow-life-community', 'shoal-life-community'].includes(id));
   const oldLengths = lengths(oldIds), revisedLengths = lengths(ids), total = legs => legs.reduce((sum, value) => sum + value, 0);
   assert.ok(Math.abs(total(oldLengths) - 10780.567) < .001); assert.ok(Math.abs(total(revisedLengths) - 4977.384) < .001);
   assert.ok(total(revisedLengths) < total(oldLengths) * .47);

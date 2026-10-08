@@ -32,6 +32,10 @@ jobs:
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test --test-concurrency=4
+          tests/seagrass-meadow-region.test.mjs
+          tests/seagrass-meadow-region-ecology.test.mjs
+          tests/seagrass-meadow-region-world.test.mjs
+          tests/seagrass-meadow-entry.test.mjs
           tests/deep-midwater-life.test.mjs
           tests/deep-midwater-life-render.test.mjs
           tests/deep-midwater-life-ecology.test.mjs

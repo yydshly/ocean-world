@@ -1,0 +1,236 @@
+{
+  "scope": "three native sparse owner windows; CPU method timing wrappers add overhead; no browser/GPU/camera acceptance",
+  "productionEdited": false,
+  "boundedExactNumericMemoCandidate": "rejected as marginal: last warm pairs 519.60 to 514.51 ms and 538.16 to 480.90 ms; cannot eliminate cross-owner waits",
+  "selfMs": [
+    {
+      "function": "noise",
+      "file": "livingShallowsGeneration.js",
+      "ms": 6667.841
+    },
+    {
+      "function": "floorVertex",
+      "file": "livingShallowsGeneration.js",
+      "ms": 4710.982
+    },
+    {
+      "function": "hash",
+      "file": "livingShallowsGeneration.js",
+      "ms": 4232.286
+    },
+    {
+      "function": "(garbage collector)",
+      "file": "",
+      "ms": 3470.02
+    },
+    {
+      "function": "floorSurface",
+      "file": "livingShallowsGeneration.js",
+      "ms": 1856.057
+    },
+    {
+      "function": "fields",
+      "file": "livingShallowsGeneration.js",
+      "ms": 1578.025
+    },
+    {
+      "function": "_surface",
+      "file": "oceanEcology.js",
+      "ms": 1349.542
+    },
+    {
+      "function": "naturalSurface",
+      "file": "oceanRockShape.js",
+      "ms": 1323.68
+    },
+    {
+      "function": "survey",
+      "file": "oceanMeadowLife.js",
+      "ms": 1253.315
+    },
+    {
+      "function": "oceanRockHeight",
+      "file": "oceanRockShape.js",
+      "ms": 1242.951
+    },
+    {
+      "function": "",
+      "file": "reefValleyRegion.js",
+      "ms": 1018.403
+    },
+    {
+      "function": "stamp",
+      "file": "reefValleyRegion.js",
+      "ms": 910.125
+    },
+    {
+      "function": "structuredClone",
+      "file": "js_transferable",
+      "ms": 851.271
+    },
+    {
+      "function": "now",
+      "file": "",
+      "ms": 819.162
+    },
+    {
+      "function": "model.<computed>",
+      "file": "grass-meadow-loading-profile.mjs",
+      "ms": 789.912
+    },
+    {
+      "function": "",
+      "file": "oceanMeadowLife.js",
+      "ms": 749.375
+    },
+    {
+      "function": "plantOverlap",
+      "file": "reefGuildHabitat.js",
+      "ms": 631.693
+    },
+    {
+      "function": "",
+      "file": "reefGuildHabitat.js",
+      "ms": 538.412
+    },
+    {
+      "function": "acceptedSite",
+      "file": "reefGuildHabitat.js",
+      "ms": 482.862
+    },
+    {
+      "function": "",
+      "file": "oceanBiodiversity.js",
+      "ms": 413.232
+    },
+    {
+      "function": "hardHeight",
+      "file": "livingShallowsGeneration.js",
+      "ms": 389.828
+    },
+    {
+      "function": "stamp",
+      "file": "livingRidgeGeology.js",
+      "ms": 382.421
+    }
+  ],
+  "inclusiveMs": [
+    {
+      "function": "(root)",
+      "file": "",
+      "ms": 47453.705
+    },
+    {
+      "function": "",
+      "file": "oceanEcology.js",
+      "ms": 43224.387
+    },
+    {
+      "function": "measure",
+      "file": "oceanEcology.js",
+      "ms": 24610.811
+    },
+    {
+      "function": "model.<computed>",
+      "file": "grass-meadow-loading-profile.mjs",
+      "ms": 16415.841
+    },
+    {
+      "function": "prepareRegion",
+      "file": "oceanEcology.js",
+      "ms": 15503.758
+    },
+    {
+      "function": "withReefValleyPlans",
+      "file": "livingRidgeGeology.js",
+      "ms": 14271.723
+    },
+    {
+      "function": "createOceanBiodiversityPlan",
+      "file": "oceanBiodiversity.js",
+      "ms": 13115.951
+    },
+    {
+      "function": "sample",
+      "file": "livingShallowsGeneration.js",
+      "ms": 12589.646
+    },
+    {
+      "function": "fields",
+      "file": "livingShallowsGeneration.js",
+      "ms": 12453.903
+    },
+    {
+      "function": "surface",
+      "file": "oceanEcology.js",
+      "ms": 11397.788
+    },
+    {
+      "function": "noise",
+      "file": "livingShallowsGeneration.js",
+      "ms": 10913.962
+    },
+    {
+      "function": "_surface",
+      "file": "oceanEcology.js",
+      "ms": 10688.842
+    },
+    {
+      "function": "chunk",
+      "file": "livingShallowsGeneration.js",
+      "ms": 10481.515
+    },
+    {
+      "function": "buildChunk",
+      "file": "livingShallowsGeneration.js",
+      "ms": 10400.832
+    },
+    {
+      "function": "supportAt",
+      "file": "oceanBiodiversity.js",
+      "ms": 10222.731
+    },
+    {
+      "function": "floorVertex",
+      "file": "livingShallowsGeneration.js",
+      "ms": 9233.074
+    },
+    {
+      "function": "validateOceanBiodiversityRecord",
+      "file": "oceanBiodiversity.js",
+      "ms": 8640.548
+    },
+    {
+      "function": "floorSurface",
+      "file": "livingShallowsGeneration.js",
+      "ms": 7822.853
+    },
+    {
+      "function": "withRidgePlans",
+      "file": "livingRidgeGeology.js",
+      "ms": 7612.771
+    },
+    {
+      "function": "model",
+      "file": "reefValleyRegion.js",
+      "ms": 7520.535
+    },
+    {
+      "function": "createReefValleyRegionPlans",
+      "file": "reefValleyRegion.js",
+      "ms": 7518.901
+    },
+    {
+      "function": "sample",
+      "file": "livingRidgeGeology.js",
+      "ms": 6787.775
+    }
+  ],
+  "provenLimits": {
+    "active": 9,
+    "public": 25,
+    "private": 97,
+    "allAnimalRecordsIncludingDead": 20
+  },
+  "scopeLimit": "profiler native records only, no full regression repeated"
+}
