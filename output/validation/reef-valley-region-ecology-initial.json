@@ -1,0 +1,266 @@
+{
+  "scope": "native ecology owner-window samples; no continuous camera, browser, GPU or documentary visual acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "mainRouteGroupIds": [
+    "reef-valley-region:204,4",
+    "reef-valley-region:210,4",
+    "reef-valley-region:216,4",
+    "reef-valley-region:222,4"
+  ],
+  "mainRouteOwnedRecords": 48,
+  "actualRouteLengthM": 1695.666928224468,
+  "windowScope": "sample entry, midpoint and exit of each actual group route; model relocation and .4-second windows, not continuous camera travel",
+  "modelAdvanceSec": 3.6,
+  "ordinaryWindows": [
+    {
+      "centre": "204,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 16,
+      "privateOwnerCount": 37,
+      "admission": [
+        {
+          "id": "204,4",
+          "status": "born",
+          "committedOwnerCount": 12
+        },
+        {
+          "id": "204,6",
+          "status": "declined",
+          "reason": "The reef-valley route cannot connect around unchanged boundary hosts."
+        }
+      ]
+    },
+    {
+      "centre": "207,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 16,
+      "privateOwnerCount": 29,
+      "admission": [
+        {
+          "id": "204,4",
+          "status": "restored"
+        },
+        {
+          "id": "204,6",
+          "status": "preserved",
+          "reason": "One or more historical owner records already exist."
+        }
+      ]
+    },
+    {
+      "centre": "210,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 18,
+      "privateOwnerCount": 53,
+      "admission": [
+        {
+          "id": "204,4",
+          "status": "restored"
+        },
+        {
+          "id": "210,4",
+          "status": "born",
+          "committedOwnerCount": 12
+        },
+        {
+          "id": "204,6",
+          "status": "preserved",
+          "reason": "One or more historical owner records already exist."
+        },
+        {
+          "id": "210,6",
+          "status": "born",
+          "committedOwnerCount": 12
+        }
+      ]
+    },
+    {
+      "centre": "213,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 29,
+      "admission": [
+        {
+          "id": "210,4",
+          "status": "restored"
+        },
+        {
+          "id": "210,6",
+          "status": "restored"
+        }
+      ]
+    },
+    {
+      "centre": "216,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 53,
+      "admission": [
+        {
+          "id": "210,4",
+          "status": "restored"
+        },
+        {
+          "id": "210,6",
+          "status": "restored"
+        },
+        {
+          "id": "216,4",
+          "status": "born",
+          "committedOwnerCount": 12
+        },
+        {
+          "id": "216,6",
+          "status": "born",
+          "committedOwnerCount": 12
+        }
+      ]
+    },
+    {
+      "centre": "219,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 29,
+      "admission": [
+        {
+          "id": "216,4",
+          "status": "restored"
+        },
+        {
+          "id": "216,6",
+          "status": "restored"
+        }
+      ]
+    },
+    {
+      "centre": "222,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 53,
+      "admission": [
+        {
+          "id": "216,4",
+          "status": "restored"
+        },
+        {
+          "id": "216,6",
+          "status": "restored"
+        },
+        {
+          "id": "222,4",
+          "status": "born",
+          "committedOwnerCount": 12
+        },
+        {
+          "id": "222,6",
+          "status": "born",
+          "committedOwnerCount": 12
+        }
+      ]
+    },
+    {
+      "centre": "225,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 29,
+      "admission": [
+        {
+          "id": "222,4",
+          "status": "restored"
+        },
+        {
+          "id": "222,6",
+          "status": "restored"
+        }
+      ]
+    },
+    {
+      "centre": "228,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 18,
+      "privateOwnerCount": 53,
+      "admission": [
+        {
+          "id": "222,4",
+          "status": "restored"
+        },
+        {
+          "id": "222,6",
+          "status": "restored"
+        },
+        {
+          "id": "228,4",
+          "status": "declined",
+          "reason": "The reef-valley route cannot connect around unchanged boundary hosts."
+        },
+        {
+          "id": "228,6",
+          "status": "born",
+          "committedOwnerCount": 12
+        }
+      ]
+    }
+  ],
+  "actualSpeciesIds": [
+    "green-chromis",
+    "lined-tang",
+    "reef-squid",
+    "spotted-jelly",
+    "feather-duster",
+    "reef-parrotfish",
+    "blue-spotted-ray",
+    "reef-goatfish",
+    "sand-goby",
+    "tropical-urchin",
+    "tiger-cowrie",
+    "blue-tang",
+    "shallow-anemone",
+    "reef-cuttlefish",
+    "barrel-sea-pen",
+    "spotted-hermit-crab",
+    "sand-edge-seahorse",
+    "silver-stripe-herring",
+    "blacktip-reef-shark",
+    "tube-sponge",
+    "day-octopus",
+    "clown-anemonefish",
+    "cleaner-wrasse",
+    "black-cucumber",
+    "honeycomb-grouper",
+    "blue-starfish",
+    "butterflyfish",
+    "top-shell",
+    "spotted-reef-crab",
+    "blue-and-gold-fusilier",
+    "bigeye-trevally"
+  ],
+  "movedIndividualCount": 668,
+  "feedingIndividualCount": 100,
+  "maxPrivateOwners": 53,
+  "limits": {
+    "active": 9,
+    "public": 25,
+    "privatePrefetch": 97,
+    "animalsIncludingDeadPerOwner": 20
+  },
+  "allOrdinaryBornGroupIds": [
+    "204,4",
+    "210,4",
+    "210,6",
+    "216,4",
+    "216,6",
+    "222,4",
+    "222,6",
+    "228,6"
+  ],
+  "excluded": "atomic, partial-history and cold-restoration cases below do not contribute to route distance or model time"
+}

@@ -1,0 +1,1138 @@
+{
+  "scope": "Finite CPU geometry of four fixed adjacent coordinate-seeded macro groups; no browser/GPU or ecological population claim",
+  "seed": "living-shallows-v1|string:42",
+  "anchors": [
+    {
+      "cx": 204,
+      "cz": 4
+    },
+    {
+      "cx": 210,
+      "cz": 4
+    },
+    {
+      "cx": 216,
+      "cz": 4
+    },
+    {
+      "cx": 222,
+      "cz": 4
+    }
+  ],
+  "groups": [
+    {
+      "id": "reef-valley-region:204,4",
+      "ownerIds": [
+        "204,4",
+        "205,4",
+        "206,4",
+        "207,4",
+        "208,4",
+        "209,4",
+        "204,5",
+        "205,5",
+        "206,5",
+        "207,5",
+        "208,5",
+        "209,5"
+      ],
+      "metrics": {
+        "rockCount": 51,
+        "coralCount": 99,
+        "grassCount": 658,
+        "addedRockCount": 7,
+        "addedCoralCount": 14,
+        "addedAlgaeCount": 6,
+        "addedGrassCount": 491,
+        "reefWallCount": 5,
+        "reefPlateauCount": 2,
+        "driftwoodCount": 1,
+        "bottleCount": 1,
+        "denseGrassCount": 380,
+        "edgeGrassCount": 111,
+        "byFacies": {
+          "reef": {
+            "rock": 20,
+            "coral": 42,
+            "seagrass": 73,
+            "algae": 60,
+            "rubble": 166
+          },
+          "sand": {
+            "rock": 8,
+            "coral": 15,
+            "seagrass": 51,
+            "algae": 22,
+            "rubble": 131
+          },
+          "meadow": {
+            "rock": 13,
+            "coral": 22,
+            "seagrass": 427,
+            "algae": 29,
+            "rubble": 143
+          },
+          "slope": {
+            "rock": 10,
+            "coral": 20,
+            "seagrass": 107,
+            "algae": 27,
+            "rubble": 136
+          }
+        }
+      },
+      "allocations": [
+        {
+          "id": "204,4",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "205,4",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "206,4",
+          "allocation": {
+            "facies": "sand",
+            "native": 8,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 4,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 0,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "207,4",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "208,4",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "209,4",
+          "allocation": {
+            "facies": "slope",
+            "native": 4,
+            "guild": 0,
+            "openWater": 3,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 8,
+            "total": 20
+          }
+        },
+        {
+          "id": "204,5",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "205,5",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "206,5",
+          "allocation": {
+            "facies": "sand",
+            "native": 8,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 4,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 0,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "207,5",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "208,5",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "209,5",
+          "allocation": {
+            "facies": "slope",
+            "native": 4,
+            "guild": 0,
+            "openWater": 3,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 8,
+            "total": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "reef-valley-region:210,4",
+      "ownerIds": [
+        "210,4",
+        "211,4",
+        "212,4",
+        "213,4",
+        "214,4",
+        "215,4",
+        "210,5",
+        "211,5",
+        "212,5",
+        "213,5",
+        "214,5",
+        "215,5"
+      ],
+      "metrics": {
+        "rockCount": 42,
+        "coralCount": 87,
+        "grassCount": 507,
+        "addedRockCount": 9,
+        "addedCoralCount": 18,
+        "addedAlgaeCount": 8,
+        "addedGrassCount": 468,
+        "reefWallCount": 4,
+        "reefPlateauCount": 5,
+        "driftwoodCount": 1,
+        "bottleCount": 1,
+        "denseGrassCount": 368,
+        "edgeGrassCount": 100,
+        "byFacies": {
+          "reef": {
+            "rock": 8,
+            "coral": 18,
+            "seagrass": 32,
+            "algae": 16,
+            "rubble": 171
+          },
+          "sand": {
+            "rock": 3,
+            "coral": 5,
+            "seagrass": 40,
+            "algae": 9,
+            "rubble": 116
+          },
+          "meadow": {
+            "rock": 11,
+            "coral": 21,
+            "seagrass": 384,
+            "algae": 26,
+            "rubble": 155
+          },
+          "slope": {
+            "rock": 20,
+            "coral": 43,
+            "seagrass": 51,
+            "algae": 56,
+            "rubble": 143
+          }
+        }
+      },
+      "allocations": [
+        {
+          "id": "210,4",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "211,4",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "212,4",
+          "allocation": {
+            "facies": "sand",
+            "native": 8,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 4,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 0,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "213,4",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "214,4",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "215,4",
+          "allocation": {
+            "facies": "slope",
+            "native": 4,
+            "guild": 0,
+            "openWater": 3,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 8,
+            "total": 20
+          }
+        },
+        {
+          "id": "210,5",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "211,5",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "212,5",
+          "allocation": {
+            "facies": "sand",
+            "native": 8,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 4,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 0,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "213,5",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "214,5",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "215,5",
+          "allocation": {
+            "facies": "slope",
+            "native": 4,
+            "guild": 0,
+            "openWater": 3,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 8,
+            "total": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "reef-valley-region:216,4",
+      "ownerIds": [
+        "216,4",
+        "217,4",
+        "218,4",
+        "219,4",
+        "220,4",
+        "221,4",
+        "216,5",
+        "217,5",
+        "218,5",
+        "219,5",
+        "220,5",
+        "221,5"
+      ],
+      "metrics": {
+        "rockCount": 59,
+        "coralCount": 117,
+        "grassCount": 484,
+        "addedRockCount": 5,
+        "addedCoralCount": 10,
+        "addedAlgaeCount": 7,
+        "addedGrassCount": 484,
+        "reefWallCount": 2,
+        "reefPlateauCount": 3,
+        "driftwoodCount": 1,
+        "bottleCount": 1,
+        "denseGrassCount": 381,
+        "edgeGrassCount": 103,
+        "byFacies": {
+          "reef": {
+            "rock": 22,
+            "coral": 41,
+            "seagrass": 0,
+            "algae": 67,
+            "rubble": 213
+          },
+          "sand": {
+            "rock": 13,
+            "coral": 24,
+            "seagrass": 55,
+            "algae": 33,
+            "rubble": 116
+          },
+          "meadow": {
+            "rock": 9,
+            "coral": 21,
+            "seagrass": 384,
+            "algae": 23,
+            "rubble": 156
+          },
+          "slope": {
+            "rock": 15,
+            "coral": 31,
+            "seagrass": 45,
+            "algae": 45,
+            "rubble": 132
+          }
+        }
+      },
+      "allocations": [
+        {
+          "id": "216,4",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "217,4",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "218,4",
+          "allocation": {
+            "facies": "sand",
+            "native": 8,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 4,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 0,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "219,4",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "220,4",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "221,4",
+          "allocation": {
+            "facies": "slope",
+            "native": 4,
+            "guild": 0,
+            "openWater": 3,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 8,
+            "total": 20
+          }
+        },
+        {
+          "id": "216,5",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "217,5",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "218,5",
+          "allocation": {
+            "facies": "sand",
+            "native": 8,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 4,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 0,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "219,5",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "220,5",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "221,5",
+          "allocation": {
+            "facies": "slope",
+            "native": 4,
+            "guild": 0,
+            "openWater": 3,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 8,
+            "total": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": "reef-valley-region:222,4",
+      "ownerIds": [
+        "222,4",
+        "223,4",
+        "224,4",
+        "225,4",
+        "226,4",
+        "227,4",
+        "222,5",
+        "223,5",
+        "224,5",
+        "225,5",
+        "226,5",
+        "227,5"
+      ],
+      "metrics": {
+        "rockCount": 52,
+        "coralCount": 105,
+        "grassCount": 510,
+        "addedRockCount": 8,
+        "addedCoralCount": 15,
+        "addedAlgaeCount": 8,
+        "addedGrassCount": 510,
+        "reefWallCount": 5,
+        "reefPlateauCount": 3,
+        "driftwoodCount": 1,
+        "bottleCount": 1,
+        "denseGrassCount": 396,
+        "edgeGrassCount": 114,
+        "byFacies": {
+          "reef": {
+            "rock": 15,
+            "coral": 35,
+            "seagrass": 0,
+            "algae": 43,
+            "rubble": 187
+          },
+          "sand": {
+            "rock": 7,
+            "coral": 14,
+            "seagrass": 53,
+            "algae": 15,
+            "rubble": 115
+          },
+          "meadow": {
+            "rock": 10,
+            "coral": 17,
+            "seagrass": 408,
+            "algae": 24,
+            "rubble": 168
+          },
+          "slope": {
+            "rock": 20,
+            "coral": 39,
+            "seagrass": 49,
+            "algae": 56,
+            "rubble": 123
+          }
+        }
+      },
+      "allocations": [
+        {
+          "id": "222,4",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "223,4",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "224,4",
+          "allocation": {
+            "facies": "sand",
+            "native": 8,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 4,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 0,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "225,4",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "226,4",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "227,4",
+          "allocation": {
+            "facies": "slope",
+            "native": 4,
+            "guild": 0,
+            "openWater": 3,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 8,
+            "total": 20
+          }
+        },
+        {
+          "id": "222,5",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "223,5",
+          "allocation": {
+            "facies": "reef",
+            "native": 4,
+            "guild": 3,
+            "openWater": 2,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 6,
+            "total": 20
+          }
+        },
+        {
+          "id": "224,5",
+          "allocation": {
+            "facies": "sand",
+            "native": 8,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 4,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 0,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "225,5",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "226,5",
+          "allocation": {
+            "facies": "meadow",
+            "native": 6,
+            "guild": 0,
+            "openWater": 0,
+            "diversity": 3,
+            "benthic": 4,
+            "meadow": 4,
+            "turtles": 3,
+            "shoal": 0,
+            "total": 20
+          }
+        },
+        {
+          "id": "227,5",
+          "allocation": {
+            "facies": "slope",
+            "native": 4,
+            "guild": 0,
+            "openWater": 3,
+            "diversity": 3,
+            "benthic": 2,
+            "meadow": 0,
+            "turtles": 0,
+            "shoal": 8,
+            "total": 20
+          }
+        }
+      ]
+    }
+  ],
+  "primaryRoute": {
+    "lengthM": 1695.666928224468,
+    "maximumGapM": 0.762855252924604,
+    "oneMetreProbes": 40144,
+    "start": {
+      "x": 13056,
+      "z": 320,
+      "y": -3.3577003479003906,
+      "bedY": -5.357700347900391,
+      "sM": 0,
+      "heading": 0
+    },
+    "end": {
+      "x": 14592,
+      "z": 320,
+      "y": -5.669329643249512,
+      "bedY": -7.669329643249512,
+      "sM": 425.5853575735547,
+      "heading": 0
+    },
+    "sharedPorts": [
+      {
+        "west": {
+          "x": 13056,
+          "z": 320,
+          "bedY": -5.357700347900391,
+          "radiusM": 1
+        },
+        "east": {
+          "x": 13440,
+          "z": 320,
+          "bedY": -5.915166854858398,
+          "radiusM": 1
+        }
+      },
+      {
+        "west": {
+          "x": 13440,
+          "z": 320,
+          "bedY": -5.915166854858398,
+          "radiusM": 1
+        },
+        "east": {
+          "x": 13824,
+          "z": 320,
+          "bedY": -5.492924690246582,
+          "radiusM": 1
+        }
+      },
+      {
+        "west": {
+          "x": 13824,
+          "z": 320,
+          "bedY": -5.492924690246582,
+          "radiusM": 1
+        },
+        "east": {
+          "x": 14208,
+          "z": 320,
+          "bedY": -8.121027946472168,
+          "radiusM": 1
+        }
+      },
+      {
+        "west": {
+          "x": 14208,
+          "z": 320,
+          "bedY": -8.121027946472168,
+          "radiusM": 1
+        },
+        "east": {
+          "x": 14592,
+          "z": 320,
+          "bedY": -7.669329643249512,
+          "radiusM": 1
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": "reef-valley-region:204,4",
+        "lengthM": 423.85489938647777,
+        "pointCount": 772
+      },
+      {
+        "id": "reef-valley-region:210,4",
+        "lengthM": 423.74690687274403,
+        "pointCount": 772
+      },
+      {
+        "id": "reef-valley-region:216,4",
+        "lengthM": 422.4797643916913,
+        "pointCount": 772
+      },
+      {
+        "id": "reef-valley-region:222,4",
+        "lengthM": 425.5853575735547,
+        "pointCount": 772
+      }
+    ]
+  },
+  "forks": {
+    "count": 8,
+    "totalLengthM": 561.7037558121177,
+    "exactMainPathJunctions": true
+  },
+  "plants": {
+    "rootedGrass": 1953,
+    "denseCore": 1525,
+    "thinEdge": 428,
+    "scope": "persistent scenery, not measured or simulated plant biomass"
+  },
+  "planHashes": [
+    {
+      "cx": 204,
+      "cz": 4,
+      "hash": "619ef98364abe53575cc7585275056b5b2b112a23badc58764f6e860f15859f6"
+    },
+    {
+      "cx": 210,
+      "cz": 4,
+      "hash": "dd31f92a8169f8d1bd6eb862763f1ddcb5ca4d0b371af8fca5d3fe10e845bf50"
+    },
+    {
+      "cx": 216,
+      "cz": 4,
+      "hash": "3d6dd3e7868efd755eb71d19624049a9f695229caf975e8443f457b2abc59941"
+    },
+    {
+      "cx": 222,
+      "cz": 4,
+      "hash": "41eefdd9241fb7f1a59e37420a7000140e98fa000b2e6dec452eaf7368480408"
+    }
+  ],
+  "immutableSources": {
+    "livingShallowSeascape.js": "67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049",
+    "livingCoastalSeascape.js": "32bbf2cd2a4d413be439f1c26da1d3dd4e706394171c9edcef52e494c53e9d88"
+  }
+}

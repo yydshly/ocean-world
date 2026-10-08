@@ -1,0 +1,53 @@
+{
+  "filesFrozen": true,
+  "sourceHashes": {
+    "src/world/OceanChunks.js": "7843174030e53b3dbfc359a257d1d7e05d9f37373e06e4031f5a180c309a57de",
+    "src/world/ReefWorld.js": "da693ab60b2970c430f8f4fef4011d11217bc30cb8ba2abd1bb312c92820d90c",
+    "tests/reef-valley-region-render.test.mjs": "872b025c0528bf13b3851ebfd55875be4e07318320b07ece2725e68853559f9b",
+    "tests/reef-valley-region-world.test.mjs": "83473c095d823422dcdfac87ed540a57dbfc062bce4d028d9451874bb6f569ac"
+  },
+  "ownedScope": "v8-only actual facies renderer; native durable entry and lazy four-group continuous route; 5 render and 6 world cases. No original assets/materials/camera appearance changes.",
+  "renderBeforeFixture": {
+    "fixedOldCommit": "8115e0e3522f85b1726b08c70b59b9fd45884026",
+    "fixedCaptureSHA256": "b5df0ea818c4c803dfcc9abe78b83c9ba48cfac709de0f3b7778f4d5a3c71ac0",
+    "all12GeometryMatricesCountsAndOriginalPlanPrototypeHashesPreserved": true,
+    "invalidCRLFWrapperCapturePreserved": true,
+    "expectedNeverTakenFromCurrentV8": true
+  },
+  "renderChecks": {
+    "initialPassed": 4,
+    "initialFailed": 1,
+    "fixtureDiagnosis": "Only isolated before-loader default Windows CRLF conversion affected grass hook text; repaired fixed old binary capture.",
+    "finalPassed": 5,
+    "finalFailed": 0,
+    "log": "output/validation/reef-valley-region-render-final.log",
+    "scope": "Final render run predates execution-only 8C model speed correction; geometry JSON remains unchanged."
+  },
+  "worldChecks": {
+    "initialPassed": 4,
+    "initialFailed": 2,
+    "log": "output/validation/reef-valley-region-world-initial.log",
+    "firstFreshEntryWallSec": 28.9031059,
+    "coldEntryWallSec": 32.5329545,
+    "failures": [
+      "Real first macro route193\u2192194s false camera ceiling; v8-only facade actual mesh correction authored by architecture agent.",
+      "Old running case6 tried mutating frozen generator; current test uses actual absent future public owner instead."
+    ],
+    "latestModelSinglePathDiagnostic": "output/validation/reef-valley-region-world-path-diagnostic.log",
+    "actualFailureOwner": "209,5",
+    "actualFailurePoint": [
+      13428.49644096994,
+      -3.9244504736411017,
+      320
+    ],
+    "native13RayBodyClearanceProof": "output/validation/reef-valley-region-first-failure-native-rays.json",
+    "stoppedRecoveryPartialLog": "output/validation/reef-valley-region-world-route-recovery.log",
+    "stoppedByParentForSingleCanonical": true,
+    "complete800CameraStatus": "Awaiting parent final canonical; not claimed passed"
+  },
+  "runnerReceipts": {
+    "render": "REEF_VALLEY_RENDER_RECEIPT",
+    "world": "REEF_VALLEY_WORLD_RECEIPT"
+  },
+  "limits": "No browser/GPU/fulltour acceptance from partial cases; root same final six-case canonical and CI decide result. No source/persistence/physical thresholds weakened."
+}

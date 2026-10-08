@@ -1,0 +1,12 @@
+{
+  "complete": false,
+  "terminatedOwnedRunner": true,
+  "log": "reef-valley-region-checks-startup-initial.log",
+  "reason": "Root began the first full runner before the agent explicit-false fixture edit landed; stopped the owned runner, preserved partial output, and froze final test bytes before the final complete run. EOF blank removed before final freeze.",
+  "changedFiles": [
+    "tests/reef-valley-region-world.test.mjs"
+  ],
+  "runtime205Unchanged": true,
+  "buildNotRepeated": true,
+  "testCountsNotAdditive": true
+}

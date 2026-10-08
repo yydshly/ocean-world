@@ -1,0 +1,157 @@
+{
+  "scope": "One actual first-failure location, native Three meshes and BVH floor/rock/footings plus 12-point radius1 ring; not viewport or GPU proof.",
+  "position": {
+    "x": 13428.49644096994,
+    "y": -3.9244504736411017,
+    "z": 320
+  },
+  "rock": {
+    "id": "living-rock:839,19",
+    "kind": "rock",
+    "profile": "natural-c",
+    "x": 13435.018861202896,
+    "y": -6.2019243015118795,
+    "z": 314.13324573129415,
+    "rotation": 0.5436302737503835,
+    "scale": {
+      "x": 18.45645037596114,
+      "y": 2.8516119899693875,
+      "z": 13.611611498078428
+    }
+  },
+  "oldConservativeCeiling": -3.350312311542492,
+  "namedRockActualAtCentre": null,
+  "allRaysClearOneMetreBody": true,
+  "samples": [
+    {
+      "x": 13428.49644096994,
+      "z": 320,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.9244504736411026,
+      "nativeHighestRayY": -5.924450473641102,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 1
+    },
+    {
+      "x": 13429.49644096994,
+      "z": 320,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.913010099718397,
+      "nativeHighestRayY": -5.913010099718399,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 0.9885596260772971
+    },
+    {
+      "x": 13429.362466373725,
+      "z": 320.5,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.909454798104288,
+      "nativeHighestRayY": -5.909454798104285,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 0.9850043244631834
+    },
+    {
+      "x": 13428.99644096994,
+      "z": 320.8660254037844,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.909521452944432,
+      "nativeHighestRayY": -5.909521452944432,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 0.9850709793033303
+    },
+    {
+      "x": 13428.49644096994,
+      "z": 321,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.915175645043767,
+      "nativeHighestRayY": -5.915175645043767,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 0.9907251714026657
+    },
+    {
+      "x": 13427.99644096994,
+      "z": 320.8660254037844,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.923325302040727,
+      "nativeHighestRayY": -5.923325302040723,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 0.9988748283996216
+    },
+    {
+      "x": 13427.630415566156,
+      "z": 320.5,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.932601811426375,
+      "nativeHighestRayY": -5.932601811426373,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 1.0081513377852716
+    },
+    {
+      "x": 13427.49644096994,
+      "z": 320,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.938666543648162,
+      "nativeHighestRayY": -5.938666543648161,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 1.014216070007059
+    },
+    {
+      "x": 13427.630415566156,
+      "z": 319.5,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.941855012507222,
+      "nativeHighestRayY": -5.941855012507226,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 1.0174045388661241
+    },
+    {
+      "x": 13427.99644096994,
+      "z": 319.1339745962156,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.940045613207114,
+      "nativeHighestRayY": -5.940045613207111,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 1.0155951395660097
+    },
+    {
+      "x": 13428.49644096994,
+      "z": 319,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.935571731032893,
+      "nativeHighestRayY": -5.935571731032894,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 1.0111212573917925
+    },
+    {
+      "x": 13428.99644096994,
+      "z": 319.1339745962156,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.928134322479194,
+      "nativeHighestRayY": -5.928134322479195,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 1.0036838488380937
+    },
+    {
+      "x": 13429.362466373725,
+      "z": 319.5,
+      "bodyBottomY": -4.924450473641102,
+      "bedY": -5.920578176141433,
+      "nativeHighestRayY": -5.920578176141433,
+      "nearestObject": "sampled-seabed",
+      "namedRockActualMeshHeight": null,
+      "bodyLowerClearanceM": 0.9961277025003312
+    }
+  ]
+}

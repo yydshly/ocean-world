@@ -1,0 +1,212 @@
+{
+  "scope": "Necessary v8 construction execution optimization. Both phase probes use Node CPU profiling and phase instrumentation; actual ordinary loading <45s is checked separately. No geometry, quotas, thresholds, native assets or mutable-history validation change.",
+  "baselineSourceSHA": "e96707840fe3ea04bccc6894ebb31ce0cb7b9c10a8610181c836fa3703a00462",
+  "optimizedSourceSHA": "8c3a7e94a78e085986e49601c1dbaa374d57cdd58976edf206a71259ece66439",
+  "currentSourceSHA": "8c3a7e94a78e085986e49601c1dbaa374d57cdd58976edf206a71259ece66439",
+  "testSHA": "f7c8bcfac8c75fc11716522f247d0a789c80c77a0b6ceeb471118e076af91c29",
+  "fix": "Ordered 16m candidate bins for routing and complete final body-corridor checks. Exact original radial and mesh predicates remain. Index extents alone include 1e-6 numerical guard; this is not a physical clearance allowance.",
+  "samples": [
+    {
+      "cx": 216,
+      "cz": 4,
+      "beforeMilliseconds": 21499.883700000002,
+      "afterMilliseconds": 2027.5284,
+      "beforePlanSHA": "3d6dd3e7868efd755eb71d19624049a9f695229caf975e8443f457b2abc59941",
+      "afterPlanSHA": "3d6dd3e7868efd755eb71d19624049a9f695229caf975e8443f457b2abc59941",
+      "completePlanBytesUnchanged": true,
+      "beforePhases": [
+        {
+          "phase": "source",
+          "milliseconds": 304.3084
+        },
+        {
+          "phase": "protection-and-bed-grid",
+          "milliseconds": 517.0315
+        },
+        {
+          "phase": "bed-amplitude-measurements-ownerplans",
+          "milliseconds": 30.534899999999993
+        },
+        {
+          "phase": "primary-and-branch-routing",
+          "milliseconds": 4922.3987
+        },
+        {
+          "phase": "new-rock-shoulders",
+          "milliseconds": 23.314000000000306
+        },
+        {
+          "phase": "coral-and-algae",
+          "milliseconds": 7.001100000000406
+        },
+        {
+          "phase": "grass-and-rubble",
+          "milliseconds": 439.95960000000014
+        },
+        {
+          "phase": "props-and-facies-metrics",
+          "milliseconds": 9.889099999999416
+        },
+        {
+          "phase": "final-complete-path-clearance",
+          "milliseconds": 15227.1412
+        },
+        {
+          "phase": "owner-habitat-and-allocation",
+          "milliseconds": 14.833999999998923
+        },
+        {
+          "phase": "immutable-freeze",
+          "milliseconds": 3.5873000000028696
+        }
+      ],
+      "afterPhases": [
+        {
+          "phase": "source",
+          "milliseconds": 376.34129999999993
+        },
+        {
+          "phase": "protection-and-bed-grid",
+          "milliseconds": 808.0942000000001
+        },
+        {
+          "phase": "bed-amplitude-measurements-ownerplans",
+          "milliseconds": 51.952999999999975
+        },
+        {
+          "phase": "primary-and-branch-routing",
+          "milliseconds": 135.74810000000002
+        },
+        {
+          "phase": "new-rock-shoulders",
+          "milliseconds": 16.181100000000015
+        },
+        {
+          "phase": "coral-and-algae",
+          "milliseconds": 7.056799999999839
+        },
+        {
+          "phase": "grass-and-rubble",
+          "milliseconds": 403.6274000000001
+        },
+        {
+          "phase": "props-and-facies-metrics",
+          "milliseconds": 8.855600000000095
+        },
+        {
+          "phase": "final-complete-path-clearance",
+          "milliseconds": 198.45119999999974
+        },
+        {
+          "phase": "owner-habitat-and-allocation",
+          "milliseconds": 18.526600000000144
+        },
+        {
+          "phase": "immutable-freeze",
+          "milliseconds": 2.9504000000001724
+        }
+      ]
+    },
+    {
+      "cx": 216,
+      "cz": 6,
+      "beforeMilliseconds": 34706.121499999994,
+      "afterMilliseconds": 2859.5327,
+      "beforePlanSHA": "b7bcfd5c2f2ef2404da3583843fe122c21544695ad7a74a662cb0f218936efc6",
+      "afterPlanSHA": "b7bcfd5c2f2ef2404da3583843fe122c21544695ad7a74a662cb0f218936efc6",
+      "completePlanBytesUnchanged": true,
+      "beforePhases": [
+        {
+          "phase": "source",
+          "milliseconds": 471.957699999999
+        },
+        {
+          "phase": "protection-and-bed-grid",
+          "milliseconds": 927.3423999999977
+        },
+        {
+          "phase": "bed-amplitude-measurements-ownerplans",
+          "milliseconds": 28.991900000000896
+        },
+        {
+          "phase": "primary-and-branch-routing",
+          "milliseconds": 10843.018399999997
+        },
+        {
+          "phase": "new-rock-shoulders",
+          "milliseconds": 27.937700000002224
+        },
+        {
+          "phase": "coral-and-algae",
+          "milliseconds": 3.0463999999992666
+        },
+        {
+          "phase": "grass-and-rubble",
+          "milliseconds": 649.4944000000032
+        },
+        {
+          "phase": "props-and-facies-metrics",
+          "milliseconds": 14.133099999999104
+        },
+        {
+          "phase": "final-complete-path-clearance",
+          "milliseconds": 21780.312899999997
+        },
+        {
+          "phase": "owner-habitat-and-allocation",
+          "milliseconds": 17.070800000001327
+        },
+        {
+          "phase": "immutable-freeze",
+          "milliseconds": 5.957000000002154
+        }
+      ],
+      "afterPhases": [
+        {
+          "phase": "source",
+          "milliseconds": 654.0371999999998
+        },
+        {
+          "phase": "protection-and-bed-grid",
+          "milliseconds": 1255.5724
+        },
+        {
+          "phase": "bed-amplitude-measurements-ownerplans",
+          "milliseconds": 25.543499999999767
+        },
+        {
+          "phase": "primary-and-branch-routing",
+          "milliseconds": 217.33320000000003
+        },
+        {
+          "phase": "new-rock-shoulders",
+          "milliseconds": 15.78480000000036
+        },
+        {
+          "phase": "coral-and-algae",
+          "milliseconds": 1.0190000000002328
+        },
+        {
+          "phase": "grass-and-rubble",
+          "milliseconds": 559.8599999999997
+        },
+        {
+          "phase": "props-and-facies-metrics",
+          "milliseconds": 12.098799999999756
+        },
+        {
+          "phase": "final-complete-path-clearance",
+          "milliseconds": 189.05029999999988
+        },
+        {
+          "phase": "owner-habitat-and-allocation",
+          "milliseconds": 15.794700000000375
+        },
+        {
+          "phase": "immutable-freeze",
+          "milliseconds": 3.2969999999995707
+        }
+      ]
+    }
+  ]
+}

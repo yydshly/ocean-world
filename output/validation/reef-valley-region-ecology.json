@@ -1,0 +1,405 @@
+{
+  "scope": "native ecology owner-window samples; no continuous camera, browser, GPU or documentary visual acceptance",
+  "seed": "living-shallows-v1|string:42",
+  "mainRouteGroupIds": [
+    "reef-valley-region:204,4",
+    "reef-valley-region:210,4",
+    "reef-valley-region:216,4",
+    "reef-valley-region:222,4"
+  ],
+  "mainRouteOwnedRecords": 48,
+  "actualRouteLengthM": 1695.666928224468,
+  "coldFirstEntry": {
+    "wallMs": 8814.2864,
+    "totalMs": 8813.128200000001,
+    "prefetchMs": 0.3761999999999972,
+    "canonicalValidationMs": 0,
+    "historicalValidationMs": 0,
+    "generationMs": 2588.6351999999997,
+    "birthEcologyMs": 2103.5635999999995,
+    "persistenceMs": 85.79719999999998,
+    "publicationMs": 22.130299999999707,
+    "otherMs": 4012.6257000000023
+  },
+  "windowScope": "sample entry, midpoint and exit of each actual group route; model relocation and .4-second windows, not continuous camera travel",
+  "modelAdvanceSec": 3.6,
+  "ordinaryWindows": [
+    {
+      "centre": "204,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 16,
+      "privateOwnerCount": 37,
+      "loadingWallMs": 0.01929999999993015,
+      "transitionTimingMs": {
+        "totalMs": 8813.128200000001,
+        "prefetchMs": 0.3761999999999972,
+        "canonicalValidationMs": 0,
+        "historicalValidationMs": 0,
+        "generationMs": 2588.6351999999997,
+        "birthEcologyMs": 2103.5635999999995,
+        "persistenceMs": 85.79719999999998,
+        "publicationMs": 22.130299999999707,
+        "otherMs": 4012.6257000000023
+      },
+      "tickWallMs": 846.0906999999988,
+      "admission": [
+        {
+          "id": "204,4",
+          "status": "born",
+          "committedOwnerCount": 12,
+          "generationMs": 1665.4107999999999
+        },
+        {
+          "id": "204,6",
+          "status": "declined",
+          "reason": "The reef-valley route cannot connect around unchanged boundary hosts.",
+          "generationMs": 923.2243999999998
+        }
+      ]
+    },
+    {
+      "centre": "207,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 16,
+      "privateOwnerCount": 29,
+      "loadingWallMs": 4536.338400000001,
+      "transitionTimingMs": {
+        "totalMs": 4536.286,
+        "prefetchMs": 30.208800000000338,
+        "canonicalValidationMs": 195.0662999999986,
+        "historicalValidationMs": 1354.3724999999995,
+        "generationMs": 0,
+        "birthEcologyMs": 0,
+        "persistenceMs": 0,
+        "publicationMs": 152.64370000000054,
+        "otherMs": 2803.994700000001
+      },
+      "tickWallMs": 888.6142999999993,
+      "admission": [
+        {
+          "id": "204,4",
+          "status": "restored"
+        },
+        {
+          "id": "204,6",
+          "status": "preserved",
+          "reason": "One or more historical owner records already exist."
+        }
+      ]
+    },
+    {
+      "centre": "210,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 18,
+      "privateOwnerCount": 53,
+      "loadingWallMs": 9150.578800000001,
+      "transitionTimingMs": {
+        "totalMs": 9150.528199999999,
+        "prefetchMs": 30.37310000000616,
+        "canonicalValidationMs": 166.90960000000268,
+        "historicalValidationMs": 1511.2760000000017,
+        "generationMs": 2792.0262000000002,
+        "birthEcologyMs": 3341.2177999999985,
+        "persistenceMs": 169.02400000000125,
+        "publicationMs": 111.17269999999917,
+        "otherMs": 1028.5287999999891
+      },
+      "tickWallMs": 589.4785000000011,
+      "admission": [
+        {
+          "id": "204,4",
+          "status": "restored"
+        },
+        {
+          "id": "210,4",
+          "status": "born",
+          "committedOwnerCount": 12,
+          "generationMs": 1433.0674999999974
+        },
+        {
+          "id": "204,6",
+          "status": "preserved",
+          "reason": "One or more historical owner records already exist."
+        },
+        {
+          "id": "210,6",
+          "status": "born",
+          "committedOwnerCount": 12,
+          "generationMs": 1358.9587000000029
+        }
+      ]
+    },
+    {
+      "centre": "213,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 29,
+      "loadingWallMs": 3980.753499999999,
+      "transitionTimingMs": {
+        "totalMs": 3980.6776000000027,
+        "prefetchMs": 70.02629999999772,
+        "canonicalValidationMs": 250.60199999999895,
+        "historicalValidationMs": 2325.7088000000003,
+        "generationMs": 0,
+        "birthEcologyMs": 0,
+        "persistenceMs": 0,
+        "publicationMs": 89.84499999999753,
+        "otherMs": 1244.4955000000082
+      },
+      "tickWallMs": 771.2114000000001,
+      "admission": [
+        {
+          "id": "210,4",
+          "status": "restored"
+        },
+        {
+          "id": "210,6",
+          "status": "restored"
+        }
+      ]
+    },
+    {
+      "centre": "216,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 53,
+      "loadingWallMs": 11168.351200000005,
+      "transitionTimingMs": {
+        "totalMs": 11168.296000000002,
+        "prefetchMs": 56.37960000000021,
+        "canonicalValidationMs": 193.16479999999865,
+        "historicalValidationMs": 2191.442600000002,
+        "generationMs": 3192.812700000002,
+        "birthEcologyMs": 4242.136399999996,
+        "persistenceMs": 197.9789000000019,
+        "publicationMs": 187.89689999999973,
+        "otherMs": 906.4841000000015
+      },
+      "tickWallMs": 597.1947999999975,
+      "admission": [
+        {
+          "id": "210,4",
+          "status": "restored"
+        },
+        {
+          "id": "210,6",
+          "status": "restored"
+        },
+        {
+          "id": "216,4",
+          "status": "born",
+          "committedOwnerCount": 12,
+          "generationMs": 1667.734199999999
+        },
+        {
+          "id": "216,6",
+          "status": "born",
+          "committedOwnerCount": 12,
+          "generationMs": 1525.0785000000033
+        }
+      ]
+    },
+    {
+      "centre": "219,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 29,
+      "loadingWallMs": 4128.4562000000005,
+      "transitionTimingMs": {
+        "totalMs": 4128.400099999999,
+        "prefetchMs": 80.66519999999582,
+        "canonicalValidationMs": 253.27169999997568,
+        "historicalValidationMs": 2362.4005000000034,
+        "generationMs": 0,
+        "birthEcologyMs": 0,
+        "persistenceMs": 0,
+        "publicationMs": 72.62309999999707,
+        "otherMs": 1359.439600000027
+      },
+      "tickWallMs": 842.9790999999968,
+      "admission": [
+        {
+          "id": "216,4",
+          "status": "restored"
+        },
+        {
+          "id": "216,6",
+          "status": "restored"
+        }
+      ]
+    },
+    {
+      "centre": "222,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 53,
+      "loadingWallMs": 10842.2483,
+      "transitionTimingMs": {
+        "totalMs": 10842.199,
+        "prefetchMs": 56.230599999988044,
+        "canonicalValidationMs": 193.10820000000967,
+        "historicalValidationMs": 2443.1705999999976,
+        "generationMs": 3170.8367,
+        "birthEcologyMs": 4024.6636,
+        "persistenceMs": 184.441899999998,
+        "publicationMs": 142.69369999999617,
+        "otherMs": 627.0537000000113
+      },
+      "tickWallMs": 523.0928000000058,
+      "admission": [
+        {
+          "id": "216,4",
+          "status": "restored"
+        },
+        {
+          "id": "216,6",
+          "status": "restored"
+        },
+        {
+          "id": "222,4",
+          "status": "born",
+          "committedOwnerCount": 12,
+          "generationMs": 1629.9090999999971
+        },
+        {
+          "id": "222,6",
+          "status": "born",
+          "committedOwnerCount": 12,
+          "generationMs": 1540.9276000000027
+        }
+      ]
+    },
+    {
+      "centre": "225,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 20,
+      "privateOwnerCount": 29,
+      "loadingWallMs": 4189.948400000001,
+      "transitionTimingMs": {
+        "totalMs": 4189.902399999999,
+        "prefetchMs": 68.04329999997572,
+        "canonicalValidationMs": 234.6136000000115,
+        "historicalValidationMs": 2506.196499999998,
+        "generationMs": 0,
+        "birthEcologyMs": 0,
+        "persistenceMs": 0,
+        "publicationMs": 74.3156999999992,
+        "otherMs": 1306.7333000000144
+      },
+      "tickWallMs": 677.985099999998,
+      "admission": [
+        {
+          "id": "222,4",
+          "status": "restored"
+        },
+        {
+          "id": "222,6",
+          "status": "restored"
+        }
+      ]
+    },
+    {
+      "centre": "228,5",
+      "advancedSec": 0.4,
+      "activeOwners": 9,
+      "publicSources": 18,
+      "privateOwnerCount": 53,
+      "loadingWallMs": 10827.2748,
+      "transitionTimingMs": {
+        "totalMs": 10827.2359,
+        "prefetchMs": 63.054100000008475,
+        "canonicalValidationMs": 220.11159999998927,
+        "historicalValidationMs": 2521.7104000000036,
+        "generationMs": 3281.2158000000054,
+        "birthEcologyMs": 2490.5081999999966,
+        "persistenceMs": 104.64839999999094,
+        "publicationMs": 92.24820000000182,
+        "otherMs": 2053.7392000000036
+      },
+      "tickWallMs": 548.6160999999993,
+      "admission": [
+        {
+          "id": "222,4",
+          "status": "restored"
+        },
+        {
+          "id": "222,6",
+          "status": "restored"
+        },
+        {
+          "id": "228,4",
+          "status": "declined",
+          "reason": "The reef-valley route cannot connect around unchanged boundary hosts.",
+          "generationMs": 1617.7957000000024
+        },
+        {
+          "id": "228,6",
+          "status": "born",
+          "committedOwnerCount": 12,
+          "generationMs": 1663.420100000003
+        }
+      ]
+    }
+  ],
+  "actualSpeciesIds": [
+    "green-chromis",
+    "lined-tang",
+    "reef-squid",
+    "spotted-jelly",
+    "feather-duster",
+    "reef-parrotfish",
+    "blue-spotted-ray",
+    "reef-goatfish",
+    "sand-goby",
+    "tropical-urchin",
+    "tiger-cowrie",
+    "blue-tang",
+    "shallow-anemone",
+    "reef-cuttlefish",
+    "barrel-sea-pen",
+    "spotted-hermit-crab",
+    "sand-edge-seahorse",
+    "silver-stripe-herring",
+    "blacktip-reef-shark",
+    "tube-sponge",
+    "day-octopus",
+    "clown-anemonefish",
+    "cleaner-wrasse",
+    "black-cucumber",
+    "honeycomb-grouper",
+    "blue-starfish",
+    "butterflyfish",
+    "top-shell",
+    "spotted-reef-crab",
+    "blue-and-gold-fusilier",
+    "bigeye-trevally"
+  ],
+  "movedIndividualCount": 668,
+  "feedingIndividualCount": 100,
+  "maxPrivateOwners": 53,
+  "limits": {
+    "active": 9,
+    "public": 25,
+    "privatePrefetch": 97,
+    "animalsIncludingDeadPerOwner": 20
+  },
+  "allOrdinaryBornGroupIds": [
+    "204,4",
+    "210,4",
+    "210,6",
+    "216,4",
+    "216,6",
+    "222,4",
+    "222,6",
+    "228,6"
+  ],
+  "excluded": "atomic, partial-history and cold-restoration cases below do not contribute to route distance or model time"
+}

@@ -1,0 +1,81 @@
+{
+  "fixedCommit": "8115e0e3522f85b1726b08c70b59b9fd45884026",
+  "sameSourceHashes": true,
+  "samePlanAndPrototypeHashes": true,
+  "sameGeometryNodeAndCountsForAll12OwnerOutputs": true,
+  "onlyWrapperCRLFGrassFunctionAndShaderHashesChanged": [
+    {
+      "owner": "152,4",
+      "window": {
+        "cx": 151,
+        "cz": 4
+      },
+      "beforeInvalidCRLF": "7c360e7171da531ee36b87341696fa07c5360b3d049c0adcfc5fb5232c57198b",
+      "fixedLF": "07ef0afd654c9c310f99a61482b466e34f0e82787830e3d6af1ba229e9ba8301"
+    },
+    {
+      "owner": "152,5",
+      "window": {
+        "cx": 151,
+        "cz": 4
+      },
+      "beforeInvalidCRLF": "30740c63dc57336b4db219f4cec248d0a4a99a1cf2c539b7676ebd2415d90f68",
+      "fixedLF": "d6414469584981ae746edca8d60c8be05a0fd0147beae68fe7a21e9cae629ea2"
+    },
+    {
+      "owner": "153,4",
+      "window": {
+        "cx": 154,
+        "cz": 4
+      },
+      "beforeInvalidCRLF": "f9de23d35e4f21e63e474faee7c4e33f5b0065580dee1fd5b1653b0c932c747a",
+      "fixedLF": "8596e80d3ba31474070ecda7b49f46c60a8cd02a87d4229319adba3d9571315d"
+    },
+    {
+      "owner": "154,4",
+      "window": {
+        "cx": 154,
+        "cz": 4
+      },
+      "beforeInvalidCRLF": "f9de23d35e4f21e63e474faee7c4e33f5b0065580dee1fd5b1653b0c932c747a",
+      "fixedLF": "8596e80d3ba31474070ecda7b49f46c60a8cd02a87d4229319adba3d9571315d"
+    },
+    {
+      "owner": "155,4",
+      "window": {
+        "cx": 154,
+        "cz": 4
+      },
+      "beforeInvalidCRLF": "e0668fb8978ba612a2300b00bd41662f4bd124b78767c8bf4e3a572cc1fb7053",
+      "fixedLF": "21a07d3c0640114893a39eab2c359e9741cd62aa657bb45d96ce40c6a6dcf8af"
+    },
+    {
+      "owner": "153,5",
+      "window": {
+        "cx": 154,
+        "cz": 4
+      },
+      "beforeInvalidCRLF": "f9de23d35e4f21e63e474faee7c4e33f5b0065580dee1fd5b1653b0c932c747a",
+      "fixedLF": "8596e80d3ba31474070ecda7b49f46c60a8cd02a87d4229319adba3d9571315d"
+    },
+    {
+      "owner": "154,5",
+      "window": {
+        "cx": 154,
+        "cz": 4
+      },
+      "beforeInvalidCRLF": "f9de23d35e4f21e63e474faee7c4e33f5b0065580dee1fd5b1653b0c932c747a",
+      "fixedLF": "8596e80d3ba31474070ecda7b49f46c60a8cd02a87d4229319adba3d9571315d"
+    },
+    {
+      "owner": "155,5",
+      "window": {
+        "cx": 154,
+        "cz": 4
+      },
+      "beforeInvalidCRLF": "bbbc3116225d5a2b2f0da604afe971f3b8fd29d9651b523c1d44395fab44342f",
+      "fixedLF": "453a058d178b0c257ee924e3bcb3673b5a529303c7da8063f7472b8210751171"
+    }
+  ],
+  "scope": "Expected derives exclusively from fixed old HEAD binary loader; current v8 code never used as before expected."
+}

@@ -1,0 +1,78 @@
+{
+  "targetedLog": "reef-valley-region-world-terminal-recovery.log",
+  "actualTests": 1,
+  "pass": 1,
+  "fail": 0,
+  "skipped": 0,
+  "samples": 29,
+  "cameraSeconds": 800,
+  "pathM": 1695.666928224468,
+  "travelledM": 1681.5252091800141,
+  "visitedCentres": 41,
+  "holds": 39,
+  "rebases": 5,
+  "entryWallSeconds": 31.560005,
+  "maximumLoadWallSec": 23.032491599999997,
+  "withinDirector45Seconds": true,
+  "whole": {
+    "rock": 4,
+    "coral": 30,
+    "seagrass": 233,
+    "animal": 91
+  },
+  "intersection": {
+    "rock": 36,
+    "coral": 43,
+    "seagrass": 288,
+    "animal": 92
+  },
+  "longestEmptySampleSpanM": 61.20774454323782,
+  "terminalPendingLoads": [
+    {
+      "scope": "completed native800s camera awaiting ordinary terminal window, not active-motion loading",
+      "complete": true,
+      "active": false,
+      "elapsedSec": 800,
+      "error": null,
+      "waitingForRegions": false,
+      "position": {
+        "x": 14592,
+        "y": -5.669329643249512,
+        "z": 320
+      },
+      "centre": "228,5",
+      "loadedOwnerIds": [
+        "227,4",
+        "227,5",
+        "228,4",
+        "228,5",
+        "227,6",
+        "228,6",
+        "229,6"
+      ],
+      "activeOwnerIds": [
+        "226,4",
+        "226,5",
+        "227,4",
+        "227,5",
+        "228,4",
+        "228,5",
+        "228,6",
+        "226,6",
+        "227,6"
+      ],
+      "mainRouteGroupIds": [
+        "reef-valley-region:204,4",
+        "reef-valley-region:210,4",
+        "reef-valley-region:216,4",
+        "reef-valley-region:222,4"
+      ]
+    }
+  ],
+  "runtimeFiles": 205,
+  "changedRuntimeFiles": [],
+  "worldTestSha256": "708e03574657252b82cc5a7e9a8fe21a005145db442cac42a167a7061539d435",
+  "worldReceiptSha256": "2f9f6b99cbf8f53d21a797552c13be9f93e0b147a572e431d329354c0762df2a",
+  "checksAreNotAdditive": "906 unchanged successful cases reused from failed complete133 local run, only this one case reexecuted; cloud reruns complete same907 identities.",
+  "gpuAcceptance": false
+}

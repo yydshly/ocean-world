@@ -1,0 +1,40 @@
+{
+  "scope": "completed native800s camera awaiting ordinary terminal window, not active-motion loading",
+  "complete": true,
+  "active": false,
+  "elapsedSec": 800,
+  "error": null,
+  "waitingForRegions": false,
+  "position": {
+    "x": 14592,
+    "y": -5.669329643249512,
+    "z": 320
+  },
+  "centre": "228,5",
+  "loadedOwnerIds": [
+    "227,4",
+    "227,5",
+    "228,4",
+    "228,5",
+    "227,6",
+    "228,6",
+    "229,6"
+  ],
+  "activeOwnerIds": [
+    "226,4",
+    "226,5",
+    "227,4",
+    "227,5",
+    "228,4",
+    "228,5",
+    "228,6",
+    "226,6",
+    "227,6"
+  ],
+  "mainRouteGroupIds": [
+    "reef-valley-region:204,4",
+    "reef-valley-region:210,4",
+    "reef-valley-region:216,4",
+    "reef-valley-region:222,4"
+  ]
+}

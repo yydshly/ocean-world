@@ -1,0 +1,53 @@
+{
+  "scope": "One finite native two-group before/after module cache probe. Warm-cache function measurements, not full production-load or browser-frame-rate evidence.",
+  "beforeSHA256": "4c87915ad1dd920bde7679468bfec13399f2a4f27f83c4ece34e4c6330aa750c",
+  "afterSHA256": "e96707840fe3ea04bccc6894ebb31ce0cb7b9c10a8610181c836fa3703a00462",
+  "before": {
+    "name": "before",
+    "coldBuildMs": 26200.1084,
+    "groups": [
+      204,
+      210
+    ],
+    "completeGeometrySHA256": [
+      "619ef98364abe53575cc7585275056b5b2b112a23badc58764f6e860f15859f6",
+      "dd31f92a8169f8d1bd6eb862763f1ddcb5ca4d0b371af8fca5d3fe10e845bf50"
+    ],
+    "cachedLookup": {
+      "calls": 4,
+      "ms": 1238.4804000000004,
+      "nativeChunkReads": 176
+    },
+    "warmMutableValidation": {
+      "records": 24,
+      "ms": 738.1098999999995,
+      "nativeChunkReads": 1056
+    },
+    "mutatedPreviouslyValidHistoryRejected": true
+  },
+  "after": {
+    "name": "after",
+    "coldBuildMs": 24647.4274,
+    "groups": [
+      204,
+      210
+    ],
+    "completeGeometrySHA256": [
+      "619ef98364abe53575cc7585275056b5b2b112a23badc58764f6e860f15859f6",
+      "dd31f92a8169f8d1bd6eb862763f1ddcb5ca4d0b371af8fca5d3fe10e845bf50"
+    ],
+    "cachedLookup": {
+      "calls": 4,
+      "ms": 0.06999999999970896,
+      "nativeChunkReads": 0
+    },
+    "warmMutableValidation": {
+      "records": 24,
+      "ms": 76.75250000000233,
+      "nativeChunkReads": 0
+    },
+    "mutatedPreviouslyValidHistoryRejected": true
+  },
+  "completeGeometryExact": true,
+  "mutableHistoryStillStrict": true
+}

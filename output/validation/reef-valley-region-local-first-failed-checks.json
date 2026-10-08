@@ -1,0 +1,13 @@
+{
+  "exitCode": 1,
+  "files": 133,
+  "wallSec": 1150.214037656784,
+  "summary": {
+    "tests": 907,
+    "pass": 906,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "sourceStillFrozen": true
+}

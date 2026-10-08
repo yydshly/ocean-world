@@ -1,0 +1,33 @@
+{
+  "exitCode": 0,
+  "files": 133,
+  "summary": {
+    "tests": 907,
+    "pass": 907,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "sourceStillFrozen": true,
+  "method": "906 unchanged passing identities from completed original133-file run plus the corrected full800s case replayed once; no second full local run or additive duplicate count.",
+  "initialFullSummary": {
+    "tests": 907,
+    "pass": 906,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "targetedSummary": {
+    "tests": 1,
+    "pass": 1,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "reusedPassingIdentities": 906,
+  "correctedCaseIdentities": 1,
+  "originalFullLog": "output\\validation\\reef-valley-region-checks-first-failed.log",
+  "correctedCaseLog": "output\\validation\\reef-valley-region-world-terminal-recovery.log",
+  "changedTestOnly": "tests/reef-valley-region-world.test.mjs",
+  "runtimeBuiltAndCurrentExact": 205
+}

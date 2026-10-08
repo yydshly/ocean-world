@@ -1,0 +1,20 @@
+{
+  "commit": "8115e0e3522f85b1726b08c70b59b9fd45884026",
+  "reason": "Original isolated write_text wrapper converted LF blobs to CRLF; replacement reads this fixed pre-v8 commit as bytes, never current dispatcher outputs.",
+  "sources": {
+    "src/livingRidgeGeology.js": {
+      "beforeBlobHash": "5f92fa2dd1d51bc4c92aedd343d8e5017c8054b755647ecac1390d7de7935788",
+      "blobCRLF": 33,
+      "blobLF": 456,
+      "loaderOnlyImportRewriteHash": "4d14c9b1722bff234eabc6de221d6a36c8805666cb3e2288665d8590d1ac99fe",
+      "isolatedCRLF": 33
+    },
+    "src/world/OceanChunks.js": {
+      "beforeBlobHash": "41290828c0422a879ff2a05248314187dd29bac546927656cd9f976d9b760fe8",
+      "blobCRLF": 0,
+      "blobLF": 752,
+      "loaderOnlyImportRewriteHash": "b68bf12a945f0ec4824e2c5036581daa1875af8ca1949e1bea3bdbf365c7a32c",
+      "isolatedCRLF": 0
+    }
+  }
+}

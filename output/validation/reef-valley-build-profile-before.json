@@ -1,0 +1,204 @@
+{
+  "scope": "CPU phase instrumented byte-equivalent geometry; two actual 216 candidate groups, no browser or whole-world loading claim",
+  "sourceSHA": "e96707840fe3ea04bccc6894ebb31ce0cb7b9c10a8610181c836fa3703a00462",
+  "samples": [
+    {
+      "cx": 216,
+      "cz": 4,
+      "milliseconds": 21499.883700000002,
+      "nativeChunkReads": 60,
+      "planSHA": "3d6dd3e7868efd755eb71d19624049a9f695229caf975e8443f457b2abc59941",
+      "phases": [
+        {
+          "phase": "source",
+          "milliseconds": 304.3084
+        },
+        {
+          "phase": "protection-and-bed-grid",
+          "milliseconds": 517.0315
+        },
+        {
+          "phase": "bed-amplitude-measurements-ownerplans",
+          "milliseconds": 30.534899999999993
+        },
+        {
+          "phase": "primary-and-branch-routing",
+          "milliseconds": 4922.3987
+        },
+        {
+          "phase": "new-rock-shoulders",
+          "milliseconds": 23.314000000000306
+        },
+        {
+          "phase": "coral-and-algae",
+          "milliseconds": 7.001100000000406
+        },
+        {
+          "phase": "grass-and-rubble",
+          "milliseconds": 439.95960000000014
+        },
+        {
+          "phase": "props-and-facies-metrics",
+          "milliseconds": 9.889099999999416
+        },
+        {
+          "phase": "final-complete-path-clearance",
+          "milliseconds": 15227.1412
+        },
+        {
+          "phase": "owner-habitat-and-allocation",
+          "milliseconds": 14.833999999998923
+        },
+        {
+          "phase": "immutable-freeze",
+          "milliseconds": 3.5873000000028696
+        }
+      ],
+      "metrics": {
+        "rockCount": 59,
+        "coralCount": 117,
+        "grassCount": 484,
+        "addedRockCount": 5,
+        "addedCoralCount": 10,
+        "addedAlgaeCount": 7,
+        "addedGrassCount": 484,
+        "reefWallCount": 2,
+        "reefPlateauCount": 3,
+        "driftwoodCount": 1,
+        "bottleCount": 1,
+        "denseGrassCount": 381,
+        "edgeGrassCount": 103,
+        "byFacies": {
+          "reef": {
+            "rock": 22,
+            "coral": 41,
+            "seagrass": 0,
+            "algae": 67,
+            "rubble": 213
+          },
+          "sand": {
+            "rock": 13,
+            "coral": 24,
+            "seagrass": 55,
+            "algae": 33,
+            "rubble": 116
+          },
+          "meadow": {
+            "rock": 9,
+            "coral": 21,
+            "seagrass": 384,
+            "algae": 23,
+            "rubble": 156
+          },
+          "slope": {
+            "rock": 15,
+            "coral": 31,
+            "seagrass": 45,
+            "algae": 45,
+            "rubble": 132
+          }
+        }
+      },
+      "routeLengthM": 422.4797643916913
+    },
+    {
+      "cx": 216,
+      "cz": 6,
+      "milliseconds": 34706.121499999994,
+      "nativeChunkReads": 60,
+      "planSHA": "b7bcfd5c2f2ef2404da3583843fe122c21544695ad7a74a662cb0f218936efc6",
+      "phases": [
+        {
+          "phase": "source",
+          "milliseconds": 471.957699999999
+        },
+        {
+          "phase": "protection-and-bed-grid",
+          "milliseconds": 927.3423999999977
+        },
+        {
+          "phase": "bed-amplitude-measurements-ownerplans",
+          "milliseconds": 28.991900000000896
+        },
+        {
+          "phase": "primary-and-branch-routing",
+          "milliseconds": 10843.018399999997
+        },
+        {
+          "phase": "new-rock-shoulders",
+          "milliseconds": 27.937700000002224
+        },
+        {
+          "phase": "coral-and-algae",
+          "milliseconds": 3.0463999999992666
+        },
+        {
+          "phase": "grass-and-rubble",
+          "milliseconds": 649.4944000000032
+        },
+        {
+          "phase": "props-and-facies-metrics",
+          "milliseconds": 14.133099999999104
+        },
+        {
+          "phase": "final-complete-path-clearance",
+          "milliseconds": 21780.312899999997
+        },
+        {
+          "phase": "owner-habitat-and-allocation",
+          "milliseconds": 17.070800000001327
+        },
+        {
+          "phase": "immutable-freeze",
+          "milliseconds": 5.957000000002154
+        }
+      ],
+      "metrics": {
+        "rockCount": 68,
+        "coralCount": 124,
+        "grassCount": 466,
+        "addedRockCount": 4,
+        "addedCoralCount": 8,
+        "addedAlgaeCount": 2,
+        "addedGrassCount": 466,
+        "reefWallCount": 2,
+        "reefPlateauCount": 2,
+        "driftwoodCount": 0,
+        "bottleCount": 2,
+        "denseGrassCount": 370,
+        "edgeGrassCount": 96,
+        "byFacies": {
+          "reef": {
+            "rock": 23,
+            "coral": 43,
+            "seagrass": 0,
+            "algae": 65,
+            "rubble": 159
+          },
+          "sand": {
+            "rock": 12,
+            "coral": 22,
+            "seagrass": 46,
+            "algae": 33,
+            "rubble": 144
+          },
+          "meadow": {
+            "rock": 17,
+            "coral": 32,
+            "seagrass": 374,
+            "algae": 47,
+            "rubble": 154
+          },
+          "slope": {
+            "rock": 16,
+            "coral": 27,
+            "seagrass": 46,
+            "algae": 46,
+            "rubble": 179
+          }
+        }
+      },
+      "routeLengthM": 423.7891438514331
+    }
+  ]
+}

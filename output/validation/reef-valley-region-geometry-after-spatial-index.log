@@ -1,0 +1,60 @@
+TAP version 13
+# Subtest: coordinate-aligned dynamic groups preserve legacy ranges and deterministically generate four real budgeted macro communities
+ok 1 - coordinate-aligned dynamic groups preserve legacy ranges and deterministically generate four real budgeted macro communities
+  ---
+  duration_ms: 3.8849
+  type: 'test'
+  ...
+# actual groups=4, source owners=48, added irregular rocks=29, attached coral=57, rooted grass=1953
+# Subtest: all twelve-owner bed grids share literal seams and preserve native outer bands, retained supports and old chunks
+ok 2 - all twelve-owner bed grids share literal seams and preserve native outer bands, retained supports and old chunks
+  ---
+  duration_ms: 2213.7627
+  type: 'test'
+  ...
+# Subtest: four actual main paths connect at exact shared world ports for a continuous one-to-two-kilometre native route
+ok 3 - four actual main paths connect at exact shared world ports for a continuous one-to-two-kilometre native route
+  ---
+  duration_ms: 2399.9151
+  type: 'test'
+  ...
+# actual connected main-route length=1695.666928224468m, maximum gap=0.762855252924604m
+# Subtest: each real sand fork rejoins exact main-path points and both its body corridor and finite segment midpoints remain open
+ok 4 - each real sand fork rejoins exact main-path points and both its body corridor and finite segment midpoints remain open
+  ---
+  duration_ms: 1111.2328
+  type: 'test'
+  ...
+# Subtest: large physical reef-wall and plateau meshes are grounded and their coral/algae use real attachment surfaces
+ok 5 - large physical reef-wall and plateau meshes are grounded and their coral/algae use real attachment surfaces
+  ---
+  duration_ms: 1.5887
+  type: 'test'
+  ...
+# Subtest: coordinate-seeded grass cores and edges use actual full soft support without erasing activity gaps or turning scenery into biomass
+ok 6 - coordinate-seeded grass cores and edges use actual full soft support without erasing activity gaps or turning scenery into biomass
+  ---
+  duration_ms: 1028.0738
+  type: 'test'
+  ...
+# Subtest: world-coordinate facies are shared and actual support—not a label—decides substrate across macro boundaries
+ok 7 - world-coordinate facies are shared and actual support—not a label—decides substrate across macro boundaries
+  ---
+  duration_ms: 4.466
+  type: 'test'
+  ...
+# Subtest: canonical closed plans reject modified roster, terrain, branches, ports and budgets while original v6/v7 sources remain literal
+ok 8 - canonical closed plans reject modified roster, terrain, branches, ports and budgets while original v6/v7 sources remain literal
+  ---
+  duration_ms: 1155.9237
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18694.1613

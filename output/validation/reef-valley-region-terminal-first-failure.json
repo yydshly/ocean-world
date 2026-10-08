@@ -1,0 +1,63 @@
+{
+  "runId": 37732491904,
+  "run": {
+    "conclusion": "failure",
+    "headSha": "c294665f33bd3cc499451c198c7d35254afea20e",
+    "status": "completed",
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/37732491904"
+  },
+  "rawLog": "reef-valley-region-cloud-first-failed.log",
+  "rawBytes": 810555,
+  "rawSha256": "6f2176a90db16ff3c1e6ee7a4690ee65348ceb1e89fc15b5e4b63ae939870fc8",
+  "failureExcerpt": [
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3934600Z not ok 894 - full800s actual camera lazily crosses four committed regions with honest window waits native pause rate rebase and frozen unloaded owners",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3935178Z   ---",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3938222Z   duration_ms: 261204.433223",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3939386Z   type: 'test'",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3940256Z   location: '/home/runner/work/ocean-world/ocean-world/tests/reef-valley-region-world.test.mjs:192:1'",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3940927Z   failureType: 'testCodeFailure'",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3941128Z   error: |-",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3941266Z     Expected values to be strictly equal:",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3941417Z     ",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3941525Z     false !== true",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3941635Z     ",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3941798Z   code: 'ERR_ASSERTION'",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3941999Z   name: 'AssertionError'",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3942195Z   expected: true",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3942377Z   actual: false",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3942566Z   operator: 'strictEqual'",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3942758Z   stack: |-",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3943241Z     TestContext.<anonymous> (file:///home/runner/work/ocean-world/ocean-world/tests/reef-valley-region-world.test.mjs:234:16)",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3943791Z     async Test.run (node:internal/test_runner/test:1054:7)",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3944199Z     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.3944519Z   ...",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.4196284Z # Subtest: new native route preparation uses current durable geometry and absent neighbour stops without an invented cut",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.4196836Z ok 895 - new native route preparation uses current durable geometry and absent neighbour stops without an invented cut",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.4197118Z   ---",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.4197240Z   duration_ms: 12299.092551"
+  ],
+  "summaryLines": [
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.5402497Z # tests 907",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.5402854Z # pass 906",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.5403038Z # fail 1",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.5403208Z # cancelled 0",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.5403406Z # skipped 0",
+    "build\tCheck whole sea scenes, native entries and saved ecosystems\t2026-10-08T05:46:07.5403796Z # duration_ms 1084067.61997"
+  ],
+  "localPreserved": {
+    "reef-valley-region-checks-first-failed.log": {
+      "bytes": 274207,
+      "sha256": "56075287c798d27e91c97cdfc54c55b611026ba392812b09209ec9dba73cd657"
+    },
+    "reef-valley-region-local-first-failed-checks.json": {
+      "bytes": 217,
+      "sha256": "7c74f50e9b535c5941ae324a621d6570adc5771a7fe055b07fe17a2da0ffe791"
+    },
+    "reef-valley-region-source-hashes-first-failed.json": {
+      "bytes": 51090,
+      "sha256": "c8ba81cfd6e57d667d1545eac169f133c7a15e597c1391dc224a3f4714fee6d5"
+    }
+  },
+  "diagnosis": "The assertion at line234 expects active-motion loading waiting even on the normally completed800s terminal frame; no production change is authorized or made.",
+  "excerptIsNotCompleteTap": true
+}

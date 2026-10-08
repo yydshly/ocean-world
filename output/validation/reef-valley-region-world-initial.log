@@ -1,0 +1,77 @@
+TAP version 13
+# Subtest: ordinary reef valley publishes one complete durable group before native render and restores exact saved history
+ok 1 - ordinary reef valley publishes one complete durable group before native render and restores exact saved history
+  ---
+  duration_ms: 61885.2085
+  type: 'test'
+  ...
+# {"entryWallSeconds":28.9031059,"withinDirector45Seconds":true}
+# {"coldEntryWallSeconds":32.5329545}
+# one native12-owner commit before public; current9/source<=25/animal<=20; cold records exact, one actual0.1s tick
+# Subtest: historical owners and missing complete history cannot refill or claim an empty continuous scene
+ok 2 - historical owners and missing complete history cannot refill or claim an empty continuous scene
+  ---
+  duration_ms: 11550.3263
+  type: 'test'
+  ...
+# Subtest: native pending entry cannot overwrite manual controls and the same shipped late guards reject other takeovers
+ok 3 - native pending entry cannot overwrite manual controls and the same shipped late guards reject other takeovers
+  ---
+  duration_ms: 54615.5789
+  type: 'test'
+  ...
+# Subtest: unreadable owner or refused atomic save stays private and a failed pause save still freezes immediately
+ok 4 - unreadable owner or refused atomic save stays private and a failed pause save still freezes immediately
+  ---
+  duration_ms: 64333.0472
+  type: 'test'
+  ...
+# Subtest: full800s actual camera lazily crosses four committed regions with honest window waits native pause rate rebase and frozen unloaded owners
+not ok 5 - full800s actual camera lazily crosses four committed regions with honest window waits native pause rate rebase and frozen unloaded owners
+  ---
+  duration_ms: 289264.9413
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\reef-valley-region-world.test.mjs:191:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    actual connected path remains physically passable
+    + actual - expected
+    
+    + '礁谷路径实际净空已改变。'
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: '礁谷路径实际净空已改变。'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/reef-valley-region-world.test.mjs:208:14)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: new native route preparation uses current durable geometry and absent neighbour stops without an invented cut
+not ok 6 - new native route preparation uses current durable geometry and absent neighbour stops without an invented cut
+  ---
+  duration_ms: 34503.0141
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\reef-valley-region-world.test.mjs:258:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot assign to read only property 'getRidgePlan' of object '#<Object>'"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/reef-valley-region-world.test.mjs:267:82)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# {"entryWallSeconds":34.445339899999965}
+1..6
+# tests 6
+# suites 0
+# pass 4
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 516425.2815

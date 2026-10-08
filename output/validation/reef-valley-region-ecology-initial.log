@@ -1,0 +1,47 @@
+TAP version 13
+# reef-valley cold first entry timing {"wallMs":20712.5481,"totalMs":20711.1534,"prefetchMs":0.5099000000000018,"canonicalValidationMs":0,"historicalValidationMs":0,"generationMs":15482.465,"birthEcologyMs":1777.7049000000006,"persistenceMs":78.80349999999817,"publicationMs":27.679599999999056,"otherMs":3343.9905000000035}
+# Subtest: ordinary owner exploration grows four real regional groups with bounded ecology and independent food-fed clocks
+not ok 1 - ordinary owner exploration grows four real regional groups with bounded ecology and independent food-fed clocks
+  ---
+  duration_ms: 116888.0879
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\reef-valley-region-ecology.test.mjs:65:1'
+  failureType: 'testCodeFailure'
+  error: 'ordinary window 216,5 exceeded 45s: {"totalMs":51967.368,"prefetchMs":66.48259999998845,"canonicalValidationMs":227.54260000000068,"historicalValidationMs":6142.711999999985,"generationMs":40805.712000000014,"birthEcologyMs":3774.9925999999978,"persistenceMs":131.23979999999574,"publicationMs":151.05419999999867,"otherMs":667.6322000000218}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/reef-valley-region-ecology.test.mjs:85:14)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: pending and superseded group saves leave private candidates invisible until durable twelve-owner completion
+ok 2 - pending and superseded group saves leave private candidates invisible until durable twelve-owner completion
+  ---
+  duration_ms: 10768.7902
+  type: 'test'
+  ...
+# Subtest: failed persistence and partial or corrupt offscreen group history cannot become virgin terrain
+ok 3 - failed persistence and partial or corrupt offscreen group history cannot become virgin terrain
+  ---
+  duration_ms: 11780.9124
+  type: 'test'
+  ...
+# Subtest: visited owners retain old terrain and next-step history; cold v8 restore preserves death and naturally empty roles
+ok 4 - visited owners retain old terrain and next-step history; cold v8 restore preserves death and naturally empty roles
+  ---
+  duration_ms: 32616.3862
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 3
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 172300.2158

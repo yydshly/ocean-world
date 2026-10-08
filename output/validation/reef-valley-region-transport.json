@@ -1,0 +1,22 @@
+{
+  "sourceSha": "c1c27499d289e8a41004b779d5f45cdc70da61dd",
+  "originMain": "c1c27499d289e8a41004b779d5f45cdc70da61dd",
+  "officialMain": "c1c27499d289e8a41004b779d5f45cdc70da61dd",
+  "frozenCurrentAndCommittedFilesExact": 343,
+  "runtimeBuiltAndCurrentExact": 205,
+  "runId": 37734564412,
+  "initialFailedRunId": 37732491904,
+  "scope": "Authorized normal non-forced source push and exact frozen bytes; workflow and deployment still pending.",
+  "testOnlyCorrection": {
+    "failedSource": "c294665f33bd3cc499451c198c7d35254afea20e",
+    "changedFiles": [
+      "tests/reef-valley-region-world.test.mjs"
+    ],
+    "reason": "Completed800s motion is inactive; its final owner-window load still freezes the camera and clock but does not set an active-motion waiting flag.",
+    "runtime205Unchanged": true,
+    "fullWorkflowFiles": 133,
+    "localUnchangedPassingIdentitiesReused": 906,
+    "localCorrectedCaseIdentities": 1
+  },
+  "gpuAppearanceAccepted": false
+}
