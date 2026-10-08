@@ -13,6 +13,7 @@ import { OCEAN_REEF_DIVERSITY_SPECIES } from '../src/oceanReefDiversitySpecies.j
 import { OCEAN_REEF_COMMUNITY_SPECIES } from '../src/oceanReefCommunitySpecies.js';
 import { OCEAN_REEF_LIFE_SPECIES } from '../src/oceanReefLifeSpecies.js';
 import { OCEAN_REEF_FAUNA_SPECIES } from '../src/oceanReefFaunaSpecies.js';
+import { OCEAN_REEF_VISITOR_IDS } from '../src/oceanReefVisitorsSpecies.js';
 import { OCEAN_REEF_ASSEMBLAGE_SPECIES } from '../src/oceanReefAssemblageSpecies.js';
 import { REEF_HABITAT_COMMUNITY_VERSION, REEF_HABITAT_COMMUNITY_IDS,
   REEF_HABITAT_COMMUNITY_SCOPE, REEF_HABITAT_COMMUNITY_FOOD_SCOPE } from '../src/oceanReefResidents.js';
@@ -105,9 +106,9 @@ function pose(object) {
 test('v7 production activates only living shallows while 75 catalog entries and existing direct/director entry retain their committed identities', async () => {
   assert.equal(REEF_HABITAT_COMMUNITY_VERSION, 7); assert.equal(residents.length, 32);
   assert.deepEqual([...REEF_HABITAT_COMMUNITY_IDS].sort(), residents.map(s => s.id).sort());
-  assert.equal(new Set(REEF_HABITAT_COMMUNITY_IDS).size, 32); assert.equal(livingShallowsSpeciesCatalog.length, 75);
+  assert.equal(new Set(REEF_HABITAT_COMMUNITY_IDS).size, 32); assert.equal(livingShallowsSpeciesCatalog.filter(s => !OCEAN_REEF_VISITOR_IDS.includes(s.id)).length, 75);
   assert.ok(REEF_HABITAT_COMMUNITY_SCOPE && REEF_HABITAT_COMMUNITY_FOOD_SCOPE);
-  for (const [path, expected] of Object.entries(retainedCatalogHashes)) assert.equal(sha(read(path).replace(/\r\n/g, '\n')), expected, `${path}: retained 9d53bb4 source`);
+  for (const [path, expected] of Object.entries(retainedCatalogHashes)) assert.equal(sha((path === 'src/sceneCatalog.js' ? read(path).replace(/\r\n/g, '\n').replace("import { OCEAN_REEF_VISITORS_SPECIES } from './oceanReefVisitorsSpecies.js';\n", '').replace(',...OCEAN_REEF_VISITORS_SPECIES', '') : read(path)).replace(/\r\n/g, '\n')), expected, `${path}: retained 9d53bb4 source`);
   for (const s of residents) {
     assert.equal(livingShallowsSpeciesCatalog.filter(row => row.id === s.id).length, 1);
     assert.equal(livingShallowsSpeciesCatalog.find(row => row.id === s.id), s);

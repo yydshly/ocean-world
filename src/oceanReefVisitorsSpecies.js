@@ -1,0 +1,80 @@
+// Finite tropical Indo-Pacific representatives, not a field census. Selected
+// sizes and model rates are illustrative; sources describe natural biology.
+const freeze = value => { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value); } return value; };
+const source = (url, label) => ({ url, label });
+const POOL = 'reefGuild.preyOrganicUnits';
+function species(data) {
+  return freeze({ regionalOnly: true, identityLevel: 'species-representative', taxonomicLevel: 'species',
+    referenceRegion: '热带印度—西太平洋礁缘与潟湖', coOccurrenceStatus: 'representatives-not-a-local-field-survey',
+    ecologicalRateStatus: 'uncalibrated-demonstration', calibratedMovementMPerS: null, calibratedEcologicalRates: null,
+    naturalPopulationDensity: null, calibratedTemperatureC: null, calibratedSalinityPSU: null, calibratedOxygenMgPerL: null,
+    displaySizeM: { range: data.sizeRangeM, measure: data.sizeMeasure, status: 'illustrative-selection' },
+    admissionDepthM: { range: data.depthSelectionM, status: 'chosen-whole-model-depth-not-complete-natural-range' },
+    depthRangeM: data.depthSelectionM, foodPool: POOL,
+    support: { mode: 'whole-freewater-body-near-real-reef', contactKind: 'none-freewater', footContacts: [],
+      rootReference: data.sizeMeasure === 'disc-width' ? 'disc-center' : 'total-length-midpoint',
+      pitchLimitRad: .10, minimumNormalY: .92, wholeBodyDepthRequired: true, terrainClearanceRequired: true },
+    feedingProxy: { owner: 'reefGuild', stock: 'preyOrganicUnits', resourcePath: `region.${POOL}`,
+      selectedFoodComponent: data.foodComponent, status: 'existing-selected-organic-proxy-not-complete-natural-diet',
+      visiblePreyKillImplemented: false, speciesResolvedFoodStock: false },
+    limitations: ['造型、数量、运动和摄食速率未作野外校准。', '摄食仅扣当地已有营养代理；未实现具体捕猎、挖沙取食或完整食物网。'],
+    ...data, sourceLinks: data.sources.map(s => ({ ...s })) });
+}
+const envelope = (x, y, z, radius) => ({ x, y, z, horizontalRadiusUnits: radius,
+  axes: 'forward-positive-x; up-positive-y; transverse-z',
+  status: 'conservative-display-whole-form-and-bounded-animation-not-measured-anatomy' });
+const length = form => ({ form, normalizedMeasuredSize: 1, bodyMeasuredX: [-.5, .5], sizeAxis: 'snout-to-farthest-caudal-tip-x',
+  clearanceIncludes: ['whole-body', 'head', 'mouth', 'eyes', 'all-fins', 'bounded-animation'] });
+export const OCEAN_REEF_VISITORS_SPECIES = freeze([
+  species({ id: 'great-barracuda', commonName: '大梭鱼', scientificName: 'Sphyraena barracuda', scientificAuthor: '(Edwards, 1771)',
+    kind: 'fish', guild: 'large-reef-edge-fish-consumer', lengthM: .95, sizeRangeM: [.80, 1.10], sizeMeasure: 'total-length', depthSelectionM: [3, 18],
+    lifeStageSelection: 'adult-form-with-emarginate-posterior-lobed-tail', referenceSizeM: { maximum: 2, measure: 'total-length' },
+    referenceDepthM: { completeNaturalRange: false, reportedRange: null }, colors: ['#929e98', '#394942', '#bbc4b8'],
+    normalizedEnvelope: envelope([-.54, .54], [-.18, .20], [-.15, .15], .57),
+    animationBounds: { tailYawRad: .10, pectoralRollRad: .06 },
+    morphology: { ...length('long-slender-pointed-snout-protruding-lower-jaw-two-separated-dorsals'), separatedDorsalFins: 2,
+      adultCaudalShape: 'emarginate-with-central-posterior-lobes' },
+    description: '细长银灰鱼体、前伸下颌、两枚分开的背鳍和成体浅凹尾缘；与深体礁鱼轮廓明显不同。',
+    diet: '自然主要食鱼，也吃头足类；本版只取未解析鱼类动物营养。', foodComponent: 'selected-unresolved-fish-nutrition',
+    behavior: '有限近礁单体巡游；没有模拟真实追猎或幼鱼群。', habitat: ['reef-edge', 'near-reef-open-water'],
+    sources: [source('https://fishesofaustralia.net.au/Home/species/735', 'Museums Victoria：大梭鱼形态、成年尾形、食性与2m TL'),
+      source('https://australian.museum/learn/animals/fishes/great-barracuda-sphyraena-barracuda/', 'Australian Museum：大梭鱼身份与完整形态')] }),
+  species({ id: 'bluefin-trevally', commonName: '蓝鳍鲹', scientificName: 'Caranx melampygus', scientificAuthor: 'Cuvier, 1833',
+    kind: 'fish', guild: 'reef-water-fish-and-crustacean-consumer', lengthM: .55, sizeRangeM: [.45, .65], sizeMeasure: 'total-length', depthSelectionM: [3, 18],
+    referenceSizeM: { maximum: 1.20, measure: 'total-length' }, referenceDepthM: { reportedRange: [1, 190], completeNaturalRange: false },
+    colors: ['#829997', '#316d8e', '#263d41'], normalizedEnvelope: envelope([-.54, .54], [-.30, .30], [-.19, .19], .58),
+    animationBounds: { tailYawRad: .12, pectoralRollRad: .06 }, morphology: { ...length('compressed-spindle-spotted-body-blue-falcate-fins-deep-fork-tail'), deeplyForkedTail: true },
+    description: '侧扁纺锤体、蓝黑斑点、蓝色镰状鳍与深叉尾。',
+    diet: '自然食鱼和甲壳类；只取既有未解析动物营养分量。', foodComponent: 'selected-unresolved-fish-and-crustacean-nutrition',
+    behavior: '礁边有限单体游动与停留；未实现天然猎群。', habitat: ['lagoon-reef', 'outer-reef', 'reef-channel'],
+    sources: [source('https://fishesofaustralia.net.au/home/species/1652', 'Museums Victoria：蓝鳍鲹蓝鳍斑点、120cm TL与1–190m'),
+      source('https://www.fao.org/4/ad471e/ad471e29.pdf', 'FAO Maldives蓝鳍鲹账户：鱼和甲壳食性、单体或小群礁栖')] }),
+  species({ id: 'oriental-sweetlips', commonName: '东方胡椒鲷', scientificName: 'Plectorhinchus vittatus', scientificAuthor: '(Linnaeus, 1758)',
+    kind: 'fish', guild: 'nocturnal-reef-benthic-animal-consumer', lengthM: .375, sizeRangeM: [.30, .45], sizeMeasure: 'total-length', depthSelectionM: [3, 18],
+    lifeStageSelection: 'striped-adult-truncate-tail', referenceSizeM: { maximum: .60, measure: 'total-length' },
+    referenceDepthM: { reportedRange: [2, 25], completeNaturalRange: false }, colors: ['#c9ccb1', '#292e29', '#b2a04b'],
+    normalizedEnvelope: envelope([-.54, .54], [-.30, .31], [-.18, .18], .58), animationBounds: { tailYawRad: .08, pectoralRollRad: .05 },
+    morphology: { ...length('deep-thick-lipped-adult-horizontal-stripes-yellow-spotted-fins-truncate-tail'), thickLips: true, adultCaudalShape: 'truncate' },
+    description: '厚唇深体、成体横向黑白条纹、黄底黑点鳍与截尾。',
+    diet: '自然夜间食底栖甲壳类和软体动物；只取未解析底栖动物营养。', foodComponent: 'selected-unresolved-benthic-crustacean-and-mollusc-nutrition',
+    behavior: '白天近礁休息，模型光照足够低时才游动和摄食。', habitat: ['coastal-reef', 'lagoon-reef', 'seaward-reef'],
+    sources: [source('https://fishesofaustralia.net.au/home/species/459', 'Museums Victoria：东方胡椒鲷身份、昼栖夜食、截尾、60cm TL与2–25m'),
+      source('https://www.fao.org/4/ad471e/ad471e33.pdf', 'FAO Maldives东方胡椒鲷账户：底栖甲壳和软体食性')] }),
+  species({ id: 'spotted-eagle-ray', commonName: '豹纹鹞鲼（描述性中文名）', scientificName: 'Aetobatus ocellatus', scientificAuthor: '(Kuhl, 1823)',
+    kind: 'ray', guild: 'reef-margin-hard-shelled-benthic-animal-consumer', lengthM: .725, sizeRangeM: [.60, .85], sizeMeasure: 'disc-width', depthSelectionM: [3, 18],
+    sizeMeasureDefinition: '两侧胸鳍尖间的盘宽；头和长尾另计全形，绝不把盘宽当全长。',
+    referenceSizeM: { maximum: null, measure: 'disc-width', totalLengthToDiscWidthRatio: 2.81 },
+    referenceDepthM: { reportedRange: [0, 60], completeNaturalRange: false }, colors: ['#45534a', '#c6cab4', '#dadccb'],
+    normalizedEnvelope: envelope([-2.45, .54], [-.24, .24], [-.54, .54], 2.51),
+    animationBounds: { wingRollRad: .24, tailYawRad: .025 },
+    morphology: { form: 'diamond-disc-duckbill-snout-white-spots-long-whip-tail', normalizedMeasuredSize: 1,
+      bodyMeasuredZ: [-.5, .5], sizeAxis: 'pectoral-tip-to-tip-z', totalLengthUnits: 2.81, ventralGillSlitsPerSide: 5,
+      clearanceIncludes: ['whole-disc', 'head', 'duckbill-snout', 'eyes', 'ventral-mouth', 'ten-gill-slits', 'entire-whip-tail', 'tail-spine', 'bounded-animation'] },
+    description: '菱形胸鳍盘、白色斑点、扁鸭嘴头、腹面口和五对鳃裂，以及纳入净空检查的完整长鞭尾。',
+    diet: '自然食硬壳螺、双壳类和蟹；本版只取现有未解析底栖动物营养。', foodComponent: 'selected-unresolved-hard-shelled-benthic-animal-nutrition',
+    behavior: '礁沙缘水层有限游动；未实现挖沙取食。采用印度太平洋A.ocellatus身份。', habitat: ['coastal-reef', 'lagoon', 'reef-sand-margin'],
+    sources: [source('https://fishesofaustralia.net.au/home/species/2034', 'Museums Victoria：A.ocellatus身份、盘宽比例、长尾、白斑、食性和0–60m'),
+      source('https://www.cmar.csiro.au/caab/taxon_report.cfm?caab_code=37039003', 'CSIRO CAAB：接受名A.ocellatus及旧A.narinari误用说明')] })
+]);
+export const OCEAN_REEF_VISITOR_IDS = freeze(OCEAN_REEF_VISITORS_SPECIES.map(s => s.id));
+export const oceanReefVisitorsSpeciesById = freeze(Object.fromEntries(OCEAN_REEF_VISITORS_SPECIES.map(s => [s.id, s])));
