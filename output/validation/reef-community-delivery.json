@@ -1,0 +1,2367 @@
+{
+  "stage": "reef-community-v3",
+  "baseCommit": "4a7b0cf567393c7e6b025b6cc1bff174d296555c",
+  "native": {
+    "seed": "living-shallows-v1|string:50",
+    "groupId": "reef-valley-region:204,4",
+    "targetRecords": 222,
+    "actualSpeciesIds": [
+      "green-chromis",
+      "lined-tang",
+      "reef-squid",
+      "sand-goby",
+      "tropical-urchin",
+      "reef-goatfish",
+      "tiger-cowrie",
+      "coral-trout",
+      "lionfish",
+      "chinese-trumpetfish",
+      "moorish-idol",
+      "yellow-boxfish",
+      "red-toothed-triggerfish",
+      "feather-duster",
+      "blue-spotted-ray",
+      "painted-spiny-lobster",
+      "longfin-batfish",
+      "blue-tang",
+      "cleaner-wrasse",
+      "top-shell",
+      "black-cucumber",
+      "spotted-hermit-crab",
+      "sand-edge-seahorse",
+      "reef-cuttlefish",
+      "barrel-sea-pen",
+      "sailfin-tang",
+      "cushion-sea-star",
+      "valentini-puffer",
+      "peacock-mantis-shrimp",
+      "honeycomb-grouper",
+      "leopard-sea-cucumber",
+      "green-turban-snail",
+      "green-turtle",
+      "spotted-jelly",
+      "reef-parrotfish",
+      "bigeye-trevally",
+      "tube-sponge",
+      "day-octopus",
+      "spotted-reef-crab",
+      "shallow-anemone",
+      "clown-anemonefish",
+      "butterflyfish",
+      "blue-and-gold-fusilier",
+      "silver-stripe-herring",
+      "blacktip-reef-shark"
+    ],
+    "scope": "one native fresh50 twelve-owner group and three ordinary nine-owner windows; CPU distances, no GPU acceptance",
+    "addedNewRecords": 16,
+    "distribution": [
+      {
+        "speciesId": "yellow-boxfish",
+        "individuals": 2,
+        "ownerIds": [
+          "204,4",
+          "204,5"
+        ],
+        "foodPools": [
+          "reefGuild.preyOrganicUnits"
+        ],
+        "nearestStartM": 2.5600244920787945,
+        "earliestWithin14M": {
+          "sM": 0,
+          "distanceM": 2.5600244920787945
+        },
+        "closest": {
+          "sM": 0.37500233802350447,
+          "distanceM": 2.542491396337485
+        }
+      },
+      {
+        "speciesId": "red-toothed-triggerfish",
+        "individuals": 4,
+        "ownerIds": [
+          "204,4",
+          "205,4",
+          "204,5",
+          "205,5"
+        ],
+        "foodPools": [
+          "resources.plankton"
+        ],
+        "nearestStartM": 7.826165121221894,
+        "earliestWithin14M": {
+          "sM": 0,
+          "distanceM": 7.826165121221894
+        },
+        "closest": {
+          "sM": 8.356259770545508,
+          "distanceM": 2.490784085229284
+        }
+      },
+      {
+        "speciesId": "longfin-batfish",
+        "individuals": 3,
+        "ownerIds": [
+          "205,4",
+          "206,4",
+          "205,5"
+        ],
+        "foodPools": [
+          "resources.algae"
+        ],
+        "nearestStartM": 120.07249367272406,
+        "earliestWithin14M": {
+          "sM": 115.53101130890367,
+          "distanceM": 13.844441871072931
+        },
+        "closest": {
+          "sM": 128.03240149524288,
+          "distanceM": 5.418341926685412
+        }
+      },
+      {
+        "speciesId": "valentini-puffer",
+        "individuals": 2,
+        "ownerIds": [
+          "207,4",
+          "207,5"
+        ],
+        "foodPools": [
+          "reefGuild.preyOrganicUnits"
+        ],
+        "nearestStartM": 220.04851329601152,
+        "earliestWithin14M": {
+          "sM": 225.33415646210955,
+          "distanceM": 13.759294078151331
+        },
+        "closest": {
+          "sM": 234.5013622558505,
+          "distanceM": 7.1207830599240625
+        }
+      },
+      {
+        "speciesId": "peacock-mantis-shrimp",
+        "individuals": 2,
+        "ownerIds": [
+          "207,4",
+          "208,4"
+        ],
+        "foodPools": [
+          "reefGuild.preyOrganicUnits"
+        ],
+        "nearestStartM": 241.00278840237002,
+        "earliestWithin14M": {
+          "sM": 261.72238923275614,
+          "distanceM": 13.803957439973729
+        },
+        "closest": {
+          "sM": 314.72839700409355,
+          "distanceM": 5.1239775520678625
+        }
+      },
+      {
+        "speciesId": "green-turban-snail",
+        "individuals": 3,
+        "ownerIds": [
+          "208,4",
+          "207,5",
+          "209,5"
+        ],
+        "foodPools": [
+          "resources.algae"
+        ],
+        "nearestStartM": 202.1200716448024,
+        "earliestWithin14M": {
+          "sM": 401.0825247960838,
+          "distanceM": 13.99995450391406
+        },
+        "closest": {
+          "sM": 414.08284672130117,
+          "distanceM": 5.101744731154085
+        }
+      }
+    ],
+    "actualRouteM": 424.3331730126696,
+    "movedNewIds": [
+      "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1",
+      "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7",
+      "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0",
+      "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6",
+      "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+      "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5",
+      "ocean:205,5:reef-residents-v3:red-toothed-triggerfish:reef:living-rock:823,22:0.35:7",
+      "ocean:205,5:reef-residents-v3:longfin-batfish:reef:living-rock:823,22:0.35:5",
+      "ocean:206,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:178:-1:0.35:1",
+      "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2",
+      "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1",
+      "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4",
+      "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6",
+      "ocean:208,4:reef-residents-v3:green-turban-snail:reef:living-rock:835,16:0.35:3",
+      "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1"
+    ],
+    "fedNewIds": [
+      "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1",
+      "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7",
+      "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0",
+      "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6",
+      "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+      "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5",
+      "ocean:205,5:reef-residents-v3:red-toothed-triggerfish:reef:living-rock:823,22:0.35:7",
+      "ocean:205,5:reef-residents-v3:longfin-batfish:reef:living-rock:823,22:0.35:5",
+      "ocean:206,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:178:-1:0.35:1",
+      "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2",
+      "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1",
+      "ocean:207,5:reef-residents-v3:green-turban-snail:reef:living-coral:living-rock:828,22:0:0.55:2",
+      "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6",
+      "ocean:208,4:reef-residents-v3:green-turban-snail:reef:living-rock:835,16:0.35:3",
+      "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1"
+    ],
+    "perSpecies": {
+      "yellow-boxfish": {
+        "individuals": 2,
+        "moved": 2,
+        "fed": 2
+      },
+      "red-toothed-triggerfish": {
+        "individuals": 4,
+        "moved": 4,
+        "fed": 4
+      },
+      "longfin-batfish": {
+        "individuals": 3,
+        "moved": 3,
+        "fed": 3
+      },
+      "valentini-puffer": {
+        "individuals": 2,
+        "moved": 2,
+        "fed": 1
+      },
+      "peacock-mantis-shrimp": {
+        "individuals": 2,
+        "moved": 2,
+        "fed": 2
+      },
+      "green-turban-snail": {
+        "individuals": 3,
+        "moved": 2,
+        "fed": 3
+      }
+    },
+    "windows": [
+      {
+        "sM": 0,
+        "activeOwnerIds": [
+          "204,4",
+          "205,4",
+          "204,5",
+          "205,5",
+          "203,4",
+          "203,5",
+          "203,6",
+          "204,6",
+          "205,6"
+        ],
+        "modelSec": 3,
+        "supports": 16,
+        "privatePrefetch": 37
+      },
+      {
+        "sM": 150,
+        "activeOwnerIds": [
+          "205,4",
+          "205,5",
+          "205,3",
+          "206,3",
+          "207,3",
+          "206,4",
+          "207,4",
+          "206,5",
+          "207,5"
+        ],
+        "modelSec": 3,
+        "supports": 22,
+        "privatePrefetch": 29
+      },
+      {
+        "sM": 350,
+        "activeOwnerIds": [
+          "207,3",
+          "207,4",
+          "207,5",
+          "208,3",
+          "209,3",
+          "208,4",
+          "209,4",
+          "208,5",
+          "209,5"
+        ],
+        "modelSec": 3,
+        "supports": 16,
+        "privatePrefetch": 33
+      }
+    ],
+    "stations": [
+      {
+        "sM": 0,
+        "actualPathSM": 0,
+        "windowIndex": 0,
+        "owner": "204,5",
+        "nearbyTargetIds": [
+          "ocean:204,5:blue-tang:0",
+          "ocean:204,5:blue-tang:1",
+          "ocean:204,5:blue-tang:2",
+          "ocean:204,5:biodiversity:shallow-anemone:living-rock:816,20:0.14:2",
+          "ocean:204,5:biodiversity:clown-anemonefish:living-rock:816,20:0.14:2:resident",
+          "ocean:204,5:benthic-life:tiger-cowrie:hard:living-rock:816,20:0.12:2",
+          "ocean:204,5:reef-residents:coral-trout:reef:living-rock:817,20:0.55:5",
+          "ocean:204,5:reef-residents-v2:chinese-trumpetfish:reef:living-coral:living-rock:816,20:3:0.55:7",
+          "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+          "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5"
+        ],
+        "nearbySpeciesIds": [
+          "blue-tang",
+          "shallow-anemone",
+          "clown-anemonefish",
+          "tiger-cowrie",
+          "coral-trout",
+          "chinese-trumpetfish",
+          "yellow-boxfish",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+          "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5"
+        ],
+        "nearestNewResidentDistanceM": 2.6230041605596215
+      },
+      {
+        "sM": 10,
+        "actualPathSM": 10.35626480894456,
+        "windowIndex": 0,
+        "owner": "204,4",
+        "nearbyTargetIds": [
+          "ocean:204,5:blue-tang:0",
+          "ocean:204,5:blue-tang:1",
+          "ocean:204,5:blue-tang:2",
+          "ocean:204,5:biodiversity:shallow-anemone:living-rock:816,20:0.14:2",
+          "ocean:204,5:biodiversity:clown-anemonefish:living-rock:816,20:0.14:2:resident",
+          "ocean:204,5:benthic-life:tiger-cowrie:hard:living-rock:816,20:0.12:2",
+          "ocean:204,5:reef-residents:coral-trout:reef:living-rock:817,20:0.55:5",
+          "ocean:204,5:reef-residents-v2:lionfish:reef:living-rock:816,20:0.35:3",
+          "ocean:204,5:reef-residents-v2:chinese-trumpetfish:reef:living-coral:living-rock:816,20:3:0.55:7",
+          "ocean:204,5:reef-residents-v2:moorish-idol:reef:living-rock:816,20:0.55:3",
+          "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+          "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5"
+        ],
+        "nearbySpeciesIds": [
+          "blue-tang",
+          "shallow-anemone",
+          "clown-anemonefish",
+          "tiger-cowrie",
+          "coral-trout",
+          "lionfish",
+          "chinese-trumpetfish",
+          "moorish-idol",
+          "yellow-boxfish",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+          "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5"
+        ],
+        "nearestNewResidentDistanceM": 3.0520455687385106
+      },
+      {
+        "sM": 20,
+        "actualPathSM": 20.463204856595027,
+        "windowIndex": 0,
+        "owner": "204,5",
+        "nearbyTargetIds": [
+          "ocean:204,5:blue-tang:0",
+          "ocean:204,5:blue-tang:1",
+          "ocean:204,5:blue-tang:2",
+          "ocean:204,5:biodiversity:shallow-anemone:living-rock:816,20:0.14:2",
+          "ocean:204,5:biodiversity:clown-anemonefish:living-rock:816,20:0.14:2:resident",
+          "ocean:204,5:reef-residents:coral-trout:reef:living-rock:817,20:0.55:5",
+          "ocean:204,5:reef-residents-v2:lionfish:reef:living-rock:816,20:0.35:3",
+          "ocean:204,5:reef-residents-v2:chinese-trumpetfish:reef:living-coral:living-rock:816,20:3:0.55:7",
+          "ocean:204,5:reef-residents-v2:moorish-idol:reef:living-rock:816,20:0.55:3",
+          "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5"
+        ],
+        "nearbySpeciesIds": [
+          "blue-tang",
+          "shallow-anemone",
+          "clown-anemonefish",
+          "coral-trout",
+          "lionfish",
+          "chinese-trumpetfish",
+          "moorish-idol",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5"
+        ],
+        "nearestNewResidentDistanceM": 11.165919239700761
+      },
+      {
+        "sM": 30,
+        "actualPathSM": 30.46540463410981,
+        "windowIndex": 0,
+        "owner": "204,5",
+        "nearbyTargetIds": [
+          "ocean:204,5:lined-tang:3",
+          "ocean:204,5:reef-residents-v2:moorish-idol:reef:living-rock:816,20:0.55:3"
+        ],
+        "nearbySpeciesIds": [
+          "lined-tang",
+          "moorish-idol"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 17.593909602650005
+      },
+      {
+        "sM": 40,
+        "actualPathSM": 40.28986110476599,
+        "windowIndex": 0,
+        "owner": "204,4",
+        "nearbyTargetIds": [
+          "ocean:204,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:47:-1:0.55:0",
+          "ocean:204,4:reef-residents-v2:lionfish:reef:valley:204,4:shoulder:47:-1:0.55:1",
+          "ocean:204,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:47:-1:0.35:0",
+          "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "lionfish",
+          "moorish-idol",
+          "yellow-boxfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1"
+        ],
+        "nearestNewResidentDistanceM": 10.767648272058267
+      },
+      {
+        "sM": 50,
+        "actualPathSM": 50.41485556870098,
+        "windowIndex": 0,
+        "owner": "204,4",
+        "nearbyTargetIds": [
+          "ocean:204,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:47:-1:0.55:0",
+          "ocean:204,4:reef-residents-v2:lionfish:reef:valley:204,4:shoulder:47:-1:0.55:1",
+          "ocean:204,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:47:-1:0.55:7",
+          "ocean:204,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:47:-1:0.35:0",
+          "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1",
+          "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "lionfish",
+          "chinese-trumpetfish",
+          "moorish-idol",
+          "yellow-boxfish",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1",
+          "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7"
+        ],
+        "nearestNewResidentDistanceM": 8.843168680275292
+      },
+      {
+        "sM": 60,
+        "actualPathSM": 60.022210293382294,
+        "windowIndex": 0,
+        "owner": "204,4",
+        "nearbyTargetIds": [
+          "ocean:204,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:47:-1:0.55:0",
+          "ocean:204,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:47:-1:0.55:7",
+          "ocean:204,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:47:-1:0.35:0",
+          "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "chinese-trumpetfish",
+          "moorish-idol",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7"
+        ],
+        "nearestNewResidentDistanceM": 11.088382270986482
+      },
+      {
+        "sM": 70,
+        "actualPathSM": 70.20266480204182,
+        "windowIndex": 0,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:91:-1:0.55:2"
+        ],
+        "nearbySpeciesIds": [
+          "moorish-idol"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 18.77376094179692
+      },
+      {
+        "sM": 80,
+        "actualPathSM": 80.3404528549612,
+        "windowIndex": 0,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:biodiversity:feather-duster:valley:204,4:shoulder:91:-1:0.4:8",
+          "ocean:205,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:91:-1:0.55:2"
+        ],
+        "nearbySpeciesIds": [
+          "feather-duster",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "moorish-idol"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 14.71797346793903
+      },
+      {
+        "sM": 90,
+        "actualPathSM": 90.06885485847302,
+        "windowIndex": 0,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:green-chromis:0",
+          "ocean:205,4:green-chromis:1",
+          "ocean:205,4:green-chromis:2",
+          "ocean:205,4:open-water:reef-squid:site:0",
+          "ocean:205,4:biodiversity:feather-duster:valley:204,4:shoulder:91:-1:0.4:8",
+          "ocean:205,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:91:-1:0.55:2",
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0"
+        ],
+        "nearbySpeciesIds": [
+          "green-chromis",
+          "reef-squid",
+          "feather-duster",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "moorish-idol",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0"
+        ],
+        "nearestNewResidentDistanceM": 6.969605206643114
+      },
+      {
+        "sM": 100,
+        "actualPathSM": 100.26670825618271,
+        "windowIndex": 0,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "painted-spiny-lobster",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0"
+        ],
+        "nearestNewResidentDistanceM": 8.234223393723484
+      },
+      {
+        "sM": 110,
+        "actualPathSM": 110.002698601251,
+        "windowIndex": 0,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:112:-1:0.55:7"
+        ],
+        "nearbySpeciesIds": [
+          "chinese-trumpetfish"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 17.27843757767194
+      },
+      {
+        "sM": 120,
+        "actualPathSM": 120.03162101033541,
+        "windowIndex": 0,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:112:-1:0.55:7",
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ],
+        "nearbySpeciesIds": [
+          "chinese-trumpetfish",
+          "longfin-batfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ],
+        "nearestNewResidentDistanceM": 10.062319630192395
+      },
+      {
+        "sM": 130,
+        "actualPathSM": 130.1069134430268,
+        "windowIndex": 0,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:112:-1:0.55:7",
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ],
+        "nearbySpeciesIds": [
+          "chinese-trumpetfish",
+          "longfin-batfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ],
+        "nearestNewResidentDistanceM": 6.009337484484734
+      },
+      {
+        "sM": 70,
+        "actualPathSM": 70.20266480204182,
+        "windowIndex": 1,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:91:-1:0.55:2"
+        ],
+        "nearbySpeciesIds": [
+          "moorish-idol"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 23.732222387154273
+      },
+      {
+        "sM": 80,
+        "actualPathSM": 80.3404528549612,
+        "windowIndex": 1,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:biodiversity:feather-duster:valley:204,4:shoulder:91:-1:0.4:8",
+          "ocean:205,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:91:-1:0.55:2"
+        ],
+        "nearbySpeciesIds": [
+          "feather-duster",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "moorish-idol"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 14.657522266175121
+      },
+      {
+        "sM": 90,
+        "actualPathSM": 90.06885485847302,
+        "windowIndex": 1,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:green-chromis:0",
+          "ocean:205,4:green-chromis:1",
+          "ocean:205,4:green-chromis:2",
+          "ocean:205,4:open-water:reef-squid:site:0",
+          "ocean:205,4:biodiversity:feather-duster:valley:204,4:shoulder:91:-1:0.4:8",
+          "ocean:205,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:91:-1:0.55:2",
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0"
+        ],
+        "nearbySpeciesIds": [
+          "green-chromis",
+          "reef-squid",
+          "feather-duster",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "moorish-idol",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0"
+        ],
+        "nearestNewResidentDistanceM": 6.971128096216945
+      },
+      {
+        "sM": 100,
+        "actualPathSM": 100.26670825618271,
+        "windowIndex": 1,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "painted-spiny-lobster",
+          "red-toothed-triggerfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0"
+        ],
+        "nearestNewResidentDistanceM": 8.351669103962866
+      },
+      {
+        "sM": 110,
+        "actualPathSM": 110.002698601251,
+        "windowIndex": 1,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:112:-1:0.55:7"
+        ],
+        "nearbySpeciesIds": [
+          "chinese-trumpetfish"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 17.396795882985543
+      },
+      {
+        "sM": 120,
+        "actualPathSM": 120.03162101033541,
+        "windowIndex": 1,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:112:-1:0.55:7",
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ],
+        "nearbySpeciesIds": [
+          "chinese-trumpetfish",
+          "longfin-batfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ],
+        "nearestNewResidentDistanceM": 10.213893628600475
+      },
+      {
+        "sM": 130,
+        "actualPathSM": 130.1069134430268,
+        "windowIndex": 1,
+        "owner": "205,4",
+        "nearbyTargetIds": [
+          "ocean:205,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:112:-1:0.55:7",
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ],
+        "nearbySpeciesIds": [
+          "chinese-trumpetfish",
+          "longfin-batfish"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ],
+        "nearestNewResidentDistanceM": 6.141108838646579
+      },
+      {
+        "sM": 140,
+        "actualPathSM": 140.6512142489755,
+        "windowIndex": 1,
+        "owner": "206,4",
+        "nearbyTargetIds": [],
+        "nearbySpeciesIds": [],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 15.021668437501198
+      },
+      {
+        "sM": 150,
+        "actualPathSM": 150.53134150273777,
+        "windowIndex": 1,
+        "owner": "206,4",
+        "nearbyTargetIds": [],
+        "nearbySpeciesIds": [],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 23.909603746636108
+      },
+      {
+        "sM": 160,
+        "actualPathSM": 160.36830952870906,
+        "windowIndex": 1,
+        "owner": "206,4",
+        "nearbyTargetIds": [],
+        "nearbySpeciesIds": [],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 22.857743114461055
+      },
+      {
+        "sM": 170,
+        "actualPathSM": 170.38117252614393,
+        "windowIndex": 1,
+        "owner": "206,5",
+        "nearbyTargetIds": [],
+        "nearbySpeciesIds": [],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 20.543172484707213
+      },
+      {
+        "sM": 180,
+        "actualPathSM": 180.39714797137958,
+        "windowIndex": 1,
+        "owner": "206,5",
+        "nearbyTargetIds": [
+          "ocean:206,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:178:1:0.55:2"
+        ],
+        "nearbySpeciesIds": [
+          "sailfin-tang"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 19.463567327689802
+      },
+      {
+        "sM": 190,
+        "actualPathSM": 190.31621549179445,
+        "windowIndex": 1,
+        "owner": "206,5",
+        "nearbyTargetIds": [
+          "ocean:206,5:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:178:1:0.55:3",
+          "ocean:206,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:178:1:0.55:2"
+        ],
+        "nearbySpeciesIds": [
+          "painted-spiny-lobster",
+          "sailfin-tang"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 25.685056828178052
+      },
+      {
+        "sM": 200,
+        "actualPathSM": 200.3912222933154,
+        "windowIndex": 1,
+        "owner": "206,5",
+        "nearbyTargetIds": [
+          "ocean:206,4:benthic-life:tiger-cowrie:soft:7,7"
+        ],
+        "nearbySpeciesIds": [
+          "tiger-cowrie"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 31.619190727902986
+      },
+      {
+        "sM": 210,
+        "actualPathSM": 210.32948300655926,
+        "windowIndex": 1,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:206,4:benthic-life:tiger-cowrie:soft:7,7",
+          "ocean:207,5:benthic-life:blue-spotted-ray:soft:1,0",
+          "ocean:207,5:benthic-life:spotted-hermit-crab:soft:0,2",
+          "ocean:207,5:meadow-life:barrel-sea-pen:edge:valley:204,4:207,5:rubble:11:3"
+        ],
+        "nearbySpeciesIds": [
+          "tiger-cowrie",
+          "blue-spotted-ray",
+          "spotted-hermit-crab",
+          "barrel-sea-pen"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 26.757786499234122
+      },
+      {
+        "sM": 220,
+        "actualPathSM": 220.1682187850876,
+        "windowIndex": 1,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,5:benthic-life:blue-spotted-ray:soft:1,0",
+          "ocean:207,5:benthic-life:spotted-hermit-crab:soft:0,2",
+          "ocean:207,5:meadow-life:barrel-sea-pen:edge:valley:204,4:207,5:rubble:11:3"
+        ],
+        "nearbySpeciesIds": [
+          "blue-spotted-ray",
+          "spotted-hermit-crab",
+          "barrel-sea-pen"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 18.60155057984288
+      },
+      {
+        "sM": 230,
+        "actualPathSM": 230.04947836663857,
+        "windowIndex": 1,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,5:meadow-life:barrel-sea-pen:edge:valley:204,4:207,5:rubble:11:3",
+          "ocean:207,5:reef-residents:coral-trout:reef:valley:204,4:shoulder:242:1:0.55:5",
+          "ocean:207,5:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:242:1:0.35:4",
+          "ocean:207,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:242:1:0.35:5",
+          "ocean:207,5:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:242:1:coral:1:0.55:3",
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "nearbySpeciesIds": [
+          "barrel-sea-pen",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "sailfin-tang",
+          "cushion-sea-star",
+          "valentini-puffer"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "nearestNewResidentDistanceM": 9.146049287931989
+      },
+      {
+        "sM": 240,
+        "actualPathSM": 240.16535162986105,
+        "windowIndex": 1,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,5:cleaner-wrasse:4",
+          "ocean:207,5:reef-residents:coral-trout:reef:valley:204,4:shoulder:242:1:0.55:5",
+          "ocean:207,5:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:242:1:0.35:4",
+          "ocean:207,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:242:1:0.35:5",
+          "ocean:207,5:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:242:1:coral:1:0.55:3",
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "nearbySpeciesIds": [
+          "cleaner-wrasse",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "sailfin-tang",
+          "cushion-sea-star",
+          "valentini-puffer"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "nearestNewResidentDistanceM": 9.142861076612515
+      },
+      {
+        "sM": 250,
+        "actualPathSM": 250.51052932961957,
+        "windowIndex": 1,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:263:-1:0.55:3",
+          "ocean:207,5:cleaner-wrasse:4",
+          "ocean:207,5:reef-residents:coral-trout:reef:valley:204,4:shoulder:242:1:0.55:5",
+          "ocean:207,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:242:1:0.35:5",
+          "ocean:207,5:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:242:1:coral:1:0.55:3"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "cleaner-wrasse",
+          "sailfin-tang",
+          "cushion-sea-star"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 16.552330215401806
+      },
+      {
+        "sM": 260,
+        "actualPathSM": 260.1479777596714,
+        "windowIndex": 1,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:263:-1:0.55:3",
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "valentini-puffer"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2"
+        ],
+        "nearestNewResidentDistanceM": 11.157206947287422
+      },
+      {
+        "sM": 270,
+        "actualPathSM": 270.37552911068127,
+        "windowIndex": 1,
+        "owner": "207,4",
+        "nearbyTargetIds": [
+          "ocean:207,4:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:263:-1:0.55:1",
+          "ocean:207,4:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:263:-1:coral:0:0.55:4",
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2",
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ],
+        "nearbySpeciesIds": [
+          "sailfin-tang",
+          "cushion-sea-star",
+          "valentini-puffer",
+          "peacock-mantis-shrimp"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2",
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ],
+        "nearestNewResidentDistanceM": 9.835362560901759
+      },
+      {
+        "sM": 280,
+        "actualPathSM": 280.148360258889,
+        "windowIndex": 1,
+        "owner": "207,4",
+        "nearbyTargetIds": [
+          "ocean:207,4:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:263:-1:0.55:1",
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ],
+        "nearbySpeciesIds": [
+          "sailfin-tang",
+          "peacock-mantis-shrimp"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ],
+        "nearestNewResidentDistanceM": 12.680110499963009
+      },
+      {
+        "sM": 210,
+        "actualPathSM": 210.32948300655926,
+        "windowIndex": 2,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,5:benthic-life:blue-spotted-ray:soft:1,0",
+          "ocean:207,5:benthic-life:spotted-hermit-crab:soft:0,2",
+          "ocean:207,5:meadow-life:barrel-sea-pen:edge:valley:204,4:207,5:rubble:11:3"
+        ],
+        "nearbySpeciesIds": [
+          "blue-spotted-ray",
+          "spotted-hermit-crab",
+          "barrel-sea-pen"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 26.757786499234122
+      },
+      {
+        "sM": 220,
+        "actualPathSM": 220.1682187850876,
+        "windowIndex": 2,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,5:benthic-life:blue-spotted-ray:soft:1,0",
+          "ocean:207,5:benthic-life:spotted-hermit-crab:soft:0,2",
+          "ocean:207,5:meadow-life:barrel-sea-pen:edge:valley:204,4:207,5:rubble:11:3"
+        ],
+        "nearbySpeciesIds": [
+          "blue-spotted-ray",
+          "spotted-hermit-crab",
+          "barrel-sea-pen"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 18.55268895458787
+      },
+      {
+        "sM": 230,
+        "actualPathSM": 230.04947836663857,
+        "windowIndex": 2,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,5:meadow-life:barrel-sea-pen:edge:valley:204,4:207,5:rubble:11:3",
+          "ocean:207,5:reef-residents:coral-trout:reef:valley:204,4:shoulder:242:1:0.55:5",
+          "ocean:207,5:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:242:1:0.35:4",
+          "ocean:207,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:242:1:0.35:5",
+          "ocean:207,5:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:242:1:coral:1:0.55:3",
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "nearbySpeciesIds": [
+          "barrel-sea-pen",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "sailfin-tang",
+          "cushion-sea-star",
+          "valentini-puffer"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "nearestNewResidentDistanceM": 9.089497645040721
+      },
+      {
+        "sM": 240,
+        "actualPathSM": 240.16535162986105,
+        "windowIndex": 2,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,5:cleaner-wrasse:4",
+          "ocean:207,5:reef-residents:coral-trout:reef:valley:204,4:shoulder:242:1:0.55:5",
+          "ocean:207,5:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:242:1:0.35:4",
+          "ocean:207,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:242:1:0.35:5",
+          "ocean:207,5:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:242:1:coral:1:0.55:3",
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "nearbySpeciesIds": [
+          "cleaner-wrasse",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "sailfin-tang",
+          "cushion-sea-star",
+          "valentini-puffer"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "nearestNewResidentDistanceM": 8.995003810885338
+      },
+      {
+        "sM": 250,
+        "actualPathSM": 250.51052932961957,
+        "windowIndex": 2,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:263:-1:0.55:3",
+          "ocean:207,5:cleaner-wrasse:4",
+          "ocean:207,5:reef-residents:coral-trout:reef:valley:204,4:shoulder:242:1:0.55:5",
+          "ocean:207,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:242:1:0.35:5",
+          "ocean:207,5:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:242:1:coral:1:0.55:3"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "cleaner-wrasse",
+          "sailfin-tang",
+          "cushion-sea-star"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 16.717246403616663
+      },
+      {
+        "sM": 260,
+        "actualPathSM": 260.1479777596714,
+        "windowIndex": 2,
+        "owner": "207,5",
+        "nearbyTargetIds": [
+          "ocean:207,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:263:-1:0.55:3",
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2"
+        ],
+        "nearbySpeciesIds": [
+          "coral-trout",
+          "valentini-puffer"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2"
+        ],
+        "nearestNewResidentDistanceM": 11.269760588202942
+      },
+      {
+        "sM": 270,
+        "actualPathSM": 270.37552911068127,
+        "windowIndex": 2,
+        "owner": "207,4",
+        "nearbyTargetIds": [
+          "ocean:207,4:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:263:-1:0.55:1",
+          "ocean:207,4:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:263:-1:coral:0:0.55:4",
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2",
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ],
+        "nearbySpeciesIds": [
+          "sailfin-tang",
+          "cushion-sea-star",
+          "valentini-puffer",
+          "peacock-mantis-shrimp"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2",
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ],
+        "nearestNewResidentDistanceM": 9.819740412181439
+      },
+      {
+        "sM": 280,
+        "actualPathSM": 280.148360258889,
+        "windowIndex": 2,
+        "owner": "207,4",
+        "nearbyTargetIds": [
+          "ocean:207,4:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:263:-1:0.55:1",
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ],
+        "nearbySpeciesIds": [
+          "sailfin-tang",
+          "peacock-mantis-shrimp"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ],
+        "nearestNewResidentDistanceM": 12.664798700831025
+      },
+      {
+        "sM": 290,
+        "actualPathSM": 290.29176034527586,
+        "windowIndex": 2,
+        "owner": "208,4",
+        "nearbyTargetIds": [
+          "ocean:208,4:benthic-life:reef-goatfish:soft:0,5"
+        ],
+        "nearbySpeciesIds": [
+          "reef-goatfish"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 20.641683804492715
+      },
+      {
+        "sM": 300,
+        "actualPathSM": 300.2455308732793,
+        "windowIndex": 2,
+        "owner": "208,4",
+        "nearbyTargetIds": [
+          "ocean:208,4:biodiversity:sand-goby:soft:2,6",
+          "ocean:208,4:benthic-life:reef-goatfish:soft:0,5",
+          "ocean:208,4:reef-residents-v2:leopard-sea-cucumber:reef:valley:204,4:shoulder:309:-1:0.55:7",
+          "ocean:208,4:reef-residents-v2:lionfish:reef:valley:204,4:shoulder:309:-1:0.55:7"
+        ],
+        "nearbySpeciesIds": [
+          "sand-goby",
+          "reef-goatfish",
+          "leopard-sea-cucumber",
+          "lionfish"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 16.081901370120057
+      },
+      {
+        "sM": 310,
+        "actualPathSM": 310.19812134695815,
+        "windowIndex": 2,
+        "owner": "208,4",
+        "nearbyTargetIds": [
+          "ocean:208,4:green-chromis:1",
+          "ocean:208,4:green-chromis:2",
+          "ocean:208,4:honeycomb-grouper:5",
+          "ocean:208,4:biodiversity:sand-goby:soft:2,6",
+          "ocean:208,4:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:309:-1:coral:0:0.55:5",
+          "ocean:208,4:reef-residents-v2:leopard-sea-cucumber:reef:valley:204,4:shoulder:309:-1:0.55:7",
+          "ocean:208,4:reef-residents-v2:lionfish:reef:valley:204,4:shoulder:309:-1:0.55:7",
+          "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6"
+        ],
+        "nearbySpeciesIds": [
+          "green-chromis",
+          "honeycomb-grouper",
+          "sand-goby",
+          "cushion-sea-star",
+          "leopard-sea-cucumber",
+          "lionfish",
+          "peacock-mantis-shrimp"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6"
+        ],
+        "nearestNewResidentDistanceM": 6.950166486077648
+      },
+      {
+        "sM": 320,
+        "actualPathSM": 320.2787564859014,
+        "windowIndex": 2,
+        "owner": "208,4",
+        "nearbyTargetIds": [
+          "ocean:208,4:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:309:-1:coral:0:0.55:5",
+          "ocean:208,4:reef-residents-v2:leopard-sea-cucumber:reef:valley:204,4:shoulder:309:-1:0.55:7",
+          "ocean:208,4:reef-residents-v2:lionfish:reef:valley:204,4:shoulder:309:-1:0.55:7",
+          "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6"
+        ],
+        "nearbySpeciesIds": [
+          "cushion-sea-star",
+          "leopard-sea-cucumber",
+          "lionfish",
+          "peacock-mantis-shrimp"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6"
+        ],
+        "nearestNewResidentDistanceM": 7.364180933902963
+      },
+      {
+        "sM": 330,
+        "actualPathSM": 330.376567025284,
+        "windowIndex": 2,
+        "owner": "208,4",
+        "nearbyTargetIds": [
+          "ocean-turtle:208,4:green-turtle:0"
+        ],
+        "nearbySpeciesIds": [
+          "green-turtle"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 16.229888820175606
+      },
+      {
+        "sM": 340,
+        "actualPathSM": 340.4338407342199,
+        "windowIndex": 2,
+        "owner": "208,4",
+        "nearbyTargetIds": [],
+        "nearbySpeciesIds": [],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 25.991164723548447
+      },
+      {
+        "sM": 350,
+        "actualPathSM": 350.454606279901,
+        "windowIndex": 2,
+        "owner": "208,4",
+        "nearbyTargetIds": [],
+        "nearbySpeciesIds": [],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 35.27029848519359
+      },
+      {
+        "sM": 360,
+        "actualPathSM": 360.0706360285226,
+        "windowIndex": 2,
+        "owner": "209,4",
+        "nearbyTargetIds": [],
+        "nearbySpeciesIds": [],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 41.767420421224934
+      },
+      {
+        "sM": 370,
+        "actualPathSM": 370.21217669650883,
+        "windowIndex": 2,
+        "owner": "209,4",
+        "nearbyTargetIds": [
+          "ocean:209,4:reef-residents-v2:leopard-sea-cucumber:reef:living-rock:838,18:0.55:5"
+        ],
+        "nearbySpeciesIds": [
+          "leopard-sea-cucumber"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 42.44643616445282
+      },
+      {
+        "sM": 380,
+        "actualPathSM": 380.2591347984033,
+        "windowIndex": 2,
+        "owner": "209,4",
+        "nearbyTargetIds": [
+          "ocean:209,4:lined-tang:3",
+          "ocean:209,4:benthic-life:reef-goatfish:soft:3,7",
+          "ocean:209,4:reef-residents-v2:leopard-sea-cucumber:reef:living-rock:838,18:0.55:5"
+        ],
+        "nearbySpeciesIds": [
+          "lined-tang",
+          "reef-goatfish",
+          "leopard-sea-cucumber"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 33.49538766153144
+      },
+      {
+        "sM": 390,
+        "actualPathSM": 390.16407242156987,
+        "windowIndex": 2,
+        "owner": "209,4",
+        "nearbyTargetIds": [
+          "ocean:209,4:lined-tang:3",
+          "ocean:209,4:benthic-life:reef-goatfish:soft:3,7",
+          "ocean:209,4:shoal-life:bigeye-trevally:0",
+          "ocean:209,4:shoal-life:bigeye-trevally:1",
+          "ocean:209,4:shoal-life:bigeye-trevally:2",
+          "ocean:209,4:shoal-life:bigeye-trevally:3",
+          "ocean:209,4:shoal-life:bigeye-trevally:4",
+          "ocean:209,4:shoal-life:bigeye-trevally:5"
+        ],
+        "nearbySpeciesIds": [
+          "lined-tang",
+          "reef-goatfish",
+          "bigeye-trevally"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 23.995615012864622
+      },
+      {
+        "sM": 400,
+        "actualPathSM": 400.0813276924153,
+        "windowIndex": 2,
+        "owner": "209,5",
+        "nearbyTargetIds": [
+          "ocean:209,4:benthic-life:reef-goatfish:soft:3,7",
+          "ocean:209,4:shoal-life:bigeye-trevally:0",
+          "ocean:209,4:shoal-life:bigeye-trevally:1",
+          "ocean:209,4:shoal-life:bigeye-trevally:2",
+          "ocean:209,4:shoal-life:bigeye-trevally:3",
+          "ocean:209,4:shoal-life:bigeye-trevally:4",
+          "ocean:209,4:shoal-life:bigeye-trevally:5",
+          "ocean:209,5:reef-residents:coral-trout:reef:living-rock:839,20:0.55:0",
+          "ocean:209,5:reef-residents:painted-spiny-lobster:reef:living-rock:839,20:0.55:0"
+        ],
+        "nearbySpeciesIds": [
+          "reef-goatfish",
+          "bigeye-trevally",
+          "coral-trout",
+          "painted-spiny-lobster"
+        ],
+        "nearbyNewResidentIds": [],
+        "nearestNewResidentDistanceM": 14.928534368008455
+      },
+      {
+        "sM": 410,
+        "actualPathSM": 410.08276051594993,
+        "windowIndex": 2,
+        "owner": "209,5",
+        "nearbyTargetIds": [
+          "ocean:209,4:blue-tang:0",
+          "ocean:209,4:blue-tang:1",
+          "ocean:209,4:blue-tang:2",
+          "ocean:209,4:biodiversity:tropical-urchin:living-rock:839,19:0.14:7",
+          "ocean:209,4:reef-residents:coral-trout:reef:living-rock:839,19:0.35:4",
+          "ocean:209,4:reef-residents:painted-spiny-lobster:reef:living-coral:living-rock:839,19:2:0.55:5",
+          "ocean:209,5:reef-residents:coral-trout:reef:living-rock:839,20:0.55:0",
+          "ocean:209,5:reef-residents:painted-spiny-lobster:reef:living-rock:839,20:0.55:0",
+          "ocean:209,5:reef-residents-v2:lionfish:reef:living-rock:839,20:0.55:2",
+          "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1"
+        ],
+        "nearbySpeciesIds": [
+          "blue-tang",
+          "tropical-urchin",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "lionfish",
+          "green-turban-snail"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1"
+        ],
+        "nearestNewResidentDistanceM": 6.502218733096073
+      },
+      {
+        "sM": 420,
+        "actualPathSM": 420.08306318954425,
+        "windowIndex": 2,
+        "owner": "209,5",
+        "nearbyTargetIds": [
+          "ocean:209,4:blue-tang:0",
+          "ocean:209,4:blue-tang:1",
+          "ocean:209,4:blue-tang:2",
+          "ocean:209,4:biodiversity:tropical-urchin:living-rock:839,19:0.14:7",
+          "ocean:209,4:reef-residents:coral-trout:reef:living-rock:839,19:0.35:4",
+          "ocean:209,4:reef-residents:painted-spiny-lobster:reef:living-coral:living-rock:839,19:2:0.55:5",
+          "ocean:209,5:reef-residents-v2:lionfish:reef:living-rock:839,20:0.55:2",
+          "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1"
+        ],
+        "nearbySpeciesIds": [
+          "blue-tang",
+          "tropical-urchin",
+          "coral-trout",
+          "painted-spiny-lobster",
+          "lionfish",
+          "green-turban-snail"
+        ],
+        "nearbyNewResidentIds": [
+          "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1"
+        ],
+        "nearestNewResidentDistanceM": 7.849489435127132
+      }
+    ],
+    "actualModelSeconds": 9,
+    "oldTerrainAndOriginalBirthsExact": true,
+    "coldActiveAndDiskExact": true,
+    "sourceHashes": {
+      "src/oceanEcology.js": "eb9f4551f6a9e73b3d0596cf29d46a3611efe7b5fb034b7656955fa252d112c4",
+      "src/oceanReefResidents.js": "ff57fd4c1e6d1680e879c4dd137fba0a183f4afc710dca539dedf60a40522402",
+      "src/oceanReefCommunitySpecies.js": "34d6b84d57b582d5a2b67bdbdad59eeeb875be41ef04be103d785afb8cdaa3a7"
+    },
+    "wallSec": 39.417665
+  },
+  "productionEntry": {
+    "scope": "one ordinary production-options fresh string50 entry; 12-null admission and first nine-owner window only; native CPU model, no browser/GPU visibility proof",
+    "seed": "living-shallows-v1|string:50",
+    "sourceHashes": {
+      "src/oceanEcology.js": "eb9f4551f6a9e73b3d0596cf29d46a3611efe7b5fb034b7656955fa252d112c4",
+      "src/oceanReefResidents.js": "ff57fd4c1e6d1680e879c4dd137fba0a183f4afc710dca539dedf60a40522402",
+      "src/oceanReefCommunitySpecies.js": "34d6b84d57b582d5a2b67bdbdad59eeeb875be41ef04be103d785afb8cdaa3a7"
+    },
+    "productionOptions": {
+      "turtles": true,
+      "sceneElements": false,
+      "habitatScenes": false,
+      "macroLandscape": false,
+      "livingGeology": true,
+      "habitatMosaic": true,
+      "seabedRelief": true,
+      "seascape": true,
+      "livingBelt": true,
+      "shallowSeascape": true,
+      "coastalSeascape": true,
+      "reefValleyRegion": true,
+      "reefResidents": true,
+      "reefDiversity": true,
+      "reefCommunity": true,
+      "meadowRegion": true,
+      "meadowAnimalBelt": true,
+      "turtleGrazing": true,
+      "biodiversity": true,
+      "benthicLife": true,
+      "meadowLife": true,
+      "shoalLife": true
+    },
+    "entry": {
+      "x": 13080,
+      "z": 320
+    },
+    "targetGroupId": "reef-valley-region:204,4",
+    "targetOwnerIds": [
+      "204,4",
+      "205,4",
+      "206,4",
+      "207,4",
+      "208,4",
+      "209,4",
+      "204,5",
+      "205,5",
+      "206,5",
+      "207,5",
+      "208,5",
+      "209,5"
+    ],
+    "routeStart": {
+      "x": 13056,
+      "z": 320,
+      "y": -1.4558000564575195,
+      "bedY": -3.4558000564575195,
+      "sM": 0,
+      "heading": 0
+    },
+    "actualRouteLengthM": 424.3331730126696,
+    "completeStrictNullLoads": true,
+    "atomicTargetBirthCount": 12,
+    "targetAnimalCount": 222,
+    "actualSpeciesIds": [
+      "green-chromis",
+      "lined-tang",
+      "reef-squid",
+      "sand-goby",
+      "tropical-urchin",
+      "reef-goatfish",
+      "tiger-cowrie",
+      "coral-trout",
+      "lionfish",
+      "chinese-trumpetfish",
+      "moorish-idol",
+      "yellow-boxfish",
+      "red-toothed-triggerfish",
+      "feather-duster",
+      "blue-spotted-ray",
+      "painted-spiny-lobster",
+      "longfin-batfish",
+      "blue-tang",
+      "cleaner-wrasse",
+      "top-shell",
+      "black-cucumber",
+      "spotted-hermit-crab",
+      "sand-edge-seahorse",
+      "reef-cuttlefish",
+      "barrel-sea-pen",
+      "sailfin-tang",
+      "cushion-sea-star",
+      "valentini-puffer",
+      "peacock-mantis-shrimp",
+      "honeycomb-grouper",
+      "leopard-sea-cucumber",
+      "green-turban-snail",
+      "green-turtle",
+      "spotted-jelly",
+      "reef-parrotfish",
+      "bigeye-trevally",
+      "tube-sponge",
+      "day-octopus",
+      "spotted-reef-crab",
+      "shallow-anemone",
+      "clown-anemonefish",
+      "butterflyfish",
+      "blue-and-gold-fusilier",
+      "silver-stripe-herring",
+      "blacktip-reef-shark"
+    ],
+    "ownerAnimalCounts": [
+      {
+        "id": "204,4",
+        "total": 15,
+        "residentIds": [
+          "ocean:204,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:47:-1:0.55:0",
+          "ocean:204,4:reef-residents-v2:lionfish:reef:valley:204,4:shoulder:47:-1:0.55:1",
+          "ocean:204,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:47:-1:0.55:7",
+          "ocean:204,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:47:-1:0.35:0",
+          "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1",
+          "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7"
+        ]
+      },
+      {
+        "id": "205,4",
+        "total": 15,
+        "residentIds": [
+          "ocean:205,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:91:-1:0.55:1",
+          "ocean:205,4:reef-residents-v2:chinese-trumpetfish:reef:valley:204,4:shoulder:112:-1:0.55:7",
+          "ocean:205,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:91:-1:0.55:2",
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0",
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6"
+        ]
+      },
+      {
+        "id": "206,4",
+        "total": 20,
+        "residentIds": [
+          "ocean:206,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:178:-1:0.55:1",
+          "ocean:206,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:178:-1:0.55:0",
+          "ocean:206,4:reef-residents-v2:moorish-idol:reef:valley:204,4:shoulder:178:-1:0.55:0",
+          "ocean:206,4:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:178:-1:0.55:2",
+          "ocean:206,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:178:-1:0.35:1"
+        ]
+      },
+      {
+        "id": "207,4",
+        "total": 20,
+        "residentIds": [
+          "ocean:207,4:reef-residents:coral-trout:reef:valley:204,4:shoulder:263:-1:0.55:3",
+          "ocean:207,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:263:-1:0.35:0",
+          "ocean:207,4:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:263:-1:0.55:1",
+          "ocean:207,4:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:263:-1:coral:0:0.55:4",
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2",
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1"
+        ]
+      },
+      {
+        "id": "208,4",
+        "total": 19,
+        "residentIds": [
+          "ocean:208,4:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:309:-1:0.35:1",
+          "ocean:208,4:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:309:-1:coral:0:0.55:5",
+          "ocean:208,4:reef-residents-v2:leopard-sea-cucumber:reef:valley:204,4:shoulder:309:-1:0.55:7",
+          "ocean:208,4:reef-residents-v2:lionfish:reef:valley:204,4:shoulder:309:-1:0.55:7",
+          "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6",
+          "ocean:208,4:reef-residents-v3:green-turban-snail:reef:living-rock:835,16:0.35:3"
+        ]
+      },
+      {
+        "id": "209,4",
+        "total": 20,
+        "residentIds": [
+          "ocean:209,4:reef-residents:coral-trout:reef:living-rock:839,19:0.35:4",
+          "ocean:209,4:reef-residents:painted-spiny-lobster:reef:living-coral:living-rock:839,19:2:0.55:5",
+          "ocean:209,4:reef-residents-v2:leopard-sea-cucumber:reef:living-rock:838,18:0.55:5"
+        ]
+      },
+      {
+        "id": "204,5",
+        "total": 18,
+        "residentIds": [
+          "ocean:204,5:reef-residents:coral-trout:reef:living-rock:817,20:0.55:5",
+          "ocean:204,5:reef-residents-v2:lionfish:reef:living-rock:816,20:0.35:3",
+          "ocean:204,5:reef-residents-v2:chinese-trumpetfish:reef:living-coral:living-rock:816,20:3:0.55:7",
+          "ocean:204,5:reef-residents-v2:moorish-idol:reef:living-rock:816,20:0.55:3",
+          "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+          "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5"
+        ]
+      },
+      {
+        "id": "205,5",
+        "total": 17,
+        "residentIds": [
+          "ocean:205,5:reef-residents:coral-trout:reef:living-rock:823,22:0.55:6",
+          "ocean:205,5:reef-residents:painted-spiny-lobster:reef:living-rock:823,22:0.35:7",
+          "ocean:205,5:reef-residents-v2:chinese-trumpetfish:reef:living-rock:823,22:0.55:5",
+          "ocean:205,5:reef-residents-v2:moorish-idol:reef:living-rock:823,22:0.35:6",
+          "ocean:205,5:reef-residents-v3:red-toothed-triggerfish:reef:living-rock:823,22:0.35:7",
+          "ocean:205,5:reef-residents-v3:longfin-batfish:reef:living-rock:823,22:0.35:5"
+        ]
+      },
+      {
+        "id": "206,5",
+        "total": 20,
+        "residentIds": [
+          "ocean:206,5:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:178:1:0.55:3",
+          "ocean:206,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:178:1:0.55:2",
+          "ocean:206,5:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:178:1:0.35:4"
+        ]
+      },
+      {
+        "id": "207,5",
+        "total": 18,
+        "residentIds": [
+          "ocean:207,5:reef-residents:coral-trout:reef:valley:204,4:shoulder:242:1:0.55:5",
+          "ocean:207,5:reef-residents:painted-spiny-lobster:reef:valley:204,4:shoulder:242:1:0.35:4",
+          "ocean:207,5:reef-residents-v2:sailfin-tang:reef:valley:204,4:shoulder:242:1:0.35:5",
+          "ocean:207,5:reef-residents-v2:cushion-sea-star:reef:valley:204,4:shoulder:242:1:coral:1:0.55:3",
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4",
+          "ocean:207,5:reef-residents-v3:green-turban-snail:reef:living-coral:living-rock:828,22:0:0.55:2"
+        ]
+      },
+      {
+        "id": "208,5",
+        "total": 20,
+        "residentIds": [
+          "ocean:208,5:reef-residents:painted-spiny-lobster:reef:living-coral:living-rock:832,23:3:0.55:6",
+          "ocean:208,5:reef-residents-v2:leopard-sea-cucumber:reef:living-rock:832,23:0.55:2"
+        ]
+      },
+      {
+        "id": "209,5",
+        "total": 20,
+        "residentIds": [
+          "ocean:209,5:reef-residents:coral-trout:reef:living-rock:839,20:0.55:0",
+          "ocean:209,5:reef-residents:painted-spiny-lobster:reef:living-rock:839,20:0.55:0",
+          "ocean:209,5:reef-residents-v2:leopard-sea-cucumber:reef:valley:204,4:shoulder:396:1:0.55:1",
+          "ocean:209,5:reef-residents-v2:lionfish:reef:living-rock:839,20:0.55:2",
+          "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1"
+        ]
+      }
+    ],
+    "distribution": [
+      {
+        "speciesId": "yellow-boxfish",
+        "count": 2,
+        "ids": [
+          "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1",
+          "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0"
+        ],
+        "ownerIds": [
+          "204,4",
+          "204,5"
+        ],
+        "nearestRouteStartM": 2.5600244920787945,
+        "closestAlongRoute": {
+          "sM": 0.37500233802350447,
+          "point": {
+            "x": 13056.375,
+            "z": 320,
+            "y": -1.454475849866867,
+            "bedY": -3.454475849866867,
+            "sM": 0.37500233802350447,
+            "heading": 0
+          },
+          "id": "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+          "distanceM": 2.542491396337485
+        },
+        "firstWithin14M": {
+          "sM": 0,
+          "point": {
+            "x": 13056,
+            "z": 320,
+            "y": -1.4558000564575195,
+            "bedY": -3.4558000564575195,
+            "sM": 0,
+            "heading": 0
+          },
+          "id": "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+          "distanceM": 2.5600244920787945
+        },
+        "scope": "all saved target-group births sampled against actual path; offscreen saved records are not current visible animals"
+      },
+      {
+        "speciesId": "red-toothed-triggerfish",
+        "count": 4,
+        "ids": [
+          "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7",
+          "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0",
+          "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5",
+          "ocean:205,5:reef-residents-v3:red-toothed-triggerfish:reef:living-rock:823,22:0.35:7"
+        ],
+        "ownerIds": [
+          "204,4",
+          "205,4",
+          "204,5",
+          "205,5"
+        ],
+        "nearestRouteStartM": 7.826165121221894,
+        "closestAlongRoute": {
+          "sM": 8.356259770545508,
+          "point": {
+            "x": 13063.75,
+            "z": 318,
+            "y": -1.3982959985733032,
+            "bedY": -3.3982959985733032,
+            "sM": 8.356259770545508,
+            "heading": 0
+          },
+          "id": "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5",
+          "distanceM": 2.490784085229284
+        },
+        "firstWithin14M": {
+          "sM": 0,
+          "point": {
+            "x": 13056,
+            "z": 320,
+            "y": -1.4558000564575195,
+            "bedY": -3.4558000564575195,
+            "sM": 0,
+            "heading": 0
+          },
+          "id": "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5",
+          "distanceM": 7.826165121221894
+        },
+        "scope": "all saved target-group births sampled against actual path; offscreen saved records are not current visible animals"
+      },
+      {
+        "speciesId": "longfin-batfish",
+        "count": 3,
+        "ids": [
+          "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6",
+          "ocean:206,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:178:-1:0.35:1",
+          "ocean:205,5:reef-residents-v3:longfin-batfish:reef:living-rock:823,22:0.35:5"
+        ],
+        "ownerIds": [
+          "205,4",
+          "206,4",
+          "205,5"
+        ],
+        "nearestRouteStartM": 120.07249367272406,
+        "closestAlongRoute": {
+          "sM": 128.03240149524288,
+          "point": {
+            "x": 13174.25,
+            "z": 306,
+            "y": -3.456692934036255,
+            "bedY": -5.456692934036255,
+            "sM": 128.03240149524288,
+            "heading": 0
+          },
+          "id": "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6",
+          "distanceM": 5.418341926685412
+        },
+        "firstWithin14M": {
+          "sM": 115.53101130890367,
+          "point": {
+            "x": 13161.75,
+            "z": 306,
+            "y": -3.27175772190094,
+            "bedY": -5.27175772190094,
+            "sM": 115.53101130890367,
+            "heading": 0
+          },
+          "id": "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6",
+          "distanceM": 13.844441871072931
+        },
+        "scope": "all saved target-group births sampled against actual path; offscreen saved records are not current visible animals"
+      },
+      {
+        "speciesId": "valentini-puffer",
+        "count": 2,
+        "ids": [
+          "ocean:207,4:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:263:-1:0.35:2",
+          "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4"
+        ],
+        "ownerIds": [
+          "207,4",
+          "207,5"
+        ],
+        "nearestRouteStartM": 220.04851329601152,
+        "closestAlongRoute": {
+          "sM": 234.5013622558505,
+          "point": {
+            "x": 13270.25,
+            "z": 335.75,
+            "y": -3.812492847442627,
+            "bedY": -5.812492847442627,
+            "sM": 234.5013622558505,
+            "heading": -0.7853981633974483
+          },
+          "id": "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4",
+          "distanceM": 7.1207830599240625
+        },
+        "firstWithin14M": {
+          "sM": 225.33415646210955,
+          "point": {
+            "x": 13262.25,
+            "z": 335.875,
+            "y": -4.031559228897095,
+            "bedY": -6.031559228897095,
+            "sM": 225.33415646210955,
+            "heading": 0.3587706702705722
+          },
+          "id": "ocean:207,5:reef-residents-v3:valentini-puffer:reef:valley:204,4:shoulder:242:1:0.55:4",
+          "distanceM": 13.759294078151331
+        },
+        "scope": "all saved target-group births sampled against actual path; offscreen saved records are not current visible animals"
+      },
+      {
+        "speciesId": "peacock-mantis-shrimp",
+        "count": 2,
+        "ids": [
+          "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1",
+          "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6"
+        ],
+        "ownerIds": [
+          "207,4",
+          "208,4"
+        ],
+        "nearestRouteStartM": 241.00278840237002,
+        "closestAlongRoute": {
+          "sM": 314.72839700409355,
+          "point": {
+            "x": 13338.75,
+            "z": 302,
+            "y": -5.867663383483887,
+            "bedY": -7.867663383483887,
+            "sM": 314.72839700409355,
+            "heading": 0
+          },
+          "id": "ocean:208,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:309:-1:0.55:6",
+          "distanceM": 5.1239775520678625
+        },
+        "firstWithin14M": {
+          "sM": 261.72238923275614,
+          "point": {
+            "x": 13292.25,
+            "z": 321.625,
+            "y": -3.56889671087265,
+            "bedY": -5.56889671087265,
+            "sM": 261.72238923275614,
+            "heading": -0.5585993153435624
+          },
+          "id": "ocean:207,4:reef-residents-v3:peacock-mantis-shrimp:reef:valley:204,4:shoulder:263:-1:0.55:1",
+          "distanceM": 13.803957439973729
+        },
+        "scope": "all saved target-group births sampled against actual path; offscreen saved records are not current visible animals"
+      },
+      {
+        "speciesId": "green-turban-snail",
+        "count": 3,
+        "ids": [
+          "ocean:208,4:reef-residents-v3:green-turban-snail:reef:living-rock:835,16:0.35:3",
+          "ocean:207,5:reef-residents-v3:green-turban-snail:reef:living-coral:living-rock:828,22:0:0.55:2",
+          "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1"
+        ],
+        "ownerIds": [
+          "208,4",
+          "207,5",
+          "209,5"
+        ],
+        "nearestRouteStartM": 202.1200716448024,
+        "closestAlongRoute": {
+          "sM": 414.08284672130117,
+          "point": {
+            "x": 13429.75,
+            "z": 320,
+            "y": -3.940646767616272,
+            "bedY": -5.940646767616272,
+            "sM": 414.08284672130117,
+            "heading": 0
+          },
+          "id": "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1",
+          "distanceM": 5.101744731154085
+        },
+        "firstWithin14M": {
+          "sM": 401.0825247960838,
+          "point": {
+            "x": 13416.75,
+            "z": 320,
+            "y": -4.01695454120636,
+            "bedY": -6.01695454120636,
+            "sM": 401.0825247960838,
+            "heading": 0
+          },
+          "id": "ocean:209,5:reef-residents-v3:green-turban-snail:reef:living-rock:839,20:0.35:1",
+          "distanceM": 13.99995450391406
+        },
+        "scope": "all saved target-group births sampled against actual path; offscreen saved records are not current visible animals"
+      }
+    ],
+    "birthValidation": {
+      "owners": 12,
+      "maxOrganicError": 0,
+      "maxFoodError": 2.220446049250313e-16,
+      "completeOrganicValidator": true,
+      "completeResidentValidator": true
+    },
+    "ordinaryWindow": {
+      "modelAdvanceSec": 1,
+      "activeOwnerIds": [
+        "204,4",
+        "205,4",
+        "204,5",
+        "205,5",
+        "203,4",
+        "203,5",
+        "203,6",
+        "204,6",
+        "205,6"
+      ],
+      "publicSupportOwners": 16,
+      "supportCellOwners": 15,
+      "privatePrefetchOwners": 37,
+      "activeNewResidentIds": [
+        "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1",
+        "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7",
+        "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0",
+        "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6",
+        "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+        "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5",
+        "ocean:205,5:reef-residents-v3:red-toothed-triggerfish:reef:living-rock:823,22:0.35:7",
+        "ocean:205,5:reef-residents-v3:longfin-batfish:reef:living-rock:823,22:0.35:5"
+      ],
+      "actualMovedCount": 88,
+      "actualFedCount": 36,
+      "movedResidentIds": [
+        "ocean:204,4:reef-residents-v3:yellow-boxfish:reef:valley:204,4:shoulder:47:-1:0.35:1",
+        "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7",
+        "ocean:205,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:91:-1:0.55:0",
+        "ocean:205,4:reef-residents-v3:longfin-batfish:reef:valley:204,4:shoulder:112:-1:0.55:6",
+        "ocean:204,5:reef-residents-v3:yellow-boxfish:reef:living-rock:816,20:0.35:0",
+        "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5",
+        "ocean:205,5:reef-residents-v3:red-toothed-triggerfish:reef:living-rock:823,22:0.35:7",
+        "ocean:205,5:reef-residents-v3:longfin-batfish:reef:living-rock:823,22:0.35:5"
+      ],
+      "fedResidentIds": [
+        "ocean:204,4:reef-residents-v3:red-toothed-triggerfish:reef:valley:204,4:shoulder:47:-1:0.35:7",
+        "ocean:204,5:reef-residents-v3:red-toothed-triggerfish:reef:living-coral:living-rock:816,20:3:0.55:5"
+      ],
+      "validation": {
+        "owners": 9,
+        "maxOrganicError": 1.1102230246251565e-15,
+        "maxFoodError": 1.1657341758564144e-15,
+        "completeOrganicValidator": true,
+        "completeResidentValidator": true
+      }
+    },
+    "wallSec": 19.7151626,
+    "exclusions": [
+      "cold-restoration recheck",
+      "failure cases",
+      "GPU occlusion",
+      "visual quality",
+      "frame rate",
+      "complete route live simulation"
+    ]
+  },
+  "uniqueLocalCases": 104,
+  "logs": [
+    {
+      "log": "ocean-reef-community-fish-assets-checks.log",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "9bd499823255c27fe1dc60e3ae2926cad961fbab2dd2b287ee09e7c9998228ab"
+    },
+    {
+      "log": "ocean-reef-community-benthic-assets-checks.log",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "f6c979c5a42964ad8d4c0be57528dece75c7ec0936a00b253fb0a9acd29cc0fc"
+    },
+    {
+      "log": "ocean-reef-community-checks.log",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "2d053f69ddcf1c57ed3b5a15eb39d9c6c19fd587735f822f0f7eb40274e09cf6"
+    },
+    {
+      "log": "reef-community-integration-checks.log",
+      "tests": 45,
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "90ef6881007f82b788f0508239434b6ce36d545ca119534733d95f065617a76a"
+    },
+    {
+      "log": "reef-community-legacy-checks.log",
+      "tests": 33,
+      "passed": 33,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "73cda06e8258e1e450ae27684cf3242d61f437cd1a83401403a2dea93b19c3be"
+    },
+    {
+      "log": "reef-community-ecology-checks.log",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "6b8958fc22950b201c151a6374c590065d86da12d41dfcbaae57e51142e80111"
+    }
+  ],
+  "runtimeBuildHashes": {
+    "src/AgeWorkbench.jsx": "fdd56b88a8f96982e229294ea7462ed89a7cfac873424ed2ac48b58834a41fe0",
+    "src/App.jsx": "d6f59990ebc1ca6df101261d1af1fda8b615281a7a797230dde1a6d0eb346fd6",
+    "src/biomes.js": "b265629fd281740bc3b79bbb6c772edaad151766c6af7c29871c3eff4170d38c",
+    "src/capture.js": "579dbc927b0d8fd81b2008270c8139173c22ad1160ac4a011242a8c748b79dba",
+    "src/coastalSeascapeMotion.js": "3f875d3fc579bbea934bde3f8f0c63add90ea8898266b382e189dd74c68109d3",
+    "src/deepBenthicLife.js": "4ab750c9d3d7d4a2ec0e8a87e3ff0f5075bc011fc484c51779705b3da90574e0",
+    "src/deepBenthicLifeRoutes.js": "5c621a776d497f7bd4a73adc03788a1653c83ba4d47b435893a9a2c05e5fd0c3",
+    "src/deepBenthicLifeSpecies.js": "ed8fd46ed2d6d9632b3ffc1d1dbfd0ef91376e6c90294050660a3a7b31aa7f12",
+    "src/deepHabitat.js": "8dae6cd5f9b0c6b1dc95246b8a5d586d063ad36bf64fe087d8ef850e93cb0da1",
+    "src/deepHardLife.js": "e5f8eb0c3f76565afe9fe90131076557aa16b26a55f16ec0c4ba35a8e9586d7e",
+    "src/deepHardLifeRoutes.js": "1c94c202643fdebd8e6a4af1d7c1bc82ed2abf475f5ddefca90e41c7295dc434",
+    "src/deepHardLifeSpecies.js": "2e1b45c90efcffa6f0e752e900232a28b53daf49b9358a3508f3e8984d4a6b75",
+    "src/deepMidwaterLife.js": "1d947c989954219a181fa57f87914f5201fe1ea8265ea27415d334a06920c2c7",
+    "src/deepMidwaterLifeRoutes.js": "6bed20780dfc53e693bb76c333dd167cc63e2a2b5c2b8a021d62992353b53c8f",
+    "src/deepMidwaterLifeSpecies.js": "634b6c05c73c25af2510af03e906e576b4d46b13e5e896d122b7f850ace3141f",
+    "src/deepOceanEcology.js": "578c69010422f336e2ac6d172569f6cc079deba65ba1ea7199d6be398599d15d",
+    "src/deepOceanGeneration.js": "c42c5d17d1a6d27eaffcd967d578fe89cd53b9303dc5b221a561ec12f1cff7d0",
+    "src/deepOceanNavigation.js": "ccfde963fd94b69e38c660f469625108295f6a1f39601b6f6bd3889b70001b2f",
+    "src/deepPredatorEcology.js": "2430aee861189a3cb097d1fa1bfb83173ab37431d3417f5f199053ea0f084801",
+    "src/deepPredatorSpecies.js": "642067883a2001d103ea4d386821add8daef9c1e30f0b29c6a0cfbe408a9c11d",
+    "src/deepSeascape.js": "cbc1007554e6c7da54a5c6b0bd1eba1b7407df1e8e68113f9663ec76718676a5",
+    "src/deepSeaSpiderGeometry.js": "2b93dcb618f913ed23d5bb2a67907e23b6d8f4526f8cd9a867e10dc6018b017d",
+    "src/deepSimulation.js": "3ed350e678bb89002445d1c9c6b376aa7dcae5780a04c5d4d4a1c853bfe7623b",
+    "src/deepSpecies.js": "9da0e1b41bbb9c4b61c26d082bd8a3090b0d1350fef626836ecdb44ea2a88c8a",
+    "src/deepWaterLife.js": "260640c29177e033e2fe8d814e72f4256358971c9fa79e76de251f03f389fcfd",
+    "src/deepWaterLifeRoutes.js": "cce0a2b2e5d5e1ffd4cc4208c29dbf2f1cff10b6564b59936014e81a36870617",
+    "src/deepWaterLifeSpecies.js": "721e6ff5d88f4c21a24e7ee02327b17e0f2468f9ccbbf05cb87038803305b370",
+    "src/deepWholeSeascape.js": "deae8f6e0b71d7e718a80d788bc1b810a93ea051809c93ec022dc50855aaa2e5",
+    "src/demoCapabilities.js": "64bc3b8f5506716504cfa30a311c89d198a0e76236fd14c3c5da7daf1f1ea733",
+    "src/demoNavigation.js": "3e45f2a36b9c90325d31465aed1f936980cc70efdc4833176dac5cf192fd6541",
+    "src/demoOverview.css": "68e3576eaa7d9dd024b8c2e0be692b31b2c117bca5af3546f9a430f0afcdb37f",
+    "src/DemoOverview.jsx": "564e03d2685918e62317ba38270624ccabb55ab5e717f397dfcc63d550cfcd24",
+    "src/directorCameraMotion.js": "3e5621d131174aec29bf641736270fabd986854481f907af2b37c99b76a8bba8",
+    "src/directorEntryMotion.js": "79467a1ff24da5abe54f3e93015c8f56b1af1b2759a6a4e78152aae4fb71c748",
+    "src/directorMotionReceipt.js": "95bef6afac3e3f5a16d5bcb8b3170d00ec3152116d79a50ef1dd982029019d38",
+    "src/directorPlayer.css": "2822ce1110aa60175791d4498f5cb14c4530ff41d548ebf3ece53e8d53a7ee5c",
+    "src/DirectorPlayer.jsx": "a686a5ed4e179fd445195c35264eeb86424582be9fef827c42b495b9650e5065",
+    "src/directorReadiness.js": "2a363356f75bd8c7fcbb79e855956cb53ec3a6796e4eb3021c202cc06bc91418",
+    "src/directorTour.js": "63b28cc06d4b7f4d4f84f2ad79b34e267fd763db170af18163fc40c426523239",
+    "src/directorTourProgress.js": "04b7e599c97960307a35fa76dd4b405515e7923cbf01c7af3ad7db1b2e6bdb37",
+    "src/ecology/ageExperimentWorker.js": "1c8341b7852241c8b7e1f215ea4826fa75151a1cbe3d1f72ccffb59b3945386c",
+    "src/ecology/AgeStructuredExperiment.js": "c2e806e3c95ecc9bb5f2c371964715e8dc722f0e23e231ad0ed97137e4eee035",
+    "src/ecology/PopulationExperiment.js": "0f8d8660a7e3fdf15e601b95e5d85154c80f396a605c035b530845e633fc319b",
+    "src/habitat.js": "d82568f9c727b967dc761e2dedf5dc1f30f3d0f34659c66d2ead1b56a2495397",
+    "src/kelpBenthicLife.js": "391a164b67c08c17377a1da731404570a82160d905364e212b1c94946f4c637a",
+    "src/kelpBenthicLifeRoutes.js": "bb03cede46124a7b73e3f2fb3d9da4ab780f0c8193309ea42f1a45bf28d2ebb9",
+    "src/kelpBenthicLifeSpecies.js": "47db651f4c5c614adeced43dcd7a69602866709cd8b58aaa1bb8901ce169e4ba",
+    "src/kelpCommunityObservation.js": "6e19fbda21e885a0749626359703958e1e311202f5013bfaee31197ebf11a46a",
+    "src/kelpDriftEcology.js": "d3665c9c3144b1bb2573c80a23c918034b8a0de572bc90556966bcfcc84564d8",
+    "src/kelpDriftGeometry.js": "0d16db672fb369bc72cfdf11ba3145d5ac397b1d0fa33f5490e88fbf83a5a8b6",
+    "src/kelpForestBelt.js": "928f5c6599b3f2d312c645b81fdd6445f4ecfbb6300563570ab503c153c1db87",
+    "src/kelpHabitat.js": "d89b5f5a8c1c4150f2725c877c79c818e0a1daaab65b138132ab46c822d0ca43",
+    "src/kelpNearBottomLife.js": "a19223aae752dc038920ac06cb5b347dc61fe597d8aa715f1f3721384e000a0b",
+    "src/kelpNearBottomLifeRoutes.js": "ce4d170585930c03652e52bec43abf44ae9215facfaa235f0ff5ce9180ae6ff1",
+    "src/kelpNearBottomLifeSpecies.js": "3cec30055cca8e837596b1b6e54dd3984579c6fe275dd7b415458615d7570f2e",
+    "src/kelpOceanEcology.js": "75e298742e651fc2bd6f2b8b68c48f16ca50099772910e6ac9e5d7669faa2805",
+    "src/kelpOceanGeneration.js": "090ffead8a86da577492dd05e2d7824348e0414dfee2ad5f2c4d1c2d4a9c4cad",
+    "src/kelpOceanLandforms.js": "9bb15711bac0ea1fe6d7c999c9ffc92171a7ab19a0072f73babaae12de08f007",
+    "src/kelpSeascape.js": "72440c8e5c42b2c4b6780f2d8897b737362793efbe1de4c2f97fcd151d46d880",
+    "src/kelpSimulation.js": "eaf562abfa990d3ddb1a8b6e98f4918c4d31d940481b805724d06d83131dc86b",
+    "src/kelpSupportMigration.js": "622ce5200d8de62000be14be402d57292d730042c46dfa0032ced40183c5241c",
+    "src/kelpUnderstory.js": "a3ecd864e83d46b9b26f326c7caf9d9bd80677a4be8869dcac079795aafb5012",
+    "src/kelpUnderstoryLife.js": "18cd93eb69cc1399c64f48c3c3b665f4b0b7baf1a7a7642371adbeaea15bacee",
+    "src/kelpUnderstoryLifeRoutes.js": "2dfcad9d2dfd07ee1367bd03e83509d85f89bff9e701921e535ad5ac34fc278f",
+    "src/kelpUnderstoryLifeSpecies.js": "2f018133817ca934f24195b660f94898f8d7d44675c7b8843035e3b1979aecf1",
+    "src/kelpVisitorCommunity.js": "0a7abedc3437079ae2a3c66c64601c9d5d878c10ac9cc2b98e1d2522a8a08b96",
+    "src/kelpVisitorSpecies.js": "4c88026e9afa6a451c4ba275997c1a6199a5b90f8998febbc32d2936b7c58e81",
+    "src/kelpWaterCommunity.js": "1e86a08bb29bd4f88247b07978d72dfb100c6b5327394d9bc9548abd585cb314",
+    "src/kelpWaterLife.js": "3b6e2cccb17f895594eecfe77f1ebc4603734b5b42592b213dab0532ba4e7eb2",
+    "src/kelpWaterLifeRoutes.js": "c8575537270235b3fc2d56e85722a4cd5c7c7e4e1806338acd6f4a14941e97af",
+    "src/kelpWaterLifeSpecies.js": "1dd923a4a97a17884fdbb9172e446e0cde9d9712cd76ffe9c29461392d5b1253",
+    "src/kelpWaterSpecies.js": "2b7193da83de8550c0fb521cd7f26ee1df69eeb32e35e312c1bfa4dfeeaff37f",
+    "src/livingCoastalSeascape.js": "32bbf2cd2a4d413be439f1c26da1d3dd4e706394171c9edcef52e494c53e9d88",
+    "src/livingDiscoveries.js": "b217f44e067bbb2b0199479df9705f7401861c6543b59261beaeca7f52e0fcfa",
+    "src/livingEcologyNetwork.js": "1f4fe4fa12882ee779f3c0379049a0ca539582db08181932195f93d48e87a562",
+    "src/livingHabitatBelt.js": "5b278a95a732e1a36263b72c2988d09c2fff34b48e687cc043055f7959fb5d0a",
+    "src/livingHabitatMosaic.js": "fd38a069bd6d3e9a69e84d21d5825b1537108867469d40d689f1c2a1545d86cb",
+    "src/livingRidgeGeology.js": "0a0fc24824ba3d687355fba6301e435973468d2f9dfde5fc96f778c5b67bfa8d",
+    "src/livingSeabedRelief.js": "e4e32d89bb8702fbb554902423a4e356e72a296122ef45bfba4ce478b833a43f",
+    "src/livingSeascape.js": "6addbdc55a9bcfc02baf31d51ac4ecf397d27babdbb76fd2ab00300200c872e1",
+    "src/livingShallows.js": "b020a299c1192533c1fb4fa4f924846f6dc005b394557ccce387d5f204956890",
+    "src/livingShallowSeascape.js": "67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049",
+    "src/livingShallowsGeneration.js": "7ec1c1966adc08dc7298d73f5be23ce67ffdfbb9f93119ed5fef77b72aab4f24",
+    "src/livingShallowsPresentation.js": "6790921e802b187a04955f0129f87b0596d7ede1bf40f13537ff83b20bcbb102",
+    "src/livingVisualRoute.js": "a9305ea4cb143ec859ae9d088011b18ede41bb1ef7d382a9592e786e2906af12",
+    "src/livingWorldState.js": "29fad0306f5d524e779d2993e311cbcb91d781d9bda959ae8abedf32d82585df",
+    "src/main.jsx": "832f752c6b6a454a26dbc4f2654f5bd633f2b103516c8c0abac648308c133a7e",
+    "src/meadowAnimalBelt.js": "ac63ef86b930ab1dc56626206089958ed3928f8b7067e2e0a5850ede4263c094",
+    "src/observationEventText.js": "09ea42ef5a0f3a474c459bad9b4e3c27acaaeb7d7cb102c53af22f0992343c92",
+    "src/ocean.css": "9cffd85c158f6f545745206c0fc7751d8704aaea913ec6b6cc731231141cfffd",
+    "src/OceanApp.jsx": "7e78c0989d95ab27eeb6b7469fdbc62124ebd43286018d8e17df100d11635518",
+    "src/oceanBenthicLife.js": "dccfdb54808a30a38dcbbb8521577fdf473571fc4c4c42323c22e5d6abd1ba77",
+    "src/oceanBenthicLifeRoutes.js": "a225927e17192e436b5c241dc62581e7ef5ae7ff3c0c13524a2e06bb112b4380",
+    "src/oceanBenthicLifeSpecies.js": "0598a61fb00e3dcf7e9780b5a97dd90fb9fe7a6ec57ce6c9f0e44fa3963ae3e1",
+    "src/oceanBiodiversity.js": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8",
+    "src/oceanBiodiversityRoutes.js": "d5d10c3ce8d40cb33283c07b1b290f6d8fd8ed0cd3fd8c1829a09c52cfb7a41c",
+    "src/oceanBiodiversityShape.js": "4bab14683cbe4436129abfcb842d095227a43a75b67f19cc297056691d4d90cc",
+    "src/oceanBiodiversitySpecies.js": "239c2b532a926714f0f75090847a876587f35e735858afbb7c0b9659d127aad6",
+    "src/oceanCommunity.js": "11985ef77d203d57146fb20a8488d73b035eb17f5f1b08c9e9341601d2915f16",
+    "src/oceanCommunityReading.js": "c1578b6da2313fde8c0126f21f62dbda2ace769702899140c3ae4608485a313c",
+    "src/oceanEcology.js": "eb9f4551f6a9e73b3d0596cf29d46a3611efe7b5fb034b7656955fa252d112c4",
+    "src/oceanEcologyStore.js": "f428681a5814cadae4af9c40768bf3136f036de2e0e60e310f89b56cf9327c42",
+    "src/oceanEnvironment.js": "758b9cdcb50b849f72c8ecbcb64d2186c2f0f86075ab56ec0e318278cf369012",
+    "src/oceanExplorationMemory.js": "ee9025659e522e128ab61eb54021d0f67184805e87c57f68b5218167d776aaaf",
+    "src/oceanFormationObservation.js": "dd927bd11c14de34be92a6e39a7a5f49e85fd2034f1331756f4b91867d55308c",
+    "src/oceanFormations.js": "067e1eefb142e887af84455915bde0513025af8b04d606d4077ef816b3ef0db6",
+    "src/oceanGeneration.js": "a0575a489c61d518213225212687aab5692f1433ef599bca3442a0ef329e0c60",
+    "src/oceanHabitatScenes.js": "a5d9f3267df038c5a6710b556f3e643eee407e8a0ff7a5714b805315c95fc970",
+    "src/oceanKeyboardInput.js": "f405e2f43dfbc2999f3c0bc5c597559ad787140a8f1ea6f6d21ea73951d27c86",
+    "src/oceanLayerNavigation.js": "4c899db80729dafad54f33b1f77cc2996a6030538b2cee87ad861c03b8b80894",
+    "src/oceanLivingLandscapeObservation.js": "cc86f4ba30ec949235d073a9a612584f4d67c2d3f5bda5ac53b8044508e7c41f",
+    "src/oceanMacroLandscape.js": "3e44a5d2f51f23290005c2d5cd8a81ddd1fafb7fd20ef100f01383143d9618fc",
+    "src/oceanMantaCommunity.js": "ede3b46fdb6b2c0d93bdca85ed086d23d3ef4f746808f2116eadaf736ae6167d",
+    "src/oceanMantaSpecies.js": "3e5e34253376cc0f20491db17ec5884b49c1ddb87bb2b048b11518251ca2a373",
+    "src/oceanMeadowLife.js": "574c11c29177411b86c6f794f6207e10805a98ccb10824bcfb876fea73b569d8",
+    "src/oceanMeadowLifeRoutes.js": "596f65e62991e8979e413da2ab534a9455d0ef861402dd16e7bb85f7e5adb7bd",
+    "src/oceanMeadowLifeSpecies.js": "753974bf36d7501e1a0d151b251e343fb75cd419b89fd443092c6d2451f6ad68",
+    "src/oceanOpenWaterLife.js": "6175afdf93c611ec4b41b26767bf558d4b8ad0b691fd354c9b853eb7b4c89350",
+    "src/oceanOpenWaterSpecies.js": "8caf092294e84c06815f25c59fdda3a60e0e53cf0e9aea0b0822b715093a9c73",
+    "src/oceanOverview.js": "346bdb8e6b71a9f71e0a7b53a7b3ecd99956545a68597e7480cf78bbcaa881cb",
+    "src/oceanPelagicCommunity.js": "20bc8185c086a06b7b899c2bcf050b67b983d9ac19eb8ef28c8be51d5597c2e9",
+    "src/oceanPelagicSpecies.js": "5d03385ba8270b3ace9cd3b7fb2b3ec1a85ede297c0b841ff96169e4325622e5",
+    "src/oceanPlanktonTransport.js": "8bac19ab7f417f92ccc7ab6640f1773d3fcd9f79009f335f593949324db55344",
+    "src/oceanReefCommunitySpecies.js": "34d6b84d57b582d5a2b67bdbdad59eeeb875be41ef04be103d785afb8cdaa3a7",
+    "src/oceanReefDiversitySpecies.js": "0c5766437f418914ee7d1c6f231524f0e991b3b2b317eb9383821b67367775e4",
+    "src/oceanReefGuild.js": "38fc704aa7bd76dabf3869648f606445b1ee8aa7fbbc9af3a4858c05d7717296",
+    "src/oceanReefGuildSpecies.js": "80ba07bcb13915086eb0bbe804c3f28c38407c50f838f7b9361733d55c3b356c",
+    "src/oceanReefResidents.js": "ff57fd4c1e6d1680e879c4dd137fba0a183f4afc710dca539dedf60a40522402",
+    "src/oceanReefResidentsSpecies.js": "f4fb5e5b479e12233db8929a84565c767874484b7a5e736f0f157bf565b2b682",
+    "src/oceanRockShape.js": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "src/oceanSceneElements.js": "296e5c8de715bb8145e8e6caa591144af4dce1022e0dd25f03ee7f62a2d27117",
+    "src/oceanSceneObservation.js": "d2120402d8a62c82bda2ae8fda76f2ac9a60d0dd69c7cd0ae710272ffae55516",
+    "src/oceanShoalLife.js": "4f02b8d3e75ac33f7855dbb8c7cba5a92f912bf29e696879d59edf1c2c8d179f",
+    "src/oceanShoalLifeRoutes.js": "79ef49bb927f8358f34fb77bbba527d4c611e001369dd28efc781416c71cd5ca",
+    "src/oceanShoalLifeSpecies.js": "eb8459a7b0a94023d909ba913ba5292a0f0a51afe37ab3b71fc77ac0cc1de4b3",
+    "src/oceanSlopeCommunity.js": "7f48ec8c589489af9411dc533a58e9c1389b0db8da332ae8216928405e072ca0",
+    "src/oceanSlopeSpecies.js": "17ab64609b6b59e327fa525a6df917796aa7b7a54bd17113987297a690c9964f",
+    "src/oceanSupportIndex.js": "91300549353ea9218465171f4524da81f46c706c2e7c092a80f6cf397bbb53cf",
+    "src/oceanTurtleCommunity.js": "01b18b8f56e94ffc2ebf602870cf850c295d20618c2b02c044574fdd76093630",
+    "src/oceanTurtleGrazing.js": "07cada73e1196425cda58d84ddff66404dda2b79108888c43df4d99c32908e66",
+    "src/oceanTurtleSpecies.js": "dda6cb54fecea40c11a0e4bf517575d8ae0448605ef20cc7698e29ec35a87cfa",
+    "src/population.css": "39d7bd8d3ecbace155f868ab968b452ab788ab2e408c51a6923cf52e81e9fa0b",
+    "src/PopulationWorkbench.jsx": "e0b997a1aad2880e78518155c2ed2f61b97e8accecb27d32872a5ca49dffb781",
+    "src/reefActivityZones.js": "4160ad246d13062a6fac8b545d78c91fd7eddaff1d0ba9d1d52517fe6ded66b5",
+    "src/reefExploration.js": "25949ee602dcbac347c5da75c519d4697b7767f0bd6b39fba69b35b21428efbe",
+    "src/reefGuildHabitat.js": "c85cb3f1e5648a845e2ec077212b22a1c06d97f6118c3bc893b5b2e0f1393080",
+    "src/reefObservationReading.js": "15f3c182e23f5531e9a0dcd787c614e70111ad96f485df8db4a4e3e5e99efe60",
+    "src/reefScenery.js": "28189c2586c2bd47fb99eee74f23565cf210540637b5f050ab7cd10fb136824d",
+    "src/reefValleyRegion.js": "8c3a7e94a78e085986e49601c1dbaa374d57cdd58976edf206a71259ece66439",
+    "src/ResourceHistory.jsx": "d7e27c70b22af2a68394656f8e06df7539bb0e1f6dbbb154841a390cafee3110",
+    "src/sceneCatalog.js": "a9923f1d3437f13f6a2eaa31ee0856cdb36047a7db37f4eaec92cf2916cf93db",
+    "src/seagrassMeadowRegion.js": "1866d1043396b1054e5f81a3d184c145670caeeda9ef2f34e09e5796395264d6",
+    "src/simulation.js": "1ac2bd317540072c78db1fc6a43190999dd2a72670f5d58d279c95f28df19c15",
+    "src/species.js": "3b68d37721e463fee06a5960f7c3bfda150208612a88075ef81daa11abad9f5c",
+    "src/styles.css": "d278a62809f23bbbab5c2c2ff4313c8d46686d438dde3670eba9ee073ccbb8dc",
+    "src/supportedMotion.js": "2b8641465e5350127c453a40a7cb5c4920543536508d73aa417ccca0e3a4fc9b",
+    "src/useDirectorTour.js": "59498613a3a6ce804a131dbc05d5d20d4d8981048565f6f56b9f8fc724e0165f",
+    "src/world/DeepBenthicLifeAssets.js": "e75d7def429e3414c902206344beabc1704f9515d8ec75638c90e0513093459a",
+    "src/world/DeepHardLifeAssets.js": "284005116c79353ceeb16df0b2e038604ad83915d0c41eb4416a53890c948f0a",
+    "src/world/DeepMidwaterLifeAssets.js": "4bc47dba8e1f53d20195e6283733463da7a24d5e986f6e25401499f546070671",
+    "src/world/DeepOceanAnimals.js": "1e150686a05eececbec52882f21cdfd3f77bf206f6374c2e050c8e4fe48479de",
+    "src/world/DeepOceanChunks.js": "12d3a8b0ffb513ac59df9b8b39e9d2af2299925143c2082f2061898acb63797e",
+    "src/world/deepOrganisms.js": "afd05b3a2c5d3ddc9d6989ccd599c716a98640b7bd8307e5859689791345f950",
+    "src/world/deepSeaSpiderOrganism.js": "6d5a04a9caf54f826c33fb874c68fe8b754193648da45dd931c1b5533b3cab18",
+    "src/world/DeepWaterLifeAssets.js": "0e9f0bdb641d051e57e8f351675a446e4efa0642f9af7632c9993feadab38607",
+    "src/world/kelpAnimationVisibility.js": "285ac84a8811adf8ffd18dceb52908894e45d375f576332fc8c157072fd8fd67",
+    "src/world/KelpBenthicLifeAssets.js": "4cbf1bfb3689e524ab085b224bb48c4f3615749dfdf7a5cdf8ba2e9999c6e62d",
+    "src/world/KelpDriftFood.js": "e92428c2a72f3f1d2ca1e85d3e76a47291728b01ad8ed5b6fe2d31c5134fa40b",
+    "src/world/KelpNearBottomLifeAssets.js": "54e8ae87c49dd020f01c89cda40b41571ccfa0636cf49cc23a1414baf10d3594",
+    "src/world/KelpOceanAnimals.js": "307bb0362d35644cfc4248cf23b5fbba38596a354fbdb542a73327edd5b38797",
+    "src/world/KelpOceanChunks.js": "a3cf0f7931d922d293aebaff35b4311407fe05ec789d344f1bbce33e058d25e9",
+    "src/world/kelpOceanHabitatCover.js": "9f1bce7f5113d5e5ed51455eb666a8a46370918feedfe7527cc2d2592de3cbf1",
+    "src/world/kelpOceanHabitatMaterial.js": "47887e4ef16eb58909c40f57c701170edf148f38f005be95481767ef60973383",
+    "src/world/kelpOrganisms.js": "8b03d9fd0040257cb86ec82b61d98f0572804012d3f02fab9fc92c5c8afa03cc",
+    "src/world/KelpUnderstory.js": "45c3ca8ab47b8e53e5cf4b695c5bf27a9bd8067340e992472556a6612224d787",
+    "src/world/KelpUnderstoryLife.js": "b9a781f2231f2c07ffe9ae519a9820d93870bc9ae3d5b3b813f000fc7cf3595f",
+    "src/world/KelpUnderstoryLifeAssets.js": "0d2b1e9da4e6fab6a8ed247d37eb0c6847388f6067e123036bbe8be417cd57ec",
+    "src/world/kelpVisitorOrganism.js": "c9655060f84b8e667936cdc33399c9a409b70ee00a384d1df26b424b1ae0469c",
+    "src/world/KelpWaterLifeAssets.js": "ef3ab91c412143fedb242a1436cb600e210858e55a7818f269a4b5551dcac735",
+    "src/world/kelpWaterOrganisms.js": "ba73ae4a647dfecaccb860a7c55ca3f758b1280d7b446c0c6603199a60267218",
+    "src/world/livingMeadowEnvironment.js": "2549d6249a6933e54369ec9227f8790028e77cdfa73496d288b2209327ac8787",
+    "src/world/livingReefSubstrate.js": "e6139ca4ab6e8bd4f15273df83968f71e72ef1238b49323bb3e0a9eaa1ef30d2",
+    "src/world/livingShallowsAssets.js": "1a7867e540bb74157c549a0b6004546e0cc4151af6748804334fd90703f31019",
+    "src/world/livingShallowsCoralMaterial.js": "99b6757abd2a19c16710753195ba2a9d7f4335fab407463c9365ed2ff0a761bb",
+    "src/world/oceanAnimalEncounters.js": "d7b3ffb8915b300cf2a3df9e1e990d9ac0fbd086e22743728980c9cc64123016",
+    "src/world/OceanAnimals.js": "6a94b32d4fc6237c3be91f55587b4434c8b7af78f147ce9f7abd36a50dfcc3a0",
+    "src/world/OceanAnimalSediment.js": "2264834b354332e310bd3c35d426d086161d351ccbec7cdad5b5dfcf454dedb8",
+    "src/world/OceanBenthicLifeAssets.js": "43af6c5977c4d4a8d26aa6f69ce93e402a4f539b65a5a119d2cd83d15045167b",
+    "src/world/OceanBiodiversityAssets.js": "9a1fc6559722aa7c961bb99c0ef89017690750479aa9231c59474c83ebfb2a22",
+    "src/world/OceanChunks.js": "b7f03539ce47a49e712f8b23a3319de310086e387168ea0fd3fbb4d94512cd0e",
+    "src/world/OceanHabitatScenes.js": "48834f08d75774dfa3af5c10dd6efdf0574fad72bff5aea3ae88eae0d4a62188",
+    "src/world/OceanMacroLandscape.js": "96d1470755431ef27e3efcb69ca9ca1b306ac377cfef4de833fa97e1cbfe0c3b",
+    "src/world/oceanMacroSurfaceMaterial.js": "5167fdc25a80c23855b406f6c339ca22b0b639abdb7d7411b72f4f69c2198e68",
+    "src/world/OceanMeadowLifeAssets.js": "366fc9d07a96bf01cfaeef1faa3d6f239fb2289e73c6b936e08d6bd63a3ac789",
+    "src/world/OceanReefCommunityBenthicAssets.js": "179e8bc576f18f5368a35b7d47268897ded776ad94de9d4230f33871cbb5aa04",
+    "src/world/OceanReefCommunityFishAssets.js": "974e7cd847b7d79b9243a98855b929a794307064782ce4d9cae07f3d711c26c8",
+    "src/world/OceanReefDiversityBenthicAssets.js": "abafe4c7d0e405b6574249b6ddc9eec99bbc5b8a55b88f2f0ae9d3872577205a",
+    "src/world/OceanReefDiversityFishAssets.js": "3a13e30176b912848e1be04bc28b73c88778ac750dccbb8723b9358e87315291",
+    "src/world/OceanReefResidentsAssets.js": "e131887d492b070c751c648e13926b0a1d90ecbf215e45feee1330af0f06634f",
+    "src/world/oceanRockFooting.js": "3f13ded85eeece52dd6ce9a9c882c8623e0d0e19c85ebde590b8a838ab0dc13b",
+    "src/world/oceanSandSurface.js": "679d72a6c9aa191aef07938be24d4ac56cd15eb46549c0cd5d068133accdc3b1",
+    "src/world/OceanSceneElements.js": "c255d2bb32ce005dad5ef357519a1cfe1c349676ac5dea9039967528b942cdb8",
+    "src/world/OceanShoalLifeAssets.js": "d5208abbded50fd7a84f94c4c308f7f579e97a3c73b537805dcaf50eb7adb0c2",
+    "src/world/OceanTurtleOrganisms.js": "83db3e5e36fc8c7993cdd25c9c061ee2462bee79801be40ec8addf856c073af9",
+    "src/world/OceanWaterParticles.js": "0243bfef453037d9f63674dcdb7fcee14bbaf6c3d631f25d8a4301b4e0111f0d",
+    "src/world/openWaterLifeAssets.js": "947e536d3e25b4c42929f7832b7672c583e6e76292e08b7e95ca45eeba0b55dc",
+    "src/world/organisms.js": "7222b152fee85bbf8c3408016b0340b364dddf44739c4b631cb84cff24353fd2",
+    "src/world/reefCoralMaterial.js": "af25a6a5b2aadfb4a67e5f555e8dc8055c04ea2a53dc9d7b2db872377349d95c",
+    "src/world/reefGuildAssets.js": "94bd5e2c5a01d3173f15e3a7c234fb047b0f4ef9ba91066d8c4d7bba61a75c81",
+    "src/world/reefLandscapeDetail.js": "2b288af4f8215fd74c08d4c8f69ac01a397d4f5b78ff9a418f98aa9dc1cfae3b",
+    "src/world/reefLandscapePlacement.js": "8813b4ffc52b52a9d4c7a46f8364a6d1c0f3b2397ef050ae25fce757d09b3f49",
+    "src/world/reefRockMaterial.js": "118c392794ff078ef9bf5623dd8fafa922a2f6f5e07ce9c538f6fdb24612ff5d",
+    "src/world/reefScanAssets.js": "693b312eb74ee81ab243c77236650548ae9748247c6072eec898244058f9d633",
+    "src/world/reefScanDisplay.js": "e77cd8b108e6ef7cd0fcc142e3c414dc7cd5f38dab905ef907bd4fb56fb72e3b",
+    "src/world/reefScanPlacement.js": "99c8e9832afe295fa1d85bf0edc3eef4dd475aea95ce27623832c66e9c081b19",
+    "src/world/reefSceneOrganization.js": "3f1356cd68ecf38f7d09bd43593634e65ee66b686fefabdf0af3099969e56729",
+    "src/world/reefSpatialQueries.js": "14e6fd229e1de493c353a8e853e8c7d40bc4b55439d1c939e036bccf00005f87",
+    "src/world/reefTerrain.js": "920e9657fd45d8b91d89ba7791c54723b569116ca831d7ca14cf23b30f430182",
+    "src/world/ReefWorld.js": "973a9f99363122cabc9b02a56914f717cef3cf2a205deef598cd9a333617e898"
+  },
+  "sourceManifest": {
+    ".github/workflows/pages.yml": "74bd228c58a83f6683c145c5555bbc44678264a951732ac7e57f5c1031899696",
+    "AGENTS.md": "186bd3879f2bfb5f95ee6d6c06a36f4147e0049f4e6b00923055d8d08ddfb81f",
+    "PLAN.md": "a5bb14d0d91edb9258c4e4b6431b1978c55327fc93801775e4d0175c6a29d5bd",
+    "PROGRESS.md": "a8c53b5a3bc859e52c455f6143cb248bb6b961a6d130b7f38e14a8f9204694b8",
+    "README.md": "68117f3c750e0b9c197f02b8c090f1babd58cc0dbefc46135335f7fcc38cbd71",
+    "docs/REEF_COMMUNITY.md": "5e5c2d3b8473909d73e7891361fa0b48a5ee32b4e5b71f9413dcfc6fa988bca7",
+    "src/oceanEcology.js": "eb9f4551f6a9e73b3d0596cf29d46a3611efe7b5fb034b7656955fa252d112c4",
+    "src/oceanReefCommunitySpecies.js": "34d6b84d57b582d5a2b67bdbdad59eeeb875be41ef04be103d785afb8cdaa3a7",
+    "src/oceanReefGuild.js": "38fc704aa7bd76dabf3869648f606445b1ee8aa7fbbc9af3a4858c05d7717296",
+    "src/oceanReefResidents.js": "ff57fd4c1e6d1680e879c4dd137fba0a183f4afc710dca539dedf60a40522402",
+    "src/sceneCatalog.js": "a9923f1d3437f13f6a2eaa31ee0856cdb36047a7db37f4eaec92cf2916cf93db",
+    "src/world/OceanAnimals.js": "6a94b32d4fc6237c3be91f55587b4434c8b7af78f147ce9f7abd36a50dfcc3a0",
+    "src/world/OceanReefCommunityBenthicAssets.js": "179e8bc576f18f5368a35b7d47268897ded776ad94de9d4230f33871cbb5aa04",
+    "src/world/OceanReefCommunityFishAssets.js": "974e7cd847b7d79b9243a98855b929a794307064782ce4d9cae07f3d711c26c8",
+    "src/world/ReefWorld.js": "973a9f99363122cabc9b02a56914f717cef3cf2a205deef598cd9a333617e898",
+    "tests/living-shallows-world.test.mjs": "79566da5ae83e7b3d5c504b5cdbed8c0d411fff93ce38417294a127a95d1c591",
+    "tests/ocean-benthic-life-world.test.mjs": "21631dc003c75f8396ac7fd8f31520283daead6e274bf699b2f9f606b685fcc9",
+    "tests/ocean-meadow-life-render.test.mjs": "3fbf58c38a8f03e060d7046663ecca71f22b44b8351d12002142015b16b648f0",
+    "tests/ocean-meadow-life-world.test.mjs": "1ea2efd1d4ce362518c51ea9121ce4e0be7826e1f25b0e6bdcfab5c8b35f5f1b",
+    "tests/ocean-reef-community-benthic-assets.test.mjs": "5915a171480f91caec5d34021204b85040fe3a90d1068c5507fef2237863f868",
+    "tests/ocean-reef-community-fish-assets.test.mjs": "b8f01aaf499509de79376acd59eda2fdc5bfaddbec785b2e9aac01e66dc63da7",
+    "tests/ocean-reef-community.test.mjs": "1cb7429ac4ece35240e1d327aec4658693f0058d4142fc6d29dd128f750d0aa6",
+    "tests/ocean-shoal-life-render.test.mjs": "1f145fbd4d585193ed1bdb0988cd17f829585e80184e62f292d978655d05ff48",
+    "tests/ocean-shoal-life-world.test.mjs": "a985ab0ce6e0b65205ebb6e1a35400c2d46c3506ea4d7d58e54e6dce25660991",
+    "tests/reef-community-ecology.test.mjs": "4b1aab378d1c2e18d4cf66c505a7a144d19fa1187b5739f50b437d8c7be2f44a",
+    "tests/reef-community-integration.test.mjs": "a00dd680945859ed699bb756f2d8722ad1b28dafa04da8dd963dff34cb24d056"
+  },
+  "unchangedLegacySources": {
+    "src/oceanReefResidentsSpecies.js": "f4fb5e5b479e12233db8929a84565c767874484b7a5e736f0f157bf565b2b682",
+    "src/world/OceanReefResidentsAssets.js": "e131887d492b070c751c648e13926b0a1d90ecbf215e45feee1330af0f06634f",
+    "src/oceanReefDiversitySpecies.js": "0c5766437f418914ee7d1c6f231524f0e991b3b2b317eb9383821b67367775e4",
+    "src/world/OceanReefDiversityFishAssets.js": "3a13e30176b912848e1be04bc28b73c88778ac750dccbb8723b9358e87315291",
+    "src/world/OceanReefDiversityBenthicAssets.js": "abafe4c7d0e405b6574249b6ddc9eec99bbc5b8a55b88f2f0ae9d3872577205a",
+    "src/reefValleyRegion.js": "8c3a7e94a78e085986e49601c1dbaa374d57cdd58976edf206a71259ece66439",
+    "src/seagrassMeadowRegion.js": "1866d1043396b1054e5f81a3d184c145670caeeda9ef2f34e09e5796395264d6",
+    "src/livingRidgeGeology.js": "0a0fc24824ba3d687355fba6301e435973468d2f9dfde5fc96f778c5b67bfa8d",
+    "src/livingShallowsGeneration.js": "7ec1c1966adc08dc7298d73f5be23ce67ffdfbb9f93119ed5fef77b72aab4f24",
+    "src/livingEcologyNetwork.js": "1f4fe4fa12882ee779f3c0379049a0ca539582db08181932195f93d48e87a562"
+  },
+  "oldResidentFreeze": {
+    "completeBeforeAfterFileSha256": "bda7986c97b7d8a30798aaa3e8f790d715f4687b830f34cea6c3beb914489add",
+    "v1CompleteRecordSha256": "55c891dcf4aed4973549c7efeabbe6034ff11fef88a316785b813a7b40377ee3",
+    "v2CompleteRecordSha256": "54ae776cffcbc4bad511189a65ac33b93a3aba21d845d096f19aaf465a530b3f",
+    "beforeAfterByteEqual": true,
+    "modelSeconds": 3.2,
+    "v1Layouts": 6,
+    "v2Owners": 12
+  },
+  "build": {
+    "success": true,
+    "viteSeconds": 9.6,
+    "base": "/ocean-world/"
+  },
+  "limits": {
+    "active": 9,
+    "publicSupports": 25,
+    "allRecordsPerOwner": 20,
+    "privatePrefetch": 97,
+    "residentMaximumIncludingPriorEightTypes": 6
+  },
+  "directorUnchanged": {
+    "chapters": 67,
+    "actions": 61,
+    "oneSpeedModelSec": 1994
+  },
+  "cloud": {
+    "newSubmissionStatus": "160file/planned1055case full checks and publish pending actual new commit Actions result",
+    "priorCommit": "4a7b0cf567393c7e6b025b6cc1bff174d296555c",
+    "priorRunId": 37772039541,
+    "priorSubmissionStatus": "independently verify Actions, no previous-stage status substituted"
+  },
+  "acceptance": "CPU model, actual Three geometry and typed stock conservation only; no browser/GPU visibility, performance or aesthetic acceptance; food/rates/density uncalibrated"
+}
