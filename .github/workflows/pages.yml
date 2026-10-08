@@ -32,6 +32,10 @@ jobs:
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test --test-concurrency=4
+          tests/meadow-animal-belt.test.mjs
+          tests/meadow-animal-belt-shoal.test.mjs
+          tests/meadow-animal-belt-bottom.test.mjs
+          tests/meadow-animal-belt-ecology.test.mjs
           tests/ocean-sand-surface.test.mjs
           tests/ocean-animal-sediment.test.mjs
           tests/ocean-animal-encounters.test.mjs

@@ -2,6 +2,7 @@ import { oceanShoalLifeSpeciesCatalog, oceanShoalLifeSpeciesById } from './ocean
 import { oceanRockHeight } from './oceanRockShape.js';
 import { oceanBiodiversityPatchHeight } from './oceanBiodiversityShape.js';
 import { recordLivingAdmission, recordLivingIngestion, recordLivingDeath, validateLivingNetworkRecord, livingNetworkBalance, LIVING_NETWORK_UNITS } from './livingEcologyNetwork.js';
+import { meadowAnimalBeltMarked, validateMeadowAnimalBelt, meadowAnimalBeltSites } from './meadowAnimalBelt.js';
 
 export const OCEAN_SHOAL_LIFE_VERSION = 1;
 export const OCEAN_SHOAL_LIFE_PROFILE = 'living-shallows-v1';
@@ -34,11 +35,16 @@ function nativeGeometry(r, g) { return g?.profile === OCEAN_SHOAL_LIFE_PROFILE &
 function nativeOwner(r, g) { return nativeGeometry(r, g) && Array.isArray(r.agents) && r.basicNetwork &&
   nonnegative(r.timeSec) && Number.isSafeInteger(r.ticks) && close(r.timeSec, r.ticks * .1); }
 function sites(g, r) { const rng = randomFor(g, r), rows = [];
+  if (meadowAnimalBeltMarked(r)) return meadowAnimalBeltSites(g, r);
   for (let z = 0; z < 4; z++) for (let x = 0; x < 4; x++) { const id = `column:${x},${z}`;
     rows.push({ id, x: r.cx * SIZE + 10 + x * 14 + rng(`${id}:x`) * 2, z: r.cz * SIZE + 10 + z * 14 + rng(`${id}:z`) * 2 }); }
   return rows.sort((a, b) => rng(`order:${a.id}`) - rng(`order:${b.id}`) || a.id.localeCompare(b.id)); }
-export function oceanShoalLifeRole(r, g) { return Boolean(nativeGeometry(r, g) && randomFor(g, r)('role') < M.roleChance &&
-  sites(g, r).some(p => Number.isFinite(g.floorSurface(p.x, p.z).height) && (g.surfaceY ?? 8) - g.floorSurface(p.x, p.z).height >= 4)); }
+export function oceanShoalLifeRole(r, g) {
+  if (meadowAnimalBeltMarked(r)) return Boolean(nativeGeometry(r, g) && validateMeadowAnimalBelt(r, g) &&
+    sites(g, r).some(p => Number.isFinite(g.floorSurface(p.x, p.z).height) && (g.surfaceY ?? 8) - g.floorSurface(p.x, p.z).height >= 4));
+  return Boolean(nativeGeometry(r, g) && randomFor(g, r)('role') < M.roleChance &&
+    sites(g, r).some(p => Number.isFinite(g.floorSurface(p.x, p.z).height) && (g.surfaceY ?? 8) - g.floorSurface(p.x, p.z).height >= 4));
+}
 function queries(g, r, { surface, bed } = {}) {
   const rows = new Map(); for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++)
     for (const e of g.chunk(r.cx + dx, r.cz + dz).elements) rows.set(e.id, e);
@@ -82,7 +88,7 @@ function slotPosition(center, heading, offset) { const c = Math.cos(heading), s 
 function selectedSize(id, slot, rng) { const [lo, hi] = species(id).sizeRangeM; return lo + rng(`${id}:${slot}:size`) * (hi - lo); }
 function schoolBirth(g, r, site, id, count, rng) {
   const bounds = species(id).depthSelectionM, depth = bounds[0] + .3 + rng(`${site.id}:${id}:depth`) * Math.max(0, Math.min(2, bounds[1] - bounds[0] - .6));
-  const center = { x: site.x, y: (g.surfaceY ?? 8) - depth, z: site.z }, heading = rng(`${site.id}:${id}:heading`) * TAU;
+  const center = { x: site.x, y: meadowAnimalBeltMarked(r) ? g.floorSurface(site.x, site.z).height + 2.2 : (g.surfaceY ?? 8) - depth, z: site.z }, heading = rng(`${site.id}:${id}:heading`) * TAU;
   const spacing = species(id).sizeRangeM[1] * 1.5 + .16, groupId = `shoal:${r.id}:${id}:${site.id}`;
   const placements = Array.from({ length: count }, (_, slot) => { const offset = { x: (Math.floor(slot / 2) - (Math.ceil(count / 2) - 1) * .5) * spacing, y: 0, z: (slot % 2 ? .5 : -.5) * spacing };
     return { id: `ocean:${r.id}:shoal-life:${id}:${slot}`, speciesId: id, siteId: site.id, groupId, slot, sizeM: selectedSize(id, slot, rng), offset,
@@ -98,9 +104,10 @@ function sharkBirth(g, r, school, rng, q) { const id = SHARK, sizeM = selectedSi
 }
 export function createOceanShoalLifePlan(g, r, { role = oceanShoalLifeRole(r, g), availableSlots = 0, maxAdded = 8, surface, bed } = {}) {
   const cap = Math.min(8, Math.max(0, Math.floor(availableSlots)), Math.max(0, Math.floor(maxAdded)));
-  if (!nativeOwner(r, g) || role !== true || !oceanShoalLifeRole(r, g) || cap < 5) return freeze({ version: 1, school: null, placements: [] });
+  if (!nativeOwner(r, g) || !validateMeadowAnimalBelt(r, g) || role !== true || !oceanShoalLifeRole(r, g) || cap < 5) return freeze({ version: 1, school: null, placements: [] });
   const rng = randomFor(g, r), q = queries(g, r, { surface, bed }), count = Math.min(cap, 5 + Math.floor(rng('count') * 3));
-  const order = [...FISH].sort((a, b) => rng(`${a}:choice`) - rng(`${b}:choice`) || a.localeCompare(b));
+  const originalOrder = [...FISH].sort((a, b) => rng(`${a}:choice`) - rng(`${b}:choice`) || a.localeCompare(b));
+  const order = meadowAnimalBeltMarked(r) ? [FISH[0], ...originalOrder.filter(id => id !== FISH[0])] : originalOrder;
   for (const id of order) for (const site of sites(g, r)) {
     const school = schoolBirth(g, r, site, id, count, rng), additions = school.placements.map(p => ({ ...p, alive: true })), trial = { ...r, agents: r.agents.concat(additions) };
     if (!additions.every(a => clearPose(r, g, a, a.position, a.heading, a.pitch, q) && occupationClear(trial, a, a.position))) continue;
@@ -108,12 +115,12 @@ export function createOceanShoalLifePlan(g, r, { role = oceanShoalLifeRole(r, g)
     // at actual tick time, so changed obstacles may make the group hold.
     if (![0, 1, 2, 3].every(i => additions.every(a => clearPose(r, g, a, { ...a.position, x: a.position.x + Math.cos(i * Math.PI / 2) * M.schoolRangeM,
       z: a.position.z + Math.sin(i * Math.PI / 2) * M.schoolRangeM }, a.heading, 0, q)))) continue;
-    const placements = clone(school.placements); if (cap > count && rng('shark:present') < .7) { const shark = sharkBirth(g, r, school, rng, q); if (shark) placements.push(shark); }
+    const placements = clone(school.placements); if (!meadowAnimalBeltMarked(r) && cap > count && rng('shark:present') < .7) { const shark = sharkBirth(g, r, school, rng, q); if (shark) placements.push(shark); }
     delete school.placements; return freeze({ version: 1, school, placements });
   } return freeze({ version: 1, school: null, placements: [] });
 }
 export function initializeOceanShoalLife(r, g, { fresh = false, role = oceanShoalLifeRole(r, g), surface, bed, capacity = 20, maxAdded = 8 } = {}) {
-  if (!fresh || !nativeOwner(r, g) || r.timeSec !== 0 || typeof role !== 'boolean' || role !== oceanShoalLifeRole(r, g) || Object.keys(r).some(k => k.startsWith('shoalLife')) ||
+  if (!fresh || !nativeOwner(r, g) || !validateMeadowAnimalBelt(r, g) || r.timeSec !== 0 || typeof role !== 'boolean' || role !== oceanShoalLifeRole(r, g) || Object.keys(r).some(k => k.startsWith('shoalLife')) ||
     [...r.agents, ...(r.turtleAgents ?? [])].some(a => isOceanShoalLifeAgent(a) || marked(a)) || !validateLivingNetworkRecord(r)) return false;
   const cap = Math.min(20, Number.isSafeInteger(capacity) ? Math.max(0, capacity) : 0), occupied = r.agents.length + (r.turtleAgents?.length ?? 0);
   if (occupied > cap) return false;
@@ -223,7 +230,7 @@ export function validateOceanShoalLifeRecord(r, g, options = {}) {
   try { return recordValid(r, g, options); } catch { return false; }
 }
 function recordValid(r, g, { surface, bed, capacity = 20, beforeTick = false } = {}) {
-  if (!nativeOwner(r, g)) return false;
+  if (!nativeOwner(r, g) || !validateMeadowAnimalBelt(r, g)) return false;
   const agents = r.agents.filter(isOceanShoalLifeAgent), keys = Object.keys(r).filter(k => k.startsWith('shoalLife'));
   const has = keys.length || agents.length || [...r.agents, ...(r.turtleAgents ?? [])].some(marked) || (r.turtleAgents ?? []).some(isOceanShoalLifeAgent);
   if (!has) return true;

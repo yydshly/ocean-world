@@ -3,6 +3,7 @@ import { oceanRockHeight, oceanRockSurface } from './oceanRockShape.js';
 import { oceanBiodiversityPatchHeight } from './oceanBiodiversityShape.js';
 import { oceanTurtleSeagrassLeafPose } from './oceanTurtleGrazing.js';
 import { recordLivingAdmission, recordLivingIngestion, recordLivingDeath, livingNetworkBalance, validateLivingNetworkRecord, LIVING_NETWORK_UNITS } from './livingEcologyNetwork.js';
+import { meadowAnimalBeltMarked, validateMeadowAnimalBelt, meadowAnimalBeltRank } from './meadowAnimalBelt.js';
 
 export const OCEAN_MEADOW_LIFE_VERSION = 1;
 export const OCEAN_MEADOW_LIFE_PROFILE = 'living-shallows-v1';
@@ -36,7 +37,8 @@ function hash(text) { let h = 2166136261; for (const c of String(text)) h = Math
 const randomFor = (g, r) => salt => hash(`meadow-life-v1|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
 const nativeOwner = (r, g) => g?.profile === OCEAN_MEADOW_LIFE_PROFILE && typeof g.chunk === 'function' && typeof g.sample === 'function' &&
   typeof g.floorSurface === 'function' && Number.isSafeInteger(r?.cx) && Number.isSafeInteger(r?.cz) && r.id === `${r.cx},${r.cz}` &&
-  Array.isArray(r.agents) && r.basicNetwork && nonnegative(r.timeSec) && Number.isSafeInteger(r.ticks) && close(r.timeSec, r.ticks * .1);
+  Array.isArray(r.agents) && r.basicNetwork && nonnegative(r.timeSec) && Number.isSafeInteger(r.ticks) && close(r.timeSec, r.ticks * .1) &&
+  (!meadowAnimalBeltMarked(r) || validateMeadowAnimalBelt(r, g));
 function elements(g, r) { const rows = new Map(); for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++)
   for (const e of g.chunk(r.cx + dx, r.cz + dz).elements) rows.set(e.id, e); return [...rows.values()]; }
 function queries(g, r, supplied = {}) {
@@ -168,7 +170,8 @@ function nativeSites(g, r, rng) {
     hardSites.push({ siteId: `hard:${e.id}:${ix},${iz}`, hostId: e.id, leafIndex: null, x: e.x + x * c + z * s, z: e.z - x * s + z * c });
   }
   hardSites.sort((a, b) => rng(`order:${a.siteId}`) - rng(`order:${b.siteId}`) || a.siteId.localeCompare(b.siteId));
-  return { sites, hardSites, chunk };
+  return { sites: meadowAnimalBeltMarked(r) ? meadowAnimalBeltRank(g, r, sites) : sites,
+    hardSites: meadowAnimalBeltMarked(r) ? meadowAnimalBeltRank(g, r, hardSites) : hardSites, chunk };
 }
 function sitePose(g, r, id, site, sizeM, heading, q) {
   const t = traits[id], agent = { speciesId: id, sizeM, meadowLifeHostId: site.hostId ?? null, meadowLifeLeafIndex: site.leafIndex ?? null };
@@ -179,13 +182,19 @@ function sitePose(g, r, id, site, sizeM, heading, q) {
 function selectedSize(id, rng) { const s = oceanMeadowLifeSpeciesById[id]; return s.sizeRangeM[0] + rng(`${id}:size`) * (s.sizeRangeM[1] - s.sizeRangeM[0]); }
 export function createOceanMeadowLifePlan(g, r, { availableSlots = 0, maxAdded = 4, surface, bed } = {}) {
   if (!nativeOwner(r, g)) return freeze({ version: 1, placements: [] });
-  const slots = Math.min(4, Math.max(0, Math.floor(availableSlots)), Math.max(0, Math.floor(maxAdded))), placements = [], rng = randomFor(g, r), q = queries(g, r, { surface, bed });
+  const belt = meadowAnimalBeltMarked(r), slots = Math.min(belt ? 2 : 4, Math.max(0, Math.floor(availableSlots)), Math.max(0, Math.floor(maxAdded))), placements = [], rng = randomFor(g, r), q = queries(g, r, { surface, bed });
   const { sites, hardSites, chunk } = nativeSites(g, r, rng);
   for (const id of OCEAN_MEADOW_LIFE_IDS) {
-    if (placements.length >= slots || rng(`${id}:present`) > .82) continue;
+    if (placements.length >= slots || rng(`${id}:present`) > (belt && id === 'sand-edge-seahorse' ? .96 : .82)) continue;
     const t = traits[id], sizeM = selectedSize(id, rng), heading = rng(`${id}:heading`) * TAU;
-    const choices = t.mode === 'grass-tail' ? chunk.elements.filter(e => e.kind === 'seagrass').map(e => ({ siteId: `grass:${e.id}:0`, hostId: e.id, leafIndex: 0 })) :
+    let choices = t.mode === 'grass-tail' ? chunk.elements.filter(e => e.kind === 'seagrass').map(e => ({ siteId: `grass:${e.id}:0`, hostId: e.id, leafIndex: 0 })) :
       t.mode === 'rubble-floor' ? hardSites : sites.map(site => ({ ...site, hostId: null, leafIndex: null }));
+    if (belt && t.mode === 'grass-tail') {
+      // A seahorse choice names a real host, so route ranking must use that
+      // plant's actual coordinates rather than a missing site X/Z.
+      const hosts = new Map(chunk.elements.filter(e => e.kind === 'seagrass').map(e => [e.id, e]));
+      choices = meadowAnimalBeltRank(g, r, choices.map(site => ({ ...site, x: hosts.get(site.hostId).x, z: hosts.get(site.hostId).z })));
+    }
     for (const site of choices) {
       const agent = { id: `ocean:${r.id}:meadow-life:${id}:${site.siteId}`, speciesId: id, sizeM, meadowLifeHostId: site.hostId, meadowLifeLeafIndex: site.leafIndex };
       const support = survey({ ...r, agents: r.agents.concat(placements.map(p => ({ ...p, alive: true }))) }, g, agent, sitePose(g, r, id, site, sizeM, heading, q), heading, 0, q, true);
@@ -290,7 +299,7 @@ export function validateOceanMeadowLifeRecord(r, g, { surface, bed, capacity = 2
     r.ticks !== d.ticks + (beforeTick ? 1 : 0) || !close(r.timeSec - d.lastTickSec, beforeTick ? .1 : 0) ||
     !Array.isArray(d.addedIds) || !Array.isArray(d.birthPlacements) || d.addedIds.length !== agents.length || d.birthPlacements.length !== agents.length ||
     new Set(d.addedIds).size !== agents.length || new Set(d.birthPlacements.map(p => p.id)).size !== agents.length || new Set(agents.map(a => a.speciesId)).size !== agents.length ||
-    agents.length > 4 || r.agents.length + (r.turtleAgents?.length ?? 0) > Math.min(20, capacity) || !close(d.initialInputUnits, agents.length * .004) ||
+    agents.length > (meadowAnimalBeltMarked(r) ? 2 : 4) || r.agents.length + (r.turtleAgents?.length ?? 0) > Math.min(20, capacity) || !close(d.initialInputUnits, agents.length * .004) ||
     !['feedings', 'deaths', 'moved'].every(k => Number.isSafeInteger(d.counters?.[k]) && d.counters[k] >= 0) || !nonnegative(d.counters?.consumedUnits) ||
     !Array.isArray(d.events) || d.events.length > 32 || !validateLivingNetworkRecord(r) || r.agents.some(a => marked(a) && !isOceanMeadowLifeAgent(a)) ||
     (r.turtleAgents ?? []).some(a => marked(a) || isOceanMeadowLifeAgent(a))) return false;

@@ -51,6 +51,7 @@ import { createLivingShallowSeascapePlans, SHALLOW_SEASCAPE_ANCHOR } from './liv
 import { createLivingCoastalSeascapePlans, COASTAL_SEASCAPE_ANCHOR } from './livingCoastalSeascape.js';
 import { createReefValleyRegionPlans, reefValleyRegionOrigin } from './reefValleyRegion.js';
 import { createSeagrassMeadowRegionPlans, seagrassMeadowRegionOrigin } from './seagrassMeadowRegion.js';
+import { meadowAnimalBeltMarked, validateMeadowAnimalBelt, meadowAnimalBeltAllocation } from './meadowAnimalBelt.js';
 
 const speciesById = { ...reefSpeciesById, ...oceanSlopeSpeciesById, ...oceanPelagicSpeciesById, ...oceanMantaSpeciesById, ...reefGuildSpeciesById, ...openWaterSpeciesById, ...oceanBiodiversitySpeciesById, ...oceanBenthicLifeSpeciesById, ...oceanMeadowLifeSpeciesById, ...oceanShoalLifeSpeciesById };
 const meadowLifeMarked = row => row && (Object.keys(row).some(key => key.startsWith('meadowLife')) ||
@@ -126,7 +127,7 @@ export function oceanSupportHeight(generator, x, z, { avoidCoral = false, includ
  * food pools are relative indices, not measured biomass. Unloaded regions
  * freeze, and changed state is restored from IndexedDB when they return. */
 export class OceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false, turtleGrazing = false, shallowSeascape = false, biodiversity = false, benthicLife = false, meadowLife = false, shoalLife = false, coastalSeascape = false, reefValleyRegion = false, meadowRegion = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false, turtleGrazing = false, shallowSeascape = false, biodiversity = false, benthicLife = false, meadowLife = false, shoalLife = false, coastalSeascape = false, reefValleyRegion = false, meadowRegion = false, meadowAnimalBelt = false } = {}) {
     this.seed = seed;
     this.generator = generator;
     this.livingNetworkEnabled = generator.profile === LIVING_NETWORK_PROFILE;
@@ -171,6 +172,9 @@ export class OceanEcology {
     this._meadowRegionRequested = meadowRegion === true;
     this.meadowRegionEnabled = this._meadowRegionRequested && this.livingGeologyEnabled &&
       typeof generator.withMeadowRegionPlans === 'function' && typeof generator.replaceRidgeOwners === 'function';
+    this._meadowAnimalBeltRequested = meadowAnimalBelt === true;
+    this.meadowAnimalBeltEnabled = this._meadowAnimalBeltRequested && this.meadowRegionEnabled &&
+      this.benthicLifeEnabled && this.meadowLifeEnabled && this.shoalLifeEnabled;
     this._meadowRegionBirths = new WeakMap();
     this._meadowRegionAdmission = { privateOwnerCount: 0, privateOwnerLimit: REEF_VALLEY_PREFETCH_OWNER_LIMIT, groups: [] };
     this._meadowRegionTiming = null;
@@ -242,6 +246,7 @@ export class OceanEcology {
         !row.agents.every(agent => typeof agent.id === 'string' && agent.regionId === id && speciesById[agent.speciesId] &&
           typeof agent.alive === 'boolean' && Number.isFinite(agent.energy) && agent.energy >= 0 && agent.energy <= 1 &&
           point(agent.position) && point(agent.home) && point(agent.target) && point(agent.velocity) && point(agent.refuge)) ||
+        !validateMeadowAnimalBelt(row, this.generator) ||
         !validateLivingNetworkRecord(row) || !validateReefGuildRecord(row, this.generator, options) ||
         !validateOpenWaterLifeRecord(row, this.generator, options)) return false;
     // V8's complete group validates this common mutable schema once. Keep
@@ -526,8 +531,16 @@ export class OceanEcology {
     if (coastal) this._coastalBirths.set(region, coastal);
     const valley = this.reefValleyRegionEnabled ? this.generator.reefValleyAllocation?.(cx, cz) : null;
     if (valley) this._reefValleyBirths.set(region, valley);
+    // This is reached for a v9 group only after all twelve owners read null.
+    // The marker controls initial habitat candidates; it never upgrades history.
+    if (this.meadowAnimalBeltEnabled && chunk.ridgePlan?.version === 9) {
+      region.meadowAnimalBeltVersion = 1;
+      region.meadowAnimalBelt = { version: 1, initializedAtSec: 0,
+        groupId: `${chunk.ridgePlan.group.cx},${chunk.ridgePlan.group.cz}`, recipe: 'route-neighborhood-v1' };
+    }
     const meadow = this.meadowRegionEnabled ? this.generator.meadowRegionAllocation?.(cx, cz) : null;
-    if (meadow) this._meadowRegionBirths.set(region, meadow);
+    const animalBelt = meadowAnimalBeltMarked(region) ? meadowAnimalBeltAllocation(this.generator, region) : null;
+    if (meadow) this._meadowRegionBirths.set(region, animalBelt ?? meadow);
     if (this.biodiversityEnabled) this._biodiversityBirths.add(region);
     if (this.benthicLifeEnabled) this._benthicLifeBirths.add(region);
     if (this.meadowLifeEnabled) this._meadowLifeBirths.add(region);
@@ -1564,10 +1577,11 @@ export class OceanEcology {
         const marked = origin.ownerIds.map(id => prefetched.get(id)).filter(meadowRegionMarked);
         if (!marked.length) continue;
         const group = marked[0].livingRidgePlan?.group;
+        const animalBeltMarked = marked.some(meadowAnimalBeltMarked);
         const complete = measure('canonicalValidationMs', () => marked.length === 12 && group?.cx === origin.cx && group?.cz === origin.cz &&
           JSON.stringify(group.ownerIds) === JSON.stringify(origin.ownerIds) && origin.ownerIds.every(id => {
             const row = prefetched.get(id), plan = row?.livingRidgePlan;
-            return row?.meadowRegionVersion === 1 && row.meadowRegionGroupId === `${origin.cx},${origin.cz}` &&
+            return meadowAnimalBeltMarked(row) === animalBeltMarked && row?.meadowRegionVersion === 1 && row.meadowRegionGroupId === `${origin.cx},${origin.cz}` &&
               row.meadowRegionInitializedAtSec === 0 && plan?.version === 9 && plan.id === id &&
               JSON.stringify(plan.group) === JSON.stringify(group) && validateLivingRidgePlan(plan, this.generator);
           }));
@@ -1623,6 +1637,9 @@ export class OceanEcology {
       }
       // Validate every saved support owner before admitting new neighbours.
       const validationRows = [...prefetched].filter(([id]) => !coastalValidated.has(id) && !valleyValidated.has(id) && !valleyExtraIds.has(id) && !meadowValidated.has(id) && !meadowExtraIds.has(id));
+      for (const [id, saved] of validationRows) if (meadowAnimalBeltMarked(saved) && !validateMeadowAnimalBelt(saved, this.generator)) {
+        this._center = null; throw new Error(`Invalid saved meadow animal belt owner ${id}; historical community was not regenerated.`);
+      }
       for (const [id, saved] of validationRows) if (saved && (['biodiversityVersion', 'biodiversityInitializedAtSec', 'biodiversity'].some(key => Object.hasOwn(saved, key)) || saved.agents?.some(isOceanBiodiversityAgent))) {
         if (!validateOceanBiodiversityRecord(saved, this.generator, {
           surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
@@ -1877,7 +1894,7 @@ export class OceanEcology {
               region.livingRidgePlan = clone(plan);
               region.meadowRegionVersion = 1; region.meadowRegionGroupId = `${origin.cx},${origin.cz}`;
               region.meadowRegionInitializedAtSec = 0;
-              if (!origin.ownerIds.includes(region.id) || !validateLivingNetworkRecord(region) ||
+              if (!validateMeadowAnimalBelt(region, this.generator) || !origin.ownerIds.includes(region.id) || !validateLivingNetworkRecord(region) ||
                   this._residentCount(region) > OCEAN_REGION_AGENT_LIMIT) throw new Error('Invalid fresh meadow-region ecological network.');
               this._meadowRegionBirths.delete(region);
               return region;
@@ -2581,6 +2598,8 @@ export class OceanEcology {
         reefValleyRegionGroupId: region.reefValleyRegionGroupId, reefValleyRegionInitializedAtSec: region.reefValleyRegionInitializedAtSec } : {}),
       ...(region.meadowRegionVersion !== undefined ? { meadowRegionVersion: region.meadowRegionVersion,
         meadowRegionGroupId: region.meadowRegionGroupId, meadowRegionInitializedAtSec: region.meadowRegionInitializedAtSec } : {}),
+      ...(meadowAnimalBeltMarked(region) ? { meadowAnimalBeltVersion: region.meadowAnimalBeltVersion,
+        meadowAnimalBelt: clone(region.meadowAnimalBelt) } : {}),
       formationsVersion: region.formationsVersion ?? 0,
       slopeCommunityVersion: region.slopeCommunityVersion ?? 0,
       slopeCommunityAdded: region.slopeCommunityAdded ?? 0,
@@ -2643,7 +2662,8 @@ export class OceanEcology {
         ...(this.reefValleyRegionEnabled || this._reefValleyAdmission.groups.length ? {
           reefValleyRegion: { enabled: this.reefValleyRegionEnabled, ...clone(this._reefValleyAdmission), transitionTimingMs: clone(this._reefValleyTiming) } } : {}),
         ...(this.meadowRegionEnabled || this._meadowRegionAdmission.groups.length ? {
-          meadowRegion: { enabled: this.meadowRegionEnabled, ...clone(this._meadowRegionAdmission), transitionTimingMs: clone(this._meadowRegionTiming) } } : {}),
+          meadowRegion: { enabled: this.meadowRegionEnabled, ...clone(this._meadowRegionAdmission), transitionTimingMs: clone(this._meadowRegionTiming),
+            ...(this.meadowAnimalBeltEnabled ? { animalBeltEnabled: true, animalBeltScope: 'initial route-neighbourhood habitats only; saved populations are preserved' } : {}) } } : {}),
         planktonTransport: { enabled: typeof this.store.saveMany === 'function',
           mode: typeof this.store.saveMany === 'function' ? 'loaded-neighbour-upwind' : 'legacy-local-exchange',
           method: OCEAN_PLANKTON_TRANSPORT_METHOD, scope: OCEAN_PLANKTON_TRANSPORT_SCOPE,
@@ -2691,6 +2711,8 @@ export class OceanEcology {
       typeof generator.withReefValleyPlans === 'function' && typeof generator.replaceRidgeOwners === 'function';
     this.meadowRegionEnabled = this._meadowRegionRequested && this.livingGeologyEnabled &&
       typeof generator.withMeadowRegionPlans === 'function' && typeof generator.replaceRidgeOwners === 'function';
+    this.meadowAnimalBeltEnabled = this._meadowAnimalBeltRequested && this.meadowRegionEnabled &&
+      this.benthicLifeEnabled && this.meadowLifeEnabled && this.shoalLifeEnabled;
     this.environmentField = createOceanEnvironment(seed, generator);
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10;
     this._disposed = false;

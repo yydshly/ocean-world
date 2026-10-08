@@ -2,6 +2,7 @@ import { oceanRockHeight } from './oceanRockShape.js';
 import { oceanBiodiversityPatchHeight } from './oceanBiodiversityShape.js';
 import { recordLivingAdmission, recordLivingIngestion } from './livingEcologyNetwork.js';
 import { oceanBenthicLifeSpeciesById } from './oceanBenthicLifeSpecies.js';
+import { meadowAnimalBeltMarked, validateMeadowAnimalBelt, meadowAnimalBeltSites, meadowAnimalBeltRank } from './meadowAnimalBelt.js';
 
 export const OCEAN_BENTHIC_LIFE_VERSION = 1;
 export const OCEAN_BENTHIC_LIFE_PROFILE = 'living-shallows-v1';
@@ -97,12 +98,22 @@ function candidateSites(generator, region, surface, bed) {
       surface(x, z, true) > h + .01 || plantOverlap(plants, x, z, .05)) continue;
     sites.push({ siteId, x, z, mode: 'hard', hostId: host.id, grassNear: false, order: layout(`order:${siteId}`) });
   }
+  if (meadowAnimalBeltMarked(region)) for (const candidate of meadowAnimalBeltSites(generator, region)) {
+    const { siteId, x, z } = candidate, h = surface(x, z), floor = bed(x, z);
+    // The route contributes possible locations only. Actual bed, roots and
+    // later whole-body admission still decide whether a niche exists.
+    if (!inBounds(chunk.bounds, x, z, .15) || ![h, floor].every(Number.isFinite) || h - floor > .025 ||
+      generator.sample(x, z).substrate !== 'sand' || surface(x, z, true) > h + .01 || plantOverlap(plants, x, z, .05)) continue;
+    sites.push({ siteId, x, z, mode: 'soft', hostId: null,
+      grassNear: plants.some(e => e.kind === 'seagrass' && Math.hypot(x - e.x, z - e.z) < 5), order: layout(`order:${siteId}`) });
+  }
   sites.sort((a, b) => Number(b.grassNear) - Number(a.grassNear) || a.order - b.order || a.siteId.localeCompare(b.siteId));
-  return { chunk, sites, plants };
+  return { chunk, sites: meadowAnimalBeltMarked(region) ? meadowAnimalBeltRank(generator, region, sites) : sites, plants };
 }
 function validOwner(generator, region, surface, bed) {
   return generator?.profile === OCEAN_BENTHIC_LIFE_PROFILE && Number.isSafeInteger(region?.cx) && Number.isSafeInteger(region?.cz) &&
-    region.id === `${region.cx},${region.cz}` && typeof surface === 'function' && typeof bed === 'function';
+    region.id === `${region.cx},${region.cz}` && typeof surface === 'function' && typeof bed === 'function' &&
+    (!meadowAnimalBeltMarked(region) || validateMeadowAnimalBelt(region, generator));
 }
 /** Finite owner-local planning in the ordinary generated scene. Empty niches
  * remain empty; this package adds actual records and no static scenery. */
@@ -136,10 +147,19 @@ export function createOceanBenthicLifePlan(generator, region, { random, surface,
       return;
     }
   };
-  place('blue-spotted-ray', soft, .42 + preference * .25);
-  place('reef-goatfish', soft, .66 + preference * .18);
-  place('tiger-cowrie', [...hard, ...soft], .72 + preference * .16);
-  place('spotted-hermit-crab', [...soft, ...hard], .76 + preference * .12);
+  if (meadowAnimalBeltMarked(region)) {
+    // A fresh route neighbourhood favours actual near-bottom feeding actors;
+    // the sparse ray and genuinely rock-supported cowrie keep distinct niches.
+    place('reef-goatfish', soft, .96);
+    place('spotted-hermit-crab', [...soft, ...hard], .94);
+    place('blue-spotted-ray', soft, .24 + preference * .16);
+    place('tiger-cowrie', hard, .55 + preference * .15);
+  } else {
+    place('blue-spotted-ray', soft, .42 + preference * .25);
+    place('reef-goatfish', soft, .66 + preference * .18);
+    place('tiger-cowrie', [...hard, ...soft], .72 + preference * .16);
+    place('spotted-hermit-crab', [...soft, ...hard], .76 + preference * .12);
+  }
   return freeze({ version: 1, placements, communityType, preference });
 }
 
@@ -288,6 +308,7 @@ export function validateOceanBenthicLifeRecord(region, generator, { surface, bed
       !Number.isFinite(agent.sizeM) || agent.sizeM < range[0] || agent.sizeM > range[1] ||
       agent.benthicLifeHostId !== site.hostId || agent.refugeHostId !== site.hostId || agent.benthicLifeSiteId !== site.siteId || agent.benthicLifeMode !== site.mode ||
       (['blue-spotted-ray', 'reef-goatfish'].includes(agent.speciesId) && site.mode !== 'soft') ||
+      (meadowAnimalBeltMarked(region) && agent.speciesId === 'tiger-cowrie' && site.mode !== 'hard') ||
       ![agent.position, agent.home, agent.refuge, agent.target, agent.velocity].every(point) || !point(birth) ||
       !Number.isFinite(agent.heading) || !Number.isFinite(agent.targetHeading) || !Number.isFinite(birth.heading) ||
       agent.pitch !== 0 || !nonnegative(agent.supportOffset) || agent.supportOffset !== birth.supportOffset || agent.dietProxy !== OCEAN_BENTHIC_LIFE_FOOD_SCOPE ||
