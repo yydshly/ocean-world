@@ -1,0 +1,672 @@
+{
+  "scope": "Finite actual-depth 700m open midwater community, three sourced complete animals and ordinary persistent exploration; no browser/GPU/whole-tour visual acceptance",
+  "files": {
+    ".github/workflows/pages.yml": "cbd289276b09fa7192be0522b8a497690d5a8cc1325d02113b19c7aca8e095b4",
+    "docs/DEEP_MIDWATER_LIFE_SOURCES.md": "a0b1ab72a8134f984e66eb7c51386b52514a19a3bb0bb9a195f4b63fb7245417",
+    "src/OceanApp.jsx": "5f8d5994b6c4c531f196a87926c66b9b896388e8bec48a4228bb6bae2e98dc89",
+    "src/deepBenthicLife.js": "4ab750c9d3d7d4a2ec0e8a87e3ff0f5075bc011fc484c51779705b3da90574e0",
+    "src/deepBenthicLifeSpecies.js": "ed8fd46ed2d6d9632b3ffc1d1dbfd0ef91376e6c90294050660a3a7b31aa7f12",
+    "src/deepHabitat.js": "8dae6cd5f9b0c6b1dc95246b8a5d586d063ad36bf64fe087d8ef850e93cb0da1",
+    "src/deepHardLife.js": "e5f8eb0c3f76565afe9fe90131076557aa16b26a55f16ec0c4ba35a8e9586d7e",
+    "src/deepHardLifeSpecies.js": "2e1b45c90efcffa6f0e752e900232a28b53daf49b9358a3508f3e8984d4a6b75",
+    "src/deepMidwaterLife.js": "1d947c989954219a181fa57f87914f5201fe1ea8265ea27415d334a06920c2c7",
+    "src/deepMidwaterLifeRoutes.js": "6bed20780dfc53e693bb76c333dd167cc63e2a2b5c2b8a021d62992353b53c8f",
+    "src/deepMidwaterLifeSpecies.js": "634b6c05c73c25af2510af03e906e576b4d46b13e5e896d122b7f850ace3141f",
+    "src/deepOceanEcology.js": "578c69010422f336e2ac6d172569f6cc079deba65ba1ea7199d6be398599d15d",
+    "src/deepOceanGeneration.js": "c42c5d17d1a6d27eaffcd967d578fe89cd53b9303dc5b221a561ec12f1cff7d0",
+    "src/deepOceanNavigation.js": "ccfde963fd94b69e38c660f469625108295f6a1f39601b6f6bd3889b70001b2f",
+    "src/deepPredatorEcology.js": "2430aee861189a3cb097d1fa1bfb83173ab37431d3417f5f199053ea0f084801",
+    "src/deepSeaSpiderGeometry.js": "2b93dcb618f913ed23d5bb2a67907e23b6d8f4526f8cd9a867e10dc6018b017d",
+    "src/deepSeascape.js": "cbc1007554e6c7da54a5c6b0bd1eba1b7407df1e8e68113f9663ec76718676a5",
+    "src/deepSimulation.js": "3ed350e678bb89002445d1c9c6b376aa7dcae5780a04c5d4d4a1c853bfe7623b",
+    "src/deepSpecies.js": "9da0e1b41bbb9c4b61c26d082bd8a3090b0d1350fef626836ecdb44ea2a88c8a",
+    "src/deepWaterLife.js": "260640c29177e033e2fe8d814e72f4256358971c9fa79e76de251f03f389fcfd",
+    "src/deepWaterLifeSpecies.js": "721e6ff5d88f4c21a24e7ee02327b17e0f2468f9ccbbf05cb87038803305b370",
+    "src/deepWholeSeascape.js": "deae8f6e0b71d7e718a80d788bc1b810a93ea051809c93ec022dc50855aaa2e5",
+    "src/demoCapabilities.js": "15f3554e59f88975206e95f5ed31eab8ff5bda960cf9ee934f939efb142e65b3",
+    "src/directorTour.js": "89c1e1fc3d028ea4ade2db2892bb975ce405a743a8961da073569350fb0484a0",
+    "src/sceneCatalog.js": "6f8dcef529fe3efdfdc8905fb490f55b746af658ee3eed38fa81d5c828493bfb",
+    "src/useDirectorTour.js": "daeb20326e1213e50eb8cdff77953baca0523b52d03993b652d3b145a31ddfaf",
+    "src/world/DeepBenthicLifeAssets.js": "e75d7def429e3414c902206344beabc1704f9515d8ec75638c90e0513093459a",
+    "src/world/DeepHardLifeAssets.js": "284005116c79353ceeb16df0b2e038604ad83915d0c41eb4416a53890c948f0a",
+    "src/world/DeepMidwaterLifeAssets.js": "4bc47dba8e1f53d20195e6283733463da7a24d5e986f6e25401499f546070671",
+    "src/world/DeepOceanAnimals.js": "1e150686a05eececbec52882f21cdfd3f77bf206f6374c2e050c8e4fe48479de",
+    "src/world/DeepWaterLifeAssets.js": "0e9f0bdb641d051e57e8f351675a446e4efa0642f9af7632c9993feadab38607",
+    "src/world/ReefWorld.js": "276a4d47eab71e246bbd90248b8439e068446580281c633a9732daae96be5e86",
+    "src/world/deepOrganisms.js": "afd05b3a2c5d3ddc9d6989ccd599c716a98640b7bd8307e5859689791345f950",
+    "src/world/deepSeaSpiderOrganism.js": "6d5a04a9caf54f826c33fb874c68fe8b754193648da45dd931c1b5533b3cab18",
+    "tests/deep-benthic-life-world.test.mjs": "8a3e4b9cc7e2c7bca227a16dd82e1c4559931b7462aa5e96781973b85c4c3cc0",
+    "tests/deep-hard-life-world.test.mjs": "129670a2042e7f401285dfc022a2c098b7ad039ebf3008ee15e5fe3bc6a5689c",
+    "tests/deep-midwater-life-ecology.test.mjs": "45dba8dff224506b4c73358ad7f5992c28dc6bd4babeb71d061d05a82bc775cc",
+    "tests/deep-midwater-life-render.test.mjs": "a7014f3a9e8e2c2c327ad01040303b9a7aa7cd17fdf5447a71d7ba67068ee9d7",
+    "tests/deep-midwater-life-world.test.mjs": "a83e383d89fa4edddc75109a8367e7e7802768bbb87e7fb3ce8845723cf1e7b8",
+    "tests/deep-midwater-life.test.mjs": "73f7badb1318c869176acd6cdad4881a21b95dfe05c1c6ba309572d2d445926b",
+    "tests/deep-water-life-world.test.mjs": "b7d5b35597e6255b5ab127eb06d9a0e0fa56480169638b5ad00207c7dca74fd9",
+    "tests/demo-navigation.test.mjs": "448be1484ed2441d52bc0a6a45c08583e7dc509cf9b2ffca4ff270d0fb430f64",
+    "tests/director-player.test.mjs": "fb5b0bc3014e0efe64461c366cdd8a9817c7ae888ab4f7177b05df33e9c92ca7",
+    "tests/director-tour.test.mjs": "e11fa2cfa24bc2f6fdc483cf3cbb865392da930cacb57f3b2cdf4115f2136e6d",
+    "tests/kelp-benthic-life-world.test.mjs": "50c8f8e5101e4797714f745766629f891ac0647ab27068d2efc8d14ae6b99a25",
+    "tests/kelp-near-bottom-life-world.test.mjs": "b5735a505ef4b7de0c31ccaea0d10ae6e46c996cacf280516d21d72e845811bb",
+    "tests/kelp-understory-life-world.test.mjs": "32b1c6b7bbe48d3629d430744949b75ab84659e2d6869be006c406ff87d3f92e",
+    "tests/kelp-water-life-world.test.mjs": "c534de870b84c0c15805964429f4ec2c898ba0f1ee5c4785f7534f29e18edc68",
+    "tests/ocean-meadow-life-world.test.mjs": "3ace3a44d5fb3286f40b3bcb17991fa957cdd5be8148de12713b92f08b04d029",
+    "tests/ocean-shoal-life-world.test.mjs": "eb08afee4eb607510f937b55fc99eda2bfb09a7c06c0abe1e5e469af4114c1e5"
+  },
+  "originalSourceBaseline": "3c1a2f81a895e6c658cbe68897797317d7e0f3dc",
+  "originalSourceExact": {
+    "src/deepSimulation.js": true,
+    "src/deepOceanGeneration.js": true,
+    "src/deepHabitat.js": true,
+    "src/deepWholeSeascape.js": true,
+    "src/deepBenthicLife.js": true,
+    "src/deepBenthicLifeSpecies.js": true,
+    "src/deepSeaSpiderGeometry.js": true,
+    "src/deepPredatorEcology.js": true,
+    "src/world/deepOrganisms.js": true,
+    "src/world/deepSeaSpiderOrganism.js": true,
+    "src/world/DeepBenthicLifeAssets.js": true,
+    "src/deepHardLifeSpecies.js": true,
+    "src/world/DeepHardLifeAssets.js": true,
+    "src/deepSpecies.js": true,
+    "src/deepHardLife.js": true,
+    "src/deepWaterLife.js": true,
+    "src/deepWaterLifeSpecies.js": true,
+    "src/world/DeepWaterLifeAssets.js": true
+  },
+  "entries": {
+    "midwaterLife": "https://yydshly.github.io/ocean-world/?demo=deep-midwater-life",
+    "director": "https://yydshly.github.io/ocean-world/?demo=director",
+    "actualNativeEntry": {
+      "ownerId": "192,8",
+      "x": 12320,
+      "z": 544,
+      "observationDepthM": 700,
+      "newIndividuals": 3,
+      "totalAnimalRecords": 16
+    }
+  },
+  "local": {
+    "validationFileCount": 124,
+    "checks": {
+      "tests": 855,
+      "pass": 855,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "durationMs": 1039352.7506
+    },
+    "productionBuild": "success",
+    "buildCount": 1,
+    "currentSourceHashesExact": true,
+    "builtRuntimeFilesUnchanged": 202,
+    "diagnostics": "Initial render 3/5 passed: picking fixture aimed through an empty AABB centre and pose comparison treated signed numeric zero as a change; only fixtures corrected. Initial ecology 4/6 passed: physiological comparison mistakenly included display observerLight metadata, and the chosen window had no stored offscreen owner; compare remaining physiology strictly and use one zero-tick cold fault probe of actually read existing halo history, without enlarging the two 12-second ecology observations. Initial world 3/6 passed: fixtures supplied null to a finite camera depth helper and compared legitimate pause-checkpoint saved counters; Second world 4/6 passed: two bed fixtures also omitted required normalized-view freeDepthM/habitat; these were supplied from the actual generator, and both affected cases passed without repeating the other four. Actual complete records and views remain strict. Model review added event label/cause required by the real UI and fixed caller-expected allocation plus deterministic saved birth roster. Navigation initial reported 44/45 passed; expected route registry missed the appended entry. The attempted command also included a nonexistent filename; its compact honest diagnostic is retained, without claiming a complete original raw TAP file. Follow-up 54/54 passed. All initial logs are diagnostics, never added to the final unique workflow case count.",
+    "targetedDiagnostics": {
+      "deep-midwater-life-model-initial.log": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "deep-midwater-life-render-initial.log": {
+        "tests": 5,
+        "pass": 3,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "deep-midwater-life-render-final.log": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "deep-midwater-life-ecology-initial.log": {
+        "tests": 6,
+        "pass": 4,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "deep-midwater-life-ecology-final.log": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "deep-midwater-life-world-initial.log": {
+        "tests": 6,
+        "pass": 3,
+        "fail": 3,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "deep-midwater-life-world-second.log": {
+        "tests": 6,
+        "pass": 4,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "deep-midwater-life-world-bed-recovery.log": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "deep-midwater-life-navigation.log": {
+        "tests": 54,
+        "pass": 54,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    "logs": [
+      "deep-midwater-life-build.log",
+      "deep-midwater-life-checks.log",
+      "deep-midwater-life-ecology-final.log",
+      "deep-midwater-life-ecology-initial.log",
+      "deep-midwater-life-model-initial.log",
+      "deep-midwater-life-navigation.log",
+      "deep-midwater-life-render-final.log",
+      "deep-midwater-life-render-initial.log",
+      "deep-midwater-life-world-bed-recovery.log",
+      "deep-midwater-life-world-initial.log",
+      "deep-midwater-life-world-second.log"
+    ]
+  },
+  "nativeModelReceipts": [
+    "deep-midwater-life-model.json",
+    "deep-midwater-life-continuation-model.json"
+  ],
+  "nativeSummary": {
+    "productionWindows": 2,
+    "observedSecPerWindow": 12,
+    "uniqueObservedOwners": 12,
+    "actualNewIndividuals": 22,
+    "movedIndividuals": 22,
+    "fedIndividuals": 22,
+    "successfulBites": 50,
+    "intakeUnits": 0.004000000000000005,
+    "initialFoodUnits": 0,
+    "externalInputUnits": 0.014880000000000006,
+    "exportedUnits": 0.0048000000000000004,
+    "maxAllAnimalRecordsPerOwner": 20,
+    "maxFoodBalanceError": 2.1649348980190553e-15,
+    "maxCombinedFoodBalanceError": 1.021405182655144e-14,
+    "maxConditionBalanceError": 2.220446049250313e-14,
+    "originalHistoryPreservedExactly": true
+  },
+  "sourceSpecies": [
+    {
+      "id": "helmet-jelly",
+      "scientificName": "Periphylla periphylla",
+      "sizeMeasure": "bell-diameter",
+      "sizeRangeM": [
+        0.2,
+        0.25
+      ],
+      "depthSelectionM": [
+        650,
+        750
+      ],
+      "foodPool": "midwaterAnimalFood",
+      "feedingEvidenceLevel": "official-aquarium-species-diet-with-tentacle-capture-anatomy",
+      "sourceLinks": [
+        {
+          "url": "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/helmet-jelly",
+          "label": "Monterey Bay Aquarium物种页：学名、浮游动物食性、铃径25厘米和防御闪光"
+        },
+        {
+          "url": "https://www.mbari.org/news/mbari-researchers-encounter-rarely-seen-deep-sea-seven-arm-octopus/",
+          "label": "MBARI直接观察2025-11-06：蒙特雷约700米的具名P.periphylla；此记录不是水母食谱"
+        },
+        {
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0967063707001094",
+          "label": "The habitat of mesopelagic scyphomedusae in Monterey Bay, California（2007）：1990–1998、200–1000米原观察调查"
+        },
+        {
+          "url": "https://link.springer.com/chapter/10.1007/978-4-431-54865-2_51",
+          "label": "Lindsay等JAMSTEC作者开放章节：Periphylla全体形Fig51.31，十二触手/十六瓣/四感官；日本样本仅用于形态"
+        },
+        {
+          "url": "https://www.whoi.edu/ocean-learning-hub/ocean-facts/helmet-jellyfish/",
+          "label": "WHOI海洋机构说明：冠水母十二触手及触手最大约50厘米，非蒙特雷配对实测"
+        }
+      ]
+    },
+    {
+      "id": "vampire-squid",
+      "scientificName": "Vampyroteuthis infernalis",
+      "sizeMeasure": "mantle-length",
+      "sizeRangeM": [
+        0.1,
+        0.13
+      ],
+      "depthSelectionM": [
+        650,
+        750
+      ],
+      "foodPool": "midwaterOrganicParticles",
+      "feedingEvidenceLevel": "original-monterey-rov-laboratory-gut-and-filament-study",
+      "sourceLinks": [
+        {
+          "url": "https://www.mbari.org/animal/vampire-squid/",
+          "label": "MBARI具名物种页：600–900米、最大总长30厘米、海洋雪、两丝/八腕/鳍与发光防御"
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479720/",
+          "label": "Hoving/Robison2012原论文：蒙特雷600–800米、22–150毫米ML、ROV/实验/胃含物与采食丝"
+        },
+        {
+          "url": "https://www.mbari.org/news/mbari-researchers-discover-what-vampire-squids-eat-its-not-what-you-think/",
+          "label": "原研究机构2012原作者研究报道与全体/采食图：伸丝可达身体八倍、收丝刮取黏液转口、主要海洋雪"
+        }
+      ]
+    },
+    {
+      "id": "giant-red-mysid",
+      "scientificName": "Neognathophausia ingens",
+      "sizeMeasure": "rostrum-to-telson-length",
+      "sizeRangeM": [
+        0.09,
+        0.12
+      ],
+      "depthSelectionM": [
+        650,
+        750
+      ],
+      "foodPool": "midwaterOrganicParticles",
+      "feedingEvidenceLevel": "mbari-authored-species-description-preserved-with-credited-regional-whole-animal-photo",
+      "sourceLinks": [
+        {
+          "url": "https://www.marinespecies.org/photogallery.php?album=675&pic=111872",
+          "label": "MBARI署名Tiburon直接全体照片与机构说明：Monterey外峡谷约900米、红色虾形、沉降碎屑/小死亡动物"
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5312021/",
+          "label": "Frank2017原加州研究：San Clemente Basin成体CL19.7–49毫米，日间650–750米、夜间400–900米扩散"
+        },
+        {
+          "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/12989.pdf",
+          "label": "Kathman等DFO1986东北太平洋官方鉴定手册pp160–162：全形/额角/柄眼/口器/尾扇、350毫米含额角、捕获常<160毫米"
+        },
+        {
+          "url": "https://www.marinespecies.org/aphia.php?id=220999&p=taxdetails",
+          "label": "WoRMS具名接受组合Neognathophausia ingens；与旧Gnathophausia文献映射"
+        }
+      ]
+    }
+  ],
+  "countsBySpecies": {
+    "helmet-jelly": {
+      "bornIndividuals": 9,
+      "movedIndividuals": 9,
+      "fedIndividuals": 9,
+      "actualIntakes": 22,
+      "consumedUnits": 0.00176
+    },
+    "vampire-squid": {
+      "bornIndividuals": 7,
+      "movedIndividuals": 7,
+      "fedIndividuals": 7,
+      "actualIntakes": 14,
+      "consumedUnits": 0.0011200000000000001
+    },
+    "giant-red-mysid": {
+      "bornIndividuals": 6,
+      "movedIndividuals": 6,
+      "fedIndividuals": 6,
+      "actualIntakes": 14,
+      "consumedUnits": 0.0011200000000000001
+    }
+  },
+  "singleOwnerContinuation": {
+    "owner": "192,8",
+    "nativeSeconds": 24,
+    "resources": {
+      "midwaterAnimalFood": 0.00024000000000000003,
+      "midwaterOrganicParticles": 0.00048
+    },
+    "foodLedger": {
+      "initial": 0,
+      "input": 0.0028800000000000023,
+      "ingested": 0.00072,
+      "exported": 0.00144,
+      "byPool": {
+        "midwaterAnimalFood": {
+          "initial": 0,
+          "input": 0.00096,
+          "ingested": 0.00024000000000000003,
+          "exported": 0.00048
+        },
+        "midwaterOrganicParticles": {
+          "initial": 0,
+          "input": 0.00192,
+          "ingested": 0.00048,
+          "exported": 0.00096
+        }
+      }
+    },
+    "energyLedger": {
+      "initial": 2.1819921364076436,
+      "feedingGain": 0.00144,
+      "maintenanceAndMotionDebit": 0.002492204422705221,
+      "clampCorrection": 0,
+      "deathLoss": 0
+    },
+    "counters": {
+      "ticks": 240,
+      "inputPulses": 36,
+      "feedings": 9,
+      "consumedUnits": 0.00072,
+      "deaths": 0
+    },
+    "foodBudgetError": 2.0599841277224584e-18,
+    "energyBudgetError": 5.329070518200751e-15,
+    "individuals": [
+      {
+        "id": "deep-midwater-life:192,8:helmet-jelly",
+        "speciesId": "helmet-jelly",
+        "sizeM": 0.21047507371986285,
+        "sizeMeasure": "bell-diameter",
+        "home": {
+          "x": 12320.42675501225,
+          "y": 2799.6637852480635,
+          "z": 542.0460603490587
+        },
+        "position": {
+          "x": 12320.505939941626,
+          "y": 2799.6667901095475,
+          "z": 542.0186147670685
+        },
+        "timeSec": 24,
+        "travelledM": 0.960000000061339,
+        "feedingCount": 3,
+        "lastMidwaterIntake": {
+          "timeSec": 23.400000000000002,
+          "ownerId": "192,8",
+          "channelId": "deep-midwater-channel:192,8:helmet-jelly",
+          "pool": "midwaterAnimalFood",
+          "parcelId": "deep-midwater-parcel:192,8:19",
+          "parcelOrdinal": 19,
+          "parcelCreatedAtSec": 20.1,
+          "parcelTravelM": 0.5940000000000002,
+          "sourcePosition": {
+            "x": 12319.930957521754,
+            "y": 2799.2638826079956,
+            "z": 542.0313370281917
+          },
+          "stockBefore": 8e-05,
+          "stockAfter": 0,
+          "removedUnits": 8e-05,
+          "energyBefore": 0.6831158290268079,
+          "energyAfter": 0.683275829026808,
+          "agentPosition": {
+            "x": 12320.52813858515,
+            "y": 2799.667782949007,
+            "z": 542.0095464433172
+          },
+          "agentHeading": -0.14036607765592635,
+          "agentPitch": 0,
+          "feedingPosition": {
+            "x": 12320.632341094655,
+            "y": 2799.267880308939,
+            "z": 541.9948231224502
+          },
+          "foodPosition": {
+            "x": 12320.524957521753,
+            "y": 2799.2638826079956,
+            "z": 542.0313370281917
+          },
+          "contactDistanceM": 0.11349219644785569,
+          "allowedDistanceM": 0.12,
+          "unit": "relative-organic-food-proxy-unit",
+          "scope": "Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input."
+        }
+      },
+      {
+        "id": "deep-midwater-life:192,8:vampire-squid",
+        "speciesId": "vampire-squid",
+        "sizeM": 0.11387072756653652,
+        "sizeMeasure": "mantle-length",
+        "home": {
+          "x": 12321.478783869052,
+          "y": 2800.003626740817,
+          "z": 545.3465505072706
+        },
+        "position": {
+          "x": 12321.490783869052,
+          "y": 2800.003626740817,
+          "z": 545.3465505072706
+        },
+        "timeSec": 24,
+        "travelledM": 1.5436561512409668,
+        "feedingCount": 3,
+        "lastMidwaterIntake": {
+          "timeSec": 23.1,
+          "ownerId": "192,8",
+          "channelId": "deep-midwater-channel:192,8:vampire-squid",
+          "pool": "midwaterOrganicParticles",
+          "parcelId": "deep-midwater-parcel:192,8:20",
+          "parcelOrdinal": 20,
+          "parcelCreatedAtSec": 20.1,
+          "parcelTravelM": 0.5400000000000001,
+          "sourcePosition": {
+            "x": 12321.39034064494,
+            "y": 2800.003626740817,
+            "z": 545.3839779614467
+          },
+          "stockBefore": 8e-05,
+          "stockAfter": 0,
+          "removedUnits": 8e-05,
+          "energyBefore": 0.7700914011070445,
+          "energyAfter": 0.7702514011070446,
+          "agentPosition": {
+            "x": 12321.53276609672,
+            "y": 2800.000049033078,
+            "z": 545.3451963826494
+          },
+          "agentHeading": 0.02861848741304129,
+          "agentPitch": 0,
+          "feedingPosition": {
+            "x": 12322.044322872609,
+            "y": 2800.000049033078,
+            "z": 545.3826238368255
+          },
+          "foodPosition": {
+            "x": 12321.930340644942,
+            "y": 2800.003626740817,
+            "z": 545.3839779614467
+          },
+          "contactDistanceM": 0.11404640226746347,
+          "allowedDistanceM": 0.12,
+          "unit": "relative-organic-food-proxy-unit",
+          "scope": "Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input."
+        }
+      },
+      {
+        "id": "deep-midwater-life:192,8:giant-red-mysid",
+        "speciesId": "giant-red-mysid",
+        "sizeM": 0.09019449632149189,
+        "sizeMeasure": "rostrum-to-telson-length",
+        "home": {
+          "x": 12318.094461118699,
+          "y": 2800.4787668380886,
+          "z": 544.6073891436705
+        },
+        "position": {
+          "x": 12318.0106828142,
+          "y": 2800.477790552207,
+          "z": 544.4893126086445
+        },
+        "timeSec": 24,
+        "travelledM": 1.8000000000657137,
+        "feedingCount": 3,
+        "lastMidwaterIntake": {
+          "timeSec": 22.700000000000003,
+          "ownerId": "192,8",
+          "channelId": "deep-midwater-channel:192,8:giant-red-mysid",
+          "pool": "midwaterOrganicParticles",
+          "parcelId": "deep-midwater-parcel:192,8:21",
+          "parcelOrdinal": 21,
+          "parcelCreatedAtSec": 20.1,
+          "parcelTravelM": 0.4500000000000001,
+          "sourcePosition": {
+            "x": 12317.50917467239,
+            "y": 2800.4661396086035,
+            "z": 544.6030747258804
+          },
+          "stockBefore": 8e-05,
+          "stockAfter": 0,
+          "removedUnits": 8e-05,
+          "energyBefore": 0.7273490646737749,
+          "energyAfter": 0.727509064673775,
+          "agentPosition": {
+            "x": 12318.053749125376,
+            "y": 2800.4867285711953,
+            "z": 544.5763278639657
+          },
+          "agentHeading": -0.28523192044813184,
+          "agentPitch": 0,
+          "feedingPosition": {
+            "x": 12318.068462679068,
+            "y": 2800.47410134171,
+            "z": 544.5720134461757
+          },
+          "foodPosition": {
+            "x": 12317.95917467239,
+            "y": 2800.4661396086035,
+            "z": 544.6030747258804
+          },
+          "contactDistanceM": 0.11389495464868818,
+          "allowedDistanceM": 0.12,
+          "unit": "relative-organic-food-proxy-unit",
+          "scope": "Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input."
+        }
+      }
+    ]
+  },
+  "legacyAssetRegression": {
+    "originalAnimals": 12,
+    "wholeOutputPoses": 60,
+    "previousTenAnimalFiftyPoseLiteralsUnchanged": true,
+    "baselineReceipt": "deep-midwater-life-original-assets-before.json",
+    "geometryIndicesAttributesAllNodeLocalWorldMatricesMaterialShader": true
+  },
+  "catalogue": {
+    "deepAnimalRepresentativeRecords": 15,
+    "newRepresentativeRecords": 3,
+    "notStrictSpeciesCensus": true
+  },
+  "director": {
+    "chapters": 64,
+    "distinctActions": 58,
+    "observationDurationSecAt1x": 794,
+    "newChapterDurationSec": 16,
+    "loadingAndTransitionsExtra": true
+  },
+  "waterEnvironment": {
+    "displayBodyDepthSelectionM": [
+      650,
+      750
+    ],
+    "targetDepthM": 700,
+    "cameraBandM": [
+      600,
+      1000
+    ],
+    "zone": "mesopelagic-twilight",
+    "daylightVeryFaintUncalibrated": true,
+    "renderedLight": "observer lamp",
+    "temperatureC": null,
+    "salinityPSU": null,
+    "oxygenMgPerL": null,
+    "source": "https://oceanservice.noaa.gov/facts/light_travel.html"
+  },
+  "publication": {
+    "status": "success",
+    "sourceSha": "1e558848c039f9176c7a4d928e5a8e7d95237cdf",
+    "runId": 37717759156,
+    "runUrl": "https://github.com/yydshly/ocean-world/actions/runs/37717759156",
+    "buildJobId": 113118098362,
+    "deployJobId": 113123002364,
+    "cloudChecks": {
+      "tests": 855,
+      "pass": 855,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "deploymentId": 6925931170,
+    "deploymentStatusId": 19437004530,
+    "publishedAtUtc": "2026-10-08T02:44:08Z",
+    "environmentUrl": "https://yydshly.github.io/ocean-world/",
+    "currentAndCommittedSourceHashesExact": {
+      ".github/workflows/pages.yml": true,
+      "docs/DEEP_MIDWATER_LIFE_SOURCES.md": true,
+      "src/OceanApp.jsx": true,
+      "src/deepBenthicLife.js": true,
+      "src/deepBenthicLifeSpecies.js": true,
+      "src/deepHabitat.js": true,
+      "src/deepHardLife.js": true,
+      "src/deepHardLifeSpecies.js": true,
+      "src/deepMidwaterLife.js": true,
+      "src/deepMidwaterLifeRoutes.js": true,
+      "src/deepMidwaterLifeSpecies.js": true,
+      "src/deepOceanEcology.js": true,
+      "src/deepOceanGeneration.js": true,
+      "src/deepOceanNavigation.js": true,
+      "src/deepPredatorEcology.js": true,
+      "src/deepSeaSpiderGeometry.js": true,
+      "src/deepSeascape.js": true,
+      "src/deepSimulation.js": true,
+      "src/deepSpecies.js": true,
+      "src/deepWaterLife.js": true,
+      "src/deepWaterLifeSpecies.js": true,
+      "src/deepWholeSeascape.js": true,
+      "src/demoCapabilities.js": true,
+      "src/directorTour.js": true,
+      "src/sceneCatalog.js": true,
+      "src/useDirectorTour.js": true,
+      "src/world/DeepBenthicLifeAssets.js": true,
+      "src/world/DeepHardLifeAssets.js": true,
+      "src/world/DeepMidwaterLifeAssets.js": true,
+      "src/world/DeepOceanAnimals.js": true,
+      "src/world/DeepWaterLifeAssets.js": true,
+      "src/world/ReefWorld.js": true,
+      "src/world/deepOrganisms.js": true,
+      "src/world/deepSeaSpiderOrganism.js": true,
+      "tests/deep-benthic-life-world.test.mjs": true,
+      "tests/deep-hard-life-world.test.mjs": true,
+      "tests/deep-midwater-life-ecology.test.mjs": true,
+      "tests/deep-midwater-life-render.test.mjs": true,
+      "tests/deep-midwater-life-world.test.mjs": true,
+      "tests/deep-midwater-life.test.mjs": true,
+      "tests/deep-water-life-world.test.mjs": true,
+      "tests/demo-navigation.test.mjs": true,
+      "tests/director-player.test.mjs": true,
+      "tests/director-tour.test.mjs": true,
+      "tests/kelp-benthic-life-world.test.mjs": true,
+      "tests/kelp-near-bottom-life-world.test.mjs": true,
+      "tests/kelp-understory-life-world.test.mjs": true,
+      "tests/kelp-water-life-world.test.mjs": true,
+      "tests/ocean-meadow-life-world.test.mjs": true,
+      "tests/ocean-shoal-life-world.test.mjs": true
+    },
+    "verificationScope": "GitHub workflow build/check/deployment metadata and logs; no frontend/browser/GPU inspection.",
+    "transportReceipt": "deep-midwater-life-publication-transport.json"
+  },
+  "limitations": [
+    "Source-compatible selected representatives, not a field co-occurrence, abundance or complete biodiversity reconstruction.",
+    "Independent initially-zero, typed suspension nutrition with bounded external input, constant-Y world+X transport, actual capture-structure contact and accounted export; not full marine-snow sinking or natural food web.",
+    "Selected full appendage poses and finite body/path admission, without natural maximum extension, vertical migration or global collision proof.",
+    "Old records, clocks, deaths, empty categories, food and RNG retained; strict-null virgin admission and atomic save precede exposure.",
+    "Very faint daylight at 700m is described but not calibrated or independently rendered; no photosynthetic/observer-light energy input.",
+    "CPU/Three/native/build/cloud metadata checks do not establish browser/GPU documentary appearance or full-tour visual acceptance."
+  ]
+}

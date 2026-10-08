@@ -1,0 +1,226 @@
+{
+  "owner": "192,8",
+  "nativeSeconds": 24,
+  "resources": {
+    "midwaterAnimalFood": 0.00024000000000000003,
+    "midwaterOrganicParticles": 0.00048
+  },
+  "foodLedger": {
+    "initial": 0,
+    "input": 0.0028800000000000023,
+    "ingested": 0.00072,
+    "exported": 0.00144,
+    "byPool": {
+      "midwaterAnimalFood": {
+        "initial": 0,
+        "input": 0.00096,
+        "ingested": 0.00024000000000000003,
+        "exported": 0.00048
+      },
+      "midwaterOrganicParticles": {
+        "initial": 0,
+        "input": 0.00192,
+        "ingested": 0.00048,
+        "exported": 0.00096
+      }
+    }
+  },
+  "energyLedger": {
+    "initial": 2.1819921364076436,
+    "feedingGain": 0.00144,
+    "maintenanceAndMotionDebit": 0.002492204422705221,
+    "clampCorrection": 0,
+    "deathLoss": 0
+  },
+  "counters": {
+    "ticks": 240,
+    "inputPulses": 36,
+    "feedings": 9,
+    "consumedUnits": 0.00072,
+    "deaths": 0
+  },
+  "foodBudgetError": 2.0599841277224584e-18,
+  "energyBudgetError": 5.329070518200751e-15,
+  "individuals": [
+    {
+      "id": "deep-midwater-life:192,8:helmet-jelly",
+      "speciesId": "helmet-jelly",
+      "sizeM": 0.21047507371986285,
+      "sizeMeasure": "bell-diameter",
+      "home": {
+        "x": 12320.42675501225,
+        "y": 2799.6637852480635,
+        "z": 542.0460603490587
+      },
+      "position": {
+        "x": 12320.505939941626,
+        "y": 2799.6667901095475,
+        "z": 542.0186147670685
+      },
+      "timeSec": 24,
+      "travelledM": 0.960000000061339,
+      "feedingCount": 3,
+      "lastMidwaterIntake": {
+        "timeSec": 23.400000000000002,
+        "ownerId": "192,8",
+        "channelId": "deep-midwater-channel:192,8:helmet-jelly",
+        "pool": "midwaterAnimalFood",
+        "parcelId": "deep-midwater-parcel:192,8:19",
+        "parcelOrdinal": 19,
+        "parcelCreatedAtSec": 20.1,
+        "parcelTravelM": 0.5940000000000002,
+        "sourcePosition": {
+          "x": 12319.930957521754,
+          "y": 2799.2638826079956,
+          "z": 542.0313370281917
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.6831158290268079,
+        "energyAfter": 0.683275829026808,
+        "agentPosition": {
+          "x": 12320.52813858515,
+          "y": 2799.667782949007,
+          "z": 542.0095464433172
+        },
+        "agentHeading": -0.14036607765592635,
+        "agentPitch": 0,
+        "feedingPosition": {
+          "x": 12320.632341094655,
+          "y": 2799.267880308939,
+          "z": 541.9948231224502
+        },
+        "foodPosition": {
+          "x": 12320.524957521753,
+          "y": 2799.2638826079956,
+          "z": 542.0313370281917
+        },
+        "contactDistanceM": 0.11349219644785569,
+        "allowedDistanceM": 0.12,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input."
+      }
+    },
+    {
+      "id": "deep-midwater-life:192,8:vampire-squid",
+      "speciesId": "vampire-squid",
+      "sizeM": 0.11387072756653652,
+      "sizeMeasure": "mantle-length",
+      "home": {
+        "x": 12321.478783869052,
+        "y": 2800.003626740817,
+        "z": 545.3465505072706
+      },
+      "position": {
+        "x": 12321.490783869052,
+        "y": 2800.003626740817,
+        "z": 545.3465505072706
+      },
+      "timeSec": 24,
+      "travelledM": 1.5436561512409668,
+      "feedingCount": 3,
+      "lastMidwaterIntake": {
+        "timeSec": 23.1,
+        "ownerId": "192,8",
+        "channelId": "deep-midwater-channel:192,8:vampire-squid",
+        "pool": "midwaterOrganicParticles",
+        "parcelId": "deep-midwater-parcel:192,8:20",
+        "parcelOrdinal": 20,
+        "parcelCreatedAtSec": 20.1,
+        "parcelTravelM": 0.5400000000000001,
+        "sourcePosition": {
+          "x": 12321.39034064494,
+          "y": 2800.003626740817,
+          "z": 545.3839779614467
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.7700914011070445,
+        "energyAfter": 0.7702514011070446,
+        "agentPosition": {
+          "x": 12321.53276609672,
+          "y": 2800.000049033078,
+          "z": 545.3451963826494
+        },
+        "agentHeading": 0.02861848741304129,
+        "agentPitch": 0,
+        "feedingPosition": {
+          "x": 12322.044322872609,
+          "y": 2800.000049033078,
+          "z": 545.3826238368255
+        },
+        "foodPosition": {
+          "x": 12321.930340644942,
+          "y": 2800.003626740817,
+          "z": 545.3839779614467
+        },
+        "contactDistanceM": 0.11404640226746347,
+        "allowedDistanceM": 0.12,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input."
+      }
+    },
+    {
+      "id": "deep-midwater-life:192,8:giant-red-mysid",
+      "speciesId": "giant-red-mysid",
+      "sizeM": 0.09019449632149189,
+      "sizeMeasure": "rostrum-to-telson-length",
+      "home": {
+        "x": 12318.094461118699,
+        "y": 2800.4787668380886,
+        "z": 544.6073891436705
+      },
+      "position": {
+        "x": 12318.0106828142,
+        "y": 2800.477790552207,
+        "z": 544.4893126086445
+      },
+      "timeSec": 24,
+      "travelledM": 1.8000000000657137,
+      "feedingCount": 3,
+      "lastMidwaterIntake": {
+        "timeSec": 22.700000000000003,
+        "ownerId": "192,8",
+        "channelId": "deep-midwater-channel:192,8:giant-red-mysid",
+        "pool": "midwaterOrganicParticles",
+        "parcelId": "deep-midwater-parcel:192,8:21",
+        "parcelOrdinal": 21,
+        "parcelCreatedAtSec": 20.1,
+        "parcelTravelM": 0.4500000000000001,
+        "sourcePosition": {
+          "x": 12317.50917467239,
+          "y": 2800.4661396086035,
+          "z": 544.6030747258804
+        },
+        "stockBefore": 0.00008,
+        "stockAfter": 0,
+        "removedUnits": 0.00008,
+        "energyBefore": 0.7273490646737749,
+        "energyAfter": 0.727509064673775,
+        "agentPosition": {
+          "x": 12318.053749125376,
+          "y": 2800.4867285711953,
+          "z": 544.5763278639657
+        },
+        "agentHeading": -0.28523192044813184,
+        "agentPitch": 0,
+        "feedingPosition": {
+          "x": 12318.068462679068,
+          "y": 2800.47410134171,
+          "z": 544.5720134461757
+        },
+        "foodPosition": {
+          "x": 12317.95917467239,
+          "y": 2800.4661396086035,
+          "z": 544.6030747258804
+        },
+        "contactDistanceM": 0.11389495464868818,
+        "allowedDistanceM": 0.12,
+        "unit": "relative-organic-food-proxy-unit",
+        "scope": "Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input."
+      }
+    }
+  ]
+}
