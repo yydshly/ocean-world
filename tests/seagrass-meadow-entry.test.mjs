@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { LIVING_SHALLOWS_PROFILE } from '../src/livingShallows.js';
+import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../src/livingShallows.js';
+import { loadLivingInputSeed } from '../src/livingWorldState.js';
 import { DEMO_LIVING_STOPS } from '../src/demoCapabilities.js';
 import { DIRECTOR_STEPS, createDirectorState, directorReducer, directorStepAction } from '../src/directorTour.js';
 import { directorMotionCompletionEvent } from '../src/directorMotionReceipt.js';
@@ -67,6 +68,70 @@ test('direct meadow URL selects the living reef and its native action without re
   const action = directorStepAction(DIRECTOR_STEPS[index]);
   assert.equal(action.biome, 'reef'); assert.equal(action.profile, LIVING_SHALLOWS_PROFILE);
   assert.equal(action.seagrassMeadowRegionEntry, true); assert.equal(action.reefValleyRegionEntry, undefined);
+});
+
+test('explicit URL seed reaches the actual world constructor and memory namespace without resetting the saved world', async () => {
+  const refStart = source.indexOf('  const livingSeedRef='), refEnd = source.indexOf('  const livingShallows=', refStart);
+  assert.ok(refStart >= 0 && refEnd > refStart);
+  const refs = new Function('window', 'URLSearchParams', 'loadLivingInputSeed', 'useRef',
+    `${source.slice(refStart, refEnd)};return {livingSeedRef,legacySeedRef};`);
+  const anchor = source.indexOf('    const controller=new AbortController()');
+  const effectStart = source.lastIndexOf('  useEffect(()=>{', anchor), effectEnd = source.indexOf('  },[biome,reefProfile,worldAttempt]);', effectStart);
+  assert.ok(effectStart >= 0 && effectEnd > effectStart);
+  const dependencies = ['AbortController', 'savedPause', 'livingShallows', 'livingSeedRef', 'legacySeedRef', 'setSeed', 'world',
+    'setError', 'setSnapshot', 'setSelected', 'setObservationId', 'setExplorationIndex', 'setPaused', 'setSpeed', 'setView',
+    'history', 'lastHistory', 'continuousBiome', 'memoryFor', 'livingShallowsSeed', 'biome', 'publishMemory', 'rememberOcean',
+    'window', 'document', 'loadReefSkeletonScan', 'ReefWorld', 'container', 'lastMemoryWrite', 'performance', 'performanceCount',
+    'LIVING_SHALLOWS_PROFILE', 'recorder', 'saveLivingInputSeed', 'reset'];
+  const effect = new Function('context', `const {${dependencies.join(',')}}=context;${source.slice(effectStart + '  useEffect(()=>{'.length, effectEnd)}`);
+  for (const { search, living, saved, expected } of [
+    { search: '?demo=seagrass-meadow-region&seed=44', living: true, saved: '42', expected: '44' },
+    { search: '', living: true, saved: '42', expected: '42' },
+    { search: '', living: true, saved: 'saved-living-17', expected: 'saved-living-17' },
+    { search: '', living: false, saved: 'saved-living-17', expected: '42' },
+    { search: '?seed=44', living: false, saved: '42', expected: '44' },
+  ]) {
+    const writes = [], preferenceReads = [], constructors = [], memoryReads = [], remembered = [];
+    const savedHistory = new Map([[livingShallowsSeed('42'), { timeSec: 132.4, dead: ['retained-death'], food: .14, rng: 88 }],
+      ['42', { timeSec: 99, dead: ['legacy-death'], food: .37, rng: 51 }]]), before = structuredClone(savedHistory);
+    const storage = { getItem(key) { preferenceReads.push(key); return JSON.stringify({ version: 1, seed: saved }); },
+      setItem(...args) { writes.push(args); }, removeItem() { assert.fail('constructor selection must not clear saved histories'); } };
+    const listeners = new Map(), window = { location: { search },
+      addEventListener: (name, fn) => listeners.set(`window:${name}`, fn), removeEventListener: name => listeners.delete(`window:${name}`) };
+    const document = { visibilityState: 'visible',
+      addEventListener: (name, fn) => listeners.set(`document:${name}`, fn), removeEventListener: name => listeners.delete(`document:${name}`) };
+    const selectedRefs = refs(window, URLSearchParams, () => loadLivingInputSeed({ storage }), value => ({ current: value }));
+    const forbid = () => assert.fail('URL opening must not reset, clear or rewrite the saved input seed');
+    class World {
+      constructor(_container, _snapshot, _select, _error, options) {
+        constructors.push(options); this.inputSeed = options.seed;
+        this.sim = { seed: options.sceneProfile === LIVING_SHALLOWS_PROFILE ? livingShallowsSeed(options.seed) : options.seed };
+        this.snapshot = () => ({ metrics: { timeSec: 0 } }); this.reset = forbid; this.dispose = () => {};
+      }
+    }
+    const noop = () => {}, world = { current: null }, seedWrites = [];
+    const context = { ...selectedRefs, window, document, world, AbortController, savedPause: () => true, livingShallows: living,
+      setSeed: value => seedWrites.push(value), setError: noop, setSnapshot: noop, setSelected: noop, setObservationId: noop,
+      setExplorationIndex: noop, setPaused: noop, setSpeed: noop, setView: noop, history: { current: [] }, lastHistory: { current: -1 },
+      continuousBiome: true, biome: 'reef', livingShallowsSeed, LIVING_SHALLOWS_PROFILE,
+      memoryFor(seed, biome) { memoryReads.push({ seed, biome }); return { load: () => structuredClone(savedHistory.get(seed) ?? null), clear: forbid }; },
+      publishMemory: noop, rememberOcean: actual => { if (actual) remembered.push(actual.sim.seed); },
+      loadReefSkeletonScan: async () => ({ dispose() {} }), ReefWorld: World, container: { current: {} },
+      lastMemoryWrite: { current: 0 }, performance: { now: () => 0 }, performanceCount: null, recorder: { current: null },
+      saveLivingInputSeed: forbid, reset: forbid };
+    const cleanup = effect(context); await settle();
+    const namespace = living ? livingShallowsSeed(expected) : expected;
+    assert.equal(constructors.length, 1); assert.equal(constructors[0].seed, expected, 'production effect passes the selected seed to ReefWorld');
+    assert.equal(constructors[0].sceneProfile, living ? LIVING_SHALLOWS_PROFILE : null);
+    assert.equal(world.current.inputSeed, expected); assert.equal(world.current.sim.seed, namespace);
+    assert.deepEqual(seedWrites, [expected]); assert.deepEqual(memoryReads, [{ seed: namespace, biome: 'reef' }]);
+    if (search) assert.deepEqual(preferenceReads, [], 'an explicit URL seed avoids even loading the stored seed preference');
+    else assert.deepEqual(preferenceReads, ['tidal-living-input-seed-v1']);
+    assert.equal(window.__REEF__.world, world.current);
+    cleanup(); await settle(); assert.equal(world.current, null); assert.equal(window.__REEF__, undefined);
+    assert.deepEqual(remembered, [namespace]); assert.equal(listeners.size, 0); assert.deepEqual(writes, []);
+    assert.deepEqual(savedHistory, before, 'opening and cleanup leave all previously saved world records unchanged');
+  }
 });
 
 test('manual and director meadow entries wait for native durable preparation before confirming or remembering', async () => {

@@ -19,7 +19,7 @@
     "src/App.jsx": "d6f59990ebc1ca6df101261d1af1fda8b615281a7a797230dde1a6d0eb346fd6",
     "src/DemoOverview.jsx": "564e03d2685918e62317ba38270624ccabb55ab5e717f397dfcc63d550cfcd24",
     "src/DirectorPlayer.jsx": "a686a5ed4e179fd445195c35264eeb86424582be9fef827c42b495b9650e5065",
-    "src/OceanApp.jsx": "004ec457d4730e2fe012ec10b4d09f9db32d0640b4a2147e089f342b55c663a5",
+    "src/OceanApp.jsx": "b0418ee730a8123de78450702eb3686af63ae2a759eb16411c8d1c24645f1e3c",
     "src/PopulationWorkbench.jsx": "e0b997a1aad2880e78518155c2ed2f61b97e8accecb27d32872a5ca49dffb781",
     "src/ResourceHistory.jsx": "d7e27c70b22af2a68394656f8e06df7539bb0e1f6dbbb154841a390cafee3110",
     "src/biomes.js": "b265629fd281740bc3b79bbb6c772edaad151766c6af7c29871c3eff4170d38c",
@@ -458,7 +458,7 @@
     "tests/reef-valley-region.test.mjs": "f7c8bcfac8c75fc11716522f247d0a789c80c77a0b6ceeb471118e076af91c29",
     "tests/reef-weathered-terrain.test.mjs": "e5ff2f2f055add57c20e9fab46a4edaa7e8d387d4f8d5d6eee87544bcd5fd943",
     "tests/reefGroundContactProjection.mjs": "5d1098014c4f5ed36abafb6c8f02446e19d39a28329b1f7b94b4453021962c50",
-    "tests/seagrass-meadow-entry.test.mjs": "fab4036decb4bf19b1e1bb6ce9ff52f2b6eb1b9830c106fe55acb8ed9bb7697f",
+    "tests/seagrass-meadow-entry.test.mjs": "265e2acf2d79dc360d35c4bef194050af564fd5d0aa1a06f9fe3bf9fc49d2fbd",
     "tests/seagrass-meadow-region-ecology.test.mjs": "09524ad42ce1a229059956271c20652c206e9c2010574d7317d1bdc275d8e864",
     "tests/seagrass-meadow-region-world.test.mjs": "38829aed12f2d6ff1238f626d86e53dac617d4dcc7ac5914a5b6072a440dc881",
     "tests/seagrass-meadow-region.test.mjs": "9a54616f65f66b4d8b2293de993086eab3d057d2fabc5c86c98dcf19966e43fc",
@@ -468,15 +468,15 @@
     "tests/supported-motion.test.mjs": "844bc622e8fb1791a3fd9c2aefe3aac257959e2d5c3492c4480a9471369a45f3"
   },
   "localBuildFiles": {
-    "dist/client/index.html": "65486e3a78e018c941e9d1051d020ca9518a746e75ffc93fe221d7340499c24f",
+    "dist/client/index.html": "66138bae577c890d09d39ba46418fc7f6aa49e30f01103ebc1a80c56d0db4e76",
     "dist/client/assets/ageExperimentWorker-C8jD93i5.js": "4257c286b08865670b9aa78b787a24382283cc8833c983db39dd2a82fe772ac3",
     "dist/client/assets/draco_decoder-C32yEggz.wasm": "c55a594e8ffd18426d36b27fea9618af3df5e173640a3e56d46f09d76f0574f2",
     "dist/client/assets/draco_decoder-fzg4nYZr.js": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04",
     "dist/client/assets/draco_decoder-Z1_iN-Ht.wasm": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac",
     "dist/client/assets/draco_wasm_wrapper-DxJM36Ib.js": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
     "dist/client/assets/draco_wasm_wrapper-fZCQGLGb.js": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6",
+    "dist/client/assets/index-Dn9NTYjQ.js": "60ec6d8590294ab0bcb5792b41ee349fa430cb8e290a6e7cca91b15de5a67f64",
     "dist/client/assets/index-DqZcM_Hj.css": "4023e6752472eb00793806042aa8384b8f656b147dba4610c55ea451ae5d740d",
-    "dist/client/assets/index-QKGKcDLC.js": "f3f13f7427095082e72c6cfab9d6c77296544428cd507bef6d9de673f6bbaa4e",
     "dist/client/assets/reef-rock-albedo.png": "125e892fd7f81628f8703d2d787d2f2ace54d98dfd13bc3568eb59ee2f043812",
     "dist/client/assets/sand-albedo.png": "9641b6c8a1dd0048de2bd992aeada2c723b5b2b8203d9febda60e4cf204365ca",
     "dist/client/assets/reef-scan/decoder-receipts.json": "495028ff0b9f1526f6c06d63938cda4d881a969e34a358e097ae43126559d710",
@@ -494,12 +494,12 @@
     "dist/client/assets/reef-scan/usnm_229-150k-2048-medium.glb": "20563502ece6c714c6a8853fa7add4d8dc4e3897d77f27aff1c93fda3c78a114",
     "dist/client/assets/reef-scan/usnm_229-20k-thumb.glb": "c3ce125d357952ff1caa68efb920fcd4876d29459517d83b2de2a3aa211f8060"
   },
-  "localBuild": "one successful production build with /ocean-world/ base",
+  "localBuild": "final successful production build after constructor seed correction; initial stage build retained separately",
   "localChecks": {
     "newGeometry": "7/7",
     "newEcology": "4/4 with corrected v9 fault case separately rechecked",
     "newNativeTraversal": "1/1, 200s",
-    "newEntryAndHeading": "6/6",
+    "newEntryAndHeading": "7/7, includes shipped actual constructor/ref seed44 namespace and untouched42 history",
     "loadingHook": "9/9 includes one new case",
     "oldReefRegionEcologyAndRenderer": "9/9",
     "regressions": "97 original passing cases retained; four catalogue/player count cases corrected and passed in final40-case contract batch; overlapping cases are not added",
@@ -509,7 +509,12 @@
     "status": "pending",
     "workflow": "pages.yml",
     "expectedFiles": 137,
-    "expectedTests": 926
+    "expectedTests": 927,
+    "cancelledInitialRun": {
+      "id": 37741793019,
+      "source": "c9b80884f9c3693a908a4fd1a82cf373c436b77d",
+      "reason": "Release audit found query seed ignored by native constructor; cancelled before publication and corrected."
+    }
   },
   "limits": {
     "activeOwners": 9,
@@ -518,5 +523,6 @@
     "animalsIncludingDeadPerOwner": 20
   },
   "browserGPUAcceptance": false,
-  "performanceOptimization": "bounded numeric memo rejected as marginal; no production cache change"
+  "performanceOptimization": "bounded numeric memo rejected as marginal; no production cache change",
+  "independentSeed44Receipt": "seagrass-meadow-region-seed44.json"
 }
