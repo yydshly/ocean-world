@@ -1,3 +1,4 @@
+import { HABITAT_LAYERS_WORLD_VARIANT } from '../oceanWorldVariant.js';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
@@ -88,7 +89,7 @@ const FRAME_TIME_LIMITS_MS = [16.67, 25, 33.34, 50, 100, 250, 1000];
 function seeded(seed) { let s = seed | 0; return () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t ^= t + Math.imul(t ^ t >>> 7, 61 | t); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 
 export class ReefWorld {
-  constructor(container, onSnapshot, onSelect, onError, { biomeId = 'reef', mobileIndividuals = null, reefScanAsset = null, seed = 42, paused = false, sceneProfile = null } = {}) {
+  constructor(container, onSnapshot, onSelect, onError, { biomeId = 'reef', mobileIndividuals = null, reefScanAsset = null, seed = 42, paused = false, sceneProfile = null, worldVariant = null } = {}) {
     const initializationStarted = performance.now();
     this.container = container;
     this.onSnapshot = onSnapshot;
@@ -98,6 +99,7 @@ export class ReefWorld {
     if (!sceneCatalogs[biomeId] || !sceneDefinitions[biomeId]) throw new RangeError(`Unknown scene biome: ${biomeId}`);
     this.biomeId = biomeId; this.isKelp = biomeId === 'kelp'; this.isDeep = biomeId === 'deep';
     this.isLivingShallows = biomeId === 'reef' && sceneProfile === LIVING_SHALLOWS_PROFILE && mobileIndividuals === null;
+    this.oceanWorldVariant = this.isLivingShallows && worldVariant === HABITAT_LAYERS_WORLD_VARIANT ? worldVariant : null;
     this.inputSeed = seed;
     if (this.isLivingShallows) seed = livingShallowsSeed(seed);
     this.definition = sceneDefinitions[biomeId]; this.surfaceY = this.definition.surfaceY;
@@ -193,7 +195,7 @@ export class ReefWorld {
         }
         if(this.isKelp||this.isDeep){this.floorMesh.visible=false;this.floorContinuation.visible=false;}
         this.scene.add(this.oceanChunks.root);this.oceanChunks.update(this.camera.position);
-        this.oceanEcology=this.isDeep?new DeepOceanEcology(seed,this.oceanChunks.generator,{seascape:true,wholeSeascape:true,benthicLife:true,hardLife:true,waterLife:true,midwaterLife:true}):this.isKelp?new KelpOceanEcology(seed,this.oceanChunks.generator,{visitors:true,understory:true,forestBelt:true,kelpSeascape:true,benthicLife:true,waterLife:true,nearBottomLife:true,understoryLife:true}):new OceanEcology(seed,this.oceanChunks.generator,{turtles:true,sceneElements:!this.isLivingShallows,habitatScenes:!this.isLivingShallows,macroLandscape:!this.isLivingShallows,livingGeology:this.isLivingShallows,habitatMosaic:this.isLivingShallows,seabedRelief:this.isLivingShallows,seascape:this.isLivingShallows,livingBelt:this.isLivingShallows,shallowSeascape:this.isLivingShallows,coastalSeascape:this.isLivingShallows,reefValleyRegion:this.isLivingShallows,reefResidents:this.isLivingShallows,reefDiversity:this.isLivingShallows,reefCommunity:this.isLivingShallows,reefLife:this.isLivingShallows,reefFauna:this.isLivingShallows,reefAssemblage:this.isLivingShallows,reefHabitatCommunity:this.isLivingShallows, reefVisitors:this.isLivingShallows,meadowRegion:this.isLivingShallows,meadowAnimalBelt:this.isLivingShallows,meadowHabitatCommunity:this.isLivingShallows,turtleGrazing:this.isLivingShallows,biodiversity:this.isLivingShallows,benthicLife:this.isLivingShallows,meadowLife:this.isLivingShallows,shoalLife:this.isLivingShallows});
+        this.oceanEcology=this.isDeep?new DeepOceanEcology(seed,this.oceanChunks.generator,{seascape:true,wholeSeascape:true,benthicLife:true,hardLife:true,waterLife:true,midwaterLife:true}):this.isKelp?new KelpOceanEcology(seed,this.oceanChunks.generator,{visitors:true,understory:true,forestBelt:true,kelpSeascape:true,benthicLife:true,waterLife:true,nearBottomLife:true,understoryLife:true}):new OceanEcology(seed,this.oceanChunks.generator,{turtles:true,sceneElements:!this.isLivingShallows,habitatScenes:!this.isLivingShallows,macroLandscape:!this.isLivingShallows,livingGeology:this.isLivingShallows,habitatMosaic:this.isLivingShallows,seabedRelief:this.isLivingShallows,seascape:this.isLivingShallows,livingBelt:this.isLivingShallows,shallowSeascape:this.isLivingShallows,coastalSeascape:this.isLivingShallows,reefValleyRegion:this.isLivingShallows,reefResidents:this.isLivingShallows,reefDiversity:this.isLivingShallows,reefCommunity:this.isLivingShallows,reefLife:this.isLivingShallows,reefFauna:this.isLivingShallows,reefAssemblage:this.isLivingShallows,reefHabitatCommunity:this.isLivingShallows, reefVisitors:this.isLivingShallows,reefHabitatLayers:this.isLivingShallows,worldVariant:this.oceanWorldVariant,meadowRegion:this.isLivingShallows,meadowAnimalBelt:this.isLivingShallows,meadowHabitatCommunity:this.isLivingShallows,turtleGrazing:this.isLivingShallows,biodiversity:this.isLivingShallows,benthicLife:this.isLivingShallows,meadowLife:this.isLivingShallows,shoalLife:this.isLivingShallows});
         if(this.isLivingShallows)this.oceanEcology.setEnvironment(this.sim.environment);
         this.oceanAnimals=this.isDeep?new DeepOceanAnimals([...this.catalog.values()]):this.isKelp?new KelpOceanAnimals([...this.catalog.values()]):new OceanAnimals([...this.catalog.values()]);this.scene.add(this.oceanAnimals.root);
         if(!this.isKelp&&!this.isDeep&&!this.isLivingShallows){this.oceanSceneElements=new OceanSceneElements();this.scene.add(this.oceanSceneElements.root);}

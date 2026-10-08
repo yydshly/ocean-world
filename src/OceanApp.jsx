@@ -1,3 +1,4 @@
+import { readOceanWorldVariant } from './oceanWorldVariant.js';
 import React, { useEffect, useRef, useState } from 'react';
 import { ReefWorld } from './world/ReefWorld.js';
 import { loadReefSkeletonScan } from './world/reefScanAssets.js';
@@ -134,6 +135,7 @@ function LivingDiscoveries({discoveries,world,ready,onTravel}){
 }
 
 export function OceanApp(){
+  const [worldVariant]=useState(()=>readOceanWorldVariant(window.location.search));
   const container=useRef(null),world=useRef(null),history=useRef([]),lastHistory=useRef(-1),recorder=useRef(null),chunks=useRef([]);
   const [snapshot,setSnapshot]=useState(null),[panel,setPanel]=useState(()=>new URLSearchParams(window.location.search).get('demo')==='all'?'demo':null),[selected,setSelected]=useState(null),[error,setError]=useState(null),[paused,setPaused]=useState(savedPause),[speed,setSpeed]=useState(1),[view,setView]=useState('wide'),[seed,setSeed]=useState(()=>new URLSearchParams(window.location.search).get('seed')||'42'),[toast,setToast]=useState(''),[help,setHelp]=useState(false),[recording,setRecording]=useState(false);
   const [pendingDemo,setPendingDemo]=useState(()=>new URLSearchParams(window.location.search).get('demo')==='seagrass-meadow-region'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'seagrass-meadow-region',seagrassMeadowRegionEntry:true}:new URLSearchParams(window.location.search).get('demo')==='reef-valley-region'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'reef-valley-region',reefValleyRegionEntry:true}:new URLSearchParams(window.location.search).get('demo')==='coastal-life-belt'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'coastal-life-belt',coastalLifeBeltEntry:true}:new URLSearchParams(window.location.search).get('demo')==='biodiversity'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'biodiversity-reef',biodiversityEntry:true}:new URLSearchParams(window.location.search).get('demo')==='benthic'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'benthic-community',benthicLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='kelp-understory-life'?{kind:'kelp-stop',biome:'kelp',stopId:'kelp-understory-life',kelpUnderstoryLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='kelp-near-bottom-life'?{kind:'kelp-stop',biome:'kelp',stopId:'kelp-near-bottom-life',kelpNearBottomLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='kelp-water-life'?{kind:'kelp-stop',biome:'kelp',stopId:'kelp-water-life',kelpWaterLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='kelp-life'?{kind:'kelp-stop',biome:'kelp',stopId:'kelp-bottom-life',kelpBenthicLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='deep-midwater-life'?{kind:'deep-stop',biome:'deep',stopId:'deep-midwater-life',deepMidwaterLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='deep-water-life'?{kind:'deep-stop',biome:'deep',stopId:'deep-water-life',deepWaterLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='deep-hard-life'?{kind:'deep-stop',biome:'deep',stopId:'deep-hard-life',deepHardLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='deep-life'?{kind:'deep-stop',biome:'deep',stopId:'deep-bottom-life',deepBenthicLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='shoal-life'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'shoal-life-community',shoalLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='meadow-life'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'meadow-life-community',meadowLifeEntry:true}:null),[worldAttempt,setWorldAttempt]=useState(0);
@@ -198,7 +200,7 @@ export function OceanApp(){
           if(cancelled)return;
           setSnapshot(s);if(s.metrics.timeSec-lastHistory.current>=2){lastHistory.current=s.metrics.timeSec;history.current=[...history.current.slice(-149),{...s.metrics}];}
           if(s.ocean?.exploring&&reef&&performance.now()-lastMemoryWrite.current>=2000)rememberOcean(reef);
-        },id=>{if(!cancelled){setSelected(id);setObservationId(null);}},message=>{if(!cancelled)setError(message);},{biomeId:biome,mobileIndividuals:performanceCount,reefScanAsset:scan,seed:appliedSeed,paused:initialPaused,sceneProfile:livingShallows?LIVING_SHALLOWS_PROFILE:null});
+        },id=>{if(!cancelled){setSelected(id);setObservationId(null);}},message=>{if(!cancelled)setError(message);},{biomeId:biome,mobileIndividuals:performanceCount,reefScanAsset:scan,seed:appliedSeed,paused:initialPaused,sceneProfile:livingShallows?LIVING_SHALLOWS_PROFILE:null,worldVariant:livingShallows?worldVariant:null});
         world.current=reef;
         window.__REEF__={snapshot:()=>reef.snapshot(),get sim(){return reef.sim;},get world(){return reef;}};
       }catch(e){
@@ -216,7 +218,7 @@ export function OceanApp(){
       if(world.current===reef)world.current=null;
       if(reef&&window.__REEF__?.world===reef)delete window.__REEF__;
     };
-  },[biome,reefProfile,worldAttempt]);
+  },[biome,reefProfile,worldAttempt,worldVariant]);
   useEffect(()=>{if(!toast)return;const t=setTimeout(()=>setToast(''),4200);return()=>clearTimeout(t);},[toast]);
   const env=snapshot?.environment||{currentMps:.15,turbidity:.25,foodSupply:1,hour:10},m=snapshot?.metrics||{},agent=snapshot?.agents.find(a=>a.id===selected),species=speciesCatalog.find(s=>s.id===agent?.speciesId);
   const regionalEcology=ocean?.ecology,regionalMetrics=regionalEcology?.metrics;

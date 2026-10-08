@@ -15,6 +15,7 @@ import { oceanLayerHeight } from '../src/oceanLayerNavigation.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../src/livingShallows.js';
 import { createLivingWorldState } from '../src/livingWorldState.js';
 import { createLivingDiscoveries } from '../src/livingDiscoveries.js';
+import { HABITAT_LAYERS_WORLD_VARIANT } from '../src/oceanWorldVariant.js';
 
 // Execute the shipped pre-GPU constructor and CPU actions, rather than a
 // second implementation of world identity, navigation or clock behavior.
@@ -45,12 +46,12 @@ function worldFixture({ profile = LIVING_SHALLOWS_PROFILE, seed = '42', biomeId 
   storage = storageFixture() } = {}) {
   const WorldCPU = new Function('THREE', 'ReefSimulation', 'KelpSimulation', 'DeepSimulation', 'sceneCatalogs', 'sceneDefinitions', 'livingShallowsSpeciesCatalog',
     'REEF_ROCKS', 'KELP_ROCKS', 'reefPresets', 'kelpPresets', 'deepPresets', 'FRAME_TIME_LIMITS_MS',
-    'LIVING_SHALLOWS_PROFILE', 'livingShallowsSeed', 'createLivingWorldState', 'clamp', 'oceanLayerHeight', 'createOceanEnvironment', 'createLivingDiscoveries',
+    'LIVING_SHALLOWS_PROFILE', 'livingShallowsSeed', 'createLivingWorldState', 'clamp', 'oceanLayerHeight', 'createOceanEnvironment', 'createLivingDiscoveries', 'HABITAT_LAYERS_WORLD_VARIANT',
     `return class {${constructorHead}\n${methods.map(method).join('\n')}}`)(THREE, ReefSimulation, KelpSimulation, DeepSimulation,
     sceneCatalogs, sceneDefinitions, livingShallowsSpeciesCatalog, REEF_ROCKS, KELP_ROCKS,
     { wide: { position: [3, 2.8, 5], target: [-2.5, .65, -2] } }, {}, {}, [16.67, 25, 33.34, 50, 100, 250, 1000],
     LIVING_SHALLOWS_PROFILE, livingShallowsSeed, actualSeed => createLivingWorldState(actualSeed, { storage }),
-    THREE.MathUtils.clamp, oceanLayerHeight, () => ({}), actualSeed => createLivingDiscoveries(actualSeed, { storage }));
+    THREE.MathUtils.clamp, oceanLayerHeight, () => ({}), actualSeed => createLivingDiscoveries(actualSeed, { storage }), HABITAT_LAYERS_WORLD_VARIANT);
   const world = new WorldCPU({}, () => {}, () => {}, () => {}, { seed, sceneProfile: profile, biomeId, mobileIndividuals, paused: true });
   const calls = [], generator = createOceanGenerator(world.sim.seed);
   Object.assign(world, {
@@ -118,7 +119,7 @@ test('new scene hides authored terrain and disables all three old additive scene
   const allocations = initializeScene(world);
   assert.equal(world.reefRoot.visible, false); assert.equal(world.floorMesh.visible, false); assert.equal(world.floorContinuation.visible, false);
   assert.deepEqual(world.cameraRocks, [], 'hidden original rocks must not remain as invisible camera collisions');
-  assert.deepEqual(world.oceanEcology.options, { turtles: true, sceneElements: false, habitatScenes: false, macroLandscape: false, livingGeology: true, habitatMosaic: true, seabedRelief: true, seascape: true, livingBelt: true, shallowSeascape: true, coastalSeascape: true, reefValleyRegion: true, reefResidents: true, reefDiversity: true, reefCommunity: true, reefLife: true, reefFauna: true, reefAssemblage: true, reefHabitatCommunity: true, meadowRegion: true, meadowAnimalBelt: true, turtleGrazing: true, biodiversity: true, benthicLife: true, meadowLife: true, shoalLife: true });
+  assert.deepEqual(world.oceanEcology.options, { turtles: true, sceneElements: false, habitatScenes: false, macroLandscape: false, livingGeology: true, habitatMosaic: true, seabedRelief: true, seascape: true, livingBelt: true, shallowSeascape: true, coastalSeascape: true, reefValleyRegion: true, reefResidents: true, reefDiversity: true, reefCommunity: true, reefLife: true, reefFauna: true, reefAssemblage: true, reefHabitatCommunity: true, reefVisitors: true, reefHabitatLayers: true, worldVariant: null, meadowRegion: true, meadowAnimalBelt: true, meadowHabitatCommunity: true, turtleGrazing: true, biodiversity: true, benthicLife: true, meadowLife: true, shoalLife: true });
   assert.deepEqual(allocations, ['StubRenderer']);
   for (const key of ['oceanSceneElements', 'oceanHabitatScenes', 'oceanMacroLandscape']) assert.equal(world[key], undefined);
   const old = worldFixture({ profile: null }).world;
@@ -126,7 +127,7 @@ test('new scene hides authored terrain and disables all three old additive scene
   const oldAllocations = initializeScene(old);
   assert.equal(old.reefRoot.visible, true); assert.equal(old.floorMesh.visible, true);
   assert.strictEqual(old.cameraRocks, originalGuards);
-  assert.deepEqual(old.oceanEcology.options, { turtles: true, sceneElements: true, habitatScenes: true, macroLandscape: true, livingGeology: false, habitatMosaic: false, seabedRelief: false, seascape: false, livingBelt: false, shallowSeascape: false, coastalSeascape: false, reefValleyRegion: false, reefResidents: false, reefDiversity: false, reefCommunity: false, reefLife: false, reefFauna: false, reefAssemblage: false, reefHabitatCommunity: false, meadowRegion: false, meadowAnimalBelt: false, turtleGrazing: false, biodiversity: false, benthicLife: false, meadowLife: false, shoalLife: false });
+  assert.deepEqual(old.oceanEcology.options, { turtles: true, sceneElements: true, habitatScenes: true, macroLandscape: true, livingGeology: false, habitatMosaic: false, seabedRelief: false, seascape: false, livingBelt: false, shallowSeascape: false, coastalSeascape: false, reefValleyRegion: false, reefResidents: false, reefDiversity: false, reefCommunity: false, reefLife: false, reefFauna: false, reefAssemblage: false, reefHabitatCommunity: false, reefVisitors: false, reefHabitatLayers: false, worldVariant: null, meadowRegion: false, meadowAnimalBelt: false, meadowHabitatCommunity: false, turtleGrazing: false, biodiversity: false, benthicLife: false, meadowLife: false, shoalLife: false });
   assert.deepEqual(oldAllocations, ['StubRenderer', 'SceneElements', 'HabitatScenes', 'MacroLandscape']);
 });
 

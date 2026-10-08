@@ -76,13 +76,13 @@ test('explicit URL seed reaches the actual world constructor and memory namespac
   const refs = new Function('window', 'URLSearchParams', 'loadLivingInputSeed', 'useRef',
     `${source.slice(refStart, refEnd)};return {livingSeedRef,legacySeedRef};`);
   const anchor = source.indexOf('    const controller=new AbortController()');
-  const effectStart = source.lastIndexOf('  useEffect(()=>{', anchor), effectEnd = source.indexOf('  },[biome,reefProfile,worldAttempt]);', effectStart);
+  const effectStart = source.lastIndexOf('  useEffect(()=>{', anchor), effectEnd = source.indexOf('  },[biome,reefProfile,worldAttempt,worldVariant]);', effectStart);
   assert.ok(effectStart >= 0 && effectEnd > effectStart);
   const dependencies = ['AbortController', 'savedPause', 'livingShallows', 'livingSeedRef', 'legacySeedRef', 'setSeed', 'world',
     'setError', 'setSnapshot', 'setSelected', 'setObservationId', 'setExplorationIndex', 'setPaused', 'setSpeed', 'setView',
     'history', 'lastHistory', 'continuousBiome', 'memoryFor', 'livingShallowsSeed', 'biome', 'publishMemory', 'rememberOcean',
     'window', 'document', 'loadReefSkeletonScan', 'ReefWorld', 'container', 'lastMemoryWrite', 'performance', 'performanceCount',
-    'LIVING_SHALLOWS_PROFILE', 'recorder', 'saveLivingInputSeed', 'reset'];
+    'LIVING_SHALLOWS_PROFILE', 'recorder', 'saveLivingInputSeed', 'reset', 'worldVariant'];
   const effect = new Function('context', `const {${dependencies.join(',')}}=context;${source.slice(effectStart + '  useEffect(()=>{'.length, effectEnd)}`);
   for (const { search, living, saved, expected } of [
     { search: '?demo=seagrass-meadow-region&seed=44', living: true, saved: '42', expected: '44' },
@@ -113,7 +113,7 @@ test('explicit URL seed reaches the actual world constructor and memory namespac
     const context = { ...selectedRefs, window, document, world, AbortController, savedPause: () => true, livingShallows: living,
       setSeed: value => seedWrites.push(value), setError: noop, setSnapshot: noop, setSelected: noop, setObservationId: noop,
       setExplorationIndex: noop, setPaused: noop, setSpeed: noop, setView: noop, history: { current: [] }, lastHistory: { current: -1 },
-      continuousBiome: true, biome: 'reef', livingShallowsSeed, LIVING_SHALLOWS_PROFILE,
+      continuousBiome: true, biome: 'reef', livingShallowsSeed, LIVING_SHALLOWS_PROFILE, worldVariant: null,
       memoryFor(seed, biome) { memoryReads.push({ seed, biome }); return { load: () => structuredClone(savedHistory.get(seed) ?? null), clear: forbid }; },
       publishMemory: noop, rememberOcean: actual => { if (actual) remembered.push(actual.sim.seed); },
       loadReefSkeletonScan: async () => ({ dispose() {} }), ReefWorld: World, container: { current: {} },
