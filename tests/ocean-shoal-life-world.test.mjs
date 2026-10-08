@@ -143,7 +143,7 @@ test('URL, ordinary button and director share native admission and frame real li
   const hook=readFileSync(new URL('../src/useDirectorTour.js',import.meta.url),'utf8');assert.ok(hook.includes("'shoal-life'"));
   assert.match(app, /get\('demo'\)==='shoal-life'[\s\S]{0,240}shoalLifeEntry:true/);
   assert.match(app, /onClick=\{enterShoalCommunity\}>水层鱼群/);
-  assert.equal(livingShallowsSpeciesCatalog.length, 69); assert.deepEqual(OCEAN_SHOAL_LIFE_ROUTE_STOPS.map(stop => stop.id), ['shoal-life-community']);
+  assert.equal(livingShallowsSpeciesCatalog.length, 75); assert.deepEqual(OCEAN_SHOAL_LIFE_ROUTE_STOPS.map(stop => stop.id), ['shoal-life-community']);
   const entry = DEMO_LIVING_STOPS.find(stop => stop.id === 'shoal-life-community'), chapter = DIRECTOR_STEPS.find(step => step.action.stopId === 'shoal-life-community');
   assert.ok(entry && chapter); assert.equal(entry.action.kind, 'living-stop'); assert.equal(entry.action.shoalLifeEntry, true);
   assert.equal(chapter.motion.kind, 'walk'); assert.equal(chapter.motion.routeId, 'shoal-life'); assert.equal(chapter.durationMs, 16000);

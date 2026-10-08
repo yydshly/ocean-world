@@ -23,8 +23,12 @@ import { isReefLifeFish, createReefLifeFish, animateReefLifeFish, disposeReefLif
 import { isReefLifeBenthic, createReefLifeBenthic, animateReefLifeBenthic, disposeReefLifeBenthic } from './OceanReefLifeBenthicAssets.js';
 import { isReefFaunaFish, createReefFaunaFish, animateReefFaunaFish, disposeReefFaunaFish } from './OceanReefFaunaFishAssets.js';
 import { isReefFaunaBenthic, createReefFaunaBenthic, animateReefFaunaBenthic, disposeReefFaunaBenthic } from './OceanReefFaunaBenthicAssets.js';
+import { isReefAssemblageFish, createReefAssemblageFish, animateReefAssemblageFish, disposeReefAssemblageFish } from './OceanReefAssemblageFishAssets.js';
+import { isReefAssemblageBenthic, createReefAssemblageBenthic, animateReefAssemblageBenthic, disposeReefAssemblageBenthic } from './OceanReefAssemblageBenthicAssets.js';
 const isTurtle = entity => entity.speciesId === 'green-turtle';
 const disposeAnimal = entity => isTurtle(entity) ? disposeOceanTurtleOrganism(entity.object)
+  : isReefAssemblageFish(entity.speciesId) ? disposeReefAssemblageFish(entity.object)
+  : isReefAssemblageBenthic(entity.speciesId) ? disposeReefAssemblageBenthic(entity.object)
   : isReefFaunaFish(entity.speciesId) ? disposeReefFaunaFish(entity.object)
   : isReefFaunaBenthic(entity.speciesId) ? disposeReefFaunaBenthic(entity.object)
   : isReefLifeFish(entity.speciesId) ? disposeReefLifeFish(entity.object)
@@ -76,6 +80,8 @@ export class OceanAnimals {
       if (this.entities.has(id)) continue;
       const species = this.catalog.get(agent.speciesId);
       const object = agent.speciesId === 'green-turtle' ? createOceanTurtleOrganism(species)
+        : isReefAssemblageFish(agent.speciesId) ? createReefAssemblageFish(species)
+        : isReefAssemblageBenthic(agent.speciesId) ? createReefAssemblageBenthic(species)
         : isReefFaunaFish(agent.speciesId) ? createReefFaunaFish(species)
         : isReefFaunaBenthic(agent.speciesId) ? createReefFaunaBenthic(species)
         : isReefLifeFish(agent.speciesId) ? createReefLifeFish(species)
@@ -147,8 +153,8 @@ export class OceanAnimals {
       const heading = Number.isFinite(agent.heading) ? agent.heading
         : Math.atan2(agent.velocity?.z || 0, agent.velocity?.x || 1);
       object.rotation.set(0, -heading, 0);
-      if (isReefResidentSpecies(entity.speciesId) || isReefDiversityFish(entity.speciesId) || isReefDiversityBenthic(entity.speciesId) || isReefCommunityFish(entity.speciesId) || isReefCommunityBenthic(entity.speciesId) || isReefLifeFish(entity.speciesId) || isReefLifeBenthic(entity.speciesId) || isReefFaunaFish(entity.speciesId) || isReefFaunaBenthic(entity.speciesId)) {
-        if (entity.speciesId === 'painted-spiny-lobster' || isReefDiversityBenthic(entity.speciesId) || isReefCommunityBenthic(entity.speciesId) || isReefLifeBenthic(entity.speciesId) || isReefFaunaBenthic(entity.speciesId)) {
+      if (isReefResidentSpecies(entity.speciesId) || isReefDiversityFish(entity.speciesId) || isReefDiversityBenthic(entity.speciesId) || isReefCommunityFish(entity.speciesId) || isReefCommunityBenthic(entity.speciesId) || isReefLifeFish(entity.speciesId) || isReefLifeBenthic(entity.speciesId) || isReefFaunaFish(entity.speciesId) || isReefFaunaBenthic(entity.speciesId) || isReefAssemblageFish(entity.speciesId) || isReefAssemblageBenthic(entity.speciesId)) {
+        if (entity.speciesId === 'painted-spiny-lobster' || isReefDiversityBenthic(entity.speciesId) || isReefCommunityBenthic(entity.speciesId) || isReefLifeBenthic(entity.speciesId) || isReefFaunaBenthic(entity.speciesId) || isReefAssemblageBenthic(entity.speciesId)) {
           const up = new THREE.Vector3(agent.supportNormal?.x ?? 0, agent.supportNormal?.y ?? 1, agent.supportNormal?.z ?? 0).normalize();
           const forward = new THREE.Vector3(Math.cos(heading), 0, Math.sin(heading));
           forward.addScaledVector(up, -forward.dot(up)).normalize();
@@ -190,7 +196,9 @@ export class OceanAnimals {
       if (entity.kind === 'turtle') {
         object.rotation.z = Number.isFinite(agent.pitch) ? THREE.MathUtils.clamp(agent.pitch, -.15, .15) : 0;
         animateOceanTurtleOrganism(object, agentTimeSec, agent);
-      } else if (isReefFaunaFish(entity.speciesId)) animateReefFaunaFish(object, agent, agentTimeSec);
+      } else if (isReefAssemblageFish(entity.speciesId)) animateReefAssemblageFish(object, agent, agentTimeSec);
+      else if (isReefAssemblageBenthic(entity.speciesId)) animateReefAssemblageBenthic(object, agent, agentTimeSec);
+      else if (isReefFaunaFish(entity.speciesId)) animateReefFaunaFish(object, agent, agentTimeSec);
       else if (isReefFaunaBenthic(entity.speciesId)) animateReefFaunaBenthic(object, agent, agentTimeSec);
       else if (isReefLifeFish(entity.speciesId)) animateReefLifeFish(object, agent, agentTimeSec);
       else if (isReefLifeBenthic(entity.speciesId)) animateReefLifeBenthic(object, agent, agentTimeSec);
