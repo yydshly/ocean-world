@@ -1,0 +1,59 @@
+TAP version 13
+# Subtest: ordinary continuous belt publishes one complete durable group before native render and restores exact saved history
+ok 1 - ordinary continuous belt publishes one complete durable group before native render and restores exact saved history
+  ---
+  duration_ms: 23026.2858
+  type: 'test'
+  ...
+# one native12-owner commit before public; current9/source<=25/animal<=20; cold records exact, one actual0.1s tick
+# Subtest: historical owners and missing complete history cannot refill or claim an empty continuous scene
+ok 2 - historical owners and missing complete history cannot refill or claim an empty continuous scene
+  ---
+  duration_ms: 7038.1689
+  type: 'test'
+  ...
+# Subtest: native pending entry cannot overwrite manual controls and the same shipped late guards reject other takeovers
+ok 3 - native pending entry cannot overwrite manual controls and the same shipped late guards reject other takeovers
+  ---
+  duration_ms: 10644.6581
+  type: 'test'
+  ...
+# Subtest: unreadable owner or refused atomic save stays private and a failed pause save still freezes immediately
+not ok 4 - unreadable owner or refused atomic save stays private and a failed pause save still freezes immediately
+  ---
+  duration_ms: 18782.4365
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\living-coastal-seascape-world.test.mjs:137:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/living-coastal-seascape-world.test.mjs:146:29)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: full200s camera follows actual401m path with current-window loading holds pause rate rebase and frozen unloaded ecology
+ok 5 - full200s camera follows actual401m path with current-window loading holds pause rate rebase and frozen unloaded ecology
+  ---
+  duration_ms: 64078.4186
+  type: 'test'
+  ...
+# {"cameraSeconds":200,"pathM":401.66140284560106,"travelledM":398.3654625398418,"visitedOwners":["150,4","151,4","152,4","152,5","153,5","154,5","154,4","155,4","155,5"],"holds":0,"rebase":1,"ecologicalTicksPerVisitedCentre":1,"ecologicalCentres":["150,4","151,4","152,4"],"scope":"few actual0.1s native ticks; camera200s is not all-owner ecology200s; unloaded owners frozen"}
+# Subtest: ordinary URL and director use the same native route with guarded asynchronous completion
+ok 6 - ordinary URL and director use the same native route with guarded asynchronous completion
+  ---
+  duration_ms: 11378.5158
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 135215.9842

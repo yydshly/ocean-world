@@ -111,7 +111,7 @@ test('the public observation shortcuts cover the actual living generator route o
   const generator = createLivingRidgeGenerator(createLivingShallowsGenerator(livingShallowsSeed('42')));
   const choices = DEMO_ACTIONS.filter(action => action.kind === 'living-stop');
   assert.deepEqual(choices.map(action => action.stopId), generator.routeStops.map(stop => stop.id));
-  assert.equal(choices.length, 21);
+  assert.equal(choices.length, 22);
   assert.equal(new Set(choices.map(action => action.stopId)).size, choices.length);
   assert.equal(new Set(DEMO_ACTIONS.map(action => action.id)).size, DEMO_ACTIONS.length);
   for (const choice of choices) {
@@ -306,7 +306,7 @@ test('discovery entry starts only the living observation world and preserves an 
 test('the director opening resolves the complete scene start while the ordinary default retains its original entry', () => {
   const generator = createLivingRidgeGenerator(createLivingShallowsGenerator(livingShallowsSeed('42')));
   const stops = [...generator.routeStops].reverse();
-  const opening = DIRECTOR_STEPS[0], action = directorStepAction(opening);
+  const opening = DIRECTOR_STEPS.find(step => step.id === 'shallows-opening'), action = directorStepAction(opening);
   assert.equal(opening.id, 'shallows-opening');
   assert.equal(opening.motion.routeId, undefined);
   assert.equal(action.entryStopId, 'shallow-scene-reef');

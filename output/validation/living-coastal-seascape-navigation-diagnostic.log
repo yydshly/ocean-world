@@ -1,0 +1,221 @@
+TAP version 13
+# Subtest: deep belt and whole-scene shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries
+ok 1 - deep belt and whole-scene shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries
+  ---
+  duration_ms: 822.8463
+  type: 'test'
+  ...
+# Subtest: kelp belt and whole-scene shortcuts resolve native seed routes without changing protected ecology
+ok 2 - kelp belt and whole-scene shortcuts resolve native seed routes without changing protected ecology
+  ---
+  duration_ms: 187.526
+  type: 'test'
+  ...
+# Subtest: matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+ok 3 - matching requires the loaded renderer and snapshot to agree on the requested shallow profile
+  ---
+  duration_ms: 0.1755
+  type: 'test'
+  ...
+# Subtest: missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+ok 4 - missing, disposed, wrong-biome or stale-world snapshots cannot execute a queued entry
+  ---
+  duration_ms: 0.0829
+  type: 'test'
+  ...
+# Subtest: the public observation shortcuts cover the actual living generator route once each
+ok 5 - the public observation shortcuts cover the actual living generator route once each
+  ---
+  duration_ms: 0.4647
+  type: 'test'
+  ...
+# Subtest: stop selection resolves the loaded route by ID and never substitutes the first stop
+ok 6 - stop selection resolves the loaded route by ID and never substitutes the first stop
+  ---
+  duration_ms: 0.2145
+  type: 'test'
+  ...
+# Subtest: kelp and deep world entries start continuous exploration and report an actual startup failure
+ok 7 - kelp and deep world entries start continuous exploration and report an actual startup failure
+  ---
+  duration_ms: 0.1651
+  type: 'test'
+  ...
+# Subtest: anchored kelp and deep openings use actual native habitat entries without a preliminary overview
+ok 8 - anchored kelp and deep openings use actual native habitat entries without a preliminary overview
+  ---
+  duration_ms: 0.2937
+  type: 'test'
+  ...
+# Subtest: director animal entry delegates selection and camera preparation while manual focus retains its native call
+ok 9 - director animal entry delegates selection and camera preparation while manual focus retains its native call
+  ---
+  duration_ms: 0.2927
+  type: 'test'
+  ...
+# Subtest: living and legacy world entries use their own observation operations without rebuilding populations
+ok 10 - living and legacy world entries use their own observation operations without rebuilding populations
+  ---
+  duration_ms: 0.319
+  type: 'test'
+  ...
+# Subtest: director fixed-view shots start at the requested view even before a slow transition could finish
+ok 11 - director fixed-view shots start at the requested view even before a slow transition could finish
+  ---
+  duration_ms: 0.2044
+  type: 'test'
+  ...
+# Subtest: water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+ok 12 - water-layer entries preserve horizontal location and do not call overview or an observation shortcut
+  ---
+  duration_ms: 0.2218
+  type: 'test'
+  ...
+# Subtest: current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+ok 13 - current-world tools do not select a biome or shallow profile; shallow discoveries are explicit
+  ---
+  duration_ms: 0.1491
+  type: 'test'
+  ...
+# Subtest: director layer entry defers vertical movement to the rendered shot and leaves manual switching intact
+ok 14 - director layer entry defers vertical movement to the rendered shot and leaves manual switching intact
+  ---
+  duration_ms: 0.0996
+  type: 'test'
+  ...
+# Subtest: a missing local animal remains absent and the navigation adapter ignores UI-only tools
+ok 15 - a missing local animal remains absent and the navigation adapter ignores UI-only tools
+  ---
+  duration_ms: 0.1006
+  type: 'test'
+  ...
+# Subtest: discovery entry starts only the living observation world and preserves an existing exploration location
+ok 16 - discovery entry starts only the living observation world and preserves an existing exploration location
+  ---
+  duration_ms: 0.0911
+  type: 'test'
+  ...
+# Subtest: the director opening resolves the complete scene start while the ordinary default retains its original entry
+not ok 17 - the director opening resolves the complete scene start while the ordinary default retains its original entry
+  ---
+  duration_ms: 0.8291
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\demo-navigation.test.mjs:306:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'coastal-life-belt'
+    - 'shallows-opening'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'shallows-opening'
+  actual: 'coastal-life-belt'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/demo-navigation.test.mjs:310:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a real completed clock can be recorded before manual navigation without advancing twice
+ok 18 - a real completed clock can be recorded before manual navigation without advancing twice
+  ---
+  duration_ms: 3.3051
+  type: 'test'
+  ...
+# Subtest: paused completion is confirmed, but missing, short, failed, wrong-length and stale shots cannot claim viewing
+ok 19 - paused completion is confirmed, but missing, short, failed, wrong-length and stale shots cannot claim viewing
+  ---
+  duration_ms: 0.3806
+  type: 'test'
+  ...
+# Subtest: the actual player exposes working camera-rate choices while loading or paused
+ok 20 - the actual player exposes working camera-rate choices while loading or paused
+  ---
+  duration_ms: 3.9447
+  type: 'test'
+  ...
+# Subtest: the actual countdown scales with rate while progress retains rendered shot time
+not ok 21 - the actual countdown scales with rate while progress retains rendered shot time
+  ---
+  duration_ms: 4.4221
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\director-player.test.mjs:56:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    2 !== 21
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 21
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/director-player.test.mjs:62:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: a completed player can select the last chapter again through its real seek handler
+ok 22 - a completed player can select the last chapter again through its real seek handler
+  ---
+  duration_ms: 0.9442
+  type: 'test'
+  ...
+# Subtest: route estimates respond to camera rate without changing completed coverage or paused wording
+ok 23 - route estimates respond to camera rate without changing completed coverage or paused wording
+  ---
+  duration_ms: 2.0471
+  type: 'test'
+  ...
+# Subtest: manual last-chapter skips and ending cannot claim that all chapters were played
+ok 24 - manual last-chapter skips and ending cannot claim that all chapters were played
+  ---
+  duration_ms: 4.4887
+  type: 'test'
+  ...
+# Subtest: the shipped player claims full completion only after every actual chapter clock completes
+ok 25 - the shipped player claims full completion only after every actual chapter clock completes
+  ---
+  duration_ms: 1.727
+  type: 'test'
+  ...
+# Subtest: a scene-only sibling mask follows exact director opacity while pause, skip and seek stay usable
+ok 26 - a scene-only sibling mask follows exact director opacity while pause, skip and seek stay usable
+  ---
+  duration_ms: 7.1615
+  type: 'test'
+  ...
+# Subtest: nearby shot linking stays visible and completion or idle cannot retain a stale mask
+ok 27 - nearby shot linking stays visible and completion or idle cannot retain a stale mask
+  ---
+  duration_ms: 5.0101
+  type: 'test'
+  ...
+# Subtest: shipped mask styling sits below controls and adds no asynchronous opacity animation
+ok 28 - shipped mask styling sits below controls and adds no asynchronous opacity animation
+  ---
+  duration_ms: 5.3211
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 26
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1121.8794

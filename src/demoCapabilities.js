@@ -7,6 +7,7 @@ import { LIVING_SHALLOWS_PROFILE } from './livingShallows.js';
 import { OCEAN_OBSERVATION_LAYERS } from './oceanLayerNavigation.js';
 import { DEEP_OCEAN_OBSERVATION_LAYERS } from './deepOceanNavigation.js';
 import { SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
+import { COASTAL_SEASCAPE_ROUTE_STOPS } from './livingCoastalSeascape.js';
 import { KELP_SEASCAPE_ROUTE_STOPS } from './kelpSeascape.js';
 import { KELP_BENTHIC_LIFE_ROUTE_STOPS } from './kelpBenthicLifeRoutes.js';
 import { KELP_UNDERSTORY_LIFE_ROUTE_STOPS } from './kelpUnderstoryLifeRoutes.js';
@@ -41,6 +42,7 @@ export const DEMO_WORLDS = Object.freeze([
 ]);
 
 const stopHints = {
+  'coastal-life-belt': '连续走过礁群、砂道、草床与外坡，观察沿途真实生活空间与动物',
   'shoal-life-community': '进入真实水层鱼群和较大游弋动物的生活空间，群体中的每条鱼独立保存，组合由当地条件与记录决定',
   'meadow-life-community': '观察实际海草间的抓附生命、礁缘游动动物和砂地附着群落；当地组合由水深、底质与保存记录决定',
   'benthic-community': '沿沙地与礁底观察魟、羊鱼、宝螺和寄居蟹，实际组合由当地底质与水深决定',
@@ -77,14 +79,14 @@ const stops = [...LIVING_SHALLOWS_ROUTE,
   { id: 'seascape-transition', label: '相邻生境' },
   { id: 'habitat-belt-reef', label: '生活带：礁群沙道' },
   { id: 'habitat-belt-meadow', label: '生活带：草床水层' },
-  ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS, ...OCEAN_SHOAL_LIFE_ROUTE_STOPS,
+  ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS, ...OCEAN_SHOAL_LIFE_ROUTE_STOPS, ...COASTAL_SEASCAPE_ROUTE_STOPS,
 ];
 
 export const DEMO_LIVING_STOPS = Object.freeze(stops.map((stop, index) => entry({
   id: stop.id, number: String(index + 1).padStart(2, '0'), title: stop.label,
   description: stopHints[stop.id],
   action: { id: `stop-${stop.id}`, kind: 'living-stop', biome: 'reef', profile: LIVING_SHALLOWS_PROFILE, stopId: stop.id,
-    ...(stop.id==='meadow-life-community'?{meadowLifeEntry:true}:stop.id==='shoal-life-community'?{shoalLifeEntry:true}:{}) },
+    ...(stop.id==='coastal-life-belt'?{coastalLifeBeltEntry:true}:stop.id==='meadow-life-community'?{meadowLifeEntry:true}:stop.id==='shoal-life-community'?{shoalLifeEntry:true}:{}) },
 })));
 
 export const DEMO_KELP_STOPS = Object.freeze([

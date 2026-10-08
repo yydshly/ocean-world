@@ -1,3 +1,16 @@
+<!-- living-coastal-seascape-current -->
+2026-10-08 当前有限阶段：连续浅海生活带。未访问区域的12个区块组成384×128米共享海床，实际路径约401.66米，连接礁群、砂道、草床和外坡；沿途使用真实已有动物、附着植物和床面物件。新版只在严格未访问历史中生成，先原子保存再曝光，旧v6及原资产保持。
+
+[普通入口](https://yydshly.github.io/ocean-world/?demo=coastal-life-belt)进入整段起点，可自由探索；[导演入口](https://yydshly.github.io/ocean-world/?demo=director)第一章沿完整路线移动观察200秒，可变速及暂停，跨区加载时停镜头和章节时钟。导演保留全部原入口，现65章、59动作、994秒1×观察，加载转场另计。
+
+宏观场景和真实持久生态优先，本阶段不继续单体材质或镜头细调。保持9活区、25公开来源、每区20条全部动物记录；不补死亡或空类别。海龟及目录物种不强制出生，植物景观不等于模拟生物量。完整食物网、真实流体及浏览器/GPU整体观感仍未验收。独立Goal保持暂停，已有浏览器拒绝不得绕过。
+
+状态：本阶段实现及有限检查完成后，由最终完整工作流、一次生产构建与精确源码发布记录确认；完整本机检查和云端发布正在进行，本行不声明已通过或已发布。
+
+说明：[连续生活带](https://github.com/yydshly/ocean-world/blob/main/docs/LIVING_COASTAL_SEASCAPE.md)。最终收据为 output/validation/living-coastal-seascape-delivery.json。以下保留此前阶段历史。
+
+<!-- /living-coastal-seascape-current -->
+
 2026-10-08 当前有限续包：在约3500米海床上方增加实际约700米水深的离底中层水体群落，加入冠水母 Periphylla periphylla、吸血乌贼 Vampyroteuthis infernalis 和巨型红糠虾 Neognathophausia ingens 三条具名完整动物代表。整套身体和附肢按650–750米实际水深与真实净空筛选；暮光层微弱太阳光尚未标定或独立渲染，近处使用观察器灯，温度、盐度、溶氧保留未知。
 
 打开[中层水体群落](https://yydshly.github.io/ocean-world/?demo=deep-midwater-life)，或在[导演入口](https://yydshly.github.io/ocean-world/?demo=director)选择“深海：离底中层水体”，进行16秒实际移动观察。string42原生入口192,8（12320,544）有3条新动物、含旧动物共16条记录；其他种子及旧历史不保证三类齐全。深海目录15条动物代表记录；导演64章、58动作、794秒1×观察，加载转场另计。普通入口、观察保存、实际700米视点、浮动原点及返回海床共用真实生态。

@@ -9,6 +9,8 @@ import { validateLivingSeascapePlan } from './livingSeascape.js';
 import { validateLivingHabitatBeltPlan, sampleLivingHabitatBelt } from './livingHabitatBelt.js';
 import { validateLivingShallowSeascapePlan, sampleLivingShallowSeascape,
   SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
+import { validateLivingCoastalSeascapePlan, sampleLivingCoastalSeascape,
+  coastalSeascapeAnimalAllocation, COASTAL_SEASCAPE_ROUTE_STOPS } from './livingCoastalSeascape.js';
 import { validateLivingSeabedRelief, sampleLivingSeabedRelief,
   livingSeabedFloorVertex, livingSeabedFloorSurface } from './livingSeabedRelief.js';
 
@@ -159,6 +161,7 @@ export function createLivingRidgePlan(baseGenerator, cx, cz) {
 
 export function validateLivingRidgePlan(plan, baseGenerator) {
   try {
+    if (plan?.version === 7) return validateLivingCoastalSeascapePlan(baseGenerator.baseGenerator ?? baseGenerator, plan);
     if (plan?.version === 6) return validateLivingShallowSeascapePlan(baseGenerator.baseGenerator ?? baseGenerator, plan);
     if (plan?.version === 5) return validateLivingHabitatBeltPlan(plan, baseGenerator);
     if (plan?.version === 4) return validateLivingSeascapePlan(plan, baseGenerator);
@@ -237,7 +240,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
   const floorPlanAt = (x, z) => {
     if (!Number.isFinite(x) || !Number.isFinite(z)) return null;
     const plan = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
-    return plan?.version === 3 || plan?.version === 4 || plan?.version === 6 ? plan : null;
+    return plan?.version === 3 || plan?.version === 4 || plan?.version === 6 || plan?.version === 7 ? plan : null;
   };
   const assertPublishable = () => {
     if (candidateBatchDepth) throw new TypeError('Cannot publish ridge owners inside a temporary plan batch.');
@@ -273,9 +276,10 @@ export function createLivingRidgeGenerator(baseGenerator) {
       Object.freeze({ id: 'seascape-transition', label: '相邻生境', x: 3502.5, z: 608 }),
       Object.freeze({ id: 'habitat-belt-reef', label: '生活带：礁群沙道', x: 4758, z: 150, heading: Math.PI / 2, entryAcrossM: 2 }),
       Object.freeze({ id: 'habitat-belt-meadow', label: '生活带：草床水层', x: 4832, z: 224, heading: Math.atan2(.51, .86), entryAcrossM: 2 }),
-      ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS, ...OCEAN_SHOAL_LIFE_ROUTE_STOPS]),
+      ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS, ...OCEAN_SHOAL_LIFE_ROUTE_STOPS, ...COASTAL_SEASCAPE_ROUTE_STOPS]),
     sample(x, z) {
       const belt = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+      if (belt?.version === 7) return sampleLivingCoastalSeascape(base, belt, x, z);
       if (belt?.version === 5) return sampleLivingHabitatBelt(base, belt, x, z);
       if (belt?.version === 6) return sampleLivingShallowSeascape(base, belt, x, z);
       const plan = floorPlanAt(x, z);
@@ -291,12 +295,17 @@ export function createLivingRidgeGenerator(baseGenerator) {
     },
     coverAt(x, z, environment) {
       const belt = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+      if (belt?.version === 7) return base.coverAt(x, z, sampleLivingCoastalSeascape(base, belt, x, z));
       if (belt?.version === 5) return base.coverAt(x, z, sampleLivingHabitatBelt(base, belt, x, z));
       if (belt?.version === 6) return base.coverAt(x, z, sampleLivingShallowSeascape(base, belt, x, z));
       const plan = floorPlanAt(x, z);
       return plan ? base.coverAt(x, z, sampleLivingSeabedRelief(base, plan, x, z)) : base.coverAt(x, z, environment);
     },
     get ridgeRevision() { return revision; },
+    coastalSeascapeAllocation(cx, cz) {
+      const plan = queryPlans.get(`${cx},${cz}`);
+      return plan?.version === 7 ? coastalSeascapeAnimalAllocation(plan) : null;
+    },
     getRidgePlan: id => plans.get(id),
     isRidgeOwnerReady: id => ready.has(id),
     registryStats: () => ({ size: ready.size, limit: LIMIT, revision, ids: [...ready],
@@ -315,7 +324,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
         for (const e of plan.elements) { counts[e.kind]++; if (e.kind === 'rock') landform[e.profile]++; }
         queryChunks.set(id, Object.freeze({ ...original, elements: plan.elements, counts: Object.freeze(counts),
           landform: Object.freeze(landform), ridgePlan: plan, ridgeGeologyVersion: plan.version,
-          ...([3, 4, 5, 6].includes(plan.version) ? { habitatComposition: plan.habitatComposition } : {}) }));
+          ...([3, 4, 5, 6, 7].includes(plan.version) ? { habitatComposition: plan.habitatComposition } : {}) }));
       }
       return queryChunks.get(id);
     },
@@ -363,6 +372,24 @@ export function createLivingRidgeGenerator(baseGenerator) {
         ids.add(plan.id);
       }
       if (group?.ownerIds?.length !== 12 || group.ownerIds.some(id => !ids.has(id))) throw new TypeError('Incomplete shallow seascape candidate.');
+      const previousPlans = queryPlans, previousChunks = queryChunks;
+      queryPlans = new Map(input.map(plan => [plan.id, plan])); queryChunks = new Map(); candidateBatchDepth++;
+      try {
+        const result = fn(facade);
+        if (result && typeof result.then === 'function') throw new TypeError('Ridge candidate callback returned an asynchronous result.');
+        return result;
+      } finally { queryPlans = previousPlans; queryChunks = previousChunks; candidateBatchDepth--; }
+    },
+    withCoastalSeascapePlans(input, fn) {
+      if (!Array.isArray(input) || input.length !== 12 || typeof fn !== 'function' || fn.constructor?.name === 'AsyncFunction')
+        throw new TypeError('A coastal seascape candidate requires twelve owners and a synchronous callback.');
+      const group = input[0]?.group, ids = new Set();
+      for (const plan of input) {
+        if (plan?.version !== 7 || !validateLivingRidgePlan(plan, base) || ids.has(plan.id) || stamp(plan.group) !== stamp(group))
+          throw new TypeError('Invalid complete coastal seascape candidate.');
+        ids.add(plan.id);
+      }
+      if (group?.ownerIds?.length !== 12 || group.ownerIds.some(id => !ids.has(id))) throw new TypeError('Incomplete coastal seascape candidate.');
       const previousPlans = queryPlans, previousChunks = queryChunks;
       queryPlans = new Map(input.map(plan => [plan.id, plan])); queryChunks = new Map(); candidateBatchDepth++;
       try {

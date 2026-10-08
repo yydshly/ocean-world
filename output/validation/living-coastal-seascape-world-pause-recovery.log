@@ -1,0 +1,16 @@
+TAP version 13
+# Subtest: unreadable owner or refused atomic save stays private and a failed pause save still freezes immediately
+ok 1 - unreadable owner or refused atomic save stays private and a failed pause save still freezes immediately
+  ---
+  duration_ms: 19425.6474
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 19604.6604

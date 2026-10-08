@@ -1,0 +1,129 @@
+TAP version 13
+# Subtest: the finite fixed twelve-owner group is deterministic, closed and uses exact twenty-record allocation recipes
+ok 1 - the finite fixed twelve-owner group is deterministic, closed and uses exact twenty-record allocation recipes
+  ---
+  duration_ms: 2.9537
+  type: 'test'
+  ...
+# actual added rocks=14, corals=22, rooted grass=467
+# Subtest: shared Float32 relief joins all internal seams and preserves the outer sixteen metres of original bed
+ok 2 - shared Float32 relief joins all internal seams and preserves the outer sixteen metres of original bed
+  ---
+  duration_ms: 367.5675
+  type: 'test'
+  ...
+# actual bed delta span=9.578926086425781m, max grade=0.6492547021423254
+# Subtest: retained boundary hosts and their attachments keep literal descriptors and complete original support footprints
+not ok 3 - retained boundary hosts and their attachments keep literal descriptors and complete original support footprints
+  ---
+  duration_ms: 2.5649
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\living-coastal-seascape.test.mjs:66:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    living-rock:602,17:complete footprint
+    + actual - expected
+    
+      {
+        elementId: null,
+    +   height: -10.207265712309292,
+    -   height: -10.208686754005315,
+        normal: {
+    +     x: 0.031803108670542576,
+    +     y: 0.9994598236924669,
+    +     z: 0.008283906295500975
+    -     x: 0.034590771275816834,
+    -     y: 0.9993402006147103,
+    -     z: 0.011074383860724386
+        }
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    height: -10.208686754005315
+    normal:
+      x: 0.034590771275816834
+      y: 0.9993402006147103
+      z: 0.011074383860724386
+    elementId: ~
+  actual:
+    height: -10.207265712309292
+    normal:
+      x: 0.031803108670542576
+      y: 0.9994598236924669
+      z: 0.008283906295500975
+    elementId: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/living-coastal-seascape.test.mjs:69:55)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the actual connected 3D route is 300–500m with bed+2m camera height and full one-metre entity clearance
+ok 4 - the actual connected 3D route is 300–500m with bed+2m camera height and full one-metre entity clearance
+  ---
+  duration_ms: 72.3284
+  type: 'test'
+  ...
+# actual 3D connected route=401.37265592574573m, 684 points, maximum point gap=0.7621098070414836m
+# Subtest: new irregular rock shoulders are grounded and attached coral or algae roots use the same actual host surface
+ok 5 - new irregular rock shoulders are grounded and attached coral or algae roots use the same actual host surface
+  ---
+  duration_ms: 0.8098
+  type: 'test'
+  ...
+# Subtest: the meadow has a thick core, a thin edge and full soft-floor root support while native activity gaps remain open
+ok 6 - the meadow has a thick core, a thin edge and full soft-floor root support while native activity gaps remain open
+  ---
+  duration_ms: 31.0625
+  type: 'test'
+  ...
+# Subtest: the shared four-facies composition is backed by real entities and actual floor or hard support determines sampled habitat
+not ok 7 - the shared four-facies composition is backed by real entities and actual floor or hard support determines sampled habitat
+  ---
+  duration_ms: 6.5235
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\living-coastal-seascape.test.mjs:127:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + -10.453680524785183
+    - -10.453588689526502
+             ^
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: -10.453588689526502
+  actual: -10.453680524785183
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/living-coastal-seascape.test.mjs:134:215)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: canonical saved geometry rejects fabricated floor, path, roots or allocation and preserves the literal closed v6 source
+ok 8 - canonical saved geometry rejects fabricated floor, path, roots or allocation and preserves the literal closed v6 source
+  ---
+  duration_ms: 215.5546
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 6
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6477.6499

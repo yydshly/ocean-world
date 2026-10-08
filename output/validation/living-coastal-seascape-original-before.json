@@ -1,0 +1,252 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-08T03:20:02.020Z",
+  "head": "d88b263495278cb92ac373ddfd5394bf528a199e",
+  "scope": "Pre-v7 full native v6 CPU buffers, node/instance matrices, material/texture and shader declarations; no GPU acceptance.",
+  "sourceHashes": {
+    "src/world/livingShallowsAssets.js": "1a7867e540bb74157c549a0b6004546e0cc4151af6748804334fd90703f31019",
+    "src/world/livingMeadowEnvironment.js": "2549d6249a6933e54369ec9227f8790028e77cdfa73496d288b2209327ac8787",
+    "src/world/livingShallowsCoralMaterial.js": "99b6757abd2a19c16710753195ba2a9d7f4335fab407463c9365ed2ff0a761bb",
+    "src/world/livingReefSubstrate.js": "e6139ca4ab6e8bd4f15273df83968f71e72ef1238b49323bb3e0a9eaa1ef30d2",
+    "src/world/oceanRockFooting.js": "3f13ded85eeece52dd6ce9a9c882c8623e0d0e19c85ebde590b8a838ab0dc13b",
+    "src/oceanRockShape.js": "d312a05672d9e303b9f9cc86d9b8d4818e6e9bb9257f63475c8a1fa3d6a21792",
+    "src/livingShallowSeascape.js": "67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049",
+    "src/world/OceanChunks.js": "dcc648350856dcd9712a53a3715f8a961e3e4d5ad8c9a302e0377c1955343919"
+  },
+  "frames": [
+    {
+      "window": {
+        "cx": 97,
+        "cz": 2
+      },
+      "input": {
+        "timeSec": 0,
+        "currentMps": 0.15
+      },
+      "owners": [
+        {
+          "id": "96,2",
+          "output": {
+            "geometry": "50c0e0a099fb6485d86906cca3ad6c3351a71022a82f4abd021831aca5ba14eb",
+            "nodeMatrices": "ddf1c0e331335167052a97a093d7003bb3757df16070448b2e7488d82232e078",
+            "materialAndShaderDeclarations": "21a07d3c0640114893a39eab2c359e9741cd62aa657bb45d96ce40c6a6dcf8af",
+            "meshes": 10,
+            "vertices": 11625,
+            "triangles": 17199
+          }
+        },
+        {
+          "id": "97,2",
+          "output": {
+            "geometry": "6e30750775835f340ee10ac523c40d822c9fd92c372c3a00ded1636fef902d59",
+            "nodeMatrices": "8b0fa74d1129f9a11ebb6bfe2846aa284bae94247138c909c9de23274a33bf2b",
+            "materialAndShaderDeclarations": "f1afcadcca9f5e78d8eb07194a9d5afd17f028e77bcb61e4839c6457727f0dce",
+            "meshes": 9,
+            "vertices": 10057,
+            "triangles": 16143
+          }
+        },
+        {
+          "id": "98,2",
+          "output": {
+            "geometry": "9b9e92103116d76007245ed3803e6e2f30273fb1ad506cda56d677b46768c53a",
+            "nodeMatrices": "b84982ad44f7ce950c8ce07ee886559ae0a61d17ab5eb331a7fd0e6a3a861361",
+            "materialAndShaderDeclarations": "500457625b86d2f331aa8db08b72f5e3a31f2ca980f8bf34f00ac430c9e6c65e",
+            "meshes": 8,
+            "vertices": 8468,
+            "triangles": 13798
+          }
+        },
+        {
+          "id": "96,3",
+          "output": {
+            "geometry": "027c3aff33ea751881761f379a8c35c30457a3ce4f7a574eb8147fd804cd743a",
+            "nodeMatrices": "7d2969edab8a77ab335ec7bb8541236b535b98278579a3a91b2844ed9fe4d8b9",
+            "materialAndShaderDeclarations": "21a07d3c0640114893a39eab2c359e9741cd62aa657bb45d96ce40c6a6dcf8af",
+            "meshes": 10,
+            "vertices": 10065,
+            "triangles": 16423
+          }
+        },
+        {
+          "id": "97,3",
+          "output": {
+            "geometry": "8c669b59565d9762769d118f1fee545c6e247894686cb09a0fcb4866b8d5ff53",
+            "nodeMatrices": "131e95a05a8193b22d47fb8e90ecf14716b568a597e66cf53f4845b68d434373",
+            "materialAndShaderDeclarations": "21a07d3c0640114893a39eab2c359e9741cd62aa657bb45d96ce40c6a6dcf8af",
+            "meshes": 10,
+            "vertices": 10757,
+            "triangles": 16739
+          }
+        },
+        {
+          "id": "98,3",
+          "output": {
+            "geometry": "62e68bbf7ed0305f50e84b533cba1275e2941f129fdf8ca74b6a34d052a1497e",
+            "nodeMatrices": "18f25d4322fc4aef2a39c97e794704f9949d4a97d9e969e73d0950f33eb5a767",
+            "materialAndShaderDeclarations": "8a54eb117e1bf7ae18a12c7b5446a4923c10fc1ad87d3b6c09f0bb22eac50896",
+            "meshes": 9,
+            "vertices": 9485,
+            "triangles": 15431
+          }
+        }
+      ],
+      "kit": {
+        "geometry": "b622a7ffc64231df0263b4c60c6d85314213546b1b973f60a46d6d91f14e349a",
+        "nodeMatrices": "fc5a2099540b7aa6f994c92d38f679443861a32f321fd0526eeb419acad89394",
+        "materialAndShaderDeclarations": "5ea88248d997e0e206652b9a4fa1f67141650bc3ded3cc3d41e6d25842293014",
+        "meshes": 80,
+        "vertices": 88937,
+        "triangles": 139934
+      },
+      "shaderDeclarations": {
+        "rock": "edd0181fa1860920c6c0c9776ca5650e89d79a70c1d664a4f463bfbe14e854d4",
+        "coral": "4148efb2af2e3b7766e56ec9d3c3ab8dd3955ad24fa2ec0b7a0566c13bd575a4",
+        "seagrass": "0c90d42678f27c45e33f471ec831112cc11f9b73ce095422e86e2b6be40f0269",
+        "rubble": "e6af1b08cb03bc20aeb3e64eaf60ee7dc0b91679f92cfd41f49089c97130123e",
+        "algae": "e6af1b08cb03bc20aeb3e64eaf60ee7dc0b91679f92cfd41f49089c97130123e",
+        "driftwood": "e6af1b08cb03bc20aeb3e64eaf60ee7dc0b91679f92cfd41f49089c97130123e",
+        "bottle": "e6af1b08cb03bc20aeb3e64eaf60ee7dc0b91679f92cfd41f49089c97130123e"
+      },
+      "displayClock": {
+        "timeSec": 0,
+        "currentMps": 0.15
+      }
+    },
+    {
+      "window": {
+        "cx": 100,
+        "cz": 2
+      },
+      "input": {
+        "timeSec": 0,
+        "currentMps": 0.15
+      },
+      "owners": [
+        {
+          "id": "99,2",
+          "output": {
+            "geometry": "013696f8bbfa0ae3a6a0c025e2c0bd53f9aaa774de234d27b70b66e88f496b52",
+            "nodeMatrices": "19f0944f2a3b57312882ee50dc5fea25d4dd50f62897bb46f29d34051dcaa577",
+            "materialAndShaderDeclarations": "07ef0afd654c9c310f99a61482b466e34f0e82787830e3d6af1ba229e9ba8301",
+            "meshes": 9,
+            "vertices": 10134,
+            "triangles": 15945
+          }
+        },
+        {
+          "id": "100,2",
+          "output": {
+            "geometry": "328ea7f4809a1cc83958daf9e11c851959f5c8177c4ce286fbba8cc178a9e329",
+            "nodeMatrices": "7e63be97ad0f7e48c134f6efba9675a7f653fad81cd7c94152e047ce1a0dc474",
+            "materialAndShaderDeclarations": "21a07d3c0640114893a39eab2c359e9741cd62aa657bb45d96ce40c6a6dcf8af",
+            "meshes": 10,
+            "vertices": 10669,
+            "triangles": 16667
+          }
+        },
+        {
+          "id": "101,2",
+          "output": {
+            "geometry": "7718d04d18fadc8f0a15f5216adbb42670aca25f5f91e831ef853747efdf0dd3",
+            "nodeMatrices": "7254fcd0c81682e5a9911588381a00612be62dd28e16a6d92c147b819e30989a",
+            "materialAndShaderDeclarations": "07ef0afd654c9c310f99a61482b466e34f0e82787830e3d6af1ba229e9ba8301",
+            "meshes": 9,
+            "vertices": 10086,
+            "triangles": 15929
+          }
+        },
+        {
+          "id": "99,3",
+          "output": {
+            "geometry": "692fd4e71b37be0ef14fae60dbc026f83340d8b974b10b998d5a2316480e94ed",
+            "nodeMatrices": "4600980a0f16b9726335a777af17af23859520a3cbedde856bef09f008a6ca5e",
+            "materialAndShaderDeclarations": "41a7fb502a3e954bbf7949f0d8b489467f1759aaf1cd8919ea6eaa94143e6932",
+            "meshes": 8,
+            "vertices": 9856,
+            "triangles": 14728
+          }
+        },
+        {
+          "id": "100,3",
+          "output": {
+            "geometry": "136f1ab5ed15e402d27fa590f8d56171dfc2c1500b85bc9679e94cc9a8930172",
+            "nodeMatrices": "aad186c53cf8817a8a908c26efadcb4ab01fc09277c051eb057cb01f59aaade3",
+            "materialAndShaderDeclarations": "21a07d3c0640114893a39eab2c359e9741cd62aa657bb45d96ce40c6a6dcf8af",
+            "meshes": 10,
+            "vertices": 10955,
+            "triangles": 16805
+          }
+        },
+        {
+          "id": "101,3",
+          "output": {
+            "geometry": "57c509ab586298d568764d74659f59e50d073825ff878dcca5e275d72b7adc38",
+            "nodeMatrices": "770bad7a341ebbefb598fcf0f189f04018f3c3aa679cee94d8cb59aee5dec191",
+            "materialAndShaderDeclarations": "21a07d3c0640114893a39eab2c359e9741cd62aa657bb45d96ce40c6a6dcf8af",
+            "meshes": 10,
+            "vertices": 11609,
+            "triangles": 17151
+          }
+        }
+      ],
+      "kit": {
+        "geometry": "8e3a05eaea62c0ccdb34d2a1fcb1a11a0bf4fafcbbb0f35335e82f679a9c205a",
+        "nodeMatrices": "08e893a80a681116cf86130f8f98a0765ae3a721c60206f53c19d17178027318",
+        "materialAndShaderDeclarations": "28960a277bb1a8402e213eb2b8b5fa86461b1ff16b0c59960bf64f32116c2d1f",
+        "meshes": 83,
+        "vertices": 93025,
+        "triangles": 143414
+      },
+      "shaderDeclarations": {
+        "rock": "edd0181fa1860920c6c0c9776ca5650e89d79a70c1d664a4f463bfbe14e854d4",
+        "coral": "4148efb2af2e3b7766e56ec9d3c3ab8dd3955ad24fa2ec0b7a0566c13bd575a4",
+        "seagrass": "0c90d42678f27c45e33f471ec831112cc11f9b73ce095422e86e2b6be40f0269",
+        "rubble": "e6af1b08cb03bc20aeb3e64eaf60ee7dc0b91679f92cfd41f49089c97130123e",
+        "algae": "e6af1b08cb03bc20aeb3e64eaf60ee7dc0b91679f92cfd41f49089c97130123e",
+        "driftwood": "e6af1b08cb03bc20aeb3e64eaf60ee7dc0b91679f92cfd41f49089c97130123e",
+        "bottle": "e6af1b08cb03bc20aeb3e64eaf60ee7dc0b91679f92cfd41f49089c97130123e"
+      },
+      "displayClock": {
+        "timeSec": 0,
+        "currentMps": 0.15
+      }
+    }
+  ],
+  "planHash": "19bfd56c8609f43e7f52b9c5fe74cc097c11eb1dece513980801df4ff323a524",
+  "inputs": [
+    {
+      "timeSec": 0,
+      "currentMps": 0.15
+    }
+  ],
+  "sourceOwners": [
+    "100,2",
+    "100,3",
+    "101,2",
+    "101,3",
+    "96,2",
+    "96,3",
+    "97,2",
+    "97,3",
+    "98,2",
+    "98,3",
+    "99,2",
+    "99,3"
+  ],
+  "sourceOwnerCount": 12,
+  "frameCount": 2,
+  "uniqueOwnerOutputs": 12,
+  "prototypeGeometryHashes": {
+    "seagrass": "ec6e57da1014ededbf8f5f5efdd387e1d8d950c3d503a246e3f83c1ada257bdc",
+    "rubble": "b1c826d5a967610183a7f966fc9f8b938b553633daa32d260e294135ef13df8a",
+    "coral-branching": "da731282ba532e6b2b075b896bce2108af371453b2a39dfa68c539091f944a87",
+    "coral-table": "d304b9549f82f8461f30829b85dbbc7715ced4580c40d8f00696ef97f965c2c6",
+    "coral-fan": "e14e3d883283c918c02a5f7d584e54f0dc2e83b1e7995a6c3b77d6cb01cf16e6",
+    "driftwood": "2e7b706975bab5195596df74ca9b5b2e34f5b6a360cc6418a8eb50c284b2c882",
+    "bottle": "fd64212ba0c671546dc42986cb2fb24f8a4754657c4e83f99a00ffe15851049a",
+    "rock-natural-a": "1705f7dc9f2c79b621519c1c7083f7de0203fc4d46db5ae1b816f916b84fbf1d",
+    "rock-natural-b": "b2f8ae4a3222da5281f90893cd9409efaaa85b2afbdd9a6e906a9f7499eb4899",
+    "rock-natural-c": "b31258eff76b48932ceeb18ba4e5546133e8e63957c4e8f3b1e195345f656606"
+  }
+}

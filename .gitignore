@@ -206,3 +206,6 @@ output/validation/screenshots/*
 
 !output/validation/deep-midwater-life-*.json
 !output/validation/deep-midwater-life-*.log
+
+!output/validation/living-coastal-seascape-*.json
+!output/validation/living-coastal-seascape-*.log

@@ -1,0 +1,43 @@
+TAP version 13
+# Subtest: pre-v7 complete twelve-owner v6 geometry instances material shaders and original kits remain literal exact
+ok 1 - pre-v7 complete twelve-owner v6 geometry instances material shaders and original kits remain literal exact
+  ---
+  duration_ms: 4341.271
+  type: 'test'
+  ...
+# Subtest: candidate is private and the published v7 window draws only actual persistent source instances with fixed roots
+ok 2 - candidate is private and the published v7 window draws only actual persistent source instances with fixed roots
+  ---
+  duration_ms: 8629.5045
+  type: 'test'
+  ...
+# Subtest: all twelve actual floor meshes and coastal facies meet across sixteen seams without changing triangles for color
+ok 3 - all twelve actual floor meshes and coastal facies meet across sixteen seams without changing triangles for color
+  ---
+  duration_ms: 9630.5529
+  type: 'test'
+  ...
+# actual12 owners,16 seams,24 floor rays; color-only coastal dispatch; old guard channels exact
+# Subtest: one actual curved route reveals whole persistent reef and meadow silhouettes at finite ordinary camera samples
+ok 4 - one actual curved route reveals whole persistent reef and meadow silhouettes at finite ordinary camera samples
+  ---
+  duration_ms: 11048.4101
+  type: 'test'
+  ...
+# seven real route CPU samples: [{"seconds":0,"position":{"x":9624,"y":-7.813448905944824,"z":304},"wholeSourceBoxes":{"coral":0,"seagrass":0,"rock":0},"intersectingSourceBoxes":{"coral":0,"seagrass":0,"rock":3}},{"seconds":33,"position":{"x":9686.71306686606,"y":-8.573635978585084,"z":295.28693313394086},"wholeSourceBoxes":{"coral":1,"seagrass":0,"rock":0},"intersectingSourceBoxes":{"coral":1,"seagrass":0,"rock":2}},{"seconds":66,"position":{"x":9744.72964839098,"y":-4.370359238102325,"z":316.7347362932352},"wholeSourceBoxes":{"coral":1,"seagrass":0,"rock":0},"intersectingSourceBoxes":{"coral":2,"seagrass":0,"rock":1}},{"seconds":100,"position":{"x":9801.29078604511,"y":-4.2367667334319625,"z":348},"wholeSourceBoxes":{"coral":1,"seagrass":18,"rock":0},"intersectingSourceBoxes":{"coral":1,"seagrass":21,"rock":1}},{"seconds":133,"position":{"x":9858.910958166956,"y":-3.6212197788278493,"z":325.0890418330437},"wholeSourceBoxes":{"coral":0,"seagrass":18,"rock":0},"intersectingSourceBoxes":{"coral":0,"seagrass":22,"rock":2}},{"seconds":166,"position":{"x":9915.008807042805,"y":-9.791413352920026,"z":297.00880704280536},"wholeSourceBoxes":{"coral":0,"seagrass":0,"rock":0},"intersectingSourceBoxes":{"coral":0,"seagrass":0,"rock":0}},{"seconds":200,"position":{"x":9960,"y":-8.382451057434082,"z":346},"wholeSourceBoxes":{"coral":0,"seagrass":30,"rock":0},"intersectingSourceBoxes":{"coral":0,"seagrass":37,"rock":0}}]
+# whole boxes/intersecting boxes within30m: {"counts":{"coral":3,"seagrass":66,"rock":0},"intersections":{"coral":4,"seagrass":80,"rock":9}}; native large rock bounds include buried shoulders; no foliage/animal occlusion or GPU appearance certification
+# Subtest: streaming rebase repeat publication and disposal preserve bounded shared kit and native display clock
+ok 5 - streaming rebase repeat publication and disposal preserve bounded shared kit and native display clock
+  ---
+  duration_ms: 9413.8717
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 43225.2881

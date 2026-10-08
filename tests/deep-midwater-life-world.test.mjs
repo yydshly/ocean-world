@@ -232,8 +232,8 @@ test('real midwater route and a finite director orbit frame the three whole form
     for (const a of life(f)) assert.equal(f.records.get(owner(f)).deepMidwaterLifeAgents.find(saved => saved.id === a.id).timeSec, 16);
     assert.equal(f.world.errors.length, 0);
   } finally { await release(f); }
-  assert.equal(DIRECTOR_STEPS.length, 64); assert.equal(new Set(DIRECTOR_STEPS.map(s => s.action.id)).size, 58);
-  assert.equal(DIRECTOR_STEPS.reduce((sum, s) => sum + s.durationMs, 0), 794000);
+  assert.equal(DIRECTOR_STEPS.length, 65); assert.equal(new Set(DIRECTOR_STEPS.map(s => s.action.id)).size, 59);
+  assert.equal(DIRECTOR_STEPS.reduce((sum, s) => sum + s.durationMs, 0), 994000);
 });
 
 test('ordinary and direct URL asynchronous results never overwrite a newer world, seed, controls or toast', async () => {

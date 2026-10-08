@@ -1,0 +1,81 @@
+TAP version 13
+# Subtest: pre-v7 complete twelve-owner v6 geometry instances material shaders and original kits remain literal exact
+ok 1 - pre-v7 complete twelve-owner v6 geometry instances material shaders and original kits remain literal exact
+  ---
+  duration_ms: 9106.7348
+  type: 'test'
+  ...
+# Subtest: candidate is private and the published v7 window draws only actual persistent source instances with fixed roots
+not ok 2 - candidate is private and the published v7 window draws only actual persistent source instances with fixed roots
+  ---
+  duration_ms: 14427.4978
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\living-coastal-seascape-render.test.mjs:76:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(checked>0&&roots>0)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/living-coastal-seascape-render.test.mjs:89:11)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: all twelve actual floor meshes and coastal facies meet across sixteen seams without changing triangles for color
+ok 3 - all twelve actual floor meshes and coastal facies meet across sixteen seams without changing triangles for color
+  ---
+  duration_ms: 16209.4232
+  type: 'test'
+  ...
+# actual12 owners,16 seams,24 floor rays; color-only coastal dispatch; old guard channels exact
+# Subtest: one actual curved route reveals whole persistent reef and meadow silhouettes at finite ordinary camera samples
+not ok 4 - one actual curved route reveals whole persistent reef and meadow silhouettes at finite ordinary camera samples
+  ---
+  duration_ms: 19216.3028
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\living-coastal-seascape-render.test.mjs:108:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(counts.coral>0&&counts.seagrass>0&&counts.rock>0)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/living-coastal-seascape-render.test.mjs:118:60)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: streaming rebase repeat publication and disposal preserve bounded shared kit and native display clock
+ok 5 - streaming rebase repeat publication and disposal preserve bounded shared kit and native display clock
+  ---
+  duration_ms: 14546.3274
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 3
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 73730.6116

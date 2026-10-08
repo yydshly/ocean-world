@@ -60,6 +60,7 @@ import { oceanKeyboardTargetConsumesInput } from '../oceanKeyboardInput.js';
 import { createLivingVisualRoute, sampleLivingVisualRoute } from '../livingVisualRoute.js';
 import { livingShallowsPresentation } from '../livingShallowsPresentation.js';
 import { createDirectorEntryMotion, sampleDirectorEntryMotion, advanceDirectorEntryElapsed } from '../directorEntryMotion.js';
+import { createCoastalSeascapeMotion, sampleCoastalSeascapeMotion, coastalSeascapeWindowReady } from '../coastalSeascapeMotion.js';
 
 const reefPresets = {
   wide: { position: [3, 2.8, 5], target: [-2.5, 0.65, -2] },
@@ -188,7 +189,7 @@ export class ReefWorld {
         }
         if(this.isKelp||this.isDeep){this.floorMesh.visible=false;this.floorContinuation.visible=false;}
         this.scene.add(this.oceanChunks.root);this.oceanChunks.update(this.camera.position);
-        this.oceanEcology=this.isDeep?new DeepOceanEcology(seed,this.oceanChunks.generator,{seascape:true,wholeSeascape:true,benthicLife:true,hardLife:true,waterLife:true,midwaterLife:true}):this.isKelp?new KelpOceanEcology(seed,this.oceanChunks.generator,{visitors:true,understory:true,forestBelt:true,kelpSeascape:true,benthicLife:true,waterLife:true,nearBottomLife:true,understoryLife:true}):new OceanEcology(seed,this.oceanChunks.generator,{turtles:true,sceneElements:!this.isLivingShallows,habitatScenes:!this.isLivingShallows,macroLandscape:!this.isLivingShallows,livingGeology:this.isLivingShallows,habitatMosaic:this.isLivingShallows,seabedRelief:this.isLivingShallows,seascape:this.isLivingShallows,livingBelt:this.isLivingShallows,shallowSeascape:this.isLivingShallows,turtleGrazing:this.isLivingShallows,biodiversity:this.isLivingShallows,benthicLife:this.isLivingShallows,meadowLife:this.isLivingShallows,shoalLife:this.isLivingShallows});
+        this.oceanEcology=this.isDeep?new DeepOceanEcology(seed,this.oceanChunks.generator,{seascape:true,wholeSeascape:true,benthicLife:true,hardLife:true,waterLife:true,midwaterLife:true}):this.isKelp?new KelpOceanEcology(seed,this.oceanChunks.generator,{visitors:true,understory:true,forestBelt:true,kelpSeascape:true,benthicLife:true,waterLife:true,nearBottomLife:true,understoryLife:true}):new OceanEcology(seed,this.oceanChunks.generator,{turtles:true,sceneElements:!this.isLivingShallows,habitatScenes:!this.isLivingShallows,macroLandscape:!this.isLivingShallows,livingGeology:this.isLivingShallows,habitatMosaic:this.isLivingShallows,seabedRelief:this.isLivingShallows,seascape:this.isLivingShallows,livingBelt:this.isLivingShallows,shallowSeascape:this.isLivingShallows,coastalSeascape:this.isLivingShallows,turtleGrazing:this.isLivingShallows,biodiversity:this.isLivingShallows,benthicLife:this.isLivingShallows,meadowLife:this.isLivingShallows,shoalLife:this.isLivingShallows});
         if(this.isLivingShallows)this.oceanEcology.setEnvironment(this.sim.environment);
         this.oceanAnimals=this.isDeep?new DeepOceanAnimals([...this.catalog.values()]):this.isKelp?new KelpOceanAnimals([...this.catalog.values()]):new OceanAnimals([...this.catalog.values()]);this.scene.add(this.oceanAnimals.root);
         if(!this.isKelp&&!this.isDeep&&!this.isLivingShallows){this.oceanSceneElements=new OceanSceneElements();this.scene.add(this.oceanSceneElements.root);}
@@ -715,16 +716,24 @@ export class ReefWorld {
     if(center===this.oceanEcologyCenter)return;
     if(this.elapsed<(this.oceanEcologyRetryAt||0))return;
     this.oceanEcologyCenter=center;
+    const shotOwner=this.directorMotion;
+    const failCoastalLoad=message=>{
+      if(!shotOwner?.coastalRoute||this.directorMotion!==shotOwner||!shotOwner.active)return;
+      shotOwner.active=false;shotOwner.error=message;shotOwner.waitingForRegions=false;
+      if(this.oceanEcologyCenter===center){this.oceanEcologyCenter=null;this.oceanEcologyRetryAt=this.elapsed+2;}
+    };
     this.oceanEcology.update(position).then(result=>{
       if(this.disposed)return;
       if(this.isLivingShallows||this.isKelp||this.isDeep)this.oceanChunks.update(this.oceanWorldPosition());
       if(result===false&&this.oceanEcologyCenter===center){this.oceanEcologyCenter=null;this.oceanEcologyRetryAt=this.elapsed+2;}
+      if(result===false)failCoastalLoad('生活带跨区加载失败，可重试当前章节或继续自由观察。');
       this.oceanAnimals.update(this.oceanEcology.agents,this.sim.metrics.timeSec,this.oceanRenderOrigin,this.camera.position,this.oceanEcology.scenery??[]);
       this.updateKelpDriftFood();
       this.oceanChunks.setDetailedHosts?.(this.oceanAnimals.detailedHostIds);
       if(this.selectedId&&!this.findAgent(this.selectedId)){this.following=false;this.transition=null;this.selectedId=null;this.oceanAnimals?.setObservationAgent?.(null);this.onSelect(null);}
       this.emitSnapshot();
-    }).catch(error=>{if(!this.disposed)this.errors.push('区域生态加载失败：'+error.message);});
+    }).catch(error=>{if(!this.disposed){this.errors.push('区域生态加载失败：'+error.message);
+      failCoastalLoad('生活带跨区加载失败：'+error.message);this.emitSnapshot();}});
   }
   updateKelpDriftFood(){
     if(this.oceanMacroLandscape&&!this.oceanEcologyResetting&&this._macroRenderRevision!==this.oceanEcology.macroLandscapeRevision){
@@ -975,6 +984,26 @@ export class ReefWorld {
       this.oceanWorldPosition().distanceTo(position)>.05||this.controls.target.distanceTo(target)>.05)return false;
     this.oceanChunks.update(this.oceanWorldPosition());
     return this.enterLivingVisualScene();
+  }
+  currentCoastalSeascapePlan(){
+    if(!this.isLivingShallows||this.disposed||this.oceanEcologyResetting||!this.oceanChunks)return null;
+    const p=this.oceanWorldPosition(),plan=this.oceanChunks.generator.chunk(Math.floor(p.x/64),Math.floor(p.z/64)).ridgePlan;
+    return plan?.version===7&&plan.theme==='living-coastal-seascape'?plan:null;
+  }
+  async enterCoastalLifeBelt(){
+    if(!this.isLivingShallows||this.disposed||this.oceanEcologyResetting||!this.oceanEcology)return false;
+    const stop=this.oceanChunks?.generator.routeStops.find(row=>row.id==='coastal-life-belt');if(!stop)return false;
+    const token=(this._shallowSceneEntryToken??0)+1;this._shallowSceneEntryToken=token;
+    const heading=stop.heading??0,x=stop.x,z=stop.z,y=Math.min(this.surfaceY-.6,this.habitatY(x,z)+2);
+    if(!this.restoreOceanObservation({position:{x,y,z},target:{x:x+8*Math.cos(heading),y:y-.65,z:z+8*Math.sin(heading)},
+      layer:'bed',freeDepthM:this.surfaceY-y,habitat:this.oceanChunks.generator.sample(x,z).habitat}))return false;
+    const position=this.oceanWorldPosition(),target=this.controls.target.clone(),seed=this.sim.seed,controls=this.controlStartCount;
+    const loaded=await this.oceanEcology.update(position);
+    if(loaded===false||this.disposed||this.oceanEcologyResetting||this._shallowSceneEntryToken!==token||this.sim.seed!==seed||
+      this.controlStartCount!==controls||this.directorMotion||this.directorEntry?.active||this.keys.size||
+      this.oceanWorldPosition().distanceTo(position)>.05||this.controls.target.distanceTo(target)>.05)return false;
+    this.oceanChunks.update(position);
+    return this.prepareDirectorObservation({routeId:'coastal-life-belt'});
   }
   async enterShallowSeascape(){
     if(!this.isLivingShallows||this.disposed||this.oceanEcologyResetting||!this.oceanEcology)return false;
@@ -1513,6 +1542,15 @@ export class ReefWorld {
   stopDirectorEntry(){this.directorEntry=null;this._directorFocusAssessment=null;}
   prepareDirectorObservation(motion={}){
     this._preparedDirectorObservation=null;
+    if(motion.routeId==='coastal-life-belt'){
+      const plan=this.currentCoastalSeascapePlan();if(!plan)return false;
+      try{
+        const shot=createCoastalSeascapeMotion(plan,{durationSec:motion.durationSec??200}),frame=sampleCoastalSeascapeMotion(shot,0);
+        if(!this.restoreOceanObservation({...frame,layer:'bed',freeDepthM:this.surfaceY-frame.position.y,
+          habitat:this.oceanChunks.generator.sample(frame.position.x,frame.position.z).habitat}))return false;
+        this._preparedDirectorObservation={coastalShot:shot};return true;
+      }catch{return false;}
+    }
     if(motion.routeId==='kelp-understory-life'&&this.isKelp){
       const view=this.kelpUnderstoryLifeObservation();return !!view&&this.restoreOceanObservation(view);
     }
@@ -1563,6 +1601,21 @@ export class ReefWorld {
     if(this.disposed||!this.camera||!this.controls)return false;
     if(!isDirectorPlaybackRate(playbackRate))return false;
     if(layer&&!['bed','midwater','surface','free'].includes(layer))return false;
+    if(routeId==='coastal-life-belt'){
+      if(kind!=='coastal-route'||this.oceanEcologyResetting)return false;
+      try{
+        const plan=this.currentCoastalSeascapePlan();if(!plan)return false;
+        const shot=createCoastalSeascapeMotion(plan,{durationSec}),frame=sampleCoastalSeascapeMotion(shot,0),position=this.oceanWorldPosition();
+        const target=this.controls.target.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z));
+        if(Math.hypot(...['x','y','z'].map(k=>position[k]-frame.position[k]))>.05||
+          Math.hypot(...['x','y','z'].map(k=>target[k]-frame.target[k]))>.05)return false;
+        this.directorMotion={shot,coastalRoute:true,active:true,complete:false,elapsedSec:0,travelledM:0,error:null,
+          playbackRate,layer:'bed',lastPosition:{x:position.x,y:position.y,z:position.z},waitingForRegions:false};
+        this.following=false;this.transition=null;this.oceanTravel=null;this.oceanCruising=false;this.keys.clear();
+        this.oceanObservationLayer='bed';this.oceanFreeDepthM=null;this._preparedDirectorObservation=null;
+        this.emitSnapshot(true);return true;
+      }catch{return false;}
+    }
     let livingRoute=null;
     if(routeId==='living-visual'&&this.isLivingShallows){
       if(!Number.isFinite(durationSec)||durationSec<=0||durationSec>60||!['walk','orbit','follow'].includes(kind)||
@@ -1627,6 +1680,12 @@ export class ReefWorld {
   }
   updateDirectorMotion(dt){
     const motion=this.directorMotion;if(!motion?.active)return;
+    if(motion.coastalRoute){
+      if(this.oceanEcologyResetting){motion.active=false;motion.error='生活带生态正在重置。';return;}
+      if(!coastalSeascapeWindowReady(this.oceanWorldPosition(),{loadedOwnerIds:this.oceanChunks.stats.loadedChunks,
+        activeOwnerIds:[...this.oceanEcology._active.keys()]})){motion.waitingForRegions=true;return;}
+      motion.waitingForRegions=false;
+    }
     const elapsed=advanceDirectorCameraElapsed(motion.elapsedSec,motion.shot.durationSec,dt,
       {paused:this.paused,hidden:typeof document!=='undefined'&&document.visibilityState==='hidden',playbackRate:motion.playbackRate});
     if(elapsed===motion.elapsedSec)return;
@@ -1638,11 +1697,22 @@ export class ReefWorld {
       // Keep the last observed absolute location for this finite shot rather
       // than suddenly aiming back at its original chapter-entry position.
       const trackingTarget=motion.lastTrackingTarget;
-      const frame=motion.livingRoute?{
+      const frame=motion.coastalRoute?sampleCoastalSeascapeMotion(motion.shot,elapsed):motion.livingRoute?{
         ...sampleLivingVisualRoute(motion.livingRoute,elapsed/motion.shot.durationSec),elapsedSec:elapsed,complete:elapsed>=motion.shot.durationSec
       }:sampleDirectorCameraMotion(motion.shot,elapsed,{...this.directorMotionQueries(motion.layer),trackingTarget});
+      if(motion.coastalRoute){
+        const id=`${Math.floor(frame.position.x/64)},${Math.floor(frame.position.z/64)}`;
+        if(!this.oceanChunks.stats.loadedChunks.includes(id)||!this.oceanEcology._active.has(id)){
+          motion.waitingForRegions=true;return;
+        }
+        const solid=Math.max(this.floorY(frame.position.x,frame.position.z),this.habitatY(frame.position.x,frame.position.z));
+        if(!Number.isFinite(solid)||frame.position.y<solid+.25||frame.position.y>this.surfaceY-.5)
+          throw new Error('生活带路径实际净空已改变。');
+      }
       const position=new THREE.Vector3(frame.position.x-this.oceanRenderOrigin.x,frame.position.y,frame.position.z-this.oceanRenderOrigin.z);
       const target=new THREE.Vector3(frame.target.x-this.oceanRenderOrigin.x,frame.target.y,frame.target.z-this.oceanRenderOrigin.z);
+      if(motion.coastalRoute&&this.clearCameraPosition(position.clone()).distanceTo(position)>.001)
+        throw new Error('生活带路径被实际岩体遮挡。');
       this.camera.position.copy(position);this.controls.target.copy(target);
       const damping=this.controls.enableDamping;this.controls.enableDamping=false;
       try{this.controls.update();this.camera.position.copy(position);this.controls.target.copy(target);this.controls.update();}
@@ -1669,7 +1739,8 @@ export class ReefWorld {
       layer:motion?.layer??null,agentId:motion?.agentId??null,error:motion?.error??null,
       ...(motion?.livingRoute?{observationRoute:{scope:motion.livingRoute.scope,sourceElementIds:[...motion.livingRoute.sourceElementIds],
         sourceAgentIds:[...motion.livingRoute.sourceAgentIds],pathLengthM:motion.livingRoute.pathLengthM}}:{}),
-      paused:!!this.paused,scope:'local-continuous-observation-shot',coordinateSpace:'absolute-world-metres',
+      ...(motion?.coastalRoute?{observationRoute:{groupId:shot.groupId,pathLengthM:shot.distanceM,ownerIds:[...shot.ownerIds]},waitingForRegions:motion.waitingForRegions}:{}),
+      paused:!!this.paused,scope:motion?.coastalRoute?'committed-continuous-habitat-belt':'local-continuous-observation-shot',coordinateSpace:'absolute-world-metres',
       worldPosition:this.camera?{...this.oceanWorldPosition()}:null,
       worldTarget:this.controls?{x:this.controls.target.x+this.oceanRenderOrigin.x,y:this.controls.target.y,z:this.controls.target.z+this.oceanRenderOrigin.z}:null};
   }
@@ -2251,7 +2322,7 @@ export class ReefWorld {
       // immediately and acknowledge the pause after its latest atomic save.
       if(this.paused&&this.oceanEcology&&!this.oceanEcologyResetting){
         const saved=await this.oceanEcology.checkpoint();
-        if(saved===false)throw new Error('暂停已生效，但最新状态保存失败；请保留当前页面并重试。');
+        if(saved===false||saved===null)throw new Error('暂停已生效，但最新状态保存失败；请保留当前页面并重试。');
       }
     }finally{if(!this.disposed)this.emitSnapshot(true);}
     return this.paused;

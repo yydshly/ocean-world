@@ -137,7 +137,7 @@ test('a distant reposition executes only under full cover and begins its shot on
   assert.equal(count(f.log, 'shot-begin'), 0);
   await run.until(() => run.state.phase === 'showing', 'the finite reveal must finish before observing');
   assert.equal(run.state.transition.phase, 'none'); assert.equal(run.state.transition.opacity, 0);
-  assert.equal(count(f.log, 'prepare'), 0); assert.equal(count(f.log, 'shot-begin'), 1);
+  assert.equal(count(f.log, 'prepare'), 1); assert.equal(count(f.log, 'shot-begin'), 1);
   assert.equal(run.state.elapsedMs, 0); assert.deepEqual(f.world.protectedState, f.protectedState);
 });
 

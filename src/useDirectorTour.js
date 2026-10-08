@@ -77,7 +77,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     const sameWorld = previous && !previous.disposed && action.biome === previous.biomeId &&
       (action.biome !== 'reef' || action.profile === (previous.isLivingShallows ? 'living-shallows-v1' : 'legacy'));
     let plan = null;
-    try { if (sameWorld && !(state.transition?.opacity > 0) && !['living-visual', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(DIRECTOR_STEPS[state.index].motion.routeId))
+    try { if (sameWorld && !(state.transition?.opacity > 0) && !['coastal-life-belt', 'living-visual', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(DIRECTOR_STEPS[state.index].motion.routeId))
       plan = previous.planDirectorEntry?.(action); }
     catch (problem) { fail(token, problem); return; }
     const mode = ['keep', 'continuous'].includes(plan?.kind) ? plan.kind : 'cut';
@@ -172,7 +172,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     if (!directorSceneReady(wait.action, actual, snapshot, { panelReady: wait.panelReady })) return;
     if (wait.mode === 'cut' && !wait.prepared) {
       wait.prepared = true;
-      if (['living-visual', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(DIRECTOR_STEPS[state.index].motion.routeId)) {
+      if (['coastal-life-belt', 'living-visual', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(DIRECTOR_STEPS[state.index].motion.routeId)) {
         if (actual.prepareDirectorObservation?.(DIRECTOR_STEPS[state.index].motion) !== true) {
           fail(state.token, '当前观察镜头无法安全就位，可重试或跳到下一章。'); return;
         }

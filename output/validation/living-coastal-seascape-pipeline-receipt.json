@@ -1,0 +1,222 @@
+{
+  "scope": "finite native CPU continuous shallow coastal habitat belt; no browser/GPU verification",
+  "frozen": true,
+  "ownedSourceHashes": {
+    "src/world/OceanChunks.js": "41290828c0422a879ff2a05248314187dd29bac546927656cd9f976d9b760fe8",
+    "tests/living-coastal-seascape-render.test.mjs": "415210e1ff13ff7a103143f9b1c9371974501231f6cab63f01124e93af3a04a1",
+    "tests/living-coastal-seascape-world.test.mjs": "219911aa2b6af7caf192292bf52fe1dd68bd0b93231b4b725b8cc0ad00def1a1"
+  },
+  "beforeBaseline": {
+    "path": "output/validation/living-coastal-seascape-original-before.json",
+    "sha256": "c1b2861d0a039566d5a67407606fafe2a33acd1fc698f9d3e2675e626177c21c",
+    "owners": 12,
+    "windows": 2,
+    "inputs": 1,
+    "completeLiteralV6OutputsPreserved": true
+  },
+  "logs": {
+    "living-coastal-seascape-render-initial.log": {
+      "tests": 5,
+      "pass": 3,
+      "fail": 2,
+      "skipped": 0,
+      "durationMs": 73730.6116
+    },
+    "living-coastal-seascape-render-two-checks.log": {
+      "tests": 2,
+      "pass": 1,
+      "fail": 1,
+      "skipped": 0,
+      "durationMs": 22164.4913
+    },
+    "living-coastal-seascape-render-final.log": {
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 43225.2881
+    },
+    "living-coastal-seascape-world-initial.log": {
+      "tests": 6,
+      "pass": 5,
+      "fail": 1,
+      "skipped": 0,
+      "durationMs": 135215.9842
+    },
+    "living-coastal-seascape-world-pause-recovery.log": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 19604.6604
+    },
+    "living-coastal-seascape-world-loading-recovery.log": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 18428.0261
+    }
+  },
+  "cameraFromActualInitialLog": {
+    "cameraSeconds": 200,
+    "pathM": 401.66140284560106,
+    "travelledM": 398.3654625398418,
+    "visitedOwners": [
+      "150,4",
+      "151,4",
+      "152,4",
+      "152,5",
+      "153,5",
+      "154,5",
+      "154,4",
+      "155,4",
+      "155,5"
+    ],
+    "holds": 0,
+    "rebase": 1,
+    "ecologicalTicksPerVisitedCentre": 1,
+    "ecologicalCentres": [
+      "150,4",
+      "151,4",
+      "152,4"
+    ],
+    "scope": "few actual0.1s native ticks; camera200s is not all-owner ecology200s; unloaded owners frozen"
+  },
+  "sevenNativeFrustumSamples": [
+    {
+      "seconds": 0,
+      "position": {
+        "x": 9624,
+        "y": -7.813448905944824,
+        "z": 304
+      },
+      "wholeSourceBoxes": {
+        "coral": 0,
+        "seagrass": 0,
+        "rock": 0
+      },
+      "intersectingSourceBoxes": {
+        "coral": 0,
+        "seagrass": 0,
+        "rock": 3
+      }
+    },
+    {
+      "seconds": 33,
+      "position": {
+        "x": 9686.71306686606,
+        "y": -8.573635978585084,
+        "z": 295.28693313394086
+      },
+      "wholeSourceBoxes": {
+        "coral": 1,
+        "seagrass": 0,
+        "rock": 0
+      },
+      "intersectingSourceBoxes": {
+        "coral": 1,
+        "seagrass": 0,
+        "rock": 2
+      }
+    },
+    {
+      "seconds": 66,
+      "position": {
+        "x": 9744.72964839098,
+        "y": -4.370359238102325,
+        "z": 316.7347362932352
+      },
+      "wholeSourceBoxes": {
+        "coral": 1,
+        "seagrass": 0,
+        "rock": 0
+      },
+      "intersectingSourceBoxes": {
+        "coral": 2,
+        "seagrass": 0,
+        "rock": 1
+      }
+    },
+    {
+      "seconds": 100,
+      "position": {
+        "x": 9801.29078604511,
+        "y": -4.2367667334319625,
+        "z": 348
+      },
+      "wholeSourceBoxes": {
+        "coral": 1,
+        "seagrass": 18,
+        "rock": 0
+      },
+      "intersectingSourceBoxes": {
+        "coral": 1,
+        "seagrass": 21,
+        "rock": 1
+      }
+    },
+    {
+      "seconds": 133,
+      "position": {
+        "x": 9858.910958166956,
+        "y": -3.6212197788278493,
+        "z": 325.0890418330437
+      },
+      "wholeSourceBoxes": {
+        "coral": 0,
+        "seagrass": 18,
+        "rock": 0
+      },
+      "intersectingSourceBoxes": {
+        "coral": 0,
+        "seagrass": 22,
+        "rock": 2
+      }
+    },
+    {
+      "seconds": 166,
+      "position": {
+        "x": 9915.008807042805,
+        "y": -9.791413352920026,
+        "z": 297.00880704280536
+      },
+      "wholeSourceBoxes": {
+        "coral": 0,
+        "seagrass": 0,
+        "rock": 0
+      },
+      "intersectingSourceBoxes": {
+        "coral": 0,
+        "seagrass": 0,
+        "rock": 0
+      }
+    },
+    {
+      "seconds": 200,
+      "position": {
+        "x": 9960,
+        "y": -8.382451057434082,
+        "z": 346
+      },
+      "wholeSourceBoxes": {
+        "coral": 0,
+        "seagrass": 30,
+        "rock": 0
+      },
+      "intersectingSourceBoxes": {
+        "coral": 0,
+        "seagrass": 37,
+        "rock": 0
+      }
+    }
+  ],
+  "diagnosticLimits": [
+    "Initial render3/5 and narrowed1/2 retained: first reef window does not require meadow roots; actual large rock boxes include buried shoulders. Final checks use real reef+meadow windows and separately count intersecting and whole boxes. No camera/asset tuning.",
+    "Initial world5/6 retained: real pause-save null was ignored by shipped setPaused; root fixed null failure recognition. Pause recovery1/1 passed.",
+    "Case4 then added actual next-centre native unreadable owner: current shot errors and stops instead of waiting forever, same camera/clock, centre retry released. Native loading recovery1/1 passed.",
+    "Explicit actual loading hold probe counted in final test; initial log held probe passed but its aggregate holds field omitted that probe. Root final canonical batch will run final test bytes.",
+    "Camera200s does not mean all owners receive ecology200s; only three centres each0.1s tick plus final current0.1s tick in native world case. Unloaded owner raw state frozen.",
+    "Local narrow diagnostics and root complete workflow cover the same test identities; do not sum counts."
+  ]
+}

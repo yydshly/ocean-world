@@ -1,0 +1,41 @@
+TAP version 13
+# Subtest: candidate is private and the published v7 window draws only actual persistent source instances with fixed roots
+ok 1 - candidate is private and the published v7 window draws only actual persistent source instances with fixed roots
+  ---
+  duration_ms: 8116.8763
+  type: 'test'
+  ...
+# Subtest: one actual curved route reveals whole persistent reef and meadow silhouettes at finite ordinary camera samples
+not ok 2 - one actual curved route reveals whole persistent reef and meadow silhouettes at finite ordinary camera samples
+  ---
+  duration_ms: 13887.5356
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\living-coastal-seascape-render.test.mjs:108:1'
+  failureType: 'testCodeFailure'
+  error: '{"coral":3,"seagrass":66,"rock":0}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/living-coastal-seascape-render.test.mjs:118:131)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    node:internal/test_runner/test:981:31
+    node:internal/process/task_queues:151:7
+    AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:148:8)
+  ...
+# seven real route CPU samples: [{"seconds":0,"position":{"x":9624,"y":-7.813448905944824,"z":304},"wholeSourceBoxes":{"coral":0,"seagrass":0,"rock":0}},{"seconds":33,"position":{"x":9686.577946334442,"y":-8.298145903523853,"z":295.42205366555817},"wholeSourceBoxes":{"coral":1,"seagrass":0,"rock":0}},{"seconds":66,"position":{"x":9744.53681232025,"y":-4.370327899747416,"z":316.59010924018764},"wholeSourceBoxes":{"coral":1,"seagrass":0,"rock":0}},{"seconds":100,"position":{"x":9801.088214224468,"y":-4.057612160850344,"z":348},"wholeSourceBoxes":{"coral":1,"seagrass":18,"rock":0}},{"seconds":133,"position":{"x":9858.844196141921,"y":-3.8596144108503685,"z":325.15580385807795},"wholeSourceBoxes":{"coral":0,"seagrass":18,"rock":0}},{"seconds":166,"position":{"x":9914.924973784995,"y":-10.047385372391817,"z":296.9249737849948},"wholeSourceBoxes":{"coral":0,"seagrass":0,"rock":0}},{"seconds":200,"position":{"x":9960,"y":-8.589826583862305,"z":346},"wholeSourceBoxes":{"coral":0,"seagrass":30,"rock":0}}]
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22164.4913

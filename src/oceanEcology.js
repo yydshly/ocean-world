@@ -48,6 +48,7 @@ import { createLivingSeabedRelief, selectLivingSeabedReliefTheme } from './livin
 import { createLivingSeascapePlans } from './livingSeascape.js';
 import { createLivingHabitatBeltPlans } from './livingHabitatBelt.js';
 import { createLivingShallowSeascapePlans, SHALLOW_SEASCAPE_ANCHOR } from './livingShallowSeascape.js';
+import { createLivingCoastalSeascapePlans, COASTAL_SEASCAPE_ANCHOR } from './livingCoastalSeascape.js';
 
 const speciesById = { ...reefSpeciesById, ...oceanSlopeSpeciesById, ...oceanPelagicSpeciesById, ...oceanMantaSpeciesById, ...reefGuildSpeciesById, ...openWaterSpeciesById, ...oceanBiodiversitySpeciesById, ...oceanBenthicLifeSpeciesById, ...oceanMeadowLifeSpeciesById, ...oceanShoalLifeSpeciesById };
 const meadowLifeMarked = row => row && (Object.keys(row).some(key => key.startsWith('meadowLife')) ||
@@ -68,6 +69,10 @@ const SHALLOW_SEASCAPE_OWNERS = [0, 1].flatMap(dz => Array.from({ length: 6 }, (
   `${SHALLOW_SEASCAPE_ANCHOR.cx + dx},${SHALLOW_SEASCAPE_ANCHOR.cz + dz}`));
 const shallowSeascapeMarked = row => row && (row.livingRidgePlan?.version === 6 ||
   ['shallowSeascapeVersion', 'shallowSeascapeGroupId', 'shallowSeascapeInitializedAtSec'].some(key => Object.hasOwn(row, key)));
+const COASTAL_SEASCAPE_OWNERS = [0, 1].flatMap(dz => Array.from({ length: 6 }, (_, dx) =>
+  `${COASTAL_SEASCAPE_ANCHOR.cx + dx},${COASTAL_SEASCAPE_ANCHOR.cz + dz}`));
+const coastalSeascapeMarked = row => row && (row.livingRidgePlan?.version === 7 ||
+  ['coastalSeascapeVersion', 'coastalSeascapeGroupId', 'coastalSeascapeInitializedAtSec'].some(key => Object.hasOwn(row, key)));
 const TAU = Math.PI * 2;
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const clone = value => structuredClone(value);
@@ -114,7 +119,7 @@ export function oceanSupportHeight(generator, x, z, { avoidCoral = false, includ
  * food pools are relative indices, not measured biomass. Unloaded regions
  * freeze, and changed state is restored from IndexedDB when they return. */
 export class OceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false, turtleGrazing = false, shallowSeascape = false, biodiversity = false, benthicLife = false, meadowLife = false, shoalLife = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false, turtleGrazing = false, shallowSeascape = false, biodiversity = false, benthicLife = false, meadowLife = false, shoalLife = false, coastalSeascape = false } = {}) {
     this.seed = seed;
     this.generator = generator;
     this.livingNetworkEnabled = generator.profile === LIVING_NETWORK_PROFILE;
@@ -146,6 +151,10 @@ export class OceanEcology {
     this._shallowSeascapeRequested = shallowSeascape === true;
     this.shallowSeascapeEnabled = this._shallowSeascapeRequested && this.livingGeologyEnabled &&
       typeof generator.withShallowSeascapePlans === 'function' && typeof generator.replaceRidgeOwners === 'function';
+    this.coastalSeascapeEnabled = coastalSeascape === true && this.livingGeologyEnabled &&
+      typeof store.saveMany === 'function' && typeof generator.withCoastalSeascapePlans === 'function' &&
+      typeof generator.replaceRidgeOwners === 'function';
+    this._coastalBirths = new WeakMap();
     this.turtlesEnabled = turtles === true;
     this._turtleGrazingRequested = turtleGrazing === true;
     this.turtleGrazingEnabled = this._turtleGrazingRequested && this.turtlesEnabled && this.livingNetworkEnabled && typeof store.saveMany === 'function';
@@ -193,6 +202,39 @@ export class OceanEcology {
   _random(region, salt) { return hash(`${this._world}|${region.id}|${salt}`) / 4294967296; }
 
   _residentCount(region) { return region.agents.length + (region.turtleAgents?.length ?? 0); }
+
+  _validCoastalHistory(row, id) {
+    const point = value => value && ['x', 'y', 'z'].every(key => Number.isFinite(value[key]));
+    const surface = (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false);
+    const options = { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT };
+    if (!row || row.version !== VERSION || row.id !== id || row.id !== `${row.cx},${row.cz}` ||
+        !Number.isSafeInteger(row.cx) || !Number.isSafeInteger(row.cz) || !Array.isArray(row.agents) ||
+        this._residentCount(row) > OCEAN_REGION_AGENT_LIMIT || !Number.isSafeInteger(row.ticks) || row.ticks < 0 ||
+        !Number.isFinite(row.timeSec) || Math.abs(row.timeSec - row.ticks * STEP) > 1e-8 ||
+        !Array.isArray(row.events) || !['feeding', 'escapes', 'cleaning', 'predation', 'deaths']
+          .every(key => Number.isSafeInteger(row.counters?.[key]) && row.counters[key] >= 0) ||
+        row.surfaceVersion !== OCEAN_ROCK_SURFACE_VERSION || row.communityVersion !== OCEAN_COMMUNITY_VERSION ||
+        (this.generator.floorSurfaceVersion && row.floorSurfaceVersion !== this.generator.floorSurfaceVersion) ||
+        !['algae', 'plankton', 'detritus'].every(key => Number.isFinite(row.resources?.[key]) && row.resources[key] >= 0) ||
+        !['initial', 'input', 'ingested', 'exported'].every(key => Number.isFinite(row.ledger?.[key]) && row.ledger[key] >= 0) ||
+        new Set(row.agents.map(agent => agent.id)).size !== row.agents.length ||
+        !row.agents.every(agent => typeof agent.id === 'string' && agent.regionId === id && speciesById[agent.speciesId] &&
+          typeof agent.alive === 'boolean' && Number.isFinite(agent.energy) && agent.energy >= 0 && agent.energy <= 1 &&
+          point(agent.position) && point(agent.home) && point(agent.target) && point(agent.velocity) && point(agent.refuge)) ||
+        !validateLivingNetworkRecord(row) || !validateReefGuildRecord(row, this.generator, options) ||
+        !validateOpenWaterLifeRecord(row, this.generator, options)) return false;
+    if ((row.biodiversityVersion !== undefined || row.agents.some(isOceanBiodiversityAgent)) &&
+      !validateOceanBiodiversityRecord(row, this.generator, options)) return false;
+    if ((row.benthicLifeVersion !== undefined || row.agents.some(isOceanBenthicLifeAgent)) &&
+      !validateOceanBenthicLifeRecord(row, this.generator, options)) return false;
+    if (meadowLifeMarked(row) && !this._validMeadowHistory(row, id)) return false;
+    if (shoalLifeMarked(row) && !this._validShoalHistory(row, id)) return false;
+    if ((row.turtleCommunityVersion !== undefined || row.turtleAgents?.length) &&
+      !validateOceanTurtleRecord(row, this.generator, { surface })) return false;
+    if ((row.turtleGrazingVersion !== undefined || row.turtleOrganicVersion !== undefined) &&
+      !validateOceanTurtleGrazingRecord(row, this.generator, { surface })) return false;
+    return true;
+  }
 
   _validMeadowHistory(row, id) {
     const point = value => value && ['x', 'y', 'z'].every(key => Number.isFinite(value[key]));
@@ -383,11 +425,13 @@ export class OceanEcology {
   }
 
   _supplementTurtleRegion(region) {
+    if (coastalSeascapeMarked(region)) return false;
     // A complete marked birth record fixes occupied and empty categories alike.
     if (region.benthicLifeVersion === 1 || region.meadowLifeVersion === 1 || region.shoalLifeVersion === 1) return false;
     if (!this.turtlesEnabled || typeof this.store.saveMany !== 'function' || region.turtleCommunityVersion !== undefined) return false;
+    const coastal = this._coastalBirths.get(region);
     const plan = createOceanTurtlePlan(this.generator, region, { seed: this.seed,
-      surface: (x, z) => this._surface(x, z, true), capacity: this._initialAnimalCapacity(region) - this._residentCount(region) });
+      surface: (x, z) => this._surface(x, z, true), capacity: coastal ? coastal.turtles : this._initialAnimalCapacity(region) - this._residentCount(region) });
     region.turtleAgents = plan.placements;
     region.turtleCommunityVersion = 1; region.turtleInitializedAtSec = region.timeSec;
     return true;
@@ -448,6 +492,8 @@ export class OceanEcology {
         detritus: .20 + Math.min(.3, chunk.counts.seagrass * .01) },
       ledger: { initial: 0, input: 0, ingested: 0, exported: 0 },
       counters: { feeding: 0, escapes: 0, cleaning: 0, predation: 0, deaths: 0 } };
+    const coastal = this.coastalSeascapeEnabled ? this.generator.coastalSeascapeAllocation?.(cx, cz) : null;
+    if (coastal) this._coastalBirths.set(region, coastal);
     if (this.biodiversityEnabled) this._biodiversityBirths.add(region);
     if (this.benthicLifeEnabled) this._benthicLifeBirths.add(region);
     if (this.meadowLifeEnabled) this._meadowLifeBirths.add(region);
@@ -489,6 +535,7 @@ export class OceanEcology {
   }
 
   _supplementRegion(region) {
+    if (coastalSeascapeMarked(region)) return false;
     // A complete marked birth record fixes occupied and empty categories alike.
     if (region.benthicLifeVersion === 1 || region.meadowLifeVersion === 1 || region.shoalLifeVersion === 1) return false;
     const chunk = this.generator.chunk(region.cx, region.cz);
@@ -541,6 +588,7 @@ export class OceanEcology {
   }
 
   _supplementSlopeRegion(region) {
+    if (coastalSeascapeMarked(region)) return false;
     // A complete marked birth record fixes occupied and empty categories alike.
     if (region.benthicLifeVersion === 1 || region.meadowLifeVersion === 1 || region.shoalLifeVersion === 1) return false;
     const chunk = this.generator.chunk(region.cx, region.cz);
@@ -595,6 +643,7 @@ export class OceanEcology {
   }
 
   _supplementPelagicRegion(region) {
+    if (coastalSeascapeMarked(region)) return false;
     // A complete marked birth record fixes occupied and empty categories alike.
     if (region.benthicLifeVersion === 1 || region.meadowLifeVersion === 1 || region.shoalLifeVersion === 1) return false;
     if (region.pelagicCommunityVersion >= OCEAN_PELAGIC_COMMUNITY_VERSION) return false;
@@ -642,6 +691,7 @@ export class OceanEcology {
   }
 
   _supplementMantaRegion(region) {
+    if (coastalSeascapeMarked(region)) return false;
     // A complete marked birth record fixes occupied and empty categories alike.
     if (region.benthicLifeVersion === 1 || region.meadowLifeVersion === 1 || region.shoalLifeVersion === 1) return false;
     if (region.mantaCommunityVersion >= OCEAN_MANTA_COMMUNITY_VERSION) return false;
@@ -1301,7 +1351,7 @@ export class OceanEcology {
           const saved = this._active.get(id) ?? await this._storage('load', world, id);
           if (!current()) return;
           if (this._counts.persistenceErrors > errorsBefore) { this._center = null; return false; }
-          if ((this.shallowSeascapeEnabled || this.biodiversityEnabled || this.benthicLifeEnabled || this.meadowLifeEnabled || this.shoalLifeEnabled) && saved === undefined) {
+          if ((this.coastalSeascapeEnabled || this.shallowSeascapeEnabled || this.biodiversityEnabled || this.benthicLifeEnabled || this.meadowLifeEnabled || this.shoalLifeEnabled) && saved === undefined) {
             this._storageError = 'A shallow seascape owner read returned no persistence result.';
             this._counts.persistenceErrors++; this._center = null; return false;
           }
@@ -1315,7 +1365,43 @@ export class OceanEcology {
             this._center = null;
             throw new Error('Invalid saved shallow seascape owner outside the admitted sample.');
           }
+          if (coastalSeascapeMarked(saved) && !COASTAL_SEASCAPE_OWNERS.includes(id)) {
+            this._center = null; throw new Error('Invalid saved coastal seascape owner outside the admitted sample.');
+          }
           prefetched.set(id, saved);
+        }
+      }
+      const coastalCandidate = this.coastalSeascapeEnabled && COASTAL_SEASCAPE_OWNERS.some(id => desired.has(id));
+      const coastalValidated = new Set();
+      if (coastalCandidate || [...prefetched.values()].some(coastalSeascapeMarked)) {
+        for (const id of COASTAL_SEASCAPE_OWNERS) if (!prefetched.has(id)) {
+          const errorsBefore = this._counts.persistenceErrors;
+          const saved = this._active.get(id) ?? await this._storage('load', world, id);
+          if (!current()) return;
+          if (this._counts.persistenceErrors > errorsBefore || saved === undefined) {
+            if (saved === undefined) { this._counts.persistenceErrors++; this._storageError = 'A complete coastal seascape owner could not be read.'; }
+            this._center = null; return false;
+          }
+          prefetched.set(id, saved);
+        }
+        const marked = COASTAL_SEASCAPE_OWNERS.map(id => prefetched.get(id)).filter(coastalSeascapeMarked);
+        if (marked.length) {
+          const group = marked[0].livingRidgePlan?.group;
+          const complete = marked.length === 12 && group?.cx === COASTAL_SEASCAPE_ANCHOR.cx && group?.cz === COASTAL_SEASCAPE_ANCHOR.cz &&
+            JSON.stringify(group.ownerIds) === JSON.stringify(COASTAL_SEASCAPE_OWNERS) && COASTAL_SEASCAPE_OWNERS.every(id => {
+              const row = prefetched.get(id), plan = row?.livingRidgePlan;
+              return row?.coastalSeascapeVersion === 1 && row.coastalSeascapeGroupId === `${group.cx},${group.cz}` &&
+                row.coastalSeascapeInitializedAtSec === 0 && plan?.version === 7 && plan.id === id &&
+                JSON.stringify(plan.group) === JSON.stringify(group) && validateLivingRidgePlan(plan, this.generator);
+            });
+          if (!complete) { this._center = null; throw new Error('Incomplete saved coastal seascape group; historical terrain and populations were not regenerated.'); }
+          this._supportCells.clear();
+          try {
+            const valid = this.generator.withCoastalSeascapePlans(marked.map(row => row.livingRidgePlan), () =>
+              COASTAL_SEASCAPE_OWNERS.every(id => this._validCoastalHistory(prefetched.get(id), id)));
+            if (!valid) { this._center = null; throw new Error('Invalid saved coastal seascape community; historical terrain and populations were not regenerated.'); }
+          } finally { this._supportCells.clear(); }
+          COASTAL_SEASCAPE_OWNERS.forEach(id => coastalValidated.add(id));
         }
       }
       const shallowCandidate = this.shallowSeascapeEnabled && SHALLOW_SEASCAPE_OWNERS.some(id => desired.has(id));
@@ -1378,7 +1464,7 @@ export class OceanEcology {
         if (!current()) return;
       }
       if (this.livingGeologyEnabled) {
-        if (this.shallowSeascapeEnabled) {
+        if (this.shallowSeascapeEnabled || this.coastalSeascapeEnabled || coastalValidated.size) {
           const savedHalo = [...prefetched].filter(([id, saved]) => supportHaloIds.has(id) && saved);
           this.generator.replaceRidgeOwners(savedHalo.filter(([, row]) => row.livingRidgePlan).map(([, row]) => row.livingRidgePlan),
             savedHalo.filter(([, row]) => !row.livingRidgePlan).map(([id]) => id));
@@ -1392,24 +1478,25 @@ export class OceanEcology {
         this._supportCells.clear();
       }
       // Validate every saved support owner before admitting new neighbours.
-      for (const [id, saved] of prefetched) if (saved && (['biodiversityVersion', 'biodiversityInitializedAtSec', 'biodiversity'].some(key => Object.hasOwn(saved, key)) || saved.agents?.some(isOceanBiodiversityAgent))) {
+      const validationRows = [...prefetched].filter(([id]) => !coastalValidated.has(id));
+      for (const [id, saved] of validationRows) if (saved && (['biodiversityVersion', 'biodiversityInitializedAtSec', 'biodiversity'].some(key => Object.hasOwn(saved, key)) || saved.agents?.some(isOceanBiodiversityAgent))) {
         if (!validateOceanBiodiversityRecord(saved, this.generator, {
           surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
           bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) {
           this._center = null; throw new Error(`Invalid saved biodiversity owner ${id}; historical community was not regenerated.`);
         }
       }
-      for (const [id, saved] of prefetched) if (saved && (['benthicLifeVersion', 'benthicLifeInitializedAtSec', 'benthicLife'].some(key => Object.hasOwn(saved, key)) || saved.agents?.some(agent => isOceanBenthicLifeAgent(agent) || (agent && ['benthicLifeIndividualVersion', 'benthicLifeSiteId', 'benthicLifeHostId', 'benthicLifeMode'].some(key => Object.hasOwn(agent, key)))))) {
+      for (const [id, saved] of validationRows) if (saved && (['benthicLifeVersion', 'benthicLifeInitializedAtSec', 'benthicLife'].some(key => Object.hasOwn(saved, key)) || saved.agents?.some(agent => isOceanBenthicLifeAgent(agent) || (agent && ['benthicLifeIndividualVersion', 'benthicLifeSiteId', 'benthicLifeHostId', 'benthicLifeMode'].some(key => Object.hasOwn(agent, key)))))) {
         if (!validateOceanBenthicLifeRecord(saved, this.generator, {
           surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
           bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) {
           this._center = null; throw new Error(`Invalid saved benthic-life owner ${id}; historical community was not regenerated.`);
         }
       }
-      for (const [id, saved] of prefetched) if (meadowLifeMarked(saved) && !this._validMeadowHistory(saved, id)) {
+      for (const [id, saved] of validationRows) if (meadowLifeMarked(saved) && !this._validMeadowHistory(saved, id)) {
         this._center = null; throw new Error(`Invalid saved meadow-life owner ${id}; historical community was not regenerated.`);
       }
-      for (const [id, saved] of prefetched) if (shoalLifeMarked(saved) && !this._validShoalHistory(saved, id)) {
+      for (const [id, saved] of validationRows) if (shoalLifeMarked(saved) && !this._validShoalHistory(saved, id)) {
         this._center = null; throw new Error(`Invalid saved shoal-life owner ${id}; historical community was not regenerated.`);
       }
       const prepareRegion = (saved, coordinates, valid) => {
@@ -1426,7 +1513,8 @@ export class OceanEcology {
         }
         try {
         const region = valid ? saved : this._createRegion(...coordinates);
-        const shoalRole = shoalFresh && this._shoalLifeBirths.get(region) === true;
+        const coastal = this._coastalBirths.get(region);
+        const shoalRole = shoalFresh && this._shoalLifeBirths.get(region) === true && (!coastal || coastal.shoal > 0);
         const shoalReserved = shoalRole ? 8 : 0;
         const diverseLimit = shoalRole ? 3 : 6, benthicLimit = shoalRole ? 2 : 4, meadowLimit = shoalRole ? 2 : 4;
         const reanchored = valid && this._reanchorRegion(region);
@@ -1459,17 +1547,17 @@ export class OceanEcology {
         const biodiversityInitialized = diverseFresh && initializeOceanBiodiversity(region, this.generator, {
           fresh: true, random: salt => this._random(region, salt),
           surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
-          bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT - (benthicFresh ? benthicLimit : 0) - (meadowFresh ? meadowLimit : 0) - shoalReserved, maxAdded: diverseLimit });
+          bed: (x, z) => this._bed(x, z), capacity: coastal ? this._residentCount(region) + coastal.diversity : OCEAN_REGION_AGENT_LIMIT - (benthicFresh ? benthicLimit : 0) - (meadowFresh ? meadowLimit : 0) - shoalReserved, maxAdded: coastal ? coastal.diversity : diverseLimit });
         const benthicLifeInitialized = benthicFresh && initializeOceanBenthicLife(region, this.generator, {
           fresh: true, random: salt => this._random(region, salt),
           surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
-          bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT - (meadowFresh ? meadowLimit : 0) - shoalReserved, maxAdded: benthicLimit });
+          bed: (x, z) => this._bed(x, z), capacity: coastal ? this._residentCount(region) + coastal.benthic : OCEAN_REGION_AGENT_LIMIT - (meadowFresh ? meadowLimit : 0) - shoalReserved, maxAdded: coastal ? coastal.benthic : benthicLimit });
         const meadowLifeInitialized = meadowFresh && initializeOceanMeadowLife(region, this.generator, {
           fresh: true, surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
-          bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT - shoalReserved, maxAdded: meadowLimit });
+          bed: (x, z) => this._bed(x, z), capacity: coastal ? this._residentCount(region) + coastal.meadow : OCEAN_REGION_AGENT_LIMIT - shoalReserved, maxAdded: coastal ? coastal.meadow : meadowLimit });
         const shoalLifeInitialized = shoalFresh && initializeOceanShoalLife(region, this.generator, {
           fresh: true, role: shoalRole, surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
-          bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT, maxAdded: 8 });
+          bed: (x, z) => this._bed(x, z), capacity: coastal ? this._residentCount(region) + coastal.shoal : OCEAN_REGION_AGENT_LIMIT, maxAdded: coastal ? coastal.shoal : 8 });
         this._shoalLifeBirths.delete(region);
         if (shoalLifeInitialized && (!validateLivingNetworkRecord(region) || !validateOceanShoalLifeRecord(region, this.generator, {
           surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
@@ -1499,8 +1587,40 @@ export class OceanEcology {
           beforeMobility, mobilityUpgraded, beforeTransport, transportUpgraded,
           turtleSupplemented, sceneSupplemented, habitatSupplemented, macroSupplemented,
           networkInitialized, guildInitialized, openWaterInitialized, biodiversityInitialized, benthicLifeInitialized, meadowLifeInitialized, shoalLifeInitialized, turtleOrganicInitialized, turtleGrazingInitialized };
-        } finally { this._biodiversityBirthView = previousBirthView; }
+        } finally {
+          this._biodiversityBirthView = previousBirthView;
+        }
       };
+      if (coastalCandidate && COASTAL_SEASCAPE_OWNERS.every(id => prefetched.get(id) === null)) {
+        try {
+          const plans = createLivingCoastalSeascapePlans(this.generator.baseGenerator, COASTAL_SEASCAPE_ANCHOR.cx, COASTAL_SEASCAPE_ANCHOR.cz);
+          let births;
+          this._supportCells.clear();
+          try {
+            births = this.generator.withCoastalSeascapePlans(plans, () => plans.map(plan => {
+              const { region } = prepareRegion(null, [plan.cx, plan.cz], false);
+              region.livingRidgePlan = clone(plan);
+              region.coastalSeascapeVersion = 1; region.coastalSeascapeGroupId = `${plan.group.cx},${plan.group.cz}`;
+              region.coastalSeascapeInitializedAtSec = 0;
+              if (!COASTAL_SEASCAPE_OWNERS.includes(region.id) || !validateLivingNetworkRecord(region) ||
+                  this._residentCount(region) > OCEAN_REGION_AGENT_LIMIT) throw new Error('Invalid fresh coastal ecological network.');
+              this._coastalBirths.delete(region);
+              return region;
+            }));
+          } finally { this._supportCells.clear(); }
+          if (!current()) return;
+          const result = await this._saveRecords(world, births.map(region => [region.id, clone(region)]));
+          if (result === null) { this._center = null; return false; }
+          if (!current()) return;
+          for (const region of births) prefetched.set(region.id, region);
+          const savedHalo = [...prefetched].filter(([id, saved]) => supportHaloIds.has(id) && saved);
+          this.generator.replaceRidgeOwners(savedHalo.filter(([, row]) => row.livingRidgePlan).map(([, row]) => row.livingRidgePlan),
+            savedHalo.filter(([, row]) => !row.livingRidgePlan).map(([id]) => id));
+          this._supportCells.clear();
+          for (const region of births) if (desired.has(region.id)) this._active.set(region.id, region);
+          this._counts.generated += births.length;
+        } catch (error) { this._supportCells.clear(); if (current()) this._center = null; throw error; }
+      }
       if (shallowCandidate && SHALLOW_SEASCAPE_OWNERS.every(id => prefetched.get(id) === null)) {
         try {
           let plans;
@@ -2170,6 +2290,8 @@ export class OceanEcology {
   }
 
   _initialAnimalCapacity(region) {
+    const coastal = this._coastalBirths.get(region);
+    if (coastal) return coastal.native;
     if (this._shoalLifeBirths.get(region) === true) return OCEAN_REGION_AGENT_LIMIT - 8 - 2 -
       (this._biodiversityBirths.has(region) ? 3 : 0) - (this._benthicLifeBirths.has(region) ? 2 : 0) -
       (this._meadowLifeBirths.has(region) ? 2 : 0);
@@ -2180,6 +2302,8 @@ export class OceanEcology {
       (this._benthicLifeBirths.has(region) ? 4 : 0) - (this._meadowLifeBirths.has(region) ? 6 : 0);
   }
   _initialGuildCapacity(region, kind = 'all') {
+    const coastal = this._coastalBirths.get(region);
+    if (coastal) return this._residentCount(region) + (kind === 'reef' ? coastal.guild : coastal.openWater);
     if (this._shoalLifeBirths.get(region) === true) return this._initialAnimalCapacity(region) + (kind === 'reef' ? 1 : 2);
     return this._initialAnimalCapacity(region) + (this._meadowLifeBirths.has(region) ? 2 : 0);
   }
@@ -2208,6 +2332,8 @@ export class OceanEcology {
       ...oceanShoalLifeSnapshot(region),
       ...(region.populationRecipeVersion !== undefined ? { populationRecipeVersion: region.populationRecipeVersion } : {}),
       ...(region.livingRidgePlan !== undefined ? { livingRidgePlan: clone(region.livingRidgePlan) } : {}),
+      ...(region.coastalSeascapeVersion !== undefined ? { coastalSeascapeVersion: region.coastalSeascapeVersion,
+        coastalSeascapeGroupId: region.coastalSeascapeGroupId, coastalSeascapeInitializedAtSec: region.coastalSeascapeInitializedAtSec } : {}),
       formationsVersion: region.formationsVersion ?? 0,
       slopeCommunityVersion: region.slopeCommunityVersion ?? 0,
       slopeCommunityAdded: region.slopeCommunityAdded ?? 0,
