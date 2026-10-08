@@ -1,3 +1,9 @@
+<!-- reef-depth-entry -->
+2026-10-09 深浅生活层分配已接入：目录83条、预算保持，固定55沿途空站3→1；旧存档保留。
+
+[本地新群落](http://127.0.0.1:4175/ocean-world/?demo=reef-valley-region&seed=55&world=depth-community) · [本批说明](docs/REEF_DEPTH_COMMUNITY.md) · [冻结证据](output/validation/reef-depth-delivery.json)。29定向检查与构建通过；GPU观感未验，线上以提交对应Actions发布结果为准。
+<!-- /reef-depth-entry -->
+
 <!-- reef-slope-entry -->
 2026-10-09 已接入四种礁坡/沙床鱼，浅海目录83条。实际固定55自然生成这四类共10条记录；旧存档保留。
 

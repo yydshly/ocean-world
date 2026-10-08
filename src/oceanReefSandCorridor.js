@@ -7,8 +7,8 @@ export const REEF_SAND_CORRIDOR_IDS = Object.freeze(['leopard-sea-cucumber', 'ch
   'shame-faced-crab', 'wedge-sea-hare', 'peacock-flounder', 'textile-cone',
   'great-barracuda', 'bluefin-trevally', 'spotted-eagle-ray']);
 const M = REEF_SAND_CORRIDOR_MODEL, point = p => p && ['x','y','z'].every(k => Number.isFinite(p[k]));
-export const isReefSandCorridorAnchor = (r,a) => [10, 11].includes(a?.reefResidentIndividualVersion) &&
-  (REEF_SAND_CORRIDOR_IDS.includes(a.speciesId) || a.reefResidentIndividualVersion === 11 && REEF_SLOPE_SAND_IDS.includes(a.speciesId)) && a.reefResidentHostId === null &&
+export const isReefSandCorridorAnchor = (r,a) => [10, 11, 12].includes(a?.reefResidentIndividualVersion) &&
+  (REEF_SAND_CORRIDOR_IDS.includes(a.speciesId) || a.reefResidentIndividualVersion >= 11 && REEF_SLOPE_SAND_IDS.includes(a.speciesId)) && a.reefResidentHostId === null &&
   a.reefResidentSiteId?.startsWith(`sand-layer:${r.id}:`) === true;
 
 export function createReefSandCorridorSites(region, chunk, group, generator) {
@@ -49,7 +49,7 @@ export function createReefSandCorridorSites(region, chunk, group, generator) {
 
 export function reefSandCorridorSpeciesSites(sites,id,random,existing=[],epoch=10) {
   const free=sites.filter(s=>s.hostId===null),other=sites.filter(s=>s.hostId!==null);
-  if(!(REEF_SAND_CORRIDOR_IDS.includes(id) || epoch === 11 && REEF_SLOPE_SAND_IDS.includes(id)) || !free.length)return other;
+  if(!(REEF_SAND_CORRIDOR_IDS.includes(id) || epoch >= 11 && REEF_SLOPE_SAND_IDS.includes(id)) || !free.length)return other;
   const offset=Math.floor(random(`sand-layer-site:${id}`)*free.length),rotated=[...free.slice(offset),...free.slice(0,offset)];
   const live=existing.filter(a=>a.alive && point(a.position));
   const separation=s=>live.length?Math.min(...live.map(a=>Math.hypot(s.x-a.position.x,s.z-a.position.z))):0;

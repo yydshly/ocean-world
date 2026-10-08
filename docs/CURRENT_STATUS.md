@@ -1,3 +1,7 @@
+<!-- reef-depth-status -->
+2026-10-09 最新有限批按实际水深重分配居民，种子55沿途空站3→1，动物预算和旧历史保持；当地类型数的取舍和验证范围见 [REEF_DEPTH_COMMUNITY.md](REEF_DEPTH_COMMUNITY.md)。后续继续跨生境丰富度与完整生活层。以下历史保留。
+<!-- /reef-depth-status -->
+
 <!-- reef-slope-status -->
 2026-10-09 最新有限批为四种礁坡/沙床鱼：83个浅海代表条目，真实地形中自然入选，新旧存档保持。具体结果与剩余空段见 [REEF_SLOPE_FISH.md](REEF_SLOPE_FISH.md)，后续仍按完整场景与缺失生态类群推进。以下保留区域阶段背景。
 <!-- /reef-slope-status -->

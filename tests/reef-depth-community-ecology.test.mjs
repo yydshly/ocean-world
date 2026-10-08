@@ -34,12 +34,12 @@ class Store {
     this.commits.push(rows);
   }
 }
-function fixture(store = new Store(), reefSlopeCommunity = true, worldVariant = null) {
+function fixture(store = new Store(), reefDepthCommunity = true, worldVariant = null) {
   const generator = createLivingRidgeGenerator(base);
   const source=readFileSync(new URL('../src/world/ReefWorld.js',import.meta.url),'utf8'),start=source.indexOf('new OceanEcology(seed,this.oceanChunks.generator,'),end=source.indexOf(');',start)+1;
   class Capture { constructor(seed,generator,options){this.options=options;} }
   const captured=new Function('OceanEcology','seed',`return ${source.slice(start,end)};`).call({isLivingShallows:true,oceanWorldVariant:worldVariant,oceanChunks:{generator}},Capture,seed);
-  const model=new OceanEcology(seed,generator,{...captured.options,reefVisitors:true,reefHabitatLayers:true,reefSandCorridor:true,reefSlopeCommunity,reefDepthCommunity:false,store});
+  const model=new OceanEcology(seed,generator,{...captured.options,reefVisitors:true,reefHabitatLayers:true,reefSandCorridor:true,reefSlopeCommunity:true,reefDepthCommunity,store});
   return { model, generator, store };
 }
 const fromRecords = records => { const store = new Store(); store.records = new Map(clone(records)); return store; };
@@ -65,7 +65,7 @@ function bounded(f) {
     if (reefResidentsMarked(row)) {
       const q = supports(f);
       const valid = validateReefResidentsRecord(row, f.generator, q);
-      if (!valid && process.env.REEF_SLOPE_FAILURE_RECEIPT) writeFileSync(process.env.REEF_SLOPE_FAILURE_RECEIPT, JSON.stringify({
+      if (!valid && process.env.REEF_DEPTH_FAILURE_RECEIPT) writeFileSync(process.env.REEF_DEPTH_FAILURE_RECEIPT, JSON.stringify({
         seed, row, activeRows: [...f.model._active.values()], disk: capture(f.store.records),
         physical: row.agents.filter(isReefResidentAgent).map(a => ({ id: a.id, speciesId: a.speciesId,
           current: reefResidentPositionValid(row, f.generator, a, a.position, q),
@@ -110,21 +110,21 @@ function coverage(f, path, windowIndex) {
 }
 
 
-let frozenV11, frozenV10;
+let frozenV12, frozenV11;
 async function initial(diverse) {
-  if (diverse ? frozenV11 : frozenV10) return clone(diverse ? frozenV11 : frozenV10);
+  if (diverse ? frozenV12 : frozenV11) return clone(diverse ? frozenV12 : frozenV11);
   const f=fixture(new Store(),diverse);
   try { await f.model.update(opening);bounded(f);const result=capture(f.store.records);
-    if(diverse) frozenV11=result;else frozenV10=result;return clone(result);
+    if(diverse) frozenV12=result;else frozenV11=result;return clone(result);
   } finally { await f.model.dispose(); }
 }
-test('actual fresh55 slope and sand habitats distribute40 types within real geometry, food, movement and exact cold restoration',async t=>{
+test('actual fresh55 depth-separated habitats distribute40 types within real geometry, food, movement and exact cold restoration',async t=>{
   const f=fixture();t.after(()=>f.model.dispose());const started=performance.now();
-  await f.model.update(opening);bounded(f);frozenV11=capture(f.store.records);
+  await f.model.update(opening);bounded(f);frozenV12=capture(f.store.records);
   const rows=targetRows(f),group=rows[0]?.livingRidgePlan?.group;
   assert.equal(rows[0]?.livingRidgePlan?.version,8);
-  assert.ok(f.store.commits.some(batch=>batch.length===12&&batch.every(([id,r])=>ids.includes(id)&&r.reefResidentsVersion===11)));
-  for(const r of rows){assert.equal(r.reefResidentsVersion,11);assert.equal(r.reefResidents.recipe,'reef-residents-v11');
+  assert.ok(f.store.commits.some(batch=>batch.length===12&&batch.every(([id,r])=>ids.includes(id)&&r.reefResidentsVersion===12)));
+  for(const r of rows){assert.equal(r.reefResidentsVersion,12);assert.equal(r.reefResidents.recipe,'reef-residents-v12');
     assert.ok(r.agents.filter(isReefResidentAgent).length<=10);assert.ok(r.agents.length+(r.turtleAgents?.length??0)<=20);}
   f.generator.withReefValleyPlans(rows.map(r=>r.livingRidgePlan),()=>{
     for(const r of rows)assert.ok(validateReefResidentsRecord(r,f.generator,supports(f)),r.id);
@@ -140,11 +140,12 @@ test('actual fresh55 slope and sand habitats distribute40 types within real geom
   assert.ok(added.some(a=>a.reefResidentMode==='reef-water'),'actual water-layer residents');
   assert.ok(added.some(a=>a.reefResidentSiteId.startsWith('sand-layer:')),'actual new layer locations admitted without bypassing body gates');
   assert.ok(added.some(a=>a.reefResidentMode==='reef-foot'),'actual bottom-supported residents');
-  assert.ok(rows.every(r=>r.reefResidents.candidateOrder.length===40),'all40 share one queue with actual vertical layers');
+  assert.ok(rows.every(r=>r.reefResidents.candidateOrder.length===40),'same40 share one depth-ranked queue');
+  assert.ok(rows.every(r=>r.reefResidents.habitatEvidence.version===4 && r.reefResidents.habitatEvidence.depthBandCandidates));
   console.log('actual reef sand corridor55 birth',JSON.stringify({targetRecords:actual.length,distribution}));
   const baseline=new Map(await initial(false)),freshRosterChanges=[];
   for(const r of rows){const old=baseline.get(`${f.model._world}|${r.id}`);
-    assert.equal(old.reefResidentsVersion,10);
+    assert.equal(old.reefResidentsVersion,11);
     assert.deepEqual(r.livingRidgePlan,old.livingRidgePlan);
     assert.deepEqual(r.agents.filter(a=>!isReefResidentAgent(a)),old.agents.filter(a=>!isReefResidentAgent(a)),'all original nonresident births exact');
     const selected=r.agents.filter(isReefResidentAgent),before=old.agents.filter(isReefResidentAgent);
@@ -174,8 +175,8 @@ test('actual fresh55 slope and sand habitats distribute40 types within real geom
   assert.ok(isDeepStrictEqual(capture(cold.model._active),active),'entire cold active state exact');
   assert.ok(isDeepStrictEqual(capture(cold.store.records),disk),'cold restore no supplement or repair writes');
   const report={seed,groupId:group.id,targetRecords:actual.length,actualSpeciesIds:[...new Set(actual.map(a=>a.speciesId))],
-    newSlopeSpeciesIds: ['bigscale-soldierfish','lunartail-bigeye','banded-lizardfish','thousand-spot-sandperch'],
-    scope:'one native fresh55 reef-slope twelve-owner group and three ordinary nine-owner windows; CPU distances, no GPU acceptance',
+    slopeSpeciesIds: ['bigscale-soldierfish','lunartail-bigeye','banded-lizardfish','thousand-spot-sandperch'],
+    scope:'one native fresh55 depth-community twelve-owner group and three ordinary nine-owner windows; CPU distances, no GPU acceptance',
     habitatResidentRecords:added.length,distribution,actualRouteM:group.pathMetrics.lengthM,
     birthLayerPlacements:rows.flatMap(r=>r.agents.filter(isReefResidentAgent).map(a=>({id:a.id,speciesId:a.speciesId,siteId:a.reefResidentSiteId,position:clone(a.position),sizeM:a.sizeM,foodPool:a.reefResidentFoodPool}))),
     absentResidentSpeciesIds:distribution.filter(r=>r.individuals===0).map(r=>r.speciesId),
@@ -184,9 +185,9 @@ test('actual fresh55 slope and sand habitats distribute40 types within real geom
     actualModelSeconds:9,oldTerrainAndOriginalNonresidentBirthsExact:true,freshRosterChanges,coldActiveAndDiskExact:true,
     sourceHashes:Object.fromEntries(['src/oceanEcology.js','src/oceanReefResidents.js','src/reefValleyRegion.js'].map(p=>[p,createHash('sha256').update(readFileSync(new URL('../'+p,import.meta.url))).digest('hex')])),
     wallSec:(performance.now()-started)/1000};
-  if(process.env.REEF_SLOPE_RECEIPT)await writeFile(process.env.REEF_SLOPE_RECEIPT,JSON.stringify(report,null,2));
+  if(process.env.REEF_DEPTH_RECEIPT)await writeFile(process.env.REEF_DEPTH_RECEIPT,JSON.stringify(report,null,2));
 });
-test('old v10 residents and deaths retain every record, resource, clock and future decision with v11 option enabled',async t=>{
+test('old v11 residents and deaths retain every record, resource, clock and future decision with v12 option enabled',async t=>{
   const f=fixture(fromRecords(await initial(false)),false);t.after(()=>f.model.dispose());await f.model.update(opening);f.model.step(.6);
   const row=[...f.model._active.values()].find(r=>ids.includes(r.id)&&r.agents.some(isReefResidentAgent)),a=row.agents.find(isReefResidentAgent);
   a.alive=false;a.energy=0;a.velocity={x:0,y:0,z:0};a.state='dead';a.stateSince=a.timeSec;
@@ -196,16 +197,16 @@ test('old v10 residents and deaths retain every record, resource, clock and futu
   await on.model.update(opening);await off.model.update(opening);
   assert.ok(isDeepStrictEqual(capture(on.model._active),capture(off.model._active)));
   assert.ok(isDeepStrictEqual(capture(on.store.records),saved));
-  assert.ok(targetRows(on).every(r=>r.reefResidentsVersion===10));
+  assert.ok(targetRows(on).every(r=>r.reefResidentsVersion===11));
   on.model.step(.6);off.model.step(.6);bounded(on);bounded(off);
-  assert.ok(isDeepStrictEqual(capture(on.model._active),capture(off.model._active)),'future v10 decisions and inventory unchanged');
+  assert.ok(isDeepStrictEqual(capture(on.model._active),capture(off.model._active)),'future v11 decisions and inventory unchanged');
 });
 test('all twelve diverse owners stay private until atomic commit and failed saves expose none',async t=>{
   const gate=defer(),release=defer(),store=new Store(),f=fixture(store);let intercepted=false;
   t.after(()=>{release.resolve();return f.model.dispose();});
-  store.beforeMany=async batch=>{if(!intercepted&&batch.length===12&&batch.every(([id,r])=>ids.includes(id)&&r.reefResidentsVersion===11)){
+  store.beforeMany=async batch=>{if(!intercepted&&batch.length===12&&batch.every(([id,r])=>ids.includes(id)&&r.reefResidentsVersion===12)){
     intercepted=true;gate.resolve(batch);await release.promise;}};
-  const updating=f.model.update(opening);await Promise.race([gate.promise,updating.then(()=>{throw Error('No whole v11 group commit');})]);
+  const updating=f.model.update(opening);await Promise.race([gate.promise,updating.then(()=>{throw Error('No whole v12 group commit');})]);
   assert.equal(f.model._active.size,0);assert.equal(f.generator.registryStats().size,0);
   assert.equal(agentsOf(f.model._active.values()).filter(a=>residentSpeciesIds.includes(a.speciesId)).length,0);
   release.resolve();await updating;bounded(f);
@@ -223,12 +224,12 @@ test('mixed recipe epochs, forged habitat evidence or order and malformed food o
     assert.equal(f.model._active.size,0);assert.ok(isDeepStrictEqual(capture(store.records),expected));}
 });
 
-test('explicit same-seed preview has complete new slope births and cold history without touching the original saved world',async t=>{
-  const original=await initial(false),store=fromRecords(original),variant=readOceanWorldVariant('?demo=reef-valley-region&seed=55&world=reef-slope'),f=fixture(store,true,variant);
+test('explicit same-seed preview has complete depth-separated births and cold history without touching the original saved world',async t=>{
+  const original=await initial(false),store=fromRecords(original),variant=readOceanWorldVariant('?demo=reef-valley-region&seed=55&world=depth-community'),f=fixture(store,true,variant);
   t.after(()=>f.model.dispose());await f.model.update(opening);bounded(f);
-  assert.equal(f.model.worldVariant,'reef-slope');assert.ok(f.model._world.startsWith('ecology-v1-copy:reef-slope:'));
+  assert.equal(f.model.worldVariant,'depth-community');assert.ok(f.model._world.startsWith('ecology-v1-copy:depth-community:'));
   for(const[key,row]of original)assert.deepEqual(store.records.get(key),row,'every original saved record retained exactly');
-  const rows=targetRows(f);assert.ok(rows.every(r=>r.reefResidentsVersion===11));
+  const rows=targetRows(f);assert.ok(rows.every(r=>r.reefResidentsVersion===12));
   const actual=agentsOf(rows),types=new Set(actual.map(a=>a.speciesId));
   assert.ok(actual.some(a=>a.reefResidentSiteId?.startsWith('sand-layer:') && a.reefResidentHostId===null));
   const normal=new Map(await initial(true));
