@@ -135,7 +135,7 @@ test('URL, ordinary button and director share native admission and frame real li
   assert.ok(source.includes('meadowLife:this.isLivingShallows'));
   assert.match(app, /get\('demo'\)==='meadow-life'[\s\S]{0,240}meadowLifeEntry:true/);
   assert.match(app, /onClick=\{enterMeadowCommunity\}>草床新群落/);
-  assert.equal(livingShallowsSpeciesCatalog.length, 79); assert.deepEqual(OCEAN_MEADOW_LIFE_ROUTE_STOPS.map(stop => stop.id), ['meadow-life-community']);
+  assert.equal(livingShallowsSpeciesCatalog.length, 83); assert.deepEqual(OCEAN_MEADOW_LIFE_ROUTE_STOPS.map(stop => stop.id), ['meadow-life-community']);
   const entry = DEMO_LIVING_STOPS.find(stop => stop.id === 'meadow-life-community'), chapter = DIRECTOR_STEPS.find(step => step.action.stopId === 'meadow-life-community');
   assert.ok(entry && chapter); assert.equal(entry.action.kind, 'living-stop'); assert.equal(entry.action.meadowLifeEntry, true);
   assert.equal(chapter.motion.kind, 'walk'); assert.equal(chapter.motion.routeId, 'meadow-life'); assert.equal(chapter.durationMs, 14000);

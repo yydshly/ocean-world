@@ -1,3 +1,4 @@
+import { OCEAN_REEF_SLOPE_IDS, REEF_SLOPE_SAND_IDS, oceanReefSlopeSpeciesById } from './oceanReefSlopeSpecies.js';
 import { createReefSandCorridorSites, reefSandCorridorSpeciesSites, isReefSandCorridorAnchor, REEF_SAND_CORRIDOR_IDS } from './oceanReefSandCorridor.js';
 import { createReefHabitatLayerSites, reefHabitatLayerSpeciesSites } from './oceanReefHabitatLayers.js';
 import { oceanRockHeight, oceanRockSurface } from './oceanRockShape.js';
@@ -21,6 +22,9 @@ export const REEF_HABITAT_COMMUNITY_VERSION = 7;
 export const REEF_VISITORS_VERSION = 8;
 export const REEF_HABITAT_LAYERS_VERSION = 9;
 export const REEF_SAND_CORRIDOR_VERSION = 10;
+export const REEF_SLOPE_COMMUNITY_VERSION = 11;
+export const REEF_SLOPE_COMMUNITY_SCOPE = 'fresh v8 reef-valley forty-type community including four slope and sand-margin fish representatives; unchanged real terrain, whole-body and bed contact admission and ten-resident/twenty-record limits; no migration or refill';
+
 export const REEF_SAND_CORRIDOR_SCOPE = 'fresh v8 reef-valley complete36-type habitat community with true owner sand-bed references for eligible soft-bottom and open-water representatives; no fabricated attachment rocks, no added population budget or historical replacement';
 export const REEF_HABITAT_LAYERS_SCOPE = 'fresh v8 reef-valley geometry with36 representative types in actual near-reef bed margins and bounded lower or upper water neighborhoods; complete physical admission and existing ten-resident/twenty-record capacity; saved recipes remain unchanged';
 export const REEF_VISITORS_NEW_IDS = OCEAN_REEF_VISITOR_IDS;
@@ -34,6 +38,7 @@ export const REEF_ASSEMBLAGE_PALETTE_IDS = Object.freeze(REEF_FAUNA_NEW_IDS.flat
 export const REEF_HABITAT_COMMUNITY_IDS = Object.freeze([...REEF_RESIDENTS_LEGACY_IDS, ...REEF_DIVERSITY_NEW_IDS,
   ...REEF_COMMUNITY_NEW_IDS, ...REEF_LIFE_NEW_IDS, ...REEF_FAUNA_NEW_IDS, ...REEF_ASSEMBLAGE_NEW_IDS]);
 export const REEF_VISITOR_COMMUNITY_IDS = Object.freeze([...REEF_HABITAT_COMMUNITY_IDS, ...REEF_VISITORS_NEW_IDS]);
+export const REEF_SLOPE_COMMUNITY_IDS = Object.freeze([...REEF_VISITOR_COMMUNITY_IDS, ...OCEAN_REEF_SLOPE_IDS]);
 export const REEF_VISITORS_SCOPE = 'fresh v8 reef-valley habitat community of thirty-six representative types including four larger reef visitors; one shared recipe in natural owner space, at most ten residents and twenty animal records; no history refill or offline evolution';
 export const REEF_VISITORS_FOOD_SCOPE = 'selected existing owner-local nutrition component; new visitors consume unresolved animal nutrition only; no visible prey kill, new stock or complete natural diet';
 export const REEF_HABITAT_COMMUNITY_FOOD_SCOPE = 'selected existing owner-local animal, algae, zooplankton, coral-organic or detrital nutrition component; no resolved visible prey kill, new food stock or complete natural diet';
@@ -53,7 +58,7 @@ export const REEF_RESIDENTS_SCOPE = 'fresh v8 reef-valley representatives using 
 export const REEF_RESIDENTS_MODEL = Object.freeze({ stepSec: .1, limit: 2, clearanceM: .004, maximumFootGapM: .025,
   maximumEvents: 32, biteUnits: .00024, biteIntervalSec: 4, maximumTurnRadPerSec: .55 });
 const M = REEF_RESIDENTS_MODEL, SIZE = 64, TAU = Math.PI * 2, POOL = 'reefGuild.preyOrganicUnits';
-const speciesById = { ...oceanReefResidentsSpeciesById, ...oceanReefDiversitySpeciesById, ...oceanReefCommunitySpeciesById, ...oceanReefLifeSpeciesById, ...oceanReefFaunaSpeciesById, ...oceanReefAssemblageSpeciesById, ...oceanReefVisitorsSpeciesById };
+const speciesById = { ...oceanReefResidentsSpeciesById, ...oceanReefDiversitySpeciesById, ...oceanReefCommunitySpeciesById, ...oceanReefLifeSpeciesById, ...oceanReefFaunaSpeciesById, ...oceanReefAssemblageSpeciesById, ...oceanReefVisitorsSpeciesById, ...oceanReefSlopeSpeciesById };
 const TOP = ['reefResidentsVersion', 'reefResidentsInitializedAtSec', 'reefResidents'];
 const INDIVIDUAL = ['reefResidentIndividualVersion', 'reefResidentSiteId', 'reefResidentHostId', 'reefResidentMode', 'reefResidentFoodPool'];
 const FIELDS = ['version', 'groupId', 'recipe', 'addedIds', 'birthPlacements', 'initialInputUnits', 'scope', 'foodScope', 'counters', 'events'];
@@ -98,16 +103,20 @@ const traits = Object.freeze({ 'coral-trout': { mode: 'reef-water', speed: .14, 
   'great-barracuda': { mode: 'reef-water', speed: .22, extent: 5, night: false, pool: POOL },
   'bluefin-trevally': { mode: 'reef-water', speed: .20, extent: 4, night: false, pool: POOL },
   'oriental-sweetlips': { mode: 'reef-water', speed: .08, extent: 3, night: true, pool: POOL },
-  'spotted-eagle-ray': { mode: 'reef-water', speed: .16, extent: 4, night: false, pool: POOL } });
+  'spotted-eagle-ray': { mode: 'reef-water', speed: .16, extent: 4, night: false, pool: POOL },
+  'bigscale-soldierfish': { mode: 'reef-water', speed: .065, extent: 2, night: true, pool: 'resources.plankton' },
+  'lunartail-bigeye': { mode: 'reef-water', speed: .07, extent: 2.5, night: true, pool: POOL },
+  'banded-lizardfish': { mode: 'reef-foot', speed: .05, extent: 1, night: false, pool: POOL, soft: true, ambush: true },
+  'thousand-spot-sandperch': { mode: 'reef-foot', speed: .018, extent: .8, night: false, pool: POOL, soft: true } });
 const clone = v => structuredClone(v), point = p => p && ['x', 'y', 'z'].every(k => Number.isFinite(p[k]));
 const nonnegative = n => Number.isFinite(n) && n >= 0, close = (a, b, t = 1e-8) => Number.isFinite(a) && Number.isFinite(b) && Math.abs(a - b) <= t;
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z), angle = a => Math.atan2(Math.sin(a), Math.cos(a));
 const individualMarked = a => a && Object.keys(a).some(k => k.startsWith('reefResident'));
-export const isReefResidentAgent = a => OCEAN_REEF_RESIDENT_IDS.includes(a?.speciesId) || REEF_DIVERSITY_NEW_IDS.includes(a?.speciesId) || REEF_COMMUNITY_NEW_IDS.includes(a?.speciesId) || REEF_LIFE_NEW_IDS.includes(a?.speciesId) || REEF_FAUNA_NEW_IDS.includes(a?.speciesId) || REEF_ASSEMBLAGE_NEW_IDS.includes(a?.speciesId) || REEF_VISITORS_NEW_IDS.includes(a?.speciesId);
+export const isReefResidentAgent = a => OCEAN_REEF_RESIDENT_IDS.includes(a?.speciesId) || REEF_DIVERSITY_NEW_IDS.includes(a?.speciesId) || REEF_COMMUNITY_NEW_IDS.includes(a?.speciesId) || REEF_LIFE_NEW_IDS.includes(a?.speciesId) || REEF_FAUNA_NEW_IDS.includes(a?.speciesId) || REEF_ASSEMBLAGE_NEW_IDS.includes(a?.speciesId) || REEF_VISITORS_NEW_IDS.includes(a?.speciesId) || OCEAN_REEF_SLOPE_IDS.includes(a?.speciesId);
 export const reefResidentsMarked = r => Boolean(r && (Object.keys(r).some(k => k.startsWith('reefResidents')) ||
   [...(r.agents ?? []), ...(r.turtleAgents ?? [])].some(a => individualMarked(a) || isReefResidentAgent(a))));
-export const reefResidentConsumerCount = r => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(r?.reefResidentsVersion) ? (r.agents ?? []).filter(a => isReefResidentAgent(a) && a.alive).length : 0;
-export const reefResidentPreyConsumerCount = r => r?.reefResidentsVersion === 1 ? reefResidentConsumerCount(r) : [2, 3, 4, 5, 6, 7, 8, 9, 10].includes(r?.reefResidentsVersion) ?
+export const reefResidentConsumerCount = r => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(r?.reefResidentsVersion) ? (r.agents ?? []).filter(a => isReefResidentAgent(a) && a.alive).length : 0;
+export const reefResidentPreyConsumerCount = r => r?.reefResidentsVersion === 1 ? reefResidentConsumerCount(r) : [2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(r?.reefResidentsVersion) ?
   (r.agents ?? []).filter(a => isReefResidentAgent(a) && a.alive && a.reefResidentFoodPool === POOL).length : 0;
 function hash(text) { let h = 2166136261; for (const c of text) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
   h ^= h >>> 16; h = Math.imul(h, 0x7feb352d); h ^= h >>> 15; h = Math.imul(h, 0x846ca68b); return (h ^ h >>> 16) >>> 0; }
@@ -121,10 +130,11 @@ const randomForV5 = (g, r) => salt => hash(`reef-residents-v5|${typeof g.seed}:$
 const randomForV6 = (g, r) => salt => hash(`reef-residents-v6|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
 const randomForV7 = (g, r) => salt => hash(`reef-residents-v7|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
 const randomForV8 = (g, r) => salt => hash(`reef-residents-v8|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
+const randomForV11 = (g, r) => salt => hash(`reef-residents-v11|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
 const randomForV10 = (g, r) => salt => hash(`reef-residents-v10|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
 const randomForV9 = (g, r) => salt => hash(`reef-residents-v9|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
-const individualVersion = id => REEF_RESIDENTS_LEGACY_IDS.includes(id) ? 1 : REEF_DIVERSITY_NEW_IDS.includes(id) ? 2 : REEF_COMMUNITY_NEW_IDS.includes(id) ? 3 : REEF_LIFE_NEW_IDS.includes(id) ? 4 : REEF_FAUNA_NEW_IDS.includes(id) ? 5 : REEF_ASSEMBLAGE_NEW_IDS.includes(id) ? 6 : REEF_VISITORS_NEW_IDS.includes(id) ? 8 : 0;
-const individualRandom = (g, r, a) => a.reefResidentIndividualVersion === 10 ? randomForV10(g, r) : a.reefResidentIndividualVersion === 9 ? randomForV9(g, r) : a.reefResidentIndividualVersion === 8 ? randomForV8(g, r) : a.reefResidentIndividualVersion === 7 ? randomForV7(g, r) : a.reefResidentIndividualVersion === 6 ? randomForV6(g, r) : a.reefResidentIndividualVersion === 5 ? randomForV5(g, r) : a.reefResidentIndividualVersion === 4 ? randomForV4(g, r) : a.reefResidentIndividualVersion === 3 ? randomForV3(g, r) : a.reefResidentIndividualVersion === 2 ? randomForV2(g, r) : randomFor(g, r);
+const individualVersion = id => REEF_RESIDENTS_LEGACY_IDS.includes(id) ? 1 : REEF_DIVERSITY_NEW_IDS.includes(id) ? 2 : REEF_COMMUNITY_NEW_IDS.includes(id) ? 3 : REEF_LIFE_NEW_IDS.includes(id) ? 4 : REEF_FAUNA_NEW_IDS.includes(id) ? 5 : REEF_ASSEMBLAGE_NEW_IDS.includes(id) ? 6 : REEF_VISITORS_NEW_IDS.includes(id) ? 8 : OCEAN_REEF_SLOPE_IDS.includes(id) ? 11 : 0;
+const individualRandom = (g, r, a) => a.reefResidentIndividualVersion === 11 ? randomForV11(g, r) : a.reefResidentIndividualVersion === 10 ? randomForV10(g, r) : a.reefResidentIndividualVersion === 9 ? randomForV9(g, r) : a.reefResidentIndividualVersion === 8 ? randomForV8(g, r) : a.reefResidentIndividualVersion === 7 ? randomForV7(g, r) : a.reefResidentIndividualVersion === 6 ? randomForV6(g, r) : a.reefResidentIndividualVersion === 5 ? randomForV5(g, r) : a.reefResidentIndividualVersion === 4 ? randomForV4(g, r) : a.reefResidentIndividualVersion === 3 ? randomForV3(g, r) : a.reefResidentIndividualVersion === 2 ? randomForV2(g, r) : randomFor(g, r);
 const individualFoodScope = a => a.reefResidentIndividualVersion >= 8 ? REEF_VISITORS_FOOD_SCOPE : a.reefResidentIndividualVersion === 7 ? REEF_HABITAT_COMMUNITY_FOOD_SCOPE : a.reefResidentIndividualVersion === 6 ? REEF_ASSEMBLAGE_FOOD_SCOPE : a.reefResidentIndividualVersion === 5 ? REEF_FAUNA_FOOD_SCOPE : a.reefResidentIndividualVersion === 4 ? REEF_LIFE_FOOD_SCOPE : a.reefResidentIndividualVersion === 3 ? REEF_COMMUNITY_FOOD_SCOPE : a.reefResidentIndividualVersion === 2 ? REEF_DIVERSITY_FOOD_SCOPE : REEF_RESIDENTS_FOOD_SCOPE;
 function actualGroup(r, g) {
   try {
@@ -234,7 +244,7 @@ function supportSurvey(r, g, a, p, heading, pitch, q, occupancy = false, range =
       levels.push(support.height - o.y);
     }
     const expected = a.reefResidentIndividualVersion >= 2 ? s.support.footContacts.length : 10;
-    const minimumContacts = a.reefResidentIndividualVersion === 4 || ([7, 8, 9, 10].includes(a.reefResidentIndividualVersion) && a.speciesId === 'banded-coral-shrimp') ? 4 : 6;
+    const minimumContacts = a.reefResidentIndividualVersion === 4 || ([7, 8, 9, 10, 11].includes(a.reefResidentIndividualVersion) && a.speciesId === 'banded-coral-shrimp') ? 4 : 6;
     if (expected < minimumContacts || expected > 12 || levels.length !== expected || Math.max(...levels) - Math.min(...levels) > M.maximumFootGapM || !close(p.y, Math.max(...levels) + M.clearanceM, 1e-7)) return null;
   }
   const low = Math.min(...offsets.map(o => o.y)), high = Math.max(...offsets.map(o => o.y));
@@ -268,17 +278,17 @@ function candidates(r, g, epoch = r.reefResidentsVersion ?? 1) {
     }
   }
   const sorted = sites.sort((a, b) => a.distanceM - b.distanceM || a.order - b.order || a.siteId.localeCompare(b.siteId));
-  return epoch >= 9 ? [...(epoch === 10 ? createReefSandCorridorSites(r, g.chunk(r.cx, r.cz), group, g) : []), ...createReefHabitatLayerSites(r, g.chunk(r.cx, r.cz), group), ...sorted] : sorted;
+  return epoch >= 9 ? [...(epoch >= 10 ? createReefSandCorridorSites(r, g.chunk(r.cx, r.cz), group, g) : []), ...createReefHabitatLayerSites(r, g.chunk(r.cx, r.cz), group), ...sorted] : sorted;
 }
 const selectedSize = (id, rng) => { const range = speciesById[id].sizeRangeM; return range[0] + rng(`${id}:size`) * (range[1] - range[0]); };
 function sitePose(r, g, a, site, heading, q) {
-  if (site.hostId === null && (a.reefResidentIndividualVersion !== 10 || !REEF_SAND_CORRIDOR_IDS.includes(a.speciesId))) return null;
+  if (site.hostId === null && (![10, 11].includes(a.reefResidentIndividualVersion) || !(REEF_SAND_CORRIDOR_IDS.includes(a.speciesId) || a.reefResidentIndividualVersion === 11 && REEF_SLOPE_SAND_IDS.includes(a.speciesId)))) return null;
   if (a.reefResidentIndividualVersion >= 9 && site.layer && (site.layer === 'water') !== (traits[a.speciesId].mode === 'reef-water')) return null;
   return traits[a.speciesId].mode === 'reef-foot' ? groundPosition(g, a, site.x, site.z, heading, q) :
     { x: site.x, z: site.z, y: q.surface(site.x, site.z, true) + (a.reefResidentIndividualVersion >= 9 && site.layer === 'water' ? site.waterHeightM : .60) + a.sizeM * .25 };
 }
 export function initializeReefResidents(r, g, { fresh = false, surface, bed, capacity = 20, version = 1 } = {}) {
-  if (version === 7 || version === 8 || version === 9 || version === 10) return initializeReefHabitatCommunity(r, g, { fresh, surface, bed, capacity }, version);
+  if (version === 7 || version === 8 || version === 9 || version === 10 || version === 11) return initializeReefHabitatCommunity(r, g, { fresh, surface, bed, capacity }, version);
   if (version === 6) return initializeReefAssemblage(r, g, { fresh, surface, bed, capacity });
   if (version === 5) return initializeReefFauna(r, g, { fresh, surface, bed, capacity });
   if (version === 4) return initializeReefLife(r, g, { fresh, surface, bed, capacity });
@@ -519,8 +529,8 @@ function initializeReefAssemblage(r, g, { fresh, surface, bed, capacity }) {
 }
 const habitatRole = id => traits[id].mode === 'reef-water' ? 'water' : traits[id].soft ? 'soft' : traits[id].hard ? 'hard' : 'margin';
 function habitatCommunityOrder(r, g, sites, q, epoch = 7) {
-  const palette = epoch >= 8 ? REEF_VISITOR_COMMUNITY_IDS : REEF_HABITAT_COMMUNITY_IDS;
-  const rng = epoch === 10 ? randomForV10(g, r) : epoch === 9 ? randomForV9(g, r) : epoch === 8 ? randomForV8(g, r) : randomForV7(g, r), habitats = { reef: 0, sand: 0, seagrass: 0, slope: 0, other: 0 };
+  const palette = epoch === 11 ? REEF_SLOPE_COMMUNITY_IDS : epoch >= 8 ? REEF_VISITOR_COMMUNITY_IDS : REEF_HABITAT_COMMUNITY_IDS;
+  const rng = epoch === 11 ? randomForV11(g, r) : epoch === 10 ? randomForV10(g, r) : epoch === 9 ? randomForV9(g, r) : epoch === 8 ? randomForV8(g, r) : randomForV7(g, r), habitats = { reef: 0, sand: 0, seagrass: 0, slope: 0, other: 0 };
   const samples = sites.map(site => {
     const sample = g.sample(site.x, site.z), ground = groundAt(g, q, site.x, site.z), solid = q.surface(site.x, site.z, true);
     habitats[Object.hasOwn(habitats, sample.habitat) ? sample.habitat : 'other']++;
@@ -532,8 +542,8 @@ function habitatCommunityOrder(r, g, sites, q, epoch = 7) {
       margin: Boolean(stable && (!onBed || ['sand', 'rock'].includes(sample.substrate))) };
   });
   const depths = samples.map(p => p.depthM).filter(Number.isFinite);
-  const habitatEvidence = { version: epoch === 10 ? 3 : epoch === 9 ? 2 : 1, sampledCenters: samples.length,
-    ...(epoch >= 9 ? { bedLayerSites: sites.filter(p => p.layer === 'bed').length, waterLayerSites: sites.filter(p => p.layer === 'water').length, ...(epoch === 10 ? { sandBedSites: sites.filter(p => p.hostId === null && p.layer === 'bed').length, openSandWaterSites: sites.filter(p => p.hostId === null && p.layer === 'water').length } : {}) } : {}),
+  const habitatEvidence = { version: epoch >= 10 ? 3 : epoch === 9 ? 2 : 1, sampledCenters: samples.length,
+    ...(epoch >= 9 ? { bedLayerSites: sites.filter(p => p.layer === 'bed').length, waterLayerSites: sites.filter(p => p.layer === 'water').length, ...(epoch >= 10 ? { sandBedSites: sites.filter(p => p.hostId === null && p.layer === 'bed').length, openSandWaterSites: sites.filter(p => p.hostId === null && p.layer === 'water').length } : {}) } : {}),
     waterCenters: samples.filter(p => p.depthM >= 3 && p.depthM <= 18).length,
     softCenters: samples.filter(p => p.soft).length, hardCenters: samples.filter(p => p.hard).length,
     marginCenters: samples.filter(p => p.margin).length, habitats,
@@ -569,14 +579,14 @@ function initializeReefHabitatCommunity(r, g, { fresh, surface, bed, capacity },
   if (!fresh || !nativeOwner(r, g) || r.timeSec !== 0 || r.ticks !== 0 || reefResidentsMarked(r) || !validateLivingNetworkRecord(r)) return false;
   const cap = Math.min(20, Number.isSafeInteger(capacity) ? Math.max(0, capacity) : 0), occupied = r.agents.length + (r.turtleAgents?.length ?? 0);
   if (occupied > cap) return false;
-  const q = queries(r, g, { surface, bed }), sites = candidates(r, g, epoch), rng = epoch === 10 ? randomForV10(g, r) : epoch === 9 ? randomForV9(g, r) : epoch === 8 ? randomForV8(g, r) : randomForV7(g, r), group = actualGroup(r, g);
+  const q = queries(r, g, { surface, bed }), sites = candidates(r, g, epoch), rng = epoch === 11 ? randomForV11(g, r) : epoch === 10 ? randomForV10(g, r) : epoch === 9 ? randomForV9(g, r) : epoch === 8 ? randomForV8(g, r) : randomForV7(g, r), group = actualGroup(r, g);
   const { candidateOrder, habitatEvidence } = habitatCommunityOrder(r, g, sites, q, epoch), available = Math.min(10, cap - occupied), born = [], placements = [];
   for (const id of candidateOrder) {
     if (born.length >= available || rng(`${id}:present`) > .96) continue;
     const sizeM = selectedSize(id, rng), heading = rng(`${id}:heading`) * TAU, t = traits[id];
-    for (const site of (epoch === 10 ? reefSandCorridorSpeciesSites(reefHabitatLayerSpeciesSites(sites, id, rng), id, rng, r.agents.concat(born)) : epoch === 9 ? reefHabitatLayerSpeciesSites(sites, id, rng) : sites)) {
+    for (const site of (epoch >= 10 ? reefSandCorridorSpeciesSites(reefHabitatLayerSpeciesSites(sites, id, rng), id, rng, r.agents.concat(born), epoch) : epoch === 9 ? reefHabitatLayerSpeciesSites(sites, id, rng) : sites)) {
       const agent = { id: `ocean:${r.id}:reef-residents-v${epoch}:${id}:${site.siteId}`, speciesId: id, sizeM,
-        reefResidentHostId: site.hostId, reefResidentIndividualVersion: epoch, ...(epoch === 10 ? { reefResidentSiteId: site.siteId } : {}) };
+        reefResidentHostId: site.hostId, reefResidentIndividualVersion: epoch, ...(epoch >= 10 ? { reefResidentSiteId: site.siteId } : {}) };
       const p = sitePose(r, g, agent, site, heading, q); if (!p || (t.coral && !nearCoral(p, q))) continue;
       const support = supportSurvey({ ...r, agents: r.agents.concat(born) }, g, agent, p, heading, 0, q, true, false); if (!support) continue;
       placements.push({ id: agent.id, speciesId: id, siteId: site.siteId, hostId: site.hostId, mode: t.mode, sizeM,
@@ -592,7 +602,7 @@ function initializeReefHabitatCommunity(r, g, { fresh, surface, bed, capacity },
   r.agents.push(...born); const initialInputUnits = recordLivingAdmission(r, born);
   r.reefResidentsVersion = epoch; r.reefResidentsInitializedAtSec = 0;
   r.reefResidents = { version: epoch, groupId: `${group.cx},${group.cz}`, recipe: `reef-residents-v${epoch}`, addedIds: born.map(a => a.id), birthPlacements: placements,
-    initialInputUnits, scope: epoch === 10 ? REEF_SAND_CORRIDOR_SCOPE : epoch === 9 ? REEF_HABITAT_LAYERS_SCOPE : epoch === 8 ? REEF_VISITORS_SCOPE : REEF_HABITAT_COMMUNITY_SCOPE, foodScope: epoch >= 8 ? REEF_VISITORS_FOOD_SCOPE : REEF_HABITAT_COMMUNITY_FOOD_SCOPE,
+    initialInputUnits, scope: epoch === 11 ? REEF_SLOPE_COMMUNITY_SCOPE : epoch === 10 ? REEF_SAND_CORRIDOR_SCOPE : epoch === 9 ? REEF_HABITAT_LAYERS_SCOPE : epoch === 8 ? REEF_VISITORS_SCOPE : REEF_HABITAT_COMMUNITY_SCOPE, foodScope: epoch >= 8 ? REEF_VISITORS_FOOD_SCOPE : REEF_HABITAT_COMMUNITY_FOOD_SCOPE,
     counters: { feedings: 0, consumedUnits: 0, deaths: 0, moved: 0, blocked: 0 }, events: [], candidateOrder, habitatEvidence };
   return true;
 }
@@ -640,7 +650,7 @@ function trajectoryClear(r, g, a, next, heading, q, budget, tolerance = 1e-8) {
   return travelled <= budget + tolerance;
 }
 export function tickReefResidentAgent(r, g, a, dt, { surface, bed, environment = {}, state } = {}) {
-  if (!nativeOwner(r, g) || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(r.reefResidentsVersion) || !isReefResidentAgent(a) || !a.alive ||
+  if (!nativeOwner(r, g) || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(r.reefResidentsVersion) || !isReefResidentAgent(a) || !a.alive ||
     individualVersion(a.speciesId) > r.reefResidentsVersion ||
     (r.reefResidentsVersion === 1 && !REEF_RESIDENTS_LEGACY_IDS.includes(a.speciesId)) || !close(dt, M.stepSec, 1e-10) ||
     !close(r.timeSec - a.timeSec, dt) || !r.reefResidents?.addedIds?.includes(a.id)) return false;
@@ -651,6 +661,16 @@ export function tickReefResidentAgent(r, g, a, dt, { surface, bed, environment =
   const light = environment.lightAtDepth ?? 1, active = t.night ? light < .15 : light >= .04;
   a.velocity = { x: 0, y: 0, z: 0 };
   if (!active || !supportSurvey(r, g, a, a.position, a.heading, a.pitch, q)) { setState(a, active ? 'blocked' : 'resting', r.timeSec, state); return true; }
+  // Only the new exposed lizardfish waits between short repositioning bursts.
+  // This is an illustrative duty cycle, not a measured hunt or visible kill.
+  if (t.ambush && (r.timeSec + rng(`${a.id}:ambush-phase`) * 8) % 8 < 6) {
+    setState(a, 'ambush-waiting', r.timeSec, state);
+    if (r.timeSec >= a.nextBite && supportSurvey(r, g, a, a.position, a.heading, a.pitch, q, true)) {
+      a.nextBite = r.timeSec + M.biteIntervalSec;
+      if (takeFood(r, a) > 0) setState(a, 'resident-proxy-feeding', r.timeSec, state);
+    }
+    return true;
+  }
   if (r.timeSec >= a.nextDecision) {
     const key = `${a.id}:decision:${a.decisions++}`; a.nextDecision = r.timeSec + 4;
     for (let i = 0; i < 8; i++) {
@@ -689,7 +709,7 @@ function intakeValid(r, a) {
 }
 export function validateReefResidentsRecord(r, g, { surface, bed, capacity = 20 } = {}) {
   if (!reefResidentsMarked(r)) return true;
-  if ([2, 3, 4, 5, 6, 7, 8, 9, 10].includes(r.reefResidentsVersion)) return validateReefDiversityRecord(r, g, { surface, bed, capacity });
+  if ([2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(r.reefResidentsVersion)) return validateReefDiversityRecord(r, g, { surface, bed, capacity });
   try {
     if (!nativeOwner(r, g) || r.reefResidentsVersion !== 1 || r.reefResidentsInitializedAtSec !== 0 ||
       Object.keys(r).some(k => k.startsWith('reefResidents') && !TOP.includes(k)) || !validateLivingNetworkRecord(r)) return false;
@@ -719,7 +739,7 @@ export function validateReefResidentsRecord(r, g, { surface, bed, capacity = 20 
         distance(a.home, b.position) > 1e-10 || distance(a.refuge, b.position) > 1e-10 || distance(a.position, a.home) > t.extent + 1e-8 || distance(a.target, a.home) > t.extent + 1e-8 ||
         a.habitat !== `reef-resident-${t.mode}` || a.dietProxy !== REEF_RESIDENTS_FOOD_SCOPE || typeof a.alive !== 'boolean' || !nonnegative(a.energy) || a.energy > 1 ||
         !nonnegative(a.timeSec) || !close(a.timeSec, Math.round(a.timeSec * 10) * .1) || a.timeSec > r.timeSec || (a.alive && !close(a.timeSec, r.timeSec)) ||
-        !nonnegative(a.stateSince) || a.stateSince > a.timeSec || !['resting', 'blocked', 'reef-cruising', 'reef-foraging', 'resident-proxy-feeding', 'searching', 'dead'].includes(a.state) ||
+        !nonnegative(a.stateSince) || a.stateSince > a.timeSec || !(['resting', 'blocked', 'reef-cruising', 'reef-foraging', 'resident-proxy-feeding', 'searching', 'dead'].includes(a.state) || version === 11 && a.speciesId === 'banded-lizardfish' && a.state === 'ambush-waiting') ||
         !nonnegative(a.nextBite) || !nonnegative(a.nextDecision) || !Number.isSafeInteger(a.decisions) || a.decisions < 0 ||
         Math.hypot(a.velocity.x, a.velocity.y, a.velocity.z) > t.speed + 1e-8 || !nonnegative(a.organicUnits) || typeof a.organicDeathRecorded !== 'boolean' ||
         (a.alive ? a.organicDeathRecorded || a.state === 'dead' : !a.organicDeathRecorded || a.organicUnits !== 0 || a.state !== 'dead' ||
@@ -752,7 +772,7 @@ function validateReefDiversityRecord(r, g, { surface, bed, capacity }) {
     const habitat = epoch >= 7 ? habitatCommunityOrder(r, g, candidates(r, g), habitatQueries, epoch) : null;
     if (!d || Object.keys(d).length !== fields.length || !fields.every(k => Object.hasOwn(d, k)) || d.version !== epoch ||
       d.groupId !== `${group.cx},${group.cz}` || d.recipe !== `reef-residents-v${epoch}` ||
-      d.scope !== (epoch === 10 ? REEF_SAND_CORRIDOR_SCOPE : epoch === 9 ? REEF_HABITAT_LAYERS_SCOPE : epoch === 8 ? REEF_VISITORS_SCOPE : epoch === 7 ? REEF_HABITAT_COMMUNITY_SCOPE : epoch === 6 ? REEF_ASSEMBLAGE_SCOPE : epoch === 5 ? REEF_FAUNA_SCOPE : epoch === 4 ? REEF_LIFE_SCOPE : epoch === 3 ? REEF_COMMUNITY_SCOPE : REEF_DIVERSITY_SCOPE) ||
+      d.scope !== (epoch === 11 ? REEF_SLOPE_COMMUNITY_SCOPE : epoch === 10 ? REEF_SAND_CORRIDOR_SCOPE : epoch === 9 ? REEF_HABITAT_LAYERS_SCOPE : epoch === 8 ? REEF_VISITORS_SCOPE : epoch === 7 ? REEF_HABITAT_COMMUNITY_SCOPE : epoch === 6 ? REEF_ASSEMBLAGE_SCOPE : epoch === 5 ? REEF_FAUNA_SCOPE : epoch === 4 ? REEF_LIFE_SCOPE : epoch === 3 ? REEF_COMMUNITY_SCOPE : REEF_DIVERSITY_SCOPE) ||
       d.foodScope !== (epoch >= 8 ? REEF_VISITORS_FOOD_SCOPE : epoch === 7 ? REEF_HABITAT_COMMUNITY_FOOD_SCOPE : epoch === 6 ? REEF_ASSEMBLAGE_FOOD_SCOPE : epoch === 5 ? REEF_FAUNA_FOOD_SCOPE : epoch === 4 ? REEF_LIFE_FOOD_SCOPE : epoch === 3 ? REEF_COMMUNITY_FOOD_SCOPE : REEF_DIVERSITY_FOOD_SCOPE) ||
       (epoch < 7 && (!Array.isArray(d.legacyAddedIds) || d.legacyAddedIds.length !== old.length || old.length > 2)) ||
       !close(d.initialInputUnits, agents.length * .004) || !Array.isArray(d.candidateOrder) || JSON.stringify(d.candidateOrder) !== JSON.stringify(epoch >= 7 ? habitat.candidateOrder : diversityOrder(r, g)) ||
@@ -803,7 +823,7 @@ function validateReefDiversityRecord(r, g, { surface, bed, capacity }) {
     return agents.every(a => {
       const version = epoch >= 7 ? epoch : individualVersion(a.speciesId), legacy = version === 1;
       if (!version || version > epoch || individualVersion(a.speciesId) > epoch) return false;
-      const rng = version === 10 ? randomForV10(g, r) : version === 9 ? randomForV9(g, r) : version === 8 ? randomForV8(g, r) : version === 7 ? randomForV7(g, r) : version === 6 ? randomForV6(g, r) : version === 5 ? randomForV5(g, r) : version === 4 ? randomForV4(g, r) : version === 3 ? randomForV3(g, r) : version === 2 ? randomForV2(g, r) : randomFor(g, r);
+      const rng = version === 11 ? randomForV11(g, r) : version === 10 ? randomForV10(g, r) : version === 9 ? randomForV9(g, r) : version === 8 ? randomForV8(g, r) : version === 7 ? randomForV7(g, r) : version === 6 ? randomForV6(g, r) : version === 5 ? randomForV5(g, r) : version === 4 ? randomForV4(g, r) : version === 3 ? randomForV3(g, r) : version === 2 ? randomForV2(g, r) : randomFor(g, r);
       const b = d.birthPlacements.find(b => b.id === a.id), s = speciesById[a.speciesId], t = traits[a.speciesId], site = b && sites.find(p => p.siteId === b.siteId);
       const scope = version >= 8 ? REEF_VISITORS_FOOD_SCOPE : version === 7 ? REEF_HABITAT_COMMUNITY_FOOD_SCOPE : version === 6 ? REEF_ASSEMBLAGE_FOOD_SCOPE : version === 5 ? REEF_FAUNA_FOOD_SCOPE : version === 4 ? REEF_LIFE_FOOD_SCOPE : version === 3 ? REEF_COMMUNITY_FOOD_SCOPE : version === 2 ? REEF_DIVERSITY_FOOD_SCOPE : REEF_RESIDENTS_FOOD_SCOPE, pool = legacy ? POOL : t.pool ?? POOL;
       if (!b || !site || !s || !t || (!legacy && !(epoch >= 7 && REEF_RESIDENTS_LEGACY_IDS.includes(a.speciesId)) && s.foodPool !== pool) || a.id !== `ocean:${r.id}:${legacy ? 'reef-residents' : `reef-residents-v${version}`}:${a.speciesId}:${site.siteId}` ||
@@ -816,7 +836,7 @@ function validateReefDiversityRecord(r, g, { surface, bed, capacity }) {
         distance(a.home, b.position) > 1e-10 || distance(a.refuge, b.position) > 1e-10 || distance(a.position, a.home) > t.extent + 1e-8 || distance(a.target, a.home) > t.extent + 1e-8 ||
         a.habitat !== `reef-resident-${t.mode}` || a.dietProxy !== scope || typeof a.alive !== 'boolean' || !nonnegative(a.energy) || a.energy > 1 ||
         !nonnegative(a.timeSec) || !close(a.timeSec, Math.round(a.timeSec * 10) * .1) || a.timeSec > r.timeSec || (a.alive && !close(a.timeSec, r.timeSec)) ||
-        !nonnegative(a.stateSince) || a.stateSince > a.timeSec || !['resting', 'blocked', 'reef-cruising', 'reef-foraging', 'resident-proxy-feeding', 'searching', 'dead'].includes(a.state) ||
+        !nonnegative(a.stateSince) || a.stateSince > a.timeSec || !(['resting', 'blocked', 'reef-cruising', 'reef-foraging', 'resident-proxy-feeding', 'searching', 'dead'].includes(a.state) || version === 11 && a.speciesId === 'banded-lizardfish' && a.state === 'ambush-waiting') ||
         !nonnegative(a.nextBite) || !nonnegative(a.nextDecision) || !Number.isSafeInteger(a.decisions) || a.decisions < 0 ||
         Math.hypot(a.velocity.x, a.velocity.y, a.velocity.z) > t.speed + 1e-8 || !nonnegative(a.organicUnits) || typeof a.organicDeathRecorded !== 'boolean' ||
         (a.alive ? a.organicDeathRecorded || a.state === 'dead' : !a.organicDeathRecorded || a.organicUnits !== 0 || a.state !== 'dead' ||

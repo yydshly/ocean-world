@@ -3,5 +3,5 @@
 export const HABITAT_LAYERS_WORLD_VARIANT = 'habitat-layers';
 export function readOceanWorldVariant(search = '') {
   const variant = new URLSearchParams(search).get('world');
-  return [HABITAT_LAYERS_WORLD_VARIANT, 'sand-corridor'].includes(variant) ? variant : null;
+  return [HABITAT_LAYERS_WORLD_VARIANT, 'sand-corridor', 'reef-slope'].includes(variant) ? variant : null;
 }

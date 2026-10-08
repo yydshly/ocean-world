@@ -60,7 +60,7 @@ test('actual regional dispatcher renders all four using saved scale, heading, pi
   assert.deepEqual(reefVisitorAssetStats(),{resources:0,instances:0});
 });
 test('shipped constructor gates visitor recipe to living shallows and preserves it through reset',async()=>{
-  assert.equal(livingShallowsSpeciesCatalog.length,79);
+  assert.equal(livingShallowsSpeciesCatalog.length,83);
   for(const s of OCEAN_REEF_VISITORS_SPECIES){assert.equal(livingShallowsSpeciesCatalog.filter(x=>x.id===s.id).length,1);
     for(const biome of ['reef','kelp','deep'])assert.ok(!sceneCatalogs[biome].some(x=>x.id===s.id));}
   const src=readFileSync(new URL('../src/world/ReefWorld.js',import.meta.url),'utf8'),start=src.indexOf('new OceanEcology(seed,this.oceanChunks.generator,'),end=src.indexOf(');',start)+1;
