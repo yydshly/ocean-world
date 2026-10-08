@@ -8,6 +8,9 @@ const candidates = new WeakMap();
 const point = p => p && ['x', 'y', 'z'].every(k => Number.isFinite(p[k]));
 const freeze = v => { if (v && typeof v === 'object' && !Object.isFrozen(v)) { Object.values(v).forEach(freeze); Object.freeze(v); } return v; };
 const allocation = freeze({ native: 2, guild: 1, openWater: 1, diversity: 2, benthic: 4, meadow: 2, turtles: 1, shoal: 7, total: 20 });
+// Four independent grass/reef-edge/soft-bottom niches share the same total
+// budget with a five-member school. The saved v1 recipe keeps its old budget.
+const communityAllocation = freeze({ ...allocation, meadow: 4, shoal: 5 });
 
 export function meadowAnimalBeltMarked(r) {
   return Boolean(r && Object.keys(r).some(k => k.startsWith('meadowAnimalBelt')));
@@ -29,11 +32,11 @@ function actualGroup(g, r) {
 
 export function validateMeadowAnimalBelt(r, g) {
   if (!meadowAnimalBeltMarked(r)) return true;
-  const group = actualGroup(g, r), d = r.meadowAnimalBelt;
-  return Boolean(group && r.meadowAnimalBeltVersion === 1 && d && typeof d === 'object' && !Array.isArray(d) &&
+  const group = actualGroup(g, r), d = r.meadowAnimalBelt, version = r.meadowAnimalBeltVersion;
+  return Boolean(group && [1, 2].includes(version) && d && typeof d === 'object' && !Array.isArray(d) &&
     Object.keys(r).filter(k => k.startsWith('meadowAnimalBelt')).every(k => TOP.includes(k)) &&
-    Object.keys(d).length === FIELDS.length && FIELDS.every(k => Object.hasOwn(d, k)) && d.version === 1 && d.initializedAtSec === 0 &&
-    d.groupId === `${group.cx},${group.cz}` && d.recipe === 'route-neighborhood-v1');
+    Object.keys(d).length === FIELDS.length && FIELDS.every(k => Object.hasOwn(d, k)) && d.version === version && d.initializedAtSec === 0 &&
+    d.groupId === `${group.cx},${group.cz}` && d.recipe === (version === 2 ? 'habitat-community-v2' : 'route-neighborhood-v1'));
 }
 
 function routeDistance(p, path) {
@@ -92,5 +95,5 @@ export function meadowAnimalBeltRank(g, r, sites) {
 }
 
 export function meadowAnimalBeltAllocation(g, r) {
-  return meadowAnimalBeltMarked(r) && validateMeadowAnimalBelt(r, g) && meadowAnimalBeltSites(g, r).length ? allocation : null;
+  return meadowAnimalBeltMarked(r) && validateMeadowAnimalBelt(r, g) && meadowAnimalBeltSites(g, r).length ? (r.meadowAnimalBeltVersion === 2 ? communityAllocation : allocation) : null;
 }

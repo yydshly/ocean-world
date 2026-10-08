@@ -34,7 +34,7 @@ const marked = a => a && Object.keys(a).some(k => k.startsWith('meadowLife'));
 export const isOceanMeadowLifeAgent = a => OCEAN_MEADOW_LIFE_IDS.includes(a?.speciesId);
 function hash(text) { let h = 2166136261; for (const c of String(text)) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
   h ^= h >>> 16; h = Math.imul(h, 0x7feb352d); h ^= h >>> 15; h = Math.imul(h, 0x846ca68b); return (h ^ h >>> 16) >>> 0; }
-const randomFor = (g, r) => salt => hash(`meadow-life-v1|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
+const randomFor = (g, r) => salt => hash(`meadow-life-v${r.meadowAnimalBeltVersion === 2 ? 2 : 1}|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
 const nativeOwner = (r, g) => g?.profile === OCEAN_MEADOW_LIFE_PROFILE && typeof g.chunk === 'function' && typeof g.sample === 'function' &&
   typeof g.floorSurface === 'function' && Number.isSafeInteger(r?.cx) && Number.isSafeInteger(r?.cz) && r.id === `${r.cx},${r.cz}` &&
   Array.isArray(r.agents) && r.basicNetwork && nonnegative(r.timeSec) && Number.isSafeInteger(r.ticks) && close(r.timeSec, r.ticks * .1) &&
@@ -182,9 +182,10 @@ function sitePose(g, r, id, site, sizeM, heading, q) {
 function selectedSize(id, rng) { const s = oceanMeadowLifeSpeciesById[id]; return s.sizeRangeM[0] + rng(`${id}:size`) * (s.sizeRangeM[1] - s.sizeRangeM[0]); }
 export function createOceanMeadowLifePlan(g, r, { availableSlots = 0, maxAdded = 4, surface, bed } = {}) {
   if (!nativeOwner(r, g)) return freeze({ version: 1, placements: [] });
-  const belt = meadowAnimalBeltMarked(r), slots = Math.min(belt ? 2 : 4, Math.max(0, Math.floor(availableSlots)), Math.max(0, Math.floor(maxAdded))), placements = [], rng = randomFor(g, r), q = queries(g, r, { surface, bed });
+  const belt = meadowAnimalBeltMarked(r), community = r.meadowAnimalBeltVersion === 2, slots = Math.min(belt && !community ? 2 : 4, Math.max(0, Math.floor(availableSlots)), Math.max(0, Math.floor(maxAdded))), placements = [], rng = randomFor(g, r), q = queries(g, r, { surface, bed });
   const { sites, hardSites, chunk } = nativeSites(g, r, rng);
-  for (const id of OCEAN_MEADOW_LIFE_IDS) {
+  const order = community ? [...OCEAN_MEADOW_LIFE_IDS].sort((a, b) => rng(`${a}:community-choice`) - rng(`${b}:community-choice`) || a.localeCompare(b)) : OCEAN_MEADOW_LIFE_IDS;
+  for (const id of order) {
     if (placements.length >= slots || rng(`${id}:present`) > (belt && id === 'sand-edge-seahorse' ? .96 : .82)) continue;
     const t = traits[id], sizeM = selectedSize(id, rng), heading = rng(`${id}:heading`) * TAU;
     let choices = t.mode === 'grass-tail' ? chunk.elements.filter(e => e.kind === 'seagrass').map(e => ({ siteId: `grass:${e.id}:0`, hostId: e.id, leafIndex: 0 })) :
@@ -299,7 +300,7 @@ export function validateOceanMeadowLifeRecord(r, g, { surface, bed, capacity = 2
     r.ticks !== d.ticks + (beforeTick ? 1 : 0) || !close(r.timeSec - d.lastTickSec, beforeTick ? .1 : 0) ||
     !Array.isArray(d.addedIds) || !Array.isArray(d.birthPlacements) || d.addedIds.length !== agents.length || d.birthPlacements.length !== agents.length ||
     new Set(d.addedIds).size !== agents.length || new Set(d.birthPlacements.map(p => p.id)).size !== agents.length || new Set(agents.map(a => a.speciesId)).size !== agents.length ||
-    agents.length > (meadowAnimalBeltMarked(r) ? 2 : 4) || r.agents.length + (r.turtleAgents?.length ?? 0) > Math.min(20, capacity) || !close(d.initialInputUnits, agents.length * .004) ||
+    agents.length > (meadowAnimalBeltMarked(r) && r.meadowAnimalBeltVersion !== 2 ? 2 : 4) || r.agents.length + (r.turtleAgents?.length ?? 0) > Math.min(20, capacity) || !close(d.initialInputUnits, agents.length * .004) ||
     !['feedings', 'deaths', 'moved'].every(k => Number.isSafeInteger(d.counters?.[k]) && d.counters[k] >= 0) || !nonnegative(d.counters?.consumedUnits) ||
     !Array.isArray(d.events) || d.events.length > 32 || !validateLivingNetworkRecord(r) || r.agents.some(a => marked(a) && !isOceanMeadowLifeAgent(a)) ||
     (r.turtleAgents ?? []).some(a => marked(a) || isOceanMeadowLifeAgent(a))) return false;

@@ -64,6 +64,10 @@ jobs:
           tests/ocean-reef-residents-assets.test.mjs
           tests/reef-residents-ecology.test.mjs
           tests/reef-residents-integration.test.mjs
+          tests/meadow-habitat-community.test.mjs
+          tests/meadow-habitat-community-shoal.test.mjs
+          tests/meadow-habitat-community-ecology.test.mjs
+          tests/meadow-habitat-community-integration.test.mjs
           tests/meadow-animal-belt.test.mjs
           tests/meadow-animal-belt-shoal.test.mjs
           tests/meadow-animal-belt-bottom.test.mjs

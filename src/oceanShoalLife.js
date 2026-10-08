@@ -29,7 +29,7 @@ const freeze = v => { if (v && typeof v === 'object' && !Object.isFrozen(v)) { O
 export const isOceanShoalLifeAgent = a => OCEAN_SHOAL_LIFE_IDS.includes(a?.speciesId);
 function hash(text) { let h = 2166136261; for (const c of String(text)) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
   h ^= h >>> 16; h = Math.imul(h, 0x7feb352d); h ^= h >>> 15; h = Math.imul(h, 0x846ca68b); return (h ^ h >>> 16) >>> 0; }
-const randomFor = (g, r) => salt => hash(`shoal-life-v1|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
+const randomFor = (g, r) => salt => hash(`shoal-life-v${r.meadowAnimalBeltVersion === 2 ? 2 : 1}|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
 function nativeGeometry(r, g) { return g?.profile === OCEAN_SHOAL_LIFE_PROFILE && typeof g.chunk === 'function' && typeof g.floorSurface === 'function' && typeof g.sample === 'function' &&
   Number.isSafeInteger(r?.cx) && Number.isSafeInteger(r?.cz) && r.id === `${r.cx},${r.cz}`; }
 function nativeOwner(r, g) { return nativeGeometry(r, g) && Array.isArray(r.agents) && r.basicNetwork &&
@@ -107,7 +107,7 @@ export function createOceanShoalLifePlan(g, r, { role = oceanShoalLifeRole(r, g)
   if (!nativeOwner(r, g) || !validateMeadowAnimalBelt(r, g) || role !== true || !oceanShoalLifeRole(r, g) || cap < 5) return freeze({ version: 1, school: null, placements: [] });
   const rng = randomFor(g, r), q = queries(g, r, { surface, bed }), count = Math.min(cap, 5 + Math.floor(rng('count') * 3));
   const originalOrder = [...FISH].sort((a, b) => rng(`${a}:choice`) - rng(`${b}:choice`) || a.localeCompare(b));
-  const order = meadowAnimalBeltMarked(r) ? [FISH[0], ...originalOrder.filter(id => id !== FISH[0])] : originalOrder;
+  const order = meadowAnimalBeltMarked(r) && r.meadowAnimalBeltVersion !== 2 ? [FISH[0], ...originalOrder.filter(id => id !== FISH[0])] : originalOrder;
   for (const id of order) for (const site of sites(g, r)) {
     const school = schoolBirth(g, r, site, id, count, rng), additions = school.placements.map(p => ({ ...p, alive: true })), trial = { ...r, agents: r.agents.concat(additions) };
     if (!additions.every(a => clearPose(r, g, a, a.position, a.heading, a.pitch, q) && occupationClear(trial, a, a.position))) continue;
