@@ -117,8 +117,8 @@ test('the director covers all four whole-scene native entries with real moving c
   }
 });
 
-test('the first director chapter enters the complete committed scene rather than the older small sample', async () => {
-  const f = fixture(), step = DIRECTOR_STEPS[0], action = directorStepAction(step);
+test('the retained v6 director chapter still enters its complete committed scene', async () => {
+  const f = fixture(), step = DIRECTOR_STEPS.find(step => step.id === 'shallows-opening'), action = directorStepAction(step);
   assert.equal(action.entryStopId, SHALLOW_SEASCAPE_ROUTE_STOPS[0].id);
   assert.equal(step.motion.kind, 'walk');
   assert.equal(step.motion.routeId, undefined, 'the old twelve-metre close sample is not the new opening');

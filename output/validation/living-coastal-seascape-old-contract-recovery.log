@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: ordinary whole-scene entry waits for twelve actual committed plans, real animals and a safe native view
+ok 1 - ordinary whole-scene entry waits for twelve actual committed plans, real animals and a safe native view
+  ---
+  duration_ms: 5026.3236
+  type: 'test'
+  ...
+# Subtest: a saved owner prevents a false new-package success and retains the complete old record
+ok 2 - a saved owner prevents a false new-package success and retains the complete old record
+  ---
+  duration_ms: 4313.1866
+  type: 'test'
+  ...
+# Subtest: late load cannot move the camera after manual takeover, seed change or disposal
+ok 3 - late load cannot move the camera after manual takeover, seed change or disposal
+  ---
+  duration_ms: 730.7871
+  type: 'test'
+  ...
+# Subtest: unreadable persistence fails ordinary entry rather than inventing a complete package
+ok 4 - unreadable persistence fails ordinary entry rather than inventing a complete package
+  ---
+  duration_ms: 120.3227
+  type: 'test'
+  ...
+# Subtest: the director covers all four whole-scene native entries with real moving chapter actions
+ok 5 - the director covers all four whole-scene native entries with real moving chapter actions
+  ---
+  duration_ms: 611.4644
+  type: 'test'
+  ...
+# Subtest: the retained v6 director chapter still enters its complete committed scene
+ok 6 - the retained v6 director chapter still enters its complete committed scene
+  ---
+  duration_ms: 5591.8927
+  type: 'test'
+  ...
+# Subtest: the same sun covers the whole shallow middle distance while other worlds retain original lighting
+ok 7 - the same sun covers the whole shallow middle distance while other worlds retain original lighting
+  ---
+  duration_ms: 0.9774
+  type: 'test'
+  ...
+# Subtest: scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+ok 8 - scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged
+  ---
+  duration_ms: 35.8513
+  type: 'test'
+  ...
+# Subtest: new scene hides authored terrain and disables all three old additive scenery systems
+ok 9 - new scene hides authored terrain and disables all three old additive scenery systems
+  ---
+  duration_ms: 8.7912
+  type: 'test'
+  ...
+# Subtest: world restores saved global forcing and clock before handing environment to regional ecology
+ok 10 - world restores saved global forcing and clock before handing environment to regional ecology
+  ---
+  duration_ms: 9.993
+  type: 'test'
+  ...
+# Subtest: new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+ok 11 - new clock advances with simulation speed, wraps hour, freezes on pause and never steps hidden authored animals
+  ---
+  duration_ms: 8.865
+  type: 'test'
+  ...
+# Subtest: route controls use finite ordinary travel without teleport or ecology replacement
+ok 12 - route controls use finite ordinary travel without teleport or ecology replacement
+  ---
+  duration_ms: 225.367
+  type: 'test'
+  ...
+# Subtest: the two living-belt entries face their planned local spaces and keep original ecological controls
+ok 13 - the two living-belt entries face their planned local spaces and keep original ecological controls
+  ---
+  duration_ms: 332.4839
+  type: 'test'
+  ...
+# Subtest: environment updates and pause save the actual global forcing and latest time
+ok 14 - environment updates and pause save the actual global forcing and latest time
+  ---
+  duration_ms: 4.5252
+  type: 'test'
+  ...
+# Subtest: explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+ok 15 - explicit reset preserves new scene version, changes typed seed and resets global clock only in the target world
+  ---
+  duration_ms: 225.0017
+  type: 'test'
+  ...
+# Subtest: new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+ok 16 - new-scene catalogue observation uses loaded real animals without selecting hidden authored organisms or leaving the current habitat
+  ---
+  duration_ms: 175.5281
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16588.8399
