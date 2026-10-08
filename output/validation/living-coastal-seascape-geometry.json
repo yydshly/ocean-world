@@ -1,0 +1,388 @@
+{
+  "scope": "CPU native fixed 150,4 twelve-owner geometry; no rendered screenshot or ecological intake claim",
+  "sourceSeed": "living-shallows-v1|string:42",
+  "owners": [
+    {
+      "id": "150,4",
+      "allocation": {
+        "facies": "reef",
+        "native": 8,
+        "guild": 4,
+        "openWater": 0,
+        "diversity": 4,
+        "benthic": 4,
+        "meadow": 0,
+        "turtles": 0,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 9,
+        "coral": 19,
+        "seagrass": 0,
+        "rubble": 58,
+        "algae": 25,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "151,4",
+      "allocation": {
+        "facies": "reef",
+        "native": 8,
+        "guild": 4,
+        "openWater": 0,
+        "diversity": 4,
+        "benthic": 4,
+        "meadow": 0,
+        "turtles": 0,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 10,
+        "coral": 15,
+        "seagrass": 0,
+        "rubble": 50,
+        "algae": 23,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "152,4",
+      "allocation": {
+        "facies": "sand",
+        "native": 8,
+        "guild": 0,
+        "openWater": 0,
+        "diversity": 4,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 0,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 8,
+        "coral": 18,
+        "seagrass": 20,
+        "rubble": 50,
+        "algae": 18,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "153,4",
+      "allocation": {
+        "facies": "meadow",
+        "native": 6,
+        "guild": 0,
+        "openWater": 0,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 3,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 6,
+        "coral": 12,
+        "seagrass": 123,
+        "rubble": 59,
+        "algae": 17,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "154,4",
+      "allocation": {
+        "facies": "meadow",
+        "native": 6,
+        "guild": 0,
+        "openWater": 0,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 3,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 8,
+        "coral": 14,
+        "seagrass": 90,
+        "rubble": 43,
+        "algae": 21,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "155,4",
+      "allocation": {
+        "facies": "slope",
+        "native": 4,
+        "guild": 0,
+        "openWater": 3,
+        "diversity": 3,
+        "benthic": 2,
+        "meadow": 0,
+        "turtles": 0,
+        "shoal": 8,
+        "total": 20
+      },
+      "counts": {
+        "rock": 6,
+        "coral": 9,
+        "seagrass": 107,
+        "rubble": 38,
+        "algae": 16,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "150,5",
+      "allocation": {
+        "facies": "reef",
+        "native": 8,
+        "guild": 4,
+        "openWater": 0,
+        "diversity": 4,
+        "benthic": 4,
+        "meadow": 0,
+        "turtles": 0,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 8,
+        "coral": 18,
+        "seagrass": 0,
+        "rubble": 50,
+        "algae": 24,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "151,5",
+      "allocation": {
+        "facies": "reef",
+        "native": 8,
+        "guild": 4,
+        "openWater": 0,
+        "diversity": 4,
+        "benthic": 4,
+        "meadow": 0,
+        "turtles": 0,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 2,
+        "coral": 5,
+        "seagrass": 0,
+        "rubble": 53,
+        "algae": 6,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "152,5",
+      "allocation": {
+        "facies": "sand",
+        "native": 8,
+        "guild": 0,
+        "openWater": 0,
+        "diversity": 4,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 0,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 7,
+        "coral": 11,
+        "seagrass": 28,
+        "rubble": 51,
+        "algae": 11,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "153,5",
+      "allocation": {
+        "facies": "meadow",
+        "native": 6,
+        "guild": 0,
+        "openWater": 0,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 3,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 4,
+        "coral": 6,
+        "seagrass": 156,
+        "rubble": 46,
+        "algae": 8,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "154,5",
+      "allocation": {
+        "facies": "meadow",
+        "native": 6,
+        "guild": 0,
+        "openWater": 0,
+        "diversity": 3,
+        "benthic": 4,
+        "meadow": 4,
+        "turtles": 3,
+        "shoal": 0,
+        "total": 20
+      },
+      "counts": {
+        "rock": 3,
+        "coral": 4,
+        "seagrass": 170,
+        "rubble": 52,
+        "algae": 4,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    },
+    {
+      "id": "155,5",
+      "allocation": {
+        "facies": "slope",
+        "native": 4,
+        "guild": 0,
+        "openWater": 3,
+        "diversity": 3,
+        "benthic": 2,
+        "meadow": 0,
+        "turtles": 0,
+        "shoal": 8,
+        "total": 20
+      },
+      "counts": {
+        "rock": 2,
+        "coral": 3,
+        "seagrass": 142,
+        "rubble": 57,
+        "algae": 6,
+        "formation": 0,
+        "driftwood": 0,
+        "bottle": 0
+      }
+    }
+  ],
+  "entities": {
+    "rockCount": 73,
+    "coralCount": 134,
+    "grassCount": 836,
+    "addedRockCount": 15,
+    "addedCoralCount": 22,
+    "addedAlgaeCount": 9,
+    "addedGrassCount": 465,
+    "driftwoodCount": 0,
+    "bottleCount": 0,
+    "denseGrassCount": 361,
+    "edgeGrassCount": 104,
+    "byFacies": {
+      "reef": {
+        "rock": 28,
+        "coral": 55,
+        "seagrass": 0,
+        "algae": 74,
+        "rubble": 177
+      },
+      "sand": {
+        "rock": 17,
+        "coral": 32,
+        "seagrass": 58,
+        "algae": 36,
+        "rubble": 138
+      },
+      "meadow": {
+        "rock": 18,
+        "coral": 33,
+        "seagrass": 448,
+        "algae": 40,
+        "rubble": 154
+      },
+      "slope": {
+        "rock": 10,
+        "coral": 14,
+        "seagrass": 330,
+        "algae": 29,
+        "rubble": 138
+      }
+    }
+  },
+  "floor": {
+    "deltaSpanM": 9.998968601226807,
+    "maximumTriangleGrade": 0.6492547244049971,
+    "displacedSeamVertices": 309,
+    "outerGuardM": 16
+  },
+  "retainedBoundaryCount": 966,
+  "route": {
+    "first": {
+      "x": 9624,
+      "z": 304,
+      "y": -7.813448905944824,
+      "bedY": -9.813448905944824,
+      "sM": 0,
+      "heading": 0
+    },
+    "last": {
+      "x": 9960,
+      "z": 346,
+      "y": -8.382451057434082,
+      "bedY": -10.382451057434082,
+      "sM": 401.66140284560106,
+      "heading": 1.5707963267948966
+    },
+    "lengthM": 401.66140284560106,
+    "pointCount": 684,
+    "maximumGapM": 0.7703796120795725,
+    "bodyRadiusM": 1,
+    "cameraHeightM": 2,
+    "actualSupportProbes": 8892
+  },
+  "meadow": {
+    "denseCount": 361,
+    "thinEdgeCount": 104,
+    "denseMeanHeightM": 0.8928387926552839,
+    "edgeMeanHeightM": 0.5927285152952361,
+    "softRootCount": 465
+  },
+  "immutableV6SHA256": "67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049"
+}
