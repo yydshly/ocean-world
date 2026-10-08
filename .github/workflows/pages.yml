@@ -33,6 +33,8 @@ jobs:
         run: >-
           node --test --test-concurrency=4
           tests/ocean-reef-habitat-layers.test.mjs
+          tests/ocean-reef-sand-corridor.test.mjs
+          tests/reef-sand-corridor-ecology.test.mjs
           tests/reef-habitat-layers-ecology.test.mjs
           tests/ocean-reef-visitors.test.mjs
           tests/ocean-reef-visitors-assets.test.mjs

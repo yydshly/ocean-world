@@ -1,3 +1,9 @@
+<!-- reef-sand-corridor-overview -->
+2026-10-09 补入真实沙沟动物生活层，鲆鱼、海参、海星、芋螺、海兔和梭鱼已使用新增沙地位置。固定55仍238条动物记录，实际类型56→58，沿路出生CPU空站6→3；较深坡面仍有空段。
+
+[本地沙沟群落](http://127.0.0.1:4175/ocean-world/?demo=reef-valley-region&seed=55&world=sand-corridor)使用独立动物存档，原世界保留；[实际结果与限制](docs/REEF_SAND_CORRIDOR.md)。29个定向检查与构建通过，GPU观感尚未验收，线上发布以对应Actions为准。以下保留历史。
+<!-- /reef-sand-corridor-overview -->
+
 <!-- reef-habitat-layers-overview -->
 2026-10-09 补入礁缘床面与上下水层的真实动物位置。同样55地形和238条总记录，当地实际类型52→56；四种中大型动物自然选中共5只，14居民使用新增位置。沿途空段仍在，整体观感尚未验收。
 
