@@ -56,7 +56,7 @@ test('actual regional dispatcher uses saved shell size support tilt and owner ti
   assert.deepEqual(reefFilterAnimalAssetStats(),{resources:0,instances:0});
 });
 test('shipped stationary filter layer and 85-entry catalog preserve all prior preview gates across resets',async()=>{
-  assert.equal(livingShallowsSpeciesCatalog.length,85);
+  assert.equal(livingShallowsSpeciesCatalog.length,87);
   for(const s of OCEAN_REEF_FILTER_SPECIES){assert.equal(livingShallowsSpeciesCatalog.filter(x=>x.id===s.id).length,1);for(const biome of ['reef','kelp','deep'])assert.ok(!sceneCatalogs[biome].some(x=>x.id===s.id));}
   const source=readFileSync(new URL('../src/world/ReefWorld.js',import.meta.url),'utf8'),start=source.indexOf('new OceanEcology(seed,this.oceanChunks.generator,'),end=source.indexOf(');',start)+1;
   class Capture{constructor(seed,generator,options){this.options=options;}}

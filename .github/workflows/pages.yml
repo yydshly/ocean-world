@@ -32,6 +32,9 @@ jobs:
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test --test-concurrency=4
+          tests/ocean-reef-suspension-life.test.mjs
+          tests/ocean-reef-suspension-assets.test.mjs
+          tests/reef-suspension-life-ecology.test.mjs
           tests/ocean-reef-filter-life.test.mjs
           tests/ocean-reef-filter-assets.test.mjs
           tests/reef-filter-life-ecology.test.mjs

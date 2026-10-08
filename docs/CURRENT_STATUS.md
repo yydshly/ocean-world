@@ -1,3 +1,7 @@
+<!-- reef-suspension-status -->
+2026-10-09 最新有限批补浅海羽星类群代表、金口海鞘及真实硬底滤食生活层，目录87；完整范围与取舍见 [REEF_SUSPENSION_LIFE.md](REEF_SUSPENSION_LIFE.md)。后续优先移动底栖动物和生活关系。以下历史保留。
+<!-- /reef-suspension-status -->
+
 <!-- reef-filter-status -->
 2026-10-09 最新有限批补鳞砗磲、黑蝶贝和固定滤食行为，目录85、固定55实际类型54→57；完整说明与限制见 [REEF_FILTER_LIFE.md](REEF_FILTER_LIFE.md)。后续缺失动物类群与整体生活关系优先。以下历史保留。
 <!-- /reef-filter-status -->

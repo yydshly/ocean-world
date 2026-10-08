@@ -7,7 +7,7 @@ export const REEF_SAND_CORRIDOR_IDS = Object.freeze(['leopard-sea-cucumber', 'ch
   'shame-faced-crab', 'wedge-sea-hare', 'peacock-flounder', 'textile-cone',
   'great-barracuda', 'bluefin-trevally', 'spotted-eagle-ray']);
 const M = REEF_SAND_CORRIDOR_MODEL, point = p => p && ['x','y','z'].every(k => Number.isFinite(p[k]));
-export const isReefSandCorridorAnchor = (r,a) => [10, 11, 12, 13].includes(a?.reefResidentIndividualVersion) &&
+export const isReefSandCorridorAnchor = (r,a) => [10, 11, 12, 13, 14].includes(a?.reefResidentIndividualVersion) &&
   (REEF_SAND_CORRIDOR_IDS.includes(a.speciesId) || a.reefResidentIndividualVersion >= 11 && REEF_SLOPE_SAND_IDS.includes(a.speciesId)) && a.reefResidentHostId === null &&
   a.reefResidentSiteId?.startsWith(`sand-layer:${r.id}:`) === true;
 
