@@ -99,7 +99,7 @@ test('production, direct URL, ordinary controls and moving director share the na
   assert.ok(app.includes("get('demo')==='benthic'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'benthic-community',benthicLifeEntry:true}"));
   assert.ok(app.includes('pending.then(entered=>'));assert.ok(app.includes('actual._shallowSceneEntryToken===token'));
   assert.ok(app.includes('onClick={enterBenthicCommunity}>沙地生物'));
-  assert.equal(livingShallowsSpeciesCatalog.length,43);
+  assert.equal(livingShallowsSpeciesCatalog.length,45);
   assert.deepEqual(OCEAN_BENTHIC_LIFE_ROUTE_STOPS.map(s=>s.id),['benthic-community']);
   const f={biomeId:'reef',oceanChunks:{generator:{routeStops:OCEAN_BENTHIC_LIFE_ROUTE_STOPS}},enterLivingShallows:i=>i===0};
   const chapter=DIRECTOR_STEPS.find(s=>s.action.stopId==='benthic-community');assert.ok(chapter);

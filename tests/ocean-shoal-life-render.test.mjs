@@ -10,7 +10,7 @@ import { createOceanShoalLifeAsset, animateOceanShoalLifeAsset, disposeOceanShoa
 
 // Finite native Three/CPU kits, not measured anatomy, habitat admission,
 // current browser images, GPU performance or complete director acceptance.
-const oldCatalog = livingShallowsSpeciesCatalog.filter(s => !OCEAN_SHOAL_LIFE_IDS.includes(s.id));
+const oldCatalog = livingShallowsSpeciesCatalog.filter(s => !OCEAN_SHOAL_LIFE_IDS.includes(s.id) && !['coral-trout', 'painted-spiny-lobster'].includes(s.id));
 const catalog = [...oldCatalog, ...oceanShoalLifeSpeciesCatalog];
 const meshes = root => { const out = []; root.traverse(o => { if (o.isMesh) out.push(o); }); return out; };
 const digest = root => { root.updateMatrixWorld(true); const h = createHash('sha256'); for (const m of meshes(root)) {
