@@ -69,13 +69,14 @@ export function initializeReefGuild(region, generator, { random, surface, bed, c
 /** Pool support approximates unresolved small benthic animals using detrital
  * organic food. It does not spawn visible animals, reproduce guild members or
  * assert a field-calibrated density. Every transfer uses the network units. */
-export function tickReefGuildPool(region, dt, { extraConsumers = 0 } = {}) {
+export function tickReefGuildPool(region, dt, { extraConsumers = 0, maxExtraConsumers = 2 } = {}) {
   if (region.reefGuildVersion !== 1) return;
   const pool = region.reefGuild;
   // New, independently admitted reef residents may share this unresolved
   // animal-food field. Its support is still an actual transfer from detritus;
   // the default leaves every original owner and food equation unchanged.
-  const added = Number.isSafeInteger(extraConsumers) ? Math.max(0, Math.min(2, extraConsumers)) : 0;
+  const extraLimit = maxExtraConsumers === 4 ? 4 : 2;
+  const added = Number.isSafeInteger(extraConsumers) ? Math.max(0, Math.min(extraLimit, extraConsumers)) : 0;
   const consumers = region.agents.filter(agent => isReefGuildAgent(agent) && agent.speciesId !== 'tube-sponge' && agent.alive).length + added;
   const transferred = Math.min(region.resources.detritus, consumers * .000025 * dt,
     Math.max(0, consumers * .018 - pool.preyOrganicUnits));
