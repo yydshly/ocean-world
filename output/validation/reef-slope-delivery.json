@@ -272,7 +272,7 @@
     "remoteAfterOwnPublish": "https://yydshly.github.io/ocean-world/?demo=reef-valley-region&seed=55&world=reef-slope"
   },
   "previewScope": "same terrain and random seed; independent animal history; global forcing/discoveries/exploration memory retain same seed scope",
-  "uniqueAcceptedLocalCases": 41,
+  "uniqueAcceptedLocalCases": 44,
   "acceptedCases": {
     "existing::scene-version opt-in keeps default, other biomes and mobile benchmark identities unchanged": "reef-slope-existing-tests.txt",
     "existing::new scene hides authored terrain and disables all three old additive scenery systems": "reef-slope-existing-tests.txt",
@@ -314,7 +314,10 @@
     "native::all twelve diverse owners stay private until atomic commit and failed saves expose none": "reef-slope-native-checks.txt",
     "native::mixed recipe epochs, forged habitat evidence or order and malformed food or support records reject historical regeneration": "reef-slope-native-checks.txt",
     "native::actual fresh55 slope and sand habitats distribute40 types within real geometry, food, movement and exact cold restoration": "reef-slope-native-repair.txt",
-    "native::explicit same-seed preview has complete new slope births and cold history without touching the original saved world": "reef-slope-native-repair.txt"
+    "native::explicit same-seed preview has complete new slope births and cold history without touching the original saved world": "reef-slope-native-repair.txt",
+    "historical-cohorts:all 35 original shallow geometry and animation receipts remain exact after the new native dispatcher": "reef-slope-historical-render-checks.txt",
+    "historical-cohorts:all 39 previous shallow geometry and animation receipts remain exact alongside new real individuals": "reef-slope-historical-render-checks.txt",
+    "historical-cohorts:v7 production activates only living shallows while 75 catalog entries and existing direct/director entry retain their committed identities": "reef-slope-historical-catalog-checks.txt"
   },
   "legacyFreeze": {
     "versions": [
@@ -585,10 +588,10 @@
   },
   "sourceManifest": {
     ".github/workflows/pages.yml": "9fc445f16b66bbe5c0a02f7b96498d21def57cb3650ef90f8573f2a16fc819b4",
-    "AGENTS.md": "cef282bb17da4332f1da452cb81d31c0286807f6aa42b0290caccf531c36c32c",
-    "PLAN.md": "f2a53e65070bb4c1c2204950fd99bcfb56a877443530ecb1b448941343ed70c2",
-    "PROGRESS.md": "74b0317084d6dbb6b11a3b2c09b7e3d9cd3d4caea32a880b71cce60451b572aa",
-    "README.md": "adc7c2805349ecd6d79929741fefdca3f6e51f2ab316fcdbbf73eff361a99267",
+    "AGENTS.md": "27f9a8cd1803db4b6c33aaa3ddcedd5820df5f5114a1f409f1463ed126742590",
+    "PLAN.md": "d779d22afcd43f0ea061f71b969019a8a6abd176c83ca97969e949ec52fc89c3",
+    "PROGRESS.md": "9328754b877ca70afb90cc4f639a7e5a8e101e1f8d0147b5f07600979477b4f9",
+    "README.md": "ee1929dca3eb8134588b6d3cc23aef2f310f808d7456fcb7115c129c7e7c5477",
     "docs/CURRENT_STATUS.md": "0a50f0af0c93e0bd392b15bc02b5a3a3f0170241e2cbed16f70bbc0b836753f4",
     "src/oceanEcology.js": "fbf60a55855f2db843afbd982583659b3b8358a1465920e16b858364f0ccb1e4",
     "src/oceanReefResidents.js": "9bc2d212967032ed3334454e7d8039c447e080f94180a57fcae540519b5615ee",
@@ -608,7 +611,10 @@
     "tests/ocean-reef-slope.test.mjs": "ce59036981a0bf1da353bbca44fef46806c2e510790f9c4f11fb3e3ed1dd188d",
     "tests/ocean-reef-slope-assets.test.mjs": "b8f863766e27a282461a607134d818a6c4cc3f9d85807a07cdad5af846d7270d",
     "tests/reef-slope-ecology.test.mjs": "b896e43ac26710cf58d491413ea4fc35209aa6193cb222b5c0c90c1712350883",
-    "docs/REEF_SLOPE_FISH.md": "cd4fa64935921ec11bd1e50ed0a3718309708da5b53cfe338b3bc6407e2e4007"
+    "docs/REEF_SLOPE_FISH.md": "5177e2f5d1e496bc4539a0e65f27aadaa9296d66c44eacb62e1a46208b65e92c",
+    "tests/ocean-meadow-life-render.test.mjs": "28d896556bb1f79853668a48dac1db22206991b123bee939588d5bd695855d9c",
+    "tests/ocean-shoal-life-render.test.mjs": "8af1fbcf7cc8b2e4396cda6360b26900bac4f988eee7b88f5aadf9c89467bf70",
+    "tests/reef-habitat-community-integration.test.mjs": "975013ebd9c083f33393f4631faa71cca720becfe35f3be699f831af8897944c"
   },
   "unchangedRuntimeSources": [
     "src/AgeWorkbench.jsx",
@@ -846,7 +852,9 @@
     "reef-slope-catalog-cases.txt": "8b5a76e2f21b4ac98bfc1a0d42c60d535c18f0f9466dc438173970d4a31c2bf9",
     "reef-slope-native-checks.txt": "443f863ec91938794a665cf41dfc803aa96524846289b43222cf0fd0e8fbc96c",
     "reef-slope-native-repair.txt": "cabed7aa6809d0fa2206a8eb645f03bff85d5de0aebda1e2694a49bde52720db",
-    "reef-slope-build.txt": "9c33531fe0a13df0c71b1a4c3274aea110879d1a7324f648a36accb071ded4c5"
+    "reef-slope-build.txt": "9c33531fe0a13df0c71b1a4c3274aea110879d1a7324f648a36accb071ded4c5",
+    "reef-slope-historical-render-checks.txt": "ca0ac6689aef428334c63b64fdb55bf342435da98a09719d1eb5ee216397a5f2",
+    "reef-slope-historical-catalog-checks.txt": "1a957b8b2ca2f29ca1932cae596f76abd33e5c51ddfd6c803099816c920a967f"
   },
   "build": {
     "success": true,
@@ -869,5 +877,12 @@
     "gpuAppearanceOcclusionOrFPS": false,
     "calibratedWildDensityMovementOrDiet": false,
     "completeFoodWebOrVisiblePredation": false
+  },
+  "publicationRepair": {
+    "priorCloudRun": 37804130881,
+    "originalGeometryDigest35And39Unchanged": true,
+    "originalV7CatalogSourceDigestUnchanged": true,
+    "runtimeAndBuildUnchanged": true,
+    "followupBase": "33d74d2c995a12663122a78d8a990e4aed44e244"
   }
 }

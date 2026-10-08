@@ -1,7 +1,7 @@
 <!-- reef-slope-entry -->
 2026-10-09 已接入四种礁坡/沙床鱼，浅海目录83条。实际固定55自然生成这四类共10条记录；旧存档保留。
 
-[本地新群落](http://127.0.0.1:4175/ocean-world/?demo=reef-valley-region&seed=55&world=reef-slope) · [本批说明](docs/REEF_SLOPE_FISH.md) · [冻结证据](output/validation/reef-slope-delivery.json)。41定向检查与构建通过；GPU观感未验收，线上版本以提交对应Actions发布结果为准。
+[本地新群落](http://127.0.0.1:4175/ocean-world/?demo=reef-valley-region&seed=55&world=reef-slope) · [本批说明](docs/REEF_SLOPE_FISH.md) · [冻结证据](output/validation/reef-slope-delivery.json)。44定向检查与构建通过；GPU观感未验收，线上版本以提交对应Actions发布结果为准。
 <!-- /reef-slope-entry -->
 
 <!-- reef-sand-corridor-overview -->

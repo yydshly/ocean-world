@@ -15,7 +15,9 @@ import { createOceanShoalLifeAsset, animateOceanShoalLifeAsset, disposeOceanShoa
 
 // Finite native Three/CPU kits, not measured anatomy, habitat admission,
 // current browser images, GPU performance or complete director acceptance.
-const oldCatalog = livingShallowsSpeciesCatalog.filter(s => !OCEAN_SHOAL_LIFE_IDS.includes(s.id) && !['coral-trout', 'painted-spiny-lobster'].includes(s.id) && !OCEAN_REEF_DIVERSITY_IDS.includes(s.id) && !OCEAN_REEF_COMMUNITY_IDS.includes(s.id) && !OCEAN_REEF_LIFE_IDS.includes(s.id) && !OCEAN_REEF_FAUNA_IDS.includes(s.id) && !OCEAN_REEF_ASSEMBLAGE_IDS.includes(s.id));
+// The receipt cohort is fixed even when later packages grow the living catalog.
+const baselineIds = new Set(['blue-tang', 'butterflyfish', 'green-chromis', 'lined-tang', 'cleaner-wrasse', 'honeycomb-grouper', 'cleaner-shrimp', 'reef-crab', 'black-cucumber', 'blue-starfish', 'top-shell', 'staghorn-coral', 'giant-clam', 'turf-algae', 'lyretail-anthias', 'yellowtail-fusilier', 'reef-manta', 'green-turtle', 'day-octopus', 'spotted-reef-crab', 'tube-sponge', 'reef-squid', 'spotted-jelly', 'biodiversity-massive-coral', 'biodiversity-grape-algae', 'tropical-urchin', 'feather-duster', 'sand-goby', 'reef-parrotfish', 'shallow-anemone', 'clown-anemonefish', 'tiger-cowrie', 'spotted-hermit-crab', 'blue-spotted-ray', 'reef-goatfish', 'sand-edge-seahorse', 'reef-cuttlefish', 'barrel-sea-pen', 'spider-conch']);
+const oldCatalog = livingShallowsSpeciesCatalog.filter(s => baselineIds.has(s.id));
 const catalog = [...oldCatalog, ...oceanShoalLifeSpeciesCatalog];
 const meshes = root => { const out = []; root.traverse(o => { if (o.isMesh) out.push(o); }); return out; };
 const digest = root => { root.updateMatrixWorld(true); const h = createHash('sha256'); for (const m of meshes(root)) {
