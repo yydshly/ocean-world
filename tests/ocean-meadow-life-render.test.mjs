@@ -7,6 +7,7 @@ import { livingShallowsSpeciesCatalog } from '../src/sceneCatalog.js';
 import { OCEAN_REEF_DIVERSITY_IDS } from '../src/oceanReefDiversitySpecies.js';
 import { OCEAN_REEF_COMMUNITY_IDS } from '../src/oceanReefCommunitySpecies.js';
 import { OCEAN_REEF_LIFE_IDS } from '../src/oceanReefLifeSpecies.js';
+import { OCEAN_REEF_FAUNA_IDS } from '../src/oceanReefFaunaSpecies.js';
 import { oceanMeadowLifeSpeciesCatalog } from '../src/oceanMeadowLifeSpecies.js';
 import { OCEAN_SHOAL_LIFE_IDS } from '../src/world/OceanShoalLifeAssets.js';
 import { createOceanMeadowLifeAsset, animateOceanMeadowLifeAsset, disposeOceanMeadowLifeAsset,
@@ -14,7 +15,7 @@ import { createOceanMeadowLifeAsset, animateOceanMeadowLifeAsset, disposeOceanMe
 
 // Native CPU kit evidence, not habitat admission, measured anatomy, GPU/FPS,
 // current browser image quality or a completed director viewing.
-const oldCatalog = livingShallowsSpeciesCatalog.filter(s => !OCEAN_MEADOW_LIFE_IDS.includes(s.id) && !OCEAN_SHOAL_LIFE_IDS.includes(s.id) && !['coral-trout', 'painted-spiny-lobster'].includes(s.id) && !OCEAN_REEF_DIVERSITY_IDS.includes(s.id) && !OCEAN_REEF_COMMUNITY_IDS.includes(s.id) && !OCEAN_REEF_LIFE_IDS.includes(s.id));
+const oldCatalog = livingShallowsSpeciesCatalog.filter(s => !OCEAN_MEADOW_LIFE_IDS.includes(s.id) && !OCEAN_SHOAL_LIFE_IDS.includes(s.id) && !['coral-trout', 'painted-spiny-lobster'].includes(s.id) && !OCEAN_REEF_DIVERSITY_IDS.includes(s.id) && !OCEAN_REEF_COMMUNITY_IDS.includes(s.id) && !OCEAN_REEF_LIFE_IDS.includes(s.id) && !OCEAN_REEF_FAUNA_IDS.includes(s.id));
 const catalog = [...oldCatalog, ...oceanMeadowLifeSpeciesCatalog];
 const meshes = root => { const out = []; root.traverse(o => { if (o.isMesh) out.push(o); }); return out; };
 const digest = root => { const h = createHash('sha256'); for (const m of meshes(root)) {
