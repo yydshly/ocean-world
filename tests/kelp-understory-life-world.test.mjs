@@ -178,8 +178,8 @@ test('direct URL, ordinary control and moving director use the native route and 
 
 
   } finally { f.animals.dispose(); f.scenery.dispose(); }
-  assert.equal(DIRECTOR_STEPS.length, 63); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 57);
-  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 778000);
+  assert.equal(DIRECTOR_STEPS.length, 64); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 58);
+  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 794000);
 });
 
 test('ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast', async () => {

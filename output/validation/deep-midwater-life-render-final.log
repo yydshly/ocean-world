@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: all twelve original native kits keep sixty complete outputs reused fifty receipts and original resources exact
+ok 1 - all twelve original native kits keep sixty complete outputs reused fifty receipts and original resources exact
+  ---
+  duration_ms: 224.3604
+  type: 'test'
+  ...
+# Subtest: three complete whole forms respect bell mantle and rostrum measures and fixed connected capture organs
+ok 2 - three complete whole forms respect bell mantle and rostrum measures and fixed connected capture organs
+  ---
+  duration_ms: 26.0705
+  type: 'test'
+  ...
+# Subtest: native dispatcher applies metre scale world-up pitch clocks picking and rebase without record mutation
+ok 3 - native dispatcher applies metre scale world-up pitch clocks picking and rebase without record mutation
+  ---
+  duration_ms: 10.1447
+  type: 'test'
+  ...
+# Subtest: private kit resources stay shared bounded and released once through partial disposal reset unload and revisit
+ok 4 - private kit resources stay shared bounded and released once through partial disposal reset unload and revisit
+  ---
+  duration_ms: 14.8073
+  type: 'test'
+  ...
+# Subtest: native appendages move while roots capture organs quiet poses and dead clocks stay fixed
+ok 5 - native appendages move while roots capture organs quiet poses and dead clocks stay fixed
+  ---
+  duration_ms: 5.3462
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 595.6805

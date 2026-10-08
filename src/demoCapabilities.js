@@ -15,6 +15,7 @@ import { KELP_WATER_LIFE_ROUTE_STOPS } from './kelpWaterLifeRoutes.js';
 import { DEEP_WHOLE_SEASCAPE_ROUTE_STOPS } from './deepWholeSeascape.js';
 import { DEEP_BENTHIC_LIFE_ROUTE_STOPS } from './deepBenthicLifeRoutes.js';
 import { DEEP_HARD_LIFE_ROUTE_STOPS } from './deepHardLifeRoutes.js';
+import { DEEP_MIDWATER_LIFE_ROUTE_STOPS } from './deepMidwaterLifeRoutes.js';
 import { DEEP_WATER_LIFE_ROUTE_STOPS } from './deepWaterLifeRoutes.js';
 
 const action = data => Object.freeze(data);
@@ -132,6 +133,9 @@ export const DEMO_DEEP_STOPS = Object.freeze([
   ...DEEP_WATER_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+9).padStart(2,'0'),title:stop.label,
     description:'观察带鳍章鱼与长体鼬鳚在真实海床上方缓游，以及接近原生底栖食物位置时的摄食',
     action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id,deepWaterLifeEntry:true}})),
+  ...DEEP_MIDWATER_LIFE_ROUTE_STOPS.map((stop,index)=>entry({id:stop.id,number:String(index+10).padStart(2,'0'),title:stop.label,
+    description:'进入约700米水深的开放中层，观察水母、吸血乌贼与红糠虾的独立活动与悬浮摄食',
+    action:{id:`stop-${stop.id}`,kind:'deep-stop',biome:'deep',stopId:stop.id,deepMidwaterLifeEntry:true}})),
 ]);
 
 export const DEMO_LEGACY_VIEWS = Object.freeze([

@@ -2,6 +2,7 @@ import { oceanRockHeight, oceanRockSurface } from './oceanRockShape.js';
 import { validateDeepWholeSeascapePlan, deepWholeSeascapeRoute } from './deepWholeSeascape.js';
 import { DEEP_BENTHIC_LIFE_ROUTE_STOPS } from './deepBenthicLifeRoutes.js';
 import { DEEP_HARD_LIFE_ROUTE_STOPS } from './deepHardLifeRoutes.js';
+import { DEEP_MIDWATER_LIFE_ROUTE_STOPS } from './deepMidwaterLifeRoutes.js';
 import { DEEP_WATER_LIFE_ROUTE_STOPS } from './deepWaterLifeRoutes.js';
 
 export const DEEP_SEASCAPE_VERSION = 1;
@@ -145,6 +146,7 @@ export function createDeepSeascapeGenerator(baseGenerator){const base=baseGenera
     get deepBenthicLifeRouteStops(){return DEEP_BENTHIC_LIFE_ROUTE_STOPS;},
     get deepHardLifeRouteStops(){return DEEP_HARD_LIFE_ROUTE_STOPS;},
     get deepWaterLifeRouteStops(){return DEEP_WATER_LIFE_ROUTE_STOPS;},
+    get deepMidwaterLifeRouteStops(){return DEEP_MIDWATER_LIFE_ROUTE_STOPS;},
     seascapePlan:(cx,cz)=>committed.get(`${cx},${cz}`),seascapeRegistryStats:()=>({size:committed.size,limit:25,revision,ids:[...committed.keys()]}),
     setSeascapePlans(input){if(temporaryDepth)throw new TypeError('Cannot publish inside a temporary deep birth view.');const next=inspect(input);
       if(next.size===committed.size&&[...next].every(([id,p])=>stamp(p)===stamp(committed.get(id))))return false;

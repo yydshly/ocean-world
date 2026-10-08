@@ -1,0 +1,466 @@
+TAP version 13
+# Subtest: two ordinary all-feature windows contain whole off-bottom forms, real movement and independent typed food contacts without changing old life
+not ok 1 - two ordinary all-feature windows contain whole off-bottom forms, real movement and independent typed food contacts without changing old life
+  ---
+  duration_ms: 96657.0789
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-ecology.test.mjs:234:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      [
+        {
+          alive: true,
+          conditionScope: 'dimensionless relative condition in independent energy ledger; not biomass or organic food stock',
+          consumedUnits: 0,
+    ...
+            hour: 0.00002777777777777778,
+    +       observerLight: 0,
+    -       observerLight: 1,
+            turbidity: 0.25
+          },
+          nextBite: 0,
+          nextDecision: 1.6,
+          nutritionPool: 'midwaterAnimalFood',
+    ...
+            hour: 0.00002777777777777778,
+    +       observerLight: 0,
+    -       observerLight: 1,
+            turbidity: 0.25
+          },
+          nextBite: 0,
+          nextDecision: 1.6,
+          nutritionPool: 'midwaterOrganicParticles',
+    ...
+            hour: 0.00002777777777777778,
+    +       observerLight: 0,
+    -       observerLight: 1,
+            turbidity: 0.25
+          },
+          nextBite: 0,
+          nextDecision: 1.6,
+          nutritionPool: 'midwaterOrganicParticles',
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      id: 'deep-midwater-life:191,7:helmet-jelly'
+      speciesId: 'helmet-jelly'
+      deepMidwaterSiteId: 'deep-midwater-site:191,7:0'
+      deepMidwaterFoodChannelId: 'deep-midwater-channel:191,7:helmet-jelly'
+      sizeM: 0.20610322915017606
+      heading: 0.0718736077658832
+      pitch: 0
+      position:
+        x: 12256.86052702295
+        y: 2799.8521749360484
+        z: 481.80611714922907
+      nutritionPool: 'midwaterAnimalFood'
+      habitat: 'native-deep-water-column'
+      alive: true
+      sourcePosition:
+        x: 12256.370226732604
+        y: 2799.4604543125442
+        z: 481.8094951541907
+      referencePosition:
+        x: 12256.970226732605
+        y: 2799.4604543125442
+        z: 481.8094951541907
+      deepMidwaterIndividualVersion: 1
+      regionId: '191,7'
+      createdAtSec: 0
+      timeSec: 0.2
+      stateSince: 0
+      state: 'drifting'
+      energy: 0.7088559635856664
+      home:
+        x: 12256.86744117628
+        y: 2799.8520504479297
+        z: 481.8020948381517
+      target:
+        x: 12256.227457994491
+        y: 2799.8635732329453
+        z: 482.17440527409786
+      targetHeading: 0.0718736077658832
+      targetPitch: 0
+      velocity:
+        x: -0.03457076665654313
+        y: 0.0006224405933608068
+        z: 0.0201115553869613
+      nextDecision: 1.6
+      decisions: 1
+      nextBite: 0
+      travelledM: 0.007999999998990573
+      feedingCount: 0
+      consumedUnits: 0
+      lastFeedAt: ~
+      lastMidwaterIntake: ~
+      foodScope: 'Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input.'
+      conditionScope: 'dimensionless relative condition in independent energy ledger; not biomass or organic food stock'
+      localEnvironment:
+        currentMps: 0.18
+        turbidity: 0.25
+        foodSupply: 0
+        hour: 0.00002777777777777778
+        observerLight: 1
+    1:
+      id: 'deep-midwater-life:191,7:vampire-squid'
+      speciesId: 'vampire-squid'
+      deepMidwaterSiteId: 'deep-midwater-site:191,7:1'
+      deepMidwaterFoodChannelId: 'deep-midwater-channel:191,7:vampire-squid'
+      sizeM: 0.11343206426827238
+      heading: -0.3431425742106512
+      pitch: 0
+      position:
+        x: 12254.017736286207
+        y: 2800.0117957012976
+        z: 479.8463690333662
+      nutritionPool: 'midwaterOrganicParticles'
+      habitat: 'native-deep-water-column'
+      alive: true
+      sourcePosition:
+        x: 12253.893938713009
+        y: 2800.0145652074366
+        z: 479.6998044963629
+      referencePosition:
+        x: 12254.493938713009
+        y: 2800.0145652074366
+        z: 479.6998044963629
+      deepMidwaterIndividualVersion: 1
+      regionId: '191,7'
+      createdAtSec: 0
+      timeSec: 0.2
+      stateSince: 0
+      state: 'drifting'
+      energy: 0.6901211430853073
+      home:
+        x: 12254.005619501992
+        y: 2800.0145652074366
+        z: 479.85017867587186
+      target:
+        x: 12254.496107081164
+        y: 2799.9024555637034
+        z: 479.6959642987862
+      targetHeading: -0.3431425742106512
+      targetPitch: 0
+      velocity:
+        x: 0.06058392107661348
+        y: -0.013847530694874877
+        z: -0.019048212528218755
+      nextDecision: 1.6
+      decisions: 1
+      nextBite: 0
+      travelledM: 0.012999999999820036
+      feedingCount: 0
+      consumedUnits: 0
+      lastFeedAt: ~
+      lastMidwaterIntake: ~
+      foodScope: 'Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input.'
+      conditionScope: 'dimensionless relative condition in independent energy ledger; not biomass or organic food stock'
+      localEnvironment:
+        currentMps: 0.18
+        turbidity: 0.25
+        foodSupply: 0
+        hour: 0.00002777777777777778
+        observerLight: 1
+    2:
+      id: 'deep-midwater-life:191,7:giant-red-mysid'
+      speciesId: 'giant-red-mysid'
+      deepMidwaterSiteId: 'deep-midwater-site:191,7:2'
+      deepMidwaterFoodChannelId: 'deep-midwater-channel:191,7:giant-red-mysid'
+      sizeM: 0.09740429491270333
+      heading: 0.004447289346717297
+      pitch: 0
+      position:
+        x: 12257.141216462782
+        y: 2799.6597074721635
+        z: 478.3438504169108
+      nutritionPool: 'midwaterOrganicParticles'
+      habitat: 'native-deep-water-column'
+      alive: true
+      sourcePosition:
+        x: 12256.543497888111
+        y: 2799.648548638411
+        z: 478.34780012719784
+      referencePosition:
+        x: 12257.143497888112
+        y: 2799.648548638411
+        z: 478.34780012719784
+      deepMidwaterIndividualVersion: 1
+      regionId: '191,7'
+      createdAtSec: 0
+      timeSec: 0.2
+      stateSince: 0
+      state: 'drifting'
+      energy: 0.6847343021955671
+      home:
+        x: 12257.126939321728
+        y: 2799.662185239699
+        z: 478.34772648597647
+      target:
+        x: 12257.635993733407
+        y: 2799.5738399266966
+        z: 478.20952444324433
+      targetHeading: 0.004447289346717297
+      targetPitch: 0
+      velocity:
+        x: 0.0713857052687672
+        y: -0.012388837676553521
+        z: -0.019380345328272597
+      nextDecision: 1.6
+      decisions: 1
+      nextBite: 0
+      travelledM: 0.015000000000984516
+      feedingCount: 0
+      consumedUnits: 0
+      lastFeedAt: ~
+      lastMidwaterIntake: ~
+      foodScope: 'Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input.'
+      conditionScope: 'dimensionless relative condition in independent energy ledger; not biomass or organic food stock'
+      localEnvironment:
+        currentMps: 0.18
+        turbidity: 0.25
+        foodSupply: 0
+        hour: 0.00002777777777777778
+        observerLight: 1
+  actual:
+    0:
+      id: 'deep-midwater-life:191,7:helmet-jelly'
+      speciesId: 'helmet-jelly'
+      deepMidwaterSiteId: 'deep-midwater-site:191,7:0'
+      deepMidwaterFoodChannelId: 'deep-midwater-channel:191,7:helmet-jelly'
+      sizeM: 0.20610322915017606
+      heading: 0.0718736077658832
+      pitch: 0
+      position:
+        x: 12256.86052702295
+        y: 2799.8521749360484
+        z: 481.80611714922907
+      nutritionPool: 'midwaterAnimalFood'
+      habitat: 'native-deep-water-column'
+      alive: true
+      sourcePosition:
+        x: 12256.370226732604
+        y: 2799.4604543125442
+        z: 481.8094951541907
+      referencePosition:
+        x: 12256.970226732605
+        y: 2799.4604543125442
+        z: 481.8094951541907
+      deepMidwaterIndividualVersion: 1
+      regionId: '191,7'
+      createdAtSec: 0
+      timeSec: 0.2
+      stateSince: 0
+      state: 'drifting'
+      energy: 0.7088559635856664
+      home:
+        x: 12256.86744117628
+        y: 2799.8520504479297
+        z: 481.8020948381517
+      target:
+        x: 12256.227457994491
+        y: 2799.8635732329453
+        z: 482.17440527409786
+      targetHeading: 0.0718736077658832
+      targetPitch: 0
+      velocity:
+        x: -0.03457076665654313
+        y: 0.0006224405933608068
+        z: 0.0201115553869613
+      nextDecision: 1.6
+      decisions: 1
+      nextBite: 0
+      travelledM: 0.007999999998990573
+      feedingCount: 0
+      consumedUnits: 0
+      lastFeedAt: ~
+      lastMidwaterIntake: ~
+      foodScope: 'Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input.'
+      conditionScope: 'dimensionless relative condition in independent energy ledger; not biomass or organic food stock'
+      localEnvironment:
+        currentMps: 0.18
+        turbidity: 0.25
+        foodSupply: 0
+        hour: 0.00002777777777777778
+        observerLight: 0
+    1:
+      id: 'deep-midwater-life:191,7:vampire-squid'
+      speciesId: 'vampire-squid'
+      deepMidwaterSiteId: 'deep-midwater-site:191,7:1'
+      deepMidwaterFoodChannelId: 'deep-midwater-channel:191,7:vampire-squid'
+      sizeM: 0.11343206426827238
+      heading: -0.3431425742106512
+      pitch: 0
+      position:
+        x: 12254.017736286207
+        y: 2800.0117957012976
+        z: 479.8463690333662
+      nutritionPool: 'midwaterOrganicParticles'
+      habitat: 'native-deep-water-column'
+      alive: true
+      sourcePosition:
+        x: 12253.893938713009
+        y: 2800.0145652074366
+        z: 479.6998044963629
+      referencePosition:
+        x: 12254.493938713009
+        y: 2800.0145652074366
+        z: 479.6998044963629
+      deepMidwaterIndividualVersion: 1
+      regionId: '191,7'
+      createdAtSec: 0
+      timeSec: 0.2
+      stateSince: 0
+      state: 'drifting'
+      energy: 0.6901211430853073
+      home:
+        x: 12254.005619501992
+        y: 2800.0145652074366
+        z: 479.85017867587186
+      target:
+        x: 12254.496107081164
+        y: 2799.9024555637034
+        z: 479.6959642987862
+      targetHeading: -0.3431425742106512
+      targetPitch: 0
+      velocity:
+        x: 0.06058392107661348
+        y: -0.013847530694874877
+        z: -0.019048212528218755
+      nextDecision: 1.6
+      decisions: 1
+      nextBite: 0
+      travelledM: 0.012999999999820036
+      feedingCount: 0
+      consumedUnits: 0
+      lastFeedAt: ~
+      lastMidwaterIntake: ~
+      foodScope: 'Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input.'
+      conditionScope: 'dimensionless relative condition in independent energy ledger; not biomass or organic food stock'
+      localEnvironment:
+        currentMps: 0.18
+        turbidity: 0.25
+        foodSupply: 0
+        hour: 0.00002777777777777778
+        observerLight: 0
+    2:
+      id: 'deep-midwater-life:191,7:giant-red-mysid'
+      speciesId: 'giant-red-mysid'
+      deepMidwaterSiteId: 'deep-midwater-site:191,7:2'
+      deepMidwaterFoodChannelId: 'deep-midwater-channel:191,7:giant-red-mysid'
+      sizeM: 0.09740429491270333
+      heading: 0.004447289346717297
+      pitch: 0
+      position:
+        x: 12257.141216462782
+        y: 2799.6597074721635
+        z: 478.3438504169108
+      nutritionPool: 'midwaterOrganicParticles'
+      habitat: 'native-deep-water-column'
+      alive: true
+      sourcePosition:
+        x: 12256.543497888111
+        y: 2799.648548638411
+        z: 478.34780012719784
+      referencePosition:
+        x: 12257.143497888112
+        y: 2799.648548638411
+        z: 478.34780012719784
+      deepMidwaterIndividualVersion: 1
+      regionId: '191,7'
+      createdAtSec: 0
+      timeSec: 0.2
+      stateSince: 0
+      state: 'drifting'
+      energy: 0.6847343021955671
+      home:
+        x: 12257.126939321728
+        y: 2799.662185239699
+        z: 478.34772648597647
+      target:
+        x: 12257.635993733407
+        y: 2799.5738399266966
+        z: 478.20952444324433
+      targetHeading: 0.004447289346717297
+      targetPitch: 0
+      velocity:
+        x: 0.0713857052687672
+        y: -0.012388837676553521
+        z: -0.019380345328272597
+      nextDecision: 1.6
+      decisions: 1
+      nextBite: 0
+      travelledM: 0.015000000000984516
+      feedingCount: 0
+      consumedUnits: 0
+      lastFeedAt: ~
+      lastMidwaterIntake: ~
+      foodScope: 'Independent initially-zero bounded midwater suspension control volumes: selected animal plankton or organic-particle nutrition as specified in the species catalog. Fixed seeded upstream sources, foodSupply/current-dependent external input, constant-Y positive-X transport, actual saved capture-organ contact and accounted outlet/support export. No bottom-food lift, original-stock transfer, visible kill, full natural diet, calibrated food flux, biomass, observer-light or hour input.'
+      conditionScope: 'dimensionless relative condition in independent energy ledger; not biomass or organic food stock'
+      localEnvironment:
+        currentMps: 0.18
+        turbidity: 0.25
+        foodSupply: 0
+        hour: 0.00002777777777777778
+        observerLight: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-ecology.test.mjs:247:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: midwater death and natural empty histories unload and cold restore with fixed food sources and no replacement
+ok 2 - midwater death and natural empty histories unload and cold restore with fixed food sources and no replacement
+  ---
+  duration_ms: 4192.3406
+  type: 'test'
+  ...
+# Subtest: enabling midwater on old paused records leaves all raw history and subsequent native steps exactly unchanged
+ok 3 - enabling midwater on old paused records leaves all raw history and subsequent native steps exactly unchanged
+  ---
+  duration_ms: 5380.5882
+  type: 'test'
+  ...
+# Subtest: pending and refused atomic midwater births expose no animals, food stock or scenery revision
+ok 4 - pending and refused atomic midwater births expose no animals, food stock or scenery revision
+  ---
+  duration_ms: 11081.0014
+  type: 'test'
+  ...
+# Subtest: undefined and thrown owner reads never become strict-null fresh water-column births
+ok 5 - undefined and thrown owner reads never become strict-null fresh water-column births
+  ---
+  duration_ms: 1.6372
+  type: 'test'
+  ...
+# Subtest: finite incomplete rosters, whole-body/typed-stock corruption and actually read offscreen history fail without refill or publication
+not ok 6 - finite incomplete rosters, whole-body/typed-stock corruption and actually read offscreen history fail without refill or publication
+  ---
+  duration_ms: 1101.7168
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-ecology.test.mjs:345:1'
+  failureType: 'testCodeFailure'
+  error: 'finite offscreen owner is genuinely read by this ordinary window'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-ecology.test.mjs:376:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 4
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 118914.982

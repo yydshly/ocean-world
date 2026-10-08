@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: three qualified whole midwater forms make pure deterministic compact plans at actual 650–750m depth, independently of the 3500m bed and native RNG
+ok 1 - three qualified whole midwater forms make pure deterministic compact plans at actual 650–750m depth, independently of the 3500m bed and native RNG
+  ---
+  duration_ms: 108.5889
+  type: 'test'
+  ...
+# Subtest: only fresh exact time-zero records initialise, all old dead records count toward twenty, and legitimate reduced or empty allocations are sealed
+ok 2 - only fresh exact time-zero records initialise, all old dead records count toward twenty, and legitimate reduced or empty allocations are sealed
+  ---
+  duration_ms: 274.291
+  type: 'test'
+  ...
+# Subtest: one native 24-second continuation records meaningful real movement, typed parcel contacts and balanced condition, and actual event UI formatting accepts feeding and death labels
+ok 3 - one native 24-second continuation records meaningful real movement, typed parcel contacts and balanced condition, and actual event UI formatting accepts feeding and death labels
+  ---
+  duration_ms: 1802.8394
+  type: 'test'
+  ...
+# Subtest: full tentacles and filaments, peer occupation, depth boundaries and target pitch are checked in the same world pose
+ok 4 - full tentacles and filaments, peer occupation, depth boundaries and target pitch are checked in the same world pose
+  ---
+  duration_ms: 37.8901
+  type: 'test'
+  ...
+# Subtest: zero supply or zero current gives no new food, observer hour and lamp create no flux, and bounded fast flow exports real excess without shadow native stock
+ok 5 - zero supply or zero current gives no new food, observer hour and lamp create no flux, and bounded fast flow exports real excess without shadow native stock
+  ---
+  duration_ms: 1175.158
+  type: 'test'
+  ...
+# Subtest: integer-native pending clocks cross 161 to 162 ticks, while duplicate, skipped or corrupt ticks reject before modifying new or original state
+ok 6 - integer-native pending clocks cross 161 to 162 ticks, while duplicate, skipped or corrupt ticks reject before modifying new or original state
+  ---
+  duration_ms: 1352.8731
+  type: 'test'
+  ...
+# Subtest: cold history reproduces the exact next step, dead native clocks and intake freeze, and complete old histories stay without later births
+ok 7 - cold history reproduces the exact next step, dead native clocks and intake freeze, and complete old histories stay without later births
+  ---
+  duration_ms: 188.6311
+  type: 'test'
+  ...
+# Subtest: saved deterministic roster erasure, namespace disguises, altered source parcels, capture witnesses, event labels and unbalanced books fail closed
+ok 8 - saved deterministic roster erasure, namespace disguises, altered source parcels, capture witnesses, event labels and unbalanced books fail closed
+  ---
+  duration_ms: 83.4808
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5428.849

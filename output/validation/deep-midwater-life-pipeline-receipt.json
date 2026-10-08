@@ -1,0 +1,64 @@
+{
+  "scope": "Three complete independent deep-midwater assets, native renderer regression and six native-world cases; CPU only",
+  "frozen": true,
+  "files": [
+    {
+      "path": "F:\\codex_project\\1002_gpt6project\\ocean-world\\src\\world\\DeepMidwaterLifeAssets.js",
+      "sha256": "4BC47DBA8E1F53D20195E6283733463DA7A24D5E986F6E25401499F546070671"
+    },
+    {
+      "path": "F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-render.test.mjs",
+      "sha256": "A7014F3A9E8E2C2C327AD01040303B9A7AA7CD17FDF5447A71D7BA67068EE9D7"
+    },
+    {
+      "path": "F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-world.test.mjs",
+      "sha256": "A83E383D89FA4EDDDC75109A8367E7E7802768BBB87E7FB3CE8845723CF1E7B8"
+    },
+    {
+      "path": "F:\\codex_project\\1002_gpt6project\\ocean-world\\output\\validation\\deep-midwater-life-original-assets-before.json",
+      "sha256": "AE7EFBE57B7CB61A72C1AC1AB92C3DC75637B0AA33BFAE6B506A223498263C50"
+    }
+  ],
+  "render": {
+    "initialLog": "output/validation/deep-midwater-life-render-initial.log",
+    "initialPass": 3,
+    "initialFail": 2,
+    "finalLog": "output/validation/deep-midwater-life-render-final.log",
+    "finalPass": 5,
+    "finalFail": 0,
+    "finalSkipped": 0,
+    "finalDurationMs": 595.6805,
+    "resourceCount": 33,
+    "oldOutputCount": 60,
+    "oldTaxaCount": 12,
+    "oldNativePoses": 5
+  },
+  "world": {
+    "initialLog": "output/validation/deep-midwater-life-world-initial.log",
+    "initialPass": 3,
+    "initialFail": 3,
+    "secondLog": "output/validation/deep-midwater-life-world-second.log",
+    "secondPass": 4,
+    "secondFail": 2,
+    "secondDurationMs": 64254.3791,
+    "bedRecoveryLog": "output/validation/deep-midwater-life-world-bed-recovery.log",
+    "bedRecoveryPass": 2,
+    "bedRecoveryFail": 0,
+    "bedRecoverySkipped": 0,
+    "bedRecoveryDurationMs": 27285.8247,
+    "finalCaseDefinitionsPassed": 6,
+    "unifiedFinalLocalTap": false,
+    "diagnostics": "Fixture bed helpers required finite freeDepthM; normalized views required actual freeDepthM and habitat. Pause legitimately acknowledges exactly nine saved native owner records; all other ecology snapshot fields and stored records remain strict."
+  },
+  "proof": {
+    "assetLastWriteUtc": "2026-10-08T01:43:36.04409Z",
+    "renderTestLastWriteUtc": "2026-10-08T02:06:40.1369636Z",
+    "renderFinalLogLastWriteUtc": "2026-10-08T02:06:41.4615502Z",
+    "worldTestLastWriteUtc": "2026-10-08T02:17:19.116406Z",
+    "postRenderEdits": "Only the new world-test file; production, new assets, render test and baseline unchanged",
+    "wholeDepthM": 700,
+    "directorNativeSeconds": 16,
+    "gpuBrowserAcceptance": false,
+    "fullTourAcceptance": false
+  }
+}

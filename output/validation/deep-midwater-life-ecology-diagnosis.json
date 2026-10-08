@@ -1,0 +1,28 @@
+{
+  "scope": "Finite test-fixture diagnostics; not a production biology, food, rate, placement or visual acceptance change",
+  "originalLog": "output/validation/deep-midwater-life-ecology-initial.log",
+  "originalTests": 6,
+  "originalPassed": 4,
+  "originalFailed": 2,
+  "originalDurationMs": 118914.982,
+  "failures": [
+    {
+      "case": 1,
+      "cause": "The test compared full new individual records between dark and lit environments. Actual physiology, movement and independent food state matched, but localEnvironment.observerLight correctly differed.",
+      "testCorrection": "Exclude only localEnvironment when comparing physiological state; independently assert actual observerLight remains zero versus one. Keep complete food/condition comparisons and zero-input assertions."
+    },
+    {
+      "case": 6,
+      "cause": "The original filter expected firstInitial to contain offscreen saved rows. Actual 192,8 admission read the aligned 16-owner halo but committed only its nine public owners, so no such row existed.",
+      "testCorrection": "One zero-tick cold/history probe centred at 191,8 genuinely reads already committed 193,* records while those records remain outside the desired 190..192 public owners. Corrupt those existing offscreen histories and require atomic rejection. Do not include the probe in ordinary ecological sample counts."
+    }
+  ],
+  "ordinaryObservedWindows": [
+    { "cx": 192, "cz": 8, "observedSec": 12 },
+    { "cx": 193, "cz": 8, "observedSec": 12 }
+  ],
+  "productionChangedForTheseCorrections": false,
+  "foodAddedOrForcedFeeding": false,
+  "sourceSelectionChanged": false,
+  "browserOrGpuUsed": false
+}

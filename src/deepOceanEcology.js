@@ -3,6 +3,7 @@ import { initializeDeepBenthicLife, tickDeepBenthicLife, validateDeepBenthicLife
 import { deepSpeciesById } from './deepSpecies.js';
 import { initializeDeepHardLife, tickDeepHardLife, validateDeepHardLifeRecord, captureDeepHardLife, deepHardLifeRole, deepHardLifeSnapshot, deepHardLifeFoodBudgetError, deepHardLifeEnergyBudgetError, DEEP_HARD_LIFE_IDS } from './deepHardLife.js';
 import { initializeDeepWaterLife, tickDeepWaterLife, validateDeepWaterLifeRecord, captureDeepWaterLife, deepWaterLifeRole, deepWaterLifeSnapshot, deepWaterLifeFoodBudgetError, deepWaterLifeEnergyBudgetError, DEEP_WATER_LIFE_IDS } from './deepWaterLife.js';
+import { initializeDeepMidwaterLife, tickDeepMidwaterLife, validateDeepMidwaterLifeRecord, captureDeepMidwaterLife, deepMidwaterLifeRole, deepMidwaterLifeSnapshot, deepMidwaterLifeFoodBudgetError, deepMidwaterLifeEnergyBudgetError, DEEP_MIDWATER_LIFE_IDS, DEEP_MIDWATER_LIFE_FOOD_POOLS } from './deepMidwaterLife.js';
 import { OceanEcologyStore } from './oceanEcologyStore.js';
 import { upgradeDeepPredators, advanceDeepPredators, validateDeepPredatorRecord, predatorEnergyBudgetError } from './deepPredatorEcology.js';
 import { createDeepSeascapePlans, validateDeepSeascapePlan } from './deepSeascape.js';
@@ -25,6 +26,11 @@ const waterMarked = record => record && (Object.keys(record).some(key => key.sta
   Object.keys(record.state ?? {}).some(key => key.startsWith('deepWater')) ||
   [record.state?.agents, record.predatorAgents, record.deepBenthicAgents, record.deepHardLifeAgents, record.deepWaterLifeAgents].filter(Array.isArray).flat().some(agent => agent &&
     (waterIds.has(agent.speciesId) || Object.keys(agent).some(key => key.startsWith('deepWater')))));
+const midwaterIds = new Set(DEEP_MIDWATER_LIFE_IDS);
+const midwaterMarked = record => record && (Object.keys(record).some(key => key.startsWith('deepMidwater')) ||
+  Object.keys(record.state ?? {}).some(key => key.startsWith('deepMidwater')) ||
+  [record.state?.agents, record.predatorAgents, record.deepBenthicAgents, record.deepHardLifeAgents, record.deepWaterLifeAgents, record.deepMidwaterLifeAgents].filter(Array.isArray).flat().some(agent => agent &&
+    (midwaterIds.has(agent.speciesId) || Object.keys(agent).some(key => key.startsWith('deepMidwater')))));
 const pools = ['surfaceDetritus', 'benthicAnimalFood', 'suspendedPrey'];
 const fields = ['_rngState', '_ticks', '_accumulator', 'timeSec', 'environment', 'events', 'agents',
   'primaryProduction', 'totalPrimaryProduction', 'counters', 'ledger', 'energyLedger', '_nextParcelId',
@@ -46,7 +52,7 @@ function hash(value) {
  * local organic-food/condition ledgers are retained; unloaded cells freeze.
  * All allocation rates, occupancy and food quantities remain display proxies. */
 export class DeepOceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), seascape = false, wholeSeascape = false, benthicLife = false, hardLife = false, waterLife = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), seascape = false, wholeSeascape = false, benthicLife = false, hardLife = false, waterLife = false, midwaterLife = false } = {}) {
     this.seed = seed; this.generator = generator; this.store = store; this._world = keyFor(seed);
     this._seascapeRequested = seascape === true;
     this.seascapeEnabled = this._seascapeRequested && this._seascapeAvailable(generator);
@@ -60,6 +66,9 @@ export class DeepOceanEcology {
     this._waterLifeRequested = waterLife === true;
     this.waterLifeEnabled = this._waterLifeRequested && typeof generator.supportAt === 'function' && typeof generator.floorSurface === 'function' && typeof store.saveMany === 'function';
     this._waterLifeBirths = new WeakSet();
+    this._midwaterLifeRequested = midwaterLife === true;
+    this.midwaterLifeEnabled = this._midwaterLifeRequested && generator.surfaceY === 3500 && typeof generator.heightAt === 'function' && typeof store.saveMany === 'function';
+    this._midwaterLifeBirths = new WeakSet();
     this._active = new Map(); this._locked = new Set(); this._center = null;
     this._queue = Promise.resolve(); this._pending = this._queue; this._revision = 0; this._generation = 0;
     this._accumulator = 0; this._activeTime = 0; this._checkpointAt = 10; this._disposed = false;
@@ -130,10 +139,11 @@ export class DeepOceanEcology {
     const region = { id, cx, cz, habitat: this.generator.sample((cx + .5) * SIZE, (cz + .5) * SIZE).habitat, sim };
     if (hardLifeFresh && this.hardLifeEnabled && deepHardLifeRole(this.generator, cx, cz)) this._hardLifeBirths.add(region);
     if (hardLifeFresh && this.waterLifeEnabled && deepWaterLifeRole(this.generator, cx, cz)) this._waterLifeBirths.add(region);
+    if (hardLifeFresh && this.midwaterLifeEnabled) this._midwaterLifeBirths.add(region);
     return region;
   }
   _record(region) {
-    const record = { ...clone(region._savedRecord ?? {}), ...captureDeepBenthicLife(region), ...captureDeepHardLife(region), ...captureDeepWaterLife(region), version: 1, id: region.id, cx: region.cx, cz: region.cz, habitat: region.habitat,
+    const record = { ...clone(region._savedRecord ?? {}), ...captureDeepBenthicLife(region), ...captureDeepHardLife(region), ...captureDeepWaterLife(region), ...captureDeepMidwaterLife(region), version: 1, id: region.id, cx: region.cx, cz: region.cz, habitat: region.habitat,
       state: { ...clone(region._savedState ?? {}), ...Object.fromEntries(fields.map(field => [field, clone(region.sim[field])])) } };
     if (region.predatorCommunityVersion !== undefined) for (const key of ['predatorCommunityVersion', 'predatorAgents',
       'predatorEnergyLedger', 'predatorCounters', 'predatorEvents']) record[key] = clone(region[key]);
@@ -240,10 +250,12 @@ export class DeepOceanEcology {
     if (record.deepHardLifeVersion !== undefined) for (const key of ['deepHardLifeVersion', 'deepHardLifeInitializedAtSec', 'deepHardLife', 'deepHardLifeAgents', 'deepHardEnergyLedger']) region[key] = clone(record[key]);
     if (!validateDeepWaterLifeRecord(record, region, { generator: this.generator, capacity: DEEP_OCEAN_REGION_ANIMAL_LIMIT })) fail();
     if (record.deepWaterLifeVersion !== undefined) for (const key of ['deepWaterLifeVersion', 'deepWaterLifeInitializedAtSec', 'deepWaterLife', 'deepWaterLifeAgents', 'deepWaterEnergyLedger']) region[key] = clone(record[key]);
+    if (!validateDeepMidwaterLifeRecord(record, region, { generator: this.generator, capacity: DEEP_OCEAN_REGION_ANIMAL_LIMIT })) fail();
+    if (record.deepMidwaterLifeVersion !== undefined) for (const key of ['deepMidwaterLifeVersion', 'deepMidwaterLifeInitializedAtSec', 'deepMidwaterLife', 'deepMidwaterLifeAgents', 'deepMidwaterEnergyLedger']) region[key] = clone(record[key]);
     if (this._animalCount(region) > DEEP_OCEAN_REGION_ANIMAL_LIMIT) fail();
     return region;
   }
-  _animalCount(region) { return region.sim.agents.length + (region.predatorAgents?.length ?? 0) + (region.deepBenthicAgents?.length ?? 0) + (region.deepHardLifeAgents?.length ?? 0) + (region.deepWaterLifeAgents?.length ?? 0); }
+  _animalCount(region) { return region.sim.agents.length + (region.predatorAgents?.length ?? 0) + (region.deepBenthicAgents?.length ?? 0) + (region.deepHardLifeAgents?.length ?? 0) + (region.deepWaterLifeAgents?.length ?? 0) + (region.deepMidwaterLifeAgents?.length ?? 0); }
   _initializeBenthicLife(region, fresh) {
     const changed = initializeDeepBenthicLife(this.generator, region, { fresh: fresh && this.benthicLifeEnabled, capacity: DEEP_OCEAN_REGION_ANIMAL_LIMIT - (this._hardLifeBirths.has(region) ? 4 : 0) - (this._waterLifeBirths.has(region) ? 4 : 0), maxAdded: 4 });
     if (changed && !validateDeepBenthicLifeRecord(this._record(region), region, { generator: this.generator, capacity: DEEP_OCEAN_REGION_ANIMAL_LIMIT }))
@@ -264,6 +276,13 @@ export class DeepOceanEcology {
       throw new Error('Invalid fresh deep swimming community; no population or food was published.');
     return changed;
   }
+  _initializeMidwaterLife(region, fresh) {
+    const changed = initializeDeepMidwaterLife(this.generator, region, { fresh: fresh && this.midwaterLifeEnabled && this._midwaterLifeBirths.has(region), capacity: DEEP_OCEAN_REGION_ANIMAL_LIMIT, maxAdded: 3 });
+    this._midwaterLifeBirths.delete(region);
+    if (changed && !validateDeepMidwaterLifeRecord(this._record(region), region, { generator: this.generator, capacity: DEEP_OCEAN_REGION_ANIMAL_LIMIT }))
+      throw new Error('Invalid fresh midwater community; no population or food was published.');
+    return changed;
+  }
   _enqueue(operation) {
     const result = this._queue.then(operation);
     this._queue = result.catch(error => { this._storageError = String(error?.message || error); });
@@ -281,12 +300,13 @@ export class DeepOceanEcology {
 
   _prepareSeascapeOwner(saved, cx, cz) {
     const fresh = saved === null, region = fresh ? this._create(cx, cz, { hardLifeFresh: true }) : this._restore(saved, cx, cz);
-    const upgraded = region.deepBenthicLifeVersion === 1 || region.deepHardLifeVersion === 1 || region.deepWaterLifeVersion === 1 ? false : upgradeDeepPredators(region, { seed: this.seed,
+    const upgraded = region.deepBenthicLifeVersion === 1 || region.deepHardLifeVersion === 1 || region.deepWaterLifeVersion === 1 || region.deepMidwaterLifeVersion === 1 ? false : upgradeDeepPredators(region, { seed: this.seed,
       supportHeight: (x, z) => this.generator.heightAt(x, z), animalLimit: DEEP_OCEAN_REGION_ANIMAL_LIMIT });
     const benthicUpdated = this._initializeBenthicLife(region, fresh);
     const hardUpdated = this._initializeHardLife(region, fresh);
     const waterUpdated = this._initializeWaterLife(region, fresh);
-    return { region, fresh, changed: fresh || upgraded || benthicUpdated || hardUpdated || waterUpdated };
+    const midwaterUpdated = this._initializeMidwaterLife(region, fresh);
+    return { region, fresh, changed: fresh || upgraded || benthicUpdated || hardUpdated || waterUpdated || midwaterUpdated };
   }
 
   async _updateSeascapeWindow(world, desired, current) {
@@ -398,7 +418,7 @@ export class DeepOceanEcology {
         // native/predator energy and death records. None of these copies tick,
         // receive new inventory or become public during validation.
         for (const record of savedWhole) this._restore(record, record.cx, record.cz);
-        for (const [id, record] of savedRows) if ((benthicMarked(record) || hardMarked(record) || waterMarked(record)) && !savedWhole.includes(record)) {
+        for (const [id, record] of savedRows) if ((benthicMarked(record) || hardMarked(record) || waterMarked(record) || midwaterMarked(record)) && !savedWhole.includes(record)) {
           const [x, z] = id.split(',').map(Number); this._restore(record, x, z);
         }
         for (const plan of freshPlans) {
@@ -421,7 +441,8 @@ export class DeepOceanEcology {
             Math.abs(region.sim.metrics.resourceBudgetError) > 1e-8 ||
             Math.abs(region.sim.metrics.energyBudgetError) > 1e-8 || Math.abs(predatorEnergyBudgetError(region)) > 1e-8 || Math.abs(deepBenthicLifeEnergyBudgetError(region)) > 1e-8 ||
             Math.abs(deepHardLifeFoodBudgetError(region)) > 1e-8 || Math.abs(deepHardLifeEnergyBudgetError(region)) > 1e-8 ||
-            Math.abs(deepWaterLifeFoodBudgetError(region)) > 1e-8 || Math.abs(deepWaterLifeEnergyBudgetError(region)) > 1e-8)
+            Math.abs(deepWaterLifeFoodBudgetError(region)) > 1e-8 || Math.abs(deepWaterLifeEnergyBudgetError(region)) > 1e-8 ||
+            Math.abs(deepMidwaterLifeFoodBudgetError(region)) > 1e-8 || Math.abs(deepMidwaterLifeEnergyBudgetError(region)) > 1e-8)
           throw new Error('Invalid deep seascape birth population or initial food inventory.');
       }
       const records = [...prepared].filter(([, item]) => item.changed).map(([id, item]) => [id, this._record(item.region)]);
@@ -435,6 +456,35 @@ export class DeepOceanEcology {
         if (!desired.has(id)) continue;
         this._active.set(id, item.region); this._counts[item.fresh ? 'generated' : 'restored']++;
       }
+      return true;
+    } catch (error) {
+      this._counts.persistenceErrors++; this._storageError = String(error?.message || error); this._center = null; return false;
+    }
+  }
+  async _updateMidwaterWindow(world, desired, current) {
+    // The independent column pack also uses an atomic nine-owner admission
+    // when geographic seascape groups are disabled. Legacy flag-off paths
+    // retain their original preparation, population and save behavior.
+    try {
+      const rows = new Map(), prepared = new Map();
+      for (const [id] of desired) {
+        const active = this._active.get(id), saved = active ? this._record(active) : await this.store.load(world, id);
+        if (!current()) return;
+        if (saved === undefined) throw new Error('Midwater owner read returned no result.');
+        rows.set(id, saved);
+      }
+      for (const [id, [cx, cz]] of desired) {
+        if (this._active.has(id)) continue;
+        prepared.set(id, this._prepareSeascapeOwner(rows.get(id), cx, cz));
+      }
+      for (const { region } of prepared.values()) if (this._animalCount(region) > DEEP_OCEAN_REGION_ANIMAL_LIMIT ||
+          !validateDeepMidwaterLifeRecord(this._record(region), region, { generator: this.generator, capacity: DEEP_OCEAN_REGION_ANIMAL_LIMIT }) ||
+          Math.abs(deepMidwaterLifeFoodBudgetError(region)) > 1e-8 || Math.abs(deepMidwaterLifeEnergyBudgetError(region)) > 1e-8)
+        throw new Error('Invalid midwater admission; no column community was published.');
+      const records = [...prepared].filter(([, item]) => item.changed).map(([id, item]) => [id, this._record(item.region)]);
+      if (records.length && !await this._save(world, records)) { this._center = null; return false; }
+      if (!current()) return;
+      for (const [id, item] of prepared) { this._active.set(id, item.region); this._counts[item.fresh ? 'generated' : 'restored']++; }
       return true;
     } catch (error) {
       this._counts.persistenceErrors++; this._storageError = String(error?.message || error); this._center = null; return false;
@@ -464,21 +514,23 @@ export class DeepOceanEcology {
         }
       } finally { for (const id of exits) this._locked.delete(id); }
       if (this.seascapeEnabled) return this._updateSeascapeWindow(world, desired, current);
+      if (this.midwaterLifeEnabled) return this._updateMidwaterWindow(world, desired, current);
       for (const [id, [x, z]] of desired) {
         if (this._active.has(id)) continue;
         try {
           const saved = await this.store.load(world, id);
           if (!current()) return;
-          if ((this.benthicLifeEnabled || this.hardLifeEnabled || this.waterLifeEnabled) && saved === undefined) throw new Error('Deep community owner read returned no result.');
+          if ((this.benthicLifeEnabled || this.hardLifeEnabled || this.waterLifeEnabled || this.midwaterLifeEnabled) && saved === undefined) throw new Error('Deep community owner read returned no result.');
           const fresh = saved === null || saved === undefined, region = fresh ? this._create(x, z, { hardLifeFresh: saved === null }) : this._restore(saved, x, z);
           // A missing class is examined exactly once, independently of the
           // native RNG. Commit the additive metadata before public activation.
-          const upgraded = region.deepBenthicLifeVersion !== 1 && region.deepHardLifeVersion !== 1 && region.deepWaterLifeVersion !== 1 && typeof this.store.saveMany === 'function' && upgradeDeepPredators(region, {
+          const upgraded = region.deepBenthicLifeVersion !== 1 && region.deepHardLifeVersion !== 1 && region.deepWaterLifeVersion !== 1 && region.deepMidwaterLifeVersion !== 1 && typeof this.store.saveMany === 'function' && upgradeDeepPredators(region, {
             seed: this.seed, supportHeight: (px, pz) => this.generator.heightAt(px, pz), animalLimit: DEEP_OCEAN_REGION_ANIMAL_LIMIT });
           const benthicUpdated = this._initializeBenthicLife(region, saved === null);
           const hardUpdated = this._initializeHardLife(region, saved === null);
           const waterUpdated = this._initializeWaterLife(region, saved === null);
-          if ((fresh || upgraded || benthicUpdated || hardUpdated || waterUpdated) && !await this._save(world, [[id, this._record(region)]])) { this._center = null; return false; }
+          const midwaterUpdated = this._initializeMidwaterLife(region, saved === null);
+          if ((fresh || upgraded || benthicUpdated || hardUpdated || waterUpdated || midwaterUpdated) && !await this._save(world, [[id, this._record(region)]])) { this._center = null; return false; }
           if (!current()) return;
           this._active.set(id, region); this._counts[fresh ? 'generated' : 'restored']++;
         } catch (error) { this._counts.persistenceErrors++; this._storageError = String(error?.message || error); this._center = null; return false; }
@@ -510,6 +562,8 @@ export class DeepOceanEcology {
         if (region.deepBenthicLifeVersion === 1) tickDeepBenthicLife(region, this.generator, STEP);
         if (region.deepHardLifeVersion === 1) tickDeepHardLife(region, this.generator, STEP);
         if (region.deepWaterLifeVersion === 1) tickDeepWaterLife(region, this.generator, STEP);
+        if (region.deepMidwaterLifeVersion === 1 && !tickDeepMidwaterLife(region, this.generator, STEP))
+          throw new Error(`Invalid midwater native tick for ${region.id}; the independent community was not advanced.`);
       }
     }
     if (this._activeTime >= this._checkpointAt) { this._checkpointAt = this._activeTime + 10; this.checkpoint(); }
@@ -519,7 +573,8 @@ export class DeepOceanEcology {
       regionId: region.id, timeSec: region.sim.timeSec, localEnvironment: { ...region.sim.environment } })).concat(
       (region.deepBenthicAgents ?? []).map(agent => ({ ...agent, regionId: region.id, timeSec: agent.alive ? region.sim.timeSec : agent.timeSec, localEnvironment: { ...region.sim.environment } })),
       (region.deepHardLifeAgents ?? []).map(agent => ({ ...agent, regionId: region.id, localEnvironment: { ...region.sim.environment } })),
-      (region.deepWaterLifeAgents ?? []).map(agent => ({ ...agent, regionId: region.id, localEnvironment: { ...region.sim.environment } }))));
+      (region.deepWaterLifeAgents ?? []).map(agent => ({ ...agent, regionId: region.id, localEnvironment: { ...region.sim.environment } })),
+      (region.deepMidwaterLifeAgents ?? []).map(agent => ({ ...agent, regionId: region.id }))));
   }
   checkpoint() {
     const generation = this._generation, world = this._world;
@@ -531,18 +586,23 @@ export class DeepOceanEcology {
   snapshot() {
     const agents = this.agents, living = agents.filter(agent => agent.alive);
     const regions = [...this._active.values()].map(region => {
-      const hard = deepHardLifeSnapshot(region);
+      const hard = deepHardLifeSnapshot(region), midwater = deepMidwaterLifeSnapshot(region);
       return ({ id: region.id, cx: region.cx, cz: region.cz, habitat: region.habitat,
       timeSec: region.sim.timeSec, agentCount: this._animalCount(region),
       nativeAgentCount: region.sim.agents.length, predatorAgentCount: region.predatorAgents?.length ?? 0,
-      alive: [...region.sim.agents, ...(region.predatorAgents ?? []), ...(region.deepBenthicAgents ?? []), ...(region.deepHardLifeAgents ?? []), ...(region.deepWaterLifeAgents ?? [])].filter(agent => agent.alive).length,
+      alive: [...region.sim.agents, ...(region.predatorAgents ?? []), ...(region.deepBenthicAgents ?? []), ...(region.deepHardLifeAgents ?? []), ...(region.deepWaterLifeAgents ?? []), ...(region.deepMidwaterLifeAgents ?? [])].filter(agent => agent.alive).length,
       ...captureDeepBenthicLife(region), deepBenthicEnergyBalanceError: deepBenthicLifeEnergyBudgetError(region),
       ...captureDeepHardLife(region),
       ...captureDeepWaterLife(region), deepWaterEnergyBalanceError: deepWaterLifeEnergyBudgetError(region),
       deepWaterFoodBalanceError: deepWaterLifeFoodBudgetError(region),
+      ...(midwater ? { ...captureDeepMidwaterLife(region), midwaterLife: midwater, deepMidwaterResources: midwater.resources,
+        deepMidwaterFoodLedger: midwater.foodLedger, deepMidwaterFoodBalanceError: deepMidwaterLifeFoodBudgetError(region),
+        deepMidwaterEnergyBalanceError: deepMidwaterLifeEnergyBudgetError(region) } : {}),
       ...(region.deepHardLifeVersion === 1 ? { deepHardResources: hard.resources, deepHardFoodLedger: hard.foodLedger,
         combinedFoodStock: Object.values(region.sim.resources).reduce((sum, value) => sum + value, 0) + Object.values(hard.resources).reduce((sum, value) => sum + value, 0),
         combinedFoodLedger: Object.fromEntries(['initial', 'input', 'ingested', 'exported'].map(key => [key, region.sim.ledger[key] + hard.foodLedger[key]])) } : {}),
+      ...(midwater ? { combinedFoodStock: Object.values(region.sim.resources).reduce((sum, value) => sum + value, 0) + Object.values(hard?.resources ?? {}).reduce((sum, value) => sum + value, 0) + Object.values(midwater.resources).reduce((sum, value) => sum + value, 0),
+        combinedFoodLedger: Object.fromEntries(['initial', 'input', 'ingested', 'exported'].map(key => [key, region.sim.ledger[key] + (hard?.foodLedger[key] ?? 0) + midwater.foodLedger[key]])) } : {}),
       deepHardFoodBalanceError: deepHardLifeFoodBudgetError(region), deepHardEnergyBalanceError: deepHardLifeEnergyBudgetError(region),
       resources: { ...region.sim.resources }, ledger: clone(region.sim.ledger), energyLedger: clone(region.sim.energyLedger), counters: { ...region.sim.counters },
       balanceError: region.sim.metrics.resourceBudgetError, energyBalanceError: region.sim.metrics.energyBudgetError,
@@ -563,13 +623,15 @@ export class DeepOceanEcology {
     const resources = Object.fromEntries(pools.map(pool => [pool, regions.reduce((sum, region) => sum + region.resources[pool], 0)]));
     if (regions.some(region => region.deepHardLifeVersion === 1)) for (const pool of ['particulateOrganicFood', 'smallSuspendedAnimals'])
       resources[pool] = regions.reduce((sum, region) => sum + (region.deepHardResources?.[pool] ?? 0), 0);
+    if (regions.some(region => region.deepMidwaterLifeVersion === 1)) for (const pool of DEEP_MIDWATER_LIFE_FOOD_POOLS)
+      resources[pool] = regions.reduce((sum, region) => sum + (region.deepMidwaterResources?.[pool] ?? 0), 0);
     const averageResources = Object.fromEntries(Object.keys(resources).map(pool => [pool, regions.length ? resources[pool] / regions.length : 0]));
     const combinedFoodLedger = Object.fromEntries(['initial', 'input', 'ingested', 'exported'].map(key => [key, regions.reduce((sum, region) => sum + (region.combinedFoodLedger?.[key] ?? region.ledger[key]), 0)]));
     const combinedFoodStock = Object.values(resources).reduce((sum, value) => sum + value, 0);
     const combinedFoodBalanceError = combinedFoodStock - (combinedFoodLedger.initial + combinedFoodLedger.input - combinedFoodLedger.ingested - combinedFoodLedger.exported);
     const averageEnergy = living.length ? living.reduce((sum, agent) => sum + agent.energy, 0) / living.length : 0;
     return { seed: this.seed, agents: clone(agents), regions, resources, combinedFoodLedger, combinedFoodStock, combinedFoodBalanceError,
-      events: [...this._active.values()].flatMap(region => [...region.sim.events.slice(-8), ...(region.predatorEvents ?? []).slice(-4), ...(region.deepBenthicLife?.events ?? []).slice(-4), ...(region.deepHardLife?.events ?? []).slice(-4), ...(region.deepWaterLife?.events ?? []).slice(-4)].map((event, index) => ({ ...clone(event),
+      events: [...this._active.values()].flatMap(region => [...region.sim.events.slice(-8), ...(region.predatorEvents ?? []).slice(-4), ...(region.deepBenthicLife?.events ?? []).slice(-4), ...(region.deepHardLife?.events ?? []).slice(-4), ...(region.deepWaterLife?.events ?? []).slice(-4), ...(region.deepMidwaterLife?.events ?? []).slice(-4)].map((event, index) => ({ ...clone(event),
         id: `${region.id}:${event.timeSec}:${index}`, regionId: region.id, title: event.label }))),
       metrics: { ...this._counts, activeRegions: this._active.size, maxActiveRegions: 9, activeIndividuals: agents.length,
         alive: living.length, maxIndividualsPerRegion: 20, averageResources, ...averageResources, averageEnergy, avgEnergy: averageEnergy,
@@ -583,6 +645,11 @@ export class DeepOceanEcology {
         predatorEnergyBalanceError: regions.reduce((error, region) => Math.max(error, Math.abs(region.predatorEnergyBalanceError)), 0),
         deepBenthicEnergyBalanceError: regions.reduce((error, region) => Math.max(error, Math.abs(region.deepBenthicEnergyBalanceError)), 0),
         combinedFoodBalanceError,
+        ...(regions.some(region => region.deepMidwaterLifeVersion === 1) ? {
+          deepMidwaterPopulation: agents.filter(agent => midwaterIds.has(agent.speciesId)).length,
+          deepMidwaterFoodBalanceError: regions.reduce((error, region) => Math.max(error, Math.abs(region.deepMidwaterFoodBalanceError ?? 0)), 0),
+          deepMidwaterEnergyBalanceError: regions.reduce((error, region) => Math.max(error, Math.abs(region.deepMidwaterEnergyBalanceError ?? 0)), 0),
+          deepMidwaterFeedingCount: regions.reduce((sum, region) => sum + (region.midwaterLife?.counters?.feedings ?? 0), 0) } : {}),
         deepWaterPopulation: agents.filter(agent => waterIds.has(agent.speciesId)).length,
         deepWaterFoodBalanceError: regions.reduce((error, region) => Math.max(error, Math.abs(region.deepWaterFoodBalanceError)), 0),
         deepWaterEnergyBalanceError: regions.reduce((error, region) => Math.max(error, Math.abs(region.deepWaterEnergyBalanceError)), 0),
@@ -609,6 +676,8 @@ export class DeepOceanEcology {
     this._hardLifeBirths = new WeakSet();
     this.waterLifeEnabled = this._waterLifeRequested && typeof generator.supportAt === 'function' && typeof generator.floorSurface === 'function' && typeof this.store.saveMany === 'function';
     this._waterLifeBirths = new WeakSet();
+    this.midwaterLifeEnabled = this._midwaterLifeRequested && generator.surfaceY === 3500 && typeof generator.heightAt === 'function' && typeof this.store.saveMany === 'function';
+    this._midwaterLifeBirths = new WeakSet();
     this.seascapeEnabled = this._seascapeRequested && this._seascapeAvailable(generator);
     this.wholeSeascapeEnabled = this._wholeSeascapeRequested && this.seascapeEnabled;
     if (this.seascapeEnabled) this.generator.setSeascapePlans([]);

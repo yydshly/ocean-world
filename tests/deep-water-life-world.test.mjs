@@ -153,7 +153,7 @@ test('direct URL, ordinary control and moving director use the native route and 
   const branchStart = app.indexOf('    if(choice.deepWaterLifeEntry&&choice.directorToken===undefined)'), branchEnd = app.indexOf('    const entered=navigateDemoEntry', branchStart);
   assert.ok(branchStart >= 0 && branchEnd > branchStart);
   assert.ok(app.slice(branchStart, branchEnd).includes('actual.enterDeepWaterLife()'));
-  assert.equal(sceneCatalogs.deep.length, 12); assert.equal(sceneCatalogs.deep.filter(species => DEEP_WATER_LIFE_IDS.includes(species.id)).length, 2);
+  assert.equal(sceneCatalogs.deep.length, 15); assert.equal(sceneCatalogs.deep.filter(species => DEEP_WATER_LIFE_IDS.includes(species.id)).length, 2);
   assert.deepEqual(DEEP_WATER_LIFE_ROUTE_STOPS.map(stop => stop.id), ['deep-water-life']);
   const entry = DEMO_DEEP_STOPS.find(stop => stop.id === 'deep-water-life'), chapter = DIRECTOR_STEPS.find(step => step.action.stopId === 'deep-water-life');
   assert.ok(entry && chapter); assert.equal(chapter.motion.kind, 'walk'); assert.equal(chapter.durationMs, 16000);
@@ -206,8 +206,8 @@ test('direct URL, ordinary control and moving director use the native route and 
     await settle(f);assert.equal(f.world.errors.length,0);
     for(const a of moved)assert.equal(f.records.get(a.regionId).deepWaterLifeAgents.find(saved=>saved.id===a.id).timeSec,16,'the actual native checkpoint persists swimmer clocks');
   } finally { f.animals.dispose(); }
-  assert.equal(DIRECTOR_STEPS.length, 63); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 57);
-  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 778000);
+  assert.equal(DIRECTOR_STEPS.length, 64); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 58);
+  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 794000);
 });
 
 test('ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast', async () => {

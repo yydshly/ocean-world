@@ -169,7 +169,7 @@ test('direct URL, ordinary control and moving director use the native route and 
   const branchStart = app.indexOf('    if(choice.deepBenthicLifeEntry&&choice.directorToken===undefined)'), branchEnd = app.indexOf('    const entered=navigateDemoEntry', branchStart);
   assert.ok(branchStart >= 0 && branchEnd > branchStart);
   assert.ok(app.slice(branchStart, branchEnd).includes('actual.enterDeepBenthicLife()'));
-  assert.equal(sceneCatalogs.deep.length, 12); assert.equal(sceneCatalogs.deep.filter(species => DEEP_BENTHIC_LIFE_IDS.includes(species.id)).length, 4);
+  assert.equal(sceneCatalogs.deep.length, 15); assert.equal(sceneCatalogs.deep.filter(species => DEEP_BENTHIC_LIFE_IDS.includes(species.id)).length, 4);
   assert.deepEqual(DEEP_BENTHIC_LIFE_ROUTE_STOPS.map(stop => stop.id), ['deep-bottom-life']);
   const entry = DEMO_DEEP_STOPS.find(stop => stop.id === 'deep-bottom-life'), chapter = DIRECTOR_STEPS.find(step => step.action.stopId === 'deep-bottom-life');
   assert.ok(entry && chapter); assert.equal(chapter.motion.kind, 'walk'); assert.equal(chapter.durationMs, 14000);
@@ -213,8 +213,8 @@ test('direct URL, ordinary control and moving director use the native route and 
     assert.equal(f.world.directorMotion.complete, true); assert.equal(f.world.directorMotion.error, null);
     assert.deepEqual(f.ecology.snapshot(), snapshot); assert.deepEqual([...f.records], records, 'director movement retains actual population, owner clocks and food history');
   } finally { f.animals.dispose(); }
-  assert.equal(DIRECTOR_STEPS.length, 63); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 57);
-  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 778000);
+  assert.equal(DIRECTOR_STEPS.length, 64); assert.equal(new Set(DIRECTOR_STEPS.map(step => step.action.id)).size, 58);
+  assert.equal(DIRECTOR_STEPS.reduce((sum, step) => sum + step.durationMs, 0), 794000);
 });
 
 test('ordinary and direct-URL asynchronous UI results cannot overwrite a newer world, seed, control, disposal or entry toast', async () => {

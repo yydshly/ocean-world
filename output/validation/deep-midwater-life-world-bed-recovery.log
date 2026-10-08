@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: ordinary real-column entrance, whole community overview and origin rebase retain exact native cold records
+ok 1 - ordinary real-column entrance, whole community overview and origin rebase retain exact native cold records
+  ---
+  duration_ms: 12857.895
+  type: 'test'
+  ...
+# Subtest: old histories and dead-only saved water communities neither refill nor become proxy director targets
+ok 2 - old histories and dead-only saved water communities neither refill nor become proxy director targets
+  ---
+  duration_ms: 14192.1884
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27285.8247

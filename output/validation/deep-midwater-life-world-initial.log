@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: ordinary real-column entrance, whole community overview and origin rebase retain exact native cold records
+not ok 1 - ordinary real-column entrance, whole community overview and origin rebase retain exact native cold records
+  ---
+  duration_ms: 4283.0027
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-world.test.mjs:86:1'
+  failureType: 'testCodeFailure'
+  error: 'Deep observation heights must be finite.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    deepOceanLayerHeight (file:///F:/codex_project/1002_gpt6project/ocean-world/src/deepOceanNavigation.js:10:76)
+    Object.oceanLayerY (eval at <anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-world.test.mjs:31:15), <anonymous>:274:27)
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-world.test.mjs:107:56)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: old histories and dead-only saved water communities neither refill nor become proxy director targets
+not ok 2 - old histories and dead-only saved water communities neither refill nor become proxy director targets
+  ---
+  duration_ms: 25.6026
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-world.test.mjs:126:1'
+  failureType: 'testCodeFailure'
+  error: 'Deep observation heights must be finite.'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    deepOceanLayerHeight (file:///F:/codex_project/1002_gpt6project/ocean-world/src/deepOceanNavigation.js:10:76)
+    Object.oceanLayerY (eval at <anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-world.test.mjs:31:15), <anonymous>:274:27)
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-world.test.mjs:130:57)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: actual pending cold loads cannot overwrite later controls, seeds, keys, navigation or disposal
+ok 3 - actual pending cold loads cannot overwrite later controls, seeds, keys, navigation or disposal
+  ---
+  duration_ms: 20490.3343
+  type: 'test'
+  ...
+# Subtest: undefined reads, rejected commits and pause save failure preserve strict publication and readiness
+ok 4 - undefined reads, rejected commits and pause save failure preserve strict publication and readiness
+  ---
+  duration_ms: 9887.8449
+  type: 'test'
+  ...
+# Subtest: real midwater route and a finite director orbit frame the three whole forms at true depth with paused native clocks
+not ok 5 - real midwater route and a finite director orbit frame the three whole forms at true depth with paused native clocks
+  ---
+  duration_ms: 3956.6177
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-world.test.mjs:193:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(isDeepStrictEqual(f.ecology.snapshot(), snapshot))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-world.test.mjs:222:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: ordinary and direct URL asynchronous results never overwrite a newer world, seed, controls or toast
+ok 6 - ordinary and direct URL asynchronous results never overwrite a newer world, seed, controls or toast
+  ---
+  duration_ms: 2.2809
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 3
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 39336.0755

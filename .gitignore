@@ -203,3 +203,6 @@ output/validation/screenshots/*
 
 !output/validation/kelp-understory-life-*.json
 !output/validation/kelp-understory-life-*.log
+
+!output/validation/deep-midwater-life-*.json
+!output/validation/deep-midwater-life-*.log

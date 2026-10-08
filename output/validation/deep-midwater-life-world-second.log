@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: ordinary real-column entrance, whole community overview and origin rebase retain exact native cold records
+not ok 1 - ordinary real-column entrance, whole community overview and origin rebase retain exact native cold records
+  ---
+  duration_ms: 3878.4688
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-world.test.mjs:86:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-world.test.mjs:108:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: old histories and dead-only saved water communities neither refill nor become proxy director targets
+not ok 2 - old histories and dead-only saved water communities neither refill nor become proxy director targets
+  ---
+  duration_ms: 27.6172
+  type: 'test'
+  location: 'F:\\codex_project\\1002_gpt6project\\ocean-world\\tests\\deep-midwater-life-world.test.mjs:126:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///F:/codex_project/1002_gpt6project/ocean-world/tests/deep-midwater-life-world.test.mjs:131:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: actual pending cold loads cannot overwrite later controls, seeds, keys, navigation or disposal
+ok 3 - actual pending cold loads cannot overwrite later controls, seeds, keys, navigation or disposal
+  ---
+  duration_ms: 24288.3494
+  type: 'test'
+  ...
+# Subtest: undefined reads, rejected commits and pause save failure preserve strict publication and readiness
+ok 4 - undefined reads, rejected commits and pause save failure preserve strict publication and readiness
+  ---
+  duration_ms: 12059.6474
+  type: 'test'
+  ...
+# Subtest: real midwater route and a finite director orbit frame the three whole forms at true depth with paused native clocks
+ok 5 - real midwater route and a finite director orbit frame the three whole forms at true depth with paused native clocks
+  ---
+  duration_ms: 23740.2263
+  type: 'test'
+  ...
+# Subtest: ordinary and direct URL asynchronous results never overwrite a newer world, seed, controls or toast
+ok 6 - ordinary and direct URL asynchronous results never overwrite a newer world, seed, controls or toast
+  ---
+  duration_ms: 3.9228
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 4
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 64254.3791

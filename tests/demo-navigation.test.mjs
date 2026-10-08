@@ -14,10 +14,10 @@ const worldAction = biome => DEMO_ACTIONS.find(action => action.kind === 'world'
 
 test('deep belt and whole-scene shortcuts match native seed routes and preserve protected ecology on arrival and invalid entries', () => {
   const generator=createDeepOceanGenerator('42',{seascape:true});
-  const stops=[...generator.seascapeRouteStops,...generator.wholeSeascapeRouteStops,...generator.deepBenthicLifeRouteStops,...generator.deepHardLifeRouteStops,...generator.deepWaterLifeRouteStops];
+  const stops=[...generator.seascapeRouteStops,...generator.wholeSeascapeRouteStops,...generator.deepBenthicLifeRouteStops,...generator.deepHardLifeRouteStops,...generator.deepWaterLifeRouteStops,...generator.deepMidwaterLifeRouteStops];
   assert.deepEqual(DEMO_DEEP_STOPS.map(entry=>entry.id),stops.map(stop=>stop.id));
   assert.deepEqual(stops.map(stop=>stop.id),['deep-plain-community','deep-slope-outcrop',
-    'deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer','deep-bottom-life','deep-hard-life','deep-water-life']);
+    'deep-scene-plain','deep-scene-slope','deep-scene-outcrop','deep-scene-outer','deep-bottom-life','deep-hard-life','deep-water-life','deep-midwater-life']);
   const hard = DEMO_DEEP_STOPS.find(entry => entry.id === 'deep-hard-life');
   const chapter = DIRECTOR_STEPS.find(step => step.action.stopId === hard.id);
   assert.equal(hard.action.deepHardLifeEntry, true); assert.equal(hard.action.biome, 'deep');

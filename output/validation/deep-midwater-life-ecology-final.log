@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: two ordinary all-feature windows contain whole off-bottom forms, real movement and independent typed food contacts without changing old life
+ok 1 - two ordinary all-feature windows contain whole off-bottom forms, real movement and independent typed food contacts without changing old life
+  ---
+  duration_ms: 58744.6648
+  type: 'test'
+  ...
+# Subtest: midwater death and natural empty histories unload and cold restore with fixed food sources and no replacement
+ok 2 - midwater death and natural empty histories unload and cold restore with fixed food sources and no replacement
+  ---
+  duration_ms: 5382.92
+  type: 'test'
+  ...
+# Subtest: enabling midwater on old paused records leaves all raw history and subsequent native steps exactly unchanged
+ok 3 - enabling midwater on old paused records leaves all raw history and subsequent native steps exactly unchanged
+  ---
+  duration_ms: 5397.5746
+  type: 'test'
+  ...
+# Subtest: pending and refused atomic midwater births expose no animals, food stock or scenery revision
+ok 4 - pending and refused atomic midwater births expose no animals, food stock or scenery revision
+  ---
+  duration_ms: 11068.2613
+  type: 'test'
+  ...
+# Subtest: undefined and thrown owner reads never become strict-null fresh water-column births
+ok 5 - undefined and thrown owner reads never become strict-null fresh water-column births
+  ---
+  duration_ms: 0.7355
+  type: 'test'
+  ...
+# Subtest: finite incomplete rosters, whole-body/typed-stock corruption and actually read offscreen history fail without refill or publication
+ok 6 - finite incomplete rosters, whole-body/typed-stock corruption and actually read offscreen history fail without refill or publication
+  ---
+  duration_ms: 2100.7952
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82867.6274

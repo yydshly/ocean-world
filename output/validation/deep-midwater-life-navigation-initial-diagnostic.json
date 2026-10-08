@@ -1,0 +1,27 @@
+{
+  "scope": "Initial navigation diagnostic from tool output; no complete raw TAP file was captured. No counts added to final unique checks.",
+  "command": [
+    "node",
+    "--test",
+    "--test-concurrency=2",
+    "tests/director-tour.test.mjs",
+    "tests/director-player.test.mjs",
+    "tests/demo-navigation.test.mjs",
+    "tests/deep-ocean-navigation.test.mjs"
+  ],
+  "reportedChecks": {
+    "tests": 45,
+    "pass": 44,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "failure": "Existing demo-navigation expected registry omitted the new deep-midwater-life native stop. Only the derived registry expectation was corrected. The nonexistent requested deep-ocean-navigation path was replaced by actual deep-ocean-world in the bounded follow-up.",
+  "followupLog": "deep-midwater-life-navigation.log",
+  "followupChecks": {
+    "tests": 54,
+    "pass": 54,
+    "fail": 0,
+    "skipped": 0
+  }
+}

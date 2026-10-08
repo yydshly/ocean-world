@@ -84,6 +84,7 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
     const stop=DEMO_DEEP_STOPS.find(row=>row.id===id);
     return step(`deep-${id}`,stop.title,`${stop.description}。沿实际海床缓行，观察周围整体环境。`,stop.action.id,12000);
   }),
+  step('deep-midwater-life', '深海：离底中层水体', '镜头进入约700米水深的开放水体，缓行观察完整水母、吸血乌贼和红糠虾。', 'stop-deep-midwater-life', 16000, 'orbit', 'deep-midwater-life'),
   step('deep-water-life', '深海：近底游泳群落', '镜头沿实际生活空间缓行，观察长体鱼与带鳍章鱼的近底游动和真实食物接触。', 'stop-deep-water-life', 16000, 'walk', 'deep-water-life'),
   step('deep-hard-life', '深海：岩附着群落', '镜头沿实际岩露头缓行，观察海百合与黑珊瑚的完整附着形态和悬浮摄食空间。', 'stop-deep-hard-life', 14000, 'walk', 'deep-hard-life'),
   step('deep-bottom-life', '深海：软底新群落', '镜头沿实际软泥底缓行，观察当地新增动物及其摄食生活空间。', 'stop-deep-bottom-life', 14000, 'walk', 'deep-benthic-life'),
