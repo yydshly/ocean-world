@@ -202,7 +202,7 @@ test('full800s actual camera lazily crosses four committed regions with honest w
     assert.equal(f.world.setDirectorPlaybackRate(2),true);f.world.updateDirectorMotion(1);assert.equal(f.world.directorMotion.elapsedSec,2);
     assert.equal(f.world.setDirectorPlaybackRate(1),true);assert.equal(f.world.setDirectorPlaybackRate(0),false);
     let holds=0,rebases=0,movedFrames=0,nextSample=0,maximumLoadWallSec=0;
-    const centres=new Set(),tickOwners=new Set(),samples=[],loadTimes=[];
+    const centres=new Set(),tickOwners=new Set(),samples=[],loadTimes=[],terminalPendingLoads=[];
     for(let attempt=0;attempt<1100&&!f.world.directorMotion.complete;attempt++){
       const before=f.world.oceanWorldPosition(),seconds=f.world.directorMotion.elapsedSec;
       f.world.updateDirectorMotion(1);const now=f.world.oceanWorldPosition(),motion=f.world.directorMotion;
@@ -231,7 +231,15 @@ test('full800s actual camera lazily crosses four committed regions with honest w
       const centre=`${Math.floor(now.x/64)},${Math.floor(now.z/64)}`;centres.add(centre);
       f.chunks.update(now);const start=performance.now();f.world.requestOceanEcology(now);
       if(!ready(f)){const p=f.world.oceanWorldPosition(),clock=motion.elapsedSec;f.world.updateDirectorMotion(10);
-        assert.equal(motion.waitingForRegions,true);same(f.world.oceanWorldPosition(),p,'genuine pending current-window hold');assert.equal(motion.elapsedSec,clock);holds++;}
+        same(f.world.oceanWorldPosition(),p,'genuine pending current-window hold');assert.equal(motion.elapsedSec,clock);
+        if(motion.complete){assert.equal(clock,800);assert.equal(motion.active,false);assert.equal(motion.error,null);assert.equal(motion.waitingForRegions,false);
+          const diagnostic={scope:'completed native800s camera awaiting ordinary terminal window, not active-motion loading',
+            complete:motion.complete,active:motion.active,elapsedSec:clock,error:motion.error,waitingForRegions:motion.waitingForRegions,
+            position:plain(p),centre,loadedOwnerIds:[...f.chunks.stats.loadedChunks],activeOwnerIds:[...f.ecology._active.keys()],
+            mainRouteGroupIds:motion.reefValleySegments.map(s=>s.groupId)};
+          terminalPendingLoads.push(diagnostic);writeFileSync('output/validation/reef-valley-region-terminal-loading-diagnostic.json',JSON.stringify(diagnostic,null,2)+'\n');
+          t.diagnostic(JSON.stringify(diagnostic));
+        }else{assert.equal(motion.waitingForRegions,true);holds++;}}
       await settle(f);const wall=(performance.now()-start)/1000;
       if(wall>.05){loadTimes.push({centre,wallSeconds:wall});maximumLoadWallSec=Math.max(maximumLoadWallSec,wall);}
       bounds(f);assert.ok(ready(f));
@@ -263,7 +271,7 @@ test('full800s actual camera lazily crosses four committed regions with honest w
     if(emptyStart!==null)longestEmptySampleSpanM=Math.max(longestEmptySampleSpanM,snap.travelledM-emptyStart);
     const receipt={cameraSeconds:800,pathM:snap.distanceM,travelledM:snap.travelledM,mainRouteGroupIds:snap.observationRoute.groupIds,
       allOrdinaryBornGroupIds:[...new Set([...f.records.values()].filter(r=>r.reefValleyRegionVersion===1).map(r=>r.reefValleyRegionGroupId))],
-      visitedCentres:[...centres],holds,rebases,entryWallSeconds,loadTimes,maximumLoadWallSec,
+      visitedCentres:[...centres],holds,rebases,entryWallSeconds,loadTimes,maximumLoadWallSec,terminalPendingLoads,
       withinDirector45Seconds:Math.max(entryWallSeconds,maximumLoadWallSec)<45,
       ecologicalCentres:[...tickOwners],ecologicalTickPerCentreSec:.1,finalTickSec:.1,sampleSpacingApproxM:60,samples,whole,intersection,longestEmptySampleSpanM,
       scope:'800s native moving camera, few actual0.1s ecological ticks, unloaded owners frozen; CPU boxes within30m, no occlusion or GPU appearance proof'};

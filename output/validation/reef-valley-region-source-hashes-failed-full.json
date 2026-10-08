@@ -478,7 +478,7 @@
     "tests/reef-valley-entry.test.mjs": "84974f58c6137de721c306ebe778930411b8a2415b6c5cc8e50155cf34839c95",
     "tests/reef-valley-region-ecology.test.mjs": "5f81c526b73ad5e1db1b7e950c77f9a3d855dcc81c838912c0e79357291d77d6",
     "tests/reef-valley-region-render.test.mjs": "872b025c0528bf13b3851ebfd55875be4e07318320b07ece2725e68853559f9b",
-    "tests/reef-valley-region-world.test.mjs": "708e03574657252b82cc5a7e9a8fe21a005145db442cac42a167a7061539d435",
+    "tests/reef-valley-region-world.test.mjs": "8699e3afdd4e700c37dbadbd03bd4905a6b51f1e303f70ecf6dce94d7b56ee73",
     "tests/reef-valley-region.test.mjs": "f7c8bcfac8c75fc11716522f247d0a789c80c77a0b6ceeb471118e076af91c29",
     "tests/sites-worker.test.mjs": "96af7b48906c6460c793356d7b6952f7d5026dbf5a502bec0d9297ff04201c26",
     "vite.config.mjs": "f1449e95c5d6102673839d1c453a5f7df81abd0b946c4dd0338c2dd5e2832b4d"
@@ -679,16 +679,5 @@
     "src/world/reefSceneOrganization.js": true,
     "src/world/reefSpatialQueries.js": true,
     "src/world/reefTerrain.js": true
-  },
-  "testOnlyCorrection": {
-    "failedSource": "c294665f33bd3cc499451c198c7d35254afea20e",
-    "changedFiles": [
-      "tests/reef-valley-region-world.test.mjs"
-    ],
-    "reason": "Completed800s motion is inactive; its final owner-window load still freezes the camera and clock but does not set an active-motion waiting flag.",
-    "runtime205Unchanged": true,
-    "fullWorkflowFiles": 133,
-    "localUnchangedPassingIdentitiesReused": 906,
-    "localCorrectedCaseIdentities": 1
   }
 }
