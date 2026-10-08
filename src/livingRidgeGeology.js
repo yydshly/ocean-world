@@ -11,6 +11,8 @@ import { validateLivingShallowSeascapePlan, sampleLivingShallowSeascape,
   SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
 import { validateLivingCoastalSeascapePlan, sampleLivingCoastalSeascape,
   coastalSeascapeAnimalAllocation, COASTAL_SEASCAPE_ROUTE_STOPS } from './livingCoastalSeascape.js';
+import { validateReefValleyRegionPlan, sampleReefValleyRegion, reefValleyAllocation,
+  REEF_VALLEY_REGION_ROUTE_STOPS } from './reefValleyRegion.js';
 import { validateLivingSeabedRelief, sampleLivingSeabedRelief,
   livingSeabedFloorVertex, livingSeabedFloorSurface } from './livingSeabedRelief.js';
 
@@ -161,6 +163,7 @@ export function createLivingRidgePlan(baseGenerator, cx, cz) {
 
 export function validateLivingRidgePlan(plan, baseGenerator) {
   try {
+    if (plan?.version === 8) return validateReefValleyRegionPlan(baseGenerator.baseGenerator ?? baseGenerator, plan);
     if (plan?.version === 7) return validateLivingCoastalSeascapePlan(baseGenerator.baseGenerator ?? baseGenerator, plan);
     if (plan?.version === 6) return validateLivingShallowSeascapePlan(baseGenerator.baseGenerator ?? baseGenerator, plan);
     if (plan?.version === 5) return validateLivingHabitatBeltPlan(plan, baseGenerator);
@@ -240,7 +243,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
   const floorPlanAt = (x, z) => {
     if (!Number.isFinite(x) || !Number.isFinite(z)) return null;
     const plan = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
-    return plan?.version === 3 || plan?.version === 4 || plan?.version === 6 || plan?.version === 7 ? plan : null;
+    return plan?.version === 3 || plan?.version === 4 || plan?.version === 6 || plan?.version === 7 || plan?.version === 8 ? plan : null;
   };
   const assertPublishable = () => {
     if (candidateBatchDepth) throw new TypeError('Cannot publish ridge owners inside a temporary plan batch.');
@@ -276,9 +279,10 @@ export function createLivingRidgeGenerator(baseGenerator) {
       Object.freeze({ id: 'seascape-transition', label: '相邻生境', x: 3502.5, z: 608 }),
       Object.freeze({ id: 'habitat-belt-reef', label: '生活带：礁群沙道', x: 4758, z: 150, heading: Math.PI / 2, entryAcrossM: 2 }),
       Object.freeze({ id: 'habitat-belt-meadow', label: '生活带：草床水层', x: 4832, z: 224, heading: Math.atan2(.51, .86), entryAcrossM: 2 }),
-      ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS, ...OCEAN_SHOAL_LIFE_ROUTE_STOPS, ...COASTAL_SEASCAPE_ROUTE_STOPS]),
+      ...SHALLOW_SEASCAPE_ROUTE_STOPS, ...OCEAN_BIODIVERSITY_ROUTE_STOPS, ...OCEAN_BENTHIC_LIFE_ROUTE_STOPS, ...OCEAN_MEADOW_LIFE_ROUTE_STOPS, ...OCEAN_SHOAL_LIFE_ROUTE_STOPS, ...COASTAL_SEASCAPE_ROUTE_STOPS, ...REEF_VALLEY_REGION_ROUTE_STOPS]),
     sample(x, z) {
       const belt = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+      if (belt?.version === 8) return sampleReefValleyRegion(base, belt, x, z);
       if (belt?.version === 7) return sampleLivingCoastalSeascape(base, belt, x, z);
       if (belt?.version === 5) return sampleLivingHabitatBelt(base, belt, x, z);
       if (belt?.version === 6) return sampleLivingShallowSeascape(base, belt, x, z);
@@ -295,6 +299,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
     },
     coverAt(x, z, environment) {
       const belt = queryPlans.get(`${Math.floor(x / SIZE)},${Math.floor(z / SIZE)}`);
+      if (belt?.version === 8) return base.coverAt(x, z, sampleReefValleyRegion(base, belt, x, z));
       if (belt?.version === 7) return base.coverAt(x, z, sampleLivingCoastalSeascape(base, belt, x, z));
       if (belt?.version === 5) return base.coverAt(x, z, sampleLivingHabitatBelt(base, belt, x, z));
       if (belt?.version === 6) return base.coverAt(x, z, sampleLivingShallowSeascape(base, belt, x, z));
@@ -305,6 +310,10 @@ export function createLivingRidgeGenerator(baseGenerator) {
     coastalSeascapeAllocation(cx, cz) {
       const plan = queryPlans.get(`${cx},${cz}`);
       return plan?.version === 7 ? coastalSeascapeAnimalAllocation(plan) : null;
+    },
+    reefValleyAllocation(cx, cz) {
+      const plan = queryPlans.get(`${cx},${cz}`);
+      return plan?.version === 8 ? reefValleyAllocation(plan) : null;
     },
     getRidgePlan: id => plans.get(id),
     isRidgeOwnerReady: id => ready.has(id),
@@ -324,7 +333,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
         for (const e of plan.elements) { counts[e.kind]++; if (e.kind === 'rock') landform[e.profile]++; }
         queryChunks.set(id, Object.freeze({ ...original, elements: plan.elements, counts: Object.freeze(counts),
           landform: Object.freeze(landform), ridgePlan: plan, ridgeGeologyVersion: plan.version,
-          ...([3, 4, 5, 6, 7].includes(plan.version) ? { habitatComposition: plan.habitatComposition } : {}) }));
+          ...([3, 4, 5, 6, 7, 8].includes(plan.version) ? { habitatComposition: plan.habitatComposition } : {}) }));
       }
       return queryChunks.get(id);
     },
@@ -398,6 +407,24 @@ export function createLivingRidgeGenerator(baseGenerator) {
         return result;
       } finally { queryPlans = previousPlans; queryChunks = previousChunks; candidateBatchDepth--; }
     },
+    withReefValleyPlans(input, fn) {
+      if (!Array.isArray(input) || input.length !== 12 || typeof fn !== 'function' || fn.constructor?.name === 'AsyncFunction')
+        throw new TypeError('A reef-valley candidate requires twelve owners and a synchronous callback.');
+      const group = input[0]?.group, ids = new Set();
+      for (const plan of input) {
+        if (plan?.version !== 8 || !validateLivingRidgePlan(plan, base) || ids.has(plan.id) || stamp(plan.group) !== stamp(group))
+          throw new TypeError('Invalid complete reef-valley candidate.');
+        ids.add(plan.id);
+      }
+      if (group?.ownerIds?.length !== 12 || group.ownerIds.some(id => !ids.has(id))) throw new TypeError('Incomplete reef-valley candidate.');
+      const previousPlans = queryPlans, previousChunks = queryChunks;
+      queryPlans = new Map(input.map(plan => [plan.id, plan])); queryChunks = new Map(); candidateBatchDepth++;
+      try {
+        const result = fn(facade);
+        if (result && typeof result.then === 'function') throw new TypeError('Ridge candidate callback returned an asynchronous result.');
+        return result;
+      } finally { queryPlans = previousPlans; queryChunks = previousChunks; candidateBatchDepth--; }
+    },
     unregisterRidgePlan(id) { assertPublishable(); if (!plans.delete(id)) return false; ready.delete(id); chunks.delete(id); revision++; return true; },
     retainRidgeOwners(ids) {
       assertPublishable();
@@ -440,11 +467,17 @@ export function createLivingRidgeGenerator(baseGenerator) {
     },
     heightForCamera(x, z) {
       if (!Number.isFinite(x) || !Number.isFinite(z)) throw new RangeError('Ocean coordinates must be finite world metres.');
-      let height = Math.max(facade.floorSurface(x, z).height, facade.sample(x, z).floorY);
       const cx = Math.floor(x / SIZE), cz = Math.floor(z / SIZE);
+      const actualMesh = queryPlans.get(`${cx},${cz}`)?.version === 8;
+      let height = actualMesh ? facade.floorSurface(x, z).height : Math.max(facade.floorSurface(x, z).height, facade.sample(x, z).floorY);
       for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) for (const e of facade.chunk(cx + dx, cz + dz).elements) {
         if (e.kind === 'algae') continue;
         if (e.kind === 'bottle' || e.kind === 'driftwood') { const y = sceneElementHeight(e, x, z); if (y !== null) height = Math.max(height, y); continue; }
+        // New v8 corridors are certified against these exact Float32 rock
+        // triangles. A legacy bounding ellipse can cover empty mesh space.
+        if (actualMesh && (e.kind === 'rock' || e.kind === 'formation')) {
+          const y = oceanRockHeight(e, x, z); if (y !== null) height = Math.max(height, y); continue;
+        }
         const c = Math.cos(e.rotation), s = Math.sin(e.rotation), wx = x - e.x, wz = z - e.z;
         if (((wx * c - wz * s) / (e.scale.x * .5)) ** 2 + ((wx * s + wz * c) / (e.scale.z * .5)) ** 2 <= 1)
           height = Math.max(height, e.y + e.scale.y);

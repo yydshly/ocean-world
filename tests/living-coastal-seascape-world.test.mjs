@@ -212,7 +212,7 @@ test('ordinary URL and director use the same native route with guarded asynchron
   assert.ok(hook.includes("['coastal-life-belt', 'living-visual'"));assert.deepEqual(COASTAL_SEASCAPE_ROUTE_STOPS.map(s=>s.id),['coastal-life-belt']);
   const entry=DEMO_LIVING_STOPS.find(s=>s.id==='coastal-life-belt'),chapter=DIRECTOR_STEPS.find(s=>s.action.stopId==='coastal-life-belt');
   assert.ok(entry&&chapter);assert.equal(entry.action.coastalLifeBeltEntry,true);assert.equal(chapter.motion.routeId,'coastal-life-belt');
-  assert.equal(chapter.motion.kind,'coastal-route');assert.equal(chapter.durationMs,200000);assert.equal(DIRECTOR_STEPS[0],chapter);
+  assert.equal(chapter.motion.kind,'coastal-route');assert.equal(chapter.durationMs,200000);assert.equal(DIRECTOR_STEPS.find(s=>s.id===chapter.id),chapter);
   const start=app.indexOf('    if(choice.coastalLifeBeltEntry&&choice.directorToken===undefined)'),end=app.indexOf('    if(choice.biodiversityEntry',start);
   assert.ok(start>=0&&end>start);const branch=`return function(choice){${app.slice(start,end)}}`;
   const f=fixture();try{
@@ -230,6 +230,6 @@ test('ordinary URL and director use the same native route with guarded asynchron
     const invoke=new Function('world','setView','setOceanToolsOpen','setPanel','rememberOcean','setToast',branch)(ref,()=>{},()=>{},()=>{},()=>notices.push('remembered'),text=>notices.push(text));
     invoke(entry.action);change(actual,ref);done(true);await nextTurn();assert.equal(notices.length,0,'stale completion cannot store memory or toast');
   }
-  assert.equal(DIRECTOR_STEPS.length,65);assert.equal(new Set(DIRECTOR_STEPS.map(s=>s.action.id)).size,59);
-  assert.equal(DIRECTOR_STEPS.reduce((n,s)=>n+s.durationMs,0),994000);
+  assert.equal(DIRECTOR_STEPS.length,66);assert.equal(new Set(DIRECTOR_STEPS.map(s=>s.action.id)).size,60);
+  assert.equal(DIRECTOR_STEPS.reduce((n,s)=>n+s.durationMs,0),1794000);
 });

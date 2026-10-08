@@ -53,6 +53,7 @@ export function directorStepAction(item) {
 // Independent worlds and distant stop jumps are not one geographic journey.
 // Time below is moving observation time; asynchronous loading does not consume it.
 export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
+  step('reef-valley-region', '热带礁谷：完整海区', '连续走过四片相邻礁谷，观察大礁墙、珊瑚台地、分叉沙沟、草床和水层动物；跨区加载时停留。', 'stop-reef-valley-region', 800000, 'reef-valley-route', 'reef-valley-region'),
   step('coastal-life-belt', '浅海：连续生活带', '镜头沿真实共享海床走过整段礁群、砂道、草床与外坡；加载时停留，继续观察当地生命。', 'stop-coastal-life-belt', 200000, 'coastal-route', 'coastal-life-belt'),
   step('shallows-opening', '新浅海：先看整体', '从浅海整景的礁群起步，再观察砂道、宽草床和外礁坡。', 'world-living-shallows', 14000),
   step('shallows-life', '浅海：附近的真实生物', '在群落周围巡游，观察生物的运动与生活空间。', 'current-local-life', 14000, 'follow'),

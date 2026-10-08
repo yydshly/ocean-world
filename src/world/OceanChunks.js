@@ -3,6 +3,7 @@ import { createOceanGenerator, OCEAN_CHUNK_SIZE, OCEAN_FORMATION_LIMIT } from '.
 import { createLivingRidgeGenerator } from '../livingRidgeGeology.js';
 import { shallowSeascapeFacies } from '../livingShallowSeascape.js';
 import { coastalSeascapeFacies } from '../livingCoastalSeascape.js';
+import { reefValleyFacies } from '../reefValleyRegion.js';
 import { OCEAN_ROCK_PROFILES, OCEAN_ROCK_SURFACE_VERSION, oceanRockMesh } from '../oceanRockShape.js';
 import { habitatSceneMesh } from '../oceanHabitatScenes.js';
 import { enableStaticRayQueries } from './reefSpatialQueries.js';
@@ -298,6 +299,7 @@ export class OceanChunks {
     const rubbleIndex = this._livingShallows ? createLivingReefSubstrateIndex(this.generator, chunk) : null;
     const completeSeascape = this._livingShallows && chunk.ridgePlan?.version === 6 ? chunk.ridgePlan : null;
     const coastalSeascape = this._livingShallows && chunk.ridgePlan?.version === 7 ? chunk.ridgePlan : null;
+    const reefValley = this._livingShallows && chunk.ridgePlan?.version === 8 ? chunk.ridgePlan : null;
     for (let rz = 0; rz <= steps; rz++) for (let rx = 0; rx <= steps; rx++) {
       const i = rz * row + rx, x = originX + rx * spacing, z = originZ + rz * spacing;
       const sample = this.generator.sample(x, z);
@@ -315,6 +317,7 @@ export class OceanChunks {
       if (rubbleIndex) livingReefSubstrateColor(color, livingReefSubstrateCover(rubbleIndex, x, z), color);
       if (completeSeascape) completeShallowTerrainColor(color, shallowSeascapeFacies(completeSeascape, x, z), rootEnvelope);
       if (coastalSeascape) completeShallowTerrainColor(color, coastalSeascapeFacies(coastalSeascape, x, z), rootEnvelope);
+      if (reefValley) completeShallowTerrainColor(color, reefValleyFacies(reefValley, x, z), rootEnvelope);
       colors.set(color, i * 3);
       if (rz < steps && rx < steps) {
         const j = (rz * steps + rx) * 6, a = i, b = a + 1, c = a + row, d = c + 1;
@@ -632,6 +635,8 @@ export class OceanChunks {
         completeShallowSeascapeScope: 'committed 384m by 128m scene; shared physical floor, source instances and world-coordinate bottom facies; nine-owner active window',
         ...(activePlanVersions[7] ? { coastalSeascapeOwners: activePlanVersions[7],
           coastalSeascapeScope: 'committed continuous coastal life belt; actual floor and attached source instances; ordinary nine-owner streaming' } : {}),
+        ...(activePlanVersions[8] ? { reefValleyOwners: activePlanVersions[8],
+          reefValleyScope: 'committed coordinate-seeded reef-valley regions; actual floor and source instances; ordinary nine-owner streaming' } : {}),
         ridgeReadyOwners: ridge.size, ridgeReadyOwnerIds: Object.freeze([...ridge.ridgeReadyOwnerIds]),
         ridgePlanOwners: ridgePlanIds.length, ridgePlanOwnerIds: Object.freeze([...ridgePlanIds]),
         ridgeRenderedOwners: this._chunks.size, ridgeRenderedOwnerIds: Object.freeze([...this._chunks.keys()]),

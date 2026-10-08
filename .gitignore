@@ -209,3 +209,6 @@ output/validation/screenshots/*
 
 !output/validation/living-coastal-seascape-*.json
 !output/validation/living-coastal-seascape-*.log
+
+!output/validation/reef-valley-*.json
+!output/validation/reef-valley-*.log
