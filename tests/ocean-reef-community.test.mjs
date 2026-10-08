@@ -217,5 +217,3 @@ test('before-v3 complete v1 and v2 future records stay frozen across finite orig
   assert.equal(hash(v1), '55c891dcf4aed4973549c7efeabbe6034ff11fef88a316785b813a7b40377ee3');
   assert.equal(hash(v2), '54ae776cffcbc4bad511189a65ac33b93a3aba21d845d096f19aaf465a530b3f');
 });
-
-

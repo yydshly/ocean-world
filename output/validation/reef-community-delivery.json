@@ -2313,7 +2313,7 @@
     "tests/ocean-meadow-life-world.test.mjs": "1ea2efd1d4ce362518c51ea9121ce4e0be7826e1f25b0e6bdcfab5c8b35f5f1b",
     "tests/ocean-reef-community-benthic-assets.test.mjs": "5915a171480f91caec5d34021204b85040fe3a90d1068c5507fef2237863f868",
     "tests/ocean-reef-community-fish-assets.test.mjs": "b8f01aaf499509de79376acd59eda2fdc5bfaddbec785b2e9aac01e66dc63da7",
-    "tests/ocean-reef-community.test.mjs": "1cb7429ac4ece35240e1d327aec4658693f0058d4142fc6d29dd128f750d0aa6",
+    "tests/ocean-reef-community.test.mjs": "b49e17eb21bb035fc97cd5cd66ea0ab37e12df84bd73080bba36000fbd085463",
     "tests/ocean-shoal-life-render.test.mjs": "1f145fbd4d585193ed1bdb0988cd17f829585e80184e62f292d978655d05ff48",
     "tests/ocean-shoal-life-world.test.mjs": "a985ab0ce6e0b65205ebb6e1a35400c2d46c3506ea4d7d58e54e6dce25660991",
     "tests/reef-community-ecology.test.mjs": "4b1aab378d1c2e18d4cf66c505a7a144d19fa1187b5739f50b437d8c7be2f44a",
@@ -2363,5 +2363,6 @@
     "priorRunId": 37772039541,
     "priorSubmissionStatus": "independently verify Actions, no previous-stage status substituted"
   },
-  "acceptance": "CPU model, actual Three geometry and typed stock conservation only; no browser/GPU visibility, performance or aesthetic acceptance; food/rates/density uncalibrated"
+  "acceptance": "CPU model, actual Three geometry and typed stock conservation only; no browser/GPU visibility, performance or aesthetic acceptance; food/rates/density uncalibrated",
+  "nonsemanticAfterChecks": "Removed a trailing blank line containing spaces from the new controller test; production and build hashes unchanged."
 }
