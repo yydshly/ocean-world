@@ -230,6 +230,6 @@ test('ordinary URL and director use the same native route with guarded asynchron
     const invoke=new Function('world','setView','setOceanToolsOpen','setPanel','rememberOcean','setToast',branch)(ref,()=>{},()=>{},()=>{},()=>notices.push('remembered'),text=>notices.push(text));
     invoke(entry.action);change(actual,ref);done(true);await nextTurn();assert.equal(notices.length,0,'stale completion cannot store memory or toast');
   }
-  assert.equal(DIRECTOR_STEPS.length,66);assert.equal(new Set(DIRECTOR_STEPS.map(s=>s.action.id)).size,60);
-  assert.equal(DIRECTOR_STEPS.reduce((n,s)=>n+s.durationMs,0),1794000);
+  assert.equal(DIRECTOR_STEPS.length,67);assert.equal(new Set(DIRECTOR_STEPS.map(s=>s.action.id)).size,61);
+  assert.equal(DIRECTOR_STEPS.reduce((n,s)=>n+s.durationMs,0),1994000);
 });

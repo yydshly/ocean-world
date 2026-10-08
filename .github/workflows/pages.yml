@@ -32,6 +32,11 @@ jobs:
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test --test-concurrency=4
+          tests/ocean-sand-surface.test.mjs
+          tests/ocean-animal-sediment.test.mjs
+          tests/ocean-animal-encounters.test.mjs
+          tests/ocean-animal-encounters-native.test.mjs
+          tests/sand-animal-life-world.test.mjs
           tests/seagrass-meadow-region.test.mjs
           tests/seagrass-meadow-region-ecology.test.mjs
           tests/seagrass-meadow-region-world.test.mjs

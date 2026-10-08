@@ -12,6 +12,8 @@ import { oceanRockFootingMesh } from './oceanRockFooting.js';
 import { createOceanMacroSurfaceMaterial, macroSurfaceCoordinates, macroSurfaceOwnerPhase } from './oceanMacroSurfaceMaterial.js';
 import { createOceanEnvironment } from '../oceanEnvironment.js';
 import { createLivingShallowsCoralMaterial } from './livingShallowsCoralMaterial.js';
+import { OCEAN_SAND_SURFACE_VERSION, applyOceanSandSurface, oceanSandSurfaceCoordinates,
+  createOceanSandHardCoverIndex, oceanSandHardCover, oceanSandSurfaceMask } from './oceanSandSurface.js';
 import { createMeadowInstanceGeometry, disposeMeadowInstanceGeometry,
   MEADOW_SHADER_DECLARATIONS, MEADOW_SHADER_TRANSFORM } from './livingMeadowEnvironment.js';
 import { LIVING_REEF_SUBSTRATE_VERSION, createLivingReefSubstrateIndex,
@@ -196,12 +198,13 @@ function seagrassGeometry() {
 
 /** A bounded 3×3 window of seed-generated landscape, separate from animals. */
 export class OceanChunks {
-  constructor(seed, { sandMaterial, livingGeology = false } = {}) {
+  constructor(seed, { sandMaterial, livingGeology = false, sandHabitat = false } = {}) {
     this.root = new THREE.Group();
     this.root.name = 'continuous-ocean-landscape';
     this.root.userData.oceanStreaming = true;
     this.root.userData.role = 'generated-landscape-not-simulated-populations';
     this._livingGeologyRequested = Boolean(livingGeology);
+    this._sandHabitatRequested = Boolean(sandHabitat);
     this.generator = this._createGenerator(seed);
     this._ridgeRevision = this.generator.ridgeRevision ?? null;
     this.renderOrigin = { x: 0, z: 0 };
@@ -239,6 +242,9 @@ export class OceanChunks {
 
   _configureAssetKit() {
     this._livingShallows = this.generator.profile === 'living-shallows-v1';
+    this._restoreSandSurface?.();
+    this._sandHabitat = this._sandHabitatRequested && this._livingShallows;
+    this._restoreSandSurface = this._sandHabitat ? applyOceanSandSurface(this._terrainMaterial) : null;
     this._meadowWater = this._livingShallows ? createOceanEnvironment(this.generator.seed, this.generator) : null;
     this._kinds = this._livingShallows ? [...KINDS, 'driftwood', 'bottle'] : KINDS;
     this._rockProfiles = this.generator.rockProfiles || OCEAN_ROCK_PROFILES;
@@ -298,6 +304,9 @@ export class OceanChunks {
     const { x: originX, z: originZ } = chunk.origin;
     const rootIndex = this._terrainCoverIndex(chunk), color = [0, 0, 0];
     const rubbleIndex = this._livingShallows ? createLivingReefSubstrateIndex(this.generator, chunk) : null;
+    const sandHardIndex = this._sandHabitat ? createOceanSandHardCoverIndex(this.generator, chunk) : null;
+    const sandMasks = this._sandHabitat ? new Float32Array(vertexCount * 3) : null;
+    const sandMask = [0, 0, 0];
     const completeSeascape = this._livingShallows && chunk.ridgePlan?.version === 6 ? chunk.ridgePlan : null;
     const coastalSeascape = this._livingShallows && chunk.ridgePlan?.version === 7 ? chunk.ridgePlan : null;
     const reefValley = this._livingShallows && chunk.ridgePlan?.version === 8 ? chunk.ridgePlan : null;
@@ -316,7 +325,10 @@ export class OceanChunks {
       const terrainColor = this._livingShallows ? livingShallowsTerrainColor : oceanTerrainColor;
       const rootEnvelope = this._grassRootEnvelope(rootIndex, x, z);
       terrainColor(x, z, sample, this.generator.coverAt(x, z, sample), rootEnvelope, color);
-      if (rubbleIndex) livingReefSubstrateColor(color, livingReefSubstrateCover(rubbleIndex, x, z), color);
+      const rubbleCover = rubbleIndex ? livingReefSubstrateCover(rubbleIndex, x, z) : 0;
+      if (rubbleIndex) livingReefSubstrateColor(color, rubbleCover, color);
+      if (sandMasks) sandMasks.set(oceanSandSurfaceMask(sample, oceanSandHardCover(sandHardIndex, x, z),
+        rootEnvelope, rubbleCover, sandMask), i * 3);
       if (completeSeascape) completeShallowTerrainColor(color, shallowSeascapeFacies(completeSeascape, x, z), rootEnvelope);
       if (coastalSeascape) completeShallowTerrainColor(color, coastalSeascapeFacies(coastalSeascape, x, z), rootEnvelope);
       if (reefValley) completeShallowTerrainColor(color, reefValleyFacies(reefValley, x, z), rootEnvelope);
@@ -344,6 +356,10 @@ export class OceanChunks {
     geometry.setAttribute('normal', new THREE.BufferAttribute(normals, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
+    if (sandMasks) {
+      geometry.setAttribute('oceanSandPosition', new THREE.BufferAttribute(oceanSandSurfaceCoordinates(positions, chunk.id), 2));
+      geometry.setAttribute('oceanSandMask', new THREE.BufferAttribute(sandMasks, 3));
+    }
     geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     geometry.computeBoundingBox();
     geometry.computeBoundingSphere();
@@ -649,6 +665,8 @@ export class OceanChunks {
         ridgeScope: 'up to 25 database-ready owners; original saved scenery or committed ridge plans; unknown owners wait before rendering' } : {}),
       ...(this._livingShallows ? { sceneProfile: 'living-shallows-v1', assetVersion: LIVING_SHALLOWS_ASSET_VERSION,
         substrateDisplayVersion: LIVING_REEF_SUBSTRATE_VERSION,
+        ...(this._sandHabitat ? { sandSurfaceDisplayVersion: OCEAN_SAND_SURFACE_VERSION,
+          sandSurfaceScope: 'soft-bottom colour, grain and ripple normal; actual hard and root envelopes; no floor relief or sediment simulation' } : {}),
         ownedMeadowGeometries, maxOwnedMeadowGeometries: MAX_ACTIVE_CHUNKS,
         meadowEnvironment: { clockSec: this._grassUniforms.time.value, baseCurrentMps: this._grassUniforms.current.value,
           bendLimit: .05, scope: 'saved world clock; shared local water field; displayed shoots, no added stock or plant physics' } } : {}),

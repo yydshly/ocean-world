@@ -33,6 +33,8 @@ import { DeepOceanChunks } from './DeepOceanChunks.js';
 import { DeepOceanEcology } from '../deepOceanEcology.js';
 import { DeepOceanAnimals } from './DeepOceanAnimals.js';
 import { OceanWaterParticles } from './OceanWaterParticles.js';
+import { OceanAnimalSediment } from './OceanAnimalSediment.js';
+import { OceanAnimalEncounters } from './oceanAnimalEncounters.js';
 import { createOceanEnvironment } from '../oceanEnvironment.js';
 import { oceanCommunityReading, nearestOceanAnimal } from '../oceanCommunityReading.js';
 import { oceanFormationObservation } from '../oceanFormationObservation.js';
@@ -180,7 +182,7 @@ export class ReefWorld {
         // moves only when the rendering origin shifts during ocean exploration.
         this.reefRoot=new THREE.Group();this.scene.add(this.reefRoot);
         for(const object of [this.reefMesh,this.decorations,this.reefScanAsset?.group,...[...this.entities.values()].map(e=>e.object)])if(object)this.reefRoot.add(object);
-        this.oceanChunks=this.isDeep?new DeepOceanChunks(seed,{sandMaterial:this.sandMaterial,seascape:true}):this.isKelp?new KelpOceanChunks(seed,{sandMaterial:this.sandMaterial,forestBelt:true}):new OceanChunks(seed,{sandMaterial:this.sandMaterial,livingGeology:this.isLivingShallows});
+        this.oceanChunks=this.isDeep?new DeepOceanChunks(seed,{sandMaterial:this.sandMaterial,seascape:true}):this.isKelp?new KelpOceanChunks(seed,{sandMaterial:this.sandMaterial,forestBelt:true}):new OceanChunks(seed,{sandMaterial:this.sandMaterial,livingGeology:this.isLivingShallows,sandHabitat:this.isLivingShallows});
         this.bindAuthoredSurface();
         if(this.isLivingShallows){
           this.reefRoot.visible=false;
@@ -206,6 +208,10 @@ export class ReefWorld {
         if(!this.isDeep){
           this.oceanWaterParticles=new OceanWaterParticles(this.scene,{seed,surfaceY:this.surfaceY});
           this.oceanWaterParticles.root.visible=false;
+        }
+        if(this.isLivingShallows){
+          this.oceanAnimalSediment=new OceanAnimalSediment(this.scene,{seed,surfaceY:this.surfaceY});
+          this.oceanAnimalEncounters=new OceanAnimalEncounters();
         }
       this.onOceanCheckpoint=()=>{this.persistLivingWorld();if(!this.oceanEcologyResetting)this.oceanEcology?.checkpoint().catch(()=>{});};
       this.onOceanVisibility=()=>{if(document.visibilityState==='hidden')this.onOceanCheckpoint();};
@@ -1155,7 +1161,7 @@ export class ReefWorld {
     const row=this.oceanEcology.snapshot().regions.find(region=>region.id===centre&&region.benthicLifeVersion===1);
     if(!row)return false;
     const life=this.oceanEcology.agents.filter(agent=>agent.regionId===centre&&agent.alive&&agent.benthicLifeIndividualVersion===1);
-    const anchor=life.find(agent=>agent.speciesId==='blue-spotted-ray')?.position||life.find(agent=>agent.speciesId==='reef-goatfish')?.position||life[0]?.position;
+    const anchor=life.find(agent=>agent.speciesId==='reef-goatfish'&&this.oceanChunks.generator.sample(agent.position.x,agent.position.z).substrate==='sand')?.position||life.find(agent=>agent.speciesId==='blue-spotted-ray')?.position||life[0]?.position;
     if(!anchor)return false;
     const x=anchor.x-4,z=anchor.z+4,y=Math.min(this.surfaceY-.6,this.habitatY(x,z)+2.5);
     this.oceanChunks.update(position);
@@ -1707,6 +1713,7 @@ export class ReefWorld {
         const position=this.oceanWorldPosition(),target=this.controls.target.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z));
         if(Math.hypot(...['x','y','z'].map(k=>position[k]-frame.position[k]))>.05||
           (routeId!=='seagrass-meadow-region'&&Math.hypot(...['x','y','z'].map(k=>target[k]-frame.target[k]))>.05))return false;
+        if(routeId==='seagrass-meadow-region')this.oceanAnimalEncounters?.reset();
         this.directorMotion={shot:Object.freeze({kind:'reef-valley-route',durationSec,distanceM:segment.distanceM,groups,segmentDurationSec:durationSec/groups,routeId}),
           reefValleyRoute:true,reefValleySegments:[segment],active:true,complete:false,elapsedSec:0,travelledM:0,error:null,playbackRate,
           meadowStartOffset:routeId==='seagrass-meadow-region'?{x:target.x-position.x,y:target.y-position.y,z:target.z-position.z}:null,
@@ -1858,6 +1865,13 @@ export class ReefWorld {
         motion.reefValleySegments.push(next);motion.shot=Object.freeze({...motion.shot,distanceM:motion.shot.distanceM+next.distanceM});
       }
       const frame=this.sampleReefValleyRegionSegment(motion.reefValleySegments[index],elapsed-index*motion.shot.segmentDurationSec,motion.shot.segmentDurationSec);
+      if(motion.shot.routeId==='seagrass-meadow-region'&&elapsed>=6){
+        const encounter=this.oceanAnimalEncounters?.update({frame,agents:this.oceanEcology.agents,
+          catalog:this.catalog,activeOwnerIds:[...this.oceanEcology._active.keys()],elapsedSec:elapsed,
+          paused:this.paused,ecologyAvailable:!this.oceanEcologyResetting,
+          visibilityM:Math.min(14,this.oceanLocalWater?.visibilityM??14),fovDeg:this.camera.fov??49,aspect:this.camera.aspect??1});
+        if(encounter)frame.target=encounter.target;
+      }
       if(motion.meadowStartOffset&&elapsed<6){
         const t=elapsed/6,ease=t*t*(3-2*t);
         for(const k of ['x','y','z'])frame.target[k]=frame.position[k]+motion.meadowStartOffset[k]*(1-ease)+(frame.target[k]-frame.position[k])*ease;
@@ -1883,7 +1897,7 @@ export class ReefWorld {
       // Manual controls can release a finished shot before the guide's next
       // timer observes it. Acknowledge its actual completion before clearing.
       if(motion?.complete===true&&!motion.error&&motion.shot)this.onDirectorMotionComplete?.(this.directorMotionSnapshot());
-    }finally{this.directorMotion=null;this._directorFocusAssessment=null;}
+    }finally{this.directorMotion=null;this._directorFocusAssessment=null;this.oceanAnimalEncounters?.reset();}
   }
   directorMotionSnapshot(){
     const motion=this.directorMotion,shot=motion?.shot;
@@ -2406,7 +2420,8 @@ export class ReefWorld {
       ...(this.isLivingShallows&&this.livingVisualRoute?{visualRoute:{status:this.livingVisualRoute.status,reason:this.livingVisualRoute.reason??null,
         sourceElementIds:[...(this.livingVisualRoute.sourceElementIds??[])],sourceAgentIds:[...(this.livingVisualRoute.sourceAgentIds??[])],
         pathLengthM:this.livingVisualRoute.pathLengthM??0}}:{}),
-      waterParticles:this.oceanWaterParticles?.stats};
+      waterParticles:this.oceanWaterParticles?.stats,
+      animalSediment:this.oceanAnimalSediment?.stats,animalEncounters:this.oceanAnimalEncounters?.stats()};
   }
   updateOceanWater(dt){
     if(!this.oceanWaterField)return;
@@ -2445,6 +2460,10 @@ export class ReefWorld {
     this.oceanWaterParticles.update({cameraPosition:position,renderOrigin:this.oceanRenderOrigin,dtSec:dt,paused:this.paused,
       currentVector:water.currentVector,turbidity:water.turbidity,lightAtDepth:water.lightAtDepth,
       floorY:this.oceanChunks.generator.sample(position.x,position.z).floorY,blend});
+    this.oceanAnimalSediment?.update({agents:this.oceanEcology?.agents??[],generator:this.oceanChunks.generator,
+      dtSec:this._animalSedimentDtSec??0,paused:this.paused||this.oceanEcologyResetting,
+      renderOrigin:this.oceanRenderOrigin,cameraPosition:position,currentVector:water.currentVector,
+      lightAtDepth:water.lightAtDepth,surfaceAt:(x,z)=>this.habitatY(x,z)});
     this.oceanChunks.setEnvironment(this.isLivingShallows?env:water,this.isLivingShallows?this.livingClockSec:this.visualTimeSec);
     this.oceanSceneElements?.setEnvironment(water,this.visualTimeSec);
     this.visualEnvironment.localWater='continuous coordinate field; depth attenuation and advection are qualitative proxies';
@@ -2501,6 +2520,7 @@ export class ReefWorld {
       this.setOceanRenderOrigin(0,0);this.oceanChunks.reset(this.sim.seed);this.setView('wide',true);
       this.oceanWaterField=this.isDeep?null:createOceanEnvironment(this.sim.seed,this.oceanChunks.generator,{uniformCurrent:this.isKelp});this.oceanLocalWater=null;
       this.oceanWaterParticles?.reset(this.sim.seed);
+      this.oceanAnimalSediment?.reset(this.sim.seed);this.oceanAnimalEncounters?.reset();this._animalSedimentDtSec=0;
       this.oceanEcology.reset(this.sim.seed,this.oceanChunks.generator).then(()=>{
         if(this.disposed||revision!==this.oceanResetRevision)return;
         this.oceanEcologyResetting=false;
@@ -2521,10 +2541,15 @@ export class ReefWorld {
     const frameTime=Math.max(now,this.lastTime);
     const rawFrameSeconds=(frameTime-this.lastTime)/1000;
     const dt=clamp(rawFrameSeconds,0,.12);this.lastTime=frameTime;this.elapsed+=dt;
+    this._animalSedimentDtSec=0;
     if(!this.paused){this.visualTimeSec+=dt;try{
       if(this.isLivingShallows){this.livingClockSec+=dt*this.speed;this.sim.timeSec=this.livingClockSec;this.sim.environment.hour=(this.sim.environment.hour+dt*this.speed/3600)%24;}
       else this.sim.step(dt*this.speed);
-      if(!this.oceanEcologyResetting)this.oceanEcology?.step(dt*this.speed,this.sim.environment);
+      if(!this.oceanEcologyResetting){
+        const ecologyClock=this.oceanEcology?._activeTime??0;
+        this.oceanEcology?.step(dt*this.speed,this.sim.environment);
+        this._animalSedimentDtSec=Math.max(0,(this.oceanEcology?._activeTime??0)-ecologyClock);
+      }
     }catch(error){this.paused=true;this.errors.push(error.message);this.onError(`生态模型停止：${error.message}`);}}
     if(this.isLivingShallows&&this.elapsed-(this._livingStateSavedAt??0)>=2)this.persistLivingWorld();
     if(!this.isLivingShallows)this.syncPopulation();
@@ -2728,6 +2753,8 @@ export class ReefWorld {
     release(()=>this.oceanHabitatScenes?.dispose());this.oceanHabitatScenes=null;
     release(()=>this.oceanMacroLandscape?.dispose());this.oceanMacroLandscape=null;
     release(()=>this.oceanWaterParticles?.dispose());this.oceanWaterParticles=null;
+    release(()=>this.oceanAnimalSediment?.dispose());this.oceanAnimalSediment=null;
+    this.oceanAnimalEncounters?.reset();this.oceanAnimalEncounters=null;
     release(()=>this.oceanChunks?.dispose());this.oceanChunks=null;
     release(()=>this.warmupTarget?.dispose());this.warmupTarget=null;
     release(()=>{if(this.onControlStart)this.controls?.removeEventListener('start',this.onControlStart);});release(()=>this.controls?.dispose());

@@ -64,7 +64,7 @@ test('ordinary sand-and-reef entry awaits persisted animals and renders actual n
   assert.equal(row.benthicLifeVersion,1);
   assert.ok(f.commits.some(rows=>rows.some(([key,r])=>key===id&&r.benthicLifeVersion===1)));
   const actual=f.ecology.agents.filter(a=>a.regionId===id&&a.alive&&a.benthicLifeIndividualVersion===1);
-  const anchor=actual.find(a=>a.speciesId==='blue-spotted-ray')?.position||actual.find(a=>a.speciesId==='reef-goatfish')?.position||actual[0]?.position;
+  const anchor=actual.find(a=>a.speciesId==='reef-goatfish'&&f.generator.sample(a.position.x,a.position.z).substrate==='sand')?.position||actual.find(a=>a.speciesId==='blue-spotted-ray')?.position||actual[0]?.position;
   assert.ok(anchor); assert.ok(worldTarget(f.world).distanceTo(new THREE.Vector3(anchor.x,anchor.y+.3,anchor.z))<.05);
   f.animals.update(f.ecology.agents,0,f.world.oceanRenderOrigin,f.world.camera.position,f.ecology.scenery);
   for(const a of actual) assert.ok(f.animals.entities.has(a.id),a.speciesId);
