@@ -1,3 +1,7 @@
+<!-- reef-filter-status -->
+2026-10-09 最新有限批补鳞砗磲、黑蝶贝和固定滤食行为，目录85、固定55实际类型54→57；完整说明与限制见 [REEF_FILTER_LIFE.md](REEF_FILTER_LIFE.md)。后续缺失动物类群与整体生活关系优先。以下历史保留。
+<!-- /reef-filter-status -->
+
 <!-- reef-depth-status -->
 2026-10-09 最新有限批按实际水深重分配居民，种子55沿途空站3→1，动物预算和旧历史保持；当地类型数的取舍和验证范围见 [REEF_DEPTH_COMMUNITY.md](REEF_DEPTH_COMMUNITY.md)。后续继续跨生境丰富度与完整生活层。以下历史保留。
 <!-- /reef-depth-status -->

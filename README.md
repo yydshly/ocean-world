@@ -1,3 +1,9 @@
+<!-- reef-filter-entry -->
+2026-10-09 新增鳞砗磲、黑蝶贝及固定滤食生活层，浅海目录85，固定55实际类型54→57。
+
+[本地贝类入口](http://127.0.0.1:4175/ocean-world/?demo=reef-valley-region&seed=55&world=reef-filter-life) · [本批说明](docs/REEF_FILTER_LIFE.md) · [冻结证据](output/validation/reef-filter-delivery.json)。39定向检查与构建通过；GPU观感未验，线上以本提交Actions实际发布结果为准。
+<!-- /reef-filter-entry -->
+
 <!-- reef-depth-entry -->
 2026-10-09 深浅生活层分配已接入：目录83条、预算保持，固定55沿途空站3→1；旧存档保留。
 
