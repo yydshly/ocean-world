@@ -55,10 +55,11 @@ import { meadowAnimalBeltMarked, validateMeadowAnimalBelt, meadowAnimalBeltAlloc
 import { oceanReefResidentsSpeciesById } from './oceanReefResidentsSpecies.js';
 import { oceanReefDiversitySpeciesById } from './oceanReefDiversitySpecies.js';
 import { oceanReefCommunitySpeciesById } from './oceanReefCommunitySpecies.js';
+import { oceanReefLifeSpeciesById } from './oceanReefLifeSpecies.js';
 import { initializeReefResidents, validateReefResidentsRecord, tickReefResidentAgent,
   isReefResidentAgent, reefResidentsMarked, reefResidentPreyConsumerCount } from './oceanReefResidents.js';
 
-const speciesById = { ...reefSpeciesById, ...oceanSlopeSpeciesById, ...oceanPelagicSpeciesById, ...oceanMantaSpeciesById, ...reefGuildSpeciesById, ...openWaterSpeciesById, ...oceanBiodiversitySpeciesById, ...oceanBenthicLifeSpeciesById, ...oceanMeadowLifeSpeciesById, ...oceanShoalLifeSpeciesById, ...oceanReefResidentsSpeciesById, ...oceanReefDiversitySpeciesById, ...oceanReefCommunitySpeciesById };
+const speciesById = { ...reefSpeciesById, ...oceanSlopeSpeciesById, ...oceanPelagicSpeciesById, ...oceanMantaSpeciesById, ...reefGuildSpeciesById, ...openWaterSpeciesById, ...oceanBiodiversitySpeciesById, ...oceanBenthicLifeSpeciesById, ...oceanMeadowLifeSpeciesById, ...oceanShoalLifeSpeciesById, ...oceanReefResidentsSpeciesById, ...oceanReefDiversitySpeciesById, ...oceanReefCommunitySpeciesById, ...oceanReefLifeSpeciesById };
 const meadowLifeMarked = row => row && (Object.keys(row).some(key => key.startsWith('meadowLife')) ||
   [row.agents, row.turtleAgents].filter(Array.isArray).flat().some(agent => agent && (isOceanMeadowLifeAgent(agent) ||
     Object.keys(agent).some(key => key.startsWith('meadowLife')))));
@@ -132,7 +133,7 @@ export function oceanSupportHeight(generator, x, z, { avoidCoral = false, includ
  * food pools are relative indices, not measured biomass. Unloaded regions
  * freeze, and changed state is restored from IndexedDB when they return. */
 export class OceanEcology {
-  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false, turtleGrazing = false, shallowSeascape = false, biodiversity = false, benthicLife = false, meadowLife = false, shoalLife = false, coastalSeascape = false, reefValleyRegion = false, meadowRegion = false, meadowAnimalBelt = false, reefResidents = false, reefDiversity = false, reefCommunity = false } = {}) {
+  constructor(seed, generator, { store = new OceanEcologyStore(), turtles = false, sceneElements = false, habitatScenes = false, macroLandscape = false, livingGeology = false, habitatMosaic = false, seabedRelief = false, seascape = false, livingBelt = false, turtleGrazing = false, shallowSeascape = false, biodiversity = false, benthicLife = false, meadowLife = false, shoalLife = false, coastalSeascape = false, reefValleyRegion = false, meadowRegion = false, meadowAnimalBelt = false, reefResidents = false, reefDiversity = false, reefCommunity = false, reefLife = false } = {}) {
     this.seed = seed;
     this.generator = generator;
     this.livingNetworkEnabled = generator.profile === LIVING_NETWORK_PROFILE;
@@ -177,6 +178,8 @@ export class OceanEcology {
     this.reefDiversityEnabled = this._reefDiversityRequested && this.reefResidentsEnabled;
     this._reefCommunityRequested = reefCommunity === true;
     this.reefCommunityEnabled = this._reefCommunityRequested && this.reefDiversityEnabled;
+    this._reefLifeRequested = reefLife === true;
+    this.reefLifeEnabled = this._reefLifeRequested && this.reefCommunityEnabled;
     this._reefValleyBirths = new WeakMap();
     this._reefValleyAdmission = { privateOwnerCount: 0, privateOwnerLimit: REEF_VALLEY_PREFETCH_OWNER_LIMIT, groups: [] };
     this._reefValleyTiming = null;
@@ -1766,7 +1769,7 @@ export class OceanEcology {
         // whole-group transaction; visited records are never supplemented.
         const reefResidentsInitialized = reefResidentsFresh && this.reefResidentsEnabled && !valid && saved === null &&
           this.generator.chunk(...coordinates).ridgePlan?.version === 8 && initializeReefResidents(region, this.generator, {
-            fresh: true, version: this.reefCommunityEnabled ? 3 : this.reefDiversityEnabled ? 2 : 1, random: salt => this._random(region, salt),
+            fresh: true, version: this.reefLifeEnabled ? 4 : this.reefCommunityEnabled ? 3 : this.reefDiversityEnabled ? 2 : 1, random: salt => this._random(region, salt),
             surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
             bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT });
         if (reefResidentsInitialized && (!validateLivingNetworkRecord(region) || !validateReefResidentsRecord(region, this.generator, {
@@ -2326,7 +2329,7 @@ export class OceanEcology {
       region.resources[pool] -= excess; region.ledger.exported += excess;
     }
     if (this.livingNetworkEnabled) tickReefGuildPool(region, STEP, {
-      extraConsumers: reefResidentPreyConsumerCount(region), maxExtraConsumers: region.reefResidentsVersion === 3 ? 6 : region.reefResidentsVersion === 2 ? 4 : 2 });
+      extraConsumers: reefResidentPreyConsumerCount(region), maxExtraConsumers: region.reefResidentsVersion === 4 ? 8 : region.reefResidentsVersion === 3 ? 6 : region.reefResidentsVersion === 2 ? 4 : 2 });
     if (this.livingNetworkEnabled) tickOpenWaterLifePool(region, STEP);
     const alive = region.agents.filter(agent => agent.alive);
     const predators = alive.filter(agent => speciesById[agent.speciesId].guild === 'predator');
@@ -2706,7 +2709,8 @@ export class OceanEcology {
           reefValleyRegion: { enabled: this.reefValleyRegionEnabled, ...clone(this._reefValleyAdmission), transitionTimingMs: clone(this._reefValleyTiming),
             ...(this.reefResidentsEnabled ? { residentsEnabled: true, residentsScope: 'new unvisited v8 reef groups only; natural spare capacity and actual support',
               ...(this.reefDiversityEnabled ? { diversityEnabled: true, diversityScope: 'eight representative types; at most four actual residents in natural spare slots' } : {}),
-              ...(this.reefCommunityEnabled ? { communityEnabled: true, communityScope: 'fourteen representative types; at most six actual residents in natural spare slots' } : {}) } : {}) } } : {}),
+              ...(this.reefCommunityEnabled ? { communityEnabled: true, communityScope: 'fourteen representative types; at most six actual residents in natural spare slots' } : {}),
+              ...(this.reefLifeEnabled ? { lifeEnabled: true, lifeScope: 'twenty representative types; at most eight actual residents in natural spare slots' } : {}) } : {}) } } : {}),
         ...(this.meadowRegionEnabled || this._meadowRegionAdmission.groups.length ? {
           meadowRegion: { enabled: this.meadowRegionEnabled, ...clone(this._meadowRegionAdmission), transitionTimingMs: clone(this._meadowRegionTiming),
             ...(this.meadowAnimalBeltEnabled ? { animalBeltEnabled: true, animalBeltScope: 'initial route-neighbourhood habitats only; saved populations are preserved' } : {}) } } : {}),
@@ -2758,6 +2762,7 @@ export class OceanEcology {
     this.reefResidentsEnabled = this._reefResidentsRequested && this.reefValleyRegionEnabled;
     this.reefDiversityEnabled = this._reefDiversityRequested && this.reefResidentsEnabled;
     this.reefCommunityEnabled = this._reefCommunityRequested && this.reefDiversityEnabled;
+    this.reefLifeEnabled = this._reefLifeRequested && this.reefCommunityEnabled;
     this.meadowRegionEnabled = this._meadowRegionRequested && this.livingGeologyEnabled &&
       typeof generator.withMeadowRegionPlans === 'function' && typeof generator.replaceRidgeOwners === 'function';
     this.meadowAnimalBeltEnabled = this._meadowAnimalBeltRequested && this.meadowRegionEnabled &&

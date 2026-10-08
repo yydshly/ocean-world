@@ -19,8 +19,12 @@ import { isReefDiversityFish, createReefDiversityFish, animateReefDiversityFish,
 import { isReefDiversityBenthic, createReefDiversityBenthic, animateReefDiversityBenthic, disposeReefDiversityBenthic } from './OceanReefDiversityBenthicAssets.js';
 import { isReefCommunityFish, createReefCommunityFish, animateReefCommunityFish, disposeReefCommunityFish } from './OceanReefCommunityFishAssets.js';
 import { isReefCommunityBenthic, createReefCommunityBenthic, animateReefCommunityBenthic, disposeReefCommunityBenthic } from './OceanReefCommunityBenthicAssets.js';
+import { isReefLifeFish, createReefLifeFish, animateReefLifeFish, disposeReefLifeFish } from './OceanReefLifeFishAssets.js';
+import { isReefLifeBenthic, createReefLifeBenthic, animateReefLifeBenthic, disposeReefLifeBenthic } from './OceanReefLifeBenthicAssets.js';
 const isTurtle = entity => entity.speciesId === 'green-turtle';
 const disposeAnimal = entity => isTurtle(entity) ? disposeOceanTurtleOrganism(entity.object)
+  : isReefLifeFish(entity.speciesId) ? disposeReefLifeFish(entity.object)
+  : isReefLifeBenthic(entity.speciesId) ? disposeReefLifeBenthic(entity.object)
   : isReefCommunityFish(entity.speciesId) ? disposeReefCommunityFish(entity.object)
   : isReefCommunityBenthic(entity.speciesId) ? disposeReefCommunityBenthic(entity.object)
   : isReefDiversityFish(entity.speciesId) ? disposeReefDiversityFish(entity.object)
@@ -68,6 +72,8 @@ export class OceanAnimals {
       if (this.entities.has(id)) continue;
       const species = this.catalog.get(agent.speciesId);
       const object = agent.speciesId === 'green-turtle' ? createOceanTurtleOrganism(species)
+        : isReefLifeFish(agent.speciesId) ? createReefLifeFish(species)
+        : isReefLifeBenthic(agent.speciesId) ? createReefLifeBenthic(species)
         : isReefCommunityFish(agent.speciesId) ? createReefCommunityFish(species)
         : isReefCommunityBenthic(agent.speciesId) ? createReefCommunityBenthic(species)
         : isReefDiversityFish(agent.speciesId) ? createReefDiversityFish(species)
@@ -135,8 +141,8 @@ export class OceanAnimals {
       const heading = Number.isFinite(agent.heading) ? agent.heading
         : Math.atan2(agent.velocity?.z || 0, agent.velocity?.x || 1);
       object.rotation.set(0, -heading, 0);
-      if (isReefResidentSpecies(entity.speciesId) || isReefDiversityFish(entity.speciesId) || isReefDiversityBenthic(entity.speciesId) || isReefCommunityFish(entity.speciesId) || isReefCommunityBenthic(entity.speciesId)) {
-        if (entity.speciesId === 'painted-spiny-lobster' || isReefDiversityBenthic(entity.speciesId) || isReefCommunityBenthic(entity.speciesId)) {
+      if (isReefResidentSpecies(entity.speciesId) || isReefDiversityFish(entity.speciesId) || isReefDiversityBenthic(entity.speciesId) || isReefCommunityFish(entity.speciesId) || isReefCommunityBenthic(entity.speciesId) || isReefLifeFish(entity.speciesId) || isReefLifeBenthic(entity.speciesId)) {
+        if (entity.speciesId === 'painted-spiny-lobster' || isReefDiversityBenthic(entity.speciesId) || isReefCommunityBenthic(entity.speciesId) || isReefLifeBenthic(entity.speciesId)) {
           const up = new THREE.Vector3(agent.supportNormal?.x ?? 0, agent.supportNormal?.y ?? 1, agent.supportNormal?.z ?? 0).normalize();
           const forward = new THREE.Vector3(Math.cos(heading), 0, Math.sin(heading));
           forward.addScaledVector(up, -forward.dot(up)).normalize();
@@ -178,7 +184,9 @@ export class OceanAnimals {
       if (entity.kind === 'turtle') {
         object.rotation.z = Number.isFinite(agent.pitch) ? THREE.MathUtils.clamp(agent.pitch, -.15, .15) : 0;
         animateOceanTurtleOrganism(object, agentTimeSec, agent);
-      } else if (isReefCommunityFish(entity.speciesId)) animateReefCommunityFish(object, agent, agentTimeSec);
+      } else if (isReefLifeFish(entity.speciesId)) animateReefLifeFish(object, agent, agentTimeSec);
+      else if (isReefLifeBenthic(entity.speciesId)) animateReefLifeBenthic(object, agent, agentTimeSec);
+      else if (isReefCommunityFish(entity.speciesId)) animateReefCommunityFish(object, agent, agentTimeSec);
       else if (isReefCommunityBenthic(entity.speciesId)) animateReefCommunityBenthic(object, agent, agentTimeSec);
       else if (isReefDiversityFish(entity.speciesId)) animateReefDiversityFish(object, agent, agentTimeSec);
       else if (isReefDiversityBenthic(entity.speciesId)) animateReefDiversityBenthic(object, agent, agentTimeSec);

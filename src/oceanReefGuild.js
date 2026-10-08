@@ -75,7 +75,7 @@ export function tickReefGuildPool(region, dt, { extraConsumers = 0, maxExtraCons
   // New, independently admitted reef residents may share this unresolved
   // animal-food field. Its support is still an actual transfer from detritus;
   // the default leaves every original owner and food equation unchanged.
-  const extraLimit = maxExtraConsumers === 6 ? 6 : maxExtraConsumers === 4 ? 4 : 2;
+  const extraLimit = maxExtraConsumers === 8 ? 8 : maxExtraConsumers === 6 ? 6 : maxExtraConsumers === 4 ? 4 : 2;
   const added = Number.isSafeInteger(extraConsumers) ? Math.max(0, Math.min(extraLimit, extraConsumers)) : 0;
   const consumers = region.agents.filter(agent => isReefGuildAgent(agent) && agent.speciesId !== 'tube-sponge' && agent.alive).length + added;
   const transferred = Math.min(region.resources.detritus, consumers * .000025 * dt,
