@@ -110,7 +110,7 @@ export function ShallowSampleApp(){
   const exploration=new URL(window.location.href);exploration.searchParams.set('demo','life-expedition');exploration.searchParams.set('world','whole-seabed');
   return <main className="shallow-sample">
     <div className="sample-canvas" ref={canvas}/>
-    <header className="sample-header"><span className="sample-brand">TIDAL <small>浅海观察</small></span><nav><a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}assets/shallow-artist/credits.html`} target="_blank" rel="noreferrer">模型来源</a> · <a href={exploration.href}>进入持续探索 ↗</a></nav></header>
+    <header className="sample-header"><span className="sample-brand">TIDAL <small>浅海观察</small></span><nav><a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}assets/shallow-artist/credits.html`} target="_blank" rel="noreferrer">模型来源</a> · <a href={exploration.href}>进入持续探索 ↗</a></nav></header>
     <section className="sample-title" aria-live="polite"><p>浅海样板 · 连续巡游 75 秒</p><h1>{chapter.title}</h1><span>{chapter.detail}</span></section>
     {summary&&<aside className="sample-community">{summary.species} 类动物 · {summary.animals} 个体<span>{summary.scannedReef?'扫描珊瑚试验 · 整景验收未通过':'群游 · 巡底 · 慢移 · 固着'}</span></aside>}
     {error&&<div className="sample-error" role="alert">{error}<button onClick={()=>window.location.reload()}>重新载入</button></div>}
