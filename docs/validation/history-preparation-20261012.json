@@ -1,0 +1,253 @@
+{
+  "version": "history-preparation-candidate-20261012",
+  "baseCommit": "a38b541",
+  "scope": "finite immutable terrain reuse; scenes, assets, species, trajectories, saved populations and simulation remain frozen",
+  "published": false,
+  "worldChecks": "not a full cloud or world suite",
+  "nativeChecks": {
+    "batch": 20,
+    "batchPass": 20,
+    "additionalMeadowCasePass": 1,
+    "uniquePassCases": 21
+  },
+  "build": {
+    "passed": true,
+    "viteSeconds": 17.74
+  },
+  "benchmark": {
+    "scope": "actual Node Workers, same complete 12-owner production group; before then after, three passes each; not browser/network A/B",
+    "before": {
+      "coldThreeJobsMs": 8624.149399999998,
+      "warmThreeJobsMeanMs": 1862.6941500000012,
+      "warmHabitatMeanMs": 356.73395000000164,
+      "followupBytes": 4801262
+    },
+    "after": {
+      "coldThreeJobsMs": 7139.654700000003,
+      "warmThreeJobsMeanMs": 986.7766499999962,
+      "warmHabitatMeanMs": 12.377649999998539,
+      "followupBytes": 485861
+    }
+  },
+  "browserEnvironment": {
+    "cssViewport": [
+      1280,
+      720
+    ],
+    "actualRenderPixelRatio": 1.0000000298023224,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "existingBrowserCacheAndHistory": true,
+    "heavyBuildsOrTestsDuringPlayback": false,
+    "otherTest3DScenes": 0,
+    "comparisonLimit": "previous candidate render pixelRatio was 1.5; do not compare FPS; browser total wait reduction was not proven"
+  },
+  "browser": {
+    "sample": {
+      "completed": true,
+      "speed": 1,
+      "modelSeconds": 75,
+      "wallSeconds": 75.00629999997615,
+      "meanFPS": 61.12999156046136,
+      "p95FrameMs": 29.099999999998545,
+      "maxFrameMs": 91.69999999999709,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "navigationToReadyMs": 7965.5,
+      "console": []
+    },
+    "life": {
+      "completed": true,
+      "modelSeconds": 240,
+      "distanceM": 451.8887904649207,
+      "nearbyObservedDisplayClasses": 24,
+      "habitats": [
+        "reef",
+        "sand",
+        "meadow",
+        "slope"
+      ],
+      "playingLongFrameMs": [
+        266.6000000000058,
+        1162.4000000000233
+      ],
+      "initialRegionPreparationMs": 29285,
+      "console": [],
+      "errors": []
+    },
+    "director": {
+      "speed": 4,
+      "completeChapters": 0,
+      "totalChapters": 67,
+      "lastChapterIndex": 0,
+      "lastModelSeconds": 287.62120000001056,
+      "chapterDurationSec": 800,
+      "maximumSampledRegionPreparationMs": 24584.5,
+      "maximumSampledWaitCounterSec": 9,
+      "maximumCapturedPlayingFrameMs": 1004.1999999999971,
+      "stoppedForObservedFailure": true,
+      "console": [],
+      "errors": []
+    }
+  },
+  "acceptance": {
+    "sampleFullPlayback": true,
+    "lifeFullPlayback": true,
+    "noSecondLongPlayingStalls": false,
+    "directorFullFirstChapter": false,
+    "directorFull67Chapters": false,
+    "browserWaitReductionProven": false,
+    "readyToDeploy": false
+  },
+  "discardedExperiment": "First-pass bed/surface query memos had no consistent improvement; removed before final tests/build/browser checks.",
+  "evidence": [
+    {
+      "path": "output/validation/history-preparation/checks.log",
+      "sha256": "b1d6cdb89feea5fdbf26138e70f19929b2a90af8a602545186787ebbe59a5647"
+    },
+    {
+      "path": "output/validation/history-preparation/meadow-check.log",
+      "sha256": "975cf974b9c5caa07370739033a839b7aa67a37ca67b9b4b9b21ef55ae9337a2"
+    },
+    {
+      "path": "output/validation/history-preparation/build.log",
+      "sha256": "eade5742ddd027ade0b8b78a42db7ed9c88c44a4fb4275ade54a1c81fb304dea"
+    },
+    {
+      "path": "output/validation/history-preparation/worker-benchmark.json",
+      "sha256": "c81045e30541467f98d2edd6f6f322f2e4b896e69866ae54019b60b1dff60920"
+    },
+    {
+      "path": "output/validation/history-preparation/worker-benchmark.log",
+      "sha256": "da6e397f92db2d17e1f191304e53f540b3d5bb5b56349056fe93eb9901aee406"
+    },
+    {
+      "path": "output/validation/history-preparation/native-before.json",
+      "sha256": "ca8bbf757122c55ce541e8837a7c8aca8fb56458b81c5edabc8008201b5fc0b9"
+    },
+    {
+      "path": "output/validation/history-preparation/native-after.json",
+      "sha256": "9fcc56398370d3daf93146a90f1c609ca87823f4a8415d0656b86c352783b37f"
+    },
+    {
+      "path": "output/validation/history-preparation/paired-benchmark.json",
+      "sha256": "0c9674803b1700ceca593b0a4480178479e9c334e4530852f7a183ed64c106ef"
+    },
+    {
+      "path": "output/validation/history-preparation/director-initial.json",
+      "sha256": "e568e343fe3900c4a552e80843b1c916ab2552ab7ef51a118516913689a35592"
+    },
+    {
+      "path": "output/validation/history-preparation/director-snapshots.json",
+      "sha256": "0b312b359d42ebc90f1bf0bc225f5450ffd24adba40a7f062b51b304c6c2c220"
+    },
+    {
+      "path": "output/validation/history-preparation/director-console.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "output/validation/history-preparation/director.png",
+      "sha256": "b475f35ae6ca7eed2637e0ed86f95f691cc20a3c53695fc0da2e1868078931af"
+    },
+    {
+      "path": "output/validation/history-preparation/life-snapshots.json",
+      "sha256": "eea095aa6c69330193d2a166ae984e14919c043095de96731bc2cc45401042a9"
+    },
+    {
+      "path": "output/validation/history-preparation/life-final.json",
+      "sha256": "088f17241065f90be8616e161bcab68dc83366b0f5cad44cfdaaf6746c0af4b2"
+    },
+    {
+      "path": "output/validation/history-preparation/life-console.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "output/validation/history-preparation/life.png",
+      "sha256": "9afe7cd4839d3258295546ce898d24de97dfc944fd0a26520a8ee50b8f7e2e5b"
+    },
+    {
+      "path": "output/validation/history-preparation/sample-final.json",
+      "sha256": "40d352bead8ba37441833feacdadd898c9e4dff3ac087a235cdc2b5c21ab60be"
+    },
+    {
+      "path": "output/validation/history-preparation/sample-console.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "output/validation/history-preparation/sample.png",
+      "sha256": "485e512814052a1c10d48a8106647b8b1b3c63bde20ee40da22e9245f64cdc3b"
+    },
+    {
+      "path": "output/validation/history-preparation/history-before.cpuprofile",
+      "sha256": "3d528b8681563264df81a8031686c17297e21e48379b40fcc5c8d7e1779f9c6e"
+    },
+    {
+      "path": "output/validation/history-preparation/oceanPreparationJobs-before.mjs",
+      "sha256": "680f84e521790a00066660eef58cadcaf3346ef194661d06bf77b3ee6a6ee3c8"
+    },
+    {
+      "path": "output/validation/history-preparation/oceanReefResidents-before.mjs",
+      "sha256": "a44047cd8ad4924c22861b666a7400e6e7bacc67aca401a371c6a32f0aa52712"
+    },
+    {
+      "path": "output/validation/history-preparation/worker-benchmark.mjs",
+      "sha256": "4e0d64ee16d39741b016f9b3f2190ca20dab5f221054b1451f2544b83fa5820b"
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/livingRidgeGeology.js",
+      "sha256": "8f3672ac691b674e8fe81f47e66a39d90213d323991441382f8593d5f33a76d2"
+    },
+    {
+      "path": "src/oceanPreparationJobs.js",
+      "sha256": "1ad62c33536d05a8900906f89a608727cf44a9a5a8a83860ad467d5265781366"
+    },
+    {
+      "path": "src/oceanReefResidents.js",
+      "sha256": "78dd91f83061793fe015e7f7c739368997ae56cf9c659e46f8170ad55bb01c87"
+    },
+    {
+      "path": "tests/history-context-transport.test.mjs",
+      "sha256": "98fd2cf63727006a17d42a3c79dae57470201afba26d6f14638f2b8c99b557f8"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "sha256": "5b13bfbf495edde3501ee5825c524226314c3186fe69b955b976bd55214846ca"
+    },
+    {
+      "path": "docs/HISTORY_PREPARATION.md",
+      "sha256": "f74cd9f9e16eb8cfd3b6ed9702f94825faff0c68c4abc226d27470c71b9b8c0a"
+    },
+    {
+      "path": "README.md",
+      "sha256": "fff9fb1270569ffc1c8d39d4d8886f9184b812438a482ea426d794893e5cbda5"
+    },
+    {
+      "path": "docs/CURRENT_STATUS.md",
+      "sha256": "92a1698570c30bf6b5c9dcbe4bd725eb6b027d9f9043ff9fd2dd2e7549e1e128"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "8b3b91cd63d0662fbcc88ebcb870522f10cffc88b7567b2b0366206f3a3325a4"
+    }
+  ],
+  "buildArtifacts": [
+    {
+      "path": "dist/client/assets/OceanApp-C8oaovue.js",
+      "sha256": "d25176e0926abc2e005880365b93810ed7b8e66c90194668e210064de6e99544"
+    },
+    {
+      "path": "dist/client/assets/ShallowSampleApp-D5Nb1y2b.js",
+      "sha256": "2d862bf681b13822613578abfd02449bfb407e7788d20ef2185eec0c4214ddba"
+    },
+    {
+      "path": "dist/client/assets/index-DuUneIDY.js",
+      "sha256": "dca33a76f7625ae869aed30001ca706cd12f658755c9a1415ecf5c8427de5d86"
+    }
+  ]
+}

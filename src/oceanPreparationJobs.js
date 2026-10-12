@@ -11,37 +11,52 @@ import { validateMeadowAnimalBelt } from './meadowAnimalBelt.js';
 // This module has no storage, DOM, render loop or shared live-world references.
 export function createOceanPreparationJobs() {
   let base = null, seed, wholeSeabed;
-  const contexts=new Map(), contextLimit=4;
+  const contexts=new Map(), retained=new Map(), contextLimit=4;
+  const lifetime=crypto.randomUUID(); let nextContext=0;
   let contextHits=0, contextValidations=0;
   const run=function run(kind, payload) {
-    if (!base || !Object.is(seed, payload.seed) || wholeSeabed !== (payload.wholeSeabed === true)) { seed = payload.seed; wholeSeabed = payload.wholeSeabed === true; base = withWholeSeabedGenerator(createLivingShallowsGenerator(seed), wholeSeabed); contexts.clear(); }
+    if (!base || !Object.is(seed, payload.seed) || wholeSeabed !== (payload.wholeSeabed === true)) { seed = payload.seed; wholeSeabed = payload.wholeSeabed === true; base = withWholeSeabedGenerator(createLivingShallowsGenerator(seed), wholeSeabed); contexts.clear(); retained.clear(); }
     if (kind === 'generate') {
       const { version, cx, cz } = payload;
       if (![8, 9].includes(version) || ![cx, cz].every(Number.isSafeInteger)) throw new TypeError('Invalid background macro-region request.');
       return (version === 8 ? createReefValleyRegionPlans : createSeagrassMeadowRegionPlans)(base, cx, cz);
     }
-    const plans = payload.plans;
+    let plans = payload.plans;
     if (kind === 'validate-plans') {
       if (!Array.isArray(plans) || plans.length > 25 || plans.some(p => !Number.isInteger(p?.version) || p.version < 1 || p.version > 9))
         throw new TypeError('Invalid background saved-plan request.');
       return plans.map(plan => validateLivingRidgePlan(plan, base));
     }
-    if (!Array.isArray(plans) || plans.length > 25 || plans.some(p => ![8, 9].includes(p?.version))) throw new TypeError('Invalid background plan batch.');
-    // Only complete, immutable terrain is cached. The full serialized source
-    // must match, including owner order and every height, support and element.
-    // Each history/birth still runs against fresh independent animal records.
-    const key=JSON.stringify(plans);
-    let entry=contexts.get(key);
-    if(entry) { contexts.delete(key); contexts.set(key,entry); contextHits++; }
-    else {
-      const generator=createLivingRidgeGenerator(base);
-      const withContext=plans[0]?.version===8 ? generator.prepareReefValleyContext(plans) : generator.prepareMeadowRegionContext(plans);
-      entry={generator,withContext}; contextValidations++;
-      if(contexts.size>=contextLimit)contexts.delete(contexts.keys().next().value);
-      contexts.set(key,entry);
+    if (payload.contextToken !== undefined && (plans !== undefined || !['history','resident-habitats'].includes(kind)))
+      throw new TypeError('Invalid retained physical context request.');
+    let entry;
+    if (payload.contextToken !== undefined) {
+      entry=retained.get(payload.contextToken);
+      if (!entry) throw new TypeError('Unknown or expired physical context.');
+      plans=entry.plans;
+      contexts.delete(entry.key); contexts.set(entry.key,entry); contextHits++;
+    } else {
+      if (!Array.isArray(plans) || plans.length > 25 || plans.some(p => ![8, 9].includes(p?.version))) throw new TypeError('Invalid background plan batch.');
+      // Only complete, immutable terrain is cached. The full serialized source
+      // must match, including owner order and every height, support and element.
+      // Each history/birth still runs against fresh independent animal records.
+      const key=JSON.stringify(plans);
+      entry=contexts.get(key);
+      if(entry) { contexts.delete(key); contexts.set(key,entry); contextHits++; }
+      else {
+        const generator=createLivingRidgeGenerator(base);
+        const withContext=plans[0]?.version===8 ? generator.prepareReefValleyContext(plans) : generator.prepareMeadowRegionContext(plans);
+        entry={generator,withContext,key,plans:withContext.immutablePlans,token:`${lifetime}:${++nextContext}`}; contextValidations++;
+        if(contexts.size>=contextLimit) {
+          const oldest=contexts.keys().next().value;
+          retained.delete(contexts.get(oldest).token); contexts.delete(oldest);
+        }
+        contexts.set(key,entry);
+        retained.set(entry.token,entry);
+      }
     }
     const {generator,withContext}=entry;
-    if (kind === 'validate-group') return true;
+    if (kind === 'validate-group') return payload.retainContext === true ? {valid:true,contextToken:entry.token} : true;
     if (kind === 'birth') {
       if (payload.options?.sceneElements || payload.options?.habitatScenes || payload.options?.macroLandscape)
         throw new TypeError('Background births require isolated native macro scenery.');

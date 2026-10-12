@@ -267,6 +267,7 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
         return result;
       } finally { queryPlans = previousPlans; queryChunks = previousChunks; candidateBatchDepth--; }
     };
+    Object.defineProperty(context, 'immutablePlans', { value: input });
     context.cacheReefHabitatOrder = createReefHabitatValidationCache();
     if (preparedContexts.size >= 4) preparedContexts.delete(preparedContexts.keys().next().value);
     preparedContexts.set(key, context);
@@ -275,19 +276,22 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
   const prepareAsync = async (input, version) => {
     if (!preparation) return version === 8 ? facade.prepareReefValleyContext(input) : facade.prepareMeadowRegionContext(input);
     const snapshot = freeze(structuredClone(input));
-    const valid = await preparation.run('validate-group', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: snapshot });
-    if (valid !== true) throw new TypeError('Invalid background physical context.');
+    const valid = await preparation.run('validate-group', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: snapshot, retainContext: true });
+    if (valid?.valid !== true || typeof valid.contextToken !== 'string') throw new TypeError('Invalid background physical context.');
+    // The worker validated every field of this full snapshot. Its bounded,
+    // worker-lifetime token reuses only terrain, never a history verdict.
+    const physicalContext = { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, contextToken: valid.contextToken };
     const context = preparedContext(snapshot);
     context.prepareResidentHabitats = async (rows, ecologySeed) => {
       const compact = rows.filter(row => Number.isInteger(row.reefResidentsVersion) && row.reefResidentsVersion >= 7 && row.reefResidentsVersion <= 20)
         .map(row => { const { livingRidgePlan, ...state } = row; return structuredClone(state); });
       if (!compact.length) return;
-      const entries = await preparation.run('resident-habitats', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: snapshot, rows: compact, ecologySeed });
+      const entries = await preparation.run('resident-habitats', { ...physicalContext, rows: compact, ecologySeed });
       context.cacheReefHabitatOrder.importEntries(entries, compact);
     };
     context.validateHistory = async (rows, ecologySeed) => {
       const compact = rows.map(row => { const { livingRidgePlan, ...state } = row; return state; });
-      return preparation.run('history', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: snapshot, rows: compact, ecologySeed });
+      return preparation.run('history', { ...physicalContext, rows: compact, ecologySeed });
     };
     return context;
   };

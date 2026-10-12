@@ -659,8 +659,9 @@ export function prepareReefResidentHabitat(r, g, options = {}) {
   const epoch = r.reefResidentsVersion;
   if (!Number.isInteger(epoch) || epoch < 7 || epoch > 20) return null;
   if (!nativeOwner(r, g)) throw new TypeError('Invalid reef habitat owner.');
-  const q = queries(r, g, options), sites = candidates(r, g);
-  const compute = () => habitatCommunityOrder(r, g, sites, q, epoch);
+  // A cache hit must skip candidate construction as well as ranking. The
+  // callback still uses every original site/query when geometry is missing.
+  const compute = () => habitatCommunityOrder(r, g, candidates(r, g), queries(r, g, options), epoch);
   return options.habitatOrder ? options.habitatOrder(r, epoch, compute) : compute();
 }
 function initializeReefHabitatCommunity(r, g, { fresh, surface, bed, capacity }, epoch = 7) {
