@@ -4,15 +4,24 @@
 
 [产品导览与所有入口](https://yydshly.github.io/ocean-world/overview/) · [75 秒浅海样板](https://yydshly.github.io/ocean-world/?demo=shallow-sample&seed=55) · [生命巡游](https://yydshly.github.io/ocean-world/?demo=life-expedition&seed=55&world=whole-seabed) · [导演模式](https://yydshly.github.io/ocean-world/?demo=director&seed=55)
 
-> 当前能力基线：`shallow-sample-v1.0-local-20261012`。产品定位是可演示、可探索的原型，尚未达到纪录片真实感或全设备稳定性能。本轮整理文档和发布既有成果，保持场景与资产冻结；发布结果以 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准。
-
-## 一张图了解产品
-
-下图使用本项目的真实实景截图，串起目标、已实现能力、观看方法、验证结果和剩余差距。点击可打开可交互的导览页，展开完整生物目录、67 个导演章节与 15 个专题入口。
-
 [![TIDAL 海底世界产品全景：目标、能力、生境、探索方法、实测结果与阶段边界](public/overview/ocean-world-product-atlas.png)](https://yydshly.github.io/ocean-world/overview/)
 
-[下载原版引导长图](https://yydshly.github.io/ocean-world/overview/ocean-world-product-atlas.png)。长图保留 2026-10-12 本地汇总时的状态文字；本 README 与导览页说明本轮发布范围。海带林、深海截图注明了历史日期，不能用来证明当前目录中的所有生物已同屏呈现。
+**一张图了解产品。** 原版引导图直接展示在根目录 README，点击图片进入交互导览，查看完整生物目录、67 个导演章节与 15 个专题入口。[下载原版长图](https://yydshly.github.io/ocean-world/overview/ocean-world-product-atlas.png)。
+
+图像来自项目实景记录，保留 2026-10-12 本地汇总时的历史状态文字；冻结版本已上线，当前状态以本文与 [发布工作流](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准。海带林、深海截图注明了历史日期，不能用来证明当前目录中的所有生物已同屏呈现。
+
+## 我们对产品的共同理解
+
+我们要构建一片能让人安静观察、逐步探索并理解生命活动的海。长期方向是海洋纪录片式真实感；当前阶段交付可体验、可验证的原型。
+
+- **先形成整体海底空间。** 礁坡、沙道、草床、光照层次和动物栖息空间应连贯，先验证完整镜头与巡游效果，再决定是否需要细节改进。
+- **动物群落是核心。** 让水层鱼群、大型巡游动物、近底动物和附着生物有清楚的活动层次；丰富度要体现在观察体验和行为上。
+- **分布遵循生境条件。** 用水深、光照、底质、水流和活动净空约束出现位置。海草扎根沉积物、海带以固着器附着岩底；这些自然规律是设计依据，现有模型仍是有限近似。
+- **探索持续，回访有记忆。** 按种子和坐标沿探索生成区域，保存当地个体和资源状态；当前卸载区域暂停演化，尚无全球离线演化。
+- **用明确验收结束每个阶段。** 先确定范围、可见效果和性能标准，在本地验证后阶段性提交发布；当前版本保持冻结，下一阶段需另行确定有限目标。
+- **保留素材来源与条件。** 只使用自制或免费且允许按条件再分发的素材，遵守署名、非商业和相同方式共享要求。
+
+> 当前能力基线：`shallow-sample-v1.0-local-20261012`。已发布 **75 秒浅海样板 + 持续探索世界 + 生态观察工具 + 产品导览**，仍未达到纪录片真实感或全设备稳定性能。上一冻结成果发布的 [1,509 项云端检查全部通过](https://github.com/yydshly/ocean-world/actions/runs/38203501128)，线上导览、图片、样板启动和返回导航已实测；这不等于所有入口都完成了完整浏览器巡游验收。
 
 ## 先从哪里看
 
