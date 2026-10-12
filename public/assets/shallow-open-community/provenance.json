@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "scope": "75-second local shallow sample",
+  "records": [
+    {
+      "key": "giant-trevally",
+      "title": "CC0 ロウニンアジ 🐟 Giant Trevally, Caranx ignobilis",
+      "author": "ffish.asia / floraZia.com",
+      "authorURL": "https://sketchfab.com/ffishAsia-and-floraZia",
+      "source": "https://sketchfab.com/3d-models/cc0-giant-trevally-caranx-ignobilis-e6446df50ba746ed8ce8a3dd66b3b8e8",
+      "uid": "e6446df50ba746ed8ce8a3dd66b3b8e8",
+      "license": "CC0-1.0",
+      "licenseURL": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "downloadMirror": "https://huggingface.co/datasets/allenai/objaverse",
+      "sourceSHA256": "fd4c4fa992999d7855c7faf4156da84e3ae782158190766d6289372aba58a699",
+      "metadataSHA256": "4a8fa3475d3bc12bc8102507ed77fa075969edf9a7d4c4f4abbd1e3f7dd6e2c9",
+      "normalizedBounds": [
+        [
+          -0.3143332302570343,
+          -0.19293329119682312,
+          -0.17417111992835999
+        ],
+        [
+          0.4990059435367584,
+          0.19316579401493073,
+          0.1692012995481491
+        ]
+      ],
+      "sourceAspect": 0.4636733862310805,
+      "displayDimensions": "Authored metre dimensions; source relative proportions preserved, not a survey measurement.",
+      "crop": "Remove separate Material.001 calibration cube.",
+      "limits": "Photogrammetric specimen, original photo colours (including capture shading); bounded project-authored swim, no source rig.",
+      "derivatives": {
+        "near": [
+          {
+            "file": "giant-trevally-1.jpg",
+            "wrapS": "repeat",
+            "wrapT": "repeat",
+            "triangles": 3048,
+            "error": 0
+          },
+          {
+            "file": "giant-trevally-2.jpg",
+            "wrapS": "repeat",
+            "wrapT": "repeat",
+            "triangles": 2951,
+            "error": 0
+          }
+        ]
+      },
+      "originalLicenseRecord": {
+        "uid": "e6446df50ba746ed8ce8a3dd66b3b8e8",
+        "name": "CC0 ロウニンアジ 🐟 Giant Trevally, Caranx ignobilis",
+        "user": "ffish.asia / floraZia.com",
+        "profile": "https://sketchfab.com/ffishAsia-and-floraZia",
+        "license": {
+          "uri": "https://api.sketchfab.com/v3/licenses/7c23a1ba438d4306920229c12afcb5f9",
+          "label": "CC0 Public Domain",
+          "fullName": "CC0 Public Domain",
+          "requirements": "Credit is not mandatory. Commercial use is allowed.",
+          "url": "http://creativecommons.org/publicdomain/zero/1.0/",
+          "slug": "cc0"
+        }
+      }
+    },
+    {
+      "key": "blacktail-snapper",
+      "title": "CC0 オキフエダイ 🐟 Blacktail Snapper, Lutjanus fulvus",
+      "author": "ffish.asia / floraZia.com",
+      "authorURL": "https://sketchfab.com/ffishAsia-and-floraZia",
+      "source": "https://sketchfab.com/3d-models/cc0-blacktail-snapper-lutjanus-fulvus-fcd035d681c74e1ea597cefb5caec202",
+      "uid": "fcd035d681c74e1ea597cefb5caec202",
+      "license": "CC0-1.0",
+      "licenseURL": "http://creativecommons.org/publicdomain/zero/1.0/",
+      "downloadMirror": "https://huggingface.co/datasets/allenai/objaverse",
+      "sourceSHA256": "4bc6d03ab8b9c35960b73901f0621cd220f15dd59bbc9de27316bcb29bc999b1",
+      "metadataSHA256": "3748c2a936626b79613b2d512d1e552ea6c557274fb45d1aeed6386f2001a8d4",
+      "normalizedBounds": [
+        [
+          -0.29698383808135986,
+          -0.19729331135749817,
+          -0.21881255507469177
+        ],
+        [
+          0.49996012449264526,
+          0.1991746574640274,
+          0.21291643381118774
+        ]
+      ],
+      "sourceAspect": 0.48649403695401605,
+      "displayDimensions": "Authored metre dimensions; source relative proportions preserved, not a survey measurement.",
+      "crop": "Remove separate Material.001 calibration cube.",
+      "limits": "Photogrammetric specimen, original photo colours (including capture shading); bounded project-authored swim, no source rig.",
+      "derivatives": {
+        "near": [
+          {
+            "file": "blacktail-snapper-1.jpg",
+            "wrapS": "repeat",
+            "wrapT": "repeat",
+            "triangles": 6000,
+            "error": 0
+          }
+        ]
+      },
+      "originalLicenseRecord": {
+        "uid": "fcd035d681c74e1ea597cefb5caec202",
+        "name": "CC0 オキフエダイ 🐟 Blacktail Snapper, Lutjanus fulvus",
+        "user": "ffish.asia / floraZia.com",
+        "profile": "https://sketchfab.com/ffishAsia-and-floraZia",
+        "license": {
+          "uri": "https://api.sketchfab.com/v3/licenses/7c23a1ba438d4306920229c12afcb5f9",
+          "label": "CC0 Public Domain",
+          "fullName": "CC0 Public Domain",
+          "requirements": "Credit is not mandatory. Commercial use is allowed.",
+          "url": "http://creativecommons.org/publicdomain/zero/1.0/",
+          "slug": "cc0"
+        }
+      }
+    },
+    {
+      "key": "porites-live",
+      "title": "Porites lobata underwater colony",
+      "author": "TheRLab",
+      "authorURL": "https://sketchfab.com/therlab",
+      "source": "https://sketchfab.com/3d-models/porites-lobata-underwater-colony-408891242fd647309393f80949210278",
+      "uid": "408891242fd647309393f80949210278",
+      "license": "CC-BY-4.0",
+      "licenseURL": "http://creativecommons.org/licenses/by/4.0/",
+      "downloadMirror": "https://huggingface.co/datasets/allenai/objaverse",
+      "sourceSHA256": "8b14b288bd36be8989297ec9f79e529d6515b8c8f0fea45d3bbce3ca720d9f81",
+      "metadataSHA256": "2dee70b270883d82d35681bbba5393c92941d05b0f0cd8bb2ecdee6a9358cb8e",
+      "normalizedBounds": [
+        [
+          -0.34232014417648315,
+          -0.19647710025310516,
+          -0.23382018506526947
+        ],
+        [
+          0.313635915517807,
+          0.3669540584087372,
+          0.342131108045578
+        ]
+      ],
+      "sourceAspect": 0.7799727610515532,
+      "displayDimensions": "Authored metre dimensions; source relative proportions preserved, not a survey measurement.",
+      "crop": "Retain triangle centroids in source-normalized XZ ellipse centre(0,.10), radii(.32,.31), Y >= -.13.",
+      "limits": "Field photogrammetry with fixed colony crop; open basal boundary remains, no repaired or invented surface.",
+      "derivatives": {
+        "near": [
+          {
+            "file": "porites-live-0.jpg",
+            "wrapS": "repeat",
+            "wrapT": "repeat",
+            "triangles": 1668,
+            "error": 0
+          }
+        ],
+        "distant": [
+          {
+            "file": "porites-live-0.jpg",
+            "wrapS": "repeat",
+            "wrapT": "repeat",
+            "triangles": 899,
+            "error": 0.0072914971970021725
+          }
+        ]
+      },
+      "originalLicenseRecord": {
+        "uid": "408891242fd647309393f80949210278",
+        "name": "Porites lobata underwater colony",
+        "user": "TheRLab",
+        "profile": "https://sketchfab.com/therlab",
+        "license": {
+          "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+          "label": "CC Attribution",
+          "fullName": "Creative Commons Attribution",
+          "requirements": "Author must be credited. Commercial use is allowed.",
+          "url": "http://creativecommons.org/licenses/by/4.0/",
+          "slug": "by"
+        }
+      }
+    }
+  ],
+  "textures": [
+    {
+      "file": "giant-trevally-1.jpg",
+      "bytes": 873019,
+      "sha256": "24a6036771e228e459a8b7fc8d18055242c3a2a672767f1a07d35c7c28d167c9"
+    },
+    {
+      "file": "giant-trevally-2.jpg",
+      "bytes": 893197,
+      "sha256": "cf2b6bcab75848bfa289947a782f3b0041231285b5748bf9babd001ad5ca3195"
+    },
+    {
+      "file": "blacktail-snapper-1.jpg",
+      "bytes": 1289777,
+      "sha256": "29a19ab25b3f188b385862179dfeda6b710757284555f07453f3e82a973d1c09"
+    },
+    {
+      "file": "porites-live-0.jpg",
+      "bytes": 513709,
+      "sha256": "0e557ad7388631bfa669da230ffe349de3a8dc07bc77046fc3d4e845956b7a2a"
+    }
+  ],
+  "generatedData": {
+    "file": "src/world/shallowOpenCommunityData.js",
+    "sha256": "1a3d837c7697c624de69c0c0e86b21579590fcd6fb73491c66baf31d1938d6fa"
+  },
+  "fallback": "Source UV/image samples in linear vertex colours when optional textures are absent or late.",
+  "retrieved": "2026-10-11",
+  "evidence": "License and creator verified against individual original Sketchfab API records; Objaverse is a download mirror, not a blanket asset license."
+}

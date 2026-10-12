@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "kind": "generated-albedo-not-measured-scan",
+  "tool": "image_gen.imagegen built-in",
+  "prompt": "Use case: photorealistic-natural. Asset type: seamless albedo colour texture for an actual 3D tropical shallow coral reef limestone substrate, not a scene illustration. Generate a square tileable material swatch viewed straight-on, fully flat diffuse illumination, no cast shadows, no directional light, no perspective, no water overlay, no fish, no text. Surface resembles naturally eroded marine carbonate reef pavement, warm pale ivory and muted grey beige stone with fine coralline encrustation in restrained dusty lavender, old porous skeletal pits and very sparse dull olive biofilm. Small scale continuous irregular rough limestone grain, realistic calcium carbonate cavities and fragments. No brown terrestrial granite, no dramatic cracks or macro rock shapes, no white bleached coral colony silhouettes, no green moss, no saturated coral colours. The neutral pore relief should be fine and uniformly distributed so the texture repeats on curved 3D reef bodies without obvious repeating motifs. Natural documentary material quality, low contrast colour, detailed but no baked highlights. Opposite edges must visually match for seamless repetition. This is an authored generated texture, not a measured specimen.",
+  "file": "shallow-reef-carbonate-v1.png",
+  "original": "D:/codex/home/generated_images/01a0fd5a-f501-7b70-8e91-7fa5c43b20bd/exec-cf2a519e-bd2b-4f07-94af-6ed8e7250ffc.png",
+  "references": [
+    "https://coralreef.noaa.gov/digital-corals/visual-media/infographics/what-makes-coral-reef",
+    "https://oceanservice.noaa.gov/facts/coralmadeof.html"
+  ],
+  "use": "Sample-only neutral carbonate substrate colour; original generated image copied unchanged. No unrelated coastal normal or roughness map. Native preview uses this actual albedo.",
+  "limits": "Authored colour texture, not surveyed underwater substrate, anatomy or measured physical PBR. Edge seamlessness is requested, not independently measured."
+}

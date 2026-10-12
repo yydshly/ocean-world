@@ -1,10 +1,11 @@
+import { validateOceanTerrainBuffers } from '../oceanTerrainJobs.js';
+import { buildOceanTerrainBuffers, oceanTerrainGeometry, terrainCoverIndex, grassRootEnvelope } from './oceanTerrainBuffers.js';
+export { oceanTerrainColor } from './oceanTerrainBuffers.js';
 import * as THREE from 'three';
+import { withWholeSeabedGenerator } from '../wholeSeabedComposition.js';
+import { OceanBackgroundPreparation } from '../oceanBackgroundPreparation.js';
 import { createOceanGenerator, OCEAN_CHUNK_SIZE, OCEAN_FORMATION_LIMIT } from '../oceanGeneration.js';
 import { createLivingRidgeGenerator } from '../livingRidgeGeology.js';
-import { shallowSeascapeFacies } from '../livingShallowSeascape.js';
-import { coastalSeascapeFacies } from '../livingCoastalSeascape.js';
-import { reefValleyFacies } from '../reefValleyRegion.js';
-import { seagrassMeadowFacies } from '../seagrassMeadowRegion.js';
 import { OCEAN_ROCK_PROFILES, OCEAN_ROCK_SURFACE_VERSION, oceanRockMesh } from '../oceanRockShape.js';
 import { habitatSceneMesh } from '../oceanHabitatScenes.js';
 import { enableStaticRayQueries } from './reefSpatialQueries.js';
@@ -12,14 +13,12 @@ import { oceanRockFootingMesh } from './oceanRockFooting.js';
 import { createOceanMacroSurfaceMaterial, macroSurfaceCoordinates, macroSurfaceOwnerPhase } from './oceanMacroSurfaceMaterial.js';
 import { createOceanEnvironment } from '../oceanEnvironment.js';
 import { createLivingShallowsCoralMaterial } from './livingShallowsCoralMaterial.js';
-import { OCEAN_SAND_SURFACE_VERSION, applyOceanSandSurface, oceanSandSurfaceCoordinates,
-  createOceanSandHardCoverIndex, oceanSandHardCover, oceanSandSurfaceMask } from './oceanSandSurface.js';
+import { OCEAN_SAND_SURFACE_VERSION, applyOceanSandSurface } from './oceanSandSurface.js';
 import { createMeadowInstanceGeometry, disposeMeadowInstanceGeometry,
   MEADOW_SHADER_DECLARATIONS, MEADOW_SHADER_TRANSFORM } from './livingMeadowEnvironment.js';
-import { LIVING_REEF_SUBSTRATE_VERSION, createLivingReefSubstrateIndex,
-  livingReefSubstrateCover, livingReefSubstrateColor } from './livingReefSubstrate.js';
+import { LIVING_REEF_SUBSTRATE_VERSION } from './livingReefSubstrate.js';
 import { LIVING_SHALLOWS_ASSET_VERSION, LIVING_SHALLOWS_CORAL_FORMS, LIVING_SHALLOWS_PALETTE,
-  livingShallowsAssetGeometries, livingShallowsRockFootingMesh, livingShallowsTerrainColor } from './livingShallowsAssets.js';
+  livingShallowsAssetGeometries, livingShallowsRockFootingMesh } from './livingShallowsAssets.js';
 
 const TERRAIN_SEGMENTS = 64;
 const ACTIVE_RADIUS = 1;
@@ -27,37 +26,10 @@ const KINDS = ['rock', 'coral', 'seagrass', 'rubble', 'algae', 'formation'];
 const ALGAE_OFFSET_M = .0015;
 const PALETTE = { rock: '#8c8978', coral: '#8a7e62', seagrass: '#51683f', rubble: '#9a917c', algae: '#59694d' };
 const MAX_ACTIVE_CHUNKS = (ACTIVE_RADIUS * 2 + 1) ** 2;
-const COVER_BIN_M = 8;
 const smoothstep = (a, b, value) => {
   const t = THREE.MathUtils.clamp((value - a) / (b - a), 0, 1);
   return t * t * (3 - 2 * t);
 };
-
-/** Ground colour is a display cue around generated grass roots. Neither the
- * continuous field nor the root envelope is a measured area or biomass. */
-export function oceanTerrainColor(x, z, sample, cover, rootEnvelope, target = [0, 0, 0]) {
-  const fade = smoothstep(40, 80, Math.hypot(x, z));
-  const hard = THREE.MathUtils.clamp(sample.rockiness || 0, 0, 1) * fade;
-  // coverAt already blends to zero in the authored reef. Actual seeded roots
-  // prevent its potential bed field from tinting large unoccupied clearings.
-  const grass = THREE.MathUtils.clamp(cover.seagrass || 0, 0, 1) * THREE.MathUtils.clamp(rootEnvelope, 0, 1);
-  const variation = Math.sin(x * .15 + z * .09) * .025 * fade;
-  target[0] = 1 - hard * .29 - grass * .56 + variation;
-  target[1] = 1 - hard * .24 - grass * .32 + variation;
-  target[2] = 1 - hard * .29 - grass * .68 + variation;
-  return target;
-}
-
-// Only a committed complete seascape supplies this broad bottom treatment.
-// Facies are authored appearance, not additional raised rocks or vegetation;
-// the meadow contribution remains tied to the actual generated root envelope.
-function completeShallowTerrainColor(color, facies, rootEnvelope) {
-  const influence = facies.influence, grass = facies.meadow * rootEnvelope;
-  color[0] *= 1 + influence * (.015 * facies.sand - .12 * facies.reef - .07 * facies.slope - .11 * grass);
-  color[1] *= 1 + influence * (.009 * facies.sand - .105 * facies.reef - .075 * facies.slope - .06 * grass);
-  color[2] *= 1 + influence * (-.008 * facies.sand - .14 * facies.reef - .08 * facies.slope - .16 * grass);
-  return color;
-}
 
 // Landscape prototypes have their base at y=0, height 1 and approximately
 // unit-wide footprints. Generator scale values therefore remain metres.
@@ -198,13 +170,23 @@ function seagrassGeometry() {
 
 /** A bounded 3×3 window of seed-generated landscape, separate from animals. */
 export class OceanChunks {
-  constructor(seed, { sandMaterial, livingGeology = false, sandHabitat = false } = {}) {
+  constructor(seed, { sandMaterial, livingGeology = false, sandHabitat = false, backgroundPreparation = false, wholeSeabed = false, progressiveStreaming = false, backgroundTerrain = backgroundPreparation && progressiveStreaming, terrainWorkerFactory = null } = {}) {
     this.root = new THREE.Group();
     this.root.name = 'continuous-ocean-landscape';
     this.root.userData.oceanStreaming = true;
     this.root.userData.role = 'generated-landscape-not-simulated-populations';
     this._livingGeologyRequested = Boolean(livingGeology);
     this._sandHabitatRequested = Boolean(sandHabitat);
+    this._backgroundPreparationRequested = backgroundPreparation === true;
+    this._wholeSeabedRequested = wholeSeabed === true;
+    this._progressiveStreaming = progressiveStreaming === true;
+    this._backgroundTerrainRequested = backgroundTerrain === true;
+    this._terrainWorkerFactory = terrainWorkerFactory;
+    this._terrainPreparation = this._createTerrainPreparation();
+    this._terrainJob = null;
+
+    this._pendingLoads = [];
+    this._streamingWork = { maxLoadsPerUpdate: 0, maxUpdateMs: 0, lastUpdateMs: 0 };
     this.generator = this._createGenerator(seed);
     this._ridgeRevision = this.generator.ridgeRevision ?? null;
     this.renderOrigin = { x: 0, z: 0 };
@@ -235,9 +217,9 @@ export class OceanChunks {
   }
 
   _createGenerator(seed) {
-    const base = createOceanGenerator(seed);
+    const base = withWholeSeabedGenerator(createOceanGenerator(seed), this._wholeSeabedRequested);
     return this._livingGeologyRequested && base.profile === 'living-shallows-v1'
-      ? createLivingRidgeGenerator(base) : base;
+        ? createLivingRidgeGenerator(base, { preparation: this._backgroundPreparationRequested && typeof Worker === 'function' ? new OceanBackgroundPreparation() : null }) : base;
   }
 
   _configureAssetKit() {
@@ -292,112 +274,53 @@ export class OceanChunks {
     this._materials.seagrass.customProgramCacheKey = () => this._livingShallows ? 'living-meadow-environment-v2' : 'generated-seagrass-sway-v1';
   }
 
-  _terrainGeometry(chunk) {
-    const steps = TERRAIN_SEGMENTS, row = steps + 1, spacing = chunk.size / steps;
-    const vertexCount = row * row;
-    const positions = new Float32Array(vertexCount * 3);
-    const normals = new Float32Array(vertexCount * 3);
-    const colors = new Float32Array(vertexCount * 3);
-    const uvs = new Float32Array(vertexCount * 2);
-    const heights = new Float64Array(vertexCount);
-    const indices = new Uint16Array(steps * steps * 6);
-    const { x: originX, z: originZ } = chunk.origin;
-    const rootIndex = this._terrainCoverIndex(chunk), color = [0, 0, 0];
-    const rubbleIndex = this._livingShallows ? createLivingReefSubstrateIndex(this.generator, chunk) : null;
-    const sandHardIndex = this._sandHabitat ? createOceanSandHardCoverIndex(this.generator, chunk) : null;
-    const sandMasks = this._sandHabitat ? new Float32Array(vertexCount * 3) : null;
-    const sandMask = [0, 0, 0];
-    const completeSeascape = this._livingShallows && chunk.ridgePlan?.version === 6 ? chunk.ridgePlan : null;
-    const coastalSeascape = this._livingShallows && chunk.ridgePlan?.version === 7 ? chunk.ridgePlan : null;
-    const reefValley = this._livingShallows && chunk.ridgePlan?.version === 8 ? chunk.ridgePlan : null;
-    const meadowRegion = this._livingShallows && chunk.ridgePlan?.version === 9 ? chunk.ridgePlan : null;
-    for (let rz = 0; rz <= steps; rz++) for (let rx = 0; rx <= steps; rx++) {
-      const i = rz * row + rx, x = originX + rx * spacing, z = originZ + rz * spacing;
-      const sample = this.generator.sample(x, z);
-      heights[i] = sample.floorY;
-      positions[i * 3] = rx * spacing;
-      positions[i * 3 + 1] = this.generator.floorVertex?.(x, z) ?? sample.floorY;
-      positions[i * 3 + 2] = rz * spacing;
-      // Same world UVs on both sides of a chunk edge, including negative
-      // coordinates; the authored texture repeats 28 times per 70 metres.
-      uvs[i * 2] = x / 70 + .5;
-      uvs[i * 2 + 1] = .5 - z / 70;
-      const terrainColor = this._livingShallows ? livingShallowsTerrainColor : oceanTerrainColor;
-      const rootEnvelope = this._grassRootEnvelope(rootIndex, x, z);
-      terrainColor(x, z, sample, this.generator.coverAt(x, z, sample), rootEnvelope, color);
-      const rubbleCover = rubbleIndex ? livingReefSubstrateCover(rubbleIndex, x, z) : 0;
-      if (rubbleIndex) livingReefSubstrateColor(color, rubbleCover, color);
-      if (sandMasks) sandMasks.set(oceanSandSurfaceMask(sample, oceanSandHardCover(sandHardIndex, x, z),
-        rootEnvelope, rubbleCover, sandMask), i * 3);
-      if (completeSeascape) completeShallowTerrainColor(color, shallowSeascapeFacies(completeSeascape, x, z), rootEnvelope);
-      if (coastalSeascape) completeShallowTerrainColor(color, coastalSeascapeFacies(coastalSeascape, x, z), rootEnvelope);
-      if (reefValley) completeShallowTerrainColor(color, reefValleyFacies(reefValley, x, z), rootEnvelope);
-      if (meadowRegion) completeShallowTerrainColor(color, seagrassMeadowFacies(meadowRegion, x, z), rootEnvelope);
-      colors.set(color, i * 3);
-      if (rz < steps && rx < steps) {
-        const j = (rz * steps + rx) * 6, a = i, b = a + 1, c = a + row, d = c + 1;
-        indices.set([a, c, b, b, c, d], j);
-      }
-    }
-    // Central differences use the same globally sampled neighbours at every
-    // shared edge. Local computeVertexNormals would shade seams differently.
-    for (let rz = 0; rz <= steps; rz++) for (let rx = 0; rx <= steps; rx++) {
-      const i = rz * row + rx, x = originX + rx * spacing, z = originZ + rz * spacing;
-      const left = rx ? heights[i - 1] : this.generator.sample(x - spacing, z).floorY;
-      const right = rx < steps ? heights[i + 1] : this.generator.sample(x + spacing, z).floorY;
-      const back = rz ? heights[i - row] : this.generator.sample(x, z - spacing).floorY;
-      const front = rz < steps ? heights[i + row] : this.generator.sample(x, z + spacing).floorY;
-      const nx = (left - right) / (2 * spacing), nz = (back - front) / (2 * spacing);
-      const length = Math.hypot(nx, 1, nz);
-      normals.set([nx / length, 1 / length, nz / length], i * 3);
-    }
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('normal', new THREE.BufferAttribute(normals, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    geometry.setAttribute('uv', new THREE.BufferAttribute(uvs, 2));
-    if (sandMasks) {
-      geometry.setAttribute('oceanSandPosition', new THREE.BufferAttribute(oceanSandSurfaceCoordinates(positions, chunk.id), 2));
-      geometry.setAttribute('oceanSandMask', new THREE.BufferAttribute(sandMasks, 3));
-    }
-    geometry.setIndex(new THREE.BufferAttribute(indices, 1));
-    geometry.computeBoundingBox();
-    geometry.computeBoundingSphere();
-    return geometry;
+  _createTerrainPreparation() {
+    if (!this._backgroundTerrainRequested || !this._progressiveStreaming ||
+        !this._wholeSeabedRequested || !this._terrainWorkerFactory && typeof Worker !== 'function') return null;
+    return new OceanBackgroundPreparation({ workerFactory: this._terrainWorkerFactory ??
+      (() => new Worker(new URL('../oceanTerrain.worker.js', import.meta.url), { type: 'module' })) });
   }
 
-  _terrainCoverIndex(chunk) {
-    // A transient world-bin index is rebuilt only when a terrain chunk loads.
-    // An active 3×3 window touches only its 5×5 neighbourhood (cache limit 32).
-    const bins = new Map();
-    for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) {
-      for (const element of this.generator.chunk(chunk.cx + dx, chunk.cz + dz).elements) {
-        if (element.kind !== 'seagrass') continue;
-        const key = `${Math.floor(element.x / COVER_BIN_M)},${Math.floor(element.z / COVER_BIN_M)}`;
-        let entries = bins.get(key);
-        if (!entries) { entries = []; bins.set(key, entries); }
-        const width = Math.max(element.scale.x, element.scale.z);
-        entries.push({ x: element.x, z: element.z, radius: 2 + width * .5, core: .35 + width * .1 });
-      }
-    }
-    return bins;
+  _terrainSources(cx, cz) {
+    const sources = [];
+    for (let z=cz-1;z<=cz+1;z++) for (let x=cx-1;x<=cx+1;x++) sources.push(this.generator.chunk(x,z));
+    return sources;
   }
 
-  _grassRootEnvelope(bins, x, z) {
-    const bx = Math.floor(x / COVER_BIN_M), bz = Math.floor(z / COVER_BIN_M);
-    let envelope = 0;
-    for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) {
-      const roots = bins.get(`${bx + dx},${bz + dz}`);
-      if (!roots) continue;
-      for (const root of roots) {
-        const distance2 = (x - root.x) ** 2 + (z - root.z) ** 2;
-        if (distance2 >= root.radius ** 2) continue;
-        envelope = Math.max(envelope, 1 - smoothstep(root.core, root.radius, Math.sqrt(distance2)));
-        if (envelope >= 1) return 1;
-      }
-    }
-    return envelope;
+  _terrainJobCurrent(job) {
+    return !this._disposed && job === this._terrainJob && job.generator === this.generator &&
+      this._pendingLoads.some(([x,z]) => x===job.cx && z===job.cz) &&
+      job.sources.every(source => (this.generator.getRidgePlan(source.id) ?? null) === (source.ridgePlan ?? null));
   }
+
+  _cancelTerrainJob() {
+    this._terrainJob = null;
+    this._terrainPreparation?.cancel();
+  }
+
+  _prepareTerrain(cx, cz) {
+    const sources=this._terrainSources(cx,cz), job={cx,cz,sources,generator:this.generator,buffers:null,error:null};
+    this._terrainJob=job;
+    // No candidate context or active animal state crosses this boundary.
+    const chunks=sources.map(({id,cx,cz,size,origin,elements,ridgePlan})=>({id,cx,cz,size,origin,elements,ridgePlan}));
+    this._terrainPreparation.run('terrain',{seed:this.generator.seed,
+      wholeSeabed:this.generator.wholeSeabedVersion===1,sandHabitat:this._sandHabitat,cx,cz,chunks})
+      .then(buffers=>{
+        if(!this._terrainJobCurrent(job))return;
+        if(!validateOceanTerrainBuffers(buffers,this._sandHabitat))throw new TypeError('Invalid prepared seabed buffers.');
+        job.buffers=buffers;
+      }).catch(error=>{if(this._terrainJobCurrent(job))job.error=error;});
+    return job;
+  }
+
+  _terrainGeometry(chunk, buffers = null) {
+    return oceanTerrainGeometry(buffers ?? buildOceanTerrainBuffers(this.generator, chunk, {
+      livingShallows: this._livingShallows, sandHabitat: this._sandHabitat
+    }), chunk.id);
+  }
+
+  _terrainCoverIndex(chunk) { return terrainCoverIndex(this.generator, chunk); }
+  _grassRootEnvelope(bins, x, z) { return grassRootEnvelope(bins, x, z); }
 
   _elementMatrix(element, chunk) {
     this._transform.position.set(element.x - chunk.origin.x, element.y, element.z - chunk.origin.z);
@@ -461,7 +384,7 @@ export class OceanChunks {
     return geometry;
   }
 
-  _load(cx, cz) {
+  _load(cx, cz, buffers = null, terrainSources = null) {
     // Saved original owners and committed plans are the only render sources.
     // Candidate geology can be queried without exposing provisional bodies.
     if (this.generator.isRidgeOwnerReady && !this.generator.isRidgeOwnerReady(`${cx},${cz}`)) return;
@@ -471,7 +394,7 @@ export class OceanChunks {
     group.userData.oceanChunk = chunk.id;
     group.userData.oceanStreaming = true;
     group.position.set(chunk.origin.x - this.renderOrigin.x, 0, chunk.origin.z - this.renderOrigin.z);
-    const terrainGeometry = this._terrainGeometry(chunk);
+    const terrainGeometry = this._terrainGeometry(chunk, buffers);
     const terrain = new THREE.Mesh(terrainGeometry, this._terrainMaterial);
     terrain.name = 'sampled-seabed';
     terrain.receiveShadow = true;
@@ -591,7 +514,7 @@ export class OceanChunks {
     }
     this.root.add(group);
     this._chunks.set(chunk.id, { group, origin: chunk.origin, terrainGeometry, footingGeometry, footings: footing.footings,
-      instances, overlays, ownedGeometries, elementCounts, rockProfileCounts,
+      instances, overlays, ownedGeometries, elementCounts, rockProfileCounts, terrainSources,
       ...(this.generator.isRidgeOwnerReady ? { sourceChunk: chunk, ridgePlan: chunk.ridgePlan ?? null } : {}) });
     this._loads++;
   }
@@ -672,6 +595,7 @@ export class OceanChunks {
           bendLimit: .05, scope: 'saved world clock; shared local water field; displayed shoots, no added stock or plant physics' } } : {}),
       chunkSize: OCEAN_CHUNK_SIZE,
       activeChunks: this._chunks.size,
+      ...(this._progressiveStreaming ? { streaming: { pendingChunks: this._pendingLoads.length, backgroundTerrain: !!this._terrainPreparation, terrainPending: !!this._terrainJob && !this._terrainJob.buffers, ...this._streamingWork } } : {}),
       maxActiveChunks: MAX_ACTIVE_CHUNKS,
       center: this._center ? Object.freeze({ ...this._center }) : null,
       renderOrigin: Object.freeze({ ...this.renderOrigin }),
@@ -704,27 +628,74 @@ export class OceanChunks {
     const centerChanged = this._center?.cx !== cx || this._center?.cz !== cz;
     const revision = this.generator.ridgeRevision ?? null;
     const revisionChanged = revision !== this._ridgeRevision;
-    if (!centerChanged && !revisionChanged) return false;
-    const loads = this._loads, unloads = this._unloads;
-    const wanted = new Set();
-    for (let z = cz - ACTIVE_RADIUS; z <= cz + ACTIVE_RADIUS; z++) for (let x = cx - ACTIVE_RADIUS; x <= cx + ACTIVE_RADIUS; x++) wanted.add(`${x},${z}`);
-    // Release first so crossing a boundary never doubles the resident window.
-    for (const [id, record] of this._chunks) {
-      if (!wanted.has(id) || this.generator.isRidgeOwnerReady &&
-        (!this.generator.isRidgeOwnerReady(id) || record.ridgePlan !== (this.generator.getRidgePlan(id) ?? null))) this._unload(id);
+    if (!centerChanged && !revisionChanged && !this._pendingLoads.length) return false;
+    const start = performance.now(), loads = this._loads, unloads = this._unloads;
+    if (centerChanged || revisionChanged) {
+      const wanted = new Set();
+      for (let z = cz - ACTIVE_RADIUS; z <= cz + ACTIVE_RADIUS; z++) for (let x = cx - ACTIVE_RADIUS; x <= cx + ACTIVE_RADIUS; x++) wanted.add(`${x},${z}`);
+      // Release stale sources before accepting new ones; at most nine live.
+      for (const [id, record] of this._chunks) {
+        if (!wanted.has(id) || this.generator.isRidgeOwnerReady &&
+          (!this.generator.isRidgeOwnerReady(id) || record.ridgePlan !== (this.generator.getRidgePlan(id) ?? null))) this._unload(id);
+      }
+      // The owner's physical plan is still identical. Keep its real mesh
+      // visible while new neighbour colour/mask data is prepared, then swap.
+      this._pendingLoads = [...wanted].filter(id => (!this._chunks.has(id) ||
+        this._chunks.get(id).terrainSources?.some(source => (source.ridgePlan ?? null) !== (this.generator.getRidgePlan(source.id) ?? null))) &&
+        (!this.generator.isRidgeOwnerReady || this.generator.isRidgeOwnerReady(id)))
+        .map(id => id.split(',').map(Number));
+      if (this._progressiveStreaming) this._pendingLoads.sort((a,b) => (a[0]-cx)**2+(a[1]-cz)**2-((b[0]-cx)**2+(b[1]-cz)**2));
     }
-    for (let z = cz - ACTIVE_RADIUS; z <= cz + ACTIVE_RADIUS; z++) for (let x = cx - ACTIVE_RADIUS; x <= cx + ACTIVE_RADIUS; x++) {
-      if (!this._chunks.has(`${x},${z}`)) this._load(x, z);
+    // Prioritize the current owner; the opt-in route builds one missing
+    // owner per render update rather than constructing a whole window.
+    const limit = this._progressiveStreaming ? 1 : this._pendingLoads.length;
+    if (this._terrainJob && !this._terrainJobCurrent(this._terrainJob)) this._cancelTerrainJob();
+    for (let i=0; i<limit && this._pendingLoads.length; i++) {
+      if (!this._terrainPreparation) {
+        const [x,z] = this._pendingLoads.shift(); this._load(x,z);
+        continue;
+      }
+      let job=this._terrainJob;
+      if(!job) { const [x,z]=this._pendingLoads[0]; job=this._prepareTerrain(x,z); }
+      if(job.error)throw job.error;
+      if(!job.buffers)break;
+      if(this._chunks.has(`${job.cx},${job.cz}`))this._unload(`${job.cx},${job.cz}`);
+      this._load(job.cx,job.cz,job.buffers,job.sources);
+      this._pendingLoads=this._pendingLoads.filter(([x,z])=>x!==job.cx||z!==job.cz);
+      this._terrainJob=null;
+      // Begin the next real owner while this frame presents the completed one.
+      if(this._pendingLoads.length) { const [x,z]=this._pendingLoads[0]; this._prepareTerrain(x,z); }
     }
-    this._center = { cx, cz };
-    this._ridgeRevision = revision;
+    this._center = { cx, cz }; this._ridgeRevision = revision;
+    const ms = performance.now()-start;
+    this._streamingWork.lastUpdateMs = ms;
+    this._streamingWork.maxUpdateMs = Math.max(this._streamingWork.maxUpdateMs, ms);
+    this._streamingWork.maxLoadsPerUpdate = Math.max(this._streamingWork.maxLoadsPerUpdate, this._loads-loads);
     this._refreshStats();
     return centerChanged || loads !== this._loads || unloads !== this._unloads;
+  }
+
+  /** Finish a static entrance over event-loop turns; motion drains via update. */
+  async prepareWindow(position, { isCurrent = () => true } = {}) {
+    if (typeof isCurrent !== 'function') throw new TypeError('A current entrance check is required');
+    if (this._disposed || !isCurrent()) return false;
+    if (this._terrainJob?.error) this._cancelTerrainJob();
+    this.update(position);
+    const cx = this._center.cx, cz = this._center.cz;
+    while (this._pendingLoads.length) {
+      await new Promise(resolve => typeof requestAnimationFrame === 'function' ? requestAnimationFrame(resolve) : setTimeout(resolve, 0));
+      if (this._disposed || !isCurrent() || this._center?.cx !== cx || this._center?.cz !== cz) return false;
+      this.update(position);
+    }
+    return !this._disposed && isCurrent();
   }
 
   reset(seed) {
     if (this._disposed) return false;
     for (const id of this._chunks.keys()) this._unload(id);
+    this._cancelTerrainJob(); this._terrainPreparation?.dispose();
+    this._terrainPreparation=this._createTerrainPreparation();
+    this.generator.disposePreparation?.();
     this.generator = this._createGenerator(seed);
     this._ridgeRevision = this.generator.ridgeRevision ?? null;
     this._meadowWater = this.generator.profile === 'living-shallows-v1' ? createOceanEnvironment(seed, this.generator) : null;
@@ -734,6 +705,8 @@ export class OceanChunks {
       this._configureAssetKit();
     }
     this._center = null;
+    this._pendingLoads = [];
+    this._streamingWork = { maxLoadsPerUpdate: 0, maxUpdateMs: 0, lastUpdateMs: 0 };
     return this.update(this._position);
   }
 
@@ -766,6 +739,8 @@ export class OceanChunks {
 
   dispose() {
     if (this._disposed) return;
+    this._cancelTerrainJob(); this._terrainPreparation?.dispose();
+    this.generator.disposePreparation?.();
     for (const id of this._chunks.keys()) this._unload(id);
     for (const geometry of Object.values(this._geometries)) geometry.dispose();
     for (const material of Object.values(this._materials)) material.dispose();

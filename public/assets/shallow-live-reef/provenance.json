@@ -1,0 +1,151 @@
+{
+  "assetVersion": 4,
+  "created": "2026-10-10",
+  "updated": "2026-10-11",
+  "assetKind": "project-authored shallow coral growth-form meshes and broken skeletal rubble",
+  "sourceCode": "src/world/ShallowLiveReefAssets.js",
+  "runtimeExports": [
+    "shallowLiveReefGeometries",
+    "shallowReefRubbleGeometry"
+  ],
+  "thirdPartyMeshesOrPhotosInTheseAssets": false,
+  "scientificReferences": [
+    {
+      "publisher": "NOAA National Ocean Service",
+      "title": "Corals Tutorial: How do corals grow?",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_corals/coral03_growth.html",
+      "accessed": "2026-10-10",
+      "usedFor": "Primary/secondary branching hierarchy, fused table growth form and massive boulder category. Geometry remains an authored interpretation. No reference photo copied."
+    },
+    {
+      "publisher": "NOAA National Ocean Service",
+      "title": "Corals Tutorial: Types of Stony Coral",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_corals/media/supp_coral03b.html",
+      "accessed": "2026-10-10",
+      "usedFor": "Description of secondary branching, broad table growth surfaces and variable lobed colony forms. No named coral taxon or reference photo is reproduced."
+    },
+    {
+      "publisher": "Australian Institute of Marine Science",
+      "title": "Examples of coral growth forms",
+      "url": "https://www.aims.gov.au/sites/default/files/2022-03/InstructionsCoralBleachingArcFieldMapsAppV6_DS_2.pdf",
+      "usedFor": "Distinction between massive boulder/lumpy form and branching/table forms. No photo copied."
+    },
+    {
+      "publisher": "NOAA National Ocean Service",
+      "title": "Corals Tutorial: Types of soft coral",
+      "url": "https://oceanservice.noaa.gov/education/tutorial_corals/media/supp_coral03c.html",
+      "usedFor": "General sea-fan growth-form category. Fan asset has no named species or geographic taxon identification. No photo copied."
+    },
+    {
+      "publisher": "NOAA National Ocean Service",
+      "title": "Are corals animals or plants?",
+      "url": "https://oceanservice.noaa.gov/facts/coral.html",
+      "usedFor": "Colonial animals attached to rock or existing skeleton, distinguished from scenery biomass accounting."
+    }
+  ],
+  "authoredChanges": [
+    "Eight/nine slimmer connected primary arms and nested fork hierarchy replace the coarse five/six-limb crowns.",
+    "Both table assets now use connected low radial supports and dense short branch tips forming a flat-topped corymbose crown; the continuous bowl/plate surface is removed.",
+    "Massive crowns keep the original broad contact and lobed outline with bounded surface relief; open fan and rubble unchanged.",
+    "Original near triangle limit 4000, seven prototype identities and complete near/far physical fitting remain. Authored display growth forms, not named living species, measurements or scans."
+  ],
+  "batch13Geometry": {
+    "method": "Actual Float32 attributes and triangle indices from shallowLiveReefGeometries; dimensions are normalized display envelopes, not surveyed anatomy",
+    "sourceSha256": "3a78447e4f0fd072c34cf88369ee9f1908044684c05d543187d9c4df03c69eeb",
+    "nearTriangleLimitUnchanged": 4000,
+    "nearTriangles": {
+      "branching-0": 3142,
+      "branching-1": 3722,
+      "table-0": 3518,
+      "table-1": 3518,
+      "massive-0": 2352,
+      "massive-1": 2352,
+      "fan-0": 3216
+    },
+    "distantTriangles": {
+      "branching-0": 746,
+      "branching-1": 962,
+      "table-0": 1142,
+      "table-1": 1142,
+      "massive-0": 380,
+      "massive-1": 380,
+      "fan-0": 1032
+    },
+    "nearRootRadii": {
+      "branching-0": 0.1289409022,
+      "branching-1": 0.13234784,
+      "table-0": 0.1102312338,
+      "table-1": 0.1103190342,
+      "massive-0": 0.4890000017,
+      "massive-1": 0.4890000003,
+      "fan-0": 0.1247220549
+    }
+  },
+  "batch13Validation": "Five targeted cases passed once: existing full family envelope/budget/LOD, outward closed massive normals, unchanged rubble constraints, seed55 complete rendered near-instance support/envelope traversal, and new low-fork/table-support/fan-aperture silhouette checks. No full project suite, build, browser run or render was performed by the asset task. Whole-scene visual acceptance remains pending integration review.",
+  "batch13Review": "Partial improvement confirmed in final native whole-scene review. School colour separation and low spreading colony silhouettes change visibly at 24/69. Brown coarse substrate still reads as soil, wide benches remain regular, crowns repeat pointed/bowl/hemisphere forms, silver fish/turtles remain simplified and small benthic residents remain hard to recognize. Documentary realism is unaccepted; actual WebGL and full playback unverified.",
+  "batch11Review": "Limited macro structure stage passes in offline fixed-camera review, most clearly at 58 seconds. Repeated two-row branching layouts, bare white rear benches at 69 seconds and weak benthic readability remain. Documentary realism, whole-route visual acceptance and WebGL playback performance have not passed.",
+  "limits": [
+    "These are authored growth-form approximations, not living coral scans, calibrated anatomy or identified species.",
+    "Vertex colors are restrained display choices; not spectral measurements, health observations or bleaching classification.",
+    "Branch meshes intersect at connected junctions; no watertight Boolean union or pore-scale physical skeleton is claimed.",
+    "A connected radial branch and tip network approximates the table growth form; resolved corallites, fine skeletal porosity and biological branch-fusion dynamics are not modeled.",
+    "Root contact radius is measured from the normalized geometry in the lowest Y<=0.025 band; placement must still validate actual rock triangles.",
+    "Massive forms require broad near-flat support; all crown geometry remains within normalized radial XZ<=0.5 and Y0..1.",
+    "Rubble surface mottling does not resolve physical pore voids, sediment dynamics or extra ecological individuals.",
+    "USNM229 remains a separate dead skeletal specimen and is not the source of these living-display crown assets.",
+    "Offline projection shows actual triangles and vertex colors, without WebGL material, shadows, caustics or FPS verification."
+  ],
+  "previousAuthoredChanges": [
+    "Batch 13 replaces both branching crowns as whole hierarchies: five or six unequal, low spreading primary limbs, three secondary forks per limb, two unequal tertiary forks per secondary, and smaller terminal side forks. Children begin on actual parent curve centrelines. Distant variants retain three/four primary limbs and fewer levels of detail.",
+    "Both table crowns replace the tall central pedestal with five low spreading support limbs and paired forks. A closed warped, scalloped fused growth surface carries short upward branch ends across its interior and edge. This is a growth-form interpretation, not a species-specific anatomical reconstruction.",
+    "Both massive crowns now have broad geometric lobes, offset shoulders and monotone meridians on a closed envelope, instead of relying on colour mottling over a regular dome.",
+    "The open reticulate fan has an uneven outline and curved shallow depth. Connected tapering branch paths remain open rather than becoming an opaque leaf sheet.",
+    "The seven shared prototype identities, existing metre-scaled scene placements, muted warm olive/brown palette and original near/distant budget remain. The five-fragment angular skeleton-rubble prototype is unchanged in this batch.",
+    "No scan, named coral species, extra biological population, scene layout change or physical growth simulation is introduced by this asset family."
+  ],
+  "batch15Geometry": {
+    "sourceSha256": "0ef6184797236954f54007888ba2abf18a695f781afb1380413f703ca1c01650",
+    "nearTriangleLimitUnchanged": 4000,
+    "nearTriangles": {
+      "branching-0": 3008,
+      "branching-1": 3320,
+      "table-0": 3710,
+      "table-1": 3710,
+      "massive-0": 2352,
+      "massive-1": 2352,
+      "fan-0": 3216
+    },
+    "distantTriangles": {
+      "branching-0": 746,
+      "branching-1": 962,
+      "table-0": 794,
+      "table-1": 794,
+      "massive-0": 380,
+      "massive-1": 380,
+      "fan-0": 1032
+    }
+  },
+  "batch13IntegrationValidation": {
+    "stage": "output/validation/shallow-natural-forms/stage.json",
+    "casesPassed": 41,
+    "localBuild": "passed",
+    "crownInstances": 420,
+    "nearVertices": 879947,
+    "distantVertices": 254256,
+    "violatingVertices": 0,
+    "originalTolerances": "unchanged",
+    "webglPlayback": "unverified"
+  },
+  "integrationValidation": {
+    "stage": "output/validation/shallow-coherent-habitat/stage.json",
+    "status": "47 targeted cases passed; whole-scene review partial",
+    "crownInstances": 413,
+    "originalPhysicalTolerances": "unchanged",
+    "webglPlayback": "unverified",
+    "casesPassed": 47,
+    "bothActualCrownLodsSupport": "passed with original physical tolerances",
+    "localBuild": "see stage receipt",
+    "wholeSceneRealism": "unaccepted"
+  },
+  "batch15Review": "partial macro improvement; documentary realism unaccepted"
+}

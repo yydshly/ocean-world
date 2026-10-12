@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "date": "2026-10-11",
+  "scope": "Local finite 75-second sample",
+  "sourceAssets": "Existing free redistributable assets only; no new download or purchase.",
+  "reef": {
+    "source": "../shallow-near-community/provenance.json",
+    "sourceTextureFilesUnchanged": true,
+    "sourceMeshUnchanged": true,
+    "changes": "Reuse complete cropped reef community as twelve foreground outcrops. Replace authored vertical foundation walls with three irregular spreading rings; original near geometry plus this exact apron are registered for physical support. Select placement from underlying carbonate grade with every outer apron edge buried in sediment.",
+    "limitation": "All source outcrops repeat one scan; authored foundation is not field measurement."
+  },
+  "fish": {
+    "authorship": "Project-authored complete bodies and articulated fins; no source image redrawing.",
+    "replacedIndividuals": 49,
+    "families": [
+      "unidentified-reef-fish",
+      "blue-tang",
+      "yellow-tang",
+      "moorish-idol"
+    ],
+    "unchanged": "Original population identities, total-length measurements, species labels and behaviours retained.",
+    "historicalSources": [
+      "../shallow-artist/provenance.json",
+      "../shallow-near-community/provenance.json"
+    ],
+    "limitation": "Shared authored family reduces style mismatch; simplified anatomy remains, not a claim of photogrammetric fish or documentary realism."
+  },
+  "licences": "Existing source attribution, noncommercial and share-alike terms remain applicable. New authored geometry contains no copied third-party mesh. No source licence restrictions are removed.",
+  "sourceFiles": [
+    {
+      "file": "src/world/ShallowNearCommunity.js",
+      "sha256": "571c784df05f0c7ff31a5cb23826d2e0b2cfe2437df442dd57ebf80fbedde6e1"
+    },
+    {
+      "file": "src/world/ShallowCohesiveFish.js",
+      "sha256": "6f5100e209c4de2fbe40d6067eaf1d8935ff777e39fef0e1f439f5d316feed03"
+    }
+  ]
+}

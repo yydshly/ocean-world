@@ -60,7 +60,7 @@ test('actual regional dispatcher renders all four using saved scale, heading, pi
   assert.deepEqual(reefVisitorAssetStats(),{resources:0,instances:0});
 });
 test('shipped constructor gates visitor recipe to living shallows and preserves it through reset',async()=>{
-  assert.equal(livingShallowsSpeciesCatalog.length,87);
+  assert.equal(livingShallowsSpeciesCatalog.length,106);
   for(const s of OCEAN_REEF_VISITORS_SPECIES){assert.equal(livingShallowsSpeciesCatalog.filter(x=>x.id===s.id).length,1);
     for(const biome of ['reef','kelp','deep'])assert.ok(!sceneCatalogs[biome].some(x=>x.id===s.id));}
   const src=readFileSync(new URL('../src/world/ReefWorld.js',import.meta.url),'utf8'),start=src.indexOf('new OceanEcology(seed,this.oceanChunks.generator,'),end=src.indexOf(');',start)+1;
@@ -69,7 +69,7 @@ test('shipped constructor gates visitor recipe to living shallows and preserves 
   for(const living of [true,false]){
     const captured=new Function('OceanEcology','seed',`return ${src.slice(start,end)};`).call({isLivingShallows:living,oceanChunks:{generator}},Capture,seed);
     assert.equal(captured.options.reefVisitors,living);
-    const model=new OceanEcology(seed,generator,{...captured.options,store:{load:async()=>null,saveMany:async()=>{},save:async()=>{}}});
+    const model=new OceanEcology(seed,generator,{...captured.options,reefForaging:false,reefSchooling:false,reefColorFish:false,reefGrazers:false,store:{load:async()=>null,saveMany:async()=>{},save:async()=>{}}});
     try{assert.equal(model.reefVisitorsEnabled,living);model.reset(seed,generator);assert.equal(model.reefVisitorsEnabled,living);assert.equal(model._active.size,0);}
     finally{await model.dispose();}
   }

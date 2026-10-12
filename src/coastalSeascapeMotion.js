@@ -42,10 +42,10 @@ export function sampleCoastalSeascapeMotion(shot, elapsedSec) {
 // Test the current camera window. It may cross into the next already-resident
 // owner once; then ordinary navigation loads that centre's nine owners while
 // the camera and its observation clock wait in place.
-export function coastalSeascapeWindowReady(position, { loadedOwnerIds = [], activeOwnerIds = [] } = {}) {
-  if (!point(position)) return false;
+export function coastalSeascapeWindowReady(position, { loadedOwnerIds = [], activeOwnerIds = [], radius = 1 } = {}) {
+  if (!point(position) || ![0, 1].includes(radius)) return false;
   const loaded = new Set(loadedOwnerIds), active = new Set(activeOwnerIds), cx = Math.floor(position.x / 64), cz = Math.floor(position.z / 64);
-  for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) {
+  for (let dz = -radius; dz <= radius; dz++) for (let dx = -radius; dx <= radius; dx++) {
     const id = `${cx + dx},${cz + dz}`; if (!loaded.has(id) || !active.has(id)) return false;
   }
   return true;

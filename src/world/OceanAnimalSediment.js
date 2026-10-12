@@ -10,7 +10,30 @@ const TRAITS = Object.freeze({
   'reef-goatfish': { clearance: .33, travelM: Infinity, moveCount: 0, feedCount: 10, radiusM: .07 },
   'spotted-hermit-crab': { clearance: .035, travelM: .008, moveCount: 2, feedCount: 3, radiusM: .035 },
   'black-cucumber': { clearance: .035, travelM: .012, moveCount: 2, feedCount: 3, radiusM: .04 },
+  'leopard-sea-cucumber': Object.freeze({ residentMin: 2, pool: 'resources.detritus', speed: .003,
+    clearance: .035, travelM: .006, moveCount: 2, feedCount: 3, radiusM: .055,
+    startHeightM: .012, liftMin: .04, liftRange: .02, settleAccel: .045, maxRiseM: .08, lifeMin: 1.5, lifeRange: .8, scaleMin: .5, scaleRange: .4 }),
+  'shame-faced-crab': Object.freeze({ residentMin: 5, pool: 'reefGuild.preyOrganicUnits', speed: .005,
+    clearance: .035, travelM: .008, moveCount: 3, feedCount: 4, radiusM: .032,
+    startHeightM: .015, liftMin: .08, liftRange: .025, settleAccel: .075, maxRiseM: .12, lifeMin: 1.8, lifeRange: .6, scaleMin: .6, scaleRange: .6 }),
+  'peacock-flounder': Object.freeze({ residentMin: 6, pool: 'reefGuild.preyOrganicUnits', speed: .01,
+    clearance: .035, travelM: .015, moveCount: 5, feedCount: 6, radiusM: .10,
+    startHeightM: .016, liftMin: .10, liftRange: .03, settleAccel: .09, maxRiseM: .18, lifeMin: 2, lifeRange: .7, scaleMin: .7, scaleRange: .6 }),
+  'humble-sea-biscuit': Object.freeze({ residentMin: 15, pool: 'resources.detritus', speed: .0015,
+    clearance: .035, travelM: .004, moveCount: 1, feedCount: 2, radiusM: .025,
+    startHeightM: .009, liftMin: .035, liftRange: .015, settleAccel: .035, maxRiseM: .06, lifeMin: 1.1, lifeRange: .5, scaleMin: .45, scaleRange: .3 }),
 });
+// Existing resident geometry is admitted by the ecology. These read-only markers
+// qualify the source; each emitted/advected grain still needs actual soft sand.
+const residentSource = (a, trait) => Number.isSafeInteger(a.reefResidentIndividualVersion) &&
+  a.reefResidentIndividualVersion >= trait.residentMin && a.reefResidentIndividualVersion <= 19 &&
+  a.reefResidentMode === 'reef-foot' && a.reefResidentFoodPool === trait.pool && typeof a.regionId === 'string';
+const residentIntake = (a, trait) => {
+  const e=a.lastResidentIntake;
+  return e && e.ownerId===a.regionId && e.pool===trait.pool && e.timeSec===a.lastFeedAt &&
+    [e.stockBefore,e.stockAfter,e.removedUnits].every(v=>Number.isFinite(v)&&v>=0) && e.removedUnits>0 &&
+    Math.abs(e.stockBefore-e.stockAfter-e.removedUnits)<=Number.EPSILON*8*Math.max(1,e.stockBefore,e.stockAfter,e.removedUnits);
+};
 const finitePoint = p => p && ['x', 'y', 'z'].every(axis => Number.isFinite(p[axis]));
 const hash = text => { let value = 2166136261; for (const c of text) value = Math.imul(value ^ c.charCodeAt(0), 16777619); return value >>> 0; };
 const seedKey = seed => {
@@ -35,6 +58,7 @@ export class OceanAnimalSediment {
     this._age = new Float64Array(OCEAN_ANIMAL_SEDIMENT_LIMIT);
     this._life = new Float64Array(OCEAN_ANIMAL_SEDIMENT_LIMIT);
     this._sourceIds = new Array(OCEAN_ANIMAL_SEDIMENT_LIMIT).fill(null);
+    this._sourceTraits = new Array(OCEAN_ANIMAL_SEDIMENT_LIMIT).fill(null);
     this._sources = new Map();
     this._renderOrigin = { x: 0, z: 0 };
     this._geometry = new THREE.BufferGeometry();
@@ -85,6 +109,7 @@ export class OceanAnimalSediment {
     this._sources.clear();
     this._life.fill(0);
     this._sourceIds.fill(null);
+    this._sourceTraits.fill(null);
     this._geometry.attributes.opacity.array.fill(0);
     this._geometry.attributes.opacity.needsUpdate = true;
   }
@@ -109,6 +134,7 @@ export class OceanAnimalSediment {
   _retire(index) {
     this._life[index] = 0;
     this._sourceIds[index] = null;
+    this._sourceTraits[index] = null;
   }
 
   _support(generator, x, z, surfaceAt) {
@@ -137,15 +163,16 @@ export class OceanAnimalSediment {
       if (localFloor === null || Math.abs(localFloor - floor) > .04) continue;
       const offset = index * 3;
       this._position[offset] = x;
-      this._position[offset + 1] = localFloor + .025;
+      this._position[offset + 1] = localFloor + (trait.startHeightM ?? .025);
       this._position[offset + 2] = z;
       this._velocity[offset] = (random('vx') - .5) * .03;
-      this._velocity[offset + 1] = .16 + random('vy') * .12;
+      this._velocity[offset + 1] = (trait.liftMin ?? .16) + random('vy') * (trait.liftRange ?? .12);
       this._velocity[offset + 2] = (random('vz') - .5) * .03;
       this._age[index] = 0;
-      this._life[index] = 4 + random('life') * 2;
+      this._life[index] = (trait.lifeMin ?? 4) + random('life') * (trait.lifeRange ?? 2);
       this._sourceIds[index] = id; // A scalar identity, never an entity reference.
-      this._geometry.attributes.pointScale.array[index] = .8 + random('scale') * .8;
+      this._sourceTraits[index] = trait.residentMin ? trait : null; // Immutable style only; no animal retained.
+      this._geometry.attributes.pointScale.array[index] = (trait.scaleMin ?? .8) + random('scale') * (trait.scaleRange ?? .8);
       emitted++;
     }
     this._emitted += emitted;
@@ -153,20 +180,22 @@ export class OceanAnimalSediment {
     return emitted;
   }
 
-  _advance(dtSec, generator, currentVector) {
+  _advance(dtSec, generator, currentVector, surfaceAt) {
     const steps = Math.ceil(dtSec / .1), dt = dtSec / steps;
     for (let step = 0; step < steps; step++) for (let index = 0; index < OCEAN_ANIMAL_SEDIMENT_LIMIT; index++) {
       if (this._life[index] <= 0) continue;
       const offset = index * 3;
       this._age[index] += dt;
       if (this._age[index] >= this._life[index]) { this._retire(index); continue; }
-      this._velocity[offset + 1] -= .065 * dt;
+      const trait=this._sourceTraits[index];
+      this._velocity[offset + 1] -= (trait?.settleAccel ?? .065) * dt;
       this._position[offset] += (currentVector.x * .4 + this._velocity[offset]) * dt;
       this._position[offset + 1] += this._velocity[offset + 1] * dt;
       this._position[offset + 2] += (currentVector.z * .4 + this._velocity[offset + 2]) * dt;
       const floor = generator.floorSurface(this._position[offset], this._position[offset + 2])?.height;
       if (!Number.isFinite(floor) || this._position[offset + 1] <= floor + BED_MARGIN_M ||
-        this._position[offset + 1] >= this.surfaceY - .04 || this._position[offset + 1] > floor + .7) {
+        this._position[offset + 1] >= this.surfaceY - .04 || this._position[offset + 1] > floor + (trait?.maxRiseM ?? .7) ||
+        (trait && this._support(generator,this._position[offset],this._position[offset+2],surfaceAt)===null)) {
         this._settled++;
         this._retire(index);
       }
@@ -204,7 +233,7 @@ export class OceanAnimalSediment {
     const elapsed = !paused && Number.isFinite(dtSec) && dtSec > 0 && dtSec <= MAX_STEP_SEC ? dtSec : 0;
     const current = { x: Number.isFinite(currentVector.x) ? THREE.MathUtils.clamp(currentVector.x, -1.2, 1.2) : 0,
       z: Number.isFinite(currentVector.z) ? THREE.MathUtils.clamp(currentVector.z, -1.2, 1.2) : 0 };
-    if (elapsed > 0) this._advance(elapsed, generator, current);
+    if (elapsed > 0) this._advance(elapsed, generator, current, surfaceAt);
     const live = new Set();
     let budget = EMISSION_LIMIT;
     for (const agent of agents) {
@@ -228,9 +257,9 @@ export class OceanAnimalSediment {
         if (previous && delta > MAX_STEP_SEC) this._skippedJumps++;
         continue;
       }
-      // The selected ray, goatfish and hermit have actual soft-bottom admission
-      // markers. The older cucumber has a generated sand habitat instead.
-      const softOwner = agent.speciesId === 'black-cucumber' ? agent.habitat?.startsWith('sand')
+      // Original benthic admission stays exact. New residents require their
+      // actual version, whole-bed controller and food-pool identity as well.
+      const softOwner = trait.residentMin ? residentSource(agent,trait) : agent.speciesId === 'black-cucumber' ? agent.habitat?.startsWith('sand')
         : agent.benthicLifeIndividualVersion === 1 && agent.benthicLifeMode === 'soft';
       if (!softOwner || Math.hypot(position.x - cameraPosition.x, position.y - cameraPosition.y, position.z - cameraPosition.z) > VIEW_RADIUS_M) continue;
       const floor = this._support(generator, position.x, position.z, surfaceAt);
@@ -239,11 +268,12 @@ export class OceanAnimalSediment {
       const moved = Math.hypot(position.x - previous.x, position.z - previous.z);
       // Reject discontinuous teleports even when someone gives them a short
       // clock delta. Slow crawlers need real accumulated travel to emit.
-      if (moved > delta * .5 + .001) continue;
+      if (moved > (trait.residentMin ? delta * trait.speed + 1e-8 : delta * .5 + .001)) continue;
       record.travelM = previous.travelM + moved;
       const fed = record.lastFeedAt !== null && record.lastFeedAt <= record.timeSec + 1e-8 &&
         record.lastFeedAt >= previous.timeSec - 1e-8 && record.timeSec - record.lastFeedAt <= MAX_STEP_SEC &&
-        (previous.lastFeedAt === null || record.lastFeedAt > previous.lastFeedAt);
+        (previous.lastFeedAt === null || record.lastFeedAt > previous.lastFeedAt) &&
+        (!trait.residentMin || residentIntake(agent,trait));
       const traversed = trait.moveCount > 0 && record.travelM >= trait.travelM;
       if ((!fed && !traversed) || record.timeSec - record.lastEmissionAt < .5) continue;
       const count = fed ? trait.feedCount : trait.moveCount;

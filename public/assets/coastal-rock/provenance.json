@@ -1,0 +1,34 @@
+{
+  "name": "Rock Boulder Cracked",
+  "source": "https://polyhaven.com/a/rock_boulder_cracked",
+  "license": "CC0-1.0",
+  "licenseReference": "https://polyhaven.com/license",
+  "files": [
+    {
+      "role": "Diffuse",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_cracked/rock_boulder_cracked_diff_1k.jpg",
+      "file": "public/assets/coastal-rock/Diffuse.jpg",
+      "bytes": 998110,
+      "md5": "2eee29ef1257ce79569e4be0b76cd1ad",
+      "actualMd5": "2eee29ef1257ce79569e4be0b76cd1ad"
+    },
+    {
+      "role": "nor_gl",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_cracked/rock_boulder_cracked_nor_gl_1k.jpg",
+      "file": "public/assets/coastal-rock/nor_gl.jpg",
+      "bytes": 1079683,
+      "md5": "1185717651f6fa2db0face12425d0a74",
+      "actualMd5": "1185717651f6fa2db0face12425d0a74"
+    },
+    {
+      "role": "rough",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_cracked/rock_boulder_cracked_rough_1k.jpg",
+      "file": "public/assets/coastal-rock/rough.jpg",
+      "bytes": 379850,
+      "md5": "8610432e3011c02abb70433f050cf651",
+      "actualMd5": "8610432e3011c02abb70433f050cf651"
+    }
+  ],
+  "usage": "Original 1k diffuse/OpenGL normal/roughness maps; world triplanar projection, restrained normal strength. All available maps published in one optional material update.",
+  "limits": "Photographic land/coastal rock material, not a scan of underwater living reef or evidence of marine biofilm. Texture mapping scale is an authored display choice."
+}

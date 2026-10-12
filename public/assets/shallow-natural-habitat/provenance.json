@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-12",
+  "records": [
+    {
+      "key": "coast_land_rocks_02",
+      "title": "Coast Land Rocks 02",
+      "authors": [
+        "Rob Tuytel",
+        "Rico Cilliers"
+      ],
+      "source": "https://polyhaven.com/a/coast_land_rocks_02",
+      "license": "CC0-1.0",
+      "changes": "Whole coastal formation simplified with original UV and original unmodified albedo. Rigid orientation and uniform scale; lower photographed ground is buried. No artificial contact platforms.",
+      "limits": "Coastal geology used as submerged habitat substrate; not a measured tropical reef scan.",
+      "sourceSHA256": "e981af395c1a546c2244d95954b8d4406bd11e26047975772b88418f3728adc6"
+    }
+  ],
+  "textures": [
+    {
+      "file": "coast_land_rocks_02-0.jpg",
+      "sha256": "2223040a8b7327b8e8b6ae78960a92ea4e10a7d62f3114496851d37dfdc2aff2"
+    }
+  ],
+  "reusedAnimal": {
+    "source": "https://sketchfab.com/3d-models/fish-c4328d6c1ae445198abc1a3d4c1e2570",
+    "author": "Yimit",
+    "license": "CC BY 4.0",
+    "individuals": 30,
+    "details": "../shallow-near-community/provenance.json"
+  },
+  "rejectedCandidate": {
+    "source": "https://sketchfab.com/3d-models/cad0abfc668e4e3486e930491ac0d840",
+    "license": "CC0",
+    "reason": "Specimen damage, jagged reconstructed silhouette and mottled photographic regions remain; not installed in final scene."
+  }
+}

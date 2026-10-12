@@ -1,0 +1,22 @@
+{
+  "version": 3,
+  "date": "2026-10-11",
+  "scope": "75-second shallow sample, whole main/reef swimmer asset family",
+  "animalAssets": "Project-authored continuous bodies and curved complete fins, shared material response and individual spine waves. Not scans or calibrated measurements. No external photos or meshes copied into these new fish.",
+  "familyConfigurationCount": 18,
+  "sourceReferences": [
+    "https://fishesofaustralia.net.au/home/species/4268",
+    "https://www.redmap.org.au/species/1/191/"
+  ],
+  "existingReferences": "public/assets/shallow-body-kit/provenance.json and shallow-community-fish/provenance.json",
+  "speciesRules": [
+    "Retain original identity, species and total-length units.",
+    "Caranx ignobilis has a steep head and no dark gill-cover spot; that marking is restricted to the separate bigeye-trevally configuration.",
+    "Moorish idol, blue tang, yellow tang and unidentified reef fish now use authored complete forms in the same main-swimmer family. Barramundi, turtles, sharks, rays, cephalopods and benthic families retain their previous geometry. Unidentified reef fish stays unidentified; no species is inferred from the former source mesh."
+  ],
+  "defaultReplacements": "Principal CC0 specimen fish and existing authored reef swimmers replaced in the default sample by this authored family. Original source files and licences retained as historical assets; no longer used for principal shoal rendering.",
+  "coralAssets": "Two Smithsonian CC0 whole-branching specimens; complete formosa, fixed lower support crop on secale, uniformly scaled. Dry specimen geometry with authored colour, not a live-tissue scan.",
+  "coralProvenance": "../shallow-branching-life/provenance.json",
+  "limitations": "Fin/body anatomy and colouring remain authored and simplified. Cohesive does not mean documentary realism or full ecosystem simulation. Existing CC BY and CC BY-NC obligations remain separate.",
+  "currentUpgrade": "../shallow-mixed-communities/provenance.json"
+}

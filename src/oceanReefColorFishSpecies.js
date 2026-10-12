@@ -1,0 +1,60 @@
+const freeze = v => { if (v && typeof v === 'object') { Object.values(v).forEach(freeze); Object.freeze(v); } return v; };
+const source = (url, label) => ({ url, label });
+function fish(d) {
+  const plankton = d.foodPool === 'resources.plankton';
+  return freeze({ regionalOnly: true, identityLevel: 'species-representative', taxonomicLevel: 'species', kind: 'fish',
+    referenceRegion: '热带印度—西太平洋礁区', coOccurrenceStatus: 'representatives-not-a-local-field-survey',
+    sizeMeasure: 'total-length', depthRangeM: d.depthSelectionM,
+    displaySizeM: { range: d.sizeRangeM, measure: 'total-length', status: 'illustrative-selection' },
+    admissionDepthM: { range: d.depthSelectionM, status: 'selected-whole-body-depth-not-complete-natural-range' },
+    naturalPopulationDensity: null, calibratedMovementMPerS: null, calibratedEcologicalRates: null,
+    calibratedTemperatureC: null, calibratedSalinityPSU: null, calibratedOxygenMgPerL: null,
+    ecologicalRateStatus: 'uncalibrated-demonstration',
+    support: { mode: 'whole-freewater-body-near-real-reef', contactKind: 'none-freewater', footContacts: [],
+      rootReference: 'total-length-midpoint', pitchLimitRad: .10, minimumNormalY: .92,
+      wholeBodyDepthRequired: true, terrainClearanceRequired: true },
+    normalizedEnvelope: { x: [-.54, .54], y: [-.34, .40], z: [-.20, .20], horizontalRadiusUnits: .58,
+      axes: 'forward-positive-x; up-positive-y; transverse-z', status: 'complete-selected-form-and-bounded-fin-motion' },
+    animationBounds: { tailYawRad: .10, pectoralRollRad: .06 },
+    feedingProxy: { owner: plankton ? 'resources' : 'reefGuild', stock: plankton ? 'plankton' : 'preyOrganicUnits',
+      resourcePath: `region.${d.foodPool}`, selectedFoodComponent: d.foodComponent,
+      status: 'existing-local-nutrition-proxy-not-complete-natural-diet', speciesResolvedFoodStock: false, visiblePreyKillImplemented: false },
+    limitations: ['密度、移动、活动时段和摄食速率是未校准示意。',
+      '个体或有限小群使用现有营养库存；未实现天然大鱼群、领地、洞穴遮蔽、物种级捕食或繁殖。'],
+    ...d, morphology: { form: d.form, normalizedMeasuredSize: 1, bodyMeasuredX: [-.5, .5],
+      sizeAxis: 'snout-to-farthest-caudal-tip-x', clearanceIncludes: ['whole-body', 'mouth', 'eyes', 'all-fins', 'bounded-animation'] },
+    sourceLinks: d.sources.map(s => ({ ...s })) });
+}
+export const OCEAN_REEF_COLOR_FISH_SPECIES = freeze([
+  fish({ id: 'emperor-angelfish', commonName: '帝王神仙鱼（描述性中文名）', scientificName: 'Pomacanthus imperator', scientificAuthor: '(Bloch, 1787)',
+    guild: 'selected-attached-animal-nutrition-consumer', lifeStageSelection: 'adult-colour-phase-only',
+    lengthM: .29, sizeRangeM: [.25, .33], depthSelectionM: [3, 30], foodPool: 'reefGuild.preyOrganicUnits',
+    foodComponent: 'selected-unresolved-sponge-and-tunicate-animal-nutrition',
+    habitat: ['coral-rich-lagoon-channel-or-seaward-reef'], colors: ['#405c96', '#c7af51', '#252d37'],
+    form: 'adult-deep-compressed-body-diagonal-yellow-blue-stripes-black-eye-mask-rounded-yellow-tail-preopercular-spines',
+    description: '成鱼深侧扁体、蓝黄斜条纹、黑色眼罩、圆黄尾及鳃盖前棘；不用幼鱼环纹混搭。',
+    behavior: '在实际礁体附近有限巡游，扣动物营养代理；没有让可见海绵或海鞘凭空消失。',
+    sources: [source('https://fishesofaustralia.net.au/home/species/653', 'Museums Victoria：成幼鱼区别、珊瑚丰富礁区及海绵/海鞘食性'),
+      source('https://australian.museum/learn/animals/fishes/emperor-angelfish-pomacanthus-imperator/', 'Australian Museum：38cm、26m活体、成鱼斜条纹与神仙鱼鳃盖前棘')] }),
+  fish({ id: 'doubleline-fusilier', commonName: '双线乌尾鮗（描述性中文名）', scientificName: 'Pterocaesio digramma',
+    guild: 'midwater-zooplankton-nutrition-consumer', lengthM: .24, sizeRangeM: [.20, .28], depthSelectionM: [5, 30],
+    foodPool: 'resources.plankton', foodComponent: 'selected-unresolved-zooplankton-nutrition',
+    habitat: ['coastal-lagoon-or-seaward-reef-water'], naturalGrouping: 'commonly-schools-not-yet-implemented',
+    colors: ['#618986', '#cbb657', '#b8bdab'], form: 'slender-blue-green-fusilier-two-narrow-yellow-side-stripes-pale-belly-and-black-fork-tail-tips',
+    description: '细长蓝绿色体、两条窄黄侧纹、浅腹和黑色叉尾尖，区别于已有两种乌尾鮗。',
+    behavior: '在真实礁区水层独立或随有限小群巡游，每条鱼独立摄食浮游营养；未校准天然群游。',
+    sources: [source('https://fishesofaustralia.net.au/home/species/543', 'Museums Victoria：两黄纹/黑尾尖、30cm参考、沿岸/潟湖/外礁'),
+      source('https://australian.museum/learn/animals/fishes/doubleline-fusilier-pterocaesio-digramma/', 'Australian Museum：细长体、中层群游与日间体色'),
+      source('https://www.fao.org/4/t0046e/T0046E08.pdf', 'FAO Carpenter 1988第54页P.digramma：西太平洋、30cm、礁区混群与中层浮游动物食性')] }),
+  fish({ id: 'bluestripe-snapper', commonName: '蓝带笛鲷（描述性中文名）', scientificName: 'Lutjanus kasmira', scientificAuthor: '(Forsskål, 1775)',
+    guild: 'reef-fish-and-crustacean-nutrition-consumer', lengthM: .24, sizeRangeM: [.20, .28], depthSelectionM: [3, 30],
+    foodPool: 'reefGuild.preyOrganicUnits', foodComponent: 'selected-unresolved-fish-and-crustacean-nutrition',
+    habitat: ['coral-reef-lagoon-and-outer-reef-slope'], naturalGrouping: 'daytime-aggregations-not-yet-implemented',
+    referenceDepthM: { reportedRange: [1, 265], completeNaturalRange: false },
+    colors: ['#c9b359', '#4b7996', '#c1c1ae'], form: 'yellow-snapper-four-blue-side-stripes-faint-grey-lower-stripes-white-belly-and-yellow-fork-tail',
+    description: '黄色体、四条蓝色侧线纹、带淡灰线的白腹及黄叉尾，区别于五线或全白腹近似种。',
+    behavior: '在礁缘独立或随有限小群巡游，扣鱼与甲壳类的未解析营养；不宣称实际追猎或完整自然群聚。',
+    sources: [source('https://fishesofaustralia.net.au/home/species/559', 'Museums Victoria：四蓝纹/腹灰纹、常见25cm、礁区与鱼类/甲壳类食性')] })
+]);
+export const OCEAN_REEF_COLOR_FISH_IDS = freeze(OCEAN_REEF_COLOR_FISH_SPECIES.map(s => s.id));
+export const oceanReefColorFishSpeciesById = freeze(Object.fromEntries(OCEAN_REEF_COLOR_FISH_SPECIES.map(s => [s.id, s])));

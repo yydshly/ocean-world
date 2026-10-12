@@ -1,3 +1,4 @@
+import { MEADOW_FORAGING_VERSION, MEADOW_FORAGING_MODEL, meadowForagingProfile, meadowForagingCandidates, meadowForagingArrived, meadowForagingReady } from './oceanMeadowForaging.js';
 import { oceanMeadowLifeSpeciesCatalog, oceanMeadowLifeSpeciesById } from './oceanMeadowLifeSpecies.js';
 import { oceanRockHeight, oceanRockSurface } from './oceanRockShape.js';
 import { oceanBiodiversityPatchHeight } from './oceanBiodiversityShape.js';
@@ -28,8 +29,8 @@ const close = (a, b, t = 1e-8) => Number.isFinite(a) && Number.isFinite(b) && Ma
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
 const angle = a => Math.atan2(Math.sin(a), Math.cos(a));
 const freeze = v => { if (v && typeof v === 'object' && !Object.isFrozen(v)) { Object.values(v).forEach(freeze); Object.freeze(v); } return v; };
-const topFields = ['meadowLifeVersion', 'meadowLifeInitializedAtSec', 'meadowLife'];
-const individualFields = ['meadowLifeIndividualVersion', 'meadowLifeSiteId', 'meadowLifeHostId', 'meadowLifeLeafIndex', 'meadowLifeMode', 'meadowLifeFoodPool'];
+const topFields = ['meadowLifeVersion', 'meadowLifeInitializedAtSec', 'meadowLife', 'meadowLifeForagingVersion'];
+const individualFields = ['meadowLifeIndividualVersion', 'meadowLifeSiteId', 'meadowLifeHostId', 'meadowLifeLeafIndex', 'meadowLifeMode', 'meadowLifeFoodPool', 'meadowLifeForagingVersion'];
 const marked = a => a && Object.keys(a).some(k => k.startsWith('meadowLife'));
 export const isOceanMeadowLifeAgent = a => OCEAN_MEADOW_LIFE_IDS.includes(a?.speciesId);
 function hash(text) { let h = 2166136261; for (const c of String(text)) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
@@ -205,7 +206,7 @@ export function createOceanMeadowLifePlan(g, r, { availableSlots = 0, maxAdded =
   }
   return freeze({ version: 1, placements });
 }
-export function initializeOceanMeadowLife(r, g, { fresh = false, capacity = 20, maxAdded = 4, surface, bed } = {}) {
+export function initializeOceanMeadowLife(r, g, { fresh = false, capacity = 20, maxAdded = 4, surface, bed, foraging = false, foodWeb = false } = {}) {
   if (!fresh || !nativeOwner(r, g) || r.timeSec !== 0 || Object.keys(r).some(k => k.startsWith('meadowLife')) ||
     [...r.agents, ...(r.turtleAgents ?? [])].some(a => isOceanMeadowLifeAgent(a) || marked(a)) || !validateLivingNetworkRecord(r)) return false;
   const cap = Math.min(20, Number.isSafeInteger(capacity) ? Math.max(0, capacity) : 0), occupied = r.agents.length + (r.turtleAgents?.length ?? 0);
@@ -217,11 +218,13 @@ export function initializeOceanMeadowLife(r, g, { fresh = false, capacity = 20, 
     energy: .72 + rng(`${p.id}:condition`) * .1, alive: true, state: traits[p.speciesId].speed ? 'foraging' : p.speciesId === 'barrel-sea-pen' ? 'contracted' : 'tail-holding', stateSince: 0,
     colonyExtension: p.speciesId === 'barrel-sea-pen' ? 0 : null, parasites: 0, lastFeedAt: null, lastMeadowIntake: null, nextBite: rng(`${p.id}:bite`) * 3,
     nextDecision: 0, decisions: 0, fleeUntil: 0, groupId: null, habitat: `meadow-life-${p.mode}`, refugeHostId: p.meadowLifeHostId,
+    ...(foraging ? { meadowLifeForagingVersion: foodWeb ? MEADOW_FORAGING_VERSION : 1 } : {}),
     meadowLifeIndividualVersion: 1, meadowLifeSiteId: p.siteId, meadowLifeHostId: p.meadowLifeHostId, meadowLifeLeafIndex: p.meadowLifeLeafIndex,
     meadowLifeMode: p.mode, meadowLifeFoodPool: p.foodPool, dietProxy: OCEAN_MEADOW_LIFE_FOOD_SCOPE,
     ...(p.mode === 'grass-tail' ? { grassContactScope: M.grassContactScope } : {}) }));
   r.agents.push(...born); const input = recordLivingAdmission(r, born);
   r.meadowLifeVersion = 1; r.meadowLifeInitializedAtSec = 0;
+  if (foraging) r.meadowLifeForagingVersion = foodWeb ? MEADOW_FORAGING_VERSION : 1;
   r.meadowLife = { version: 1, scope: M.scope, foodScope: OCEAN_MEADOW_LIFE_FOOD_SCOPE, initialInputUnits: input,
     addedIds: born.map(a => a.id), birthPlacements: clone(plan.placements), ticks: 0, lastTickSec: 0,
     counters: { feedings: 0, consumedUnits: 0, deaths: 0, moved: 0 }, events: [] };
@@ -231,7 +234,24 @@ export function oceanMeadowLifePositionValid(r, g, agent, position = agent.posit
   return nativeOwner(r, g) && isOceanMeadowLifeAgent(agent) && Boolean(survey(r, g, agent, position, heading, pitch, queries(g, r, { surface, bed }), occupancy));
 }
 export function oceanMeadowLifeBalance(r) { return r?.basicNetwork ? livingNetworkBalance(r) : NaN; }
-export function oceanMeadowLifeSnapshot(r) { return Object.hasOwn(r, 'meadowLifeVersion') ? Object.fromEntries(topFields.map(k => [k, clone(r[k])])) : {}; }
+export function oceanMeadowLifeSnapshot(r) { return Object.hasOwn(r, 'meadowLifeVersion') ? Object.fromEntries(topFields.filter(k => Object.hasOwn(r, k)).map(k => [k, clone(r[k])])) : {}; }
+function foragingContext(r, g, a, q, occupancy = true) {
+  const offsets = (heading, pitch = 0) => bodyPoints(a.speciesId, a.sizeM, frame(null, heading, pitch, false));
+  return {
+    positionAt: (x, z, heading) => {
+      if (a.speciesId === 'spider-conch') return supportedPosition(g, r, a, x, z, heading, q);
+      let y = -Infinity;
+      for (const o of offsets(heading)) y = Math.max(y, q.surface(x + o.x, z + o.z, true) - o.y);
+      return { x, y: y + MEADOW_FORAGING_MODEL.cuttlefishClearanceM, z };
+    },
+    physicallyValid: () => Boolean(survey(r, g, a, a.position, a.heading, a.pitch, q, occupancy)),
+    bodyClearance: () => Math.min(...offsets(a.heading, a.pitch).map(o => a.position.y + o.y - q.surface(a.position.x + o.x, a.position.z + o.z, true))),
+  };
+}
+export function oceanMeadowForagingReady(r, g, a, { surface, bed } = {}) {
+  return nativeOwner(r, g) && a?.alive === true && Boolean(meadowForagingProfile(a)) &&
+    meadowForagingReady(a, foragingContext(r, g, a, queries(g, r, { surface, bed })));
+}
 function setState(a, state, clock) { if (a.state !== state) { a.state = state; a.stateSince = clock; } }
 function takeFood(r, a, amount) {
   let taken, stockBefore, stockAfter;
@@ -242,7 +262,8 @@ function takeFood(r, a, amount) {
     r.resources[pool] -= taken; r.ledger.ingested += taken; stockAfter = r.resources[pool]; }
   recordLivingIngestion(r, a, taken); a.energy = Math.min(1, a.energy + taken * M.conditionGainPerUnit); a.lastFeedAt = r.timeSec;
   a.lastMeadowIntake = { timeSec: r.timeSec, pool: a.meadowLifeFoodPool, stockBefore, stockAfter, removedUnits: taken,
-    ownerId: r.id, unit: LIVING_NETWORK_UNITS, agentPosition: clone(a.position), scope: OCEAN_MEADOW_LIFE_FOOD_SCOPE };
+    ownerId: r.id, unit: LIVING_NETWORK_UNITS, agentPosition: clone(a.position), scope: OCEAN_MEADOW_LIFE_FOOD_SCOPE,
+    ...(meadowForagingProfile(a) ? { foraging: { version: a.meadowLifeForagingVersion, target: clone(a.target), heading: a.heading, pitch: a.pitch } } : {}) };
   r.counters.feeding++; r.meadowLife.counters.feedings++; r.meadowLife.counters.consumedUnits += taken;
   r.meadowLife.events.push({ timeSec: r.timeSec, agentId: a.id, pool: a.meadowLifeFoodPool, removedUnits: taken, scope: OCEAN_MEADOW_LIFE_FOOD_SCOPE });
   if (r.meadowLife.events.length > M.maximumEvents) r.meadowLife.events.splice(0, r.meadowLife.events.length - M.maximumEvents);
@@ -264,16 +285,29 @@ export function tickOceanMeadowLife(r, g, dt, { surface, bed, environmentAt } = 
     if (a.speciesId === 'barrel-sea-pen') { a.colonyExtension = Math.max(0, Math.min(1, a.colonyExtension + (night ? 1 : -1) * dt * .5));
       a.velocity = { x: 0, y: 0, z: 0 }; setState(a, night ? 'expanding' : 'contracted', r.timeSec); if (!night || a.colonyExtension < .9) continue;
     } else if (t.speed) {
+      const profile = meadowForagingProfile(a);
+      if (profile?.daylightOnly && (hour < 6 || hour >= 18)) {
+        a.velocity = { x: 0, y: 0, z: 0 }; setState(a, 'meadow-resting', r.timeSec); continue;
+      }
       if (r.timeSec >= a.nextDecision) { const key = `${a.id}:decision:${a.decisions++}`; a.nextDecision = r.timeSec + 4;
-        for (let i = 0; i < 6; i++) { const h = rng(`${key}:heading:${i}`) * TAU, reach = rng(`${key}:reach:${i}`) * t.extent;
-          const x = a.home.x + Math.cos(h) * reach, z = a.home.z + Math.sin(h) * reach, heading = Math.atan2(z - a.position.z, x - a.position.x);
-          const candidate = t.mode === 'rubble-floor' ? supportedPosition(g, r, a, x, z, heading, q) : { x, z, y: a.home.y };
-          if (survey(r, g, a, candidate, heading, 0, q, true)) { a.target = candidate; a.targetHeading = heading; break; } }
+        if (profile) {
+          const candidates = meadowForagingCandidates(a, salt => rng(`${key}:${salt}`), foragingContext(r, g, a, q).positionAt);
+          for (const { position, heading } of candidates) if (survey(r, g, a, position, heading, 0, q, true)) {
+            a.target = position; a.targetHeading = heading;
+            a.nextDecision = r.timeSec + distance(a.position, position) / t.speed + MEADOW_FORAGING_MODEL.pauseSeconds + MEADOW_FORAGING_MODEL.turnAllowanceSeconds;
+            break;
+          }
+        } else {
+          for (let i = 0; i < 6; i++) { const h = rng(`${key}:heading:${i}`) * TAU, reach = rng(`${key}:reach:${i}`) * t.extent;
+            const x = a.home.x + Math.cos(h) * reach, z = a.home.z + Math.sin(h) * reach, heading = Math.atan2(z - a.position.z, x - a.position.x);
+            const candidate = t.mode === 'rubble-floor' ? supportedPosition(g, r, a, x, z, heading, q) : { x, z, y: a.home.y };
+            if (survey(r, g, a, candidate, heading, 0, q, true)) { a.target = candidate; a.targetHeading = heading; break; } }
+        }
       }
       const previous = clone(a.position), delta = { x: a.target.x - previous.x, y: a.target.y - previous.y, z: a.target.z - previous.z }, length = Math.hypot(delta.x, delta.y, delta.z);
       const heading = a.heading + Math.max(-M.maximumTurnRadiansPerSec * dt, Math.min(M.maximumTurnRadiansPerSec * dt, angle(a.targetHeading - a.heading)));
       if (survey(r, g, a, previous, heading, a.pitch, q, true)) a.heading = heading;
-      if (length > 1e-8) for (const fraction of [1, .5, .25]) { const step = Math.min(length, t.speed * dt) * fraction;
+      if (length > 1e-8 && (!profile || !meadowForagingArrived(a))) for (const fraction of [1, .5, .25]) { const step = Math.min(length, t.speed * dt) * fraction;
         let next = { x: previous.x + delta.x / length * step, y: previous.y + delta.y / length * step, z: previous.z + delta.z / length * step };
         if (t.mode === 'rubble-floor') next = supportedPosition(g, r, a, next.x, next.z, a.heading, q);
         let mid = next && { x: (previous.x + next.x) * .5, y: (previous.y + next.y) * .5, z: (previous.z + next.z) * .5 };
@@ -282,8 +316,9 @@ export function tickOceanMeadowLife(r, g, dt, { surface, bed, environmentAt } = 
         if (!support || !mid || distance(previous, mid) + distance(mid, next) > t.speed * dt + 1e-8 || !survey(r, g, a, mid, a.heading, a.pitch, q, true)) continue;
         a.position = next; a.supportNormal = clone(support.supportNormal);
         d.counters.moved++; break; }
-      a.velocity = Object.fromEntries(['x', 'y', 'z'].map(k => [k, (a.position[k] - previous[k]) / dt])); setState(a, 'foraging', r.timeSec);
+      a.velocity = Object.fromEntries(['x', 'y', 'z'].map(k => [k, (a.position[k] - previous[k]) / dt])); setState(a, profile ? (meadowForagingReady(a, foragingContext(r, g, a, q)) ? 'meadow-forage-paused' : 'meadow-forage-approaching') : 'foraging', r.timeSec);
     } else setState(a, 'tail-holding', r.timeSec);
+    if (meadowForagingProfile(a) && !meadowForagingReady(a, foragingContext(r, g, a, q))) continue;
     if (r.timeSec >= a.nextBite) { a.nextBite = r.timeSec + M.biteIntervalSec;
       setState(a, takeFood(r, a, M.biteUnits) > 0 ? 'meadow-proxy-feeding' : 'searching', r.timeSec); }
   }
@@ -296,6 +331,7 @@ export function validateOceanMeadowLifeRecord(r, g, { surface, bed, capacity = 2
   if (!has) return true;
   const d = r.meadowLife;
   if (r.meadowLifeVersion !== 1 || r.meadowLifeInitializedAtSec !== 0 || !d || d.version !== 1 || d.scope !== M.scope || d.foodScope !== OCEAN_MEADOW_LIFE_FOOD_SCOPE ||
+    (r.meadowLifeForagingVersion !== undefined && ![1, MEADOW_FORAGING_VERSION].includes(r.meadowLifeForagingVersion)) ||
     keys.some(k => !topFields.includes(k)) || !Number.isSafeInteger(d.ticks) || d.ticks < 0 || !close(d.lastTickSec, d.ticks * .1) ||
     r.ticks !== d.ticks + (beforeTick ? 1 : 0) || !close(r.timeSec - d.lastTickSec, beforeTick ? .1 : 0) ||
     !Array.isArray(d.addedIds) || !Array.isArray(d.birthPlacements) || d.addedIds.length !== agents.length || d.birthPlacements.length !== agents.length ||
@@ -310,7 +346,7 @@ export function validateOceanMeadowLifeRecord(r, g, { surface, bed, capacity = 2
   return agents.every(a => {
     const b = d.birthPlacements.find(p => p.id === a.id), s = oceanMeadowLifeSpeciesById[a.speciesId], t = traits[a.speciesId];
     if (!b || a.id !== `ocean:${r.id}:meadow-life:${a.speciesId}:${b.siteId}` || a.regionId !== r.id || b.speciesId !== a.speciesId ||
-      a.meadowLifeIndividualVersion !== 1 || a.meadowLifeSiteId !== b.siteId || a.meadowLifeHostId !== b.meadowLifeHostId || a.meadowLifeLeafIndex !== b.meadowLifeLeafIndex ||
+      a.meadowLifeForagingVersion !== r.meadowLifeForagingVersion || a.meadowLifeIndividualVersion !== 1 || a.meadowLifeSiteId !== b.siteId || a.meadowLifeHostId !== b.meadowLifeHostId || a.meadowLifeLeafIndex !== b.meadowLifeLeafIndex ||
       a.meadowLifeMode !== t.mode || b.mode !== t.mode || a.meadowLifeFoodPool !== t.pool || b.foodPool !== t.pool || a.refugeHostId !== a.meadowLifeHostId ||
       Object.keys(a).some(k => k.startsWith('meadowLife') && !individualFields.includes(k)) ||
       !d.addedIds.includes(a.id) || !close(a.sizeM, selectedSize(a.speciesId, rng), 1e-12) || a.sizeM !== b.sizeM || a.sizeM < s.sizeRangeM[0] || a.sizeM > s.sizeRangeM[1] ||
@@ -318,7 +354,7 @@ export function validateOceanMeadowLifeRecord(r, g, { surface, bed, capacity = 2
       ![a.heading, a.targetHeading, b.heading, a.pitch, b.pitch].every(Number.isFinite) || Math.abs(a.pitch) > t.pitch || b.pitch !== 0 ||
       distance(a.home, b.position) > 1e-10 || distance(a.refuge, b.position) > 1e-10 || distance(a.position, a.home) > t.extent + 1e-8 || distance(a.target, a.home) > t.extent + 1e-8 ||
       typeof a.alive !== 'boolean' || !nonnegative(a.energy) || a.energy > 1 || !nonnegative(a.timeSec) || a.timeSec > d.lastTickSec + 1e-8 || (a.alive && !close(a.timeSec, d.lastTickSec)) ||
-      !['foraging', 'tail-holding', 'contracted', 'expanding', 'meadow-proxy-feeding', 'searching', 'dead'].includes(a.state) || (a.alive && a.state === 'dead') || !close(a.timeSec, Math.round(a.timeSec * 10) * .1) ||
+      !['foraging', 'tail-holding', 'contracted', 'expanding', 'meadow-proxy-feeding', 'searching', 'dead', ...(meadowForagingProfile(a) ? ['meadow-forage-approaching', 'meadow-forage-paused', 'meadow-resting'] : [])].includes(a.state) || (a.alive && a.state === 'dead') || !close(a.timeSec, Math.round(a.timeSec * 10) * .1) ||
       !nonnegative(a.nextBite) || !nonnegative(a.nextDecision) || !Number.isSafeInteger(a.decisions) || a.decisions < 0 || !nonnegative(a.stateSince) || a.stateSince > a.timeSec + 1e-8 ||
       !nonnegative(a.organicUnits) || typeof a.organicDeathRecorded !== 'boolean' || a.dietProxy !== OCEAN_MEADOW_LIFE_FOOD_SCOPE ||
       Math.hypot(a.velocity.x, a.velocity.y, a.velocity.z) > t.speed + 1e-8 || (a.lastFeedAt !== null && (!nonnegative(a.lastFeedAt) || a.lastFeedAt > a.timeSec)) ||
@@ -330,14 +366,23 @@ export function validateOceanMeadowLifeRecord(r, g, { surface, bed, capacity = 2
     if (!site || (site.hostId ?? null) !== a.meadowLifeHostId || (site.leafIndex ?? null) !== a.meadowLifeLeafIndex || !close(b.heading, rng(`${a.speciesId}:heading`) * TAU, 1e-12)) return false;
     const canonical = sitePose(g, r, a.speciesId, site, a.sizeM, b.heading, q);
     if (!canonical || distance(canonical, b.position) > 1e-10) return false;
-    if (a.lastMeadowIntake === null ? a.lastFeedAt !== null : !intakeValid(r, a)) return false;
+    if (a.lastMeadowIntake === null ? a.lastFeedAt !== null : !intakeValid(r, a, g, q)) return false;
     const support = survey(r, g, a, a.position, a.heading, a.pitch, q), birth = survey(r, g, a, a.home, b.heading, 0, q);
     return Boolean(support && birth && distance(a.supportNormal, support.supportNormal) < 1e-8 && distance(b.supportNormal, birth.supportNormal) < 1e-8 &&
       survey(r, g, a, a.target, a.targetHeading, 0, q));
   });
 }
-function intakeValid(r, a) {
+function intakeValid(r, a, g, q) {
   const e = a.lastMeadowIntake;
+  if (meadowForagingProfile(a)) {
+    const pose = e?.foraging;
+    if (!pose || pose.version !== a.meadowLifeForagingVersion || !point(pose.target) || !point(e.agentPosition) ||
+      !Number.isFinite(pose.heading) || !Number.isFinite(pose.pitch) || Math.abs(pose.pitch) > traits[a.speciesId].pitch ||
+      distance(pose.target, a.home) > traits[a.speciesId].extent + 1e-8) return false;
+    const historical = { ...a, position: e.agentPosition, target: pose.target, heading: pose.heading, pitch: pose.pitch };
+    // Historical support is static; other live animals may have moved since.
+    if (!meadowForagingReady(historical, foragingContext(r, g, historical, q, false))) return false;
+  } else if (e?.foraging !== undefined) return false;
   return e && nonnegative(e.timeSec) && e.timeSec <= a.timeSec && close(e.timeSec, a.lastFeedAt) && e.pool === a.meadowLifeFoodPool &&
     nonnegative(e.stockBefore) && nonnegative(e.stockAfter) && nonnegative(e.removedUnits) && e.removedUnits > 0 && e.removedUnits <= M.biteUnits &&
     close(e.stockBefore - e.stockAfter, e.removedUnits, Number.EPSILON * 8 * Math.max(e.stockBefore, e.stockAfter, e.removedUnits)) && e.ownerId === r.id && e.unit === LIVING_NETWORK_UNITS &&

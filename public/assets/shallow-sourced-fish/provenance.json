@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "title": "Barramundi Fish",
+  "author": "Microsoft",
+  "publisher": "KhronosGroup glTF-Sample-Assets",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/blob/main/Models/BarramundiFish/README.md",
+  "scientificName": "Lates calcarifer",
+  "identityNote": "Publisher names Barramundi; not a fusilier, snapper or trevally replacement. No scan provenance claimed.",
+  "sourceFiles": [
+    {
+      "file": "BarramundiFish.gltf",
+      "download": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/BarramundiFish/glTF/BarramundiFish.gltf",
+      "bytes": 2554,
+      "sha256": "15e2c26d308ef73f227655703ba88c37cf817e60e25229fab5cbfd0bf6888d2e"
+    },
+    {
+      "file": "BarramundiFish.bin",
+      "download": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/BarramundiFish/glTF/BarramundiFish.bin",
+      "bytes": 128208,
+      "sha256": "5d6ca35ff4e498d84597956091cf5de8ce0f236cd9b8ebf48e19d372e4187112"
+    },
+    {
+      "file": "BarramundiFish_baseColor.png",
+      "download": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/BarramundiFish/glTF/BarramundiFish_baseColor.png",
+      "bytes": 4985099,
+      "sha256": "c80f0a2b9752fb6fe1eda851afdad071b289982be036c1e6ee621592d64547c6"
+    },
+    {
+      "file": "BarramundiFish_normal.png",
+      "download": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/BarramundiFish/glTF/BarramundiFish_normal.png",
+      "bytes": 3017384,
+      "sha256": "089f8ff777a1ab63ceb26f5b77bc758ff9db944b59f579dc3aee4143e3bc8f9d"
+    },
+    {
+      "file": "BarramundiFish_occlusionRoughnessMetallic.png",
+      "download": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/BarramundiFish/glTF/BarramundiFish_occlusionRoughnessMetallic.png",
+      "bytes": 4355820,
+      "sha256": "4a89d8a0bf9d960e17177411fb846eb9acbb737ab3c6c7716a8d97672e22fafc"
+    }
+  ],
+  "adaptations": [
+    "Preserve all 2188 source vertices, 3864 source triangles, UVs, tangent handedness and material texture channels.",
+    "Bake authored node pose plus axis alignment; raw -Z mouth becomes +X; centered neutral total length is 1.",
+    "Scale original maps to 1024 pixels using Lanczos; normalize reduced tangent-space normal vectors.",
+    "Tail wave is authored display motion in this project, not source skeletal animation or calibrated biomechanics."
+  ],
+  "coordinates": {
+    "sourceBounds": {
+      "min": [
+        -0.0738416239619255,
+        -0.000878453254699707,
+        -0.3177383244037628
+      ],
+      "max": [
+        0.06906196475028992,
+        0.2866283059120178,
+        0.3253729045391083
+      ]
+    },
+    "sourceForward": "raw -Z (mouth UV u~.03 vs distal tail u~.97)",
+    "axisTransform": "center source AABB, rotate raw Y -90 degrees, divide by raw Z length",
+    "unit": "neutral total length X=1"
+  },
+  "motion": {
+    "sourceAnimations": 0,
+    "type": "shared GPU tail-body shear",
+    "maxNormalizedOffset": 0.028,
+    "verticalOffset": 0,
+    "amplitudeClamped": true
+  },
+  "generatedData": {
+    "bytes": 128208,
+    "sha256": "a52a515b130dd2e76f9e9bb8fe3d923a189f06cbb2e18a2d89eda3935dd6e029"
+  },
+  "textures": [
+    {
+      "file": "barramundi-basecolor.png",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1109477,
+      "sha256": "05aff82bf6078734a3c7effe111f3f1ddc420f470bc61ddffea07c031da35f5e"
+    },
+    {
+      "file": "barramundi-normal.png",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 888459,
+      "sha256": "cc27374b0086c7a44ff40df74e60cb50cf7b8752c9c38768b42a9cfb04398957"
+    },
+    {
+      "file": "barramundi-orm.png",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 961003,
+      "sha256": "7cfeb34e13a5ccb53e2999a7ccbe1261ced354b19602e6ec176c03f6f0fa2e53"
+    }
+  ],
+  "integration": {
+    "defaultEnabled": true,
+    "sampleOnly": true,
+    "individuals": 3,
+    "preservesOriginal281IdentitySpeciesSize": true,
+    "visualReview": "partial improvement visible at 58s; existing principal shoals and green turtle unchanged",
+    "motionNote": "No source skeleton/animation; per-individual authored GPU tail shear, not calibrated biomechanics",
+    "limits": "Full source wave envelope/discrete vertex clearance checked; actual WebGL playback/startup/FPS unverified."
+  }
+}

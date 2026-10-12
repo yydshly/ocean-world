@@ -1,0 +1,29 @@
+{
+  "stage": 29,
+  "date": "2026-10-12",
+  "scope": "finite 75-second shallow sample; persistent ocean unchanged",
+  "construction": "12 complete open reef banks replace 12 broad ramps and 24 rear/toe overlays. Four authored variants, each containing 18 whole source colonies and two compact animal contact patches. Gaps are missing triangles, not painted sand. Near geometry is shared by collision and rendering.",
+  "sources": [
+    {
+      "asset": "Agaricia leaf colony and Orbicella lobed colony",
+      "author": "Patric Lengacher",
+      "license": "CC BY 4.0",
+      "provenance": "../shallow-benthic-habitat/provenance.json"
+    },
+    {
+      "asset": "Acropora branching skeleton adapted to living display",
+      "author": "Smithsonian Institution",
+      "license": "CC0",
+      "provenance": "../shallow-branching-life/provenance.json"
+    }
+  ],
+  "modifications": "Reuse original images and prepared source meshes; rigid rotation, uniform scale and translation of complete colonies. Original source images remain byte-identical. Rock supports and habitat layout are project authored.",
+  "limits": [
+    "Artistic cross-region composition, not a single surveyed reef.",
+    "Branching source is a skeleton with authored living surface.",
+    "Contact patches remain simplified; animals remain representative models.",
+    "No new measured ecosystem populations or biomass.",
+    "Existing assets elsewhere retain their original attribution, noncommercial and share-alike conditions."
+  ],
+  "thirdPartyPurchases": 0
+}

@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-12",
+  "records": [
+    {
+      "key": "table-acropora",
+      "title": "Acropora hyacinthus",
+      "author": "thehydrous",
+      "source": "https://sketchfab.com/3d-models/acropora-hyacinthus-3b2227217de7468ea1ae67440505ce49",
+      "license": "by-nc-sa",
+      "licenseURL": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "sourceSha256": "e8bf0375f36da2f71401c977718d468478e27bc78f48e769840a99d680205f52",
+      "changes": "UV-preserving simplification, uniform world scale, source cut terrain buried in the receiving rock. The tiny untextured survey fragment is omitted.",
+      "limits": "Different survey sites assembled as visual reference, not one measured reef. CC BY-NC-SA restrictions retained.",
+      "originalTriangles": 228344,
+      "nearTriangles": 14922
+    },
+    {
+      "key": "acropora-robusta",
+      "title": "Acropora robusta, Iriomote Japan",
+      "author": "thehydrous",
+      "source": "https://sketchfab.com/3d-models/acropora-robusta-iriomote-japan-754bb17c26f8441bafd78417c0b67b45",
+      "license": "by-nc-sa",
+      "licenseURL": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "sourceSha256": "85d6f96bead1e37b475b94b3db7b6ac6056b76f8a70bb487ad91919f0d86707d",
+      "changes": "UV-preserving simplification, original complete textured survey patch, uniform world scale and assembly on the receiving rock.",
+      "limits": "Different survey sites assembled as visual reference, not one measured reef. CC BY-NC-SA restrictions retained.",
+      "originalTriangles": 150000,
+      "nearTriangles": 13999
+    },
+    {
+      "key": "reef-shark",
+      "title": "Blacktip Reef Shark",
+      "author": "Lais.Marques",
+      "source": "https://sketchfab.com/3d-models/blacktip-reef-shark-a52bb96c5a0c4157b49982471f8902b0",
+      "license": "by",
+      "licenseURL": "http://creativecommons.org/licenses/by/4.0/",
+      "sourceSha256": "af7c47fadf6e86673c1754322a777d4aac7bd8ba5c500327498c16ef7115010e",
+      "changes": "Original complete model, rigid normalization to total length; bounded authored swimming deformation replaces source rig. No new anatomy or species identification claimed.",
+      "limits": "Artist model, not an anatomical scan.",
+      "originalTriangles": 6228,
+      "nearTriangles": 6228
+    },
+    {
+      "key": "yellow-tang-low",
+      "title": "Oxidane - Yellow Tang",
+      "author": "JayNme",
+      "source": "https://sketchfab.com/3d-models/oxidane-yellow-tang-5750f70ac6734728b0eb3ed81de9bb2d",
+      "license": "by",
+      "licenseURL": "http://creativecommons.org/licenses/by/4.0/",
+      "sourceSha256": "25723490457b49858bc167208229570bff793bced8f2ecfc94c4f9d5084a2720",
+      "changes": "Original complete model, rigid normalization to total length; bounded authored swimming deformation replaces source rig. No new anatomy or species identification claimed.",
+      "limits": "Artist model, not an anatomical scan.",
+      "originalTriangles": 1184,
+      "nearTriangles": 1184
+    }
+  ],
+  "textures": [
+    {
+      "file": "acropora-robusta-0.jpg",
+      "bytes": 1009335,
+      "sha256": "87789e0c2c9c6ece93cf142eec2498fba910d86ee2318c0753e5e3f2b73f676c"
+    },
+    {
+      "file": "reef-shark-0.png",
+      "bytes": 245654,
+      "sha256": "f6cede13abc70862ef146f2b11ab42eff5e7e94aea55caa99815484ca2c05d8a"
+    },
+    {
+      "file": "reef-shark-1.png",
+      "bytes": 187096,
+      "sha256": "b5a1230c8e9db0d62f76bb641598964e3683f38293ef49f74b29e5192ec8fb6a"
+    },
+    {
+      "file": "reef-shark-2.png",
+      "bytes": 150095,
+      "sha256": "4a053266f26467c979d589998874f8c4d978ec6e179b6a40a376796304129614"
+    },
+    {
+      "file": "reef-shark-3.png",
+      "bytes": 177221,
+      "sha256": "7df2056695f90c3c910b219bac50a194d76e9338b96f2fd0e8c3c17ce866a1ab"
+    },
+    {
+      "file": "reef-shark-4.png",
+      "bytes": 457940,
+      "sha256": "2b6802225b8bd7cd35d4ea96e6a202f2ed412ef53788880969a85462bf90ed51"
+    },
+    {
+      "file": "reef-shark-5.png",
+      "bytes": 149315,
+      "sha256": "a957844b04eec08436974264e1277968f64571d90193fa781d49089399b43c83"
+    },
+    {
+      "file": "table-acropora-0.jpg",
+      "bytes": 1152707,
+      "sha256": "26e3bb877d3ff64b5dcae8d8a58ad5453ce5b98d591faf6c015a0c6ce1edba1c"
+    },
+    {
+      "file": "table-acropora-1.jpg",
+      "bytes": 948193,
+      "sha256": "601053225c8bb3f74df3d63b44cee71b9ee9e014a7b85d164f0a94101dcd2d4a"
+    },
+    {
+      "file": "table-acropora-2.jpg",
+      "bytes": 537354,
+      "sha256": "df6703eaf64126429b713b4200025196fd675bc5046fa110632b4ba0151848e8"
+    },
+    {
+      "file": "table-acropora-3.jpg",
+      "bytes": 977882,
+      "sha256": "a87e33bacf9dc10804040230e9d649034a2443e987aa8edb599a0e0313c7375b"
+    },
+    {
+      "file": "table-acropora-4.jpg",
+      "bytes": 959376,
+      "sha256": "24c1753df6a521233bb3241c415bd6d73e779ff066d5393c9f514d873b93e10f"
+    },
+    {
+      "file": "yellow-tang-low-0.png",
+      "bytes": 1011972,
+      "sha256": "550da96f626d1659baf73ccc7cc97d5840eb6bc42fc3220058175bd0bf8c7f57"
+    }
+  ]
+}

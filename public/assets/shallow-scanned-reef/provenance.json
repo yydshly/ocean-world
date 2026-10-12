@@ -1,0 +1,417 @@
+{
+  "version": 2,
+  "sourceKind": "underwater-photogrammetry-from-author-published-DinaCon-2025-Bali-assets-not-museum-skeletons",
+  "sourcePage": "https://scan3d.dinacon.org/",
+  "repository": "https://github.com/Reobos/Dina3D",
+  "authors": [
+    {
+      "sourceCredit": "Komang",
+      "fullCredit": "Komang Ngurah Semita Dana",
+      "creditPage": "https://blunderboffins.itch.io/karang-lestari"
+    }
+  ],
+  "geography": "Les Village, Bali, Indonesia",
+  "license": {
+    "name": "MIT",
+    "scope": "published asset repository root LICENSE; no nested license paths or GLB extras overrides observed; not a single-model Creative Commons declaration",
+    "copyright": "Copyright (c) 2025 Kyle Chisholm",
+    "file": "SOURCE-MIT-LICENSE.txt",
+    "source": "https://github.com/Reobos/Dina3D/blob/main/LICENSE"
+  },
+  "tool": {
+    "name": "MeshoptSimplifier",
+    "version": "1.3.0",
+    "method": "simplifyWithAttributes; UV .5 each; six source extrema locked; Permissive; target near3800/far900 triangles; compact original retained vertices; no remeshing or filled holes",
+    "geometryFixedFrom": "initial-permissive; original near3796/3800 and far899 geometry frozen, no further geometry parameter tuning",
+    "uvReplacement": "MeshBVH0.9.15 original surface nearest point / barycentric original UV to independent per-LOD-face atlas"
+  },
+  "changes": [
+    "Uniform source max(X/Z)width normalization to 1; original +Y retained; source minY translated to zero",
+    "Original POS/UV at retained source vertices, UV-aware index simplification; original GLBs have no NORMAL attribute, derived normals computed from actual derivative topology",
+    "Only original embedded baseColor image retained; Lanczos downsample to 1024; no wet-scene normal/roughness reinterpretation",
+    "Compact Float32 POS/computedNORMAL/UV plus Uint16 indices in binary and synchronous base64 module",
+    "Fixed first-pass POS/computedNORMAL triangles retained exactly; face vertices duplicated only to assign independent atlas UV",
+    "Original 8k real baseColor rebaked directly, not source-normal/PBR/color synthesis"
+  ],
+  "limits": [
+    "Source has no supplied survey scale/calibration: unit dimensions do not claim real metres",
+    "Original coral plus irregular basal/background patch retained; not a clean narrow-root colony and not terrain collision or a biological tissue model",
+    "Seams can simplify in Permissive mode; very fine branches and corallites may be lost",
+    "Photographic albedo can contain source underwater lighting; no measured reflectance or color correction claimed",
+    "Only derivative asset preview/data checks; no full scene, browser/WebGL or FPS acceptance",
+    "Nearest-surface albedo reprojection may choose adjacent surfaces where the fixed simplified mesh bridges fine branches or gaps; low per-face texel resolution loses detail",
+    "Independent atlas chart gutters reduce bilinear bleed; no measured physical reflectance or texture visual acceptance implied by budgets"
+  ],
+  "geometry": [
+    {
+      "key": "scanned-pocillopora",
+      "detail": "near",
+      "file": "scanned-pocillopora-near.bin",
+      "byteLength": 387192,
+      "sha256": "5243ec5fc58e0fed00df879fe0fe793af3057100d4a851d0b4d47dded11f0fca",
+      "vertices": 11388,
+      "indices": 11388,
+      "triangles": 3796,
+      "simplifierError": 0.007436854764819145,
+      "bounds": {
+        "min": [
+          -0.4945124387741089,
+          0,
+          -0.5
+        ],
+        "max": [
+          0.4945124387741089,
+          0.4908806383609772,
+          0.5
+        ],
+        "size": [
+          0.9890248775482178,
+          0.4908806383609772,
+          1
+        ]
+      },
+      "radius": 0.7032015001727786,
+      "rootRadius": 0.6847806229481649,
+      "height": 0.4908806383609772,
+      "rootBandY": 0.025,
+      "baseColorFile": "scanned-pocillopora-albedo-1024.jpg",
+      "baseColorFactor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "source": "pocillopora_meandrina_komang.glb",
+      "sourceSha256": "7e63ec720e21cc47735376b2662eb0d9cba1c53f85d04eb32b6ce5b3a83294a2",
+      "sourceBounds": {
+        "min": [
+          -0.8227476477622986,
+          -1.1102230246251565e-16,
+          -0.831877589225769
+        ],
+        "max": [
+          0.8227475881576538,
+          0.8167052268981934,
+          0.831877589225769
+        ],
+        "size": [
+          1.6454952359199524,
+          0.8167052268981935,
+          1.663755178451538
+        ]
+      },
+      "sourceToUnitScale": 0.6010499699425146,
+      "sourceRecenterTranslation": [
+        2.9802322387695312e-08,
+        1.1102230246251565e-16,
+        0
+      ],
+      "sourceOrientation": "source node identity; supplied +Y and positive-height coral/background patch retained",
+      "dimensions": "unit display envelope; not measured metres",
+      "normals": "unchanged computed normals from fixed first-pass derivative; face duplication preserves smoothing",
+      "uv": "independent per-face atlas cells with two-texel edge-extended gutters",
+      "sourceGeometrySha256": "f7554ffc0f018e2dbfec0c26a9c18669c9fcafdccb8dd81281efd8c6544deec5"
+    },
+    {
+      "key": "scanned-pocillopora",
+      "detail": "distant",
+      "file": "scanned-pocillopora-distant.bin",
+      "byteLength": 91698,
+      "sha256": "1101a4997a3fd5971d13a3e3dd8824011b30a42ca3cb4b1fb179094e730c7a59",
+      "vertices": 2697,
+      "indices": 2697,
+      "triangles": 899,
+      "simplifierError": 0.021034076809883118,
+      "bounds": {
+        "min": [
+          -0.4945124387741089,
+          0,
+          -0.5
+        ],
+        "max": [
+          0.4945124387741089,
+          0.4908806383609772,
+          0.5
+        ],
+        "size": [
+          0.9890248775482178,
+          0.4908806383609772,
+          1
+        ]
+      },
+      "radius": 0.7032015001727786,
+      "rootRadius": 0.6847806229481649,
+      "height": 0.4908806383609772,
+      "rootBandY": 0.025,
+      "baseColorFile": "scanned-pocillopora-albedo-1024.jpg",
+      "baseColorFactor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "source": "pocillopora_meandrina_komang.glb",
+      "sourceSha256": "7e63ec720e21cc47735376b2662eb0d9cba1c53f85d04eb32b6ce5b3a83294a2",
+      "sourceBounds": {
+        "min": [
+          -0.8227476477622986,
+          -1.1102230246251565e-16,
+          -0.831877589225769
+        ],
+        "max": [
+          0.8227475881576538,
+          0.8167052268981934,
+          0.831877589225769
+        ],
+        "size": [
+          1.6454952359199524,
+          0.8167052268981935,
+          1.663755178451538
+        ]
+      },
+      "sourceToUnitScale": 0.6010499699425146,
+      "sourceRecenterTranslation": [
+        2.9802322387695312e-08,
+        1.1102230246251565e-16,
+        0
+      ],
+      "sourceOrientation": "source node identity; supplied +Y and positive-height coral/background patch retained",
+      "dimensions": "unit display envelope; not measured metres",
+      "normals": "unchanged computed normals from fixed first-pass derivative; face duplication preserves smoothing",
+      "uv": "independent per-face atlas cells with two-texel edge-extended gutters",
+      "sourceGeometrySha256": "78758f6755c83250e1708c90343f337605b49738c32d0d7af82227657337be03"
+    },
+    {
+      "key": "scanned-diploastrea",
+      "detail": "near",
+      "file": "scanned-diploastrea-near.bin",
+      "byteLength": 387600,
+      "sha256": "19a457aba4ba998600fd6ec1972923aaf3c7405e1608df4bb8638b219b07dee0",
+      "vertices": 11400,
+      "indices": 11400,
+      "triangles": 3800,
+      "simplifierError": 0.005555101204663515,
+      "bounds": {
+        "min": [
+          -0.5,
+          0,
+          -0.4202183783054352
+        ],
+        "max": [
+          0.5,
+          0.4140602946281433,
+          0.4202183783054352
+        ],
+        "size": [
+          1,
+          0.4140602946281433,
+          0.8404367566108704
+        ]
+      },
+      "radius": 0.6531000909740515,
+      "rootRadius": 0.58096364787813,
+      "height": 0.4140602946281433,
+      "rootBandY": 0.025,
+      "baseColorFile": "scanned-diploastrea-albedo-1024.jpg",
+      "baseColorFactor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "source": "diploastrea_heliopora_komang.glb",
+      "sourceSha256": "8ac2db30d21168635a8fd87799c2af0d1d3f75f352ba7b7fe1a02bab4c6b5648",
+      "sourceBounds": {
+        "min": [
+          -1.0096397399902344,
+          1.8078054608849925e-09,
+          -0.848538339138031
+        ],
+        "max": [
+          1.0096397399902344,
+          0.8361034393310547,
+          0.848538339138031
+        ],
+        "size": [
+          2.0192794799804688,
+          0.8361034375232492,
+          1.697076678276062
+        ]
+      },
+      "sourceToUnitScale": 0.4952261486902607,
+      "sourceRecenterTranslation": [
+        0,
+        -1.8078054608849925e-09,
+        0
+      ],
+      "sourceOrientation": "source node identity; supplied +Y and positive-height coral/background patch retained",
+      "dimensions": "unit display envelope; not measured metres",
+      "normals": "unchanged computed normals from fixed first-pass derivative; face duplication preserves smoothing",
+      "uv": "independent per-face atlas cells with two-texel edge-extended gutters",
+      "sourceGeometrySha256": "964883764a34ce3106b0165557e5c07a04e0445b065eba07b43b5b2be036a590"
+    },
+    {
+      "key": "scanned-diploastrea",
+      "detail": "distant",
+      "file": "scanned-diploastrea-distant.bin",
+      "byteLength": 91698,
+      "sha256": "e1129fa0d0a47e6357c2fa0eb58057fdb6c39be8a8f6fbec0b4ea1bc9a764413",
+      "vertices": 2697,
+      "indices": 2697,
+      "triangles": 899,
+      "simplifierError": 0.015549851581454277,
+      "bounds": {
+        "min": [
+          -0.5,
+          0,
+          -0.4202183783054352
+        ],
+        "max": [
+          0.5,
+          0.4140602946281433,
+          0.4202183783054352
+        ],
+        "size": [
+          1,
+          0.4140602946281433,
+          0.8404367566108704
+        ]
+      },
+      "radius": 0.6531000909740515,
+      "rootRadius": 0.5681358055691326,
+      "height": 0.4140602946281433,
+      "rootBandY": 0.025,
+      "baseColorFile": "scanned-diploastrea-albedo-1024.jpg",
+      "baseColorFactor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "source": "diploastrea_heliopora_komang.glb",
+      "sourceSha256": "8ac2db30d21168635a8fd87799c2af0d1d3f75f352ba7b7fe1a02bab4c6b5648",
+      "sourceBounds": {
+        "min": [
+          -1.0096397399902344,
+          1.8078054608849925e-09,
+          -0.848538339138031
+        ],
+        "max": [
+          1.0096397399902344,
+          0.8361034393310547,
+          0.848538339138031
+        ],
+        "size": [
+          2.0192794799804688,
+          0.8361034375232492,
+          1.697076678276062
+        ]
+      },
+      "sourceToUnitScale": 0.4952261486902607,
+      "sourceRecenterTranslation": [
+        0,
+        -1.8078054608849925e-09,
+        0
+      ],
+      "sourceOrientation": "source node identity; supplied +Y and positive-height coral/background patch retained",
+      "dimensions": "unit display envelope; not measured metres",
+      "normals": "unchanged computed normals from fixed first-pass derivative; face duplication preserves smoothing",
+      "uv": "independent per-face atlas cells with two-texel edge-extended gutters",
+      "sourceGeometrySha256": "d659224c1c2cf4e18977db837e5fd9165d4c721d267b948f77f3b42acd480780"
+    }
+  ],
+  "textures": [
+    {
+      "key": "scanned-pocillopora",
+      "sourceEmbeddedImage": 2,
+      "sourceImageSha256": "f6ea536102cbfa5d1caf4d14a5cbb4a164ff45c082eb4a470fdce7d6428fa431",
+      "sourceSize": [
+        8192,
+        8192
+      ],
+      "file": "scanned-pocillopora-albedo-1024.jpg",
+      "bytes": 796925,
+      "sha256": "c103dff3b06443a28d5ff184a0b2ef1e59e27383891e18ed4dd7bf29ed4ef238",
+      "size": [
+        1024,
+        1024
+      ],
+      "colorSpace": "sRGB; bilinear original pixels interpolated in linear color then encoded sRGB",
+      "change": "Nearest-original-surface per-texel albedo rebake into per-face near/far shared atlas; two-texel edge gutters; JPEG95; no invented PBR"
+    },
+    {
+      "key": "scanned-diploastrea",
+      "sourceEmbeddedImage": 2,
+      "sourceImageSha256": "6973cfbb41093d63204c09769f04e7616f7754c098313dcdb4231ff6f157f6b6",
+      "sourceSize": [
+        8192,
+        8192
+      ],
+      "file": "scanned-diploastrea-albedo-1024.jpg",
+      "bytes": 799682,
+      "sha256": "da19d8f0d3731f7cd786e6d5b55f1b676fce7ddb2be41cb9d555a7210a65443b",
+      "size": [
+        1024,
+        1024
+      ],
+      "colorSpace": "sRGB; bilinear original pixels interpolated in linear color then encoded sRGB",
+      "change": "Nearest-original-surface per-texel albedo rebake into per-face near/far shared atlas; two-texel edge gutters; JPEG95; no invented PBR"
+    }
+  ],
+  "textureReprojection": [
+    {
+      "key": "scanned-pocillopora",
+      "originalSourceSha256": "7e63ec720e21cc47735376b2662eb0d9cba1c53f85d04eb32b6ce5b3a83294a2",
+      "queryCount": 920220,
+      "atlasSize": [
+        1024,
+        1024
+      ],
+      "nearAndFarSharedAtlas": true,
+      "faceCellGrid": 69,
+      "cellPixels": 14,
+      "gutterPixels": 2,
+      "method": "per-texel MeshBVH.closestPointToPoint original100k then that source face barycentric UV and original embedded baseColor; no cross-chart vertex interpolation",
+      "sampledDistance": {
+        "samples": 28756,
+        "median": 0.001327223646566899,
+        "p95": 0.0066079067624320266,
+        "max": 0.030913934348387136,
+        "units": "normalized source-width units; not metres"
+      }
+    },
+    {
+      "key": "scanned-diploastrea",
+      "originalSourceSha256": "8ac2db30d21168635a8fd87799c2af0d1d3f75f352ba7b7fe1a02bab4c6b5648",
+      "queryCount": 921004,
+      "atlasSize": [
+        1024,
+        1024
+      ],
+      "nearAndFarSharedAtlas": true,
+      "faceCellGrid": 69,
+      "cellPixels": 14,
+      "gutterPixels": 2,
+      "method": "per-texel MeshBVH.closestPointToPoint original100k then that source face barycentric UV and original embedded baseColor; no cross-chart vertex interpolation",
+      "sampledDistance": {
+        "samples": 28781,
+        "median": 0.0008839239175999361,
+        "p95": 0.0046404400192632525,
+        "max": 0.01973880791431965,
+        "units": "normalized source-width units; not metres"
+      }
+    }
+  ],
+  "integration": {
+    "defaultEnabled": false,
+    "selector": "reef=scanned",
+    "candidateVisualReview": "failed at whole-scene level despite bounded UV correction; 58/69 material/background-patch regression",
+    "nativePlacementCounts": {
+      "attempted": 161,
+      "accepted": 121,
+      "fallback": 40
+    },
+    "visualEvidence": "output/validation/shallow-sourced-assets/visual-review.json",
+    "limits": "Native CPU source-albedo projection, not WebGL playback or PBR/FPS proof; no source survey metres claimed."
+  }
+}

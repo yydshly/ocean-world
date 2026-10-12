@@ -46,7 +46,7 @@ test('real regional dispatcher respects saved size support tilt and owner time w
   }finally{animals.dispose();}assert.deepEqual(reefSuspensionAnimalAssetStats(),{resources:0,instances:0});
 });
 test('87-entry catalog ships the new phase behind all prior preview gates and keeps the same policy across reset',async()=>{
-  assert.equal(livingShallowsSpeciesCatalog.length,87);for(const s of OCEAN_REEF_SUSPENSION_SPECIES){assert.equal(livingShallowsSpeciesCatalog.filter(x=>x.id===s.id).length,1);for(const biome of ['reef','kelp','deep'])assert.ok(!sceneCatalogs[biome].some(x=>x.id===s.id));}
+  assert.equal(livingShallowsSpeciesCatalog.length,106);for(const s of OCEAN_REEF_SUSPENSION_SPECIES){assert.equal(livingShallowsSpeciesCatalog.filter(x=>x.id===s.id).length,1);for(const biome of ['reef','kelp','deep'])assert.ok(!sceneCatalogs[biome].some(x=>x.id===s.id));}
   const source=readFileSync(new URL('../src/world/ReefWorld.js',import.meta.url),'utf8'),start=source.indexOf('new OceanEcology(seed,this.oceanChunks.generator,'),end=source.indexOf(');',start)+1;
   class Capture{constructor(seed,generator,options){this.options=options;}}
   const seed=livingShallowsSeed('55'),g=createLivingRidgeGenerator(createLivingShallowsGenerator(seed)),store={load:async()=>null,save:async()=>{},saveMany:async()=>{}};

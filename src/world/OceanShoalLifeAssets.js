@@ -1,3 +1,7 @@
+import { OCEAN_COASTAL_SCHOOL_SPECIES, OCEAN_COASTAL_SCHOOL_IDS } from '../oceanCoastalSchoolSpecies.js';
+import { buildOceanCoastalSchoolFish } from './OceanCoastalSchoolGeometry.js';
+import { OCEAN_MEADOW_WATER_SPECIES, OCEAN_MEADOW_WATER_IDS } from '../oceanMeadowWaterSpecies.js';
+import { buildOceanMeadowWaterFish } from './OceanMeadowWaterGeometry.js';
 import * as THREE from 'three';
 import { oceanShoalLifeSpeciesCatalog, oceanShoalLifeSpeciesById } from '../oceanShoalLifeSpecies.js';
 
@@ -6,11 +10,11 @@ import { oceanShoalLifeSpeciesCatalog, oceanShoalLifeSpeciesById } from '../ocea
 const TAU = Math.PI * 2, resources = new Map(), instances = new Set();
 export const OCEAN_SHOAL_LIFE_ASSET_VERSION = 1;
 export const OCEAN_SHOAL_LIFE_IDS = Object.freeze(oceanShoalLifeSpeciesCatalog.map(s => s.id));
-export const OCEAN_SHOAL_LIFE_ENVELOPES = Object.freeze(Object.fromEntries(oceanShoalLifeSpeciesCatalog.map(s => [s.id,
+export const OCEAN_SHOAL_LIFE_ENVELOPES = Object.freeze(Object.fromEntries([...oceanShoalLifeSpeciesCatalog, ...OCEAN_MEADOW_WATER_SPECIES, ...OCEAN_COASTAL_SCHOOL_SPECIES].map(s => [s.id,
   Object.freeze({ sizeMeasure: s.sizeMeasure, horizontalRadius: s.normalizedEnvelope.horizontalRadiusUnits,
     minY: s.normalizedEnvelope.y[0], maxY: s.normalizedEnvelope.y[1], pitchLimit: .12,
     localBounds: Object.freeze({ minX: s.normalizedEnvelope.x[0], maxX: s.normalizedEnvelope.x[1], minZ: s.normalizedEnvelope.z[0], maxZ: s.normalizedEnvelope.z[1] }) })])));
-export const isOceanShoalLifeSpecies = id => OCEAN_SHOAL_LIFE_IDS.includes(id);
+export const isOceanShoalLifeSpecies = id => OCEAN_SHOAL_LIFE_IDS.includes(id) || OCEAN_MEADOW_WATER_IDS.includes(id) || OCEAN_COASTAL_SCHOOL_IDS.includes(id);
 function share(root, key, make) {
   let entry = resources.get(key); if (!entry) { entry = { value: make(), refs: 0 }; resources.set(key, entry); }
   if (!root.userData.shoalLifeResources.has(key)) { root.userData.shoalLifeResources.add(key); entry.refs++; }
@@ -126,7 +130,7 @@ export function createOceanShoalLifeAsset(speciesOrId) {
   const root=new THREE.Group(),parts={};Object.assign(root.userData,{speciesId:id,kind:s.kind,sizeMeasure:s.sizeMeasure,shoalLifeResources:new Set(),shoalLifeDisposed:false,
     phase:0,morphologyStatus:'complete authored whole form; not a scan or measured body proportions',measureReferences:{neutralTotalLength:1,minX:-.5,maxX:.5},localEnvelope:OCEAN_SHOAL_LIFE_ENVELOPES[id]});
   root.name=s.commonName;instances.add(root);
-  try{if(id==='blacktip-reef-shark')shark(root,parts);else fish(root,parts,id);root.userData.shoalLifeParts=parts;return{group:root,parts,envelope:OCEAN_SHOAL_LIFE_ENVELOPES[id]};}
+  try{if(id==='blacktip-reef-shark')shark(root,parts);else if(OCEAN_COASTAL_SCHOOL_IDS.includes(id))buildOceanCoastalSchoolFish(root,parts,id,builder,mesh);else if(OCEAN_MEADOW_WATER_IDS.includes(id))buildOceanMeadowWaterFish(root,parts,id,builder,mesh);else fish(root,parts,id);root.userData.shoalLifeParts=parts;return{group:root,parts,envelope:OCEAN_SHOAL_LIFE_ENVELOPES[id]};}
   catch(error){disposeOceanShoalLifeAsset(root);throw error;}
 }
 export function animateOceanShoalLifeAsset(root,nativeTimeSec,agent={}) {

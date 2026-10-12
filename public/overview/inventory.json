@@ -1,0 +1,2034 @@
+{
+  "date": "2026-10-12",
+  "scope": "Frozen simulation baseline and existing local validation records, prepared for publication with the product guide; hosted cold loading is not measured by these records.",
+  "frozenVersion": "shallow-sample-v1.0-local-20261012",
+  "catalogs": [
+    {
+      "name": "浅海",
+      "count": 106,
+      "entries": [
+        {
+          "id": "blue-tang",
+          "name": "蓝倒吊",
+          "scientificName": "Paracanthurus hepatus",
+          "kind": "fish",
+          "identityLevel": null
+        },
+        {
+          "id": "butterflyfish",
+          "name": "条纹蝴蝶鱼",
+          "scientificName": "Chaetodon lineolatus",
+          "kind": "fish",
+          "identityLevel": null
+        },
+        {
+          "id": "green-chromis",
+          "name": "绿光鳃雀鲷",
+          "scientificName": "Chromis viridis",
+          "kind": "fish",
+          "identityLevel": null
+        },
+        {
+          "id": "lined-tang",
+          "name": "条纹倒吊",
+          "scientificName": "Acanthurus lineatus",
+          "kind": "fish",
+          "identityLevel": null
+        },
+        {
+          "id": "cleaner-wrasse",
+          "name": "裂唇鱼",
+          "scientificName": "Labroides dimidiatus",
+          "kind": "fish",
+          "identityLevel": null
+        },
+        {
+          "id": "honeycomb-grouper",
+          "name": "蜂巢石斑鱼",
+          "scientificName": "Epinephelus merra",
+          "kind": "fish",
+          "identityLevel": null
+        },
+        {
+          "id": "cleaner-shrimp",
+          "name": "清洁虾",
+          "scientificName": "Lysmata amboinensis",
+          "kind": "shrimp",
+          "identityLevel": null
+        },
+        {
+          "id": "reef-crab",
+          "name": "黑指珊瑚蟹",
+          "scientificName": "Cymo melanodactylus",
+          "kind": "crab",
+          "identityLevel": null
+        },
+        {
+          "id": "black-cucumber",
+          "name": "黑海参",
+          "scientificName": "Holothuria atra",
+          "kind": "cucumber",
+          "identityLevel": null
+        },
+        {
+          "id": "blue-starfish",
+          "name": "蓝海星",
+          "scientificName": "Linckia laevigata",
+          "kind": "star",
+          "identityLevel": null
+        },
+        {
+          "id": "top-shell",
+          "name": "马蹄螺",
+          "scientificName": "Rochia nilotica",
+          "kind": "snail",
+          "identityLevel": null
+        },
+        {
+          "id": "staghorn-coral",
+          "name": "鹿角珊瑚",
+          "scientificName": "Acropora muricata",
+          "kind": "coral",
+          "identityLevel": null
+        },
+        {
+          "id": "giant-clam",
+          "name": "小砗磲",
+          "scientificName": "Tridacna maxima",
+          "kind": "clam",
+          "identityLevel": null
+        },
+        {
+          "id": "turf-algae",
+          "name": "礁面藻膜",
+          "scientificName": "Turf algal assemblage",
+          "kind": "algae",
+          "identityLevel": null
+        },
+        {
+          "id": "lyretail-anthias",
+          "name": "海金鱼类群",
+          "scientificName": "Pseudanthias squamipinnis s.l.",
+          "kind": "fish",
+          "identityLevel": null
+        },
+        {
+          "id": "yellowtail-fusilier",
+          "name": "黄尾乌尾鮗",
+          "scientificName": "Caesio cuning",
+          "kind": "fish",
+          "identityLevel": null
+        },
+        {
+          "id": "reef-manta",
+          "name": "礁蝠鲼",
+          "scientificName": "Mobula alfredi",
+          "kind": "ray",
+          "identityLevel": null
+        },
+        {
+          "id": "green-turtle",
+          "name": "绿海龟",
+          "scientificName": "Chelonia mydas",
+          "kind": "turtle",
+          "identityLevel": null
+        },
+        {
+          "id": "day-octopus",
+          "name": "日行章鱼",
+          "scientificName": "Octopus cyanea",
+          "kind": "octopus",
+          "identityLevel": null
+        },
+        {
+          "id": "spotted-reef-crab",
+          "name": "红斑瓢蟹",
+          "scientificName": "Carpilius maculatus",
+          "kind": "crab",
+          "identityLevel": null
+        },
+        {
+          "id": "tube-sponge",
+          "name": "管状海绵群体代表",
+          "scientificName": "Porifera · tubular growth form",
+          "kind": "sponge",
+          "identityLevel": "phylum-group"
+        },
+        {
+          "id": "reef-squid",
+          "name": "大鳍礁鱿代表",
+          "scientificName": "Sepioteuthis lessoniana complex",
+          "kind": "squid",
+          "identityLevel": "species-complex"
+        },
+        {
+          "id": "spotted-jelly",
+          "name": "白斑水母",
+          "scientificName": "Phyllorhiza punctata",
+          "kind": "jelly",
+          "identityLevel": null
+        },
+        {
+          "id": "biodiversity-massive-coral",
+          "name": "团块滨珊瑚类群代表",
+          "scientificName": "Porites lobata s.l.",
+          "kind": "coral",
+          "identityLevel": "species-complex"
+        },
+        {
+          "id": "biodiversity-grape-algae",
+          "name": "葡萄蕨藻",
+          "scientificName": "Caulerpa racemosa",
+          "kind": "algae",
+          "identityLevel": "species"
+        },
+        {
+          "id": "tropical-urchin",
+          "name": "长刺刺冠海胆",
+          "scientificName": "Diadema setosum",
+          "kind": "urchin",
+          "identityLevel": "species"
+        },
+        {
+          "id": "feather-duster",
+          "name": "羽冠管虫（描述性中文名）",
+          "scientificName": "Sabellastarte spectabilis",
+          "kind": "worm",
+          "identityLevel": "species"
+        },
+        {
+          "id": "sand-goby",
+          "name": "蓝带砂虾虎鱼（描述性中文名）",
+          "scientificName": "Valenciennea strigata",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "reef-parrotfish",
+          "name": "太平洋绿鳍鹦嘴鱼（描述性中文名）",
+          "scientificName": "Chlorurus spilurus",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "shallow-anemone",
+          "name": "壮丽海葵（描述性中文名）",
+          "scientificName": "Radianthus magnifica",
+          "kind": "anemone",
+          "identityLevel": "species"
+        },
+        {
+          "id": "clown-anemonefish",
+          "name": "眼斑双锯鱼",
+          "scientificName": "Amphiprion percula",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "tiger-cowrie",
+          "name": "虎斑宝贝",
+          "scientificName": "Cypraea tigris",
+          "kind": "mollusk",
+          "identityLevel": "species"
+        },
+        {
+          "id": "spotted-hermit-crab",
+          "name": "白斑寄居蟹",
+          "scientificName": "Dardanus megistos",
+          "kind": "crustacean",
+          "identityLevel": "species"
+        },
+        {
+          "id": "blue-spotted-ray",
+          "name": "蓝斑条尾魟",
+          "scientificName": "Taeniura lymma",
+          "kind": "ray",
+          "identityLevel": "species"
+        },
+        {
+          "id": "reef-goatfish",
+          "name": "点线羊鱼",
+          "scientificName": "Parupeneus barberinus",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "sand-edge-seahorse",
+          "name": "草床海马（H. kuda复合群代表）",
+          "scientificName": "Hippocampus kuda s.l.",
+          "kind": "fish",
+          "identityLevel": "species-complex-representative"
+        },
+        {
+          "id": "reef-cuttlefish",
+          "name": "礁乌贼",
+          "scientificName": "Ascarosepion latimanus",
+          "kind": "cuttlefish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "barrel-sea-pen",
+          "name": "棒状海鳃",
+          "scientificName": "Cavernularia obesa",
+          "kind": "sea-pen",
+          "identityLevel": "species"
+        },
+        {
+          "id": "spider-conch",
+          "name": "蜘蛛螺",
+          "scientificName": "Lambis lambis",
+          "kind": "snail",
+          "identityLevel": "species"
+        },
+        {
+          "id": "blue-and-gold-fusilier",
+          "name": "黄蓝背乌尾鮗",
+          "scientificName": "Caesio teres",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "bigeye-trevally",
+          "name": "六带鲹",
+          "scientificName": "Caranx sexfasciatus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "silver-stripe-herring",
+          "name": "日本银带鲱",
+          "scientificName": "Spratelloides gracilis",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "blacktip-reef-shark",
+          "name": "黑鳍礁鲨",
+          "scientificName": "Carcharhinus melanopterus",
+          "kind": "shark",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "coral-trout",
+          "name": "豹纹鳃棘鲈（珊瑚鳟）",
+          "scientificName": "Plectropomus leopardus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "painted-spiny-lobster",
+          "name": "彩绘龙虾（描述性中文名）",
+          "scientificName": "Panulirus versicolor",
+          "kind": "crustacean",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "lionfish",
+          "name": "蓑鲉（狮子鱼）",
+          "scientificName": "Pterois volitans",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "chinese-trumpetfish",
+          "name": "中华喇叭鱼（描述性中文名）",
+          "scientificName": "Aulostomus chinensis",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "moorish-idol",
+          "name": "镰鱼（角镰鱼）",
+          "scientificName": "Zanclus cornutus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "sailfin-tang",
+          "name": "帆鳍刺尾鱼（描述性中文名）",
+          "scientificName": "Zebrasoma velifer",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "cushion-sea-star",
+          "name": "新几内亚枕海星（描述性中文名）",
+          "scientificName": "Culcita novaeguineae",
+          "kind": "echinoderm",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "leopard-sea-cucumber",
+          "name": "豹斑白尼参（描述性中文名）",
+          "scientificName": "Bohadschia argus",
+          "kind": "echinoderm",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "yellow-boxfish",
+          "name": "黄色箱鲀（描述性中文名）",
+          "scientificName": "Ostracion cubicus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "red-toothed-triggerfish",
+          "name": "红齿鳞鲀（描述性中文名）",
+          "scientificName": "Odonus niger",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "longfin-batfish",
+          "name": "圆脸蝙蝠鱼（描述性中文名）",
+          "scientificName": "Platax teira",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "valentini-puffer",
+          "name": "黑鞍尖鼻鲀（描述性中文名）",
+          "scientificName": "Canthigaster valentini",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "peacock-mantis-shrimp",
+          "name": "孔雀螳螂虾（描述性中文名）",
+          "scientificName": "Odontodactylus scyllarus",
+          "kind": "crustacean",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "green-turban-snail",
+          "name": "绿色蝾螺（描述性中文名）",
+          "scientificName": "Turbo marmoratus",
+          "kind": "mollusc",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "copperband-butterflyfish",
+          "name": "铜带蝴蝶鱼（描述性中文名）",
+          "scientificName": "Chelmon rostratus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "longnose-butterflyfish",
+          "name": "黄色镊口鱼（长吻蝴蝶鱼）",
+          "scientificName": "Forcipiger flavissimus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "fire-goby",
+          "name": "红火镖鱼（描述性中文名）",
+          "scientificName": "Nemateleotris magnifica",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "pajama-cardinalfish",
+          "name": "丝鳍圆天竺鲷（睡衣天竺鲷）",
+          "scientificName": "Sphaeramia nematoptera",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "banded-coral-shrimp",
+          "name": "红白清洁虾（描述性中文名）",
+          "scientificName": "Stenopus hispidus",
+          "kind": "crustacean",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "chocolate-chip-sea-star",
+          "name": "黑瘤海星（巧克力海星，描述性中文名）",
+          "scientificName": "Protoreaster nodosus",
+          "kind": "echinoderm",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "humphead-wrasse",
+          "name": "曲纹唇鱼（隆头鱼）",
+          "scientificName": "Cheilinus undulatus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "bluespine-unicornfish",
+          "name": "青斑鼻鱼（蓝棘独角鱼，描述性中文名）",
+          "scientificName": "Naso unicornis",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "clown-triggerfish",
+          "name": "花斑拟鳞鲀（小丑炮弹鱼）",
+          "scientificName": "Balistoides conspicillum",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "shame-faced-crab",
+          "name": "肝叶馒头蟹（羞面箱蟹，描述性中文名）",
+          "scientificName": "Calappa hepatica",
+          "kind": "crustacean",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "wedge-sea-hare",
+          "name": "耳形海兔（楔形海兔，描述性中文名）",
+          "scientificName": "Dolabella auricularia",
+          "kind": "mollusc",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "varicose-phyllidia",
+          "name": "疣状叶海蛞蝓（描述性中文名）",
+          "scientificName": "Phyllidia varicosa",
+          "kind": "mollusc",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "giant-moray",
+          "name": "爪哇裸胸鳝（巨海鳗）",
+          "scientificName": "Gymnothorax javanicus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "banded-pipefish",
+          "name": "环纹海龙（描述性中文名）",
+          "scientificName": "Dunckerocampus dactyliophorus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "spot-fin-porcupinefish",
+          "name": "斑鳍二齿鲀（黑斑刺鲀）",
+          "scientificName": "Diodon hystrix",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "peacock-flounder",
+          "name": "豹纹鲆（孔雀鲽，描述性中文名）",
+          "scientificName": "Bothus mancus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "textile-cone",
+          "name": "织锦芋螺",
+          "scientificName": "Conus textile",
+          "kind": "mollusc",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "collector-urchin",
+          "name": "白棘三列海胆（集物海胆，描述性中文名）",
+          "scientificName": "Tripneustes gratilla",
+          "kind": "echinoderm",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "great-barracuda",
+          "name": "大梭鱼",
+          "scientificName": "Sphyraena barracuda",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "bluefin-trevally",
+          "name": "蓝鳍鲹",
+          "scientificName": "Caranx melampygus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "oriental-sweetlips",
+          "name": "东方胡椒鲷",
+          "scientificName": "Plectorhinchus vittatus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "spotted-eagle-ray",
+          "name": "豹纹鹞鲼（描述性中文名）",
+          "scientificName": "Aetobatus ocellatus",
+          "kind": "ray",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "bigscale-soldierfish",
+          "name": "大鳞兵鲷（描述性中文名）",
+          "scientificName": "Myripristis berndti",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "lunartail-bigeye",
+          "name": "月尾大眼鲷（描述性中文名）",
+          "scientificName": "Priacanthus hamrur",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "banded-lizardfish",
+          "name": "环带狗母鱼（描述性中文名）",
+          "scientificName": "Synodus dermatogenys",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "thousand-spot-sandperch",
+          "name": "千斑沙鲈（描述性中文名）",
+          "scientificName": "Parapercis millepunctata",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "fluted-giant-clam",
+          "name": "鳞砗磲",
+          "scientificName": "Tridacna squamosa",
+          "kind": "bivalve",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "black-lip-pearl-oyster",
+          "name": "黑蝶贝",
+          "scientificName": "Pinctada margaritifera",
+          "kind": "bivalve",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "shallow-feather-star",
+          "name": "浅海羽星（类群代表）",
+          "scientificName": "Comatulida spp.",
+          "kind": "crinoid",
+          "identityLevel": "order-morphological-representative"
+        },
+        {
+          "id": "gold-mouth-sea-squirt",
+          "name": "金口海鞘（描述性中文名）",
+          "scientificName": "Polycarpa aurata",
+          "kind": "ascidian",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "banded-brittle-star",
+          "name": "环纹蛇尾（描述性中文名）",
+          "scientificName": "Ophiolepis superba",
+          "kind": "echinoderm",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "humble-sea-biscuit",
+          "name": "低平海饼（描述性中文名）",
+          "scientificName": "Clypeaster humilis",
+          "kind": "echinoderm",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "reef-fireworm",
+          "name": "礁栖火焰虫类群（描述性中文名）",
+          "scientificName": "Eurythoe spp.",
+          "kind": "worm",
+          "identityLevel": "genus-representative"
+        },
+        {
+          "id": "long-spined-diadem-urchin",
+          "name": "长棘冠海胆（描述性中文名）",
+          "scientificName": "Diadema setosum",
+          "kind": "echinoderm",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "emperor-angelfish",
+          "name": "帝王神仙鱼（描述性中文名）",
+          "scientificName": "Pomacanthus imperator",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "doubleline-fusilier",
+          "name": "双线乌尾鮗（描述性中文名）",
+          "scientificName": "Pterocaesio digramma",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "bluestripe-snapper",
+          "name": "蓝带笛鲷（描述性中文名）",
+          "scientificName": "Lutjanus kasmira",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "green-tiger-prawn",
+          "name": "绿虎对虾（描述性中文名）",
+          "scientificName": "Penaeus (Eopenaeus) semisulcatus",
+          "kind": "crustacean",
+          "identityLevel": "species"
+        },
+        {
+          "id": "flower-swimming-crab",
+          "name": "远海梭子蟹（花蟹）",
+          "scientificName": "Portunus pelagicus",
+          "kind": "crustacean",
+          "identityLevel": "species"
+        },
+        {
+          "id": "white-spotted-rabbitfish",
+          "name": "白点兔鱼（描述性中文名）",
+          "scientificName": "Siganus canaliculatus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "hardyhead-silverside",
+          "name": "银带银汉鱼（描述性中文名）",
+          "scientificName": "Atherinomorus lacunosus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "leopard-flounder",
+          "name": "斑点豹鲆（描述性中文名）",
+          "scientificName": "Bothus pantherinus",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "comb-sand-star",
+          "name": "梳棘沙海星（描述性中文名）",
+          "scientificName": "Astropecten polyacanthus",
+          "kind": "starfish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "sandfish-sea-cucumber",
+          "name": "糙海参",
+          "scientificName": "Holothuria scabra",
+          "kind": "sea-cucumber",
+          "identityLevel": "species"
+        },
+        {
+          "id": "indian-mackerel",
+          "name": "印度鲭（描述性中文名）",
+          "scientificName": "Rastrelliger kanagurta",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "yellowstripe-scad",
+          "name": "黄带鲹（描述性中文名）",
+          "scientificName": "Selaroides leptolepis",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "blue-linckia-star",
+          "name": "蓝海星（描述性中文名）",
+          "scientificName": "Linckia laevigata",
+          "kind": "starfish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "prickly-redfish",
+          "name": "梅花参（描述性中文名）",
+          "scientificName": "Thelenota ananas",
+          "kind": "sea-cucumber",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "giant-triton",
+          "name": "大法螺",
+          "scientificName": "Charonia tritonis",
+          "kind": "mollusc",
+          "identityLevel": "species-representative"
+        }
+      ]
+    },
+    {
+      "name": "海带林",
+      "count": 24,
+      "entries": [
+        {
+          "id": "giant-kelp",
+          "name": "巨藻",
+          "scientificName": "Macrocystis pyrifera",
+          "kind": "kelp",
+          "identityLevel": "species"
+        },
+        {
+          "id": "purple-urchin",
+          "name": "紫海胆",
+          "scientificName": "Strongylocentrotus purpuratus",
+          "kind": "urchin",
+          "identityLevel": "species"
+        },
+        {
+          "id": "bat-star",
+          "name": "蝙蝠海星",
+          "scientificName": "Patiria miniata",
+          "kind": "star",
+          "identityLevel": "species"
+        },
+        {
+          "id": "giant-kelpfish",
+          "name": "巨型海藻鱼",
+          "scientificName": "Heterostichus rostratus",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "brown-turban-snail",
+          "name": "褐色钟螺",
+          "scientificName": "Tegula brunnea",
+          "kind": "snail",
+          "identityLevel": "species"
+        },
+        {
+          "id": "gumboot-chiton",
+          "name": "胶靴石鳖",
+          "scientificName": "Cryptochiton stelleri",
+          "kind": "chiton",
+          "identityLevel": "species"
+        },
+        {
+          "id": "blue-rockfish",
+          "name": "蓝岩鱼",
+          "scientificName": "Sebastes mystinus",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "leopard-shark",
+          "name": "豹鲨",
+          "scientificName": "Triakis semifasciata",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "red-abalone",
+          "name": "红鲍",
+          "scientificName": "Haliotis rufescens",
+          "kind": "mollusk",
+          "identityLevel": "species"
+        },
+        {
+          "id": "northern-kelp-crab",
+          "name": "北方藻蟹",
+          "scientificName": "Pugettia producta",
+          "kind": "crustacean",
+          "identityLevel": "species"
+        },
+        {
+          "id": "california-sea-hare",
+          "name": "加州褐海兔",
+          "scientificName": "Aplysia californica",
+          "kind": "mollusk",
+          "identityLevel": "species"
+        },
+        {
+          "id": "giant-plumose-anemone",
+          "name": "巨羽状海葵",
+          "scientificName": "Metridium farcimen",
+          "kind": "anemone",
+          "identityLevel": "species"
+        },
+        {
+          "id": "pacific-jack-mackerel",
+          "name": "太平洋竹荚鱼",
+          "scientificName": "Trachurus symmetricus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "california-market-squid",
+          "name": "加州市售鱿鱼",
+          "scientificName": "Doryteuthis opalescens",
+          "kind": "cephalopod",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "pacific-sea-nettle",
+          "name": "太平洋海荨麻",
+          "scientificName": "Chrysaora fuscescens",
+          "kind": "jellyfish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "opaleye",
+          "name": "青眼鱼",
+          "scientificName": "Girella nigricans",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "red-rock-crab",
+          "name": "红岩蟹",
+          "scientificName": "Cancer productus",
+          "kind": "crab",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "gopher-rockfish",
+          "name": "褐斑岩鱼",
+          "scientificName": "Sebastes carnatus",
+          "kind": "fish",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "horn-shark",
+          "name": "加州角鲨",
+          "scientificName": "Heterodontus francisci",
+          "kind": "shark",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "round-stingray",
+          "name": "哈氏圆魟",
+          "scientificName": "Urobatis halleri",
+          "kind": "ray",
+          "identityLevel": "species-representative"
+        },
+        {
+          "id": "pterygophora-californica",
+          "name": "加州翼柄藻",
+          "scientificName": "Pterygophora californica",
+          "kind": "kelp",
+          "identityLevel": "named-regional-representative"
+        },
+        {
+          "id": "calliarthron-cheilosporioides",
+          "name": "宽翼分节珊瑚藻",
+          "scientificName": "Calliarthron cheilosporioides",
+          "kind": "kelp",
+          "identityLevel": "named-regional-representative"
+        },
+        {
+          "id": "orange-puffball-sponge",
+          "name": "加州橙球海绵",
+          "scientificName": "Tethya californiana",
+          "kind": "sponge",
+          "identityLevel": "named-regional-representative"
+        },
+        {
+          "id": "monterey-stalked-tunicate",
+          "name": "蒙特雷柄海鞘",
+          "scientificName": "Styela montereyensis",
+          "kind": "tunicate",
+          "identityLevel": "named-regional-representative"
+        }
+      ]
+    },
+    {
+      "name": "深海",
+      "count": 15,
+      "entries": [
+        {
+          "id": "sea-pig-group",
+          "name": "海猪属类群",
+          "scientificName": "Scotoplanes spp.",
+          "kind": "cucumber",
+          "identityLevel": "genus-group"
+        },
+        {
+          "id": "rattail-family",
+          "name": "鼠尾鳕科类群",
+          "scientificName": "Macrouridae",
+          "kind": "fish",
+          "identityLevel": "family-group"
+        },
+        {
+          "id": "pom-pom-anemone",
+          "name": "绒球海葵",
+          "scientificName": "Liponema brevicorne",
+          "kind": "anemone",
+          "identityLevel": "species"
+        },
+        {
+          "id": "giant-sea-spider-group",
+          "name": "巨型海蜘蛛属类群",
+          "scientificName": "Colossendeis spp.",
+          "kind": "sea-spider",
+          "identityLevel": "genus-group"
+        },
+        {
+          "id": "abyssal-brittle-star",
+          "name": "深渊长臂蛇尾",
+          "scientificName": "Ophiosphalma glabrum",
+          "kind": "brittle-star",
+          "identityLevel": "species"
+        },
+        {
+          "id": "pyramid-urchin",
+          "name": "深海金字塔海胆",
+          "scientificName": "Echinocrepis rostrata",
+          "kind": "urchin",
+          "identityLevel": "species"
+        },
+        {
+          "id": "acorn-worm-group",
+          "name": "背帷肠鳃类（属代表）",
+          "scientificName": "Tergivelum spp.",
+          "kind": "worm",
+          "identityLevel": "genus-group"
+        },
+        {
+          "id": "deep-amphipod-group",
+          "name": "深海端足类（属代表）",
+          "scientificName": "Eurythenes spp.",
+          "kind": "crustacean",
+          "identityLevel": "genus-group"
+        },
+        {
+          "id": "sea-lily-thalassocrinus",
+          "name": "深海长柄海百合",
+          "scientificName": "Thalassocrinus alvinae",
+          "kind": "crinoid",
+          "identityLevel": "species"
+        },
+        {
+          "id": "alternating-quill-black-coral",
+          "name": "交替羽枝黑珊瑚",
+          "scientificName": "Alternatipathes alternata",
+          "kind": "black-coral",
+          "identityLevel": "species"
+        },
+        {
+          "id": "abyssal-dumbo-octopus",
+          "name": "深渊小飞象章鱼",
+          "scientificName": "Grimpoteuthis bathynectes",
+          "kind": "octopus",
+          "identityLevel": "species"
+        },
+        {
+          "id": "giant-cusk-eel",
+          "name": "巨型鼬鳚",
+          "scientificName": "Spectrunculus grandis",
+          "kind": "fish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "helmet-jelly",
+          "name": "冠水母",
+          "scientificName": "Periphylla periphylla",
+          "kind": "jellyfish",
+          "identityLevel": "species"
+        },
+        {
+          "id": "vampire-squid",
+          "name": "吸血乌贼",
+          "scientificName": "Vampyroteuthis infernalis",
+          "kind": "cephalopod",
+          "identityLevel": "species"
+        },
+        {
+          "id": "giant-red-mysid",
+          "name": "巨型红糠虾",
+          "scientificName": "Neognathophausia ingens",
+          "kind": "crustacean",
+          "identityLevel": "species"
+        }
+      ]
+    }
+  ],
+  "director": {
+    "chapters": 67,
+    "nominalSeconds": 1994,
+    "steps": [
+      {
+        "id": "reef-valley-region",
+        "title": "热带礁谷：完整海区",
+        "seconds": 800,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "seagrass-meadow-region",
+        "title": "热带海草：完整草甸",
+        "seconds": 200,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "coastal-life-belt",
+        "title": "浅海：连续生活带",
+        "seconds": 200,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-opening",
+        "title": "新浅海：先看整体",
+        "seconds": 14,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-life",
+        "title": "浅海：附近的真实生物",
+        "seconds": 14,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-discoveries",
+        "title": "浅海：沉木与沉底瓶",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-shoal-life-community",
+        "title": "水层鱼群与巡游鲨",
+        "seconds": 16,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-meadow-life-community",
+        "title": "草床与沙地新群落",
+        "seconds": 14,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-biodiversity-reef",
+        "title": "丰富群落：礁缘",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-benthic-community",
+        "title": "沙地与礁底生物",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-shallow-scene-reef",
+        "title": "整景礁群",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-shallow-scene-sand",
+        "title": "整景砂道",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-shallow-scene-meadow",
+        "title": "整景草床",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-shallow-scene-slope",
+        "title": "整景外礁坡",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-habitat-belt-reef",
+        "title": "生活带：礁群沙道",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-habitat-belt-meadow",
+        "title": "生活带：草床水层",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-seascape-transition",
+        "title": "相邻生境",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-connected-seascape",
+        "title": "连续海床",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-shelf-rise",
+        "title": "海床缓坡",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-sand-basin",
+        "title": "宽缓砂盆",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-patch-reef",
+        "title": "分散礁丘",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-meadow-edge",
+        "title": "草床边缘",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-ridge-gully",
+        "title": "礁脊岩沟",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-outer-reef",
+        "title": "外礁坡面",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-seagrass-meadow",
+        "title": "浅海草床",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-sand-channel",
+        "title": "沙地通道",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "shallows-reef-garden",
+        "title": "连片礁群",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "legacy-opening",
+        "title": "原浅礁：固定礁区",
+        "seconds": 14,
+        "context": {
+          "biome": "reef",
+          "profile": "legacy"
+        }
+      },
+      {
+        "id": "legacy-wide",
+        "title": "原浅礁：全景入口",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "legacy"
+        }
+      },
+      {
+        "id": "legacy-skeleton",
+        "title": "原浅礁：珊瑚骨架",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "legacy"
+        }
+      },
+      {
+        "id": "kelp-opening",
+        "title": "巨藻整景：先看整体",
+        "seconds": 14,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-kelp-scene-forest",
+        "title": "整景巨藻群",
+        "seconds": 12,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-kelp-scene-rockbed",
+        "title": "整景岩底",
+        "seconds": 12,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-kelp-scene-opening",
+        "title": "整景林间沙地",
+        "seconds": 12,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-kelp-scene-outer",
+        "title": "整景开放林缘",
+        "seconds": 12,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-understory-life",
+        "title": "巨藻林：林下附着群落",
+        "seconds": 16,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-near-bottom-life",
+        "title": "巨藻林：岩沙底层群落",
+        "seconds": 16,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-water-life",
+        "title": "巨藻林：林缘水层群落",
+        "seconds": 16,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-bottom-life",
+        "title": "巨藻林：林底新群落",
+        "seconds": 14,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-forest-belt",
+        "title": "林缘生活带：巨藻群",
+        "seconds": 14,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-forest-opening",
+        "title": "林缘生活带：开放沙地",
+        "seconds": 12,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-bed",
+        "title": "海带林：林底",
+        "seconds": 12,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-midwater",
+        "title": "海带林：藻间水层",
+        "seconds": 12,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-surface",
+        "title": "海带林：上部水域",
+        "seconds": 12,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "kelp-life",
+        "title": "海带林：附近的真实动物",
+        "seconds": 14,
+        "context": {
+          "biome": "kelp"
+        }
+      },
+      {
+        "id": "deep-opening",
+        "title": "深海整景：先看整体",
+        "seconds": 14,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-deep-scene-plain",
+        "title": "整景沉积平原",
+        "seconds": 12,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-deep-scene-slope",
+        "title": "整景宽缓坡",
+        "seconds": 12,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-deep-scene-outcrop",
+        "title": "整景岩露头",
+        "seconds": 12,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-deep-scene-outer",
+        "title": "整景开放海床",
+        "seconds": 12,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-midwater-life",
+        "title": "深海：离底中层水体",
+        "seconds": 16,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-water-life",
+        "title": "深海：近底游泳群落",
+        "seconds": 16,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-hard-life",
+        "title": "深海：岩附着群落",
+        "seconds": 14,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-bottom-life",
+        "title": "深海：软底新群落",
+        "seconds": 14,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-plain-belt",
+        "title": "深海生活带：沉积平原",
+        "seconds": 14,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-outcrop-belt",
+        "title": "深海生活带：缓坡岩露头",
+        "seconds": 12,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-bed",
+        "title": "深海：近底观察",
+        "seconds": 12,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-midwater",
+        "title": "深海：离底观察",
+        "seconds": 12,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-surface",
+        "title": "深海：上方观察",
+        "seconds": 12,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "deep-life",
+        "title": "深海：附近的真实动物",
+        "seconds": 14,
+        "context": {
+          "biome": "deep"
+        }
+      },
+      {
+        "id": "tools-return",
+        "title": "回到浅海：查看现有工具",
+        "seconds": 12,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "tools-catalog",
+        "title": "生物图鉴",
+        "seconds": 8,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "tools-environment",
+        "title": "环境实验入口",
+        "seconds": 8,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "tools-journal",
+        "title": "探索手记",
+        "seconds": 8,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "tools-foodweb",
+        "title": "独立实验：食物网对照",
+        "seconds": 8,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "tools-age",
+        "title": "独立实验：年龄结构",
+        "seconds": 8,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      },
+      {
+        "id": "tools-capture",
+        "title": "截图、录像与导出",
+        "seconds": 8,
+        "context": {
+          "biome": "reef",
+          "profile": "living-shallows-v1"
+        }
+      }
+    ]
+  },
+  "life": [
+    {
+      "id": "life-expedition",
+      "title": "海底生命：连续巡游",
+      "seconds": 240
+    }
+  ],
+  "worlds": [
+    {
+      "id": "living-shallows",
+      "title": "新浅海",
+      "description": "看连续生成的海床、生境与实际群落，以及礁坡、砂盆和相邻地貌。"
+    },
+    {
+      "id": "legacy-reef",
+      "title": "原浅礁",
+      "description": "看原礁区的珊瑚、鱼群和岩隙，再进入外围探索；另有珊瑚骨架观察。"
+    },
+    {
+      "id": "kelp",
+      "title": "海带林",
+      "description": "看巨藻岩底、林间空地、林底落料与分布在不同空间的真实动物。"
+    },
+    {
+      "id": "deep",
+      "title": "深海软底",
+      "description": "看观察器照明下的软底群落，近底觅食、附底等候与实际摄食记录。"
+    }
+  ],
+  "stops": [
+    {
+      "id": "reef-garden",
+      "title": "连片礁群",
+      "description": "珊瑚岩礁与相邻生活空间",
+      "biome": "reef"
+    },
+    {
+      "id": "sand-channel",
+      "title": "沙地通道",
+      "description": "礁群之间的开放沙道",
+      "biome": "reef"
+    },
+    {
+      "id": "seagrass-meadow",
+      "title": "浅海草床",
+      "description": "海草簇与沙地间隙",
+      "biome": "reef"
+    },
+    {
+      "id": "outer-reef",
+      "title": "外礁坡面",
+      "description": "较深礁坡和上方水域",
+      "biome": "reef"
+    },
+    {
+      "id": "ridge-gully",
+      "title": "礁脊岩沟",
+      "description": "成组礁脊之间的通道",
+      "biome": "reef"
+    },
+    {
+      "id": "patch-reef",
+      "title": "分散礁丘",
+      "description": "分散礁丘与开放沙面",
+      "biome": "reef"
+    },
+    {
+      "id": "meadow-edge",
+      "title": "草床边缘",
+      "description": "草床和岩礁的交界",
+      "biome": "reef"
+    },
+    {
+      "id": "shelf-rise",
+      "title": "海床缓坡",
+      "description": "实际海床抬升与坡面",
+      "biome": "reef"
+    },
+    {
+      "id": "sand-basin",
+      "title": "宽缓砂盆",
+      "description": "下凹砂盆与周围海床",
+      "biome": "reef"
+    },
+    {
+      "id": "connected-seascape",
+      "title": "连续海床",
+      "description": "四区共用的连续起伏",
+      "biome": "reef"
+    },
+    {
+      "id": "seascape-transition",
+      "title": "相邻生境",
+      "description": "相邻地貌与生境过渡",
+      "biome": "reef"
+    },
+    {
+      "id": "habitat-belt-reef",
+      "title": "生活带：礁群沙道",
+      "description": "完整生活带中的礁丘、珊瑚群落与开放砂道",
+      "biome": "reef"
+    },
+    {
+      "id": "habitat-belt-meadow",
+      "title": "生活带：草床水层",
+      "description": "相邻草床、软底生命与上方真实水层动物",
+      "biome": "reef"
+    },
+    {
+      "id": "shallow-scene-reef",
+      "title": "整景礁群",
+      "description": "浅海整景起点，观察成组岩礁、珊瑚与砂道的关系",
+      "biome": "reef"
+    },
+    {
+      "id": "shallow-scene-sand",
+      "title": "整景砂道",
+      "description": "沿共享海床观察宽砂道、碎石带与相邻礁肩",
+      "biome": "reef"
+    },
+    {
+      "id": "shallow-scene-meadow",
+      "title": "整景草床",
+      "description": "观察宽草床、软底动物和上方游动生命",
+      "biome": "reef"
+    },
+    {
+      "id": "shallow-scene-slope",
+      "title": "整景外礁坡",
+      "description": "沿整景末段观察外礁缓坡、稀疏岩体与开放水层",
+      "biome": "reef"
+    },
+    {
+      "id": "biodiversity-reef",
+      "title": "丰富群落：礁缘",
+      "description": "普通探索中的礁缘丰富群落，观察团块珊瑚、附着生物与近底动物；当地组合随生境而变",
+      "biome": "reef"
+    },
+    {
+      "id": "benthic-community",
+      "title": "沙地与礁底生物",
+      "description": "沿沙地与礁底观察魟、羊鱼、宝螺和寄居蟹，实际组合由当地底质与水深决定",
+      "biome": "reef"
+    },
+    {
+      "id": "meadow-life-community",
+      "title": "草床与沙地新群落",
+      "description": "观察实际海草间的抓附生命、礁缘游动动物和砂地附着群落；当地组合由水深、底质与保存记录决定",
+      "biome": "reef"
+    },
+    {
+      "id": "shoal-life-community",
+      "title": "水层鱼群与巡游鲨",
+      "description": "进入真实水层鱼群和较大游弋动物的生活空间，群体中的每条鱼独立保存，组合由当地条件与记录决定",
+      "biome": "reef"
+    },
+    {
+      "id": "coastal-life-belt",
+      "title": "连续浅海生活带",
+      "description": "连续走过礁群、砂道、草床与外坡，观察沿途真实生活空间与动物",
+      "biome": "reef"
+    },
+    {
+      "id": "reef-valley-region",
+      "title": "热带礁谷海区",
+      "description": "连续探索礁墙、台地、分叉沙沟、草床边缘与真实水层群落，向外继续生成相邻海区",
+      "biome": "reef"
+    },
+    {
+      "id": "seagrass-meadow-region",
+      "title": "热带海草草甸生活带",
+      "description": "接续礁谷的完整草甸、草缘沙沟、硬底岛与当地真实动物",
+      "biome": "reef"
+    },
+    {
+      "id": "forest-belt-interior",
+      "title": "林缘生活带：巨藻群",
+      "description": "硬底高巨藻、低冠植物与真实林间动物",
+      "biome": "kelp"
+    },
+    {
+      "id": "forest-belt-opening",
+      "title": "林缘生活带：开放沙地",
+      "description": "相邻林缘、天然沉积空隙与上方水域",
+      "biome": "kelp"
+    },
+    {
+      "id": "kelp-scene-forest",
+      "title": "整景巨藻群",
+      "description": "硬底高冠藻群、林下植物和真实动物",
+      "biome": "kelp"
+    },
+    {
+      "id": "kelp-scene-rockbed",
+      "title": "整景岩底",
+      "description": "原生不规则岩底与林下生活空间",
+      "biome": "kelp"
+    },
+    {
+      "id": "kelp-scene-opening",
+      "title": "整景林间沙地",
+      "description": "天然沉积空隙、林缘与藻间水层",
+      "biome": "kelp"
+    },
+    {
+      "id": "kelp-scene-outer",
+      "title": "整景开放林缘",
+      "description": "稀疏林缘、开放海床与上方水域",
+      "biome": "kelp"
+    },
+    {
+      "id": "kelp-bottom-life",
+      "title": "林底新群落",
+      "description": "沿原生岩底寻找红鲍、北方藻蟹、幼体海兔和附着海葵；当地组合由底质、水深与保存记录决定",
+      "biome": "kelp"
+    },
+    {
+      "id": "kelp-understory-life",
+      "title": "林下附着群落",
+      "description": "穿行林下岩面，观察棕榈状藻丛、分节珊瑚藻、团球海绵和带柄海鞘组成的实际附着群落",
+      "biome": "kelp"
+    },
+    {
+      "id": "kelp-near-bottom-life",
+      "title": "岩沙底层群落",
+      "description": "沿岩底与相邻沙地观察红岩蟹、褐斑岩鱼、角鲨和圆盘鳐的实际活动；当地组合由底质、水深与保存记录决定",
+      "biome": "kelp"
+    },
+    {
+      "id": "kelp-water-life",
+      "title": "林缘水层群落",
+      "description": "沿真实巨藻林缘的水层移动，观察群游竹荚鱼、乌贼、海荨麻和近底岩藻取食者，实际组合由当地条件及存档决定",
+      "biome": "kelp"
+    },
+    {
+      "id": "deep-plain-community",
+      "title": "深海生活带：沉积平原",
+      "description": "软泥底、实际底栖动物与近底觅食空间",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-slope-outcrop",
+      "title": "深海生活带：缓坡岩露头",
+      "description": "共享床面的宽缓坡、稀疏硬底和周围真实群落",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-scene-plain",
+      "title": "整景沉积平原",
+      "description": "连续软泥海床、沉积平原与实际底栖生命",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-scene-slope",
+      "title": "整景宽缓坡",
+      "description": "共享海床上的宽缓坡与近底生活空间",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-scene-outcrop",
+      "title": "整景岩露头",
+      "description": "实际岩露头、周围沉积底和真实群落",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-scene-outer",
+      "title": "整景开放海床",
+      "description": "碎石与开放海床，继续向外探索",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-bottom-life",
+      "title": "深海软底新群落",
+      "description": "观察适合当地软泥底与水深的沉积物利用者和底栖爬行动物；当地组合由生境与保存记录决定",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-hard-life",
+      "title": "深海岩附着群落",
+      "description": "观察真实岩面上固定附着的海百合与黑珊瑚，以及随底流发生的悬浮摄食",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-water-life",
+      "title": "深海近底游泳群落",
+      "description": "观察带鳍章鱼与长体鼬鳚在真实海床上方缓游，以及接近原生底栖食物位置时的摄食",
+      "biome": "deep"
+    },
+    {
+      "id": "deep-midwater-life",
+      "title": "离底中层水体群落",
+      "description": "进入约700米水深的开放中层，观察水母、吸血乌贼与红糠虾的独立活动与悬浮摄食",
+      "biome": "deep"
+    }
+  ],
+  "links": {
+    "sample": "../?demo=shallow-sample&seed=55",
+    "director": "../?demo=director&seed=55",
+    "life": "../?demo=life-expedition&seed=55&world=whole-seabed",
+    "all": "../?demo=all&seed=55",
+    "reef": "../?demo=reef-valley-region&seed=55&world=whole-seabed",
+    "meadow": "../?demo=seagrass-meadow-region&seed=55&world=whole-seabed",
+    "kelp": "../?demo=kelp-life&seed=55",
+    "deep": "../?demo=deep-life&seed=55"
+  },
+  "images": [
+    {
+      "file": "reef.png",
+      "source": "output/validation/shallow-final-closeout/browser/final-24.png",
+      "caption": "浅海样板 / 最终版本 / 暂停于 24 秒，2026-10-12"
+    },
+    {
+      "file": "school.png",
+      "source": "output/validation/shallow-final-closeout/browser/final-69.png",
+      "caption": "浅海样板 / 最终版本 / 暂停于 69 秒，2026-10-12"
+    },
+    {
+      "file": "meadow.png",
+      "source": "output/validation/shallow-final-closeout/browser/tour-2.png",
+      "caption": "浅海样板 / 收尾首轮实播约 55 秒，2026-10-12；同组景观素材，非最终性能记录"
+    },
+    {
+      "file": "kelp.png",
+      "source": "output/validation/screenshots/kelp-community-view-forest-final-2026-10-04.png",
+      "caption": "海带林 / 历史浏览器实景，2026-10-04；图内目录数量为旧版本"
+    },
+    {
+      "file": "deep.jpg",
+      "source": "output/validation/screenshots/deep-continuous-final-2026-10-04.jpg",
+      "caption": "深海软底 / 历史浏览器实景，2026-10-04；图内目录数量为旧版本"
+    }
+  ],
+  "validation": {
+    "version": "shallow-sample-v1.0-local-20261012",
+    "status": "frozen-local-prototype",
+    "sourceChanges": [
+      "src/oceanRockShape.js",
+      "src/ShallowSampleApp.jsx",
+      "src/shallowSampleReefSlope.js",
+      "src/world/prepareShallowRenderer.js"
+    ],
+    "counts": {
+      "animals": 293,
+      "displayClasses": 38,
+      "assetsReplaced": 0,
+      "speciesAdded": 0
+    },
+    "tests": {
+      "main": 87,
+      "preparation": 2,
+      "unique": 89
+    },
+    "build": {
+      "file": "ShallowSampleApp-DIpUHeTR.js",
+      "bytes": 17108800,
+      "sha256": "d63b22319f60fdfb8559c8af32f0d3ed6d855fba4392741be82508d4b324459c"
+    },
+    "playback": {
+      "speed": 1,
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5,
+      "startedAt": 6100.5,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "completed": true,
+      "lastModelSecond": 75,
+      "elapsedWallSeconds": 75.0137,
+      "averageFps": 54.31398925185535,
+      "p95FrameMs": 25,
+      "maxFrameMs": 54.19999999999982,
+      "uninterrupted": true
+    },
+    "startup": {
+      "navigationToReadyMs": 6100.400000095367,
+      "startupMs": 5280.600000023842,
+      "modelBuildMs": 3416.2000000476837,
+      "uploadMs": 1372.2999999523163,
+      "preparedBatches": 328,
+      "cache": "Existing local asset cache; not a cold network first visit"
+    },
+    "visual": "Existing art retained; no claim of documentary realism",
+    "limits": [
+      "Stable 60 FPS unmet",
+      "Navigation within 5 seconds unmet",
+      "No exhaustive animal-to-animal collision verification",
+      "Other devices and cold network visit unverified"
+    ],
+    "checks": {
+      "pauseSeek24and69": true,
+      "freeAndReturn": true,
+      "consoleErrors": 0,
+      "consoleWarnings": 0,
+      "originalGeometryAnd151PoseSamplesExact": true
+    },
+    "publication": "No commit, push or deployment"
+  },
+  "sources": [
+    "src/App.jsx",
+    "src/OceanApp.jsx",
+    "src/ShallowSampleApp.jsx",
+    "src/sceneCatalog.js",
+    "src/demoCapabilities.js",
+    "src/directorTour.js",
+    "docs/SHALLOW_SAMPLE_FROZEN.md",
+    "docs/WHOLE_SEABED_STAGE.md",
+    "docs/CRUISE_SMOOTHNESS_STAGE.md",
+    "docs/ACTIVE_HISTORY_STAGE.md",
+    "output/validation/shallow-final-closeout/stage.json"
+  ]
+}

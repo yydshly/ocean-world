@@ -212,3 +212,7 @@ output/validation/screenshots/*
 
 !output/validation/reef-valley-*.json
 !output/validation/reef-valley-*.log
+
+# Local Python bytecode
+__pycache__/
+*.pyc

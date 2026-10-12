@@ -1,0 +1,263 @@
+{
+  "kind": "frozen native v2 asset regression; not visual acceptance",
+  "sourceSHA256": "3418c40385f4df3bcbb0d728077261fd3dc13134d2a7af8c7458e149c5f5cbbe",
+  "models": {
+    "blue-and-gold-fusilier": {
+      "sha256": "29f77fc6a2d0ea178e4732dcfd75981766d99bfc15cad346576a1b917b477dd6",
+      "meshParts": 5,
+      "triangles": 4496
+    },
+    "doubleline-fusilier": {
+      "sha256": "55f88d9594526c88c32fa6c4fefeef8e7ef3e078eb007ae3f5b2694a4142e515",
+      "meshParts": 5,
+      "triangles": 4496
+    },
+    "bluestripe-snapper": {
+      "sha256": "da97057d94d87e6e86b6e46039cc5888d338280955694eefcb2319f28260457e",
+      "meshParts": 5,
+      "triangles": 4496
+    },
+    "white-spotted-rabbitfish": {
+      "sha256": "5254167d42b71e48bd413a8c793782f5be307c0235d7823f69e9ca9c7b540172",
+      "meshParts": 5,
+      "triangles": 2848
+    },
+    "bigeye-trevally": {
+      "sha256": "0576ba2e6a5c18959574f66b870468697ea9cd1589b030d452ee6547130c45e4",
+      "meshParts": 5,
+      "triangles": 4640
+    },
+    "reef-parrotfish": {
+      "sha256": "4c1e3b378f24ccf106552a435f3d7c4e585933d38a4b3fce9627fbccaab5a0e5",
+      "meshParts": 5,
+      "triangles": 2848
+    },
+    "lyretail-anthias": {
+      "sha256": "70abaf2cc69c70b01b4d8dc8b1d5adb29d1b24eb9e8f8874557da250c62cc825",
+      "meshParts": 5,
+      "triangles": 2848
+    },
+    "copperband-butterflyfish": {
+      "sha256": "08f730ae54c88d57f88407dd2f22ade47342e42396aa60c8e431d8aa071d8086",
+      "meshParts": 5,
+      "triangles": 2800
+    },
+    "emperor-angelfish": {
+      "sha256": "ccdc03f328816bf47472317525ecae28157e8f961b32bc2407ba0d40c6611499",
+      "meshParts": 5,
+      "triangles": 2800
+    },
+    "moorish-idol": {
+      "sha256": "66e39a0a3f9721f6aab4f3b233ce0911bff669e94e28743bc145025c2902538e",
+      "meshParts": 5,
+      "triangles": 2824
+    },
+    "sailfin-tang": {
+      "sha256": "bbe4c99327b45b05abdef713202ed92602d7aba598fdec0ed2571aff7da22446",
+      "meshParts": 5,
+      "triangles": 2824
+    },
+    "bluespine-unicornfish": {
+      "sha256": "9054a915e9969dc1200f19b1d5cca42935277b8563ba8425a529678a2b0a369e",
+      "meshParts": 5,
+      "triangles": 2904
+    },
+    "reef-goatfish": {
+      "sha256": "acfea8cf2af6dd52152af7bb68639d9162216fde8240a32881c9e5b9cc25fd8e",
+      "meshParts": 5,
+      "triangles": 2960
+    }
+  },
+  "limits": [
+    "Species silhouettes and colours are authored interpretations of museum and agency descriptions, not digitised measured outlines or specimen scans.",
+    "Body and fin frequencies are bounded display animation, not calibrated locomotion or a fluid simulation.",
+    "No claim of documentary photorealism, actual browser/GPU acceptance or natural colour calibration follows from native geometry checks."
+  ],
+  "screenedExternalAssets": [
+    {
+      "url": "https://sketchfab.com/3d-models/green-turtle-chelonia-mydas-f84013f4d4754381979429b5cffb5f17",
+      "status": "Not imported. CC BY-SA low-poly artist model; no accessible source download was used in this batch."
+    },
+    {
+      "url": "https://www.fab.com/listings/1e44440c-ea44-42b4-89c4-ee8946dcd035",
+      "status": "Not imported. Purchasable green-turtle asset; no purchase or entitlement was assumed."
+    }
+  ],
+  "representatives": [
+    {
+      "id": "green-turtle",
+      "scientificName": "Chelonia mydas",
+      "unit": "1 metre total length on X; rendered using the existing catalogue individual size",
+      "construction": "Broad low carapace with five central and four paired side scutes, light plastron, small head, four thick swept flippers and intact tail.",
+      "sources": [
+        {
+          "url": "https://www.fisheries.noaa.gov/species/green-turtle",
+          "use": "Adult small head, olive/brown shell, light underside, five central/four side scutes."
+        }
+      ]
+    },
+    {
+      "id": "blue-spotted-ray",
+      "scientificName": "Taeniura lymma",
+      "unit": "1 metre disc width on Z, separate intact tail extent; rendered using the existing catalogue disc width",
+      "construction": "Thin continuous oval disc with rounded margin, dorsal muscle relief, blue dorsal spots, eyes/spiracles, moderate pelvic fins and striped tapered tail with a lower fold.",
+      "sources": [
+        {
+          "url": "https://www.floridamuseum.ufl.edu/discover-fish/species-profiles/bluespotted-ribbontail-ray/",
+          "use": "Oval disc, rounded snout, eye/spiracle arrangement, pelvic fins, stout tail/lower fold and dorsal blue spots/tail stripes."
+        }
+      ]
+    },
+    {
+      "id": "blue-and-gold-fusilier",
+      "scientificName": "Caesio teres",
+      "unit": "1 metre total-length unit along X",
+      "sources": [
+        {
+          "url": "https://fishesofaustralia.net.au/Home/species/1233",
+          "use": "Named whole-fish outline, yellow back/caudal peduncle/tail and blue/silver body."
+        }
+      ]
+    },
+    {
+      "id": "doubleline-fusilier",
+      "scientificName": "Pterocaesio digramma",
+      "unit": "1 metre total-length unit along X",
+      "sources": [
+        {
+          "url": "https://fishesofaustralia.net.au/home/species/543",
+          "use": "Named fusilier representative; existing catalogue double-line and dark caudal-tip identification retained."
+        },
+        {
+          "url": "https://australian.museum/learn/animals/fishes/doubleline-fusilier-pterocaesio-digramma/",
+          "use": "Slender body, two longitudinal stripes and middle-water schooling."
+        }
+      ]
+    },
+    {
+      "id": "bluestripe-snapper",
+      "scientificName": "Lutjanus kasmira",
+      "unit": "1 metre total-length unit along X",
+      "sources": [
+        {
+          "url": "https://www.kahaku.go.jp/research/db/zoology/Fishes_of_Andaman_Sea/contents/lutjanidae/11.html",
+          "use": "Named complete fish, yellow flank, lighter underside and four blue stripes."
+        }
+      ]
+    },
+    {
+      "id": "bigeye-trevally",
+      "scientificName": "Caranx sexfasciatus",
+      "unit": "1 metre total-length unit along X; catalogue TL/FL distinctions retained",
+      "construction": "Compressed adult outline, two dorsal fins, long curved pectoral membranes, large lateral eyes and a deep fork; no mandatory adult six-bar pattern.",
+      "sources": [
+        {
+          "url": "https://www.kahaku.go.jp/research/db/zoology/FishGuide/data/fish207.html",
+          "use": "Named complete animal and adult opercular spot/fin-tip diagnostics; its pictured SL is not used as this model's TL."
+        },
+        {
+          "url": "https://biogeodb.stri.si.edu/sftep/es/thefishes/species/1251",
+          "use": "Compressed form, long pectoral fins and separate dorsal/anal fin arrangement."
+        }
+      ]
+    }
+  ],
+  "wave": [
+    {
+      "x": -0.5,
+      "time": 0,
+      "value": {
+        "offset": -0.004732370824297446,
+        "slope": 0.17774635858359566
+      }
+    },
+    {
+      "x": -0.5,
+      "time": 42,
+      "value": {
+        "offset": -0.012483993942252034,
+        "slope": -0.16367466581298803
+      }
+    },
+    {
+      "x": -0.5,
+      "time": 75,
+      "value": {
+        "offset": 0.006478734997758043,
+        "slope": 0.175752484311994
+      }
+    },
+    {
+      "x": -0.1,
+      "time": 0,
+      "value": {
+        "offset": 0.00845993062397682,
+        "slope": -0.08727994052158805
+      }
+    },
+    {
+      "x": -0.1,
+      "time": 42,
+      "value": {
+        "offset": -0.003319349896707414,
+        "slope": 0.08010434697556178
+      }
+    },
+    {
+      "x": -0.1,
+      "time": 75,
+      "value": {
+        "offset": 0.005403003672667549,
+        "slope": -0.0861247243491206
+      }
+    },
+    {
+      "x": 0.3,
+      "time": 0,
+      "value": {
+        "offset": 0,
+        "slope": 0
+      }
+    },
+    {
+      "x": 0.3,
+      "time": 42,
+      "value": {
+        "offset": 0,
+        "slope": 0
+      }
+    },
+    {
+      "x": 0.3,
+      "time": 75,
+      "value": {
+        "offset": 0,
+        "slope": 0
+      }
+    },
+    {
+      "x": 0.5,
+      "time": 0,
+      "value": {
+        "offset": 0,
+        "slope": 0
+      }
+    },
+    {
+      "x": 0.5,
+      "time": 42,
+      "value": {
+        "offset": 0,
+        "slope": 0
+      }
+    },
+    {
+      "x": 0.5,
+      "time": 75,
+      "value": {
+        "offset": 0,
+        "slope": 0
+      }
+    }
+  ]
+}

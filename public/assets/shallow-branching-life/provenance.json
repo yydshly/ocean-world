@@ -1,0 +1,211 @@
+{
+  "version": 2,
+  "author": "Smithsonian Institution / National Museum of Natural History",
+  "license": "CC0-1.0",
+  "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "sourceCollection": "https://3d.si.edu/corals",
+  "changes": "Official source transform; complete formosa, secale excludes triangles touching the lower 24 percent of its height to remove the rectangular specimen support; open basal crop, no filling or invented branches; 6000/1200 triangle targets; authored tissue colour, not original living colour; uniform source proportions. Acropora secale source includes attached Tubipora musica.",
+  "limits": [
+    "Dry specimen geometry adapted for living-colony display, not living-tissue photogrammetry.",
+    "Source record names and locations are provenance, not a calibrated local ecological census.",
+    "World widths are authored. Original source bounds and retained cropped bounds are distinguished; these are not measured scene colony sizes."
+  ],
+  "records": [
+    {
+      "form": "branching",
+      "key": "formosa",
+      "name": "Madrepora formosa / Acropora muricata",
+      "catalog": "USNM 292",
+      "detail": "near",
+      "vertices": 2956,
+      "triangles": 5988,
+      "error": 0.010324092581868172,
+      "aspect": 0.6181290643035143,
+      "crop": "none",
+      "sourceBoundsM": [
+        [
+          -0.09392842650413513,
+          -0.07069677859544754,
+          -0.09761668741703033
+        ],
+        [
+          0.09392844140529633,
+          0.07069677859544754,
+          0.09761668741703033
+        ]
+      ],
+      "sourceSHA256": "b04580f9e45e58bfc784978ff785def68fbd7d86019b1109a626e7d599e2abb1",
+      "documentSHA256": "c8d10c22b3c851413c179f6ec3c28b370b92cbcaee6f2ee463e745bb5bee33cb",
+      "source": "https://3d-api.si.edu/content/document/3d_package:03d6b38a-bf7d-4334-90c9-1f7b4c3041a9/document.json",
+      "license": "CC0-1.0",
+      "originalSourceBoundsM": [
+        [
+          -0.09392842650413513,
+          -0.07069677859544754,
+          -0.09761668741703033
+        ],
+        [
+          0.09392844140529633,
+          0.07069677859544754,
+          0.09761668741703033
+        ]
+      ]
+    },
+    {
+      "form": "branching",
+      "key": "formosa",
+      "name": "Madrepora formosa / Acropora muricata",
+      "catalog": "USNM 292",
+      "detail": "distant",
+      "vertices": 566,
+      "triangles": 1160,
+      "error": 0.02643076702952385,
+      "aspect": 0.6181290643035143,
+      "crop": "none",
+      "sourceBoundsM": [
+        [
+          -0.09392842650413513,
+          -0.07069677859544754,
+          -0.09761668741703033
+        ],
+        [
+          0.09392844140529633,
+          0.07069677859544754,
+          0.09761668741703033
+        ]
+      ],
+      "sourceSHA256": "b04580f9e45e58bfc784978ff785def68fbd7d86019b1109a626e7d599e2abb1",
+      "documentSHA256": "c8d10c22b3c851413c179f6ec3c28b370b92cbcaee6f2ee463e745bb5bee33cb",
+      "source": "https://3d-api.si.edu/content/document/3d_package:03d6b38a-bf7d-4334-90c9-1f7b4c3041a9/document.json",
+      "license": "CC0-1.0",
+      "originalSourceBoundsM": [
+        [
+          -0.09392842650413513,
+          -0.07069677859544754,
+          -0.09761668741703033
+        ],
+        [
+          0.09392844140529633,
+          0.07069677859544754,
+          0.09761668741703033
+        ]
+      ]
+    },
+    {
+      "form": "branching2",
+      "key": "secale",
+      "name": "Acropora secale",
+      "catalog": "USNM 268",
+      "detail": "near",
+      "vertices": 2958,
+      "triangles": 5995,
+      "error": 0.009953459724783897,
+      "aspect": 0.44997825800035046,
+      "crop": "Exclude triangles with any vertex in the lower 24% of transformed original Y; open base.",
+      "sourceBoundsM": [
+        [
+          -0.12851110100746155,
+          -0.04380728304386139,
+          -0.11033836752176285
+        ],
+        [
+          0.12851102650165558,
+          0.08424722403287888,
+          0.11033833771944046
+        ]
+      ],
+      "sourceSHA256": "141d379617fadff6f2517faa99d8857f0f47e68c828a571d09f006662249a626",
+      "documentSHA256": "e0648904206ce0d3eb8c0494a459b7d92ffc7386f0181ba0fac17e1a58f39bfa",
+      "source": "https://3d-api.si.edu/content/document/3d_package:cb2e1f4d-8eaa-454b-b61d-cc78b6b64b7b/document.json",
+      "license": "CC0-1.0",
+      "originalSourceBoundsM": [
+        [
+          -0.12851110100746155,
+          -0.08424721658229828,
+          -0.11033836752176285
+        ],
+        [
+          0.12851102650165558,
+          0.08424722403287888,
+          0.11033833771944046
+        ]
+      ]
+    },
+    {
+      "form": "branching2",
+      "key": "secale",
+      "name": "Acropora secale",
+      "catalog": "USNM 268",
+      "detail": "distant",
+      "vertices": 562,
+      "triangles": 1150,
+      "error": 0.028488511219620705,
+      "aspect": 0.44997825800035046,
+      "crop": "Exclude triangles with any vertex in the lower 24% of transformed original Y; open base.",
+      "sourceBoundsM": [
+        [
+          -0.12851110100746155,
+          -0.04380728304386139,
+          -0.11033836752176285
+        ],
+        [
+          0.12851102650165558,
+          0.08424722403287888,
+          0.11033833771944046
+        ]
+      ],
+      "sourceSHA256": "141d379617fadff6f2517faa99d8857f0f47e68c828a571d09f006662249a626",
+      "documentSHA256": "e0648904206ce0d3eb8c0494a459b7d92ffc7386f0181ba0fac17e1a58f39bfa",
+      "source": "https://3d-api.si.edu/content/document/3d_package:cb2e1f4d-8eaa-454b-b61d-cc78b6b64b7b/document.json",
+      "license": "CC0-1.0",
+      "originalSourceBoundsM": [
+        [
+          -0.12851110100746155,
+          -0.08424721658229828,
+          -0.11033836752176285
+        ],
+        [
+          0.12851102650165558,
+          0.08424722403287888,
+          0.11033833771944046
+        ]
+      ]
+    }
+  ],
+  "generatedData": {
+    "file": "src/world/shallowBranchingCoralData.js",
+    "sha256": "7b6fe33ddac3b2e7580edc3c44ad77e7b540fd21c3cb54f87cfa4a90fd591045"
+  },
+  "licenseEvidence": [
+    {
+      "key": "formosa",
+      "title": "Madrepora formosa",
+      "author": "The Smithsonian Institution",
+      "source": "https://sketchfab.com/3d-models/madrepora-formosa-a45268ba13fd4397b40a1c36f1554c7c",
+      "license": {
+        "uri": "https://api.sketchfab.com/v3/licenses/7c23a1ba438d4306920229c12afcb5f9",
+        "label": "CC0 Public Domain",
+        "fullName": "CC0 Public Domain",
+        "requirements": "Credit is not mandatory. Commercial use is allowed.",
+        "url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "slug": "cc0"
+      },
+      "metadataSHA256": "8b1150e7d54199b387b0d881e6c16bab2216f674efb8df13d69a8d209adc2551"
+    },
+    {
+      "key": "secale",
+      "title": "Acropora secale",
+      "author": "The Smithsonian Institution",
+      "source": "https://sketchfab.com/3d-models/acropora-secale-4650d132e07b420ba3da377f2f41a5e8",
+      "license": {
+        "uri": "https://api.sketchfab.com/v3/licenses/7c23a1ba438d4306920229c12afcb5f9",
+        "label": "CC0 Public Domain",
+        "fullName": "CC0 Public Domain",
+        "requirements": "Credit is not mandatory. Commercial use is allowed.",
+        "url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "slug": "cc0"
+      },
+      "metadataSHA256": "cb01fe8289f8a5d9c82135ddad9ddcfbbe2bf369052ad91d832e4729d0ae2e6a"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "version": 2,
+  "date": "2026-10-11",
+  "scope": "Finite local shallow sample",
+  "records": [
+    {
+      "key": "fish",
+      "title": "Fish",
+      "author": "Yimit",
+      "source": "https://sketchfab.com/3d-models/fish-c4328d6c1ae445198abc1a3d4c1e2570",
+      "uid": "c4328d6c1ae445198abc1a3d4c1e2570",
+      "license": {
+        "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+        "label": "CC Attribution",
+        "fullName": "Creative Commons Attribution",
+        "requirements": "Author must be credited. Commercial use is allowed.",
+        "url": "http://creativecommons.org/licenses/by/4.0/",
+        "slug": "by"
+      },
+      "sourceSHA256": "f49762eb1e380c2497a0567b3c0a6de06e4f80866786fed63da50f51fd7921ac",
+      "changes": "Retain complete source and original albedo; simplify mesh, normalize axes/width; runtime dimensions authored, not survey measurements.",
+      "limits": "Author supplies no taxonomic identification. Shown as an unidentified reef-fish study, not labelled as the former blacktail snapper. Project bounded swim deformation, not a source animation rig.",
+      "triangles": {
+        "near": 2277
+      }
+    },
+    {
+      "key": "foliose",
+      "title": "Foliacious Montipora sp.",
+      "author": "thehydrous",
+      "source": "https://sketchfab.com/3d-models/foliacious-montipora-sp-d26a10a601e34570a5571714a422e226",
+      "uid": "d26a10a601e34570a5571714a422e226",
+      "license": {
+        "uri": "https://api.sketchfab.com/v3/licenses/2628dbe5140a4e9592126c8df566c0b7",
+        "label": "CC Attribution-NonCommercial-ShareAlike",
+        "fullName": "CC Attribution-NonCommercial-ShareAlike",
+        "requirements": "Author must be credited. No commercial use. Modified versions must have the same license.",
+        "url": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "slug": "by-nc-sa"
+      },
+      "sourceSHA256": "701bbd69847ef706e88395d57f0332d5f02fdaa5f32c6d29f6913d719cdaa177",
+      "changes": "Retain complete source and original albedo; simplify mesh, normalize axes/width; runtime dimensions authored, not survey measurements.",
+      "limits": "Source field photogrammetry; lighting and missing scan surfaces remain. No fabricated tissue, no per-branch repair.",
+      "triangles": {
+        "near": 12000,
+        "distant": 2834
+      }
+    },
+    {
+      "key": "reefscan",
+      "title": "Underwater Coral Reef Photogrametry 3D Scan",
+      "author": "VIVID REALITY",
+      "source": "https://sketchfab.com/3d-models/underwater-coral-reef-photogrametry-3d-scan-ef94bf857d2a4af5b3691d19d57baaaa",
+      "uid": "ef94bf857d2a4af5b3691d19d57baaaa",
+      "license": {
+        "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+        "label": "CC Attribution",
+        "fullName": "Creative Commons Attribution",
+        "requirements": "Author must be credited. Commercial use is allowed.",
+        "url": "http://creativecommons.org/licenses/by/4.0/",
+        "slug": "by"
+      },
+      "sourceSHA256": "d67f214efd3aac01e779b6b25c0bc916f6cdaf76b7f3242105cc0cf2f8fdcef7",
+      "changes": "Fixed whole-family crop below 30% source height removes the blue survey-floor apron; interpolate cut triangles, simplify retained upper community with UV and boundary protection. An authored continuous limestone foundation closes the outer cut perimeter and joins the actual sediment bed; its visible top is included in physical support queries. The foundation is not part of the field scan. Original source images untouched. Dimensions authored, not survey scale.",
+      "limits": "Source field photogrammetry; lighting and missing scan surfaces remain. No fabricated tissue, no per-branch repair.",
+      "triangles": {
+        "near": 22725
+      }
+    }
+  ],
+  "generatedData": {
+    "file": "src/world/shallowNearCommunityData.js",
+    "sha256": "cd59a51ccf0093a7a72d72ea326e53d2a95fabe6a53e052be89d7cf165cdc5bb"
+  },
+  "textures": [
+    {
+      "file": "fish-0.jpg",
+      "sha256": "dfda47333b86e8af57c34cee0f5ea8c362d253d3aad9ccd9d154c758060266b1"
+    },
+    {
+      "file": "foliose-0.jpg",
+      "sha256": "ff2f90db19a53a3d62b161913acbfdf46d5b330aa5bd2af6b08b54f64177fdf8"
+    },
+    {
+      "file": "reefscan-0.jpg",
+      "sha256": "74072429c2cb7ac5da876414c69a75e09871148e69070b69541613d381b36e18"
+    },
+    {
+      "file": "reefscan-1.jpg",
+      "sha256": "c799181e96a64daa41b8b02b6ea35fcd353874932a71cf3e6bb1bc5340c35e3d"
+    },
+    {
+      "file": "reefscan-2.jpg",
+      "sha256": "611f50216a0b54ca22e00d75544003fcd76e48d0be5025fa5a240021db7a7179"
+    },
+    {
+      "file": "reefscan-3.jpg",
+      "sha256": "1fedaa90b40434b24e3b173d0fe39abe61ed4aef30d319b79a45c2a3ba14396b"
+    },
+    {
+      "file": "reefscan-4.jpg",
+      "sha256": "d25d7dd851b3caca9fe64365e5805c792b063a2ff3906692a7ba7388f08ea71f"
+    },
+    {
+      "file": "reefscan-5.jpg",
+      "sha256": "45798ccec7d9b7a93c051e79ef14b5b5c3ac2762072514d86bd4cec9cbf191c2"
+    },
+    {
+      "file": "reefscan-6.jpg",
+      "sha256": "73c91d163031e5729e5353794bbc8b52491509bb124680a5dc1a58b0c97ca44f"
+    },
+    {
+      "file": "reefscan-7.jpg",
+      "sha256": "29f874933d4934478138031d7350ffb44f717a27cb977bed42e01769aef4da58"
+    },
+    {
+      "file": "reefscan-8.jpg",
+      "sha256": "40736364df0363d67c65e95965fa7484694c87c166bb08fa498c6af6d1e8ee28"
+    },
+    {
+      "file": "reefscan-9.jpg",
+      "sha256": "1a6ecf2b2a7ce9700e482699ae40beb93701a82b8071cff28f317045af7be47e"
+    },
+    {
+      "file": "reefscan-10.jpg",
+      "sha256": "6b6efb48d857f7b0d4bd6b41b97019869fe3bcf62d7d00cbfaa587f0eb1f2cc6"
+    },
+    {
+      "file": "reefscan-11.jpg",
+      "sha256": "115a010f7d5838e84a03208c795bb91e5a3297bd0d0ede16e7f267196e5ac5c7"
+    },
+    {
+      "file": "reefscan-12.jpg",
+      "sha256": "2c0232c7bd4f391cb1e4929518c62591b250edaae64a89f898f2c70a64b0e97e"
+    },
+    {
+      "file": "reefscan-13.jpg",
+      "sha256": "70021efa2d8e9377c13ee0c7a5b167f15958caca8848a9b1a3b78df5a070f2ad"
+    },
+    {
+      "file": "reefscan-14.jpg",
+      "sha256": "f61527f0747507e77b4305c9d4fa7fa758591ba4b91aa304c5cfa64c5b48c50b"
+    },
+    {
+      "file": "reefscan-15.jpg",
+      "sha256": "d1688e1fa1f35d249ec18b4c03468caa6b2ef70a1698c9c8d904c77d4b7a8207"
+    }
+  ],
+  "redistribution": "Preserve attribution, source and licence links. Foliose derivative remains CC BY-NC-SA 4.0; non-commercial, share-alike for this asset. Fish and reefscan CC BY 4.0. Existing assets retain their own licences.",
+  "fallback": "Source UV/image samples in linear vertex colours when optional textures are absent or late."
+}

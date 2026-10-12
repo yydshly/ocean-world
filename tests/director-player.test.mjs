@@ -61,13 +61,26 @@ test('the actual countdown scales with rate while progress retains rendered shot
   const progress = byLabel(tree, '当前章节巡游进度');
   assert.equal(progress.props['aria-valuenow'], 0);
   assert.equal(progress.props['aria-valuetext'], '0%，剩余 200 秒');
-  assert.ok(elements(tree).some(item => content(item) === '200 秒后继续'));
+  assert.ok(elements(tree).some(item => content(item) === '巡游剩余 200 秒'));
   state = send(state, 'pause');
   state = send(state, 'set-rate', { playbackRate: 0.5 });
   const pausedTree = render(state);
   assert.equal(byLabel(pausedTree, '当前章节巡游进度').props['aria-valuetext'], '0%，剩余 1594 秒');
   assert.ok(elements(pausedTree).some(item => content(item) === '暂停中'));
   assert.equal(byLabel(pausedTree, '继续导演演示').type, 'button');
+});
+
+test('actual waiting output distinguishes a stalled window from remaining route time and gives a working retry', () => {
+  let state = enter(send(createDirectorState(), 'start'));
+  state = send(state, 'motion-status', { token: state.token, waiting: true, waitSec: 12 });
+  const tree = render(state); assert.match(content(tree), /等待海域就绪/);
+  assert.match(content(tree), /已等待 12 秒/); assert.doesNotMatch(content(tree), /秒后继续/);
+  state = send(state, 'failed', { token: state.token, error: 'injected timeout' });
+  let retried = false;
+  const failed = render(state, { onResume: () => { retried = true; } });
+  const button = elements(failed).find(item => item.type === 'button' && content(item) === '重试巡游');
+  assert.ok(button); button.props.onClick(); assert.equal(retried, true);
+  assert.doesNotMatch(content(failed), /就绪后自动继续/);
 });
 
 test('a completed player can select the last chapter again through its real seek handler', () => {
@@ -170,7 +183,7 @@ test('a scene-only sibling mask follows exact director opacity while pause, skip
   assert.ok(content(paused).includes('已暂停 · 自然转场中'));
   assert.ok(content(paused).includes('转往另一观察点'));
   assert.ok(elements(paused).some(item => item.props.role === 'alert' && content(item) === '当前海域尚未就绪'));
-  byLabel(paused, '继续导演演示').props.onClick(); assert.equal(calls.at(-1), 'resume');
+  byLabel(paused, '重试巡游').props.onClick(); assert.equal(calls.at(-1), 'resume');
 });
 
 test('nearby shot linking stays visible and completion or idle cannot retain a stale mask', () => {

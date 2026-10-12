@@ -1,5 +1,12 @@
+import { OCEAN_REEF_BOTTOM_SPECIES } from './oceanReefBottomSpecies.js';
+import { OCEAN_COASTAL_SCHOOL_SPECIES } from './oceanCoastalSchoolSpecies.js';
+import { OCEAN_SAND_BOTTOM_SPECIES } from './oceanSandBottomSpecies.js';
+import { OCEAN_REEF_COLOR_FISH_SPECIES } from './oceanReefColorFishSpecies.js';
+import { OCEAN_REEF_GRAZERS_SPECIES } from './oceanReefGrazersSpecies.js';
+import { OCEAN_MEADOW_WATER_SPECIES } from './oceanMeadowWaterSpecies.js';
 import { speciesCatalog } from './species.js';
 import { oceanBiodiversitySpeciesCatalog } from './oceanBiodiversitySpecies.js';
+import { OCEAN_SMALL_BOTTOM_SPECIES } from './oceanSmallBottomSpecies.js';
 import { oceanBenthicLifeSpeciesCatalog } from './oceanBenthicLifeSpecies.js';
 import { oceanMeadowLifeSpeciesCatalog } from './oceanMeadowLifeSpecies.js';
 import { oceanShoalLifeSpeciesCatalog } from './oceanShoalLifeSpecies.js';
@@ -9,6 +16,7 @@ import { OCEAN_REEF_COMMUNITY_SPECIES } from './oceanReefCommunitySpecies.js';
 import { OCEAN_REEF_LIFE_SPECIES } from './oceanReefLifeSpecies.js';
 import { OCEAN_REEF_FAUNA_SPECIES } from './oceanReefFaunaSpecies.js';
 import { OCEAN_REEF_ASSEMBLAGE_SPECIES } from './oceanReefAssemblageSpecies.js';
+import { OCEAN_REEF_MOBILE_BENTHOS_SPECIES } from './oceanReefMobileBenthosSpecies.js';
 import { OCEAN_REEF_SUSPENSION_SPECIES } from './oceanReefSuspensionSpecies.js';
 import { OCEAN_REEF_FILTER_SPECIES } from './oceanReefFilterSpecies.js';
 import { OCEAN_REEF_SLOPE_SPECIES } from './oceanReefSlopeSpecies.js';
@@ -46,7 +54,7 @@ const deep=[...deepSpeciesCatalog,...deepPredatorSpeciesCatalog.map(s=>({...s,re
   nameNote:(s.identityLevel==='genus-group'?'属层级代表模型，未辨认为具名物种。':s.identityLevel==='family-group'?'科层级代表模型，未辨认为具名物种。':'')+(s.commonName.includes('（描述性中文名）')?'中文名为描述性译名，以学名辨认。':''),
   description:s.shape,behavior:deepBehaviors[s.id],colors:s.kind==='fish'?['#796d67']:['#c4a0a1']}));
 export const sceneCatalogs={reef:[...speciesCatalog,...oceanSlopeSpeciesCatalog,...oceanPelagicSpeciesCatalog,...oceanMantaSpeciesCatalog,...oceanTurtleSpeciesCatalog],kelp:[...kelp,...kelpWaterSpeciesCatalog,...kelpVisitorSpeciesCatalog,...kelpBenthicLifeSpeciesCatalog,...kelpWaterLifeSpeciesCatalog,...kelpNearBottomLifeSpeciesCatalog,...kelpUnderstoryLifeSpeciesCatalog],deep:[...deep,...deepBenthicLifeSpeciesCatalog,...deepHardLifeSpeciesCatalog,...deepWaterLifeSpeciesCatalog,...deepMidwaterLifeSpeciesCatalog]};
-export const livingShallowsSpeciesCatalog = Object.freeze([...sceneCatalogs.reef,...oceanReefGuildSpeciesCatalog,...openWaterSpeciesCatalog,...oceanBiodiversitySpeciesCatalog,...oceanBenthicLifeSpeciesCatalog,...oceanMeadowLifeSpeciesCatalog,...oceanShoalLifeSpeciesCatalog,...OCEAN_REEF_RESIDENT_SPECIES,...OCEAN_REEF_DIVERSITY_SPECIES,...OCEAN_REEF_COMMUNITY_SPECIES,...OCEAN_REEF_LIFE_SPECIES,...OCEAN_REEF_FAUNA_SPECIES,...OCEAN_REEF_ASSEMBLAGE_SPECIES,...OCEAN_REEF_VISITORS_SPECIES, ...OCEAN_REEF_SLOPE_SPECIES, ...OCEAN_REEF_FILTER_SPECIES, ...OCEAN_REEF_SUSPENSION_SPECIES]);
+export const livingShallowsSpeciesCatalog = Object.freeze([...sceneCatalogs.reef,...oceanReefGuildSpeciesCatalog,...openWaterSpeciesCatalog,...oceanBiodiversitySpeciesCatalog,...oceanBenthicLifeSpeciesCatalog,...oceanMeadowLifeSpeciesCatalog,...oceanShoalLifeSpeciesCatalog,...OCEAN_REEF_RESIDENT_SPECIES,...OCEAN_REEF_DIVERSITY_SPECIES,...OCEAN_REEF_COMMUNITY_SPECIES,...OCEAN_REEF_LIFE_SPECIES,...OCEAN_REEF_FAUNA_SPECIES,...OCEAN_REEF_ASSEMBLAGE_SPECIES,...OCEAN_REEF_VISITORS_SPECIES, ...OCEAN_REEF_SLOPE_SPECIES, ...OCEAN_REEF_FILTER_SPECIES, ...OCEAN_REEF_SUSPENSION_SPECIES, ...OCEAN_REEF_MOBILE_BENTHOS_SPECIES, ...OCEAN_REEF_GRAZERS_SPECIES, ...OCEAN_REEF_COLOR_FISH_SPECIES, ...OCEAN_SMALL_BOTTOM_SPECIES, ...OCEAN_MEADOW_WATER_SPECIES, ...OCEAN_SAND_BOTTOM_SPECIES, ...OCEAN_COASTAL_SCHOOL_SPECIES, ...OCEAN_REEF_BOTTOM_SPECIES]);
 export const sceneDefinitions={
   reef:{id:'reef',title:'在礁间，',label:'浅海珊瑚礁',eyebrow:'INDO-PACIFIC · SHALLOW REEF',subtitle:'热带浅海礁区',surfaceY:8,baseline:reefBaseline,views:{wide:'全景',reef:'礁边',coral:'珊瑚',skeleton:'骨架',crevice:'岩隙'}},
   kelp:{id:'kelp',title:'在林下，',label:'温带海带林',eyebrow:'MONTEREY · KELP FOREST',subtitle:'温带岩底与巨藻林',surfaceY:12,baseline:kelpBaseline,views:{wide:'全景',reef:'林下',canopy:'冠层',crevice:'岩底'}},

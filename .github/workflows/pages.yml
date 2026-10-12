@@ -32,6 +32,27 @@ jobs:
       - name: Check whole sea scenes, native entries and saved ecosystems
         run: >-
           node --test --test-concurrency=4
+          tests/ocean-meadow-food-web.test.mjs
+          tests/ocean-streaming-stall.test.mjs
+          tests/reef-residents-streaming-performance.test.mjs
+          tests/ocean-preparation.test.mjs
+          tests/ocean-background-preparation.test.mjs
+          tests/life-expedition-continuity.test.mjs
+          tests/meadow-food-web-ecology.test.mjs
+          tests/ocean-coastal-schools.test.mjs
+          tests/coastal-schools-ecology.test.mjs tests/ocean-reef-bottom-life.test.mjs tests/reef-bottom-life-ecology.test.mjs tests/reef-bottom-reef-region.test.mjs tests/life-expedition.test.mjs tests/life-expedition-native.test.mjs
+          tests/ocean-sand-bottom-life.test.mjs
+          tests/sand-bottom-life-ecology.test.mjs
+          tests/ocean-meadow-water-life.test.mjs
+          tests/meadow-water-life-ecology.test.mjs
+          tests/ocean-small-bottom-life.test.mjs
+          tests/small-bottom-life-ecology.test.mjs
+          tests/ocean-meadow-foraging.test.mjs
+          tests/meadow-foraging-ecology.test.mjs
+          tests/ocean-loading-failure.test.mjs
+          tests/ocean-reef-mobile-benthos.test.mjs
+          tests/ocean-reef-mobile-benthos-assets.test.mjs
+          tests/reef-mobile-benthos-ecology.test.mjs
           tests/ocean-reef-suspension-life.test.mjs
           tests/ocean-reef-suspension-assets.test.mjs
           tests/reef-suspension-life-ecology.test.mjs
@@ -92,6 +113,15 @@ jobs:
           tests/meadow-animal-belt-ecology.test.mjs
           tests/ocean-sand-surface.test.mjs
           tests/ocean-animal-sediment.test.mjs
+          tests/ocean-resident-sediment.test.mjs
+          tests/ocean-reef-schooling.test.mjs tests/ocean-reef-foraging.test.mjs tests/reef-foraging-ecology.test.mjs
+          tests/reef-schooling-ecology.test.mjs
+          tests/ocean-reef-color-fish.test.mjs
+          tests/ocean-reef-color-fish-assets.test.mjs
+          tests/reef-color-fish-ecology.test.mjs
+          tests/ocean-reef-grazers.test.mjs
+          tests/ocean-reef-grazers-assets.test.mjs
+          tests/reef-grazers-ecology.test.mjs
           tests/ocean-animal-encounters.test.mjs
           tests/ocean-animal-encounters-native.test.mjs
           tests/sand-animal-life-world.test.mjs
@@ -232,6 +262,12 @@ jobs:
           tests/director-readiness.test.mjs
           tests/director-camera-motion.test.mjs
           tests/observation-event-text.test.mjs
+      - name: Check frozen shallow sample and original image integrity
+        run: npm run test:shallow
+      - name: Check published product guide and asset paths
+        run: npm run test:publication
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
       - name: Upload static website
         uses: actions/upload-pages-artifact@v4
         with:

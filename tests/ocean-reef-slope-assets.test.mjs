@@ -62,7 +62,7 @@ test('actual regional dispatcher renders all four using saved scale, heading, pi
   assert.deepEqual(reefSlopeAnimalAssetStats(),{resources:0,instances:0});
 });
 test('shipped constructor gates slope recipe to living shallows and preserves it through reset',async()=>{
-  assert.equal(livingShallowsSpeciesCatalog.length,87);
+  assert.equal(livingShallowsSpeciesCatalog.length,106);
   for(const s of OCEAN_REEF_SLOPE_SPECIES){assert.equal(livingShallowsSpeciesCatalog.filter(x=>x.id===s.id).length,1);
     for(const biome of ['reef','kelp','deep'])assert.ok(!sceneCatalogs[biome].some(x=>x.id===s.id));}
   const src=readFileSync(new URL('../src/world/ReefWorld.js',import.meta.url),'utf8'),start=src.indexOf('new OceanEcology(seed,this.oceanChunks.generator,'),end=src.indexOf(');',start)+1;
@@ -71,7 +71,7 @@ test('shipped constructor gates slope recipe to living shallows and preserves it
   for(const living of [true,false])for(const variant of[null,'habitat-layers','sand-corridor','reef-slope']){
     const captured=new Function('OceanEcology','seed',`return ${src.slice(start,end)};`).call({isLivingShallows:living,oceanWorldVariant:variant,oceanChunks:{generator}},Capture,seed);
     const expected=living&&!['habitat-layers','sand-corridor'].includes(variant);assert.equal(captured.options.reefSlopeCommunity,expected);
-    const model=new OceanEcology(seed,generator,{...captured.options,store:{load:async()=>null,saveMany:async()=>{},save:async()=>{}}});
+    const model=new OceanEcology(seed,generator,{...captured.options,reefForaging:false,reefSchooling:false,reefColorFish:false,reefGrazers:false,store:{load:async()=>null,saveMany:async()=>{},save:async()=>{}}});
     try{assert.equal(model.reefSlopeCommunityEnabled,expected);model.reset(seed,generator);assert.equal(model.reefSlopeCommunityEnabled,expected);assert.equal(model._active.size,0);if(living&&variant)assert.ok(model._world.startsWith(`ecology-v1-copy:${variant}:`));assert.equal(model._randomWorld,`ecology-v1:string:${seed}`);}
     finally{await model.dispose();}
   }

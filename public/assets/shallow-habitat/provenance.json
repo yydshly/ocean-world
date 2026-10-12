@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-11",
+  "scope": "75-second shallow sample",
+  "thirdParty": {
+    "title": "Coral Ground 02",
+    "author": "Rob Tuytel / Poly Haven",
+    "source": "https://polyhaven.com/a/coral_ground_02",
+    "license": "CC0-1.0",
+    "licenseEvidence": "https://polyhaven.com/license",
+    "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/coral_ground_02/coral_ground_02_diff_1k.jpg",
+    "file": "public/assets/coral_ground_02_diff_1k.jpg",
+    "bytes": 743145,
+    "sha256": "83b51ff02b9b3b45a1eeb5676ab406b77e31c172e029e1e3e4280640fe197656",
+    "changes": "Original image bytes retained. Runtime world triplanar scale .5/m matches source 2m width. RGB is 92% desaturated in linear shader space and modulates authored carbonate/attached-cover colours. Not an underwater living-colony photograph."
+  },
+  "authored": [
+    "ShallowHabitatForms.js: generic foliose plates, spatial attached-cover colours on unchanged rock triangles",
+    "ShallowCommunityFishAssets.js: complete batfish and humphead wrasse body/curved fin kits"
+  ],
+  "thirdPartyMeshOrPhotoCopiedForAuthoredModels": false,
+  "ecologyReferences": [
+    "https://australian.museum/learn/animals/fishes/roundface-batfish-platax-teira/",
+    "https://fishesofaustralia.net.au/home/species/2962",
+    "https://flowergarden.noaa.gov/about/mesophotic.html"
+  ],
+  "constraints": "Qualitative anatomical and habitat interpretation. Not measured taxa, coral biomass, field percent cover or recruitment. Existing source animal and coral licenses remain separate.",
+  "rejected": "Acropora sp. skeleton candidate was fragmented and had survey material; no runtime import or public model. The previous rejected Echinopora remains disabled."
+}

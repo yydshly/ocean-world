@@ -58,7 +58,9 @@ function harness(world, { execute: executeOverride, samplePreparation = false } 
   let state = createDirectorState(), refCursor = 0, dirty = true, now = 0, nextId = 1, api;
   const refs = [], committed = [], queued = [], events = [], execution = [], notices = [], controls = [];
   const frames = new Map(), cancelledFrames = [], timers = new Map();
-  const document = { visibilityState: 'visible' }, window = { location: { search: '' } };
+  const listeners = new Set();
+  const document = { visibilityState: 'visible', addEventListener(name, fn) { if (name === 'visibilitychange') listeners.add(fn); },
+    removeEventListener(name, fn) { if (name === 'visibilitychange') listeners.delete(fn); } }, window = { location: { search: '' } };
   const requestAnimationFrame = callback => { const id = nextId++; frames.set(id, callback); return id; };
   const cancelAnimationFrame = id => { if (frames.has(id)) cancelledFrames.push(frames.get(id)); frames.delete(id); };
   Object.assign(window, { requestAnimationFrame, cancelAnimationFrame });
@@ -120,7 +122,9 @@ function harness(world, { execute: executeOverride, samplePreparation = false } 
     for (let elapsed = 0; elapsed <= limitMs; elapsed += 25) { await flush(); if (predicate()) return; await advance(25); }
     assert.fail(`${label}: ${JSON.stringify(state)}`);
   }
-  const run = { inputs, events, execution, notices, controls, document, frames, cancelledFrames,
+  const run = { inputs, events, execution, notices, controls, document, frames, cancelledFrames, timers,
+    visibility(value) { document.visibilityState = value; for (const fn of listeners) fn(); },
+    elapseWithoutTimers(ms) { now += ms; },
     flush, advance, until, publish, get api() { return api; }, get state() { return state; }, get now() { return now; },
     async runCancelledFrames() { for (const callback of cancelledFrames.splice(0)) callback(now); await flush(); } };
   render(); return run;
@@ -139,6 +143,65 @@ test('a distant reposition executes only under full cover and begins its shot on
   assert.equal(run.state.transition.phase, 'none'); assert.equal(run.state.transition.opacity, 0);
   assert.equal(count(f.log, 'prepare'), 1); assert.equal(count(f.log, 'shot-begin'), 1);
   assert.equal(run.state.elapsedMs, 0); assert.deepEqual(f.world.protectedState, f.protectedState);
+});
+
+test('an asynchronous in-shot window wait freezes progress, reports waiting and resumes the same camera once ready', async () => {
+  const f = worldFixture(), run = harness(f.world); await start(run);
+  await run.until(() => run.state.phase === 'showing', 'shot starts');
+  f.world.shot.elapsedSec = 7; await run.advance(250);
+  const token = run.state.token;
+  f.world.shot.waitingForRegions = true; await run.advance(12000);
+  assert.equal(run.state.elapsedMs, 7000); assert.deepEqual(run.state.motionStatus, { waiting: true, waitSec: 12, reason: 'regions' });
+  assert.equal(run.state.error, null); assert.deepEqual(run.state.completedStepIds, []);
+  f.world.shot.waitingForRegions = false; f.world.shot.elapsedSec = 8; await run.advance(250);
+  assert.equal(run.state.token, token); assert.equal(run.state.elapsedMs, 8000);
+  assert.deepEqual(run.state.motionStatus, { waiting: false, waitSec: 0, reason: null }); assert.equal(count(f.log, 'shot-begin'), 1);
+  assert.deepEqual(f.world.protectedState, f.protectedState);
+});
+
+test('an indefinitely stalled shot excludes paused and hidden time, then fails with a retryable token', async () => {
+  const f = worldFixture(), run = harness(f.world); await start(run);
+  await run.until(() => run.state.phase === 'showing', 'shot starts');
+  f.world.shot.elapsedSec = 5; await run.advance(250); f.world.shot.waitingForRegions = true;
+  await run.advance(12000); run.api.pause(); await run.flush(); await run.advance(300000);
+  run.api.resume(); await run.flush(); run.document.visibilityState = 'hidden'; await run.advance(300000);
+  assert.equal(run.state.error, null); assert.equal(run.state.elapsedMs, 5000);
+  run.document.visibilityState = 'visible'; await run.advance(47000); assert.equal(run.state.error, null);
+  await run.advance(1000); assert.match(run.state.error, /跨区加载已等待 60 秒/);
+  assert.equal(run.state.playing, false); assert.equal(f.world.shot.active, false);
+  assert.deepEqual(run.state.completedStepIds, []); const token = run.state.token;
+  run.api.resume(); await run.flush(); await run.until(() => run.state.phase === 'showing', 'fresh retry starts');
+  assert.ok(run.state.token > token); assert.equal(run.state.error, null); assert.equal(run.state.elapsedMs, 0);
+  assert.equal(count(f.log, 'shot-begin'), 2); assert.deepEqual(f.world.protectedState, f.protectedState);
+});
+
+test('clock stagnation without a window flag cannot stall forever, and an old timer cannot fail a replacement shot', async () => {
+  const f = worldFixture(), run = harness(f.world); await start(run);
+  await run.until(() => run.state.phase === 'showing', 'shot starts');
+  const oldTimer = [...run.timers.values()].find(item => item.delay === 250).callback;
+  await run.advance(60000);
+  assert.match(run.state.error, /镜头已连续 60 秒没有前进/); const oldToken = run.state.token;
+  run.api.resume(); await run.flush(); await run.until(() => run.state.phase === 'showing', 'retry starts');
+  assert.ok(run.state.token > oldToken); oldTimer(); await run.flush();
+  assert.equal(run.state.error, null); assert.equal(run.state.motionStatus, null);
+  f.world.shot.elapsedSec = 1; await run.advance(250); assert.equal(run.state.elapsedMs, 1000);
+});
+
+test('a pending pause checkpoint during entry also has a bounded loading deadline', async () => {
+  const f = worldFixture(); f.world.pauseGate = deferred(); const run = harness(f.world); await start(run);
+  await run.advance(45000); assert.match(run.state.error, /45 秒有效加载时间/);
+  assert.equal(run.execution.length, 0); f.world.pauseGate.resolve(); await run.flush();
+  assert.equal(run.execution.length, 0); assert.deepEqual(f.world.protectedState, f.protectedState);
+});
+
+test('a browser-frozen hidden tab does not spend its no-progress deadline when timers resume', async () => {
+  const f = worldFixture(), run = harness(f.world); await start(run);
+  await run.until(() => run.state.phase === 'showing', 'shot starts');
+  f.world.shot.waitingForRegions = true; await run.advance(10000);
+  run.visibility('hidden'); run.elapseWithoutTimers(300000); run.visibility('visible');
+  await run.advance(250); assert.equal(run.state.error, null); assert.equal(run.state.motionStatus.waitSec, 10);
+  await run.advance(49000); assert.equal(run.state.error, null);
+  await run.advance(1000); assert.match(run.state.error, /60 秒/);
 });
 
 test('cross-world loading and a second physical window requested by preparation remain covered until truly ready', async () => {

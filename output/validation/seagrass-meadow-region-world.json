@@ -1,6 +1,6 @@
 {
   "scope": "native CPU Three camera, model and saved history; GPU appearance not accepted",
-  "entrySeconds": 38.8394967,
+  "entrySeconds": 25.47007,
   "plannedDistanceM": 393.6777282783832,
   "travelledM": 392.1255179270791,
   "centres": [
@@ -15,7 +15,7 @@
     "232,4",
     "233,4"
   ],
-  "maximumMeasuredWindowSeconds": 24.818235999999988,
+  "maximumMeasuredWindowSeconds": 12.6515683,
   "initialAliveAnimals": 107,
   "initialSpecies": [
     "green-chromis",

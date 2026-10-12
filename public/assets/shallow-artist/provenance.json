@@ -1,0 +1,14 @@
+{
+  "author": "LasquetiSpice (https://sketchfab.com/LasquetiSpice)",
+  "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "source": "https://sketchfab.com/3d-models/animated-swimming-tropical-fish-school-loop-62ccf83b35c744d7b5ffb7be80d4ea99",
+  "title": "Animated Swimming Tropical Fish School Loop",
+  "download": "https://raw.githubusercontent.com/bob6664569/open-water/main/site/assets/animals/tropical-fish-school-512.glb",
+  "sourceSha256": "27b39a88aedcff15b31e8e827b9f4ade35c3faac8304749928dca6de9c0f253e",
+  "changes": "Isolated first Moorish idol, blue tang and yellow tang; remove group trajectory, normalize full body length; bake four root-local skeletal poses; preserve UV and original source diffuse. Artistic models, not scans or anatomical calibration. Source clownfish held back until a suitable anemone habitat is present.",
+  "usedDiffuses": [
+    "artist-fish-5.png",
+    "artist-fish-9.png",
+    "artist-fish-13.png"
+  ]
+}

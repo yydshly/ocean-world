@@ -1,0 +1,146 @@
+{
+  "assetFamily": "shallow-community-fish-v2",
+  "createdAt": "2026-10-10",
+  "sourceKind": "project-authored-whole-form-procedural-meshes",
+  "module": "src/world/ShallowCommunityFishAssets.js",
+  "unit": "+X forward; complete total-length X envelope 1 metre; apply catalogue individual size uniformly",
+  "ownership": "Original project-authored geometry and vertex colours. No source photograph, texture, third-party mesh or scan was copied.",
+  "species": [
+    {
+      "id": "cleaner-wrasse",
+      "scientificName": "Labroides dimidiatus",
+      "commonName": "裂唇鱼（蓝带清洁鱼）",
+      "existingExactId": true,
+      "catalogueSuggestion": {
+        "lengthM": 0.105,
+        "rangeM": [
+          0.085,
+          0.115
+        ],
+        "guild": "cleaner",
+        "depthM": [
+          2,
+          40
+        ]
+      },
+      "sourceFacts": "Adult cleanerfish have a pale head, blue posterior and a black lateral stripe that broadens toward the tail. They occupy rocky or coral reefs and may clean larger client fish at a station. Museum sources report maximum total lengths of 11.5–12 cm.",
+      "sources": [
+        {
+          "url": "https://fishesofaustralia.net.au/home/species/250",
+          "publisher": "Museums Victoria / Fishes of Australia",
+          "checked": "2026-10-10",
+          "supports": "identity, adult pattern, cleaning stations, 12 cm TL maximum and 2–40 m depth"
+        },
+        {
+          "url": "https://australian.museum/Common-Cleanerfish-Labroides-dimidiatus",
+          "publisher": "Australian Museum",
+          "checked": "2026-10-10",
+          "supports": "posterior widening black stripe, reef habitat, 11.5 cm maximum"
+        }
+      ],
+      "representedCues": "continuous slender body; widening adult black stripe; rounded striped caudal fin; small paired pectorals",
+      "motionPaddingUnitM": 0.024,
+      "limits": "Adult appearance only. Display-fin movement is authored, not measured locomotion; geometry alone does not implement client cleaning, parasites, sex change or social structure."
+    },
+    {
+      "id": "black-blotched-porcupinefish",
+      "scientificName": "Diodon liturosus",
+      "commonName": "黑斑二齿鲀",
+      "existingExactId": false,
+      "notEquivalentTo": "spot-fin-porcupinefish / Diodon hystrix; or Arothron spp.",
+      "catalogueSuggestion": {
+        "lengthM": 0.32,
+        "rangeM": [
+          0.28,
+          0.36
+        ],
+        "guild": "benthic-feeder",
+        "habitat": "reef associated"
+      },
+      "sourceFacts": "A reef-associated porcupinefish with brown-grey upper surfaces, a pale belly, dark blotches edged in a pale colour, and unspotted fins. Museums Victoria reports a maximum size of 45 cm. The resting body here is not inflated, and its short spines remain laid back.",
+      "sources": [
+        {
+          "url": "https://fishesofaustralia.net.au/home/species/920",
+          "publisher": "Museums Victoria / Fishes of Australia",
+          "checked": "2026-10-10",
+          "supports": "identity, pale-edged dark blotches, unspotted fins, reef association and 45 cm maximum"
+        },
+        {
+          "url": "https://www.fishbase.se/summary/diodon-liturosus",
+          "publisher": "FishBase",
+          "checked": "2026-10-10",
+          "supports": "shorter spines compared with Diodon hystrix"
+        }
+      ],
+      "representedCues": "continuous thick but uninflated body; laid short spines; pale-edged dark blotches; unspotted rounded fins; no pelvic fins",
+      "motionPaddingUnitM": 0.024,
+      "limits": "The outline, spine spacing and colours are authored interpretations, not calibrated anatomical measurements. No defensive inflation or crushing bite is simulated. Catalogue individual range is a selected display range rather than a museum population statistic."
+    },
+    {
+      "id": "lionfish",
+      "scientificName": "Pterois volitans",
+      "commonName": "蓑鲉（红狮子鱼）",
+      "existingExactId": true,
+      "catalogueSuggestion": {
+        "lengthM": 0.28,
+        "rangeM": [
+          0.25,
+          0.3
+        ],
+        "guild": "predator",
+        "depthM": [
+          1,
+          128
+        ]
+      },
+      "sourceFacts": "An Indo-Pacific reef predator with irregular reddish bands on a cream body, elongated dorsal spines, broad fan-like pectorals with rays beyond the membranes, and fleshy head appendages. Museums Victoria reports 38 cm TL and 1–128 m depth. These cues are used for recognition; the new geometry does not simulate prey capture or venom.",
+      "sources": [
+        {
+          "url": "https://fishesofaustralia.net.au/home/species/2113",
+          "publisher": "Museums Victoria / Fishes of Australia",
+          "checked": "2026-10-10",
+          "supports": "identity, irregular bands, long dorsal spines and projecting pectoral rays, head appendages, native Indo-Pacific habitat, 38 cm TL and 1–128 m"
+        }
+      ],
+      "representedCues": "continuous striped body; thirteen dorsal spines and basal membranes; two continuous bowed pectoral fans with projecting rays; small eye and head appendages; rounded spotted tail",
+      "motionPaddingUnitM": 0.024,
+      "limits": "Fin motion is a restrained display approximation. Membranes are opaque double-sided surfaces for stable shared instancing, without measured underwater translucency. No hunting, venom, feeding event or complete ecological interaction is implied."
+    },
+    {
+      "id": "longfin-batfish",
+      "scientificName": "Platax teira",
+      "commonName": "长鳍蝙蝠鱼",
+      "sources": [
+        {
+          "url": "https://australian.museum/learn/animals/fishes/roundface-batfish-platax-teira/",
+          "publisher": "Australian Museum",
+          "checked": "2026-10-11"
+        }
+      ],
+      "representedCues": "Deep silver body, two dark vertical bands and belly blotch, continuous rounded dorsal/anal and caudal fins",
+      "existingExactId": true,
+      "motionPaddingUnitM": 0.035,
+      "limits": "Project-authored representative, not a source scan, measured anatomy or calibrated biomechanics. Original sample individual lengths and identities preserved."
+    },
+    {
+      "id": "humphead-wrasse",
+      "scientificName": "Cheilinus undulatus",
+      "commonName": "苏眉",
+      "sources": [
+        {
+          "url": "https://fishesofaustralia.net.au/home/species/2962",
+          "publisher": "Museums Victoria / Fishes of Australia",
+          "checked": "2026-10-11"
+        }
+      ],
+      "representedCues": "Volumetric green-grey body, forehead bulge, thick lips and broad curved fins",
+      "existingExactId": true,
+      "motionPaddingUnitM": 0.035,
+      "limits": "Project-authored representative, not a source scan, measured anatomy or calibrated biomechanics. Original sample individual lengths and identities preserved."
+    }
+  ],
+  "sharedResourcePolicy": "one geometry kit per species and two materials per asset manager; repeated create returns independent fin transforms sharing geometry/material; dispose emits once per resource and is idempotent",
+  "performanceBudget": "less than or equal to 9000 complete triangles per species before scene instancing",
+  "overallLimits": "Species-distinct authored meshes, not documentary-quality scans, calibrated anatomy, photogrammetry or full food-web simulation. Local native mesh and resource checks do not prove WebGL frame rate or the visual result in a browser.",
+  "updatedAt": "2026-10-11"
+}

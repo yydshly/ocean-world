@@ -9,8 +9,8 @@ const worldKey = world => `${world.biomeId}:${world.isLivingShallows ? 'living' 
 const panelAction = action => ['panel', 'population', 'capture'].includes(action.kind);
 
 /** Orchestrates existing entries; it never resets a world or creates animals. */
-export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute, recording, paused, speed, onControls, onNotice }) {
-  const [state, dispatch] = useReducer(directorReducer, undefined, createDirectorState);
+export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute, recording, paused, speed, onControls, onNotice, steps = DIRECTOR_STEPS, autoDemo = "director" }) {
+  const [state, dispatch] = useReducer((value, event) => directorReducer(value, event, steps), undefined, createDirectorState);
   const current = useRef(state); current.current = state;
   const adapters = useRef(null); adapters.current = { execute, onControls, onNotice };
   const original = useRef(null), waiting = useRef(null), startedToken = useRef(null);
@@ -18,6 +18,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   const environments = useRef(new Map()), preparedWorlds = useRef(new WeakSet());
   const receipts = useRef([]), autoStarted = useRef(false);
   const motion = useRef(null);
+  const progressWatch = useRef(null);
   const valid = token => current.current.active && current.current.token === token;
   const stopMotion = () => {
     motion.current?.world.stopDirectorMotion?.(); motion.current = null;
@@ -50,7 +51,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
   };
 
   useEffect(() => {
-    if (autoStarted.current || !worldReady || new URLSearchParams(window.location.search).get('demo') !== 'director') return;
+    if (autoStarted.current || !worldReady || new URLSearchParams(window.location.search).get('demo') !== autoDemo) return;
     autoStarted.current = true; start();
   }, [worldReady]);
 
@@ -70,7 +71,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
 
   useEffect(() => {
     if (!state.active || state.phase !== 'loading' || state.error || startedToken.current === state.token) return;
-    const token = state.token, action = directorStepAction(DIRECTOR_STEPS[state.index]);
+    const token = state.token, action = directorStepAction(steps[state.index]);
     startedToken.current = token;
     const previous = worldRef.current;
     stopMotion();
@@ -78,7 +79,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
       (action.biome !== 'reef' || action.profile === (previous.isLivingShallows ? 'living-shallows-v1' : 'legacy'));
     let plan = null;
     if(sameWorld&&action.seagrassMeadowRegionEntry)plan=previous.planSeagrassMeadowEntry?.();
-    try { if (!plan&&sameWorld && !(state.transition?.opacity > 0) && !['coastal-life-belt', 'living-visual', 'reef-valley-region', 'seagrass-meadow-region', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(DIRECTOR_STEPS[state.index].motion.routeId))
+    try { if (!plan&&sameWorld && !(state.transition?.opacity > 0) && !['coastal-life-belt', 'living-visual', 'reef-valley-region', 'seagrass-meadow-region', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(steps[state.index].motion.routeId))
       plan = previous.planDirectorEntry?.(action); }
     catch (problem) { fail(token, problem); return; }
     const mode = ['keep', 'continuous'].includes(plan?.kind) ? plan.kind : 'cut';
@@ -149,7 +150,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     const timer = setInterval(() => {
       const now = performance.now(), deltaMs = Math.max(0, now - previousTime); previousTime = now;
       const wait = waiting.current;
-      if (!valid(token) || !current.current.playing || !wait?.executed ||
+      if (!valid(token) || !current.current.playing || !wait ||
           (typeof document !== 'undefined' && document.visibilityState !== 'visible') ||
           ['out', 'in'].includes(current.current.transition?.phase) ||
           (wait.mode === 'continuous' && worldRef.current?.directorEntrySnapshot?.().active)) return;
@@ -157,7 +158,9 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
       const timeoutMs=wait.action.seagrassMeadowRegionEntry?120000:45000;
       if (elapsedMs >= timeoutMs) fail(token, `这个入口未在 ${timeoutMs/1000} 秒有效加载时间内就绪。可以重试或跳过。`);
     }, 1000);
-    return () => clearInterval(timer);
+    const visibilityChanged = () => { previousTime = performance.now(); };
+    document.addEventListener?.('visibilitychange', visibilityChanged);
+    return () => { clearInterval(timer); document.removeEventListener?.('visibilitychange', visibilityChanged); };
   }, [state.active, state.phase, state.token, state.error]);
 
   useEffect(() => {
@@ -174,11 +177,11 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     if (!directorSceneReady(wait.action, actual, snapshot, { panelReady: wait.panelReady })) return;
     if (wait.mode === 'cut' && !wait.prepared) {
       wait.prepared = true;
-      if (['coastal-life-belt', 'living-visual', 'reef-valley-region', 'seagrass-meadow-region', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(DIRECTOR_STEPS[state.index].motion.routeId)) {
-        if (actual.prepareDirectorObservation?.(DIRECTOR_STEPS[state.index].motion) !== true) {
+      if (['coastal-life-belt', 'living-visual', 'reef-valley-region', 'seagrass-meadow-region', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(steps[state.index].motion.routeId)) {
+        if (actual.prepareDirectorObservation?.(steps[state.index].motion) !== true) {
           fail(state.token, '当前观察镜头无法安全就位，可重试或跳到下一章。'); return;
         }
-        wait.absence = DIRECTOR_STEPS[state.index].motion.routeId === 'living-visual' && actual.livingVisualRoute?.status === 'empty';
+        wait.absence = steps[state.index].motion.routeId === 'living-visual' && actual.livingVisualRoute?.status === 'empty';
         // Preparing can move into another resident window. Keep full cover
         // until its native nine-owner loading has genuinely completed.
         return;
@@ -195,7 +198,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     }
     if (state.transition?.phase !== 'none' || state.transition?.opacity > 0) return;
     receipts.current = [...receipts.current.slice(-63), {
-      step: DIRECTOR_STEPS[state.index].id, action: wait.action.id, token: state.token,
+      step: steps[state.index].id, action: wait.action.id, token: state.token,
       biome: snapshot.biomeId, profile: snapshot.sceneProfile, chunkId: snapshot.ocean?.chunkId,
       loadingRegions: snapshot.ocean?.ecology?.metrics?.loadingRegions ?? 0,
       alive: snapshot.ocean?.ecology?.metrics?.alive, panelReady: wait.panelReady, absence: wait.absence,
@@ -232,7 +235,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
 
   useEffect(() => {
     if (!state.active || state.phase !== 'showing' || state.error || !worldReady) return;
-    const actual = worldRef.current, token = state.token, step = DIRECTOR_STEPS[state.index];
+    const actual = worldRef.current, token = state.token, step = steps[state.index];
     if (!actual || actual.disposed) return;
     try {
       const begun = actual.beginDirectorMotion({ ...step.motion,
@@ -245,7 +248,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
       const previousCompletion = actual.onDirectorMotionComplete;
       const onCompletion = shot => {
         if (motion.current !== owner || worldRef.current !== actual) return;
-        const event = directorMotionCompletionEvent(shot, current.current, token, DIRECTOR_STEPS);
+        const event = directorMotionCompletionEvent(shot, current.current, token, steps);
         if (event) dispatch(event);
       };
       actual.onDirectorMotionComplete = onCompletion;
@@ -270,32 +273,51 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
 
   useEffect(() => {
     if (!state.active || state.phase !== 'showing' || state.error) return;
+    if (progressWatch.current?.token !== state.token)
+      progressWatch.current = { token: state.token, idleMs: 0, elapsedSec: 0, travelledM: 0 };
+    let previousTime = performance.now();
     const timer = setInterval(() => {
+      const now = performance.now(), deltaMs = Math.max(0, now - previousTime); previousTime = now;
       if (document.visibilityState !== 'visible') return;
       const owner = motion.current;
-      if (!owner || owner.token !== state.token || owner.world !== worldRef.current) return;
+      if (!valid(state.token) || !owner || owner.token !== state.token || owner.world !== worldRef.current) return;
       const shot = owner.world.directorMotionSnapshot();
       if (!shot?.kind && !shot?.error) {
         stop(); adapters.current.onNotice('已切换为自由观察，可从顶部重新开始导演演示。'); return;
       }
       if (shot?.error) { fail(state.token, shot.error); return; }
       if (!current.current.playing) return;
+      const watch = progressWatch.current;
+      const progressed = (shot.elapsedSec ?? 0) > watch.elapsedSec || (shot.travelledM ?? 0) > watch.travelledM;
+      watch.idleMs = progressed || shot.complete ? 0 : watch.idleMs + deltaMs;
+      watch.elapsedSec = shot.elapsedSec ?? 0; watch.travelledM = shot.travelledM ?? 0;
+      dispatch({ type: 'motion-status', token: state.token,
+        waiting: shot.waitingForRegions === true || watch.idleMs >= 3000, waitSec: watch.idleMs / 1000,
+        reason: shot.waitingForRegions ? 'regions' : 'motion' });
+      if (watch.idleMs >= 60000) {
+        fail(state.token, shot.waitingForRegions
+          ? '跨区加载已等待 60 秒，巡游暂时停止。点击“重试巡游”重新开始当前巡游，或退出自由观察。'
+          : '镜头已连续 60 秒没有前进。点击“重试巡游”重新开始当前巡游，或退出自由观察。');
+        return;
+      }
       // Follow the rendered shot's clock, not a wall timer that could advance
       // while a low frame rate leaves the camera behind its planned route.
-      const observedMs = shot?.complete ? DIRECTOR_STEPS[state.index].durationMs : (shot?.elapsedSec ?? 0) * 1000;
+      const observedMs = shot?.complete ? steps[state.index].durationMs : (shot?.elapsedSec ?? 0) * 1000;
       dispatch({ type: 'tick', token: state.token, deltaMs: observedMs - current.current.elapsedMs });
     }, 250);
-    return () => clearInterval(timer);
+    const visibilityChanged = () => { previousTime = performance.now(); };
+    document.addEventListener?.('visibilitychange', visibilityChanged);
+    return () => { clearInterval(timer); document.removeEventListener?.('visibilitychange', visibilityChanged); };
   }, [state.active, state.phase, state.playing, state.token, state.error]);
 
-  return { state, steps: DIRECTOR_STEPS, start, stop, applied, prepareWorld, panelReady, fail, isCurrent: valid,
+  return { state, steps: steps, start, stop, applied, prepareWorld, panelReady, fail, isCurrent: valid,
     pause: () => dispatch({ type: 'pause' }), resume: () => dispatch({ type: 'resume' }),
     next: () => changeStep({ type: 'next' }), previous: () => changeStep({ type: 'prev' }),
     seek: index => state.phase === 'complete' ? start(index) : changeStep({ type: 'seek', index }),
     setPlaybackRate: playbackRate => {
       if (isDirectorPlaybackRate(playbackRate)) dispatch({ type: 'set-rate', playbackRate });
     },
-    diagnostics: { ...state, title: DIRECTOR_STEPS[state.index].title, progress: directorTourProgress(state), entered: receipts.current,
+    diagnostics: { ...state, title: steps[state.index].title, progress: directorTourProgress(state, steps), entered: receipts.current,
       motion: worldRef.current?.directorMotionSnapshot?.() ?? null,
       entry: worldRef.current?.directorEntrySnapshot?.() ?? null },
   };

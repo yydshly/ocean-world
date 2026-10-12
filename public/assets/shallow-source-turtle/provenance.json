@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "species": "Eretmochelys imbricata",
+  "id": "hawksbill-turtle",
+  "author": "DigitalLife3D (https://sketchfab.com/DigitalLife3D)",
+  "license": "CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)",
+  "source": "https://sketchfab.com/3d-models/model-50a-hawksbill-sea-turtle-e69458ef8176402d919df421e444da86",
+  "title": "Model 50A - Hawksbill Sea Turtle",
+  "download": "https://raw.githubusercontent.com/bob6664569/open-water/main/site/assets/animals/turtle.glb",
+  "sourceSHA256": "a353b651c46cd66e45dd064925079688d0ed44c8001a25630a39489cf3b252ba",
+  "limits": [
+    "Non-commercial asset; retain credit, source and CC BY-NC 4.0 on redistribution. No unrestricted commercial distribution.",
+    "Eight root-local source skeletal poses, linearly interpolated; not a biomechanical simulation.",
+    "Neutral total length normalized to 1; authored sample individual size, not a specimen measurement.",
+    "Original body/eye images retained without image editing; thin transparent outer-eye shell omitted; normals regenerated for each pose.",
+    "Photographic/model-reconstructed representative, not the green-turtle species."
+  ],
+  "sourceAnimation": {
+    "name": "Swim Cycle",
+    "duration": 1,
+    "frames": 8,
+    "playbackCyclesPerSecond": 0.36
+  },
+  "bounds": {
+    "min": [
+      -0.5,
+      -0.30583759772445773,
+      -0.5397805238515994
+    ],
+    "max": [
+      0.5000951459232859,
+      0.28267335214101424,
+      0.5407470411927656
+    ]
+  },
+  "parts": [
+    {
+      "role": "body",
+      "vertices": 2290,
+      "triangles": 4064,
+      "texture": "hawksbill-body.png",
+      "sha256": "4b59727f82ac9d50940170e487bbe6c21d93cddf7783d0aa9b00088991c1f09b"
+    },
+    {
+      "role": "eyes",
+      "vertices": 1028,
+      "triangles": 1920,
+      "texture": "hawksbill-eyes.png",
+      "sha256": "b8dbd3ec67c5d7f0d99341cdb3307e12d668151ebf97d9bdd63d4e4c605dae3f"
+    }
+  ],
+  "generatedData": {
+    "file": "src/world/shallowHawksbillData.js",
+    "sha256": "0cba92c31faaed00b7ffe14be260e4d8bd1e6e8eae9ca74db7f52406f2ada659"
+  }
+}

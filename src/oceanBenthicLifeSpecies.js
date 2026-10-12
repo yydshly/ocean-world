@@ -1,11 +1,14 @@
+import { oceanReefBottomSpeciesById } from './oceanReefBottomSpecies.js';
 // A finite regional admission catalog. Borrowed shells and clearance envelopes
 // are display choices; sources do not calibrate ecology, density or motion.
+import { oceanSandBottomSpeciesById } from './oceanSandBottomSpecies.js';
 const freeze = value => {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
     Object.values(value).forEach(freeze); Object.freeze(value);
   }
   return value;
 };
+import { oceanSmallBottomSpeciesById } from './oceanSmallBottomSpecies.js';
 const source = (url, label) => ({ url, label });
 const envelope = (x, y, z, radius) => ({ x, y, z, horizontalRadiusUnits: radius,
   axes: 'forward-positive-x; up-positive-y; transverse-z',
@@ -116,4 +119,4 @@ export const oceanBenthicLifeSpeciesCatalog = freeze([
   }),
 ]);
 
-export const oceanBenthicLifeSpeciesById = freeze(Object.fromEntries(oceanBenthicLifeSpeciesCatalog.map(row => [row.id, row])));
+export const oceanBenthicLifeSpeciesById = freeze({ ...Object.fromEntries(oceanBenthicLifeSpeciesCatalog.map(row => [row.id, row])), ...oceanSmallBottomSpeciesById, ...oceanSandBottomSpeciesById, ...oceanReefBottomSpeciesById });

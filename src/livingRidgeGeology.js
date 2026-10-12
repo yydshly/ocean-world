@@ -1,3 +1,4 @@
+import { createReefHabitatValidationCache } from './oceanReefHabitatCache.js';
 import { OCEAN_BIODIVERSITY_ROUTE_STOPS } from './oceanBiodiversityRoutes.js';
 import { OCEAN_BENTHIC_LIFE_ROUTE_STOPS } from './oceanBenthicLifeRoutes.js';
 import { OCEAN_MEADOW_LIFE_ROUTE_STOPS } from './oceanMeadowLifeRoutes.js';
@@ -232,10 +233,10 @@ export function validateLivingRidgePlan(plan, baseGenerator) {
 
 /** Bounded committed owner plans over the unchanged base generator. Temporary
  * candidate queries never publish a new revision or survive their callback. */
-export function createLivingRidgeGenerator(baseGenerator) {
+export function createLivingRidgeGenerator(baseGenerator, { preparation = null } = {}) {
   const base = baseGenerator.baseGenerator ?? baseGenerator;
   if (base.profile !== 'living-shallows-v1') throw new TypeError('Ridge facade requires living shallows.');
-  const plans = new Map(), chunks = new Map(), ready = new Set(); let revision = 0, candidateBatchDepth = 0;
+  const plans = new Map(), chunks = new Map(), ready = new Set(), backgroundValidated = new WeakSet(); let revision = 0, candidateBatchDepth = 0;
   let queryPlans = plans, queryChunks = chunks;
   const checkOwnerId = id => {
     if (typeof id !== 'string') throw new TypeError('Ridge owner ID must be a coordinate pair.');
@@ -251,11 +252,50 @@ export function createLivingRidgeGenerator(baseGenerator) {
   const assertPublishable = () => {
     if (candidateBatchDepth) throw new TypeError('Cannot publish ridge owners inside a temporary plan batch.');
   };
+  const preparedContexts = new Map();
+  const preparedContext = input => {
+    const key = stamp(input), existing = preparedContexts.get(key);
+    if (existing) { preparedContexts.delete(key); preparedContexts.set(key, existing); return existing; }
+    const preparedPlans = new Map(input.map(plan => [plan.id, plan])), preparedChunks = new Map();
+    const context = fn => {
+      if (typeof fn !== 'function' || fn.constructor?.name === 'AsyncFunction') throw new TypeError('Prepared physical context requires a synchronous callback.');
+      const previousPlans = queryPlans, previousChunks = queryChunks;
+      queryPlans = preparedPlans; queryChunks = preparedChunks; candidateBatchDepth++;
+      try {
+        const result = fn(facade);
+        if (result?.then) throw new TypeError('Prepared physical context returned an asynchronous result.');
+        return result;
+      } finally { queryPlans = previousPlans; queryChunks = previousChunks; candidateBatchDepth--; }
+    };
+    context.cacheReefHabitatOrder = createReefHabitatValidationCache();
+    if (preparedContexts.size >= 4) preparedContexts.delete(preparedContexts.keys().next().value);
+    preparedContexts.set(key, context);
+    return context;
+  };
+  const prepareAsync = async (input, version) => {
+    if (!preparation) return version === 8 ? facade.prepareReefValleyContext(input) : facade.prepareMeadowRegionContext(input);
+    const snapshot = freeze(structuredClone(input));
+    const valid = await preparation.run('validate-group', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: snapshot });
+    if (valid !== true) throw new TypeError('Invalid background physical context.');
+    const context = preparedContext(snapshot);
+    context.prepareResidentHabitats = async (rows, ecologySeed) => {
+      const compact = rows.filter(row => Number.isInteger(row.reefResidentsVersion) && row.reefResidentsVersion >= 7 && row.reefResidentsVersion <= 20)
+        .map(row => { const { livingRidgePlan, ...state } = row; return structuredClone(state); });
+      if (!compact.length) return;
+      const entries = await preparation.run('resident-habitats', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: snapshot, rows: compact, ecologySeed });
+      context.cacheReefHabitatOrder.importEntries(entries, compact);
+    };
+    context.validateHistory = async (rows, ecologySeed) => {
+      const compact = rows.map(row => { const { livingRidgePlan, ...state } = row; return state; });
+      return preparation.run('history', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: snapshot, rows: compact, ecologySeed });
+    };
+    return context;
+  };
   const inspectBatch = input => {
     if (!Array.isArray(input) || input.length > LIMIT) throw new TypeError('Ridge plan batch must be an array within the owner limit.');
     const ids = new Set(), groups = new Map();
     for (const plan of input) {
-      if (!validateLivingRidgePlan(plan, base)) throw new TypeError('Invalid ridge plan in batch.');
+      if (!backgroundValidated.has(plan) && !validateLivingRidgePlan(plan, base)) throw new TypeError('Invalid ridge plan in batch.');
       if (ids.has(plan.id)) throw new TypeError('Ridge plan batch contains duplicate owners.');
       ids.add(plan.id);
       if (plan.version === 4 || plan.version === 5) {
@@ -325,6 +365,27 @@ export function createLivingRidgeGenerator(baseGenerator) {
       return plan?.version === 9 ? seagrassMeadowAllocation(plan) : null;
     },
     getRidgePlan: id => plans.get(id),
+    generateMacroPlans: (version, cx, cz) => preparation?.run('generate', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, version, cx, cz }),
+    validateMacroPlans: async input => {
+      // Freeze before dispatch: a verdict can certify only this exact object.
+      input.forEach(freeze);
+      const verdicts = await preparation.run('validate-plans', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: input });
+      if (Array.isArray(verdicts) && verdicts.length === input.length)
+        input.forEach((plan, i) => { if (verdicts[i] === true) backgroundValidated.add(plan); });
+      return verdicts;
+    },
+    prepareMacroBirths: async (input, ecologySeed, options, environment) => {
+      const result = await preparation.run('birth', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: input, ecologySeed, options, environment });
+      if (!Array.isArray(result) || result.length !== 12) throw new TypeError('Incomplete background birth result.');
+      for (const row of result) { freeze(row.livingRidgePlan); backgroundValidated.add(row.livingRidgePlan); }
+      return result;
+    },
+    backgroundPreparationEnabled: !!preparation,
+    cancelPreparation: () => preparation?.cancel(),
+    disposePreparation: () => preparation?.dispose(),
+    preparationStats: () => preparation?.stats() ?? null,
+    prepareReefValleyContextAsync: input => prepareAsync(input, 8),
+    prepareMeadowRegionContextAsync: input => prepareAsync(input, 9),
     isRidgeOwnerReady: id => ready.has(id),
     registryStats: () => ({ size: ready.size, limit: LIMIT, revision, ids: [...ready],
       ridgeReadyOwnerIds: [...ready], ridgePlanOwnerIds: [...plans.keys()].filter(id => ready.has(id)) }),
@@ -348,7 +409,7 @@ export function createLivingRidgeGenerator(baseGenerator) {
     },
     registerRidgePlan(plan) {
       assertPublishable();
-      if (!validateLivingRidgePlan(plan, base)) throw new TypeError('Invalid saved ridge-gully plan.');
+      if (!backgroundValidated.has(plan) && !validateLivingRidgePlan(plan, base)) throw new TypeError('Invalid saved ridge-gully plan.');
       if (ready.has(plan.id) && plans.has(plan.id) && stamp(plans.get(plan.id)) === stamp(plan)) return false;
       if (!ready.has(plan.id) && ready.size >= LIMIT) throw new RangeError('Ridge registry exceeds its 25-owner halo.');
       plans.set(plan.id, freeze(plan)); ready.add(plan.id); chunks.delete(plan.id); revision++; return true;
@@ -369,13 +430,17 @@ export function createLivingRidgeGenerator(baseGenerator) {
       if (!Array.isArray(input) || !Array.isArray(legacyIds)) throw new TypeError('Invalid ridge halo replacement.');
       const next = new Map(), nextReady = new Set();
       for (const plan of input) {
-        if (!validateLivingRidgePlan(plan, base) || nextReady.has(plan.id)) throw new TypeError('Invalid ridge halo plan.');
-        next.set(plan.id, freeze(plan)); nextReady.add(plan.id);
+        if ((!backgroundValidated.has(plan) && !validateLivingRidgePlan(plan, base)) || nextReady.has(plan.id)) throw new TypeError('Invalid ridge halo plan.');
+        const frozen = freeze(plan), previous = plans.get(plan.id);
+        // Equal canonical sources retain identity in overlapping saved halos.
+        next.set(plan.id, previous && stamp(previous) === stamp(frozen) ? previous : frozen); nextReady.add(plan.id);
       }
       for (const id of legacyIds) { checkOwnerId(id); if (nextReady.has(id)) throw new TypeError('Duplicate ridge halo owner.'); nextReady.add(id); }
       if (nextReady.size > LIMIT) throw new RangeError('Ridge registry exceeds its 25-owner halo.');
-      if (stamp([...ready]) === stamp([...nextReady]) && stamp([...plans]) === stamp([...next])) return false;
-      plans.clear(); chunks.clear(); ready.clear();
+      if (stamp([...ready]) === stamp([...nextReady]) && plans.size === next.size &&
+          [...next].every(([id, plan]) => plans.get(id) === plan)) return false;
+      for (const [id, chunk] of chunks) if (!nextReady.has(id) || (chunk.ridgePlan ?? null) !== (next.get(id) ?? null)) chunks.delete(id);
+      plans.clear(); ready.clear();
       for (const [id, plan] of next) plans.set(id, plan);
       for (const id of nextReady) ready.add(id);
       revision++; return true;
@@ -415,6 +480,18 @@ export function createLivingRidgeGenerator(baseGenerator) {
         if (result && typeof result.then === 'function') throw new TypeError('Ridge candidate callback returned an asynchronous result.');
         return result;
       } finally { queryPlans = previousPlans; queryChunks = previousChunks; candidateBatchDepth--; }
+    },
+    prepareReefValleyContext(input) {
+      // An isolated immutable snapshot is validated once. Later synchronous
+      // units can reuse it without re-serializing twelve full plans each time.
+      const snapshot = freeze(structuredClone(input));
+      facade.withReefValleyPlans(snapshot, () => {});
+      return preparedContext(snapshot);
+    },
+    prepareMeadowRegionContext(input) {
+      const snapshot = freeze(structuredClone(input));
+      facade.withMeadowRegionPlans(snapshot, () => {});
+      return preparedContext(snapshot);
     },
     withReefValleyPlans(input, fn) {
       if (!Array.isArray(input) || input.length !== 12 || typeof fn !== 'function' || fn.constructor?.name === 'AsyncFunction')

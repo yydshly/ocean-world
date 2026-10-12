@@ -69,7 +69,7 @@ export function initializeReefGuild(region, generator, { random, surface, bed, c
 /** Pool support approximates unresolved small benthic animals using detrital
  * organic food. It does not spawn visible animals, reproduce guild members or
  * assert a field-calibrated density. Every transfer uses the network units. */
-export function tickReefGuildPool(region, dt, { extraConsumers = 0, maxExtraConsumers = 2 } = {}) {
+export function tickReefGuildPool(region, dt, { extraConsumers = 0, maxExtraConsumers = 2, meadowConsumers = 0 } = {}) {
   if (region.reefGuildVersion !== 1) return;
   const pool = region.reefGuild;
   // New, independently admitted reef residents may share this unresolved
@@ -77,7 +77,8 @@ export function tickReefGuildPool(region, dt, { extraConsumers = 0, maxExtraCons
   // the default leaves every original owner and food equation unchanged.
   const extraLimit = maxExtraConsumers === 10 ? 10 : maxExtraConsumers === 8 ? 8 : maxExtraConsumers === 6 ? 6 : maxExtraConsumers === 4 ? 4 : 2;
   const added = Number.isSafeInteger(extraConsumers) ? Math.max(0, Math.min(extraLimit, extraConsumers)) : 0;
-  const consumers = region.agents.filter(agent => isReefGuildAgent(agent) && agent.speciesId !== 'tube-sponge' && agent.alive).length + added;
+  const meadow = region.meadowLifeForagingVersion === 2 && Number.isSafeInteger(meadowConsumers) ? Math.max(0, Math.min(2, meadowConsumers)) : 0;
+  const consumers = region.agents.filter(agent => isReefGuildAgent(agent) && agent.speciesId !== 'tube-sponge' && agent.alive).length + added + meadow;
   const transferred = Math.min(region.resources.detritus, consumers * .000025 * dt,
     Math.max(0, consumers * .018 - pool.preyOrganicUnits));
   region.resources.detritus -= transferred;

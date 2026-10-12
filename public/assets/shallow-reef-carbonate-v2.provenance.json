@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "kind": "generated-albedo-not-measured-scan",
+  "tool": "image_gen.imagegen built-in",
+  "prompt": "Use case: photorealistic-natural. Asset type: tileable diffuse albedo material for an actual 3D shallow tropical marine reef limestone substrate, not a finished underwater scene. Primary request: a square straight-on flat orthographic material swatch showing naturally colonised old carbonate reef pavement, with broad irregular connected areas of muted olive-brown and warm grey encrusting biofilm, restrained dusty rose coralline patches, and a smaller amount of exposed weathered cream limestone. Medium scale connected blotches should carry the overall colour; fine texture should be subtle, softly resolved and low contrast so it does not become salt-and-pepper noise from several metres away. Aged marine carbonate, gentle pits and erosion, documentary natural material quality. Uniform flat diffuse illumination: absolutely no cast shadows, directional highlights, lens effects or water tint. No distinct coral colonies, fish, plants, moss, terrestrial granite, pebbles, dramatic cracks, symbols, text or watermark. No white-dominant surface, no saturated colours. Opposite edges should visually match; no central hero feature. This is an authored colour texture, not a measured photogrammetric scan. Opaque full-frame texture.",
+  "file": "shallow-reef-carbonate-v2.png",
+  "original": "D:/codex/home/generated_images/01a0fd5a-f501-7b70-8e91-7fa5c43b20bd/exec-42aa3f64-09ad-485d-9bb1-8f7b44c7f3da.png",
+  "references": [
+    {
+      "url": "https://oceanservice.noaa.gov/facts/coralmadeof.html",
+      "use": "Calcium carbonate reef foundation; not the source of measured material colour or a photograph."
+    },
+    {
+      "url": "https://coralreef.noaa.gov/digital-corals/visual-media/infographics/what-makes-coral-reef",
+      "use": "Distinction between colonial coral animals, skeletal reef structure and habitat; no image copied."
+    }
+  ],
+  "use": "Sample-only substrate diffuse colour. Generated source copied unchanged into the project; broad subdued colour areas replace the white-dominant prior texture. Same file and 0.24 per-metre triplanar scale used in WebGL material and native albedo preview.",
+  "limits": "Authored palette and requested tile continuity, not a surveyed substrate, measured biological cover, taxonomic identification or calibrated PBR. No generated normal or roughness map. Offline appearance does not establish WebGL lighting or documentary realism.",
+  "replacesForSample": "shallow-reef-carbonate-v1.png; original preserved"
+}

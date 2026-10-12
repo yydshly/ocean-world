@@ -104,24 +104,32 @@ export const DIRECTOR_STEPS = Object.freeze(withStepContexts([
   step('tools-capture', '截图、录像与导出', '保存观察画面，录制一段巡游，或导出当前实验数据。', 'capture-guide', 8000),
 ]));
 
+// A finite review of one real mixed habitat, separate from the full tools tour.
+export const DIRECTOR_LIFE_STEPS = Object.freeze(withStepContexts([
+  Object.freeze({ ...step('life-expedition', '海底生命：连续巡游',
+    '沿同一片海床走过礁谷、沙沟、草床边缘和外坡。附近动物出现后，可退出巡游跟随观察。',
+    'stop-reef-valley-region', 240000, 'reef-valley-route', 'reef-valley-region'),
+    motion: Object.freeze({ kind: 'reef-valley-route', routeId: 'reef-valley-region', durationSec: 240, groups: 1, expedition: true }) }),
+]));
+
 export function createDirectorState() {
   return { active: false, index: 0, phase: 'idle', playing: false, elapsedMs: 0, token: 0, error: null, playbackRate: 1, completedStepIds: [], transition: { phase: 'none', kind: null, opacity: 0, elapsedMs: 0, durationMs: 0 } };
 }
 
-const validIndex = index => Number.isInteger(index) && index >= 0 && index < DIRECTOR_STEPS.length;
+const validIndex = (index, steps) => Number.isInteger(index) && index >= 0 && index < steps.length;
 const matches = (state, event) => state.active && event.token === state.token;
 const loadStep = (state, index, playing = state.playing) => ({
-  ...state, active: true, index, phase: 'loading', playing, elapsedMs: 0, token: state.token + 1, error: null,
+  ...state, active: true, index, phase: 'loading', playing, elapsedMs: 0, token: state.token + 1, error: null, motionStatus: null,
   transition: { ...state.transition, phase: state.transition?.opacity > 0 ? 'out' : 'none' },
 });
 const complete = state => ({
-  ...state, active: false, phase: 'complete', playing: false, token: state.token + 1, error: null,
+  ...state, active: false, phase: 'complete', playing: false, token: state.token + 1, error: null, motionStatus: null,
   transition: { phase: 'none', kind: null, opacity: 0, elapsedMs: 0, durationMs: 0 },
 });
-const advance = state => state.index + 1 < DIRECTOR_STEPS.length
+const advance = (state, steps) => state.index + 1 < steps.length
   ? loadStep(state, state.index + 1) : complete(state);
-const recordComplete = state => {
-  const id = DIRECTOR_STEPS[state.index].id;
+const recordComplete = (state, steps) => {
+  const id = steps[state.index].id;
   return state.completedStepIds.includes(id) ? state
     : { ...state, completedStepIds: [...state.completedStepIds, id] };
 };
@@ -129,7 +137,7 @@ const recordComplete = state => {
 /** A callback must carry the token of the step that created it. This lets a
  * late load, failure, or timer from an old step harmlessly settle after seek,
  * restart, or stop. Pausing can still allow the current load to complete. */
-export function directorReducer(state, event) {
+export function directorReducer(state, event, steps = DIRECTOR_STEPS) {
   if (!event || typeof event.type !== 'string') return state;
   switch (event.type) {
     case 'transition-stage': {
@@ -159,37 +167,44 @@ export function directorReducer(state, event) {
       return isDirectorPlaybackRate(event.playbackRate) && event.playbackRate !== state.playbackRate
         ? { ...state, playbackRate: event.playbackRate } : state;
     case 'start':
-      return loadStep({ ...state, completedStepIds: [] }, validIndex(event.index) ? event.index : 0, true);
+      return loadStep({ ...state, completedStepIds: [] }, validIndex(event.index, steps) ? event.index : 0, true);
     case 'entered':
       if (!matches(state, event) || state.phase !== 'loading' || state.error || state.transition?.phase !== 'none' || state.transition?.opacity > 0) return state;
       return { ...state, phase: 'showing', elapsedMs: 0 };
     case 'failed':
       if (!matches(state, event)) return state;
       return { ...state, playing: false, error: String(event.error?.message || event.error || '当前入口未完成加载，可重试或跳到下一步。') };
+    case 'motion-status': {
+      if (!matches(state, event) || state.phase !== 'showing' || state.error) return state;
+      const waiting = event.waiting === true, waitSec = Math.max(0, Math.floor(event.waitSec || 0));
+      const reason = waiting ? event.reason === 'motion' ? 'motion' : 'regions' : null;
+      if (state.motionStatus?.waiting === waiting && state.motionStatus?.waitSec === waitSec && state.motionStatus?.reason === reason) return state;
+      return { ...state, motionStatus: { waiting, waitSec, reason } };
+    }
     case 'pause':
       return state.active && state.playing ? { ...state, playing: false } : state;
     case 'resume':
       if (!state.active) return state;
       return state.error ? loadStep(state, state.index, true) : { ...state, playing: true };
     case 'next':
-      return state.active ? advance(state) : state;
+      return state.active ? advance(state, steps) : state;
     case 'prev':
       return state.active ? loadStep(state, Math.max(0, state.index - 1)) : state;
     case 'seek':
-      return state.active && validIndex(event.index) ? loadStep(state, event.index) : state;
+      return state.active && validIndex(event.index, steps) ? loadStep(state, event.index) : state;
     case 'record-complete':
       // The native shot owner verifies completion before releasing the camera.
       // This receipt records coverage without advancing or inventing shot time.
       return matches(state, event) && state.phase === 'showing' && !state.error
-        ? recordComplete(state) : state;
+        ? recordComplete(state, steps) : state;
     case 'tick': {
       if (!matches(state, event) || state.phase !== 'showing' || !state.playing || state.error
         || !Number.isFinite(event.deltaMs) || event.deltaMs <= 0) return state;
-      const elapsedMs = Math.min(DIRECTOR_STEPS[state.index].durationMs, state.elapsedMs + event.deltaMs);
+      const elapsedMs = Math.min(steps[state.index].durationMs, state.elapsedMs + event.deltaMs);
       const nextState = { ...state, elapsedMs };
       // A slow tab can complete this step, but cannot consume viewing time for
       // the next scene before that scene has actually finished loading.
-      return elapsedMs >= DIRECTOR_STEPS[state.index].durationMs ? advance(recordComplete(nextState)) : nextState;
+      return elapsedMs >= steps[state.index].durationMs ? advance(recordComplete(nextState, steps), steps) : nextState;
     }
     case 'stop':
       return { ...createDirectorState(), token: state.token + 1, playbackRate: state.playbackRate,

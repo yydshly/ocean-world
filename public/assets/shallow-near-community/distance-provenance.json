@@ -1,0 +1,110 @@
+{
+  "author": "VIVID REALITY",
+  "license": "CC-BY-4.0",
+  "sourceRecord": "provenance.json",
+  "changes": "Simplify cropped upper community for distant views with UV protection. Original positions, source images and near physical support retained. Select whole instances by camera frustum and distance.",
+  "generatedData": {
+    "file": "src/world/shallowReefDistanceData.js",
+    "sha256": "477aaac9542cebae6feda1f7e1362fa70c46088e633309fadb194ec2d74b5154"
+  },
+  "records": [
+    {
+      "file": "reefscan-0.jpg",
+      "near": 222,
+      "far": 48,
+      "error": 0.007301578298211098
+    },
+    {
+      "file": "reefscan-1.jpg",
+      "near": 1035,
+      "far": 227,
+      "error": 0.01201536227017641
+    },
+    {
+      "file": "reefscan-2.jpg",
+      "near": 1524,
+      "far": 335,
+      "error": 0.011258707381784916
+    },
+    {
+      "file": "reefscan-3.jpg",
+      "near": 1560,
+      "far": 343,
+      "error": 0.011046115309000015
+    },
+    {
+      "file": "reefscan-4.jpg",
+      "near": 1531,
+      "far": 334,
+      "error": 0.011045322753489017
+    },
+    {
+      "file": "reefscan-5.jpg",
+      "near": 1573,
+      "far": 346,
+      "error": 0.012299940921366215
+    },
+    {
+      "file": "reefscan-6.jpg",
+      "near": 1632,
+      "far": 359,
+      "error": 0.01132955402135849
+    },
+    {
+      "file": "reefscan-7.jpg",
+      "near": 1403,
+      "far": 308,
+      "error": 0.01199300866574049
+    },
+    {
+      "file": "reefscan-8.jpg",
+      "near": 1568,
+      "far": 344,
+      "error": 0.011676379479467869
+    },
+    {
+      "file": "reefscan-9.jpg",
+      "near": 1748,
+      "far": 384,
+      "error": 0.010358222760260105
+    },
+    {
+      "file": "reefscan-10.jpg",
+      "near": 1591,
+      "far": 350,
+      "error": 0.011036120355129242
+    },
+    {
+      "file": "reefscan-11.jpg",
+      "near": 1598,
+      "far": 350,
+      "error": 0.010683819651603699
+    },
+    {
+      "file": "reefscan-12.jpg",
+      "near": 1647,
+      "far": 362,
+      "error": 0.010392324067652225
+    },
+    {
+      "file": "reefscan-13.jpg",
+      "near": 1614,
+      "far": 355,
+      "error": 0.010132486000657082
+    },
+    {
+      "file": "reefscan-14.jpg",
+      "near": 1559,
+      "far": 341,
+      "error": 0.009067396633327007
+    },
+    {
+      "file": "reefscan-15.jpg",
+      "near": 920,
+      "far": 202,
+      "error": 0.006016296800225973
+    }
+  ],
+  "source": "https://sketchfab.com/3d-models/underwater-coral-reef-photogrametry-3d-scan-ef94bf857d2a4af5b3691d19d57baaaa",
+  "licenseURL": "https://creativecommons.org/licenses/by/4.0/"
+}

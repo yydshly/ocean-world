@@ -1,0 +1,733 @@
+{
+  "version": 27,
+  "reefMosaic": {
+    "provenance": "shallow-reef-mosaic/provenance.json",
+    "method": "Lower whole hard-substrate masses, four foliose forms and more canopy allocation on connected slopes. All physical surfaces are refitted; common animal material response keeps original source UVs, textures and motion.",
+    "limits": "No new third-party assets or species. Source geometry quality still varies; documentary realism and browser FPS remain unverified. First coating/compact-source candidate rejected."
+  },
+  "sampleRibbonHabitat": {
+    "provenance": "shallow-ribbon-habitat/provenance.json",
+    "method": "Sample-only curved seagrass ribbons and asymmetric foliose laminae; complete substrate refit. Whole-body dynamic animal batch bounds enable camera/shadow frustum culling while all animal simulations continue.",
+    "limits": "Authored geometry, not photogrammetry. CPU culling checks do not establish WebGL FPS. Documentary realism remains unaccepted."
+  },
+  "date": "2026-10-12",
+  "scope": "75-second shallow sample only",
+  "reefStructure": {
+    "method": "Twelve connected live-slope modules now use a continuous rising actual triangle surface with interlocking heads and shallow winding grooves, replacing the two step levels. Original 85 rock transforms, slope rim XZ and two habitat search regions remain. Colonies, resident spaces and soft-bed edges refit the actual support. The nine older rock profiles and sediment bed heights remain byte exact.",
+    "limits": "Authored heightfields, not scanned living-reef geology. No enterable caves or overhangs. Only three sample-slope profiles change in batch 15; persistent exploration unchanged. Whole-scene documentary realism remains unaccepted.",
+    "currentOverride": "Batch24 uses 68 upper scan outcrops with visible authored foundations, keeps all 12 inhabited front slopes, lowers two near resident rocks and replaces the third near rock. Historic nine mesh definitions and persistent exploration remain unchanged."
+  },
+  "museumSkeleton": {
+    "file": "reef-scan/usnm_229-20k-thumb.glb",
+    "specimen": "USNM 229, Acropora cytherea",
+    "representation": "Dead coral skeleton environment; no living tissue or extra biological population",
+    "method": "Original source metre scale and existing display cut; up to 32 suitable colony sites. Playback preparation seals incomplete or late installation before the clock starts; offline inspection can finish all sites.",
+    "licenseEvidence": "reef-scan/license-evidence.json",
+    "record": "https://www.si.edu/object/madrepora-cytherea%3Anmnhinvertebratezoology_13935",
+    "limits": "Copies of one dry specimen, not scanned living reef diversity. Vertex clearance checked; no full-triangle structural stability or habitat survey claimed.",
+    "currentOverride": "Optional historical skeleton loader remains available, but is no longer part of the default finite sample startup or displayed default scene in batch24."
+  },
+  "individualSwimming": {
+    "method": "Independent source-pose phases for artist fish; independent spine/fin display phases for procedural fish. Five principal shoals use world-fixed passages beside the observation corridor, narrower transverse formations and bounded independent drift with actual velocity headings; deterministic replay. Other sample reef patrols retain their own local display movement.",
+    "limits": "Display formation and bounded movement, not calibrated biomechanics or complete neighbour avoidance. Actual WebGL performance and continuous event visibility unverified."
+  },
+  "animals": {
+    "method": "Four principal shoal species use authored body-kit v4: fuller transverse bodies for both fusiliers and trevally, species bands retained, dorsal/flank contrast and bounded body-colour variation. Turtle shell and skin revised as a whole. Three coastal barramundi retain Microsoft/Khronos CC0 source mesh, UV, normal, tangent, PBR and project-authored motion. These updates are not specimen scans or calibrated anatomy. Batch 16 adds one DigitalLife3D hawksbill with original body/eye images and eight source swim poses; existing principal shoals and green turtles remain unchanged. Batch 18 replaces the 30 snapper and 16 trevally representatives with correctly identified CC0 Lutjanus fulvus and Caranx ignobilis specimen scans. Other 247 identities and sizes retain batch 17. Original source images and bounded project-authored swim; no source rig or calibrated biomechanics.",
+    "species": {
+      "copperband-butterflyfish": {
+        "scientificName": "Chelmon rostratus",
+        "reference": "https://australian.museum/learn/animals/fishes/beaked-coralfish-chelmon-rostratus/"
+      },
+      "emperor-angelfish": {
+        "scientificName": "Pomacanthus imperator",
+        "representation": "Qualitative adult palette",
+        "reference": "https://australian.museum/learn/animals/fishes/emperor-angelfish-pomacanthus-imperator/"
+      },
+      "moorish-idol": {
+        "scientificName": "Zanclus cornutus",
+        "reference": "https://australian.museum/learn/animals/fishes/moorish-idol-zanclus-cornutus-linnaeus-1758/"
+      },
+      "sailfin-tang": {
+        "scientificName": "Zebrasoma velifer",
+        "nameNote": "Catalogue valid spelling velifer; Museums Victoria page uses veliferum",
+        "reference": "https://fishesofaustralia.net.au/home/species/2205"
+      },
+      "bluespine-unicornfish": {
+        "scientificName": "Naso unicornis",
+        "reference": "https://fishesofaustralia.net.au/home/species/2201"
+      },
+      "reef-goatfish": {
+        "scientificName": "Parupeneus barberinus",
+        "reference": "https://fishesofaustralia.net.au/home/species/586"
+      },
+      "blue-and-gold-fusilier": {
+        "scientificName": "Caesio teres",
+        "reference": "https://fishesofaustralia.net.au/Home/species/1233"
+      },
+      "doubleline-fusilier": {
+        "scientificName": "Pterocaesio digramma",
+        "reference": "https://fishesofaustralia.net.au/home/species/543"
+      },
+      "bluestripe-snapper": {
+        "scientificName": "Lutjanus kasmira",
+        "reference": "https://fishesofaustralia.net.au/home/species/559"
+      },
+      "white-spotted-rabbitfish": {
+        "scientificName": "Siganus canaliculatus",
+        "reference": "https://www.fao.org/4/y0870e/y0870e27.pdf"
+      },
+      "bigeye-trevally": {
+        "scientificName": "Caranx sexfasciatus",
+        "reference": "https://fishesofaustralia.net.au/home/species/1654"
+      },
+      "reef-parrotfish": {
+        "scientificName": "Chlorurus spilurus",
+        "representation": "Qualitative terminal-phase palette",
+        "reference": "https://fishesofaustralia.net.au/home/species/5300"
+      },
+      "lyretail-anthias": {
+        "scientificName": "Pseudanthias squamipinnis sensu lato",
+        "representation": "Qualitative orange female palette",
+        "reference": "https://fishesofaustralia.net.au/home/species/4402"
+      },
+      "barramundi": {
+        "scientificName": "Lates calcarifer",
+        "representation": "Three authored marine coastal visitors beside the grass/sand edge, not coral-obligate resident stocks",
+        "unit": "source total length normalized to 1, world lengths authored from the sample catalogue",
+        "reference": "https://era.dpi.qld.gov.au/id/eprint/11309/",
+        "provenance": "shallow-sourced-fish/provenance.json"
+      },
+      "hawksbill-turtle": {
+        "scientificName": "Eretmochelys imbricata",
+        "representation": "One authored reef visitor, distinct from green turtle; not an additional ecological stock in persistent exploration",
+        "unit": "source neutral complete length 1; authored size 0.9716696064420045 m, not a specimen measurement",
+        "provenance": "shallow-source-turtle/provenance.json",
+        "license": "CC-BY-NC-4.0; non-commercial only"
+      },
+      "blacktail-snapper": {
+        "scientificName": "Lutjanus fulvus",
+        "provenance": "shallow-open-community/provenance.json",
+        "license": "CC0-1.0",
+        "representation": "Source specimen scan; authored sample group and metre length; not persistent ecology stock"
+      },
+      "giant-trevally": {
+        "scientificName": "Caranx ignobilis",
+        "provenance": "shallow-open-community/provenance.json",
+        "license": "CC0-1.0",
+        "representation": "Source specimen scan; authored sample group and metre length; not persistent ecology stock"
+      }
+    },
+    "currentOverride": "Batch23 replaces the 30 blacktail-snapper display agents with the unidentified Yimit reef-fish asset; 293 animals in 38 display classes, not 38 taxonomically verified species. Remaining 263 identities retained."
+  },
+  "colonies": {
+    "method": "Seven shared near/distant authored geometries, v4: near branching crowns use eight/nine slender primary arms; table crowns use connected radial support branches and short ascending tips, with no fused bowl/plate surface. Massive forms retain broad contact and bounded relief; fan and rubble unchanged. Both actual LODs fit the highest substrate and their union envelope reserves animal clearance. One bounded smaller retry, otherwise discard.",
+    "provenance": "shallow-live-reef/provenance.json",
+    "limits": "Display growth forms, not additional biological individuals or identified species. Original basal 25mm/non-basal 1mm tolerances and matrix roundoff remain. Vertex/support checks are not full triangle collision, continuous basal contact or structural stability. Documentary realism remains unaccepted."
+  },
+  "reefTexture": {
+    "file": "reef-limestone-albedo-v2.png",
+    "method": "Built-in image_gen.imagegen; original generation, no external photograph copied",
+    "originalPath": "D:/codex/home/generated_images/01a0fd5a-f501-7b70-8e91-7fa5c43b20bd/exec-18428298-931b-4ef9-b8b6-5ed63503d473.png",
+    "projectPath": "F:/codex_project/1002_gpt6project/ocean-world/public/assets/reef-limestone-albedo-v2.png",
+    "prompt": "Use case: photorealistic-natural. Asset type: a square seamless PBR base-color texture for submerged tropical coral limestone in a real-time 3D underwater world. Orthographic straight-on surface only, edge-to-edge, no objects or scene. Natural irregular eroded limestone pores, broken coral-grain texture, fine sand lodged in shallow crevices, muted warm grey-beige stone with subdued olive-brown marine biofilm and small restrained dusty rose coralline stains. Approximately a 1 metre surface patch. Fine photographic natural texture with coherent medium-scale variation, moderate contrast. Flat neutral diffuse lighting; no directional illumination, cast shadows, highlights, water caustics, blue water tint, horizon, outlines, text, organisms or recognizable shells. Tile seamlessly on all four edges. Opaque 1024 by 1024 square. This is a surface albedo asset, not a render of an underwater scene.",
+    "limits": "Generated qualitative albedo, not a scan or measured height/normal map. Retained as previous-version evidence; current sample uses marineCarbonateAlbedo.",
+    "activeInCurrentSample": false
+  },
+  "verificationLimits": "Offline actual-mesh previews can sample source albedo at perspective-correct pixels. They do not execute WebGL normal/roughness maps, caustics, shadows, image-based lighting, or measure browser performance.",
+  "heroAnimals": {
+    "method": "Three authored sample-only continuous meshes with per-individual bounded motion; not scans, calibrated anatomy or biomechanical simulation",
+    "species": {
+      "green-turtle": {
+        "scientificName": "Chelonia mydas",
+        "unit": "catalogue total length",
+        "reference": "https://www.fisheries.noaa.gov/species/green-turtle"
+      },
+      "blue-spotted-ray": {
+        "scientificName": "Taeniura lymma",
+        "unit": "catalogue disc width; intact tail retained",
+        "reference": "https://fishesofaustralia.net.au/home/species/2030"
+      },
+      "blacktip-reef-shark": {
+        "scientificName": "Carcharhinus melanopterus",
+        "unit": "catalogue total length",
+        "reference": "https://fishesofaustralia.net.au/home/species/1952"
+      }
+    }
+  },
+  "coastalRockPbr": {
+    "activeInCurrentSample": false,
+    "name": "Rock Boulder Cracked",
+    "source": "https://polyhaven.com/a/rock_boulder_cracked",
+    "license": "CC0-1.0",
+    "licenseReference": "https://polyhaven.com/license",
+    "files": [
+      {
+        "role": "Diffuse",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_cracked/rock_boulder_cracked_diff_1k.jpg",
+        "file": "public/assets/coastal-rock/Diffuse.jpg",
+        "bytes": 998110,
+        "md5": "2eee29ef1257ce79569e4be0b76cd1ad",
+        "actualMd5": "2eee29ef1257ce79569e4be0b76cd1ad"
+      },
+      {
+        "role": "nor_gl",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_cracked/rock_boulder_cracked_nor_gl_1k.jpg",
+        "file": "public/assets/coastal-rock/nor_gl.jpg",
+        "bytes": 1079683,
+        "md5": "1185717651f6fa2db0face12425d0a74",
+        "actualMd5": "1185717651f6fa2db0face12425d0a74"
+      },
+      {
+        "role": "rough",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_cracked/rock_boulder_cracked_rough_1k.jpg",
+        "file": "public/assets/coastal-rock/rough.jpg",
+        "bytes": 379850,
+        "md5": "8610432e3011c02abb70433f050cf651",
+        "actualMd5": "8610432e3011c02abb70433f050cf651"
+      }
+    ],
+    "usage": "Historical batch 6/7 source material, retained for comparison. Current shallow sample does not pair these terrestrial normal/roughness maps with the generated marine albedo.",
+    "limits": "Photographic land/coastal rock material, not a scan of underwater living reef or evidence of marine biofilm. Texture mapping scale is an authored display choice."
+  },
+  "marineCarbonateAlbedo": {
+    "activeInCurrentSample": true,
+    "file": "shallow-reef-carbonate-v1.png",
+    "provenance": "shallow-reef-carbonate-v1.provenance.json",
+    "method": "Existing generated pale carbonate-v1 reused unchanged at the same 0.24 per-metre mapping. A new built-in image-generation attempt was aborted with no output; no CLI fallback or new texture was produced.",
+    "limits": "Authored qualitative colour and requested tile continuity, not a surveyed substrate, measured biological cover, taxonomic identification or calibrated PBR. Offline appearance does not establish WebGL lighting or documentary realism.",
+    "previousVersion": {
+      "file": "shallow-reef-carbonate-v2.png",
+      "provenance": "shallow-reef-carbonate-v2.provenance.json",
+      "method": "Original built-in image_gen.imagegen result copied unchanged. Broad connected muted olive-brown and warm grey colour areas with restrained dusty rose interpretation replace the white-dominant prior albedo; the same source and 0.24 per-metre triplanar scale are used by the sample material and native preview. No generated normal or roughness maps.",
+      "limits": "Authored qualitative colour and requested tile continuity, not a surveyed substrate, measured biological cover, taxonomic identification or calibrated PBR. Offline appearance does not establish WebGL lighting or documentary realism."
+    }
+  },
+  "wholeBodyBatch": {
+    "species": [
+      "green-turtle",
+      "blue-spotted-ray",
+      "blue-and-gold-fusilier",
+      "doubleline-fusilier",
+      "bluestripe-snapper",
+      "bigeye-trevally"
+    ],
+    "provenance": "shallow-body-kit/provenance.json",
+    "method": "Batch 15 revises the four principal shoal bodies/colour fields and the turtle shell dome, scute panels and skin mosaic. Original individual identities, catalogue dimensions and bounded movement remain; ray unchanged.",
+    "limits": "Authored procedural representatives, not downloaded specimen scans or measured anatomy. Unchanged benthic animals and other fish remain quality gaps.",
+    "currentRevisionSpecies": [
+      "blue-and-gold-fusilier",
+      "doubleline-fusilier",
+      "bluestripe-snapper",
+      "bigeye-trevally",
+      "green-turtle"
+    ],
+    "currentRevisionVersion": 4
+  },
+  "communityExpansion": {
+    "speciesAddedToSample": [
+      "cleaner-wrasse",
+      "black-blotched-porcupinefish",
+      "lionfish"
+    ],
+    "displayReplacements": [
+      "reef-cuttlefish",
+      "day-octopus"
+    ],
+    "provenance": [
+      "shallow-community-fish/provenance.json",
+      "shallow-cephalopods/provenance.json"
+    ],
+    "method": "Ten new metre-scaled sample individuals and three observation groups: reef cleaner/client proximity, sand cephalopods/goatfish, and reef-margin lionfish. Tail reef form composition includes branching/table crowns instead of only massive crowns. Existing 271 individual identities and sizes retained.",
+    "units": "Community fish use total length; cuttlefish retains catalogue mantle length, octopus retains complete arm diameter. Appendages and bounded movement enter whole-body clearance.",
+    "limits": "Authored display patrols and shared per-species fin/arm poses. No simulated parasite removal, prey capture, inflation, skin camouflage, measured species co-occurrence or new persistent food stock. Asset and whole-scene documentary realism remain unaccepted."
+  },
+  "samplePerformance": {
+    "method": "Spatial sand tiles with exact original vertices/normals and triangles; distant grass/coral display detail with hysteresis; simpler fish topology and merged hero bodies; unused legacy templates excluded; current footprint queried every update, fixed residents cached, most vertical velocities derive actual consecutive positions; sustained cadence triggers adaptive pixel ratio",
+    "staticMembraneBatching": "Existing natural fish dorsal/anal membranes merge once with identical vertices and material; moving tails and pectorals retain pivots. This reduces part draws without removing animals or changing natural sizes.",
+    "sedimentLookup": "Precomputed rotated-ellipse reef bins replace all-rock evaluation at each bed vertex; batch 10 verified exact field preservation on all 78,961 vertices. The current added slope changes the authored reef field. Grass uses shared 16m spatial batches and only the required meadow geometry is constructed.",
+    "limits": "Native CPU/frustum candidate comparison only. Browser/WebGL shader execution, actual FPS and visual acceptance remain unverified."
+  },
+  "habitatComposition": {
+    "batch": 10,
+    "method": "Collect actual hard-shoulder crown candidates across the entire route, then select fairly across five route sections within the existing 420 candidate cap. Per-bommie dominant forms and companion crowns share one variant per 16m cell. Six low sediment-edge patches reuse existing short-grass and skeletal-rubble geometry.",
+    "seed55": {
+      "animals": 281,
+      "types": 35,
+      "rocks": 73,
+      "corals": 259,
+      "branching": 129,
+      "table": 71,
+      "massive": 27,
+      "fan": 32,
+      "grass": 396,
+      "rubble": 276,
+      "newShortGrass": 44,
+      "newRubble": 55
+    },
+    "physics": "New grass checks actual fixed roots and all ribbon vertices at both bounded sway extrema on soft bed. New fragments check all transformed vertices, with at most 5mm basal or 1mm other embedding. Camera corridor and low-animal patrol footprints are excluded; crown near-vertex support and resident envelopes remain checked.",
+    "preservation": "All 281 animal identities and individual dimensions, bed triangles and hard rocks equal frozen batch 9. No new animal species or persistent ecology inventory.",
+    "review": "Fixed-camera native views show clearer branch/fan silhouettes and nearer short-grass transitions. Living-reef coverage and sand-channel composition pass only partially; large bare shoulders, empty sand and low-contrast benthic bodies remain. These are authored display patches, not measured living cover or full food-web stocks.",
+    "evidence": "output/validation/shallow-habitat-completion/stage.json"
+  },
+  "continuousLivingSlope": {
+    "batch": 11,
+    "method": "Compose substrate, crown groups and animal spaces together: 12 overlapping hard-slope modules in two route sectors, two actual broad benches per module, rear ridges and restrained exposed carbonate. Twenty-four old bommies are lowered and moved behind the new slope. A finite 650-candidate crown pass reserves up to 390 candidates for the slope before fitting actual near geometry.",
+    "seed55": {
+      "animals": 281,
+      "types": 35,
+      "rocks": 85,
+      "corals": 397,
+      "slopeCorals": 171,
+      "grass": 371,
+      "rearrangedResidents": 20,
+      "rearrangedReefFish": 7,
+      "rubble": 227,
+      "forms": {
+        "branching": 191,
+        "table": 129,
+        "massive": 47,
+        "fan": 30
+      }
+    },
+    "community": "Twenty existing attached/crawling residents and seven existing small reef fish are redistributed into two bench communities. Complete body and bounded patrol disks remain free of crowns; existing major encounters and sample community visits retain their arrangements. No new animal individual or species is introduced.",
+    "physics": "Slope support uses the exact rendered Float32 mesh. Full resident footprint circles, actual host and highest hard surface are checked across the 75-second model route. Final crown near vertices retain substrate, route and resident clearance. Existing and new grass checks actual ribbon roots and both bounded sway extrema on soft bed; rubble refits all transformed vertices with at most 5mm basal or 1mm other embedding, rejecting hard-rock overlap.",
+    "preservation": "All 281 animal identities, individual dimensions and bed triangles retain the batch 10 baseline. Authored hard-reef layout and display cover change; persistent exploration, species inventory and ecology stocks do not migrate.",
+    "review": "Macro reef-slope structure passes this limited offline stage, with the clearest same-camera change at 58 seconds. Naturalness passes only partially: two repeated branch rows and bare white benches at 69 seconds remain. Small benthic residents remain hard to identify, and the 72-second supplementary view shows a close fish obstructing the camera. Complete 75-second visual acceptance, documentary realism and actual WebGL smoothness have not passed.",
+    "validation": {
+      "targetedCasesPassed": 34,
+      "localBuild": "passed",
+      "actualWebGLPlayback": "unverified",
+      "originalAcceptanceThresholds": "unchanged"
+    },
+    "evidence": "output/validation/shallow-continuous-reef/stage.json",
+    "limits": "Authored procedural habitat, not a living reef scan or measured cover survey. No caves or undercuts are navigable; highest-surface support is not complete triangle collision, full neighbour avoidance or food-web simulation. Offline mesh/albedo images do not establish GPU frame rate, startup time or dynamic visibility."
+  },
+  "communityPassages": {
+    "batch": 12,
+    "method": "Compose five world-fixed principal-school passages, irregular neighbouring live-reef patches and two mixed terrace-resident communities as one observation scene. Existing animal identities and natural dimensions remain unchanged; no new animal or species is added.",
+    "seed55": {
+      "animals": 281,
+      "types": 35,
+      "rocks": 85,
+      "corals": 417,
+      "slopeCorals": 185,
+      "forms": {
+        "branching": 174,
+        "table": 138,
+        "massive": 73,
+        "fan": 32
+      },
+      "reservedAnimalSpaces": 27,
+      "benthicResidents": 20,
+      "reefPatrolFish": 7,
+      "upperTerraceResidents": 3,
+      "naturalBarePockets": 6,
+      "grass": 371,
+      "rubble": 229
+    },
+    "schoolPassages": "Five principal shoals keep fixed world-space group centres beside the swim route. Their transverse orbit and formation are narrower, with bounded independent drift, distinct vertical offsets and actual velocity headings. The authored full orbit, formation, drift and conservative body envelope inform the side margin; there is no camera-driven per-frame displacement or removal of individual fish.",
+    "livingCover": "The same seven living-coral display geometries are retained. Two regular rows per bench become overlapping irregular two-dimensional growth patches with nearby companions, varied crown heights and six small exposed hard-bottom pockets. This changes composition, not source mesh provenance or simulated recruitment.",
+    "residentSpaces": "Twenty existing benthic residents and seven existing reef fish use actual broad bench metadata. Large complete footprints are reserved first, then smaller bottom residents are mixed along the nearer front edge. Two tube sponges and one feather star use physically higher terraces farther ahead. The 27 complete body-plus-patrol reservations remain clear of living crowns.",
+    "physics": "Actual host and highest hard surface, full footprint circles, individual body envelopes, mutual planned spacing and crown exclusions retain their existing checks. Final crown near-geometry vertices still fit actual hard substrate and route clearance. These checks do not claim complete triangle collision, neighbour avoidance or actual image-level visibility.",
+    "camera": "The 75-second camera route and field of view are retained. Encounter focus continues to follow the actual relocated shoals; framing thresholds are not reduced and animals are not enlarged to obtain readable projections.",
+    "preservation": "All 281 animal identities and individual dimensions, persistent exploration and ecology inventory remain unchanged. Batch 11 continuousLivingSlope remains historical evidence; living-asset provenance remains version 2 because this batch changes arrangement rather than the seven source geometries.",
+    "review": "Same-camera 72-second preview clearly removes the fish filling the image. The 24/69 views include schools, canopy and resident animals together, but small benthic animals remain hard to recognize. Irregular growth patches only partly improve naturalness; repeated crowns, regular bare terraces and procedural assets remain. Camera positions retained across five preview times; only 72 keeps the complete prior camera matrix. Documentary realism and actual WebGL playback remain unaccepted.",
+    "validation": {
+      "targetedCases": 37,
+      "localBuild": "passed",
+      "nativeReview": "close-school occlusion repair passed limited native review; community/naturalness partial",
+      "actualWebGLPlayback": "unverified",
+      "originalAcceptanceThresholds": "unchanged"
+    },
+    "evidence": "output/validation/shallow-community-passages/stage.json",
+    "limits": "Authored fixed passages and bounded display movement, not a complete boids solver, calibrated swimming biomechanics, measured co-occurrence or full food web. Repositioning habitats does not demonstrate every animal is visible. Offline mesh/albedo previews cannot establish browser FPS, startup time, WebGL shadows or continuous dynamic occlusion."
+  },
+  "naturalForms": {
+    "batch": 13,
+    "method": "Finite local whole-form replacement of the three sample-slope surfaces, four principal-school bodies, seven living-coral geometries and marine carbonate albedo. Existing route, natural animal sizes, school passages and 27 resident reservations are retained; physical crown and soft-bed placements refit the changed actual geometry.",
+    "seed55": {
+      "animals": 281,
+      "types": 35,
+      "rocks": 85,
+      "corals": 420,
+      "slopeCorals": 192,
+      "grass": 372,
+      "rubble": 227,
+      "forms": {
+        "branching": 184,
+        "table": 136,
+        "massive": 66,
+        "fan": 34
+      },
+      "reservedAnimalSpaces": 27
+    },
+    "reefSurfaces": {
+      "changedProfiles": [
+        "sample-slope-a",
+        "sample-slope-b",
+        "sample-slope-c"
+      ],
+      "modules": 12,
+      "verticesPerProfile": 2305,
+      "trianglesPerProfile": 4544,
+      "method": "Low-frequency relief on two irregular broad support bands, curved non-straight shoulders, shallow connected grooves and an asymmetric broken rear crest. Original rim XZ, topology, module centres/scales and two-layer habitatBench metadata are retained.",
+      "limits": "Single-valued actual triangle surfaces; no enterable caves, undercuts or overhangs. Static naturalness only partly improved; documentary realism remains unaccepted."
+    },
+    "assetRevisions": {
+      "principalSchoolBodyKit": 3,
+      "principalSchoolSpecies": [
+        "blue-and-gold-fusilier",
+        "doubleline-fusilier",
+        "bluestripe-snapper",
+        "bigeye-trevally"
+      ],
+      "livingCoralGeometries": 7,
+      "livingCoralVersion": 3,
+      "carbonateAlbedoVersion": 2,
+      "provenance": [
+        "shallow-body-kit/provenance.json",
+        "shallow-live-reef/provenance.json",
+        "shallow-reef-carbonate-v2.provenance.json"
+      ],
+      "limits": "Authored procedural display representatives and generated colour, not living-reef/specimen scans, measured anatomy or biological cover. No new animal individual or species is introduced."
+    },
+    "preservation": "All 281 animal identities, species and individual dimensions, original bed heights, 85 rock position/rotation/scale records and nine older rock surfaces exactly retain batch 12. Only three sample-slope surfaces change intentionally; transform equality does not mean full surface equality. Persistent exploration and ecology inventory do not migrate.",
+    "physics": "Actual displayed Float32 triangles provide support. Both near and distant living-crown geometries fit the highest actual substrate and share complete radius/top reservations at the original basal/non-basal tolerances; one bounded smaller retry remains. All 27 resident body-plus-patrol spaces remain placed. Original camera/animal/grass/rubble thresholds retain their meaning; this is not complete triangle collision or image-level readability.",
+    "camera": "Four final comparison previews reuse frozen batch 12 cameras at 24/58/69/72 seconds, maximum matrix error 3.33e-16. Current default 24/69 camera directions differ slightly; default 58/72 remain exact. Fixed-camera asset comparisons are not equality of every default movie frame.",
+    "native": {
+      "updates": 601,
+      "modelSeconds": 75,
+      "medianMs": 2.9582999999993262,
+      "p95Ms": 3.723899999999958,
+      "maxMs": 10.246000000000095,
+      "meshObjects": 309,
+      "meshBudget": 350,
+      "limits": "Current sequential native CPU work only. Changed content prevents a same-workload reduction claim; not browser startup, GPU or FPS evidence."
+    },
+    "review": "Partial improvement confirmed in final native whole-scene review. School colour separation and low spreading colony silhouettes change visibly at 24/69. Brown coarse substrate still reads as soil, wide benches remain regular, crowns repeat pointed/bowl/hemisphere forms, silver fish/turtles remain simplified and small benthic residents remain hard to recognize. Documentary realism is unaccepted; actual WebGL and full playback unverified.",
+    "validation": {
+      "casesPassed": 41,
+      "localBuild": "passed",
+      "nativeReview": "partial: macro forms and school contrast visible; documentary realism failed",
+      "actualWebGLPlayback": "unverified",
+      "originalAcceptanceThresholds": "unchanged",
+      "bothCrownLodsSupport": {
+        "nearVertices": 879947,
+        "distantVertices": 254256,
+        "violatingVertices": 0,
+        "initialFailuresPreserved": "output/validation/shallow-natural-forms/initial/distant-support-review.json"
+      }
+    },
+    "evidence": "output/validation/shallow-natural-forms/stage.json",
+    "limits": "Offline actual-mesh/albedo CPU previews do not execute WebGL lighting or shadows, prove continuous dynamic occlusion, establish FPS/startup time, or simulate full neighbour avoidance and food-web ecology. Prior project-URL approval rejection is respected. Local only, no commit or deployment."
+  },
+  "artistReplacements": {
+    "species": [
+      "blue-tang",
+      "moorish-idol"
+    ],
+    "provenance": "shallow-artist/provenance.json",
+    "credit": "shallow-artist/credits.html",
+    "method": "Artist meshes with original diffuse/UV, extracted independent bodies and four local source skeletal poses. These replace the historical procedural entries below for this sample.",
+    "limits": "CC BY 4.0 artistic assets, not scans or anatomical calibration. Other animals remain procedural representatives. Shadow and WebGL shader execution require actual browser review."
+  },
+  "sourcedAssetEvaluation": {
+    "batch": 14,
+    "default": {
+      "animals": 284,
+      "species": 36,
+      "rocks": 85,
+      "colonies": 420,
+      "scannedColonies": 0,
+      "meshObjects": 310,
+      "barramundiIndividuals": 3
+    },
+    "fish": {
+      "key": "barramundi",
+      "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/blob/main/Models/BarramundiFish/README.md",
+      "license": "CC0-1.0",
+      "vertices": 2188,
+      "triangles": 3864,
+      "nativeReview": "Source body and photographic texture more credible; near 58s two full animals and one left-edge cropped animal. Not a whole key-animal upgrade or WebGL playback proof."
+    },
+    "scanCorals": {
+      "provenance": "shallow-scanned-reef/provenance.json",
+      "source": "https://scan3d.dinacon.org/",
+      "license": "MIT repository scope with author credit retained",
+      "sourceIdentities": [
+        "Pocillopora meandrina",
+        "Diploastrea heliopora"
+      ],
+      "candidateAcceptedPlacements": 121,
+      "candidateFallbackPlacements": 40,
+      "defaultEnabled": false,
+      "experimentSelector": "reef=scanned",
+      "geometry": "Original unit width/source proportions retained, source scale uncalibrated; 3796/3800 near and 899 far triangles, actual broad base fit. Source albedo rebaked to independent face atlas, fixed geometry preserved.",
+      "decision": "Whole-scene candidate failed: dark blue/white basal patches break the brown slope composition at 58/69. Retained only as explicitly labelled experiment. No further parameter repair."
+    },
+    "verification": {
+      "nativeVertexRoutePoses": 31,
+      "modelSeconds": 75,
+      "gpuPlayback": "unverified",
+      "browserStartup": "unverified",
+      "wholeSceneRealism": "unaccepted",
+      "evidence": "output/validation/shallow-sourced-assets/stage.json"
+    }
+  },
+  "coherentHabitat": {
+    "batch": 15,
+    "method": "One whole-slope, living-crown and principal-animal integration batch, local only. No additional animal or species count.",
+    "seed55": {
+      "animals": 284,
+      "species": 36,
+      "rocks": 85,
+      "colonies": 413,
+      "slopeColonies": 183,
+      "grass": 373,
+      "rubble": 228
+    },
+    "preservation": {
+      "animalIdentitySpeciesSizeExact": true,
+      "bedByteExact": true,
+      "all85RockTransformsExact": true
+    },
+    "assetRevisions": {
+      "bodyKit": 4,
+      "coralKit": 4,
+      "slopeStructure": 3,
+      "carbonateAlbedoReused": 1
+    },
+    "physics": "27 whole body/patrol reservations retained. Swimming patrols may use sloping hard substrate and follow the highest real surface under the body; attached/crawling animals still require the original stable contact range. Full near/far coral support, grass/rubble fit and route clearance remain required.",
+    "camera": "Comparison frames freeze batch14 export cameras; current default orientation differs at 24/69 seconds, with 58/72 matching to floating-point tolerance.",
+    "validation": {
+      "stage": "output/validation/shallow-coherent-habitat/stage.json",
+      "status": "47 targeted cases passed; whole-scene review partial",
+      "wholeSceneRealism": "unaccepted",
+      "webglPlayback": "unverified",
+      "casesPassed": 47,
+      "localBuild": "see stage receipt"
+    },
+    "limits": "Authored geometry and qualitative colours, not measured anatomy, scan-based reef structure or full ecology. Native projected images are not browser screenshots or playback/FPS evidence.",
+    "review": "partial macro improvement; documentary realism unaccepted"
+  },
+  "sourceCommunity": {
+    "batch": 16,
+    "accepted": "One source hawksbill, original textures and eight source swimming poses; no full principal-animal replacement",
+    "rejected": "Three additional Dina3D field-coral scans produced dark/blue basal patches and regressed whole-scene reef appearance. Removed from application imports and public assets; candidate retained only as local evidence.",
+    "seed55": {
+      "animals": 285,
+      "species": 37,
+      "rocks": 85,
+      "corals": 413,
+      "grass": 373,
+      "rubble": 228,
+      "meshObjects": 313
+    },
+    "preservation": "All original 284 animal identities/species/sizes, bed, 85 rocks, default corals/grass/rubble exact against frozen before-src. No persistent exploration change.",
+    "stage": "output/validation/shallow-source-community/stage.json",
+    "validation": "49 related cases pass; native 151 poses / 75 model seconds / 501018 full turtle vertices, minimum substrate gap 0.6545986205610212 m. No continuous triangle-collision guarantee.",
+    "acceptance": "Partial animal improvement only. Whole-scene documentary realism unaccepted; actual WebGL 75-second playback, FPS and startup unverified.",
+    "license": "DigitalLife3D turtle CC BY-NC 4.0 does not inherit repository source-code license. Source credits linked from sample UI."
+  },
+  "freeAssetPolicy": {
+    "cost": 0,
+    "newLicenses": [
+      "CC0-1.0",
+      "CC-BY-4.0"
+    ],
+    "existingHawksbill": "CC-BY-NC-4.0: only non-commercial redistribution; original attribution and modification record retained",
+    "paidSelection": "withdrawn by user"
+  },
+  "museumLivingForms": {
+    "provenance": "shallow-museum-corals/provenance.json",
+    "forms": [
+      "Pocillopora damicornis",
+      "Pocillopora nobilis / meandrina"
+    ],
+    "representation": "Dry CC0 skeleton geometry with authored tissue colours, not live tissue photographs; scene widths uniformly scale source proportions.",
+    "coloniesAtSeed55": 174
+  },
+  "sourceCommunityBatch17": "Three source hawksbills are now shown in the late sample: two procedural green turtles were replaced with correctly labelled hawksbills. Original early green turtle and primary shoals remain. Eight source yellow tangs added. This is a finite showcase change, no persistent ecology migration.",
+  "sourceCommunityBatch18": {
+    "provenance": "shallow-open-community/provenance.json",
+    "sources": [
+      {
+        "key": "giant-trevally",
+        "title": "CC0 ロウニンアジ 🐟 Giant Trevally, Caranx ignobilis",
+        "author": "ffish.asia / floraZia.com",
+        "source": "https://sketchfab.com/3d-models/cc0-giant-trevally-caranx-ignobilis-e6446df50ba746ed8ce8a3dd66b3b8e8",
+        "license": "CC0-1.0"
+      },
+      {
+        "key": "blacktail-snapper",
+        "title": "CC0 オキフエダイ 🐟 Blacktail Snapper, Lutjanus fulvus",
+        "author": "ffish.asia / floraZia.com",
+        "source": "https://sketchfab.com/3d-models/cc0-blacktail-snapper-lutjanus-fulvus-fcd035d681c74e1ea597cefb5caec202",
+        "license": "CC0-1.0"
+      },
+      {
+        "key": "porites-live",
+        "title": "Porites lobata underwater colony",
+        "author": "TheRLab",
+        "source": "https://sketchfab.com/3d-models/porites-lobata-underwater-colony-408891242fd647309393f80949210278",
+        "license": "CC-BY-4.0"
+      }
+    ],
+    "seed55": {
+      "animals": 293,
+      "species": 38,
+      "rocks": 85,
+      "corals": 421,
+      "slopeCorals": 184,
+      "grass": 373,
+      "rubble": 228
+    },
+    "mainFishReplacements": 46,
+    "retainedOriginalIdentities": 247,
+    "poritesColoniesBeforeSkeleton": 83,
+    "poritesColoniesAfterSkeleton": 78,
+    "rejected": "Echinopora candidate failed whole-scene appearance and is excluded from application/public assets.",
+    "limits": "Partial asset improvement. Source fish capture shadows/fin limits remain; Porites crop has open basal boundaries. Existing table/fan/branch assets and authored reef slope remain. Whole-scene realism unaccepted; WebGL/FPS/startup unverified.",
+    "stage": "output/validation/shallow-main-community/stage.json"
+  },
+  "habitatIntegration": {
+    "batch": 19,
+    "provenance": "shallow-habitat/provenance.json",
+    "summary": {
+      "animals": 293,
+      "species": 38,
+      "rocks": 85,
+      "corals": 524,
+      "slopeCorals": 285,
+      "frontFoliose": 57,
+      "grass": 376,
+      "rubble": 224,
+      "forms": {
+        "table": 206,
+        "branching": 198,
+        "fan": 30,
+        "massive": 90
+      }
+    },
+    "animalIdentitiesAndSizesPreserved": true,
+    "reef": "Same hard triangles with world-varying thin attached-cover colour and CC0 carbonate surface detail; no extra physical displacement.",
+    "colonies": "Low foliose family replaces upright twig table forms. Broader slope patches plus front-grade attached colonies, finer spatial variant assignment. Full physical crown/near-far checks remain.",
+    "attachment": "Foliose form may attach to slopes with up-normal >=.45; other forms remain >=.78. Complete actual vertex burial limits, highest substrate, route and animal reserves stay unchanged.",
+    "animals": "4 batfish and 1 humphead wrasse use complete authored body/curved fin kits at original identity and dimensions. Remaining source scans, artist models and old species coexist; not a claim that all animals are unified.",
+    "validation": "output/validation/shallow-habitat-integration/stage.json",
+    "limitations": "Whole-scene documentary realism unaccepted; runtime WebGL/FPS/startup unverified."
+  },
+  "cohesiveLife": {
+    "batch": 20,
+    "provenance": "shallow-cohesive-life/provenance.json",
+    "coralProvenance": "shallow-branching-life/provenance.json",
+    "summary": {
+      "animals": 293,
+      "species": 38,
+      "rocks": 85,
+      "corals": 532,
+      "slopeCorals": 289,
+      "frontFoliose": 57,
+      "grass": 376,
+      "rubble": 224,
+      "forms": {
+        "table": 206,
+        "branching": 206,
+        "fan": 30,
+        "massive": 90
+      }
+    },
+    "changedAnimalModels": {
+      "blue-and-gold-fusilier": 38,
+      "blacktail-snapper": 30,
+      "doubleline-fusilier": 34,
+      "white-spotted-rabbitfish": 18,
+      "giant-trevally": 16,
+      "lyretail-anthias": 30,
+      "bluespine-unicornfish": 3,
+      "reef-parrotfish": 8,
+      "copperband-butterflyfish": 4,
+      "emperor-angelfish": 3,
+      "sailfin-tang": 4,
+      "reef-goatfish": 9
+    },
+    "animalIdentitiesAndSizesPreserved": true,
+    "display": "Two new branching specimen derivatives replace compact Pocillopora heads; shared complete authored swimmer family replaces main photographic specimens and authored reef fish. Existing artist/hero/benthic animals retained.",
+    "limitations": "Dry skeleton geometry/authored tissue colour; authored fish rather than scanned anatomy. No whole-documentary-realism or runtime-FPS acceptance.",
+    "validation": "output/validation/shallow-cohesive-life/stage.json"
+  },
+  "nearSourceCommunity": {
+    "provenance": "shallow-near-community/provenance.json",
+    "method": "Batch24: 68 copies of the existing VIVID REALITY upper reef community, including one formerly bare near ledge. Remove the survey-floor apron as a single family crop; visible authored limestone foundations close the outer perimeter and are part of exact physical support. Two near resident rocks are lower and refitted with smaller complete source colonies. Original source texture pixels, fish identities, sizes and motions remain.",
+    "limits": "One reef scan is repeated, not 68 independently scanned sites. Source fish has no taxonomic identification and is displayed as unidentified. Other animal families remain mixed. Documentary realism is not accepted. Fish and reef CC BY 4.0; Montipora CC BY-NC-SA 4.0, non-commercial redistribution with attribution and share-alike for its derivatives.",
+    "preparedLayout": "Seed55 source placement is fully fitted at build time and reused only for matching input; animation and actual physical support remain runtime. Other seeds and experimental scans compute their own fit."
+  },
+  "integratedPass": {
+    "stage": 24,
+    "materials": "Shared authored scale and fin-ray surface response on existing cohesive/community fish; source fish maps untouched. This improves material consistency without upgrading all anatomy.",
+    "startup": "Skip intermediate material rendering until visible texture settlement, then compile once. Optional dry skeleton placement is removed from the mandatory default sample startup. Cached base64 decoding; source reef reduced from 48020 to 22725 triangles.",
+    "scope": "Local finite 75-second sample; no added paid assets or species. No new source images; all prior attribution/noncommercial/share-alike restrictions retained.",
+    "validation": "output/validation/shallow-integrated-pass/stage.json"
+  },
+  "canopyPerformance": {
+    "stage": 25,
+    "scope": "Local 75-second sample only",
+    "cover": "Full exposed grade participates in colony arrangement. 501 independent colonies, including 310 on the continuous slope; all near/far vertices retain exact support and existing animal clearances. No added species.",
+    "animals": "A complete CC0 photographic trevally candidate was evaluated and rejected for heavy capture shading and stylistic inconsistency. Existing 293 animals/38 display classes and their coherent swimmer bodies are retained. Animal anatomy/style unification is not claimed as completed.",
+    "rendering": "View-frustum instance selection and two complete LODs for reefs and colonies. Reef source 22725 near / 4988 far triangles; original images unchanged. Physical queries retain the near surface. Paused views redraw only on changes.",
+    "sources": [
+      "shallow-open-community/provenance.json",
+      "shallow-near-community/distance-provenance.json"
+    ],
+    "limits": "Source photography includes capture shading, and other animals still use mixed geometry. Increased cover and lower submitted triangle counts are not proof of documentary realism or browser frame rate. Existing noncommercial/share-alike licence conditions retained.",
+    "evidence": "output/validation/shallow-canopy-performance/stage.json",
+    "startup": "Pre-fitted default layout uses a versioned key with only key numbers rounded to 1e-8 to tolerate cross-engine transcendental differences; physical coordinates are never rounded. UI-exported metrics record actual cache use and both raw input fingerprints."
+  },
+  "groundedAssembly": {
+    "stage": 26,
+    "scope": "Local 75-second sample only",
+    "reef": "Twelve additional complete foreground outcrops; tapered exact physical aprons replace vertical plinths. Layout fitted to existing habitat and animal spaces.",
+    "animals": "49 individuals in four display classes join the same authored main-swimmer family, retaining existing identities, lengths and motion. Historical photographic/artwork assets retained but not selected for these classes.",
+    "sources": "shallow-grounded-assembly/provenance.json",
+    "limits": "More coherent silhouettes and grounded landforms, not documentary realism. Source repetition, broad bare substrate and other animal families remain.",
+    "performance": "Existing instance frustum selection, near/far LOD and prepared-layout cache retained. Final local playback recorded separately."
+  },
+  "mixedCommunities": {
+    "stage": 27,
+    "scope": "Local 75-second sample only",
+    "provenance": "shallow-mixed-communities/provenance.json",
+    "repeatedSurveyOutcrops": 30,
+    "authoredMultiSourceOutcrops": 50,
+    "recipes": 4,
+    "limits": "Improved composition variety and main fish forms; bare grade, repeated source colonies and model-like benthos remain. Local playback evidence is separate."
+  },
+  "benthicHabitat": {
+    "stage": 28,
+    "scope": "Local 75-second shallow sample",
+    "provenance": "shallow-benthic-habitat/provenance.json",
+    "newSources": 3,
+    "licence": "CC BY 4.0; existing asset restrictions retained",
+    "authoredAnimals": [
+      "fluted-giant-clam",
+      "spotted-reef-crab",
+      "day-octopus",
+      "reef-cuttlefish"
+    ],
+    "limits": "Source photographs and authored bodies still differ. Cross-region visual-reference assembly, not a single field site or calibrated ecosystem."
+  },
+  "currentStage": {
+    "id": "shallow-living-kit",
+    "provenance": "shallow-living-kit/provenance.json",
+    "method": "Two additional whole live coral scans across 12 banks; 8 yellow tang and 1 blacktip reef shark complete artist assets. Fifteen scanned substrates share actual bed sediment colour field and map. Original source images and contact meshes unchanged.",
+    "limits": "Only nine additional animals replaced; other 284 retain prior assets. NC/SA terms retained. Whole-scene documentary realism remains partial."
+  },
+  "contactFauna": {
+    "provenance": "shallow-contact-fauna/provenance.json",
+    "animals": {
+      "crab": 3,
+      "octopus": 2
+    },
+    "method": "Whole source crab and octopus geometry; shared scan-boundary collar buried into sediment, identical visible and physical source geometry. Bank-only source material isolation.",
+    "limits": "Blue-crab and unidentified-octopus reference sources replace old sample labels only. Octopus authored pigment, original normal image. Giant trevally 16 unchanged: no acceptable complete redistributable source found. Mixed-source demonstration, not a local biological survey. CC BY / CC BY-NC retained."
+  }
+}

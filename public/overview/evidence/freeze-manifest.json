@@ -1,0 +1,2997 @@
+{
+  "version": "shallow-sample-v1.0-local-20261012",
+  "status": "frozen-local-prototype",
+  "entry": "/ocean-world/?demo=shallow-sample&seed=55",
+  "files": [
+    {
+      "path": "site/ocean-world/assets/OceanApp-DCoIrJMQ.js",
+      "bytes": 1676551,
+      "sha256": "a33b709f3dfa1ade871894865584e4bad8dbff077a4c6981116d6b188da73568"
+    },
+    {
+      "path": "site/ocean-world/assets/OceanApp-KPpsgtMu.css",
+      "bytes": 49670,
+      "sha256": "336e3e7bda2e69558de4398ac32952cc2d21d2536f107b07b2766f50dcf52203"
+    },
+    {
+      "path": "site/ocean-world/assets/ShallowSampleApp-C471I7hd.css",
+      "bytes": 3285,
+      "sha256": "9a38ffee0503f9eb140c23731df4e19f4977f71e454bd4a195bdf9521fa4c31b"
+    },
+    {
+      "path": "site/ocean-world/assets/ShallowSampleApp-DIpUHeTR.js",
+      "bytes": 17108800,
+      "sha256": "d63b22319f60fdfb8559c8af32f0d3ed6d855fba4392741be82508d4b324459c"
+    },
+    {
+      "path": "site/ocean-world/assets/ageExperimentWorker-C8jD93i5.js",
+      "bytes": 15363,
+      "sha256": "4257c286b08865670b9aa78b787a24382283cc8833c983db39dd2a82fe772ac3"
+    },
+    {
+      "path": "site/ocean-world/assets/coastal-rock/Diffuse.jpg",
+      "bytes": 998110,
+      "sha256": "e88c9e50109c7f610bc380a00b9bdac5954c392bb02134dedeea3358da57276a"
+    },
+    {
+      "path": "site/ocean-world/assets/coastal-rock/nor_gl.jpg",
+      "bytes": 1079683,
+      "sha256": "022000a37cb91457de2e0c738baebbc1b0b8eb864ba99321d07c248d5c0741bc"
+    },
+    {
+      "path": "site/ocean-world/assets/coastal-rock/provenance.json",
+      "bytes": 1588,
+      "sha256": "2aadf364b04a534b92e70a5b4b5c9f4f328de50536fe82640ba1f98a858e7f0b"
+    },
+    {
+      "path": "site/ocean-world/assets/coastal-rock/rough.jpg",
+      "bytes": 379850,
+      "sha256": "47e6c4b43c9cc5331d0392e3f74777f9a6712edda141dd148586b404c6c30e73"
+    },
+    {
+      "path": "site/ocean-world/assets/coral_ground_02_diff_1k.jpg",
+      "bytes": 743145,
+      "sha256": "83b51ff02b9b3b45a1eeb5676ab406b77e31c172e029e1e3e4280640fe197656"
+    },
+    {
+      "path": "site/ocean-world/assets/draco_decoder-C32yEggz.wasm",
+      "bytes": 285747,
+      "sha256": "c55a594e8ffd18426d36b27fea9618af3df5e173640a3e56d46f09d76f0574f2"
+    },
+    {
+      "path": "site/ocean-world/assets/draco_decoder-Z1_iN-Ht.wasm",
+      "bytes": 192420,
+      "sha256": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac"
+    },
+    {
+      "path": "site/ocean-world/assets/draco_decoder-fzg4nYZr.js",
+      "bytes": 719410,
+      "sha256": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04"
+    },
+    {
+      "path": "site/ocean-world/assets/draco_wasm_wrapper-DxJM36Ib.js",
+      "bytes": 58763,
+      "sha256": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8"
+    },
+    {
+      "path": "site/ocean-world/assets/draco_wasm_wrapper-fZCQGLGb.js",
+      "bytes": 58456,
+      "sha256": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6"
+    },
+    {
+      "path": "site/ocean-world/assets/index-BwzdgMd7.css",
+      "bytes": 552,
+      "sha256": "8bc852d0e88cdb8f6312fcd1780fd3b61cccd39dcc3cda76616d01adbd769c5a"
+    },
+    {
+      "path": "site/ocean-world/assets/index-Dep3SjBD.js",
+      "bytes": 196555,
+      "sha256": "8500ef2bbe08f70d8704c99d1151a8d3b6326b6063ddb51d6eaff24fe22059fd"
+    },
+    {
+      "path": "site/ocean-world/assets/oceanPreparation.worker-BqsEFCrW.js",
+      "bytes": 871406,
+      "sha256": "b877a43f85755f1f2cccccf7ceccb8fb795badac82e7994ea4ca2f22841d6a57"
+    },
+    {
+      "path": "site/ocean-world/assets/oceanTerrain.worker-Ccefm7gr.js",
+      "bytes": 84841,
+      "sha256": "0014fa812efe896e1f17909adde7494d1c311a785ace5922aafbe6419b74dfb0"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-limestone-albedo-v2.png",
+      "bytes": 4574030,
+      "sha256": "a5e23f0d5dd733bcea42cfcb20f6117b7dcb0e6706208b4c68118285d16d0db5"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-rock-albedo.png",
+      "bytes": 3901217,
+      "sha256": "125e892fd7f81628f8703d2d787d2f2ace54d98dfd13bc3568eb59ee2f043812"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/DRACO-LICENSE.txt",
+      "bytes": 13898,
+      "sha256": "d3709b0fb4b8a94bbb1d02b8a2e484f258b0d9c5c5a01f940391f3fe662cd1a4"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/DRACO-README.md",
+      "bytes": 1395,
+      "sha256": "839850a67c93f6b26d3cc038a45bd8289e3cfdf15531e69339e8eb1282b4eb76"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/NOTICE.txt",
+      "bytes": 1477,
+      "sha256": "d7854f99f3ea0ce45537e79c823311f84e1969b67eb4ea0234c7cadde6527aa2"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/THREE-LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/decoder-receipts.json",
+      "bytes": 948,
+      "sha256": "495028ff0b9f1526f6c06d63938cda4d881a969e34a358e097ae43126559d710"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/detail-candidate-download-receipts-v1.json",
+      "bytes": 2107,
+      "sha256": "d79dda7e6ff7b3eae6c0bfd09d723a97e7f1528ed454dc34c221fa8d6be5b8ac"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/document.json",
+      "bytes": 8698,
+      "sha256": "a6332dc422504fc2793124b159301a5aa33a82096d0a591dcfd7fa1d704c8418"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/download-receipts.json",
+      "bytes": 931,
+      "sha256": "09e86fb704dca8ba629fc511ed79649227dbb94d6e6ad84c0639479a3876b9d8"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/draco_decoder.wasm",
+      "bytes": 192420,
+      "sha256": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/draco_wasm_wrapper.js",
+      "bytes": 58456,
+      "sha256": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/license-evidence.json",
+      "bytes": 2576,
+      "sha256": "5c8de9d819d7029c0a9917a34435810f09e0567011028e7d9cad6a0fd64245ad"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/usnm_229-150k-1024-low.glb",
+      "bytes": 1729252,
+      "sha256": "11a2bedd6925eae830831e191eb4a13668eb93e6ba9c44270534f574ec89f12b"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/usnm_229-150k-2048-medium.glb",
+      "bytes": 4244612,
+      "sha256": "20563502ece6c714c6a8853fa7add4d8dc4e3897d77f27aff1c93fda3c78a114"
+    },
+    {
+      "path": "site/ocean-world/assets/reef-scan/usnm_229-20k-thumb.glb",
+      "bytes": 323096,
+      "sha256": "c3ce125d357952ff1caa68efb920fcd4876d29459517d83b2de2a3aa211f8060"
+    },
+    {
+      "path": "site/ocean-world/assets/reefScanAssets-DOnHS6j-.js",
+      "bytes": 1481589,
+      "sha256": "f9213e349306ee2915c3aa3218e5e8e9cd151f8f69ed28dec593aab7106aac9b"
+    },
+    {
+      "path": "site/ocean-world/assets/sand-albedo.png",
+      "bytes": 3279638,
+      "sha256": "9641b6c8a1dd0048de2bd992aeada2c723b5b2b8203d9febda60e4cf204365ca"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-artist/artist-fish-13.png",
+      "bytes": 386095,
+      "sha256": "f8d72debae23ed1dcdb6a4a5189edcc1562c2853c79af62d34490b4b5ecda6f6"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-artist/artist-fish-5.png",
+      "bytes": 293002,
+      "sha256": "bd9c51f3765b800a7f489c99067936dc6163fb03975b006350c2b2c26ae596db"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-artist/artist-fish-9.png",
+      "bytes": 196199,
+      "sha256": "97c7a968bdfa30b374f7da39fe3a6bfdd26b346903f59ee0ab22d459978909a3"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-artist/credits.html",
+      "bytes": 18683,
+      "sha256": "f64eaccbf909f97c0e1f479d89707c6dba9fa2b961454c68808b76c245196fa0"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-artist/fish.json",
+      "bytes": 2144755,
+      "sha256": "3d01b8a872aaafcb5440c2f8eba8eff33dd98a5f2bde650ea3da466da46f32dc"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-artist/provenance.json",
+      "bytes": 965,
+      "sha256": "7e2ee35ec35639d25c41139e9c001c25db12470b60a424ee71eaa46a09f23ab1"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-benthic-habitat/provenance.json",
+      "bytes": 6322,
+      "sha256": "eca267fc23d2969b6cfc25fe8a6cd46b62f836fd762f4472b3bb5b4a4c9dc59c"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-benthic-habitat/reef-lettuce-0.jpg",
+      "bytes": 1311340,
+      "sha256": "b3ad068cf3753fc6cd94f9ba9a2d70daace7b0a090d8733d66ddde67cee5705d"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-benthic-habitat/reef-lobed-0.jpg",
+      "bytes": 727984,
+      "sha256": "fba8041aa2119bfca34da354643e2dbc9af6ef2247f66de781bf281b15cd7ff6"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-benthic-habitat/sponge-stove-0.jpg",
+      "bytes": 1044573,
+      "sha256": "c8e9e72c281d58bb51b00be5d0fadf1f56fe974978fc5ad0bf7f3fdf74df46ff"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-body-kit/provenance.json",
+      "bytes": 8969,
+      "sha256": "0985fa5c9850e2c95a97231e46cbc80ae5d9187ce5782900e8115b4b722bbdb1"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-branching-life/provenance.json",
+      "bytes": 7598,
+      "sha256": "db2446361674c3e2a4c9e541085658f006b50b76d3c985a4378a68600224966b"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-cephalopods/provenance.json",
+      "bytes": 3204,
+      "sha256": "c5ed05cd392b3bf78a3ecbb7dca65fddded270fcffce5e2cca2f50e9d2572f46"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-cohesive-life/provenance.json",
+      "bytes": 2013,
+      "sha256": "13d99448d826006b9983469fea0f59b679a17594c16ff1fd09e2b55a82243d15"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-community-fish/provenance.json",
+      "bytes": 7649,
+      "sha256": "bedf3e5ba69b1c42f1dee43c3f361a0faaf4d3a3dca042e067a40cc1d3bb9c99"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-contact-fauna/crab-blue-0.jpg",
+      "bytes": 937141,
+      "sha256": "f4aca94889a7b534d4db99e68e2ea581120e0e58990c6557ada22a5e01da6446"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-contact-fauna/crab-blue-1.jpg",
+      "bytes": 1141601,
+      "sha256": "dd9e618fcca644d58039ca48da8fa3c93b91f3b6a56fc0598b06f14b49907838"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-contact-fauna/crab-blue-2.jpg",
+      "bytes": 3356,
+      "sha256": "25279fa0b6974da96625cd0ad9320b841b58c9daebde298a9833f3fabf128a87"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-contact-fauna/octopus-lukas-0-normal.jpg",
+      "bytes": 949786,
+      "sha256": "e31e40cda7fe387445baa55f400d60f2b23e440496ea554293f34ea52dcbbc68"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-contact-fauna/provenance.json",
+      "bytes": 2892,
+      "sha256": "fa9950e6d6a65e80898d80a8c210967bc24158fce20ed01e9187a09ed1b4aa69"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-grounded-assembly/provenance.json",
+      "bytes": 1970,
+      "sha256": "f2249c5442c40b8595d3ff613d0a5c67022b5655f76f92356fe71f0e1a403180"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-habitat/provenance.json",
+      "bytes": 1728,
+      "sha256": "af0a7f35fadc377ef5ea7ca0295c4494307701e61e235822086059b8672e20bb"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-live-reef/provenance.json",
+      "bytes": 9355,
+      "sha256": "cc4f4c1f1f11d02558b3deadc88ec19ed5fc3bae563628c45c9dcb9172ed07a1"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/acropora-robusta-0.jpg",
+      "bytes": 1009335,
+      "sha256": "87789e0c2c9c6ece93cf142eec2498fba910d86ee2318c0753e5e3f2b73f676c"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/provenance.json",
+      "bytes": 5166,
+      "sha256": "535c96403f8c36d7bafb5dc9fb867829199f0ec4de4313a1a62c212bc969dcb3"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/reef-shark-0.png",
+      "bytes": 245654,
+      "sha256": "f6cede13abc70862ef146f2b11ab42eff5e7e94aea55caa99815484ca2c05d8a"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/reef-shark-1.png",
+      "bytes": 187096,
+      "sha256": "b5a1230c8e9db0d62f76bb641598964e3683f38293ef49f74b29e5192ec8fb6a"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/reef-shark-2.png",
+      "bytes": 150095,
+      "sha256": "4a053266f26467c979d589998874f8c4d978ec6e179b6a40a376796304129614"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/reef-shark-3.png",
+      "bytes": 177221,
+      "sha256": "7df2056695f90c3c910b219bac50a194d76e9338b96f2fd0e8c3c17ce866a1ab"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/reef-shark-4.png",
+      "bytes": 457940,
+      "sha256": "2b6802225b8bd7cd35d4ea96e6a202f2ed412ef53788880969a85462bf90ed51"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/reef-shark-5.png",
+      "bytes": 149315,
+      "sha256": "a957844b04eec08436974264e1277968f64571d90193fa781d49089399b43c83"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/table-acropora-0.jpg",
+      "bytes": 1152707,
+      "sha256": "26e3bb877d3ff64b5dcae8d8a58ad5453ce5b98d591faf6c015a0c6ce1edba1c"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/table-acropora-1.jpg",
+      "bytes": 948193,
+      "sha256": "601053225c8bb3f74df3d63b44cee71b9ee9e014a7b85d164f0a94101dcd2d4a"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/table-acropora-2.jpg",
+      "bytes": 537354,
+      "sha256": "df6703eaf64126429b713b4200025196fd675bc5046fa110632b4ba0151848e8"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/table-acropora-3.jpg",
+      "bytes": 977882,
+      "sha256": "a87e33bacf9dc10804040230e9d649034a2443e987aa8edb599a0e0313c7375b"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/table-acropora-4.jpg",
+      "bytes": 959376,
+      "sha256": "24c1753df6a521233bb3241c415bd6d73e779ff066d5393c9f514d873b93e10f"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-living-kit/yellow-tang-low-0.png",
+      "bytes": 1011972,
+      "sha256": "550da96f626d1659baf73ccc7cc97d5840eb6bc42fc3220058175bd0bf8c7f57"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-mixed-communities/provenance.json",
+      "bytes": 2718,
+      "sha256": "b4563ef2ebc4ea7ac29ab04c76816d022a9269f4647399aa81e4a60b0afbc23e"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-museum-corals/provenance.json",
+      "bytes": 4857,
+      "sha256": "6186fc71d48f094c06b0867ae13c9ed13befd84b62596c44d7de31ea020e2893"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-natural-assets.json",
+      "bytes": 50430,
+      "sha256": "0ead9400e39c34609b75f42f600ee3e437f9bbcf25bac343da624c31ba81642b"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-natural-habitat/coast_land_rocks_02-0.jpg",
+      "bytes": 886282,
+      "sha256": "2223040a8b7327b8e8b6ae78960a92ea4e10a7d62f3114496851d37dfdc2aff2"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-natural-habitat/provenance.json",
+      "bytes": 1413,
+      "sha256": "c855c66ea87bd6cb49284d6fbe2969f7adb976941d8375799f6f3257dfa8f33a"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/distance-provenance.json",
+      "bytes": 2687,
+      "sha256": "3a9dc4d340ae820b780b53270e57a645bda73f200e557bd113da524b691b848d"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/fish-0.jpg",
+      "bytes": 388414,
+      "sha256": "dfda47333b86e8af57c34cee0f5ea8c362d253d3aad9ccd9d154c758060266b1"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/foliose-0.jpg",
+      "bytes": 1064909,
+      "sha256": "ff2f90db19a53a3d62b161913acbfdf46d5b330aa5bd2af6b08b54f64177fdf8"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/provenance.json",
+      "bytes": 6787,
+      "sha256": "ea3a6797e7803f7df427fca32193ad4f61a25726c7670846120cd448868c6c0a"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-0.jpg",
+      "bytes": 1658316,
+      "sha256": "74072429c2cb7ac5da876414c69a75e09871148e69070b69541613d381b36e18"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-1.jpg",
+      "bytes": 1504107,
+      "sha256": "c799181e96a64daa41b8b02b6ea35fcd353874932a71cf3e6bb1bc5340c35e3d"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-10.jpg",
+      "bytes": 1434325,
+      "sha256": "6b6efb48d857f7b0d4bd6b41b97019869fe3bcf62d7d00cbfaa587f0eb1f2cc6"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-11.jpg",
+      "bytes": 1514097,
+      "sha256": "115a010f7d5838e84a03208c795bb91e5a3297bd0d0ede16e7f267196e5ac5c7"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-12.jpg",
+      "bytes": 1485695,
+      "sha256": "2c0232c7bd4f391cb1e4929518c62591b250edaae64a89f898f2c70a64b0e97e"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-13.jpg",
+      "bytes": 1534679,
+      "sha256": "70021efa2d8e9377c13ee0c7a5b167f15958caca8848a9b1a3b78df5a070f2ad"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-14.jpg",
+      "bytes": 1477888,
+      "sha256": "f61527f0747507e77b4305c9d4fa7fa758591ba4b91aa304c5cfa64c5b48c50b"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-15.jpg",
+      "bytes": 806358,
+      "sha256": "d1688e1fa1f35d249ec18b4c03468caa6b2ef70a1698c9c8d904c77d4b7a8207"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-2.jpg",
+      "bytes": 1415748,
+      "sha256": "611f50216a0b54ca22e00d75544003fcd76e48d0be5025fa5a240021db7a7179"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-3.jpg",
+      "bytes": 1420334,
+      "sha256": "1fedaa90b40434b24e3b173d0fe39abe61ed4aef30d319b79a45c2a3ba14396b"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-4.jpg",
+      "bytes": 1432891,
+      "sha256": "d25d7dd851b3caca9fe64365e5805c792b063a2ff3906692a7ba7388f08ea71f"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-5.jpg",
+      "bytes": 1424960,
+      "sha256": "45798ccec7d9b7a93c051e79ef14b5b5c3ac2762072514d86bd4cec9cbf191c2"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-6.jpg",
+      "bytes": 1445430,
+      "sha256": "73c91d163031e5729e5353794bbc8b52491509bb124680a5dc1a58b0c97ca44f"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-7.jpg",
+      "bytes": 1411260,
+      "sha256": "29f874933d4934478138031d7350ffb44f717a27cb977bed42e01769aef4da58"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-8.jpg",
+      "bytes": 1429123,
+      "sha256": "40736364df0363d67c65e95965fa7484694c87c166bb08fa498c6af6d1e8ee28"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-near-community/reefscan-9.jpg",
+      "bytes": 1456419,
+      "sha256": "1a6ecf2b2a7ce9700e482699ae40beb93701a82b8071cff28f317045af7be47e"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-open-community/blacktail-snapper-1.jpg",
+      "bytes": 1289777,
+      "sha256": "29a19ab25b3f188b385862179dfeda6b710757284555f07453f3e82a973d1c09"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-open-community/giant-trevally-1.jpg",
+      "bytes": 873019,
+      "sha256": "24a6036771e228e459a8b7fc8d18055242c3a2a672767f1a07d35c7c28d167c9"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-open-community/giant-trevally-2.jpg",
+      "bytes": 893197,
+      "sha256": "cf2b6bcab75848bfa289947a782f3b0041231285b5748bf9babd001ad5ca3195"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-open-community/porites-live-0.jpg",
+      "bytes": 513709,
+      "sha256": "0e557ad7388631bfa669da230ffe349de3a8dc07bc77046fc3d4e845956b7a2a"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-open-community/provenance.json",
+      "bytes": 8439,
+      "sha256": "f21fc3894a9043c6e37f161f4e184b2a9544dbcfeffdbc2b219f52af2b65757a"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-reef-architecture/provenance.json",
+      "bytes": 1561,
+      "sha256": "b10778d293c6b693d6ee4cea94ab8481f799b860129e40d652b0b842f4bd7237"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-reef-carbonate-v1.png",
+      "bytes": 4419469,
+      "sha256": "4136e31cff54b070d15677c6248588f4868c5aea1b1d3df245b1ecc1282fe644"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-reef-carbonate-v1.provenance.json",
+      "bytes": 2054,
+      "sha256": "25b6bddaf4430059c49c5dbca9e7b73f4b9188ee0b9ccec0ddf31d10cc8b76d4"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-reef-carbonate-v2.png",
+      "bytes": 4097781,
+      "sha256": "7cf7d0531bbc8b04fbc738808490b70aa3a51f940dbdb00e57247d4645bccf6a"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-reef-carbonate-v2.provenance.json",
+      "bytes": 2595,
+      "sha256": "881b6795525a0802c6ca0e3c0120e43867a7600267a2869a4b614ee51e2b9db7"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-reef-mosaic/provenance.json",
+      "bytes": 1216,
+      "sha256": "754c3625aecc8cc5ff36c1eca6ca9cb9bcacbc79ada561a75f515fee83481434"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-ribbon-habitat/provenance.json",
+      "bytes": 965,
+      "sha256": "b2d82587632c47db842c0e843760991758daa4fc78ca97d0a491b4b97c20780c"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/SOURCE-MIT-LICENSE.txt",
+      "bytes": 1091,
+      "sha256": "258af090f7b08ce937ab2fa5768d95ee3b2773dbcfe8aee763e6062da0681129"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/provenance.json",
+      "bytes": 15411,
+      "sha256": "113397a0010d543db625ffc1c4d9e7ae1f26fe039abbb58bbe82f3c986d8a4d3"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/scanned-diploastrea-albedo-1024.jpg",
+      "bytes": 799682,
+      "sha256": "da19d8f0d3731f7cd786e6d5b55f1b676fce7ddb2be41cb9d555a7210a65443b"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/scanned-diploastrea-distant.bin",
+      "bytes": 91698,
+      "sha256": "e1129fa0d0a47e6357c2fa0eb58057fdb6c39be8a8f6fbec0b4ea1bc9a764413"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/scanned-diploastrea-near.bin",
+      "bytes": 387600,
+      "sha256": "19a457aba4ba998600fd6ec1972923aaf3c7405e1608df4bb8638b219b07dee0"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/scanned-pocillopora-albedo-1024.jpg",
+      "bytes": 796925,
+      "sha256": "c103dff3b06443a28d5ff184a0b2ef1e59e27383891e18ed4dd7bf29ed4ef238"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/scanned-pocillopora-distant.bin",
+      "bytes": 91698,
+      "sha256": "1101a4997a3fd5971d13a3e3dd8824011b30a42ca3cb4b1fb179094e730c7a59"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/scanned-pocillopora-near.bin",
+      "bytes": 387192,
+      "sha256": "5243ec5fc58e0fed00df879fe0fe793af3057100d4a851d0b4d47dded11f0fca"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-scanned-reef/texture-receipts.json",
+      "bytes": 1365,
+      "sha256": "de9fea9a72a447f288a3c9bd492a8e797f7c68ebf176195bf0cd9468a2909ba4"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-source-turtle/hawksbill-body.png",
+      "bytes": 1320805,
+      "sha256": "4b59727f82ac9d50940170e487bbe6c21d93cddf7783d0aa9b00088991c1f09b"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-source-turtle/hawksbill-eyes.png",
+      "bytes": 487458,
+      "sha256": "b8dbd3ec67c5d7f0d99341cdb3307e12d668151ebf97d9bdd63d4e4c605dae3f"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-source-turtle/provenance.json",
+      "bytes": 2077,
+      "sha256": "e9b5f3ce918531e884e7f50cb14a63bae9d703bfcc1f0f01b48f9a96cca7fdaf"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-sourced-fish/barramundi-basecolor.png",
+      "bytes": 1109477,
+      "sha256": "05aff82bf6078734a3c7effe111f3f1ddc420f470bc61ddffea07c031da35f5e"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-sourced-fish/barramundi-normal.png",
+      "bytes": 888459,
+      "sha256": "cc27374b0086c7a44ff40df74e60cb50cf7b8752c9c38768b42a9cfb04398957"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-sourced-fish/barramundi-orm.png",
+      "bytes": 961003,
+      "sha256": "7cfeb34e13a5ccb53e2999a7ccbe1261ced354b19602e6ec176c03f6f0fa2e53"
+    },
+    {
+      "path": "site/ocean-world/assets/shallow-sourced-fish/provenance.json",
+      "bytes": 4566,
+      "sha256": "3302c81539eb98d332c95d180f687686957b0f811096b2dd6e9404db0ff72145"
+    },
+    {
+      "path": "site/ocean-world/index.html",
+      "bytes": 437,
+      "sha256": "8b7177c73d69b3ce510c90b9dae076b903b10abeb5efd9fbd552e692447dfc32"
+    },
+    {
+      "path": "source/.openai/hosting.json",
+      "bytes": 31,
+      "sha256": "d532abb65cf9ae20634b464d954cb4a08a0de9f3cd3cdf7f9c3ec8948826d947"
+    },
+    {
+      "path": "source/AGENTS.md",
+      "bytes": 280594,
+      "sha256": "8e032e0e37e0c2f02a3cff5df21cf557c3b5ef917d607ef7da735dd3cec5dded"
+    },
+    {
+      "path": "source/docs/SHALLOW_SAMPLE_FROZEN.md",
+      "bytes": 3673,
+      "sha256": "d9b264e4a1c76aef502277f495aed1b59ad14deb0ae94c1776d3bcdb53e2e26e"
+    },
+    {
+      "path": "source/index.html",
+      "bytes": 315,
+      "sha256": "2ef8c4d48233be5dfb9c477c42c11eddfc8bd438aa22d0de09513489651a85e0"
+    },
+    {
+      "path": "source/package-lock.json",
+      "bytes": 57645,
+      "sha256": "d38a10bde68b8e1ccc812a5356e0797365efa10e4c35c18f6365411b8db45aa4"
+    },
+    {
+      "path": "source/package.json",
+      "bytes": 808,
+      "sha256": "bda1d38112d00a8f2b069395b44ff352ace3c7e8ac9de6eb7ec2e3d5cefa03ea"
+    },
+    {
+      "path": "source/public/assets/coastal-rock/Diffuse.jpg",
+      "bytes": 998110,
+      "sha256": "e88c9e50109c7f610bc380a00b9bdac5954c392bb02134dedeea3358da57276a"
+    },
+    {
+      "path": "source/public/assets/coastal-rock/nor_gl.jpg",
+      "bytes": 1079683,
+      "sha256": "022000a37cb91457de2e0c738baebbc1b0b8eb864ba99321d07c248d5c0741bc"
+    },
+    {
+      "path": "source/public/assets/coastal-rock/provenance.json",
+      "bytes": 1588,
+      "sha256": "2aadf364b04a534b92e70a5b4b5c9f4f328de50536fe82640ba1f98a858e7f0b"
+    },
+    {
+      "path": "source/public/assets/coastal-rock/rough.jpg",
+      "bytes": 379850,
+      "sha256": "47e6c4b43c9cc5331d0392e3f74777f9a6712edda141dd148586b404c6c30e73"
+    },
+    {
+      "path": "source/public/assets/coral_ground_02_diff_1k.jpg",
+      "bytes": 743145,
+      "sha256": "83b51ff02b9b3b45a1eeb5676ab406b77e31c172e029e1e3e4280640fe197656"
+    },
+    {
+      "path": "source/public/assets/reef-limestone-albedo-v2.png",
+      "bytes": 4574030,
+      "sha256": "a5e23f0d5dd733bcea42cfcb20f6117b7dcb0e6706208b4c68118285d16d0db5"
+    },
+    {
+      "path": "source/public/assets/reef-rock-albedo.png",
+      "bytes": 3901217,
+      "sha256": "125e892fd7f81628f8703d2d787d2f2ace54d98dfd13bc3568eb59ee2f043812"
+    },
+    {
+      "path": "source/public/assets/reef-scan/DRACO-LICENSE.txt",
+      "bytes": 13898,
+      "sha256": "d3709b0fb4b8a94bbb1d02b8a2e484f258b0d9c5c5a01f940391f3fe662cd1a4"
+    },
+    {
+      "path": "source/public/assets/reef-scan/DRACO-README.md",
+      "bytes": 1395,
+      "sha256": "839850a67c93f6b26d3cc038a45bd8289e3cfdf15531e69339e8eb1282b4eb76"
+    },
+    {
+      "path": "source/public/assets/reef-scan/NOTICE.txt",
+      "bytes": 1477,
+      "sha256": "d7854f99f3ea0ce45537e79c823311f84e1969b67eb4ea0234c7cadde6527aa2"
+    },
+    {
+      "path": "source/public/assets/reef-scan/THREE-LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "source/public/assets/reef-scan/decoder-receipts.json",
+      "bytes": 948,
+      "sha256": "495028ff0b9f1526f6c06d63938cda4d881a969e34a358e097ae43126559d710"
+    },
+    {
+      "path": "source/public/assets/reef-scan/detail-candidate-download-receipts-v1.json",
+      "bytes": 2107,
+      "sha256": "d79dda7e6ff7b3eae6c0bfd09d723a97e7f1528ed454dc34c221fa8d6be5b8ac"
+    },
+    {
+      "path": "source/public/assets/reef-scan/document.json",
+      "bytes": 8698,
+      "sha256": "a6332dc422504fc2793124b159301a5aa33a82096d0a591dcfd7fa1d704c8418"
+    },
+    {
+      "path": "source/public/assets/reef-scan/download-receipts.json",
+      "bytes": 931,
+      "sha256": "09e86fb704dca8ba629fc511ed79649227dbb94d6e6ad84c0639479a3876b9d8"
+    },
+    {
+      "path": "source/public/assets/reef-scan/draco_decoder.wasm",
+      "bytes": 192420,
+      "sha256": "a680d927bed9cb864ddbd63521868891af2bfbe755092761b4837487618df8ac"
+    },
+    {
+      "path": "source/public/assets/reef-scan/draco_wasm_wrapper.js",
+      "bytes": 58456,
+      "sha256": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6"
+    },
+    {
+      "path": "source/public/assets/reef-scan/license-evidence.json",
+      "bytes": 2576,
+      "sha256": "5c8de9d819d7029c0a9917a34435810f09e0567011028e7d9cad6a0fd64245ad"
+    },
+    {
+      "path": "source/public/assets/reef-scan/usnm_229-150k-1024-low.glb",
+      "bytes": 1729252,
+      "sha256": "11a2bedd6925eae830831e191eb4a13668eb93e6ba9c44270534f574ec89f12b"
+    },
+    {
+      "path": "source/public/assets/reef-scan/usnm_229-150k-2048-medium.glb",
+      "bytes": 4244612,
+      "sha256": "20563502ece6c714c6a8853fa7add4d8dc4e3897d77f27aff1c93fda3c78a114"
+    },
+    {
+      "path": "source/public/assets/reef-scan/usnm_229-20k-thumb.glb",
+      "bytes": 323096,
+      "sha256": "c3ce125d357952ff1caa68efb920fcd4876d29459517d83b2de2a3aa211f8060"
+    },
+    {
+      "path": "source/public/assets/sand-albedo.png",
+      "bytes": 3279638,
+      "sha256": "9641b6c8a1dd0048de2bd992aeada2c723b5b2b8203d9febda60e4cf204365ca"
+    },
+    {
+      "path": "source/public/assets/shallow-artist/artist-fish-13.png",
+      "bytes": 386095,
+      "sha256": "f8d72debae23ed1dcdb6a4a5189edcc1562c2853c79af62d34490b4b5ecda6f6"
+    },
+    {
+      "path": "source/public/assets/shallow-artist/artist-fish-5.png",
+      "bytes": 293002,
+      "sha256": "bd9c51f3765b800a7f489c99067936dc6163fb03975b006350c2b2c26ae596db"
+    },
+    {
+      "path": "source/public/assets/shallow-artist/artist-fish-9.png",
+      "bytes": 196199,
+      "sha256": "97c7a968bdfa30b374f7da39fe3a6bfdd26b346903f59ee0ab22d459978909a3"
+    },
+    {
+      "path": "source/public/assets/shallow-artist/credits.html",
+      "bytes": 18683,
+      "sha256": "f64eaccbf909f97c0e1f479d89707c6dba9fa2b961454c68808b76c245196fa0"
+    },
+    {
+      "path": "source/public/assets/shallow-artist/fish.json",
+      "bytes": 2144755,
+      "sha256": "3d01b8a872aaafcb5440c2f8eba8eff33dd98a5f2bde650ea3da466da46f32dc"
+    },
+    {
+      "path": "source/public/assets/shallow-artist/provenance.json",
+      "bytes": 965,
+      "sha256": "7e2ee35ec35639d25c41139e9c001c25db12470b60a424ee71eaa46a09f23ab1"
+    },
+    {
+      "path": "source/public/assets/shallow-benthic-habitat/provenance.json",
+      "bytes": 6322,
+      "sha256": "eca267fc23d2969b6cfc25fe8a6cd46b62f836fd762f4472b3bb5b4a4c9dc59c"
+    },
+    {
+      "path": "source/public/assets/shallow-benthic-habitat/reef-lettuce-0.jpg",
+      "bytes": 1311340,
+      "sha256": "b3ad068cf3753fc6cd94f9ba9a2d70daace7b0a090d8733d66ddde67cee5705d"
+    },
+    {
+      "path": "source/public/assets/shallow-benthic-habitat/reef-lobed-0.jpg",
+      "bytes": 727984,
+      "sha256": "fba8041aa2119bfca34da354643e2dbc9af6ef2247f66de781bf281b15cd7ff6"
+    },
+    {
+      "path": "source/public/assets/shallow-benthic-habitat/sponge-stove-0.jpg",
+      "bytes": 1044573,
+      "sha256": "c8e9e72c281d58bb51b00be5d0fadf1f56fe974978fc5ad0bf7f3fdf74df46ff"
+    },
+    {
+      "path": "source/public/assets/shallow-body-kit/provenance.json",
+      "bytes": 8969,
+      "sha256": "0985fa5c9850e2c95a97231e46cbc80ae5d9187ce5782900e8115b4b722bbdb1"
+    },
+    {
+      "path": "source/public/assets/shallow-branching-life/provenance.json",
+      "bytes": 7598,
+      "sha256": "db2446361674c3e2a4c9e541085658f006b50b76d3c985a4378a68600224966b"
+    },
+    {
+      "path": "source/public/assets/shallow-cephalopods/provenance.json",
+      "bytes": 3204,
+      "sha256": "c5ed05cd392b3bf78a3ecbb7dca65fddded270fcffce5e2cca2f50e9d2572f46"
+    },
+    {
+      "path": "source/public/assets/shallow-cohesive-life/provenance.json",
+      "bytes": 2013,
+      "sha256": "13d99448d826006b9983469fea0f59b679a17594c16ff1fd09e2b55a82243d15"
+    },
+    {
+      "path": "source/public/assets/shallow-community-fish/provenance.json",
+      "bytes": 7649,
+      "sha256": "bedf3e5ba69b1c42f1dee43c3f361a0faaf4d3a3dca042e067a40cc1d3bb9c99"
+    },
+    {
+      "path": "source/public/assets/shallow-contact-fauna/crab-blue-0.jpg",
+      "bytes": 937141,
+      "sha256": "f4aca94889a7b534d4db99e68e2ea581120e0e58990c6557ada22a5e01da6446"
+    },
+    {
+      "path": "source/public/assets/shallow-contact-fauna/crab-blue-1.jpg",
+      "bytes": 1141601,
+      "sha256": "dd9e618fcca644d58039ca48da8fa3c93b91f3b6a56fc0598b06f14b49907838"
+    },
+    {
+      "path": "source/public/assets/shallow-contact-fauna/crab-blue-2.jpg",
+      "bytes": 3356,
+      "sha256": "25279fa0b6974da96625cd0ad9320b841b58c9daebde298a9833f3fabf128a87"
+    },
+    {
+      "path": "source/public/assets/shallow-contact-fauna/octopus-lukas-0-normal.jpg",
+      "bytes": 949786,
+      "sha256": "e31e40cda7fe387445baa55f400d60f2b23e440496ea554293f34ea52dcbbc68"
+    },
+    {
+      "path": "source/public/assets/shallow-contact-fauna/provenance.json",
+      "bytes": 2892,
+      "sha256": "fa9950e6d6a65e80898d80a8c210967bc24158fce20ed01e9187a09ed1b4aa69"
+    },
+    {
+      "path": "source/public/assets/shallow-grounded-assembly/provenance.json",
+      "bytes": 1970,
+      "sha256": "f2249c5442c40b8595d3ff613d0a5c67022b5655f76f92356fe71f0e1a403180"
+    },
+    {
+      "path": "source/public/assets/shallow-habitat/provenance.json",
+      "bytes": 1728,
+      "sha256": "af0a7f35fadc377ef5ea7ca0295c4494307701e61e235822086059b8672e20bb"
+    },
+    {
+      "path": "source/public/assets/shallow-live-reef/provenance.json",
+      "bytes": 9355,
+      "sha256": "cc4f4c1f1f11d02558b3deadc88ec19ed5fc3bae563628c45c9dcb9172ed07a1"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/acropora-robusta-0.jpg",
+      "bytes": 1009335,
+      "sha256": "87789e0c2c9c6ece93cf142eec2498fba910d86ee2318c0753e5e3f2b73f676c"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/provenance.json",
+      "bytes": 5166,
+      "sha256": "535c96403f8c36d7bafb5dc9fb867829199f0ec4de4313a1a62c212bc969dcb3"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/reef-shark-0.png",
+      "bytes": 245654,
+      "sha256": "f6cede13abc70862ef146f2b11ab42eff5e7e94aea55caa99815484ca2c05d8a"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/reef-shark-1.png",
+      "bytes": 187096,
+      "sha256": "b5a1230c8e9db0d62f76bb641598964e3683f38293ef49f74b29e5192ec8fb6a"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/reef-shark-2.png",
+      "bytes": 150095,
+      "sha256": "4a053266f26467c979d589998874f8c4d978ec6e179b6a40a376796304129614"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/reef-shark-3.png",
+      "bytes": 177221,
+      "sha256": "7df2056695f90c3c910b219bac50a194d76e9338b96f2fd0e8c3c17ce866a1ab"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/reef-shark-4.png",
+      "bytes": 457940,
+      "sha256": "2b6802225b8bd7cd35d4ea96e6a202f2ed412ef53788880969a85462bf90ed51"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/reef-shark-5.png",
+      "bytes": 149315,
+      "sha256": "a957844b04eec08436974264e1277968f64571d90193fa781d49089399b43c83"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/table-acropora-0.jpg",
+      "bytes": 1152707,
+      "sha256": "26e3bb877d3ff64b5dcae8d8a58ad5453ce5b98d591faf6c015a0c6ce1edba1c"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/table-acropora-1.jpg",
+      "bytes": 948193,
+      "sha256": "601053225c8bb3f74df3d63b44cee71b9ee9e014a7b85d164f0a94101dcd2d4a"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/table-acropora-2.jpg",
+      "bytes": 537354,
+      "sha256": "df6703eaf64126429b713b4200025196fd675bc5046fa110632b4ba0151848e8"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/table-acropora-3.jpg",
+      "bytes": 977882,
+      "sha256": "a87e33bacf9dc10804040230e9d649034a2443e987aa8edb599a0e0313c7375b"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/table-acropora-4.jpg",
+      "bytes": 959376,
+      "sha256": "24c1753df6a521233bb3241c415bd6d73e779ff066d5393c9f514d873b93e10f"
+    },
+    {
+      "path": "source/public/assets/shallow-living-kit/yellow-tang-low-0.png",
+      "bytes": 1011972,
+      "sha256": "550da96f626d1659baf73ccc7cc97d5840eb6bc42fc3220058175bd0bf8c7f57"
+    },
+    {
+      "path": "source/public/assets/shallow-mixed-communities/provenance.json",
+      "bytes": 2718,
+      "sha256": "b4563ef2ebc4ea7ac29ab04c76816d022a9269f4647399aa81e4a60b0afbc23e"
+    },
+    {
+      "path": "source/public/assets/shallow-museum-corals/provenance.json",
+      "bytes": 4857,
+      "sha256": "6186fc71d48f094c06b0867ae13c9ed13befd84b62596c44d7de31ea020e2893"
+    },
+    {
+      "path": "source/public/assets/shallow-natural-assets.json",
+      "bytes": 50430,
+      "sha256": "0ead9400e39c34609b75f42f600ee3e437f9bbcf25bac343da624c31ba81642b"
+    },
+    {
+      "path": "source/public/assets/shallow-natural-habitat/coast_land_rocks_02-0.jpg",
+      "bytes": 886282,
+      "sha256": "2223040a8b7327b8e8b6ae78960a92ea4e10a7d62f3114496851d37dfdc2aff2"
+    },
+    {
+      "path": "source/public/assets/shallow-natural-habitat/provenance.json",
+      "bytes": 1413,
+      "sha256": "c855c66ea87bd6cb49284d6fbe2969f7adb976941d8375799f6f3257dfa8f33a"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/distance-provenance.json",
+      "bytes": 2687,
+      "sha256": "3a9dc4d340ae820b780b53270e57a645bda73f200e557bd113da524b691b848d"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/fish-0.jpg",
+      "bytes": 388414,
+      "sha256": "dfda47333b86e8af57c34cee0f5ea8c362d253d3aad9ccd9d154c758060266b1"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/foliose-0.jpg",
+      "bytes": 1064909,
+      "sha256": "ff2f90db19a53a3d62b161913acbfdf46d5b330aa5bd2af6b08b54f64177fdf8"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/provenance.json",
+      "bytes": 6787,
+      "sha256": "ea3a6797e7803f7df427fca32193ad4f61a25726c7670846120cd448868c6c0a"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-0.jpg",
+      "bytes": 1658316,
+      "sha256": "74072429c2cb7ac5da876414c69a75e09871148e69070b69541613d381b36e18"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-1.jpg",
+      "bytes": 1504107,
+      "sha256": "c799181e96a64daa41b8b02b6ea35fcd353874932a71cf3e6bb1bc5340c35e3d"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-10.jpg",
+      "bytes": 1434325,
+      "sha256": "6b6efb48d857f7b0d4bd6b41b97019869fe3bcf62d7d00cbfaa587f0eb1f2cc6"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-11.jpg",
+      "bytes": 1514097,
+      "sha256": "115a010f7d5838e84a03208c795bb91e5a3297bd0d0ede16e7f267196e5ac5c7"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-12.jpg",
+      "bytes": 1485695,
+      "sha256": "2c0232c7bd4f391cb1e4929518c62591b250edaae64a89f898f2c70a64b0e97e"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-13.jpg",
+      "bytes": 1534679,
+      "sha256": "70021efa2d8e9377c13ee0c7a5b167f15958caca8848a9b1a3b78df5a070f2ad"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-14.jpg",
+      "bytes": 1477888,
+      "sha256": "f61527f0747507e77b4305c9d4fa7fa758591ba4b91aa304c5cfa64c5b48c50b"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-15.jpg",
+      "bytes": 806358,
+      "sha256": "d1688e1fa1f35d249ec18b4c03468caa6b2ef70a1698c9c8d904c77d4b7a8207"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-2.jpg",
+      "bytes": 1415748,
+      "sha256": "611f50216a0b54ca22e00d75544003fcd76e48d0be5025fa5a240021db7a7179"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-3.jpg",
+      "bytes": 1420334,
+      "sha256": "1fedaa90b40434b24e3b173d0fe39abe61ed4aef30d319b79a45c2a3ba14396b"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-4.jpg",
+      "bytes": 1432891,
+      "sha256": "d25d7dd851b3caca9fe64365e5805c792b063a2ff3906692a7ba7388f08ea71f"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-5.jpg",
+      "bytes": 1424960,
+      "sha256": "45798ccec7d9b7a93c051e79ef14b5b5c3ac2762072514d86bd4cec9cbf191c2"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-6.jpg",
+      "bytes": 1445430,
+      "sha256": "73c91d163031e5729e5353794bbc8b52491509bb124680a5dc1a58b0c97ca44f"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-7.jpg",
+      "bytes": 1411260,
+      "sha256": "29f874933d4934478138031d7350ffb44f717a27cb977bed42e01769aef4da58"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-8.jpg",
+      "bytes": 1429123,
+      "sha256": "40736364df0363d67c65e95965fa7484694c87c166bb08fa498c6af6d1e8ee28"
+    },
+    {
+      "path": "source/public/assets/shallow-near-community/reefscan-9.jpg",
+      "bytes": 1456419,
+      "sha256": "1a6ecf2b2a7ce9700e482699ae40beb93701a82b8071cff28f317045af7be47e"
+    },
+    {
+      "path": "source/public/assets/shallow-open-community/blacktail-snapper-1.jpg",
+      "bytes": 1289777,
+      "sha256": "29a19ab25b3f188b385862179dfeda6b710757284555f07453f3e82a973d1c09"
+    },
+    {
+      "path": "source/public/assets/shallow-open-community/giant-trevally-1.jpg",
+      "bytes": 873019,
+      "sha256": "24a6036771e228e459a8b7fc8d18055242c3a2a672767f1a07d35c7c28d167c9"
+    },
+    {
+      "path": "source/public/assets/shallow-open-community/giant-trevally-2.jpg",
+      "bytes": 893197,
+      "sha256": "cf2b6bcab75848bfa289947a782f3b0041231285b5748bf9babd001ad5ca3195"
+    },
+    {
+      "path": "source/public/assets/shallow-open-community/porites-live-0.jpg",
+      "bytes": 513709,
+      "sha256": "0e557ad7388631bfa669da230ffe349de3a8dc07bc77046fc3d4e845956b7a2a"
+    },
+    {
+      "path": "source/public/assets/shallow-open-community/provenance.json",
+      "bytes": 8439,
+      "sha256": "f21fc3894a9043c6e37f161f4e184b2a9544dbcfeffdbc2b219f52af2b65757a"
+    },
+    {
+      "path": "source/public/assets/shallow-reef-architecture/provenance.json",
+      "bytes": 1561,
+      "sha256": "b10778d293c6b693d6ee4cea94ab8481f799b860129e40d652b0b842f4bd7237"
+    },
+    {
+      "path": "source/public/assets/shallow-reef-carbonate-v1.png",
+      "bytes": 4419469,
+      "sha256": "4136e31cff54b070d15677c6248588f4868c5aea1b1d3df245b1ecc1282fe644"
+    },
+    {
+      "path": "source/public/assets/shallow-reef-carbonate-v1.provenance.json",
+      "bytes": 2054,
+      "sha256": "25b6bddaf4430059c49c5dbca9e7b73f4b9188ee0b9ccec0ddf31d10cc8b76d4"
+    },
+    {
+      "path": "source/public/assets/shallow-reef-carbonate-v2.png",
+      "bytes": 4097781,
+      "sha256": "7cf7d0531bbc8b04fbc738808490b70aa3a51f940dbdb00e57247d4645bccf6a"
+    },
+    {
+      "path": "source/public/assets/shallow-reef-carbonate-v2.provenance.json",
+      "bytes": 2595,
+      "sha256": "881b6795525a0802c6ca0e3c0120e43867a7600267a2869a4b614ee51e2b9db7"
+    },
+    {
+      "path": "source/public/assets/shallow-reef-mosaic/provenance.json",
+      "bytes": 1216,
+      "sha256": "754c3625aecc8cc5ff36c1eca6ca9cb9bcacbc79ada561a75f515fee83481434"
+    },
+    {
+      "path": "source/public/assets/shallow-ribbon-habitat/provenance.json",
+      "bytes": 965,
+      "sha256": "b2d82587632c47db842c0e843760991758daa4fc78ca97d0a491b4b97c20780c"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/SOURCE-MIT-LICENSE.txt",
+      "bytes": 1091,
+      "sha256": "258af090f7b08ce937ab2fa5768d95ee3b2773dbcfe8aee763e6062da0681129"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/provenance.json",
+      "bytes": 15411,
+      "sha256": "113397a0010d543db625ffc1c4d9e7ae1f26fe039abbb58bbe82f3c986d8a4d3"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/scanned-diploastrea-albedo-1024.jpg",
+      "bytes": 799682,
+      "sha256": "da19d8f0d3731f7cd786e6d5b55f1b676fce7ddb2be41cb9d555a7210a65443b"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/scanned-diploastrea-distant.bin",
+      "bytes": 91698,
+      "sha256": "e1129fa0d0a47e6357c2fa0eb58057fdb6c39be8a8f6fbec0b4ea1bc9a764413"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/scanned-diploastrea-near.bin",
+      "bytes": 387600,
+      "sha256": "19a457aba4ba998600fd6ec1972923aaf3c7405e1608df4bb8638b219b07dee0"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/scanned-pocillopora-albedo-1024.jpg",
+      "bytes": 796925,
+      "sha256": "c103dff3b06443a28d5ff184a0b2ef1e59e27383891e18ed4dd7bf29ed4ef238"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/scanned-pocillopora-distant.bin",
+      "bytes": 91698,
+      "sha256": "1101a4997a3fd5971d13a3e3dd8824011b30a42ca3cb4b1fb179094e730c7a59"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/scanned-pocillopora-near.bin",
+      "bytes": 387192,
+      "sha256": "5243ec5fc58e0fed00df879fe0fe793af3057100d4a851d0b4d47dded11f0fca"
+    },
+    {
+      "path": "source/public/assets/shallow-scanned-reef/texture-receipts.json",
+      "bytes": 1365,
+      "sha256": "de9fea9a72a447f288a3c9bd492a8e797f7c68ebf176195bf0cd9468a2909ba4"
+    },
+    {
+      "path": "source/public/assets/shallow-source-turtle/hawksbill-body.png",
+      "bytes": 1320805,
+      "sha256": "4b59727f82ac9d50940170e487bbe6c21d93cddf7783d0aa9b00088991c1f09b"
+    },
+    {
+      "path": "source/public/assets/shallow-source-turtle/hawksbill-eyes.png",
+      "bytes": 487458,
+      "sha256": "b8dbd3ec67c5d7f0d99341cdb3307e12d668151ebf97d9bdd63d4e4c605dae3f"
+    },
+    {
+      "path": "source/public/assets/shallow-source-turtle/provenance.json",
+      "bytes": 2077,
+      "sha256": "e9b5f3ce918531e884e7f50cb14a63bae9d703bfcc1f0f01b48f9a96cca7fdaf"
+    },
+    {
+      "path": "source/public/assets/shallow-sourced-fish/barramundi-basecolor.png",
+      "bytes": 1109477,
+      "sha256": "05aff82bf6078734a3c7effe111f3f1ddc420f470bc61ddffea07c031da35f5e"
+    },
+    {
+      "path": "source/public/assets/shallow-sourced-fish/barramundi-normal.png",
+      "bytes": 888459,
+      "sha256": "cc27374b0086c7a44ff40df74e60cb50cf7b8752c9c38768b42a9cfb04398957"
+    },
+    {
+      "path": "source/public/assets/shallow-sourced-fish/barramundi-orm.png",
+      "bytes": 961003,
+      "sha256": "7cfeb34e13a5ccb53e2999a7ccbe1261ced354b19602e6ec176c03f6f0fa2e53"
+    },
+    {
+      "path": "source/public/assets/shallow-sourced-fish/provenance.json",
+      "bytes": 4566,
+      "sha256": "3302c81539eb98d332c95d180f687686957b0f811096b2dd6e9404db0ff72145"
+    },
+    {
+      "path": "source/scripts/bake-shallow-cover.mjs",
+      "bytes": 1326,
+      "sha256": "5f3594756fbea60b1c88d72b8ee9e7a4bef7e5378f60ab39596fb7cf90539266"
+    },
+    {
+      "path": "source/scripts/prepare-sites-build.mjs",
+      "bytes": 910,
+      "sha256": "b6a6adaa4fab3234676116dd1c9cb6611275ab9d92dd26f5bf402393e3744bf6"
+    },
+    {
+      "path": "source/scripts/validation-capture-plugin.mjs",
+      "bytes": 8765,
+      "sha256": "2bf411bf66ef3ee1ab1dd725470bf7f79d018f0d04b0fd7fc5fb6e170204b046"
+    },
+    {
+      "path": "source/src/AgeWorkbench.jsx",
+      "bytes": 10639,
+      "sha256": "fdd56b88a8f96982e229294ea7462ed89a7cfac873424ed2ac48b58834a41fe0"
+    },
+    {
+      "path": "source/src/App.jsx",
+      "bytes": 533,
+      "sha256": "3571e61c4dc56a60738aae9f41c7f846fe1c6ffb8ded99b9cae40ac27d5fd5f8"
+    },
+    {
+      "path": "source/src/DemoOverview.jsx",
+      "bytes": 9234,
+      "sha256": "564e03d2685918e62317ba38270624ccabb55ab5e717f397dfcc63d550cfcd24"
+    },
+    {
+      "path": "source/src/DirectorPlayer.jsx",
+      "bytes": 8192,
+      "sha256": "cb40b1f7b3b622e56f80911b01a4c08d489732cfcbf0660d75c1372c3c3b6df5"
+    },
+    {
+      "path": "source/src/LifeExpeditionPanel.jsx",
+      "bytes": 1477,
+      "sha256": "569a0c6c0d37f17eabd3af61c3e88fcbe5b17cdd7de548d7276e0ead1f298948"
+    },
+    {
+      "path": "source/src/OceanApp.jsx",
+      "bytes": 123802,
+      "sha256": "28ce03b3474dbcf8e3f9c6c50a1e77cf45a05cf9c76875fee502f4a4d2e2b29d"
+    },
+    {
+      "path": "source/src/PopulationWorkbench.jsx",
+      "bytes": 7941,
+      "sha256": "e0b997a1aad2880e78518155c2ed2f61b97e8accecb27d32872a5ca49dffb781"
+    },
+    {
+      "path": "source/src/ResourceHistory.jsx",
+      "bytes": 2352,
+      "sha256": "d7e27c70b22af2a68394656f8e06df7539bb0e1f6dbbb154841a390cafee3110"
+    },
+    {
+      "path": "source/src/ShallowSampleApp.jsx",
+      "bytes": 13196,
+      "sha256": "615b694160e8a3bb94f4a8e2bf6753d4df1c44591053fa5b4d14d972d7fde393"
+    },
+    {
+      "path": "source/src/biomes.js",
+      "bytes": 24254,
+      "sha256": "b265629fd281740bc3b79bbb6c772edaad151766c6af7c29871c3eff4170d38c"
+    },
+    {
+      "path": "source/src/capture.js",
+      "bytes": 1207,
+      "sha256": "579dbc927b0d8fd81b2008270c8139173c22ad1160ac4a011242a8c748b79dba"
+    },
+    {
+      "path": "source/src/coastalSeascapeMotion.js",
+      "bytes": 3429,
+      "sha256": "3e19cfd9ba4b3772c4a313e315483def65b1e6953479a43cc16e7a2a5cde5f23"
+    },
+    {
+      "path": "source/src/deepBenthicLife.js",
+      "bytes": 33187,
+      "sha256": "4ab750c9d3d7d4a2ec0e8a87e3ff0f5075bc011fc484c51779705b3da90574e0"
+    },
+    {
+      "path": "source/src/deepBenthicLifeRoutes.js",
+      "bytes": 303,
+      "sha256": "5c621a776d497f7bd4a73adc03788a1653c83ba4d47b435893a9a2c05e5fd0c3"
+    },
+    {
+      "path": "source/src/deepBenthicLifeSpecies.js",
+      "bytes": 12892,
+      "sha256": "ed8fd46ed2d6d9632b3ffc1d1dbfd0ef91376e6c90294050660a3a7b31aa7f12"
+    },
+    {
+      "path": "source/src/deepHabitat.js",
+      "bytes": 2364,
+      "sha256": "8dae6cd5f9b0c6b1dc95246b8a5d586d063ad36bf64fe087d8ef850e93cb0da1"
+    },
+    {
+      "path": "source/src/deepHardLife.js",
+      "bytes": 31117,
+      "sha256": "e5f8eb0c3f76565afe9fe90131076557aa16b26a55f16ec0c4ba35a8e9586d7e"
+    },
+    {
+      "path": "source/src/deepHardLifeRoutes.js",
+      "bytes": 398,
+      "sha256": "1c94c202643fdebd8e6a4af1d7c1bc82ed2abf475f5ddefca90e41c7295dc434"
+    },
+    {
+      "path": "source/src/deepHardLifeSpecies.js",
+      "bytes": 11193,
+      "sha256": "2e1b45c90efcffa6f0e752e900232a28b53daf49b9358a3508f3e8984d4a6b75"
+    },
+    {
+      "path": "source/src/deepMidwaterLife.js",
+      "bytes": 33803,
+      "sha256": "1d947c989954219a181fa57f87914f5201fe1ea8265ea27415d334a06920c2c7"
+    },
+    {
+      "path": "source/src/deepMidwaterLifeRoutes.js",
+      "bytes": 275,
+      "sha256": "6bed20780dfc53e693bb76c333dd167cc63e2a2b5c2b8a021d62992353b53c8f"
+    },
+    {
+      "path": "source/src/deepMidwaterLifeSpecies.js",
+      "bytes": 16902,
+      "sha256": "634b6c05c73c25af2510af03e906e576b4d46b13e5e896d122b7f850ace3141f"
+    },
+    {
+      "path": "source/src/deepOceanEcology.js",
+      "bytes": 57785,
+      "sha256": "578c69010422f336e2ac6d172569f6cc079deba65ba1ea7199d6be398599d15d"
+    },
+    {
+      "path": "source/src/deepOceanGeneration.js",
+      "bytes": 12540,
+      "sha256": "c42c5d17d1a6d27eaffcd967d578fe89cd53b9303dc5b221a561ec12f1cff7d0"
+    },
+    {
+      "path": "source/src/deepOceanNavigation.js",
+      "bytes": 1211,
+      "sha256": "ccfde963fd94b69e38c660f469625108295f6a1f39601b6f6bd3889b70001b2f"
+    },
+    {
+      "path": "source/src/deepPredatorEcology.js",
+      "bytes": 22289,
+      "sha256": "2430aee861189a3cb097d1fa1bfb83173ab37431d3417f5f199053ea0f084801"
+    },
+    {
+      "path": "source/src/deepPredatorSpecies.js",
+      "bytes": 1461,
+      "sha256": "642067883a2001d103ea4d386821add8daef9c1e30f0b29c6a0cfbe408a9c11d"
+    },
+    {
+      "path": "source/src/deepSeaSpiderGeometry.js",
+      "bytes": 6965,
+      "sha256": "2b93dcb618f913ed23d5bb2a67907e23b6d8f4526f8cd9a867e10dc6018b017d"
+    },
+    {
+      "path": "source/src/deepSeascape.js",
+      "bytes": 18842,
+      "sha256": "cbc1007554e6c7da54a5c6b0bd1eba1b7407df1e8e68113f9663ec76718676a5"
+    },
+    {
+      "path": "source/src/deepSimulation.js",
+      "bytes": 27057,
+      "sha256": "3ed350e678bb89002445d1c9c6b376aa7dcae5780a04c5d4d4a1c853bfe7623b"
+    },
+    {
+      "path": "source/src/deepSpecies.js",
+      "bytes": 1579,
+      "sha256": "9da0e1b41bbb9c4b61c26d082bd8a3090b0d1350fef626836ecdb44ea2a88c8a"
+    },
+    {
+      "path": "source/src/deepWaterLife.js",
+      "bytes": 26900,
+      "sha256": "260640c29177e033e2fe8d814e72f4256358971c9fa79e76de251f03f389fcfd"
+    },
+    {
+      "path": "source/src/deepWaterLifeRoutes.js",
+      "bytes": 405,
+      "sha256": "cce0a2b2e5d5e1ffd4cc4208c29dbf2f1cff10b6564b59936014e81a36870617"
+    },
+    {
+      "path": "source/src/deepWaterLifeSpecies.js",
+      "bytes": 10984,
+      "sha256": "721e6ff5d88f4c21a24e7ee02327b17e0f2468f9ccbbf05cb87038803305b370"
+    },
+    {
+      "path": "source/src/deepWholeSeascape.js",
+      "bytes": 16165,
+      "sha256": "deae8f6e0b71d7e718a80d788bc1b810a93ea051809c93ec022dc50855aaa2e5"
+    },
+    {
+      "path": "source/src/demoCapabilities.js",
+      "bytes": 15112,
+      "sha256": "64bc3b8f5506716504cfa30a311c89d198a0e76236fd14c3c5da7daf1f1ea733"
+    },
+    {
+      "path": "source/src/demoNavigation.js",
+      "bytes": 3444,
+      "sha256": "3e45f2a36b9c90325d31465aed1f936980cc70efdc4833176dac5cf192fd6541"
+    },
+    {
+      "path": "source/src/demoOverview.css",
+      "bytes": 8754,
+      "sha256": "68e3576eaa7d9dd024b8c2e0be692b31b2c117bca5af3546f9a430f0afcdb37f"
+    },
+    {
+      "path": "source/src/directorCameraMotion.js",
+      "bytes": 5505,
+      "sha256": "3e5621d131174aec29bf641736270fabd986854481f907af2b37c99b76a8bba8"
+    },
+    {
+      "path": "source/src/directorEntryMotion.js",
+      "bytes": 5118,
+      "sha256": "79467a1ff24da5abe54f3e93015c8f56b1af1b2759a6a4e78152aae4fb71c748"
+    },
+    {
+      "path": "source/src/directorMotionReceipt.js",
+      "bytes": 691,
+      "sha256": "95bef6afac3e3f5a16d5bcb8b3170d00ec3152116d79a50ef1dd982029019d38"
+    },
+    {
+      "path": "source/src/directorPlayer.css",
+      "bytes": 7596,
+      "sha256": "4cd7e40bd7b9b777ed38d00ee01a4ad72377566b736a90d649e1fb86b4a4bc8a"
+    },
+    {
+      "path": "source/src/directorReadiness.js",
+      "bytes": 1822,
+      "sha256": "2a363356f75bd8c7fcbb79e855956cb53ec3a6796e4eb3021c202cc06bc91418"
+    },
+    {
+      "path": "source/src/directorTour.js",
+      "bytes": 18068,
+      "sha256": "75a4810271107f4b7f7c34d5afc5199a3e8f2bc735f140d1ce5679f48189051e"
+    },
+    {
+      "path": "source/src/directorTourProgress.js",
+      "bytes": 1825,
+      "sha256": "04b7e599c97960307a35fa76dd4b405515e7923cbf01c7af3ad7db1b2e6bdb37"
+    },
+    {
+      "path": "source/src/ecology/AgeStructuredExperiment.js",
+      "bytes": 22043,
+      "sha256": "c2e806e3c95ecc9bb5f2c371964715e8dc722f0e23e231ad0ed97137e4eee035"
+    },
+    {
+      "path": "source/src/ecology/PopulationExperiment.js",
+      "bytes": 17213,
+      "sha256": "0f8d8660a7e3fdf15e601b95e5d85154c80f396a605c035b530845e633fc319b"
+    },
+    {
+      "path": "source/src/ecology/ageExperimentWorker.js",
+      "bytes": 333,
+      "sha256": "1c8341b7852241c8b7e1f215ea4826fa75151a1cbe3d1f72ccffb59b3945386c"
+    },
+    {
+      "path": "source/src/habitat.js",
+      "bytes": 17150,
+      "sha256": "d82568f9c727b967dc761e2dedf5dc1f30f3d0f34659c66d2ead1b56a2495397"
+    },
+    {
+      "path": "source/src/kelpBenthicLife.js",
+      "bytes": 28797,
+      "sha256": "391a164b67c08c17377a1da731404570a82160d905364e212b1c94946f4c637a"
+    },
+    {
+      "path": "source/src/kelpBenthicLifeRoutes.js",
+      "bytes": 279,
+      "sha256": "bb03cede46124a7b73e3f2fb3d9da4ab780f0c8193309ea42f1a45bf28d2ebb9"
+    },
+    {
+      "path": "source/src/kelpBenthicLifeSpecies.js",
+      "bytes": 12137,
+      "sha256": "47db651f4c5c614adeced43dcd7a69602866709cd8b58aaa1bb8901ce169e4ba"
+    },
+    {
+      "path": "source/src/kelpCommunityObservation.js",
+      "bytes": 20710,
+      "sha256": "6e19fbda21e885a0749626359703958e1e311202f5013bfaee31197ebf11a46a"
+    },
+    {
+      "path": "source/src/kelpDriftEcology.js",
+      "bytes": 20231,
+      "sha256": "d3665c9c3144b1bb2573c80a23c918034b8a0de572bc90556966bcfcc84564d8"
+    },
+    {
+      "path": "source/src/kelpDriftGeometry.js",
+      "bytes": 2660,
+      "sha256": "0d16db672fb369bc72cfdf11ba3145d5ac397b1d0fa33f5490e88fbf83a5a8b6"
+    },
+    {
+      "path": "source/src/kelpForestBelt.js",
+      "bytes": 14429,
+      "sha256": "928f5c6599b3f2d312c645b81fdd6445f4ecfbb6300563570ab503c153c1db87"
+    },
+    {
+      "path": "source/src/kelpHabitat.js",
+      "bytes": 13678,
+      "sha256": "d89b5f5a8c1c4150f2725c877c79c818e0a1daaab65b138132ab46c822d0ca43"
+    },
+    {
+      "path": "source/src/kelpNearBottomLife.js",
+      "bytes": 37779,
+      "sha256": "a19223aae752dc038920ac06cb5b347dc61fe597d8aa715f1f3721384e000a0b"
+    },
+    {
+      "path": "source/src/kelpNearBottomLifeRoutes.js",
+      "bytes": 397,
+      "sha256": "ce4d170585930c03652e52bec43abf44ae9215facfaa235f0ff5ce9180ae6ff1"
+    },
+    {
+      "path": "source/src/kelpNearBottomLifeSpecies.js",
+      "bytes": 19302,
+      "sha256": "3cec30055cca8e837596b1b6e54dd3984579c6fe275dd7b415458615d7570f2e"
+    },
+    {
+      "path": "source/src/kelpOceanEcology.js",
+      "bytes": 95850,
+      "sha256": "75e298742e651fc2bd6f2b8b68c48f16ca50099772910e6ac9e5d7669faa2805"
+    },
+    {
+      "path": "source/src/kelpOceanGeneration.js",
+      "bytes": 18407,
+      "sha256": "090ffead8a86da577492dd05e2d7824348e0414dfee2ad5f2c4d1c2d4a9c4cad"
+    },
+    {
+      "path": "source/src/kelpOceanLandforms.js",
+      "bytes": 6984,
+      "sha256": "9bb15711bac0ea1fe6d7c999c9ffc92171a7ab19a0072f73babaae12de08f007"
+    },
+    {
+      "path": "source/src/kelpSeascape.js",
+      "bytes": 12781,
+      "sha256": "72440c8e5c42b2c4b6780f2d8897b737362793efbe1de4c2f97fcd151d46d880"
+    },
+    {
+      "path": "source/src/kelpSimulation.js",
+      "bytes": 27962,
+      "sha256": "eaf562abfa990d3ddb1a8b6e98f4918c4d31d940481b805724d06d83131dc86b"
+    },
+    {
+      "path": "source/src/kelpSupportMigration.js",
+      "bytes": 4993,
+      "sha256": "622ce5200d8de62000be14be402d57292d730042c46dfa0032ced40183c5241c"
+    },
+    {
+      "path": "source/src/kelpUnderstory.js",
+      "bytes": 8250,
+      "sha256": "a3ecd864e83d46b9b26f326c7caf9d9bd80677a4be8869dcac079795aafb5012"
+    },
+    {
+      "path": "source/src/kelpUnderstoryLife.js",
+      "bytes": 39758,
+      "sha256": "18cd93eb69cc1399c64f48c3c3b665f4b0b7baf1a7a7642371adbeaea15bacee"
+    },
+    {
+      "path": "source/src/kelpUnderstoryLifeRoutes.js",
+      "bytes": 242,
+      "sha256": "2dfcad9d2dfd07ee1367bd03e83509d85f89bff9e701921e535ad5ac34fc278f"
+    },
+    {
+      "path": "source/src/kelpUnderstoryLifeSpecies.js",
+      "bytes": 17156,
+      "sha256": "2f018133817ca934f24195b660f94898f8d7d44675c7b8843035e3b1979aecf1"
+    },
+    {
+      "path": "source/src/kelpVisitorCommunity.js",
+      "bytes": 10595,
+      "sha256": "0a7abedc3437079ae2a3c66c64601c9d5d878c10ac9cc2b98e1d2522a8a08b96"
+    },
+    {
+      "path": "source/src/kelpVisitorSpecies.js",
+      "bytes": 1990,
+      "sha256": "4c88026e9afa6a451c4ba275997c1a6199a5b90f8998febbc32d2936b7c58e81"
+    },
+    {
+      "path": "source/src/kelpWaterCommunity.js",
+      "bytes": 7952,
+      "sha256": "1e86a08bb29bd4f88247b07978d72dfb100c6b5327394d9bc9548abd585cb314"
+    },
+    {
+      "path": "source/src/kelpWaterLife.js",
+      "bytes": 38194,
+      "sha256": "3b6e2cccb17f895594eecfe77f1ebc4603734b5b42592b213dab0532ba4e7eb2"
+    },
+    {
+      "path": "source/src/kelpWaterLifeRoutes.js",
+      "bytes": 233,
+      "sha256": "c8575537270235b3fc2d56e85722a4cd5c7c7e4e1806338acd6f4a14941e97af"
+    },
+    {
+      "path": "source/src/kelpWaterLifeSpecies.js",
+      "bytes": 18304,
+      "sha256": "1dd923a4a97a17884fdbb9172e446e0cde9d9712cd76ffe9c29461392d5b1253"
+    },
+    {
+      "path": "source/src/kelpWaterSpecies.js",
+      "bytes": 2616,
+      "sha256": "2b7193da83de8550c0fb521cd7f26ee1df69eeb32e35e312c1bfa4dfeeaff37f"
+    },
+    {
+      "path": "source/src/lifeExpedition.js",
+      "bytes": 8526,
+      "sha256": "baed96c9ec119f855dd8a6f429a70bf24a01ff858fb989dc14023a317f0da874"
+    },
+    {
+      "path": "source/src/livingCoastalSeascape.js",
+      "bytes": 27627,
+      "sha256": "32bbf2cd2a4d413be439f1c26da1d3dd4e706394171c9edcef52e494c53e9d88"
+    },
+    {
+      "path": "source/src/livingDiscoveries.js",
+      "bytes": 3910,
+      "sha256": "b217f44e067bbb2b0199479df9705f7401861c6543b59261beaeca7f52e0fcfa"
+    },
+    {
+      "path": "source/src/livingEcologyNetwork.js",
+      "bytes": 18456,
+      "sha256": "1f4fe4fa12882ee779f3c0379049a0ca539582db08181932195f93d48e87a562"
+    },
+    {
+      "path": "source/src/livingHabitatBelt.js",
+      "bytes": 12283,
+      "sha256": "5b278a95a732e1a36263b72c2988d09c2fff34b48e687cc043055f7959fb5d0a"
+    },
+    {
+      "path": "source/src/livingHabitatMosaic.js",
+      "bytes": 24076,
+      "sha256": "fd38a069bd6d3e9a69e84d21d5825b1537108867469d40d689f1c2a1545d86cb"
+    },
+    {
+      "path": "source/src/livingRidgeGeology.js",
+      "bytes": 40934,
+      "sha256": "2b163d0278617dcf44053c2c0e07fbb0f70c1a55ca13f550ee886d9974910e44"
+    },
+    {
+      "path": "source/src/livingSeabedRelief.js",
+      "bytes": 14465,
+      "sha256": "e4e32d89bb8702fbb554902423a4e356e72a296122ef45bfba4ce478b833a43f"
+    },
+    {
+      "path": "source/src/livingSeascape.js",
+      "bytes": 11169,
+      "sha256": "6addbdc55a9bcfc02baf31d51ac4ecf397d27babdbb76fd2ab00300200c872e1"
+    },
+    {
+      "path": "source/src/livingShallowSeascape.js",
+      "bytes": 28711,
+      "sha256": "67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049"
+    },
+    {
+      "path": "source/src/livingShallows.js",
+      "bytes": 737,
+      "sha256": "b020a299c1192533c1fb4fa4f924846f6dc005b394557ccce387d5f204956890"
+    },
+    {
+      "path": "source/src/livingShallowsGeneration.js",
+      "bytes": 23087,
+      "sha256": "7ec1c1966adc08dc7298d73f5be23ce67ffdfbb9f93119ed5fef77b72aab4f24"
+    },
+    {
+      "path": "source/src/livingShallowsPresentation.js",
+      "bytes": 1452,
+      "sha256": "cc48cddabe547a4c74c805a9625130bd0765d07d3e631814a85e0485d61ba0d7"
+    },
+    {
+      "path": "source/src/livingVisualRoute.js",
+      "bytes": 17073,
+      "sha256": "a9305ea4cb143ec859ae9d088011b18ede41bb1ef7d382a9592e786e2906af12"
+    },
+    {
+      "path": "source/src/livingWorldState.js",
+      "bytes": 2834,
+      "sha256": "29fad0306f5d524e779d2993e311cbcb91d781d9bda959ae8abedf32d82585df"
+    },
+    {
+      "path": "source/src/main.jsx",
+      "bytes": 242,
+      "sha256": "832f752c6b6a454a26dbc4f2654f5bd633f2b103516c8c0abac648308c133a7e"
+    },
+    {
+      "path": "source/src/meadowAnimalBelt.js",
+      "bytes": 6623,
+      "sha256": "4cb1ad931f31d8069e54899a0e2354e920a1a04e1412c4169932ce49e60f79c3"
+    },
+    {
+      "path": "source/src/observationEventText.js",
+      "bytes": 1562,
+      "sha256": "09ea42ef5a0f3a474c459bad9b4e3c27acaaeb7d7cb102c53af22f0992343c92"
+    },
+    {
+      "path": "source/src/ocean.css",
+      "bytes": 28311,
+      "sha256": "9cffd85c158f6f545745206c0fc7751d8704aaea913ec6b6cc731231141cfffd"
+    },
+    {
+      "path": "source/src/oceanAnimalCommunities.js",
+      "bytes": 1890,
+      "sha256": "43d480fd3f2d633e782277c6b78594da37f715e3590657fb6ca4f9990f415225"
+    },
+    {
+      "path": "source/src/oceanBackgroundPreparation.js",
+      "bytes": 3013,
+      "sha256": "2e8f761044ffe8dd1871ebed246b2072af0db1c97930b99e059915957be3d4c2"
+    },
+    {
+      "path": "source/src/oceanBenthicLife.js",
+      "bytes": 34354,
+      "sha256": "12fd3a49bed05558c5ddc9c9a3782c7adb6ee3f8e99484045ff5b37272852bc4"
+    },
+    {
+      "path": "source/src/oceanBenthicLifeRoutes.js",
+      "bytes": 338,
+      "sha256": "a225927e17192e436b5c241dc62581e7ef5ae7ff3c0c13524a2e06bb112b4380"
+    },
+    {
+      "path": "source/src/oceanBenthicLifeSpecies.js",
+      "bytes": 10752,
+      "sha256": "d722a21762bd4fc3c9b690419de7e7d80e41df1e2c67051176352ac1cf145276"
+    },
+    {
+      "path": "source/src/oceanBiodiversity.js",
+      "bytes": 32200,
+      "sha256": "1fe0d1c4d5ed9166674a6fd5dc44c78ab463b08524c6706bdf6a135323055de8"
+    },
+    {
+      "path": "source/src/oceanBiodiversityRoutes.js",
+      "bytes": 341,
+      "sha256": "d5d10c3ce8d40cb33283c07b1b290f6d8fd8ed0cd3fd8c1829a09c52cfb7a41c"
+    },
+    {
+      "path": "source/src/oceanBiodiversityShape.js",
+      "bytes": 525,
+      "sha256": "4bab14683cbe4436129abfcb842d095227a43a75b67f19cc297056691d4d90cc"
+    },
+    {
+      "path": "source/src/oceanBiodiversitySpecies.js",
+      "bytes": 15656,
+      "sha256": "239c2b532a926714f0f75090847a876587f35e735858afbb7c0b9659d127aad6"
+    },
+    {
+      "path": "source/src/oceanCoastalSchoolSpecies.js",
+      "bytes": 5556,
+      "sha256": "4eac62579f81fcdb72fdb7702ba6bd4ca1336ce1c63e946b43607c2808c989ad"
+    },
+    {
+      "path": "source/src/oceanCommunity.js",
+      "bytes": 10707,
+      "sha256": "11985ef77d203d57146fb20a8488d73b035eb17f5f1b08c9e9341601d2915f16"
+    },
+    {
+      "path": "source/src/oceanCommunityReading.js",
+      "bytes": 2947,
+      "sha256": "c1578b6da2313fde8c0126f21f62dbda2ace769702899140c3ae4608485a313c"
+    },
+    {
+      "path": "source/src/oceanEcology.js",
+      "bytes": 223214,
+      "sha256": "37dcfedbffb941f3c27d87ebcd92045a3edea5eeb8d0585c5af4493122a9365f"
+    },
+    {
+      "path": "source/src/oceanEcologyStore.js",
+      "bytes": 4688,
+      "sha256": "f166e4d776b3c2db41f6a9a663a4b61d2b51cb5d220925a001c2a4fda9b6b8d1"
+    },
+    {
+      "path": "source/src/oceanEnvironment.js",
+      "bytes": 4804,
+      "sha256": "758b9cdcb50b849f72c8ecbcb64d2186c2f0f86075ab56ec0e318278cf369012"
+    },
+    {
+      "path": "source/src/oceanExplorationMemory.js",
+      "bytes": 7351,
+      "sha256": "ee9025659e522e128ab61eb54021d0f67184805e87c57f68b5218167d776aaaf"
+    },
+    {
+      "path": "source/src/oceanFormationObservation.js",
+      "bytes": 2011,
+      "sha256": "dd927bd11c14de34be92a6e39a7a5f49e85fd2034f1331756f4b91867d55308c"
+    },
+    {
+      "path": "source/src/oceanFormations.js",
+      "bytes": 5343,
+      "sha256": "067e1eefb142e887af84455915bde0513025af8b04d606d4077ef816b3ef0db6"
+    },
+    {
+      "path": "source/src/oceanGeneration.js",
+      "bytes": 24900,
+      "sha256": "a0575a489c61d518213225212687aab5692f1433ef599bca3442a0ef329e0c60"
+    },
+    {
+      "path": "source/src/oceanHabitatScenes.js",
+      "bytes": 20172,
+      "sha256": "a5d9f3267df038c5a6710b556f3e643eee407e8a0ff7a5714b805315c95fc970"
+    },
+    {
+      "path": "source/src/oceanKeyboardInput.js",
+      "bytes": 957,
+      "sha256": "f405e2f43dfbc2999f3c0bc5c597559ad787140a8f1ea6f6d21ea73951d27c86"
+    },
+    {
+      "path": "source/src/oceanLayerNavigation.js",
+      "bytes": 1531,
+      "sha256": "4c899db80729dafad54f33b1f77cc2996a6030538b2cee87ad861c03b8b80894"
+    },
+    {
+      "path": "source/src/oceanLivingLandscapeObservation.js",
+      "bytes": 6405,
+      "sha256": "cc86f4ba30ec949235d073a9a612584f4d67c2d3f5bda5ac53b8044508e7c41f"
+    },
+    {
+      "path": "source/src/oceanMacroLandscape.js",
+      "bytes": 29412,
+      "sha256": "3e44a5d2f51f23290005c2d5cd8a81ddd1fafb7fd20ef100f01383143d9618fc"
+    },
+    {
+      "path": "source/src/oceanMantaCommunity.js",
+      "bytes": 4809,
+      "sha256": "ede3b46fdb6b2c0d93bdca85ed086d23d3ef4f746808f2116eadaf736ae6167d"
+    },
+    {
+      "path": "source/src/oceanMantaSpecies.js",
+      "bytes": 2022,
+      "sha256": "3e5e34253376cc0f20491db17ec5884b49c1ddb87bb2b048b11518251ca2a373"
+    },
+    {
+      "path": "source/src/oceanMeadowForaging.js",
+      "bytes": 2959,
+      "sha256": "48ac5355e4b1d5e225c16b393cb1a26ac71c5c2d12e22734d91309825c31a9bb"
+    },
+    {
+      "path": "source/src/oceanMeadowLife.js",
+      "bytes": 36296,
+      "sha256": "f4f47276118994670c108b7a80f58d99692fc18352c7114c603035f96f7c2e1b"
+    },
+    {
+      "path": "source/src/oceanMeadowLifeRoutes.js",
+      "bytes": 342,
+      "sha256": "596f65e62991e8979e413da2ab534a9455d0ef861402dd16e7bb85f7e5adb7bd"
+    },
+    {
+      "path": "source/src/oceanMeadowLifeSpecies.js",
+      "bytes": 18391,
+      "sha256": "753974bf36d7501e1a0d151b251e343fb75cd419b89fd443092c6d2451f6ad68"
+    },
+    {
+      "path": "source/src/oceanMeadowWaterSpecies.js",
+      "bytes": 7463,
+      "sha256": "ef372a53e7a0b3d73baa68ae2ad4083b8ccb08621fbbd8b6d9b3a4728ba2baa1"
+    },
+    {
+      "path": "source/src/oceanOpenWaterLife.js",
+      "bytes": 14147,
+      "sha256": "6175afdf93c611ec4b41b26767bf558d4b8ad0b691fd354c9b853eb7b4c89350"
+    },
+    {
+      "path": "source/src/oceanOpenWaterSpecies.js",
+      "bytes": 3035,
+      "sha256": "8caf092294e84c06815f25c59fdda3a60e0e53cf0e9aea0b0822b715093a9c73"
+    },
+    {
+      "path": "source/src/oceanOverview.js",
+      "bytes": 2590,
+      "sha256": "346bdb8e6b71a9f71e0a7b53a7b3ecd99956545a68597e7480cf78bbcaa881cb"
+    },
+    {
+      "path": "source/src/oceanPelagicCommunity.js",
+      "bytes": 5333,
+      "sha256": "20bc8185c086a06b7b899c2bcf050b67b983d9ac19eb8ef28c8be51d5597c2e9"
+    },
+    {
+      "path": "source/src/oceanPelagicSpecies.js",
+      "bytes": 1814,
+      "sha256": "5d03385ba8270b3ace9cd3b7fb2b3ec1a85ede297c0b841ff96169e4325622e5"
+    },
+    {
+      "path": "source/src/oceanPlanktonTransport.js",
+      "bytes": 4184,
+      "sha256": "8bac19ab7f417f92ccc7ab6640f1773d3fcd9f79009f335f593949324db55344"
+    },
+    {
+      "path": "source/src/oceanPreparation.js",
+      "bytes": 1380,
+      "sha256": "ba03f4c9150e1b7ab4f638e5d84ea9b8096f2e8b0bd4c4f8dff574372a18bb1f"
+    },
+    {
+      "path": "source/src/oceanPreparation.worker.js",
+      "bytes": 335,
+      "sha256": "1de611e648da3db0c0e7f3649370c1c82b951672559d01dbe8e29de0c4932b29"
+    },
+    {
+      "path": "source/src/oceanPreparationJobs.js",
+      "bytes": 5940,
+      "sha256": "8c3af057a9f8a86080993a1eacbef9cb0a5b2360cdb21285a69bdf064fa29aff"
+    },
+    {
+      "path": "source/src/oceanReefAssemblageSpecies.js",
+      "bytes": 17516,
+      "sha256": "286f5d7bd04107c40399baf723c42876ecca4ab790f328202fda6f9bd472a3f5"
+    },
+    {
+      "path": "source/src/oceanReefBottomSpecies.js",
+      "bytes": 5721,
+      "sha256": "b17cbf20c3fb8ef79ea85db120623b7d167c243c91ff609bf855a8a99093f9d0"
+    },
+    {
+      "path": "source/src/oceanReefColorFishSpecies.js",
+      "bytes": 6584,
+      "sha256": "239c3661bd031d9423c4d5d991bf308ff226a73942eb6de0d37445e38044d7c7"
+    },
+    {
+      "path": "source/src/oceanReefCommunitySpecies.js",
+      "bytes": 14861,
+      "sha256": "34d6b84d57b582d5a2b67bdbdad59eeeb875be41ef04be103d785afb8cdaa3a7"
+    },
+    {
+      "path": "source/src/oceanReefDepthCommunity.js",
+      "bytes": 1157,
+      "sha256": "2af0c75de957b301e92e82154fe6c115ee0e44122037da15267eb2ad58ee23c6"
+    },
+    {
+      "path": "source/src/oceanReefDiversitySpecies.js",
+      "bytes": 14591,
+      "sha256": "0c5766437f418914ee7d1c6f231524f0e991b3b2b317eb9383821b67367775e4"
+    },
+    {
+      "path": "source/src/oceanReefFaunaSpecies.js",
+      "bytes": 17065,
+      "sha256": "cc51e19c9ab9d0e9867f272e0784c2db36c0af29fb984e4ebc42f7723d8ca208"
+    },
+    {
+      "path": "source/src/oceanReefFilterSpecies.js",
+      "bytes": 5435,
+      "sha256": "5c97d798be2f447e6ecdda5f470cd2a10979b77a1c835e2f007760718ceb95ae"
+    },
+    {
+      "path": "source/src/oceanReefForaging.js",
+      "bytes": 3939,
+      "sha256": "7b47afc4eff5f88591a2c60d9db33bb8993b095c96b9c5097b357b7fa5a3c744"
+    },
+    {
+      "path": "source/src/oceanReefGrazersSpecies.js",
+      "bytes": 6072,
+      "sha256": "eef4b9afc4f26baecc48ebb5234c697a1904f65d702e1471490081880a7b8fdf"
+    },
+    {
+      "path": "source/src/oceanReefGuild.js",
+      "bytes": 14012,
+      "sha256": "b0f2d58c7f8b59ab1201fc838fde41e1a4f0bd5df281bdd96306d01d27c8fa6e"
+    },
+    {
+      "path": "source/src/oceanReefGuildSpecies.js",
+      "bytes": 4046,
+      "sha256": "80ba07bcb13915086eb0bbe804c3f28c38407c50f838f7b9361733d55c3b356c"
+    },
+    {
+      "path": "source/src/oceanReefHabitatCache.js",
+      "bytes": 2931,
+      "sha256": "d71c8cf7e6268797cc68d7413d0ab21505d2b85d114dd08bdf704c5c71535ea6"
+    },
+    {
+      "path": "source/src/oceanReefHabitatLayers.js",
+      "bytes": 3848,
+      "sha256": "8efcc48f640282969e56dac70e0f571877320e5f18eabc9d317f1ca6499976b0"
+    },
+    {
+      "path": "source/src/oceanReefLifeSpecies.js",
+      "bytes": 16053,
+      "sha256": "f2be22402fbfe24661596ea5e54b9ab601a36e1db177f59c4edcfca8d00a0781"
+    },
+    {
+      "path": "source/src/oceanReefMobileBenthosSpecies.js",
+      "bytes": 7063,
+      "sha256": "61ef0e8f3e529def0f3c0909b7520ca641057405eed46ad6bb8391468acf5b3d"
+    },
+    {
+      "path": "source/src/oceanReefResidents.js",
+      "bytes": 108067,
+      "sha256": "c2e98011ffb44f9b1f26c393911ea81a417f30093d936cf4c1a38f0716f900c0"
+    },
+    {
+      "path": "source/src/oceanReefResidentsSpecies.js",
+      "bytes": 7482,
+      "sha256": "f4fb5e5b479e12233db8929a84565c767874484b7a5e736f0f157bf565b2b682"
+    },
+    {
+      "path": "source/src/oceanReefSandCorridor.js",
+      "bytes": 4439,
+      "sha256": "886de8a693f1619d5a807a5a961db87dfc846d155e62ffc89f634372ca5e3e64"
+    },
+    {
+      "path": "source/src/oceanReefSchooling.js",
+      "bytes": 5456,
+      "sha256": "0fadcb24b6d69e65466fbe4e735552e97ca7ce89c5e362f80e116361aed5aed2"
+    },
+    {
+      "path": "source/src/oceanReefSlopeSpecies.js",
+      "bytes": 8051,
+      "sha256": "f1cb458f52b143dab4aa022d39be1b860fb1a3ade5afc2a3306ca57b57c84455"
+    },
+    {
+      "path": "source/src/oceanReefSuspensionSpecies.js",
+      "bytes": 6622,
+      "sha256": "682429dd1f272212f71aaf4d0f328e8cbfd6119d69d9e078e312e3fa29aaf12b"
+    },
+    {
+      "path": "source/src/oceanReefVisitorsSpecies.js",
+      "bytes": 9299,
+      "sha256": "47a5626efdcdc6dc9113839f0b8532ed6006925949bba9cbc7bb88db8037813b"
+    },
+    {
+      "path": "source/src/oceanRockShape.js",
+      "bytes": 23386,
+      "sha256": "26846b38a5bcd1590a2826250dbf0715174e91ec164b1edfe4096d095fdabad0"
+    },
+    {
+      "path": "source/src/oceanSandBottomSpecies.js",
+      "bytes": 6103,
+      "sha256": "e37f2d48e87f69eb432923b9e861c4e823e834ccb11ee07ab259a48bf619140f"
+    },
+    {
+      "path": "source/src/oceanSceneElements.js",
+      "bytes": 17260,
+      "sha256": "296e5c8de715bb8145e8e6caa591144af4dce1022e0dd25f03ee7f62a2d27117"
+    },
+    {
+      "path": "source/src/oceanSceneObservation.js",
+      "bytes": 6715,
+      "sha256": "d2120402d8a62c82bda2ae8fda76f2ac9a60d0dd69c7cd0ae710272ffae55516"
+    },
+    {
+      "path": "source/src/oceanShoalLife.js",
+      "bytes": 32565,
+      "sha256": "a1146f222f7a2911fa0518592f286b6daea8cddb597543f6629edb8e42d3460a"
+    },
+    {
+      "path": "source/src/oceanShoalLifeRoutes.js",
+      "bytes": 253,
+      "sha256": "79ef49bb927f8358f34fb77bbba527d4c611e001369dd28efc781416c71cd5ca"
+    },
+    {
+      "path": "source/src/oceanShoalLifeSpecies.js",
+      "bytes": 17734,
+      "sha256": "ae09372893404a09e605d68a50109121bfa6dea9463e4f74d4c70f1bac444174"
+    },
+    {
+      "path": "source/src/oceanSlopeCommunity.js",
+      "bytes": 5374,
+      "sha256": "7f48ec8c589489af9411dc533a58e9c1389b0db8da332ae8216928405e072ca0"
+    },
+    {
+      "path": "source/src/oceanSlopeSpecies.js",
+      "bytes": 1332,
+      "sha256": "17ab64609b6b59e327fa525a6df917796aa7b7a54bd17113987297a690c9964f"
+    },
+    {
+      "path": "source/src/oceanSmallBottomSpecies.js",
+      "bytes": 4821,
+      "sha256": "e35ad2151c14736f938fa43fa19a4d1656395b298e6fdb3b4098ee527660a0c7"
+    },
+    {
+      "path": "source/src/oceanSupportIndex.js",
+      "bytes": 4083,
+      "sha256": "91300549353ea9218465171f4524da81f46c706c2e7c092a80f6cf397bbb53cf"
+    },
+    {
+      "path": "source/src/oceanTerrain.worker.js",
+      "bytes": 446,
+      "sha256": "a804bb01ab84c2275308f13b23c839e7c534d5c28b3f3f5d4a6e03335eac7db2"
+    },
+    {
+      "path": "source/src/oceanTerrainJobs.js",
+      "bytes": 3979,
+      "sha256": "d3083efefde9ff257bf5b9336e5e2abc76a1b9907038f9a09b58619ed4ae6cb5"
+    },
+    {
+      "path": "source/src/oceanTurtleCommunity.js",
+      "bytes": 15039,
+      "sha256": "01b18b8f56e94ffc2ebf602870cf850c295d20618c2b02c044574fdd76093630"
+    },
+    {
+      "path": "source/src/oceanTurtleGrazing.js",
+      "bytes": 23425,
+      "sha256": "07cada73e1196425cda58d84ddff66404dda2b79108888c43df4d99c32908e66"
+    },
+    {
+      "path": "source/src/oceanTurtleSpecies.js",
+      "bytes": 1300,
+      "sha256": "dda6cb54fecea40c11a0e4bf517575d8ae0448605ef20cc7698e29ec35a87cfa"
+    },
+    {
+      "path": "source/src/oceanWorldVariant.js",
+      "bytes": 772,
+      "sha256": "c68f6cf80f7f097bb470fd5ab42e22ee7e4889d8b061f62c74a416af55864e59"
+    },
+    {
+      "path": "source/src/population.css",
+      "bytes": 4861,
+      "sha256": "39d7bd8d3ecbace155f868ab968b452ab788ab2e408c51a6923cf52e81e9fa0b"
+    },
+    {
+      "path": "source/src/reefActivityZones.js",
+      "bytes": 1726,
+      "sha256": "4160ad246d13062a6fac8b545d78c91fd7eddaff1d0ba9d1d52517fe6ded66b5"
+    },
+    {
+      "path": "source/src/reefExploration.js",
+      "bytes": 1179,
+      "sha256": "25949ee602dcbac347c5da75c519d4697b7767f0bd6b39fba69b35b21428efbe"
+    },
+    {
+      "path": "source/src/reefGuildHabitat.js",
+      "bytes": 9564,
+      "sha256": "c85cb3f1e5648a845e2ec077212b22a1c06d97f6118c3bc893b5b2e0f1393080"
+    },
+    {
+      "path": "source/src/reefObservationReading.js",
+      "bytes": 4108,
+      "sha256": "15f3c182e23f5531e9a0dcd787c614e70111ad96f485df8db4a4e3e5e99efe60"
+    },
+    {
+      "path": "source/src/reefScenery.js",
+      "bytes": 1082,
+      "sha256": "28189c2586c2bd47fb99eee74f23565cf210540637b5f050ab7cd10fb136824d"
+    },
+    {
+      "path": "source/src/reefValleyRegion.js",
+      "bytes": 35941,
+      "sha256": "e61ecb363e2828a03df8dae50a80944d37ce19dffc50ab7302815c148cd1db2c"
+    },
+    {
+      "path": "source/src/sceneCatalog.js",
+      "bytes": 6979,
+      "sha256": "d5f27836c775ae6650afc3bcfe48277d79ca7ed90499b413efaab46ba1c975b6"
+    },
+    {
+      "path": "source/src/seagrassMeadowRegion.js",
+      "bytes": 33803,
+      "sha256": "1866d1043396b1054e5f81a3d184c145670caeeda9ef2f34e09e5796395264d6"
+    },
+    {
+      "path": "source/src/shallowSample.css",
+      "bytes": 3246,
+      "sha256": "68413e0ccca950641098a4f3a1e9f2fa034372574ade817010683f54ed909107"
+    },
+    {
+      "path": "source/src/shallowSample.js",
+      "bytes": 25671,
+      "sha256": "f73f6dde297dda23ae31c74c0729379b15f2d5549f357b66731787ae2f8e2180"
+    },
+    {
+      "path": "source/src/shallowSampleCommunityExpansion.js",
+      "bytes": 2030,
+      "sha256": "f511505a28b31beb096edffb85190d2af0a46d288f35c8693219b2c6d8ea3897"
+    },
+    {
+      "path": "source/src/shallowSampleLivingCover.js",
+      "bytes": 15329,
+      "sha256": "487a400025adc26da065b3309020ac24c8f0cffb3777c8ae569f9de1d494cf97"
+    },
+    {
+      "path": "source/src/shallowSamplePlayback.js",
+      "bytes": 1413,
+      "sha256": "6710f6e04b330b206c9a8a0314fbac3b656093cfd003158d1b732e4cbe0e2b7c"
+    },
+    {
+      "path": "source/src/shallowSampleReefCommunity.js",
+      "bytes": 8520,
+      "sha256": "22aeee0bc08e73b0e54a36acf9ec994aaa4cc065095c9b9f1a1890ad5ac8d8d6"
+    },
+    {
+      "path": "source/src/shallowSampleReefSlope.js",
+      "bytes": 2689,
+      "sha256": "6d40f8ee0a0561049ba1b841150e12cfe0a2710077275b858d0e9a9037f0263d"
+    },
+    {
+      "path": "source/src/shallowSampleSandHabitat.js",
+      "bytes": 5635,
+      "sha256": "9b42d85c5538d94e95442018dcfae3ddee5baac67daf46f2c2da3a700e16870a"
+    },
+    {
+      "path": "source/src/shallowSampleSchoolPassages.js",
+      "bytes": 2187,
+      "sha256": "d2b0322d177bddf22b1d6b58feefd89edd8587f9e99312e2296544d4e4ba2b35"
+    },
+    {
+      "path": "source/src/shallowSampleSediment.js",
+      "bytes": 1897,
+      "sha256": "294b574cad3c36167fa9f5ca0d589da989990bf6788244a4c521a31e0210d91e"
+    },
+    {
+      "path": "source/src/shallowSampleSlopeAnimals.js",
+      "bytes": 11411,
+      "sha256": "06e82dfc4f13edd7dd39d3747e0b5095d6f6bed1ab3c2b466a1ee5fff7deb2c4"
+    },
+    {
+      "path": "source/src/shallowSampleSoftBedFit.js",
+      "bytes": 2707,
+      "sha256": "16cc428a7b26a73fae031af9b20feec392ea995905c87fbd7aae493768b02f2f"
+    },
+    {
+      "path": "source/src/shallowSampleSpecies.js",
+      "bytes": 4555,
+      "sha256": "de6d55ccc846239afc17fc03defbd374056146b4bd0d423bb53a77a4cd713391"
+    },
+    {
+      "path": "source/src/simulation.js",
+      "bytes": 35210,
+      "sha256": "1ac2bd317540072c78db1fc6a43190999dd2a72670f5d58d279c95f28df19c15"
+    },
+    {
+      "path": "source/src/species.js",
+      "bytes": 9584,
+      "sha256": "3b68d37721e463fee06a5960f7c3bfda150208612a88075ef81daa11abad9f5c"
+    },
+    {
+      "path": "source/src/styles.css",
+      "bytes": 594,
+      "sha256": "d278a62809f23bbbab5c2c2ff4313c8d46686d438dde3670eba9ee073ccbb8dc"
+    },
+    {
+      "path": "source/src/supportedMotion.js",
+      "bytes": 1606,
+      "sha256": "2b8641465e5350127c453a40a7cb5c4920543536508d73aa417ccca0e3a4fc9b"
+    },
+    {
+      "path": "source/src/useDirectorTour.js",
+      "bytes": 19866,
+      "sha256": "a856f66168a792e13d190c974b8484521909546e8d24d900cfb00fb585e3da2f"
+    },
+    {
+      "path": "source/src/wholeSeabedComposition.js",
+      "bytes": 1800,
+      "sha256": "3c1b10765786a99c40cf125949d4c82d6c12aa9324d58c25fa8bc3dc8e5049e5"
+    },
+    {
+      "path": "source/src/world/DeepBenthicLifeAssets.js",
+      "bytes": 16401,
+      "sha256": "e75d7def429e3414c902206344beabc1704f9515d8ec75638c90e0513093459a"
+    },
+    {
+      "path": "source/src/world/DeepHardLifeAssets.js",
+      "bytes": 13011,
+      "sha256": "284005116c79353ceeb16df0b2e038604ad83915d0c41eb4416a53890c948f0a"
+    },
+    {
+      "path": "source/src/world/DeepMidwaterLifeAssets.js",
+      "bytes": 16652,
+      "sha256": "4bc47dba8e1f53d20195e6283733463da7a24d5e986f6e25401499f546070671"
+    },
+    {
+      "path": "source/src/world/DeepOceanAnimals.js",
+      "bytes": 8291,
+      "sha256": "1e150686a05eececbec52882f21cdfd3f77bf206f6374c2e050c8e4fe48479de"
+    },
+    {
+      "path": "source/src/world/DeepOceanChunks.js",
+      "bytes": 12230,
+      "sha256": "12d3a8b0ffb513ac59df9b8b39e9d2af2299925143c2082f2061898acb63797e"
+    },
+    {
+      "path": "source/src/world/DeepWaterLifeAssets.js",
+      "bytes": 14204,
+      "sha256": "0e9f0bdb641d051e57e8f351675a446e4efa0642f9af7632c9993feadab38607"
+    },
+    {
+      "path": "source/src/world/KelpBenthicLifeAssets.js",
+      "bytes": 15516,
+      "sha256": "4cbf1bfb3689e524ab085b224bb48c4f3615749dfdf7a5cdf8ba2e9999c6e62d"
+    },
+    {
+      "path": "source/src/world/KelpDriftFood.js",
+      "bytes": 6989,
+      "sha256": "e92428c2a72f3f1d2ca1e85d3e76a47291728b01ad8ed5b6fe2d31c5134fa40b"
+    },
+    {
+      "path": "source/src/world/KelpNearBottomLifeAssets.js",
+      "bytes": 17927,
+      "sha256": "54e8ae87c49dd020f01c89cda40b41571ccfa0636cf49cc23a1414baf10d3594"
+    },
+    {
+      "path": "source/src/world/KelpOceanAnimals.js",
+      "bytes": 11771,
+      "sha256": "307bb0362d35644cfc4248cf23b5fbba38596a354fbdb542a73327edd5b38797"
+    },
+    {
+      "path": "source/src/world/KelpOceanChunks.js",
+      "bytes": 20576,
+      "sha256": "a3cf0f7931d922d293aebaff35b4311407fe05ec789d344f1bbce33e058d25e9"
+    },
+    {
+      "path": "source/src/world/KelpUnderstory.js",
+      "bytes": 10018,
+      "sha256": "45c3ca8ab47b8e53e5cf4b695c5bf27a9bd8067340e992472556a6612224d787"
+    },
+    {
+      "path": "source/src/world/KelpUnderstoryLife.js",
+      "bytes": 4471,
+      "sha256": "b9a781f2231f2c07ffe9ae519a9820d93870bc9ae3d5b3b813f000fc7cf3595f"
+    },
+    {
+      "path": "source/src/world/KelpUnderstoryLifeAssets.js",
+      "bytes": 18431,
+      "sha256": "0d2b1e9da4e6fab6a8ed247d37eb0c6847388f6067e123036bbe8be417cd57ec"
+    },
+    {
+      "path": "source/src/world/KelpWaterLifeAssets.js",
+      "bytes": 14931,
+      "sha256": "ef3ab91c412143fedb242a1436cb600e210858e55a7818f269a4b5551dcac735"
+    },
+    {
+      "path": "source/src/world/OceanAnimalSediment.js",
+      "bytes": 18660,
+      "sha256": "801be2b6fea50fc287d836ce63fc7294e678243383fb7f2a207d2875bc28e9c7"
+    },
+    {
+      "path": "source/src/world/OceanAnimals.js",
+      "bytes": 21617,
+      "sha256": "15bac12ac3ae8bc47b727662abc673c0c4a6a38369cdb749352a918630817ed0"
+    },
+    {
+      "path": "source/src/world/OceanBenthicLifeAssets.js",
+      "bytes": 22021,
+      "sha256": "9dd5f10d9a8b0b5a37776175ad051a5d762df5cd05355940aca8f2b3584f6951"
+    },
+    {
+      "path": "source/src/world/OceanBiodiversityAssets.js",
+      "bytes": 18310,
+      "sha256": "9a1fc6559722aa7c961bb99c0ef89017690750479aa9231c59474c83ebfb2a22"
+    },
+    {
+      "path": "source/src/world/OceanChunks.js",
+      "bytes": 44273,
+      "sha256": "4430698d87d54d8da627cd74d94c8c9f3a1c7250ea8acbade4e7de5a4a7c4cff"
+    },
+    {
+      "path": "source/src/world/OceanCoastalSchoolGeometry.js",
+      "bytes": 3545,
+      "sha256": "2a2e7d44c47bbf3ec46cf8df16b2136133f502d5aee748fdf36f866675e162d0"
+    },
+    {
+      "path": "source/src/world/OceanHabitatScenes.js",
+      "bytes": 7822,
+      "sha256": "48834f08d75774dfa3af5c10dd6efdf0574fad72bff5aea3ae88eae0d4a62188"
+    },
+    {
+      "path": "source/src/world/OceanMacroLandscape.js",
+      "bytes": 13996,
+      "sha256": "96d1470755431ef27e3efcb69ca9ca1b306ac377cfef4de833fa97e1cbfe0c3b"
+    },
+    {
+      "path": "source/src/world/OceanMeadowLifeAssets.js",
+      "bytes": 17159,
+      "sha256": "366fc9d07a96bf01cfaeef1faa3d6f239fb2289e73c6b936e08d6bd63a3ac789"
+    },
+    {
+      "path": "source/src/world/OceanMeadowWaterGeometry.js",
+      "bytes": 4251,
+      "sha256": "705c3d47f54e7ac343054a5c13ba5bdeb5c99cf4868e568170220e86ace73be4"
+    },
+    {
+      "path": "source/src/world/OceanReefAssemblageBenthicAssets.js",
+      "bytes": 17970,
+      "sha256": "54741598651ea6534ebc754e1de598d2e129443afb09255b2471d7a2f04fe718"
+    },
+    {
+      "path": "source/src/world/OceanReefAssemblageFishAssets.js",
+      "bytes": 16420,
+      "sha256": "42aeee588228dbf4d85b3b0b0e5405e3d9c030bfb54420f1832b26384bf679cd"
+    },
+    {
+      "path": "source/src/world/OceanReefBottomGeometry.js",
+      "bytes": 3314,
+      "sha256": "f6194f4ac1eaf90fab3c122c121559d5aff807201ad6ffa518a73208eebe973a"
+    },
+    {
+      "path": "source/src/world/OceanReefColorFishAssets.js",
+      "bytes": 11519,
+      "sha256": "1d4f6556c8abcb0dc7540d121c3f9562773f35b7543f13421860ba27a5230674"
+    },
+    {
+      "path": "source/src/world/OceanReefCommunityBenthicAssets.js",
+      "bytes": 17408,
+      "sha256": "179e8bc576f18f5368a35b7d47268897ded776ad94de9d4230f33871cbb5aa04"
+    },
+    {
+      "path": "source/src/world/OceanReefCommunityFishAssets.js",
+      "bytes": 14835,
+      "sha256": "974e7cd847b7d79b9243a98855b929a794307064782ce4d9cae07f3d711c26c8"
+    },
+    {
+      "path": "source/src/world/OceanReefDiversityBenthicAssets.js",
+      "bytes": 14503,
+      "sha256": "abafe4c7d0e405b6574249b6ddc9eec99bbc5b8a55b88f2f0ae9d3872577205a"
+    },
+    {
+      "path": "source/src/world/OceanReefDiversityFishAssets.js",
+      "bytes": 15415,
+      "sha256": "3a13e30176b912848e1be04bc28b73c88778ac750dccbb8723b9358e87315291"
+    },
+    {
+      "path": "source/src/world/OceanReefFaunaBenthicAssets.js",
+      "bytes": 18745,
+      "sha256": "28c3756f08d7ac3a05507c43331088ccc9b208852f25b63e4de5ff1c1226985b"
+    },
+    {
+      "path": "source/src/world/OceanReefFaunaFishAssets.js",
+      "bytes": 14932,
+      "sha256": "9470d4fc0a031e7e1d31e3d725a7239de6065679ed9de1392113deed90c8f67b"
+    },
+    {
+      "path": "source/src/world/OceanReefFilterAssets.js",
+      "bytes": 6294,
+      "sha256": "07e97b7118100d868b207cc28d26ab5eb575370c9c29a43bc1fed7240274f0b1"
+    },
+    {
+      "path": "source/src/world/OceanReefGrazersAssets.js",
+      "bytes": 8992,
+      "sha256": "6ce13d50feca45a4b3f5da2208735cbf45ea1cef9f72b69047001f4e6a8c8bc8"
+    },
+    {
+      "path": "source/src/world/OceanReefLifeBenthicAssets.js",
+      "bytes": 13744,
+      "sha256": "96bbc255664da2ec6418924603682639ee105ae031cf746305ff7fe7fa44cb7d"
+    },
+    {
+      "path": "source/src/world/OceanReefLifeFishAssets.js",
+      "bytes": 15627,
+      "sha256": "b2009213609fb438ba2319046c0c0b3dd175997ed611dbb7ace1dcb8c6a1d78b"
+    },
+    {
+      "path": "source/src/world/OceanReefMobileBenthosAssets.js",
+      "bytes": 8044,
+      "sha256": "48d56c032b2edffdb480c3feaf3abcf7665e5f231150ea37c7846607943f501e"
+    },
+    {
+      "path": "source/src/world/OceanReefResidentsAssets.js",
+      "bytes": 13272,
+      "sha256": "e131887d492b070c751c648e13926b0a1d90ecbf215e45feee1330af0f06634f"
+    },
+    {
+      "path": "source/src/world/OceanReefSlopeAssets.js",
+      "bytes": 12948,
+      "sha256": "e3c59cd4b9febf74d49d99394b67e453a3b4f15b269d85aee29a1f4206e87ebe"
+    },
+    {
+      "path": "source/src/world/OceanReefSuspensionAssets.js",
+      "bytes": 8339,
+      "sha256": "d10f5152efa408c999612d9dd3999dd2265a837f19d690d530621fe8f3f14505"
+    },
+    {
+      "path": "source/src/world/OceanReefVisitorsAssets.js",
+      "bytes": 14474,
+      "sha256": "d86cf5d53b2b8bc23e553ddc6c19b8df9f7cb94b7b521c41f8648a101e60daa4"
+    },
+    {
+      "path": "source/src/world/OceanSandBottomGeometry.js",
+      "bytes": 4655,
+      "sha256": "1b0f2bf8cfc8d89d69690ca3c751d7ef802679642f8bcde1872b413902409b35"
+    },
+    {
+      "path": "source/src/world/OceanSceneElements.js",
+      "bytes": 8308,
+      "sha256": "c255d2bb32ce005dad5ef357519a1cfe1c349676ac5dea9039967528b942cdb8"
+    },
+    {
+      "path": "source/src/world/OceanShoalLifeAssets.js",
+      "bytes": 13631,
+      "sha256": "b860aa75534b8e206facd7eb6e1e62a5591653b6fd2b21e73f62175787281c27"
+    },
+    {
+      "path": "source/src/world/OceanSmallBottomGeometry.js",
+      "bytes": 5106,
+      "sha256": "00b70bb249ac83d8cc552d84a54bd1bbd35617e3c25b5417163b4048540bbd9b"
+    },
+    {
+      "path": "source/src/world/OceanTurtleOrganisms.js",
+      "bytes": 10021,
+      "sha256": "83db3e5e36fc8c7993cdd25c9c061ee2462bee79801be40ec8addf856c073af9"
+    },
+    {
+      "path": "source/src/world/OceanWaterParticles.js",
+      "bytes": 8022,
+      "sha256": "0243bfef453037d9f63674dcdb7fcee14bbaf6c3d631f25d8a4301b4e0111f0d"
+    },
+    {
+      "path": "source/src/world/ReefWorld.js",
+      "bytes": 231101,
+      "sha256": "0598728e339a23b956954b0d5cc68f8481b3e8a2c59e138ea82433a2a9be4a0a"
+    },
+    {
+      "path": "source/src/world/ShallowArtistFish.js",
+      "bytes": 3362,
+      "sha256": "dd17e6c919055904d840708ce6c1f6ac4294ca964e166020e2a477f48d81ed64"
+    },
+    {
+      "path": "source/src/world/ShallowAttachedReef.js",
+      "bytes": 4239,
+      "sha256": "9c812a0b93f0e5178592d9094cac7449606c92a75c604624dc10c3f1f5fdd236"
+    },
+    {
+      "path": "source/src/world/ShallowBenthicAssets.js",
+      "bytes": 7212,
+      "sha256": "a915923f1f2354486556e93fa78d0a3957538f4ed952e215493df44e414c6263"
+    },
+    {
+      "path": "source/src/world/ShallowBenthicCorals.js",
+      "bytes": 2701,
+      "sha256": "6c25d45686b726a5da8cd55371fa86c9f5146cff79fb11d92c60ac7f3f3386c4"
+    },
+    {
+      "path": "source/src/world/ShallowBranchingCorals.js",
+      "bytes": 1354,
+      "sha256": "219f54375467e9f83b5a8b87d8ac06a550afee3a3933c670418aa8a80aa7841c"
+    },
+    {
+      "path": "source/src/world/ShallowCephalopodAssets.js",
+      "bytes": 14779,
+      "sha256": "73465b701f3f48a38ae5b272fd2cb0c0ac80793eb89e86c1dba9bae4248f8ff1"
+    },
+    {
+      "path": "source/src/world/ShallowCohesiveFish.js",
+      "bytes": 8197,
+      "sha256": "4fd296060e6d3af4c4c64bab6f07b878d7ccd8ba6a51a1ab5effa648822b2dd6"
+    },
+    {
+      "path": "source/src/world/ShallowCommunityFishAssets.js",
+      "bytes": 23182,
+      "sha256": "e6ddffeab9f640f9aee978932a5873e565a6065f24cf44b79575d670ae8dca11"
+    },
+    {
+      "path": "source/src/world/ShallowContactFauna.js",
+      "bytes": 4006,
+      "sha256": "14b0539ddad55bc6c713b6c9b867d22073ef1632e4c2a171e0e172c05bdbc756"
+    },
+    {
+      "path": "source/src/world/ShallowFishSurface.js",
+      "bytes": 2482,
+      "sha256": "1e13d4de4e8f42a272e63962bcd028a93d9289c8f97fc461bc8f99cceb6b9864"
+    },
+    {
+      "path": "source/src/world/ShallowHabitatForms.js",
+      "bytes": 4966,
+      "sha256": "70d3f791dd7fe2d942fde3470380ad3ed9e31fdf1c0b3d10165344a56c47a199"
+    },
+    {
+      "path": "source/src/world/ShallowHeroAnimals.js",
+      "bytes": 13929,
+      "sha256": "8977888ec10c7c8255231956f1c2e3dc07a55628d93a11210ffb4400fbe3914a"
+    },
+    {
+      "path": "source/src/world/ShallowLiveReefAssets.js",
+      "bytes": 17935,
+      "sha256": "0ef6184797236954f54007888ba2abf18a695f781afb1380413f703ca1c01650"
+    },
+    {
+      "path": "source/src/world/ShallowLivingKit.js",
+      "bytes": 1307,
+      "sha256": "725455bd17517723f3dcbc626979efefe6c392e29264aff668c55880a25aea0d"
+    },
+    {
+      "path": "source/src/world/ShallowMarineAppearance.js",
+      "bytes": 1438,
+      "sha256": "f83acfcda40143c4f2a9149685d1e163afc76baba4391c6ed900c3873417c482"
+    },
+    {
+      "path": "source/src/world/ShallowMeadowRibbonAssets.js",
+      "bytes": 2050,
+      "sha256": "850fa402a1555a7fd3d198e09bdea420d56b63ff73a45cd6f8a70fcfcad005ca"
+    },
+    {
+      "path": "source/src/world/ShallowMuseumCorals.js",
+      "bytes": 1327,
+      "sha256": "c155e1fa7f2c8d8ad1198838e74d71ba504caf768550693c0d0de9bbfc65f4f1"
+    },
+    {
+      "path": "source/src/world/ShallowNaturalAssets.js",
+      "bytes": 26028,
+      "sha256": "0035fb490549a6111202879827478f005e1e0c65add3427ff211fae8765e7d5f"
+    },
+    {
+      "path": "source/src/world/ShallowNaturalHabitat.js",
+      "bytes": 4220,
+      "sha256": "1f2897152d031e79e5a0acf07b0d61d9f8af606af298726b1ef5855b5834e72d"
+    },
+    {
+      "path": "source/src/world/ShallowNearCommunity.js",
+      "bytes": 22589,
+      "sha256": "1773dca5b844d2049c9320f0ce0c7e3045f8e8046d7af1d3eb47ebf688b3091c"
+    },
+    {
+      "path": "source/src/world/ShallowOpenCommunity.js",
+      "bytes": 4801,
+      "sha256": "e65e6d315e67db8355e2df45c6d7e8b30af246573e313ec4e1624b004b80a1a7"
+    },
+    {
+      "path": "source/src/world/ShallowReefBank.js",
+      "bytes": 4568,
+      "sha256": "ee52f8ad08e19e5b5e4925251092e43f2d6ca46cac927ae828f9dacc471a72b0"
+    },
+    {
+      "path": "source/src/world/ShallowSampleScene.js",
+      "bytes": 34921,
+      "sha256": "7521032d6bd4aa2535e877b11f5c041dca3de8b62042e10ce9ff1389683c0374"
+    },
+    {
+      "path": "source/src/world/ShallowScannedReefAssets.js",
+      "bytes": 4085,
+      "sha256": "dec48aed3538d041fc43ebf063cfcd710added364ecade5339e346dcac5a530e"
+    },
+    {
+      "path": "source/src/world/ShallowScannedReefData.js",
+      "bytes": 1281398,
+      "sha256": "f01cf83e14d881abedf0df446aaa32bebad90e542b36460e6432d1dbb43db664"
+    },
+    {
+      "path": "source/src/world/ShallowSedimentContact.js",
+      "bytes": 3472,
+      "sha256": "828c4adde6f2459e4ede1e65a6f1509a63efeeede45634e7e1ae0ee85354fe6a"
+    },
+    {
+      "path": "source/src/world/ShallowSourceTurtle.js",
+      "bytes": 3886,
+      "sha256": "1b1a29cc48eff185406a072a357c8f61378851676a2c809e9f97b0886ef35813"
+    },
+    {
+      "path": "source/src/world/ShallowSourcedFishAssets.js",
+      "bytes": 7597,
+      "sha256": "3b49aa253f0791413cc4e4a9995fc502c66277f40de424146a07b70891b238b1"
+    },
+    {
+      "path": "source/src/world/ShallowSourcedFishData.js",
+      "bytes": 171494,
+      "sha256": "275ec39ca3ad0cfa9f0d5710aef1f6d8e938fcb0e2bc0a16db612d8a5d45e6f5"
+    },
+    {
+      "path": "source/src/world/ShallowVisibleInstances.js",
+      "bytes": 2806,
+      "sha256": "fc47a02d1d1586e8718bafbe5d40031aa09e02df47dcc9b12ef62cc410ef7c0a"
+    },
+    {
+      "path": "source/src/world/deepOrganisms.js",
+      "bytes": 32932,
+      "sha256": "afd05b3a2c5d3ddc9d6989ccd599c716a98640b7bd8307e5859689791345f950"
+    },
+    {
+      "path": "source/src/world/deepSeaSpiderOrganism.js",
+      "bytes": 7866,
+      "sha256": "6d5a04a9caf54f826c33fb874c68fe8b754193648da45dd931c1b5533b3cab18"
+    },
+    {
+      "path": "source/src/world/kelpAnimationVisibility.js",
+      "bytes": 773,
+      "sha256": "285ac84a8811adf8ffd18dceb52908894e45d375f576332fc8c157072fd8fd67"
+    },
+    {
+      "path": "source/src/world/kelpOceanHabitatCover.js",
+      "bytes": 5920,
+      "sha256": "9f1bce7f5113d5e5ed51455eb666a8a46370918feedfe7527cc2d2592de3cbf1"
+    },
+    {
+      "path": "source/src/world/kelpOceanHabitatMaterial.js",
+      "bytes": 3525,
+      "sha256": "47887e4ef16eb58909c40f57c701170edf148f38f005be95481767ef60973383"
+    },
+    {
+      "path": "source/src/world/kelpOrganisms.js",
+      "bytes": 31220,
+      "sha256": "8b03d9fd0040257cb86ec82b61d98f0572804012d3f02fab9fc92c5c8afa03cc"
+    },
+    {
+      "path": "source/src/world/kelpVisitorOrganism.js",
+      "bytes": 8614,
+      "sha256": "c9655060f84b8e667936cdc33399c9a409b70ee00a384d1df26b424b1ae0469c"
+    },
+    {
+      "path": "source/src/world/kelpWaterOrganisms.js",
+      "bytes": 7759,
+      "sha256": "ba73ae4a647dfecaccb860a7c55ca3f758b1280d7b446c0c6603199a60267218"
+    },
+    {
+      "path": "source/src/world/livingMeadowEnvironment.js",
+      "bytes": 3942,
+      "sha256": "2549d6249a6933e54369ec9227f8790028e77cdfa73496d288b2209327ac8787"
+    },
+    {
+      "path": "source/src/world/livingReefSubstrate.js",
+      "bytes": 1939,
+      "sha256": "e6139ca4ab6e8bd4f15273df83968f71e72ef1238b49323bb3e0a9eaa1ef30d2"
+    },
+    {
+      "path": "source/src/world/livingShallowsAssets.js",
+      "bytes": 20253,
+      "sha256": "1a7867e540bb74157c549a0b6004546e0cc4151af6748804334fd90703f31019"
+    },
+    {
+      "path": "source/src/world/livingShallowsCoralMaterial.js",
+      "bytes": 2027,
+      "sha256": "99b6757abd2a19c16710753195ba2a9d7f4335fab407463c9365ed2ff0a761bb"
+    },
+    {
+      "path": "source/src/world/oceanAnimalEncounters.js",
+      "bytes": 10665,
+      "sha256": "d7b3ffb8915b300cf2a3df9e1e990d9ac0fbd086e22743728980c9cc64123016"
+    },
+    {
+      "path": "source/src/world/oceanMacroSurfaceMaterial.js",
+      "bytes": 5489,
+      "sha256": "5167fdc25a80c23855b406f6c339ca22b0b639abdb7d7411b72f4f69c2198e68"
+    },
+    {
+      "path": "source/src/world/oceanRockFooting.js",
+      "bytes": 1577,
+      "sha256": "3f13ded85eeece52dd6ce9a9c882c8623e0d0e19c85ebde590b8a838ab0dc13b"
+    },
+    {
+      "path": "source/src/world/oceanSandSurface.js",
+      "bytes": 8199,
+      "sha256": "679d72a6c9aa191aef07938be24d4ac56cd15eb46549c0cd5d068133accdc3b1"
+    },
+    {
+      "path": "source/src/world/oceanTerrainBuffers.js",
+      "bytes": 9756,
+      "sha256": "fb709d79b46a5fa8745be5813f668997c568f807c6798a139ce87bd4665b4daf"
+    },
+    {
+      "path": "source/src/world/openWaterLifeAssets.js",
+      "bytes": 14960,
+      "sha256": "947e536d3e25b4c42929f7832b7672c583e6e76292e08b7e95ca45eeba0b55dc"
+    },
+    {
+      "path": "source/src/world/organisms.js",
+      "bytes": 100871,
+      "sha256": "7222b152fee85bbf8c3408016b0340b364dddf44739c4b631cb84cff24353fd2"
+    },
+    {
+      "path": "source/src/world/prepareShallowRenderer.js",
+      "bytes": 957,
+      "sha256": "31cb702d6ddcb3014d4c41ed057e6f31b080bde0575bc7ed211a2bc09ee41bff"
+    },
+    {
+      "path": "source/src/world/reefCoralMaterial.js",
+      "bytes": 4667,
+      "sha256": "af25a6a5b2aadfb4a67e5f555e8dc8055c04ea2a53dc9d7b2db872377349d95c"
+    },
+    {
+      "path": "source/src/world/reefGuildAssets.js",
+      "bytes": 13399,
+      "sha256": "94bd5e2c5a01d3173f15e3a7c234fb047b0f4ef9ba91066d8c4d7bba61a75c81"
+    },
+    {
+      "path": "source/src/world/reefLandscapeDetail.js",
+      "bytes": 4006,
+      "sha256": "2b288af4f8215fd74c08d4c8f69ac01a397d4f5b78ff9a418f98aa9dc1cfae3b"
+    },
+    {
+      "path": "source/src/world/reefLandscapePlacement.js",
+      "bytes": 5289,
+      "sha256": "8813b4ffc52b52a9d4c7a46f8364a6d1c0f3b2397ef050ae25fce757d09b3f49"
+    },
+    {
+      "path": "source/src/world/reefRockMaterial.js",
+      "bytes": 4546,
+      "sha256": "118c392794ff078ef9bf5623dd8fafa922a2f6f5e07ce9c538f6fdb24612ff5d"
+    },
+    {
+      "path": "source/src/world/reefScanAssets.js",
+      "bytes": 25339,
+      "sha256": "693b312eb74ee81ab243c77236650548ae9748247c6072eec898244058f9d633"
+    },
+    {
+      "path": "source/src/world/reefScanDisplay.js",
+      "bytes": 4193,
+      "sha256": "e77cd8b108e6ef7cd0fcc142e3c414dc7cd5f38dab905ef907bd4fb56fb72e3b"
+    },
+    {
+      "path": "source/src/world/reefScanPlacement.js",
+      "bytes": 3787,
+      "sha256": "99c8e9832afe295fa1d85bf0edc3eef4dd475aea95ce27623832c66e9c081b19"
+    },
+    {
+      "path": "source/src/world/reefSceneOrganization.js",
+      "bytes": 1372,
+      "sha256": "3f1356cd68ecf38f7d09bd43593634e65ee66b686fefabdf0af3099969e56729"
+    },
+    {
+      "path": "source/src/world/reefSpatialQueries.js",
+      "bytes": 2733,
+      "sha256": "14e6fd229e1de493c353a8e853e8c7d40bc4b55439d1c939e036bccf00005f87"
+    },
+    {
+      "path": "source/src/world/reefTerrain.js",
+      "bytes": 3655,
+      "sha256": "920e9657fd45d8b91d89ba7791c54723b569116ca831d7ca14cf23b30f430182"
+    },
+    {
+      "path": "source/src/world/shallowBenthicCoralData.js",
+      "bytes": 1974440,
+      "sha256": "3d59ddab8b8de7e85f45282622130c1f531a8c93da3f3e28244d110606411ef1"
+    },
+    {
+      "path": "source/src/world/shallowBranchingCoralData.js",
+      "bytes": 453192,
+      "sha256": "7b6fe33ddac3b2e7580edc3c44ad77e7b540fd21c3cb54f87cfa4a90fd591045"
+    },
+    {
+      "path": "source/src/world/shallowContactFaunaData.js",
+      "bytes": 1606308,
+      "sha256": "4d8b9f26a5964530401b6f917ec81d0c549c2723eb6e8c892b6004da9c0f8078"
+    },
+    {
+      "path": "source/src/world/shallowHawksbillData.js",
+      "bytes": 933414,
+      "sha256": "0cba92c31faaed00b7ffe14be260e4d8bd1e6e8eae9ca74db7f52406f2ada659"
+    },
+    {
+      "path": "source/src/world/shallowLivingKitData.js",
+      "bytes": 2434398,
+      "sha256": "0b802d1eb3b8f01bbe0957642ae6f79081952d33ccf8afb08e73dde42402bb52"
+    },
+    {
+      "path": "source/src/world/shallowMuseumCoralData.js",
+      "bytes": 310668,
+      "sha256": "1be12629d646ce52bfcb687a5694d35f9a20649bd03cce02f0e144a39cb29cd0"
+    },
+    {
+      "path": "source/src/world/shallowNaturalHabitatData.js",
+      "bytes": 966911,
+      "sha256": "c2e60bcb07c9e927b0194187bc4892664b6b21173acec7e56fbfe0b3c9d8bde1"
+    },
+    {
+      "path": "source/src/world/shallowNearCommunityData.js",
+      "bytes": 3311744,
+      "sha256": "cd59a51ccf0093a7a72d72ea326e53d2a95fabe6a53e052be89d7cf165cdc5bb"
+    },
+    {
+      "path": "source/src/world/shallowOpenCommunityData.js",
+      "bytes": 823312,
+      "sha256": "1a3d837c7697c624de69c0c0e86b21579590fcd6fb73491c66baf31d1938d6fa"
+    },
+    {
+      "path": "source/src/world/shallowPreparedCover.js",
+      "bytes": 211643,
+      "sha256": "1bfdd67126306e6ae0867b0af7419186b8350c5745a527d948519ba755ea1138"
+    },
+    {
+      "path": "source/src/world/shallowPreparedHabitats.js",
+      "bytes": 6526,
+      "sha256": "2d03adc02cbcd4286140ef6eb9d4057f4f2bfff2c347228c3315a6352d53d0db"
+    },
+    {
+      "path": "source/src/world/shallowReefDistanceData.js",
+      "bytes": 622475,
+      "sha256": "477aaac9542cebae6feda1f7e1362fa70c46088e633309fadb194ec2d74b5154"
+    },
+    {
+      "path": "source/src/world/shallowSampleCoralAssets.js",
+      "bytes": 1407,
+      "sha256": "4d6bd8cdf904a66d81d626a988603cf360340a4f652eff399d14c700771a778b"
+    },
+    {
+      "path": "source/vite.config.mjs",
+      "bytes": 535,
+      "sha256": "f1449e95c5d6102673839d1c453a5f7df81abd0b946c4dd0338c2dd5e2832b4d"
+    },
+    {
+      "path": "source/worker/index.js",
+      "bytes": 483,
+      "sha256": "2dd0615a445143933d88d4271f54f5d63ee951421fcd08c5a7617bb09c564389"
+    },
+    {
+      "path": "validation/browser/before-24.png",
+      "bytes": 109006,
+      "sha256": "92446447db95a66ab8f88342e2191bfdac06134f817330c59a517ff6e9fc211a"
+    },
+    {
+      "path": "validation/browser/completed-75.png",
+      "bytes": 98417,
+      "sha256": "483229438726e282cb510d02ffbb8e3cb11c0e119310e3c22a5815a1666ae54b"
+    },
+    {
+      "path": "validation/browser/console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "validation/browser/final-24.png",
+      "bytes": 111595,
+      "sha256": "171b6a5f7a6539ebb6c31f566e3fa17dd0807dfbc06540d49dd3c8e62ea81d99"
+    },
+    {
+      "path": "validation/browser/final-69.png",
+      "bytes": 124334,
+      "sha256": "53866b1152113232054e602f22450c4a0bed157fc8b03ea155d51c4f18f9f83f"
+    },
+    {
+      "path": "validation/browser/final-tour-1.png",
+      "bytes": 103355,
+      "sha256": "2b1840465e918beed587a6caecc30414be3e1a3bf27b9d4b75e60b4498ce7934"
+    },
+    {
+      "path": "validation/browser/final-tour-2.png",
+      "bytes": 96818,
+      "sha256": "6514dce707918a8f9a39a88af62c73ae6c0ab2ddde197d71d281e4f4e6f0ecc2"
+    },
+    {
+      "path": "validation/browser/playback-initial-hitch.json",
+      "bytes": 151732,
+      "sha256": "3521f756e6e93a00e0f1ccf59d540225b04315185e92b3388f34ef305028474a"
+    },
+    {
+      "path": "validation/browser/playback.json",
+      "bytes": 114900,
+      "sha256": "b62f11ca9aeeb4e77abfef0f7cabf0beb2f55cd61f8c1c2e49772f39edb11f21"
+    },
+    {
+      "path": "validation/browser/tour-1.png",
+      "bytes": 102752,
+      "sha256": "327c6d554261c93db648ad34cd0de4f6ac44c64c8d5ed86b8aa6bfa017eaf6ea"
+    },
+    {
+      "path": "validation/browser/tour-2.png",
+      "bytes": 122916,
+      "sha256": "c67497e0fcfc1122f4319daaf1eda5b6c4ae091e9abf84a68136da5713bb7177"
+    },
+    {
+      "path": "validation/build-final.log",
+      "bytes": 2137,
+      "sha256": "e810ec2418bfd8b2e7e745cb3dc0971450c2cc3b89a955d0639751430748114d"
+    },
+    {
+      "path": "validation/build.log",
+      "bytes": 2136,
+      "sha256": "48918e834129ddf30a9738a38a4df8b63654e64a94b2ff97b19689f7fa98e992"
+    },
+    {
+      "path": "validation/preparation-tests.log",
+      "bytes": 639,
+      "sha256": "8bd704a66ca2d0e0cfa760d596efa0356e6f1f5ea289a8f83babc81a05a05ad2"
+    },
+    {
+      "path": "validation/preservation.json",
+      "bytes": 479,
+      "sha256": "f92e4632a8cc26faf477e7b04f7dc40426a316e646ced8da214a9f36c26fbc46"
+    },
+    {
+      "path": "validation/review.html",
+      "bytes": 3434,
+      "sha256": "12c17378c277a4aabc86d20fe344de2e8f5a6fd3eff855dc245dc73676b4fc20"
+    },
+    {
+      "path": "validation/stage.json",
+      "bytes": 1830,
+      "sha256": "787dd3c99414bc4412f1856dd7fa5146cb41925cdca5d63bddbf74cb1ad4d216"
+    },
+    {
+      "path": "validation/tests.log",
+      "bytes": 24874,
+      "sha256": "f04eeaff69cd8d58ef0b81500599be8e6010514222e3b9401bb5cc4a6df5d34a"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-12",
+  "records": [
+    {
+      "key": "crab-blue",
+      "title": "Blue crab",
+      "author": "Julian Johnson-Mortimer",
+      "source": "https://sketchfab.com/3d-models/blue-crab-084c87634fab4f2bbc3a5866789014e3",
+      "license": "by",
+      "licenseURL": "http://creativecommons.org/licenses/by/4.0/",
+      "sourceSha256": "064f431b7db3e781c2486655d159ba17be929ee27943a34dac019926336b665e",
+      "changes": "Complete source model; UV-preserving simplification and rigid scale/orientation. Blue crab units are source carapace width; octopus units are the full horizontal arm envelope. Source image bytes unmodified. Original material replaced with shared marine response; untextured octopus receives authored muted skin colour and retains original normal map.",
+      "limits": "Artist reference without precise taxonomic certification. Blue crab is a coastal sand/grass visitor in this mixed-source demonstration, not a verified local reef population. Octopus is not identified as Octopus cyanea. Original CC BY or CC BY-NC restrictions retained.",
+      "originalTriangles": 763196,
+      "nearTriangles": 17304
+    },
+    {
+      "key": "octopus-lukas",
+      "title": "Octopus",
+      "author": "Lukáš Marek",
+      "source": "https://sketchfab.com/3d-models/octopus-6c77dfc55d34470991f77ba78fc2bdf4",
+      "license": "by-nc",
+      "licenseURL": "http://creativecommons.org/licenses/by-nc/4.0/",
+      "sourceSha256": "bcc3db4a4fdca701553be8c6e4afd453c3e9b4970b756341187bc5ce7f1cbfcc",
+      "changes": "Complete source model; UV-preserving simplification and rigid scale/orientation. Blue crab units are source carapace width; octopus units are the full horizontal arm envelope. Source image bytes unmodified. Original material replaced with shared marine response; untextured octopus receives authored muted skin colour and retains original normal map.",
+      "limits": "Artist reference without precise taxonomic certification. Blue crab is a coastal sand/grass visitor in this mixed-source demonstration, not a verified local reef population. Octopus is not identified as Octopus cyanea. Original CC BY or CC BY-NC restrictions retained.",
+      "originalTriangles": 24984,
+      "nearTriangles": 15998
+    }
+  ],
+  "textures": [
+    {
+      "file": "crab-blue-0.jpg",
+      "bytes": 937141,
+      "sha256": "f4aca94889a7b534d4db99e68e2ea581120e0e58990c6557ada22a5e01da6446"
+    },
+    {
+      "file": "crab-blue-1.jpg",
+      "bytes": 1141601,
+      "sha256": "dd9e618fcca644d58039ca48da8fa3c93b91f3b6a56fc0598b06f14b49907838"
+    },
+    {
+      "file": "crab-blue-2.jpg",
+      "bytes": 3356,
+      "sha256": "25279fa0b6974da96625cd0ad9320b841b58c9daebde298a9833f3fabf128a87"
+    },
+    {
+      "file": "octopus-lukas-0-normal.jpg",
+      "bytes": 949786,
+      "sha256": "e31e40cda7fe387445baa55f400d60f2b23e440496ea554293f34ea52dcbbc68"
+    }
+  ]
+}

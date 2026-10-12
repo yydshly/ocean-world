@@ -1,5 +1,8 @@
+import { oceanMeadowWaterSpeciesById } from './oceanMeadowWaterSpecies.js';
+
 // A finite tropical Indo-Pacific reef-water package. Chosen size, admission
 // depth, school size, geometry and ecological rates are display selections.
+import { oceanCoastalSchoolSpeciesById } from './oceanCoastalSchoolSpecies.js';
 const freeze = value => {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
     Object.values(value).forEach(freeze); Object.freeze(value);
@@ -190,6 +193,6 @@ export const oceanShoalLifeSpeciesCatalog = freeze([
   }),
 ]);
 
-export const oceanShoalLifeSpeciesById = freeze(Object.fromEntries(
+export const oceanShoalLifeSpeciesById = freeze({ ...oceanMeadowWaterSpeciesById, ...oceanCoastalSchoolSpeciesById, ...Object.fromEntries(
   oceanShoalLifeSpeciesCatalog.map(species => [species.id, species]),
-));
+) });

@@ -1,0 +1,133 @@
+{
+  "version": 4,
+  "kind": "authored-procedural-whole-body-kit",
+  "scope": "75-second shallow sample only; no persistent population or catalogue size migration",
+  "created": "2026-10-10",
+  "assetSource": "Original project-authored Three.js geometry and vertex surface colours; no third-party mesh or photograph was copied into this kit.",
+  "limits": [
+    "Species silhouettes and colours are authored interpretations of museum and agency descriptions, not digitised measured outlines or specimen scans.",
+    "Body and fin frequencies are bounded display animation, not calibrated locomotion or a fluid simulation.",
+    "No claim of documentary photorealism, actual browser/GPU acceptance or natural colour calibration follows from native geometry checks."
+  ],
+  "representatives": [
+    {
+      "id": "green-turtle",
+      "scientificName": "Chelonia mydas",
+      "unit": "1 metre total length on X; rendered using the existing catalogue individual size",
+      "construction": "Broad low carapace with five central and four paired side scutes, light plastron, small head, four thick swept flippers and intact tail.",
+      "sources": [
+        {
+          "url": "https://www.fisheries.noaa.gov/species/green-turtle",
+          "use": "Adult small head, olive/brown shell, light underside, five central/four side scutes."
+        }
+      ],
+      "version4Construction": "Whole carapace now has a fuller low dome and distinct dark olive-brown scutes, light seams and irregular radial marbling; dorsal skin/plastron contrast retained across the complete head and flippers. Authored geometry/vertex colour, not a source scan."
+    },
+    {
+      "id": "blue-spotted-ray",
+      "scientificName": "Taeniura lymma",
+      "unit": "1 metre disc width on Z, separate intact tail extent; rendered using the existing catalogue disc width",
+      "construction": "Thin continuous oval disc with rounded margin, dorsal muscle relief, blue dorsal spots, eyes/spiracles, moderate pelvic fins and striped tapered tail with a lower fold.",
+      "sources": [
+        {
+          "url": "https://www.floridamuseum.ufl.edu/discover-fish/species-profiles/bluespotted-ribbontail-ray/",
+          "use": "Oval disc, rounded snout, eye/spiracle arrangement, pelvic fins, stout tail/lower fold and dorsal blue spots/tail stripes."
+        }
+      ]
+    },
+    {
+      "id": "blue-and-gold-fusilier",
+      "scientificName": "Caesio teres",
+      "unit": "1 metre total-length unit along X",
+      "sources": [
+        {
+          "url": "https://fishesofaustralia.net.au/Home/species/1233",
+          "use": "Named whole-fish outline, yellow back/caudal peduncle/tail and blue/silver body."
+        }
+      ],
+      "version3Construction": "Blue flank with broad diagonal yellow upper/rear field, gold deeply forked tail, restrained lower silver field; fusiform body and shorter rounded head.",
+      "version4Construction": "Full-school asset treatment: fuller transverse body on fusiliers and trevally, slimmer vertical fusiform outline, complete flank shading with bounded fine colour variation; species bands, natural length, eyes, fins and original triangle/draw budgets retained."
+    },
+    {
+      "id": "doubleline-fusilier",
+      "scientificName": "Pterocaesio digramma",
+      "unit": "1 metre total-length unit along X",
+      "sources": [
+        {
+          "url": "https://fishesofaustralia.net.au/home/species/543",
+          "use": "Named fusilier representative; existing catalogue double-line and dark caudal-tip identification retained."
+        },
+        {
+          "url": "https://australian.museum/learn/animals/fishes/doubleline-fusilier-pterocaesio-digramma/",
+          "use": "Slender body, two longitudinal stripes and middle-water schooling."
+        }
+      ],
+      "version3Construction": "Slender blue-green body carrying two continuous yellow flank lines, pale lower surface and dark fork tips.",
+      "version4Construction": "Full-school asset treatment: fuller transverse body on fusiliers and trevally, slimmer vertical fusiform outline, complete flank shading with bounded fine colour variation; species bands, natural length, eyes, fins and original triangle/draw budgets retained."
+    },
+    {
+      "id": "bluestripe-snapper",
+      "scientificName": "Lutjanus kasmira",
+      "unit": "1 metre total-length unit along X",
+      "sources": [
+        {
+          "url": "https://www.kahaku.go.jp/research/db/zoology/Fishes_of_Andaman_Sea/contents/lutjanidae/11.html",
+          "use": "Named complete fish, yellow flank, lighter underside and four blue stripes."
+        },
+        {
+          "url": "https://fishesofaustralia.net.au/home/species/559",
+          "use": "Version 3 whole flank: four narrow brilliant-blue lines, faint grey belly lines, yellow fins; no fifth blue belly line."
+        }
+      ],
+      "version3Construction": "Moderately deep yellow fish with four stable blue flank lines, subdued grey belly lines and yellow fins; complete forehead and caudal peduncle.",
+      "version4Construction": "Full-school asset treatment: fuller transverse body on fusiliers and trevally, slimmer vertical fusiform outline, complete flank shading with bounded fine colour variation; species bands, natural length, eyes, fins and original triangle/draw budgets retained."
+    },
+    {
+      "id": "bigeye-trevally",
+      "scientificName": "Caranx sexfasciatus",
+      "unit": "1 metre total-length unit along X; catalogue TL/FL distinctions retained",
+      "construction": "Compressed adult outline, two dorsal fins, long curved pectoral membranes, large lateral eyes and a deep fork; no mandatory adult six-bar pattern.",
+      "sources": [
+        {
+          "url": "https://www.kahaku.go.jp/research/db/zoology/FishGuide/data/fish207.html",
+          "use": "Named complete animal and adult opercular spot/fin-tip diagnostics; its pictured SL is not used as this model's TL."
+        },
+        {
+          "url": "https://biogeodb.stri.si.edu/sftep/es/thefishes/species/1251",
+          "use": "Compressed form, long pectoral fins and separate dorsal/anal fin arrangement."
+        },
+        {
+          "url": "https://biogeodb.stri.si.edu/sftep/en/thefishes/species/1251",
+          "use": "Version 3 adult whole form: large adipose-covered eye, long pectoral fins, front lateral-line arch/scutes and dark white-tipped dorsal lobe. No catalogue size change is taken from this account."
+        }
+      ],
+      "version3Construction": "Adult compressed silver/blue-grey body with dark upper flank, small opercular mark, pronounced front lateral-line arch, two dorsal fins and dark/white-tipped leading lobes; long swept pectorals, deep fork.",
+      "version4Construction": "Full-school asset treatment: fuller transverse body on fusiliers and trevally, slimmer vertical fusiform outline, complete flank shading with bounded fine colour variation; species bands, natural length, eyes, fins and original triangle/draw budgets retained."
+    }
+  ],
+  "screenedExternalAssets": [
+    {
+      "url": "https://sketchfab.com/3d-models/green-turtle-chelonia-mydas-f84013f4d4754381979429b5cffb5f17",
+      "status": "Not imported. CC BY-SA low-poly artist model; no accessible source download was used in this batch."
+    },
+    {
+      "url": "https://www.fab.com/listings/1e44440c-ea44-42b4-89c4-ee8946dcd035",
+      "status": "Not imported. Purchasable green-turtle asset; no purchase or entitlement was assumed."
+    }
+  ],
+  "schoolKitVersion": 4,
+  "previousVersionScope": "Historical version 2 turtle/ray; version 3 four main schools. Version 4 changes turtle surface and four principal school bodies/colours; ray and external-asset records retained.",
+  "schoolQualityBatch": {
+    "date": "2026-10-11",
+    "authored": true,
+    "calibrated": false,
+    "construction": "Four principal schools retain species band signatures, unit length, fins, eyes and triangle/draw budgets; fuller lateral cross-sections for fusiliers/trevally, slimmer vertical outlines and whole-body colour variation. Turtle dome, scute colours and skin mosaic revised; motion unchanged.",
+    "unit": "Neutral snout X=+.5 and clipped distal caudal tip X=-.5; actual existing catalogue individual sizes and sampleBodyWave are unchanged.",
+    "limits": [
+      "Full-body colour and silhouette interpretation, not a specimen scan, colour-calibrated photograph or calibrated natural density.",
+      "Model-side geometry/pattern checks are not actual WebGL or documentary-realism acceptance."
+    ],
+    "previousConstruction": "Species-specific whole body/rounded forehead/gill cover and caudal peduncle; 28 original-budget cross-section intervals redistributed over complete flank colour fields, complete dorsal/anal/pectoral/caudal outlines with shared instanced materials."
+  },
+  "updated": "2026-10-11"
+}

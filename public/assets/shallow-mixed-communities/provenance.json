@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "date": "2026-10-11",
+  "scope": "Finite local 75-second shallow sample",
+  "sources": [
+    {
+      "source": "../shallow-near-community/provenance.json",
+      "use": "Existing VIVID REALITY reef scan and thehydrous foliose Montipora",
+      "licenses": [
+        "CC-BY-4.0",
+        "CC-BY-NC-SA-4.0"
+      ]
+    },
+    {
+      "source": "../shallow-open-community/provenance.json",
+      "use": "Existing whole Porites live colony",
+      "licenses": [
+        "CC-BY-4.0"
+      ]
+    },
+    {
+      "source": "../shallow-branching-life/provenance.json",
+      "use": "Two Smithsonian whole branching specimens, existing authored tissue colours",
+      "licenses": [
+        "CC0-1.0"
+      ]
+    }
+  ],
+  "changes": "Four authored combinations of seven complete colonies replace 50 of 80 repeated survey outcrops. These are combinations of existing sources, not new scan sites or species. Original source images and binary mesh files are unchanged. Both display LODs preserve complete colonies; near geometry and original grounded apron supply exact physical support.",
+  "assemblyTerms": "Compositions containing Montipora retain CC BY-NC-SA 4.0 conditions, attribution, noncommercial and share-alike. Other component attributions and their original licences are retained in linked source receipts. No proprietary or paid assets added.",
+  "fish": "Project-authored swimmer family v3: differentiated complete body contours, open ruled caudal forks, mouth seam, physical skin layer and restrained procedural scale relief. Existing identities, total lengths and behaviour unchanged. Not scans or anatomically calibrated models.",
+  "rejected": "The enlarged mixed front-cover layout reduced fitted coverage and displaced a small patrol; retained the previous front-cover composition and original near toe sources. A runtime pink crust/turf overlay looked painted and was removed. No rendered screenshot is claimed to be documentary realism.",
+  "sourceFiles": [
+    {
+      "file": "src/world/ShallowNearCommunity.js",
+      "sha256": "8064d2200673430160d8e96aa68c831887e06646fb91aa7efedb157dbdcf756b"
+    },
+    {
+      "file": "src/world/ShallowCohesiveFish.js",
+      "sha256": "4fd296060e6d3af4c4c64bab6f07b878d7ccd8ba6a51a1ab5effa648822b2dd6"
+    },
+    {
+      "file": "src/world/ShallowCommunityFishAssets.js",
+      "sha256": "e6ddffeab9f640f9aee978932a5873e565a6065f24cf44b79575d670ae8dca11"
+    },
+    {
+      "file": "src/world/ShallowFishSurface.js",
+      "sha256": "1e13d4de4e8f42a272e63962bcd028a93d9289c8f97fc461bc8f99cceb6b9864"
+    },
+    {
+      "file": "src/oceanRockShape.js",
+      "sha256": "7ec55af33626d6963868f12e2a216df5ffbdd40a6efc64a837ecd9e239de0e61"
+    }
+  ]
+}

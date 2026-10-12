@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "date": "2026-10-11",
+  "records": [
+    {
+      "key": "reef-lettuce",
+      "title": "Thin Leaf Lettuce Coral / Agaricia tenufolia",
+      "author": "Patric Lengacher",
+      "source": "https://sketchfab.com/3d-models/thin-leaf-lettuce-coral-agaricia-tenufolia-bb8f65f9b13d4070b173f813b7dbe6bc",
+      "uid": "bb8f65f9b13d4070b173f813b7dbe6bc",
+      "license": {
+        "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+        "label": "CC Attribution",
+        "fullName": "Creative Commons Attribution",
+        "requirements": "Author must be credited. Commercial use is allowed.",
+        "url": "http://creativecommons.org/licenses/by/4.0/",
+        "slug": "by"
+      },
+      "description": "A lettuce coral scanned in West End Roatan, about 10-14m depth.\n\n25 Photos taken in Roatan, Honduras with a 15mm fisheye lens, processed in Agisoft Metashape Standard\nSupport the [Roatan Marine Park](http://wwwhttps://www.roatanmarinepark.org/) in their efforts to treat affected corals and protect the reef.",
+      "originalSHA256": "c7145045f8048018d4a80160073a90684d9b2ec2d63ae27d7777db6329a88605",
+      "changes": "Complete colony mesh decimated and normalized. Original colour photograph bytes unchanged. Low reef layer conforms to actual supporting triangles. Authored display widths and placements, not survey dimensions.",
+      "limitations": "Roatan Caribbean sources used as explicitly cross-region visual reference in this authored sample; not a reconstruction of one Indo-Pacific field site. Lobed source includes one diseased/exposed area described by its author.",
+      "triangles": {
+        "near": 15999,
+        "distant": 2879,
+        "cover": 1273
+      }
+    },
+    {
+      "key": "reef-lobed",
+      "title": "Lobed Star Coral / Orbicella annularis",
+      "author": "Patric Lengacher",
+      "source": "https://sketchfab.com/3d-models/lobed-star-coral-orbicella-annularis-c0cd7232d2d94ffe994fdc2850625fc2",
+      "uid": "c0cd7232d2d94ffe994fdc2850625fc2",
+      "license": {
+        "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+        "label": "CC Attribution",
+        "fullName": "Creative Commons Attribution",
+        "requirements": "Author must be credited. Commercial use is allowed.",
+        "url": "http://creativecommons.org/licenses/by/4.0/",
+        "slug": "by"
+      },
+      "description": "A detail scan of an OANN coral. Also known as Lobed Star Coral or Orbicella annularis. The largest chunk is about 25cm x 40cm. One small part of the colony shows a white area where the coral skeleton is exposed, due to a disease.\n\n21 Photos taken in Roatan, Honduras with a 15mm fisheye lens, processed in Agisoft Metashape Standard\n\nSupport the [Roatan Marine Park](https://www.roatanmarinepark.org/) in their efforts to treat affected corals and protect the reef.",
+      "originalSHA256": "0e299a3a1db01a61101580e8b1043fe62144500d18f5f791cb8de28e373b2e30",
+      "changes": "Complete colony mesh decimated and normalized. Original colour photograph bytes unchanged. Low reef layer conforms to actual supporting triangles. Authored display widths and placements, not survey dimensions.",
+      "limitations": "Roatan Caribbean sources used as explicitly cross-region visual reference in this authored sample; not a reconstruction of one Indo-Pacific field site. Lobed source includes one diseased/exposed area described by its author.",
+      "triangles": {
+        "near": 16000,
+        "distant": 2879,
+        "cover": 800
+      }
+    },
+    {
+      "key": "sponge-stove",
+      "title": "Stove-pipe Sponge / Aplysina archeri",
+      "author": "Patric Lengacher",
+      "source": "https://sketchfab.com/3d-models/stove-pipe-sponge-aplysina-archeri-749021f080cf4ee78adb5374584e0689",
+      "uid": "749021f080cf4ee78adb5374584e0689",
+      "license": {
+        "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+        "label": "CC Attribution",
+        "fullName": "Creative Commons Attribution",
+        "requirements": "Author must be credited. Commercial use is allowed.",
+        "url": "http://creativecommons.org/licenses/by/4.0/",
+        "slug": "by"
+      },
+      "description": "A couple of tube sponges growing on a little ledge. Although it might appear that the scan is not complete on one of the tubes, in reality it was a damaged / deformed sponge.\n\nA fairy basslet sneaked into one of the pictures, can you spot it?\n\n21 Photos taken in Roatan, Honduras with a 15mm fisheye lens, processed in Agisoft Metashape Standard\n\nSupport the [Roatan Marine Park](http://wwwhttps://www.roatanmarinepark.org/) in their efforts to treat affected corals and protect the reef.",
+      "originalSHA256": "19e1422772929aa5e1e0188ffce991fc04bd45fa1ab9ee1090189e756ed5ebfa",
+      "changes": "Selected the complete main tube cluster using one fixed XYZ region; removed surrounding ledge. Decimated to 6499 triangles, normalized all axes equally to height=1. Open basal cuts; no invented cap or tube repair. Original image bytes retained.",
+      "limitations": "Roatan Caribbean sources used as explicitly cross-region visual reference in this authored sample; not a reconstruction of one Indo-Pacific field site. Lobed source includes one diseased/exposed area described by its author.",
+      "triangles": {
+        "near": 6499
+      }
+    }
+  ],
+  "generatedData": {
+    "file": "src/world/shallowBenthicCoralData.js",
+    "sha256": "3d59ddab8b8de7e85f45282622130c1f531a8c93da3f3e28244d110606411ef1"
+  },
+  "textures": [
+    {
+      "file": "reef-lettuce-0.jpg",
+      "sha256": "b3ad068cf3753fc6cd94f9ba9a2d70daace7b0a090d8733d66ddde67cee5705d"
+    },
+    {
+      "file": "reef-lobed-0.jpg",
+      "sha256": "fba8041aa2119bfca34da354643e2dbc9af6ef2247f66de781bf281b15cd7ff6"
+    },
+    {
+      "file": "sponge-stove-0.jpg",
+      "sha256": "c8e9e72c281d58bb51b00be5d0fadf1f56fe974978fc5ad0bf7f3fdf74df46ff"
+    }
+  ],
+  "redistribution": "CC BY 4.0 for these three derived colony meshes and original images. Preserve source, author, licence and adaptation notices. Other existing assets retain their own licences.",
+  "authoredAnimals": "The new clam and crab family and cephalopod v2 are project-authored approximations, not sourced scans."
+}

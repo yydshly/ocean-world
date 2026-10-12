@@ -1,9 +1,24 @@
+import { OCEAN_REEF_BOTTOM_IDS } from '../oceanReefBottomSpecies.js';
+import { reefBottomBody, reefBottomAppendages, animateReefBottomParts } from './OceanReefBottomGeometry.js';
+import { OCEAN_SAND_BOTTOM_IDS } from '../oceanSandBottomSpecies.js';
+import { sandBottomBody, sandBottomAppendages, animateSandBottomParts } from './OceanSandBottomGeometry.js';
 import * as THREE from 'three';
+import { OCEAN_SMALL_BOTTOM_IDS } from '../oceanSmallBottomSpecies.js';
+import { smallBottomBody, smallBottomMovingParts, prawnPleopods } from './OceanSmallBottomGeometry.js';
 
 const TAU = Math.PI * 2, resources = new Map(), instances = new Set();
 export const OCEAN_BENTHIC_LIFE_ASSET_VERSION = 1;
 export const OCEAN_BENTHIC_LIFE_IDS = Object.freeze(['tiger-cowrie', 'spotted-hermit-crab', 'blue-spotted-ray', 'reef-goatfish']);
 export const OCEAN_BENTHIC_LIFE_ENVELOPES = Object.freeze({
+  'blue-linckia-star': Object.freeze({ sizeMeasure: 'maximum-whole-arm-span', horizontalRadius: .60, minY: 0, maxY: .12, localBounds: Object.freeze({ minX: -.56, maxX: .56, minZ: -.56, maxZ: .56 }), pitchLimit: 0 }),
+  'prickly-redfish': Object.freeze({ sizeMeasure: 'body-length', horizontalRadius: .60, minY: 0, maxY: .38, localBounds: Object.freeze({ minX: -.51, maxX: .51, minZ: -.23, maxZ: .23 }), pitchLimit: 0 }),
+  'giant-triton': Object.freeze({ sizeMeasure: 'shell-length', horizontalRadius: .78, minY: 0, maxY: .50, localBounds: Object.freeze({ minX: -.51, maxX: .72, minZ: -.22, maxZ: .22 }), pitchLimit: 0 }),
+  'leopard-flounder': Object.freeze({ sizeMeasure: 'total-length', horizontalRadius: .64, minY: 0, maxY: .11, localBounds: Object.freeze({ minX: -.515, maxX: .505, minZ: -.33, maxZ: .33 }), pitchLimit: 0 }),
+  'comb-sand-star': Object.freeze({ sizeMeasure: 'maximum-whole-arm-span', horizontalRadius: .61, minY: 0, maxY: .11, localBounds: Object.freeze({ minX: -.56, maxX: .56, minZ: -.56, maxZ: .56 }), pitchLimit: 0 }),
+  'sandfish-sea-cucumber': Object.freeze({ sizeMeasure: 'body-length', horizontalRadius: .60, minY: 0, maxY: .32, localBounds: Object.freeze({ minX: -.51, maxX: .51, minZ: -.21, maxZ: .21 }), pitchLimit: 0 }),  'green-tiger-prawn': Object.freeze({ sizeMeasure: 'total-body-length-excluding-antennae', horizontalRadius: 1.22, minY: 0, maxY: .36,
+    localBounds: Object.freeze({ minX: -.51, maxX: 1.13, minZ: -.43, maxZ: .43 }), pitchLimit: 0 }),
+  'flower-swimming-crab': Object.freeze({ sizeMeasure: 'carapace-width-including-lateral-spines', horizontalRadius: 1.08, minY: 0, maxY: .40,
+    localBounds: Object.freeze({ minX: -.43, maxX: .80, minZ: -.72, maxZ: .72 }), pitchLimit: 0 }),
   'tiger-cowrie': Object.freeze({ sizeMeasure: 'shell-length', horizontalRadius: .72, minY: 0, maxY: .50,
     localBounds: Object.freeze({ minX: -.52, maxX: .70, minZ: -.33, maxZ: .33 }), pitchLimit: 0 }),
   'spotted-hermit-crab': Object.freeze({ sizeMeasure: 'borrowed-shell-length', horizontalRadius: 1.1, minY: 0, maxY: .78,
@@ -13,7 +28,7 @@ export const OCEAN_BENTHIC_LIFE_ENVELOPES = Object.freeze({
   'reef-goatfish': Object.freeze({ sizeMeasure: 'total-length', horizontalRadius: .57, minY: -.30, maxY: .22,
     localBounds: Object.freeze({ minX: -.5, maxX: .5, minZ: -.15, maxZ: .15 }), pitchLimit: .25 }),
 });
-export const isOceanBenthicLifeSpecies = id => OCEAN_BENTHIC_LIFE_IDS.includes(id);
+export const isOceanBenthicLifeSpecies = id => OCEAN_BENTHIC_LIFE_IDS.includes(id) || OCEAN_SMALL_BOTTOM_IDS.includes(id) || OCEAN_SAND_BOTTOM_IDS.includes(id) || OCEAN_REEF_BOTTOM_IDS.includes(id);
 function share(root, key, make) {
   let row = resources.get(key); if (!row) { row = { value: make(), refs: 0 }; resources.set(key, row); }
   if (!root.userData.benthicLifeResources.has(key)) { root.userData.benthicLifeResources.add(key); row.refs++; }
@@ -208,7 +223,24 @@ export function createOceanBenthicLifeAsset(species) {
     morphologyStatus: 'complete procedural representative; sizes and outline ratios are display selections, not measured anatomy' });
   group.name = species?.commonName ?? id; instances.add(group);
   try {
-    if (id === 'tiger-cowrie') {
+    if (OCEAN_REEF_BOTTOM_IDS.includes(id)) {
+      parts.body = add(group, 'complete hard-reef body and ventral contacts', () => reefBottomBody(builder, id));
+      if (id !== 'blue-linckia-star') {
+        parts.appendages = new THREE.Group(); group.add(parts.appendages);
+        add(group, id === 'prickly-redfish' ? 'twenty ventral oral tentacles' : 'paired head tentacles eyes and siphon', () => reefBottomAppendages(builder, id), parts.appendages);
+      }
+    } else if (OCEAN_SAND_BOTTOM_IDS.includes(id)) {
+      parts.body = add(group, 'complete soft-bottom body and ventral contacts', () => sandBottomBody(builder, id));
+      if (id !== 'comb-sand-star') {
+        parts.appendages = new THREE.Group(); if (id === 'leopard-flounder') parts.appendages.position.x = -.37; group.add(parts.appendages);
+        add(group, id === 'leopard-flounder' ? 'rounded caudal fin' : 'twenty ventral oral tentacles', () => sandBottomAppendages(builder, id), parts.appendages);
+      }
+    } else if (OCEAN_SMALL_BOTTOM_IDS.includes(id)) {
+      parts.body = add(group, id === 'green-tiger-prawn' ? 'six somites five leg pairs rostrum and tail fan' : 'lateral-tooth carapace chelipeds three walking pairs and paddles', () => smallBottomBody(builder, id));
+      parts.appendages = new THREE.Group(); group.add(parts.appendages);
+      add(group, id === 'green-tiger-prawn' ? 'two antenna and branched antennule pairs' : 'mouth appendages', () => smallBottomMovingParts(builder, id), parts.appendages);
+      if (id === 'green-tiger-prawn') { parts.pleopods = new THREE.Group(); group.add(parts.pleopods); add(group, 'five pleopod pairs', () => prawnPleopods(builder), parts.pleopods); }
+    } else if (id === 'tiger-cowrie') {
       parts.shell = add(group, 'spotted shell', cowrieShell); parts.foot = add(group, 'foot and head tentacles', cowrieFoot);
       parts.mantle = new THREE.Group(); group.add(parts.mantle); add(group, 'living mantle folds', cowrieMantle, parts.mantle);
     } else if (id === 'spotted-hermit-crab') {
@@ -235,7 +267,14 @@ export function animateOceanBenthicLifeAsset(group, timeSec, agent = {}) {
   if (!group || group.userData.benthicLifeDisposed) return;
   const parts = group.userData.benthicLifeParts, time = Number.isFinite(timeSec) ? timeSec : 0, phase = group.userData.phase ?? 0;
   const resting = ['resting', 'sheltering', 'fixed', 'host-unavailable'].includes(agent.state);
-  if (group.userData.speciesId === 'tiger-cowrie') {
+  if (OCEAN_REEF_BOTTOM_IDS.includes(group.userData.speciesId)) {
+    animateReefBottomParts(parts, group.userData.speciesId, time, agent, phase);
+  } else if (OCEAN_SAND_BOTTOM_IDS.includes(group.userData.speciesId)) {
+    animateSandBottomParts(parts, group.userData.speciesId, time, agent, phase);
+  } else if (OCEAN_SMALL_BOTTOM_IDS.includes(group.userData.speciesId)) {
+    parts.appendages.rotation.y = resting ? 0 : Math.sin(time * 2.2 + phase) * .012;
+    if (parts.pleopods) parts.pleopods.rotation.x = resting ? 0 : Math.sin(time * 3 + phase) * .018;
+  } else if (group.userData.speciesId === 'tiger-cowrie') {
     parts.mantle.scale.set(resting ? .93 : 1, 1, resting ? .92 : 1);
   } else if (group.userData.speciesId === 'spotted-hermit-crab') {
     parts.legs.forEach((leg, i) => { leg.rotation.y = resting ? 0 : Math.sin(time * 3.2 + phase + i * Math.PI) * .045;

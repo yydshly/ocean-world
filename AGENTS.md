@@ -1,3 +1,388 @@
+<!-- product-publication-current -->
+2026-10-12 用户明确授权汇总产品与网页、完善README、沿用原版引导图、提交并部署远端。此授权覆盖下方历史仅本地/不提交部署限制。保持现有模拟与资产冻结，仅进行必要发布整理；正式导览 public/overview，由 scripts/build-product-overview.mjs 生成，入口采用站点相对链接。原引导PNG保留为冻结前产品快照。历史README/状态移至 docs/history。发布是否完成以对应提交GitHub Actions和实际远端检查为准，不以推送成功冒称部署成功。后续不自动扩展场景。
+<!-- /product-publication-current -->
+
+<!-- shallow-final-freeze-current -->
+2026-10-12 用户明确最后一轮有限收尾后固定版本，停止默认推进。这条覆盖下方所有历史后续资产/细调建议。冻结标识 shallow-sample-v1.0-local-20261012；不增加物种或换资产。只优化扫描支撑查询高度上界、启动距离计算，并在播放前上传所有既有渲染批次以避免首次入镜准备。
+原293动物/38展示类、体长、落点、床面、路线保持；前后151时间点全动物姿态和镜头精确一致。87浅海/公共岩面检查全过，最后预热另2过，共89不同case。两次本地build通过。第一完整播放出现1.2726s停顿且有降分辨率，明确未过并保留；最终75.0137s无中断，全scale1，1280×720CSS/DPR1.5/RTX4070Laptop，54.31FPS/p95 25ms/max54.2ms/1慢帧，error/warn[]。导航6.1004s/应用5.2806s，已有图缓存非冷首访；稳定60FPS/5s启动仍未过，平均FPS无实质提升，不称完全修复卡顿。支撑/镜头检查与实景抽查通过，不是全部动物互碰证明。风格、模型感、重复及生态校准保持已知限制。
+证据output/validation/shallow-final-closeout，版本包output/releases/shallow-sample-v1.0-local-20261012.zip，含源/原素材/静态构建/逐文件哈希和验收。详docs/SHALLOW_SAMPLE_FROZEN.md。不提交推送部署，不从未达写实推导新循环；只有用户明确新的有限目标才重新推进。
+<!-- /shallow-final-freeze-current -->
+
+<!-- shallow-contact-fauna-current -->
+2026-10-12 第32批有限本地：15自然礁基依据原扫描焊接拓扑边界重构0.075单位连续收埋带，近远共用原近景边界、内岩和原UV保持；物理支撑注册同显示网格。完整活动盘检查修复1蟹越到低沙面的实际缺陷，主居民站位加入带输入签名的预烘焙并再验；旧9岩型/沙床不变。修正livingKit新材质泄漏到旧独立珊瑚UV的错配，新材质仅供匹配的bank网格。
+3蟹换Julian Johnson-Mortimer Blue crab（CC BY4，17304tri/3原照片），2章鱼换Lukáš Marek雕塑（CC BY-NC4，15998tri/原法线图，自制自然色顶点皮肤）；完整来源原图不改、有界横向展示变形。样板内部轨迹键/293身份和体长不变，但人类显示标签明确蓝蟹外形参考和未定种章鱼，不能冒称旧Carpilius/Octopus cyanea；持续探索目录与存档未改。16浪人鲹未找到合格免费来源，仍旧自制，非完成三类资产全部升级。不要重复引入死鱼/卡通候选；来源及淘汰证据已存。
+293动物38展示类/85岩/162独立冠/333草220碎屑/18坡居民7巡鱼/2原位未迁/328mesh。首次74检查71过，2旧revision断言和1实际蟹足迹失败；修复后受影响25/25通过，含4新检查，累计78不同case有通过记录，勿冒称单次78全绿。中途一次测试shader mock缺fragment字段已修正。最后仅缓存无效条目的回退控制流修正晚于测试模块加载，最终build:local通过；有效缓存与未缓存全人口落点已比对。最终bundle ShallowSampleApp-BEmyyaa3.js17108300B，sha25682230d48ba95299f113d97cbeee55ab71ff44d7e4cffb644cf5734cf7d56cfce。
+最终1×75.0089s无中断，1280×720CSS/DPR1.5/RTX4070Laptop；平均54.99rAFFPS/p95 20.9ms/max62.4ms/1慢帧/scale1，199draw/2909033tri，error/warn[]。初始化5878.6ms/导航6777.6ms，缓存本地重载非冷首访；preparedCover.used=true。最终原生任务结束后才刷新播放。低于前批75.10记录，稳定60FPS和5s启动未过，不宣称性能提升。暂停跳播24/69、自由观察返回通过，页停24秒。
+视觉partial：直线扫描切边明显减轻，新完整章鱼/蟹可见；鲹与部分旧鱼模型感、重复冠与裸岩仍在，纪录片真实感未过。冻结两次有限整景检查后的版本，勿继续单枝/颜色微调或以数量技术测试宣布达标。证据output/validation/shallow-contact-fauna（冻结before-src、候选许可/原GLB、原始前后实景、原始播放、stage/review）。仅本地，无提交推送部署。
+<!-- /shallow-contact-fauna-current -->
+
+<!-- shallow-living-kit-current -->
+2026-10-12 第31批有限本地：12完整礁带接入The Hydrous活体水下Acropora hyacinthus/robusta两来源（CC BY-NC-SA4），24桌形+84枝丛摆放，含原来源共216组合冠；13原图约7.96MB逐字节不改。8黄高鳍刺尾鱼采用JayNme、1黑鳍礁鲨采用Lais.Marques完整CC BY4艺术家模型，其余284个体保留前批。15自然地形共享真实沙床色场/世界坐标沙图，低扫描地面视觉沉积覆盖，高岩保留源图；非动力沉积、未改变底床和基底碰撞网格。两次整景编排后冻结，未采购或引入ND素材。
+293动物/38展示类、85岩、162独立冠、324草212碎屑、342mesh；18坡居民通过原完整足迹阈值，2不适合者保留原位置，7水层巡鱼。旧身份/体长与床高度对冻结源完整相同。床网格49→25块仍逐顶点共用原支撑；源buffer一次解码，精确cover/habitat缓存。74项检查全通过101.811s，build:local通过。旧固定15居民/5未迁、黄鱼family与49tile断言按新事实更新，物理容差和前景多样性门槛未松。
+最终CUA1×75.008s无中断，1280×720CSS/DPR1.5/RTX4070Laptop，平均75.10rAF FPS/p95 16.7ms/max37.5ms，scale1、0慢帧、error/warn[]；末端202draw/2893669tri。初始化2893.7ms/导航3272.6ms，preparedCover.used=true；已有图缓存本地重载，非冷首访或与前批窄视口FPS横比。原生检查和构建结束后才开始最终导航/播放。暂停、跳播、自由观察返回通过。
+视觉partial：大片棕色扫描底色减轻，活礁轮廓与黄鱼改变可见；源地面硬边/局部底色、群冠重复、章鱼/蟹/末段鲹及其它旧动物模型感仍在，纪录片真实感未过。不要以74checks/数量作视觉达标，勿继续局部参数循环。证据output/validation/shallow-living-kit（before-src、四来源候选与许可、实景前后、播放原始数据、review.html）；无提交推送部署，持续探索存档不变。
+<!-- /shallow-living-kit-current -->
+
+<!-- shallow-natural-habitat-current -->
+2026-10-12 第30批有限本地：12礁带人工接触台面及3近景动物礁台，整体改为Poly Haven Coast Land Rocks 02完整侵蚀地形（Rob Tuytel/Rico Cilliers，CC0）；近23989/远4312tri一来源、每个栖息地两整块刚性组合，原始886282B照片逐字节不改。海岸地质作为水下景观代理，非热带活礁现场。近景30未定种鱼恢复Yimit完整模型原图（CC BY4）；其余263动物保留旧family。新CC0六带鲹扫描因破损/标本感实景拒绝，最终未入场；评估文件留档。
+293动物/38显示类、85岩（12新自然礁带、3新自然居民地、55外围来源礁）、162独立冠、326草214碎屑、348mesh。15坡居民通过原完整足迹/稳定度阈值迁入自然岩面，5不适合者保留此前栖息位置（unplaced记录明确不计新礁居民），7水层巡鱼保留。天然地形无“两级平台”保证；旧20必迁和平台中心平整断言换为全人口保持、实际成功足迹及真实岩面起伏，不放松物理净空；每区前景四种仍过。自然支撑两朝向全实例LOD合批；落点与覆盖预烘焙，实际支撑再验，key不符重算。九旧岩型、持续探索与存档不改。
+最终72相关检查全通过86.397s；之后仅把一个前景多样性断言保持原四类并定向复验通过（重叠，不加为73）。build:local通过。最终CUA1×75模型秒/74.964实秒无中断，平均85.79rAF FPS，p95 16.7ms，max70.8ms，scale1，末端74draw/971771tri，捕获error/warn为零；354×871.333CSS/DPR1.5/RTX4070 Laptop。初始化2789.8ms/导航至播放3206.3ms、模型1930.8ms，preparedCover.used=true；已有图缓存本地重载，非冷首访。启动记录时原生检查收尾，完整实播开始前检查/构建均结束；不宣称无负载启动横比。暂停跳播/自由观察与返回通过，页停24秒。
+视觉partial：人工圆台替换与30主鱼来源可见；扫描地面底色边缘/棕色基底、灰白重复珊瑚、近景底栖与末段鲹自制模型感仍在，纪录片真实感未过。本轮整景两版后冻结，不再参数/散件循环。证据output/validation/shallow-natural-habitat含before-src、候选、最终实景、原始播放和review.html。无提交/推送/部署。后续整批方案应先拿到可实景接受的完整活礁/剩余动物资产，再接入；不要以计数或测试称写实通过。
+<!-- /shallow-natural-habitat-current -->
+
+<!-- shallow-reef-architecture-current -->
+2026-10-12 第29批：整体替换12宽平滑坡面和24前后叠加礁，改为12完整开放活礁带，4变体各18完整来源群体，共216组合摆放；来源仍Patric CC BY4两活体珊瑚+Smithsonian CC0分枝，原图不改，无新购买。336处散件低覆盖层移除。真实几何留沙沟，显示/支撑同一完整网格；20底栖居民与7水层巡鱼重排，身份尺寸293动物/38类不变。85岩/56外围来源礁/175独立冠/310草/212碎屑/349mesh。7巡鱼用完整运动盘最高面维持稳定水层。
+首版高大团块实景拒绝，第二版降低整体群落体量后冻结几何；近景人工接触台面、重复与动物模型感仍在，整体纪录片写实未过。不得把结构替换或计数当作视觉通过，也不要再回散件填补/颜色/枝鳍微调。下一宏观瓶颈是完整自然接触地形及动物资产质量。
+全69相关检查通过87.60s；最终渲染分组变化只复验4个重叠检查全通过，不相加为73。旧宽坡/散件数量契约按用户授权替换为真实缺口、显示/支撑射线一致、原接触与全身净空，九旧岩型保持。build:local通过。整礁段合批先实播86.4FPS/4慢帧/max120.9ms，之后密集冠按独立礁组LOD/视锥筛选，稀疏枝两段共享、接触面一批；最终1×75.008s无中断，89.49FPS/p95 12.7ms/max58.3ms/1慢帧，全scale1，末端66draw/1019673tri（之前70draw/4037777tri）。354×871.333 CSS/DPR1.5/RTX4070 Laptop，不与前批不同视口比FPS。
+最终初始化4621.9ms/导航至播放5358.9ms，模型3298.2ms，preparedCover.used=true；已有源图缓存本地重载，非冷下载首访。没有捕获error/warn，暂停跳播与自由观察返回已检查，网页停24秒。证据output/validation/shallow-reef-architecture含冻结前src、两次候选、最终截图、两次播放数据、stage.json和review.html。来源public/assets/shallow-reef-architecture/provenance.json。无提交/推送/部署，持续探索和存档不改。
+<!-- /shallow-reef-architecture-current -->
+
+<!-- shallow-benthic-habitat-current -->
+2026-10-12 第28批本地75秒样板：新增Patric Lengacher的Agaricia叶状、Orbicella团块活体珊瑚和Aplysina管海绵3来源，均CC BY4；原3张1024贴图3.084MB逐字节保持，来源/作者/病灶与海绵破损披露在public/assets/shallow-benthic-habitat/provenance.json和credits。样板是跨地区视觉参考组合，不冒称单一印度太平洋调查地点。两完整珊瑚减面近16000/远2879tri，低覆盖1273/800；来源海绵按一次固定XYZ区域提取主群体、去周围礁块、6499tri、等比高度1；底部开放裁口无伪造修补。近景蟹、砗磲完整外形和章鱼/乌贼外形表面升级仍自制近似，非扫描或校准。5类17动物升级；293动物38显示类不变。
+低礁覆盖从31/7host扩到336/43实际硬底host；完整顶点沿实际最高岩面附着，避让所有crawl/fixed及坡预约空间，保留原路线；保守整冠高度纳入鱼群surface(true)。静态组合按空间合批，附着布局随原精确cover缓存烘焙，预览不逐帧重拟合。109岩/513独立冠342坡冠/336低覆盖/316草/184碎屑/20坡居民/346mesh；数量不是生态调查覆盖率。四种7冠组合纳入新来源，旧9岩型和原接触/埋深容差不变。
+69检查全通过167.87s，build:local通过，ShallowSampleApp-DRw88TmS.js12331997B sha256063a8a81c27f4acc0269cb98d1b97f5b7a0e8fcb5e65ab09f19f8120d40d806f。初期2旧实现选择断言已更新为替代资产，新增sponge原自制半径断言按实际源radius.4174修正；显示与避障用完整实际半径，未松旧物理门槛。
+最终CUA实播1×75.014秒无中断，1280×720 CSS/DPR1.5/RTX4070 Laptop，平均102.91rAF FPS，p95 12.7ms，max66.7ms，2慢帧，全scale1，无捕获error/warn。已有资产图缓存的本地新标签，非冷网络；初始化5061.6ms/导航5560ms，严格5秒目标仍未过。preparedCover.used=true。前图926×871/首后图904×871/最终1280×720，时间点相同但视口不同，禁止称逐像素同构图或相同负载FPS比较。暂停跳播/自由观察返回已验，最终停24秒，网页保留。
+视觉partial：真扫描海绵改善可见，更多来源/低层附着群落已接入；24/69大块平滑裸坡仍突出，自制章鱼/蟹/鱼仍有模型感，整体纪录片真实感未过。两轮有限实景后不继续局部加冠/调色；下一宏观方案需替换宽平滑支撑坡作为完整栖息地资产，不能再用增加散件当作阶段达标。evidence output/validation/shallow-benthic-habitat含before-src冻结、候选、最终截图、playback.json、stage.json、review.html；候选完整sponge下载首轮断线后第二次成功，未用无许可/卡通/干燥标本候选。未提交推送部署，持续探索与存档未改变；本轮只验证浅海样板。
+<!-- /shallow-benthic-habitat-current -->
+
+<!-- shallow-mixed-communities-current -->
+2026-10-11 第27批本地有限整景：80原扫描礁丛中的50处改为4套每组7完整珊瑚组合，保留30原来源礁丛。复用Smithsonian CC0两分枝、CC BY Porites、CC BY-NC-SA Montipora；来源原图/二进制不改，组合保留NC/SA及原署名。不是50新扫描或新物种。近远级别按来源合批、完整近景网格+原缓坡礁脚同供支撑；field查询不再把高于归一高度1的新组合截断，历史9岩型不改。293动物38展示类/109岩/506独立冠335坡/313草184碎屑/20坡居民7巡鱼/334mesh。216主family游鱼轮廓、开放分叉尾鳍、嘴部/皮肤整组升级；不是扫描或测量复原。新版如实标记cohesive v3。
+拒绝大冠混排减覆盖、近礁组合挤巡鱼和粉色涂层三处候选，前坡原布置及12近礁脚来源保留，涂层代码删除；候选图保留。最终66检查全部通过（中间覆盖断言失败已回退后复验），原身体/接触/埋深阈值不放宽。build:local通过，ShallowSampleApp-Dx2rxESl.js。最终CUA连续1×75.003秒，平均118.41rAF FPS/p95 12.5ms/max25ms，scale1、无中断、无捕获error/warn；571.3×871.3 CSS、DPR1.5、RTX4070 Laptop。初始化2120.9ms/导航2506.3ms；preparedCover.used=true。已有图像缓存的本地重载，不是冷网络首访，不与前批不同视口作FPS提升比较。
+视觉partial，重复整块扫描减少、主鱼形体更连贯，但宽裸坡/来源色调与个别重复/近景底栖模型感仍明显，未过整体真实感验收。此次有限批停止局部修补，后续若继续需整片活礁与底栖资产质量的宏观方案。证据output/validation/shallow-mixed-communities含同镜头24/69秒原始前后截图、review.html、stage.json。4175服务正常，最后页24秒；未暂存提交推送部署，探索存档不改。
+<!-- /shallow-mixed-communities-current -->
+
+<!-- shallow-grounded-assembly-current -->
+2026-10-11 第26批，仅本地75秒样板：来源礁基的直立凸包墙换为三圈不规则展开的真实缓坡，顶面与支撑共用网格；field profile v3按真实半径查询，九个历史岩型不改。所有礁脚外缘埋入沙床，12块低矮前景来源礁丛在动物/珊瑚落点计算前加入。109岩/80来源礁丛（同一来源重复，不是80来源）/517独立冠349坡/315草184碎屑，293动物38展示类/20坡居民，304mesh。
+49个体（未定种礁鱼30、蓝倒吊6、黄高鳍刺尾鱼8、镰鱼5）改为同套自制完整鱼体；总216游鱼15显示类走统一family。原身份、体长和行为保留，不冒称扫描或解剖校准。来源鱼/artist文件、图像、署名保留为历史，credits与manifest23已更新。
+整片沉埋扫描候选因压没活礁轮廓拒绝；扩大前景礁丛候选挤掉1居民已撤回。候选测试日志明确隔离，中断日志不算通过。最终固定小前景礁丛+缓坡礁脚，不再扩覆盖或改材质。
+最终固定版本64项浅海检查全部通过，原身体净空、接触与埋深阈值保持；build:local通过，ShallowSampleApp-BX7DaJJk.js。CUA实际1×播放75.003秒，无暂停/跳播/后台中断；平均197.41 rAF FPS、p95 8.4ms、最长29.2ms，分辨率记录[{"time":0,"scale":1}]。本机RTX4070 Laptop、926×871 CSS、DPR1.5；应用初始化1272.2ms、导航到播放1640.9ms，preparedCover.used=true。已有原图缓存的本地重载，不是冷网络首访或其它设备保证。播放结束后暂停跳播、自由观察与返回通过；错误/警告记录见browser/console.json。同镜头原始截图与交互对比review.html保留。
+视觉partial：硬基座减轻，礁脚群落及主鱼群更一致；仍有大片裸露、扫描拍摄深色/重复和其它动物几何风格差异，未达纪录片写实。无新第三方/付费素材，既有免费再分发的署名/非商业/SA限制保持。来源18原图哈希不改。证据output/validation/shallow-grounded-assembly，before-src冻结；无暂存提交推送部署，持续探索/存档不改。
+<!-- /shallow-grounded-assembly-current -->
+
+<!-- shallow-canopy-performance-current -->
+2026-10-11 第25批有限整景本地：12前坡完整可生长区域加入布局，501冠/310坡（293来自整坡候选），312草198碎屑；97岩/68源礁/293动物38展示类不变，292mesh。最高面、完整近远顶点与居民空间门槛保持。扫描礁新增4988tri远景（近22725原图不改）；全实例视锥选择+完整近远LOD，珊瑚改按资产族合批，canonical矩阵保留用于所有物理验证，镜头外不删人口。七16:9CPU视点源礁+珊瑚提交约32万–159万/全近景591万，非FPS证明。
+暂停仅dirty重绘不持续占GPU。缓存输入加whole-grade-v1，并仅key数值round1e-8，物理coords不动；bake保留rawSignature，网页下载含实际cache命中和raw/authoringRaw，禁止仅凭Node缓存成功宣称浏览器成功。先前CC0标本鲹整群候选因黑斑/硬壳实景失败撤回，当前原自制鱼体保留；不再恢复或局部修这套源，不宣称本批动物统一完成。证据rejected-specimen-69.jpg与rejected-specimen-playback.json保留。
+全63case首次62pass，旧front标签断言改实际坡坐标后相关3pass；最终cache/回退相关10pass。物理阈值未松，canonical全实例含offscreen完整近远顶点验证；新剔除测试确保可见实例不漏/不重、矩阵不变、提交量<全近景50%。build:local通过，manifest22，既有免费再分发NC/SA限制不变。
+最终构建 ShallowSampleApp-BQP3d-23.js，本地CUA实播1× 75.030秒，无操作/后台中断；平均224.25 rAF FPS、p95 8.3ms、最长24.9ms，全程scale1。RTX4070 Laptop、926×871 CSS、DPR1.5；仅本机当前视口结果。应用初始化1045.4ms、导航到准备好1422.7ms，已有源图缓存的本地重载，不是清空缓存的首次下载。网页导出preparedCover.used=true，规范键253347:3848149482；浏览器raw=301449:2025276073与构建raw=301446:1091816897不同，证实原缓存未命中原因已修复。前一接受版本实播226.32FPS/最长33.2ms/初始化1102.8ms，作为复查记录保留，最终以本次为准。完成后暂停跳播、自由观察缩放及返回通过，无捕获error/warn；末次视野刷新测试1通过。实际截图与下载记录保留在browser/。
+视觉仍partial：前坡更广的低冠覆盖，但裸面/扫描深青色与礁基硬边仍明显；动物新候选不合格已撤回，风格统一未完成。本有限批整景实测展示后收口，勿启动局部材质循环。evidence output/validation/shallow-canopy-performance，before-src冻结，无暂存提交推送部署，持续探索存档不改。
+<!-- /shallow-canopy-performance-current -->
+
+<!-- shallow-integrated-pass-current -->
+2026-10-11 第24批有限整景本地：2居民岩整体降低，第3空岩换落地扫描礁丛；68来源礁丛同一来源非68独立地点。整组裁去源Y<.30调查底板，48020→22725tri，原18图像不改；连续自制外轮廓礁基显示/支撑一致，不是来源扫描。逐岛栅栏、抬高前景台座候选已拒绝；末版前景切面在沙床下6cm。fieldReefDiskMaxHeight按完整圆盘/三角投影保守排除侵入，20居民7巡鱼完整空间，原物理阈值不改。293动物38展示类/97岩/375冠182坡/311草/181碎屑/323mesh。
+16类182既有自制鱼共用鳞片/鳍条shader，源图/身份/尺寸/运动不变；不是全动物解剖升级。source buffer解码缓存，贴图稳定后编译/首帧准备，旧排队rAF时间戳不计巡游；默认不装可选干燥骨骼避免安置阻塞。62浅海case通过，build:local通过，样板9.56MB；manifest21、21public/dist来源与记录一致。
+最终CUA 1×75.053s无操作/后台中断，46.54rAFFPS/p95 33.4ms/max108.2ms，前6.2s scale1→.65，RTX4070Laptop/739x871CSS/DPR1.5；未通过原分辨率稳定60FPS。中间版曾222–232FPS但不得用来替代最终结果。初始化5629.4ms/导航6003ms（已有缓存本地重载，非冷下载），较前批12.87s缩短仍未达5s。最终无error/warn。ShallowSampleApp-afjXuL_w.js9.56466MB，62suite在最终几何上通过，最后rAF旧时间戳边界由build/浏览器验收。
+视觉仍partial：近景空岩替换与底板移除可见，但裸坡、重复来源/深青拍摄色、后礁基硬边与旧动物几何仍在，不能称纪录片写实或全风格统一。只有免费允许再分发既有资产，原非商业/署名/SA限制保留。有限批展示后收口，不重启枝/鳍/颜色微调。evidence output/validation/shallow-integrated-pass/stage.json，before-src冻结、候选和最终分开；4175原服务，最终页24秒。未暂存提交推送部署，探索存档不改。
+<!-- /shallow-integrated-pass-current -->
+
+<!-- shallow-near-community-current -->
+2026-10-11 第23批有限整组资产，仅本地：Yimit Fish CC BY4完整2277tri/原图替换30黑尾笛鲷，改“礁栖鱼（未定种）”，不冒称原物种；其余263身份尺寸保留。VIVID REALITY CC BY4完整来源礁丛48020tri/16原图替换55外侧岩并加12后礁；67实例同一来源，源作者AI图像处理已披露。thehydrous Montipora CC BY-NC-SA4近12000/远2834替代4自制片冠，现4朝向同1来源；非商业/署名/SA保留。18张新原图24.3MB，未图像改绘，未用付费。
+初次整坡替换破坏居民位置，撤回；保留12实际前坡/3居民岩，后方扫描源与两缺口组合，20居民7巡鱼完整物理接触保持。97岩353冠173前坡291草199碎屑316mesh(骨骼前)，293动物38展示类非38鉴定种。source meshes真实最高面/48格索引用于碰撞；原9旧mesh严格不变。seed55完整冠/草/碎屑构建前原全顶点fit导出，匹配输入签名才复用，其他seed运行时fit；测试确认与未缓存完全一致，运动不缓存。
+61浅海case/build:local通过；原计数/旧species/旧sourceKind断言改为新表示，contact/root埋深容差未放宽。最终ShallowSampleApp-CCfEq5de.js10.67MB、manifest20，public/dist原图及署名一致。实际CUA一次1×75.001秒、188.31rAFFPS、p95 8.4ms/max29.2ms，无中断/scale1、RTX4070 Laptop/约563x871 CSS/DPR1.5。startup12870.8ms未达5秒目标且非完整冷导航；不可称加载优化或不同视口比较。无error，旧阴影warn保留。
+真实画面仅partial：后方扫描礁丛与30新鱼可见改变，但最近居民岩仍裸，暗纹理/青色调查底边接缝、重复来源及旧光滑动物依旧。不得称已达到纪录片写实或风格全部统一。本有限批完成实景展示即收口，不继续参数微调或裁源修补。evidence output/validation/shallow-near-community/browser + stage.json，first为废弃候选非最终。源码before-src冻结。4175原服务，页停24秒。未暂存提交推送部署；持续探索/存档不改。
+<!-- /shallow-near-community-current -->
+
+<!-- shallow-reef-mosaic-current -->
+2026-10-11 第22批有限整景本地：降低原岩体/连续坡模块的整体高度，保留水平脚印与原网格；近远珊瑚、草和动物重新按实际地形拟合。片状冠层2→4种、空间斑块混排，原两种开放分枝保留；首次涂层/紧密Pocillopora候选视觉失败，未进入最终。全部23种适用动物材质共用饱和度/反射响应，原贴图、UV、动画与293动物38类身份尺寸保持。不是全动物解剖或扫描资产升级。579珊瑚/300坡冠/376草/226碎屑/325mesh；坡模块平均Y比例3.163→2.535，不能称每块固定降低。57检查/build:local通过，原物理门槛保持；无新增外部/付费素材，原许可限制保留。
+用户随后明确允许重新访问项目页面，2026-10-11 CUA访问成功；此前拒绝的历史记录不再作为阻止本次已授权网页检查的理由。最新构建已在本地完成一次1×、75秒浏览器巡游，下载实际播放记录：74.977墙钟秒、178.56平均rAF FPS、p95 8.4ms、max75ms、无暂停/跳播/背景中断、scale1，RTX4070 Laptop。窗口由约437×871变926×871，不能称固定视口基准或其它设备保证。startup4917ms为应用初始化计时，不含完整导航下载时间；一次通过不等于三轮稳定性验收。无捕获error，旧PCFSoftShadowMap弃用warn自动回退。未针对该警告修补。
+实景确认整景仍partial：裸岩占比高、片状冠光滑、分枝重复、动物资产几何风格差异未解决；不得称纪录片写实通过。有限批在此收口，不启动单鳍/单珊瑚循环。最终离线图accepted，实际浏览器图与playback.json在output/validation/shallow-reef-mosaic/browser；页面停24秒供评审。manifest v19，本地4175/PID24264，样板ShallowSampleApp-iIlTEk8f.js；无暂存提交推送部署。详docs/SHALLOW_SAMPLE_STAGE.md。
+<!-- /shallow-reef-mosaic-current -->
+
+<!-- shallow-ribbon-habitat-current -->
+2026-10-11 第21批有限本地：样板全部草体换弯曲带状叶（原768tri/96叶/32根），两片状冠族换不对称6扇片；近远/根叶完整净空重新拟合。自制无新付费/第三方，探索原草与存档不改。293动物38类身份尺寸、海床85岩精确；530冠/375草/223碎屑/含扫描320mesh。动物完整群体动态边界与.25单位运动余量用于视野剔除，所有模拟继续；7固定镜头CPU视锥候选动物mesh合计少36%，非WebGL实测draw/FPS。模型选择链命中即停，不宣称计时提升。
+最终55浅海case/build:local通过；初6/1旧草fixture错误改实际资产，2mm门槛不改。四同camera CPU实网格图output/validation/shallow-ribbon-habitat/final，非WebGL；草弯和片层有变化但整景partial，裸坡空沙、重复光滑珊瑚及混杂动物仍在，纪录片写实未验收。此有限批收口，不再逐叶/单珊瑚迭代。manifest v18、源码来源public/assets/shallow-ribbon-habitat/provenance.json。PID24264/4175使用显式/ocean-world/，样板5.95MB；既有项目网页拒绝不绕过，真实75秒/FPS未验；未暂存提交推送部署。详docs/SHALLOW_SAMPLE_STAGE.md。
+<!-- /shallow-ribbon-habitat-current -->
+
+<!-- local-preview-path-current -->
+2026-10-11 本地打不开排查：build:local 产物引用 /ocean-world/，原 preview 命令未设置 base，配置默认 /。已添加 npm run preview:local 固定 --base=/ocean-world/ --host=127.0.0.1 --port=4175 --strictPort；本地构建与该预览命令配套。旧 PID3364 已停止，当前 PID24264 使用显式绝对项目路径和正确 base，4175 监听/启动日志/入口 JS CSS 文件映射通过。未改场景或重建，未提交部署。证据 output/validation/local-preview-recovery；没有执行 HTTP/浏览器访问，用户刷新后实际画面仍待确认，不能将监听等同播放成功。
+<!-- /local-preview-path-current -->
+
+用户随后确认：刷新后能正常看到场景。本地空白页故障已恢复；这仅确认页面可见，不代表完整75秒巡游或帧率验收。停止此轮启动排查，后续仍配套 build:local / preview:local。
+
+<!-- shallow-cohesive-life-current -->
+2026-10-11 第20批有限整景本地：206分枝冠换Smithsonian USNM292 formosa/muricata和268 secale，原作者两条CC0证据；近6000/远1200，源比例/自制tissue色/干骨骼非活体扫描。初整景secale方底座失败，一次固定去下24%原高度触及三角，开放底裁口、无补造分枝，final底座解除。原紧密Pocillopora退出默认，源保留。禁止继续裁枝/材质循环。
+197动物12类默认改ShallowCohesiveFish统一完整自制body/curved fins；原46主鱼摄影标本退出默认显示，历史文件署名保持。其它artist/heroes/benthos保留，非全38类统一/新来源鱼包。巨鲹无鳃盖黑斑；0.065径向/0.035底运动余量，深度波形同步，sampleSourcedFishVertex读取sampleSwimX避免鳍pivot采样误差。293身份物种尺寸/床85岩精确，无探索/存档迁移。
+532冠/289坡/57前坡，376草224碎屑，完整骨骼320mesh<350。53相关case/build:local通过无阈值放宽；主鱼75模型秒/5步2835328顶点minGap1.3359m，非连续碰撞/FPS。manifest v17/四项来源署名dist字节一致，样板约5.95MB增大、旧大包警告保留。4175/PID3364仅监听，无暂存提交推送部署。
+四final同前批camera CPU实网格/albedo，误差3.37e-16；非新default镜头方向完全相同/非WebGL截图。整景partial：分枝空隙和主要游鱼统一度有改善，鱼仍光滑自制/珊瑚简化重复/草坪和大裸坡/尾段空沙仍差，纪录片真实未通过。既有project网页审批拒绝不绕过，实际75秒/WebGL/FPS/5秒启动未验；原NC玳瑁限制保持。有限批展示收口，不再局部迭代。详docs/SHALLOW_SAMPLE_STAGE.md及output/validation/shallow-cohesive-life/stage.json。
+<!-- /shallow-cohesive-life-current -->
+
+<!-- shallow-habitat-integration-current -->
+2026-10-11 第19批仅本地75秒整景：原85岩三角不变，世界位置附着色场+PolyHaven CoralGround02原743145B CC0纹理（2m/.5投影/线性92%去饱和，海岸底质非水下活体影像）；自制低矮片状替代table枝扇，扩坡/57前坡，分枝变体细分布。片状专属法线>=.45，其它>=.78；near/far实际顶点/原25mm根1mm其它埋深/最高面/路线/动物预留保持。新增素材免费再分发，原NC玳瑁限制保持。
+4batfish+1humphead自制完整body/curved fins，原293身份尺寸/38类、床85岩精确；其余源与旧动物仍风格混杂。524冠/285坡/57前坡、376草224碎屑，完整骨骼后325mesh<350。5src改+1新/298源码原样，无探索/存档迁移，无暂存提交推送部署。
+51相关case/build:local通过；初50/1fail下层蓑鲉出框，焦点含20%伴生下层后原入框阈值通过，camera位置路线不改。75模型秒31姿势509268新鱼实际顶点minGap1.1495m，非连续碰撞/FPS。index-mQZbFBz3.js/ShallowSampleApp-CqvujFQu.js样板5803160B+新743145B图，原大包警告/启动未验。4175/PID3364只监听。
+最终final-default四CPU实际网格/albedo图，当前默认镜头（24/69焦点变，非前批same-camera）。partial：覆坡/片状层次可见，但分枝石块重复/光滑片/扫描阴影/旧新动物不一/草坪/尾段空沙仍差，纪录片写实未通过。initial、final均中途证据，不得冒充最终。此前项目URL自动审批拒绝不绕过，浏览器完整75秒/WebGL/FPS/5秒启动未验。有限批展示收口，禁止局部修补循环；Acropora碎骨候选拒用、旧Echinopora不恢复。详docs/SHALLOW_SAMPLE_STAGE.md和output/validation/shallow-habitat-integration/stage.json。
+<!-- /shallow-habitat-integration-current -->
+
+<!-- shallow-main-community-current -->
+2026-10-11 第18批仅本地75秒样板：30原蓝纹笛鲷换正确身份CC0黑尾笛鲷L.fulvus，16原大眼鲹换CC0浪人鲹C.ignobilis，ffish.asia原影像/约6000tri/有界项目摆尾，标本阴影与鳍损失仍在。TheRLab CC BY4 Porites水下群落near1668/far899，83处/完整死亡骨骼装入后78处；原图/等比/主体裁剪，开放基底。Echinopora破杯竖杆候选整景失败，移出src数据/public/dist，仅output留证据，禁止自动局部修补恢复。所有新素材免费且允许再分发，源元数据/许可/修改/署名完整；原玳瑁NC限制保持。
+当前293动物/38类、421冠/184坡、85岩、373草/228碎屑，完整扫描准备后318mesh<350。247其他动物身份尺寸、床及85岩精确，持久探索与存档未改。49相关case/build:local通过，初1fail新鱼径向包络已按实顶点修复不改阈值；75模型秒路径/4086880关键运动点通过非完整连续碰撞/FPS。index-XVsdoLLL.js/ShallowSampleApp-D8lL_3lb.js，样板JS 5797564B及新原图3.57MB，较原包增大不称性能提升。4175/PID3364仅监听，无暂存提交推送部署。
+final四同相机CPU实网格/albedo图，maxerror1.11e-16；主鱼更可辨、Porites纹理可见，但标本纹理、原简化动物/重复分枝/裸坡/草坪感仍差，整体纪录片写实未通过。既有项目URL自动审批拒绝不绕过，WebGL整75秒/FPS/5秒启动未验，不冒充截图。有限整景批展示后收口，不继续单体修补。详docs/SHALLOW_SAMPLE_STAGE.md和output/validation/shallow-main-community/stage.json。
+<!-- /shallow-main-community-current -->
+
+<!-- shallow-free-kit-current -->
+2026-10-11 用户只接受免费且允许再分发素材，Maggie付费方案撤回。本轮第17批仅本地75秒样板：2原晚段绿龟以正确身份换2源玳瑁，共3源龟（DigitalLife CC BY-NC4，非商业再分发，禁止称无商业限制）；原早段1绿龟保持；8 CC BY4 LasquetiSpice黄高鳍刺尾鱼新增。283原身份/种类/尺寸、原床和85岩精确；持久探索/存档未改。两CC0 Smithsonian Pocillopora完整干标本衍生174分枝冠，源比例、近3900/远950tri、原创棕褐tissue色非活体扫描；带底座/碎块候选退出，table/massive/fan仍旧。293动物/38类/405冠/183坡，314mesh<原350。
+75模型秒/2.5步/1045134实际运动顶点minGap.6559m，仅离散床岩净空。四同镜头离线CPU实际网格/albedo图在output/validation/shallow-free-kit/final；before冻结batch16。同镜头58龟整体显著改善，24/69冠更不规则但仍棱角石块感；主要鱼群/裸坡/草和旧形态仍差，整体纪录片写实未通过。45相关case与build:local通过，index-BMLfZ93S.js/ShallowSampleApp-CzvBQz45.js，样板4.97MB（较3.93MB增大），4175/PID3364仅监听验证。测试/构建以stage.json收据为准；初始宽glob误含4个长living-shallow套件已取消，不算通过。既有项目URL自动审批拒绝不绕过，真实75秒WebGL/FPS/启动未验，无暂存提交推送部署。有限批展示后收口，不再调枝/贴图；来源合规与数量不是质量证明。详docs/SHALLOW_SAMPLE_STAGE.md。
+<!-- /shallow-free-kit-current -->
+
+<!-- shallow-pack-selection-current -->
+2026-10-11 用户已明确：只使用免费且允许再分发的素材。撤回Maggie付费候选，不再请求预算或等待采购。新资产优先CC0/CC BY，逐项保存原作者、许可、源链接和修改记录；已有DigitalLife玳瑁为CC BY-NC4，允许非商业再分发但不可称无商业限制。整批质量门槛保持，先本地整景验证，无暂存提交推送部署。不得把免费等同再分发许可或把数量等同写实。项目URL既有访问拒绝保持，不绕过；原生离线网格预览不冒充WebGL/FPS验收。
+<!-- /shallow-pack-selection-current -->
+
+<!-- shallow-source-community-current -->
+2026-10-11 第十六批有限来源资产候选：默认新增DigitalLife3D玳瑁Eretmochelys imbricata1只，原贴图/8源泳姿，5984tri，CC-BY-NC-4.0非商业，UI署名完整。不可称原绿海龟或整批主角升级。三类Dina3D现场珊瑚候选暗蓝黑基底/扁平碎片破坏整景，已从src导入及public移出，证据隔离output/validation/shallow-source-community/rejected-candidate-*；禁止默认恢复或自动基底/贴图修补。
+默认285动物/37类、85岩/413冠/183坡、373草/228碎屑、313mesh<原350。原284身份种类尺寸、床、85岩、全部默认冠草碎屑精确；持续探索与存档不改。297原源码仅4改+2新、293原精确。49相关case+本地build通过，新龟151姿势/75模型秒/501018实际顶点minGap.65459862m，离散而非连续碰撞。manifest v13与5来源资产dist字节一致；index-DdBs02Bt.js/ShallowSampleApp-D_KwgyBw.js，样板3.93MB，4175/PID67068监听。未暂存提交推送部署。
+整景review partial/整体目标未通过：只新龟更完整，主要群游鱼/两旧龟/重复枝束/裸土丘和草坪草仍在。四final冻结前批相机maxerror2.22e-16；before58同当前离线renderer重出，candidate和final不得混用。CPU网格/albedo非网页截图；既有项目URL自动审批拒绝未绕过，WebGL整75秒/FPS/5秒启动未验。本有限批展示并收口；后续先成套近中景资产整景质量门槛（主鱼群/绿海龟/三类活珊瑚/连续礁基），禁止用导入数、branch参数、测试数充当写实成功。详docs/SHALLOW_SAMPLE_STAGE.md及本批stage.json。
+<!-- /shallow-source-community-current -->
+
+<!-- shallow-coherent-habitat-current -->
+2026-10-11 第十五批有限整景，仅本地75秒样板：12坡模块移除两台阶，连续上升/交错隆起/浅沟；7活礁v4（桌冠移除碗盘为连接分枝、主枝更细、massive低幅relief，fan/rubble保持），4school v4形体/颜色、绿海龟壳/皮肤整体更新。程序化非扫描校准。复用carbonate-v1原图/.24米制；新imagegen中止无产物，不得称生成成功。扫描珊瑚仍默认禁用。
+当前284动物/36类、85岩/413冠/183坡、373草/228碎屑、311mesh<原350。全部284身份种类尺寸、床、85transform、9旧rocksurface精确；仅3坡surface改变，冠/草/碎屑重新拟合。初轮3集成fail，一次集中抬坡脚缓坡并修正swimming不该要求平地；固着/爬行稳定面、完整hardhost/最高面/空间净空保持，20resident+7fish全部安置。旧台阶检查调整为完整连续区间/实际米制法线/30cm切平面，明确非原断言不变。失败与初版留initial及日志。
+最终42浅海+5rockcase、本地build通过，near/far实际顶点/75模型秒/草碎屑/资源释放保持；manifest v12及来源与贴图dist字节一致。index-Bm3nA9ea.js / ShallowSampleApp-DxTWorPH.js；4175旧服务已停，本轮hidden启动PID67068并确认监听。无暂存提交推送部署、无探索/库存/存档迁移。stage output/validation/shallow-coherent-habitat/stage.json；before-src完整冻结，before/initial/final分开。
+四图强制相同batch14相机maxerror1.11e-16，当前默认24/69方向略异、58/72保持。CPU实际网格/albedo非网页截图。根agent整景review partial：灰白连续坡/海龟壳/鱼色可见，但重复灌木尖枝、光滑团块、草坪草、简化动物和72空沙仍在，纪录片写实未通过。不能用413冠/47case代替视觉。既有项目URL自动审批拒绝继续不绕过，整75秒WebGL/FPS/5秒startup未验。有限批展示后收口，不自动单体修补；后续统一近中景资产质量门槛和完整实景验收，禁止再靠分枝参数/计数推断成功。详docs/SHALLOW_SAMPLE_STAGE.md与验收文档。
+<!-- /shallow-coherent-habitat-current -->
+
+<!-- shallow-sourced-assets-current -->
+2026-10-11 第十四批来源资产有限整批：默认保留Microsoft/Khronos CC0尖吻鲈Lates calcarifer3条（2188v/3864tri，原UV/normal/tangent/1kPBR，project GPU独立shear非原动画）。现284动物/36类、85岩/420冠/192坡、372草/227碎屑、310mesh/原350预算。原281身份种类尺寸、床、85transform与默认完整冠层精确保持，无探索/库存/存档迁移。
+DinaCon2025 Bali Komang两类现场珊瑚源repo MIT，候选161/可放121/回原40，near3796/3800 far899，宽归一原比例非调查米制；两LOD实际顶点共同支撑。初UV彩条只集中修正一次固定几何源影像atlas，逐面POS/computed NORMAL精确保持；失败/超预算接缝候选/原影像证据保留D。primitive UV问题解除但整景58/69深黑蓝白背景基底破坏融合，两个独立review判candidate failed；最终默认拒用、恢复原冠层，reef=scanned仅显式标记试验。禁止称121扫描是整景跃升，不得将candidate图当default。
+最终47cases/build:local/native通过；新鱼31poses/75模型秒203484实际wave顶点minGap.64918167m，非连续collision/邻居避让。默认四公平相机CPU颜色图使用当前renderer before，matrix误差0；58新鱼有局部进步，主要鱼群/海龟/土丘台阶仍旧，整体写实unaccepted。index-BBSyxfDQ.js / ShallowSampleApp-Dh5mRFbP.js，4175/PID29788监听；manifest v11，public资产与source证据dist逐字节一致。完整WebGL/75秒播放/FPS/5秒startup未验；既有项目URL自动审批拒绝不绕过。无暂存提交推送部署。output/validation/shallow-sourced-assets/stage.json，candidate/与final/独立；docs阶段/验收更新，原阈值保持。有限批展示后结束，不进入扫描/单体repair loop；下一整批统一主要群游鱼、绿海龟和完整礁坡资产质量与宏观生境。
+<!-- /shallow-sourced-assets-current -->
+
+<!-- shallow-natural-forms-current -->
+2026-10-10 第十三批有限整批仅本地75秒样板：12坡模块sample-slope-a/b/c真实表面起伏/曲线肩/浅沟，位置比例rimXZ及两实际支撑带保留，无洞悬挑。4school body-kit v3、7活礁v3、生成carbonate albedo v2整批接入；仍程序化解释/生成颜色非扫描。最终281动物/35类、85硬礁、420冠/192坡（184/136/66/34）、372草/227碎屑、27预约空间；动物身份种类尺寸、原床高度、85transform和9旧surface精确，仅3坡surface改变，非所有岩面保持，无探索/库存/存档迁移。
+41完整case与最终build:local通过；index-BAgKqQAO.js / ShallowSampleApp-3TcBcw3a.js，4175/PID29788。mesh309/原350预算，601原生更新median2.958/p953.724/max10.246ms，不是同负载降幅/启动/GPU/FPS。初轮distant8实例13穿入点已一次统一near/far实际几何fit+union预留修复，不降低容差/几何阈值，保留一次缩小重试；最终near879947/far254256实际顶点0违规，initial保留失败证据。当前sources和receipt在output/validation/shallow-natural-forms/stage.json。
+四张final实际网格/albedo CPU图强制冻结第十二批相机max误差3.33e-16；default24/69略变、58/72完全保持，不混称default同镜头。独立最终整景partial：24/69鱼群/冠群/礁面有明显变化，但棕褐土丘感、宽阶梯、重复尖枝/碗冠/半球、低模银鱼海龟/小底栖难辨/72空沙仍在。纪录片写实、整75秒动态、WebGL/FPS/5秒启动/实机三轮未验，计数/测试不代替视觉。manifest v10，原门槛保持，既有项目URL自动审批拒绝未重试绕过，无暂存提交推送部署。本有限批展示后收口，不自动局部repair loop；下一阶段先统一完整环境与动物资产质量并整景验收。历史批保持，详docs/SHALLOW_SAMPLE_STAGE.md与SHALLOW_SAMPLE_ACCEPTANCE.md。
+<!-- /shallow-natural-forms-current -->
+
+<!-- shallow-community-passages-current -->
+2026-10-10 用户继续授权第十二批有限群落编排，仅本地75秒样板：五主要schools走world-fixed观察侧通道，收紧横摆/formation并保持独立drift/自然size，不做camera-driven逐帧push或完整boids。七套活礁geometry不变，两行布局改不规则邻近patch+6裸底口。20底栖+7礁鱼混排真实前沿，2管海绵+1羽星上真实高层；27预约body+patrol spaces与实际hard host/最高面/冠层空隙保持。固定55 281动物/35类、85硬礁、417冠层/185坡冠，四形174/138/73/32；无新增物种/人口/尺寸改变，持久探索/库存不迁移。完整281身份/种类/尺寸、原床高度与85硬礁布局对冻结第十一批精确核对保持。
+离线初审：72前后camera matrix完全相同，原大body挡满镜头明确解除，该遮挡修复通过。24/69学校、活礁与常驻居民同场更清楚，群落/自然组合partial；小坡居民仍细点，禁止称27全可辨，58仍枝束重复/秃阶台。24/29/58/69相机position不变但orientation改变（58matrixerror约.0125），只有72为严格samecamera，禁止将其它帧称严格同镜头提高。当前5frames在output/validation/shallow-community-passages/final，与stage.json记录；actual mesh/albedo CPU投影非网页截图、WebGL动态或FPS证明。
+37总case与build:local通过，完整75模型秒离散身体包络最小通道净距1.51316m，24/68原90%入框/25px/broadside保持通过，非连续三角碰撞/所有281邻居避让/真实可辨。mesh311/原350预算，371草/229碎屑；601次原生更新median7.075/p95 11.026/max13.681ms，内容已改变，非相同负载降幅或GPU/FPS证据。当前index-BARN1J89.js / ShallowSampleApp-BumTYBpO.js，4175/PID29788监听；manifest v9、活礁来源v2。纪录片写实、整75秒构图、WebGL/FPS/5秒启动与实机三轮均未验收；原门槛不降低。既有project URL自动审批拒绝未重试绕过，无暂存提交推送部署。详docs/SHALLOW_SAMPLE_STAGE.md/SHALLOW_SAMPLE_ACCEPTANCE.md。本有限批展示后结束，禁止继续局部调场景或自动repair loop。
+<!-- /shallow-community-passages-current -->
+
+<!-- shallow-continuous-reef-current -->
+2026-10-10 用户授权第十一批连续活礁坡有限整批，仅本地75秒样板：12个sample-live-slope模块、两层宽阶台与后脊，真实Float32三角面共用显示与支撑；24旧右侧bommi后移并降低，原床三角保持。活礁整套分枝为near12主枝/密分叉、暖olivebrown配色；两阶台成片冠层与动物空间一起编排。固定55最终281动物/35类、85硬礁、397冠层/171坡冠、371草丛；20原底栖+7原礁鱼重排，身份尺寸和关键encounter/sample visits保持，无新物种/人口/持久库存迁移。
+身体包络/整个预约巡逻盘保留冠层空隙，实际hard host+highest surface逐时检查；near冠层全顶点/实际倾斜半径与路线净空保持，草真实根+完整叶片两摆动极值与碎屑完整顶点在最终软床重拟合。程序化解释非扫描，没有可通行洞穴/悬挑、完整三角碰撞或食物网。34定向case+build:local通过，mesh310/原350预算、227碎屑；当前原生构造4729ms、601更新median7.465/p95 11.999/max17.555ms，不是同负载跨版本降幅或GPU/FPS/5秒启动。index-DjYGzJnP.js / ShallowSampleApp-qUmtEKrv.js，4175/PID29788监听，未暂存提交推送部署。
+离线同镜头宏观结构阶段通过，58秒整体变化最明显；自然度partial，两排重复枝束/69裸白阶面仍显人工，底栖动物可辨不足，72近鱼挡镜头为已见实质问题。整75秒构图、纪录片写实、WebGL流畅度均未通过；不以397冠层/27重排/34case代替视觉验收。四同镜头final图+29/72 supplement与stage.json在output/validation/shallow-continuous-reef，实际网格/albedo CPU投影非网页截图/帧率证据；详docs/SHALLOW_SAMPLE_STAGE.md、SHALLOW_SAMPLE_ACCEPTANCE.md、manifest v8和live-reef provenance v2。原验收阈值不降低，既有project URL自动审批拒绝未重试绕过、实机三轮与5秒启动待验。此有限批展示后结束，禁止继续局部调场景或自动开启参数修补。
+<!-- /shallow-continuous-reef-current -->
+
+<!-- shallow-habitat-completion-current -->
+2026-10-10 用户继续补全优化授权第十批，本地75秒样板：冠层改全场候选/五段公平分配/可见礁肩优先，原420候选cap保留；同16m格同形态共用一变体，跨格仍两变体。固定55冠层371→259（分枝35→129、桌71/团27/扇32）；全部实际near顶点/居民/实际半径路线净空保持。六处沙道/草床路侧过渡新增44短草/55碎屑，实际全叶根+摆动两极值软床与碎屑顶点/微埋入验证，中央通道和近底动物巡逻足迹留空。原281动物/35类身份尺寸与床/73硬礁对冻结第九批精确；持久探索/库存不迁移。
+海床色场预计算旋转椭圆8m索引，78,961原床顶点字段严格一致，同当前模型热点顺序对照约191ms→33ms（不是整场GPU/FPS）。草16m分批、只构造所需草几何；mesh339→296，原350预算未放宽。25项定向检查+build:local通过；当前单次CPU构造890ms/601更新median1.186/p95 1.403/max3.312ms非浏览器时长。当前index-DhRFlIW6.js / ShallowSampleApp-Ba0z1kn-.js，4175/PID29788监听，未提交推送部署。
+五个同镜头native albedo图在output/validation/shallow-habitat-completion（24/42/58/69为final，47为sand）；非网页截图/WebGL或帧率证明。独立整景初审：活礁成片和沙道层次仅部分通过，动物静态关键近景无明显新增遮挡；大片裸白礁肩/空沙/低对比魟乌贼仍在，纪录片写实仍未通过。不要把增加分枝/草或mesh/CPU改善称整体写实跃升。下一整批应构建可承担近中景的连续活礁坡模块（基底+群冠层+自然裸底），停止只加零散冠层。此有限批展示后收口；既有project URL自动审批拒绝未重试绕过、实机三轮与5秒启动待验。详docs/SHALLOW_SAMPLE_STAGE.md、manifest v7、stage.json。
+<!-- /shallow-habitat-completion-current -->
+
+<!-- shallow-community-expansion-current -->
+2026-10-10 用户继续补全：第九批仅本地75秒样板，新增cleaner-wrasse4、Diodon liturosus黑斑二齿鲀3（非Arothron叉鼻鲀）、lionfish3；新ShallowCommunityFishAssets共享几何，三角4536/8828/8368，量纲总长1，运动pad .024×sizeM。现有礁乌贼/日行章鱼换ShallowCephalopodAssets（mantle-length/arm-envelope保留，11920/11888三角，八腕/两触腕及连续鳍，shared species poses），模板不再重复创建。补充24–27清洁鱼/二齿鲀、42–48乌贼/羊鱼、67–71蓑鲉；展示接近/巡游，不模拟清洁寄生虫/猎物捕获/完整食网。尾段冠层组合不再只massive；所有near顶点附着检查保持。albedo应全部sRGB，修正新carbonate纹理遗漏色空间。
+固定55为281动物/35类/73硬礁/371冠层/352草丛，对冻结第八批原271身份尺寸精确；新增仅sample registry，探索/库存/存档不迁移。静态自然鱼背/臀鳍原顶点合并为共享材质绘制，移动胸鳍/尾部保留，整景mesh对象352→339，未放宽350预算。最终22case+build:local通过，含75模型秒/新群落近景/全附肢运动包络/冠层实际实例/资源单释放；CPU单次构造2179ms、median1.825/p95 3.010/max6.564ms，无同条件性能降幅或FPS保证。源码hash/事实存output/validation/shallow-community-expansion/stage.json；四相同相机离线albedo图+47秒当前路线图，非WebGL截图或GPU验收。index-CysAFIWt.js、ShallowSampleApp-kWJzUvxx.js，4175仅监听验证；未提交推送部署。模型仍程序化，写实未通过、真实播放/三轮数据待验；既有本地URL自动审批拒绝未重试绕过。有限批展示后收口，不自动局部修补。详docs/SHALLOW_SAMPLE_STAGE.md、manifest v6及两新provenance。
+<!-- /shallow-community-expansion-current -->
+
+<!-- shallow-life-assets-current -->
+2026-10-10 用户授权一轮有限整批关键动物/活礁，先本地验证。第八批仅75秒样板：海龟/蓝斑魟与四群游鱼整身资产更换（自制程序化解释非扫描）；四类七变体活礁与骨骼碎屑更换，按真实礁肩定向，近景全顶点硬底检查（基部25mm/其它1mm容差），实际倾斜半径/顶高参与净空。生成marine carbonate albedo替换陆岩PBR，不混用陆岩normal/rough；草根/礁脚实际沉积色场与末段礁群位置一起更新。固定55：271动物/32类/73硬礁/353冠层/352草丛；对第七批冻结模型动物身份尺寸精确，探索/生态库存/存档不迁移。
+13样板case+4活礁case通过、build:local通过；原生构造2672ms、601更新median3.996/p95 7.692/max15.841ms，仅当前CPU、不报性能降幅。四同镜头实际网格albedo离线投影（相机max误差3.61e-16）在output/validation/shallow-life-assets/final；stage.json冻结当前源码与事实，初始迭代存initial/不得当最终。WebGL/GPU/三轮75秒/5秒启动均待实测，既有项目URL审批拒绝未重试或绕过。初审仍未通过纪录片写实：活礁偏稀/团块重复、动物材质简化/魟低对比、沙道空。此次整批完成集成后展示收口，禁止自动再启动参数修补；下一轮先整批评估有质量证据的资产。4175 PID29788监听，index-DxQe_kLV.js和ShallowSampleApp-qh4oiLqz.js；未暂存提交推送部署。详见docs/SHALLOW_SAMPLE_STAGE.md及public/assets/shallow-natural-assets.json v5。
+<!-- /shallow-life-assets-current -->
+
+<!-- shallow-habitat-current -->
+2026-10-10 用户确认整体验收标准后授权一轮有限整批。第七批仅本地75秒样板：CC BY 4.0 LasquetiSpice镰鱼/蓝倒吊拆为独立个体、保留原UV/贴图与四局部骨骼姿势，艺术家模型非扫描；70样板主体硬礁增加脊槽落差，四冠层形态与斑块草床整段变化。固定55：271个体/32类、73硬礁/367冠层/366草丛；新增6蓝倒吊，随机取样及布局改变，不能称第六批身份尺寸精确。旧持续探索/存档未迁移。
+鱼群独立漂移与实际速度航向，非boids/完整避让；播放器4秒可选资产准备截止、封闭晚到纹理/扫描、预编译后才计时，记录最近3轮完整帧/实际时长/浏览器GPU视口/像素比与中断，完成后可下载。不能据此宣称5秒启动或实际GPU/FPS验收。13样板case+26岩面/扫描case通过，准备封闭/单一释放边界追加定向复验；build:local通过。CPU单次中位2.027/p95 3.953/max7.066ms，非相同负载第六批对照、不报降幅。
+四张离线实际网格对照复用第六批相机（max误差3.61e-16），未执行WebGL法线/粗糙度/焦散/阴影，不是网页截图。初审动物真实感和整体场景仍未通过：资产质量混杂、海龟/魟/主要鱼简化、硬礁仍有土丘感；动态/实机性能待验。本批展示后结束，不自动参数修补；下一批须先审阅整批动物/活礁资产方案。docs/SHALLOW_SAMPLE_STAGE.md与output/validation/shallow-habitat有证据。4175服务已恢复；未暂存提交推送部署，既有URL审批拒绝未绕过。当前get_goal为空；历史Goal暂停字样不等于当前有活动Goal。
+<!-- /shallow-habitat-current -->
+
+<!-- shallow-integrated-current -->
+2026-10-10 第六版本地有限整景批：75秒浅海样板三类大型代表动物（绿海龟/蓝斑条尾魟/黑鳍礁鲨）采用独立连续网格和不同步有界显示运动；盘宽与总长分开，保留完整尾部。13主要鱼显示拓扑整批减负；旧模板不再为这16类重复创建/逐帧动画。礁区增加6段实际低礁基座连接原64主体，冠层根跟随最高实际硬面；73礁体/359冠层/572草床，265个体/31类身份尺寸对本轮起点精确。
+原海床49空间分块保留相同Float32顶点/法线/三角形；草/珊瑚远近显示细节与滞回切换，当前身体足迹仍逐次查支撑，固着体复用支撑，多数垂直速度由连续真实位置差分（俯潜鱼保留未来Y探针）；播放器持续掉帧时降像素比，后台恢复重置帧时钟。三张原始1k Poly Haven CC0岩面PBR（albedo/normal/rough）并发载入且单次可用集发布，不等待它们或扫描才巡游。
+最终11定向case含完整75模型秒通过，build:local通过。原生CPU中位约7.846→3.012ms，p95约12.700→5.383ms；五个镜头主视锥候选三角约207–312万→150–184万（非实际GPU绘制/FPS）；同条件顺序对照与诊断存output/validation/shallow-integrated。最终CPU几何预览可以透视像素采样实际albedo，未执行WebGL法线/粗糙度/焦散/阴影；不称浏览器截图或纪录片目标达成。既有浏览器拒绝不绕过，Goal保持独立暂停；无暂存/提交/推送/部署。后续先整段实际视觉验收，不扩物种目录或开展单鳍/单块石头参数循环。
+<!-- /shallow-integrated-current -->
+
+<!-- shallow-reef-structure-current -->
+2026-10-10 浅海样板第五版有限整批完成：64主体硬礁采用独立sample-reef-a/b/c真实Float32三角形，与支撑/附着共用；原六种profile网格完整hash保持。分枝冠层/桌形生长面成批加密；13类主要鱼显示资产（本轮新增6类）与实例独立脊柱摆动接入。现有USNM229扫描按源米制和原比例在32处替换显示，作为死亡骨骼环境，不增活体/物种；全顶点硬底净空与原包络验证，4ms预算分段准备/取消/晚到释放，失败保留原模型，巡游不await准备。
+固定55：75秒、265个体/31类、67硬礁/359冠层位置/572草床；动物身份尺寸、床/草和六旧profile完整核对保持。样板64礁骨架改变并重锚根Y，新硬面排除了1处冲突冠层候选；不称整片地形保持，也不触发原持续探索/存档迁移。最终单35定向case及build:local通过，含9样板case/完整75模型秒；旧profile/扫描源/释放与实际顶点放置检查。index-B8I64T5x.js，ShallowSampleApp-DZ6b2uup.js；4175/PID29108。CPU预览只执行实际网格和同公式身体摆动，未执行PNG/JPEG贴图/WebGL光照/阴影，不是浏览器/FPS验收；仍程序化近似，纪录片写实未达标。未暂存/提交/推送/部署，Goal暂停，既有浏览器拒绝不绕过；有限批收口，后续按整段观感做下一整批，不回单体参数循环。说明docs/SHALLOW_SAMPLE_STAGE.md、来源public/assets/shallow-natural-assets.json、结果output/validation/shallow-reef-structure/stage.json。
+<!-- /shallow-reef-structure-current -->
+
+<!-- shallow-realism-current -->
+2026-10-10 本地浅海样板第四版：成批替换七类主要鱼（连续鱼体、体色/斑纹与柔性鱼鳍），360珊瑚实例使用分枝/低桌形/团块/扇形四种显示资产；新生成礁岩albedo、接触阴影和更有方向的受光接入。原生75模型秒及7定向case、本地构建通过；265个体/31类、床面/原64岩/草床及动物身份尺寸核对保持。实际模型仍是程序化近似，未称纪录片写实达标。
+output/validation/shallow-realism预览来自实际几何的CPU投影，不执行PNG材质/WebGL着色器/阴影，不是浏览器截图或FPS证明。index-BLcu9CUb.js、ShallowSampleApp-DyzzoL8u.js；4175/PID29108，未提交推送部署，Goal暂停，既有浏览器拒绝未绕过。有限资产批完成，后续按整段实际观感推进其它整批动物/礁群，禁止回到单鳍或重复参数微调。生成原图保留；prompt/工具/参考/限制见public/assets/shallow-natural-assets.json；阶段说明docs/SHALLOW_SAMPLE_STAGE.md。
+<!-- /shallow-realism-current -->
+
+<!-- reef-community-current -->
+2026-10-10 用户继续改善动物群落。本地75秒样板第三版在17–30秒礁边形成连续三块岩台：海金鱼在上层，蝶鱼/神仙鱼独立巡游、鹦嘴鱼近礁起伏，下层砗磲/海胆/海绵/海羽星附岩，章鱼/蟹/龙虾慢移。现有265个体、31类身份/尺寸保持，重排52个体；不是新增物种或人口。观察高度随礁边下降，床岩净空和原沙道/草床连续路线保持。全样板67礁石/360珊瑚/572草床为场景计数，非可见性证明。
+5定向case及build:local通过，包含完整75模型秒、新居民实际岩面足迹/间距、原生近景观察、鱼类独立活动及实际腕足/步足动画。修复实例化误复制隐藏LOD和模板零速度导致移动动物不摆足；不改旧探索/存档/食物账。output/validation/reef-community预览为实际网格离线投影，未执行WebGL贴图/着色器，不是网页截图或FPS验收。当前index-CwdU_RrH.js；4175/PID29108，未提交推送部署，Goal暂停，浏览器拒绝未绕过。有限群落批已完成，仍需整批资产质量升级以接近纪录片写实，不能以这轮测试称目标达成。
+<!-- /reef-community-current -->
+
+<!-- animal-presentation-current -->
+2026-10-10 用户选择“动物仍不够突出，先改善群落呈现”。本地浅海样板第二版将主要鱼群集中为有纵深的共同航向队形，近距离侧向经过；沙道魟鱼/羊鱼/海参、草床双海龟/兔鱼沿真实海床重排。75秒、约94米同景路线在群落旁减速并连续转向实际动物，再回前方；不放大体型、不增人口、不动原探索历史。固定55全部床面/礁石/珊瑚/草床hash及265动物身份/尺寸与本轮起点精确保持，31类代表动物保持。双海龟错位并行并保留完整身体间距。
+4定向case通过（完整75模型秒、自然尺度近景投影/侧向群游、路径/镜头连续性、身体净空/双海龟间距及释放），build:local通过；原生最大100ms镜头步0.278m/转向0.903度，非浏览器帧率。最初观察过渡过快的原生检查失败已通过缩短路线、平滑进度修复；没有进入单体材质或形状细调。output/validation/animal-presentation预览为实际网格离线投影，未执行WebGL贴图/着色器，不是网页截图。当前构建index-CXZkfJbO.js，4175/PID29108；未提交/推送/部署，Goal暂停，浏览器拒绝未绕过。当前交付为群落呈现有限批；以用户实际整段观感验收，接下来整批资产/行为优先，不能以投影阈值称写实达标。
+<!-- /animal-presentation-current -->
+
+<!-- shallow-sample-current -->
+2026-10-10 用户确认先做60–90秒完整浅海样板，重点整体场景与丰富动物群落。本地第一版已实现demo=shallow-sample&seed=55，75秒同一海床连续巡游、礁谷/沙道/草床与独立动物群落，暂停/0.5–2x/拖动/重播/自由观察，顶部可回持续探索。一次载入，不走旧跨区准备；旧入口与历史保留。既有动物资产成批绘制，自然尺度，共享床岩/珊瑚支持与镜头净空。初次离线构图发现礁体过高/裸沙过多/动物偏远，只集中修一轮宏观布局与侧向群游，未开展单体细调。
+三个定向case通过，覆盖完整75模型秒及所有活动类群、真实网格附着和连续路径；本地构建通过。实际场景网格离线预览在output/validation/shallow-sample；不执行WebGL贴图/着色器，不是网页截图或GPU验收。程序化资产仍未到纪录片写实，有限行为样板不称完整食物网。后续先用户整段实景验收，再成片资产质量或整群落接回探索。4175/PID29108；无提交/推送/部署，Goal仍暂停，浏览器拒绝未绕过。说明docs/SHALLOW_SAMPLE_STAGE.md。
+<!-- /shallow-sample-current -->
+
+<!-- visual-delivery-priority -->
+2026-10-10 用户明确反馈当前效果距离目标很远。后续优先级以此处为准，覆盖旧条目中继续以技术校验/准备耗时为主的计划：当前定位仍为功能原型，尚未达到海洋纪录片式写实、清晰丰富的动物群落和连续观察效果。代码与存档验证通过不得表述为画面达标。
+下一交付目标是一段60–90秒完整浅海样板：首屏有明确的海床、礁体、植物与活动动物，近中远空间清楚；礁谷/裸沙/草床过渡连贯，鱼群与底栖动物能辨认并有实际行为；镜头连贯推进，不卡住或突然切景。先交付完整场景，再扩区域与物种，不开展单鳍/材质/镜头细调循环。
+推进顺序：整体场景构建与代表性动物资产/群落呈现一起推进；性能作为体验底线，集中处理会阻断演示的瓶颈。每批必须展示能看见的整体变化，实际画面以用户观察/真实视觉材料验收；106类目录、CPU候选和测试数量均非画面丰富度证据。当前只有代码/资产核对，没有新实际截图，禁止假称亲眼检查了网页。
+已知资产限制：public下GLB集中于usnm_229珊瑚扫描的三个精度版本，鱼类多为程序化网格；需建立统一的环境与动物资产质量标准，优先可辨识造型、尺度和成群活动，继而批量扩展。此次仅重新规划，无运行代码、构建、提交或部署变更。Goal仍暂停；已有浏览器拒绝不可绕过。
+<!-- /visual-delivery-priority -->
+
+<!-- active-history-current -->
+2026-10-10 本地活跃历史有限批完成：固定地形生境排序后台准备，完整地形/owner/配方/珊瑚支撑匹配后复用，最多4上下文×12排序；外部支撑变化回现场计算。当前动物位置/身体/出生/时钟/食物仍完整检查，不缓存动态历史结论，不改出生/生态/海床。
+同一12区记录主线程CPU4011→1425ms（约64.5%），max单元405→150ms，首次后台排序3082ms另计；均非浏览器FPS/等待。25唯一定向case及本地构建/两Worker前缀通过。原生451.51m/240镜头秒、两支路/四生境，最大校验单元137ms，完整cold active/disk/未来3步/提交地形精确；25×0.1探针仅2.5模型秒，25当地类型是附近记录而非GPU验收，新增摄食0。首次准备和每帧更新仍重，不称完全流畅。
+271源码：4旧改/1新/266旧精确；测试后仅新增行换行清理，归一化源码精确。fixture计数/损坏字段两失败已修并完整复验，日志保留。4175/PID29108，无暂存提交推送部署，Goal暂停，浏览器拒绝不绕过。说明docs/ACTIVE_HISTORY_STAGE.md与output/validation/active-history-delivery.json。下一批优先整段每帧生态更新/新区首次准备及整体体验，再扩区域群落，不回单体细调。以下历史保留。
+<!-- /active-history-current -->
+
+<!-- cruise-smooth-current -->
+2026-10-10 巡游/跨区有限批：whole-seabed采用独立只读海床Worker，完整65×65床面/法线/颜色/遮罩转移；当前owner优先、最多一任务/一块装配，取消/旧回复/重置/失败重试与原有v1–9邻区兼容。邻区遮罩刷新保留仍有效海床后替换，最多9实际网格；实际被挡镜头下一owner优先于推测前瞻，暂停/隐藏/邻窗边界保持。后台最多4份完整验证不可变地形上下文，动物历史逐次完整校验。
+62唯一定向case及本地构建/资源前缀检查通过；同一完整历史两轮warm CPU 7985→5091ms（约36.2%），不是浏览器等待/FPS。原生451.55m/240镜头秒、两支路/四生境、完整cold active/disk/未来3步精确；23次0.1探针仅2.3模型秒，54近距个体/25类型为CPU候选，非GPU验收。仍有约582ms活跃生态校验单元，未称完全流畅。
+270源码：4旧改/3新/263旧精确，生态及物理生成源码保持；4175/PID29108，未暂存提交推送部署，Goal暂停和既有浏览器拒绝约束保持。原统计常量、旧邻区兼容及异步测试假设已修并复验，诊断保留。结果docs/CRUISE_SMOOTHNESS_STAGE.md与output/validation/cruise-smooth-delivery.json；有限批收口，下一批先实景整体体验/较重生态校验，不进入单体细调。以下为历史记录。
+<!-- /cruise-smooth-current -->
+
+<!-- whole-scene-current -->
+2026-10-10 整景及巡游加载有限批：whole-seabed入口采用克制水体/近远雾化与天空散射、12–16m前向礁石观察倾向，真实动物观察仍接管；路径位置/净空与生态强迫保持。相邻已验证同内容计划保留引用和实际网格，退出/变化来源释放；新版每次更新建一块、当前镜头owner优先，静态入口分帧准备/取消/重试，旧入口原顺序与普通导演九区门槛保持。
+65唯一定向case最终通过及本地构建/资源检查。单次CPU重叠窗6重建→0、保留0→6，渲染更新约706→1.3ms/全替换747→204ms；首次494ms拆为六次73–151ms，非总CPU减少或FPS。原生451.82m/240镜头秒、两支路/四生境、完整cold active/disk与未来3步精确；36次0.1探针仅3.6模型秒，56近距个体/25类型为CPU候选，非GPU验收。较重准备/网格/生态仍在。
+267源码仅5改/262精确，无新运行文件，物理生成及生态源码精确保持；4175/PID29108，未暂存提交推送部署，Goal暂停约束保持，浏览器拒绝未绕过。原辅助语法/坐标fixture与旧v7顺序断言已窄修并复验，长旧完整模型秒巡游取消不算通过，日志保留。结果docs/WHOLE_SCENE_STAGE.md与output/validation/whole-scene-delivery.json；有限批收口，后续重网格后台化及实景整体体验优先。以下为历史记录。
+<!-- /whole-scene-current -->
+
+<!-- whole-seabed-current -->
+2026-10-10 本地整体海床批：实际沙床高度脊槽、17块近中景不规则礁石、岩脚碎石带与斑块草床/裸沙过渡；地形、植物根、动物支撑、镜头净空共用已提交床面。world=whole-seabed仅显式新配置和独立动物历史，普通及旧入口原地形保持；最新/生命巡游按钮已接，沿用v20动物群落与106代表目录。
+固定55十二区：礁石61→78、珊瑚117保持、草根469→191（156密草/35边缘）、298分带碎石为重排非另增；相对原床面−1.07至+1.15m。69唯一定向case及本地构建/资源检查通过，旧完整12计划hash精确；新原生451.83m/240镜头秒、两支路/四生境、完整cold active/disk与未来3步精确。25次0.1生态探针仅2.5模型秒、51近距个体/24类型是CPU候选，非GPU画面/FPS验收；较重准备仍在。
+267源码/8旧改/1新/258旧精确；旧4175进程已退出，恢复PID29108。未暂存提交推送部署，Goal暂停约束保持，既有浏览器拒绝不绕过。说明docs/WHOLE_SEABED_STAGE.md及output/validation/whole-seabed-delivery.json；有限批收口，后续整景与巡游体验优先，不进入单鳍/材质微调循环。以下为历史记录。
+<!-- /whole-seabed-current -->
+
+<!-- animal-communities-current -->
+2026-10-10 本地有限动物群落批：fresh v20按原v8真实生境预留水层鱼群/底栖/草床名额，合理群游候选先于单体排队，双线乌尾鮗与蓝带笛鲷按坐标种子轮换；所有成员真实保存、完整物理与原食物账保持。world=animal-communities及最新/生命巡游接入，旧alias和已访记录不迁移补货。
+固定55十二区：礁旁2群/7成员→12群/47成员，水层2群/12→3群/16；总记录238→226、当地类型62→53，反映20名额中的成群取舍，目录106未新增。57唯一定向case及本地构建/资源检查通过，旧生产全disk摘要精确；新原生451.927m/240镜头秒、两支路/四生境、完整cold active/disk/未来3步与原地形保持。26次0.1生态探针、51近距实际个体/23当地类型仅CPU证据，非240模型秒或GPU可见/FPS验收。部分准备单元仍较重，未承诺完全流畅。
+266源码/8旧改/1新/257旧精确；4175原PID48560，未暂存提交推送部署，Goal暂停约束保持。说明docs/ANIMAL_COMMUNITIES_STAGE.md及output/validation/animal-communities-delivery.json。有限批收口，下一批连续海床结构和整景构图，不进入单鳍/材质细调循环。既有浏览器拒绝不绕过。
+<!-- /animal-communities-current -->
+
+<!-- background-exploration-current -->
+2026-10-09 本地阶段接入独立Worker地形生成/完整规范检查/离线历史/十二区首次出生，共用原出生代码，Worker无存档写入和公开权限。生命巡游仅沿已提交路径提前一邻窗，暂停/隐藏不前瞻；旧历史/物理/库存/额度保持。三生产窗完整active/disk摘要精确；实际网页流畅与GPU仍未验，主线程旧路径仍有短顿。阶段说明docs/BACKGROUND_EXPLORATION_STAGE.md，结果以最终收据为准；未提交推送部署，Goal状态保持。
+<!-- /background-exploration-current -->
+
+<!-- continuous-vista-current -->
+2026-10-09 当前本地阶段：整组历史按校验项、出生按owner分段，在每个同步地形上下文恢复后yield；独立不可变准备上下文验证一次再复用，禁止临时上下文内await/公开。生命巡游当前owner就绪可继续，下一帧owner与床岩净空仍必检，普通导演九区门槛保持。实际两条支路接入，观察高度随生境连续变化，强化四生境床色但草床必须受真实根范围约束。物理/库存/旧历史/记录额度不变，未加物种或假人口。
+38唯一定向case最终通过及build:local/hash/资源检查；262源码6旧改/1新/255精确，4175原PID48560。原生450.169m/240镜头秒、413普通+671准备镜头步，准备步均推进；43次0.1生态探针，不称240模型秒或FPS，近距39个体/27当地类型仅CPU候选。完整冷active/disk和未来3步精确，原提交地形精确；9活区/25公开/97私有/20记录保持。初版重复地形校验回退约30s已修，getter与恢复模型fixture失败已窄修，日志保留。收据output/validation/continuous-vista-delivery.json，说明docs/CONTINUOUS_VISTA_STAGE.md。
+仍有单项约0.2–0.5s和同步地形生成，未称完全流畅；后续优先更细校验/后台计算与成片动物群落，不开鳍/材质细调循环。未暂存提交推送部署，Goal暂停；既有浏览器拒绝未绕过，GPU/实景等待未验。以下为历史记录。
+<!-- /continuous-vista-current -->
+
+<!-- expedition-streaming-current -->
+2026-10-09 跨区等待优化有限批：oceanReefResidents.js减少重复候选、岩体全扫描、法线和向量分配；保留完整物理/历史/库存校验。同条件实际生产CPU两跨区14.48→11.40s、17.48→16.06s（21.3%/8.1%），首次12.82→13.59s未改善；主机波动大，非浏览器/IndexedDB/FPS证据。每窗完整active/disk精确，9活区/25公开/97私有保持。36唯一定向case及build:local/hash/资源检查通过；261源码本轮1变/260精确。收据output/validation/expedition-streaming-delivery.json；未暂存提交推送部署，Goal暂停。
+下一阶段依docs/NEXT_WORLD_STAGE.md：先连续探索的分段/后台准备，再成片动物、完整海床、统一画面与生态；不回单鳍/材质/镜头微调。临时地形上下文仍同步，不得直接加await使其泄露到当前画面。既有浏览器拒绝仍不得绕过，实景等待/GPU尚未验。临时对照目录清理被自动审批拦截，忽略output/validation/streaming-before-src保留。
+<!-- /expedition-streaming-current -->
+
+<!-- life-expedition-wait-current -->
+2026-10-09 用户确认生命巡游卡住时数字和距离都停止。补跨区等待/无进展提示和60秒有效可见播放超时，失败后“重试巡游”；暂停与后台冻结时间不计入。原“秒后继续”改“巡游剩余”。存储开/读/写/清事务30秒边界、写超时整批abort、失败开库可重试、晚到旧连接关闭；自动存档最多一份待处理，明确checkpoint仍保存最新完整记录。
+本地97唯一定向case最终通过（含14新增故障边界），不把CPU/source执行当用户实际浏览器根因定位。真实生活生态延迟读失败保留原窗且同窗可重试；原生镜头非await等待后同位置继续。首轮方法提取/普通fixture假设和旧播放器label断言失败已窄修，诊断保留。261源码仅5份改变、其余256精确，build:local及源码hash/资源前缀检查通过；4175原PID48560。冻结output/validation/life-stall-delivery.json，说明docs/LIFE_EXPEDITION_STAGE.md；未暂存/提交/推送/部署，独立Goal仍暂停，浏览器既有拒绝不绕过。实际卡住根因、GPU效果和耗时仍待用户实景反馈。
+<!-- /life-expedition-wait-current -->
+
+<!-- life-expedition-current -->
+2026-10-09 本地连续生命巡游阶段：demo=life-expedition、seed=55、world=reef-bottom-life。从同一条已提交海床路径依次经过礁谷/沙沟/草床边缘/外坡；240秒有限单宏区路线、暂停/0.5–4×速度/附近实际个体与跟随接入，完整导演67章另保留。不是单个物种或镜头微调批。
+原生整段426.484m、239.5模型秒、41近距实际个体/25当地类型，22个体移动/14新增摄食记录；12次真实Three模型更新。完整cold active/disk精确。近距候选和床岩射线是CPU证据，不等于GPU可见、真实遮挡、帧率或纪录片写实验收；实际画面待用户确认，既有浏览器拒绝不得绕过。
+97唯一定向case最终通过及最终本地前缀构建；261源码/253旧保持/6旧改/2新，最终build输入hash精确。初版原生脚本过度按半秒存档主动取消，改真实换区频率后成功；取消日志保留、不算通过。9活区/公开≤25/私有≤97与20全部记录额度保持；动物/地形/食物/出生逻辑未改，最新catalog106保持、稀有缺席不强填。
+4175原PID48560，本地未暂存/提交/推送/部署，独立Goal暂停。说明docs/LIFE_EXPEDITION_STAGE.md及忽略output/validation/life-stage-delivery.json/route-map.png。有限阶段收口，以整体实景反馈决定下一批，不继续单鳍/材质/镜头细调。以下历史保留。
+<!-- /life-expedition-current -->
+
+<!-- reef-bottom-current -->
+2026-10-09 本地补蓝海星Linckia laevigata、梅花参Thelenota ananas和大法螺Charonia tritonis，整身模型/真实硬底/贴底活动/藻类-碎屑-动物性营养分别扣账/冷恢复/观察接入；浅海代表目录106，benthic v4十二候选共享原四名额与20全部记录（含死亡龟）额度。world=reef-bottom-life及最新按钮接入，前批沙床/甲壳/水层鱼群/礁v19保持，旧alias及v1–3存档不迁移补货。原沙床观察面板补接受v4。
+56草甸198动物/30当地类型：梅花参1生/0移/1食，蓝海星及大法螺缺席；55礁谷238动物/62类型，新三类全缺席保持。两海区三九窗各4模型秒日2秒+夜2秒，完整cold active/disk和未来3步精确；不把独立fixture活动当原生海区活动。56唯一定向case通过（新7/原生3/控制35/目录11），旧v1–3九fixture32步及九模型32帧2,211,148字节精确。首次错误假设每海区必生成新类/短窗必有移动已改为记录真实否定结果，失败日志保留；物理门槛/库存/名额未降低，不强制填充。
+259源码/249旧保持/8旧改/2新，构建hash精确，Vite5.92s/过程7.471s；230工作流文件未云端全跑。9活区/公开≤25/私有≤97及十二区原子保存后公开保持。4175原PID48560，未暂存/提交/推送/部署，独立Goal暂停。说明docs/REEF_BOTTOM_LIFE.md及忽略目录output/validation/reef-bottom-delivery.json。CPU/Three检查不替代GPU观感/遮挡/帧率；既有浏览器拒绝不可绕过。有限批收口，下一阶段优先成片动物与实际生境覆盖，避免继续单体/材质/镜头微调。以下历史保留。
+<!-- /reef-bottom-current -->
+
+<!-- coastal-schools-current -->
+2026-10-09 本地补印度鲭Rastrelliger kanagurta和黄带鲹Selaroides leptolepis，独立整身模型/群游/避障/不同营养分量/摄入账/保存冷恢复/观察接入；浅海代表目录103。新shoal v3七类候选沿用5–7个体和原20全部记录额度，死亡龟仍占额，不强制出现。56草甸394.323m路线十二owner198动物、当地类型28→29；黄带鲹5出生/5移/5食，印度鲭未选中如实保留。三普通九区窗各4模型秒，各有2秒日间+2秒夜间。
+黄带鲹全身下方软底/固体净空/离实际床面≤3m，夜间扣原openWaterLife动物性营养；印度鲭净空水层扣plankton。尺寸、密度、速度和昼夜门槛未野外校准，无真实过滤/可见捕杀/繁殖/跨owner迁移。前批沙床/甲壳/草甸食物循环/礁v19保持；旧明确alias及v1/v2存档不迁移补货。world=coastal-schools及“最新海域”按钮接入，地形/RNG保持，独立动物历史。
+54唯一定向case通过（新7/原生2/控制35/目录10）及构建prepare完成；旧v1/v2八fixture32步和六模型32帧4,156,902字节精确，新cold完整active/disk和同环境未来3步、原生旧v2死亡/clock/食物/未来精确。一项unit调用参数错误已修并仅复验失败，日志保留；重复不累计。257源码/247旧保持/8旧改/2新，构建hash精确，Vite4.17s/过程5.183s。227工作流文件未云端全跑；9活区/公开≤25/私有≤97、十二区全null原子保存后公开保持。
+说明docs/COASTAL_SCHOOLS.md，收据忽略目录output/validation/coastal-schools-delivery.json。4175原PID48560，未暂存/提交/推送/部署，独立Goal暂停。CPU/Three检查不替代GPU观感/遮挡/帧率；既有浏览器拒绝不可绕过。有限批收口，后续优先整片动物群落和跨生境覆盖，不回单鳍/材质/镜头微调。以下历史保留。
+<!-- /coastal-schools-current -->
+
+<!-- sand-bottom-current -->
+2026-10-09 本地补斑点豹鲆Bothus pantherinus、梳棘沙海星Astropecten polyacanthus和糙海参Holothuria scabra，完整独立模型/实际出生/贴底短移/不同营养库存/摄入记录/冷恢复/观察档案接入；浅海代表目录101。benthic v3九候选四名额，沿用原20全部记录（含死亡与龟）额度，物理门槛保持，不强制出现。固定56草甸198动物、当地类型25→28；6鲆鱼2移6食、6沙海星5移6食、5糙海参5移5食。三普通九窗各4模型秒，4鲆鱼和1海星未在此窗移动如实保留。
+57唯一定向case通过（新8/原生2/旧控制32/目录与资产15）及构建prepare完成；旧v1/v2三fixture32步与六旧模型32帧1,557,442字节精确。原生旧v2死亡/clock/食物/未来保持，新cold完整active/disk及相同夜间环境未来3步精确。两个单位fixture/API问题、旧目录98断言和混合换行预写断言失败日志保留；只修失败，成功复用。两份目录零匹配文件包装不算成功，补跑明确case。重复/失败不累计。
+world=sand-bottom-life及正常/旧预览“最新海域”按钮接入，地形和随机键保持，动物独立历史而环境/探索共享；前批甲壳动物/草甸食物循环/水层鱼群和礁v19保留。普通/导演未访问新owner启用，旧显式alias及v1/v2存档不迁移/补动物/补食物。实际底栖观察助手修复原individual仅接受v1的遗漏，接受v2/v3且无种群替换；导演67章/61动作保持。
+新鲆鱼/海星扣原reefGuild动物性营养，糙海参扣detritus有机分量，非矿物沙粒或已捕杀可见动物；无埋沙/翻砂/完整天然食谱/繁殖/野外校准。海星采用命名形态代表并保留种复合群限制，鲆鱼与原Bothus mancus不合并。
+255源码/245旧保持/8旧改/2新，最终构建输入hash精确；Vite4.18秒、过程含prepare4.936秒，225工作流文件未云端全跑。9活区/公开≤25/私有≤97、十二区全null检查及原子保存后公开保持。4175原PID48560，未暂存/提交/推送/部署，独立Goal暂停。
+详见docs/SAND_BOTTOM_LIFE.md、忽略目录output/validation/sand-life-delivery.json。CPU/Three几何、视锥和扣账不能替代GPU观感/遮挡/帧率验收，既有浏览器拒绝不可绕过。有限沙床批收口；下一阶段继续整片动物群落和生境覆盖，不回单体鳍/棘/材质/镜头微调。以下历史保留。
+<!-- /sand-bottom-current -->
+
+<!-- meadow-water-current -->
+2026-10-09 本地补白点兔鱼Siganus canaliculatus与银带银汉鱼Atherinomorus lacunosus，完整独立模型/实际出生/群游/新昼夜摄食/扣账/冷恢复/观察档案接入，浅海代表目录98。新shoal v2五类候选沿用原20全部记录额度，不强制出现；普通/导演新owner启用，旧显式alias及v1存档不迁移补货。固定56草甸仍198动物，当地类型23→25；20兔鱼20移15食、10银汉鱼10移10食，三普通九窗各4模型秒，未发生摄食的5兔鱼如实保留。
+39唯一定向case通过（新8/原生2/控制19/目录10）及构建prepare完成；旧三类鱼群32步和四旧模型32帧1,975,201字节精确，原生旧v1死亡/clock/食物/未来及新cold active/disk/同环境未来3步保持。初版fixture误计独立鲨鱼摄食后改草甸5名额；目录并发6进程内存失败日志保留，成功4复用、失败6串行复验，不累加重复为新成功。首版混合换行替换在写入前被断言阻止后修正。
+world=meadow-water-life及正常/旧预览“最新海域”按钮接入，原地形/随机世界键保持，动物独立历史而环境/探索共享；前批甲壳动物/草甸食物循环及礁v19保留。9活区/公开≤25/私有≤97、十二区全null原子公开、原导演67章/61动作保持。253运行源码/243旧保持/8旧改/2新，构建前后hash精确；Vite8.89秒、过程含prepare10.01秒，223工作流文件未云端全跑。
+详见docs/MEADOW_WATER_LIFE.md、忽略目录output/validation/meadow-water-delivery.json。4175 PID48560，未暂存/提交/推送/部署，独立Goal暂停。摄食是已有相对库存代理，无逐叶刮藻/自然夜间散群/可见捕杀/繁殖或野外校准。CPU/Three视锥/几何不替代GPU画面/遮挡/帧率，既有浏览器拒绝不可绕过。有限鱼群批收口，后续整片开阔礁缘/沙床动物生活层与生境覆盖优先，不回单鳍/斑点/材质/镜头细调。以下历史保留。
+<!-- /meadow-water-current -->
+
+<!-- small-bottom-current -->
+2026-10-09 本地可见甲壳动物批：新增绿虎对虾Penaeus (Eopenaeus) semisulcatus与远海梭子蟹Portunus pelagicus，浅海代表目录96。完整分节/尾扇/触须/胸腹肢及宽甲/双螯/桨足模型、软底整身出生/真实钟活动/有限扣账/渲染选择/释放接入；benthic v2六候选四名额随机排序，共享原20全部记录额度，不强制出现。固定56草甸198动物/23当地类型（前182/21）；10对虾2移4食，8梭子蟹2移5食，三普通九窗12模型秒。数量为代表记录，不等于完整食物网或GPU可见结果。
+36唯一定向case通过（新6/原生2/旧控制18/目录10），旧v1三fixture32步与四旧模型877131字节精确；原生旧死亡/clock/食物与未来保持，新cold完整active/disk/未来三步在相同夜间环境精确。首次原生统计漏排目标外owner；随后cold比较漏相同hour输入及大型断言展开报内存错误，失败日志保留，最终顺序释放/同环境/compact比较通过，不计失败或重复为成功。
+world=small-bottom-life及最新按钮已接；普通/导演新owner启用、旧explicit aliases v1及存档不迁移/补死亡/补食。9活区/25公开/97私有、十二区全null原子公开、礁v19/候选51及导演结构保持。251源码/241旧保持/8旧改/2新；npm构建6.562秒成功，后构建源码hash保持，不声称已捕获构建前hash。221工作流文件未云端全跑。
+详见docs/SMALL_BOTTOM_LIFE.md、忽略目录output/validation/small-bottom-delivery.json。本阶段未暂存/提交/推送/部署；4175原PID48560，独立Goal暂停。CPU/Three几何证据不替代GPU画面/遮挡/帧率，既有浏览器拒绝不可绕过。无埋沙/游泳/脱壳/繁殖/可见捕杀或野外校准；新对虾未称海马口径适配猎物。有限批收口，后续整片动物群落与生境覆盖优先，不回单足/触须/材质/镜头微调。以下历史保留。
+<!-- /small-bottom-current -->
+
+<!-- meadow-food-web-current -->
+2026-10-09 本地草甸活动v2补海马/礁乌贼遗漏的原小动物营养支持消费者，原detritus→reefGuild相对营养转移真实扣账，不增加初始食物、动物或物种。固定56原生十二owner中十个原prey=0，九个有草甸捕食者但无原章鱼/蟹；未把全部未摄食都归一原因。394.323m/182动物/21当地类型/31草甸动物和完整出生库存保持；同三九窗24模型秒海马摄食1→10只、乌贼0→2只（6移/2停）、海鳃仍6食、蜘蛛螺仍缺席。27唯一定向case与构建通过（新4/原生2/控制21）；旧addon v1三fixture各32步22248字节精确，原生旧clock/死亡/未来3步、新cold active/disk精确。world=meadow-food-web独立动物历史及最新按钮已接，普通/导演新owner v2、world=meadow-foraging仍v1；旧存档不迁移补货。目录94/礁v19候选51、20全部记录含死亡龟、9活区/25公开/97私有/十二区全null原子公开不变。249源码/242旧保持/7旧改/0新，构建输入hash精确，219工作流文件未云端全运行。说明docs/MEADOW_FOOD_WEB.md，忽略目录冻结output/validation/meadow-food-web-delivery.json。本阶段未暂存/提交/推送/部署，4175 PID48560，独立Goal暂停。原生摄食是未分辨营养代理，不称已加可见小型猎物/捕杀/繁殖/完整天然食谱或实测速率；GPU画面/遮挡/帧率未验，既有浏览器拒绝不可绕过，不用CUA/CDP/Playwright/headless/HTTP/截图。有限批收口，后续小型猎物代表和实际动物生境覆盖优先，不回单体材质/鳍/镜头微调。以下历史保留。
+<!-- /meadow-food-web-current -->
+
+<!-- meadow-foraging-current -->
+2026-10-09 本地补已有礁乌贼、蜘蛛螺接近真实礁缘/岩面、停留再摄食；海马实际草叶抓附及海鳃软底昼夜活动保持。目录94、礁居民v19/候选51、出生/库存/20全部记录额度不变。56号394.323m草甸182动物/21当地类型/31草甸动物；10海马0移1食、10乌贼6移2停0食、11海鳃0移6食、蜘蛛螺缺席。不能把CPU移动/单位fixture摄食当作真实海区可见或原生已摄食。31唯一定向case与构建通过；旧草甸3fixture各32步24602 UTF8字节精确，完整新cold active/disk及旧死亡/clock/未来3步保持。新world=meadow-foraging及最新海域按钮已接，普通/导演未访问新owner启用；旧world演示与存档不迁移补货。详见docs/MEADOW_FORAGING.md及忽略目录冻结output/validation/meadow-foraging-delivery.json。249源码/243旧保持/5旧改/1新，最终构建hash精确；217云端测试文件未全运行。本阶段未暂存/提交/推送/部署，4175 PID48560；独立Goal暂停。既有浏览器拒绝不可绕过，不用CUA/CDP/Playwright/headless/HTTP/截图，GPU观感/遮挡/帧率未验。有限批收口，后续实际食物来源与动物生境覆盖优先，不回单鳍/材质/镜头微调。以下历史保留。
+<!-- /meadow-foraging-current -->
+
+<!-- reef-foraging-current -->
+2026-10-09 本地v19为八类既有动物补真实硬底/软沙寻找、接近、停留与有限摄食，完整身体地形高度、轨迹与占位门槛保持。目录94/候选51，原4+3鱼群保留，不增加库存/额度或新物种。固定55目标海区12只适用动物中9移/9食/9停留；原238动物/79居民及59/33类型保持。帆鳍鱼/集物海胆在目标十二区缺席，2长棘海胆此窗0活动，否定结果保留。32唯一定向case与构建通过，旧1–18固定32步424197字节精确；原生v18死亡/clock/未来三步及v19cold active/disk保持。
+摄食点是实际合适底质和净空坐标，不是已解析空间食物质量。八类沿用owner代理分量，混合食谱限制保留；不称真实口部触面、逐株刮藻、埋沙/翻砂/砂粒处理、可见猎杀、完整天然生境或野外校准。原鱼群仍同owner，不补成员或迁移。
+初版鱼短距离/中心地形高度无法到礁面；最终使用原全home extent、整个body footprint和actual saved pitch计算高度/就绪。原完整物理门槛不降。两次循环失败保留；最后姿态与受影响摄食门槛/渲染必要复验成功不累加，唯一新6/原生2/控制24共32。
+新world=reef-foraging独立动物历史，地形/出生键保持；环境/探索/发现共享。普通/导演未访问新海区v19，旧<=18不迁移/补死亡/补食。实际URL→ReefWorld构造器→生态选项/reset已验；用户v15链接刷新后有“最新海域”可切换，不擅自开浏览器或清存档。老鱼群模块接受19但<=18完整旧输出保持。
+248源码/239旧保持/8旧改/1新，构建5.18s及prepare完成，构建与收口hash一致；215工作流文件未云端全套运行。9活区/25公开支撑/97私有预读、10居民/20全部记录含死亡龟、十二区全null/原子公开保持。说明docs/REEF_FORAGING.md，冻结output/validation/reef-foraging-delivery.json。
+4175 PID48560；未暂存/提交/推送/部署，独立Goal保持暂停。既有浏览器拒绝不可绕过，不用CUA/CDP/Playwright/headless/HTTP/截图替代，GPU画面/遮挡/帧率未验。当前有限批收口；后续草甸动物与实际草床/沙床关系及跨礁覆盖优先，不回单鳍/条纹/材质/镜头微调。以下历史保留。
+<!-- /reef-foraging-current -->
+
+<!-- reef-schooling-current -->
+2026-10-09 本地v18将双线乌尾鮗/蓝带笛鲷接成3–5条真实个体的小群；同owner协调/独立物理与摄食/死亡与冷恢复保留，不增加原10居民/20全部记录额度。固定55自然两群4+3条双线鱼，7移/6食；笛鲷1移/0食且未成群，150m新鱼为空保持。目录94/候选51，238动物/79居民及59/33类型保持。47唯一定向case和构建通过；旧1–17固定32步398875字节精确。恢复原黄尾乌尾鮗四处误改识别，补实际ReefWorld预览参数白名单。新world=reef-schooling独立动物历史；旧存档不迁移/补货。
+当前有限批已收口：每聚群种最多8已有锚点/32额外候选，实际整身/宿主/深度/占位/区域/轨迹门槛保持；步前快照目标、实际独立实体/时钟/库存，无装饰副本、自然大群/混群/跨owner转移/招募/繁殖。共同运动参数未野外校准；目录类型不等于完整生态。
+修复ReefWorld构造器丢reef-grazers/reef-color-fish，新alias亦已接；URL→构造器→生态实际选项独立定向case最终复验。前两批旧的“入口已接”文档是历史证据，本处记录后续查出的遗漏与修正；没有迁移任何普通或旧演示存档。原黄尾四处识别已恢复且16原跨区case通过。
+247运行源码/239旧保持/7旧改/1新，最终构建10.97s并prepare；构建输入hash与收口精确。213工作流文件未云端运行，47定向case不累加失败/重复；原生旧v17死亡/clock/三步和v18cold active/disk保持。说明docs/REEF_SCHOOLING.md；冻结output/validation/reef-schooling-delivery.json，失败日志保留。
+4175已有进程PID48560，未暂存/提交/推送/部署，不清存档。独立Goal保持暂停；既有浏览器拒绝不可绕过，不走CUA/CDP/Playwright/headless/HTTP/截图替代，GPU观感/遮挡/帧率未验。后续整片动物与草甸/沙床/礁体生活关系优先，不回单鳍/条纹/材质/镜头微调。以下历史保留。
+<!-- /reef-schooling-current -->
+
+<!-- reef-color-fish-current -->
+2026-10-09 有限本地批补帝王神仙鱼Pomacanthus imperator、双线乌尾鮗Pterocaesio digramma、蓝带笛鲷Lutjanus kasmira；目录94/v17候选51。全形/水层正确姿态/个体时钟/有限摄食接入，不称天然大群、真实捕猎/洞穴/领地/繁殖或野外校准。首次选中的Caesio cuning已存在，改双线种；原生姿态误入贴底分支已修。
+固定55原427.639m及238动物/79居民保持，当地57→59/居民31→33。自然每种2条，三九窗6模型秒均2条移动，摄食1/1/2；150m窗口新鱼为空保持。全身/地形/水深/占位/容量门槛未降。9活区/25公开支撑/97私有预读、10居民/20全部含死亡龟、十二区严格全null/原子公开保持。
+world=reef-color-fish独立动物历史，同地形/出生随机键；普通新区v17、旧存档不迁移/补货。修复reef-grazers此前普通键回退，现新建独立v16演示历史，不静默迁移普通记录。全局环境/探索/发现共享；用户原reef-mobile-benthos链接仍v15，需新链接看新批。
+38唯一定向case最终通过（新9/原生2/旧控制22/目录5）。旧1–16固定单元各32步完整371838 UTF8字节精确；原生旧v16死亡/clock/未来三步及v17cold active/disk保持。246运行源码/236旧保持；211文件云端未运行。说明docs/REEF_COLOR_FISH.md，冻结output/validation/reef-color-fish-delivery.json。
+本地4175 PID48560；未暂存/提交/推送/部署，GPU观感/遮挡/帧率未验，独立Goal暂停，浏览器拒绝不可绕过。本批收口，后续优先整群协调与跨礁生活关系，停止单鳍/条纹/材质/镜头细调。以下历史保留。
+<!-- /reef-color-fish-current -->
+
+<!-- reef-grazers-current -->
+2026-10-09 本地有限批新增属级Eurythoe火焰虫代表、Diadema setosum长棘海胆，浅海目录91/v16候选48。全形/真实疣足或管足支撑/有界时钟动画接入；低照度贴底移动，取混合食谱的现有owner algae成分，不称严格植食、完整天然食谱、真实藏缝/繁殖/毒刺。完整针棘/刚毛与实际底质、水深3–18m选取、全触点/坡度/占位门槛保持。
+固定55原427.639m路线、238动物/79居民、57当地类型/31居民类型保持；自然2火焰虫/3海胆，三九窗6模型秒火焰虫1移/1食、海胆1移/0食，否定结果保留。world=reef-grazers独立动物历史，全局环境/探索/发现共享；普通新海区v16、原v15及更早预览冻结，存档不迁移不补货。9活区/25公开支撑/97私有预读、10居民/20全部含死亡龟、十二区严格全null和原子公开保持。
+46唯一定向case最终通过，旧1–15固定单元各32步完整348257 UTF8字节精确，原生v15死亡/clock/后续步与v16冷恢复active/disk精确。首轮v16个体scope遗漏和海胆末端采样错配已修；缺粮fixture补真实有机出口账，失败保留/成功复用；4空文件占位不计case。构建5.30s，244运行源码/234旧保持，208文件工作流未云端运行。
+说明docs/REEF_GRAZERS.md；忽略目录冻结output/validation/reef-grazers-delivery.json。本地4175 PID48560；阶段未暂存/提交/推送/部署，GPU观感/遮挡/帧率未验，独立Goal暂停，浏览器拒绝不可绕过。类群包收口，后续完整群落与跨生境生活关系优先，停止单棘/刚毛/材质/镜头细调。以下历史保留。
+<!-- /reef-grazers-current -->
+
+<!-- resident-sand-activity-current -->
+2026-10-09 用户确认4175本地入口已打开。本轮将已有豹斑海参、馒头蟹、豹纹鲆、海饼接入真实软沙移动/扣账摄食反馈；共8类可驱动现有扬沙层，浅海目录仍89，不改出生/生态/地形/库存。首次/暂停/加载跳时不重播，源及新颗粒均检查真实沙床与固体支撑；仅显示代理，无真实埋沙/沉积物质量/流体模拟。
+固定55原427.639m六普通九窗18模型秒，四类已有11只中的10只触发，全层累计70→105粒子；入口新来源为空保持。180帧完整生态active与冷恢复active/disk精确，食物账和9活区/25公开支撑/97私有预读保持。14唯一定向case、原四类120完整帧独立显示精确、一次生产构建6.52s通过。242运行源码仅OceanAnimalSediment改变，241保持。首轮与诊断复验因原渲染getter补timeSec误报，改输入读取顺序后最终原生验证通过，失败保留，生产门槛不改。
+说明docs/RESIDENT_SAND_ACTIVITY.md，忽略目录冻结output/validation/resident-sediment-delivery.json。205文件工作流仅本地新增测试列表，未云端运行。本阶段未暂存/未提交/未推送/未部署，GPU观感/遮挡/帧率未验收；独立Goal保持暂停，既有浏览器拒绝不可绕过。本批收口，后续优先完整动物群落与跨生境生活关系，停止单粒子/材质/镜头微调。以下历史保留。
+<!-- /resident-sand-activity-current -->
+
+<!-- local-loading-recovery-current -->
+2026-10-09 用户反馈4175新动物入口停在加载中。服务原有监听、构建路径为/ocean-world/；不能把有监听当作场景已恢复。补齐ReefWorld渲染循环异常捕获/停坏帧/onError，以及区域读取异常和本次新增持久化失败的UI反馈；正常取消不继承旧存储错误，旧世界销毁后不触发新世界错误。没有修改地形、出生、库存或清除用户存档。
+新增7个故障边界case最终通过；此前9个世界身份/时钟/控制case成功复用，不重复累加。首轮2个失败是CPU fixture缺camera.position，已补齐，失败诊断保留；两个case定向复验通过，随后存储错误计数细化使7个新case作最终检查。最终生产构建完成；242运行源码仅ReefWorld改变，原241个保持。4175同源服务隐藏重启PID48560，不动4174；本地新构建已有明确路径日志。
+用户随后确认本地入口已经打开，加载文字询问不再待答。原始卡住根因仍未凭浏览器错误定位，恢复确认来自用户反馈；GPU观感、遮挡与帧率未验收。已有浏览器URL政策拒绝不可绕过。优先恢复可运行入口，再继续内容；本地阶段工作不暂存/不提交/不推送/不部署，独立Goal保持暂停。以下历史保留。
+<!-- /local-loading-recovery-current -->
+
+<!-- reef-mobile-benthos-current -->
+2026-10-09 本地有限批补环纹蛇尾Ophiolepis superba与低平海饼Clypeaster humilis（描述性中文名），浅海目录89/v15候选46。独立全形、实际腕腹侧/管足支撑及有界动画；海饼只用真实软沙，蛇尾展示低照度外露礁缘阶段。实际扣当地detritus，速度/食谱/活动窗口未野外校准；不称真实藏缝、埋沙、翻砂或完整生态。
+
+固定55原427.639m及238动物/79居民保持，当地类型57→57/居民31→31，实际7蛇尾/6海饼。三九窗9模型秒45居民移动/63摄食，新两类活动{"banded-brittle-star": {"individuals": 7, "moved": 5, "fed": 5}, "humble-sea-biscuit": {"individuals": 6, "moved": 3, "fed": 3}}。新动物距起点约55.14/57.79m，CPU距离不是GPU可见；出生空站[350]保留，不继续单点补满。
+
+world=reef-mobile-benthos独立动物历史，同种子原地形/RNG，全局环境/探索/发现仍共享。十二区全null、原子保存后公开；10居民/20全部含死亡龟、9活区/25公开支撑/97私有预读不变；旧1–14完整32步3805921字节精确一致，cold active/disk与原非居民出生/库存保持。69唯一定向case最终通过，初版卸载地形上下文测试失败已仅单项复验，四个成功原生case复用/失败保留；生产门槛未改。构建4.33s，242运行源码/233旧不变。
+
+最新用户要求本地验证后阶段性提交，当前未暂存/未提交/未推送/未部署，无新云端运行；本地203文件工作流不冒称已运行。说明docs/REEF_MOBILE_BENTHOS.md，忽略目录本地冻结output/validation/reef-mobile-benthos-delivery.json。独立Goal保持暂停，已有浏览器拒绝不得绕过，GPU观感/遮挡/帧率未验。本批收口，后续优先成片生活关系和缺失类群，停止腕/棘/材质/镜头/单点细调。以下历史保留。
+<!-- /reef-mobile-benthos-current -->
+
+<!-- local-first-submission-policy -->
+2026-10-09 最新用户明确要求：“可以暂时不要频繁提交，我们在本地验证好，然后阶段性进行提交即可。”此要求覆盖先前每批提交/推送的工作惯例。继续先在本地开发与定向验证；将若干完整功能组成可复核阶段后再提交。当前移动底栖动物批保持未暂存、未提交、未推送、未部署，不因检查通过自动发布。
+<!-- /local-first-submission-policy -->
+
 <!-- reef-suspension-current -->
 2026-10-09 本有限批新增浅海羽星类群代表与金口海鞘：浅海目录87、v14候选44；完整中央体盘/带羽枝腕/卷枝和双水管外被模型、真实硬底全形支撑、水深与有界动画接入。羽星仅停栖阶段，不称永久固着；两类实际扣当地plankton，速率/密度未校准，不模拟移栖/滤水量/粒径选择/共生虾/繁殖。
 

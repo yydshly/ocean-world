@@ -1,3 +1,5 @@
+import { OCEAN_COASTAL_SCHOOL_IDS } from './oceanCoastalSchoolSpecies.js';
+import { OCEAN_MEADOW_WATER_IDS } from './oceanMeadowWaterSpecies.js';
 import { oceanShoalLifeSpeciesCatalog, oceanShoalLifeSpeciesById } from './oceanShoalLifeSpecies.js';
 import { oceanRockHeight } from './oceanRockShape.js';
 import { oceanBiodiversityPatchHeight } from './oceanBiodiversityShape.js';
@@ -9,6 +11,8 @@ export const OCEAN_SHOAL_LIFE_PROFILE = 'living-shallows-v1';
 export const OCEAN_SHOAL_LIFE_AGENT_LIMIT = 8;
 export const OCEAN_SHOAL_LIFE_IDS = Object.freeze(oceanShoalLifeSpeciesCatalog.map(s => s.id));
 export const OCEAN_SHOAL_LIFE_FOOD_SCOPE = 'each actual individual removes owner-local existing plankton or unresolved openWaterLife swimming-animal nutrition; no visible prey kill, measured biomass, new food pool or complete natural diet';
+export const OCEAN_MEADOW_WATER_FOOD_SCOPE = 'each actual individual removes owner-local existing algae, plankton or unresolved openWaterLife swimming-animal nutrition; no leaf-surface grazing, visible prey kill, measured biomass, new food pool or complete natural diet';
+const foodScope = r => [2, 3].includes(r.shoalLifeVersion) ? OCEAN_MEADOW_WATER_FOOD_SCOPE : OCEAN_SHOAL_LIFE_FOOD_SCOPE;
 export const OCEAN_SHOAL_LIFE_MODEL = Object.freeze({ stepSec: .1, roleChance: .35, maximumPitchRad: .12,
   clearanceM: .25, peerGapM: .06, maximumEvents: 32, biteUnits: .00012, biteIntervalSec: 3.5,
   schoolSpeedMps: .18, sharkSpeedMps: .32, maximumSchoolTurnRadPerSec: .12, maximumSharkTurnRadPerSec: .35,
@@ -26,7 +30,7 @@ const angle = a => Math.atan2(Math.sin(a), Math.cos(a));
 const boundedTurn = (from, to, limit) => from + Math.max(-limit, Math.min(limit, angle(to - from)));
 const marked = a => a && Object.keys(a).some(k => k.startsWith('shoalLife'));
 const freeze = v => { if (v && typeof v === 'object' && !Object.isFrozen(v)) { Object.values(v).forEach(freeze); Object.freeze(v); } return v; };
-export const isOceanShoalLifeAgent = a => OCEAN_SHOAL_LIFE_IDS.includes(a?.speciesId);
+export const isOceanShoalLifeAgent = a => OCEAN_SHOAL_LIFE_IDS.includes(a?.speciesId) || OCEAN_MEADOW_WATER_IDS.includes(a?.speciesId) || OCEAN_COASTAL_SCHOOL_IDS.includes(a?.speciesId);
 function hash(text) { let h = 2166136261; for (const c of String(text)) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
   h ^= h >>> 16; h = Math.imul(h, 0x7feb352d); h ^= h >>> 15; h = Math.imul(h, 0x846ca68b); return (h ^ h >>> 16) >>> 0; }
 const randomFor = (g, r) => salt => hash(`shoal-life-v${r.meadowAnimalBeltVersion === 2 ? 2 : 1}|${typeof g.seed}:${g.seed}|${r.id}|${salt}`) / 4294967296;
@@ -57,7 +61,7 @@ function queries(g, r, { surface, bed } = {}) {
   return { bed: floor, surface: (x, z) => { let y = solid(x, z, true);
     for (const p of r.biodiversity?.patches ?? []) y = Math.max(y, oceanBiodiversityPatchHeight(p, x, z) ?? -Infinity); return y; } };
 }
-const poolFor = id => [FISH[0], FISH[2]].includes(id) ? 'plankton' : 'openWaterLife.preyOrganicUnits';
+const poolFor = id => id === OCEAN_MEADOW_WATER_IDS[0] ? 'algae' : [FISH[0], FISH[2], OCEAN_MEADOW_WATER_IDS[1], 'indian-mackerel'].includes(id) ? 'plankton' : 'openWaterLife.preyOrganicUnits';
 const species = id => oceanShoalLifeSpeciesById[id];
 const radius = a => species(a.speciesId).normalizedEnvelope.horizontalRadiusUnits * a.sizeM;
 const wholeRadius = a => { const e = species(a.speciesId).normalizedEnvelope;
@@ -74,7 +78,8 @@ function clearPose(r, g, a, p, heading, pitch, q) {
   const offsets = bodyOffsets(a, heading, pitch), rad = Math.max(radius(a), ...offsets.map(o => Math.hypot(o.x, o.z))), bounds = species(a.speciesId).depthSelectionM;
   if (!owned(r, p, rad)) return false;
   return offsets.every(o => { const x = p.x + o.x, y = p.y + o.y, z = p.z + o.z, bottom = q.bed(x, z), solid = q.surface(x, z), depth = (g.surfaceY ?? 8) - y;
-    return Number.isFinite(bottom) && Number.isFinite(solid) && y >= Math.max(bottom, solid) + M.clearanceM && depth >= bounds[0] && depth <= bounds[1]; });
+    return Number.isFinite(bottom) && Number.isFinite(solid) &&
+      (a.speciesId !== 'yellowstripe-scad' || (g.sample(x, z).substrate !== 'rock' && solid - bottom <= .025 && y - bottom <= 3)) && y >= Math.max(bottom, solid) + M.clearanceM && depth >= bounds[0] && depth <= bounds[1]; });
 }
 function pairClear(a, p, b, other = b.position) {
   if (!b.alive || !point(other) || a.id === b.id) return true;
@@ -88,7 +93,7 @@ function slotPosition(center, heading, offset) { const c = Math.cos(heading), s 
 function selectedSize(id, slot, rng) { const [lo, hi] = species(id).sizeRangeM; return lo + rng(`${id}:${slot}:size`) * (hi - lo); }
 function schoolBirth(g, r, site, id, count, rng) {
   const bounds = species(id).depthSelectionM, depth = bounds[0] + .3 + rng(`${site.id}:${id}:depth`) * Math.max(0, Math.min(2, bounds[1] - bounds[0] - .6));
-  const center = { x: site.x, y: meadowAnimalBeltMarked(r) ? g.floorSurface(site.x, site.z).height + 2.2 : (g.surfaceY ?? 8) - depth, z: site.z }, heading = rng(`${site.id}:${id}:heading`) * TAU;
+  const center = { x: site.x, y: id === 'yellowstripe-scad' || meadowAnimalBeltMarked(r) ? g.floorSurface(site.x, site.z).height + 2.2 : (g.surfaceY ?? 8) - depth, z: site.z }, heading = rng(`${site.id}:${id}:heading`) * TAU;
   const spacing = species(id).sizeRangeM[1] * 1.5 + .16, groupId = `shoal:${r.id}:${id}:${site.id}`;
   const placements = Array.from({ length: count }, (_, slot) => { const offset = { x: (Math.floor(slot / 2) - (Math.ceil(count / 2) - 1) * .5) * spacing, y: 0, z: (slot % 2 ? .5 : -.5) * spacing };
     return { id: `ocean:${r.id}:shoal-life:${id}:${slot}`, speciesId: id, siteId: site.id, groupId, slot, sizeM: selectedSize(id, slot, rng), offset,
@@ -102,12 +107,13 @@ function sharkBirth(g, r, school, rng, q) { const id = SHARK, sizeM = selectedSi
     if (clearPose(r, g, a, p, h, 0, q) && occupationClear({ ...r, agents: r.agents.concat(school.placements.map(p => ({ ...p, alive: true }))) }, a, p)) return a;
   } return null;
 }
-export function createOceanShoalLifePlan(g, r, { role = oceanShoalLifeRole(r, g), availableSlots = 0, maxAdded = 8, surface, bed } = {}) {
+export function createOceanShoalLifePlan(g, r, { role = oceanShoalLifeRole(r, g), availableSlots = 0, maxAdded = 8, meadowWater = false, coastalSchools = false, surface, bed } = {}) {
+  const version = coastalSchools === true ? 3 : meadowWater === true ? 2 : 1;
   const cap = Math.min(8, Math.max(0, Math.floor(availableSlots)), Math.max(0, Math.floor(maxAdded)));
-  if (!nativeOwner(r, g) || !validateMeadowAnimalBelt(r, g) || role !== true || !oceanShoalLifeRole(r, g) || cap < 5) return freeze({ version: 1, school: null, placements: [] });
+  if (!nativeOwner(r, g) || !validateMeadowAnimalBelt(r, g) || role !== true || !oceanShoalLifeRole(r, g) || cap < 5) return freeze({ version, school: null, placements: [] });
   const rng = randomFor(g, r), q = queries(g, r, { surface, bed }), count = Math.min(cap, 5 + Math.floor(rng('count') * 3));
-  const originalOrder = [...FISH].sort((a, b) => rng(`${a}:choice`) - rng(`${b}:choice`) || a.localeCompare(b));
-  const order = meadowAnimalBeltMarked(r) && r.meadowAnimalBeltVersion !== 2 ? [FISH[0], ...originalOrder.filter(id => id !== FISH[0])] : originalOrder;
+  const originalOrder = [...FISH, ...(version >= 2 ? OCEAN_MEADOW_WATER_IDS : []), ...(version === 3 ? OCEAN_COASTAL_SCHOOL_IDS : [])].sort((a, b) => rng(`${a}:choice`) - rng(`${b}:choice`) || a.localeCompare(b));
+  const order = version === 1 && meadowAnimalBeltMarked(r) && r.meadowAnimalBeltVersion !== 2 ? [FISH[0], ...originalOrder.filter(id => id !== FISH[0])] : originalOrder;
   for (const id of order) for (const site of sites(g, r)) {
     const school = schoolBirth(g, r, site, id, count, rng), additions = school.placements.map(p => ({ ...p, alive: true })), trial = { ...r, agents: r.agents.concat(additions) };
     if (!additions.every(a => clearPose(r, g, a, a.position, a.heading, a.pitch, q) && occupationClear(trial, a, a.position))) continue;
@@ -116,24 +122,24 @@ export function createOceanShoalLifePlan(g, r, { role = oceanShoalLifeRole(r, g)
     if (![0, 1, 2, 3].every(i => additions.every(a => clearPose(r, g, a, { ...a.position, x: a.position.x + Math.cos(i * Math.PI / 2) * M.schoolRangeM,
       z: a.position.z + Math.sin(i * Math.PI / 2) * M.schoolRangeM }, a.heading, 0, q)))) continue;
     const placements = clone(school.placements); if (!meadowAnimalBeltMarked(r) && cap > count && rng('shark:present') < .7) { const shark = sharkBirth(g, r, school, rng, q); if (shark) placements.push(shark); }
-    delete school.placements; return freeze({ version: 1, school, placements });
-  } return freeze({ version: 1, school: null, placements: [] });
+    delete school.placements; return freeze({ version, school, placements });
+  } return freeze({ version, school: null, placements: [] });
 }
-export function initializeOceanShoalLife(r, g, { fresh = false, role = oceanShoalLifeRole(r, g), surface, bed, capacity = 20, maxAdded = 8 } = {}) {
+export function initializeOceanShoalLife(r, g, { fresh = false, role = oceanShoalLifeRole(r, g), surface, bed, capacity = 20, maxAdded = 8, meadowWater = false, coastalSchools = false } = {}) {
   if (!fresh || !nativeOwner(r, g) || !validateMeadowAnimalBelt(r, g) || r.timeSec !== 0 || typeof role !== 'boolean' || role !== oceanShoalLifeRole(r, g) || Object.keys(r).some(k => k.startsWith('shoalLife')) ||
     [...r.agents, ...(r.turtleAgents ?? [])].some(a => isOceanShoalLifeAgent(a) || marked(a)) || !validateLivingNetworkRecord(r)) return false;
   const cap = Math.min(20, Number.isSafeInteger(capacity) ? Math.max(0, capacity) : 0), occupied = r.agents.length + (r.turtleAgents?.length ?? 0);
   if (occupied > cap) return false;
   const slots = Math.min(8, cap - occupied, Number.isSafeInteger(maxAdded) ? Math.max(0, maxAdded) : 0);
-  const plan = createOceanShoalLifePlan(g, r, { role, availableSlots: slots, maxAdded: slots, surface, bed }), rng = randomFor(g, r);
+  const plan = createOceanShoalLifePlan(g, r, { role, availableSlots: slots, maxAdded: slots, meadowWater, coastalSchools, surface, bed }), rng = randomFor(g, r);
   const born = plan.placements.map(p => ({ id: p.id, regionId: r.id, speciesId: p.speciesId, sizeM: p.sizeM, position: clone(p.position), home: clone(p.position), refuge: clone(p.position),
     target: clone(p.position), heading: p.heading, targetHeading: p.heading, pitch: 0, velocity: { x: 0, y: 0, z: 0 }, timeSec: 0, energy: .75 + rng(`${p.id}:energy`) * .1,
     alive: true, state: 'school-cruising', stateSince: 0, nextBite: rng(`${p.id}:bite`) * 3, nextDecision: 0, decisions: 0, lastFeedAt: null, lastShoalIntake: null,
-    parasites: 0, fleeUntil: 0, habitat: 'shoal-life-water-column', groupId: p.groupId, refugeHostId: null, dietProxy: OCEAN_SHOAL_LIFE_FOOD_SCOPE,
-    shoalLifeIndividualVersion: 1, shoalLifeGroupId: p.groupId, shoalLifeSlot: p.slot, shoalLifeSiteId: p.siteId, shoalLifeFoodPool: p.foodPool }));
+    parasites: 0, fleeUntil: 0, habitat: 'shoal-life-water-column', groupId: p.groupId, refugeHostId: null, dietProxy: plan.version >= 2 ? OCEAN_MEADOW_WATER_FOOD_SCOPE : OCEAN_SHOAL_LIFE_FOOD_SCOPE,
+    shoalLifeIndividualVersion: plan.version, shoalLifeGroupId: p.groupId, shoalLifeSlot: p.slot, shoalLifeSiteId: p.siteId, shoalLifeFoodPool: p.foodPool }));
   r.agents.push(...born); const input = recordLivingAdmission(r, born);
-  r.shoalLifeVersion = 1; r.shoalLifeInitializedAtSec = 0;
-  r.shoalLife = { version: 1, scope: M.scope, foodScope: OCEAN_SHOAL_LIFE_FOOD_SCOPE, role, admissionSlots: slots,
+  r.shoalLifeVersion = plan.version; r.shoalLifeInitializedAtSec = 0;
+  r.shoalLife = { version: plan.version, scope: M.scope, foodScope: foodScope(r), role, admissionSlots: slots,
     addedIds: born.map(a => a.id), birthPlacements: clone(plan.placements), school: clone(plan.school), initialInputUnits: input, ticks: 0, lastTickSec: 0,
     counters: { feedings: 0, consumedUnits: 0, deaths: 0, moved: 0, blocked: 0 }, events: [] }; return true;
 }
@@ -189,15 +195,15 @@ function moveShark(r, g, a, q, dt, rng) {
     r.shoalLife.counters.blocked++; setState(a, 'school-holding', r.timeSec); }
 }
 function takeFood(r, a) { const pool = a.shoalLifeFoodPool;
-  const stockBefore = pool === 'plankton' ? r.resources.plankton : r.openWaterLifeVersion === 1 ? r.openWaterLife?.preyOrganicUnits : 0;
+  const stockBefore = ['algae', 'plankton'].includes(pool) ? r.resources[pool] : r.openWaterLifeVersion === 1 ? r.openWaterLife?.preyOrganicUnits : 0;
   if (!nonnegative(stockBefore)) return 0;
   const taken = Math.min(stockBefore, M.biteUnits); if (!(taken > 0)) return 0;
   const stockAfter = stockBefore - taken;
-  if (pool === 'plankton') { r.resources.plankton = stockAfter; r.ledger.ingested += taken; } else r.openWaterLife.preyOrganicUnits = stockAfter;
+  if (['algae', 'plankton'].includes(pool)) { r.resources[pool] = stockAfter; r.ledger.ingested += taken; } else r.openWaterLife.preyOrganicUnits = stockAfter;
   recordLivingIngestion(r, a, taken); a.energy = Math.min(1, a.energy + taken * M.conditionGainPerUnit); a.lastFeedAt = r.timeSec;
-  a.lastShoalIntake = { timeSec: r.timeSec, pool, stockBefore, stockAfter, removedUnits: taken, ownerId: r.id, unit: LIVING_NETWORK_UNITS, agentPosition: clone(a.position), scope: OCEAN_SHOAL_LIFE_FOOD_SCOPE };
+  a.lastShoalIntake = { timeSec: r.timeSec, pool, stockBefore, stockAfter, removedUnits: taken, ownerId: r.id, unit: LIVING_NETWORK_UNITS, agentPosition: clone(a.position), scope: foodScope(r) };
   r.counters.feeding++; const d = r.shoalLife; d.counters.feedings++; d.counters.consumedUnits += taken;
-  d.events.push({ timeSec: r.timeSec, agentId: a.id, pool, removedUnits: taken, scope: OCEAN_SHOAL_LIFE_FOOD_SCOPE });
+  d.events.push({ timeSec: r.timeSec, agentId: a.id, pool, removedUnits: taken, scope: foodScope(r) });
   if (d.events.length > M.maximumEvents) d.events.splice(0, d.events.length - M.maximumEvents); return taken;
 }
 export function tickOceanShoalLife(r, g, dt, { surface, bed, environmentAt } = {}) {
@@ -215,7 +221,12 @@ export function tickOceanShoalLife(r, g, dt, { surface, bed, environmentAt } = {
   for (const a of agents) { if (!a.alive) continue; if (a.speciesId === SHARK) moveShark(r, g, a, q, dt, rng);
     // The environment callback supplies the actual owner's current context;
     // no environmental cue is converted into a new food stock.
-    environmentAt?.(a.position, a);
+    const environment = environmentAt?.(a.position, a);
+    if (OCEAN_MEADOW_WATER_IDS.includes(a.speciesId) || a.speciesId === 'yellowstripe-scad') {
+      const hour = environment?.hour;
+      const day = Number.isFinite(hour) ? hour >= 6 && hour < 18 : Number.isFinite(environment?.lightAtDepth) ? environment.lightAtDepth >= .1 : null;
+      if (day === null || day !== (a.speciesId === OCEAN_MEADOW_WATER_IDS[0])) continue;
+    }
     if (r.timeSec >= a.nextBite) { a.nextBite = r.timeSec + M.biteIntervalSec; setState(a, takeFood(r, a) > 0 ? 'shoal-proxy-feeding' : 'searching', r.timeSec); }
   }
   d.ticks = r.ticks; d.lastTickSec = r.timeSec; return true;
@@ -223,7 +234,7 @@ export function tickOceanShoalLife(r, g, dt, { surface, bed, environmentAt } = {
 function receiptValid(r, a) { const e = a.lastShoalIntake;
   return e && nonnegative(e.timeSec) && e.timeSec <= a.timeSec && close(e.timeSec, a.lastFeedAt) && e.pool === a.shoalLifeFoodPool && nonnegative(e.stockBefore) && nonnegative(e.stockAfter) &&
     e.removedUnits > 0 && e.removedUnits <= M.biteUnits && close(e.stockBefore - e.stockAfter, e.removedUnits, Number.EPSILON * 8 * Math.max(e.stockBefore, e.stockAfter, e.removedUnits)) &&
-    e.ownerId === r.id && e.unit === LIVING_NETWORK_UNITS && e.scope === OCEAN_SHOAL_LIFE_FOOD_SCOPE && owned(r, e.agentPosition, radius(a)) &&
+    e.ownerId === r.id && e.unit === LIVING_NETWORK_UNITS && e.scope === foodScope(r) && owned(r, e.agentPosition, radius(a)) &&
     distance(e.agentPosition, a.home) <= (a.speciesId === SHARK ? M.sharkRangeM : M.schoolRangeM + 3) + 1e-8;
 }
 export function validateOceanShoalLifeRecord(r, g, options = {}) {
@@ -235,7 +246,7 @@ function recordValid(r, g, { surface, bed, capacity = 20, beforeTick = false } =
   const has = keys.length || agents.length || [...r.agents, ...(r.turtleAgents ?? [])].some(marked) || (r.turtleAgents ?? []).some(isOceanShoalLifeAgent);
   if (!has) return true;
   const d = r.shoalLife;
-  if (r.shoalLifeVersion !== 1 || r.shoalLifeInitializedAtSec !== 0 || !d || d.version !== 1 || d.scope !== M.scope || d.foodScope !== OCEAN_SHOAL_LIFE_FOOD_SCOPE ||
+  if (![1, 2, 3].includes(r.shoalLifeVersion) || r.shoalLifeInitializedAtSec !== 0 || !d || d.version !== r.shoalLifeVersion || d.scope !== M.scope || d.foodScope !== foodScope(r) ||
     keys.some(k => !TOP.includes(k)) || Object.keys(d).some(k => k.startsWith('shoalLife')) || typeof d.role !== 'boolean' || d.role !== oceanShoalLifeRole(r, g) || !Number.isSafeInteger(d.admissionSlots) || d.admissionSlots < 0 || d.admissionSlots > 8 ||
     !Number.isSafeInteger(d.ticks) || d.ticks < 0 || !close(d.lastTickSec, d.ticks * .1) || r.ticks !== d.ticks + (beforeTick ? 1 : 0) || !close(r.timeSec - d.lastTickSec, beforeTick ? .1 : 0) ||
     !Array.isArray(d.addedIds) || !Array.isArray(d.birthPlacements) || d.addedIds.length !== agents.length || d.birthPlacements.length !== agents.length || new Set(d.addedIds).size !== agents.length ||
@@ -246,7 +257,7 @@ function recordValid(r, g, { surface, bed, capacity = 20, beforeTick = false } =
   if (!agents.length) return d.school === null && d.addedIds.length === 0 && d.birthPlacements.length === 0 && d.initialInputUnits === 0 && d.events.length === 0 &&
     Object.values(d.counters).every(v => v === 0);
   const q = queries(g, r, { surface, bed }), rng = randomFor(g, r), s = d.school, schoolAgents = agents.filter(a => a.speciesId !== SHARK), sharks = agents.filter(a => a.speciesId === SHARK);
-  if (!d.role || !s || !FISH.includes(s.speciesId) || schoolAgents.length < 5 || schoolAgents.length > 7 || sharks.length > 1 || schoolAgents.some(a => a.speciesId !== s.speciesId) ||
+  if (!d.role || !s || ![...FISH, ...(d.version >= 2 ? OCEAN_MEADOW_WATER_IDS : []), ...(d.version === 3 ? OCEAN_COASTAL_SCHOOL_IDS : [])].includes(s.speciesId) || schoolAgents.length < 5 || schoolAgents.length > 7 || sharks.length > 1 || schoolAgents.some(a => a.speciesId !== s.speciesId) ||
     !Array.isArray(s.memberIds) || s.memberIds.length !== schoolAgents.length || new Set(s.memberIds).size !== schoolAgents.length || s.memberIds.some(id => !schoolAgents.some(a => a.id === id)) ||
     s.leaderId !== s.memberIds[0] || s.activeLeaderId !== (s.memberIds.find(id => schoolAgents.find(a => a.id === id).alive) ?? null) ||
     ![s.home, s.center, s.target].every(point) || !Number.isFinite(s.heading) || distance(s.home, s.center) > M.schoolRangeM + 1e-8 || distance(s.home, s.target) > M.schoolRangeM + 1e-8 ||
@@ -257,7 +268,7 @@ function recordValid(r, g, { surface, bed, capacity = 20, beforeTick = false } =
   if (s.groupId !== expected.groupId || distance(s.home, expected.home) > 1e-10 || s.memberIds.some((id, i) => id !== expected.memberIds[i]) ||
     schoolAgents.length !== Math.min(d.admissionSlots, 5 + Math.floor(rng('count') * 3))) return false;
   if (!d.events.every(e => d.addedIds.includes(e.agentId) && nonnegative(e.timeSec) && e.timeSec <= d.lastTickSec && e.removedUnits > 0 && e.removedUnits <= M.biteUnits &&
-    e.pool === poolFor(agents.find(a => a.id === e.agentId).speciesId) && e.scope === OCEAN_SHOAL_LIFE_FOOD_SCOPE)) return false;
+    e.pool === poolFor(agents.find(a => a.id === e.agentId).speciesId) && e.scope === foodScope(r))) return false;
   return agents.every(a => {
     const b = d.birthPlacements.find(p => p.id === a.id), canonical = a.speciesId === SHARK ? (() => { const index = Number(b?.siteId?.split(':')[1]); if (!Number.isSafeInteger(index) || index < 0 || index >= 12) return null;
       const h = rng(`shark:heading:${index}`) * TAU, bounds = species(SHARK).depthSelectionM;
@@ -265,7 +276,7 @@ function recordValid(r, g, { surface, bed, capacity = 20, beforeTick = false } =
       return { ...b, offset: { x: 0, y: 0, z: 0 }, sizeM: selectedSize(SHARK, 0, rng), heading: h, pitch: 0, position: { x: s.home.x + Math.cos(h) * 5, z: s.home.z + Math.sin(h) * 5,
         y: (g.surfaceY ?? 8) - (bounds[0] + 1 + rng('shark:depth') * Math.min(3, bounds[1] - bounds[0] - 2)) } }; })() : expected.placements[a.shoalLifeSlot];
     if (!b || !canonical || !d.addedIds.includes(a.id) || a.id !== `ocean:${r.id}:shoal-life:${a.speciesId}:${a.speciesId === SHARK ? 0 : a.shoalLifeSlot}` || a.regionId !== r.id || b.speciesId !== a.speciesId ||
-      a.shoalLifeIndividualVersion !== 1 || a.shoalLifeGroupId !== b.groupId || a.groupId !== b.groupId || b.groupId !== (a.speciesId === SHARK ? null : s.groupId) || a.shoalLifeSlot !== b.slot ||
+      a.shoalLifeIndividualVersion !== d.version || a.shoalLifeGroupId !== b.groupId || a.groupId !== b.groupId || b.groupId !== (a.speciesId === SHARK ? null : s.groupId) || a.shoalLifeSlot !== b.slot ||
       a.shoalLifeSiteId !== b.siteId || a.shoalLifeFoodPool !== poolFor(a.speciesId) || b.foodPool !== a.shoalLifeFoodPool || Object.keys(a).some(k => k.startsWith('shoalLife') && !INDIVIDUAL.includes(k)) ||
       !close(a.sizeM, canonical.sizeM, 1e-12) || a.sizeM !== b.sizeM || distance(b.position, canonical.position) > 1e-10 || !close(b.heading, canonical.heading, 1e-12) || b.pitch !== 0 ||
       !point(b.offset) || distance(b.offset, canonical.offset) > 1e-10 || ![a.position, a.home, a.refuge, a.target, a.velocity].every(point) || distance(a.home, b.position) > 1e-10 || distance(a.refuge, b.position) > 1e-10 ||
@@ -273,7 +284,7 @@ function recordValid(r, g, { surface, bed, capacity = 20, beforeTick = false } =
       !nonnegative(a.timeSec) || a.timeSec > d.lastTickSec + 1e-8 || (a.alive && !close(a.timeSec, d.lastTickSec)) || !close(a.timeSec, Math.round(a.timeSec * 10) * .1) ||
       !['school-cruising', 'shark-cruising', 'school-holding', 'shoal-proxy-feeding', 'searching', 'dead'].includes(a.state) || (a.alive && a.state === 'dead') ||
       !nonnegative(a.nextBite) || !nonnegative(a.nextDecision) || !Number.isSafeInteger(a.decisions) || a.decisions < 0 || !nonnegative(a.stateSince) || a.stateSince > a.timeSec + 1e-8 ||
-      !nonnegative(a.organicUnits) || typeof a.organicDeathRecorded !== 'boolean' || a.dietProxy !== OCEAN_SHOAL_LIFE_FOOD_SCOPE ||
+      !nonnegative(a.organicUnits) || typeof a.organicDeathRecorded !== 'boolean' || a.dietProxy !== foodScope(r) ||
       Math.hypot(a.velocity.x, a.velocity.y, a.velocity.z) > (a.speciesId === SHARK ? M.sharkSpeedMps : M.schoolSpeedMps + .21) + 1e-8 ||
       (a.lastFeedAt !== null && (!nonnegative(a.lastFeedAt) || a.lastFeedAt > a.timeSec)) || (a.lastShoalIntake === null ? a.lastFeedAt !== null : !receiptValid(r, a)) ||
       (a.alive ? a.organicDeathRecorded : !a.organicDeathRecorded || a.organicUnits !== 0 || a.state !== 'dead' || !close(a.stateSince, a.timeSec) || Math.hypot(a.velocity.x, a.velocity.y, a.velocity.z) !== 0)) return false;

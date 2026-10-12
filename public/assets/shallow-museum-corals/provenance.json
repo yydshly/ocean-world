@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "author": "Smithsonian Institution / National Museum of Natural History",
+  "license": "CC0-1.0",
+  "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "sourceCollection": "https://3d.si.edu/corals",
+  "changes": "Official source transform; no cuts, holes filled or invented branches; simplify to two LODs; authored restrained tissue colours; scene dimensions uniformly scale each source shape.",
+  "limits": [
+    "Dry specimen geometry adapted for living-colony display, not living-tissue photogrammetry.",
+    "Source record names and locations are provenance, not a calibrated local ecological census.",
+    "World widths are authored; original physical specimen dimensions retained in records."
+  ],
+  "records": [
+    {
+      "form": "branching",
+      "key": "pocillopora",
+      "name": "Pocillopora damicornis",
+      "catalog": "USNM 46926",
+      "detail": "near",
+      "vertices": 1946,
+      "triangles": 3896,
+      "error": 0.007966689765453339,
+      "aspect": 0.5252289669154069,
+      "sourceBoundsM": [
+        [
+          -0.04930119961500168,
+          -0.03226970136165619,
+          -0.05300099775195122
+        ],
+        [
+          0.04885699599981308,
+          0.03222447633743286,
+          0.052755001932382584
+        ]
+      ],
+      "sourceSHA256": "9d69ad048df353741d47edad38b27b0dee5ac528f3364594c30e324f97a8e946",
+      "documentSHA256": "c8f6f381fdff5a43ffd5c072ebf8142c559e7aa09303b705720c18c64d5425ff",
+      "source": "https://3d-api.si.edu/content/document/3d_package:ae26ad01-e7be-4664-8a3a-b8bffd42a186/document.json",
+      "license": "CC0-1.0"
+    },
+    {
+      "form": "branching",
+      "key": "pocillopora",
+      "name": "Pocillopora damicornis",
+      "catalog": "USNM 46926",
+      "detail": "distant",
+      "vertices": 475,
+      "triangles": 950,
+      "error": 0.02396431751549244,
+      "aspect": 0.5252289669154069,
+      "sourceBoundsM": [
+        [
+          -0.04930119961500168,
+          -0.03226970136165619,
+          -0.05300099775195122
+        ],
+        [
+          0.04885699599981308,
+          0.03222447633743286,
+          0.052755001932382584
+        ]
+      ],
+      "sourceSHA256": "9d69ad048df353741d47edad38b27b0dee5ac528f3364594c30e324f97a8e946",
+      "documentSHA256": "c8f6f381fdff5a43ffd5c072ebf8142c559e7aa09303b705720c18c64d5425ff",
+      "source": "https://3d-api.si.edu/content/document/3d_package:ae26ad01-e7be-4664-8a3a-b8bffd42a186/document.json",
+      "license": "CC0-1.0"
+    },
+    {
+      "form": "branching2",
+      "key": "nobilis",
+      "name": "Pocillopora nobilis / Pocillopora meandrina",
+      "catalog": "source syntype",
+      "detail": "near",
+      "vertices": 1945,
+      "triangles": 3888,
+      "error": 0.017018059268593788,
+      "aspect": 0.6610543080636909,
+      "sourceBoundsM": [
+        [
+          -0.07096686214208603,
+          -0.05149809271097183,
+          -0.07516317814588547
+        ],
+        [
+          0.07064967602491379,
+          0.051638007164001465,
+          0.07509152591228485
+        ]
+      ],
+      "sourceSHA256": "c51a4c687a85faee71de7351af1d5d14fddae39fd53156092ff60a65ed636c7c",
+      "documentSHA256": "a2d65439034b7a61d19f44c4e0df264c4f6afd544bacd5662c379cd0894fab74",
+      "source": "https://3d-api.si.edu/content/document/3d_package:25e7d19b-bb0a-4f60-a7d2-894e234a4faa/document.json",
+      "license": "CC0-1.0"
+    },
+    {
+      "form": "branching2",
+      "key": "nobilis",
+      "name": "Pocillopora nobilis / Pocillopora meandrina",
+      "catalog": "source syntype",
+      "detail": "distant",
+      "vertices": 477,
+      "triangles": 950,
+      "error": 0.03966047614812851,
+      "aspect": 0.6610543080636909,
+      "sourceBoundsM": [
+        [
+          -0.07096686214208603,
+          -0.05149809271097183,
+          -0.07516317814588547
+        ],
+        [
+          0.07064967602491379,
+          0.051638007164001465,
+          0.07509152591228485
+        ]
+      ],
+      "sourceSHA256": "c51a4c687a85faee71de7351af1d5d14fddae39fd53156092ff60a65ed636c7c",
+      "documentSHA256": "a2d65439034b7a61d19f44c4e0df264c4f6afd544bacd5662c379cd0894fab74",
+      "source": "https://3d-api.si.edu/content/document/3d_package:25e7d19b-bb0a-4f60-a7d2-894e234a4faa/document.json",
+      "license": "CC0-1.0"
+    }
+  ],
+  "generatedData": {
+    "file": "src/world/shallowMuseumCoralData.js",
+    "sha256": "1be12629d646ce52bfcb687a5694d35f9a20649bd03cce02f0e144a39cb29cd0"
+  },
+  "excludedCandidates": [
+    "Madrepora surculosa and Acropora cytherea: visible artificial display base, not used as living colonies.",
+    "Orbicella hispidula and Porites lobata: fragment shapes do not satisfy the living-colony silhouette gate."
+  ]
+}

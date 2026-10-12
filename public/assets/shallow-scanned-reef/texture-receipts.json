@@ -1,0 +1,38 @@
+[
+  {
+    "key": "scanned-pocillopora",
+    "sourceEmbeddedImage": 2,
+    "sourceImageSha256": "f6ea536102cbfa5d1caf4d14a5cbb4a164ff45c082eb4a470fdce7d6428fa431",
+    "sourceSize": [
+      8192,
+      8192
+    ],
+    "file": "scanned-pocillopora-albedo-1024.jpg",
+    "bytes": 796925,
+    "sha256": "c103dff3b06443a28d5ff184a0b2ef1e59e27383891e18ed4dd7bf29ed4ef238",
+    "size": [
+      1024,
+      1024
+    ],
+    "colorSpace": "sRGB; bilinear original pixels interpolated in linear color then encoded sRGB",
+    "change": "Nearest-original-surface per-texel albedo rebake into per-face near/far shared atlas; two-texel edge gutters; JPEG95; no invented PBR"
+  },
+  {
+    "key": "scanned-diploastrea",
+    "sourceEmbeddedImage": 2,
+    "sourceImageSha256": "6973cfbb41093d63204c09769f04e7616f7754c098313dcdb4231ff6f157f6b6",
+    "sourceSize": [
+      8192,
+      8192
+    ],
+    "file": "scanned-diploastrea-albedo-1024.jpg",
+    "bytes": 799682,
+    "sha256": "da19d8f0d3731f7cd786e6d5b55f1b676fce7ddb2be41cb9d555a7210a65443b",
+    "size": [
+      1024,
+      1024
+    ],
+    "colorSpace": "sRGB; bilinear original pixels interpolated in linear color then encoded sRGB",
+    "change": "Nearest-original-surface per-texel albedo rebake into per-face near/far shared atlas; two-texel edge gutters; JPEG95; no invented PBR"
+  }
+]

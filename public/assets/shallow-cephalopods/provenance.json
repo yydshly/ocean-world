@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "role": "sample-only authored whole-body cephalopod display replacements",
+  "authorship": "Original procedural geometry and vertex colour code authored in this project. Reference pages supply natural-history facts only; no external image, texture or mesh has been copied.",
+  "species": [
+    {
+      "id": "reef-cuttlefish",
+      "scientificName": "Ascarosepion latimanus",
+      "referenceSynonym": "Sepia latimanus",
+      "existingCatalogueMeasure": "mantle-length",
+      "unitDefinition": "Outer mantle X extent is one unit, from -0.5 to +0.5. Head, eight arms and two feeding tentacles additionally enter the complete motion envelope.",
+      "wholeForm": "Broad flattened closed mantle, narrower head with lateral W-shaped pupils, two continuous mantle fin fringes, eight volume-tapered arms and two slender feeding shafts ending in clubs.",
+      "sources": [
+        { "url": "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/broadclub-cuttlefish", "supports": "Coral reef habitat, flattened hovering body, eight arms plus two feeding tentacles and a delicate moving fin fringe." },
+        { "url": "https://www.dpird.nsw.gov.au/fishing/fish-species/species-list/cuttlefish", "supports": "Rounded mantle relative to squid; nearly encircling mantle fin, eight arms, two feeding tentacles and anterior lateral eyes." }
+      ]
+    },
+    {
+      "id": "day-octopus",
+      "scientificName": "Octopus cyanea",
+      "existingCatalogueMeasure": "arm-envelope",
+      "unitDefinition": "The complete horizontal arm diameter is at most one unit. No mantle-size-to-total-length conversion or catalogue resizing is performed.",
+      "wholeForm": "Low elongated muscular mantle and head, lateral slit pupils, interbrachial web and eight continuous tapered radial arms with short curled tips and paired underside cup suggestions.",
+      "sources": [
+        { "url": "https://www.waikikiaquarium.org/experience/animal-guide/invertebrates/molluscs/octopus/", "supports": "Head, mantle and eight muscular arms with webbing; brown and tan mottled day octopus inhabits shallow reef and hunts during the day." },
+        { "url": "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/day-octopus", "supports": "Octopus cyanea, Indo-Pacific reefs, daytime foraging and variable mottled textured camouflage." }
+      ]
+    }
+  ],
+  "motion": "Deterministic bounded arm yaw/lift and fin-group flex; shared per-species template pose suitable for the existing instance matrix renderer. The small sucker cup field is a visual suggestion rather than complete biological population.",
+  "limitations": [
+    "These are authored representative forms, not scans, photographs, measured anatomy or a claim of documentary realism.",
+    "No full skin camouflage, ink, prey capture, fluid simulation, jet propulsion or muscular biomechanics are implemented.",
+    "Arm lifts stay above the local display base; actual substrate support is supplied by the sample's complete physical envelope, not per-sucker surface conformation.",
+    "Whole-form and motion bounds are native geometry checks; local WebGL appearance and frame rate require separate review."
+  ]
+}

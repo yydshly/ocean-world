@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-11",
+  "source": "Project-authored geometry; no new third-party assets or paid material",
+  "scope": "Finite 75-second shallow sample only",
+  "seagrass": {
+    "file": "src/world/ShallowMeadowRibbonAssets.js",
+    "description": "96 curved ribbon leaves sharing 32 sediment-rooted shoots; original 768-triangle budget, 960 vertices, whole-leaf bounded-current substrate checks",
+    "limits": "Generic display growth form, not a surveyed species or additional ecological population"
+  },
+  "foliose": {
+    "file": "src/world/ShallowHabitatForms.js",
+    "description": "Two asymmetric six-lamina fan forms with shared basal attachment and independent near/far geometry; original complete-vertex rock fit remains",
+    "limits": "Authored interpretation, not scanned living tissue or calibrated coral anatomy"
+  },
+  "otherSources": "Existing source attribution and licence terms remain unchanged, including the non-commercial turtle asset"
+}

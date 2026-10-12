@@ -1,0 +1,18 @@
+{
+  "kind": "same-process CPU comparison, not WebGL FPS",
+  "layoutExact": true,
+  "all293PosesExactAt151Times": true,
+  "cameraExact": true,
+  "before": {
+    "buildMs": 5499.708299999999,
+    "updateMeanMs": 18.06992793791578,
+    "updateP95Ms": 21.13040000000001,
+    "updateMaxMs": 28.720400000000154
+  },
+  "after": {
+    "buildMs": 5645.921200000001,
+    "updateMeanMs": 14.445018403547586,
+    "updateP95Ms": 19.667900000000373,
+    "updateMaxMs": 27.333800000000338
+  }
+}

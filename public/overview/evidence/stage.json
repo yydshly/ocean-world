@@ -1,0 +1,70 @@
+{
+  "version": "shallow-sample-v1.0-local-20261012",
+  "status": "frozen-local-prototype",
+  "sourceChanges": [
+    "src/oceanRockShape.js",
+    "src/ShallowSampleApp.jsx",
+    "src/shallowSampleReefSlope.js",
+    "src/world/prepareShallowRenderer.js"
+  ],
+  "counts": {
+    "animals": 293,
+    "displayClasses": 38,
+    "assetsReplaced": 0,
+    "speciesAdded": 0
+  },
+  "tests": {
+    "main": 87,
+    "preparation": 2,
+    "unique": 89
+  },
+  "build": {
+    "file": "ShallowSampleApp-DIpUHeTR.js",
+    "bytes": 17108800,
+    "sha256": "d63b22319f60fdfb8559c8af32f0d3ed6d855fba4392741be82508d4b324459c"
+  },
+  "playback": {
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "pixelRatio": 1.5,
+    "startedAt": 6100.5,
+    "resolutionHistory": [
+      {
+        "time": 0,
+        "scale": 1
+      }
+    ],
+    "interruptions": [],
+    "completed": true,
+    "lastModelSecond": 75,
+    "elapsedWallSeconds": 75.0137,
+    "averageFps": 54.31398925185535,
+    "p95FrameMs": 25,
+    "maxFrameMs": 54.19999999999982,
+    "uninterrupted": true
+  },
+  "startup": {
+    "navigationToReadyMs": 6100.400000095367,
+    "startupMs": 5280.600000023842,
+    "modelBuildMs": 3416.2000000476837,
+    "uploadMs": 1372.2999999523163,
+    "preparedBatches": 328,
+    "cache": "Existing local asset cache; not a cold network first visit"
+  },
+  "visual": "Existing art retained; no claim of documentary realism",
+  "limits": [
+    "Stable 60 FPS unmet",
+    "Navigation within 5 seconds unmet",
+    "No exhaustive animal-to-animal collision verification",
+    "Other devices and cold network visit unverified"
+  ],
+  "checks": {
+    "pauseSeek24and69": true,
+    "freeAndReturn": true,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "originalGeometryAnd151PoseSamplesExact": true
+  },
+  "publication": "No commit, push or deployment"
+}

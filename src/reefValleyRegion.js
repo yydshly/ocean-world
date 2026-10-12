@@ -1,3 +1,4 @@
+import { createWholeSeabedComposition } from './wholeSeabedComposition.js';
 import { livingSeabedFloorSurface } from './livingSeabedRelief.js';
 import { oceanRockHeight, oceanRockMesh, oceanRockSurface } from './oceanRockShape.js';
 import { sceneElementHeight, sceneElementMesh } from './oceanSceneElements.js';
@@ -106,13 +107,14 @@ function route(base, view, retained, origin) {
   return { path, branches, ports };
 }
 function build(base, chunks, halo, origin) {
+  const composition = base.wholeSeabedVersion === 1 ? createWholeSeabedComposition(base.seed, origin) : null;
   const original = chunks.flatMap(c => c.elements), protectedIds = new Set(original.filter(e => !within(e, origin)).map(e => e.id));
   for (const e of original) if (e.attachmentId && protectedIds.has(e.attachmentId)) protectedIds.add(e.id);
   const retained = original.filter(e => protectedIds.has(e.id)), external = halo, mask = protection([...retained, ...external]), skeleton = { seed: base.seed, group: { origin, seed: base.seed } }, baseline = [], unit = [];
-  for (let z = 0; z <= DEPTH; z++) for (let x = 0; x <= WIDTH; x++) { const wx = origin.x + x, wz = origin.z + z, y = base.floorVertex(wx, wz), f = reefValleyFacies(skeleton, wx, wz), target = -4.8 * f.reef - 6.3 * f.sand - 4.7 * f.meadow - 15.5 * f.slope + .22 * Math.sin((wx * .77 + wz * .51) / 32); baseline.push(y); unit.push((target - y) * f.influence * mask(wx, wz)); }
+  for (let z = 0; z <= DEPTH; z++) for (let x = 0; x <= WIDTH; x++) { const wx = origin.x + x, wz = origin.z + z, y = base.floorVertex(wx, wz), f = reefValleyFacies(skeleton, wx, wz), target = -4.8 * f.reef - 6.3 * f.sand - 4.7 * f.meadow - 15.5 * f.slope + .22 * Math.sin((wx * .77 + wz * .51) / 32) + (composition?.relief(wx, wz, f) ?? 0); baseline.push(y); unit.push((target - y) * f.influence * mask(wx, wz)); }
   const amplitude = amplitudeLimit(baseline, unit), heights = baseline.map((y, i) => Math.fround(y + unit[i] * amplitude)), measured = measurements(heights, baseline, WIDTH, DEPTH, ROW, origin, base.surfaceY),
     group = { id: `reef-valley-region:${chunks[0].cx},${chunks[0].cz}`, cx: chunks[0].cx, cz: chunks[0].cz, seed: base.seed, origin, ownerIds: chunks.map(c => c.id), widthM: WIDTH, depthM: DEPTH, outerGuardM: GUARD, gridSizeX: ROW, gridSizeZ: DEPTH + 1,
-      facies: ['reef', 'sand', 'meadow', 'slope'], ...measured, controls: { amplitude, protectionRampM: 18, pathBodyRadiusM: 1, cameraHeightM: 2 }, retainedBoundaryIds: retained.map(e => e.id), coverElements: [] },
+      facies: ['reef', 'sand', 'meadow', 'slope'], ...measured, controls: { amplitude, protectionRampM: 18, pathBodyRadiusM: 1, cameraHeightM: 2 }, retainedBoundaryIds: retained.map(e => e.id), coverElements: [], ...(composition ? { wholeSeabedVersion: 1 } : {}) },
     plans = chunks.map(c => { const local = [], old = [], ox = (c.cx - chunks[0].cx) * OWNER, oz = (c.cz - chunks[0].cz) * OWNER; for (let z = 0; z <= OWNER; z++) for (let x = 0; x <= OWNER; x++) { const i = (oz + z) * ROW + ox + x; local.push(heights[i]); old.push(baseline[i]); }
       return { version: 8, id: c.id, cx: c.cx, cz: c.cz, seed: base.seed, theme: 'reef-valley-region', baseStamp: stamp(c), group,
         floorPatch: { gridSize: 65, spacingM: 1, widthM: OWNER, boundaryGuardM: 0, groupOuterGuardM: GUARD, heights: local, ...measurements(local, old, OWNER, OWNER, 65, c.origin, base.surfaceY) },
@@ -129,7 +131,28 @@ function build(base, chunks, halo, origin) {
     const mesh = oceanRockMesh(e.profile); let ground = Infinity; for (let i = 0; i < mesh.positions.length; i += 3) if (mesh.positions[i + 1] === 0) { const q = world(e, mesh.positions[i], mesh.positions[i + 2]); ground = Math.min(ground, view.floorSurface(q.x, q.z).height); } e.y = ground - .06;
     if (all.some(q => Math.hypot(q.x - e.x, q.z - e.z) < radial(q) + radial(e) + .3)) continue; if (!add(e)) continue; const p = ownerAt(e); p.newRockIds.push(e.id); p.ridgeIds.push(e.id); rocks.push(e); break;
   } }
-  for (const host of rocks.filter(e => e.id.startsWith('valley:'))) { const f = reefValleyFacies(skeleton, host.x, host.z), count = f.meadow > .55 ? 2 : 4;
+  if (composition) for (let s = 10; s < path.at(-1).sM - 8; s += 27) {
+    const station = at(s);
+    for (const side of [-1, 1]) for (const reach of [5, 8, 11]) {
+      const salt = `seabed-apron:${Math.floor(s)}:${side}`, along = (random(base.seed, `${group.id}:${salt}:along`) - .5) * 13, across = reach + (random(base.seed, `${group.id}:${salt}:across`) - .5) * 3,
+        x = station.x + Math.cos(station.heading) * along - Math.sin(station.heading) * across * side,
+        z = station.z + Math.sin(station.heading) * along + Math.cos(station.heading) * across * side, f = reefValleyFacies(skeleton, x, z),
+        width = 1.1 + .8 * (f.reef + f.slope) + random(base.seed, `${group.id}:${salt}:width`) * 1.6,
+        e = { id: `valley:${group.cx},${group.cz}:${salt}`, kind: 'rock', x, z,
+          profile: ['natural-a', 'natural-b', 'natural-c'][Math.floor(random(base.seed, `${salt}:profile`) * 3)],
+          rotation: random(base.seed, `${salt}:turn`) * TAU,
+          scale: { x: width, y: width * (.25 + random(base.seed, `${salt}:height`) * .22), z: width * (.55 + random(base.seed, `${salt}:depth`) * .4) },
+          landformRole: 'rubble-apron-rock' };
+      if (all.some(q => Math.hypot(q.x - x, q.z - z) < radial(q) + radial(e) + .3)) continue;
+      let ground = Infinity; const mesh = oceanRockMesh(e.profile);
+      for (let i = 0; i < mesh.positions.length; i += 3) if (mesh.positions[i + 1] === 0) {
+        const q = world(e, mesh.positions[i], mesh.positions[i + 2]); ground = Math.min(ground, view.floorSurface(q.x, q.z).height);
+      }
+      e.y = ground - .06;
+      if (!add(e)) continue; ownerAt(e).newRockIds.push(e.id); rocks.push(e); break;
+    }
+  }
+  for (const host of rocks.filter(e => e.id.startsWith('valley:') && e.landformRole !== 'rubble-apron-rock')) { const f = reefValleyFacies(skeleton, host.x, host.z), count = f.meadow > .55 ? 2 : 4;
     for (let index = 0; index < count; index++) { const angle = index * TAU / count + .31, q = world(host, Math.cos(angle) * .21, Math.sin(angle) * .21), y = oceanRockHeight(host, q.x, q.z), morphotype = ['branching', 'table', 'fan', 'branching'][index], width = 1.8 + random(base.seed, `${host.id}:coral:${index}`) * .9,
         e = { id: `${host.id}:coral:${index}`, kind: 'coral', attachmentId: host.id, morphotype, ...q, y, rotation: random(base.seed, `${host.id}:coral-turn:${index}`) * TAU, scale: { x: width, y: morphotype === 'table' ? .7 : 1.35 + random(base.seed, `${host.id}:coral-height:${index}`) * .5, z: width * .72 } };
       if (y === null || y < view.floorSurface(q.x, q.z).height + .25 || base.surfaceY - y < 3 || base.surfaceY - y > 22 || all.some(a => ['coral', 'algae'].includes(a.kind) && Math.hypot(a.x - e.x, a.z - e.z) < radial(a) + radial(e) + .1)) continue; add(e);
@@ -141,12 +164,13 @@ function build(base, chunks, halo, origin) {
   }
   for (const p of plans) { const activity = livingShallowsSoftActivitySites(base.seed, p.cx, p.cz);
     for (let z = p.cz * OWNER + 2; z < (p.cz + 1) * OWNER - 2; z += 2.6) for (let x = p.cx * OWNER + 2; x < (p.cx + 1) * OWNER - 2; x += 2.6) { const salt = `grass:${x.toFixed(1)},${z.toFixed(1)}`, q = { x: x + (random(base.seed, `${salt}:x`) - .5) * .45, z: z + (random(base.seed, `${salt}:z`) - .5) * .45 }, f = reefValleyFacies(skeleton, q.x, q.z), core = smooth((f.meadow - .24) / .43);
-      if (f.meadow < .24 || random(base.seed, `${salt}:present`) > .18 + .79 * core) continue; const width = 1.20 + core * .55 + random(base.seed, `${salt}:width`) * .13, e = { id: `valley:${group.cx},${group.cz}:${salt}`, kind: 'seagrass', ...q, y: view.floorSurface(q.x, q.z).height, rotation: random(base.seed, `${salt}:rotation`) * TAU,
+      if (f.meadow < .24 || random(base.seed, `${salt}:present`) > (.18 + .79 * core) * (composition?.grassFactor(q.x, q.z) ?? 1)) continue; const width = 1.20 + core * .55 + random(base.seed, `${salt}:width`) * .13, e = { id: `valley:${group.cx},${group.cz}:${salt}`, kind: 'seagrass', ...q, y: view.floorSurface(q.x, q.z).height, rotation: random(base.seed, `${salt}:rotation`) * TAU,
         scale: { x: width, y: .40 + core * .45 + random(base.seed, `${salt}:height`) * .10, z: width }, meadowBand: core > .7 ? 'dense-core' : 'thin-edge' };
       if (!ring(e.x, e.z, radial(e)).every(r => base.surfaceY - view.floorSurface(r.x, r.z).height >= 3 && base.surfaceY - view.floorSurface(r.x, r.z).height <= 20) || !clearSoft(view, rocks, e, radial(e)) || activity.some(a => Math.hypot(a.x - e.x, a.z - e.z) < radial(e) + .32) || all.some(a => ['coral', 'seagrass', 'driftwood', 'bottle'].includes(a.kind) && Math.hypot(a.x - e.x, a.z - e.z) < radial(a) + radial(e) - .35)) continue; add(e);
     }
-    for (let index = 0; index < 48; index++) { const salt = `${p.id}:rubble:${index}`, x = p.cx * OWNER + 3 + random(base.seed, `${salt}:x`) * 58, z = p.cz * OWNER + 3 + random(base.seed, `${salt}:z`) * 58, width = .30 + random(base.seed, `${salt}:width`) * .50,
-        e = { id: `valley:${group.cx},${group.cz}:${salt}`, kind: 'rubble', x, y: view.floorSurface(x, z).height, z, rotation: random(base.seed, `${salt}:turn`) * TAU, scale: { x: width, y: .08 + random(base.seed, `${salt}:height`) * .07, z: width * .75 } }; if (clearSoft(view, rocks, e, radial(e))) add(e); }
+    for (let index = 0; index < 48; index++) { const salt = `${p.id}:rubble:${index}`, hosts = composition ? rocks.filter(e => ownerAt(e) === p) : [], host = hosts.length ? hosts[index % hosts.length] : null, angle = random(base.seed, `${salt}:angle`) * TAU, reach = host ? radial(host) + .5 + random(base.seed, `${salt}:reach`) * 3.5 : 0,
+        x = host ? host.x + Math.cos(angle) * reach : p.cx * OWNER + 3 + random(base.seed, `${salt}:x`) * 58, z = host ? host.z + Math.sin(angle) * reach : p.cz * OWNER + 3 + random(base.seed, `${salt}:z`) * 58, width = .30 + random(base.seed, `${salt}:width`) * .50,
+        e = { id: `valley:${group.cx},${group.cz}:${salt}`, kind: 'rubble', ...(composition ? { seabedBand: host ? 'rock-foot-apron' : 'sparse-open-bottom' } : {}), x, y: view.floorSurface(x, z).height, z, rotation: random(base.seed, `${salt}:turn`) * TAU, scale: { x: width, y: .08 + random(base.seed, `${salt}:height`) * .07, z: width * .75 } }; if (clearSoft(view, rocks, e, radial(e))) add(e); }
   }
   for (const [kind, sM, side] of [['bottle', 142, -1], ['driftwood', 213, 1]]) { const point = at(sM); for (const reach of [4, 6, 8, 10]) { const e = { id: `valley:${group.cx},${group.cz}:${kind}`, kind, x: point.x - Math.sin(point.heading) * reach * side, z: point.z + Math.cos(point.heading) * reach * side, rotation: -point.heading + .3, variant: 0,
       scale: kind === 'bottle' ? { x: .32, y: .078, z: .078 } : { x: 1.8, y: .16, z: .25 }, physicalState: kind === 'bottle' ? 'grounded-flooded' : 'grounded', ...(kind === 'bottle' ? { flooded: true, sealed: false } : {}) };
@@ -154,7 +178,7 @@ function build(base, chunks, halo, origin) {
   group.coverElements = all.filter(e => ['rock', 'seagrass'].includes(e.kind));
   group.routePath = path; group.branchPaths = routing.branches; group.sharedPorts = routing.ports; group.routeLengthM = path.at(-1).sM; group.route = [{ id: 'reef-valley-region', label: '连续礁谷', x: path[0].x, y: path[0].y, z: path[0].z, heading: path[0].heading, entryAcrossM: 1, macroId: group.id }];
   const newRows = all.filter(e => e.id.startsWith('valley:')), count = (rows, kind) => rows.filter(e => e.kind === kind).length;
-  group.metrics = { rockCount: count(all, 'rock'), coralCount: count(all, 'coral'), grassCount: count(all, 'seagrass'), addedRockCount: count(newRows, 'rock'), addedCoralCount: count(newRows, 'coral'), addedAlgaeCount: count(newRows, 'algae'), addedGrassCount: count(newRows, 'seagrass'),
+  group.metrics = { ...(composition ? { apronRockCount: rocks.filter(e => e.landformRole === 'rubble-apron-rock').length, apronRubbleCount: all.filter(e => e.seabedBand === 'rock-foot-apron').length } : {}), rockCount: count(all, 'rock'), coralCount: count(all, 'coral'), grassCount: count(all, 'seagrass'), addedRockCount: count(newRows, 'rock'), addedCoralCount: count(newRows, 'coral'), addedAlgaeCount: count(newRows, 'algae'), addedGrassCount: count(newRows, 'seagrass'),
     reefWallCount: newRows.filter(e => e.landformRole === 'reef-wall').length, reefPlateauCount: newRows.filter(e => e.landformRole === 'reef-plateau').length,
     driftwoodCount: count(all, 'driftwood'), bottleCount: count(all, 'bottle'), denseGrassCount: all.filter(e => e.meadowBand === 'dense-core').length, edgeGrassCount: all.filter(e => e.meadowBand === 'thin-edge').length,
     byFacies: Object.fromEntries(group.facies.map(f => [f, Object.fromEntries(['rock', 'coral', 'seagrass', 'algae', 'rubble'].map(kind => [kind, all.filter(e => e.kind === kind && reefValleyFacies(skeleton, e.x, e.z).dominant === f).length]))])) };
