@@ -4,6 +4,29 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { livingShallowsSpeciesCatalog, sceneCatalogs } from '../src/sceneCatalog.js';
 import { DIRECTOR_STEPS } from '../src/directorTour.js';
+import { build } from 'esbuild';
+import { createRequire } from 'node:module';
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+
+test('every published world entry renders its initial shell before the first world snapshot', async () => {
+  const result = await build({entryPoints:['src/OceanApp.jsx'],bundle:true,write:false,format:'cjs',platform:'node',
+    packages:'external',loader:{'.css':'empty'},logLevel:'silent',define:{
+      'import.meta.env':JSON.stringify({BASE_URL:'/ocean-world/'}),
+      'import.meta.url':JSON.stringify(new URL('../src/OceanApp.jsx',import.meta.url).href),
+    }});
+  const urls = [...new Set([...fs.readFileSync('public/overview/index.html','utf8').matchAll(/href="([^"]*\?demo=[^"]+)"/g)]
+    .map(match => new URL(match[1].replaceAll('&amp;','&'),'https://example.test/ocean-world/overview/').search))];
+  assert.ok(urls.length >= 18);
+  for (const search of urls.filter(value => !value.includes('demo=shallow-sample'))) {
+    const module={exports:{}},storage={getItem:()=>null,setItem:()=>{}};
+    new Function('require','module','exports','window','localStorage',result.outputFiles[0].text)(
+      createRequire(import.meta.url),module,module.exports,{location:{search}},storage);
+    const html=renderToStaticMarkup(React.createElement(module.exports.OceanApp));
+    assert.match(html,/TIDAL/,search);
+    assert.match(html,/产品导览/,search);
+  }
+});
 
 test('published guide uses portable entries and ships every local page/image/evidence link', () => {
   for (const mount of ['/ocean-world/', '/']) {
