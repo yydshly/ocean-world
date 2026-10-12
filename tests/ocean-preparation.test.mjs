@@ -21,6 +21,16 @@ test('failed preparation and asynchronous units cannot publish a later unit',asy
  await assert.rejects(p.each([1,2],()=>{throw Error('physical refusal');}),/physical refusal/);
 });
 
+test('owner restoration checkpoint yields after its budget and rejects a request made stale during the yield',async()=>{
+ let clock=0,valid=true,yields=0;
+ const p=new OceanPreparation({now:()=>clock,budgetMs:8,yieldTask:async()=>{yields++;valid=false;}});
+ assert.equal(await p.checkpoint(()=>valid),true);assert.equal(yields,0);
+ clock=9;
+ assert.equal(await p.checkpoint(()=>valid),false);assert.equal(yields,1);
+ assert.equal(await p.checkpoint(()=>valid),false);assert.equal(yields,1);
+ assert.equal(p.stats().units,0,'a checkpoint is not a fabricated preparation unit');
+});
+
 const base=createLivingShallowsGenerator(livingShallowsSeed('55'));
 const plans=createReefValleyRegionPlans(base,204,4),group=plans[0].group;
 test('prepared native context isolates its immutable snapshot, restores terrain on throw and rejects async/publication',()=>{

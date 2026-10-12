@@ -63,7 +63,7 @@ test('a roaming ray reuses its exact object and resources across ownership and f
 
 // Execute the actual World summary method without constructing a browser GPU.
 const worldSource = readFileSync(new URL('../src/world/ReefWorld.js', import.meta.url), 'utf8');
-const snapshotStart = worldSource.indexOf('  oceanSnapshot(){');
+const snapshotStart = worldSource.indexOf('  oceanSnapshot(');
 const snapshotEnd = worldSource.indexOf('  updateOceanWater(', snapshotStart);
 assert.ok(snapshotStart >= 0 && snapshotEnd > snapshotStart);
 const WorldFixture = new Function('oceanCommunityReading',

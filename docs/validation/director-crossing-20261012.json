@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 1,
+  "candidate": "director-crossing-candidate-20261012",
+  "generatedAt": "2026-10-12T11:33:14.745621+00:00",
+  "baseCommit": "92eaf16a9eb03609734f10ca2eb408c3363aaa35",
+  "acceptance": "partial; not deployment-ready",
+  "scope": {
+    "focusedAdjustments": 2,
+    "noFurtherAutomaticRepair": true,
+    "assetsAndSimulationRulesFrozen": true,
+    "savedHistoryRetained": true
+  },
+  "deployment": {
+    "published": false,
+    "remoteRetainedCommit": "4749548bfa2216879315fb7b84ad6479cf3a940e",
+    "mainRechecked": true
+  },
+  "environment": {
+    "origin": "http://127.0.0.1:4175/ocean-world/",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5
+    },
+    "hardware": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "heavyTestsOrBuildDuringPlayback": false,
+    "network": "local existing cache; not public cold visit",
+    "notComparableToPreviousCandidateDpr1": true
+  },
+  "director": {
+    "query": "?demo=director&seed=55",
+    "rate": "mainly 4x",
+    "coverage": "partial chapter 1, then manual selection of chapter 4 and automatic chapter 4 through 13; paused at chapter 14",
+    "completedStepIds": [
+      "shallows-opening",
+      "shallows-life",
+      "shallows-discoveries",
+      "shallows-shoal-life-community",
+      "shallows-meadow-life-community",
+      "shallows-biodiversity-reef",
+      "shallows-benthic-community",
+      "shallows-shallow-scene-reef",
+      "shallows-shallow-scene-sand",
+      "shallows-shallow-scene-meadow"
+    ],
+    "chapter10To11Passed": true,
+    "full67ChaptersVerified": false,
+    "maxRetainedPlayingFrameMs": 1204.1000000000058,
+    "playingFramesOver1000Ms": [
+      {
+        "milliseconds": 1204.1000000000058,
+        "paused": false,
+        "motionKind": "reef-valley-route",
+        "motionElapsedSec": 125.56759999999964,
+        "waitingForRegions": true,
+        "previousCpuMs": {
+          "ecology": 0.052217667618217875,
+          "authored": 0.07597781954964765,
+          "camera": 0.2839683482415536,
+          "streaming": 0.002971977230675451,
+          "animals": 0.6227433793439581,
+          "water": 0.10782711503506219,
+          "render": 1.931612309118218
+        }
+      }
+    ],
+    "errors": [],
+    "console": [],
+    "verdict": "historical return pass; remaining stalls fail",
+    "preciseMaximumPreparingWaitMeasured": false
+  },
+  "lifeExpedition": {
+    "enteredFromProductGuide": true,
+    "query": "?demo=life-expedition&seed=55&world=whole-seabed",
+    "rate": 1,
+    "completed": true,
+    "nominalModelSeconds": 240,
+    "displayedDistanceM": 452,
+    "displayedNearbyClasses": 25,
+    "displayedHabitats": [
+      "礁谷",
+      "沙沟",
+      "草床边缘",
+      "外礁坡"
+    ],
+    "retainedLongFramesCount": 5,
+    "playingEventsOver250Ms": [],
+    "errors": [],
+    "console": [],
+    "verdict": "this local complete route passes; startup stalls retained separately"
+  },
+  "shallow": {
+    "enteredFromProductGuide": true,
+    "query": "?demo=shallow-sample&seed=55",
+    "rate": 1,
+    "completed": true,
+    "modelSeconds": 75,
+    "wallSeconds": 78.44830000002383,
+    "averageFps": 39.500475266219844,
+    "p95FrameMs": 45.900000000001455,
+    "maxFrameMs": 1004.2000000000007,
+    "interruptions": [],
+    "playingIntervalsOver1000Ms": [
+      1004.2000000000007,
+      1000.1000000000004,
+      1004.1999999999989
+    ],
+    "resolutionHistory": [
+      {
+        "time": 0,
+        "scale": 1
+      },
+      {
+        "time": 3.4417,
+        "scale": 0.85
+      },
+      {
+        "time": 14.254100000000008,
+        "scale": 0.7
+      },
+      {
+        "time": 15.775000000000006,
+        "scale": 0.65
+      }
+    ],
+    "startupMs": 12239.5,
+    "navigationToReadyMs": 13075.200000047684,
+    "sourceAndAssetsUnchangedVsBase": true,
+    "console": [],
+    "verdict": "functionally complete; loading and smoothness fail"
+  },
+  "checks": {
+    "passedLogBatches": [
+      33,
+      6,
+      11
+    ],
+    "distinctPassedTitles": 42,
+    "finalFocusedChecks": 11,
+    "allWorldCloudSuiteRun": false,
+    "logs": [
+      "affected-checks-passed.log",
+      "snapshot-contract-final.log",
+      "round-2-final-checks.log"
+    ],
+    "finalViteBuildSeconds": 16.48
+  },
+  "remaining": [
+    "Director worker-reply synchronous task still produces 1.2041s playing interval; exact internal substep not conclusively profiled.",
+    "Preparing waits remain, precise full route maximum not measured.",
+    "Shallow loading and rendering remain above targets.",
+    "Full 67-chapter and public cold-visit acceptance not completed."
+  ],
+  "buildAssets": [
+    {
+      "file": "index-BwzdgMd7.css",
+      "bytes": 552,
+      "sha256": "8bc852d0e88cdb8f6312fcd1780fd3b61cccd39dcc3cda76616d01adbd769c5a"
+    },
+    {
+      "file": "index-EThlfWsA.js",
+      "bytes": 198027,
+      "sha256": "e9c50295fb9f6cdcbfab4bfcf4f7007476d1910bb55ed7b267b490d1303365f7"
+    },
+    {
+      "file": "OceanApp-B__JcuGO.js",
+      "bytes": 1654387,
+      "sha256": "056937b78544c9c9b6614a3162f3f909b3be8d8bb1eee578dba95bce5bf97885"
+    },
+    {
+      "file": "OceanApp-QPxwgFME.css",
+      "bytes": 49382,
+      "sha256": "1578516b53d0a544602b8642a1ee7760627a6cbc8f95c2a877ee78c1641c6527"
+    },
+    {
+      "file": "oceanPreparation.worker-CRjGQeQd.js",
+      "bytes": 869657,
+      "sha256": "d75c164c09b714247ee7f2a48e0270a61a50a7a2706b934ba9166234f5d1c7c0"
+    },
+    {
+      "file": "oceanRuntime.worker-DtT0esaO.js",
+      "bytes": 868230,
+      "sha256": "6282bcb322547ecc454acf00af01c53e8b603da5c76861b4e30f15e4f57b4583"
+    },
+    {
+      "file": "shallowBenthicCoralData-CIGNmVEm.bin",
+      "bytes": 1281686,
+      "sha256": "54f776c8b4a7b7ee673e1f2a325fcb9f1155663700d55cfaf63b53a45205303b"
+    },
+    {
+      "file": "shallowBranchingCoralData-fih3f9ew.bin",
+      "bytes": 316723,
+      "sha256": "d1052eca2c8e2c87b67ba262572fd8e6b240fedb2aec019e393be5646bed5d4e"
+    },
+    {
+      "file": "shallowContactFaunaData-5HeIBBl6.bin",
+      "bytes": 959638,
+      "sha256": "b20bf41e5b76c3b8348f5fd6ef7faac92ab2598b565cbb4eae933c1b663fe359"
+    },
+    {
+      "file": "shallowHawksbillData-BBHROR24.bin",
+      "bytes": 654551,
+      "sha256": "7a4adbe912c4b270e7920cf3ea7ca0f4d0b1590b42305de3132b6602c43d09cc"
+    },
+    {
+      "file": "shallowLivingKitData-aD3FXB8l.bin",
+      "bytes": 1436291,
+      "sha256": "7f4c6264a804c4409b74da4e6576209e77edf1957c72bdc52c61f8b47b65152e"
+    },
+    {
+      "file": "shallowNaturalHabitatData-BVezin7E.bin",
+      "bytes": 646086,
+      "sha256": "2775cbc8aa4ac276c2d3a2656265867a75f76c1607b6ac18c9d695f4d2a139b4"
+    },
+    {
+      "file": "shallowNearCommunityData-D3vLCK8A.bin",
+      "bytes": 1993458,
+      "sha256": "09974765cb779089b9eccdc851a06383ed16b4fb5738cb4b187cf105a0227768"
+    },
+    {
+      "file": "shallowOpenCommunityData-DeubavW-.bin",
+      "bytes": 476474,
+      "sha256": "7a9edc62fc8b882fa248ffbdcf1050154a0d7f4c6272e503bbcf73aceb2a28a5"
+    },
+    {
+      "file": "shallowReefDistanceData-D3vmvdlk.bin",
+      "bytes": 411234,
+      "sha256": "a1c021cbca3556f7106edb6a77978ffcc851159ed39da2231a9377ffe696bc2d"
+    },
+    {
+      "file": "ShallowSampleApp-B-93cWNp.js",
+      "bytes": 2535602,
+      "sha256": "734cbac538afb1e83c032d869a91c614213065f95a5d6c52d1c9bb0fd278dd7f"
+    },
+    {
+      "file": "ShallowSampleApp-Dm-NMGKs.css",
+      "bytes": 3228,
+      "sha256": "154c3225dcad4ff3c36c85f8f5ded6dd82114adc397968ce4b481aa9d6e9d089"
+    },
+    {
+      "file": "ShallowScannedReefData-Dd_2Oy2J.bin",
+      "bytes": 595563,
+      "sha256": "cd5c2e59ebae69044ee0c18dc466ababedc76a6d9fad7c1cbd8e980458a4f77f"
+    },
+    {
+      "file": "ShallowSourcedFishData-CooNqDTz.bin",
+      "bytes": 107206,
+      "sha256": "5e2413f7fa3d605fba219cd840fe60dea9677685bb949c5959ebcba6933d212a"
+    }
+  ],
+  "rawEvidenceFiles": [
+    {
+      "file": "affected-checks-passed.log",
+      "bytes": 8925,
+      "sha256": "e7cec23812fa84eac63cc6fd88e1a8a123c71d7843aa7433c754a3cf91314f0d"
+    },
+    {
+      "file": "affected-checks.log",
+      "bytes": 2929,
+      "sha256": "52d0e8e5d596903f6a5064ed2bdf575b6cd2966254be62a62840dfa47bfff1c4"
+    },
+    {
+      "file": "build-final.log",
+      "bytes": 4441,
+      "sha256": "5a1afc0d53f622fb8a643851e0c8f97dd4b4095efe0cf45f65d310d8c88e4306"
+    },
+    {
+      "file": "build-local.log",
+      "bytes": 4441,
+      "sha256": "d74eb3377668f88747d554d6ba3daa21e0932955f9e09bc594be3e8d70a88e68"
+    },
+    {
+      "file": "build-round-2.log",
+      "bytes": 4441,
+      "sha256": "72251b3e21f069166c1a83aaa79d830cc16184872d3d6be0b4b0d6fd75b117a9"
+    },
+    {
+      "file": "director-console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "file": "director-final.json",
+      "bytes": 976179,
+      "sha256": "4e7042fe55ad499ecb101fdb681e2c1c725d48263eaf49afdffa6908499da59b"
+    },
+    {
+      "file": "director-final.png",
+      "bytes": 77154,
+      "sha256": "7e00a91c0d241d9d4c11c2c5a7551bbc327eafc482590e993c0c93be3acde51c"
+    },
+    {
+      "file": "director-pre-target.json",
+      "bytes": 2166485,
+      "sha256": "73d7dbdb21be557d3c56e738808e3f59fcbdf2fc6d1e24e318955008c45e74f5"
+    },
+    {
+      "file": "director-round-2-route-stop.json",
+      "bytes": 2208427,
+      "sha256": "f9fc6f679f3320a76e11a6a0bfbc7b049683c5fffa0621ab05af39eb87be2f2d"
+    },
+    {
+      "file": "director-round-2-samples.json",
+      "bytes": 231779,
+      "sha256": "840921425e413021d92e3cf73036c1cd300138976c2df289cef6896fe62a70b5"
+    },
+    {
+      "file": "director-round-2-start.json",
+      "bytes": 333226,
+      "sha256": "5953f27d39ec6dba29275f52ce542c4466b62eafc7d575fc415d083bb650c9a9"
+    },
+    {
+      "file": "director-samples.json",
+      "bytes": 44637,
+      "sha256": "cea2c09f871107ad7601eb0de24ca2337d49ea26bf7958db82521dbddbe85050"
+    },
+    {
+      "file": "director-start.json",
+      "bytes": 333594,
+      "sha256": "25cb73138d964d3a94a3922f9b879b4d7b5a64ea3a12e45b5028e4a1d62810c0"
+    },
+    {
+      "file": "director-target-current.json",
+      "bytes": 760675,
+      "sha256": "625b22d25004fbf0d44c3e9a684ce5abbaab70e669ae61162d18878109223725"
+    },
+    {
+      "file": "director-target-pass.json",
+      "bytes": 918049,
+      "sha256": "5792ca48cedbfc1b40f7afaa06de4142862a22266c509dfeeddd439b8176e8e4"
+    },
+    {
+      "file": "director-target-pass.png",
+      "bytes": 68909,
+      "sha256": "78b7a0dffb6efc0a01828e4cba06c6f1d3906def00c0fe5cbca50ed164ad9a6a"
+    },
+    {
+      "file": "failed-records.json",
+      "bytes": 10540634,
+      "sha256": "5e93d26ad9a9611e49904afd3e97e8ae81c0b3413d25f8eaf3629b3ea0139108"
+    },
+    {
+      "file": "final-affected-checks.log",
+      "bytes": 7686,
+      "sha256": "4e13cf83112a01a9b136cbb38eab1a372a2cb93c7aa308bd2ac29eea202fccb9"
+    },
+    {
+      "file": "history-checks.log",
+      "bytes": 681,
+      "sha256": "e9989eba8f99c1083b9d8614e763049e79d3f310f7473cd335f0b69c600450a2"
+    },
+    {
+      "file": "history-final-checks.log",
+      "bytes": 1063,
+      "sha256": "99dd52d1546ee230ad8f70e0f2cabee42a7e45a5e9bb278417529b1ab2368bf6"
+    },
+    {
+      "file": "life-console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "file": "life-final.json",
+      "bytes": 2618806,
+      "sha256": "4b898541907ac8ef949d73d11c76d69564d6718774fef1c5fc6ad138ec29b7c2"
+    },
+    {
+      "file": "life-final.png",
+      "bytes": 67132,
+      "sha256": "9656465217b38de5cae20b7592a7b7dda7a724a887127b3b1d2f71a2e66c0196"
+    },
+    {
+      "file": "life-mid.png",
+      "bytes": 81427,
+      "sha256": "9254ebc773861c3bd50928eee5753e47af60074dd257dbf1712c872fb126e173"
+    },
+    {
+      "file": "life-samples.json",
+      "bytes": 154422,
+      "sha256": "81fa34a771e3e82c9469441cec7b23265db6b415d33387a506ea6ee9a041318c"
+    },
+    {
+      "file": "life-start.json",
+      "bytes": 26328,
+      "sha256": "dd7a1b799a40f7be94d7a65b1aa44015533e23027a7fa1335d131db98a59d4c2"
+    },
+    {
+      "file": "preview-4175-error.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "preview-4175.log",
+      "bytes": 87,
+      "sha256": "316d167c5983c1bd6097e446bea933170837093204d6ddb18982b911731e5363"
+    },
+    {
+      "file": "round-2-final-checks.log",
+      "bytes": 3174,
+      "sha256": "9cfb87118b8821f6e655c723c98081c1cdd53e18d003ca3a924a44bcda55abce"
+    },
+    {
+      "file": "sample-console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "file": "sample-final.json",
+      "bytes": 56496,
+      "sha256": "39651c317840dafc3a42200d6431861ee552c9f5efb2070ca37adf470618c7be"
+    },
+    {
+      "file": "sample-final.png",
+      "bytes": 89004,
+      "sha256": "514ce1b1baa95cf2bac1687e6a4a7dbefad29b8f6044439b296f8513a2d57189"
+    },
+    {
+      "file": "sample-start.json",
+      "bytes": 22866,
+      "sha256": "e9a81fd3ca5d51f074781270e6759acb0952459853a36a7d3cad058b9aa31a88"
+    },
+    {
+      "file": "snapshot-contract-checks.log",
+      "bytes": 3771,
+      "sha256": "0aa6808f3bc9e6a4bf3404eace71fb55eec10afd653bb6cb0f8d13b1698d50bf"
+    },
+    {
+      "file": "snapshot-contract-final.log",
+      "bytes": 1716,
+      "sha256": "0638928014d91c5afb85d2709a971d35d816149473b2c59e38eeb07d21cd83e1"
+    }
+  ]
+}

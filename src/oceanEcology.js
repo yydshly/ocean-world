@@ -1599,6 +1599,21 @@ export class OceanEcology {
   }
 
   _validateSupportHistory(validationRows) {
+    const shallow = validationRows.filter(([, row]) => row?.shallowSeascapeVersion === 1);
+    if (shallow.length) {
+      // Complete historical groups extend beyond the published 25-owner halo.
+      // Validate them on their original private terrain, without admitting it.
+      const publishedSupports = this._supportCells;
+      this._supportCells = new Map(); this._runtimePoseCache = null;
+      try {
+        this.generator.withShallowSeascapePlans(shallow.map(([, row]) => row.livingRidgePlan),
+          () => this._validateSupportHistoryRows(shallow));
+      } finally { this._supportCells = publishedSupports; this._runtimePoseCache = null; }
+    }
+    return this._validateSupportHistoryRows(validationRows.filter(([, row]) => row?.shallowSeascapeVersion !== 1));
+  }
+
+  _validateSupportHistoryRows(validationRows) {
     for (const [id, saved] of validationRows) if (reefResidentsMarked(saved) && !validateReefResidentsRecord(saved, this.generator, {
       surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
       bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) {
@@ -1815,6 +1830,12 @@ export class OceanEcology {
         }
         const marked = SHALLOW_SEASCAPE_OWNERS.map(id => prefetched.get(id)).filter(shallowSeascapeMarked);
         if (marked.length) {
+          if (this.generator.backgroundPreparationEnabled) {
+            const verdicts = await measureAsync('canonicalValidationMs', () => this.generator.validateMacroPlans(marked.map(row => row.livingRidgePlan)));
+            if (!current()) return;
+            if (!Array.isArray(verdicts) || verdicts.length !== marked.length || verdicts.some(value => value !== true))
+              throw new Error('Invalid saved shallow seascape terrain; historical terrain was not regenerated.');
+          }
           const group = marked[0].livingRidgePlan?.group;
           const complete = marked.length === 12 && group?.cx === SHALLOW_SEASCAPE_ANCHOR.cx && group?.cz === SHALLOW_SEASCAPE_ANCHOR.cz &&
             JSON.stringify(group.ownerIds) === JSON.stringify(SHALLOW_SEASCAPE_OWNERS) &&
@@ -1826,7 +1847,7 @@ export class OceanEcology {
                 row.shallowSeascapeVersion === 1 && row.shallowSeascapeGroupId === `${group.cx},${group.cz}` &&
                 row.shallowSeascapeInitializedAtSec === 0 &&
                 plan?.version === 6 && plan.id === id && JSON.stringify(plan.group) === JSON.stringify(group) &&
-                validateLivingRidgePlan(plan, this.generator) && validateLivingNetworkRecord(row) &&
+                (this.generator.backgroundPreparationEnabled || validateLivingRidgePlan(plan, this.generator)) && validateLivingNetworkRecord(row) &&
                 this._residentCount(row) <= OCEAN_REGION_AGENT_LIMIT;
             });
           if (!complete) { this._center = null; throw new Error('Incomplete saved shallow seascape group; historical terrain and populations were not regenerated.'); }
@@ -2267,6 +2288,9 @@ export class OceanEcology {
       }
       for (const [id, coordinates] of desired) {
         if (this._active.has(id)) continue;
+        // Prior owner restoration may consume the entire frame budget. Its
+        // physical context has ended; allow painting before the next owner.
+        if (this.backgroundRuntime && !await preparation.checkpoint(current)) return;
         const errorsBefore = this._counts.persistenceErrors;
         const saved = this.livingGeologyEnabled ? prefetched.get(id) : await this._storage('load', world, id);
         if (!current()) return;
@@ -2886,7 +2910,7 @@ export class OceanEcology {
     return height;
   }
 
-  snapshot() {
+  snapshot({ detailedTerrain = true } = {}) {
     const regions = [...this._active.values()].map(region => ({ id: region.id, cx: region.cx, cz: region.cz, habitat: region.habitat, surfaceVersion: region.surfaceVersion,
       floorSurfaceVersion: region.floorSurfaceVersion ?? 0,
       communityVersion: region.communityVersion ?? null,
@@ -2899,7 +2923,9 @@ export class OceanEcology {
       ...(reefResidentsMarked(region) ? { reefResidentsVersion: region.reefResidentsVersion,
         reefResidentsInitializedAtSec: region.reefResidentsInitializedAtSec, reefResidents: clone(region.reefResidents) } : {}),
       ...(region.populationRecipeVersion !== undefined ? { populationRecipeVersion: region.populationRecipeVersion } : {}),
-      ...(region.livingRidgePlan !== undefined ? { livingRidgePlan: clone(region.livingRidgePlan) } : {}),
+      ...(region.livingRidgePlan !== undefined ? { livingRidgePlan: detailedTerrain ? clone(region.livingRidgePlan) : {
+        version: region.livingRidgePlan.version, id: region.livingRidgePlan.id, cx: region.cx, cz: region.cz,
+        theme: region.livingRidgePlan.theme, group: clone(region.livingRidgePlan.group), geometryIncluded: false } } : {}),
       ...(region.coastalSeascapeVersion !== undefined ? { coastalSeascapeVersion: region.coastalSeascapeVersion,
         coastalSeascapeGroupId: region.coastalSeascapeGroupId, coastalSeascapeInitializedAtSec: region.coastalSeascapeInitializedAtSec } : {}),
       ...(region.reefValleyRegionVersion !== undefined ? { reefValleyRegionVersion: region.reefValleyRegionVersion,

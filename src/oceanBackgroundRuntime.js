@@ -30,6 +30,7 @@ export class OceanBackgroundRuntime {
       if (this.disposed || ecology._generation !== generation ||
           ecology.generator !== generator || generator.ridgeRevision !== topology ||
           active.some(([id, row]) => ecology._active.get(id) !== row)) return;
+      this.acknowledgeContext(payload, generator);
       if (result.rows.length !== active.length || result.rows.some(row => !ecology._active.has(row.id)))
         throw new Error('后台生态回复的区域不匹配。');
       for (const row of result.rows) {
@@ -50,21 +51,31 @@ export class OceanBackgroundRuntime {
   }
   payload(frames = []) {
     const ecology = this.ecology, generator = ecology.generator;
-    const registry = generator.registryStats();
-    const plans = registry.ids.map(id => generator.getRidgePlan(id)).filter(Boolean);
+    const context = JSON.stringify([ecology.seed, generator.wholeSeabedVersion === 1, ecology._backgroundBirthOptions]);
+    const changed = this._acknowledgedGenerator !== generator || this._acknowledgedTopology !== generator.ridgeRevision || this._acknowledgedContext !== context;
+    const registry = changed ? generator.registryStats() : null;
     return { seed: ecology.seed, wholeSeabed: generator.wholeSeabedVersion === 1,
-      options: ecology._backgroundBirthOptions, topology: generator.ridgeRevision, plans,
-      legacyIds: registry.ids.filter(id => !generator.getRidgePlan(id)),
-      rows: [...ecology._active.values()].map(row => structuredClone(row)),
+      options: ecology._backgroundBirthOptions, topology: generator.ridgeRevision, context,
+      ...(changed ? { plans: registry.ids.map(id => generator.getRidgePlan(id)).filter(Boolean),
+        legacyIds: registry.ids.filter(id => !generator.getRidgePlan(id)) } : {}),
+      planRowIds: [...ecology._active.values()].filter(row => row.livingRidgePlan).map(row => row.id),
+      rows: [...ecology._active.values()].map(({ livingRidgePlan, ...row }) => structuredClone(row)),
       locked: [...ecology._lockedRegions], desired: [...ecology._planktonDesiredRegions],
       sceneSupports: [...ecology._sceneSupports], habitatSupports: [...ecology._habitatSupports],
       macroSupports: [...ecology._macroSupports], birthView: ecology._biodiversityBirthView,
       activeTime: ecology._activeTime, accumulator: ecology._accumulator, frames };
   }
+  acknowledgeContext(payload, generator) {
+    if (this.disposed || this.ecology.generator !== generator || generator.ridgeRevision !== payload.topology) return;
+    this._acknowledgedGenerator = generator; this._acknowledgedTopology = payload.topology;
+    this._acknowledgedContext = payload.context;
+  }
   async validateHistory(kind, rows, valid = true) {
     if (!this.barriers) throw new Error('Historical validation requires an owner publication barrier.');
-    const payload = this.payload();
-    return this.preparation.run('history', { ...payload, kind, validationRows: structuredClone(rows), valid });
+    const generator = this.ecology.generator, payload = this.payload();
+    const result = await this.preparation.run('history', { ...payload, kind, validationRows: structuredClone(rows), valid });
+    this.acknowledgeContext(payload, generator);
+    return result;
   }
   async flush() {
     this.barriers++;
@@ -82,7 +93,7 @@ export class OceanBackgroundRuntime {
     try { await this.flush(); return await operation(); }
     finally { this.barriers--; if (!this.barriers) this.pump(); }
   }
-  reset() { this.frames.length = 0; this.error = null; }
+  reset() { this.frames.length = 0; this.error = null; this._acknowledgedGenerator = null; }
   async shutdown() {
     try { await this.flush(); }
     finally { this.disposed = true; this.preparation.dispose(); }

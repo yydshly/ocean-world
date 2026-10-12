@@ -2426,7 +2426,7 @@ export class ReefWorld {
   }
   stopOceanTravel(){this.oceanTravel=null;this.oceanCruising=false;this.emitSnapshot(true);}
   returnToReef(){this.setView('wide',true);this.select(null);this.onSelect(null);this.emitSnapshot(true);}
-  oceanSnapshot(){
+  oceanSnapshot({detailedTerrain=true}={}){
     if(!this.oceanChunks)return null;
     const position=this.oceanWorldPosition(),sample=this.oceanChunks.generator.sample(position.x,position.z);
     const cx=Math.floor(position.x/64),cz=Math.floor(position.z/64),nearby=[];
@@ -2435,7 +2435,7 @@ export class ReefWorld {
       const cell=this.oceanChunks.generator.chunk(cx+dx,cz+dz);
       nearby.push({dx,dz,habitat,composition:cell.habitatComposition,current:dx===0&&dz===0});
     }
-    const ecology=this.oceanEcology?.snapshot();
+    const ecology=this.oceanEcology?.snapshot({detailedTerrain});
     const community=oceanCommunityReading({agents:ecology?.agents||[],regionId:`${cx},${cz}`,cameraPosition:position,
       catalog:this.catalog,loaded:!this.oceanEcologyResetting&&!!ecology?.regions.some(region=>region.id===`${cx},${cz}`)});
     const chunk=this.oceanChunks.generator.chunk(cx,cz);
@@ -2823,8 +2823,8 @@ export class ReefWorld {
       this.camera.position.add(v);this.controls.target.add(v);
     }
   }
-  observationStateSnapshot(){
-    return {ocean:this.oceanSnapshot(),directorMotion:this.directorMotionSnapshot(),resourceInventory:this.resourceInventorySnapshot(),environmentAssets:this.environmentAssets.map(asset=>({...asset})),initializationMs:this.initializationMs,
+  observationStateSnapshot({detailedTerrain=true}={}){
+    return {ocean:this.oceanSnapshot({detailedTerrain}),directorMotion:this.directorMotionSnapshot(),resourceInventory:this.resourceInventorySnapshot(),environmentAssets:this.environmentAssets.map(asset=>({...asset})),initializationMs:this.initializationMs,
       ...(this.isLivingShallows?{sceneProfile:LIVING_SHALLOWS_PROFILE,inputSeed:this.inputSeed,worldClockSec:this.livingClockSec}:{}),
       gpuWarmup:this.gpuWarmup?{...this.gpuWarmup}:null,visualTimeSec:this.visualTimeSec,
       landscapeCoralDetail:this.landscapeCoralDetail?{...this.landscapeCoralDetail}:null,
@@ -2832,8 +2832,8 @@ export class ReefWorld {
       environment:{...this.sim.environment},following:this.following,controlStartCount:this.controlStartCount,
       viewport:{width:this.container.clientWidth,height:this.container.clientHeight,pixelRatio:this.renderer.getPixelRatio()}};
   }
-  snapshot(){const selected=this.findAgent(this.selectedId);return {...this.frameTimingSnapshot(),...this.observationStateSnapshot(),focusObservation:this.lastFocusAssessment?{...this.lastFocusAssessment}:null,biomeId:this.biomeId,sceneLabel:this.definition.label,surfaceY:this.surfaceY,visualEnvironment:{...this.visualEnvironment},workload:{...this.workload},morphology:this.isKelp?{...KELP_MORPHOLOGY}:null,selectedSpecies:selected?this.catalog.get(selected.speciesId):null,selectedAgentId:this.selectedId,runId:this.runId,wallSeconds:(Date.now()-this.runStarted)/1000,metrics:{...this.sim.metrics},environment:{...this.sim.environment},events:this.sim.events.slice(-8).reverse(),agents:(this.isLivingShallows?[]:this.sim.agents).concat(this.oceanEcology?.snapshot().agents||[]).map(a=>({...a,position:{...a.position}})),fps:Math.round(this.fps),drawCalls:this.renderer.info.render.calls,triangles:this.renderer.info.render.triangles,hardware:this.hardware,viewport:{width:this.container.clientWidth,height:this.container.clientHeight,pixelRatio:this.renderer.getPixelRatio()},camera:{position:this.camera.position.toArray(),target:this.controls.target.toArray()},depthM:Math.max(0,(this.isDeep?this.definition.observationDepthM??DEEP_DEPTH_M:this.surfaceY)-this.camera.position.y),following:this.following,paused:this.paused,speed:this.speed,errors:[...this.errors]};}
-  emitSnapshot(){this.lastSnapshot=this.elapsed;this.onSnapshot(this.snapshot());}
+  snapshot({detailedTerrain=true}={}){const selected=this.findAgent(this.selectedId);return {...this.frameTimingSnapshot(),...this.observationStateSnapshot({detailedTerrain}),focusObservation:this.lastFocusAssessment?{...this.lastFocusAssessment}:null,biomeId:this.biomeId,sceneLabel:this.definition.label,surfaceY:this.surfaceY,visualEnvironment:{...this.visualEnvironment},workload:{...this.workload},morphology:this.isKelp?{...KELP_MORPHOLOGY}:null,selectedSpecies:selected?this.catalog.get(selected.speciesId):null,selectedAgentId:this.selectedId,runId:this.runId,wallSeconds:(Date.now()-this.runStarted)/1000,metrics:{...this.sim.metrics},environment:{...this.sim.environment},events:this.sim.events.slice(-8).reverse(),agents:(this.isLivingShallows?[]:this.sim.agents).concat(this.oceanEcology?.snapshot({detailedTerrain:false}).agents||[]).map(a=>({...a,position:{...a.position}})),fps:Math.round(this.fps),drawCalls:this.renderer.info.render.calls,triangles:this.renderer.info.render.triangles,hardware:this.hardware,viewport:{width:this.container.clientWidth,height:this.container.clientHeight,pixelRatio:this.renderer.getPixelRatio()},camera:{position:this.camera.position.toArray(),target:this.controls.target.toArray()},depthM:Math.max(0,(this.isDeep?this.definition.observationDepthM??DEEP_DEPTH_M:this.surfaceY)-this.camera.position.y),following:this.following,paused:this.paused,speed:this.speed,errors:[...this.errors]};}
+  emitSnapshot(){this.lastSnapshot=this.elapsed;this.onSnapshot(this.snapshot({detailedTerrain:false}));}
   async downloadScreenshot(){this.renderer.render(this.scene,this.camera);const data=this.renderer.domElement.toDataURL('image/png'),name=`${this.biomeId}-${Date.now()}`;if(localCaptureEnabled){const r=await fetch('/__reef-capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'screenshot',name,data})});if(!r.ok)throw new Error('无法写入项目验证目录');const file=(await r.json()).file;await saveJson({schema:'tidal-observation-frame-v1',biomeId:this.biomeId,image:file,selectedId:this.selectedId,snapshot:this.snapshot()},name+'-metadata');return file;}const a=document.createElement('a');a.download=name+'.png';a.href=data;a.click();return name+'.png';}
   dispose(){
     if(this.disposed)return;

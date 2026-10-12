@@ -23,5 +23,12 @@ export class OceanPreparation {
     }
     return current();
   }
+  async checkpoint(current = () => true) {
+    if (!current()) return false;
+    if (this.now() - this.turnStart >= this.budgetMs) {
+      await this.yieldTask(); this.yields++; this.turnStart = this.now();
+    }
+    return current();
+  }
   stats() { return { units: this.units, yields: this.yields, maxUnitMs: this.maxUnitMs, cpuMs: this.cpuMs }; }
 }

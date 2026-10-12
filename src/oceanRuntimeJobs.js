@@ -4,7 +4,8 @@ import { createLivingRidgeGenerator } from './livingRidgeGeology.js';
 import { OceanEcology } from './oceanEcology.js';
 
 // Only computation runs here. Admissions, storage and authoritative publication
-// stay on the main model. Input and output are complete native records.
+// stay on the main model. Dynamic records remain complete; static terrain
+// is retained in the acknowledged worker context.
 export function createOceanRuntimeJobs() {
   let ecology = null, contextKey = null, topology = null, owners = null;
   return payload => {
@@ -24,7 +25,13 @@ export function createOceanRuntimeJobs() {
     }
     const ids = JSON.stringify(payload.rows.map(row => row.id));
     const previous = ecology._active;
-    ecology._active = new Map(payload.rows.map(row => {
+    const planRowIds = new Set(payload.planRowIds ?? payload.rows.filter(row => row.livingRidgePlan).map(row => row.id));
+    ecology._active = new Map(payload.rows.map(input => {
+      const row = { ...input };
+      if (planRowIds.has(row.id)) {
+        row.livingRidgePlan = ecology.generator.getRidgePlan(row.id);
+        if (!row.livingRidgePlan) throw new Error(`Runtime terrain missing for owner ${row.id}.`);
+      }
       const existing = previous.get(row.id);
       if (!existing) return [row.id, row];
       for (const field of Object.keys(existing)) if (!Object.hasOwn(row, field)) delete existing[field];
@@ -50,7 +57,7 @@ export function createOceanRuntimeJobs() {
     }
     const start = performance.now();
     for (const frame of payload.frames) ecology.step(frame.deltaSec, frame.environment);
-    return { rows: [...ecology._active.values()], activeTime: ecology._activeTime,
+    return { rows: [...ecology._active.values()].map(({ livingRidgePlan, ...row }) => row), activeTime: ecology._activeTime,
       accumulator: ecology._accumulator, planktonLastStep: ecology._planktonLastStep,
       planktonFaces: [...ecology._planktonFaces], computationMs: performance.now() - start };
   };

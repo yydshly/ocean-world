@@ -53,9 +53,10 @@ test('background integration preserves native seed55 complete records, fractiona
   const background = new OceanEcology(seed, generator, { ...options, store });
   background._active = new Map(structuredClone([...native._active]));
   background._planktonDesiredRegions = new Set(native._planktonDesiredRegions);
-  const run = createOceanRuntimeJobs();
+  const run = createOceanRuntimeJobs(), packets = [];
   const preparation = { async run(kind, payload) {
     await new Promise(resolve => setTimeout(resolve, 0));
+    packets.push({ kind, plans: Object.hasOwn(payload, 'plans'), bytes: JSON.stringify(payload).length, rowPlans: payload.rows.some(row => Object.hasOwn(row, 'livingRidgePlan')) });
     return structuredClone(run(structuredClone(payload)));
   }, dispose() {} };
   background.backgroundRuntime = new OceanBackgroundRuntime(background, { preparation });
@@ -72,6 +73,9 @@ test('background integration preserves native seed55 complete records, fractiona
       assert.equal(background._activeTime, native._activeTime);
       assert.equal(background._accumulator, native._accumulator);
     }
+    assert.equal(packets[0].plans, true);
+    assert.ok(packets.slice(1).every(packet => !packet.plans && !packet.rowPlans));
+    assert.ok(packets.at(-1).bytes < packets[0].bytes * .5, 'unchanged terrain is not repeatedly copied into ecological ticks');
     const env = { hour: 12, currentMps: .15, turbidity: .25, foodSupply: 1 };
     native.step(.1, env); background.step(.1, env);
     // Requesting a new owner window bumps the revision before its queued load.

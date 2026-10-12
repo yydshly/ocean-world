@@ -7,7 +7,7 @@ import { oceanCommunityReading, nearestOceanAnimal } from '../src/oceanCommunity
 // Execute the actual CPU World methods without constructing its browser GPU.
 const source = readFileSync(new URL('../src/world/ReefWorld.js', import.meta.url), 'utf8');
 const focusStart = source.indexOf('  focusNearbyOceanAnimal('), focusEnd = source.indexOf('  setView(', focusStart);
-const snapshotStart = source.indexOf('  oceanSnapshot(){'), snapshotEnd = source.indexOf('  updateOceanWater(', snapshotStart);
+const snapshotStart = source.indexOf('  oceanSnapshot('), snapshotEnd = source.indexOf('  updateOceanWater(', snapshotStart);
 assert.ok(focusStart >= 0 && focusEnd > focusStart && snapshotStart >= 0 && snapshotEnd > snapshotStart);
 const WorldFixture = new Function('oceanCommunityReading', 'nearestOceanAnimal',
   `return class {${source.slice(focusStart, focusEnd)}\n${source.slice(snapshotStart, snapshotEnd)}}`)(oceanCommunityReading, nearestOceanAnimal);
