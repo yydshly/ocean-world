@@ -38,6 +38,9 @@ test('retained terrain checks the complete source once, isolates immutable plans
  assert.throws(()=>run('validate-group',{...payload,plans:changed,retainContext:true}),/Invalid/);
  assert.throws(()=>run('history',{...compact,plans:changed,rows}),/retained physical/);
  const exposed=structuredClone(rows);assert.equal(run('history',{...compact,rows:exposed}),true);
+  const changedPatches=structuredClone(rows),patched=changedPatches.find(row=>row.biodiversity?.patches.length);
+  assert.ok(patched);patched.biodiversity.patches[0].y+=.1;
+  assert.equal(run('history',{...compact,rows:changedPatches}),false,'retained canonical layout never certifies a changed saved patch');
  assert.ok(Object.isFrozen(exposed[0].livingRidgePlan.floorPatch.heights));
  assert.throws(()=>exposed[0].livingRidgePlan.floorPatch.heights[0]++,TypeError);
  assert.equal(run('history',{...compact,rows:structuredClone(rows)}),true);

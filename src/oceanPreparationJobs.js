@@ -99,12 +99,12 @@ export function createOceanPreparationJobs() {
       // Reuse exact bounded physical queries across birth/current checks, as
       // the native integrator does within one tick. Never cache record verdicts
       // or carry these maps into another history request.
-      ecology._stepBedMemo = new Map();ecology._stepSurfaceMemo = new Map();
+      ecology._historyTerrainCanonical=(row,compute)=>withContext.cacheBiodiversityPlan(row,ecology.livingNetworkEnabled,compute);
       return withContext(() => payload.rows.every(row => {
         if (!byId.has(row.id)) return false;
         // Terrain is sent once for the batch; all other saved fields are exact.
         row.livingRidgePlan = byId.get(row.id); ecology._supportCells.clear();
-        return ecology._validCoastalHistory(row, row.id, true, withContext.cacheReefHabitatOrder);
+        return ecology._withHistoryQueries(row,()=>ecology._validCoastalHistory(row, row.id, true, withContext.cacheReefHabitatOrder));
       }));
     }
     throw new TypeError('Unknown ocean preparation job.');

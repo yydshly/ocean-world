@@ -1,0 +1,211 @@
+{
+  "version": "history-query-candidate-20261013",
+  "branch": "fix/history-bottleneck-20261013",
+  "baseCommit": "5b8b606",
+  "published": false,
+  "releaseAcceptancePassed": false,
+  "sourceHashes": {
+    "src/livingRidgeGeology.js": "c31d38f964ec8f4c99f06f1dc2be68d2df88e623b378e7a7529e45613832b9c9",
+    "src/oceanBiodiversity.js": "581a5d63a5d234c7a19ac3103d1ec3ddba3443e9a34dc81b71aa3d44957a1b61",
+    "src/oceanEcology.js": "096aca47e9685950609c153a45f4290b29f68e19acfad683b18ca4dffc36a1e4",
+    "src/oceanPreparationJobs.js": "09696ebe4adcfd591a98c098093c0b2fdc706ad2204c65ba354de5530d160b4d",
+    "src/world/prepareShallowRenderer.js": "dac9b81bfd7b436b191ffd18ca7cdfaea78510286002a8e29b8eae20012b86f6",
+    "tests/director-shallow-history.test.mjs": "0bdc92f0498a4d8fcc7e2f582937acde8f40654236ae0190754065d758e51ebc",
+    "tests/history-context-transport.test.mjs": "95dad0c4ab8223957daffc1ad738404180c50657dd47a53907be57df723e483d",
+    "tests/shallow-render-preparation.test.mjs": "dcbfdbadcc79524c1f6a804e702a5ab1cc63578dbaa8db3acdb7ba6d08f362f7"
+  },
+  "builtJavaScriptHashes": {
+    "OceanApp-CUslcrBT.js": "817683333b47f72ab72ea3430c8bfec7662e5a1caf0e8d746e2520d63efc8e0f",
+    "oceanPreparation.worker-D9XhRfxE.js": "c653bdc6fd530c5a9e15c3408deadcbd3ff658ad91fef23fa44411d5ace1d088",
+    "oceanRuntime.worker-CkO16gdU.js": "3912efb06a50fe583b055ee5dbdd6bda4efb623cf2565837b21a837e47f681ea",
+    "ShallowSampleApp-mNsAw0ha.js": "a9005425427a02bd73abb360acff36dca37d8d637656ee06116d6a16e570b86a"
+  },
+  "nativeBatches": [
+    {
+      "log": "checks-initial.log",
+      "passed": 27,
+      "failed": 0
+    },
+    {
+      "log": "checks-final.log",
+      "passed": 34,
+      "failed": 0
+    },
+    {
+      "log": "checks-worker-final.log",
+      "passed": 23,
+      "failed": 0
+    },
+    {
+      "log": "checks-cache-corruption.log",
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "log": "checks-shallow-release.log",
+      "passed": 82,
+      "failed": 0
+    },
+    {
+      "log": "checks-hosting.log",
+      "passed": 8,
+      "failed": 0
+    }
+  ],
+  "uniquePassingTitles": 146,
+  "buildViteSeconds": 13.03,
+  "newAssetFiles": [],
+  "sample": {
+    "navigationToReadyMs": 8995.299999952316,
+    "startupMs": 8449.5,
+    "modelBuildMs": 6679.899999976158,
+    "sceneBuildStagesMs": {
+      "animals": 390.39999997615814,
+      "bed": 117.20000004768372,
+      "firstUpdate": 12.5,
+      "materials": 1.2999999523162842,
+      "model": 5592.5,
+      "plants": 79,
+      "rocks": 486.39999997615814
+    },
+    "assetUploadMs": 1162.899999976158,
+    "preparedRenderBatches": 328,
+    "run": {
+      "averageFps": 130.38666666666649,
+      "completed": true,
+      "elapsedWallSeconds": 75.00300000002383,
+      "height": 720,
+      "interruptions": [],
+      "lastModelSecond": 75,
+      "maxFrameMs": 83.20000000001164,
+      "p95FrameMs": 12.5,
+      "pixelRatio": 1.5,
+      "resolutionHistory": [
+        {
+          "scale": 1,
+          "time": 0
+        }
+      ],
+      "speed": 1,
+      "startedAt": 8995.399999976158,
+      "uninterrupted": true,
+      "width": 1280
+    },
+    "firstLoadWithinFiveSeconds": false,
+    "errorsAndWarnings": []
+  },
+  "director": {
+    "completedCount": 67,
+    "allCompleted": true,
+    "completeStepIds": [
+      "reef-valley-region",
+      "seagrass-meadow-region",
+      "coastal-life-belt",
+      "shallows-opening",
+      "shallows-life",
+      "shallows-discoveries",
+      "shallows-shoal-life-community",
+      "shallows-meadow-life-community",
+      "shallows-biodiversity-reef",
+      "shallows-benthic-community",
+      "shallows-shallow-scene-reef",
+      "shallows-shallow-scene-sand",
+      "shallows-shallow-scene-meadow",
+      "shallows-shallow-scene-slope",
+      "shallows-habitat-belt-reef",
+      "shallows-habitat-belt-meadow",
+      "shallows-seascape-transition",
+      "shallows-connected-seascape",
+      "shallows-shelf-rise",
+      "shallows-sand-basin",
+      "shallows-patch-reef",
+      "shallows-meadow-edge",
+      "shallows-ridge-gully",
+      "shallows-outer-reef",
+      "shallows-seagrass-meadow",
+      "shallows-sand-channel",
+      "shallows-reef-garden",
+      "legacy-opening",
+      "legacy-wide",
+      "legacy-skeleton",
+      "kelp-opening",
+      "kelp-kelp-scene-forest",
+      "kelp-kelp-scene-rockbed",
+      "kelp-kelp-scene-opening",
+      "kelp-kelp-scene-outer",
+      "kelp-understory-life",
+      "kelp-near-bottom-life",
+      "kelp-water-life",
+      "kelp-bottom-life",
+      "kelp-forest-belt",
+      "kelp-forest-opening",
+      "kelp-bed",
+      "kelp-midwater",
+      "kelp-surface",
+      "kelp-life",
+      "deep-opening",
+      "deep-deep-scene-plain",
+      "deep-deep-scene-slope",
+      "deep-deep-scene-outcrop",
+      "deep-deep-scene-outer",
+      "deep-midwater-life",
+      "deep-water-life",
+      "deep-hard-life",
+      "deep-bottom-life",
+      "deep-plain-belt",
+      "deep-outcrop-belt",
+      "deep-bed",
+      "deep-midwater",
+      "deep-surface",
+      "deep-life",
+      "tools-return",
+      "tools-catalog",
+      "tools-environment",
+      "tools-journal",
+      "tools-foodweb",
+      "tools-age",
+      "tools-capture"
+    ],
+    "nativeAdmissions": 64,
+    "absentStopFallbacks": [],
+    "rate": 4,
+    "chapterSeeks": 0,
+    "pauseAtCompleted": 58,
+    "actualSecondsIncludingPause": 1525.536,
+    "plannedMainObservationLimitSeconds": 1200,
+    "boundaryNote": "The progress report used an earlier snapshot; pause happened at 58, beyond the planned twenty-minute observation bound. The last nine chapters were then finished in this same playback, without code changes or another run. Do not claim twenty-minute completion or uninterrupted full playback.",
+    "observedMaxWaitSeconds": 13,
+    "observedHistoryJobs": 181,
+    "observedHistoryRoundTripMs": {
+      "minimum": 208.09999990463257,
+      "median": 732.6000000238419,
+      "maximum": 2550.5
+    },
+    "observedWindowTimingMaxMs": {
+      "totalMs": 22647.69999992847,
+      "historicalValidationMs": 6048.799999952316,
+      "canonicalValidationMs": 9132.5,
+      "queueAndBarrierMs": 2680.100000023842,
+      "ownerValidationAndRestoreMs": 2925.9999998807907
+    },
+    "unpausedMotionLongFrameObservations": 248,
+    "maxUnpausedMotionLongFrameMs": 6512.399999999907,
+    "longFrameQualification": "Telemetry paused=false, motionKind present and waitingForRegions=false; includes transitions/publication, not proof of ordinary walking-only stalls.",
+    "errors": [],
+    "errorsAndWarnings": [],
+    "viewport": {
+      "height": 720,
+      "pixelRatio": 1.5,
+      "width": 1280
+    }
+  },
+  "limitations": [
+    "One local existing-cache playback; not public cold-start or controlled before/after benchmark.",
+    "Director waiting sampled every two or four seconds with gaps; observed maximum13 does not prove absence of17-second waits at all times.",
+    "Full director playback includes one pause; first three chapters completed without a seek.",
+    "Large early complete diagnostic captures were replaced with compact later summaries; observer overhead is not ruled out.",
+    "Life expedition did not receive a new full playback in this phase."
+  ],
+  "publishedMainVerified": "4749548bfa2216879315fb7b84ad6479cf3a940e",
+  "stopDecision": "Freeze this candidate locally; sample startup and overall flow gates failed, so do not deploy or append repairs."
+}

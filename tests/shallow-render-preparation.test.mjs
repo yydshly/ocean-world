@@ -12,9 +12,11 @@ function statefulRenderer(operations){
 
 test('preparation includes hidden LODs and off-camera animals then restores their exact flags',async()=>{
   const scene=new THREE.Scene(),near=new THREE.Mesh(),far=new THREE.Mesh();far.visible=false;far.frustumCulled=false;scene.add(near,far);
-  const events=[],renderer=statefulRenderer({async compileAsync(){events.push('compile');assert.ok(near.visible&&far.visible);},render(){events.push('upload');assert.equal(near.frustumCulled,false);assert.equal(far.frustumCulled,false);assert.deepEqual(renderer.state.viewport.toArray(),[0,0,1,1]);assert.equal(renderer.state.test,true);}});
+  near.geometry.setDrawRange(3,42);far.geometry.setDrawRange(0,Infinity);
+  const events=[],renderer=statefulRenderer({async compileAsync(){events.push('compile');assert.ok(near.visible&&far.visible);},render(){events.push('upload');assert.equal(near.frustumCulled,false);assert.equal(far.frustumCulled,false);assert.deepEqual(renderer.state.viewport.toArray(),[0,0,1,1]);assert.equal(renderer.state.test,true);assert.deepEqual(near.geometry.drawRange,{start:0,count:0});assert.deepEqual(far.geometry.drawRange,{start:0,count:0});}});
   const result=await prepareShallowRenderer(renderer,scene,new THREE.Camera());
   assert.deepEqual(events,['compile','upload']);assert.equal(result.batches,2);
+  assert.deepEqual(near.geometry.drawRange,{start:3,count:42});assert.deepEqual(far.geometry.drawRange,{start:0,count:Infinity});assert.equal(result.uploadTriangles,0);
   assert.equal(near.visible,true);assert.equal(near.frustumCulled,true);assert.equal(far.visible,false);assert.equal(far.frustumCulled,false);
   assert.deepEqual(renderer.state.viewport.toArray(),[3,4,1280,720]);assert.deepEqual(renderer.state.scissor.toArray(),[5,6,100,200]);assert.equal(renderer.state.test,false);
   for(const o of [near,far]){o.geometry.dispose();o.material.dispose();}
@@ -31,9 +33,10 @@ test('failed or cancelled preparation never leaves hidden meshes enabled or rend
 });
 
 test('an upload exception restores real canvas viewport, scissor and mesh flags',async()=>{
-  const scene=new THREE.Scene(),mesh=new THREE.Mesh();mesh.visible=false;scene.add(mesh);
+  const scene=new THREE.Scene(),mesh=new THREE.Mesh();mesh.visible=false;mesh.geometry.setDrawRange(9,27);scene.add(mesh);
   const renderer=statefulRenderer({async compileAsync(){},render(){throw Error('upload failed');}});
   await assert.rejects(prepareShallowRenderer(renderer,scene,new THREE.Camera()),/upload failed/);
   assert.deepEqual(renderer.state.viewport.toArray(),[3,4,1280,720]);assert.deepEqual(renderer.state.scissor.toArray(),[5,6,100,200]);assert.equal(renderer.state.test,false);assert.equal(mesh.visible,false);
+  assert.deepEqual(mesh.geometry.drawRange,{start:9,count:27});
   mesh.geometry.dispose();mesh.material.dispose();
 });

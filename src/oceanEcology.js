@@ -313,10 +313,27 @@ export class OceanEcology {
     return true;
   }
 
+  _withHistoryQueries(row, operation) {
+    // One synchronous owner check has one fixed physical context. Reuse only
+    // exact queries and its terrain-derived empty-population layout across
+    // the old biodiversity/meadow/shoal composite checks. Every mutable record
+    // condition and actual body/support check still runs. Nothing survives it.
+    const previousBed=this._stepBedMemo,previousSurface=this._stepSurfaceMemo,previousCanonical=this._historyBiodiversityCanonical;
+    this._stepBedMemo=new Map();this._stepSurfaceMemo=new Map();
+    let canonical;
+    this._historyBiodiversityCanonical=(owner,compute)=>{
+      if(owner!==row)return compute();
+      return canonical??=(this._historyTerrainCanonical ? this._historyTerrainCanonical(owner,compute) : compute());
+    };
+    try{return operation();}finally{
+      this._stepBedMemo=previousBed;this._stepSurfaceMemo=previousSurface;this._historyBiodiversityCanonical=previousCanonical;
+    }
+  }
+
   *_coastalHistoryChecks(row, id, sharedClassValidation = false, habitatOrder = null) {
     const point = value => value && ['x', 'y', 'z'].every(key => Number.isFinite(value[key]));
     const surface = (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false);
-    const options = { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT, habitatOrder };
+    const options = { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT, habitatOrder, canonicalPlan: this._historyBiodiversityCanonical };
     yield () => !(!row || row.version !== VERSION || row.id !== id || row.id !== `${row.cx},${row.cz}` ||
         !Number.isSafeInteger(row.cx) || !Number.isSafeInteger(row.cz) || !Array.isArray(row.agents) ||
         this._residentCount(row) > OCEAN_REGION_AGENT_LIMIT || !Number.isSafeInteger(row.ticks) || row.ticks < 0 ||
@@ -420,7 +437,7 @@ export class OceanEcology {
         !validateOpenWaterLifeRecord(row, this.generator, { surface, capacity: OCEAN_REGION_AGENT_LIMIT }) ||
         !validateOceanMeadowLifeRecord(row, this.generator, { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) return false;
     if (row.biodiversityVersion !== undefined && !validateOceanBiodiversityRecord(row, this.generator,
-      { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) return false;
+      { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT, canonicalPlan: this._historyBiodiversityCanonical })) return false;
     if (row.benthicLifeVersion !== undefined && !validateOceanBenthicLifeRecord(row, this.generator,
       { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) return false;
     if (row.turtleCommunityVersion !== undefined && !validateOceanTurtleRecord(row, this.generator, { surface })) return false;
@@ -458,7 +475,7 @@ export class OceanEcology {
         !validateOpenWaterLifeRecord(row, this.generator, { surface, capacity: OCEAN_REGION_AGENT_LIMIT }) ||
         !validateOceanShoalLifeRecord(row, this.generator, { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) return false;
     if (row.biodiversityVersion !== undefined && !validateOceanBiodiversityRecord(row, this.generator,
-      { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) return false;
+      { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT, canonicalPlan: this._historyBiodiversityCanonical })) return false;
     if (row.benthicLifeVersion !== undefined && !validateOceanBenthicLifeRecord(row, this.generator,
       { surface, bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) return false;
     if (row.meadowLifeVersion !== undefined && !validateOceanMeadowLifeRecord(row, this.generator,
@@ -1620,15 +1637,25 @@ export class OceanEcology {
       // Validate them on their original private terrain, without admitting it.
       const publishedSupports = this._supportCells;
       this._supportCells = new Map(); this._runtimePoseCache = null;
+      const previousCanonical=this._historyTerrainCanonical;
       try {
-        this.generator.withShallowSeascapePlans(shallow.map(([, row]) => row.livingRidgePlan),
-          () => this._validateSupportHistoryRows(shallow));
-      } finally { this._supportCells = publishedSupports; this._runtimePoseCache = null; }
+        const context=this.generator.prepareShallowSeascapeContext(shallow.map(([, row])=>row.livingRidgePlan));
+        if(!this._sceneSupports.size&&!this._habitatSupports.size&&!this._macroSupports.size)
+          this._historyTerrainCanonical=(row,compute)=>context.cacheBiodiversityPlan(row,this.livingNetworkEnabled,compute);
+        else this._historyTerrainCanonical=null;
+        context(()=>this._validateSupportHistoryRows(shallow));
+      } finally { this._supportCells = publishedSupports; this._runtimePoseCache = null;this._historyTerrainCanonical=previousCanonical; }
     }
     return this._validateSupportHistoryRows(validationRows.filter(([, row]) => row?.shallowSeascapeVersion !== 1));
   }
 
   _validateSupportHistoryRows(validationRows) {
+    for(const [id,row]of validationRows)this._withHistoryQueries(row,()=>this._validateSupportHistoryRow(id,row));
+    return true;
+  }
+
+  _validateSupportHistoryRow(id, saved) {
+    const validationRows=[[id,saved]];
     for (const [id, saved] of validationRows) if (reefResidentsMarked(saved) && !validateReefResidentsRecord(saved, this.generator, {
       surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
       bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) {
@@ -1640,7 +1667,7 @@ export class OceanEcology {
     for (const [id, saved] of validationRows) if (saved && (['biodiversityVersion', 'biodiversityInitializedAtSec', 'biodiversity'].some(key => Object.hasOwn(saved, key)) || saved.agents?.some(isOceanBiodiversityAgent))) {
       if (!validateOceanBiodiversityRecord(saved, this.generator, {
         surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false),
-        bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })) {
+        bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT, canonicalPlan: this._historyBiodiversityCanonical })) {
         this._center = null; throw new Error(`Invalid saved biodiversity owner ${id}; historical community was not regenerated.`);
       }
   }
@@ -1661,9 +1688,13 @@ export class OceanEcology {
   }
 
   _validateActiveHistory(saved, id, valid) {
+    return this._withHistoryQueries(saved,()=>this._validateActiveHistoryRow(saved,id,valid));
+  }
+
+  _validateActiveHistoryRow(saved, id, valid) {
     const hasBiodiversityRecord = saved && (['biodiversityVersion', 'biodiversityInitializedAtSec', 'biodiversity'].some(key => Object.hasOwn(saved, key)) || saved.agents?.some(isOceanBiodiversityAgent));
     if (hasBiodiversityRecord && (!valid || !validateOceanBiodiversityRecord(saved, this.generator, {
-      surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false), bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT })))
+      surface: (x, z, coral) => this._surface(x, z, coral, true, true, true, true, true, false), bed: (x, z) => this._bed(x, z), capacity: OCEAN_REGION_AGENT_LIMIT, canonicalPlan: this._historyBiodiversityCanonical })))
       throw new Error('Invalid saved biodiversity community; original animals and scenery were not regenerated.');
     const hasBenthicRecord = saved && (['benthicLifeVersion', 'benthicLifeInitializedAtSec', 'benthicLife'].some(key => Object.hasOwn(saved, key)) || saved.agents?.some(agent => isOceanBenthicLifeAgent(agent) || (agent && ['benthicLifeIndividualVersion', 'benthicLifeSiteId', 'benthicLifeHostId', 'benthicLifeMode'].some(key => Object.hasOwn(agent, key)))));
     if (hasBenthicRecord && (!valid || !validateOceanBenthicLifeRecord(saved, this.generator, {

@@ -337,7 +337,7 @@ export function tickOceanBiodiversityAgent(region, generator, agent, dt, { rando
   if (region.events.length > 32) region.events.splice(0, region.events.length - 32);
 }
 
-export function validateOceanBiodiversityRecord(region, generator, { surface, bed, capacity = 20 } = {}) {
+export function validateOceanBiodiversityRecord(region, generator, { surface, bed, capacity = 20, canonicalPlan } = {}) {
   const descriptor = region?.biodiversity, agents = region?.agents?.filter(isOceanBiodiversityAgent) ?? [];
   if (generator?.profile !== OCEAN_BIODIVERSITY_PROFILE || !region || !Number.isSafeInteger(region.cx) || !Number.isSafeInteger(region.cz) ||
       region.id !== `${region.cx},${region.cz}` || !nonnegative(region.timeSec) || !region.basicNetwork ||
@@ -350,7 +350,8 @@ export function validateOceanBiodiversityRecord(region, generator, { surface, be
       !Number.isSafeInteger(descriptor.counters?.feedings) || descriptor.counters.feedings < 0 || !nonnegative(descriptor.counters?.consumedUnits) ||
       !Array.isArray(descriptor.patches) || descriptor.patches.length > OCEAN_BIODIVERSITY_PATCH_LIMIT ||
       new Set(descriptor.patches.map(p => p.id)).size !== descriptor.patches.length || typeof surface !== 'function' || typeof bed !== 'function') return false;
-  const canonical = createOceanBiodiversityPlan(generator, { id: region.id, cx: region.cx, cz: region.cz, agents: [] }, { surface, bed, availableSlots: 0 });
+  const computeCanonical = () => createOceanBiodiversityPlan(generator, { id: region.id, cx: region.cx, cz: region.cz, agents: [] }, { surface, bed, availableSlots: 0 });
+  const canonical = canonicalPlan ? canonicalPlan(region, computeCanonical) : computeCanonical();
   if (JSON.stringify(descriptor.patches) !== JSON.stringify(canonical.patches) || descriptor.communityType !== canonical.communityType || descriptor.preference !== canonical.preference ||
       Math.abs(descriptor.initialInputUnits - descriptor.addedIds.length * .004) > 1e-10) return false;
   const chunk = generator.chunk(region.cx, region.cz), hosts = new Map(chunk.elements.filter(e => e.kind === 'rock').map(e => [e.id, e]));

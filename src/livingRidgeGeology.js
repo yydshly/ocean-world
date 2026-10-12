@@ -269,6 +269,17 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
     };
     Object.defineProperty(context, 'immutablePlans', { value: input });
     context.cacheReefHabitatOrder = createReefHabitatValidationCache();
+    const biodiversityPlans=new Map();
+    context.cacheBiodiversityPlan=(row,networkEnabled,compute)=>{
+      if(!preparedPlans.has(row.id)||row.id!==`${row.cx},${row.cz}`)return compute();
+      const key=JSON.stringify([row.id,Boolean(networkEnabled)]);
+      if(biodiversityPlans.has(key)){const value=biodiversityPlans.get(key);biodiversityPlans.delete(key);biodiversityPlans.set(key,value);return value;}
+      // Empty-population canonical layout only. No saved descriptor, animal,
+      // clock, food stock or accepted/rejected history result is retained.
+      const value=freeze(structuredClone(compute()));
+      if(biodiversityPlans.size>=12)biodiversityPlans.delete(biodiversityPlans.keys().next().value);
+      biodiversityPlans.set(key,value);return value;
+    };
     if (preparedContexts.size >= REEF_VALLEY_REGION_LAYOUT.maximumCachedGroups) preparedContexts.delete(preparedContexts.keys().next().value);
     preparedContexts.set(key, context);
     return context;
@@ -448,6 +459,15 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
       for (const [id, plan] of next) plans.set(id, plan);
       for (const id of nextReady) ready.add(id);
       revision++; return true;
+    },
+    prepareShallowSeascapeContext(input) {
+      // The complete source, including every vertex and neighbouring owner,
+      // must match an already validated immutable context before reusing it.
+      if(!Array.isArray(input)||input.length!==12)throw new TypeError('A shallow seascape context requires twelve owners.');
+      const key=stamp(input),existing=preparedContexts.get(key);
+      if(existing){preparedContexts.delete(key);preparedContexts.set(key,existing);return existing;}
+      facade.withShallowSeascapePlans(input,()=>true);
+      return preparedContext(freeze(structuredClone(input)));
     },
     withShallowSeascapePlans(input, fn) {
       if (!Array.isArray(input) || input.length !== 12 || typeof fn !== 'function' || fn.constructor?.name === 'AsyncFunction')
