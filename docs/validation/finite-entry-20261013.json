@@ -1,0 +1,171 @@
+{
+  "version": "finite-entry-candidate-20261013",
+  "baseCommit": "c5e5720",
+  "branch": "fix/finite-entry-preparation-20261012",
+  "published": false,
+  "sourceHashes": {
+    "src/oceanBackgroundRuntime.js": "c48c3572928c584c7a7e77af6b3f3390be1ed36608d660a8cc41b26eaea20a9b",
+    "src/oceanEcology.js": "819c827f4940eaafb277fffbc782947c943e495ddc2e3ed0233b8b864d69463e",
+    "src/oceanPreparationJobs.js": "ea5372efeda5e572c003358938f57f54b92c65c1b40bf73d6e839c4ab514476e",
+    "src/world/prepareShallowRenderer.js": "cc842e60b388e2ff45d7f7701c50c738fb044f2bdce4097d716575bdf9eb948a",
+    "tests/ocean-background-runtime.test.mjs": "a188cba94d839f258f7c3b14936eff65a37a99f9ef24678a3b0129104a924eba",
+    "tests/ocean-streaming-stall.test.mjs": "197aa066f6caa135646a6a284dd643d335a836d579f574ca7100c47a08f1cefd",
+    "tests/reef-habitat-preparation.test.mjs": "a425095e2117bf56884988a89e6caa4eb5aab73f37ce91018eaae8213fa77856",
+    "tests/shallow-render-preparation.test.mjs": "b2218026b8c56f4b53777b976f178a53fa63b0d5d281b8c85925e0f90bb9a5dc"
+  },
+  "nativeBatches": [
+    {
+      "log": "checks.log",
+      "passed": 29,
+      "failed": 1,
+      "failedTitles": [
+        "all four source families retain exact attributes, indices and metadata after other habitats transform and dispose their copies"
+      ]
+    },
+    {
+      "log": "sample-checks.log",
+      "passed": 10,
+      "failed": 7,
+      "failedTitles": [
+        "distant coral detail reduces geometry while exact sand tiles keep shared physical support",
+        "sample hard reef uses its actual eroded triangles; individual fish waves remain inside reserved motion clearance",
+        "original-sized dead scan installs within existing colony clearance, with actual substrate clearance and safe cancellation",
+        "whole coral replacements stay inside the physical colony envelopes and share batched geometry",
+        "nearby communities pass broadside at natural scale; observation motion stays continuous",
+        "full 75 model seconds retain identities and body clearance; shoals face their individual movement and all mobile guilds move",
+        "reef passage includes attached and crawling residents on clear rock, with separate fish patrols"
+      ]
+    },
+    {
+      "log": "sample-recheck.log",
+      "passed": 21,
+      "failed": 0,
+      "failedTitles": []
+    },
+    {
+      "log": "final-sample-checks.log",
+      "passed": 20,
+      "failed": 0,
+      "failedTitles": []
+    },
+    {
+      "log": "final-history-checks.log",
+      "passed": 20,
+      "failed": 0,
+      "failedTitles": []
+    },
+    {
+      "log": "backlog-checks.log",
+      "passed": 2,
+      "failed": 0,
+      "failedTitles": []
+    }
+  ],
+  "uniqueKeptCheckTitles": 46,
+  "trackedAssetChanges": [],
+  "bounds": {
+    "activeOwners": 9,
+    "publicOwners": 25,
+    "privateOwners": 97,
+    "immutableContexts": 6,
+    "queuedInputFrames": 2048
+  },
+  "originalFramesMerged": false,
+  "mutableVerdictCache": false,
+  "sourceCacheExperimentWithdrawn": true,
+  "gate": {
+    "passed": false,
+    "sampleComplete": true,
+    "startupWithin5s": false,
+    "directorFirstThreeComplete": false,
+    "directorLongWaitObserved": 17
+  },
+  "build": {
+    "passed": true,
+    "viteSeconds": 12.66,
+    "log": "release-build.log",
+    "fullCloudSuiteRun": false
+  },
+  "sample": {
+    "navigationToReadyMs": 5840.5,
+    "startupMs": 5209.600000023842,
+    "uploadMs": 1317.3000000715256,
+    "run": {
+      "averageFps": 122.48680070396328,
+      "completed": true,
+      "elapsedWallSeconds": 75.0055,
+      "height": 720,
+      "interruptions": [],
+      "lastModelSecond": 75,
+      "maxFrameMs": 74.89999999999418,
+      "p95FrameMs": 12.5,
+      "pixelRatio": 1.0000000298023224,
+      "resolutionHistory": [
+        {
+          "scale": 1,
+          "time": 0
+        }
+      ],
+      "speed": 1,
+      "startedAt": 5840.5,
+      "uninterrupted": true,
+      "width": 1280
+    },
+    "hardware": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "errorsAndWarnings": []
+  },
+  "director": {
+    "playbackRate": 4,
+    "viewport": {
+      "height": 871,
+      "pixelRatio": 1.5,
+      "width": 869
+    },
+    "sampledPeakWaitSec": 17,
+    "sampledPeakPreparation": {
+      "birthEcologyMs": 0,
+      "canonicalValidationMs": 3699.400000095367,
+      "generationMs": 0,
+      "historicalValidationMs": 11512.600000023842,
+      "otherMs": 1332,
+      "ownerValidationAndRestoreMs": 322.10000002384186,
+      "persistenceMs": 0,
+      "prefetchMs": 532.3999998569489,
+      "preparation": {
+        "cpuMs": 0,
+        "maxUnitMs": 0,
+        "units": 0,
+        "yields": 3
+      },
+      "publicationMs": 118.20000004768372,
+      "queueAndBarrierMs": 1832.100000023842,
+      "readCalls": 6,
+      "restoreMs": 0,
+      "totalMs": 19348.80000007153
+    },
+    "lastElapsedSec": 691.828400000031,
+    "durationSec": 800,
+    "completeChapters": 0,
+    "continuousFirstThreePassed": false,
+    "playingLongFrameCount": 13,
+    "playingMaxFrameMs": 512.6000000000058,
+    "firstCapturedAt": "2026-10-12T16:01:08.310Z",
+    "lastCapturedAt": "2026-10-12T16:08:41.173Z",
+    "errors": [],
+    "errorsAndWarnings": []
+  },
+  "limitations": [
+    "Director attempt stopped on confirmed failure before its ten-minute observation limit; no complete first chapter, first three or 67-chapter claim.",
+    "Sample final 1280x720 pixelRatio about 1 differs from prior pixelRatio1.5; default-viewport playback and withdrawn experiment retained.",
+    "Existing local asset caches and evolving real history; not controlled A/B or public cold-start result.",
+    "Life expedition did not receive a new full browser run in this phase."
+  ],
+  "publishedMainVerified": "4749548bfa2216879315fb7b84ad6479cf3a940e",
+  "stopDecision": "Freeze local candidate; do not deploy or automatically repair again.",
+  "builtJavaScriptHashes": {
+    "OceanApp-DZ-F5MQa.js": "27c4d44375237be12f119c20c2678331ddf84b63ed0c792ae35a96b0987800c0",
+    "oceanPreparation.worker-mDQfNO9h.js": "76b6c0a650b33044f389015c3e6f0247d792b5e82aa392b954eb0cf773d736a0",
+    "oceanRuntime.worker-C83RAE8S.js": "17785babce57051f8e362163ad8842acf61bf9641a9024d4228f4512dbc00e06",
+    "ShallowSampleApp-bsIejQod.js": "4f15399517543eb8c75b7844eed36c77c1fb3b2d13ef1c3eaf93e1f98f14e2d4"
+  }
+}

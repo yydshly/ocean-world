@@ -10,6 +10,7 @@ import {withWholeSeabedGenerator} from '../src/wholeSeabedComposition.js';
 import {createLivingRidgeGenerator} from '../src/livingRidgeGeology.js';
 import {OceanEcology} from '../src/oceanEcology.js';
 import {OceanPreparation} from '../src/oceanPreparation.js';
+import {OceanBackgroundRuntime} from '../src/oceanBackgroundRuntime.js';
 import {nativePreparation} from './helpers/ocean-preparation-node.mjs';
 import {livingShallowsSeed} from '../src/livingShallows.js';
 import {prepareReefResidentHabitat,isReefResidentAgent} from '../src/oceanReefResidents.js';
@@ -49,6 +50,34 @@ async function setup(){
  const rows=structuredClone(f.rows);for(const row of rows)ecology._active.set(row.id,row);
  return {...f,rows,preparation,g,context,ecology};
 }
+
+test('a drained runtime barrier validates every active and offline owner once in the real worker without changing complete records',async()=>{
+ const f=await setup();let histories=0;
+ const runtime=new OceanBackgroundRuntime(f.ecology,{preparation:{run(){assert.fail('no simulated frames in this fixture');},dispose(){}}});f.ecology.backgroundRuntime=runtime;
+ try{
+  const before=structuredClone(f.rows);for(const row of f.rows.slice(8))f.ecology._active.delete(row.id);
+  const context=Object.assign(check=>f.context(check),{
+   validateHistory:async(rows,s)=>{histories++;assert.equal(rows.length,12);assert.equal(runtime.barriers>0,true);return f.context.validateHistory(rows,s);},
+   prepareResidentHabitats:()=>assert.fail('a full worker validation already prepares exact habitat ranking')});
+  assert.equal(await runtime.withBarrier(()=>f.ecology._validatePreparedHistory(f.rows,context,new OceanPreparation(),()=>true)),true);
+  assert.equal(histories,1);assert.deepEqual(f.rows,before);
+  const corrupt=structuredClone(f.rows);corrupt[0].resources.detritus=-1;
+  assert.equal(await runtime.withBarrier(()=>f.ecology._validatePreparedHistory(corrupt,context,new OceanPreparation(),()=>true)),false);
+  assert.equal(histories,2);assert.equal(f.g.registryStats().size,0);
+ }finally{f.preparation.dispose();}
+});
+
+test('an active mutation after a worker snapshot still undergoes the original current physical checks',async()=>{
+ const f=await setup();f.ecology.backgroundRuntime={barriers:1};let mutated=false;
+ try{
+  const context=Object.assign(check=>f.context(check),{cacheReefHabitatOrder:f.context.cacheReefHabitatOrder,
+   prepareResidentHabitats:(rows,s)=>f.context.prepareResidentHabitats(rows,s),
+   validateHistory:async(rows,s)=>{const valid=await f.context.validateHistory(rows,s);assert.equal(valid,true);
+    if(!mutated){mutated=true;rows.find(row=>row.agents.some(isReefResidentAgent)).agents.find(isReefResidentAgent).position.y=-999;}return valid;}});
+  assert.equal(await f.ecology._validatePreparedHistory(f.rows,context,new OceanPreparation(),()=>true),false);
+  assert.equal(f.g.registryStats().size,0);
+ }finally{f.preparation.dispose();}
+});
 test('actual full native history keeps exact ranking and all records while background preparation removes fixed geometry work from live checks',async()=>{
  const f=await setup(),before=structuredClone(f.rows),timer=setInterval(()=>beats++,2);let beats=0;
  try{

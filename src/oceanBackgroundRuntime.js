@@ -21,7 +21,10 @@ export class OceanBackgroundRuntime {
     if (this.pending || !this.frames.length || this.disposed || this.error) return;
     const ecology = this.ecology;
     if (!this.barriers && ecology._accumulator + this.frames.reduce((sum, frame) => sum + frame.deltaSec, 0) < .1 - 1e-10) return;
-    const frames = this.frames.splice(0, Math.min(16, this.frames.length));
+    // A barrier stops new input. Drain its bounded backlog in one message,
+    // preserving every frame and environment in order instead of cloning the
+    // same complete population once per sixteen old inputs. Live jobs stay small.
+    const frames = this.frames.splice(0, this.barriers ? this.frames.length : Math.min(16, this.frames.length));
     const generation = ecology._generation;
     const generator = ecology.generator, topology = generator.ridgeRevision;
     const active = [...ecology._active];

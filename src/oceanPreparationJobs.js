@@ -95,6 +95,11 @@ export function createOceanPreparationJobs() {
       if (!Array.isArray(payload.rows) || payload.rows.length > 12) throw new TypeError('Invalid background history batch.');
       const byId = new Map(plans.map(p => [p.id, p]));
       const ecology = new OceanEcology(payload.ecologySeed, generator, { store: {} });
+      // This request has one immutable terrain context and no simulated ticks.
+      // Reuse exact bounded physical queries across birth/current checks, as
+      // the native integrator does within one tick. Never cache record verdicts
+      // or carry these maps into another history request.
+      ecology._stepBedMemo = new Map();ecology._stepSurfaceMemo = new Map();
       return withContext(() => payload.rows.every(row => {
         if (!byId.has(row.id)) return false;
         // Terrain is sent once for the batch; all other saved fields are exact.

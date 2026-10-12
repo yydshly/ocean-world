@@ -356,6 +356,16 @@ export class OceanEcology {
   async _validatePreparedHistory(rows, withContext, preparation, current, shared = true) {
     if (!current()) return false;
     const nativeSupports = () => !this._sceneSupports.size && !this._habitatSupports.size && !this._macroSupports.size;
+    // The runtime barrier has drained every original frame and freezes active
+    // rows. Validate the entire transaction once in the native terrain worker,
+    // including active owners. Never retain a mutable history verdict. A UI or
+    // adapter mutation during the reply falls back to the original live checks.
+    if (shared && this.backgroundRuntime?.barriers > 0 && nativeSupports() && withContext.validateHistory) {
+      const snapshots = rows.map(row => JSON.stringify(row));
+      const valid = await withContext.validateHistory(rows, this.seed);
+      if (!current()) return false;
+      if (nativeSupports() && rows.every((row, i) => JSON.stringify(row) === snapshots[i])) return valid === true;
+    }
     const habitatOrder = withContext.cacheReefHabitatOrder ? ((row, epoch, compute) =>
       nativeSupports() ? withContext.cacheReefHabitatOrder(row, epoch, compute) : compute()) : null;
     if (nativeSupports() && withContext.prepareResidentHabitats) {
@@ -1458,8 +1468,13 @@ export class OceanEcology {
     return true;
   }
 
-  _enqueue(operation) {
-    const result = this._queue.then(() => this.backgroundRuntime ? this.backgroundRuntime.withBarrier(operation) : operation());
+  _enqueue(operation, current = null) {
+    const result = this._queue.then(() => {
+      // Superseded exploration requests must not drain the runtime again.
+      // Saves/reset/disposal omit this guard and retain the full barrier.
+      if (current && !current()) return;
+      return this.backgroundRuntime ? this.backgroundRuntime.withBarrier(operation) : operation();
+    });
     // Storage failure is recorded and cannot poison subsequent transitions.
     this._queue = result.catch(error => { this._storageError = String(error?.message || error); });
     return result;
@@ -1718,9 +1733,9 @@ export class OceanEcology {
     } };
     const measureAsync = async (key, fn) => { const start = performance.now(); if (key === 'prefetchMs') timing.readCalls++; try { return await fn(); } finally { timing[key] += performance.now() - start; } };
     const preparation = new OceanPreparation();
+    const current = () => !this._disposed && generation === this._generation && revision === this._revision;
     this._pending = this._enqueue(async () => {
       timing.queueAndBarrierMs = performance.now() - requestedAt;
-      const current = () => !this._disposed && generation === this._generation && revision === this._revision;
       if (!current()) return;
       const desired = new Map();
       for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) desired.set(`${cx + dx},${cz + dz}`, [cx + dx, cz + dz]);
@@ -2456,7 +2471,7 @@ export class OceanEcology {
           throw error;
         }
       }
-    }).catch(error => {
+    }, current).catch(error => {
       if (generation !== this._generation || revision !== this._revision || this._disposed) return;
       this._center = null; throw error;
     }).finally(() => {

@@ -56,7 +56,7 @@ test('background integration preserves native seed55 complete records, fractiona
   const run = createOceanRuntimeJobs(), packets = [];
   const preparation = { async run(kind, payload) {
     await new Promise(resolve => setTimeout(resolve, 0));
-    packets.push({ kind, plans: Object.hasOwn(payload, 'plans'), bytes: JSON.stringify(payload).length, rowPlans: payload.rows.some(row => Object.hasOwn(row, 'livingRidgePlan')) });
+    packets.push({ kind, frames:payload.frames.length, plans: Object.hasOwn(payload, 'plans'), bytes: JSON.stringify(payload).length, rowPlans: payload.rows.some(row => Object.hasOwn(row, 'livingRidgePlan')) });
     return structuredClone(run(structuredClone(payload)));
   }, dispose() {} };
   background.backgroundRuntime = new OceanBackgroundRuntime(background, { preparation });
@@ -76,6 +76,14 @@ test('background integration preserves native seed55 complete records, fractiona
     assert.equal(packets[0].plans, true);
     assert.ok(packets.slice(1).every(packet => !packet.plans && !packet.rowPlans));
     assert.ok(packets.at(-1).bytes < packets[0].bytes * .5, 'unchanged terrain is not repeatedly copied into ecological ticks');
+    const packetStart=packets.length;
+    for(let i=0;i<207;i++){
+      const delta=.004+(i%3)*.001,environment={hour:10+i*.002,currentMps:.1+(i%4)*.01,turbidity:.2,foodSupply:.7+(i%5)*.01};
+      native.step(delta,environment);background.step(delta,environment);
+    }
+    await background.backgroundRuntime.flush();
+    assert.ok(packets.slice(packetStart).some(p=>p.frames>16),'barrier drains the exact original backlog in one message');
+    equal([...background._active],[...native._active]);assert.equal(background._activeTime,native._activeTime);assert.equal(background._accumulator,native._accumulator);
     const env = { hour: 12, currentMps: .15, turbidity: .25, foodSupply: 1 };
     native.step(.1, env); background.step(.1, env);
     // Requesting a new owner window bumps the revision before its queued load.

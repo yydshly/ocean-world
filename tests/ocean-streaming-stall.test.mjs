@@ -21,6 +21,15 @@ function extract(source, name) {
 const ecologySource = readFileSync(new URL('../src/oceanEcology.js', import.meta.url), 'utf8');
 const Queue = new Function('STEP', 'clone', `return class {${['step', 'checkpoint', '_enqueue', '_storage', '_saveRecords'].map(name => extract(ecologySource, name)).join('\n')}}`)(.5, clone);
 
+test('obsolete queued exploration skips draining frames while the next current request and explicit save retain barriers',async()=>{
+ const q=new Queue(),gate=deferred(),events=[];q._queue=gate.promise;let revision=1;
+ q.backgroundRuntime={async withBarrier(operation){events.push('barrier');return operation();}};
+ const old=q._enqueue(()=>assert.fail('obsolete window'),()=>revision===1);revision=2;
+ const next=q._enqueue(()=>events.push('current'),()=>revision===2);
+ const save=q._enqueue(()=>events.push('save'));gate.resolve();await Promise.all([old,next,save]);
+ assert.deepEqual(events,['barrier','current','barrier','save']);
+});
+
 test('a stalled save queues only one automatic checkpoint and an explicit pause save still captures the latest full records', async () => {
   const gate = deferred(), disk = new Map(), commits = [], q = new Queue();
   const original = { id: '0,0', timeSec: 0, agents: [{ id: 'old-death', alive: false }], resources: { plankton: .4 }, ledger: { ingested: .2 } };

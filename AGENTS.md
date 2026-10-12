@@ -1,3 +1,7 @@
+<!-- finite-entry-current -->
+2026-10-13 本轮有限收尾固定 finite-entry-candidate-20261013，基于c5e5720，仅探索过期队列、屏障内完整Worker历史校验、请求内精确查询复用、原始帧积压批传和样板全部批次一像素预热；无场景/资产/物种/模拟规则扩展，无历史重生或放宽检查。源网格缓存无明确收益已撤，所有失败记录保留。46不同定向标题有通过记录，最终样板20/20、历史20/20、207原始帧积压2/2（重叠，非全量云端）；最终build Vite12.66s过。最终样板1×75.0055秒完整/无中断/scale1，1280×720/实际DPR约1，122.49FPS/p95 12.5ms/max74.9ms/导航5.8405s；不能与旧DPR1.5横比。导演4×从头无跳章到691.83/800秒暂停，0/67，实际869×871/DPR1.5，仍抽样17秒等待/准备最高19.35秒，13个未暂停未标记等待运动长帧、最长512.6ms；未过前三章或完整67验收。默认尺寸样板6.40s与已撤实验9.21s全部留存，不挑最快证明5s达标。本轮没有新的生命240秒实播。整体发布失败，只本地固定不推送部署，远端main核对仍4749548。详docs/FINITE_ENTRY.md、docs/validation/finite-entry-20261013.json、output/validation/finite-entry/review.html。停止本轮，不自动修补或扩展；后续需用户另行授权明确有限目标。
+<!-- /finite-entry-current -->
+
 <!-- transition-pipeline-current -->
 2026-10-12 最新本地候选 `transition-pipeline-candidate-20261012` 直接进入演示目标整区、批读完整海区、合并后台活区校验与恢复，并将不可变地形缓存对齐6组工作集；动态历史仍完整复核。41个不同检查有通过记录，最终构建14.17秒通过。最终1280×720/渲染pixelRatio1.5：样板1×75完整，99.18FPS/p95 12.6ms/max45.8ms/启动8.31秒；生命1×240完整452.05米/25沿途类别/4生境，捕获0个>250ms播放间隔；导演4×首章只到134.55/800秒，0/67完整，界面等待17秒/抽样准备18.36秒/max658.5ms。排队屏障与完整历史检查仍为主要等待，整体稳定性未通过。只本地固定，不推送部署；场景与资产冻结，不自动追加修补。 详docs/TRANSITION_PIPELINE.md、docs/validation/transition-pipeline-20261012.json及output/validation/transition-pipeline。此前失败记录保留。
 <!-- /transition-pipeline-current -->
