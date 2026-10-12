@@ -10,7 +10,7 @@ const durationText = seconds => {
 };
 
 export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
-  onPrevious, onSeek, onStop, onRestart, onPlaybackRateChange, title = "导演演示", children = null }) {
+  onPrevious, onSeek, onStop, onRestart, onPlaybackRateChange, title = "导演演示", notice = null, children = null }) {
   if (!state || (!state.active && state.phase !== 'complete')) return null;
 
   const count = steps.length;
@@ -73,6 +73,7 @@ export function DirectorPlayer({ state, steps = [], onPause, onResume, onNext,
           : '本次演示已结束。选择章节可重新观看，也可以重新播放全部，或自由探索。'
         : step?.caption || '观察当前海域的实际场景与状态。'}</p>
       {transitionCopy && <p className="director-player-transition-copy">{transitionCopy}</p>}
+      {notice && !loading && <p className="director-player-transition-copy" role="status">{notice}</p>}
     </div>
 
     {children}

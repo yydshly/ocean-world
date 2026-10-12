@@ -43,6 +43,8 @@ const nativeOwner = (r, g) => g?.profile === OCEAN_MEADOW_LIFE_PROFILE && typeof
 function elements(g, r) { const rows = new Map(); for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++)
   for (const e of g.chunk(r.cx + dx, r.cz + dz).elements) rows.set(e.id, e); return [...rows.values()]; }
 function queries(g, r, supplied = {}) {
+  const cache=supplied.topologyCache,key=`meadow-queries:${r.id}`;
+  if(cache?.has(key)){const q=cache.get(key);cache.delete(key);cache.set(key,q);return q;}
   const bed = supplied.bed ?? ((x, z) => g.floorSurface(x, z).height);
   const nearby = elements(g, r);
   const surface = supplied.surface ?? ((x, z, crown = false) => nearby.reduce((y, e) => {
@@ -55,7 +57,10 @@ function queries(g, r, supplied = {}) {
     if (crown) for (const p of r.biodiversity?.patches ?? []) y = Math.max(y, oceanBiodiversityPatchHeight(p, x, z) ?? -Infinity);
     return y;
   };
-  return { bed, surface: obstacle, nearby };
+  const memo=query=>{const values=new Map();return(x,z,crown=false)=>{const k=`${x},${z},${+crown}`;if(values.has(k))return values.get(k);const value=query(x,z,crown);if(values.size<8192)values.set(k,value);return value;};};
+  const result={bed:cache?memo(bed):bed,surface:cache?memo(obstacle):obstacle,nearby};
+  if(cache){cache.set(key,result);if(cache.size>2048)cache.delete(cache.keys().next().value);}
+  return result;
 }
 const envelope = id => oceanMeadowLifeSpeciesById[id].normalizedEnvelope;
 const depthValid = (g, id, y) => { const [low, high] = oceanMeadowLifeSpeciesById[id].depthSelectionM, d = (g.surfaceY ?? 8) - y; return d >= low && d <= high; };
@@ -112,6 +117,9 @@ function bodyClear(r, agent, p, radius, height) { return [...r.agents, ...(r.tur
   return Math.hypot(p.x - a.position.x, p.z - a.position.z) >= radius + rad + .04;
 }); }
 function survey(r, g, agent, p, heading, pitch, q, occupancy = false) {
+  const cache=q.terrainCache,key=cache?JSON.stringify([agent.id,agent.speciesId,agent.sizeM,agent.meadowLifeHostId,agent.meadowLifeLeafIndex,p,heading,pitch]):null;
+  const cached=cache?.get(key);
+  if(cached){cache.delete(key);cache.set(key,cached);if(occupancy&&!bodyClear(r,agent,p,cached.radius,cached.height))return null;return cached.support;}
   const t = traits[agent.speciesId], e = envelope(agent.speciesId);
   if (!point(p) || !Number.isFinite(heading) || !Number.isFinite(pitch) || Math.abs(pitch) > t.pitch || !depthValid(g, agent.speciesId, p.y) || !niche(g, r, agent, p, q)) return null;
   const ground = supportAt(g, r, agent, p.x, p.z, q), tangent = ['soft-buried', 'rubble-floor'].includes(t.mode);
@@ -145,8 +153,10 @@ function survey(r, g, agent, p, heading, pitch, q, occupancy = false) {
     const bottom = p.y + Math.min(...offsets.map(o => o.y)), top = p.y + Math.max(...offsets.map(o => o.y));
     if (bottom < plant.y + (plant.scale?.y ?? 0) * 1.02 + .03 && top > plant.y - .03 && Math.hypot(p.x - plant.x, p.z - plant.z) < radius + r0 + .02) return null;
   }
-  if (occupancy && !bodyClear(r, agent, p, radius, (e.y[1] - e.y[0]) * agent.sizeM)) return null;
-  return { position: clone(p), supportNormal: tangent ? pose.up : { x: 0, y: 1, z: 0 } };
+  const support={ position: clone(p), supportNormal: tangent ? pose.up : { x: 0, y: 1, z: 0 } },height=(e.y[1]-e.y[0])*agent.sizeM;
+  if(cache){cache.set(key,{support,radius,height});if(cache.size>2048)cache.delete(cache.keys().next().value);}
+  if (occupancy && !bodyClear(r, agent, p, radius, height)) return null;
+  return support;
 }
 function supportedPosition(g, r, agent, x, z, heading, q) {
   const support = supportAt(g, r, agent, x, z, q), pose = support && frame(support.normal, heading, 0, true); if (!pose) return null;
@@ -157,8 +167,17 @@ function supportedPosition(g, r, agent, x, z, heading, q) {
   }
   return { x, y: y + M.clearanceM, z };
 }
+const nativeSiteCaches = new WeakMap();
 function nativeSites(g, r, rng) {
   const chunk = g.chunk(r.cx, r.cz), sites = [];
+  let cache = nativeSiteCaches.get(g);
+  if (!cache) { cache = new Map(); nativeSiteCaches.set(g, cache); }
+  const key = JSON.stringify([typeof g.seed, g.seed, r.id, r.meadowAnimalBeltVersion, r.meadowAnimalBelt]);
+  const prior = cache.get(key);
+  // Generation publishes immutable chunks. Changed support plans create a
+  // different chunk; mutable test/custom generators always take the full path.
+  const reusable = Object.isFrozen(chunk);
+  if (reusable && prior?.chunk === chunk) return prior;
   for (let z = 0; z < 8; z++) for (let x = 0; x < 8; x++) { const id = `grid:${x},${z}`;
     sites.push({ siteId: id, x: chunk.origin.x + (x + .2 + rng(`${id}:x`) * .6) * 8, z: chunk.origin.z + (z + .2 + rng(`${id}:z`) * .6) * 8 }); }
   for (const e of chunk.elements.filter(e => ['rock', 'rubble', 'algae'].includes(e.kind))) for (let i = 0; i < 4; i++) {
@@ -171,8 +190,10 @@ function nativeSites(g, r, rng) {
     hardSites.push({ siteId: `hard:${e.id}:${ix},${iz}`, hostId: e.id, leafIndex: null, x: e.x + x * c + z * s, z: e.z - x * s + z * c });
   }
   hardSites.sort((a, b) => rng(`order:${a.siteId}`) - rng(`order:${b.siteId}`) || a.siteId.localeCompare(b.siteId));
-  return { sites: meadowAnimalBeltMarked(r) ? meadowAnimalBeltRank(g, r, sites) : sites,
+  const result = { sites: meadowAnimalBeltMarked(r) ? meadowAnimalBeltRank(g, r, sites) : sites,
     hardSites: meadowAnimalBeltMarked(r) ? meadowAnimalBeltRank(g, r, hardSites) : hardSites, chunk };
+  if (reusable) { cache.set(key, result); if (cache.size > 25) cache.delete(cache.keys().next().value); }
+  return result;
 }
 function sitePose(g, r, id, site, sizeM, heading, q) {
   const t = traits[id], agent = { speciesId: id, sizeM, meadowLifeHostId: site.hostId ?? null, meadowLifeLeafIndex: site.leafIndex ?? null };
@@ -269,11 +290,12 @@ function takeFood(r, a, amount) {
   if (r.meadowLife.events.length > M.maximumEvents) r.meadowLife.events.splice(0, r.meadowLife.events.length - M.maximumEvents);
   return taken;
 }
-export function tickOceanMeadowLife(r, g, dt, { surface, bed, environmentAt } = {}) {
+export function tickOceanMeadowLife(r, g, dt, { surface, bed, environmentAt, validateRecord = true, terrainCache = null } = {}) {
   const d = r?.meadowLife;
   if (!nativeOwner(r, g) || r.meadowLifeVersion !== 1 || !close(dt, .1, 1e-10) || !d || !close(r.timeSec - d.lastTickSec, .1) || r.ticks !== d.ticks + 1 ||
-    !validateOceanMeadowLifeRecord(r, g, { surface, bed, beforeTick: true })) return false;
-  const q = queries(g, r, { surface, bed }), rng = randomFor(g, r);
+    (validateRecord && !validateOceanMeadowLifeRecord(r, g, { surface, bed, beforeTick: true }))) return false;
+  const q = queries(g, r, { surface, bed, topologyCache: terrainCache }), rng = randomFor(g, r);
+  q.terrainCache=terrainCache;
   for (const a of r.agents.filter(isOceanMeadowLifeAgent)) {
     if (!a.alive) continue;
     const t = traits[a.speciesId], env = environmentAt?.(a.position, a) ?? { lightAtDepth: 1, currentMps: 0 }, light = env.lightAtDepth ?? 1;

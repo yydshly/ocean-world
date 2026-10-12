@@ -197,11 +197,13 @@ function actualGroup(r, g) {
 function nativeOwner(r, g) { return actualGroup(r, g) && Array.isArray(r.agents) && Array.isArray(r.turtleAgents ?? []) &&
   nonnegative(r.timeSec) && Number.isSafeInteger(r.ticks) && r.ticks >= 0 && close(r.timeSec, r.ticks * M.stepSec) &&
   r.reefGuildVersion === 1 && nonnegative(r.reefGuild?.preyOrganicUnits) && r.basicNetwork; }
-function queries(r, g, { surface, bed } = {}) {
+function queries(r, g, { surface, bed, topologyCache = null } = {}) {
+  const topologyKey=`resident-queries:${r.id}`;
+  if(topologyCache?.has(topologyKey)){const q=topologyCache.get(topologyKey);topologyCache.delete(topologyKey);topologyCache.set(topologyKey,q);return q;}
   const nearby = new Map();
   for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) for (const e of g.chunk(r.cx + dx, r.cz + dz).elements) nearby.set(e.id, e);
   const rows = [...nearby.values()], memo = query => { const cache = new Map(); return (x, z, crown = false) => {
-    const key = `${x},${z},${crown ? 1 : 0}`; if (!cache.has(key)) cache.set(key, query(x, z, crown)); return cache.get(key); }; };
+    const key = `${x},${z},${crown ? 1 : 0}`; if (cache.has(key))return cache.get(key);const value=query(x,z,crown);if(cache.size<8192)cache.set(key,value);return value; }; };
   const floor = memo(bed ?? ((x, z) => g.floorSurface(x, z).height));
   const nativeSurface = surface ?? ((x, z, crown = false) => rows.reduce((height, e) => {
     if (['rock', 'formation'].includes(e.kind)) return Math.max(height, oceanRockHeight(e, x, z) ?? -Infinity);
@@ -216,9 +218,11 @@ function queries(r, g, { surface, bed } = {}) {
   // Local to this synchronous query: immutable supports are culled with the
   // existing conservative index. Mutable descriptors retain full candidates.
   const groundIndex = createOceanSupportIndex(rows.filter(e => ['rock', 'formation'].includes(e.kind)).map(element => ({ element })), r.cx, r.cz);
-  return { nearby: rows, groundIndex, bed: floor, surface: solid,
+  const result = { nearby: rows, groundIndex, bed: floor, surface: solid,
     groundMemo: Object.isFrozen(g) && Object.isFrozen(g.baseGenerator) && groundIndex.features.every(({element}) =>
       Object.isFrozen(element) && Object.isFrozen(element.scale)) ? new Map() : null };
+  if(topologyCache){topologyCache.set(topologyKey,result);if(topologyCache.size>2048)topologyCache.delete(topologyCache.keys().next().value);}
+  return result;
 }
 function frame(normal, heading, pitch, grounded) {
   let up = { x: 0, y: 1, z: 0 };
@@ -275,6 +279,9 @@ function bodyClear(r, a, p, radius, low, high) {
   });
 }
 function supportSurvey(r, g, a, p, heading, pitch, q, occupancy = false, range = true) {
+  const cache=q.terrainCache,key=cache?JSON.stringify([a.id,a.speciesId,a.sizeM,a.reefResidentIndividualVersion,a.home,a.reefResidentHostId,p,heading,pitch,range]):null;
+  const cached=cache?.get(key);
+  if(cached){cache.delete(key);cache.set(key,cached);if(occupancy&&!bodyClear(r,a,p,cached.radius,cached.low,cached.high))return null;return cached.support;}
   const s = speciesById[a.speciesId], t = traits[a.speciesId];
   if (!s || !point(p) || !Number.isFinite(heading) || !Number.isFinite(pitch) || Math.abs(pitch) > s.support.pitchLimitRad ||
     !(isReefSandCorridorAnchor(r, a) ? g.sample(p.x, p.z).substrate === 'sand' : nearHost(reefHost(r, g, a), p)) || (range && point(a.home) && distance(p, a.home) > t.extent + 1e-8)) return null;
@@ -309,8 +316,10 @@ function supportSurvey(r, g, a, p, heading, pitch, q, occupancy = false, range =
     if (p.y + high < e.y - .025 || p.y + low > e.y + e.scale.y * 1.02 + .025) continue;
     if (Math.hypot(p.x - e.x, p.z - e.z) < radius + Math.max(e.scale.x, e.scale.z) * .55 + .025) return null;
   }
+  const support={ position: clone(p), supportNormal: grounded ? clone(pose.up) : { x: 0, y: 1, z: 0 } };
+  if(cache){cache.set(key,{support,radius,low,high});if(cache.size>2048)cache.delete(cache.keys().next().value);}
   if (occupancy && !bodyClear(r, a, p, radius, low, high)) return null;
-  return { position: clone(p), supportNormal: grounded ? clone(pose.up) : { x: 0, y: 1, z: 0 } };
+  return support;
 }
 function groundPosition(g, a, x, z, heading, q) {
   const s = speciesById[a.speciesId], ground = groundAt(g, q, x, z), pose = ground && frame(ground.normal, heading, 0, true);
@@ -785,12 +794,13 @@ function trajectoryClear(r, g, a, next, heading, q, budget, tolerance = 1e-8) {
   }
   return travelled <= budget + tolerance;
 }
-export function tickReefResidentAgent(r, g, a, dt, { surface, bed, environment = {}, state, schoolFrames = null } = {}) {
+export function tickReefResidentAgent(r, g, a, dt, { surface, bed, environment = {}, state, schoolFrames = null, terrainCache = null } = {}) {
   if (!nativeOwner(r, g) || ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].includes(r.reefResidentsVersion) || !isReefResidentAgent(a) || !a.alive ||
     individualVersion(a.speciesId) > r.reefResidentsVersion ||
     (r.reefResidentsVersion === 1 && !REEF_RESIDENTS_LEGACY_IDS.includes(a.speciesId)) || !close(dt, M.stepSec, 1e-10) ||
     !close(r.timeSec - a.timeSec, dt) || !r.reefResidents?.addedIds?.includes(a.id)) return false;
-  const d = r.reefResidents, t = traits[a.speciesId], q = queries(r, g, { surface, bed }), rng = individualRandom(g, r, a);
+  const d = r.reefResidents, t = traits[a.speciesId], q = queries(r, g, { surface, bed, topologyCache: terrainCache }), rng = individualRandom(g, r, a);
+  q.terrainCache=terrainCache;
   a.timeSec = r.timeSec; a.energy = Math.max(0, a.energy - dt * (t.mode === 'reef-water' ? .00012 : .000025));
   if (a.energy <= 0) { a.alive = false; a.velocity = { x: 0, y: 0, z: 0 }; setState(a, 'dead', r.timeSec, state);
     recordLivingDeath(r, a); r.counters.deaths++; d.counters.deaths++; return true; }

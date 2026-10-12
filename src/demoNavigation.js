@@ -14,6 +14,10 @@ export function demoWorldMatches(choice, world, snapshot) {
 // Reuse normal observation/navigation operations. No generation, population,
 // clock, resource, environment or persistence reset belongs in this adapter.
 export function navigateDemoEntry(choice, world, { movingDirector = false, directorEntryPlan = null, playing = true, playbackRate = 1 } = {}) {
+  if (movingDirector) {
+    world.directorEntryNotice = null;
+    choice = resolveDirectorStop(choice, world);
+  }
   if (movingDirector && directorEntryPlan?.kind === 'continuous')
     return world.beginDirectorEntry?.(directorEntryPlan, { playing, playbackRate }) === true;
   if (choice.kind === 'deep-stop') return world.biomeId==='deep'&&world.enterDeepSeascape?.(choice.stopId)===true;
@@ -64,4 +68,38 @@ export function navigateDemoEntry(choice, world, { movingDirector = false, direc
       : world.focusNearbyOceanAnimal(null);
   }
   return false;
+}
+
+// Authored macro routes can be absent for a valid procedural seed. Observe an
+// existing native stop in the same biome; never reseed or create replacement
+// animals just to satisfy a chapter. Manual shortcuts retain strict semantics.
+export function resolveDirectorStop(choice, world) {
+  const id = choice.stopId ?? choice.entryStopId;
+  const generator = world.oceanChunks?.generator;
+  if (!id || !generator) return choice;
+  const alternatives = {
+    'kelp-scene-forest': ['forest-belt-interior', 'kelp-bottom-life'],
+    'kelp-scene-rockbed': ['kelp-understory-life'],
+    'kelp-scene-opening': ['forest-belt-opening', 'kelp-near-bottom-life'],
+    'kelp-scene-outer': ['kelp-water-life'],
+    'forest-belt-interior': ['kelp-bottom-life'],
+    'forest-belt-opening': ['kelp-near-bottom-life'],
+    'deep-scene-plain': ['deep-plain-community', 'deep-bottom-life'],
+    'deep-scene-slope': ['deep-slope-outcrop', 'deep-water-life'],
+    'deep-scene-outcrop': ['deep-hard-life'],
+    'deep-scene-outer': ['deep-water-life'],
+    'deep-plain-community': ['deep-bottom-life'],
+    'deep-slope-outcrop': ['deep-hard-life'],
+  };
+  if (!alternatives[id]) return choice;
+  const keys = world.biomeId === 'kelp'
+    ? ['forestRouteStops', 'kelpSeascapeRouteStops', 'kelpBenthicLifeRouteStops', 'kelpUnderstoryLifeRouteStops', 'kelpNearBottomLifeRouteStops', 'kelpWaterLifeRouteStops']
+    : world.biomeId === 'deep'
+      ? ['seascapeRouteStops', 'wholeSeascapeRouteStops', 'deepBenthicLifeRouteStops', 'deepHardLifeRouteStops', 'deepWaterLifeRouteStops'] : [];
+  const stops = keys.flatMap(key => generator[key] ?? []);
+  if (stops.some(stop => stop.id === id)) return choice;
+  const replacement = alternatives[id].map(key => stops.find(stop => stop.id === key)).find(Boolean);
+  if (!replacement) return choice;
+  world.directorEntryNotice = `当前种子未形成此整景观察点，改为观察${replacement.label || '本海域已有生境'}。`;
+  return { ...choice, ...(choice.stopId ? { stopId: replacement.id } : { entryStopId: replacement.id }) };
 }

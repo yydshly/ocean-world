@@ -30,7 +30,7 @@
 | [产品导览](https://yydshly.github.io/ocean-world/overview/) | 首次了解产品 | 目标、能力图、实景模块、目录、全部主要入口与验证证据 |
 | [75 秒浅海样板](https://yydshly.github.io/ocean-world/?demo=shallow-sample&seed=55) | 看集中呈现的浅海效果 | 礁谷 → 沙道 → 草床；293 个体、38 个展示类别；已完成一次最终本机完整实播 |
 | [导演模式](https://yydshly.github.io/ocean-world/?demo=director&seed=55) | 自动带看已有入口 | 67 章；1× 名义观察时长 33 分 14 秒，加载与转场另计；可选章与接管 |
-| [生命巡游](https://yydshly.github.io/ocean-world/?demo=life-expedition&seed=55&world=whole-seabed) | 看连续海床与生境衔接 | 约 4 分钟路线，原生路线检查约 450 米；浏览器完整跨区流畅度尚未验收 |
+| [生命巡游](https://yydshly.github.io/ocean-world/?demo=life-expedition&seed=55&world=whole-seabed) | 看连续海床与生境衔接 | 240 秒、约 452 米；本轮按完整浏览器实播记录验收，区域准备期间会等待 |
 | [礁谷探索](https://yydshly.github.io/ocean-world/?demo=reef-valley-region&seed=55&world=whole-seabed) / [海草甸](https://yydshly.github.io/ocean-world/?demo=seagrass-meadow-region&seed=55&world=whole-seabed) | 自由走进浅海 | 按底质、水深和保存状态生成与延续群落 |
 | [海带林](https://yydshly.github.io/ocean-world/?demo=kelp-life&seed=55) / [深海软底](https://yydshly.github.io/ocean-world/?demo=deep-life&seed=55) | 看不同生境 | 藻林分层生活、沉积海床与观察器照明 |
 
@@ -68,6 +68,10 @@
 6. **留下记录**：通过“探索手记”标记位置、返回观察点；导出截图、录像或当前实验数据。线上文件由浏览器下载，注意实际下载结果。
 
 ## 验证结果与已知差距
+
+本轮集中修复三个体验问题：导演跨区时遇到当前种子不存在的整景观察点，会明确提示并观察同海域已有生境；生命巡游的生态积分与历史区域完整校验移到后台线程，保存和换区前等待已提交的计算；浅海样板的大体积模型数据拆成可独立缓存的压缩文件，主样板 JavaScript 从约 17.1 MB 降至 2.54 MB。几何、原图、293 个体和 38 个展示类别保持同一冻结基线。
+
+最新本机播放、长帧和定向检查结果见[入口体验验收记录](public/overview/evidence/entry-experience.json)。从上方引导图进入导览后，建议先看 75 秒样板，再进入生命巡游；导演模式可以选章、变速或退出观察。首次区域准备仍需等待，67 章全程与所有设备的稳定帧率不由单次定向检查保证。
 
 最终本机样板记录：1× 完整播放 **75.0137 秒**，无暂停、跳播或后台中断；1280×720 CSS、DPR 1.5、RTX 4070 Laptop、WebGL2，全程分辨率缩放 1.0。
 

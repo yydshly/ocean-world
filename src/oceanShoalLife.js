@@ -206,10 +206,10 @@ function takeFood(r, a) { const pool = a.shoalLifeFoodPool;
   d.events.push({ timeSec: r.timeSec, agentId: a.id, pool, removedUnits: taken, scope: foodScope(r) });
   if (d.events.length > M.maximumEvents) d.events.splice(0, d.events.length - M.maximumEvents); return taken;
 }
-export function tickOceanShoalLife(r, g, dt, { surface, bed, environmentAt } = {}) {
+export function tickOceanShoalLife(r, g, dt, { surface, bed, environmentAt, validateRecord = true } = {}) {
   const d = r?.shoalLife;
   if (!nativeOwner(r, g) || !close(dt, .1, 1e-10) || !d || r.ticks !== d.ticks + 1 || !close(r.timeSec - d.lastTickSec, .1) ||
-    !validateOceanShoalLifeRecord(r, g, { surface, bed, beforeTick: true })) return false;
+    (validateRecord && !validateOceanShoalLifeRecord(r, g, { surface, bed, beforeTick: true }))) return false;
   const q = queries(g, r, { surface, bed }), rng = randomFor(g, r), agents = r.agents.filter(isOceanShoalLifeAgent);
   for (const a of agents) { if (!a.alive) continue; a.timeSec = r.timeSec;
     // Respiration is already owned by tickLivingNetwork. This condition proxy

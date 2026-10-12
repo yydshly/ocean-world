@@ -49,7 +49,7 @@ const poster=`
   <div class="goal-grid">
    <article><b>自然的海底空间</b><p>连续地形、光照水色、生境过渡</p>${tag('已有生成与环境表现')}<small>真实感仍未达纪录片标准</small></article>
    <article><b>丰富的生命群落</b><p>鱼群、底栖、附着生物与海草藻林</p>${tag('目录与代表群落已接入')}<small>并非所有种类同时出现</small></article>
-   <article><b>可以持续探索</b><p>沿探索生成，回访保留当地状态</p>${tag('已实现分区生成与保存')}<small>跨区流畅度尚未完整验收</small></article>
+   <article><b>可以持续探索</b><p>沿探索生成，回访保留当地状态</p>${tag('已实现分区生成与保存')}<small>240 秒生命路线按完整实播单独验收</small></article>
    <article><b>能理解生命与环境</b><p>跟随观察、条件实验、资源与行为</p>${tag('已有定性生态模型')}<small>尚非科研级生态预测</small></article>
   </div>
  </section>
@@ -103,7 +103,7 @@ const poster=`
   <div class="journey">
    <article><span class="step">1</span><div><h3>先看 75 秒浅海样板</h3><p>看鱼群、近景礁体、礁底动物和草床海龟。0.5 / 1 / 1.5 / 2×；暂停、进度拖动与从头观看。</p><small>“自由观察”是转动与缩放视角；点击“返回巡游镜头”继续。</small>${a(links.sample,'打开样板','entry-link')}</div></article>
    <article><span class="step">2</span><div><h3>用导演模式看已有入口</h3><p>按章节带看生境、视角及功能；67 章，1× 名义观察时长 33 分 14 秒，另加切换与加载。</p><small>0.5–4×，可选章、暂停与接管；远距离会过渡切换。</small>${a(links.director,'打开导演模式','entry-link')}</div></article>
-   <article><span class="step">3</span><div><h3>用生命巡游看连续海床</h3><p>约 4 分钟路线，连接礁区、沙沟、草甸和外坡。也可从草甸、礁谷或其他生境入口直接进入。</p><small>原生路线检查约 450 m；完整浏览器跨区流畅度仍未验收。</small>${a(links.life,'打开生命巡游','entry-link')}</div></article>
+   <article><span class="step">3</span><div><h3>用生命巡游看连续海床</h3><p>约 4 分钟路线，连接礁区、沙沟、草甸和外坡。也可从草甸、礁谷或其他生境入口直接进入。</p><small>约 452 m；本轮完整实播与长帧结果见下方入口体验记录，首次区域准备仍需等待。</small>${a(links.life,'打开生命巡游','entry-link')}</div></article>
    <article><span class="step">4</span><div><h3>接管移动，跟随一个个体</h3><p>退出自动巡游，WASD 移动、Q/E 下潜/上浮、Shift 加速；拖动转向、右键平移、滚轮靠近。</p><small>点击动物 → 档案 → 跟随；打开环境实验或探索手记，留下观察记录。</small>${a(links.reef,'打开礁谷探索','entry-link')}</div></article>
   </div>
   <div class="quick-links"><b>专题直达</b>${a(links.meadow,'海草甸')}${a(links.kelp,'海带林')}${a(links.deep,'深海软底')}${a(links.all,'能力总览')}<span>本页入口使用当前站点 · 历史存档与设备性能会影响体验</span></div>
@@ -122,7 +122,7 @@ const poster=`
 </main>`;
 
 const extraRoutes=[['浅海 / 礁谷','reef-valley-region','whole-seabed'],['浅海 / 海草甸','seagrass-meadow-region','whole-seabed'],['浅海 / 海岸生命带','coastal-life-belt','whole-seabed'],['浅海 / 丰富礁缘群落','biodiversity'],['浅海 / 底栖群落','benthic'],['浅海 / 水层群落','shoal-life'],['浅海 / 草床群落','meadow-life'],['海带林 / 底栖生活','kelp-life'],['海带林 / 林下附着','kelp-understory-life'],['海带林 / 近底生活','kelp-near-bottom-life'],['海带林 / 水层生活','kelp-water-life'],['深海 / 底栖生活','deep-life'],['深海 / 硬底附着','deep-hard-life'],['深海 / 离底游泳','deep-water-life'],['深海 / 中层水域','deep-midwater-life']];
-const appendix=`<section class="appendix" id="appendix"><p class="appendix-note">引导图采用 2026-10-12 本地汇总原版，保留图中实景和历史状态标注。网页入口已适配当前站点；最新发布状态见 GitHub。浅海样板与持续探索使用不同场景和验收范围。</p><div class="section-head"><span class="section-no">＋</span><h2>详细清单与证据</h2><p>展开查看 · 目录与代码入口已核对，本次未重跑所有场景</p></div>
+const appendix=`<section class="appendix" id="appendix"><p class="appendix-note"><b>本轮入口与性能修复：</b>导演遇到当前种子没有的整景观察点，会提示并观察同海域已有生境；生命巡游的生态计算和历史完整校验在后台运行；样板模型数据采用独立压缩与缓存。${a('evidence/entry-experience.json','查看最新本机实播与检查结果')}。原版引导图保留历史状态，完整 67 章和跨设备稳定性能仍须分别验收。</p><p class="appendix-note">引导图采用 2026-10-12 本地汇总原版，保留图中实景和历史状态标注。网页入口已适配当前站点；最新发布状态见 GitHub。浅海样板与持续探索使用不同场景和验收范围。</p><div class="section-head"><span class="section-no">＋</span><h2>详细清单与证据</h2><p>展开查看 · 目录与代码入口已核对，本次未重跑所有场景</p></div>
  <details><summary>物种与代表类群目录：浅海 106 / 海带林 24 / 深海 15</summary><p class="appendix-note">这是持续探索的代码目录，包含藻类和科、属代表；展示取决于生境、种子与已有存档。不是当前镜头同时可见的种数，也不是浅海样板的 38 类名单。</p>${cats.map(([name,rows])=>`<h3>${name} · ${rows.length} 条</h3><div class="species-list">${rows.map(s=>`<div><b>${esc(s.commonName)}</b><small>${esc(s.scientificName||s.id)}</small></div>`).join('')}</div>`).join('')}</details>
  <details><summary>专题观察入口：15 个直达链接</summary><div class="route-list">${extraRoutes.map(([label,demo,world])=>a(entry(demo,world),label)).join('')}</div><p class="appendix-note">同一地区的个体出现受种子、底质与保存状态影响；上述链接来自当前入口解析，未在本次逐一播放验收。点击会在新标签页打开。</p></details>
  <details><summary>导演章节：${DIRECTOR_STEPS.length} 章 / 名义观察时长 33 分 14 秒</summary><p class="appendix-note">1× 观察时长不含加载和切换；导演覆盖既有生境与功能入口，75 秒样板是独立入口。</p><ol class="chapters">${DIRECTOR_STEPS.map(s=>`<li><span>${esc(s.title)}</span><small>${s.durationMs/1000} 秒 · ${esc(({reef:'浅礁',kelp:'海带林',deep:'深海'})[s.context.biome])}</small></li>`).join('')}</ol></details>
