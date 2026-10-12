@@ -179,7 +179,7 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
     if (wait.mode === 'cut' && !wait.prepared) {
       wait.prepared = true;
       if (['coastal-life-belt', 'living-visual', 'reef-valley-region', 'seagrass-meadow-region', 'meadow-life', 'shoal-life', 'kelp-water-life', 'kelp-near-bottom-life', 'kelp-understory-life', 'deep-midwater-life', 'deep-hard-life', 'deep-water-life'].includes(steps[state.index].motion.routeId)) {
-        if (actual.prepareDirectorObservation?.(steps[state.index].motion) !== true) {
+        if (actual.prepareDirectorObservation?.(steps[state.index].motion, { allowHabitatFallback: true }) !== true) {
           fail(state.token, '当前观察镜头无法安全就位，可重试或跳到下一章。'); return;
         }
         wait.absence = steps[state.index].motion.routeId === 'living-visual' && actual.livingVisualRoute?.status === 'empty';

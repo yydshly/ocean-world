@@ -1682,7 +1682,7 @@ export class ReefWorld {
       worldTarget:this.controls?{x:this.controls.target.x+this.oceanRenderOrigin.x,y:this.controls.target.y,z:this.controls.target.z+this.oceanRenderOrigin.z}:null};
   }
   stopDirectorEntry(){this.directorEntry=null;this._directorFocusAssessment=null;}
-  prepareDirectorObservation(motion={}){
+  prepareDirectorObservation(motion={}, {allowHabitatFallback=false}={}){
     if(['reef-valley-region','seagrass-meadow-region'].includes(motion.routeId)){
       const plan=motion.routeId==='seagrass-meadow-region'?this.currentSeagrassMeadowRegionPlan():this.currentReefValleyRegionPlan();if(!plan)return false;
       try{const frame=this.sampleReefValleyRegionSegment(this.createReefValleyRegionSegment(plan),0,200);
@@ -1700,41 +1700,41 @@ export class ReefWorld {
       }catch{return false;}
     }
     if(motion.routeId==='kelp-understory-life'&&this.isKelp){
-      const view=this.kelpUnderstoryLifeObservation();if(!view){this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
+      const view=this.kelpUnderstoryLifeObservation();if(!view){if(!allowHabitatFallback||this.disposed||this.oceanEcologyResetting)return false;this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
       return this.restoreOceanObservation(view);
     }
     if(motion.routeId==='kelp-near-bottom-life'&&this.isKelp){
       const view=this.kelpNearBottomLifeObservation();
-      if(!view){this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
+      if(!view){if(!allowHabitatFallback||this.disposed||this.oceanEcologyResetting)return false;this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
       return this.restoreOceanObservation(view);
     }
     if(motion.routeId==='kelp-water-life'&&this.isKelp){
       const view=this.kelpWaterLifeObservation();
-      if(!view){this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
+      if(!view){if(!allowHabitatFallback||this.disposed||this.oceanEcologyResetting)return false;this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
       return this.restoreOceanObservation(view);
     }
     if(motion.routeId==='shoal-life'&&this.isLivingShallows){
       const view=this.oceanShoalLifeObservation();
-      if(!view){this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
+      if(!view){if(!allowHabitatFallback||this.disposed||this.oceanEcologyResetting)return false;this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
       return this.restoreOceanObservation(view);
     }
     if(motion.routeId==='meadow-life'&&this.isLivingShallows){
       const view=this.oceanMeadowLifeObservation();
-      if(!view){this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
+      if(!view){if(!allowHabitatFallback||this.disposed||this.oceanEcologyResetting)return false;this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
       return this.restoreOceanObservation(view);
     }
     if(motion.routeId==='deep-midwater-life'&&this.isDeep){
-      const view=this.deepMidwaterLifeObservation();if(!view){this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
+      const view=this.deepMidwaterLifeObservation();if(!view){if(!allowHabitatFallback||this.disposed||this.oceanEcologyResetting)return false;this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
       return this.restoreOceanObservation(view);
     }
     if(motion.routeId==='deep-water-life'&&this.isDeep){
       const view=this.deepWaterLifeObservation();
-      if(!view){this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
+      if(!view){if(!allowHabitatFallback||this.disposed||this.oceanEcologyResetting)return false;this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
       return this.restoreOceanObservation(view);
     }
     if(motion.routeId==='deep-hard-life'&&this.isDeep){
       const view=this.deepHardLifeObservation();
-      if(!view){this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
+      if(!view){if(!allowHabitatFallback||this.disposed||this.oceanEcologyResetting)return false;this.directorEntryNotice='此处当前没有可接近的目标动物，继续观察已有生境。';return true;}
       return this.restoreOceanObservation(view);
     }
     if(motion.routeId==='deep-benthic-life'&&this.isDeep){
@@ -2637,10 +2637,10 @@ export class ReefWorld {
         this._animalSedimentDtSec=Math.max(0,(this.oceanEcology?._activeTime??0)-ecologyClock);
       }
     }catch(error){this.paused=true;this.errors.push(error.message);this.onError(`生态模型停止：${error.message}`);}}
-    markCpu('ecology');
     if(this.isLivingShallows&&this.elapsed-(this._livingStateSavedAt??0)>=2)this.persistLivingWorld();
     if(!this.isLivingShallows)this.syncPopulation();
     const metrics=this.sim.metrics;
+    markCpu('ecology');
     if(!this.isLivingShallows)for(const agent of this.sim.agents){const entity=this.entities.get(agent.id);if(entity)this.updateOrganism(agent,entity,metrics);}
     const env=this.sim.environment;
     if(this.isDeep){
