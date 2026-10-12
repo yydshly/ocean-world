@@ -38,6 +38,13 @@ test('real worker owner preparation retains complete native records, flags, envi
       const restored=native._prepareRegion(structuredClone(saved),coordinates,true);
       const workerRestored=await runtime.withBarrier(()=>runtime.prepareOwner(saved,coordinates,true));
       assert.ok(isDeepStrictEqual(workerRestored,restored),'restoration and rollback records match native');
+      native._validateActiveHistory(structuredClone(saved),saved.id,true);
+      native._validateRestoredMobileHistory(structuredClone(saved),saved.id,true);
+      const combined=await runtime.withBarrier(()=>runtime.prepareOwner(saved,coordinates,true,null,true));
+      assert.ok(isDeepStrictEqual(combined,restored),'combined validation and preparation preserves every native result field');
+      const broken=structuredClone(saved);broken.agents[0].position.x=NaN;
+      assert.throws(()=>native._validateActiveHistory(broken,broken.id,true),/Invalid/);
+      await assert.rejects(runtime.withBarrier(()=>runtime.prepareOwner(broken,coordinates,true,null,true)),/Invalid/);
       assert.deepEqual(workerRestored.region.opaqueHistory,saved.opaqueHistory);
       assert.deepEqual(chunks.generator.registryStats(),registry);
     }

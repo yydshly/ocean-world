@@ -12,7 +12,7 @@ import { validateLivingShallowSeascapePlan, sampleLivingShallowSeascape,
   SHALLOW_SEASCAPE_ROUTE_STOPS } from './livingShallowSeascape.js';
 import { validateLivingCoastalSeascapePlan, sampleLivingCoastalSeascape,
   coastalSeascapeAnimalAllocation, COASTAL_SEASCAPE_ROUTE_STOPS } from './livingCoastalSeascape.js';
-import { validateReefValleyRegionPlan, sampleReefValleyRegion, reefValleyAllocation,
+import { validateReefValleyRegionPlan, sampleReefValleyRegion, reefValleyAllocation, REEF_VALLEY_REGION_LAYOUT,
   REEF_VALLEY_REGION_ROUTE_STOPS } from './reefValleyRegion.js';
 import { validateSeagrassMeadowRegionPlan, sampleSeagrassMeadowRegion, seagrassMeadowAllocation,
   SEAGRASS_MEADOW_REGION_ROUTE_STOPS } from './seagrassMeadowRegion.js';
@@ -269,7 +269,7 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
     };
     Object.defineProperty(context, 'immutablePlans', { value: input });
     context.cacheReefHabitatOrder = createReefHabitatValidationCache();
-    if (preparedContexts.size >= 4) preparedContexts.delete(preparedContexts.keys().next().value);
+    if (preparedContexts.size >= REEF_VALLEY_REGION_LAYOUT.maximumCachedGroups) preparedContexts.delete(preparedContexts.keys().next().value);
     preparedContexts.set(key, context);
     return context;
   };

@@ -1,0 +1,326 @@
+{
+  "version": "transition-pipeline-candidate-20261012",
+  "baseCommit": "a8a7dfe",
+  "branch": "fix/transition-pipeline-20261012",
+  "published": false,
+  "scope": "finite transition pipeline; scenes, assets, species, trajectories and simulation frozen",
+  "changes": [
+    "Direct demonstrations initialize their native macro staging view",
+    "Extra complete owner groups use bounded batched storage reads",
+    "Original active history validation and owner restoration share one worker request",
+    "Immutable terrain contexts use the existing six-group bound",
+    "Bounded worker CPU, round-trip, storage-read and queue/barrier telemetry"
+  ],
+  "bounds": {
+    "immutableContexts": 6,
+    "publicOwners": 25,
+    "activeOwners": 9,
+    "combinedPrivateOwners": 97
+  },
+  "mutableHistoryVerdictCache": false,
+  "nativeChecks": {
+    "batches": [
+      {
+        "log": "checks.log",
+        "passed": 27,
+        "failed": 2,
+        "failedTitles": [
+          "background integration preserves native seed55 complete records, fractional clocks and persistence barriers",
+          "the direct reef-valley URL enters the living reef without altering previously selected worlds or seeds"
+        ]
+      },
+      {
+        "log": "recheck.log",
+        "passed": 11,
+        "failed": 0,
+        "failedTitles": []
+      },
+      {
+        "log": "capacity-checks.log",
+        "passed": 16,
+        "failed": 0,
+        "failedTitles": []
+      }
+    ],
+    "uniquePassingCases": 41,
+    "uniqueEncounteredCases": 41
+  },
+  "build": {
+    "passed": true,
+    "viteSeconds": 14.17,
+    "chunkSizeWarningRemains": true,
+    "fullCloudSuite": false
+  },
+  "browserEnvironment": {
+    "cssViewport": [
+      1280,
+      720
+    ],
+    "actualRenderPixelRatio": 1.5,
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "existingBrowserCacheAndEvolvingHistory": true,
+    "heavyTestsOrBuildsDuringFinalPlayback": false,
+    "otherConcurrent3DTestTabs": 0,
+    "visibility": "visible",
+    "entry": "local product overview links",
+    "comparisonLimit": "not cold first visit or a controlled before/after A/B; prior phase render pixelRatio was about 1"
+  },
+  "browser": {
+    "sample": {
+      "completed": true,
+      "speed": 1,
+      "modelSeconds": 75,
+      "wallSeconds": 75.007,
+      "meanFPS": 99.18111252436321,
+      "p95FrameMs": 12.60000000000582,
+      "maxFrameMs": 45.80000000000109,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "navigationToReadyMs": 8311.399999976158,
+      "applicationStartupMs": 7797.099999904633,
+      "console": [],
+      "returnedToOverviewViaUI": true
+    },
+    "life": {
+      "completed": true,
+      "speed": 1,
+      "modelSeconds": 240,
+      "distanceM": 452.0513435185288,
+      "nearbyObservedDisplayClasses": 25,
+      "habitats": [
+        "reef",
+        "sand",
+        "meadow",
+        "slope"
+      ],
+      "capturedPlayingLongFrameEvents": [],
+      "maximumSampledCompletedRegionPreparationMs": 14648,
+      "console": [],
+      "errors": [],
+      "fpsScope": "overallMeanFPS includes initialization and post-completion frames; not reported as playing mean",
+      "navigationToPlayingMeasured": false,
+      "initialWaitReductionProven": false,
+      "returnedToOverviewViaUI": true
+    },
+    "director": {
+      "speed": 4,
+      "completeChapters": 0,
+      "totalChapters": 67,
+      "lastModelSeconds": 134.54520000000085,
+      "chapterDurationSeconds": 800,
+      "maximumSampledCompletedRegionPreparationMs": 18358.5,
+      "maximumSampledJSONWaitSec": 16,
+      "pausedUIWaitSec": 17,
+      "capturedPlayingLongFrameEvents": [
+        {
+          "milliseconds": 491.59999999999854,
+          "paused": false,
+          "motionKind": "reef-valley-route",
+          "motionElapsedSec": 24.296400000000002,
+          "waitingForRegions": false,
+          "previousCpuMs": {
+            "ecology": 0.10101651683965439,
+            "authored": 0.23707776145099785,
+            "camera": 0.8331722772539254,
+            "streaming": 47.71100598131753,
+            "animals": 2.4323863230731417,
+            "water": 0.30326461481198297,
+            "render": 4.508835181622111
+          }
+        },
+        {
+          "milliseconds": 337.5,
+          "paused": false,
+          "motionKind": "reef-valley-route",
+          "motionElapsedSec": 32.346399999999996,
+          "waitingForRegions": false,
+          "previousCpuMs": {
+            "ecology": 0.05935152747144912,
+            "authored": 0.13413456497541437,
+            "camera": 0.7078288122758134,
+            "streaming": 25.796461571693538,
+            "animals": 1.3126165296242982,
+            "water": 0.1804604208171356,
+            "render": 9.644362828284986
+          }
+        },
+        {
+          "milliseconds": 525,
+          "paused": false,
+          "motionKind": "reef-valley-route",
+          "motionElapsedSec": 98.99320000000036,
+          "waitingForRegions": false,
+          "previousCpuMs": {
+            "ecology": 0.12936963772810328,
+            "authored": 0.28342366704213756,
+            "camera": 1.7551458514709124,
+            "streaming": 45.53552083252625,
+            "animals": 4.129513073243078,
+            "water": 0.3748189029878754,
+            "render": 8.35680321962586
+          }
+        },
+        {
+          "milliseconds": 250.10000000000582,
+          "paused": false,
+          "motionKind": "reef-valley-route",
+          "motionElapsedSec": 98.99320000000036,
+          "waitingForRegions": true,
+          "previousCpuMs": {
+            "ecology": 0.07801124346048782,
+            "authored": 0.15155392706661114,
+            "camera": 0.45569026554616276,
+            "streaming": 0.009926741921719055,
+            "animals": 1.9629404209210226,
+            "water": 0.22880188051592962,
+            "render": 4.2925808273105766
+          }
+        },
+        {
+          "milliseconds": 658.5,
+          "paused": false,
+          "motionKind": "reef-valley-route",
+          "motionElapsedSec": 125.76240000000023,
+          "waitingForRegions": false,
+          "previousCpuMs": {
+            "ecology": 0.07304551511480632,
+            "authored": 0.13497522832720008,
+            "camera": 1.1650123176449039,
+            "streaming": 61.0601088763378,
+            "animals": 2.0414914272725415,
+            "water": 0.21140449044476636,
+            "render": 3.911065357786757
+          }
+        },
+        {
+          "milliseconds": 295.8999999999942,
+          "paused": false,
+          "motionKind": "reef-valley-route",
+          "motionElapsedSec": 134.54520000000085,
+          "waitingForRegions": false,
+          "previousCpuMs": {
+            "ecology": 0.029432896203070612,
+            "authored": 0.08521408262474778,
+            "camera": 0.7623721994730845,
+            "streaming": 29.050571657550773,
+            "animals": 1.0083708328975518,
+            "water": 0.12463102902828517,
+            "render": 2.3684756103864544
+          }
+        }
+      ],
+      "worstSampleBreakdownMs": {
+        "totalMs": 18358.5,
+        "prefetchMs": 576.5,
+        "canonicalValidationMs": 893.3999999761581,
+        "historicalValidationMs": 5437.199999928474,
+        "generationMs": 0,
+        "birthEcologyMs": 0,
+        "persistenceMs": 0,
+        "publicationMs": 108.89999997615814,
+        "restoreMs": 0,
+        "queueAndBarrierMs": 9608.5,
+        "ownerValidationAndRestoreMs": 799.700000166893,
+        "readCalls": 3,
+        "preparation": {
+          "units": 117,
+          "yields": 36,
+          "maxUnitMs": 137.10000002384186,
+          "cpuMs": 1036
+        },
+        "otherMs": 934.2999999523163
+      },
+      "stoppedForObservedLongWait": true,
+      "firstChapterCompleted": false,
+      "full67Completed": false,
+      "console": [],
+      "errors": [],
+      "cacheCapacityClaim": "native six-context scan passes; final browser attempt stopped while two contexts were resident, so no six-context director improvement claim"
+    }
+  },
+  "discardedAndEarlierAttempts": {
+    "diagnosticBaseline": "profile-before.json; includes the ordinary entry support work before macro demo entry",
+    "cache4FunctionalBuild": "life-final.json and life-snapshots.json complete 240s; director-before-capacity.json is partial and failed waits, not the final capacity6 build",
+    "partialVisibilityAttempt": "life-visibility-attempt.json; not final performance acceptance",
+    "testFailuresPreserved": "checks.log: 27/29 pass; diagnostic stats adapter and test harness repaired, then 11/11 recheck and 16/16 capacity cases pass"
+  },
+  "gates": {
+    "sampleFullPlayback": true,
+    "sampleUnderFiveSecondsStart": false,
+    "lifeFullPlayback": true,
+    "lifeNoCapturedPlayingIntervalOver250Ms": true,
+    "directorFull67": false,
+    "directorWaitAcceptable": false,
+    "documentaryRealism": false,
+    "overallReleaseReady": false
+  },
+  "conclusion": "partial finite phase, local freeze; no remote push or deployment; no automatic further repairs",
+  "evidenceHashes": {
+    "checks.log": "3b699d6f451f59f5e29e3a455a6af5a63a383403bc30e90faca2428258587cb1",
+    "recheck.log": "d42095a513f53b6c8e87ad2a4687e27d5ac58c3b98957c8b6b699df1b11e5c80",
+    "capacity-checks.log": "66514746314abca79fb5a1fb04f98f98e16e966ef1b4b3cef54cea564ffc03ea",
+    "capacity-final-build.log": "5bdcbbdd146fdaa0ba890813aa03f33c2194ccfd196294bcaabd47c90f0574a8",
+    "profile-first.json": "3a86504828cef9759a04cee18884bc29501545a297c5b3d85b2b684800d5845f",
+    "profile-before.json": "eaa606fa36394e89a63e1a9127375b06e49b58504b08573ad1d5f23c0f4471c4",
+    "life-visibility-attempt.json": "37f5d06164a4f3aab09ade4dbdc9ac3b7d6bd2a40fe2f24efaa73d4ed56cbfaa",
+    "life-final.json": "464ef5d568e4ae57aab2d8c630a205cef3ccc0e86b73d4c919c886a31e30cf24",
+    "life-snapshots.json": "ba4f93af67e9ccdced030c3830b8027f2dba663d99f5045cf664f310fea4f831",
+    "life-console.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "director-before-capacity.json": "017befeb3f910487444b73e89ab160ff1c1bd411f0a4a10e045872fe4cc51057",
+    "director-capacity-final.json": "8b657afa36ddb11f3fad5f6f619e25237484af77943109b703c19ca304b21114",
+    "director-capacity-snapshots.json": "0c083c677830d3f2e6ae7236edfc90723650556b6172797c1f97ae3c7c9609d4",
+    "director-console.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "life-capacity-final.json": "30fbdb7af48a1a1ad2839f37fc90ceb6975ddff53a08ec2d9e022c746471da0c",
+    "life-capacity-snapshots.json": "d66789099dd0f58a14005acd48d271caac2bab84a8b93adee37572e37aa6c595",
+    "life-capacity-console.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sample-final.json": "f46d067f4bdbde5fb2676d62287a768a989909ec1ee60338c022354091debf42",
+    "sample-console.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sample.png": "5c518fddcb278a61f02180b9e0bd7ee2f52eb1af3011ddf9f79a0f3b0210be0a",
+    "life-capacity.png": "46683882aab22fbfffc06e2d4f7669fa887e9ecf1251ec3742863d06ba3b444a",
+    "director.png": "a23f2862139713be534ac2801ec7e2879a49ab71f49ed32222cd3dddf3fec240"
+  },
+  "buildAssetHashes": {
+    "ageExperimentWorker-C8jD93i5.js": "4257c286b08865670b9aa78b787a24382283cc8833c983db39dd2a82fe772ac3",
+    "draco_decoder-fzg4nYZr.js": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04",
+    "draco_wasm_wrapper-DxJM36Ib.js": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
+    "draco_wasm_wrapper-fZCQGLGb.js": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6",
+    "index-J6cV8hlw.js": "5719cff11650787cc4b80e78d6ed66c4e9f9607838cf65fbbb93ee6a3c356d3d",
+    "model-loader-BmUF7JJH.js": "c72fd6cdb9ce4eaac3da6f7cf4e8370440c1716a170c3ebec0c904957fd3db1f",
+    "model-shallowBenthicCoralData-ClSitNV7.js": "b947df8fd771ae479260c93c2b3cdefc7f224796e0c9aed5bb9c240afd59aed4",
+    "model-shallowBranchingCoralData-B62OXckL.js": "ea4e5e60a503004d3da206d834dfdac60efda04a113201692bb05cd3b0944c35",
+    "model-shallowContactFaunaData-DsZl7Wck.js": "a15b8a632e2adbd27ede1e619cd24c389f6c1108bbd0498ead0d86ceb13dde99",
+    "model-shallowHawksbillData-CKCaOoNg.js": "433b65e8b88b187988cd632d84a271c43b5cfbea08bc0deb4780c135e2e3361e",
+    "model-shallowLivingKitData-DTaptMz-.js": "c74bb4ded74fb2af8c9b0950860eb24799a9cdde5176c50f64fdbc5e0f5f10f3",
+    "model-shallowNaturalHabitatData-C1zB2h_R.js": "3e01d394b8a9386f62af02d4a52298528b66d206ed8dbf827f462c6b8a341649",
+    "model-shallowNearCommunityData--ZpqrwJS.js": "b1f7893c108893eaec9f2282bf41114e5683c08278f1dbbd65d5f493ef148d72",
+    "model-shallowOpenCommunityData-DW6ToclW.js": "bcf809f9b198c33338c70ba2e014259f8787afdf5506e820b7a07320283e5f97",
+    "model-shallowReefDistanceData-B_J3Yq2I.js": "ac917fe51a79d683b14a1eb9347f930cdf3b6b1caaabc275f58bcfe6de551dcd",
+    "model-ShallowScannedReefData-5HRlOeZU.js": "326d4618058094de5b3f206a7cdecf11c6d0ea209428b85ce9a8dd041b3116c6",
+    "model-ShallowSourcedFishData-CsT9LYfq.js": "d1398e412e5c7b2d455d717e09f81cc12c9f7f4e9e021b542b0526ad93f43b49",
+    "OceanApp-BlwcFf-k.js": "b6db8858672513cc566b00e1af51cd370acbb7d4c8c0590796620125ec1ba9aa",
+    "oceanPreparation.worker-D1Lt8LeQ.js": "b2b9c5705ca8ca8ad905c414190c42b0aeb886362815ca13e7dbe4c9c930e340",
+    "oceanRuntime.worker-DPRzld4J.js": "89b51a6dd348283e7b090041575ad40100ed393a3b3401fea47449fbac065f50",
+    "oceanTerrain.worker-CMNF_cte.js": "46391bd188902ea4f68c9318ac5b9afbd547df7dd2ebf078b11c9e62e96c7f27",
+    "reefScanAssets-BjsR8BYJ.js": "30ff07335072bec59cc1b23208c1ffab7583d0a684fa5089190bb2b23f09c55f",
+    "ShallowSampleApp-ORHAMKxU.js": "4135c6b513fd3591e30086696bb29fd26e8c0634c78953d9adc3b9dd82daed86"
+  },
+  "modifiedRuntimeSourceHashes": {
+    "src/initialLivingEntry.js": "c74344dcb6f0e83b793c1547eddfd23c35c84b9221691764942c2600eb80f3ca",
+    "src/OceanApp.jsx": "7e1d64574fa4f839228e082287838d2d9de39b68bf8716447cb9f7ee14aa55cc",
+    "src/livingRidgeGeology.js": "d635d861187f006d2312ef89a92f985d67c1b0e92e9759df0242dcef34f66187",
+    "src/oceanBackgroundPreparation.js": "8a211a800107fe168ac1174a9c2883dfdd2d11a7ab91724ddbd4c2eb5694f9cb",
+    "src/oceanBackgroundRuntime.js": "1270eae21eb715eb9999eea7856b5598bc98056506f7955564a2c66a9ff3db1d",
+    "src/oceanEcology.js": "5d02e4491e8846a9a9fcde34f36755990b60a97894e285f47f3486cc1c1b53ac",
+    "src/oceanPreparation.worker.js": "2b572fd9ac098538e0c556e7243bc8571074e9dafdde9b70f1ea23aae8ddc577",
+    "src/oceanPreparationJobs.js": "c9a58058928e9645950d9a037419e4c8c638b7731f14aefa035cad7de48cdfa6",
+    "src/oceanRuntime.worker.js": "b33a652abc93667cdf807f5ba2693b0b4d2490b420da032c9e8dfef76cbe73a4",
+    "src/oceanRuntimeJobs.js": "f375187875454671111cc6721367699eb26f7d3fecc0bcef7bd7b53849b1ef6d",
+    "src/world/ReefWorld.js": "909bfc04b8555c52094f8a6d63e75f84a2e7d238fb61ee697914cbf276d24aa3"
+  },
+  "remoteMainVerified": "4749548bfa2216879315fb7b84ad6479cf3a940e"
+}

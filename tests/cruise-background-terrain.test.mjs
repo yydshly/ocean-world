@@ -129,8 +129,8 @@ test('bounded immutable worker contexts reuse terrain only and recheck each full
  assert.equal(run('history',{...payload,ecologySeed:seed,rows:corrupt}),false,'no mutable-history verdict is cached');
  const changed=structuredClone(plans);changed[0].floorPatch.heights[2000]+=.2;
  assert.throws(()=>run('validate-group',{...payload,plans:changed}),/Invalid/);
- for(let offset=1;offset<=5;offset++)assert.equal(run('validate-group',{...payload,plans:[...plans.slice(offset),...plans.slice(0,offset)]}),true);
- assert.equal(run.stats().contexts,4);assert.equal(run.stats().contextLimit,4);
+ for(let offset=1;offset<=7;offset++)assert.equal(run('validate-group',{...payload,plans:[...plans.slice(offset),...plans.slice(0,offset)]}),true);
+ assert.equal(run.stats().contexts,6);assert.equal(run.stats().contextLimit,6);
  assert.throws(()=>run('validate-group',{...payload,seed:seed+1}),/Invalid/);assert.equal(run.stats().contexts,0);
  assert.throws(()=>run('validate-group',{...payload,wholeSeabed:false}),/Invalid/);assert.equal(run.stats().contexts,0);
  assert.equal(run('validate-group',payload),true);assert.equal(run('history',{...payload,ecologySeed:seed,rows:structuredClone(rows)}),true);

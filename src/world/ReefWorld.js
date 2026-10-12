@@ -92,7 +92,7 @@ const FRAME_TIME_LIMITS_MS = [16.67, 25, 33.34, 50, 100, 250, 1000];
 function seeded(seed) { let s = seed | 0; return () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t ^= t + Math.imul(t ^ t >>> 7, 61 | t); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 
 export class ReefWorld {
-  constructor(container, onSnapshot, onSelect, onError, { biomeId = 'reef', mobileIndividuals = null, reefScanAsset = null, seed = 42, paused = false, sceneProfile = null, worldVariant = null } = {}) {
+  constructor(container, onSnapshot, onSelect, onError, { biomeId = 'reef', mobileIndividuals = null, reefScanAsset = null, seed = 42, paused = false, sceneProfile = null, worldVariant = null, initialEntryStopId = null } = {}) {
     const initializationStarted = performance.now();
     this.container = container;
     this.onSnapshot = onSnapshot;
@@ -249,7 +249,7 @@ export class ReefWorld {
       this.onBlur = () => this.keys.clear();
       window.addEventListener('keydown',this.onKeyDown);window.addEventListener('keyup',this.onKeyUp);window.addEventListener('blur',this.onBlur);
       this.resizeObserver = new ResizeObserver(()=>this.resize()); this.resizeObserver.observe(container); this.resize();
-      if(this.isLivingShallows)this.enterLivingShallows();else this.setView('wide',true);
+      if(this.isLivingShallows){if(!this.initializeLivingDemoEntry(initialEntryStopId))this.enterLivingShallows();}else this.setView('wide',true);
       this.warmupPreallocatedResources();
       this.resourceInventorySnapshot(true);
       // Initialization and its one-time upload/precompile cost are reported
@@ -1986,6 +1986,16 @@ export class ReefWorld {
     this.livingWorldState.save({version:1,timeSec:this.livingClockSec,environment:{...this.sim.environment}});
     this._livingStateSavedAt=this.elapsed;
   }
+  initializeLivingDemoEntry(stopId){
+    if(!this.isLivingShallows||!this.oceanChunks||!['reef-valley-region','seagrass-meadow-region'].includes(stopId))return false;
+    const stop=this.oceanChunks.generator.routeStops?.find(row=>row.id===stopId);if(!stop)return false;
+    const origin=(stopId==='reef-valley-region'?reefValleyRegionOrigin:seagrassMeadowRegionOrigin)(Math.floor(stop.x/64),Math.floor(stop.z/64));
+    if(!origin)return false;
+    this._shallowSceneEntryToken=(this._shallowSceneEntryToken??0)+1;
+    const x=origin.cx*64+192,z=origin.cz*64+64,y=Math.min(this.surfaceY-.6,this.habitatY(x,z)+2);
+    return this.restoreOceanObservation({position:{x,y,z},target:{x:x+8,y:y-.65,z},layer:'bed',
+      freeDepthM:this.surfaceY-y,habitat:this.oceanChunks.generator.sample(x,z).habitat});
+  }
   enterLivingShallows(index=0){
     if(!this.isLivingShallows||!this.oceanChunks)return false;
     this._shallowSceneEntryToken=(this._shallowSceneEntryToken??0)+1;
@@ -2785,7 +2795,7 @@ export class ReefWorld {
     this.frameTimeBuckets[index<0?FRAME_TIME_LIMITS_MS.length:index]++;
   }
   frameTimingSnapshot(){
-    return {frameWorkEvents:this.frameWorkEvents??[],ecologyWorkEvents:this.oceanEcology?._loadWorkEvents??[],mainThreadStalls:{type:this.mainThreadStalls?.type??null,events:this.mainThreadStalls?.events??[]},directorEntryNotice:this.directorEntryNotice??null,longFrameEvents:this.longFrameEvents??[],ecologyRuntime:this.oceanEcology?.backgroundRuntime?.stats()??null,frameCpuMs:this.frameCpuMs,actualFrameCount:this.actualFrameCount,actualFrameSeconds:this.actualFrameSeconds,
+    return {frameWorkEvents:this.frameWorkEvents??[],ecologyWorkEvents:this.oceanEcology?._loadWorkEvents??[],macroPreparation:this.oceanChunks?.generator?.preparationStats?.()??null,mainThreadStalls:{type:this.mainThreadStalls?.type??null,events:this.mainThreadStalls?.events??[]},directorEntryNotice:this.directorEntryNotice??null,longFrameEvents:this.longFrameEvents??[],ecologyRuntime:this.oceanEcology?.backgroundRuntime?.stats()??null,frameCpuMs:this.frameCpuMs,actualFrameCount:this.actualFrameCount,actualFrameSeconds:this.actualFrameSeconds,
       overallMeanFPS:this.actualFrameSeconds>0?this.actualFrameCount/this.actualFrameSeconds:0,
       minFrameTimeMs:Number.isFinite(this.minFrameTimeMs)?this.minFrameTimeMs:null,maxFrameTimeMs:this.maxFrameTimeMs,
       frameTimeBuckets:this.frameTimeBuckets.map((frames,index)=>({upperMs:FRAME_TIME_LIMITS_MS[index]??null,frames}))};

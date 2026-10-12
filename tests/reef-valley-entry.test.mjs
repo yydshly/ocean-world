@@ -20,7 +20,7 @@ function initializer(name,setter){
     if(c==='(')depth++;else if(c===')'&&!--depth)break;
   }
   assert.equal(depth,0);
-  return new Function('window','localStorage','URLSearchParams','LIVING_SHALLOWS_PROFILE',`const expeditionMode = new URLSearchParams(window.location.search).get('demo') === 'life-expedition'; return (${source.slice(start,i)});`);
+  return new Function('window','localStorage','URLSearchParams','LIVING_SHALLOWS_PROFILE',`const expeditionMode = new URLSearchParams(window.location.search).get('demo') === 'life-expedition'; const directorEntryMode = new URLSearchParams(window.location.search).get('demo') === 'director'; return (${source.slice(start,i)});`);
 }
 const factories=[['pendingDemo','setPendingDemo'],['biome','setBiome'],['reefProfile','setReefProfile']].map(([a,b])=>initializer(a,b));
 const begin=source.indexOf('    if(choice.reefValleyRegionEntry||choice.seagrassMeadowRegionEntry){'),end=source.indexOf('    if(choice.coastalLifeBeltEntry',begin);
@@ -46,6 +46,7 @@ test('the direct reef-valley URL enters the living reef without altering previou
   assert.deepEqual(values('?demo=reef-valley-region'),[{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,
     stopId:'reef-valley-region',reefValleyRegionEntry:true},'reef',LIVING_SHALLOWS_PROFILE]);
   assert.deepEqual(values(''),[null,'kelp','legacy']);assert.deepEqual(writes,[]);
+  for(const demo of ['director','life-expedition'])assert.deepEqual(values(`?demo=${demo}`),[null,'reef',LIVING_SHALLOWS_PROFILE]);
   const capability=DEMO_LIVING_STOPS.find(row=>row.id==='reef-valley-region');
   assert.equal(capability.action.reefValleyRegionEntry,true);
   assert.equal(DIRECTOR_STEPS[0].action,capability.action);

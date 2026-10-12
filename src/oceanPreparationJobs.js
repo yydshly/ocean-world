@@ -2,7 +2,7 @@ import { prepareReefResidentHabitat } from './oceanReefResidents.js';
 import { withWholeSeabedGenerator } from './wholeSeabedComposition.js';
 import { createLivingShallowsGenerator } from './livingShallowsGeneration.js';
 import { createLivingRidgeGenerator, validateLivingRidgePlan } from './livingRidgeGeology.js';
-import { createReefValleyRegionPlans } from './reefValleyRegion.js';
+import { createReefValleyRegionPlans, REEF_VALLEY_REGION_LAYOUT } from './reefValleyRegion.js';
 import { createSeagrassMeadowRegionPlans } from './seagrassMeadowRegion.js';
 import { OceanEcology } from './oceanEcology.js';
 import { validateLivingNetworkRecord } from './livingEcologyNetwork.js';
@@ -11,7 +11,7 @@ import { validateMeadowAnimalBelt } from './meadowAnimalBelt.js';
 // This module has no storage, DOM, render loop or shared live-world references.
 export function createOceanPreparationJobs() {
   let base = null, seed, wholeSeabed;
-  const contexts=new Map(), retained=new Map(), contextLimit=4;
+  const contexts=new Map(), retained=new Map(), contextLimit=REEF_VALLEY_REGION_LAYOUT.maximumCachedGroups;
   const lifetime=crypto.randomUUID(); let nextContext=0;
   let contextHits=0, contextValidations=0;
   const run=function run(kind, payload) {
@@ -104,6 +104,7 @@ export function createOceanPreparationJobs() {
     }
     throw new TypeError('Unknown ocean preparation job.');
   };
-  run.stats=()=>({contextHits,contextValidations,contexts:contexts.size,contextLimit});
+  run.stats=()=>({contextHits,contextValidations,contexts:contexts.size,contextLimit,
+    groups:[...contexts.values()].map(entry=>entry.plans[0].group.id)});
   return run;
 }

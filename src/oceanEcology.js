@@ -1707,7 +1707,8 @@ export class OceanEcology {
     const generation = this._generation, revision = ++this._revision, world = this._world;
     const requestedAt = performance.now();
     const timing = { totalMs: 0, prefetchMs: 0, canonicalValidationMs: 0, historicalValidationMs: 0,
-      generationMs: 0, birthEcologyMs: 0, persistenceMs: 0, publicationMs: 0, restoreMs: 0 };
+      generationMs: 0, birthEcologyMs: 0, persistenceMs: 0, publicationMs: 0, restoreMs: 0,
+      queueAndBarrierMs: 0, ownerValidationAndRestoreMs: 0, readCalls: 0 };
     const measure = (key, fn) => { const start = performance.now(); try { return fn(); } finally {
       const duration = performance.now() - start; timing[key] = (timing[key] ?? 0) + duration;
       if (this.backgroundRuntime && duration > 50) {
@@ -1715,14 +1716,31 @@ export class OceanEcology {
         if(this._loadWorkEvents.length>32)this._loadWorkEvents.shift();
       }
     } };
-    const measureAsync = async (key, fn) => { const start = performance.now(); try { return await fn(); } finally { timing[key] += performance.now() - start; } };
+    const measureAsync = async (key, fn) => { const start = performance.now(); if (key === 'prefetchMs') timing.readCalls++; try { return await fn(); } finally { timing[key] += performance.now() - start; } };
     const preparation = new OceanPreparation();
     this._pending = this._enqueue(async () => {
+      timing.queueAndBarrierMs = performance.now() - requestedAt;
       const current = () => !this._disposed && generation === this._generation && revision === this._revision;
       if (!current()) return;
       const desired = new Map();
       for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) desired.set(`${cx + dx},${cz + dz}`, [cx + dx, cz + dz]);
       const prefetched = new Map();
+      const readCompleteOwnerGroup = async (ownerIds, label) => {
+        if (typeof this.store.loadMany !== 'function') return null;
+        if (prefetched.size + ownerIds.filter(id => !prefetched.has(id)).length > REEF_VALLEY_PREFETCH_OWNER_LIMIT)
+          throw new RangeError('Macro-region private prefetch exceeds its 97-owner bound.');
+        const missing = ownerIds.filter(id => !prefetched.has(id) && !this._active.has(id));
+        if (!missing.length) return new Map();
+        const errorsBefore = this._counts.persistenceErrors;
+        const records = await measureAsync('prefetchMs', () => this._storage('loadMany', world, missing));
+        if (!current()) return false;
+        if (this._counts.persistenceErrors > errorsBefore) { this._center = null; return false; }
+        if (!(records instanceof Map) || missing.some(id => !records.has(id) || records.get(id) === undefined)) {
+          this._counts.persistenceErrors++; this._storageError = `A complete ${label} owner batch could not be read.`;
+          this._center = null; return false;
+        }
+        return records;
+      };
       const supportHaloIds = new Set(), macroPlansToValidate = [];
       if (this.livingGeologyEnabled) {
         // Read the complete support halo before changing its source. A failed
@@ -1875,9 +1893,11 @@ export class OceanEcology {
       for (const [id, saved] of prefetched) if (reefValleyMarked(saved)) addValleyGroup(...id.split(',').map(Number));
       this._reefValleyAdmission = { privateOwnerCount: prefetched.size, privateOwnerLimit: REEF_VALLEY_PREFETCH_OWNER_LIMIT, groups: [] };
       for (const origin of valleyGroups.values()) {
+        const groupRecords = await readCompleteOwnerGroup(origin.ownerIds, 'reef-valley');
+        if (groupRecords === false) { if (!current()) return; return false; }
         for (const id of origin.ownerIds) if (!prefetched.has(id)) {
           const errorsBefore = this._counts.persistenceErrors;
-          const saved = this._active.get(id) ?? await measureAsync('prefetchMs', () => this._storage('load', world, id));
+          const saved = this._active.get(id) ?? (groupRecords ? groupRecords.get(id) : await measureAsync('prefetchMs', () => this._storage('load', world, id)));
           if (!current()) return;
           if (this._counts.persistenceErrors > errorsBefore || saved === undefined) {
             if (saved === undefined) { this._counts.persistenceErrors++; this._storageError = 'A complete reef-valley owner could not be read.'; }
@@ -1934,9 +1954,11 @@ export class OceanEcology {
       for (const [id, saved] of prefetched) if (meadowRegionMarked(saved)) addMeadowGroup(...id.split(',').map(Number));
       this._meadowRegionAdmission = { privateOwnerCount: prefetched.size, privateOwnerLimit: REEF_VALLEY_PREFETCH_OWNER_LIMIT, groups: [] };
       for (const origin of meadowGroups.values()) {
+        const groupRecords = await readCompleteOwnerGroup(origin.ownerIds, 'meadow-region');
+        if (groupRecords === false) { if (!current()) return; return false; }
         for (const id of origin.ownerIds) if (!prefetched.has(id)) {
           const errorsBefore = this._counts.persistenceErrors;
-          const saved = this._active.get(id) ?? await measureAsync('prefetchMs', () => this._storage('load', world, id));
+          const saved = this._active.get(id) ?? (groupRecords ? groupRecords.get(id) : await measureAsync('prefetchMs', () => this._storage('load', world, id)));
           if (!current()) return;
           if (this._counts.persistenceErrors > errorsBefore || saved === undefined) {
             if (saved === undefined) { this._counts.persistenceErrors++; this._storageError = 'A complete meadow-region owner could not be read.'; }
@@ -2347,10 +2369,7 @@ export class OceanEcology {
         // Restore checks read this committed owner's historical solids locally;
         // live physics sees only owners that have completed activation.
         try {
-          if (this.backgroundRuntime) {
-            await measureAsync('historicalValidationMs', () => this.backgroundRuntime.validateHistory('active', [[id, saved]], valid));
-            if (!current()) return;
-          } else {
+          if (!this.backgroundRuntime) {
             this._validateActiveHistory(saved, id, valid);
             this._validateRestoredMobileHistory(saved, id, valid);
           }
@@ -2381,7 +2400,7 @@ export class OceanEcology {
           const prepare = () => prepareRegion(saved, coordinates, valid);
           let prepared;
           if (this.backgroundRuntime) {
-            prepared = await measureAsync('restoreMs', () => this.backgroundRuntime.prepareOwner(saved, coordinates, valid, freshPlan));
+            prepared = await measureAsync('ownerValidationAndRestoreMs', () => this.backgroundRuntime.prepareOwner(saved, coordinates, valid, freshPlan, true));
             if (!current()) return;
           } else if (freshPlan) {
             this._supportCells.clear();this._runtimePoseCache=null;
@@ -2443,7 +2462,7 @@ export class OceanEcology {
     }).finally(() => {
       timing.preparation = preparation.stats();
       timing.totalMs = performance.now() - requestedAt;
-      timing.otherMs = Math.max(0, timing.totalMs - Object.entries(timing).filter(([key]) => key !== 'totalMs' && key !== 'preparation').reduce((sum, [, value]) => sum + value, 0));
+      timing.otherMs = Math.max(0, timing.totalMs - Object.entries(timing).filter(([key]) => key !== 'totalMs' && key !== 'preparation' && key !== 'readCalls').reduce((sum, [, value]) => sum + value, 0));
       if (revision === this._revision) this._reefValleyTiming = timing;
       if (revision === this._revision) this._meadowRegionTiming = timing;
     });

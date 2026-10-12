@@ -27,6 +27,7 @@ export class OceanBackgroundRuntime {
     const active = [...ecology._active];
     const payload = this.payload(frames);
     const flight = this.preparation.run('step', payload).then(result => {
+      const applyStartedMs = performance.now();
       if (this.disposed || ecology._generation !== generation ||
           ecology.generator !== generator || generator.ridgeRevision !== topology ||
           active.some(([id, row]) => ecology._active.get(id) !== row)) return;
@@ -43,6 +44,7 @@ export class OceanBackgroundRuntime {
       ecology._planktonLastStep = result.planktonLastStep;
       ecology._planktonFaces = new Map(result.planktonFaces);
       this.computationMs = result.computationMs;
+      this.replyApplyMs = performance.now() - applyStartedMs;
     }).catch(error => { if (!this.disposed) this.error = error; }).finally(() => {
       if (this.pending === flight) this.pending = null;
       if (!this.barriers) this.pump();
@@ -50,11 +52,12 @@ export class OceanBackgroundRuntime {
     this.pending = flight;
   }
   payload(frames = []) {
+    const payloadStartedMs = performance.now();
     const ecology = this.ecology, generator = ecology.generator;
     const context = JSON.stringify([ecology.seed, generator.wholeSeabedVersion === 1, ecology._backgroundBirthOptions]);
     const changed = this._acknowledgedGenerator !== generator || this._acknowledgedTopology !== generator.ridgeRevision || this._acknowledgedContext !== context;
     const registry = changed ? generator.registryStats() : null;
-    return { seed: ecology.seed, wholeSeabed: generator.wholeSeabedVersion === 1,
+    const payload = { seed: ecology.seed, wholeSeabed: generator.wholeSeabedVersion === 1,
       options: ecology._backgroundBirthOptions, topology: generator.ridgeRevision, context,
       ...(changed ? { plans: registry.ids.map(id => generator.getRidgePlan(id)).filter(Boolean),
         legacyIds: registry.ids.filter(id => !generator.getRidgePlan(id)) } : {}),
@@ -64,6 +67,7 @@ export class OceanBackgroundRuntime {
       sceneSupports: [...ecology._sceneSupports], habitatSupports: [...ecology._habitatSupports],
       macroSupports: [...ecology._macroSupports], birthView: ecology._biodiversityBirthView,
       atomicStore: typeof ecology.store?.saveMany === 'function', environment: { ...ecology._environment }, activeTime: ecology._activeTime, accumulator: ecology._accumulator, frames };
+    this.payloadMs = performance.now() - payloadStartedMs; return payload;
   }
   acknowledgeContext(payload, generator) {
     if (this.disposed || this.ecology.generator !== generator || generator.ridgeRevision !== payload.topology) return;
@@ -77,10 +81,10 @@ export class OceanBackgroundRuntime {
     this.acknowledgeContext(payload, generator);
     return result;
   }
-  async prepareOwner(saved, coordinates, valid, freshPlan = null) {
+  async prepareOwner(saved, coordinates, valid, freshPlan = null, validateActive = false) {
     if (!this.barriers) throw new Error('Owner preparation requires a publication barrier.');
     const generator = this.ecology.generator, payload = this.payload();
-    const result = await this.preparation.run('prepare-owner', { ...payload, kind: 'prepare-owner', saved: structuredClone(saved), coordinates, valid, freshPlan });
+    const result = await this.preparation.run('prepare-owner', { ...payload, kind: 'prepare-owner', saved: structuredClone(saved), coordinates, valid, freshPlan, validateActive });
     this.acknowledgeContext(payload, generator);
     // Preserve the certified immutable terrain identity on main-owned records.
     if (saved?.livingRidgePlan) for (const key of ['region', 'beforeCommunity', 'beforeMobility', 'beforeTransport'])
@@ -109,7 +113,8 @@ export class OceanBackgroundRuntime {
   }
   async withBarrier(operation) {
     this.barriers++;
-    try { await this.flush(); return await operation(); }
+    const barrierStartedMs = performance.now();
+    try { await this.flush(); this.barrierWaitMs = performance.now() - barrierStartedMs; return await operation(); }
     finally { this.barriers--; if (!this.barriers) this.pump(); }
   }
   reset() { this.frames.length = 0; this.error = null; this._acknowledgedGenerator = null; }
@@ -117,8 +122,10 @@ export class OceanBackgroundRuntime {
     try { await this.flush(); }
     finally { this.disposed = true; this.preparation.dispose(); }
   }
-  stats() { return { pending: !!this.pending, queuedFrames: this.frames.length,
+  stats() { const preparationStats = this.preparation.stats?.() ?? {}; return { pending: !!this.pending, queuedFrames: this.frames.length,
     queuedSeconds: this.frames.reduce((sum, frame) => sum + frame.deltaSec, 0),
-    computationMs: this.computationMs, error: this.error?.message ?? null };
+    computationMs: this.computationMs, payloadMs: this.payloadMs ?? 0, replyApplyMs: this.replyApplyMs ?? 0,
+    barrierWaitMs: this.barrierWaitMs ?? 0, jobs: preparationStats.jobs ?? [],
+    transitionJobs: preparationStats.transitionJobs ?? [], error: this.error?.message ?? null };
   }
 }

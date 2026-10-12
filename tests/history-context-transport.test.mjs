@@ -46,8 +46,8 @@ test('retained terrain checks the complete source once, isolates immutable plans
 test('retained contexts expire with LRU eviction, seed/profile changes and worker lifetime',()=>{
  const {plans}=data(),jobs=createOceanPreparationJobs(),payload={seed,wholeSeabed:true,plans};
  const first=jobs('validate-group',{...payload,retainContext:true});
- for(let offset=1;offset<=4;offset++)jobs('validate-group',{...payload,plans:[...plans.slice(offset),...plans.slice(0,offset)]});
- assert.equal(jobs.stats().contexts,4);assert.equal(jobs.stats().contextLimit,4);
+ for(let offset=1;offset<=6;offset++)jobs('validate-group',{...payload,plans:[...plans.slice(offset),...plans.slice(0,offset)]});
+ assert.equal(jobs.stats().contexts,6);assert.equal(jobs.stats().contextLimit,6);
  const compact={seed,wholeSeabed:true,contextToken:first.contextToken,rows:[]};
  assert.throws(()=>jobs('history',compact),/expired/);
  const current=jobs('validate-group',{...payload,retainContext:true});

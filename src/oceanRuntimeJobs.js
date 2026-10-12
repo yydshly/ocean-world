@@ -49,7 +49,14 @@ export function createOceanRuntimeJobs() {
     ecology._accumulator = payload.accumulator;
     if (payload.environment) ecology._environment = { ...payload.environment };
     if (payload.kind === 'prepare-owner') {
-      const prepare = () => ecology._prepareRegion(payload.saved, payload.coordinates, payload.valid);
+      const prepare = () => {
+        if (payload.validateActive === true) {
+          ecology._validateActiveHistory(payload.saved, payload.coordinates.join(','), payload.valid);
+          ecology._validateRestoredMobileHistory(payload.saved, payload.coordinates.join(','), payload.valid);
+          ecology._supportCells.clear(); ecology._runtimePoseCache = null;
+        }
+        return ecology._prepareRegion(payload.saved, payload.coordinates, payload.valid);
+      };
       ecology._supportCells.clear(); ecology._runtimePoseCache = null;
       const previousStore = ecology.store;
       if (!payload.atomicStore) ecology.store = {};
