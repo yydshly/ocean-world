@@ -1,4 +1,5 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useSyncExternalStore } from 'react';
+import { sceneLoadingProgress } from './sceneLoadingProgress.js';
 const OceanApp = lazy(() => import('./OceanApp.jsx').then(module => ({ default: module.OceanApp })));
 const ShallowSample = lazy(() => import('./ShallowSampleApp.jsx').then(module => ({ default: module.ShallowSampleApp })));
 
@@ -16,5 +17,6 @@ class SceneLoadBoundary extends React.Component {
 
 export function App(){
   const sample = new URLSearchParams(window.location.search).get('demo') === 'shallow-sample';
-  return <SceneLoadBoundary><Suspense fallback={<p style={{padding:30}} role="status">正在打开海底世界…首次访问需要准备模型，之后可使用缓存。</p>}>{sample ? <ShallowSample/> : <OceanApp/>}</Suspense></SceneLoadBoundary>;
+  const loading = useSyncExternalStore(sceneLoadingProgress.subscribe, sceneLoadingProgress.getSnapshot);
+  return <SceneLoadBoundary><Suspense fallback={<div style={{padding:30}} role="status"><p>正在打开海底世界…首次访问需要准备模型，之后可使用缓存。</p>{loading.started>0&&<p>模型准备 {loading.complete} / {loading.started} · 已接收 {(loading.bytes/1048576).toFixed(1)} MB</p>}<button onClick={()=>window.location.reload()}>重新载入</button></div>}>{sample ? <ShallowSample/> : <OceanApp/>}</Suspense></SceneLoadBoundary>;
 }

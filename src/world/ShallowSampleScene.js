@@ -160,7 +160,10 @@ gl_FragColor.rgb*=1.0+caustic*${strength.toFixed(3)};\n#include <dithering_fragm
 
 export class ShallowSampleScene {
   constructor(seed=55,options={}){
+    let stamp=performance.now();this.buildTimings={};
+    const mark=name=>{const next=performance.now();this.buildTimings[name]=next-stamp;stamp=next;};
     this.model=createShallowSample(seed,options);this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#326e80');
+    mark('model');
     this.scene.fog=new THREE.FogExp2('#326e80',.023);this.clock={value:0};this.resources=[];this.textures=[];this.disposed=false;
     this.coralBatches=[];this.grassBatches=[];this.skeletonMeshes=[];this.skeletonSites=[];this.scanController=new AbortController();
     this.scannedReefMaterials=new Map();this.openCommunity=new ShallowOpenCommunity();this.nearCommunity=new ShallowNearCommunity();this.benthicCorals=new ShallowBenthicCorals();
@@ -185,8 +188,8 @@ export class ShallowSampleScene {
     this.reefTextureScale=.50;
     this.reefTextureDesaturation=.92;
     this.resources.push(sand,rockMaterial);
-    this.buildBed(sand);this.buildRocks(rockMaterial);this.buildPlants();
-    this.animals=new SampleAnimalRenderer(this.model,this.openCommunity,this.nearCommunity,this.benthicCorals);this.scene.add(this.animals.root);this.update(0);
+    mark('materials');this.buildBed(sand);mark('bed');this.buildRocks(rockMaterial);mark('rocks');this.buildPlants();mark('plants');
+    this.animals=new SampleAnimalRenderer(this.model,this.openCommunity,this.nearCommunity,this.benthicCorals);this.scene.add(this.animals.root);mark('animals');this.update(0);mark('firstUpdate');
   }
   own(resource){this.resources.push(resource);return resource;}
   buildBed(material){

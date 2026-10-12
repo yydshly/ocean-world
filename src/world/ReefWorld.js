@@ -68,6 +68,7 @@ import { createDirectorEntryMotion, sampleDirectorEntryMotion, advanceDirectorEn
 import { createCoastalSeascapeMotion, sampleCoastalSeascapeMotion, coastalSeascapeWindowReady } from '../coastalSeascapeMotion.js';
 import { reefValleyRegionOrigin } from '../reefValleyRegion.js';
 import { seagrassMeadowRegionOrigin } from '../seagrassMeadowRegion.js';
+import { observeMainThreadStalls } from '../mainThreadStalls.js';
 
 const reefPresets = {
   wide: { position: [3, 2.8, 5], target: [-2.5, 0.65, -2] },
@@ -126,6 +127,9 @@ export class ReefWorld {
     this.oceanEcologyCenter = null; this.oceanEcologyResetting = false;
     this.livingVisualRoute = null;
     this.disposed = false; this.elapsed = 0; this.visualTimeSec = 0; this.frameCount = 0; this.frameSeconds = 0; this.fps = 0;
+    this.mainThreadStalls=observeMainThreadStalls(()=>({paused:this.paused,visible:!document.hidden,
+      motionKind:this.directorMotion?.shot?.kind??null,motionElapsedSec:this.directorMotion?.elapsedSec??null,
+      frameCpuMs:this.lastFrameCpuMs??null}));
     this.controlStartCount = 0; this.lastResourceInventory = -Infinity;
     this.actualFrameCount = 0; this.actualFrameSeconds = 0;
     this.frameTimeBuckets = Array(FRAME_TIME_LIMITS_MS.length + 1).fill(0);
@@ -2718,6 +2722,11 @@ export class ReefWorld {
     this.recordFrameInterval(rawFrameSeconds);
     this.frameCount++;this.frameSeconds+=rawFrameSeconds;if(this.frameSeconds>=1){this.fps=this.frameCount/this.frameSeconds;this.frameCount=0;this.frameSeconds=0;}
     if(this.elapsed-this.lastSnapshot>.3)this.emitSnapshot();
+    markCpu('snapshot');this.lastFrameCpuMs=cpu;
+    if(Object.values(cpu).reduce((sum,value)=>sum+value,0)>100){
+      this.frameWorkEvents??=[];this.frameWorkEvents.push({startMs:frameTime,paused:this.paused,motionElapsedSec:this.directorMotion?.elapsedSec??null,cpu});
+      if(this.frameWorkEvents.length>32)this.frameWorkEvents.shift();
+    }
     if(localCaptureEnabled&&this.elapsed<=1501&&this.elapsed-this.lastTelemetry>=30){this.lastTelemetry=this.elapsed;this.telemetrySamples.push({...this.frameTimingSnapshot(),...this.observationStateSnapshot(),biomeId:this.biomeId,wallSeconds:(Date.now()-this.runStarted)/1000,fps:Math.round(this.fps),metrics:{...metrics},paused:this.paused,speed:this.speed,visibility:document.visibilityState,drawCalls:this.renderer.info.render.calls,triangles:this.renderer.info.render.triangles,entities:this.entities.size,memory:{geometries:this.renderer.info.memory.geometries,textures:this.renderer.info.memory.textures}});this.telemetrySamples=this.telemetrySamples.slice(-50);fetch('/__reef-capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'telemetry',name:this.runId,data:{...this.frameTimingSnapshot(),...this.observationStateSnapshot(),biomeId:this.biomeId,runId:this.runId,startedAt:new Date(this.runStarted).toISOString(),wallSeconds:(Date.now()-this.runStarted)/1000,hardware:this.hardware,viewport:this.snapshot().viewport,samples:this.telemetrySamples,errors:this.errors}})}).catch(()=>{});}
   }
   clearCameraPosition(p,{column=this.deepMidwaterObservation}={}){
@@ -2776,7 +2785,7 @@ export class ReefWorld {
     this.frameTimeBuckets[index<0?FRAME_TIME_LIMITS_MS.length:index]++;
   }
   frameTimingSnapshot(){
-    return {directorEntryNotice:this.directorEntryNotice??null,longFrameEvents:this.longFrameEvents??[],ecologyRuntime:this.oceanEcology?.backgroundRuntime?.stats()??null,frameCpuMs:this.frameCpuMs,actualFrameCount:this.actualFrameCount,actualFrameSeconds:this.actualFrameSeconds,
+    return {frameWorkEvents:this.frameWorkEvents??[],ecologyWorkEvents:this.oceanEcology?._loadWorkEvents??[],mainThreadStalls:{type:this.mainThreadStalls?.type??null,events:this.mainThreadStalls?.events??[]},directorEntryNotice:this.directorEntryNotice??null,longFrameEvents:this.longFrameEvents??[],ecologyRuntime:this.oceanEcology?.backgroundRuntime?.stats()??null,frameCpuMs:this.frameCpuMs,actualFrameCount:this.actualFrameCount,actualFrameSeconds:this.actualFrameSeconds,
       overallMeanFPS:this.actualFrameSeconds>0?this.actualFrameCount/this.actualFrameSeconds:0,
       minFrameTimeMs:Number.isFinite(this.minFrameTimeMs)?this.minFrameTimeMs:null,maxFrameTimeMs:this.maxFrameTimeMs,
       frameTimeBuckets:this.frameTimeBuckets.map((frames,index)=>({upperMs:FRAME_TIME_LIMITS_MS[index]??null,frames}))};
@@ -2834,7 +2843,7 @@ export class ReefWorld {
     // A partial constructor must release every resource that it acquired.
     // Continue cleanup if one disposer fails; preserve the original failure.
     const release=action=>{try{action();}catch(error){this.errors?.push('资源释放失败：'+error.message);}};
-    release(()=>this.renderer?.setAnimationLoop(null));release(()=>this.resizeObserver?.disconnect());
+    release(()=>this.mainThreadStalls?.dispose());release(()=>this.renderer?.setAnimationLoop(null));release(()=>this.resizeObserver?.disconnect());
     release(()=>this.persistLivingWorld());
     release(()=>window.removeEventListener('pagehide',this.onOceanCheckpoint));release(()=>document.removeEventListener('visibilitychange',this.onOceanVisibility));
     release(()=>{this.oceanEcology?.dispose().catch(error=>this.errors?.push('区域生态保存失败：'+error.message));});

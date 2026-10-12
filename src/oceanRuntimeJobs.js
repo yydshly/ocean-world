@@ -42,7 +42,10 @@ export function createOceanRuntimeJobs() {
     ecology._accumulator = payload.accumulator;
     if (payload.kind === 'support') return ecology._validateSupportHistory(payload.validationRows);
     if (payload.kind === 'active') {
-      for (const [id, row] of payload.validationRows) ecology._validateActiveHistory(row, id, payload.valid);
+      for (const [id, row] of payload.validationRows) {
+        ecology._validateActiveHistory(row, id, payload.valid);
+        ecology._validateRestoredMobileHistory(row, id, payload.valid);
+      }
       return true;
     }
     const start = performance.now();

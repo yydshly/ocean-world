@@ -4,10 +4,20 @@ import { pathToFileURL } from 'node:url';
 // Keep authored geometry byte-for-byte intact, but stop shipping large base64
 // literals as executable JavaScript. Content-hashed data survives UI releases.
 export function compressedModelDataPlugin() {
+  let base = '/';
   return {
     name: 'compressed-model-data',
     apply: 'build',
     enforce: 'pre',
+    configResolved(config) { base = config.base; },
+    transformIndexHtml: { order: 'post', handler(_html, context) {
+      const files = Object.values(context.bundle ?? {}).filter(asset => asset.type === 'asset' && asset.fileName.endsWith('.bin')).map(asset => base + asset.fileName);
+      if (!files.length) return [];
+      // Start the sample's data requests with the document, before its lazy JS
+      // dependency graph arrives. Other entrances don't download these models.
+      return [{ tag: 'script', injectTo: 'head-prepend', children:
+        `if(new URLSearchParams(location.search).get('demo')==='shallow-sample')for(const url of ${JSON.stringify(files)}){const link=document.createElement('link');link.rel='preload';link.as='fetch';link.crossOrigin='anonymous';link.href=url;document.head.appendChild(link);}` }];
+    } },
     async transform(code, id) {
       if (!/\/world\/shallow\w+Data\.js$/i.test(id) || code.length < 100000) return null;
       const match = code.match(/export default ([\s\S]*);\s*$/);

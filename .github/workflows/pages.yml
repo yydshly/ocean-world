@@ -46,7 +46,7 @@ jobs:
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
       - name: Check entry navigation, packaged models and background integration
-        run: node --test tests/entry-experience.test.mjs tests/ocean-background-runtime.test.mjs
+        run: node --test tests/entry-experience.test.mjs tests/ocean-background-runtime.test.mjs tests/stable-loading.test.mjs tests/stable-plan-validation.test.mjs
       - name: Upload static website
         uses: actions/upload-pages-artifact@v4
         with:

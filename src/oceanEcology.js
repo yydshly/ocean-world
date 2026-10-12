@@ -1646,6 +1646,40 @@ export class OceanEcology {
     return true;
   }
 
+  _validateRestoredMobileHistory(saved, id, valid) {
+    const hasSceneRecord = saved && ['sceneElementsVersion', 'sceneElementsInitializedAtSec', 'sceneElements'].some(key => Object.hasOwn(saved, key));
+    const hasHabitatRecord = saved && ['habitatSceneVersion', 'habitatSceneInitializedAtSec', 'habitatSceneTheme', 'habitatSceneElements'].some(key => Object.hasOwn(saved, key));
+    const hasMacroRecord = saved && ['macroLandscapeVersion', 'macroLandscapeInitializedAtSec', 'macroLandscapeElements'].some(key => Object.hasOwn(saved, key));
+    const hasTurtleRecord = saved && ['turtleCommunityVersion', 'turtleInitializedAtSec', 'turtleAgents'].some(key => Object.hasOwn(saved, key));
+    const restoredSurface = (x, z) => Math.max(
+      (hasSceneRecord ? saved.sceneElements : []).reduce((height, element) => Math.max(height,
+        sceneElementHeight(element, x, z, true) ?? -Infinity), this._surface(x, z, true)),
+      (hasHabitatRecord ? saved.habitatSceneElements : []).reduce((height, element) => Math.max(height,
+        habitatSceneHeight(element, x, z, true) ?? -Infinity), -Infinity),
+      (hasMacroRecord ? saved.macroLandscapeElements : []).reduce((height, element) => Math.max(height,
+        macroLandscapeHeight(element, this.generator, x, z, true) ?? -Infinity), -Infinity));
+    const hasGuildRecord = saved && (['reefGuildVersion', 'reefGuildInitializedAtSec', 'reefGuild'].some(key => Object.hasOwn(saved, key)) ||
+      saved.agents?.some(isReefGuildAgent));
+    if (hasGuildRecord && (!valid || !validateReefGuildRecord(saved, this.generator,
+      { surface: (x, z, coral) => this._surface(x, z, coral) })))
+      throw new Error('Invalid saved reef-life guild; original population was not regenerated.');
+    const hasOpenWaterRecord = saved && (['openWaterLifeVersion', 'openWaterLifeInitializedAtSec', 'openWaterLife'].some(key => Object.hasOwn(saved, key)) ||
+      saved.agents?.some(isOpenWaterLifeAgent));
+    if (hasOpenWaterRecord && (!valid || !validateOpenWaterLifeRecord(saved, this.generator,
+      { surface: (x, z, coral) => this._surface(x, z, coral) })))
+      throw new Error('Invalid saved open-water life; original population was not regenerated.');
+    if (hasTurtleRecord && (!valid || !validateOceanTurtleRecord(saved, this.generator, { surface: restoredSurface }))) {
+      this._sceneSupports.delete(id);
+      throw new Error('Invalid saved grass-bed turtle; original population was not regenerated.');
+    }
+    const hasGrazingRecord = saved && (['turtleGrazingVersion', 'turtleGrazingInitializedAtSec', 'turtleOrganicVersion', 'turtleOrganicInitializedAtSec', 'turtleOrganic'].some(key => Object.hasOwn(saved, key)) ||
+      saved.turtleAgents?.some(agent => Object.hasOwn(agent, 'grazing')));
+    if (hasGrazingRecord && (!hasTurtleRecord || saved.turtleOrganicVersion !== 1 || saved.turtleGrazingVersion !== 1 ||
+        !validateOceanTurtleGrazingRecord(saved, this.generator, { surface: restoredSurface })))
+      throw new Error('Invalid saved turtle feeding state; original population was not regenerated.');
+    return true;
+  }
+
   update(position) {
     if (!position || !Number.isFinite(position.x) || !Number.isFinite(position.z)) throw new RangeError('Exploration coordinates must be finite.');
     if (this._disposed) return Promise.resolve();
@@ -1659,7 +1693,13 @@ export class OceanEcology {
     const requestedAt = performance.now();
     const timing = { totalMs: 0, prefetchMs: 0, canonicalValidationMs: 0, historicalValidationMs: 0,
       generationMs: 0, birthEcologyMs: 0, persistenceMs: 0, publicationMs: 0 };
-    const measure = (key, fn) => { const start = performance.now(); try { return fn(); } finally { timing[key] += performance.now() - start; } };
+    const measure = (key, fn) => { const start = performance.now(); try { return fn(); } finally {
+      const duration = performance.now() - start; timing[key] = (timing[key] ?? 0) + duration;
+      if (this.backgroundRuntime && duration > 50) {
+        this._loadWorkEvents ??= []; this._loadWorkEvents.push({startMs:start,durationMs:duration,kind:key});
+        if(this._loadWorkEvents.length>32)this._loadWorkEvents.shift();
+      }
+    } };
     const measureAsync = async (key, fn) => { const start = performance.now(); try { return await fn(); } finally { timing[key] += performance.now() - start; } };
     const preparation = new OceanPreparation();
     this._pending = this._enqueue(async () => {
@@ -1699,7 +1739,7 @@ export class OceanEcology {
             this._storageError = 'A shallow seascape owner read returned no persistence result.';
             this._counts.persistenceErrors++; this._center = null; return false;
           }
-          const backgroundPlan = this.generator.backgroundPreparationEnabled && [8, 9].includes(saved?.livingRidgePlan?.version);
+          const backgroundPlan = this.generator.backgroundPreparationEnabled && Number.isInteger(saved?.livingRidgePlan?.version) && saved.livingRidgePlan.version >= 1 && saved.livingRidgePlan.version <= 9;
           if (backgroundPlan) macroPlansToValidate.push(saved.livingRidgePlan);
           if (saved && Object.hasOwn(saved, 'livingRidgePlan') &&
               ((!backgroundPlan && !measure('canonicalValidationMs', () => validateLivingRidgePlan(saved.livingRidgePlan, this.generator))) || saved.livingRidgePlan.id !== id)) {
@@ -1960,7 +2000,7 @@ export class OceanEcology {
         catch (error) { if (current()) this._center = null; throw error; }
         if (!current()) return;
       } else this._validateSupportHistory(validationRows);
-      const prepareRegion = (...args) => this._prepareRegion(...args);
+      const prepareRegion = (...args) => measure('restoreMs', () => this._prepareRegion(...args));
       if (coastalCandidate && COASTAL_SEASCAPE_OWNERS.every(id => prefetched.get(id) === null)) {
         try {
           const plans = createLivingCoastalSeascapePlans(this.generator.baseGenerator, COASTAL_SEASCAPE_ANCHOR.cx, COASTAL_SEASCAPE_ANCHOR.cz);
@@ -2277,34 +2317,10 @@ export class OceanEcology {
           if (this.backgroundRuntime) {
             await measureAsync('historicalValidationMs', () => this.backgroundRuntime.validateHistory('active', [[id, saved]], valid));
             if (!current()) return;
-          } else this._validateActiveHistory(saved, id, valid);
-          const hasTurtleRecord = saved && ['turtleCommunityVersion', 'turtleInitializedAtSec', 'turtleAgents'].some(key => Object.hasOwn(saved, key));
-          const restoredSurface = (x, z) => Math.max(
-            (hasSceneRecord ? saved.sceneElements : []).reduce((height, element) => Math.max(height,
-              sceneElementHeight(element, x, z, true) ?? -Infinity), this._surface(x, z, true)),
-            (hasHabitatRecord ? saved.habitatSceneElements : []).reduce((height, element) => Math.max(height,
-              habitatSceneHeight(element, x, z, true) ?? -Infinity), -Infinity),
-            (hasMacroRecord ? saved.macroLandscapeElements : []).reduce((height, element) => Math.max(height,
-              macroLandscapeHeight(element, this.generator, x, z, true) ?? -Infinity), -Infinity));
-          const hasGuildRecord = saved && (['reefGuildVersion', 'reefGuildInitializedAtSec', 'reefGuild'].some(key => Object.hasOwn(saved, key)) ||
-            saved.agents?.some(isReefGuildAgent));
-          if (hasGuildRecord && (!valid || !validateReefGuildRecord(saved, this.generator,
-            { surface: (x, z, coral) => this._surface(x, z, coral) })))
-            throw new Error('Invalid saved reef-life guild; original population was not regenerated.');
-          const hasOpenWaterRecord = saved && (['openWaterLifeVersion', 'openWaterLifeInitializedAtSec', 'openWaterLife'].some(key => Object.hasOwn(saved, key)) ||
-            saved.agents?.some(isOpenWaterLifeAgent));
-          if (hasOpenWaterRecord && (!valid || !validateOpenWaterLifeRecord(saved, this.generator,
-            { surface: (x, z, coral) => this._surface(x, z, coral) })))
-            throw new Error('Invalid saved open-water life; original population was not regenerated.');
-          if (hasTurtleRecord && (!valid || !validateOceanTurtleRecord(saved, this.generator, { surface: restoredSurface }))) {
-            this._sceneSupports.delete(id);
-            throw new Error('Invalid saved grass-bed turtle; original population was not regenerated.');
+          } else {
+            this._validateActiveHistory(saved, id, valid);
+            this._validateRestoredMobileHistory(saved, id, valid);
           }
-          const hasGrazingRecord = saved && (['turtleGrazingVersion', 'turtleGrazingInitializedAtSec', 'turtleOrganicVersion', 'turtleOrganicInitializedAtSec', 'turtleOrganic'].some(key => Object.hasOwn(saved, key)) ||
-            saved.turtleAgents?.some(agent => Object.hasOwn(agent, 'grazing')));
-          if (hasGrazingRecord && (!hasTurtleRecord || saved.turtleOrganicVersion !== 1 || saved.turtleGrazingVersion !== 1 ||
-              !validateOceanTurtleGrazingRecord(saved, this.generator, { surface: restoredSurface })))
-            throw new Error('Invalid saved turtle feeding state; original population was not regenerated.');
           let freshPlan = null;
           if (this.livingGeologyEnabled && !saved) {
             if (this.seabedReliefEnabled) {

@@ -1,3 +1,6 @@
+<!-- stable-experience-closeout-current -->
+2026-10-12 有限入口稳定性阶段已收口：两轮修复上限用完，不自动第三轮，不扩资产/物种/模拟。候选 stable-experience-candidate-20261012 只留本地，不推送部署；远端保留4749548。最终同构建：1×75.0117s完整，46.94FPS/p95 37.5ms/max83.2ms，scale1→0.65，导航8.30s；1×240s生命巡游完成，452m/25附近展示类/4生境，但播放1.5293s和1.2125s间隔，流畅度失败；导演以4×为主未跳章，10/67完整，第11章整景礁群报Invalid saved biodiversity owner 101,2，保留播放间隔最长4.9208s/抽样准备等待27s。真实viewport1280×720，pixelRatio约1，RTX4070Laptop，本地已有缓存，勿横比此前DPR1.5或称公网冷首访。六批定向27/81/29/8/30/8通过有重叠，最终build17.56s通过，无候选全量云端检查。原因未完全定位，未清空历史/重生人口/放宽验证。详docs/STABLE_EXPERIENCE.md及docs/validation/stable-experience-20261012.json；全部原始证据output/validation/stable-experience。未获新的有限目标前保持固定，不以未达标为理由无限优化。
+<!-- /stable-experience-closeout-current -->
 <!-- product-publication-current -->
 2026-10-12 用户明确授权汇总产品与网页、完善README、沿用原版引导图、提交并部署远端。此授权覆盖下方历史仅本地/不提交部署限制。保持现有模拟与资产冻结，仅进行必要发布整理；正式导览 public/overview，由 scripts/build-product-overview.mjs 生成，入口采用站点相对链接。原引导PNG保留为冻结前产品快照。历史README/状态移至 docs/history。发布是否完成以对应提交GitHub Actions和实际远端检查为准，不以推送成功冒称部署成功。后续不自动扩展场景。
 <!-- /product-publication-current -->

@@ -21,8 +21,12 @@ export function createOceanPreparationJobs() {
       return (version === 8 ? createReefValleyRegionPlans : createSeagrassMeadowRegionPlans)(base, cx, cz);
     }
     const plans = payload.plans;
+    if (kind === 'validate-plans') {
+      if (!Array.isArray(plans) || plans.length > 25 || plans.some(p => !Number.isInteger(p?.version) || p.version < 1 || p.version > 9))
+        throw new TypeError('Invalid background saved-plan request.');
+      return plans.map(plan => validateLivingRidgePlan(plan, base));
+    }
     if (!Array.isArray(plans) || plans.length > 25 || plans.some(p => ![8, 9].includes(p?.version))) throw new TypeError('Invalid background plan batch.');
-    if (kind === 'validate-plans') return plans.map(plan => validateLivingRidgePlan(plan, base));
     // Only complete, immutable terrain is cached. The full serialized source
     // must match, including owner order and every height, support and element.
     // Each history/birth still runs against fresh independent animal records.

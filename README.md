@@ -1,5 +1,7 @@
 # TIDAL · 海底世界
 
+> **最新本地验收：候选未通过，未部署。** 两轮入口稳定性修复已收口；75秒样板和240秒生命巡游完整播完，但仍有长停顿，导演在第11章加载失败。远端保留 `4749548`。[本轮结论、指标与剩余问题](docs/STABLE_EXPERIENCE.md)。
+
 一个可以观看、探索和观察生命的浏览器海底原型。目标是自然光照、真实比例、丰富生境与安静观察的海洋纪录片式体验；当前交付是**冻结的 75 秒浅海样板 + 持续探索世界 + 生态观察工具**。
 
 [产品导览与所有入口](https://yydshly.github.io/ocean-world/overview/) · [75 秒浅海样板](https://yydshly.github.io/ocean-world/?demo=shallow-sample&seed=55) · [生命巡游](https://yydshly.github.io/ocean-world/?demo=life-expedition&seed=55&world=whole-seabed) · [导演模式](https://yydshly.github.io/ocean-world/?demo=director&seed=55)
@@ -71,7 +73,7 @@
 
 本轮集中修复三个体验问题：导演跨区时遇到当前种子不存在的整景观察点，会明确提示并观察同海域已有生境；生命巡游的生态积分与历史区域完整校验移到后台线程，保存和换区前等待已提交的计算；浅海样板的大体积模型数据拆成可独立缓存的压缩文件，主样板 JavaScript 从约 17.1 MB 降至 2.54 MB。几何、原图、293 个体和 38 个展示类别保持同一冻结基线。
 
-最新本机播放、长帧和定向检查结果见[入口体验验收记录](public/overview/evidence/entry-experience.json)。从上方引导图进入导览后，建议先看 75 秒样板，再进入生命巡游；导演模式可以选章、变速或退出观察。首次区域准备仍需等待，67 章全程与所有设备的稳定帧率不由单次定向检查保证。
+上一发布版的播放、长帧和定向检查见[入口体验验收记录](public/overview/evidence/entry-experience.json)；最新未发布候选的结果见[有限收口验收](docs/STABLE_EXPERIENCE.md)。从上方引导图进入导览后，建议先看 75 秒样板，再进入生命巡游；导演模式可以选章、变速或退出观察。首次区域准备仍需等待，67 章全程与所有设备的稳定帧率不由单次定向检查保证。
 
 最终本机样板记录：1× 完整播放 **75.0137 秒**，无暂停、跳播或后台中断；1280×720 CSS、DPR 1.5、RTX 4070 Laptop、WebGL2，全程分辨率缩放 1.0。
 

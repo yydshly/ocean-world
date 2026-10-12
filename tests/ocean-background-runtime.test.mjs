@@ -90,5 +90,11 @@ test('background integration preserves native seed55 complete records, fractiona
     assert.throws(() => native._validateActiveHistory(damaged, id, true), /Invalid saved/);
     await assert.rejects(background.backgroundRuntime.withBarrier(() => background.backgroundRuntime.validateHistory('active', [[id, damaged]])), /Invalid saved/);
     assert.equal(damaged.resources.algae, -1, 'corrupt history was rejected, not repaired');
+    const [guildId, guildRow] = rows.find(([, record]) => record.reefGuildVersion === 1);
+    assert.equal(native._validateRestoredMobileHistory(guildRow, guildId, true), true);
+    const damagedGuild = structuredClone(guildRow); damagedGuild.reefGuild.preyOrganicUnits = -1;
+    assert.throws(() => native._validateRestoredMobileHistory(damagedGuild, guildId, true), /Invalid saved reef-life/);
+    await assert.rejects(background.backgroundRuntime.withBarrier(() => background.backgroundRuntime.validateHistory('active', [[guildId, damagedGuild]])), /Invalid saved/);
+    assert.equal(damagedGuild.reefGuild.preyOrganicUnits, -1);
   } finally { await background.dispose(); await native.dispose(); chunks.dispose(); }
 });

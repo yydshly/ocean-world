@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "candidate": "stable-experience-candidate-20261012",
+  "generatedAt": "2026-10-12T10:24:35.992529+00:00",
+  "baseCommit": "4749548bfa2216879315fb7b84ad6479cf3a940e",
+  "scope": {
+    "repairRounds": 2,
+    "maxRepairRounds": 2,
+    "sceneAssetsAndSimulationFrozen": true,
+    "noThirdRepair": true
+  },
+  "acceptance": "not-passed",
+  "deployment": {
+    "candidatePublished": false,
+    "remoteRetainedCommit": "4749548bfa2216879315fb7b84ad6479cf3a940e",
+    "verifiedWorkflow": "https://github.com/yydshly/ocean-world/actions/runs/38223039936"
+  },
+  "environment": {
+    "localOrigin": "http://127.0.0.1:4176/ocean-world/",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.0000000298023224
+    },
+    "hardware": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "network": "local cached visit; not public cold-cache loading",
+    "heavyTestsAndBuildsDuringFinalPlayback": false
+  },
+  "shallow": {
+    "query": "?demo=shallow-sample&seed=55",
+    "speed": 1,
+    "completed": true,
+    "uninterrupted": true,
+    "elapsedWallSeconds": 75.01169999995231,
+    "averageFps": 46.94140922883305,
+    "p95FrameMs": 37.5,
+    "maxFrameMs": 83.20000000000073,
+    "startupMs": 7621.899999976158,
+    "navigationToReadyMs": 8297.600000023842,
+    "resolutionHistory": [
+      {
+        "time": 0,
+        "scale": 1
+      },
+      {
+        "time": 19.67510000000004,
+        "scale": 0.85
+      },
+      {
+        "time": 21.18740000000006,
+        "scale": 0.7
+      },
+      {
+        "time": 22.73340000000007,
+        "scale": 0.65
+      }
+    ],
+    "capturedConsole": [],
+    "verdict": "functional pass; full-quality performance and 5-second loading target not passed"
+  },
+  "life": {
+    "query": "?demo=life-expedition&seed=55&world=whole-seabed",
+    "speed": 1,
+    "nominalModelSeconds": 240,
+    "completedStepIds": [
+      "life-expedition"
+    ],
+    "completed": true,
+    "displayedTravelledM": 452,
+    "displayedNearbyAnimalClasses": 25,
+    "displayedHabitats": [
+      "礁谷",
+      "沙沟",
+      "草床边缘",
+      "外礁坡"
+    ],
+    "maxRecordedPlayingFrameMs": 1529.2999999999884,
+    "recordedPlayingIntervalsOver1000Ms": [
+      {
+        "milliseconds": 1529.2999999999884,
+        "paused": false,
+        "motionKind": "reef-valley-route",
+        "motionElapsedSec": 169.1382000000031,
+        "waitingForRegions": false,
+        "previousCpuMs": {
+          "ecology": 0.08631402589187738,
+          "authored": 0.1473997187006658,
+          "camera": 0.979426465723801,
+          "streaming": 0.023162615280699808,
+          "animals": 1.0138196902044305,
+          "water": 0.1274560836589159,
+          "render": 2.9617258602753362
+        }
+      },
+      {
+        "milliseconds": 1212.5,
+        "paused": false,
+        "motionKind": "reef-valley-route",
+        "motionElapsedSec": 197.56670000000057,
+        "waitingForRegions": false,
+        "previousCpuMs": {
+          "ecology": 0.12381868154399156,
+          "authored": 0.2288630403393274,
+          "camera": 2.5037597314592213,
+          "streaming": 1.1739622839400088,
+          "animals": 5.601038701165757,
+          "water": 0.3469660024831795,
+          "render": 6.8781401193245415
+        }
+      }
+    ],
+    "errors": [],
+    "capturedConsole": [],
+    "verdict": "functional pass; playing stalls not passed"
+  },
+  "director": {
+    "query": "?demo=director&seed=55",
+    "rateScope": "primarily 4x; first approximately 23 model seconds at 1x; no chapter skipping",
+    "totalChapters": 67,
+    "completedStepIds": [
+      "reef-valley-region",
+      "seagrass-meadow-region",
+      "coastal-life-belt",
+      "shallows-opening",
+      "shallows-life",
+      "shallows-discoveries",
+      "shallows-shoal-life-community",
+      "shallows-meadow-life-community",
+      "shallows-biodiversity-reef",
+      "shallows-benthic-community"
+    ],
+    "completedChapters": 10,
+    "failedChapter": 11,
+    "failedTitle": "整景礁群",
+    "errors": [
+      "区域生态加载失败：Invalid saved biodiversity owner 101,2; historical community was not regenerated."
+    ],
+    "maxRecordedPlayingFrameMs": 4920.800000000047,
+    "maxSampledWaitSec": 27,
+    "capturedConsole": [],
+    "verdict": "failed; full 67-chapter coverage incomplete"
+  },
+  "interpretation": [
+    "rAF intervals measure observed playback cadence, not proof of a particular CPU, GPU or storage cause.",
+    "Bounded diagnostics can drop older records; maxima and waits describe retained/observed evidence, not a complete global profile.",
+    "Unit and native checks do not override browser failures. Test sets overlap and must not be summed.",
+    "No user storage was cleared or invalid historical populations regenerated to obtain a pass."
+  ],
+  "checks": [
+    {
+      "log": "round-1-checks.log",
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "duration_ms": 56927.1136
+    },
+    {
+      "log": "shallow-checks.log",
+      "tests": 81,
+      "pass": 81,
+      "fail": 0,
+      "duration_ms": 120298.3408
+    },
+    {
+      "log": "publication-director-checks.log",
+      "tests": 29,
+      "pass": 29,
+      "fail": 0,
+      "duration_ms": 4113.729
+    },
+    {
+      "log": "round-2-checks.log",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "duration_ms": 48503.7062
+    },
+    {
+      "log": "round-2-affected.log",
+      "tests": 30,
+      "pass": 30,
+      "fail": 0,
+      "duration_ms": 44130.5388
+    },
+    {
+      "log": "final-publication-checks.log",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "duration_ms": 1652.9957
+    }
+  ],
+  "build": {
+    "log": "round-2-build.log",
+    "status": "passed",
+    "elapsedSec": 17.56,
+    "candidateCloudFullSuiteRun": false,
+    "runtimeFiles": [
+      {
+        "path": "dist/client/assets/ageExperimentWorker-C8jD93i5.js",
+        "bytes": 15363,
+        "sha256": "4257c286b08865670b9aa78b787a24382283cc8833c983db39dd2a82fe772ac3"
+      },
+      {
+        "path": "dist/client/assets/draco_decoder-fzg4nYZr.js",
+        "bytes": 719410,
+        "sha256": "30e4d486fa020737af10e3c56197693e5b904bdc05b8bfa5d7b06751dec6da04"
+      },
+      {
+        "path": "dist/client/assets/draco_wasm_wrapper-DxJM36Ib.js",
+        "bytes": 58763,
+        "sha256": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8"
+      },
+      {
+        "path": "dist/client/assets/draco_wasm_wrapper-fZCQGLGb.js",
+        "bytes": 58456,
+        "sha256": "8bb2952d2ba7d67e1414f8df819410cb0434a666be53f671fff75f68843d76f6"
+      },
+      {
+        "path": "dist/client/assets/index-DbY-Egfi.js",
+        "bytes": 198027,
+        "sha256": "ef5bcc9dd71064b0a14df116ddc55b1859e968e426b5b3f92ecf7a0ce43adc61"
+      },
+      {
+        "path": "dist/client/assets/model-loader-BmUF7JJH.js",
+        "bytes": 1017,
+        "sha256": "c72fd6cdb9ce4eaac3da6f7cf4e8370440c1716a170c3ebec0c904957fd3db1f"
+      },
+      {
+        "path": "dist/client/assets/model-shallowBenthicCoralData-ClSitNV7.js",
+        "bytes": 161,
+        "sha256": "b947df8fd771ae479260c93c2b3cdefc7f224796e0c9aed5bb9c240afd59aed4"
+      },
+      {
+        "path": "dist/client/assets/model-shallowBranchingCoralData-B62OXckL.js",
+        "bytes": 163,
+        "sha256": "ea4e5e60a503004d3da206d834dfdac60efda04a113201692bb05cd3b0944c35"
+      },
+      {
+        "path": "dist/client/assets/model-shallowContactFaunaData-DsZl7Wck.js",
+        "bytes": 161,
+        "sha256": "a15b8a632e2adbd27ede1e619cd24c389f6c1108bbd0498ead0d86ceb13dde99"
+      },
+      {
+        "path": "dist/client/assets/model-shallowHawksbillData-CKCaOoNg.js",
+        "bytes": 158,
+        "sha256": "433b65e8b88b187988cd632d84a271c43b5cfbea08bc0deb4780c135e2e3361e"
+      },
+      {
+        "path": "dist/client/assets/model-shallowLivingKitData-DTaptMz-.js",
+        "bytes": 158,
+        "sha256": "c74bb4ded74fb2af8c9b0950860eb24799a9cdde5176c50f64fdbc5e0f5f10f3"
+      },
+      {
+        "path": "dist/client/assets/model-shallowNaturalHabitatData-C1zB2h_R.js",
+        "bytes": 163,
+        "sha256": "3e01d394b8a9386f62af02d4a52298528b66d206ed8dbf827f462c6b8a341649"
+      },
+      {
+        "path": "dist/client/assets/model-shallowNearCommunityData--ZpqrwJS.js",
+        "bytes": 162,
+        "sha256": "b1f7893c108893eaec9f2282bf41114e5683c08278f1dbbd65d5f493ef148d72"
+      },
+      {
+        "path": "dist/client/assets/model-shallowOpenCommunityData-DW6ToclW.js",
+        "bytes": 162,
+        "sha256": "bcf809f9b198c33338c70ba2e014259f8787afdf5506e820b7a07320283e5f97"
+      },
+      {
+        "path": "dist/client/assets/model-shallowReefDistanceData-B_J3Yq2I.js",
+        "bytes": 161,
+        "sha256": "ac917fe51a79d683b14a1eb9347f930cdf3b6b1caaabc275f58bcfe6de551dcd"
+      },
+      {
+        "path": "dist/client/assets/model-ShallowScannedReefData-5HRlOeZU.js",
+        "bytes": 178,
+        "sha256": "326d4618058094de5b3f206a7cdecf11c6d0ea209428b85ce9a8dd041b3116c6"
+      },
+      {
+        "path": "dist/client/assets/model-ShallowSourcedFishData-CsT9LYfq.js",
+        "bytes": 198,
+        "sha256": "d1398e412e5c7b2d455d717e09f81cc12c9f7f4e9e021b542b0526ad93f43b49"
+      },
+      {
+        "path": "dist/client/assets/OceanApp-2fUcIpTc.js",
+        "bytes": 1652355,
+        "sha256": "92b9c633e4435b3db9d9bd305e918a8cab4cf9890b7e276299aa0e67121241f2"
+      },
+      {
+        "path": "dist/client/assets/oceanPreparation.worker-B8c8naa-.js",
+        "bytes": 868438,
+        "sha256": "ccb5f77d8d7402c9fbeeeb264f40b341462562798baf0f47fab1b1ec1ea768fa"
+      },
+      {
+        "path": "dist/client/assets/oceanRuntime.worker-mvk2wsUJ.js",
+        "bytes": 866739,
+        "sha256": "6633ebee4d3b539f8d34a6e9728e7f65c1920e14355cb4df3dd1eb8fa9414ae6"
+      },
+      {
+        "path": "dist/client/assets/oceanTerrain.worker-Dg_rHvK8.js",
+        "bytes": 84573,
+        "sha256": "2c474f5e4c03ba49d2f2a40686eb9c5471ff6b813988a4c092834adf30f64a6f"
+      },
+      {
+        "path": "dist/client/assets/reefScanAssets-BHjmIaWG.js",
+        "bytes": 1475841,
+        "sha256": "c41005b62534f6b2b383cab1653d20a361d3c10646b39eb1cdcf802728849e8e"
+      },
+      {
+        "path": "dist/client/assets/shallowBenthicCoralData-CIGNmVEm.bin",
+        "bytes": 1281686,
+        "sha256": "54f776c8b4a7b7ee673e1f2a325fcb9f1155663700d55cfaf63b53a45205303b"
+      },
+      {
+        "path": "dist/client/assets/shallowBranchingCoralData-fih3f9ew.bin",
+        "bytes": 316723,
+        "sha256": "d1052eca2c8e2c87b67ba262572fd8e6b240fedb2aec019e393be5646bed5d4e"
+      },
+      {
+        "path": "dist/client/assets/shallowContactFaunaData-5HeIBBl6.bin",
+        "bytes": 959638,
+        "sha256": "b20bf41e5b76c3b8348f5fd6ef7faac92ab2598b565cbb4eae933c1b663fe359"
+      },
+      {
+        "path": "dist/client/assets/shallowHawksbillData-BBHROR24.bin",
+        "bytes": 654551,
+        "sha256": "7a4adbe912c4b270e7920cf3ea7ca0f4d0b1590b42305de3132b6602c43d09cc"
+      },
+      {
+        "path": "dist/client/assets/shallowLivingKitData-aD3FXB8l.bin",
+        "bytes": 1436291,
+        "sha256": "7f4c6264a804c4409b74da4e6576209e77edf1957c72bdc52c61f8b47b65152e"
+      },
+      {
+        "path": "dist/client/assets/shallowNaturalHabitatData-BVezin7E.bin",
+        "bytes": 646086,
+        "sha256": "2775cbc8aa4ac276c2d3a2656265867a75f76c1607b6ac18c9d695f4d2a139b4"
+      },
+      {
+        "path": "dist/client/assets/shallowNearCommunityData-D3vLCK8A.bin",
+        "bytes": 1993458,
+        "sha256": "09974765cb779089b9eccdc851a06383ed16b4fb5738cb4b187cf105a0227768"
+      },
+      {
+        "path": "dist/client/assets/shallowOpenCommunityData-DeubavW-.bin",
+        "bytes": 476474,
+        "sha256": "7a9edc62fc8b882fa248ffbdcf1050154a0d7f4c6272e503bbcf73aceb2a28a5"
+      },
+      {
+        "path": "dist/client/assets/shallowReefDistanceData-D3vmvdlk.bin",
+        "bytes": 411234,
+        "sha256": "a1c021cbca3556f7106edb6a77978ffcc851159ed39da2231a9377ffe696bc2d"
+      },
+      {
+        "path": "dist/client/assets/ShallowSampleApp-DOkrtZTt.js",
+        "bytes": 2535602,
+        "sha256": "ea76cb546c6d01052864f01eb10a005b486f375f46558d0e47e645bc2d43f5fb"
+      },
+      {
+        "path": "dist/client/assets/ShallowScannedReefData-Dd_2Oy2J.bin",
+        "bytes": 595563,
+        "sha256": "cd5c2e59ebae69044ee0c18dc466ababedc76a6d9fad7c1cbd8e980458a4f77f"
+      },
+      {
+        "path": "dist/client/assets/ShallowSourcedFishData-CooNqDTz.bin",
+        "bytes": 107206,
+        "sha256": "5e2413f7fa3d605fba219cd840fe60dea9677685bb949c5959ebcba6933d212a"
+      }
+    ],
+    "runtimeFileHashScope": "Existing compiled JS and compressed model data; no guarantee about public cold-cache performance."
+  },
+  "evidenceRoot": "output/validation/stable-experience",
+  "rawFiles": {
+    "shallow-final.json": "71d6cb1dfad8fd75f9cbcb539dad39d1acae41d3c33b1c2d8dcfdcc6ae7cf5f6",
+    "shallow-final.png": "f7aab0af79e334b9f4e720e47b5a622d46611e02f3f9f14178ef627b93f00101",
+    "life-final.json": "674bb4dec7486d862b6dd6a2ed347389bf9d0c1750e99bcd6065066fff4468e5",
+    "life-final.png": "198373ec2042425b4538f941e6ee492e6678b965006c9b68bcf05e4d64baac7c",
+    "director-final.json": "7db9d930a7e7d3ef0e4cc1c5d8d4872b84adee2b0db4d83076ebf9de8b508b9e",
+    "director-final.png": "027ce022b63eaef5fa68a5fd2d05a70aa962b95b344f1b205816b5e36d096b4e",
+    "director-final-trace.json": "67ad524a9a16a1961bba190632d58e98bac572f7ec395f9667b5b900d33e10ee",
+    "director-second-round-unmet.json": "e882640f9fbcdc00e997f2e9773a63a082bee8d588e4c764db538fc413144f84"
+  }
+}

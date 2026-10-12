@@ -27,6 +27,7 @@ export function ShallowSampleApp(){
       const modelStart=performance.now();
       world=new ShallowSampleScene(Number.isFinite(seed)?seed:55,{scannedReef:params.get('reef')==='scanned'});setSummary({...world.summary,scannedReef:world.model.scannedReef});
       metrics.modelBuildMs=performance.now()-modelStart;
+      metrics.sceneBuildStagesMs={...world.buildTimings};
       metrics.preparedCover={used:world.model.preparedCover,signature:world.model.coverInputSignature,raw:world.model.coverRawInputSignature,authoringRaw:world.model.coverExpectedRawSignature};
       controls=new OrbitControls(world.camera,renderer.domElement);controls.enabled=false;controls.enableDamping=true;
       controls.minDistance=1;controls.maxDistance=45;controls.maxPolarAngle=Math.PI*.85;
@@ -109,6 +110,7 @@ export function ShallowSampleApp(){
   const downloadMetrics=()=>{const blob=new Blob([JSON.stringify(runtime.current?.diagnostics.metrics,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='shallow-sample-playback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
   const exploration=new URL(window.location.href);exploration.searchParams.set('demo','life-expedition');exploration.searchParams.set('world','whole-seabed');
   return <main className="shallow-sample">
+    <output id="shallow-diagnostics" hidden>{JSON.stringify(runtime.current?.diagnostics.metrics??null)}</output>
     <div className="sample-canvas" ref={canvas}/>
     <header className="sample-header"><span className="sample-brand">TIDAL <small>浅海观察</small></span><nav><a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}assets/shallow-artist/credits.html`} target="_blank" rel="noreferrer">模型来源</a> · <a href={exploration.href}>进入持续探索 ↗</a></nav></header>
     <section className="sample-title" aria-live="polite"><p>浅海样板 · 连续巡游 75 秒</p><h1>{chapter.title}</h1><span>{chapter.detail}</span></section>
