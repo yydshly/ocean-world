@@ -100,5 +100,5 @@ test('actual URL and constructor gate the fresh food-web phase, isolate its hist
   try{assert.equal(m.meadowFoodWebEnabled,enabled);if(variant)assert.ok(m._world.includes('copy:'+variant+':'));const world=m._world;await m.reset(seed,g);assert.equal(m.meadowFoodWebEnabled,enabled);assert.equal(m._world,world);}finally{await m.dispose();}
  }
  const missing=new OceanEcology(seed,g,{meadowFoodWeb:true});try{assert.equal(missing.meadowFoodWebEnabled,false);}finally{await missing.dispose();}
- const app=readFileSync(new URL('../src/OceanApp.jsx',import.meta.url),'utf8');assert.ok(app.includes("url.searchParams.set('world','meadow-water-life')"));assert.ok(app.includes('动物性食物接入当地食物循环'));
+ const app=readFileSync(new URL('../src/OceanApp.jsx',import.meta.url),'utf8');assert.ok(app.includes("url.searchParams.set('world','whole-seabed')"));assert.ok(app.includes('动物性食物接入当地食物循环'));
 });

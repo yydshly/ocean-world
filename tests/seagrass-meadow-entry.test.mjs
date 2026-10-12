@@ -26,7 +26,7 @@ function initializer(name, setter) {
     if (c === '(') depth++; else if (c === ')' && !--depth) break;
   }
   assert.equal(depth, 0);
-  return new Function('window', 'localStorage', 'URLSearchParams', 'LIVING_SHALLOWS_PROFILE', `return (${source.slice(start, i)});`);
+  return new Function('window', 'localStorage', 'URLSearchParams', 'LIVING_SHALLOWS_PROFILE', `const expeditionMode = new URLSearchParams(window.location.search).get('demo') === 'life-expedition'; return (${source.slice(start, i)});`);
 }
 const initializers = [['pendingDemo', 'setPendingDemo'], ['biome', 'setBiome'], ['reefProfile', 'setReefProfile']]
   .map(([name, setter]) => initializer(name, setter));

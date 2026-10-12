@@ -103,7 +103,7 @@ npm run test:publication # 检查导览链接、资源、目录数量和构建�
 
 ## 部署与目录
 
-GitHub Pages 使用 `.github/workflows/pages.yml`：依赖安装 → 按仓库基路径构建 → 功能及发布检查 → 上传静态文件 → 发布。推送 `main` 会触发；部署要求仓库变量 `PAGES_ENABLED=true` 和 Pages 的 Actions 发布设置。静态产物是 `dist/client/`。
+GitHub Pages 使用 `.github/workflows/pages.yml`：依赖安装 → 按仓库基路径构建 → 功能及发布检查 → 上传静态文件 → 发布。推送 `main` 会触发；部署要求仓库变量 `PAGES_ENABLED=true` 和 Pages 的 Actions 发布设置。静态产物是 `dist/client/`。 原有 237 个世界检查文件全部保留：236 个分为 8 个并行组，1 个依赖构建产物的检查随构建执行；浅海样板和导览另有独立检查。所有组通过后才部署。
 
 | 路径 | 内容 |
 | --- | --- |

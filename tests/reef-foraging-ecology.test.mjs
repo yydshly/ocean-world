@@ -36,11 +36,12 @@ class Store {
   }
 }
 function fixture(store = new Store(), reefForaging = true, worldVariant = null) {
+  // Historical recipe flags must not inherit additions from the latest default world.
   const generator = createLivingRidgeGenerator(base);
   const source=readFileSync(new URL('../src/world/ReefWorld.js',import.meta.url),'utf8'),start=source.indexOf('new OceanEcology(seed,this.oceanChunks.generator,'),end=source.indexOf(');',start)+1;
   class Capture { constructor(seed,generator,options){this.options=options;} }
-  const captured=new Function('OceanEcology','seed',`return ${source.slice(start,end)};`).call({isLivingShallows:true,oceanWorldVariant:worldVariant,oceanChunks:{generator}},Capture,seed);
-  const model=new OceanEcology(seed,generator,{...captured.options,reefForaging,reefSchooling:true,reefColorFish:true,reefGrazers:true,reefVisitors:true,reefHabitatLayers:true,reefSandCorridor:true,reefSlopeCommunity:true,reefDepthCommunity:true,reefFilterLife:true,reefSuspensionLife:true,reefMobileBenthos:true,store});
+  const captured=new Function('OceanEcology','seed',`return ${source.slice(start,end)};`).call({isLivingShallows:true,oceanWorldVariant:worldVariant??'reef-foraging',oceanChunks:{generator}},Capture,seed);
+  const model=new OceanEcology(seed,generator,{...captured.options,worldVariant,reefForaging,reefSchooling:true,reefColorFish:true,reefGrazers:true,reefVisitors:true,reefHabitatLayers:true,reefSandCorridor:true,reefSlopeCommunity:true,reefDepthCommunity:true,reefFilterLife:true,reefSuspensionLife:true,reefMobileBenthos:true,store});
   return { model, generator, store };
 }
 const fromRecords = records => { const store = new Store(); store.records = new Map(clone(records)); return store; };

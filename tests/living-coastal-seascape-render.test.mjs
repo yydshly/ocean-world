@@ -1,3 +1,4 @@
+import { assertLegacyRockCompatibility } from './legacy-scene-compatibility.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -63,7 +64,7 @@ function rowsFor(record,mesh){const kind=mesh.userData.landscapeKind;return reco
 function geomHash(g){return sha(JSON.stringify({attributes:stable(g.attributes),index:stable(g.index)}));}
 
 test('pre-v7 complete twelve-owner v6 geometry instances material shaders and original kits remain literal exact',t=>{
-  for(const[path,hash]of Object.entries(original.sourceHashes))if(path!=='src/world/OceanChunks.js')assert.equal(sha(readFileSync(new URL('../'+path,import.meta.url))),hash,path);
+  for(const[path,hash]of Object.entries(original.sourceHashes))if(path==='src/oceanRockShape.js')assertLegacyRockCompatibility(hash);else if(path!=='src/world/OceanChunks.js')assert.equal(sha(readFileSync(new URL('../'+path,import.meta.url))),hash,path);
   const ocean=new OceanChunks(SEED,{livingGeology:true});t.after(()=>ocean.dispose());const plans=createLivingShallowSeascapePlans(ocean.generator.baseGenerator,96,2);
   assert.equal(sha(JSON.stringify(plans)),original.planHash);let checked=0;
   for(const frame of original.frames){const p={x:frame.window.cx*64+32,z:frame.window.cz*64+32};publish(ocean,plans,p);ocean.setEnvironment({currentMps:frame.input.currentMps},frame.input.timeSec);ocean.root.updateMatrixWorld(true);

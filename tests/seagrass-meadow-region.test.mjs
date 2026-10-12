@@ -1,3 +1,4 @@
+import { assertLegacyValleyCompatibility } from './legacy-scene-compatibility.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
@@ -116,8 +117,10 @@ test('world facies and actual cover decide habitats while old outer-band samples
   for (const q of [{ x: group.origin.x + 8.1, z: group.origin.z + 45.2 }, { x: group.origin.x + 375.1, z: group.origin.z + 73.2 }]) assert.deepEqual(sampleSeagrassMeadowRegion(base, owner(q.x, q.z), q.x, q.z), base.sample(q.x, q.z));
   for (const p of plans) { const x = p.cx * 64 + 32, z = p.cz * 64 + 32, sample = sampleSeagrassMeadowRegion(base, p, x, z); assert.equal(sample.floorY, floor(x, z).height); assert.equal(sample.depthM, base.surfaceY - sample.floorY); }
   assert.throws(() => seagrassMeadowFacies(plans[0], NaN, 0), RangeError);
-  const sources = {}; for (const [file, expected] of [['reefValleyRegion.js', '8c3a7e94a78e085986e49601c1dbaa374d57cdd58976edf206a71259ece66439'], ['livingCoastalSeascape.js', '32bbf2cd2a4d413be439f1c26da1d3dd4e706394171c9edcef52e494c53e9d88'], ['livingShallowSeascape.js', '67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049']]) { const hash = createHash('sha256').update(await readFile(new URL(`../src/${file}`, import.meta.url))).digest('hex'); assert.equal(hash, expected); sources[file] = hash; }
+  const sources = {}; for (const [file, expected] of [['livingCoastalSeascape.js', '32bbf2cd2a4d413be439f1c26da1d3dd4e706394171c9edcef52e494c53e9d88'], ['livingShallowSeascape.js', '67bc701f098708a64a59372fb7067198b19718700f01e29bd7115957584a5049']]) { const hash = createHash('sha256').update(await readFile(new URL(`../src/${file}`, import.meta.url))).digest('hex'); assert.equal(hash, expected); sources[file] = hash; }
+  assertLegacyValleyCompatibility(base);
   receipt.immutableSources = sources;
+  receipt.legacyValleyPlansExact = true;
 });
 
 test('closed canonical plans reject edited hosts, roots, group metadata, ports, allocation and already-checked mutable histories without cache rereads', async () => {

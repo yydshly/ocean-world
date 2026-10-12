@@ -37,7 +37,16 @@ test('shipped constructor creates sand interaction and encounters only for livin
     world.oceanAnimalSediment?.dispose();
     assert.equal(world.scene.children.length, 0);
   }
-  assert.match(source, /new OceanChunks\(seed,\{sandMaterial:this.sandMaterial,livingGeology:this.isLivingShallows,sandHabitat:this.isLivingShallows\}\)/);
+  const chunkCall = source.match(/new OceanChunks\(seed,\{[^;]+?\}\)/)?.[0];
+  assert.ok(chunkCall, 'shipped terrain constructor');
+  class CaptureChunks { constructor(seed, options) { this.seed = seed; this.options = options; } }
+  for (const living of [true, false]) {
+    const sandMaterial = {}, scope = { isLivingShallows: living, sandMaterial, oceanWorldVariant: null };
+    const actual = new Function('OceanChunks', 'seed', `return ${chunkCall}`).call(scope, CaptureChunks, 'native44');
+    assert.equal(actual.seed, 'native44'); assert.equal(actual.options.sandMaterial, sandMaterial);
+    assert.equal(actual.options.livingGeology, living); assert.equal(actual.options.sandHabitat, living);
+    assert.equal(actual.options.backgroundPreparation, living);
+  }
 });
 
 test('shipped clock passes actual quantized ecology advance, freezing pause and loading', () => {

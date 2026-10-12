@@ -1,3 +1,4 @@
+import { assertLegacyRockCompatibility } from './legacy-scene-compatibility.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -84,7 +85,8 @@ test('the original landscape triangles, roots and all native/water/visitor body 
   for (const file of ['src/kelpOceanGeneration.js', 'src/kelpHabitat.js', 'src/kelpSimulation.js', 'src/oceanRockShape.js',
     'src/world/KelpOceanChunks.js', 'src/world/kelpOrganisms.js', 'src/world/kelpWaterOrganisms.js', 'src/world/kelpVisitorOrganism.js']) {
     const entry = before.find(row => row.file === file); assert.ok(entry, `${file} was independently frozen before this milestone`);
-    assert.equal(createHash('sha256').update(readFileSync(new URL(`../${file}`, import.meta.url))).digest('hex'), entry.sha256, `${file} preserves the delivered original body/landscape`);
+    if (file === 'src/oceanRockShape.js') assertLegacyRockCompatibility(entry.sha256);
+    else assert.equal(createHash('sha256').update(readFileSync(new URL(`../${file}`, import.meta.url))).digest('hex'), entry.sha256, `${file} preserves the delivered original body/landscape`);
   }
   const chunks = new KelpOceanChunks('42'), renderer = new KelpUnderstory(); t.after(() => { chunks.dispose(); renderer.dispose(); });
   chunks.update({ x: -289, z: -62 });

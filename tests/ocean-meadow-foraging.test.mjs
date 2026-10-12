@@ -128,10 +128,10 @@ test('actual URL and shipped constructor select isolated meadow history and rese
   try{assert.equal(m.meadowForagingEnabled,shipped.meadowForaging);if(variant)assert.ok(m._world.includes('copy:'+variant+':'));await m.reset(seed,g);assert.equal(m.meadowForagingEnabled,shipped.meadowForaging);}finally{await m.dispose();}
  }
  const constructor=source.slice(source.indexOf('this.oceanWorldVariant ='),source.indexOf('this.inputSeed ='));assert.ok(constructor.includes("worldVariant === 'meadow-foraging'"));
- const app=read('src/OceanApp.jsx'),button=app.slice(app.indexOf("worldVariant!=='meadow-water-life'"),app.indexOf('>最新海域</button>'));
- assert.ok(button.includes("url.searchParams.set('world','meadow-water-life')"));assert.ok(button.includes('window.location.assign(url.href)'));
+ const app=read('src/OceanApp.jsx'),button=app.slice(app.indexOf("worldVariant!=='whole-seabed'"),app.indexOf('>最新海域</button>'));
+ assert.ok(button.includes("url.searchParams.set('world','whole-seabed')"));assert.ok(button.includes('window.location.assign(url.href)'));
  const url=new URL('http://127.0.0.1:4175/ocean-world/?demo=seagrass-meadow-region&seed=56&world=reef-foraging');
  const run=button.slice(button.indexOf('const url='),button.indexOf('window.location.assign(url.href);')+'window.location.assign(url.href);'.length);
  let assigned;new Function('window',run)({location:{href:url.href,assign:value=>assigned=value}});
- assert.equal(new URL(assigned).searchParams.get('demo'),'seagrass-meadow-region');assert.equal(new URL(assigned).searchParams.get('seed'),'56');assert.equal(new URL(assigned).searchParams.get('world'),'meadow-food-web');
+ assert.equal(new URL(assigned).searchParams.get('demo'),'seagrass-meadow-region');assert.equal(new URL(assigned).searchParams.get('seed'),'56');assert.equal(new URL(assigned).searchParams.get('world'),'whole-seabed');
 });
