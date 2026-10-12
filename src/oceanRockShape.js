@@ -236,7 +236,13 @@ export function registerFieldReefMesh(profile, positions, indices) {
     const length=Math.hypot(nx,ny,nz),denominator=(p[b+2]-p[c+2])*(p[a]-p[c])+(p[c]-p[b])*(p[a+2]-p[c+2]);
     if(length<1e-12||Math.abs(denominator)<1e-12)continue;
     if(ny<0){nx=-nx;ny=-ny;nz=-nz;}
-    const face=faces.length;faces.push({a,b,c,denominator,normal:{x:nx/length,y:ny/length,z:nz/length},
+    const minX=Math.min(p[a],p[b],p[c]),maxX=Math.max(p[a],p[b],p[c]);
+    const minZ=Math.min(p[a+2],p[b+2],p[c+2]),maxZ=Math.max(p[a+2],p[b+2],p[c+2]);
+    // Conservative barycentric edge and Float32 transform margins. Bounds
+    // only reject impossible triangles; arithmetic, ties and normals stay exact.
+    const marginX=EPSILON*(2*(maxX-minX)+1)+Number.EPSILON*Math.max(Math.abs(minX),Math.abs(maxX))*32;
+    const marginZ=EPSILON*(2*(maxZ-minZ)+1)+Number.EPSILON*Math.max(Math.abs(minZ),Math.abs(maxZ))*32;
+    const face=faces.length;faces.push({a,b,c,denominator,minX:minX-marginX,maxX:maxX+marginX,minZ:minZ-marginZ,maxZ:maxZ+marginZ,normal:{x:nx/length,y:ny/length,z:nz/length},
       ceiling:Math.max(p[a+1],p[b+1],p[c+1])+EPSILON*(Math.abs(p[a+1])+Math.abs(p[b+1])+Math.abs(p[c+1]))*4});
     for(let z=Math.floor((Math.min(p[a+2],p[b+2],p[c+2])+.5)*cells);z<=Math.floor((Math.max(p[a+2],p[b+2],p[c+2])+.5)*cells);z++)
       for(let x=Math.floor((Math.min(p[a],p[b],p[c])+.5)*cells);x<=Math.floor((Math.max(p[a],p[b],p[c])+.5)*cells);x++){
@@ -273,7 +279,9 @@ export function oceanRockSurface(profile = 'mound', x, z) {
     for(const face of data.bins.get(`${Math.floor((x+.5)*data.cells)},${Math.floor((z+.5)*data.cells)}`)??[]){
       // Barycentric edge tolerance permits a tiny extrapolation. Retain that
       // margin, including negative heights; this is not an approximate grid.
-      if(top&&data.faces[face].ceiling<top.height)break;
+      const bounds=data.faces[face];
+      if(top&&bounds.ceiling<top.height)break;
+      if(x<bounds.minX||x>bounds.maxX||z<bounds.minZ||z>bounds.maxZ)continue;
       const hit=triangleSurface(data,face,x,z);
       if(hit&&(!top||hit.height>top.height||(hit.height===top.height&&face<topFace))){top=hit;topFace=face;}
     }

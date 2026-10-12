@@ -1707,7 +1707,7 @@ export class OceanEcology {
     const generation = this._generation, revision = ++this._revision, world = this._world;
     const requestedAt = performance.now();
     const timing = { totalMs: 0, prefetchMs: 0, canonicalValidationMs: 0, historicalValidationMs: 0,
-      generationMs: 0, birthEcologyMs: 0, persistenceMs: 0, publicationMs: 0 };
+      generationMs: 0, birthEcologyMs: 0, persistenceMs: 0, publicationMs: 0, restoreMs: 0 };
     const measure = (key, fn) => { const start = performance.now(); try { return fn(); } finally {
       const duration = performance.now() - start; timing[key] = (timing[key] ?? 0) + duration;
       if (this.backgroundRuntime && duration > 50) {
@@ -2028,8 +2028,9 @@ export class OceanEcology {
           let births;
           this._supportCells.clear();this._runtimePoseCache=null;
           try {
-            births = this.generator.withCoastalSeascapePlans(plans, () => plans.map(plan => {
-              const { region } = prepareRegion(null, [plan.cx, plan.cz], false);
+            const prepared = this.backgroundRuntime ? await measureAsync('birthEcologyMs', () => this.backgroundRuntime.prepareGroup(plans)) : null;
+            if (!current()) return;
+            const finish = (region, plan) => {
               region.livingRidgePlan = clone(plan);
               region.coastalSeascapeVersion = 1; region.coastalSeascapeGroupId = `${plan.group.cx},${plan.group.cz}`;
               region.coastalSeascapeInitializedAtSec = 0;
@@ -2037,7 +2038,9 @@ export class OceanEcology {
                   this._residentCount(region) > OCEAN_REGION_AGENT_LIMIT) throw new Error('Invalid fresh coastal ecological network.');
               this._coastalBirths.delete(region);
               return region;
-            }));
+            };
+            births = prepared ? prepared.map((region, i) => finish(region, plans[i])) :
+              this.generator.withCoastalSeascapePlans(plans, () => plans.map(plan => finish(prepareRegion(null, [plan.cx, plan.cz], false).region, plan)));
           } finally { this._supportCells.clear();this._runtimePoseCache=null; }
           if (!current()) return;
           const result = await this._saveRecords(world, births.map(region => [region.id, clone(region)]));
@@ -2061,15 +2064,18 @@ export class OceanEcology {
             let births;
             this._supportCells.clear();this._runtimePoseCache=null;
             try {
-              births = this.generator.withShallowSeascapePlans(plans, () => plans.map(plan => {
-                const { region } = prepareRegion(null, [plan.cx, plan.cz], false);
+              const prepared = this.backgroundRuntime ? await measureAsync('birthEcologyMs', () => this.backgroundRuntime.prepareGroup(plans)) : null;
+              if (!current()) return;
+              const finish = (region, plan) => {
                 region.livingRidgePlan = clone(plan);
                 region.shallowSeascapeVersion = 1; region.shallowSeascapeGroupId = `${plan.group.cx},${plan.group.cz}`;
                 region.shallowSeascapeInitializedAtSec = 0;
                 if (!SHALLOW_SEASCAPE_OWNERS.includes(region.id) || !validateLivingNetworkRecord(region) ||
                     this._residentCount(region) > OCEAN_REGION_AGENT_LIMIT) throw new Error('Invalid fresh whole-shallow ecological network.');
                 return region;
-              }));
+              };
+              births = prepared ? prepared.map((region, i) => finish(region, plans[i])) :
+                this.generator.withShallowSeascapePlans(plans, () => plans.map(plan => finish(prepareRegion(null, [plan.cx, plan.cz], false).region, plan)));
             } finally { this._supportCells.clear();this._runtimePoseCache=null; }
             if (!current()) return;
             const result = await this._saveRecords(world, births.map(region => [region.id, clone(region)]));
@@ -2250,13 +2256,16 @@ export class OceanEcology {
           let births;
           this._supportCells.clear();this._runtimePoseCache=null;
           try {
-            births = this.generator.withRidgePlans(plans, () => plans.map(plan => {
-              const { region } = prepareRegion(null, [plan.cx, plan.cz], false);
+            const prepared = this.backgroundRuntime ? await measureAsync('birthEcologyMs', () => this.backgroundRuntime.prepareGroup(plans)) : null;
+            if (!current()) return;
+            const finish = (region, plan) => {
               region.livingRidgePlan = clone(plan);
               if (!validateLivingNetworkRecord(region) || this._residentCount(region) > OCEAN_REGION_AGENT_LIMIT)
                 throw new Error('Invalid fresh seascape ecological network.');
               return region;
-            }));
+            };
+            births = prepared ? prepared.map((region, i) => finish(region, plans[i])) :
+              this.generator.withRidgePlans(plans, () => plans.map(plan => finish(prepareRegion(null, [plan.cx, plan.cz], false).region, plan)));
           } finally { this._supportCells.clear();this._runtimePoseCache=null; }
           if (!current()) return;
           // Four real populations, stocks and their shared floor sources form
@@ -2371,7 +2380,10 @@ export class OceanEcology {
           }
           const prepare = () => prepareRegion(saved, coordinates, valid);
           let prepared;
-          if (freshPlan) {
+          if (this.backgroundRuntime) {
+            prepared = await measureAsync('restoreMs', () => this.backgroundRuntime.prepareOwner(saved, coordinates, valid, freshPlan));
+            if (!current()) return;
+          } else if (freshPlan) {
             this._supportCells.clear();this._runtimePoseCache=null;
             try { prepared = this.generator.withRidgePlan(freshPlan, prepare); }
             finally { this._supportCells.clear();this._runtimePoseCache=null; }

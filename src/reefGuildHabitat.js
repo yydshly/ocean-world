@@ -1,3 +1,4 @@
+import { createOceanSupportIndex, oceanSupportCandidates } from './oceanSupportIndex.js';
 import { oceanRockHeight } from './oceanRockShape.js';
 import { LIVING_SHALLOWS_PROFILE } from './livingShallows.js';
 
@@ -78,12 +79,18 @@ export function createReefGuildPlan(generator, region, { random, surface, bed, a
     'tube-sponge': { sizeM: .3 + random('reef-guild:sponge:size') * .6, radiusFactor: .35 },
   };
   const bounds = chunk.bounds;
+  const plantPadding=Math.max(...Object.values(dimensions).map(d=>d.sizeM*d.radiusFactor))+.04;
+  // Expanded ellipse broadphase for the largest actual candidate footprint.
+  // Mutable custom descriptors remain in every bin; exact overlap still decides.
+  const plantIndex=createOceanSupportIndex(plants.map(plant=>({plant,element:
+    Object.isFrozen(plant)&&Object.isFrozen(plant.scale)?Object.freeze({...plant,kind:'coral',rotation:plant.rotation??0,
+      scale:Object.freeze({...plant.scale,x:plant.scale.x+2*plantPadding,z:plant.scale.z+2*plantPadding})}):plant})),region.cx,region.cz);
   const acceptedSite = (speciesId, rock, point, selected) => {
     const { sizeM, radiusFactor } = dimensions[speciesId], radius = sizeM * radiusFactor;
     if (point.x < bounds.minX + radius + .1 || point.x > bounds.maxX - radius - .1 ||
         point.z < bounds.minZ + radius + .1 || point.z > bounds.maxZ - radius - .1 ||
         generator.sample(point.x, point.z).depthM > 22) return null;
-    if (plants.some(plant => (speciesId === 'tube-sponge' || plant.kind !== 'algae') && plantOverlap(plant, point.x, point.z, radius))) return null;
+    if (oceanSupportCandidates(plantIndex,point.x,point.z).some(({plant}) => (speciesId === 'tube-sponge' || plant.kind !== 'algae') && plantOverlap(plant, point.x, point.z, radius))) return null;
     if (selected.some(row => Math.hypot(row.x - point.x, row.z - point.z) < row.supportRadius + radius + .2)) return null;
     if (agents.some(agent => agent.alive && finitePoint(agent.position) && !['green-chromis', 'lined-tang', 'cleaner-wrasse', 'honeycomb-grouper', 'golden-sweep', 'reef-manta', 'green-turtle'].includes(agent.speciesId) &&
       Math.hypot(agent.position.x - point.x, agent.position.z - point.z) < radius + Math.max(.10, (agent.sizeM ?? .1) * .5))) return null;

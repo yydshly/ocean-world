@@ -1,0 +1,518 @@
+{
+  "version": "stable-demo-candidate-20261012",
+  "branch": "fix/stable-demo-20261012",
+  "baselineCommit": "411a791837219c1d294470b1bfce1b58efb38d9f",
+  "publishedCommit": "4749548bfa2216879315fb7b84ad6479cf3a940e",
+  "deployed": false,
+  "accepted": false,
+  "scope": "Two bounded stability passes. Frozen assets, scenes, individuals, routes and ecological rules.",
+  "environment": {
+    "origin": "http://127.0.0.1:4175/ocean-world/",
+    "viewport": "1280x720 CSS / DPR1.5",
+    "hardware": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "cache": "Existing local assets and saved history. No user storage cleared. Not public cold network."
+  },
+  "sample": {
+    "before": {
+      "completed": true,
+      "modelSeconds": 75,
+      "wallSeconds": 75.02060000002385,
+      "meanFPS": 42.21732256593874,
+      "p95FrameMs": 37.5,
+      "maxFrameMs": 108.40000000000146,
+      "navigationToReadyMs": 6599.700000047684,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        },
+        {
+          "time": 35.74569999999979,
+          "scale": 0.85
+        },
+        {
+          "time": 37.274899999999796,
+          "scale": 0.7
+        },
+        {
+          "time": 38.76649999999977,
+          "scale": 0.65
+        }
+      ],
+      "interruptions": [],
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5
+      }
+    },
+    "round1": {
+      "completed": true,
+      "modelSeconds": 75,
+      "wallSeconds": 75.25030000000001,
+      "meanFPS": 111.62790697674419,
+      "p95FrameMs": 12.599999999998545,
+      "maxFrameMs": 145.79999999999927,
+      "navigationToReadyMs": 4101.899999976158,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5
+      }
+    },
+    "newLocalOrigin": {
+      "completed": true,
+      "modelSeconds": 75,
+      "wallSeconds": 75.00869999995231,
+      "meanFPS": 112.92715998192098,
+      "p95FrameMs": 12.5,
+      "maxFrameMs": 25,
+      "navigationToReadyMs": 4615.5,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5
+      }
+    },
+    "final": {
+      "completed": true,
+      "modelSeconds": 75,
+      "wallSeconds": 75.43200000002383,
+      "meanFPS": 66.8574860365562,
+      "p95FrameMs": 24.900000000001455,
+      "maxFrameMs": 295.79999999999563,
+      "navigationToReadyMs": 8558.100000023842,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5
+      }
+    }
+  },
+  "life": {
+    "completed": true,
+    "nominalSeconds": 240,
+    "playbackRate": 1,
+    "route": {
+      "habitat": "reef",
+      "habitats": [
+        "reef",
+        "sand",
+        "meadow",
+        "slope"
+      ],
+      "nearby": [
+        {
+          "id": "ocean:210,4:reef-residents-v20:gold-mouth-sea-squirt:reef:living-rock:840,19:0.35:6",
+          "speciesId": "gold-mouth-sea-squirt",
+          "state": "sessile-filtering",
+          "distanceM": 3.8365031976681423
+        }
+      ],
+      "speciesIds": [
+        "doubleline-fusilier",
+        "bluestripe-snapper",
+        "cushion-sea-star",
+        "comb-sand-star",
+        "leopard-flounder",
+        "fire-goby",
+        "chocolate-chip-sea-star",
+        "shame-faced-crab",
+        "pajama-cardinalfish",
+        "banded-brittle-star",
+        "green-tiger-prawn",
+        "reef-cuttlefish",
+        "humble-sea-biscuit",
+        "banded-lizardfish",
+        "thousand-spot-sandperch",
+        "longnose-butterflyfish",
+        "sand-goby",
+        "barrel-sea-pen",
+        "green-turtle",
+        "flower-swimming-crab",
+        "yellowstripe-scad",
+        "lunartail-bigeye",
+        "bigscale-soldierfish",
+        "emperor-angelfish",
+        "gold-mouth-sea-squirt"
+      ],
+      "individuals": 55,
+      "movedIndividuals": 10,
+      "feedingIndividuals": 4,
+      "travelledM": 452.0384780436062,
+      "elapsedSec": 240,
+      "scope": "nearby-live-records-along-one-committed-route"
+    },
+    "meanFPS": 73.77534522272256,
+    "playingFrameIntervalsOver250Ms": [
+      {
+        "milliseconds": 262.3999999999651,
+        "paused": false,
+        "motionKind": "reef-valley-route",
+        "motionElapsedSec": 228.9868000000028,
+        "waitingForRegions": false,
+        "previousCpuMs": {
+          "ecology": 0.08786395308039913,
+          "authored": 0.2036589065253784,
+          "camera": 1.502485492660865,
+          "streaming": 0.030102284192971156,
+          "animals": 3.2842205076686093,
+          "water": 0.29532179872963804,
+          "render": 5.18858020830795
+        }
+      }
+    ],
+    "errors": [],
+    "console": [],
+    "initializationMs": 2450.899999976158
+  },
+  "director": {
+    "full67Accepted": false,
+    "round1": "Completed chapter 1 and started 2; 1083.3ms playing frame interval captured.",
+    "round2": "Stopped the continuous route during chapter 1 after observed region preparation waiting reached 20 seconds. Then manually sought chapter 10 for a targeted return check; not full 67-chapter verification.",
+    "maxObservedPlayingFrameMs": 908.2999999999884,
+    "maxSampledPreparationWaitSeconds": 20,
+    "targetedCompletedStepIds": [
+      "shallows-benthic-community",
+      "shallows-shallow-scene-reef",
+      "shallows-shallow-scene-sand",
+      "shallows-shallow-scene-meadow",
+      "shallows-shallow-scene-slope",
+      "shallows-habitat-belt-reef",
+      "shallows-habitat-belt-meadow"
+    ],
+    "targetedLastChapter": 17,
+    "targetedPhase": "showing",
+    "targetedError": null,
+    "targetedErrors": [],
+    "console": []
+  },
+  "native": {
+    "uniqueCasesWithPassRecords": 74,
+    "batches": [
+      {
+        "file": "broadphase-checks.log",
+        "passed": 38,
+        "failed": 0,
+        "sha256": "9c49a5ef072bafa8cfb57fc8017efaa2f80ac35aa42869b63acc400c8319f5ce"
+      },
+      {
+        "file": "round-2-checks.log",
+        "passed": 35,
+        "failed": 1,
+        "sha256": "bf445edfec23d5abc6a84ccbf98e0b51292546d1fe7eebd52b2f40b6de34121f"
+      },
+      {
+        "file": "group-publication-final.log",
+        "passed": 1,
+        "failed": 0,
+        "sha256": "e6c0f6d04a1f6dc726455c014feffa53c8d944cd915d2542e065d52097d1bf3d"
+      }
+    ],
+    "correctedCase": [
+      "worker-backed region update publishes the same whole habitat transactions and finite timings as native update"
+    ],
+    "correction": "The new test initially referenced a nonexistent timing field. The production transaction comparison had passed; the corrected timing assertion was rerun and passed separately. Not one all-green full-suite run.",
+    "actualMeshSurfaceParity": {
+      "queries": 21942,
+      "exactHeightAndNormalParity": true,
+      "profiles": 2,
+      "scope": "actual frozen natural near banks versus unchanged original surface query"
+    }
+  },
+  "build": {
+    "command": "npm run build:local",
+    "viteSeconds": 18.73,
+    "log": "round-2-build.log",
+    "cloudSuite": false
+  },
+  "remaining": [
+    "Variable shallow startup: final 8.56s, earlier runs 4.10-4.62s. 5s target not consistently met.",
+    "Director region preparation sampled at 20s; no full 67-chapter acceptance. Short playing stalls remain.",
+    "A 262.4ms playing frame interval occurred in final life tour. Stable 60FPS and all-device guarantees not established."
+  ],
+  "stoppingRule": "Frozen locally after the second bounded pass; no automatic third pass, push or deployment.",
+  "evidenceCaveats": [
+    "sample-native-before.json and sample-poses-before.json were overwritten by the after-change profiler and contain after-change data despite their raw filenames. They are not used as before baselines. The original sample-before.cpuprofile and sample-native-baseline.log are retained."
+  ],
+  "evidence": [
+    {
+      "path": "output/validation/stable-demo/broadphase-checks.log",
+      "bytes": 10353,
+      "sha256": "9c49a5ef072bafa8cfb57fc8017efaa2f80ac35aa42869b63acc400c8319f5ce"
+    },
+    {
+      "path": "output/validation/stable-demo/build.log",
+      "bytes": 4441,
+      "sha256": "df5b6914041189d480a29c408b84becb72d63d650ece62550c58e1a1c88dce72"
+    },
+    {
+      "path": "output/validation/stable-demo/director-final-console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "output/validation/stable-demo/director-first-long-stall.json",
+      "bytes": 4386657,
+      "sha256": "42924c641757a53df07f3221e7f16308cea14d8837acfb1d58050a6e613a4707"
+    },
+    {
+      "path": "output/validation/stable-demo/director-native-after.json",
+      "bytes": 17382,
+      "sha256": "c51fa2e0d09ba3d817285f3551b5f96aa8f72a75ef0b99fa8175ce374e9407c6"
+    },
+    {
+      "path": "output/validation/stable-demo/director-native-after.log",
+      "bytes": 10794,
+      "sha256": "4302221f018d2621b87c742acbafc4c17ffce7597ff9939efc5b8169e9ca0158"
+    },
+    {
+      "path": "output/validation/stable-demo/director-native-before.json",
+      "bytes": 23061,
+      "sha256": "1c744967306c555a1831105931aaa651a786045fd8c67081c66aae2ad6f7eec6"
+    },
+    {
+      "path": "output/validation/stable-demo/director-native-before.log",
+      "bytes": 10630,
+      "sha256": "df3f79aaddf498e7da7fc63536187bb1e165020289ba2ec821f29952dedeb920"
+    },
+    {
+      "path": "output/validation/stable-demo/director-round-1.json",
+      "bytes": 65396183,
+      "sha256": "5f7228b5f0700eec9e3c934b00decaad48f1cf0a56d4548d798ee641c91b61db"
+    },
+    {
+      "path": "output/validation/stable-demo/director-round-1.png",
+      "bytes": 83651,
+      "sha256": "55ab5dc5f56f4603166e0b9c91b4b53fe80348e7fe8d1c2dabe008a3e1ead45f"
+    },
+    {
+      "path": "output/validation/stable-demo/director-round-2-route.png",
+      "bytes": 69820,
+      "sha256": "0962048ac31abf66d0caaa7aa2c5bd50de3a19a7b8a3d236459aadf002de5d9e"
+    },
+    {
+      "path": "output/validation/stable-demo/director-round-2.json",
+      "bytes": 18748150,
+      "sha256": "15caadfa4c23656f95aae456d6459f526b66923ef0667e8ecdf419fa00a1eaff"
+    },
+    {
+      "path": "output/validation/stable-demo/director-samples.json",
+      "bytes": 14531247,
+      "sha256": "0b7a079b1c369d30c1dfd44fdc8d2c1626e79c065f1c805ecbc6fca3aca307e3"
+    },
+    {
+      "path": "output/validation/stable-demo/director-targeted-current.json",
+      "bytes": 645858,
+      "sha256": "c1c6c88e2de2bbdfcff2c1e42f2a75021a39d041a5a54173e3150f6a698e1dac"
+    },
+    {
+      "path": "output/validation/stable-demo/director-targeted-final.json",
+      "bytes": 706676,
+      "sha256": "60e6d03b6dc88d7153af7cc11fa478758438bd3fb2f871b6956b15e805ba08df"
+    },
+    {
+      "path": "output/validation/stable-demo/director-targeted-final.png",
+      "bytes": 80777,
+      "sha256": "5f06aef1bfb204140d05ace51bb187c33fd6c6dc577c23c4994e51e1820ec1bd"
+    },
+    {
+      "path": "output/validation/stable-demo/final-owner-checks.log",
+      "bytes": 4678,
+      "sha256": "d3efb5ba7604367fa60a4c9c39ad850434e86bb202dff9e2e667ab8774e84353"
+    },
+    {
+      "path": "output/validation/stable-demo/group-native-parity.log",
+      "bytes": 736,
+      "sha256": "b3d3f7fe3abc6e2ff156cfc946444764868db6a7351129e2e74def09ad3131ec"
+    },
+    {
+      "path": "output/validation/stable-demo/group-publication-final.log",
+      "bytes": 424,
+      "sha256": "e6c0f6d04a1f6dc726455c014feffa53c8d944cd915d2542e065d52097d1bf3d"
+    },
+    {
+      "path": "output/validation/stable-demo/life-complete.json",
+      "bytes": 5212078,
+      "sha256": "3923775c010a82d9ed338cec431ee16b4910e458ff7be02a9dd4b92ff836648c"
+    },
+    {
+      "path": "output/validation/stable-demo/life-complete.png",
+      "bytes": 67112,
+      "sha256": "54cdcb606d0b51f3410e4a62b44e3b0b1c26cbb81fe813823a1c8e72070bf6de"
+    },
+    {
+      "path": "output/validation/stable-demo/life-console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "output/validation/stable-demo/life-final-console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "output/validation/stable-demo/life-final-mid.json",
+      "bytes": 5528830,
+      "sha256": "069c4c1e306dec5b2b9ee77bf97b543ebe7752320648e57433478547f37450a5"
+    },
+    {
+      "path": "output/validation/stable-demo/life-final.json",
+      "bytes": 5232045,
+      "sha256": "a3f1291ec5df4193c94050b8d99e03dc2618c1678d8e01d95575509f37ddeec4"
+    },
+    {
+      "path": "output/validation/stable-demo/life-final.png",
+      "bytes": 67238,
+      "sha256": "a9e05b9a3d8a9c63934743ffab3434a8d9e897d3aa7828343eecf21191153aff"
+    },
+    {
+      "path": "output/validation/stable-demo/life-loading-current.json",
+      "bytes": 3869023,
+      "sha256": "113bed382ab163a5f4498f59931b74ff3aa5de33f0337964ff2118b6c9f055c2"
+    },
+    {
+      "path": "output/validation/stable-demo/life-start.json",
+      "bytes": 2760924,
+      "sha256": "203c5109ded157adb401d2dd748fb5ef9a110e975ef10f4aa70d8edf51f706a9"
+    },
+    {
+      "path": "output/validation/stable-demo/natural-surface-parity.log",
+      "bytes": 149,
+      "sha256": "7dccfc04976edcb06f5d7e0b3aa8f550d00e7417435d2773f72435a6931504fa"
+    },
+    {
+      "path": "output/validation/stable-demo/owner-native-parity.log",
+      "bytes": 423,
+      "sha256": "3bdf02b9104f5b115e5c0adaa0b4ebc4d0742b2b5996f5d7e7d9c20945eba195"
+    },
+    {
+      "path": "output/validation/stable-demo/owner-preparation-checks.log",
+      "bytes": 1943,
+      "sha256": "27dfcf86ba6bf1fde56fedac3b2f4cf2c52b8e162cbd18137b6c558a37a825d2"
+    },
+    {
+      "path": "output/validation/stable-demo/preview-4176-error.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "output/validation/stable-demo/preview-4176.log",
+      "bytes": 87,
+      "sha256": "68198b829d4ba50e87e00b9efb1f831fdf68ab7bbc43b44914ac5fa5ed64f0c9"
+    },
+    {
+      "path": "output/validation/stable-demo/review-cover.png",
+      "bytes": 92009,
+      "sha256": "23e57541355d1a2d1a83d65e25f062b3a50771edf1f3292e8bdd1e5fc1d08a66"
+    },
+    {
+      "path": "output/validation/stable-demo/round-2-build.log",
+      "bytes": 4441,
+      "sha256": "5ff6c0998637a66411bb0eb3c2d82d78d58ae2a34a410bf04002af7136e1bc39"
+    },
+    {
+      "path": "output/validation/stable-demo/round-2-checks.log",
+      "bytes": 11305,
+      "sha256": "bf445edfec23d5abc6a84ccbf98e0b51292546d1fe7eebd52b2f40b6de34121f"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-browser-after.json",
+      "bytes": 222090,
+      "sha256": "4d8ad3fc0e2967753277a7f7a0115f1116d5bc323016a975dcace917d602a2bb"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-browser-after.png",
+      "bytes": 99050,
+      "sha256": "eb292a641179fc5bb1591dba13cbfb565d88a8537e7cdd1d78d4801a0b7f68f3"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-browser-before.json",
+      "bytes": 89376,
+      "sha256": "7954d5fdf0e408b20c4bb4180306ad638bbed7c67534e6e2c3793882ff6a3af8"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-browser-before.png",
+      "bytes": 89009,
+      "sha256": "09a4bd6ba7a2575bd79c5b421a33b5bbc33223baab58d51d7da7872871e9af7f"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-final-console.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-final.json",
+      "bytes": 132602,
+      "sha256": "077cc74ee8d3040dfc7f3600c3089f7289ad90634a0061140a0635c143c5e04f"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-final.png",
+      "bytes": 99018,
+      "sha256": "5e85b28f795c854b9d6ed0bfa5790a98fcbcde745d9644e02ecbfe356d35e6e6"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-native-after.log",
+      "bytes": 415,
+      "sha256": "e5ce712970488bf90d13247fb6b531a4e1a849f1588a0ed45b7840dde901bfef"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-native-baseline.log",
+      "bytes": 403,
+      "sha256": "4c72c1a8672c116732f45cc016b88676a282ec542c97697463a6d921a5675897"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-native-before.json",
+      "bytes": 4018,
+      "sha256": "8838547c36acfb9c3f1327be3b392eea56a648e022792a58c02f6e8c4d1be0a8"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-new-origin.json",
+      "bytes": 228577,
+      "sha256": "bc62eaab9ebba49fda5ba8a579d7a741a6b125ed98dc412c83f12df8d91baaea"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-new-origin.png",
+      "bytes": 99050,
+      "sha256": "28c1f4aecafd396e39363bc894fa429380de90b74285491b86b62a858266e935"
+    },
+    {
+      "path": "output/validation/stable-demo/sample-poses-before.json",
+      "bytes": 12100354,
+      "sha256": "e15f692a7bd07c3d634a8bae5aa47a1c9a39f56e553bb4e5423dfe576ced5cc5"
+    }
+  ],
+  "runtimeSourceHashes": {
+    "src/oceanRockShape.js": "b2c7c22d6f0752a49ba73a7328570eb160e3a1a05d736fef4a1b07aa70597aef",
+    "src/reefGuildHabitat.js": "5c01329de7b93d14427a3b4d565c26b418a3fb0e220b490f24a2c6ab6833ddc2",
+    "src/oceanBackgroundRuntime.js": "036dd765d41b1fe71c515a047f74a35611990db538a04bb7039545a7d6a92759",
+    "src/oceanRuntimeJobs.js": "c039cb8053be14fee36ac540498b4ca7c7f0648ae1acd8daa6debd409e27d022",
+    "src/oceanEcology.js": "3f4dc2a073f94df1462f8df81dedd38227da05b383ef3a0e3c499beb2c117480"
+  },
+  "buildAssetHashes": {
+    "dist/client/assets/OceanApp-Ch-GCS9k.js": "439aabdff86bdce3685d5dd04b060105d40cdf19b77ca8c6d8336fbb9518143c",
+    "dist/client/assets/oceanRuntime.worker-CigJ20oU.js": "c81a0dd4978d09d42e58aed0c353e5ae2f114ed5a3241eb77345673e5d68d744",
+    "dist/client/assets/ShallowSampleApp-Din35trG.js": "c77df6e0b9276278c7017ce05def6dac1557a0c3ddc82ac0806fc04f14f0d291"
+  }
+}

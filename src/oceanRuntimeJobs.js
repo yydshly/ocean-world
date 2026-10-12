@@ -47,6 +47,29 @@ export function createOceanRuntimeJobs() {
     ecology._biodiversityBirthView = payload.birthView;
     ecology._activeTime = payload.activeTime;
     ecology._accumulator = payload.accumulator;
+    if (payload.environment) ecology._environment = { ...payload.environment };
+    if (payload.kind === 'prepare-owner') {
+      const prepare = () => ecology._prepareRegion(payload.saved, payload.coordinates, payload.valid);
+      ecology._supportCells.clear(); ecology._runtimePoseCache = null;
+      const previousStore = ecology.store;
+      if (!payload.atomicStore) ecology.store = {};
+      try { return payload.freshPlan ? ecology.generator.withRidgePlan(payload.freshPlan, prepare) : prepare(); }
+      finally { ecology.store = previousStore; ecology._supportCells.clear(); ecology._runtimePoseCache = null; }
+    }
+    if (payload.kind === 'prepare-group') {
+      const plans = payload.groupPlans;
+      const version = plans?.[0]?.version;
+      const context = version === 6 ? 'withShallowSeascapePlans' : version === 7 ? 'withCoastalSeascapePlans' :
+        [4, 5].includes(version) ? 'withRidgePlans' : null;
+      if (!context) throw new TypeError('Unsupported background owner group.');
+      const previousStore = ecology.store;
+      if (!payload.atomicStore) ecology.store = {};
+      ecology._supportCells.clear(); ecology._runtimePoseCache = null;
+      try {
+        return ecology.generator[context](plans, () => plans.map(plan =>
+          ecology._prepareRegion(null, [plan.cx, plan.cz], false).region));
+      } finally { ecology.store = previousStore; ecology._supportCells.clear(); ecology._runtimePoseCache = null; }
+    }
     if (payload.kind === 'support') return ecology._validateSupportHistory(payload.validationRows);
     if (payload.kind === 'active') {
       for (const [id, row] of payload.validationRows) {

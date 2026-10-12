@@ -63,7 +63,7 @@ export class OceanBackgroundRuntime {
       locked: [...ecology._lockedRegions], desired: [...ecology._planktonDesiredRegions],
       sceneSupports: [...ecology._sceneSupports], habitatSupports: [...ecology._habitatSupports],
       macroSupports: [...ecology._macroSupports], birthView: ecology._biodiversityBirthView,
-      activeTime: ecology._activeTime, accumulator: ecology._accumulator, frames };
+      atomicStore: typeof ecology.store?.saveMany === 'function', environment: { ...ecology._environment }, activeTime: ecology._activeTime, accumulator: ecology._accumulator, frames };
   }
   acknowledgeContext(payload, generator) {
     if (this.disposed || this.ecology.generator !== generator || generator.ridgeRevision !== payload.topology) return;
@@ -76,6 +76,25 @@ export class OceanBackgroundRuntime {
     const result = await this.preparation.run('history', { ...payload, kind, validationRows: structuredClone(rows), valid });
     this.acknowledgeContext(payload, generator);
     return result;
+  }
+  async prepareOwner(saved, coordinates, valid, freshPlan = null) {
+    if (!this.barriers) throw new Error('Owner preparation requires a publication barrier.');
+    const generator = this.ecology.generator, payload = this.payload();
+    const result = await this.preparation.run('prepare-owner', { ...payload, kind: 'prepare-owner', saved: structuredClone(saved), coordinates, valid, freshPlan });
+    this.acknowledgeContext(payload, generator);
+    // Preserve the certified immutable terrain identity on main-owned records.
+    if (saved?.livingRidgePlan) for (const key of ['region', 'beforeCommunity', 'beforeMobility', 'beforeTransport'])
+      if (result[key]?.livingRidgePlan) result[key].livingRidgePlan = saved.livingRidgePlan;
+    return result;
+  }
+  async prepareGroup(plans) {
+    if (!this.barriers) throw new Error('Group preparation requires a publication barrier.');
+    const generator = this.ecology.generator, payload = this.payload();
+    const rows = await this.preparation.run('prepare-group', { ...payload, kind: 'prepare-group', groupPlans: structuredClone(plans) });
+    if (!Array.isArray(rows) || rows.length !== plans.length || rows.some((row, i) => row.id !== plans[i].id))
+      throw new Error('Background owner group did not return every original owner in order.');
+    this.acknowledgeContext(payload, generator);
+    return rows;
   }
   async flush() {
     this.barriers++;
