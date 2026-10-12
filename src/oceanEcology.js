@@ -1615,10 +1615,26 @@ export class OceanEcology {
         // Read the complete support halo before changing its source. A failed
         // read never means virgin terrain, and old records without a plan
         // retain their exact original floor, hosts and attachments.
+        let haloRecords = null;
+        if (typeof this.store.loadMany === 'function') {
+          const ids = [];
+          for (let dz = -2; dz <= 2; dz++) for (let dx = -2; dx <= 2; dx++) {
+            const id = `${cx + dx},${cz + dz}`;
+            if (!this._active.has(id)) ids.push(id);
+          }
+          const errorsBefore = this._counts.persistenceErrors;
+          haloRecords = await measureAsync('prefetchMs', () => this._storage('loadMany', world, ids));
+          if (!current()) return;
+          if (this._counts.persistenceErrors > errorsBefore) { this._center = null; return false; }
+          if (!(haloRecords instanceof Map) || ids.some(id => !haloRecords.has(id) || haloRecords.get(id) === undefined)) {
+            this._storageError = 'A shallow support-window read returned incomplete persistence results.';
+            this._counts.persistenceErrors++; this._center = null; return false;
+          }
+        }
         for (let dz = -2; dz <= 2; dz++) for (let dx = -2; dx <= 2; dx++) {
           const id = `${cx + dx},${cz + dz}`, errorsBefore = this._counts.persistenceErrors;
           supportHaloIds.add(id);
-          const saved = this._active.get(id) ?? await measureAsync('prefetchMs', () => this._storage('load', world, id));
+          const saved = this._active.get(id) ?? (haloRecords ? haloRecords.get(id) : await measureAsync('prefetchMs', () => this._storage('load', world, id)));
           if (!current()) return;
           if (this._counts.persistenceErrors > errorsBefore) { this._center = null; return false; }
           if ((this.meadowRegionEnabled || this.reefValleyRegionEnabled || this.coastalSeascapeEnabled || this.shallowSeascapeEnabled || this.biodiversityEnabled || this.benthicLifeEnabled || this.meadowLifeEnabled || this.shoalLifeEnabled) && saved === undefined) {

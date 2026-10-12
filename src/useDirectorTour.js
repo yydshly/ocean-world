@@ -155,7 +155,8 @@ export function useDirectorTour({ worldRef, snapshot, worldReady, error, execute
           ['out', 'in'].includes(current.current.transition?.phase) ||
           (wait.mode === 'continuous' && worldRef.current?.directorEntrySnapshot?.().active)) return;
       elapsedMs += deltaMs;
-      const timeoutMs=wait.action.seagrassMeadowRegionEntry?120000:45000;
+      // Both macro regions validate a complete persisted support window.
+      const timeoutMs=(wait.action.seagrassMeadowRegionEntry||wait.action.reefValleyRegionEntry)?120000:45000;
       if (elapsedMs >= timeoutMs) fail(token, `这个入口未在 ${timeoutMs/1000} 秒有效加载时间内就绪。可以重试或跳过。`);
     }, 1000);
     const visibilityChanged = () => { previousTime = performance.now(); };

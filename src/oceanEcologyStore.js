@@ -81,6 +81,24 @@ export class OceanEcologyStore {
     });
   }
 
+  // One bounded support window, one readonly transaction. Waiting for each
+  // individual transaction allowed rendering work to delay every next read.
+  async loadMany(world, regionIds) {
+    const ids = [...new Set(regionIds)];
+    if (ids.length > 25) throw new RangeError('A regional read batch is limited to 25 owners.');
+    if (!ids.length) return new Map();
+    const database = await this._open();
+    if (!database) return new Map(ids.map(id => [id, null]));
+    return this._transaction(database, 'readonly', transaction => {
+      const values = new Map(), store = transaction.objectStore('regions');
+      for (const id of ids) {
+        const request = store.get(`${world}|${id}`);
+        request.onsuccess = () => { values.set(id, request.result?.state ?? null); };
+      }
+      return () => values;
+    });
+  }
+
   async save(world, regionId, state) {
     return this.saveMany(world, [[regionId, state]]);
   }

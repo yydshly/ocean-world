@@ -1035,8 +1035,17 @@ export class ReefWorld {
     if(!this.restoreOceanObservation({position:{x,y,z},target:{x:x+8,y:y-.65,z},layer:'bed',freeDepthM:this.surfaceY-y,
       habitat:this.oceanChunks.generator.sample(x,z).habitat}))return false;
     let position=this.oceanWorldPosition(),target=this.controls.target.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z));
-    const unchanged=()=>this.oceanWorldPosition().distanceTo(position)<=.05&&
-      this.controls.target.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z)).distanceTo(target)<=.05;
+    const unchanged=()=>{
+      const renderOrigin=new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z);
+      const actual=this.oceanWorldPosition(),aim=this.controls.target.clone().add(renderOrigin);
+      if(actual.distanceTo(position)<=.05&&aim.distanceTo(target)<=.05)return true;
+      // Publishing terrain can lift the observer and its aim before this
+      // await resumes. Accept only the exact shared collision correction;
+      // manual movement and chapter ownership still cancel the entry.
+      const corrected=this.clearCameraPosition(position.clone().sub(renderOrigin)).add(renderOrigin);
+      const correctedAim=target.clone().add(corrected.clone().sub(position));
+      return actual.distanceTo(corrected)<=.05&&aim.distanceTo(correctedAim)<=.05;
+    };
     const first=await this.oceanEcology.update(position);if(first===false||!allowed()||!unchanged())return false;
     this.oceanChunks.update(position);const plan=this.currentReefValleyRegionPlan();
     if(!plan||plan.group.cx!==origin.cx||plan.group.cz!==origin.cz)return false;
@@ -1074,8 +1083,17 @@ export class ReefWorld {
     if(!keep&&!this.restoreOceanObservation({position:{x,y,z},target:{x:x+8,y:y-.65,z},layer:'bed',freeDepthM:this.surfaceY-y,
       habitat:this.oceanChunks.generator.sample(x,z).habitat}))return false;
     let position=this.oceanWorldPosition(),target=this.controls.target.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z));
-    const unchanged=()=>this.oceanWorldPosition().distanceTo(position)<=.05&&
-      this.controls.target.clone().add(new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z)).distanceTo(target)<=.05;
+    const unchanged=()=>{
+      const renderOrigin=new THREE.Vector3(this.oceanRenderOrigin.x,0,this.oceanRenderOrigin.z);
+      const actual=this.oceanWorldPosition(),aim=this.controls.target.clone().add(renderOrigin);
+      if(actual.distanceTo(position)<=.05&&aim.distanceTo(target)<=.05)return true;
+      // Publishing terrain can lift the observer and its aim before this
+      // await resumes. Accept only the exact shared collision correction;
+      // manual movement and chapter ownership still cancel the entry.
+      const corrected=this.clearCameraPosition(position.clone().sub(renderOrigin)).add(renderOrigin);
+      const correctedAim=target.clone().add(corrected.clone().sub(position));
+      return actual.distanceTo(corrected)<=.05&&aim.distanceTo(correctedAim)<=.05;
+    };
     const first=await this.oceanEcology.update(position);if(first===false||!allowed()||!unchanged())return false;
     this.oceanChunks.update(position);const plan=this.currentSeagrassMeadowRegionPlan();
     if(!plan||plan.group.cx!==origin.cx||plan.group.cz!==origin.cz)return false;

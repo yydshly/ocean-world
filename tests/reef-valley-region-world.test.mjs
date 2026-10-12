@@ -42,8 +42,8 @@ const plain = v => ({x:v.x,y:v.y,z:v.z});
 const target = w => w.controls.target.clone().add(new THREE.Vector3(w.oceanRenderOrigin.x,0,w.oceanRenderOrigin.z));
 const nextTurn = () => new Promise(resolve => setImmediate(resolve));
 function deferred() { let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no;});return{promise,resolve,reject}; }
-function fixture({records=new Map(),reefValleyRegion=true}={}) {
-  const seed=livingShallowsSeed('42'),chunks=new OceanChunks(seed,{livingGeology:true}),generator=chunks.generator;
+function fixture({records=new Map(),reefValleyRegion=true,seedValue='42',wholeSeabed=false}={}) {
+  const seed=livingShallowsSeed(seedValue),chunks=new OceanChunks(seed,{livingGeology:true,wholeSeabed}),generator=chunks.generator;
   const commits=[],reads=[],requests=[],updates=[],views=[],store={available:true,beforeRead:null,beforeSave:null,rejectSave:false,undefinedId:null,
     async load(_world,id){reads.push(id);if(this.beforeRead)await this.beforeRead(id);if(this.undefinedId===id)return undefined;return structuredClone(records.get(id)??null);},
     async saveMany(_world,rows){if(this.beforeSave)await this.beforeSave(rows);if(this.rejectSave)throw new Error('native atomic save refused');
@@ -74,6 +74,26 @@ async function release(f) {f.world.disposed=true;f.store.beforeRead=null;f.store
 function ready(f) {return coastalSeascapeWindowReady(f.world.oceanWorldPosition(),{loadedOwnerIds:f.chunks.stats.loadedChunks,activeOwnerIds:[...f.ecology._active.keys()]});}
 function bounds(f) {assert.equal(f.ecology._active.size,9);assert.equal(f.chunks.stats.activeChunks,9);assert.ok(f.chunks.stats.ridgeReadyOwners<=25);
   assert.ok(f.ecology._reefValleyAdmission.privateOwnerCount<=97);assert.ok([...f.ecology._active.values()].every(r=>r.agents.length+(r.turtleAgents?.length??0)<=20));}
+
+test('fresh asynchronous entry survives the render-loop clearance after terrain publication',async t=>{
+  const f=fixture({seedValue:'55',wholeSeabed:true});
+  const update=f.ecology.update.bind(f.ecology);
+  let lifts=0;
+  f.ecology.update=async position=>{
+    const result=await update(position);
+    const before=f.world.oceanWorldPosition();
+    f.world.enforceCameraClearance();
+    if(f.world.oceanWorldPosition().distanceTo(before)>.05)lifts++;
+    return result;
+  };
+  try{
+    const entered=await f.world.enterReefValleyRegion();
+    t.diagnostic(`physical clearance corrections during asynchronous preparation: ${lifts}`);
+    assert.ok(lifts>0,'the published whole-seabed geometry actually corrects the camera');
+    assert.equal(entered,true);
+    bounds(f);
+  }finally{await release(f);}
+});
 
 test('ordinary reef valley publishes one complete durable group before native render and restores exact saved history',async t=>{
   const f=fixture(),resume=deferred();let cold;try{

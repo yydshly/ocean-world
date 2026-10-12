@@ -65,6 +65,9 @@ test('one coral surface hooks the installed standard shader without displacement
   assert.ok(shader.vertexShader.includes('vLivingColonyLocal = position;'));
   assert.ok(shader.fragmentShader.includes('diffuseColor.rgb *= vec3(colonyShade'));
   assert.ok(shader.fragmentShader.includes('roughnessFactor = clamp('));
+  // `patch` is reserved by GLSL ES: native hook checks used to pass while
+  // the real WebGL2 compiler rejected the entire coral material.
+  assert.doesNotMatch(shader.fragmentShader, /\b(?:float|vec[234])\s+patch\b/);
   assert.deepEqual(shader.uniforms, {});
   assert.equal(shader.vertexShader.replace('varying vec3 vLivingColonyLocal;\n', '')
     .replace('\n vLivingColonyLocal = position;', ''), original.vertexShader,

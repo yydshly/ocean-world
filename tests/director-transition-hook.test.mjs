@@ -188,10 +188,22 @@ test('clock stagnation without a window flag cannot stall forever, and an old ti
 });
 
 test('a pending pause checkpoint during entry also has a bounded loading deadline', async () => {
-  const f = worldFixture(); f.world.pauseGate = deferred(); const run = harness(f.world); await start(run);
+  const f = worldFixture(); f.world.pauseGate = deferred(); const run = harness(f.world);
+  await start(run, DIRECTOR_STEPS.findIndex(step => step.id === 'shallows-opening'));
   await run.advance(45000); assert.match(run.state.error, /45 秒有效加载时间/);
   assert.equal(run.execution.length, 0); f.world.pauseGate.resolve(); await run.flush();
   assert.equal(run.execution.length, 0); assert.deepEqual(f.world.protectedState, f.protectedState);
+});
+
+test('reef valley preparation has the same finite loading budget as the meadow', async () => {
+  const index = DIRECTOR_STEPS.findIndex(step => directorStepAction(step).reefValleyRegionEntry);
+  assert.ok(index >= 0);
+  const f = worldFixture(); f.world.pauseGate = deferred(); const run = harness(f.world); await start(run, index);
+  await run.advance(45000); assert.equal(run.state.error, null);
+  await run.advance(75000); assert.match(run.state.error, /120 秒有效加载时间/);
+  f.world.pauseGate.resolve(); await run.flush();
+  assert.equal(run.execution.length, 0);
+  assert.deepEqual(f.world.protectedState, f.protectedState);
 });
 
 test('a browser-frozen hidden tab does not spend its no-progress deadline when timers resume', async () => {
@@ -324,7 +336,7 @@ test('a failed entry cannot fabricate readiness, chapter time or a started obser
   assert.deepEqual(unsafe.world.protectedState, unsafe.protectedState);
 });
 
-test('only the complete meadow entry receives 120 seconds of effective loading while pause and hidden time remain excluded', async () => {
+test('macro entries allow 120 effective seconds while ordinary entries retain 45 and pause/hidden time is excluded', async () => {
   const meadowIndex = DIRECTOR_STEPS.findIndex(step => step.id === 'seagrass-meadow-region');
   assert.ok(meadowIndex >= 0);
   const f = worldFixture(); f.world.ready = false;
@@ -349,9 +361,9 @@ test('only the complete meadow entry receives 120 seconds of effective loading w
   assert.equal(count(f.log, 'prepare'), 0); assert.deepEqual(f.world.protectedState, f.protectedState);
 
   const old = worldFixture(); old.world.ready = false;
-  const retained = harness(old.world); await start(retained, 0);
-  await retained.until(() => retained.execution.length === 1, 'the existing reef entry must reach its unchanged gate');
-  assert.equal(retained.execution[0].action.reefValleyRegionEntry, true);
+  const retained = harness(old.world); await start(retained, DIRECTOR_STEPS.findIndex(step => step.id === 'shallows-opening'));
+  await retained.until(() => retained.execution.length === 1, 'an ordinary shallow entry must reach its unchanged gate');
+  assert.equal(Boolean(retained.execution[0].action.reefValleyRegionEntry), false);
   await retained.advance(44000); assert.equal(retained.state.error, null);
   await retained.advance(1000); assert.match(retained.state.error, /45 秒有效加载时间/);
   assert.equal(retained.state.elapsedMs, 0); assert.deepEqual(retained.state.completedStepIds, []);

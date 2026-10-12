@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { OceanEcology } from '../src/oceanEcology.js';
+import { OceanChunks } from '../src/world/OceanChunks.js';
 import { OceanEcologyStore } from '../src/oceanEcologyStore.js';
 
 // Stage writes until completion so an abort really discards the whole batch.
@@ -81,6 +83,27 @@ function fakeIndexedDB() {
   };
   return fake;
 }
+
+test('support-window batch reads preserve missing owners and exact history in one transaction', async () => {
+  const database = fakeIndexedDB(), store = new OceanEcologyStore(database);
+  const history = { dead: ['remembered-fish'], timeSec: 112, resources: { algae: .2 } };
+  await store.save('world-a', '1,2', history);
+  await store.save('world-b', '1,2', { unrelated: true });
+  const before = database.transactions.length;
+  const rows = await store.loadMany('world-a', ['1,2', '2,2', '1,2']);
+  assert.equal(database.transactions.length - before, 1);
+  assert.deepEqual(rows, new Map([['1,2', history], ['2,2', null]]));
+  rows.get('1,2').resources.algae = 99;
+  assert.deepEqual(await store.load('world-a', '1,2'), history);
+  await assert.rejects(store.loadMany('world-a', Array.from({length:26}, (_, i) => `${i},0`)), RangeError);
+});
+
+test('a timed out batch rejects instead of treating unread owners as unvisited sea', async () => {
+  const database = fakeIndexedDB(), store = new OceanEcologyStore(database, {timeoutMs:10});
+  database.hangNextTransaction = true;
+  await assert.rejects(store.loadMany('world-a', ['1,2', '2,2']), /timed out/);
+  assert.equal(database.transactions.at(-1).status, 'aborted');
+});
 
 test('saveMany commits every region in one transaction and keeps the v1 namespace', async () => {
   const indexedDB = fakeIndexedDB();
@@ -194,4 +217,31 @@ test('a stalled database opening is retryable and closes a late old connection',
   assert.equal(closed, 1);
   await store.save('world', '0,0', { clockSec: 17 });
   assert.deepEqual(await store.load('world', '0,0'), { clockSec: 17 }); assert.equal(opens, 2);
+});
+
+test('failed or incomplete support-window reads cannot generate replacement owners', async () => {
+  for (const fail of ['reject', 'missing-owner', 'undefined-owner']) {
+    const chunks = new OceanChunks('living-shallows-v1|string:55', {livingGeology:true});
+    let writes=0, requested=[];
+    const store = {available:true,
+      async loadMany(_world, ids) {
+        requested=ids;
+        if(fail==='reject')throw new Error('read unavailable');
+        const rows=new Map(ids.map(id=>[id,null]));
+        if(fail==='missing-owner')rows.delete(ids[0]);else rows.set(ids[0],undefined);
+        return rows;
+      },
+      async load(){throw new Error('no per-owner fallback after an incomplete batch');},
+      async saveMany(){writes++;},
+    };
+    const ecology=new OceanEcology('living-shallows-v1|string:55',chunks.generator,{store,livingGeology:true});
+    try{
+      assert.equal(await ecology.update({x:207*64+2,z:5*64+2}),false);
+      assert.equal(requested.length,25);
+      assert.equal(new Set(requested).size,25);
+      assert.equal(ecology._active.size,0);
+      assert.equal(writes,0);
+      assert.equal(ecology._counts.persistenceErrors,1);
+    }finally{await ecology.dispose();chunks.dispose();}
+  }
 });

@@ -16,8 +16,8 @@ export function createLivingShallowsCoralMaterial() {
     shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vLivingColonyLocal = position;');
     shader.fragmentShader = `varying vec3 vLivingColonyLocal;
       vec2 livingColonyTissue(vec3 p) {
-        float patch = .5 + .5 * sin(p.x * 13.0 + p.z * 9.0 + sin(p.y * 8.0) * .65);
-        return vec2(patch, smoothstep(.60, .98, p.y));
+        float tissuePatch = .5 + .5 * sin(p.x * 13.0 + p.z * 9.0 + sin(p.y * 8.0) * .65);
+        return vec2(tissuePatch, smoothstep(.60, .98, p.y));
       }\n` + shader.fragmentShader;
     shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `#include <color_fragment>
       vec2 colonyColour = livingColonyTissue(vLivingColonyLocal);
