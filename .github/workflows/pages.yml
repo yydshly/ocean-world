@@ -25,6 +25,14 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Set up Python for native texture verification
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: pip
+          cache-dependency-path: requirements-test.txt
+      - name: Install native verification dependencies
+        run: python -m pip install -r requirements-test.txt
       - name: Build
         run: npm run build
         env:
