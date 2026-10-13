@@ -42,8 +42,8 @@ const plain = v => ({x:v.x,y:v.y,z:v.z});
 const target = w => w.controls.target.clone().add(new THREE.Vector3(w.oceanRenderOrigin.x,0,w.oceanRenderOrigin.z));
 const nextTurn = () => new Promise(resolve => setImmediate(resolve));
 function deferred() { let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no;});return{promise,resolve,reject}; }
-function fixture({records=new Map(),reefValleyRegion=true,seedValue='42',wholeSeabed=false}={}) {
-  const seed=livingShallowsSeed(seedValue),chunks=new OceanChunks(seed,{livingGeology:true,wholeSeabed}),generator=chunks.generator;
+function fixture({records=new Map(),reefValleyRegion=true,seedValue='42',wholeSeabed=false,progressiveStreaming=false}={}) {
+  const seed=livingShallowsSeed(seedValue),chunks=new OceanChunks(seed,{livingGeology:true,wholeSeabed,progressiveStreaming}),generator=chunks.generator;
   const commits=[],reads=[],requests=[],updates=[],views=[],store={available:true,beforeRead:null,beforeSave:null,rejectSave:false,undefinedId:null,
     async load(_world,id){reads.push(id);if(this.beforeRead)await this.beforeRead(id);if(this.undefinedId===id)return undefined;return structuredClone(records.get(id)??null);},
     async saveMany(_world,rows){if(this.beforeSave)await this.beforeSave(rows);if(this.rejectSave)throw new Error('native atomic save refused');
@@ -93,6 +93,34 @@ test('fresh asynchronous entry survives the render-loop clearance after terrain 
     assert.equal(entered,true);
     bounds(f);
   }finally{await release(f);}
+});
+
+test('the real second destination stays pending despite the old nine-owner count, then completes ecology and progressive terrain',async t=>{
+  const f=fixture({seedValue:'55',wholeSeabed:true,progressiveStreaming:true}),reached=deferred(),resume=deferred();
+  let completed=false;
+  f.store.beforeRead=async id=>{if(id==='202,3'){reached.resolve();await resume.promise;}};
+  try{
+    const pending=f.world.enterReefValleyRegion().then(result=>{completed=true;return result;});
+    await reached.promise;
+    const position=f.world.oceanWorldPosition();
+    assert.equal(`${Math.floor(position.x/64)},${Math.floor(position.z/64)}`,'204,5');
+    assert.equal(f.ecology.snapshot({detailedTerrain:false}).metrics.loadingRegions,0,'the old nine-owner count does not describe destination readiness');
+    assert.deepEqual(new Set(f.ecology._active.keys()),new Set([-1,0,1].flatMap(dz=>[-1,0,1].map(dx=>`${207+dx},${5+dz}`))));
+    assert.equal(completed,false);assert.equal(ready(f),false);
+    for(let frame=0;frame<3;frame++){
+      f.world.enforceCameraClearance();f.chunks.update(f.world.oceanWorldPosition());
+      f.world.requestOceanEcology(f.world.oceanWorldPosition());await nextTurn();
+    }
+    assert.equal(completed,false,'ordinary render requests do not prematurely finish or duplicate the native entrance');
+    assert.equal(ready(f),false);assert.ok(!f.chunks.stats.loadedChunks.includes('204,5'));
+    resume.resolve();assert.equal(await pending,true);await settle(f);bounds(f);assert.equal(ready(f),true);
+    const owners=new Set([-1,0,1].flatMap(dz=>[-1,0,1].map(dx=>`${204+dx},${5+dz}`)));
+    same(new Set(f.ecology._active.keys()),owners,'native ecology really publishes the destination owners');
+    same(new Set(f.chunks.stats.loadedChunks),owners,'progressive terrain really drains the destination window');
+    assert.equal(f.chunks.stats.streaming.pendingChunks,0);
+    assert.ok(f.chunks.stats.streaming.maxLoadsPerUpdate<=1,'the finite entrance keeps progressive loading');
+    t.diagnostic('controlled second-window read; actual seed55 whole-seabed ecology and Three terrain; old loading0 rejected until both destination windows complete');
+  }finally{resume.resolve();await release(f);}
 });
 
 test('ordinary reef valley publishes one complete durable group before native render and restores exact saved history',async t=>{

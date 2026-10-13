@@ -1,5 +1,6 @@
 import React, { useSyncExternalStore } from 'react';
 import { sceneLoadingProgress } from './sceneLoadingProgress.js';
+import { ExperienceNavigation } from './ExperienceNavigation.jsx';
 import './sceneLoading.css';
 
 const preparationLabels = {
@@ -18,6 +19,7 @@ export function SceneLoading({ experience = 'world', phase = 'opening', error = 
   const activeStep = phase !== 'opening' ? 2 : loading.started > 0 ? 1 : 0;
   const status = preparationLabels[phase] || (loading.started > 0 ? '正在下载并准备模型' : '正在打开体验');
   return <section className={`scene-loading${shallow ? ' has-preview' : ''}${error ? ' has-error' : ''}`} aria-label={error ? '场景加载错误' : '场景加载'}>
+    {phase === 'opening' && <ExperienceNavigation research={!shallow}/>}
     {shallow && <img className="scene-loading-preview" src={`${base}overview/stage-04/after-96.jpg`} alt="" decoding="async"/>}
     <div className="scene-loading-content">
       <div className="scene-loading-brand">TIDAL <span>海底世界</span></div>

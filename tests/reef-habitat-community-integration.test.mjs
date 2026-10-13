@@ -31,6 +31,7 @@ import { REEF_HABITAT_COMMUNITY_VERSION, REEF_HABITAT_COMMUNITY_IDS,
 import { DEMO_LIVING_STOPS } from '../src/demoCapabilities.js';
 import { DIRECTOR_STEPS } from '../src/directorTour.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../src/livingShallows.js';
+import { directorSceneReady } from '../src/directorReadiness.js';
 
 const residents = [...OCEAN_REEF_RESIDENT_SPECIES, ...OCEAN_REEF_DIVERSITY_SPECIES, ...OCEAN_REEF_COMMUNITY_SPECIES,
   ...OCEAN_REEF_LIFE_SPECIES, ...OCEAN_REEF_FAUNA_SPECIES, ...OCEAN_REEF_ASSEMBLAGE_SPECIES];
@@ -77,14 +78,17 @@ async function runShippedEntry(choice) {
   const start = app.indexOf('    if(choice.reefValleyRegionEntry||choice.seagrassMeadowRegionEntry){'),
     end = app.indexOf('    if(choice.coastalLifeBeltEntry', start);
   assert.ok(start >= 0 && end > start);
-  const run = new Function('choice', 'world', 'director', 'setView', 'setOceanToolsOpen', 'setPanel', 'rememberOcean', 'setToast', app.slice(start, end));
+  const run = new Function('choice', 'world', 'director', 'setView', 'setOceanToolsOpen', 'setPanel', 'rememberOcean', 'setToast', 'pendingNativeDemo', 'setPendingDemo', 'directorSceneReady', app.slice(start, end));
   let release; const pending = new Promise(resolve => { release = resolve; });
   const retained = { seed: '55', death: { id: 'old-death', alive: false }, timeSec: 4.2, stock: .03, rng: 88 }, before = structuredClone(retained);
   const actual = { sim: { seed: '55' }, controlStartCount: 0, disposed: false, _shallowSceneEntryToken: 0, retained,
+    biomeId:'reef',isLivingShallows:true,snapshot(){const ids=[-1,0,1].flatMap(dz=>[-1,0,1].map(dx=>`${204+dx},${5+dz}`));
+      return{biomeId:'reef',sceneProfile:LIVING_SHALLOWS_PROFILE,ocean:{exploring:true,chunkId:'204,5',localHabitat:{status:'empty'},
+        ecology:{metrics:{loadingRegions:0,activeRegions:9},regions:ids.map(id=>({id}))},streaming:{loadedChunks:ids}}};},
     enterReefValleyRegion({ isCurrent }) { assert.equal(isCurrent(), true); this._shallowSceneEntryToken++; return pending; } };
   let remembers = 0, confirms = 0;
   run(choice, { current: actual }, { isCurrent: token => token === 37, applied: () => confirms++, fail: () => assert.fail('entry failed') },
-    () => {}, () => {}, () => {}, () => remembers++, () => assert.fail('entry toast failure'));
+    () => {}, () => {}, () => {}, () => remembers++, () => assert.fail('entry toast failure'),{current:null},()=>{},directorSceneReady);
   assert.equal(remembers, 0); assert.equal(confirms, 0); release(true);
   for (let i = 0; i < 5; i++) await Promise.resolve();
   assert.equal(remembers, 1); assert.equal(confirms, choice.directorToken === undefined ? 0 : 1); assert.deepEqual(retained, before);

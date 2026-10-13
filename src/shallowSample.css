@@ -1,6 +1,6 @@
 .shallow-sample{position:relative;width:100%;height:100dvh;background:#326e80;color:#f6f3e8;font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif}
 .sample-canvas{position:absolute;inset:0}.sample-canvas canvas{display:block;width:100%;height:100%;touch-action:none}
-.sample-header{position:absolute;top:24px;left:30px;right:30px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.sample-header{position:absolute;top:24px;left:30px;right:150px;display:flex;justify-content:space-between;align-items:center;gap:16px}
 .sample-brand{font-size:22px;letter-spacing:4px;font-weight:650}.sample-brand small{font-size:12px;letter-spacing:2px;margin-left:15px;font-weight:400;opacity:.82}
 .sample-header a{color:#e6eeeb;text-decoration:none;font-size:12px;padding:9px 12px;background:#103d4b55;border:1px solid #d4ebe12b;border-radius:5px}
 .sample-title{position:absolute;left:30px;top:100px;max-width:370px;text-shadow:0 2px 18px #103944a0;pointer-events:none}
@@ -24,6 +24,7 @@
 @media(max-width:700px){.shallow-journey .sample-header nav{display:flex;gap:4px;font-size:0}.shallow-journey .sample-header a{font-size:10px;padding:6px}.shallow-journey .sample-community{display:none}.shallow-journey .sample-controls{width:calc(100% - 24px)}.journey-chapters{gap:2px}.journey-chapters button{font-size:10px}.journey-guide{left:18px;bottom:calc(var(--sample-panel-height,220px) + 28px);max-width:210px;padding:9px 12px}.journey-guide p{margin:4px 0}.shallow-journey .sample-title h1{font-size:19px}.shallow-journey .sample-title{max-width:320px}}
 
 /* Narration stays in the measured footer so captions never cover its controls. */
+@media(max-width:700px){.sample-header nav{display:none}.sample-header{right:128px}}
 .journey-narration{border-top:1px solid #d9ece226;margin-top:11px;padding-top:10px}
 .narration-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:11px;color:#d3e1dc}
 .narration-actions button{background:#dbe4be;color:#214a50;border:0;border-radius:5px;font-size:12px;padding:8px 12px;cursor:pointer}

@@ -16,6 +16,7 @@ import { createOceanExplorationMemory, OCEAN_OBSERVATION_POINT_LIMIT } from './o
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from './livingShallows.js';
 import { loadLivingInputSeed, saveLivingInputSeed } from './livingWorldState.js';
 import { DemoOverview } from './DemoOverview.jsx';
+import { ExperienceNavigation } from './ExperienceNavigation.jsx';
 import { demoWorldMatches, navigateDemoEntry } from './demoNavigation.js';
 import { DirectorPlayer } from './DirectorPlayer.jsx';
 import { useDirectorTour } from './useDirectorTour.js';
@@ -148,9 +149,10 @@ export function OceanApp(){
   const initialEntryRef = useRef(initialLivingEntry(window.location.search));
   const [worldVariant]=useState(()=>readOceanWorldVariant(window.location.search));
   const container=useRef(null),world=useRef(null),history=useRef([]),lastHistory=useRef(-1),recorder=useRef(null),chunks=useRef([]);
+  const pendingNativeDemo=useRef(null);
   const [snapshot,setSnapshot]=useState(null),[panel,setPanel]=useState(()=>new URLSearchParams(window.location.search).get('demo')==='all'?'demo':null),[selected,setSelected]=useState(null),[error,setError]=useState(null),[paused,setPaused]=useState(savedPause),[speed,setSpeed]=useState(1),[view,setView]=useState('wide'),[seed,setSeed]=useState(()=>new URLSearchParams(window.location.search).get('seed')||'42'),[toast,setToast]=useState(''),[help,setHelp]=useState(false),[recording,setRecording]=useState(false);
   const [pendingDemo,setPendingDemo]=useState(()=>new URLSearchParams(window.location.search).get('demo')==='seagrass-meadow-region'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'seagrass-meadow-region',seagrassMeadowRegionEntry:true}:new URLSearchParams(window.location.search).get('demo')==='reef-valley-region'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'reef-valley-region',reefValleyRegionEntry:true}:new URLSearchParams(window.location.search).get('demo')==='coastal-life-belt'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'coastal-life-belt',coastalLifeBeltEntry:true}:new URLSearchParams(window.location.search).get('demo')==='biodiversity'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'biodiversity-reef',biodiversityEntry:true}:new URLSearchParams(window.location.search).get('demo')==='benthic'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'benthic-community',benthicLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='kelp-understory-life'?{kind:'kelp-stop',biome:'kelp',stopId:'kelp-understory-life',kelpUnderstoryLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='kelp-near-bottom-life'?{kind:'kelp-stop',biome:'kelp',stopId:'kelp-near-bottom-life',kelpNearBottomLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='kelp-water-life'?{kind:'kelp-stop',biome:'kelp',stopId:'kelp-water-life',kelpWaterLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='kelp-life'?{kind:'kelp-stop',biome:'kelp',stopId:'kelp-bottom-life',kelpBenthicLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='deep-midwater-life'?{kind:'deep-stop',biome:'deep',stopId:'deep-midwater-life',deepMidwaterLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='deep-water-life'?{kind:'deep-stop',biome:'deep',stopId:'deep-water-life',deepWaterLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='deep-hard-life'?{kind:'deep-stop',biome:'deep',stopId:'deep-hard-life',deepHardLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='deep-life'?{kind:'deep-stop',biome:'deep',stopId:'deep-bottom-life',deepBenthicLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='shoal-life'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'shoal-life-community',shoalLifeEntry:true}:new URLSearchParams(window.location.search).get('demo')==='meadow-life'?{kind:'living-stop',biome:'reef',profile:LIVING_SHALLOWS_PROFILE,stopId:'meadow-life-community',meadowLifeEntry:true}:null),[worldAttempt,setWorldAttempt]=useState(0);
-  const closeDemo=()=>{director.stop();setPendingDemo(null);setPanel(null);};
+  const closeDemo=()=>{pendingNativeDemo.current=null;director.stop();setPendingDemo(null);setPanel(null);};
   const [biome,setBiome]=useState(()=>{if(expeditionMode||directorEntryMode)return 'reef';if(new URLSearchParams(window.location.search).get('demo')==='seagrass-meadow-region')return 'reef';if(new URLSearchParams(window.location.search).get('demo')==='reef-valley-region')return 'reef';if(new URLSearchParams(window.location.search).get('demo')==='coastal-life-belt')return 'reef';if(new URLSearchParams(window.location.search).get('demo')==='shoal-life')return 'reef';if(new URLSearchParams(window.location.search).get('demo')==='meadow-life')return 'reef';if(['deep-life','deep-hard-life','deep-water-life','deep-midwater-life'].includes(new URLSearchParams(window.location.search).get('demo')))return 'deep';if(['kelp-water-life','kelp-near-bottom-life','kelp-understory-life'].includes(new URLSearchParams(window.location.search).get('demo')))return 'kelp';if(new URLSearchParams(window.location.search).get('demo')==='kelp-life')return 'kelp';if(new URLSearchParams(window.location.search).get('demo')==='biodiversity')return 'reef';if(new URLSearchParams(window.location.search).get('demo')==='benthic')return 'reef';try{const saved=localStorage.getItem('tidal-observation-biome-v1');return ['reef','kelp','deep'].includes(saved)?saved:'reef';}catch{return 'reef';}});
   const [reefProfile,setReefProfile]=useState(()=>{if(expeditionMode||directorEntryMode)return LIVING_SHALLOWS_PROFILE;if(new URLSearchParams(window.location.search).get('demo')==='seagrass-meadow-region')return LIVING_SHALLOWS_PROFILE;if(new URLSearchParams(window.location.search).get('demo')==='reef-valley-region')return LIVING_SHALLOWS_PROFILE;if(new URLSearchParams(window.location.search).get('demo')==='coastal-life-belt')return LIVING_SHALLOWS_PROFILE;if(new URLSearchParams(window.location.search).get('demo')==='shoal-life')return LIVING_SHALLOWS_PROFILE;if(new URLSearchParams(window.location.search).get('demo')==='meadow-life')return LIVING_SHALLOWS_PROFILE;if(new URLSearchParams(window.location.search).get('demo')==='biodiversity')return LIVING_SHALLOWS_PROFILE;if(new URLSearchParams(window.location.search).get('demo')==='benthic')return LIVING_SHALLOWS_PROFILE;try{return localStorage.getItem('tidal-shallows-profile-v1')==='legacy'?'legacy':LIVING_SHALLOWS_PROFILE;}catch{return LIVING_SHALLOWS_PROFILE;}});
   const livingSeedRef=useRef(new URLSearchParams(window.location.search).get('seed')||loadLivingInputSeed()),
@@ -333,7 +335,7 @@ export function OceanApp(){
   const chooseDemo=choice=>{
     if(choice.directorToken===undefined)director.stop();
     if(recording&&['world','living-stop','kelp-stop','deep-stop','view','discoveries'].includes(choice.kind)){setToast('请先结束录像，再切换观察入口');return;}
-    setPendingDemo(null);setHelp(false);
+    pendingNativeDemo.current=null;setPendingDemo(null);setHelp(false);
     if(choice.directorToken===undefined){
       if(choice.kind==='population'){setEcologyModel(choice.model);setPanel('population');return;}
       if(choice.kind==='panel'){setPanel(choice.panel);return;}
@@ -348,8 +350,8 @@ export function OceanApp(){
   const director=useDirectorTour({worldRef:world,snapshot,worldReady,error,execute:chooseDemo,recording,paused,speed,
     steps:expeditionMode?DIRECTOR_LIFE_STEPS:DIRECTOR_STEPS,autoDemo:expeditionMode?"life-expedition":"director",
     onControls:(nextPaused,nextSpeed)=>{setPaused(nextPaused);setSpeed(nextSpeed);try{localStorage.setItem('tidal-observation-paused-v1',String(nextPaused));}catch{}},onNotice:setToast});
-  const startDirector=()=>{setPendingDemo(null);setPanel(null);setHelp(false);director.start();};
-  const stopDirector=()=>{director.stop();setPendingDemo(null);setPanel(null);};
+  const startDirector=()=>{pendingNativeDemo.current=null;setPendingDemo(null);setPanel(null);setHelp(false);director.start();};
+  const stopDirector=()=>{pendingNativeDemo.current=null;director.stop();setPendingDemo(null);setPanel(null);};
   const travelDiscovery=id=>{director.stop();setPendingDemo(null);return world.current?.travelLivingDiscovery(id)??false;};
   const travelKelpBelt=id=>{director.stop();setPendingDemo(null);return world.current?.travelKelpForestBelt(id)??false;};
   const travelDeepBelt=id=>{director.stop();setPendingDemo(null);return world.current?.travelDeepSeascape(id)??false;};
@@ -447,6 +449,7 @@ export function OceanApp(){
     }catch(error){if(current())setToast(error.message);}
   };
   useEffect(()=>{
+    if(pendingNativeDemo.current?.choice!==pendingDemo)pendingNativeDemo.current=null;
     if(!pendingDemo||!worldReady||!demoWorldMatches(pendingDemo,world.current,snapshot))return;
     const choice=pendingDemo;
     if(choice.directorToken!==undefined){
@@ -455,18 +458,20 @@ export function OceanApp(){
       if(choice.kind==='local-life'&&!world.current.oceanExploring){world.current.startOceanExploration();return;}
       if(choice.kind==='local-life'&&!directorSceneReady(choice,world.current,snapshot))return;
     }
-    setPendingDemo(null);
+    if(!choice.reefValleyRegionEntry&&!choice.seagrassMeadowRegionEntry)setPendingDemo(null);
     if(choice.directorToken!==undefined&&['panel','population','capture'].includes(choice.kind)){
       if(choice.kind==='population'){setEcologyModel(choice.model);setPanel('population');}
       else setPanel(choice.kind==='capture'?'capture':choice.panel);
       director.applied(choice.directorToken);return;
     }
     if(choice.reefValleyRegionEntry||choice.seagrassMeadowRegionEntry){
-      const actual=world.current;setView('ocean');setOceanToolsOpen(false);setPanel(null);
-      const ownsChapter=()=>choice.directorToken===undefined||director.isCurrent(choice.directorToken);
+      if(pendingNativeDemo.current?.choice===choice&&pendingNativeDemo.current.actual===world.current)return;
+      const actual=world.current,attempt={choice,actual};pendingNativeDemo.current=attempt;
+      setView('ocean');setOceanToolsOpen(false);setPanel(choice.directorToken===undefined?'demo':null);
+      const ownsChapter=()=>pendingNativeDemo.current===attempt&&(choice.directorToken===undefined||director.isCurrent(choice.directorToken));
       const seed=actual.sim.seed,controls=actual.controlStartCount;
       const pending=choice.seagrassMeadowRegionEntry?actual.enterSeagrassMeadowRegion({isCurrent:ownsChapter}):actual.enterReefValleyRegion({isCurrent:ownsChapter}),token=actual._shallowSceneEntryToken;
-      const current=()=>ownsChapter()&&world.current===actual&&!actual.disposed&&actual.sim.seed===seed&&actual.controlStartCount===controls&&actual._shallowSceneEntryToken===token;
+      const current=()=>pendingNativeDemo.current===attempt&&ownsChapter()&&world.current===actual&&!actual.disposed&&actual.sim.seed===seed&&actual.controlStartCount===controls&&actual._shallowSceneEntryToken===token;
       pending.then(entered=>{
         if(!current())return;
         if(!entered){
@@ -474,8 +479,17 @@ export function OceanApp(){
           if(choice.directorToken!==undefined)director.fail(choice.directorToken,message);else setToast(message);
           return;
         }
+        if(!directorSceneReady(choice,actual,actual.snapshot({detailedTerrain:false}))){
+          const message='目的地海床与群落尚未完整就绪，请重试此入口。';
+          if(choice.directorToken!==undefined)director.fail(choice.directorToken,message);else setToast(message);
+          return;
+        }
+        setPanel(null);
         rememberOcean();if(choice.directorToken!==undefined)director.applied(choice.directorToken);
-      }).catch(problem=>{if(current()){if(choice.directorToken!==undefined)director.fail(choice.directorToken,problem.message);else setToast(problem.message);}});
+      }).catch(problem=>{if(current()){if(choice.directorToken!==undefined)director.fail(choice.directorToken,problem.message);else setToast(problem.message);}}).finally(()=>{
+        if(pendingNativeDemo.current!==attempt)return;
+        pendingNativeDemo.current=null;setPendingDemo(previous=>previous===choice?null:previous);
+      });
       return;
     }
     if(choice.coastalLifeBeltEntry&&choice.directorToken===undefined){
@@ -652,6 +666,7 @@ export function OceanApp(){
     <header className="masthead"><div className="brand"><span className="brand-en">TIDAL</span><span className="brand-divider"/><span className="brand-cn">潮汐<span>海底观察站</span></span></div><nav aria-label="观察工具"><button className="demo-entry" disabled={recording} onClick={()=>window.location.assign(`${import.meta.env.BASE_URL}overview/`)}>产品导览</button><button className="demo-entry" disabled={recording} onClick={()=>{const url=new URL(window.location.href);url.searchParams.set('demo','shallow-sample');window.location.assign(url.href);}}>浅海样板</button>{livingShallows&&<button className="demo-entry" disabled={recording} onClick={()=>{
       if(expeditionMode){startDirector();return;} const url=new URL(window.location.href);url.searchParams.set('demo','life-expedition');url.searchParams.set('world','whole-seabed');window.location.assign(url.href);
     }}>生命巡游</button>}{livingShallows&&worldVariant!=='whole-seabed'&&<button className="demo-entry" disabled={recording} onClick={()=>{const url=new URL(window.location.href);url.searchParams.set('world','whole-seabed');window.location.assign(url.href);}}>最新海域</button>}<button className="demo-entry" disabled={recording} onClick={()=>{if(!expeditionMode){startDirector();return;} const url=new URL(window.location.href);url.searchParams.set('demo','director');window.location.assign(url.href);}}>导演演示</button><button className={`demo-entry ${panel==='demo'?'active':''}`} onClick={()=>{director.stop();setPendingDemo(null);setHelp(false);setPanel('demo');}}>能力总览</button><button className={!panel?'active':''} onClick={closeDemo}>自由观察</button><button className={panel==='science'?'active':''} onClick={()=>toggle('science')}>环境实验</button><button className={panel==='population'?'active':''} onClick={()=>toggle('population')}>生态演化</button><button className={panel==='catalog'?'active':''} onClick={()=>toggle('catalog')}>生物图鉴 <small>{speciesCatalog.length}</small></button>{continuousBiome&&<button className={panel==='journal'?'active':''} onClick={()=>{setHelp(false);toggle('journal');}}>探索手记</button>}<button className="help-button" onClick={()=>{director.stop();setPendingDemo(null);setPanel(null);setHelp(!help);}}>操作说明</button></nav></header>
+    <ExperienceNavigation research disabled={recording}/>
     <section className="location-label"><p className="eyebrow">{oceanExploring?'OPEN OCEAN · CONTINUOUS EXPLORATION':definition.eyebrow}</p><h1>{oceanExploring?(isDeep?(ocean?.deepMidwaterObservation?'观察中层水体':'沿深海床探索'):biome==='kelp'?'穿行巨藻林':livingShallows?'探索浅海生命':'向海洋深处探索'):biome==='reef'?definition.label:<>{definition.title}<br/>观察生命。</>}</h1><p className="location-sub">{biome!=='reef'&&(ocean?.deepMidwaterObservation?'约700米的开放中层 · 暮光层':definition.subtitle)}<span>{isDeep?'观察器照明':'自然光'} · 安静观察</span></p></section>
     <div className="biome-switch"><label htmlFor="biome">观察生境</label><select id="biome" value={biome} disabled={recording||director.state.active} onChange={e=>{setPendingDemo(null);setPanel(null);setHelp(false);rememberOcean();try{localStorage.setItem('tidal-observation-biome-v1',e.target.value);}catch{}setBiome(e.target.value);}}>{Object.values(sceneDefinitions).map(d=><option key={d.id} value={d.id}>{d.label}</option>)}</select>{biome==='reef'&&!performanceCount&&<select aria-label="浅海世界" value={reefProfile} disabled={recording||director.state.active} onChange={e=>{setPendingDemo(null);rememberOcean();setPanel(null);setSelected(null);try{localStorage.setItem('tidal-shallows-profile-v1',e.target.value);}catch{}setReefProfile(e.target.value);}}><option value={LIVING_SHALLOWS_PROFILE}>浅海生态海域</option><option value="legacy">原浅礁观察区</option></select>}</div>
     {!snapshot&&!error&&<div className="loading-note">正在构建{definition.label}与生物群落…</div>}

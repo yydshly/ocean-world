@@ -8,6 +8,8 @@
 
 **点击上方原版引导图进入产品导览，选择“4分钟浅海体验”或“60秒鱼群协同”。** 图中实景与数据是 **2026-10-12 的历史快照**，包括75秒样板和当时的性能、发布状态；最新阶段说明以本文与[阶段05鱼群协同页](https://yydshly.github.io/ocean-world/overview/stage-05/)为准。[下载原版长图](https://yydshly.github.io/ocean-world/overview/ocean-world-product-atlas.png)。
 
+**入口有限收尾：** 浅海页面右上角“更多体验”连接10个主要入口，研究页面可以“返回4分钟浅海主线”。礁谷、草甸等待实际目的地地形与群落齐备后才确认进入；保留历史校验和加载耗时，不宣称所有研究路线已完整验收。[本轮导航、验证与发布记录](docs/releases/ENTRY_NAVIGATION_PUBLICATION_20261013.md)。
+
 > **当前阶段：05 · 鱼群协同与中文讲解。** 现有38条乌尾鮗展示遇礁分流、汇合、受扰散开与重新聚集；60秒入口直接观察这一段，原4分钟主线的开场包含同样演示，之后继续礁谷 → 沙道 → 草床。293个体、38展示类、现有资产与原路线保持。60秒版五段中文短讲解，4分钟版共十段，均可开启字幕与语音。鱼群本地归档基线为 `a935a3e` / `stage-05-fish-schooling-local-20261013`；本轮配音、正式部署和实际远端加载播放结果以[发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)及同一提交的 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准。
 
 **阶段05已上线：** [`stage-05-schooling-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-05-schooling-published-20261013) / `e573347`；[发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38394640991)。60秒及4分钟分别完整1×实播59.9985 / 240.0559实秒，无操作中断；五/十段讲解的媒体状态结果见回执。正常缓存远端导航22.168 / 4.917秒，贴图9/47、47/47；非受控冷启动或5秒加载保证。[发布回执与保留限制](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)。本轮收口，不继续优化。
@@ -38,12 +40,15 @@
 | [阶段04前后对照](https://yydshly.github.io/ocean-world/overview/stage-04/) | 历史栖息地变化 | 同路线五个时点的真实截图、完整播放结果和保留差距 |
 | [产品导览](https://yydshly.github.io/ocean-world/overview/) | 了解产品全貌 | 目标、能力图、实景模块、生物目录、主要入口与验证证据 |
 | [75秒浅海样板](https://yydshly.github.io/ocean-world/?demo=shallow-sample&seed=55) | 紧凑的历史样板 | 保留原冻结路线；阶段02—04的整合主要在4分钟入口，不能用此入口代替最新阶段 |
+| [能力总览](https://yydshly.github.io/ocean-world/?demo=all&seed=55) | 研究入口菜单 | 按海域、地貌、生物观察及记录工具选择已有能力；菜单出现与目的地场景就绪分别判断 |
 | [导演模式](https://yydshly.github.io/ocean-world/?demo=director&seed=55) | 范围探索：自动带看已有功能 | 67章，可选章、变速与接管；1×名义观察时长33分14秒，加载和转场另计；跨区等待仍是已知问题，本次不宣称全部67章完成新验收 |
 | [生命巡游](https://yydshly.github.io/ocean-world/?demo=life-expedition&seed=55&world=whole-seabed) | 范围探索：连续生成海床 | 另一条240秒、约452米的路线；区域准备期间可能等待，与推荐4分钟浅海体验使用不同场景和验收范围 |
 | [礁谷探索](https://yydshly.github.io/ocean-world/?demo=reef-valley-region&seed=55&world=whole-seabed) / [海草甸](https://yydshly.github.io/ocean-world/?demo=seagrass-meadow-region&seed=55&world=whole-seabed) | 自由走进浅海 | 按底质、水深和保存状态生成与延续群落 |
 | [海带林](https://yydshly.github.io/ocean-world/?demo=kelp-life&seed=55) / [深海软底](https://yydshly.github.io/ocean-world/?demo=deep-life&seed=55) | 看不同生境 | 藻林分层生活、沉积海床与观察器照明 |
 
 **4分钟浅海体验是当前集中建设和验收的主线，其余世界入口用于探索已有能力范围。** 样板中的动物数量、近景资产和播放表现，不能外推到持续探索世界或所有设备。
+
+**在页面里切换入口：** 浅海体验右上角常驻“更多体验”，专注观看、下载构建及加载错误时均可打开；菜单分为“观看主线”和“研究与范围探索”，包含4分钟主线、60秒鱼群、75秒历史样板，以及能力总览、导演、生命巡游、礁谷、草甸、海带林和深海。研究页面提供“返回4分钟浅海主线”。切换保留当前种子，开始所选入口的独立体验；区域准备和性能仍需按各入口单独判断。
 
 ## 我们对产品的共同理解
 

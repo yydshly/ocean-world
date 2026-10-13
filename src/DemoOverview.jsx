@@ -49,7 +49,7 @@ export function DemoOverview({ onChoose, onClose, onStartDirector, worldReady, r
       <button type="button" disabled={recording} aria-describedby="demo-director-intro" onClick={onStartDirector}>
         <span aria-hidden="true">▶</span>一键导演演示
       </button>
-      <p id="demo-director-intro">约 8 分钟，镜头前进、转向和升降，依次巡游各观察点并展示现有工具。跨海域时切换场景，可暂停、跳章或退出。</p>
+      <p id="demo-director-intro">67个观察章节，镜头前进、转向和升降，依次展示生境与工具。可按需选章、暂停、变速或退出；完整观看是较长流程，区域切换与准备时间另计。</p>
     </div>
 
     <div className="demo-current-status" role="status" aria-live="polite">

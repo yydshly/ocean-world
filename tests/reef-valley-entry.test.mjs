@@ -5,6 +5,7 @@ import { LIVING_SHALLOWS_PROFILE } from '../src/livingShallows.js';
 import { DEMO_LIVING_STOPS } from '../src/demoCapabilities.js';
 import { DIRECTOR_STEPS, createDirectorState, directorReducer } from '../src/directorTour.js';
 import { directorMotionCompletionEvent } from '../src/directorMotionReceipt.js';
+import { directorSceneReady } from '../src/directorReadiness.js';
 
 // Execute the shipped initialization and asynchronous entry handler. World
 // interfaces are explicit doubles; this does not mount React or accept pixels.
@@ -25,18 +26,21 @@ function initializer(name,setter){
 const factories=[['pendingDemo','setPendingDemo'],['biome','setBiome'],['reefProfile','setReefProfile']].map(([a,b])=>initializer(a,b));
 const begin=source.indexOf('    if(choice.reefValleyRegionEntry||choice.seagrassMeadowRegionEntry){'),end=source.indexOf('    if(choice.coastalLifeBeltEntry',begin);
 assert.ok(begin>=0&&end>begin);
-const runEntry=new Function('choice','world','director','setView','setOceanToolsOpen','setPanel','rememberOcean','setToast',source.slice(begin,end));
+const runEntry=new Function('choice','world','director','setView','setOceanToolsOpen','setPanel','rememberOcean','setToast','pendingNativeDemo','setPendingDemo','directorSceneReady',source.slice(begin,end));
 const wait=async()=>{for(let i=0;i<5;i++)await Promise.resolve();};
 function fixture({guided=false}={}){
   let resolve,reject,valid=true;const gate=new Promise((yes,no)=>{resolve=yes;reject=no;}),log=[];
   const retained={timeSec:132.4,dead:{id:'retained-death',alive:false},stock:{plankton:.14},rng:88};
   const actual={sim:{seed:'retained-seed'},disposed:false,controlStartCount:2,_shallowSceneEntryToken:10,retained,
+    biomeId:'reef',isLivingShallows:true,snapshot(){const ids=[-1,0,1].flatMap(dz=>[-1,0,1].map(dx=>`${204+dx},${5+dz}`));
+      return{biomeId:'reef',sceneProfile:LIVING_SHALLOWS_PROFILE,ocean:{exploring:true,chunkId:'204,5',localHabitat:{status:'empty'},
+        ecology:{metrics:{loadingRegions:0,activeRegions:9},regions:ids.map(id=>({id}))},streaming:{loadedChunks:ids}}};},
     enterReefValleyRegion(options){this.options=options;this._shallowSceneEntryToken++;return gate;}};
   const world={current:actual},director={isCurrent:token=>valid&&token===37,
     applied:token=>log.push(['applied',token]),fail:(token,message)=>log.push(['failed',token,message])};
   const choice={reefValleyRegionEntry:true,...(guided?{directorToken:37}:{})};
   runEntry(choice,world,director,value=>log.push(['view',value]),value=>log.push(['tools',value]),value=>log.push(['panel',value]),
-    ()=>log.push(['remember']),value=>log.push(['toast',value]));
+    ()=>log.push(['remember']),value=>log.push(['toast',value]),{current:null},()=>{},directorSceneReady);
   return {actual,world,log,resolve,reject,retained,before:structuredClone(retained),invalidate:()=>valid=false};
 }
 

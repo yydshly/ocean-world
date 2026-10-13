@@ -77,6 +77,24 @@ test('failed loading and missing region/metric evidence remain unready', () => {
   }
 });
 
+test('native regional entrances require the current terrain window as well as its actual ecological owners', () => {
+  for(const flag of ['reefValleyRegionEntry','seagrassMeadowRegionEntry']){
+    const native={...choice,[flag]:true},current=snapshot();
+    assert.equal(directorSceneReady(native,world,{...current,ocean:null}),false,'a native destination needs an actual exploration snapshot');
+    assert.equal(directorSceneReady(native,world,{...current,ocean:{...current.ocean,exploring:false}}),false);
+    current.ocean.chunkId='204,5';current.ocean.ecology.regions=regionsAround(207,5);
+    current.ocean.streaming={loadedChunks:['205,4','205,5','205,6']};
+    assert.equal(directorSceneReady(native,world,current),false,'nine old residents and zero loading do not finish arrival');
+    current.ocean.ecology.regions=regionsAround(204,5);
+    assert.equal(directorSceneReady(native,world,current),false,'ecology alone cannot stand in for missing terrain');
+    current.ocean.streaming.loadedChunks=regionsAround(204,5).map(row=>row.id);
+    current.ocean.localHabitat.status='empty';
+    assert.equal(directorSceneReady(native,world,current),true,'an empty complete destination is still a valid arrival');
+    current.ocean.streaming.loadedChunks.pop();
+    assert.equal(directorSceneReady(native,world,current),false,'all current neighbour terrain must actually be published');
+  }
+});
+
 test('population chapters require their actual panel result as well as the matching loaded scene', () => {
   const panel = { kind: 'population', model: 'age' };
   assert.equal(directorSceneReady(panel, world, snapshot()), false);

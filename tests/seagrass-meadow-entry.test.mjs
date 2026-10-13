@@ -11,6 +11,7 @@ import { seagrassMeadowRegionOrigin } from '../src/seagrassMeadowRegion.js';
 import { coastalSeascapeWindowReady } from '../src/coastalSeascapeMotion.js';
 import { isDirectorPlaybackRate, advanceDirectorCameraElapsed } from '../src/directorCameraMotion.js';
 import { initialLivingEntry } from '../src/initialLivingEntry.js';
+import { directorSceneReady } from '../src/directorReadiness.js';
 
 // Execute shipped UI initialization and dispatch logic. These interface doubles
 // verify delegation and stale ownership; the separate native World suite owns
@@ -34,20 +35,23 @@ const initializers = [['pendingDemo', 'setPendingDemo'], ['biome', 'setBiome'], 
 const begin = source.indexOf('    if(choice.reefValleyRegionEntry||choice.seagrassMeadowRegionEntry){');
 const end = source.indexOf('    if(choice.coastalLifeBeltEntry', begin);
 assert.ok(begin >= 0 && end > begin);
-const runEntry = new Function('choice', 'world', 'director', 'setView', 'setOceanToolsOpen', 'setPanel', 'rememberOcean', 'setToast', source.slice(begin, end));
+const runEntry = new Function('choice', 'world', 'director', 'setView', 'setOceanToolsOpen', 'setPanel', 'rememberOcean', 'setToast', 'pendingNativeDemo', 'setPendingDemo', 'directorSceneReady', source.slice(begin, end));
 const settle = async () => { for (let i = 0; i < 5; i++) await Promise.resolve(); };
 function entryFixture({ guided = false } = {}) {
   let resolve, reject, valid = true;
   const pending = new Promise((yes, no) => { resolve = yes; reject = no; }), log = [];
   const history = { timeSec: 132.4, dead: { id: 'retained-death', alive: false }, stocks: { plankton: .14 }, rng: 88 };
   const actual = { sim: { seed: 'retained-seed' }, disposed: false, controlStartCount: 2, _shallowSceneEntryToken: 10, history,
+    biomeId:'reef',isLivingShallows:true,snapshot(){const ids=[-1,0,1].flatMap(dz=>[-1,0,1].map(dx=>`${228+dx},${4+dz}`));
+      return{biomeId:'reef',sceneProfile:LIVING_SHALLOWS_PROFILE,ocean:{exploring:true,chunkId:'228,4',localHabitat:{status:'empty'},
+        ecology:{metrics:{loadingRegions:0,activeRegions:9},regions:ids.map(id=>({id}))},streaming:{loadedChunks:ids}}};},
     enterReefValleyRegion() { throw new Error('meadow action dispatched to old reef entrance'); },
     enterSeagrassMeadowRegion(options) { this.options = options; this._shallowSceneEntryToken++; log.push(['native']); return pending; } };
   const world = { current: actual }, director = { isCurrent: token => valid && token === 37,
     applied: token => log.push(['applied', token]), fail: (token, message) => log.push(['failed', token, message]) };
   const choice = { seagrassMeadowRegionEntry: true, ...(guided ? { directorToken: 37 } : {}) };
   runEntry(choice, world, director, value => log.push(['view', value]), value => log.push(['tools', value]),
-    value => log.push(['panel', value]), () => log.push(['remember']), value => log.push(['toast', value]));
+    value => log.push(['panel', value]), () => log.push(['remember']), value => log.push(['toast', value]),{current:null},()=>{},directorSceneReady);
   return { actual, world, log, resolve, reject, history, before: structuredClone(history), invalidate: () => valid = false };
 }
 

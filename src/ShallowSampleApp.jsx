@@ -11,6 +11,7 @@ import {prepareShallowRenderer} from './world/prepareShallowRenderer.js';
 import {loadPreparedShallowGeometry} from './world/preparedShallowGeometry.js';
 import {SceneLoading} from './SceneLoading.jsx';
 import {createShallowSchooling,prepareShallowSchooling,shallowSchoolingDiagnostics,shallowSchoolingPhase,SHALLOW_SCHOOLING_PHASES} from './shallowSchooling.js';
+import { ExperienceNavigation } from './ExperienceNavigation.jsx';
 
 export function ShallowSampleApp({journey=false}){
   const schoolingOnly=journey&&new URLSearchParams(window.location.search).get('school')==='1';
@@ -182,6 +183,7 @@ export function ShallowSampleApp({journey=false}){
   const journeyUrl=new URL(window.location.href);journeyUrl.searchParams.delete('school');
   return <main className={`shallow-sample${journey?' shallow-journey':''}${journey&&focused?' is-focused':''}${journey&&free?' is-exploring':''}`}>
     <output id="shallow-diagnostics" hidden>{JSON.stringify(runtime.current?.diagnostics.metrics??null)}</output>
+    <ExperienceNavigation/>
     <div className="sample-experience" inert={!ready||!!error} aria-hidden={!ready||!!error}>
     <div className="sample-canvas" ref={canvas} tabIndex={journey?0:undefined} role={journey?"region":undefined} aria-label={journey?"浅海探索画面":undefined} onPointerDown={()=>canvas.current?.focus({preventScroll:true})}/>
     <header className="sample-header"><span className="sample-brand">TIDAL <small>浅海观察</small></span><nav><a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}assets/shallow-artist/credits.html`} target="_blank" rel="noreferrer">模型来源</a> · <a href={exploration.href}>进入持续探索 ↗</a></nav></header>

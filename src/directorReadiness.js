@@ -11,7 +11,8 @@ export function directorSceneReady(choice, world, snapshot, { panelReady = false
     profile: world.isLivingShallows ? LIVING_SHALLOWS_PROFILE : 'legacy',
   }, world, snapshot)) return false;
   if (choice.kind === 'population' && panelReady !== true) return false;
-  if (!snapshot.ocean?.exploring) return true;
+  const nativeRegion = choice.reefValleyRegionEntry || choice.seagrassMeadowRegionEntry;
+  if (!snapshot.ocean?.exploring) return !nativeRegion;
   const { ecology, localHabitat, chunkId } = snapshot.ocean;
   if (ecology?.metrics?.loadingRegions !== 0 || !(ecology.metrics.activeRegions > 0) ||
     !['ready', 'empty'].includes(localHabitat?.status) || typeof chunkId !== 'string' ||
@@ -22,8 +23,10 @@ export function directorSceneReady(choice, world, snapshot, { panelReady = false
   // An old nine-owner window can still include the new centre while its exit
   // save is pending. A count alone does not prove the requested window loaded.
   const resident = new Set(ecology.regions.map(region => region?.id));
+  const terrain = nativeRegion && new Set(snapshot.ocean.streaming?.loadedChunks ?? []);
   for (let dz = -1; dz <= 1; dz++) for (let dx = -1; dx <= 1; dx++) {
     if (!resident.has(`${cx + dx},${cz + dz}`)) return false;
+    if (nativeRegion && !terrain.has(`${cx + dx},${cz + dz}`)) return false;
   }
   return true;
 }
