@@ -1912,6 +1912,7 @@
     }
   ],
   "links": {
+    "journey": "../?demo=shallow-journey&seed=55",
     "sample": "../?demo=shallow-sample&seed=55",
     "director": "../?demo=director&seed=55",
     "life": "../?demo=life-expedition&seed=55&world=whole-seabed",

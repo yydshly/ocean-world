@@ -12,3 +12,13 @@
 .sample-error{position:absolute;inset:30% 20% auto;background:#143d4be8;border:1px solid #bad0c6;padding:24px;border-radius:8px}.sample-error button{display:block;margin-top:16px;padding:8px 16px}
 .sample-preparing{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:14px 20px;background:#123d4bd9;border-radius:8px;font-size:14px}
 @media(max-width:640px){.sample-header{left:18px;right:18px;top:18px}.sample-brand{font-size:18px}.sample-brand small{display:none}.sample-title{left:18px;top:76px;max-width:260px}.sample-title h1{font-size:21px}.sample-title span{display:none}.sample-community{right:18px;top:auto;bottom:158px;font-size:11px}.sample-community span{display:none}.sample-controls{bottom:14px;width:calc(100% - 24px);padding:12px}.sample-actions{gap:6px}.sample-actions>span{width:100%;margin-top:3px}.sample-progress label{display:none}}
+
+.shallow-journey .sample-controls{width:min(870px,calc(100% - 40px))}
+.journey-chapters{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-bottom:13px}
+.journey-chapters button{border:0;border-bottom:2px solid #c1dfcf24;background:transparent;color:#c4d9d3;padding:5px 3px 9px;font-size:11px;cursor:pointer;text-align:left}
+.journey-chapters button small{display:block;color:#8daca5;font-size:9px;margin-bottom:4px}
+.journey-chapters button[aria-current]{color:#eff1d2;border-color:#dbe4be}
+.journey-guide{position:absolute;left:30px;bottom:calc(var(--sample-panel-height,160px) + 42px);max-width:240px;padding:14px 16px;border-left:2px solid #dbe4be66;background:linear-gradient(90deg,#123d4bd6,#123d4b55);border-radius:0 8px 8px 0}
+.journey-eyebrow{display:block;font-size:10px;letter-spacing:1px;color:#bfd2cb}.journey-guide strong{display:block;font-size:17px;font-weight:500;margin-top:7px}.journey-guide p{font-size:11px;line-height:1.7;margin:7px 0;color:#dce9df}.journey-guide small{font-size:10px;color:#aac7c1}.journey-movement{display:flex;gap:5px;margin-top:10px}.journey-movement button{padding:8px 5px;background:#e1e7ca;border:0;border-radius:4px;color:#1c4a4c;touch-action:none}
+.sample-canvas:focus-visible{outline:2px solid #dbe4be;outline-offset:-3px}
+@media(max-width:700px){.shallow-journey .sample-header nav{display:flex;gap:4px;font-size:0}.shallow-journey .sample-header a{font-size:10px;padding:6px}.shallow-journey .sample-community{display:none}.shallow-journey .sample-controls{width:calc(100% - 24px)}.journey-chapters{gap:2px}.journey-chapters button{font-size:10px}.journey-guide{left:18px;bottom:calc(var(--sample-panel-height,220px) + 28px);max-width:210px;padding:9px 12px}.journey-guide p{margin:4px 0}.shallow-journey .sample-title h1{font-size:19px}.shallow-journey .sample-title{max-width:320px}}

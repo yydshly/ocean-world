@@ -16,7 +16,8 @@ class SceneLoadBoundary extends React.Component {
 }
 
 export function App(){
-  const sample = new URLSearchParams(window.location.search).get('demo') === 'shallow-sample';
+  const demo = new URLSearchParams(window.location.search).get('demo');
+  const sample = demo === 'shallow-sample' || demo === 'shallow-journey';
   const loading = useSyncExternalStore(sceneLoadingProgress.subscribe, sceneLoadingProgress.getSnapshot);
-  return <SceneLoadBoundary><Suspense fallback={<div style={{padding:30}} role="status"><p>正在打开海底世界…首次访问需要准备模型，之后可使用缓存。</p>{loading.started>0&&<p>模型准备 {loading.complete} / {loading.started} · 已接收 {(loading.bytes/1048576).toFixed(1)} MB</p>}<button onClick={()=>window.location.reload()}>重新载入</button></div>}>{sample ? <ShallowSample/> : <OceanApp/>}</Suspense></SceneLoadBoundary>;
+  return <SceneLoadBoundary><Suspense fallback={<div style={{padding:30}} role="status"><p>正在打开海底世界…首次访问需要准备模型，之后可使用缓存。</p>{loading.started>0&&<p>模型准备 {loading.complete} / {loading.started} · 已接收 {(loading.bytes/1048576).toFixed(1)} MB</p>}<button onClick={()=>window.location.reload()}>重新载入</button></div>}>{sample ? <ShallowSample journey={demo === 'shallow-journey'}/> : <OceanApp/>}</Suspense></SceneLoadBoundary>;
 }

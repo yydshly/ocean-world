@@ -8,7 +8,7 @@ export function createShallowPlaybackMetrics(){
     interrupt(reason){if(run&&!run.completed&&!run.interruptions.includes(reason))run.interruptions.push(reason);},
     frame(now,interval,time,scale){
       if(!run||run.completed)return;
-      if(interval>0&&run.intervalsMs.length<20000)run.intervalsMs.push(interval);
+      if(interval>0&&run.intervalsMs.length<60000)run.intervalsMs.push(interval);
       if(run.resolutionHistory.at(-1)?.scale!==scale)run.resolutionHistory.push({time,scale});
       run.lastModelSecond=time;run.elapsedWallSeconds=(now-run.startedAt)/1000;
     },

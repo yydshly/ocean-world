@@ -387,9 +387,9 @@ vec3 roughP=sampleWorld*.32;roughnessFactor=clamp(.72+.28*(texture2D(sampleRockR
     };
     material.customProgramCacheKey=()=>`sample-coastal-pbr-${!!normalMap}-${!!roughMap}`;material.needsUpdate=true;
   }
-  update(time,autoCamera=true){
+  update(time,autoCamera=true,cameraView=null){
     if(this.disposed)return;this.clock.value=time;updateShallowSample(this.model,time);this.animals.update(time);
-    if(autoCamera){const view=sampleShallowCamera(this.model,time);this.camera.position.copy(view.position);this.camera.lookAt(view.target);}
+    if(autoCamera){const view=cameraView??sampleShallowCamera(this.model,time);this.camera.position.copy(view.position);this.camera.lookAt(view.target);}
     const p=this.camera.position;this.sun.target.position.set(p.x+6,0,p.z);this.sun.position.set(p.x-17,28,p.z-14);
     this.updateView();
     this.water.position.copy(this.camera.position);

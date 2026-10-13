@@ -1,0 +1,127 @@
+{
+  "stage": "02",
+  "date": "2026-10-13",
+  "status": "local-verified-and-archived; user visual acceptance pending",
+  "scope": "240 second finite shallow journey using existing assets; no persistent world or ecology change",
+  "routeMeters": 90.08271084770561,
+  "animals": 293,
+  "displayCategories": 38,
+  "fixRounds": 1,
+  "builds": 2,
+  "targetedChecks": {
+    "uniquePassed": 9,
+    "routeTests": 4,
+    "existingSampleRegressionTests": 5,
+    "notFullRepositorySuite": true
+  },
+  "firstRun": {
+    "elapsedWallSeconds": 240.45420000009537,
+    "averageFps": 82.30260993678043,
+    "p95FrameMs": 24.89999999999418,
+    "maxFrameMs": 275,
+    "uninterrupted": true
+  },
+  "finalRun": {
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "pixelRatio": 1.5,
+    "duration": 240,
+    "elapsedWallSeconds": 240.74789999997617,
+    "averageFps": 101.44729480111323,
+    "p95FrameMs": 16.69999999999709,
+    "maxFrameMs": 195.8000000000029,
+    "resolutionHistory": [
+      {
+        "time": 0,
+        "scale": 1
+      }
+    ],
+    "interruptions": [],
+    "completed": true,
+    "lastModelSecond": 240,
+    "uninterrupted": true
+  },
+  "navigationToReadyMs": 8512.600000023842,
+  "modelBuildMs": 4104.600000023842,
+  "renderPreparationMs": 1633.5,
+  "environment": {
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "context": "WebGL2RenderingContext"
+  },
+  "sourceHashes": {
+    "src/App.jsx": "8bdebf8922a78115bf2ef2d9baff15d2e79ecc75c53760aa86133139720f006a",
+    "src/ShallowSampleApp.jsx": "2ca194ee48ed1f2c19a4113ca8c795badffc63cce2c88fbb3b4f2e757b81a8aa",
+    "src/shallowJourney.js": "17ee93b1a02a549b38db8ba85ec5b85b8c75012e83fc09689e529b4dc6e28b82",
+    "src/shallowSamplePlayback.js": "701a6407b15233a80d4f9cc48ee11584e5ce023d82112a9ac61322f203c036cc",
+    "src/shallowSample.css": "739247ff761abc9e588aeb035591c8a6527eec329e902d8f94d3845ee7c61f08",
+    "src/world/ShallowSampleScene.js": "074b03590857213ff5e35582f6135ec9ea476a3d08f6f1367738b6d8897c1f69",
+    "tests/shallow-journey.test.mjs": "9e553404d6bf0901baaa3b81db9542396617472e6c2630ff2c6f8f30044d66ef"
+  },
+  "controls": {
+    "before": {
+      "time": 164.59999999999982,
+      "lifeTime": 164.74579999999983,
+      "free": true,
+      "position": [
+        10.851859643915025,
+        1.3718971417443195,
+        0.9670711431098769
+      ],
+      "returning": false
+    },
+    "after": {
+      "time": 164.59999999999982,
+      "lifeTime": 165.5040999999997,
+      "free": true,
+      "position": [
+        11.19567857224811,
+        1.3718971417443195,
+        1.4857951658038393
+      ],
+      "returning": false
+    },
+    "returnedView": {
+      "time": 194.07069999999334,
+      "lifeTime": 198.28319999999286,
+      "free": false,
+      "position": [
+        24.642428311598135,
+        1.5558689900952931,
+        5.834178430005696
+      ],
+      "returning": false
+    },
+    "mobileBoxes": {
+      "controlsTop": 624.6666870117188,
+      "gap": 14.000015258789062,
+      "guideBottom": 610.6666717529297,
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    "pauseResume": true,
+    "speedSelection": true,
+    "restart": true,
+    "keyboardArrow": true,
+    "shortPress": true
+  },
+  "console": [],
+  "limits": [
+    "Existing model-like animals, scan repetition and reef hard edges remain.",
+    "First loading 8.51 seconds; not the former 5 second target.",
+    "Finite habitat, not seamless global ocean or calibrated ecology.",
+    "No new full director/life expedition validation; their older performance limits remain.",
+    "Local cached desktop test, not cold public network or mobile device performance.",
+    "Camera safety and sampled visual inspection are not exhaustive mesh-to-mesh animal collision proof."
+  ],
+  "guideEntry": {
+    "from": "http://127.0.0.1:4175/ocean-world/overview/",
+    "link": "进入4分钟浅海体验",
+    "destination": "http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55",
+    "visible": "礁谷 · 进入鱼群的家",
+    "result": "loaded and playing; paused for handoff"
+  }
+}
