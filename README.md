@@ -10,6 +10,8 @@
 
 > **当前版本：阶段04 · 栖息地整合。** 本次发布范围包含293个动物个体、38个展示类别、240秒路线、六段中文讲解、三个浅海栖息地及两段过渡。本地场景基线为 `22987c4` / `stage-04-complete-habitats-local-20261013`。具体远端版本与部署状态以对应提交的 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准；详见[本次发布说明](docs/releases/STAGE_04_PUBLICATION.md)。
 
+**已上线：** [`stage-04-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-04-published-20261013) / `11edf106`；[全部发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38377213071)。已核对引导图到主体验、语音和探索返回。此次远端打开约33.9秒，加载仍偏慢；详见[当前状态与发布回执](docs/CURRENT_STATUS.md)。
+
 ## 当前做到哪一步
 
 | 阶段 | 已形成的能力与效果 | 阶段记录 |

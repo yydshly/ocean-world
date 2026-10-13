@@ -1,0 +1,372 @@
+{
+  "stage": "stage-04-published-20261013",
+  "date": "2026-10-13",
+  "status": "published-and-archived-prototype",
+  "deployedCommit": "11edf106e8f52785330432ac8ab62acc113cc03a",
+  "sceneArchiveCommit": "22987c4f5971db931510d45fdc61ec86791669e1",
+  "sourceAndAssetsUnchangedFromSceneArchive": true,
+  "website": "https://yydshly.github.io/ocean-world/overview/",
+  "workflow": {
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/38377213071",
+    "conclusion": "success",
+    "completedAt": "2026-10-13T09:44:22Z",
+    "jobs": [
+      {
+        "name": "build",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (3)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (6)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (4)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (0)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (5)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (7)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (2)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (1)",
+        "conclusion": "success"
+      },
+      {
+        "name": "deploy",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "firstAttempt": {
+    "run": "https://github.com/yydshly/ocean-world/actions/runs/38374785498",
+    "conclusion": "failure",
+    "deployed": false,
+    "causes": [
+      "Three old test fixtures omitted current entry or observer dependencies.",
+      "Expedition test omitted real camera steps taken during worker preparation."
+    ],
+    "remediation": "Test context and complete sampling repaired; runtime and original safety/history thresholds unchanged."
+  },
+  "localPublicationChecks": {
+    "shallow": 137,
+    "publicationAndHosting": 9,
+    "affectedWorldTestsAfterFixtureRepair": 38,
+    "finalViteBuildSeconds": 15.32
+  },
+  "staticResources": {
+    "checkedAt": "2026-10-13T09:47:30.831886+00:00",
+    "base": "https://yydshly.github.io/ocean-world/",
+    "scope": "Published guide, review images, original atlas and all six narration files; byte comparison, not browser performance. Runtime resources are checked separately against actual cloud-generated URLs.",
+    "passed": true,
+    "resources": [
+      {
+        "path": "overview/index.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 43499,
+        "sha256": "fe2a643333a85e9ef45082a56f88b88915375efa7eedf8dbd5e5ab24c46631f2",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/poster.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 19168,
+        "sha256": "ccf89aaef682d057235cee7b46e2119c3da01f845684515068386d494fddc540",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/index.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 8240,
+        "sha256": "0504fb09383648a53ee1991edb39833e5e2c9491561b478980a528e5ce556a0e",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/summary.json",
+        "status": 200,
+        "contentType": "application/json; charset=utf-8",
+        "bytes": 3108,
+        "sha256": "aa5348bc47261d47c77107dcb706287b0f025b423b5b1a1a27f054aff29034db",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/ocean-world-product-atlas.png",
+        "status": 200,
+        "contentType": "image/png",
+        "bytes": 665798,
+        "sha256": "fc31a5e84742672276f9105db33e2a99335ae76962b9a0e2d896ac681beb50ef",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "audio/shallow-journey/open-water.mp3",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "bytes": 279348,
+        "sha256": "9ab73047813b43177ceb3b4cbc377efb03d37417a7dd4c5b5484e0d270b942fd",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "audio/shallow-journey/reef-edge.mp3",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "bytes": 287988,
+        "sha256": "aff048da0e2bf0b5f18d5038462ff7679a1c9079a5db93116040c846699336ee",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "audio/shallow-journey/reef-entry.mp3",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "bytes": 295476,
+        "sha256": "1e33d4d20afec079b90d430679aaa45f9740d8db851c9e74b2d7ed8ea148ae1d",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "audio/shallow-journey/reef-sand.mp3",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "bytes": 281652,
+        "sha256": "cbcadf9cb6c65fdc700700627d2197508f8cbb9b1eb0a2f397b3b54896c35324",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "audio/shallow-journey/sand-life.mp3",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "bytes": 308724,
+        "sha256": "35a81f61d0c4a707ab7d6d4e3b977e11035a13c468d742679ad46f8bf54fc70c",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "audio/shallow-journey/seagrass.mp3",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "bytes": 279924,
+        "sha256": "7d8eb01d7fd07ea3e1d9c33601ddd1ca14324ce298f6cd1042623be4b09b0a05",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/after-144.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 91485,
+        "sha256": "33515a2adaf597e243435c635be17bdfcc04a4fb61b48df969770fd0544ff59d",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/after-168.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 79825,
+        "sha256": "69225c5688f9027aa8af42601814309e5039dc196befd5d32f92d50c2559340d",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/after-192.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 88044,
+        "sha256": "c5a969d11544365fed2892c64e84d10db51570722e18c6156fbfa1ec64157379",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/after-24.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 82975,
+        "sha256": "38c2b681b7d790f5daec4dca503c2ab92c0de6b15990013e8577e473f0013fd7",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/after-96.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 73725,
+        "sha256": "10105e05d1e2b26f9e3df0f79d7ee84a99059999993873c44019241791daef2b",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/before-144.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 86874,
+        "sha256": "617c214e22ec4d9b9cb4d6132dc0395d72571700c8d81dfd711214fe43a84148",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/before-168.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 74741,
+        "sha256": "92c630a656221f12f496f685f5f57e057ba9817d111cc4c4ca14a418bcb61988",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/before-192.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 105448,
+        "sha256": "c4fd3555c3d83dee89211eb18153828fd0370f23249f6ca8497213482e8d60a3",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/before-24.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 81811,
+        "sha256": "4c58bbd3f0a2d1921fa23f0b5d32639ea17784787d47fa53b93d4d6e1167b49d",
+        "matchesLocalBuild": true
+      },
+      {
+        "path": "overview/stage-04/before-96.jpg",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "bytes": 72144,
+        "sha256": "55955d9acc6ae4cbc66f2c67bc54cf11def719e2e3c2d8c9f4da369fab4b8f6c",
+        "matchesLocalBuild": true
+      }
+    ]
+  },
+  "runtimeEquivalence": {
+    "passed": true,
+    "app": {
+      "path": "assets/ShallowSampleApp-BYLxGuV3.js",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 2595158,
+      "sha256": "449fe4cdb1c17599ba967abe55470de7dc9ea168ab66a2bb649f3ebac615c155",
+      "localSha256": "da8a4a775aaeed620af8c486100fee1562a1d60cf7042fb164547e69ef8b09d1",
+      "byteIdentical": false,
+      "identicalAfterContentHashReferences": true
+    },
+    "models": [
+      {
+        "path": "assets/shallowReefDistanceData-CHW9_plF.bin",
+        "status": 200,
+        "decompressedSha256": "1cb343cccb2f2640aeb1ce16a538792a6af9641635aff12c45a32eb13a4a5d48",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/ShallowSourcedFishData-BuXjyOgT.bin",
+        "status": 200,
+        "decompressedSha256": "f7e3b0d07f86a19a9ba1b72eea45b44c5bd41bf865e46119fcf8d98ccffd0de1",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/shallowHawksbillData-cDocDmzE.bin",
+        "status": 200,
+        "decompressedSha256": "09cbd4bf50fc8a88c1e11506134337c48beadccbe55803ce48951a4f5e1a3c38",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/shallowOpenCommunityData-BrdioUT5.bin",
+        "status": 200,
+        "decompressedSha256": "36cb455db2d153b261dc3758462daa345c682e694db4061f419a190d1e6d922c",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/shallowNaturalHabitatData-CsZ3VtZX.bin",
+        "status": 200,
+        "decompressedSha256": "e776225a5235d55996cf58306625e0e445a6af8479b3b7034bef7e6b98b37c68",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/ShallowScannedReefData-DMNubvTX.bin",
+        "status": 200,
+        "decompressedSha256": "eef5a61b2e29ab9dfba473d79addd3813fce27dcae6569b7421e52968f2d7406",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/shallowContactFaunaData-DP6ZynFn.bin",
+        "status": 200,
+        "decompressedSha256": "c57a08e29806c5422d14f07d50fe658266b5fe6fcbb0b20ae02e6c62d5744045",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/shallowBenthicCoralData-oRqUepTg.bin",
+        "status": 200,
+        "decompressedSha256": "f252390c1958bfc2961de5ad5a216593708966007a8ad61dee8acc52292d0e90",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/shallowBranchingCoralData-U9lznt-l.bin",
+        "status": 200,
+        "decompressedSha256": "9c219e2c403bcecc9afef2d08c44e46db0d7723939d2ca0c224aa094d7533882",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/shallowNearCommunityData-6BnOB1nD.bin",
+        "status": 200,
+        "decompressedSha256": "2ddfcaa9b2dd24a342fcd3e09f82dc0d911d01d6a5c69e1e92ba27148712d5c4",
+        "decompressedByteIdentical": true
+      },
+      {
+        "path": "assets/shallowLivingKitData-B4Xf1Da3.bin",
+        "status": 200,
+        "decompressedSha256": "ae99c2d4bfad70c8758cfa842d73e5cffb5ca04ef681e756a543a032db7408ab",
+        "decompressedByteIdentical": true
+      }
+    ],
+    "transportDifference": "Only gzip header OS byte differs (Unix 03 vs Windows 0a); model content remains byte-identical after decompression. Hash references therefore differ; two minified wrappers also rename local variables without semantic change.",
+    "resourceCount": 23
+  },
+  "browserSmoke": {
+    "scope": "Hosted smoke: README atlas → guide → journey, reef playback, chapter selection, narration, exploration and return, reaching 240s with manual jumps. Not a continuous four-minute performance run; cache was not cleared.",
+    "path": [
+      "GitHub README original atlas",
+      "Published overview",
+      "shallow-journey seed 55"
+    ],
+    "experience": "stage-04-complete-habitats",
+    "checks": [
+      "Reef playback progresses",
+      "Narration and subtitles",
+      "Select grass chapter",
+      "Take over exploration, move forward and return",
+      "Arrival at timeline 240 with intentional manual interruptions",
+      "Review page: all 11 image elements loaded, 10 unique JPEGs"
+    ],
+    "playedClips": [
+      "reef-edge",
+      "seagrass",
+      "open-water"
+    ],
+    "console": [],
+    "navigationToReadyMs": 33906.60000002384,
+    "startupMs": 10480,
+    "cacheCleared": false,
+    "continuous240sAcceptance": false,
+    "interruptions": [
+      "pause",
+      "seek",
+      "free-observation"
+    ],
+    "completedTimeline": true,
+    "elapsedWallSeconds": 167.37440000007152
+  },
+  "limitations": [
+    "Hosted opening in this visit took about 33.9s; 5s loading target is not met by this observation.",
+    "This online smoke includes chapter selection and exploration; the full uninterrupted 240.040s evidence is the earlier local Stage04 archive.",
+    "No new full 67-chapter director, all-world browser, mobile or cross-device performance acceptance.",
+    "Scanned edges, animal model appearance, repeated grass and small distant animals remain."
+  ],
+  "fixedVersion": true
+}
