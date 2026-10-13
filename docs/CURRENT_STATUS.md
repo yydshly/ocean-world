@@ -1,3 +1,17 @@
+<!-- stage-05-schooling-publication-complete -->
+# 当前已发布：阶段05 · 鱼群协同与中文讲解
+
+2026-10-13完成用户授权的有限发布。运行版本`e573347` / 归档标签`stage-05-schooling-published-20261013`；[工作流38394640991](https://github.com/yydshly/ocean-world/actions/runs/38394640991)的build、8组世界回归、deploy共10个job全过。现有38条乌尾鮗、293动物/38展示类与原4分钟路线保持；60秒五段新讲解，4分钟前60秒同讲解、随后五段栖息地旁白，共十段，默认关闭，展开控制→开启讲解。
+
+[60秒鱼群协同](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1) · [4分钟浅海](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55) · [产品导览](https://yydshly.github.io/ocean-world/overview/) · [本轮发布回执](releases/STAGE_05_SCHOOLING_PUBLICATION.md) · [远端结构化摘要](validation/stage-05-schooling-publication-20261013.json)
+
+60秒及4分钟分别完整1×实播59.9985 / 240.0559实秒，无操作中断；五/十段讲解的媒体状态结果见回执。正常缓存远端导航22.168 / 4.917秒，贴图9/47、47/47；非受控冷启动或5秒加载保证。帧间隔p95 12.5 / 12.5ms，最长91.7 / 149.9ms，>250ms 0 / 0次。媒体playing事件不是人耳试听；完整run开场和末次视口分别保留，不推断全程固定尺寸。
+
+已部署、完成两条1倍速连续实播并阶段性归档；真实感、加载和有限协同等既有边界继续保留。本轮176项本机检查通过，初轮26项中23项导览、图像、音频与样式直接字节一致，3项生成引用差异保留原证据。线上实际HTML和两份脚本均200；脚本仅资源哈希引用不同，HTML另有同一预载集合的顺序差异，规范这些引用后完整内容一致。11份模型仅gzip头OS字段不同，解压数据一致；另1份静态几何包原字节一致。失败的Actions产物下载未重试，也未当作产物比对成功。13个运行文件保持冻结。远侧分流局部遮挡、旧资产模型感/硬边、固定场景编排及240秒后38鱼末帧冻结保留；旧导演/生命巡游跨区等待不属本轮修复。
+
+此阶段固定，不继续增加场景、资产或自动优化。以下为历次归档原文，其中“仅本地”“未部署”及560669f只表示当时状态，不能替代上述当前发布结果。
+<!-- /stage-05-schooling-publication-complete -->
+
 <!-- stage-05-schooling-local -->
 # 当前本地阶段：05 · 鱼群协同演示
 

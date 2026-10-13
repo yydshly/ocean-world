@@ -10,6 +10,8 @@
 
 > **当前阶段：05 · 鱼群协同与中文讲解。** 现有38条乌尾鮗展示遇礁分流、汇合、受扰散开与重新聚集；60秒入口直接观察这一段，原4分钟主线的开场包含同样演示，之后继续礁谷 → 沙道 → 草床。293个体、38展示类、现有资产与原路线保持。60秒版五段中文短讲解，4分钟版共十段，均可开启字幕与语音。鱼群本地归档基线为 `a935a3e` / `stage-05-fish-schooling-local-20261013`；本轮配音、正式部署和实际远端加载播放结果以[发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)及同一提交的 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准。
 
+**阶段05已上线：** [`stage-05-schooling-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-05-schooling-published-20261013) / `e573347`；[发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38394640991)。60秒及4分钟分别完整1×实播59.9985 / 240.0559实秒，无操作中断；五/十段讲解的媒体状态结果见回执。正常缓存远端导航22.168 / 4.917秒，贴图9/47、47/47；非受控冷启动或5秒加载保证。[发布回执与保留限制](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)。本轮收口，不继续优化。
+
 **阶段04历史发布：** [`stage-04-loading-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-04-loading-published-20261013) / `560669f`；[发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38383872433)。完整4分钟及六段讲解通过；本次远端首轮10.72秒、贴图26/47，缓存复访6.44秒、47/47。首访材质仍不齐，未达到5秒目标；非受控冷测。[发布回执与保留限制](docs/releases/STAGE_04_LOADING_PUBLICATION.md)。
 
 ## 当前做到哪一步
@@ -91,7 +93,7 @@
 
 **阶段05先前本地协同基线：** 60秒与4分钟分别完整1×实播 **60.009秒 / 240.228秒**，均无操作中断，控制台error/warn为空；1280×720 / DPR1.5 / RTX4070 Laptop / 渲染比例1，p95为16.6 / 12.6ms，最长95.9 / 162.4ms，169项不同相关检查通过。正常缓存未清的本地导航为9.336 / 5.119秒，非公网受控冷加载证明。此基线早于本轮五段新旁白，4分钟当时使用六段旧讲解；不能视为本轮新配音或远端验证。详见[先前本地归档](docs/validation/stage-05-schooling-20261013.json)。
 
-**本轮正式发布：** 同一版本的60秒五段讲解与4分钟十段讲解、README引导图 → 导览 → 两个体验入口、实际加载与完整1×播放均以[本次发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)为准；部署以同一提交的Actions为准。
+**本轮正式发布：** 运行版本`e573347`，归档`stage-05-schooling-published-20261013`；[同一提交的10项CI任务与部署](https://github.com/yydshly/ocean-world/actions/runs/38394640991)成功。60秒及4分钟分别完整1×实播59.9985 / 240.0559实秒，无操作中断；五/十段讲解的媒体状态结果见回执。正常缓存远端导航22.168 / 4.917秒，贴图9/47、47/47；非受控冷启动或5秒加载保证。README引导图→导览→两个体验入口及实播依据见[本次发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)；本轮固定，不自动继续优化。
 
 **阶段04历史本机记录：** 原240秒路线正常1×播放，实际 **240.040秒**，无暂停、跳播或中断；六段讲解均出现实际播放事件，无语音错误或阻塞，控制台error/warn为空。
 

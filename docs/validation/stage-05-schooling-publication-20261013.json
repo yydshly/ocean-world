@@ -1,0 +1,6244 @@
+{
+  "date": "2026-10-13",
+  "recordedOn": "2026-10-13T12:33:01.867Z",
+  "stage": "05",
+  "status": "deployed-remote-verified-stage-archived-with-known-limits",
+  "runtimeCommit": "e5733473d226d4c3cf6a0d553fbdafb0c0716ef9",
+  "archiveTag": "stage-05-schooling-published-20261013",
+  "workflow": {
+    "conclusion": "success",
+    "databaseId": 38394640991,
+    "headSha": "e5733473d226d4c3cf6a0d553fbdafb0c0716ef9",
+    "jobs": [
+      {
+        "completedAt": "2026-10-13T12:10:41Z",
+        "conclusion": "success",
+        "databaseId": 115286638721,
+        "name": "build",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:30Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:34Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:35Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:38Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:39Z",
+            "conclusion": "success",
+            "name": "Set up Python for native texture verification",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:45Z",
+            "conclusion": "success",
+            "name": "Install native verification dependencies",
+            "number": 6,
+            "startedAt": "2026-10-13T12:04:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:05:06Z",
+            "conclusion": "success",
+            "name": "Build",
+            "number": 7,
+            "startedAt": "2026-10-13T12:04:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:05:06Z",
+            "conclusion": "success",
+            "name": "Check built hosting artifacts",
+            "number": 8,
+            "startedAt": "2026-10-13T12:05:06Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:06:59Z",
+            "conclusion": "success",
+            "name": "Check shallow sample, four-minute habitats, narration and original image integrity",
+            "number": 9,
+            "startedAt": "2026-10-13T12:05:06Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:07:02Z",
+            "conclusion": "success",
+            "name": "Check published product guide and asset paths",
+            "number": 10,
+            "startedAt": "2026-10-13T12:06:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:34Z",
+            "conclusion": "success",
+            "name": "Check entry navigation, packaged models and background integration",
+            "number": 11,
+            "startedAt": "2026-10-13T12:07:02Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:38Z",
+            "conclusion": "success",
+            "name": "Upload static website",
+            "number": 12,
+            "startedAt": "2026-10-13T12:10:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:39Z",
+            "conclusion": "success",
+            "name": "Post Set up Python for native texture verification",
+            "number": 22,
+            "startedAt": "2026-10-13T12:10:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:39Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 23,
+            "startedAt": "2026-10-13T12:10:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:39Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 24,
+            "startedAt": "2026-10-13T12:10:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:39Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 25,
+            "startedAt": "2026-10-13T12:10:39Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286638721"
+      },
+      {
+        "completedAt": "2026-10-13T12:10:46Z",
+        "conclusion": "success",
+        "databaseId": 115286639134,
+        "name": "world-checks (5)",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:30Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:35Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:36Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:38Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:44Z",
+            "conclusion": "success",
+            "name": "Check whole sea scenes, native entries and saved ecosystems",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:44Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 9,
+            "startedAt": "2026-10-13T12:10:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:45Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-13T12:10:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:10:45Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-13T12:10:45Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286639134"
+      },
+      {
+        "completedAt": "2026-10-13T12:11:50Z",
+        "conclusion": "success",
+        "databaseId": 115286639188,
+        "name": "world-checks (3)",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:31Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:36Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:39Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:41Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:11:47Z",
+            "conclusion": "success",
+            "name": "Check whole sea scenes, native entries and saved ecosystems",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:41Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:11:47Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 9,
+            "startedAt": "2026-10-13T12:11:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:11:47Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-13T12:11:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:11:48Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-13T12:11:47Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286639188"
+      },
+      {
+        "completedAt": "2026-10-13T12:18:42Z",
+        "conclusion": "success",
+        "databaseId": 115286639216,
+        "name": "world-checks (1)",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:30Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:35Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:38Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:40Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:18:39Z",
+            "conclusion": "success",
+            "name": "Check whole sea scenes, native entries and saved ecosystems",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:40Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:18:39Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 9,
+            "startedAt": "2026-10-13T12:18:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:18:39Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-13T12:18:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:18:39Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-13T12:18:39Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286639216"
+      },
+      {
+        "completedAt": "2026-10-13T12:11:57Z",
+        "conclusion": "success",
+        "databaseId": 115286639221,
+        "name": "world-checks (0)",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:30Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:36Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:38Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:39Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:11:54Z",
+            "conclusion": "success",
+            "name": "Check whole sea scenes, native entries and saved ecosystems",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:11:54Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 9,
+            "startedAt": "2026-10-13T12:11:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:11:54Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-13T12:11:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:11:55Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-13T12:11:54Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286639221"
+      },
+      {
+        "completedAt": "2026-10-13T12:14:35Z",
+        "conclusion": "success",
+        "databaseId": 115286639222,
+        "name": "world-checks (7)",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:31Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:35Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:41Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:35Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:44Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:41Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:14:31Z",
+            "conclusion": "success",
+            "name": "Check whole sea scenes, native entries and saved ecosystems",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:14:31Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 9,
+            "startedAt": "2026-10-13T12:14:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:14:32Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-13T12:14:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:14:32Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-13T12:14:32Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286639222"
+      },
+      {
+        "completedAt": "2026-10-13T12:12:32Z",
+        "conclusion": "success",
+        "databaseId": 115286639245,
+        "name": "world-checks (6)",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:32Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:38Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:40Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:43Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:40Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:12:28Z",
+            "conclusion": "success",
+            "name": "Check whole sea scenes, native entries and saved ecosystems",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:12:29Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 9,
+            "startedAt": "2026-10-13T12:12:28Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:12:29Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-13T12:12:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:12:29Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-13T12:12:29Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286639245"
+      },
+      {
+        "completedAt": "2026-10-13T12:12:27Z",
+        "conclusion": "success",
+        "databaseId": 115286639333,
+        "name": "world-checks (4)",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:31Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:36Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:38Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:40Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:12:24Z",
+            "conclusion": "success",
+            "name": "Check whole sea scenes, native entries and saved ecosystems",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:40Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:12:24Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 9,
+            "startedAt": "2026-10-13T12:12:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:12:25Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-13T12:12:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:12:25Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-13T12:12:25Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286639333"
+      },
+      {
+        "completedAt": "2026-10-13T12:09:41Z",
+        "conclusion": "success",
+        "databaseId": 115286639460,
+        "name": "world-checks (2)",
+        "startedAt": "2026-10-13T12:04:29Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:04:30Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:04:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:34Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-13T12:04:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:36Z",
+            "conclusion": "success",
+            "name": "Set up Node.js",
+            "number": 3,
+            "startedAt": "2026-10-13T12:04:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:04:37Z",
+            "conclusion": "success",
+            "name": "Install dependencies",
+            "number": 4,
+            "startedAt": "2026-10-13T12:04:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:09:38Z",
+            "conclusion": "success",
+            "name": "Check whole sea scenes, native entries and saved ecosystems",
+            "number": 5,
+            "startedAt": "2026-10-13T12:04:37Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:09:39Z",
+            "conclusion": "success",
+            "name": "Post Set up Node.js",
+            "number": 9,
+            "startedAt": "2026-10-13T12:09:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:09:39Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 10,
+            "startedAt": "2026-10-13T12:09:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:09:39Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-13T12:09:39Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115286639460"
+      },
+      {
+        "completedAt": "2026-10-13T12:19:26Z",
+        "conclusion": "success",
+        "databaseId": 115292458654,
+        "name": "deploy",
+        "startedAt": "2026-10-13T12:18:46Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-13T12:18:47Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-13T12:18:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:18:48Z",
+            "conclusion": "success",
+            "name": "Configure Pages",
+            "number": 2,
+            "startedAt": "2026-10-13T12:18:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:19:25Z",
+            "conclusion": "success",
+            "name": "Publish",
+            "number": 3,
+            "startedAt": "2026-10-13T12:18:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-13T12:19:25Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 4,
+            "startedAt": "2026-10-13T12:19:25Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991/job/115292458654"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/38394640991"
+  },
+  "scope": "Publish the existing 38-fusilier collaboration demonstration and five short synchronized Mandarin explanations, retaining the four-minute route and all scene/animal assets. No additional scene or stability optimization.",
+  "websites": {
+    "guide": "https://yydshly.github.io/ocean-world/overview/",
+    "school": "https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1",
+    "journey": "https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55",
+    "stage": "https://yydshly.github.io/ocean-world/overview/stage-05/"
+  },
+  "tests": {
+    "shallowPassed": 166,
+    "publicationPassed": 6,
+    "hostingPassed": 4,
+    "publicationHostingPassed": 10,
+    "distinctPassed": 176,
+    "notes": "The 26 narration-focused tests overlap the 166 shallow cases and are not added again. This is not a fresh local full-world suite; the workflow keeps its own world checks."
+  },
+  "build": {
+    "viteSeconds": 17.62,
+    "log": "output/validation/stage-05-schooling-publication/build.log"
+  },
+  "localNewNarration60": {
+    "kind": "local-60",
+    "durationSeconds": 60,
+    "completeRun": {
+      "speed": 1,
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5,
+      "duration": 60,
+      "startedAt": 54142.89999997616,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "completed": true,
+      "lastModelSecond": 60,
+      "elapsedWallSeconds": 59.99430000002384,
+      "averageFps": 112.66666666666667,
+      "p95FrameMs": 12.60000000000582,
+      "maxFrameMs": 50,
+      "uninterrupted": true,
+      "originalRunIndex": 1,
+      "intervalStatistics": {
+        "samples": 6760,
+        "invalidOrNonpositive": 0,
+        "recordedMaxFrameMs": 50,
+        "framesOver250Ms": 0,
+        "intervalsOver250Ms": [],
+        "note": "Computed from this run's original intervalsMs; the full array remains in the ignored raw evidence."
+      }
+    },
+    "earlierInterruptedRuns": [
+      {
+        "speed": 1,
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5,
+        "duration": 60,
+        "startedAt": 6828.399999976158,
+        "resolutionHistory": [
+          {
+            "time": 0,
+            "scale": 1
+          }
+        ],
+        "interruptions": [
+          "pause",
+          "seek"
+        ],
+        "completed": false,
+        "lastModelSecond": 39.23340000000083,
+        "elapsedWallSeconds": 39.25460000002384,
+        "originalRunIndex": 0,
+        "intervalStatistics": {
+          "samples": 5967,
+          "invalidOrNonpositive": 0,
+          "recordedMaxFrameMs": 120.80000000000018,
+          "framesOver250Ms": 0,
+          "intervalsOver250Ms": [],
+          "note": "Computed from this run's original intervalsMs; the full array remains in the ignored raw evidence."
+        }
+      }
+    ],
+    "otherNonselectedRuns": [],
+    "readiness": {
+      "startupMs": 6241.299999952316,
+      "staticGeometryReadyMs": 36.60000002384186,
+      "modelBuildMs": 3634.5,
+      "textureReadyMs": 208.80000007152557,
+      "schoolingPreparationMs": 674,
+      "compileMs": 1206.1000000238419,
+      "assetUploadMs": 569.5,
+      "textureUploadMs": 1132.6999999284744,
+      "renderPreparationMs": 1775.6000000238419,
+      "firstFrameMs": 45.89999997615814,
+      "navigationToReadyMs": 6827.399999976158,
+      "sceneBuildStagesMs": {
+        "model": 2529.8000000715256,
+        "materials": 2.1999999284744263,
+        "bed": 182.89999997615814,
+        "rocks": 482.7000000476837,
+        "plants": 47.299999952316284,
+        "animals": 322,
+        "firstUpdate": 9.800000071525574
+      },
+      "preparedTextureCount": 47,
+      "preparedRenderBatches": 331,
+      "preparedGeometry": {
+        "used": true,
+        "bytes": 2281360,
+        "transportBytes": 1951008,
+        "geometries": 8
+      },
+      "preparedCover": {
+        "used": true,
+        "signature": "260382:1732770830",
+        "raw": "310789:3737047858",
+        "authoringRaw": "310788:1698179965"
+      },
+      "cacheCondition": "Normal existing local-browser cache; not cleared or throttled, not a controlled cold-start result."
+    },
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "context": "WebGL2RenderingContext"
+    },
+    "currentViewport": null,
+    "viewportCaveat": "Run width/height record only the opening size; end CSS viewport was not captured in this raw file. No fixed-viewport claim.",
+    "quality": {
+      "finalResolutionScale": 1,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ]
+    },
+    "finalView": {
+      "time": 59.87920000000232,
+      "lifeTime": 59.87920000000232,
+      "free": false,
+      "position": [
+        -27.048205285683988,
+        1.75,
+        -1.0031295134700606
+      ],
+      "returning": false,
+      "activities": {
+        "school-coordination": 38,
+        "school-passage": 30,
+        "school-return": 34,
+        "grass-edge-hold": 11,
+        "grass-edge-swim": 7,
+        "school-turn": 16,
+        "reef-patrol": 16,
+        "reef-hold": 3,
+        "sand-transit": 5,
+        "sand-assess": 2,
+        "sand-probe": 2
+      }
+    },
+    "finalSchooling": {
+      "version": "local-neighbour-shoal-v1",
+      "phase": "regrouping",
+      "timeSec": 60.00000000000234,
+      "count": 38,
+      "center": {
+        "x": -29.51981609816568,
+        "y": 2.312423573994145,
+        "z": -9.002615078444558
+      },
+      "spreadM": 0.8413931844741124,
+      "alignment": 0.9999604819260696,
+      "alarmCount": 0,
+      "minBodyGapM": 0.2997266137054987,
+      "minTerrainClearanceM": 0.6467941784140775,
+      "obstacleId": "sample-rock-0",
+      "split": {
+        "near": 0,
+        "left": 0,
+        "right": 0
+      },
+      "pending": false,
+      "fixedStepSec": 0.03333333333333333,
+      "checkpointCount": 1201,
+      "checkpointBytes": 3285936,
+      "steps": 0,
+      "neighbourInteractions": 0,
+      "supportProjections": 0,
+      "creationMs": 38.300000071525574,
+      "preparationMs": 673.8000000715256,
+      "updateMs": 0.2999999523162842,
+      "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+    },
+    "routeSamples": [
+      {
+        "second": 0,
+        "position": [
+          -42,
+          2.55,
+          0
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 1,
+        "position": [
+          -41.85570934587444,
+          2.55,
+          0.07697300421609116
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 2,
+        "position": [
+          -41.73515025555376,
+          2.55,
+          0.14780377097774286
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 3,
+        "position": [
+          -41.58899123031542,
+          2.5236797420747075,
+          0.2397512572495686
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 4,
+        "position": [
+          -41.468948947315866,
+          2.484892851302598,
+          0.3186279822255245
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 5,
+        "position": [
+          -41.349810992870985,
+          2.4454393459373795,
+          0.39836212066028037
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 6,
+        "position": [
+          -41.20881700333014,
+          2.397972976019424,
+          0.4925637286257101
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 7,
+        "position": [
+          -41.08970551267705,
+          2.35765999852148,
+          0.5703061582303549
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 8,
+        "position": [
+          -40.94708453984936,
+          2.3096343173069043,
+          0.6590826752504173
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 9,
+        "position": [
+          -40.82736637152191,
+          2.2699164785146637,
+          0.7284315693510852
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 10,
+        "position": [
+          -40.68158632967343,
+          2.2227742297345334,
+          0.8046936722779594
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 11,
+        "position": [
+          -40.55622497874124,
+          2.18363447654368,
+          0.8617910664923466
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 12,
+        "position": [
+          -40.43017873377425,
+          2.1458642446520946,
+          0.9102872650955631
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 13,
+        "position": [
+          -40.27413466817303,
+          2.101698108696814,
+          0.9568533913423592
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 14,
+        "position": [
+          -40.13918232382702,
+          2.065956752147378,
+          0.9843988900725326
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 15,
+        "position": [
+          -39.96905670957491,
+          2.02553052958221,
+          1.0016641363262389
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 16,
+        "position": [
+          -39.80506745982707,
+          1.994169641317376,
+          0.9998354449890573
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 17,
+        "position": [
+          -39.6362622837024,
+          1.9645637204756303,
+          0.981379657200793
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 18,
+        "position": [
+          -39.430604543974,
+          1.9291434127926008,
+          0.9400606775097404
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 19,
+        "position": [
+          -39.25421712804926,
+          1.8996243740911092,
+          0.8911939262049364
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 20,
+        "position": [
+          -39.04006344751064,
+          1.8671859028619195,
+          0.818805980621823
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 21,
+        "position": [
+          -38.86005875478806,
+          1.842402442608827,
+          0.7494856474510863
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 22,
+        "position": [
+          -38.67507151797957,
+          1.8190989098692347,
+          0.6724463839911076
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 23,
+        "position": [
+          -38.44959832485229,
+          1.7934439199538323,
+          0.5734620921495841
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 24,
+        "position": [
+          -38.25951975668448,
+          1.7738020015419842,
+          0.48795971542170946
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 25,
+        "position": [
+          -38.030975675910575,
+          1.7524328029235834,
+          0.3854000597843581
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 26,
+        "position": [
+          -37.83923216520465,
+          1.7361172962521092,
+          0.30159730609835345
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 27,
+        "position": [
+          -37.60691207021336,
+          1.7181689405190639,
+          0.20530766610583673
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 28,
+        "position": [
+          -37.408960345592995,
+          1.7042102498392104,
+          0.12976261504491404
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 29,
+        "position": [
+          -37.211416312701296,
+          1.6913681440508688,
+          0.06208388315786939
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 30,
+        "position": [
+          -36.97031668212354,
+          1.6772121215784983,
+          -0.00787034250727168
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 31,
+        "position": [
+          -36.742294049104295,
+          1.6661290517329492,
+          -0.06775441121247121
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 32,
+        "position": [
+          -36.46458299334666,
+          1.6536345923167142,
+          -0.13913647182829203
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 33,
+        "position": [
+          -36.23347564510957,
+          1.6435044542800263,
+          -0.19704711286885668
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 34,
+        "position": [
+          -35.99920899201592,
+          1.6349741713107346,
+          -0.2541982646556298
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 35,
+        "position": [
+          -35.717690298469584,
+          1.6276842522077763,
+          -0.3206065728970172
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 36,
+        "position": [
+          -35.48043292528482,
+          1.6256856251428065,
+          -0.3744909546513102
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 37,
+        "position": [
+          -35.19016993536137,
+          1.6296674347644053,
+          -0.4376331873019735
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 38,
+        "position": [
+          -34.94375169323792,
+          1.6334093094282696,
+          -0.488698482393837
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 39,
+        "position": [
+          -34.644820892357735,
+          1.6380888736418993,
+          -0.5473567562027127
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 40,
+        "position": [
+          -34.37914265712778,
+          1.6421025956878172,
+          -0.5963424019596087
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 41,
+        "position": [
+          -34.121422206385795,
+          1.6456461955644983,
+          -0.6409376484342815
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 42,
+        "position": [
+          -33.8613675836296,
+          1.6486798397930724,
+          -0.6829465983443156
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 43,
+        "position": [
+          -33.5428393375416,
+          1.6523096102836088,
+          -0.7302249104789759
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 44,
+        "position": [
+          -33.2746649785827,
+          1.656818384822884,
+          -0.76640880070238
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 45,
+        "position": [
+          -32.935651177675815,
+          1.663890766209331,
+          -0.8073996694430287
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 46,
+        "position": [
+          -32.59639361585524,
+          1.6708344743171266,
+          -0.8445566572497746
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 47,
+        "position": [
+          -32.24377659661618,
+          1.6786368431834986,
+          -0.879948007673686
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 48,
+        "position": [
+          -31.81528833188604,
+          1.6885896092016053,
+          -0.9186285832018746
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 49,
+        "position": [
+          -31.448077259915525,
+          1.6972453247431594,
+          -0.948045130551575
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 50,
+        "position": [
+          -31.081696127212734,
+          1.70579540944207,
+          -0.9739642706279089
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 51,
+        "position": [
+          -30.631215520655815,
+          1.7158995056060458,
+          -1.0010889148120985
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 52,
+        "position": [
+          -30.253929107045014,
+          1.7238159413493348,
+          -1.0197020146862656
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 53,
+        "position": [
+          -29.794880292541507,
+          1.7324595052591465,
+          -1.0371480449509396
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 54,
+        "position": [
+          -29.409235885369434,
+          1.7386946669668628,
+          -1.047223470575684
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 55,
+        "position": [
+          -29.021200123580314,
+          1.743802557076745,
+          -1.052942371082597
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 56,
+        "position": [
+          -28.55773241785138,
+          1.748015939872164,
+          -1.0536409635844615
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 57,
+        "position": [
+          -28.176455378293138,
+          1.749761824239889,
+          -1.0488925564623612
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 58,
+        "position": [
+          -27.80090997157787,
+          1.75,
+          -1.0391832668951304
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 59,
+        "position": [
+          -27.345999653769148,
+          1.75,
+          -1.0201975129130028
+        ],
+        "chapter": "礁谷"
+      }
+    ],
+    "routeLengthM": 90.08271084770561,
+    "routeLengthNote": "routeLengthM describes the original complete four-minute route, not distance traversed by the sixty-second window.",
+    "narration": {
+      "enabled": true,
+      "status": "quiet",
+      "clipId": null,
+      "expectedClipIds": [
+        "school-entry",
+        "school-split",
+        "school-merge",
+        "school-disturb",
+        "school-regroup"
+      ],
+      "playingClipIds": [
+        "school-entry",
+        "school-split",
+        "school-merge",
+        "school-disturb",
+        "school-regroup"
+      ],
+      "playingEvents": [
+        {
+          "time": 0.14580000000000293,
+          "status": "playing",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 8.233399999999994,
+          "status": "playing",
+          "clipId": "school-split"
+        },
+        {
+          "time": 28.12920000000006,
+          "status": "playing",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 36.13750000000041,
+          "status": "playing",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 46.19590000000125,
+          "status": "playing",
+          "clipId": "school-regroup"
+        }
+      ],
+      "playingCountByClip": {
+        "school-entry": 1,
+        "school-split": 1,
+        "school-merge": 1,
+        "school-disturb": 1,
+        "school-regroup": 1
+      },
+      "duplicatePlayingClipIds": [],
+      "allExpectedClipsPlayed": true,
+      "unexpectedPlayingClipIds": [],
+      "errorOrBlockedEvents": [],
+      "events": [
+        {
+          "time": 0,
+          "status": "off",
+          "clipId": null
+        },
+        {
+          "time": 0,
+          "status": "loading",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 0.14580000000000293,
+          "status": "playing",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 4.074999999999979,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 8.141699999999997,
+          "status": "loading",
+          "clipId": "school-split"
+        },
+        {
+          "time": 8.233399999999994,
+          "status": "playing",
+          "clipId": "school-split"
+        },
+        {
+          "time": 14.070700000000045,
+          "status": "paused",
+          "clipId": "school-split"
+        },
+        {
+          "time": 14.070700000000045,
+          "status": "quiet",
+          "clipId": "school-split"
+        },
+        {
+          "time": 14.070700000000045,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 28.045900000000074,
+          "status": "loading",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 28.12920000000006,
+          "status": "playing",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 32.52090000000008,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 36.04990000000041,
+          "status": "loading",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 36.13750000000041,
+          "status": "playing",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.49580000000077,
+          "status": "paused",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.49580000000077,
+          "status": "quiet",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.508400000000776,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 46.116600000001235,
+          "status": "loading",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 46.19590000000125,
+          "status": "playing",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 51.7083000000017,
+          "status": "quiet",
+          "clipId": null
+        }
+      ],
+      "eventScope": "Recorded model-time status history. If the player was restarted, earlier activation events can remain; they are retained, not silently relabelled as the final run."
+    },
+    "console": [],
+    "checks": {
+      "completedOneTimes": true,
+      "uninterrupted": true,
+      "allExpectedNarrationPlayed": true,
+      "narrationProblems": 0,
+      "consoleItems": 0,
+      "framesOver250Ms": 0
+    }
+  },
+  "remote60": {
+    "kind": "remote-60",
+    "durationSeconds": 60,
+    "completeRun": {
+      "speed": 1,
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5,
+      "duration": 60,
+      "startedAt": 41044.700000047684,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "completed": true,
+      "lastModelSecond": 60,
+      "elapsedWallSeconds": 59.998499999952315,
+      "averageFps": 133.15,
+      "p95FrameMs": 12.5,
+      "maxFrameMs": 91.69999999999709,
+      "uninterrupted": true,
+      "originalRunIndex": 1,
+      "intervalStatistics": {
+        "samples": 7989,
+        "invalidOrNonpositive": 0,
+        "recordedMaxFrameMs": 91.69999999999709,
+        "framesOver250Ms": 0,
+        "intervalsOver250Ms": [],
+        "note": "Computed from this run's original intervalsMs; the full array remains in the ignored raw evidence."
+      }
+    },
+    "earlierInterruptedRuns": [
+      {
+        "speed": 1,
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5,
+        "duration": 60,
+        "startedAt": 22168.300000071526,
+        "resolutionHistory": [
+          {
+            "time": 0,
+            "scale": 1
+          }
+        ],
+        "interruptions": [
+          "pause",
+          "seek"
+        ],
+        "completed": false,
+        "lastModelSecond": 4.141699999999985,
+        "elapsedWallSeconds": 4.174899999928475,
+        "originalRunIndex": 0,
+        "intervalStatistics": {
+          "samples": 867,
+          "invalidOrNonpositive": 0,
+          "recordedMaxFrameMs": 133.29999999999927,
+          "framesOver250Ms": 0,
+          "intervalsOver250Ms": [],
+          "note": "Computed from this run's original intervalsMs; the full array remains in the ignored raw evidence."
+        }
+      }
+    ],
+    "otherNonselectedRuns": [],
+    "readiness": {
+      "startupMs": 6206.300000071526,
+      "staticGeometryReadyMs": 18.899999976158142,
+      "modelBuildMs": 1608,
+      "schoolingPreparationMs": 450.40000009536743,
+      "textureReadyMs": 4004.399999976158,
+      "compileMs": 246.19999992847443,
+      "assetUploadMs": 282.7000000476837,
+      "textureUploadMs": 186.10000002384186,
+      "renderPreparationMs": 528.8999999761581,
+      "firstFrameMs": 2.899999976158142,
+      "navigationToReadyMs": 22167.700000047684,
+      "sceneBuildStagesMs": {
+        "model": 1089.7000000476837,
+        "materials": 0.8999999761581421,
+        "bed": 70.89999997615814,
+        "rocks": 205.10000002384186,
+        "plants": 22.799999952316284,
+        "animals": 186.40000009536743,
+        "firstUpdate": 5.399999976158142
+      },
+      "preparedTextureCount": 9,
+      "preparedRenderBatches": 331,
+      "preparedGeometry": {
+        "used": true,
+        "bytes": 2281360,
+        "transportBytes": 1951008,
+        "geometries": 8
+      },
+      "preparedCover": {
+        "used": true,
+        "signature": "260382:1732770830",
+        "raw": "310789:3737047858",
+        "authoringRaw": "310788:1698179965"
+      },
+      "cacheCondition": "Normal canonical remote URL visit in the existing browser; cache not cleared or throttled, not controlled cold startup.",
+      "visitOrder": "First canonical remote entry during this publication check; prior browser cache was not cleared. This is not a first-ever or controlled cold visit."
+    },
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "context": "WebGL2RenderingContext"
+    },
+    "currentViewport": {
+      "height": 720,
+      "pixelRatio": 1.5,
+      "width": 1280
+    },
+    "viewportCaveat": "Run width/height are the recorded opening size; currentViewport is the separately captured end size. No fixed-viewport comparison is inferred.",
+    "quality": {
+      "finalResolutionScale": 1,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ]
+    },
+    "finalView": {
+      "time": 59.92920000000319,
+      "lifeTime": 59.92920000000319,
+      "free": false,
+      "position": [
+        -27.02824238739573,
+        1.75,
+        -1.0018462198697522
+      ],
+      "returning": false,
+      "activities": {
+        "school-coordination": 38,
+        "school-passage": 30,
+        "school-return": 34,
+        "grass-edge-hold": 11,
+        "grass-edge-swim": 7,
+        "school-turn": 16,
+        "reef-patrol": 16,
+        "reef-hold": 3,
+        "sand-transit": 6,
+        "sand-assess": 1,
+        "sand-probe": 2
+      }
+    },
+    "finalSchooling": {
+      "version": "local-neighbour-shoal-v1",
+      "phase": "regrouping",
+      "timeSec": 60.0000000000032,
+      "count": 38,
+      "center": {
+        "x": -29.51981609816568,
+        "y": 2.312423573994145,
+        "z": -9.002615078444558
+      },
+      "spreadM": 0.8413931844741124,
+      "alignment": 0.9999604819260696,
+      "alarmCount": 0,
+      "minBodyGapM": 0.2997266137054987,
+      "minTerrainClearanceM": 0.6467941784140775,
+      "obstacleId": "sample-rock-0",
+      "split": {
+        "near": 0,
+        "left": 0,
+        "right": 0
+      },
+      "pending": false,
+      "fixedStepSec": 0.03333333333333333,
+      "checkpointCount": 1201,
+      "checkpointBytes": 3285936,
+      "steps": 0,
+      "neighbourInteractions": 0,
+      "supportProjections": 0,
+      "creationMs": 18.300000071525574,
+      "preparationMs": 450.3000000715256,
+      "updateMs": 0,
+      "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+    },
+    "routeSamples": [
+      {
+        "second": 0,
+        "position": [
+          -42,
+          2.55,
+          0
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 1,
+        "position": [
+          -41.858436597344586,
+          2.55,
+          0.07543411627504701
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 2,
+        "position": [
+          -41.715176604216026,
+          2.55,
+          0.16002064449855785
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 3,
+        "position": [
+          -41.59702926566581,
+          2.526244695952669,
+          0.23455842841348395
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 4,
+        "position": [
+          -41.47907057840553,
+          2.488221589909602,
+          0.3118999271868996
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 5,
+        "position": [
+          -41.33439789817671,
+          2.4402686470649497,
+          0.40870651607757474
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 6,
+        "position": [
+          -41.21682135052185,
+          2.400683337943607,
+          0.4872596183854216
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 7,
+        "position": [
+          -41.075249348536374,
+          2.352769735164741,
+          0.579551889686944
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 8,
+        "position": [
+          -40.955199332366774,
+          2.312349148110663,
+          0.6541941071847557
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 9,
+        "position": [
+          -40.83338275870694,
+          2.271889787618479,
+          0.7250800176560002
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 10,
+        "position": [
+          -40.686600001838926,
+          2.2243661743856995,
+          0.8022388352620382
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 11,
+        "position": [
+          -40.56302898902174,
+          2.185711317049598,
+          0.8589114175041865
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 12,
+        "position": [
+          -40.407576199384934,
+          2.1393129945686353,
+          0.9179784553646444
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 13,
+        "position": [
+          -40.27770279210805,
+          2.1026696601125625,
+          0.9559623036590018
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 14,
+        "position": [
+          -40.14408633521126,
+          2.0671996808853605,
+          0.9836102285828557
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 15,
+        "position": [
+          -39.97350000007921,
+          2.0264105629699847,
+          1.001466620435374
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 16,
+        "position": [
+          -39.805826448483714,
+          1.9943071420887828,
+          0.9998825715160733
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 17,
+        "position": [
+          -39.63703604830217,
+          1.9646902829130342,
+          0.9814984100012032
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 18,
+        "position": [
+          -39.43062336645931,
+          1.9291466694188,
+          0.940065283013905
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 19,
+        "position": [
+          -39.253432351246836,
+          1.8995008669378546,
+          0.8909527829316141
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 20,
+        "position": [
+          -39.03520751151688,
+          1.866493249210155,
+          0.8170262362169616
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 21,
+        "position": [
+          -38.85266043400244,
+          1.8414432290463094,
+          0.7465038970345208
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 22,
+        "position": [
+          -38.66921809479175,
+          1.8184093894470637,
+          0.6699349949978375
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 23,
+        "position": [
+          -38.4462012176435,
+          1.7930812579004023,
+          0.5719438027401256
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 24,
+        "position": [
+          -38.25694834955206,
+          1.7735525621161448,
+          0.4867995127403244
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 25,
+        "position": [
+          -38.0266442686311,
+          1.7520515326125343,
+          0.38347682705586555
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 26,
+        "position": [
+          -37.83221252696278,
+          1.7355547821805102,
+          0.29859172359175723
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 27,
+        "position": [
+          -37.63783552436761,
+          1.7204273037625049,
+          0.21770097051202353
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 28,
+        "position": [
+          -37.40181801303202,
+          1.7037335160447928,
+          0.12717166523131385
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 29,
+        "position": [
+          -37.20153580214809,
+          1.6907625504727448,
+          0.05892997855711446
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 30,
+        "position": [
+          -36.999975459395245,
+          1.6786919624996597,
+          -0.000006513442942485865
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 31,
+        "position": [
+          -36.7278630775152,
+          1.6654619129667474,
+          -0.07150781069553627
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 32,
+        "position": [
+          -36.49687659777505,
+          1.6550274577184634,
+          -0.1309319133642253
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 33,
+        "position": [
+          -36.21879962719385,
+          1.642925097883214,
+          -0.20067485617875172
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 34,
+        "position": [
+          -35.98225631242859,
+          1.6344817616591858,
+          -0.258269438666752
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 35,
+        "position": [
+          -35.74342414989902,
+          1.6281929877998067,
+          -0.31464472077998445
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 36,
+        "position": [
+          -35.45111743223263,
+          1.6260682118631575,
+          -0.3810099174071493
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 37,
+        "position": [
+          -35.206642253656426,
+          1.629422438696785,
+          -0.43413498740136847
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 38,
+        "position": [
+          -34.96041734203593,
+          1.6331476052422047,
+          -0.48532080195589855
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 39,
+        "position": [
+          -34.66286757315602,
+          1.6378087509632135,
+          -0.5439205611164265
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 40,
+        "position": [
+          -34.41113042265982,
+          1.6416407721164425,
+          -0.5906048581784722
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 41,
+        "position": [
+          -34.10632195841601,
+          1.6458340799333588,
+          -0.6434596872128743
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 42,
+        "position": [
+          -33.84608862820869,
+          1.6488266145278736,
+          -0.6853200217020768
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 43,
+        "position": [
+          -33.57983113959654,
+          1.6517507602018584,
+          -0.72497284466883
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 44,
+        "position": [
+          -33.25523134671118,
+          1.6572085284035833,
+          -0.7689012250493752
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 45,
+        "position": [
+          -32.97759797676289,
+          1.6630643651101922,
+          -0.8025889954559601
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 46,
+        "position": [
+          -32.634887917792504,
+          1.6699958424024326,
+          -0.8404954864974499
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 47,
+        "position": [
+          -32.22003805573666,
+          1.6791840361283263,
+          -0.8822143936765632
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 48,
+        "position": [
+          -31.863681559595555,
+          1.687446460419241,
+          -0.9144954999442293
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 49,
+        "position": [
+          -31.42994141548898,
+          1.6976724024360896,
+          -0.9494088757924509
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 50,
+        "position": [
+          -31.061660473808228,
+          1.7062541663430055,
+          -0.9752823801042648
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 51,
+        "position": [
+          -30.68867094132719,
+          1.7146574349580368,
+          -0.9979236056934032
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 52,
+        "position": [
+          -30.233448872855107,
+          1.724220649696655,
+          -1.020603350405156
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 53,
+        "position": [
+          -29.854985441795634,
+          1.7314181166933575,
+          -1.035195899115252
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 54,
+        "position": [
+          -29.386896071306012,
+          1.7390141813378273,
+          -1.0476749533090488
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 55,
+        "position": [
+          -29.003979492313775,
+          1.7439863133066842,
+          -1.053089995271709
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 56,
+        "position": [
+          -28.619653711983503,
+          1.7476196888807658,
+          -1.053948901556145
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 57,
+        "position": [
+          -28.157672374278174,
+          1.7497890426250784,
+          -1.0485284386818485
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 58,
+        "position": [
+          -27.78050437827452,
+          1.75,
+          -1.0385056765271428
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 59,
+        "position": [
+          -27.401471263701914,
+          1.75,
+          -1.022959302677529
+        ],
+        "chapter": "礁谷"
+      }
+    ],
+    "routeLengthM": 90.08271084770561,
+    "routeLengthNote": "routeLengthM describes the original complete four-minute route, not distance traversed by the sixty-second window.",
+    "narration": {
+      "enabled": true,
+      "status": "quiet",
+      "clipId": null,
+      "expectedClipIds": [
+        "school-entry",
+        "school-split",
+        "school-merge",
+        "school-disturb",
+        "school-regroup"
+      ],
+      "playingClipIds": [
+        "school-entry",
+        "school-split",
+        "school-merge",
+        "school-disturb",
+        "school-regroup"
+      ],
+      "playingEvents": [
+        {
+          "time": 0.6709000000000012,
+          "status": "playing",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 8.675099999999963,
+          "status": "playing",
+          "clipId": "school-split"
+        },
+        {
+          "time": 28.720899999999833,
+          "status": "playing",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 36.80410000000034,
+          "status": "playing",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 46.587500000001356,
+          "status": "playing",
+          "clipId": "school-regroup"
+        }
+      ],
+      "playingCountByClip": {
+        "school-entry": 1,
+        "school-split": 1,
+        "school-merge": 1,
+        "school-disturb": 1,
+        "school-regroup": 1
+      },
+      "duplicatePlayingClipIds": [],
+      "allExpectedClipsPlayed": true,
+      "unexpectedPlayingClipIds": [],
+      "errorOrBlockedEvents": [],
+      "events": [
+        {
+          "time": 0,
+          "status": "off",
+          "clipId": null
+        },
+        {
+          "time": 0,
+          "status": "loading",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 0.6709000000000012,
+          "status": "playing",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 4.379199999999961,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 8.108399999999959,
+          "status": "loading",
+          "clipId": "school-split"
+        },
+        {
+          "time": 8.675099999999963,
+          "status": "playing",
+          "clipId": "school-split"
+        },
+        {
+          "time": 14.17099999999998,
+          "status": "paused",
+          "clipId": "school-split"
+        },
+        {
+          "time": 14.17099999999998,
+          "status": "quiet",
+          "clipId": "school-split"
+        },
+        {
+          "time": 14.191799999999983,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 28.14169999999983,
+          "status": "loading",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 28.720899999999833,
+          "status": "playing",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 32.70839999999991,
+          "status": "paused",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 32.70839999999991,
+          "status": "quiet",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 32.72909999999991,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 36.145800000000264,
+          "status": "loading",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 36.80410000000034,
+          "status": "playing",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.529200000000735,
+          "status": "paused",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.529200000000735,
+          "status": "quiet",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.55010000000075,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 46.012500000001296,
+          "status": "loading",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 46.587500000001356,
+          "status": "playing",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 51.87910000000205,
+          "status": "paused",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 51.87910000000205,
+          "status": "quiet",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 51.89580000000205,
+          "status": "quiet",
+          "clipId": null
+        }
+      ],
+      "eventScope": "Recorded model-time status history. If the player was restarted, earlier activation events can remain; they are retained, not silently relabelled as the final run."
+    },
+    "console": [],
+    "checks": {
+      "completedOneTimes": true,
+      "uninterrupted": true,
+      "allExpectedNarrationPlayed": true,
+      "narrationProblems": 0,
+      "consoleItems": 0,
+      "framesOver250Ms": 0
+    }
+  },
+  "remote240": {
+    "kind": "remote-240",
+    "durationSeconds": 240,
+    "completeRun": {
+      "speed": 1,
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5,
+      "duration": 240,
+      "startedAt": 18715.200000047684,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "completed": true,
+      "lastModelSecond": 240,
+      "elapsedWallSeconds": 240.05589999995232,
+      "averageFps": 135.52118984380348,
+      "p95FrameMs": 12.5,
+      "maxFrameMs": 149.90000000000146,
+      "uninterrupted": true,
+      "originalRunIndex": 1,
+      "intervalStatistics": {
+        "samples": 32533,
+        "invalidOrNonpositive": 0,
+        "recordedMaxFrameMs": 149.90000000000146,
+        "framesOver250Ms": 0,
+        "intervalsOver250Ms": [],
+        "note": "Computed from this run's original intervalsMs; the full array remains in the ignored raw evidence."
+      }
+    },
+    "earlierInterruptedRuns": [
+      {
+        "speed": 1,
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5,
+        "duration": 240,
+        "startedAt": 4917.5,
+        "resolutionHistory": [
+          {
+            "time": 0,
+            "scale": 1
+          }
+        ],
+        "interruptions": [
+          "pause",
+          "seek"
+        ],
+        "completed": false,
+        "lastModelSecond": 6.10010000000001,
+        "elapsedWallSeconds": 6.1036,
+        "originalRunIndex": 0,
+        "intervalStatistics": {
+          "samples": 659,
+          "invalidOrNonpositive": 0,
+          "recordedMaxFrameMs": 54.19999999999982,
+          "framesOver250Ms": 0,
+          "intervalsOver250Ms": [],
+          "note": "Computed from this run's original intervalsMs; the full array remains in the ignored raw evidence."
+        }
+      }
+    ],
+    "otherNonselectedRuns": [],
+    "readiness": {
+      "startupMs": 3968.399999976158,
+      "staticGeometryReadyMs": 25.299999952316284,
+      "modelBuildMs": 2218.100000023842,
+      "textureReadyMs": 463.5,
+      "schoolingPreparationMs": 532.3999999761581,
+      "compileMs": 899.5,
+      "assetUploadMs": 249.70000004768372,
+      "textureUploadMs": 836,
+      "renderPreparationMs": 1149.2000000476837,
+      "firstFrameMs": 19.600000023841858,
+      "navigationToReadyMs": 4917.200000047684,
+      "sceneBuildStagesMs": {
+        "model": 1524.4000000953674,
+        "materials": 0.5,
+        "bed": 93.59999990463257,
+        "rocks": 297.5,
+        "plants": 28.5,
+        "animals": 233.20000004768372,
+        "firstUpdate": 6
+      },
+      "preparedTextureCount": 47,
+      "preparedRenderBatches": 331,
+      "preparedGeometry": {
+        "used": true,
+        "bytes": 2281360,
+        "transportBytes": 1951008,
+        "geometries": 8
+      },
+      "preparedCover": {
+        "used": true,
+        "signature": "260382:1732770830",
+        "raw": "310789:3737047858",
+        "authoringRaw": "310788:1698179965"
+      },
+      "cacheCondition": "Normal canonical remote URL visit in the existing browser; cache not cleared or throttled, not controlled cold startup.",
+      "visitOrder": "Follow-up entry after completing the sixty-second route in the same browser, reusing downloaded resources."
+    },
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "context": "WebGL2RenderingContext"
+    },
+    "currentViewport": {
+      "height": 871,
+      "pixelRatio": 1.5,
+      "width": 853
+    },
+    "viewportCaveat": "Run width/height are the recorded opening size; currentViewport is the separately captured end size. No fixed-viewport comparison is inferred.",
+    "quality": {
+      "finalResolutionScale": 1,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ]
+    },
+    "finalView": {
+      "time": 239.933500000021,
+      "lifeTime": 239.933500000021,
+      "free": false,
+      "position": [
+        44.96897241257164,
+        2.2500000000000004,
+        5.008876674730179
+      ],
+      "returning": false,
+      "activities": {
+        "school-coordination": 38,
+        "school-passage": 64,
+        "grass-edge-swim": 18,
+        "school-spread": 16,
+        "reef-hold": 7,
+        "reef-patrol": 12,
+        "sand-transit": 6,
+        "sand-probe": 1,
+        "sand-assess": 2
+      }
+    },
+    "finalSchooling": {
+      "version": "local-neighbour-shoal-v1",
+      "phase": "regrouping",
+      "timeSec": 240,
+      "count": 38,
+      "center": {
+        "x": -26.020671451988715,
+        "y": 2.3268358079898532,
+        "z": -7.892236884096217
+      },
+      "spreadM": 0.8257195217376794,
+      "alignment": 0.9914547975391091,
+      "alarmCount": 0,
+      "minBodyGapM": 0.21542666058507656,
+      "minTerrainClearanceM": 0.07000000000000006,
+      "obstacleId": "sample-rock-0",
+      "split": {
+        "near": 0,
+        "left": 0,
+        "right": 0
+      },
+      "pending": false,
+      "fixedStepSec": 0.03333333333333333,
+      "checkpointCount": 1201,
+      "checkpointBytes": 3285936,
+      "steps": 0,
+      "neighbourInteractions": 0,
+      "supportProjections": 0,
+      "creationMs": 21,
+      "preparationMs": 532.2000000476837,
+      "updateMs": 0,
+      "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+    },
+    "routeSamples": [
+      {
+        "second": 0,
+        "position": [
+          -42,
+          2.55,
+          0
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 1,
+        "position": [
+          -41.85025716949947,
+          2.55,
+          0.08005846539371451
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 2,
+        "position": [
+          -41.730276956664724,
+          2.55,
+          0.15077301055472095
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 3,
+        "position": [
+          -41.58684746566167,
+          2.5229954812158906,
+          0.24113843910336744
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 4,
+        "position": [
+          -41.46735171377832,
+          2.4843674822042705,
+          0.3196906725914678
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 5,
+        "position": [
+          -41.34715711506729,
+          2.444549026926232,
+          0.4001433823301392
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 6,
+        "position": [
+          -41.205095449794364,
+          2.3967130473933276,
+          0.49502712158416234
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 7,
+        "position": [
+          -41.085964028338395,
+          2.3563939250011847,
+          0.5727037141760682
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 8,
+        "position": [
+          -40.96437209379207,
+          2.3154201647158694,
+          0.6486420538705915
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 9,
+        "position": [
+          -40.81805818616346,
+          2.2668660356205605,
+          0.7335869899554344
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 10,
+        "position": [
+          -40.695509466065886,
+          2.2271977132719,
+          0.7978454534458037
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 11,
+        "position": [
+          -40.5460194347195,
+          2.180523369465814,
+          0.8660613867438602
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 12,
+        "position": [
+          -40.4168558823811,
+          2.141999652546208,
+          0.9148587200157808
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 13,
+        "position": [
+          -40.28780935659872,
+          2.1054249799276206,
+          0.9533934420886768
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 14,
+        "position": [
+          -40.128186226013554,
+          2.0631740758683055,
+          0.9861085005770294
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 15,
+        "position": [
+          -39.99043526867179,
+          2.029769415501803,
+          1.0005867707982725
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 16,
+        "position": [
+          -39.792986709829556,
+          1.9919827242864154,
+          0.9990397622927082
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 17,
+        "position": [
+          -39.616269152101665,
+          1.9612972042340375,
+          0.9782092793345628
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 18,
+        "position": [
+          -39.443922075234475,
+          1.9314491041424413,
+          0.9432842323155148
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 19,
+        "position": [
+          -39.231857862313674,
+          1.8961089387777725,
+          0.8842478471662236
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 20,
+        "position": [
+          -39.05387957632738,
+          1.869158157637416,
+          0.8238393779922191
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 21,
+        "position": [
+          -38.871583201269296,
+          1.843897687279801,
+          0.7541115597071494
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 22,
+        "position": [
+          -38.652466702729015,
+          1.816437644404214,
+          0.6627269304627452
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 23,
+        "position": [
+          -38.467345202780685,
+          1.7953397521253365,
+          0.5813844769360529
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 24,
+        "position": [
+          -38.24147091423603,
+          1.7720519345303016,
+          0.47981673908431577
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 25,
+        "position": [
+          -38.05001848878531,
+          1.7541100256861157,
+          0.3938682916907238
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 26,
+        "position": [
+          -37.818166568086916,
+          1.7344297540373121,
+          0.2925933466692918
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 27,
+        "position": [
+          -37.62367235671547,
+          1.7193926078457524,
+          0.2120067270109638
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 28,
+        "position": [
+          -37.42851762720379,
+          1.7055162720604362,
+          0.13690854813999176
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 29,
+        "position": [
+          -37.19253522605378,
+          1.690211051310094,
+          0.056077383885174026
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 30,
+        "position": [
+          -36.992808801186264,
+          1.678334252608118,
+          -0.001908182994782129
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 31,
+        "position": [
+          -36.71956763534159,
+          1.6650785656482596,
+          -0.07366332093858514
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 32,
+        "position": [
+          -36.48956204312084,
+          1.654711827739565,
+          -0.13279257630505067
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 33,
+        "position": [
+          -36.21347687005025,
+          1.6427150563029247,
+          -0.20198905852350763
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 34,
+        "position": [
+          -35.98009183540504,
+          1.6344189165835357,
+          -0.2587885896551766
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 35,
+        "position": [
+          -35.744478631200614,
+          1.6282138459590787,
+          -0.3143999473740957
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 36,
+        "position": [
+          -35.45869733779772,
+          1.6259693373199773,
+          -0.37932734722127837
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 37,
+        "position": [
+          -35.21757289219811,
+          1.6292597613078872,
+          -0.43180791053325684
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 38,
+        "position": [
+          -34.92595135630765,
+          1.6336886001356383,
+          -0.49229378227950754
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 39,
+        "position": [
+          -34.679736219090884,
+          1.6375466871678646,
+          -0.5406963159049134
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 40,
+        "position": [
+          -34.379115224571834,
+          1.6421029914235277,
+          -0.5963473034252621
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 41,
+        "position": [
+          -34.124868855667934,
+          1.6456032901101016,
+          -0.6403605696239463
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 42,
+        "position": [
+          -33.81549371226551,
+          1.6491201639974782,
+          -0.6900407955207262
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 43,
+        "position": [
+          -33.55238061269544,
+          1.652165572298146,
+          -0.7288762776985791
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 44,
+        "position": [
+          -33.286698914455116,
+          1.6565765892504203,
+          -0.764856598748448
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 45,
+        "position": [
+          -32.947600158800896,
+          1.6636556632402602,
+          -0.8060342157312281
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 46,
+        "position": [
+          -32.611811927851974,
+          1.670498860585439,
+          -0.8429347289451328
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 47,
+        "position": [
+          -32.194630288408426,
+          1.679768815808989,
+          -0.8846240242410527
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 48,
+        "position": [
+          -31.841089861835332,
+          1.6879804794417812,
+          -0.9164324106872629
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 49,
+        "position": [
+          -31.48253232918769,
+          1.6964330397193637,
+          -0.945431130789239
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 50,
+        "position": [
+          -31.041530837574,
+          1.7067147582715512,
+          -0.9765962610226723
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 51,
+        "position": [
+          -30.666567448375737,
+          1.715135491810563,
+          -0.9991515785498978
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 52,
+        "position": [
+          -30.21283781228712,
+          1.7246277862940624,
+          -1.0214989866154027
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 53,
+        "position": [
+          -29.834336851771884,
+          1.7317759600894267,
+          -1.0358779785309435
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 54,
+        "position": [
+          -29.45576904932827,
+          1.738029012027366,
+          -1.0462359579246903
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 55,
+        "position": [
+          -28.997066536248443,
+          1.744060080831686,
+          -1.0531466711579578
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 56,
+        "position": [
+          -28.60928307464412,
+          1.7476860391134834,
+          -1.0539061392172986
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 57,
+        "position": [
+          -28.15076884666401,
+          1.7497990485084742,
+          -1.048391464349734
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 58,
+        "position": [
+          -27.775363625895867,
+          1.75,
+          -1.038332469653014
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 59,
+        "position": [
+          -27.398036961859333,
+          1.75,
+          -1.0227920254645488
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 60,
+        "position": [
+          -26.95473801447743,
+          1.75,
+          -0.9969532369602094
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 61,
+        "position": [
+          -26.582682622766573,
+          1.75,
+          -0.9676190653637183
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 62,
+        "position": [
+          -26.131956727651826,
+          1.75,
+          -0.9226830512343102
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 63,
+        "position": [
+          -25.751582659662713,
+          1.7498382497258933,
+          -0.8776463019686709
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 64,
+        "position": [
+          -25.293707000554097,
+          1.7485488474852615,
+          -0.8158193481926783
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 65,
+        "position": [
+          -24.914331875930948,
+          1.7465498053018387,
+          -0.7590047511266941
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 66,
+        "position": [
+          -24.528283828123374,
+          1.7436612083954224,
+          -0.6966001778276463
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 67,
+        "position": [
+          -24.071326236776624,
+          1.7391218485182098,
+          -0.617480044359453
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 68,
+        "position": [
+          -23.69224495352403,
+          1.734501369707985,
+          -0.5480917606203596
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 69,
+        "position": [
+          -23.238682024535223,
+          1.727905695859827,
+          -0.46129136490271666
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 70,
+        "position": [
+          -22.86391022921235,
+          1.7216142694891245,
+          -0.38699165332615393
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 71,
+        "position": [
+          -22.499129290762028,
+          1.714738512852491,
+          -0.31289422612634
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 72,
+        "position": [
+          -22.070809200214367,
+          1.7056614915244128,
+          -0.2242479440079136
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 73,
+        "position": [
+          -21.72103987497573,
+          1.6974570245066758,
+          -0.15104740134802447
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 74,
+        "position": [
+          -21.30672775217274,
+          1.6867211780648736,
+          -0.06407786378244612
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 75,
+        "position": [
+          -20.977874398068504,
+          1.6772580383407332,
+          0.004628019091346938
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 76,
+        "position": [
+          -20.709209041803394,
+          1.6671998397057288,
+          0.06499153867476336
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 77,
+        "position": [
+          -20.40216163431151,
+          1.654654857099217,
+          0.14286046256296303
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 78,
+        "position": [
+          -20.151732159763444,
+          1.6445218369251835,
+          0.21255138726114325
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 79,
+        "position": [
+          -19.85921936857111,
+          1.6313700633673203,
+          0.29961229077767415
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 80,
+        "position": [
+          -19.618921192334493,
+          1.61889565833871,
+          0.37438509524535407
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 81,
+        "position": [
+          -19.33635908248674,
+          1.602588217639247,
+          0.4641862859678138
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 82,
+        "position": [
+          -19.101418572873992,
+          1.5880664126015493,
+          0.5387939872488707
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 83,
+        "position": [
+          -18.86801473659943,
+          1.5730921931413773,
+          0.6113628078312408
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 84,
+        "position": [
+          -18.58516200899406,
+          1.554687602521707,
+          0.6952565406639616
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 85,
+        "position": [
+          -18.348496889300616,
+          1.5394771873638464,
+          0.760488860958195
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 86,
+        "position": [
+          -18.059210853421,
+          1.5216203168825813,
+          0.8322982944768829
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 87,
+        "position": [
+          -17.812257509423382,
+          1.5073535602955885,
+          0.8855131753740826
+        ],
+        "chapter": "礁谷"
+      },
+      {
+        "second": 88,
+        "position": [
+          -17.559165814504045,
+          1.493952116060103,
+          0.931473211183578
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 89,
+        "position": [
+          -17.245073616270773,
+          1.4794122095814932,
+          0.9756713041802798
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 90,
+        "position": [
+          -16.96867073266545,
+          1.4688477506566624,
+          1.0024834354705385
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 91,
+        "position": [
+          -16.631974731574672,
+          1.4599361394749022,
+          1.02258510979816
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 92,
+        "position": [
+          -16.226825794469075,
+          1.4538663714660325,
+          1.0322241919895487
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 93,
+        "position": [
+          -15.88030045038708,
+          1.4603353425693324,
+          1.0294751685201864
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 94,
+        "position": [
+          -15.45868287924137,
+          1.4697670191165157,
+          1.014421342948
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 95,
+        "position": [
+          -15.101133329271827,
+          1.4786639877930552,
+          0.993050539804697
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 96,
+        "position": [
+          -14.738645658558376,
+          1.4882216479020651,
+          0.964597754285628
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 97,
+        "position": [
+          -14.291647526770511,
+          1.5003303040831373,
+          0.9217504527476952
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 98,
+        "position": [
+          -13.9219212425999,
+          1.5102664976071614,
+          0.8811097531679131
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 99,
+        "position": [
+          -13.545978698603369,
+          1.520021885104554,
+          0.8360619418931124
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 100,
+        "position": [
+          -13.089506427493752,
+          1.5309893408107387,
+          0.7777048089348128
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 101,
+        "position": [
+          -12.700138004024973,
+          1.5393371324137735,
+          0.7258866612964788
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 102,
+        "position": [
+          -12.22660593950574,
+          1.5477920222069343,
+          0.6617403099526225
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 103,
+        "position": [
+          -11.834640215575494,
+          1.5546454373390295,
+          0.6087350317631566
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 104,
+        "position": [
+          -11.433135779655286,
+          1.5630288968461095,
+          0.5554354226987345
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 105,
+        "position": [
+          -10.936723958266132,
+          1.5743172548265423,
+          0.49201636321288544
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 106,
+        "position": [
+          -10.422740656693351,
+          1.5844253578793586,
+          0.421311209527672
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 107,
+        "position": [
+          -9.783369818296423,
+          1.5969325079823367,
+          0.32156709846583736
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 108,
+        "position": [
+          -9.219536588487479,
+          1.60762774038031,
+          0.22558923730724348
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 109,
+        "position": [
+          -8.655163395977164,
+          1.6178204436872716,
+          0.12409303364994548
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 110,
+        "position": [
+          -7.95232550859492,
+          1.629468855576194,
+          -0.007466884205675657
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 111,
+        "position": [
+          -7.361906324978822,
+          1.6381729754875876,
+          -0.12061562274051145
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 112,
+        "position": [
+          -6.65669752069617,
+          1.6468871934345357,
+          -0.25684639563205836
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 113,
+        "position": [
+          -6.060510821730967,
+          1.6526054533079182,
+          -0.3713580122236637
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 114,
+        "position": [
+          -5.470621211970769,
+          1.6564750255344531,
+          -0.48262597031575927
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 115,
+        "position": [
+          -4.761141496078346,
+          1.6582370594661584,
+          -0.6117206161369154
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 116,
+        "position": [
+          -4.1955102473636465,
+          1.6582370594661584,
+          -0.7091437385763503
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 117,
+        "position": [
+          -3.6410318016573187,
+          1.6582370594661584,
+          -0.798095557689581
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 118,
+        "position": [
+          -2.9970171026728076,
+          1.6582370594661584,
+          -0.8905010852747727
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 119,
+        "position": [
+          -2.481180675239477,
+          1.6582370594661584,
+          -0.9533073716557354
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 120,
+        "position": [
+          -1.993607569214136,
+          1.6582343510910258,
+          -1.0005290191120635
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 121,
+        "position": [
+          -1.5759469752753184,
+          1.656935790986429,
+          -1.0339748429468925
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 122,
+        "position": [
+          -1.2334430498549307,
+          1.6529720847616232,
+          -1.059436405408436
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 123,
+        "position": [
+          -0.8242878495636108,
+          1.6457163733564022,
+          -1.086904365376152
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 124,
+        "position": [
+          -0.49388289947807607,
+          1.638490705955387,
+          -1.1062337569464575
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 125,
+        "position": [
+          -0.1660431472449885,
+          1.6296602811697,
+          -1.122406106300098
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 126,
+        "position": [
+          0.21758346777557008,
+          1.6173066399434672,
+          -1.1368600764463361
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 127,
+        "position": [
+          0.5292549205266558,
+          1.6058575583461885,
+          -1.1444807787712163
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 128,
+        "position": [
+          0.8974472195742835,
+          1.5907884526226965,
+          -1.1479606415951313
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 129,
+        "position": [
+          1.2002138837561853,
+          1.5773236152236685,
+          -1.1457084012117218
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 130,
+        "position": [
+          1.4964610204479682,
+          1.5633262846798173,
+          -1.1384387952645547
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 131,
+        "position": [
+          1.8445267066926807,
+          1.5460120021925667,
+          -1.1226745998933636
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 132,
+        "position": [
+          2.129351074156529,
+          1.5313293568618396,
+          -1.103254457575328
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 133,
+        "position": [
+          2.46759882396419,
+          1.5135101093818597,
+          -1.0716001738774523
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 134,
+        "position": [
+          2.7435895282994505,
+          1.4988525860371276,
+          -1.0380603632331642
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 135,
+        "position": [
+          3.0095562356104035,
+          1.4846720181550703,
+          -0.9984402904015652
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 136,
+        "position": [
+          3.2560648202073272,
+          1.4684069842661462,
+          -0.9517781028629395
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 137,
+        "position": [
+          3.4535235141613234,
+          1.4555480715201279,
+          -0.90539900485571
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 138,
+        "position": [
+          3.6421911351738308,
+          1.4447829083507981,
+          -0.8537042931592892
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 139,
+        "position": [
+          3.8608272450191987,
+          1.4327523450806594,
+          -0.7852563498905881
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 140,
+        "position": [
+          4.03745418707632,
+          1.4223592286453761,
+          -0.7239322409910394
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 141,
+        "position": [
+          4.249166554181363,
+          1.4092928678343988,
+          -0.644555066986818
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 142,
+        "position": [
+          4.422568278059485,
+          1.398308393032531,
+          -0.5759758919096549
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 143,
+        "position": [
+          4.627888877005253,
+          1.3852375116165438,
+          -0.49234753530151704
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 144,
+        "position": [
+          4.79990694258375,
+          1.374448836762691,
+          -0.4217004990702456
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 145,
+        "position": [
+          4.9754916709159565,
+          1.3637822426808295,
+          -0.35038416115150295
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 146,
+        "position": [
+          5.19086257757743,
+          1.3514368107996022,
+          -0.26572154577818335
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 147,
+        "position": [
+          5.374249829068656,
+          1.3417087396774046,
+          -0.19735513944809385
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 148,
+        "position": [
+          5.602659943590824,
+          1.330807216072878,
+          -0.1183577756256326
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 149,
+        "position": [
+          5.800470110878848,
+          1.3225084605289228,
+          -0.05625816106438025
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 150,
+        "position": [
+          6.006038780644917,
+          1.3150931371607069,
+          0.0016020014081470802
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 151,
+        "position": [
+          6.330486952094712,
+          1.3074105300732128,
+          0.08364949275257515
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 152,
+        "position": [
+          6.608773267998103,
+          1.3021160229214086,
+          0.14850899104940796
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 153,
+        "position": [
+          6.949266525628206,
+          1.2969772595327456,
+          0.22230243400619393
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 154,
+        "position": [
+          7.24092334384321,
+          1.298367603914147,
+          0.2816477723236791
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 155,
+        "position": [
+          7.535187657490334,
+          1.302439850841406,
+          0.33875632060649086
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 156,
+        "position": [
+          7.898518868788045,
+          1.308310489004968,
+          0.4064969051344227
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 157,
+        "position": [
+          8.207964694205137,
+          1.3138201088968255,
+          0.46261982568859494
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 158,
+        "position": [
+          8.527906998314505,
+          1.319865414799176,
+          0.5198807088326953
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 159,
+        "position": [
+          8.910042973196962,
+          1.327355438267278,
+          0.5881737218358847
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 160,
+        "position": [
+          9.231783686439869,
+          1.3337228877142788,
+          0.6463062580913028
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 161,
+        "position": [
+          9.556349612992335,
+          1.340079750509421,
+          0.706145866273687
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 162,
+        "position": [
+          9.952324396279261,
+          1.347567735853465,
+          0.7815507140991456
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 163,
+        "position": [
+          10.284320005867839,
+          1.3548943657651258,
+          0.8474172153390767
+        ],
+        "chapter": "沙道"
+      },
+      {
+        "second": 164,
+        "position": [
+          10.690644398754557,
+          1.3666725078677255,
+          0.932074897448864
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 165,
+        "position": [
+          11.04144225919574,
+          1.3780961992645224,
+          1.0093034625931012
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 166,
+        "position": [
+          11.491168253980367,
+          1.3908261982630745,
+          1.1085612460635337
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 167,
+        "position": [
+          12.05608514781827,
+          1.4075291146923536,
+          1.2301404261718138
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 168,
+        "position": [
+          12.5381546742224,
+          1.4220650275557536,
+          1.3325030164867584
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 169,
+        "position": [
+          13.038535304913621,
+          1.4372307721978983,
+          1.4384972817684065
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 170,
+        "position": [
+          13.64486110907974,
+          1.4554350409835939,
+          1.5678820472261938
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 171,
+        "position": [
+          14.154275402375438,
+          1.4703733183406882,
+          1.6783995926654447
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 172,
+        "position": [
+          14.777674761513891,
+          1.4879202373861204,
+          1.81718184261823
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 173,
+        "position": [
+          15.296070418913233,
+          1.5017170694285031,
+          1.9365768391526814
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 174,
+        "position": [
+          15.913885813924114,
+          1.516881176500572,
+          2.084971923676407
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 175,
+        "position": [
+          16.43250886948635,
+          1.5283358165384857,
+          2.215865019184726
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 176,
+        "position": [
+          16.936253231244926,
+          1.5381011145559844,
+          2.3497197966067644
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 177,
+        "position": [
+          17.539224744588335,
+          1.5475403890528396,
+          2.520476949694315
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 178,
+        "position": [
+          18.027109496668736,
+          1.5529020037871368,
+          2.6688058651840367
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 179,
+        "position": [
+          18.503978737078075,
+          1.5563977157900266,
+          2.8244642336420256
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 180,
+        "position": [
+          19.062080990978508,
+          1.5586857184117529,
+          3.023133806371128
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 181,
+        "position": [
+          19.464860335391414,
+          1.5592726346508763,
+          3.1811717424069808
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 182,
+        "position": [
+          19.933334762092162,
+          1.5592726346508763,
+          3.381395897461809
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 183,
+        "position": [
+          20.320703807759184,
+          1.5592726346508763,
+          3.559129160751906
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 184,
+        "position": [
+          20.700985888962595,
+          1.5592726346508763,
+          3.7431586619587365
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 185,
+        "position": [
+          21.15403421502485,
+          1.5592726346508763,
+          3.9730229667535717
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 186,
+        "position": [
+          21.52754742935327,
+          1.5592636111306948,
+          4.169647180421596
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 187,
+        "position": [
+          21.96811799530298,
+          1.5586793218800397,
+          4.40770642011754
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 188,
+        "position": [
+          22.33555059723048,
+          1.5573860988198638,
+          4.609529904621373
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 189,
+        "position": [
+          22.700225059175402,
+          1.5555623144381925,
+          4.811077918453584
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 190,
+        "position": [
+          23.12873196525849,
+          1.5529993627440377,
+          5.047203838345867
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 191,
+        "position": [
+          23.482728160794327,
+          1.5507825449347632,
+          5.239796747723593
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 192,
+        "position": [
+          23.912523481133285,
+          1.5490955975007927,
+          5.468120664415685
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 193,
+        "position": [
+          24.267893208605056,
+          1.5521480131808953,
+          5.650390400919865
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 194,
+        "position": [
+          24.623285524089006,
+          1.5556687645893152,
+          5.825020579284922
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 195,
+        "position": [
+          25.047376296441463,
+          1.5602848458284782,
+          6.021365544987001
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 196,
+        "position": [
+          25.360443083212225,
+          1.5644035225274509,
+          6.166804892654901
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 197,
+        "position": [
+          25.728703209712098,
+          1.5697941765656225,
+          6.3458911399581535
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 198,
+        "position": [
+          26.03308665251835,
+          1.5747143922352356,
+          6.498573198158615
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 199,
+        "position": [
+          26.33350426725393,
+          1.580014135341166,
+          6.651490909721281
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 200,
+        "position": [
+          26.688211272197332,
+          1.5868830679069021,
+          6.832207547934958
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 201,
+        "position": [
+          26.98306829467026,
+          1.5930841029719214,
+          6.980256052510586
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 202,
+        "position": [
+          27.276690498688943,
+          1.599711964366026,
+          7.123631294303233
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 203,
+        "position": [
+          27.6356884377968,
+          1.6084511310279241,
+          7.290698663008191
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 204,
+        "position": [
+          27.935147650062593,
+          1.61622034666758,
+          7.421015839453038
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 205,
+        "position": [
+          28.30191746141783,
+          1.6263384516317272,
+          7.566994432785908
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 206,
+        "position": [
+          28.610558619773265,
+          1.6353017348505867,
+          7.67663202784865
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 207,
+        "position": [
+          28.924459593164126,
+          1.6448097421166104,
+          7.7746403302194835
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 208,
+        "position": [
+          29.311307493817953,
+          1.658782603087339,
+          7.87567645873572
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 209,
+        "position": [
+          29.642564969398332,
+          1.6726838239027195,
+          7.944386438076668
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 210,
+        "position": [
+          30.069935471826177,
+          1.691121611125643,
+          8.008658418623446
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 211,
+        "position": [
+          30.508971256051808,
+          1.7075781180241005,
+          8.048099591676571
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 212,
+        "position": [
+          31.058263300829804,
+          1.7286367144276427,
+          8.066318888274719
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 213,
+        "position": [
+          31.53404003233032,
+          1.7471517310555402,
+          8.05917729864225
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 214,
+        "position": [
+          32.02181252631569,
+          1.7663365669159263,
+          8.033604794503562
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 215,
+        "position": [
+          32.620888791485704,
+          1.790108454003511,
+          7.98118064860291
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 216,
+        "position": [
+          33.13256735914092,
+          1.810496027813406,
+          7.92113372017438
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 217,
+        "position": [
+          33.65915811151172,
+          1.8315112798674782,
+          7.8471528160479025
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 218,
+        "position": [
+          34.291966340186754,
+          1.8567322970937883,
+          7.744799494615405
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 219,
+        "position": [
+          34.81269434271012,
+          1.8773952057335825,
+          7.651660090192467
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 220,
+        "position": [
+          35.330428788934135,
+          1.8978080047022712,
+          7.552773582648197
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 221,
+        "position": [
+          35.94673007912883,
+          1.9218457184218205,
+          7.428949691986489
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 222,
+        "position": [
+          36.45404053993846,
+          1.941373950006989,
+          7.323674537858515
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 223,
+        "position": [
+          36.96342024461798,
+          1.960266028478264,
+          7.216442076577492
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 224,
+        "position": [
+          37.549088023655436,
+          1.981961930387195,
+          7.093236767467246
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 225,
+        "position": [
+          38.030428615601195,
+          2.0004004970182336,
+          6.993770083643647
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 226,
+        "position": [
+          38.565903206893296,
+          2.0224066747524896,
+          6.877815395714094
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 227,
+        "position": [
+          39.010453098869526,
+          2.040933008119514,
+          6.772947881674226
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 228,
+        "position": [
+          39.453428049799726,
+          2.0596036346643922,
+          6.66136328969746
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 229,
+        "position": [
+          39.981143742403994,
+          2.0820880344681263,
+          6.520161918361051
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 230,
+        "position": [
+          40.411876036593945,
+          2.1006040659155634,
+          6.3990803829011975
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 231,
+        "position": [
+          40.92555072257108,
+          2.1228425204529158,
+          6.2489397777443205
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 232,
+        "position": [
+          41.35577054041808,
+          2.1415671967365126,
+          6.1193017070206785
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 233,
+        "position": [
+          41.78284297598381,
+          2.160215839191082,
+          5.987966249018269
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 234,
+        "position": [
+          42.2991783067701,
+          2.182802744458645,
+          5.826848212425384
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 235,
+        "position": [
+          42.72872677126337,
+          2.2015937750349868,
+          5.691877679258688
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 236,
+        "position": [
+          43.16402424357297,
+          2.220605006917737,
+          5.555188219450841
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 237,
+        "position": [
+          43.67872495629086,
+          2.2430005457085973,
+          5.39491307678621
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 238,
+        "position": [
+          44.111757500777216,
+          2.2500000000000004,
+          5.262226383126645
+        ],
+        "chapter": "草床"
+      },
+      {
+        "second": 239,
+        "position": [
+          44.53849820154995,
+          2.2500000000000004,
+          5.134286999517199
+        ],
+        "chapter": "草床"
+      }
+    ],
+    "routeLengthM": 90.08271084770561,
+    "routeLengthNote": "routeLengthM describes the original complete four-minute route, not distance traversed by the sixty-second window.",
+    "narration": {
+      "enabled": true,
+      "status": "quiet",
+      "clipId": null,
+      "expectedClipIds": [
+        "school-entry",
+        "school-split",
+        "school-merge",
+        "school-disturb",
+        "school-regroup",
+        "reef-edge",
+        "reef-sand",
+        "sand-life",
+        "seagrass",
+        "open-water"
+      ],
+      "playingClipIds": [
+        "school-entry",
+        "school-split",
+        "school-merge",
+        "school-disturb",
+        "school-regroup",
+        "reef-edge",
+        "reef-sand",
+        "sand-life",
+        "seagrass",
+        "open-water"
+      ],
+      "playingEvents": [
+        {
+          "time": 0.16250000000000003,
+          "status": "playing",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 8.166700000000024,
+          "status": "playing",
+          "clipId": "school-split"
+        },
+        {
+          "time": 28.091800000000084,
+          "status": "playing",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 36.19590000000067,
+          "status": "playing",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 46.15840000000232,
+          "status": "playing",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 64.95850000000463,
+          "status": "playing",
+          "clipId": "reef-edge"
+        },
+        {
+          "time": 90.9084000000103,
+          "status": "playing",
+          "clipId": "reef-sand"
+        },
+        {
+          "time": 122.68350000001683,
+          "status": "playing",
+          "clipId": "sand-life"
+        },
+        {
+          "time": 168.67510000002082,
+          "status": "playing",
+          "clipId": "seagrass"
+        },
+        {
+          "time": 170.68340000002107,
+          "status": "playing",
+          "clipId": "seagrass"
+        },
+        {
+          "time": 215.60010000002694,
+          "status": "playing",
+          "clipId": "open-water"
+        },
+        {
+          "time": 216.6334000000268,
+          "status": "playing",
+          "clipId": "open-water"
+        },
+        {
+          "time": 216.88350000002677,
+          "status": "playing",
+          "clipId": "open-water"
+        }
+      ],
+      "playingCountByClip": {
+        "school-entry": 1,
+        "school-split": 1,
+        "school-merge": 1,
+        "school-disturb": 1,
+        "school-regroup": 1,
+        "reef-edge": 1,
+        "reef-sand": 1,
+        "sand-life": 1,
+        "seagrass": 2,
+        "open-water": 3
+      },
+      "duplicatePlayingClipIds": [
+        "seagrass",
+        "open-water"
+      ],
+      "allExpectedClipsPlayed": true,
+      "unexpectedPlayingClipIds": [],
+      "errorOrBlockedEvents": [],
+      "events": [
+        {
+          "time": 0,
+          "status": "off",
+          "clipId": null
+        },
+        {
+          "time": 0,
+          "status": "loading",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 0.16250000000000003,
+          "status": "playing",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 4.4375000000000036,
+          "status": "paused",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 4.4375000000000036,
+          "status": "quiet",
+          "clipId": "school-entry"
+        },
+        {
+          "time": 4.458300000000003,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 8.033300000000024,
+          "status": "loading",
+          "clipId": "school-split"
+        },
+        {
+          "time": 8.166700000000024,
+          "status": "playing",
+          "clipId": "school-split"
+        },
+        {
+          "time": 14.05830000000012,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 28.012600000000074,
+          "status": "loading",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 28.091800000000084,
+          "status": "playing",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 32.512700000000066,
+          "status": "paused",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 32.512700000000066,
+          "status": "quiet",
+          "clipId": "school-merge"
+        },
+        {
+          "time": 32.52520000000006,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 36.11260000000065,
+          "status": "loading",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 36.19590000000067,
+          "status": "playing",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.491700000001366,
+          "status": "paused",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.491700000001366,
+          "status": "quiet",
+          "clipId": "school-disturb"
+        },
+        {
+          "time": 40.504300000001365,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 46.0710000000023,
+          "status": "loading",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 46.15840000000232,
+          "status": "playing",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 51.73360000000283,
+          "status": "paused",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 51.73360000000283,
+          "status": "quiet",
+          "clipId": "school-regroup"
+        },
+        {
+          "time": 51.75860000000283,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 64.17510000000445,
+          "status": "loading",
+          "clipId": "reef-edge"
+        },
+        {
+          "time": 64.95850000000463,
+          "status": "playing",
+          "clipId": "reef-edge"
+        },
+        {
+          "time": 81.94590000000831,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 90.09590000001012,
+          "status": "loading",
+          "clipId": "reef-sand"
+        },
+        {
+          "time": 90.9084000000103,
+          "status": "playing",
+          "clipId": "reef-sand"
+        },
+        {
+          "time": 107.5418000000137,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 122.05850000001669,
+          "status": "loading",
+          "clipId": "sand-life"
+        },
+        {
+          "time": 122.68350000001683,
+          "status": "playing",
+          "clipId": "sand-life"
+        },
+        {
+          "time": 141.33340000001886,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 166.0209000000206,
+          "status": "loading",
+          "clipId": "seagrass"
+        },
+        {
+          "time": 168.67510000002082,
+          "status": "playing",
+          "clipId": "seagrass"
+        },
+        {
+          "time": 169.99590000002092,
+          "status": "loading",
+          "clipId": "seagrass"
+        },
+        {
+          "time": 170.68340000002107,
+          "status": "playing",
+          "clipId": "seagrass"
+        },
+        {
+          "time": 183.43760000002283,
+          "status": "paused",
+          "clipId": "seagrass"
+        },
+        {
+          "time": 183.43760000002283,
+          "status": "quiet",
+          "clipId": "seagrass"
+        },
+        {
+          "time": 183.4542000000228,
+          "status": "quiet",
+          "clipId": null
+        },
+        {
+          "time": 212.0001000000263,
+          "status": "loading",
+          "clipId": "open-water"
+        },
+        {
+          "time": 215.60010000002694,
+          "status": "playing",
+          "clipId": "open-water"
+        },
+        {
+          "time": 216.01680000002693,
+          "status": "loading",
+          "clipId": "open-water"
+        },
+        {
+          "time": 216.6334000000268,
+          "status": "playing",
+          "clipId": "open-water"
+        },
+        {
+          "time": 216.87090000002678,
+          "status": "loading",
+          "clipId": "open-water"
+        },
+        {
+          "time": 216.88350000002677,
+          "status": "playing",
+          "clipId": "open-water"
+        },
+        {
+          "time": 229.3876000000238,
+          "status": "paused",
+          "clipId": "open-water"
+        },
+        {
+          "time": 229.3876000000238,
+          "status": "quiet",
+          "clipId": "open-water"
+        },
+        {
+          "time": 229.3876000000238,
+          "status": "quiet",
+          "clipId": null
+        }
+      ],
+      "eventScope": "Recorded model-time status history. If the player was restarted, earlier activation events can remain; they are retained, not silently relabelled as the final run."
+    },
+    "console": [],
+    "checks": {
+      "completedOneTimes": true,
+      "uninterrupted": true,
+      "allExpectedNarrationPlayed": true,
+      "narrationProblems": 0,
+      "consoleItems": 0,
+      "framesOver250Ms": 0
+    }
+  },
+  "transport": {
+    "base": "https://yydshly.github.io/ocean-world/",
+    "checkedOn": "2026-10-13T12:20:39.424Z",
+    "expectedBasis": "per-file-local-byte-or-actual-published-reference-and-decoded-data",
+    "checked": 26,
+    "passed": 23,
+    "initialLocalByteComparison": {
+      "checked": 26,
+      "byteMatches": 23,
+      "mismatches": [
+        {
+          "file": "assets/index-CIMT3PAk.js",
+          "status": 404,
+          "bytes": 9379,
+          "expectedBytes": 201140,
+          "hash": "b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368",
+          "expectedHash": "fe5080876c8c2e4c36bdc82d04f2155bfff3dd23972df372f324bdf33c45f21e",
+          "same": false,
+          "contentType": "text/html; charset=utf-8",
+          "currentBuildHash": "fe5080876c8c2e4c36bdc82d04f2155bfff3dd23972df372f324bdf33c45f21e",
+          "currentBuildBytes": 201140,
+          "sameCurrentBuild": false
+        },
+        {
+          "file": "assets/ShallowSampleApp-BofGugmK.js",
+          "status": 404,
+          "bytes": 9379,
+          "expectedBytes": 2609507,
+          "hash": "b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368",
+          "expectedHash": "9fa4b1fe5f24a50a4d990954959de92011dc6f4967010dfc270b4fdfac9f6d61",
+          "same": false,
+          "contentType": "text/html; charset=utf-8",
+          "currentBuildHash": "9fa4b1fe5f24a50a4d990954959de92011dc6f4967010dfc270b4fdfac9f6d61",
+          "currentBuildBytes": 2609507,
+          "sameCurrentBuild": false
+        },
+        {
+          "file": "index.html",
+          "status": 200,
+          "bytes": 1796,
+          "expectedBytes": 1796,
+          "hash": "f6943517e5dfce854970e02e48223cc32b68ecee97fa7b91e6bb54ab3a6dcca4",
+          "expectedHash": "643bdea4fef601af2cafe64f6aeef3ac70ade0674885b24adf34332f2fb452b8",
+          "same": false,
+          "contentType": "text/html; charset=utf-8",
+          "currentBuildHash": "643bdea4fef601af2cafe64f6aeef3ac70ade0674885b24adf34332f2fb452b8",
+          "currentBuildBytes": 1796,
+          "sameCurrentBuild": false
+        }
+      ],
+      "originalEvidence": "output/validation/stage-05-schooling-publication/transport.json"
+    },
+    "results": [
+      {
+        "file": "assets/index-CIMT3PAk.js",
+        "status": 404,
+        "bytes": 9379,
+        "expectedBytes": 201140,
+        "hash": "b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368",
+        "expectedHash": "fe5080876c8c2e4c36bdc82d04f2155bfff3dd23972df372f324bdf33c45f21e",
+        "same": false,
+        "contentType": "text/html; charset=utf-8",
+        "currentBuildHash": "fe5080876c8c2e4c36bdc82d04f2155bfff3dd23972df372f324bdf33c45f21e",
+        "currentBuildBytes": 201140,
+        "sameCurrentBuild": false
+      },
+      {
+        "file": "assets/index-D1Szse8H.css",
+        "status": 200,
+        "bytes": 4517,
+        "expectedBytes": 4517,
+        "hash": "8029eee1ba83686fdea215db0ee881c1c49ca8b5f54a7fbdba783754b3777c20",
+        "expectedHash": "8029eee1ba83686fdea215db0ee881c1c49ca8b5f54a7fbdba783754b3777c20",
+        "same": true,
+        "contentType": "text/css; charset=utf-8",
+        "currentBuildHash": "8029eee1ba83686fdea215db0ee881c1c49ca8b5f54a7fbdba783754b3777c20",
+        "currentBuildBytes": 4517,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "assets/ShallowSampleApp-BofGugmK.js",
+        "status": 404,
+        "bytes": 9379,
+        "expectedBytes": 2609507,
+        "hash": "b620507312c5e97566a3c6cfaf99144fefc18a0da7d941401dfa0f5f58fb0368",
+        "expectedHash": "9fa4b1fe5f24a50a4d990954959de92011dc6f4967010dfc270b4fdfac9f6d61",
+        "same": false,
+        "contentType": "text/html; charset=utf-8",
+        "currentBuildHash": "9fa4b1fe5f24a50a4d990954959de92011dc6f4967010dfc270b4fdfac9f6d61",
+        "currentBuildBytes": 2609507,
+        "sameCurrentBuild": false
+      },
+      {
+        "file": "assets/ShallowSampleApp-CyMmiP5q.css",
+        "status": 200,
+        "bytes": 8810,
+        "expectedBytes": 8810,
+        "hash": "221b7921b7f3dcb0f95b29c2555fbb46dc55e05aef1330dfda9654d856137ea7",
+        "expectedHash": "221b7921b7f3dcb0f95b29c2555fbb46dc55e05aef1330dfda9654d856137ea7",
+        "same": true,
+        "contentType": "text/css; charset=utf-8",
+        "currentBuildHash": "221b7921b7f3dcb0f95b29c2555fbb46dc55e05aef1330dfda9654d856137ea7",
+        "currentBuildBytes": 8810,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-journey/open-water.mp3",
+        "status": 200,
+        "bytes": 279348,
+        "expectedBytes": 279348,
+        "hash": "9ab73047813b43177ceb3b4cbc377efb03d37417a7dd4c5b5484e0d270b942fd",
+        "expectedHash": "9ab73047813b43177ceb3b4cbc377efb03d37417a7dd4c5b5484e0d270b942fd",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "9ab73047813b43177ceb3b4cbc377efb03d37417a7dd4c5b5484e0d270b942fd",
+        "currentBuildBytes": 279348,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-journey/reef-edge.mp3",
+        "status": 200,
+        "bytes": 287988,
+        "expectedBytes": 287988,
+        "hash": "aff048da0e2bf0b5f18d5038462ff7679a1c9079a5db93116040c846699336ee",
+        "expectedHash": "aff048da0e2bf0b5f18d5038462ff7679a1c9079a5db93116040c846699336ee",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "aff048da0e2bf0b5f18d5038462ff7679a1c9079a5db93116040c846699336ee",
+        "currentBuildBytes": 287988,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-journey/reef-entry.mp3",
+        "status": 200,
+        "bytes": 295476,
+        "expectedBytes": 295476,
+        "hash": "1e33d4d20afec079b90d430679aaa45f9740d8db851c9e74b2d7ed8ea148ae1d",
+        "expectedHash": "1e33d4d20afec079b90d430679aaa45f9740d8db851c9e74b2d7ed8ea148ae1d",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "1e33d4d20afec079b90d430679aaa45f9740d8db851c9e74b2d7ed8ea148ae1d",
+        "currentBuildBytes": 295476,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-journey/reef-sand.mp3",
+        "status": 200,
+        "bytes": 281652,
+        "expectedBytes": 281652,
+        "hash": "cbcadf9cb6c65fdc700700627d2197508f8cbb9b1eb0a2f397b3b54896c35324",
+        "expectedHash": "cbcadf9cb6c65fdc700700627d2197508f8cbb9b1eb0a2f397b3b54896c35324",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "cbcadf9cb6c65fdc700700627d2197508f8cbb9b1eb0a2f397b3b54896c35324",
+        "currentBuildBytes": 281652,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-journey/sand-life.mp3",
+        "status": 200,
+        "bytes": 308724,
+        "expectedBytes": 308724,
+        "hash": "35a81f61d0c4a707ab7d6d4e3b977e11035a13c468d742679ad46f8bf54fc70c",
+        "expectedHash": "35a81f61d0c4a707ab7d6d4e3b977e11035a13c468d742679ad46f8bf54fc70c",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "35a81f61d0c4a707ab7d6d4e3b977e11035a13c468d742679ad46f8bf54fc70c",
+        "currentBuildBytes": 308724,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-journey/seagrass.mp3",
+        "status": 200,
+        "bytes": 279924,
+        "expectedBytes": 279924,
+        "hash": "7d8eb01d7fd07ea3e1d9c33601ddd1ca14324ce298f6cd1042623be4b09b0a05",
+        "expectedHash": "7d8eb01d7fd07ea3e1d9c33601ddd1ca14324ce298f6cd1042623be4b09b0a05",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "7d8eb01d7fd07ea3e1d9c33601ddd1ca14324ce298f6cd1042623be4b09b0a05",
+        "currentBuildBytes": 279924,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-schooling/school-disturb.mp3",
+        "status": 200,
+        "bytes": 71988,
+        "expectedBytes": 71988,
+        "hash": "b060110ac7b3c37bbf05198716167947f63cab94ab27f705a663ee887cd3dc2e",
+        "expectedHash": "b060110ac7b3c37bbf05198716167947f63cab94ab27f705a663ee887cd3dc2e",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "b060110ac7b3c37bbf05198716167947f63cab94ab27f705a663ee887cd3dc2e",
+        "currentBuildBytes": 71988,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-schooling/school-entry.mp3",
+        "status": 200,
+        "bytes": 63924,
+        "expectedBytes": 63924,
+        "hash": "2ee82d199a1094909a2808d5699bd3bc60c0c75ca682d3d9833fda3f7c929ebf",
+        "expectedHash": "2ee82d199a1094909a2808d5699bd3bc60c0c75ca682d3d9833fda3f7c929ebf",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "2ee82d199a1094909a2808d5699bd3bc60c0c75ca682d3d9833fda3f7c929ebf",
+        "currentBuildBytes": 63924,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-schooling/school-merge.mp3",
+        "status": 200,
+        "bytes": 72564,
+        "expectedBytes": 72564,
+        "hash": "b30bf6bdff6f750c3c423a5f2cc647ea304162ba0b369aa92c9acf405d8a1615",
+        "expectedHash": "b30bf6bdff6f750c3c423a5f2cc647ea304162ba0b369aa92c9acf405d8a1615",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "b30bf6bdff6f750c3c423a5f2cc647ea304162ba0b369aa92c9acf405d8a1615",
+        "currentBuildBytes": 72564,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-schooling/school-regroup.mp3",
+        "status": 200,
+        "bytes": 92148,
+        "expectedBytes": 92148,
+        "hash": "4977d8b6feabebbc155a7f4eaee0b9bb02eba29134380f4f881aa585487350f8",
+        "expectedHash": "4977d8b6feabebbc155a7f4eaee0b9bb02eba29134380f4f881aa585487350f8",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "4977d8b6feabebbc155a7f4eaee0b9bb02eba29134380f4f881aa585487350f8",
+        "currentBuildBytes": 92148,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "audio/shallow-schooling/school-split.mp3",
+        "status": 200,
+        "bytes": 97332,
+        "expectedBytes": 97332,
+        "hash": "bb0251ededc6cd4c2a84247d1cf80e5a52ef756d9f748b72a203c69b284d3725",
+        "expectedHash": "bb0251ededc6cd4c2a84247d1cf80e5a52ef756d9f748b72a203c69b284d3725",
+        "same": true,
+        "contentType": "audio/mp3",
+        "currentBuildHash": "bb0251ededc6cd4c2a84247d1cf80e5a52ef756d9f748b72a203c69b284d3725",
+        "currentBuildBytes": 97332,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "index.html",
+        "status": 200,
+        "bytes": 1796,
+        "expectedBytes": 1796,
+        "hash": "f6943517e5dfce854970e02e48223cc32b68ecee97fa7b91e6bb54ab3a6dcca4",
+        "expectedHash": "643bdea4fef601af2cafe64f6aeef3ac70ade0674885b24adf34332f2fb452b8",
+        "same": false,
+        "contentType": "text/html; charset=utf-8",
+        "currentBuildHash": "643bdea4fef601af2cafe64f6aeef3ac70ade0674885b24adf34332f2fb452b8",
+        "currentBuildBytes": 1796,
+        "sameCurrentBuild": false
+      },
+      {
+        "file": "overview/index.html",
+        "status": 200,
+        "bytes": 45209,
+        "expectedBytes": 45209,
+        "hash": "72ae3eaf117b4f6cf9c54f80e18c06b32b7fb432ab3d2467377dd1c5f1d499b4",
+        "expectedHash": "72ae3eaf117b4f6cf9c54f80e18c06b32b7fb432ab3d2467377dd1c5f1d499b4",
+        "same": true,
+        "contentType": "text/html; charset=utf-8",
+        "currentBuildHash": "72ae3eaf117b4f6cf9c54f80e18c06b32b7fb432ab3d2467377dd1c5f1d499b4",
+        "currentBuildBytes": 45209,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/inventory.json",
+        "status": 200,
+        "bytes": 66814,
+        "expectedBytes": 66814,
+        "hash": "836715bf1a7bd50010f1a7fd549bd68d1ae3c9956c09c0931c750401fb648ea5",
+        "expectedHash": "836715bf1a7bd50010f1a7fd549bd68d1ae3c9956c09c0931c750401fb648ea5",
+        "same": true,
+        "contentType": "application/json; charset=utf-8",
+        "currentBuildHash": "836715bf1a7bd50010f1a7fd549bd68d1ae3c9956c09c0931c750401fb648ea5",
+        "currentBuildBytes": 66814,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/ocean-world-product-atlas.png",
+        "status": 200,
+        "bytes": 665798,
+        "expectedBytes": 665798,
+        "hash": "fc31a5e84742672276f9105db33e2a99335ae76962b9a0e2d896ac681beb50ef",
+        "expectedHash": "fc31a5e84742672276f9105db33e2a99335ae76962b9a0e2d896ac681beb50ef",
+        "same": true,
+        "contentType": "image/png",
+        "currentBuildHash": "fc31a5e84742672276f9105db33e2a99335ae76962b9a0e2d896ac681beb50ef",
+        "currentBuildBytes": 665798,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/stage-05/escape-38.jpg",
+        "status": 200,
+        "bytes": 92620,
+        "expectedBytes": 92620,
+        "hash": "87952ba29200a55a7e401f5b13a085dd6c8c8e05f817df8121ce4fec0b44c2a8",
+        "expectedHash": "87952ba29200a55a7e401f5b13a085dd6c8c8e05f817df8121ce4fec0b44c2a8",
+        "same": true,
+        "contentType": "image/jpeg",
+        "currentBuildHash": "87952ba29200a55a7e401f5b13a085dd6c8c8e05f817df8121ce4fec0b44c2a8",
+        "currentBuildBytes": 92620,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/stage-05/index.html",
+        "status": 200,
+        "bytes": 9623,
+        "expectedBytes": 9623,
+        "hash": "654146e07799882fda5241d2727af340adc10a029a9615c4dcd7e41ccd89d8bc",
+        "expectedHash": "654146e07799882fda5241d2727af340adc10a029a9615c4dcd7e41ccd89d8bc",
+        "same": true,
+        "contentType": "text/html; charset=utf-8",
+        "currentBuildHash": "654146e07799882fda5241d2727af340adc10a029a9615c4dcd7e41ccd89d8bc",
+        "currentBuildBytes": 9623,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/stage-05/local-summary.json",
+        "status": 200,
+        "bytes": 27949,
+        "expectedBytes": 27949,
+        "hash": "6b2bcb4a5edc148b1a4f6fc81f05719dc686691198848bcc47815bd243dfe82d",
+        "expectedHash": "6b2bcb4a5edc148b1a4f6fc81f05719dc686691198848bcc47815bd243dfe82d",
+        "same": true,
+        "contentType": "application/json; charset=utf-8",
+        "currentBuildHash": "6b2bcb4a5edc148b1a4f6fc81f05719dc686691198848bcc47815bd243dfe82d",
+        "currentBuildBytes": 27949,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/stage-05/merge-34.jpg",
+        "status": 200,
+        "bytes": 92385,
+        "expectedBytes": 92385,
+        "hash": "8fbc1fc0f1e1a30a5197523bc62cedb3aadc67a0f35f706ee4fb413d61cda39e",
+        "expectedHash": "8fbc1fc0f1e1a30a5197523bc62cedb3aadc67a0f35f706ee4fb413d61cda39e",
+        "same": true,
+        "contentType": "image/jpeg",
+        "currentBuildHash": "8fbc1fc0f1e1a30a5197523bc62cedb3aadc67a0f35f706ee4fb413d61cda39e",
+        "currentBuildBytes": 92385,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/stage-05/regroup-60.jpg",
+        "status": 200,
+        "bytes": 91903,
+        "expectedBytes": 91903,
+        "hash": "e5eb6dadbff26a18058381963b80a3cbf0aae3643d59ca4c2bd89233adfcfc4d",
+        "expectedHash": "e5eb6dadbff26a18058381963b80a3cbf0aae3643d59ca4c2bd89233adfcfc4d",
+        "same": true,
+        "contentType": "image/jpeg",
+        "currentBuildHash": "e5eb6dadbff26a18058381963b80a3cbf0aae3643d59ca4c2bd89233adfcfc4d",
+        "currentBuildBytes": 91903,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/stage-05/split-21.4.jpg",
+        "status": 200,
+        "bytes": 93545,
+        "expectedBytes": 93545,
+        "hash": "608817e0ff780547707b064693bf03882786951149d52e4a21a8b8737ffa1e25",
+        "expectedHash": "608817e0ff780547707b064693bf03882786951149d52e4a21a8b8737ffa1e25",
+        "same": true,
+        "contentType": "image/jpeg",
+        "currentBuildHash": "608817e0ff780547707b064693bf03882786951149d52e4a21a8b8737ffa1e25",
+        "currentBuildBytes": 93545,
+        "sameCurrentBuild": true
+      },
+      {
+        "file": "overview/stage-05/summary.json",
+        "status": 200,
+        "bytes": 2533,
+        "expectedBytes": 2533,
+        "hash": "51a1bef3c57d672baaef9bf12c5a943123073a404bb5830ab7bfc0c5f49884f3",
+        "expectedHash": "51a1bef3c57d672baaef9bf12c5a943123073a404bb5830ab7bfc0c5f49884f3",
+        "same": true,
+        "contentType": "application/json; charset=utf-8",
+        "currentBuildHash": "51a1bef3c57d672baaef9bf12c5a943123073a404bb5830ab7bfc0c5f49884f3",
+        "currentBuildBytes": 2533,
+        "sameCurrentBuild": true
+      }
+    ],
+    "narrationFiles": 11,
+    "canonicalPublishedReferences": {
+      "checked": 3,
+      "passed": 3,
+      "results": [
+        {
+          "file": "index.html",
+          "status": 200,
+          "bytes": 1796,
+          "hash": "f6943517e5dfce854970e02e48223cc32b68ecee97fa7b91e6bb54ab3a6dcca4",
+          "expectedBasis": "actual-published-reference",
+          "comparisonBasis": "local-html-after-content-hash-reference-and-preload-order-normalization",
+          "comparisonPassed": true,
+          "originalLocalEncodedBytesEqual": false
+        },
+        {
+          "file": "assets/index-CQjDl_52.js",
+          "status": 200,
+          "bytes": 201140,
+          "hash": "795f2358288ad62782ffb3112fb12edac1d9ba891b4226acdb98ce3b2f1e8ce3",
+          "expectedBasis": "actual-published-reference",
+          "comparisonBasis": "local-executable-after-only-content-hash-reference-token-normalization",
+          "comparisonPassed": true,
+          "originalLocalEncodedBytesEqual": false
+        },
+        {
+          "file": "assets/ShallowSampleApp-LcHdtbiJ.js",
+          "status": 200,
+          "bytes": 2609507,
+          "hash": "9e856235d32ee3df021554d5483c7fb9e404e790c952c5e279f20977e10f35f2",
+          "expectedBasis": "actual-published-reference",
+          "comparisonBasis": "local-executable-after-only-content-hash-reference-token-normalization",
+          "comparisonPassed": true,
+          "originalLocalEncodedBytesEqual": false
+        }
+      ]
+    },
+    "decodedModelData": {
+      "checked": 12,
+      "decodedMatches": 12,
+      "directlyEncodedByteMatches": 1,
+      "onlyOSHeaderDifferences": 11,
+      "results": [
+        {
+          "file": "assets/shallow-static-v1-gzip.bin?v=2bb430782756eefc",
+          "localFile": "assets/shallow-static-v1-gzip.bin?v=2bb430782756eefc",
+          "status": 200,
+          "localBytes": 1951008,
+          "remoteBytes": 1951008,
+          "localHash": "4dd58786b5fe3a2650e62939657308391634d0c223d64c09f723fbc31dcd114f",
+          "remoteHash": "4dd58786b5fe3a2650e62939657308391634d0c223d64c09f723fbc31dcd114f",
+          "localGzipHeader": "1f8b08000000000002ff",
+          "remoteGzipHeader": "1f8b08000000000002ff",
+          "equalCompressedBytes": true,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 2281360,
+          "remoteDecodedBytes": 2281360,
+          "localDecodedHash": "2bb430782756eefc205e5faa6b5a2210091885a64bd074ccdf291780c0b56f1c",
+          "remoteDecodedHash": "2bb430782756eefc205e5faa6b5a2210091885a64bd074ccdf291780c0b56f1c",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": true,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowReefDistanceData-CHW9_plF.bin",
+          "localFile": "assets/shallowReefDistanceData-D3vmvdlk.bin",
+          "status": 200,
+          "localBytes": 411234,
+          "remoteBytes": 411234,
+          "localHash": "a1c021cbca3556f7106edb6a77978ffcc851159ed39da2231a9377ffe696bc2d",
+          "remoteHash": "a68d353326e50aecf5dde6dbd130af4bc0c52e31d615ca42b691f71953ab9e19",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 622368,
+          "remoteDecodedBytes": 622368,
+          "localDecodedHash": "1cb343cccb2f2640aeb1ce16a538792a6af9641635aff12c45a32eb13a4a5d48",
+          "remoteDecodedHash": "1cb343cccb2f2640aeb1ce16a538792a6af9641635aff12c45a32eb13a4a5d48",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/ShallowSourcedFishData-BuXjyOgT.bin",
+          "localFile": "assets/ShallowSourcedFishData-CooNqDTz.bin",
+          "status": 200,
+          "localBytes": 107206,
+          "remoteBytes": 107206,
+          "localHash": "5e2413f7fa3d605fba219cd840fe60dea9677685bb949c5959ebcba6933d212a",
+          "remoteHash": "3165168807ac0f4076fa019f2c14b3473938f2fc9fef85430015f30c978464af",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 171374,
+          "remoteDecodedBytes": 171374,
+          "localDecodedHash": "f7e3b0d07f86a19a9ba1b72eea45b44c5bd41bf865e46119fcf8d98ccffd0de1",
+          "remoteDecodedHash": "f7e3b0d07f86a19a9ba1b72eea45b44c5bd41bf865e46119fcf8d98ccffd0de1",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowNaturalHabitatData-CsZ3VtZX.bin",
+          "localFile": "assets/shallowNaturalHabitatData-BVezin7E.bin",
+          "status": 200,
+          "localBytes": 646086,
+          "remoteBytes": 646086,
+          "localHash": "2775cbc8aa4ac276c2d3a2656265867a75f76c1607b6ac18c9d695f4d2a139b4",
+          "remoteHash": "f14045f0897223138a6bc42402c700754d5f1e1047913bc11e05c4e0b3811999",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 966828,
+          "remoteDecodedBytes": 966828,
+          "localDecodedHash": "e776225a5235d55996cf58306625e0e445a6af8479b3b7034bef7e6b98b37c68",
+          "remoteDecodedHash": "e776225a5235d55996cf58306625e0e445a6af8479b3b7034bef7e6b98b37c68",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowOpenCommunityData-BrdioUT5.bin",
+          "localFile": "assets/shallowOpenCommunityData-DeubavW-.bin",
+          "status": 200,
+          "localBytes": 476474,
+          "remoteBytes": 476474,
+          "localHash": "7a9edc62fc8b882fa248ffbdcf1050154a0d7f4c6272e503bbcf73aceb2a28a5",
+          "remoteHash": "40e6eba1a009236040cf108c0bc914207e128f0fd97ceb7826f1b6178db8b0a1",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 823199,
+          "remoteDecodedBytes": 823199,
+          "localDecodedHash": "36cb455db2d153b261dc3758462daa345c682e694db4061f419a190d1e6d922c",
+          "remoteDecodedHash": "36cb455db2d153b261dc3758462daa345c682e694db4061f419a190d1e6d922c",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowHawksbillData-cDocDmzE.bin",
+          "localFile": "assets/shallowHawksbillData-BBHROR24.bin",
+          "status": 200,
+          "localBytes": 654551,
+          "remoteBytes": 654551,
+          "localHash": "7a4adbe912c4b270e7920cf3ea7ca0f4d0b1590b42305de3132b6602c43d09cc",
+          "remoteHash": "4c5c6a603c062411cf4bc5308775f800a000bb6ca575dfc6a58e9120c8c07076",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 933320,
+          "remoteDecodedBytes": 933320,
+          "localDecodedHash": "09cbd4bf50fc8a88c1e11506134337c48beadccbe55803ce48951a4f5e1a3c38",
+          "remoteDecodedHash": "09cbd4bf50fc8a88c1e11506134337c48beadccbe55803ce48951a4f5e1a3c38",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/ShallowScannedReefData-DMNubvTX.bin",
+          "localFile": "assets/ShallowScannedReefData-Dd_2Oy2J.bin",
+          "status": 200,
+          "localBytes": 595563,
+          "remoteBytes": 595563,
+          "localHash": "cd5c2e59ebae69044ee0c18dc466ababedc76a6d9fad7c1cbd8e980458a4f77f",
+          "remoteHash": "8ac231576858b8a1d5d2f3f34186899eea923cdd2f634d03b0536bad7adea0ac",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 1281299,
+          "remoteDecodedBytes": 1281299,
+          "localDecodedHash": "eef5a61b2e29ab9dfba473d79addd3813fce27dcae6569b7421e52968f2d7406",
+          "remoteDecodedHash": "eef5a61b2e29ab9dfba473d79addd3813fce27dcae6569b7421e52968f2d7406",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowBranchingCoralData-U9lznt-l.bin",
+          "localFile": "assets/shallowBranchingCoralData-fih3f9ew.bin",
+          "status": 200,
+          "localBytes": 316723,
+          "remoteBytes": 316723,
+          "localHash": "d1052eca2c8e2c87b67ba262572fd8e6b240fedb2aec019e393be5646bed5d4e",
+          "remoteHash": "fb98c7ae040b858ce4480052c69c5a1052c3d283258e4cb478642e7b9f35b74f",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 453105,
+          "remoteDecodedBytes": 453105,
+          "localDecodedHash": "9c219e2c403bcecc9afef2d08c44e46db0d7723939d2ca0c224aa094d7533882",
+          "remoteDecodedHash": "9c219e2c403bcecc9afef2d08c44e46db0d7723939d2ca0c224aa094d7533882",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowContactFaunaData-DP6ZynFn.bin",
+          "localFile": "assets/shallowContactFaunaData-5HeIBBl6.bin",
+          "status": 200,
+          "localBytes": 959638,
+          "remoteBytes": 959638,
+          "localHash": "b20bf41e5b76c3b8348f5fd6ef7faac92ab2598b565cbb4eae933c1b663fe359",
+          "remoteHash": "4aa352baff0fff4aed4cfe5776d900e59950ff5e867da78ba11a5a1a94db0eab",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 1606227,
+          "remoteDecodedBytes": 1606227,
+          "localDecodedHash": "c57a08e29806c5422d14f07d50fe658266b5fe6fcbb0b20ae02e6c62d5744045",
+          "remoteDecodedHash": "c57a08e29806c5422d14f07d50fe658266b5fe6fcbb0b20ae02e6c62d5744045",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowBenthicCoralData-oRqUepTg.bin",
+          "localFile": "assets/shallowBenthicCoralData-CIGNmVEm.bin",
+          "status": 200,
+          "localBytes": 1281686,
+          "remoteBytes": 1281686,
+          "localHash": "54f776c8b4a7b7ee673e1f2a325fcb9f1155663700d55cfaf63b53a45205303b",
+          "remoteHash": "7ab95ab13ac9cda94700af26f92841e081c0d9d6d4ca3f3e46e758c7025ea260",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 1974365,
+          "remoteDecodedBytes": 1974365,
+          "localDecodedHash": "f252390c1958bfc2961de5ad5a216593708966007a8ad61dee8acc52292d0e90",
+          "remoteDecodedHash": "f252390c1958bfc2961de5ad5a216593708966007a8ad61dee8acc52292d0e90",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowNearCommunityData-6BnOB1nD.bin",
+          "localFile": "assets/shallowNearCommunityData-D3vLCK8A.bin",
+          "status": 200,
+          "localBytes": 1993458,
+          "remoteBytes": 1993458,
+          "localHash": "09974765cb779089b9eccdc851a06383ed16b4fb5738cb4b187cf105a0227768",
+          "remoteHash": "f00aeb114703f1dbe01a3d8c27bb441775ef3f9265133ca7f32411b95b2b88b0",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 3311654,
+          "remoteDecodedBytes": 3311654,
+          "localDecodedHash": "2ddfcaa9b2dd24a342fcd3e09f82dc0d911d01d6a5c69e1e92ba27148712d5c4",
+          "remoteDecodedHash": "2ddfcaa9b2dd24a342fcd3e09f82dc0d911d01d6a5c69e1e92ba27148712d5c4",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        },
+        {
+          "file": "assets/shallowLivingKitData-B4Xf1Da3.bin",
+          "localFile": "assets/shallowLivingKitData-aD3FXB8l.bin",
+          "status": 200,
+          "localBytes": 1436291,
+          "remoteBytes": 1436291,
+          "localHash": "7f4c6264a804c4409b74da4e6576209e77edf1957c72bdc52c61f8b47b65152e",
+          "remoteHash": "33a6aca6e4c0cb9e4a3702fa2fde769d33305426c1ce2638177e03bc59a567cf",
+          "localGzipHeader": "1f8b080000000000020a",
+          "remoteGzipHeader": "1f8b0800000000000203",
+          "equalCompressedBytes": false,
+          "equalAfterOnlyGzipOSByte": true,
+          "localDecodedBytes": 2434320,
+          "remoteDecodedBytes": 2434320,
+          "localDecodedHash": "ae99c2d4bfad70c8758cfa842d73e5cffb5ca04ef681e756a543a032db7408ab",
+          "remoteDecodedHash": "ae99c2d4bfad70c8758cfa842d73e5cffb5ca04ef681e756a543a032db7408ab",
+          "equalDecodedBytes": true,
+          "expectedBasis": "local-decoded-model-bytes",
+          "sameDecoded": true,
+          "sameEncoded": false,
+          "sameAfterOnlyGzipOSHeader": true
+        }
+      ]
+    },
+    "html": {
+      "samePreloadModelSet": true,
+      "differentPreloadOrder": true,
+      "equalAfterHashReferencesAndPreloadOrder": true
+    },
+    "explanation": "The eleven content-hashed model gzip payloads differ only at header offset 9 (local 0x0A, canonical remote 0x03). Decoded data is identical. Those hash changes propagate into referenced JS filenames; the HTML additionally orders the same preload resource set differently. Two canonical JS modules are identical after reference-hash tokens alone are normalized. The static geometry gzip itself is directly byte-identical.",
+    "headerReference": "https://www.rfc-editor.org/rfc/rfc1952.html#section-2.3",
+    "workflowArtifactDownload": {
+      "attempted": true,
+      "success": false,
+      "artifactId": 11812600087,
+      "name": "github-pages",
+      "error": "error downloading github-pages: error writing zip archive: unexpected EOF",
+      "retryPerformed": false,
+      "artifactByteMatchClaim": false,
+      "note": "Validation used actual canonical published references and decoded-data comparison; no workflow-artifact byte equality is claimed."
+    },
+    "allDiagnosedCanonicalChecksPassed": true
+  },
+  "runtimeSource": {
+    "count": 13,
+    "allMatch": true,
+    "checks": [
+      {
+        "file": "src/App.jsx",
+        "expected": "f4fb2548889880ee61d512a779756ad98e1bc756db3089ca99b3fc2fa3559bd1",
+        "workingTree": "f4fb2548889880ee61d512a779756ad98e1bc756db3089ca99b3fc2fa3559bd1",
+        "releasedCommit": "f4fb2548889880ee61d512a779756ad98e1bc756db3089ca99b3fc2fa3559bd1",
+        "same": true
+      },
+      {
+        "file": "src/SceneLoading.jsx",
+        "expected": "753934e644d89995b1cbb3f3c6e29ccaec54137273cb9bd6fd8eeb03f57f2968",
+        "workingTree": "753934e644d89995b1cbb3f3c6e29ccaec54137273cb9bd6fd8eeb03f57f2968",
+        "releasedCommit": "753934e644d89995b1cbb3f3c6e29ccaec54137273cb9bd6fd8eeb03f57f2968",
+        "same": true
+      },
+      {
+        "file": "src/ShallowSampleApp.jsx",
+        "expected": "b2d5cf0b3c89701d8624f2ed01e61dccb7c2469b3724b4b158fe114faba809be",
+        "workingTree": "b2d5cf0b3c89701d8624f2ed01e61dccb7c2469b3724b4b158fe114faba809be",
+        "releasedCommit": "b2d5cf0b3c89701d8624f2ed01e61dccb7c2469b3724b4b158fe114faba809be",
+        "same": true
+      },
+      {
+        "file": "src/shallowJourney.js",
+        "expected": "9313458153434064de439f266250f22a27c4fcf3619e0e0a80aa05a3060243a1",
+        "workingTree": "9313458153434064de439f266250f22a27c4fcf3619e0e0a80aa05a3060243a1",
+        "releasedCommit": "9313458153434064de439f266250f22a27c4fcf3619e0e0a80aa05a3060243a1",
+        "same": true
+      },
+      {
+        "file": "src/shallowSample.js",
+        "expected": "740fe93a3b475fa52fc43ab1b4225f25e76b0a65372b235b9797853e5cca8dbb",
+        "workingTree": "740fe93a3b475fa52fc43ab1b4225f25e76b0a65372b235b9797853e5cca8dbb",
+        "releasedCommit": "740fe93a3b475fa52fc43ab1b4225f25e76b0a65372b235b9797853e5cca8dbb",
+        "same": true
+      },
+      {
+        "file": "src/shallowSample.css",
+        "expected": "e5cfb70ff9ae88a1c5112a38493b6b6d9062f435280d8971667980bcffaa3b97",
+        "workingTree": "e5cfb70ff9ae88a1c5112a38493b6b6d9062f435280d8971667980bcffaa3b97",
+        "releasedCommit": "e5cfb70ff9ae88a1c5112a38493b6b6d9062f435280d8971667980bcffaa3b97",
+        "same": true
+      },
+      {
+        "file": "src/shallowSchooling.js",
+        "expected": "3a5fd4b5422ed85add1718b9faaf60dd61962e8a35d57f4f76c6e2e41657fbd8",
+        "workingTree": "3a5fd4b5422ed85add1718b9faaf60dd61962e8a35d57f4f76c6e2e41657fbd8",
+        "releasedCommit": "3a5fd4b5422ed85add1718b9faaf60dd61962e8a35d57f4f76c6e2e41657fbd8",
+        "same": true
+      },
+      {
+        "file": "src/ShallowNarration.jsx",
+        "expected": "f22e7ec0285ca557d3803df21e66897a7021e7627704c4f539d6e94d52b79eec",
+        "workingTree": "f22e7ec0285ca557d3803df21e66897a7021e7627704c4f539d6e94d52b79eec",
+        "releasedCommit": "f22e7ec0285ca557d3803df21e66897a7021e7627704c4f539d6e94d52b79eec",
+        "same": true
+      },
+      {
+        "file": "src/shallowNarrationTimeline.js",
+        "expected": "3b0658085039768ba6211eebbc50bff8730cca184f98a4dac05c85cf80730ac6",
+        "workingTree": "3b0658085039768ba6211eebbc50bff8730cca184f98a4dac05c85cf80730ac6",
+        "releasedCommit": "3b0658085039768ba6211eebbc50bff8730cca184f98a4dac05c85cf80730ac6",
+        "same": true
+      },
+      {
+        "file": "src/shallowNarrationPresentation.js",
+        "expected": "c5f4b91e4cfb4d312f84113cb6fe5c242cbe5ff230a53c154c60ff85b0c90625",
+        "workingTree": "c5f4b91e4cfb4d312f84113cb6fe5c242cbe5ff230a53c154c60ff85b0c90625",
+        "releasedCommit": "c5f4b91e4cfb4d312f84113cb6fe5c242cbe5ff230a53c154c60ff85b0c90625",
+        "same": true
+      },
+      {
+        "file": "src/shallowNarration.js",
+        "expected": "4d63359123f27ac70ed7b55750b02c0415ebd743e7fa4046ef9c3bc667c0df05",
+        "workingTree": "4d63359123f27ac70ed7b55750b02c0415ebd743e7fa4046ef9c3bc667c0df05",
+        "releasedCommit": "4d63359123f27ac70ed7b55750b02c0415ebd743e7fa4046ef9c3bc667c0df05",
+        "same": true
+      },
+      {
+        "file": "src/data/shallowJourneyNarration.json",
+        "expected": "a78cf164b79ba3f3425b4ef832691fb21b704a1c173bff131116f9489cd8e298",
+        "workingTree": "a78cf164b79ba3f3425b4ef832691fb21b704a1c173bff131116f9489cd8e298",
+        "releasedCommit": "a78cf164b79ba3f3425b4ef832691fb21b704a1c173bff131116f9489cd8e298",
+        "same": true
+      },
+      {
+        "file": "src/data/shallowSchoolingNarration.json",
+        "expected": "188656fdebaaf300f30e53820bc8906b90a19485253dce6fef0d150bbde5a8be",
+        "workingTree": "188656fdebaaf300f30e53820bc8906b90a19485253dce6fef0d150bbde5a8be",
+        "releasedCommit": "188656fdebaaf300f30e53820bc8906b90a19485253dce6fef0d150bbde5a8be",
+        "same": true
+      }
+    ]
+  },
+  "observedIssues": [],
+  "limits": [
+    "Normal uncleared browser cache; no controlled cold-network, mobile-device or all-device performance guarantee.",
+    "Previous Stage05 local playback predates these recordings and is a separate historical archive, not substituted for this remote verification.",
+    "A branch of the split shoal is partly occluded by the foreground reef. Existing model realism, scan edges and loading limits remain.",
+    "This is a finite neighbour-coordination demonstration with an authored route and one local stimulus, not real autonomous predation or a full food web.",
+    "The coordinated school holds its final pose after 240 seconds; this publication does not extend the finite simulation.",
+    "Narration playing events confirm media playback state and clip selection, not an independent human acoustic-quality review.",
+    "Repeated playing status events for the same media clip are preserved with per-clip counts; these events alone do not prove or exclude audible replay.",
+    "The first local-filename transport comparison retained three mismatches; canonical remote modules and decoded model data were verified separately. No equality to a downloaded workflow artifact is claimed because that download failed with unexpected EOF.",
+    "This finite publication is closed; no automatic further optimization or new assets are authorized by the archive."
+  ],
+  "rawEvidenceFiles": [
+    "output/validation/stage-05-schooling-publication/remote-60-playback.json",
+    "output/validation/stage-05-schooling-publication/remote-60-narration.json",
+    "output/validation/stage-05-schooling-publication/remote-60-console.json",
+    "output/validation/stage-05-schooling-publication/remote-240-playback.json",
+    "output/validation/stage-05-schooling-publication/remote-240-narration.json",
+    "output/validation/stage-05-schooling-publication/remote-240-console.json",
+    "output/validation/stage-05-schooling-publication/transport.json",
+    "output/validation/stage-05-schooling-publication/workflow.json",
+    "output/validation/stage-05-schooling-publication/source-hashes.json",
+    "output/validation/stage-05-schooling-publication/local-60-playback.json",
+    "output/validation/stage-05-schooling-publication/local-60-narration.json",
+    "output/validation/stage-05-schooling-publication/local-60-console.json",
+    "output/validation/stage-05-schooling-publication/cloud-comparison-preliminary.json",
+    "output/validation/stage-05-schooling-publication/runtime-reference-comparison.json",
+    "output/validation/stage-05-schooling-publication/git-source-byte-check.json"
+  ],
+  "guideFlow": {
+    "verified": true,
+    "sequence": [
+      "GitHub README original linked guide image",
+      "canonical /overview/",
+      "60-second school link",
+      "completed five-clip 60-second run",
+      "school footer full four-minute link",
+      "completed ten-clip 240-second run"
+    ],
+    "readmeImage": {
+      "width": 1440,
+      "height": 3970,
+      "loaded": true,
+      "outerLink": "https://yydshly.github.io/ocean-world/overview/"
+    },
+    "note": "The README image link was opened by clicking the rendered image; both routes were entered through visible website links. The full-route link was reached from the sixty-second footer."
+  },
+  "screenshots": [
+    {
+      "path": "docs/validation/stage-05-schooling-publication/remote-60-split.png",
+      "modelSecondApprox": 27.7666,
+      "note": "During uninterrupted sixty-second run, partly occluded split branch; initial texture readiness 9/47.",
+      "bytes": 78341,
+      "sha256": "335d2c89297db6d7b4b98d686bad06df6d9b36adc93ea059bbe38f146b8f6f51"
+    },
+    {
+      "path": "docs/validation/stage-05-schooling-publication/remote-240-narrated-reef.png",
+      "modelSecondApprox": 97.7044,
+      "note": "During uninterrupted full route, forty-seven textures prepared; shows an actual Mandarin subtitle.",
+      "bytes": 61915,
+      "sha256": "88c90efd2815d5639f6924ba2f18a5195c8f60c59a11a22d67976d48beb022c6"
+    },
+    {
+      "path": "docs/validation/stage-05-schooling-publication/remote-240-grass.png",
+      "modelSecondApprox": 239.9335,
+      "note": "Near the end of the uninterrupted full route; grass-bed view.",
+      "bytes": 71681,
+      "sha256": "e22db7df734059960fa69371744b00b30900f3f6e3b7faf39f35c093c0b5d584"
+    },
+    {
+      "path": "docs/validation/stage-05-schooling-publication/remote-guide.png",
+      "modelSecondApprox": null,
+      "note": "Actual deployed guide reached from the original README image.",
+      "bytes": 106857,
+      "sha256": "7fb3dedae542d846678003f0a5fea73f9521bbc08103803fbff22e5092517f38"
+    }
+  ],
+  "archivePolicy": {
+    "closed": true,
+    "runtimeCommit": "e5733473d226d4c3cf6a0d553fbdafb0c0716ef9",
+    "tag": "stage-05-schooling-published-20261013",
+    "documentationOnlyReceipt": true,
+    "websiteRebuiltAfterReceipt": false,
+    "note": "The final archive commit adds documentation and actual remote evidence. It does not change the deployed runtime or start a further optimization round."
+  }
+}
