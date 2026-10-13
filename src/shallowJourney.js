@@ -25,16 +25,26 @@ export function createShallowJourney(model){
     heights.push(y);
   }
   const safe=heights.map((_,i)=>Math.max(...heights.slice(Math.max(0,i-5),Math.min(samples,i+6)))+.15);
-  const groups=SHALLOW_JOURNEY_CHAPTERS.map(c=>model.agents.filter(a=>c.focus.includes(a.speciesId)));
+  // Anchor the sand observation on its nearby probing group. Averaging it with
+  // distant rays and cuttlefish pulled the visible action to the frame edge.
+  const groups=SHALLOW_JOURNEY_CHAPTERS.map((c,index)=>model.agents.filter(a=>
+    model.livingCommunities&&index===3?a.speciesId==='reef-goatfish':c.focus.includes(a.speciesId)));
+  const companionIds=[['moorish-idol','reef-parrotfish'],['blue-tang','yellow-tang','copperband-butterflyfish'],['sailfin-tang','clown-triggerfish'],['sandfish-sea-cucumber'],['white-spotted-rabbitfish'],['longfin-batfish','hawksbill-turtle']];
+  const companions=companionIds.map(ids=>model.agents.filter(a=>ids.includes(a.speciesId)));
   return {seconds:SHALLOW_JOURNEY_SECONDS,length:curve.getLength(),curve,groups,
     view(time){
       const u=THREE.MathUtils.clamp(time/SHALLOW_JOURNEY_SECONDS,0,1),p=curve.getPoint(u),n=u*(samples-1),i=Math.min(samples-2,Math.floor(n));
       p.y=THREE.MathUtils.lerp(safe[i],safe[i+1],n-i);
-      const tangent=curve.getTangent(u),target=p.clone().add(tangent.multiplyScalar(9));target.y=Math.max(model.floor(target.x,target.z)+.7,p.y-.8);
+      const tangent=curve.getTangent(u),target=p.clone().add(tangent.multiplyScalar(9));target.y=Math.max(model.floor(target.x,target.z)+(model.livingCommunities?.4:.7),p.y-(model.livingCommunities?1.55:.8));
       SHALLOW_JOURNEY_CHAPTERS.forEach((c,index)=>{
         const fadeIn=THREE.MathUtils.smoothstep(time,c.start,c.start+12),fadeOut=1-THREE.MathUtils.smoothstep(time,c.end-10,c.end);
         const members=groups[index];if(!members.length||fadeIn*fadeOut===0)return;
         const center=new THREE.Vector3();for(const a of members)center.add(new THREE.Vector3(a.position.x,a.position.y,a.position.z));center.multiplyScalar(1/members.length);
+        if(model.livingCommunities){
+          const nearby=(index===3?[]:companions[index]).filter(a=>Math.hypot(a.position.x-p.x,a.position.z-p.z)<12);
+          if(nearby.length){const lower=new THREE.Vector3();for(const a of nearby)lower.add(new THREE.Vector3(a.position.x,a.position.y,a.position.z));lower.multiplyScalar(1/nearby.length);center.lerp(lower,.28);}
+          center.y=Math.min(center.y,p.y+.35);
+        }
         const distance=p.distanceTo(center);if(distance>18||distance<2)return;
         target.lerp(center,fadeIn*fadeOut*.82);
       });

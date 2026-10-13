@@ -1,0 +1,35 @@
+{
+  "reef": {
+    "time": 0,
+    "lifeTime": 0,
+    "free": false,
+    "position": [
+      -42,
+      2.55,
+      0
+    ],
+    "returning": false
+  },
+  "sand": {
+    "time": 120,
+    "lifeTime": 120,
+    "free": false,
+    "position": [
+      -2,
+      1.6582370594661584,
+      -1
+    ],
+    "returning": false
+  },
+  "grass": {
+    "time": 164,
+    "lifeTime": 164,
+    "free": false,
+    "position": [
+      10.630923523480854,
+      1.3647609034906545,
+      0.919323090066698
+    ],
+    "returning": false
+  }
+}

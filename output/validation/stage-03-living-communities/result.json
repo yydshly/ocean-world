@@ -1,0 +1,282 @@
+{
+  "date": "2026-10-13",
+  "stage": 3,
+  "baseCommit": "ff0a70136f3e8e6f0759ec347bf1f0af42fb41d1",
+  "tag": "stage-03-living-communities-local-20261013",
+  "localOnly": true,
+  "scope": "Three authored shallow communities on the existing 240-second route; one concentrated correction then archive",
+  "playback": {
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "pixelRatio": 1.0000000298023224,
+    "duration": 240,
+    "startedAt": 38307.39999997616,
+    "resolutionHistory": [
+      {
+        "time": 0.0125,
+        "scale": 1
+      }
+    ],
+    "interruptions": [],
+    "completed": true,
+    "lastModelSecond": 240,
+    "elapsedWallSeconds": 240.0272000000238,
+    "averageFps": 108.31910018745664,
+    "p95FrameMs": 12.60000000000582,
+    "maxFrameMs": 141.70000000001164,
+    "uninterrupted": true
+  },
+  "navigationToReadyMs": 6004.799999952316,
+  "environment": {
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "context": "WebGL2RenderingContext"
+  },
+  "routeLengthM": 90.08271084770561,
+  "communities": {
+    "habitat": {
+      "revision": "three-living-communities-v1",
+      "before": {
+        "grass": 333,
+        "rubble": 220,
+        "rocks": 85
+      },
+      "after": {
+        "grass": 273,
+        "rubble": 259,
+        "rocks": 85
+      },
+      "reefs": {
+        "moved": [
+          {
+            "id": "sample-live-slope-near-0",
+            "role": "forward-reef-spur",
+            "before": {
+              "x": -30,
+              "y": -1.4315198110471108,
+              "z": 8.45,
+              "rotation": 0
+            },
+            "after": {
+              "x": -31.7,
+              "y": -1.409721163197748,
+              "z": 6.4,
+              "rotation": -0.34
+            },
+            "distance": 2.6631747971171538
+          },
+          {
+            "id": "sample-live-slope-near-1",
+            "role": "recessed-reef-pocket",
+            "before": {
+              "x": -23.2,
+              "y": -1.4411174717090685,
+              "z": 8.60146477726542,
+              "rotation": 0.024088954635429826
+            },
+            "after": {
+              "x": -24,
+              "y": -1.4394596178540313,
+              "z": 11.1,
+              "rotation": 0.29
+            },
+            "distance": 2.6234858984270026
+          },
+          {
+            "id": "sample-live-slope-near-5",
+            "role": "open-sand-gateway",
+            "before": {
+              "x": 4,
+              "y": -0.8181031784681334,
+              "z": 8.277393630560635,
+              "rotation": 0.005377999702195388
+            },
+            "after": {
+              "x": 4.8,
+              "y": -0.712712697743138,
+              "z": 10.5,
+              "rotation": 0.41
+            },
+            "distance": 2.3621979327466263
+          },
+          {
+            "id": "sample-live-slope-tail-0",
+            "role": "meadow-reef-edge",
+            "before": {
+              "x": 36,
+              "y": -1.0292288766345357,
+              "z": 8.45,
+              "rotation": 0
+            },
+            "after": {
+              "x": 36.9,
+              "y": -0.8904637509446036,
+              "z": 12.2,
+              "rotation": -0.32
+            },
+            "distance": 3.8564880396547325
+          }
+        ],
+        "declined": []
+      },
+      "meadow": {
+        "bounds": {
+          "minX": 22,
+          "maxX": 47,
+          "minZ": 3.5,
+          "maxZ": 15.4
+        },
+        "clumps": 123,
+        "channelWidthM": 1.64,
+        "grassBatches": 7
+      },
+      "sand": {
+        "edgeFragments": 94,
+        "openLane": {
+          "minX": 7,
+          "maxX": 25,
+          "minZ": -1.5,
+          "maxZ": 4.8
+        }
+      },
+      "assets": "existing-licensed-reef-formations-and-project-authored-grass-rubble",
+      "constructionMs": 222.79999995231628
+    },
+    "life": {
+      "version": "three-living-communities-v1",
+      "animalCount": 293,
+      "participants": 164,
+      "kinds": {
+        "school": 118,
+        "grass-edge": 18,
+        "reef-hold": 19,
+        "sand-probe": 9
+      },
+      "footprints": [
+        {
+          "id": "shallow-reef-goatfish-208",
+          "x": 12.2,
+          "z": 0.5000000000000004,
+          "r": 0.95,
+          "habitat": "sand"
+        },
+        {
+          "id": "shallow-reef-goatfish-209",
+          "x": 12.2,
+          "z": -1.6999999999999997,
+          "r": 0.95,
+          "habitat": "sand"
+        },
+        {
+          "id": "shallow-reef-goatfish-210",
+          "x": 10,
+          "z": 0.5000000000000004,
+          "r": 0.95,
+          "habitat": "sand"
+        },
+        {
+          "id": "shallow-reef-goatfish-211",
+          "x": 14.399999999999999,
+          "z": 0.5000000000000004,
+          "r": 0.95,
+          "habitat": "sand"
+        },
+        {
+          "id": "shallow-reef-goatfish-212",
+          "x": 12.2,
+          "z": 2.7000000000000006,
+          "r": 0.95,
+          "habitat": "sand"
+        },
+        {
+          "id": "shallow-reef-goatfish-213",
+          "x": 10,
+          "z": -1.6999999999999997,
+          "r": 0.95,
+          "habitat": "sand"
+        },
+        {
+          "id": "shallow-reef-goatfish-214",
+          "x": 14.399999999999999,
+          "z": -1.6999999999999997,
+          "r": 0.95,
+          "habitat": "sand"
+        },
+        {
+          "id": "shallow-reef-goatfish-215",
+          "x": 10,
+          "z": 2.7000000000000006,
+          "r": 0.95,
+          "habitat": "sand"
+        },
+        {
+          "id": "shallow-reef-goatfish-216",
+          "x": 14.399999999999999,
+          "z": 2.7000000000000006,
+          "r": 0.95,
+          "habitat": "sand"
+        }
+      ],
+      "limits": "Authored school coordination, sand probing and habitat pauses; no resource consumption or full agent avoidance."
+    }
+  },
+  "narration": {
+    "playingClipIds": [
+      "open-water",
+      "reef-edge",
+      "reef-entry",
+      "reef-sand",
+      "sand-life",
+      "seagrass"
+    ],
+    "failedEvents": []
+  },
+  "console": [],
+  "tests": {
+    "distinctPassed": 21,
+    "finalCameraIntegrationRerunPassed": 4,
+    "fullRepository": false
+  },
+  "buildSeconds": 13.57,
+  "sourceHashesUnchanged": {
+    "src/ShallowSampleApp.jsx": "487a18e20bfd9e88b797233d9760406151cf831869de7e3f787df8dd690d974c",
+    "src/shallowJourney.js": "31afc96bba8ee93656daabf1a09f473ea37f39d618c1a19c6a264e7eb6cac934",
+    "src/shallowSample.js": "3b1f9aa2dbc38097e81088936cad949304a4205cca8d91bc88499daf5d840e62",
+    "src/shallowJourneyLife.js": "62b7633ac9a8f5876c0758bdeeb3e29e22ee2c32353d06ee445a257d696308dd",
+    "src/shallowJourneyHabitat.js": "0a2b8a887122bc29a58786b0e703a393befde89fd5c2c704e19cd16fa8ad25f5",
+    "src/world/ShallowSampleScene.js": "0f44dbb527655a13e84eac28ba8c7b218e958ce21dc19b57ff84dd536beb3862",
+    "src/world/ShallowJourneyActivity.js": "22318b9b6937694cc422d6faa8c808075e051471f0bfbf54ec15b0c4b0884931",
+    "src/world/ShallowJourneyAnimalAppearance.js": "86480e0424088c25c61e2b429b05ba66798824550277a845b705d2e0b27e9006",
+    "dist/client/assets/ShallowSampleApp-C5tHsVPb.js": "08e4888adcbdbd3481c6d30128575b36ed46a27089704dad41cc546463fbf43e"
+  },
+  "concentratedCorrection": "Sand chapter follows nearby goatfish, excluding rear rays, cuttlefish and remote companion averaging",
+  "visualStatus": "Local prototype milestone. Hard reef edges, legacy animal style and weak distant-animal readability remain; user acceptance pending.",
+  "screenshots": {
+    "final-reef.png": {
+      "time": 24,
+      "mode": "post-playback paused"
+    },
+    "final-sand.png": {
+      "time": 144,
+      "mode": "post-playback paused"
+    },
+    "final-grass.png": {
+      "time": 190.95,
+      "mode": "uninterrupted final playback"
+    },
+    "beforeAfterTimes": [
+      0,
+      120,
+      164
+    ],
+    "comparison": "Same route times, changed target direction/layout; not identical camera material A/B"
+  },
+  "limitations": [
+    "Authored deterministic group behaviour, no new food web or reproduction",
+    "No full inter-animal collision avoidance",
+    "Existing licensed assets and original content only; no downloads/API calls",
+    "Navigation has existing local cache; 6.005 seconds exceeds prior five-second target",
+    "RTX4070 Laptop, fixed 1280x720 DPR1; not mobile, all-device or online validation"
+  ]
+}

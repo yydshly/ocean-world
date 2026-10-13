@@ -1,4 +1,6 @@
 import {ShallowContactFauna} from './ShallowContactFauna.js';
+import {ShallowJourneyAnimalAppearance} from './ShallowJourneyAnimalAppearance.js';
+import {ShallowJourneyActivity} from './ShallowJourneyActivity.js';
 import {ShallowSedimentContact} from './ShallowSedimentContact.js';
 import * as THREE from 'three';
 import { OceanAnimals } from './OceanAnimals.js';
@@ -55,6 +57,7 @@ class SampleAnimalRenderer {
     this.templates=new OceanAnimals(shallowSampleSpeciesCatalog);this.natural=new ShallowNaturalFishAssets();this.heroes=new ShallowHeroAnimals();this.artists=new ShallowArtistFish();
     this.contactFauna=new ShallowContactFauna();this.cephalopods=new ShallowCephalopodAssets();this.communityFish=new ShallowCommunityFishAssets();this.speeds=new Map();this.batches=[];this.templatesAgents=[];
     this.sourcedFish=new ShallowSourcedFishAssets();this.cohesive=new ShallowCohesiveFish();this.benthic=new ShallowBenthicAssets(benthicCorals.material('tube-sponge'));
+    this.journeyAppearance=model.livingCommunities?new ShallowJourneyAnimalAppearance():null;
     this.sourceTurtle=new ShallowSourceTurtle();this.openCommunity=openCommunity;this.nearCommunity=nearCommunity;
     const species=new Map();
     for(const a of model.agents){if(!species.has(a.speciesId))species.set(a.speciesId,[]);species.get(a.speciesId).push(a);}
@@ -68,7 +71,7 @@ class SampleAnimalRenderer {
     for(const [id,agents] of species){
       // Only construct the selected family. Unused legacy bodies otherwise
       // keep allocating geometry and animating invisibly throughout the tour.
-      const nearFish=this.nearCommunity.create(id),cohesive=nearFish?null:this.cohesive.create(id);let selected=nearFish??cohesive;
+      const journeyAsset=this.journeyAppearance?.create(id),nearFish=journeyAsset?null:this.nearCommunity.create(id),cohesive=journeyAsset||nearFish?null:this.cohesive.create(id);let selected=journeyAsset??nearFish??cohesive;
       const choose=assets=>selected?null:(selected=assets.create(id));
       const contactFauna=choose(this.contactFauna),benthic=choose(this.benthic),openFish=choose(this.openCommunity),sourceTurtle=choose(this.sourceTurtle),artist=choose(this.artists),hero=choose(this.heroes),cephalopod=choose(this.cephalopods),community=choose(this.communityFish),sourced=choose(this.sourcedFish),natural=choose(this.natural),
         object=selected?.root??this.templates.getObject(`sample-template-${id}`);object.updateMatrixWorld(true);
@@ -80,6 +83,7 @@ class SampleAnimalRenderer {
         if(benthic)a.clearance.radius=benthic.motionRadius*a.sizeM;
         if(contactFauna)a.clearance.radius=contactFauna.motionRadius*a.sizeM;
         if(cohesive){a.clearance.radius+=.065*a.sizeM;a.clearance.bottom+=.035*a.sizeM;}
+        if(journeyAsset){a.clearance.radius+=journeyAsset.motionPadding.radius*a.sizeM;a.clearance.bottom+=journeyAsset.motionPadding.bottom*a.sizeM;}
         if(hero){a.clearance.radius+=.045*a.sizeM;a.clearance.bottom+=(hero.kind===1?.15:hero.kind===2?.045:0)*a.sizeM;}
         if(cephalopod){a.clearance.radius+=cephalopod.motionPadding.radius*a.sizeM;a.clearance.bottom+=cephalopod.motionPadding.bottom*a.sizeM;}
         if(community){const pad=SHALLOW_COMMUNITY_MOTION_PADDING[id]*a.sizeM;a.clearance.radius+=pad;a.clearance.bottom+=pad;}}
@@ -97,12 +101,12 @@ class SampleAnimalRenderer {
         if(child.customDepthMaterial)mesh.customDepthMaterial=child.customDepthMaterial;
         if(hero){const phases=new Float32Array(agents.length*2);agents.forEach((a,i)=>phases.set([a.phase+i*2.39996,hero.kind],i*2));child.geometry.setAttribute('sampleHero',new THREE.InstancedBufferAttribute(phases,2));}
         if(artist)child.geometry.setAttribute('artistPhase',new THREE.InstancedBufferAttribute(Float32Array.from(agents,a=>a.phase%4),1));
-        if(natural||sourced||openFish||cohesive||nearFish){
+        if(natural||sourced||openFish||cohesive||nearFish||journeyAsset){
           const waveX=new Float32Array(child.geometry.attributes.position.count),p=new THREE.Vector3();
           for(let v=0;v<waveX.length;v++)waveX[v]=p.fromBufferAttribute(child.geometry.attributes.position,v).applyMatrix4(child.matrixWorld).x;
           child.geometry.setAttribute('sampleSwimX',new THREE.BufferAttribute(waveX,1));
           const phases=new Float32Array(agents.length*3);
-          agents.forEach((a,i)=>phases.set([a.phase+i*2.39996,4.1+(i%7)*.13,(sourced||openFish||cohesive||nearFish)?.025:.022+(i%5)*.002],i*3));
+          agents.forEach((a,i)=>phases.set([a.phase+i*2.39996,4.1+(i%7)*.13,(sourced||openFish||cohesive||nearFish||journeyAsset)?.025:.022+(i%5)*.002],i*3));
           child.geometry.setAttribute('sampleSwim',new THREE.InstancedBufferAttribute(phases,3));
         }
         mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);mesh.frustumCulled=true;
@@ -113,7 +117,7 @@ class SampleAnimalRenderer {
       // A generous motion margin bounds authored waves; it changes visibility
       // culling only, never the animal's physical dimensions or clearance.
       const displayRadius=(Math.max(box.min.length(),box.max.length())+.25)*Math.max(...agents.map(a=>a.sizeM));
-      this.batches.push({id,agents,parts,displayRadius,displayBox:new THREE.Box3(),displaySphere:new THREE.Sphere(),template:templateBySpecies.get(id),assetFamily:contactFauna?'contact-fauna':nearFish?'source-reef-fish':cohesive?'cohesive-fish':cephalopod?'cephalopod':community?'community-fish':null});
+      this.batches.push({id,agents,parts,displayRadius,displayBox:new THREE.Box3(),displaySphere:new THREE.Sphere(),template:templateBySpecies.get(id),assetFamily:journeyAsset?journeyAsset.assetFamily:contactFauna?'contact-fauna':nearFish?'source-reef-fish':cohesive?'cohesive-fish':cephalopod?'cephalopod':community?'community-fish':null});
     }
     this.matrix=new THREE.Matrix4();this.pose=new THREE.Matrix4();this.position=new THREE.Vector3();this.scale=new THREE.Vector3();this.quaternion=new THREE.Quaternion();this.rotation=new THREE.Euler(0,0,0,'YXZ');
   }
@@ -126,6 +130,7 @@ class SampleAnimalRenderer {
     }
     this.templates.update(this.templatesAgents,time);
     this.contactFauna.update(time);this.natural.update(time,this.speeds);this.cephalopods.update(time,this.speeds);this.communityFish.update(time,this.speeds);this.benthic.update(time,this.speeds);
+    this.journeyAppearance?.update(time,this.speeds);
     this.heroes.update(time);
     this.artists.update(time);this.openCommunity.update(time);this.nearCommunity.update(time);
     this.sourcedFish.update(time,this.speeds);this.cohesive.update(time,this.speeds);
@@ -141,7 +146,7 @@ class SampleAnimalRenderer {
     }
     for(const batch of this.batches)for(const {mesh}of batch.parts)mesh.instanceMatrix.needsUpdate=true;
   }
-  dispose(){for(const b of this.batches)for(const {mesh}of b.parts){mesh.removeFromParent();mesh.dispose();}this.templates.dispose();this.contactFauna.dispose();this.natural.dispose();this.heroes.dispose();this.artists.dispose();this.cephalopods.dispose();this.communityFish.dispose();this.sourcedFish.dispose();this.sourceTurtle.dispose();this.openCommunity.dispose();this.cohesive.dispose();this.benthic.dispose();}
+  dispose(){for(const b of this.batches)for(const {mesh}of b.parts){mesh.removeFromParent();mesh.dispose();}this.templates.dispose();this.contactFauna.dispose();this.natural.dispose();this.heroes.dispose();this.artists.dispose();this.cephalopods.dispose();this.communityFish.dispose();this.sourcedFish.dispose();this.sourceTurtle.dispose();this.openCommunity.dispose();this.cohesive.dispose();this.benthic.dispose();this.journeyAppearance?.dispose();}
 }
 
 function causticMaterial(material,clock,strength=.13) {
@@ -189,7 +194,7 @@ export class ShallowSampleScene {
     this.reefTextureDesaturation=.92;
     this.resources.push(sand,rockMaterial);
     mark('materials');this.buildBed(sand);mark('bed');this.buildRocks(rockMaterial);mark('rocks');this.buildPlants();mark('plants');
-    this.animals=new SampleAnimalRenderer(this.model,this.openCommunity,this.nearCommunity,this.benthicCorals);this.scene.add(this.animals.root);mark('animals');this.update(0);mark('firstUpdate');
+    this.animals=new SampleAnimalRenderer(this.model,this.openCommunity,this.nearCommunity,this.benthicCorals);this.scene.add(this.animals.root);if(this.model.livingCommunities){this.activity=new ShallowJourneyActivity(this.model);this.scene.add(this.activity.root);}mark('animals');this.update(0);mark('firstUpdate');
   }
   own(resource){this.resources.push(resource);return resource;}
   buildBed(material){
@@ -388,7 +393,7 @@ vec3 roughP=sampleWorld*.32;roughnessFactor=clamp(.72+.28*(texture2D(sampleRockR
     material.customProgramCacheKey=()=>`sample-coastal-pbr-${!!normalMap}-${!!roughMap}`;material.needsUpdate=true;
   }
   update(time,autoCamera=true,cameraView=null){
-    if(this.disposed)return;this.clock.value=time;updateShallowSample(this.model,time);this.animals.update(time);
+    if(this.disposed)return;this.clock.value=time;updateShallowSample(this.model,time);this.animals.update(time);this.activity?.update(time);
     if(autoCamera){const view=cameraView??sampleShallowCamera(this.model,time);this.camera.position.copy(view.position);this.camera.lookAt(view.target);}
     const p=this.camera.position;this.sun.target.position.set(p.x+6,0,p.z);this.sun.position.set(p.x-17,28,p.z-14);
     this.updateView();
@@ -403,7 +408,7 @@ vec3 roughP=sampleWorld*.32;roughnessFactor=clamp(.72+.28*(texture2D(sampleRockR
   }
   get summary(){return {duration:this.model.seconds,animals:this.model.agents.length,species:new Set(this.model.agents.map(a=>a.speciesId)).size,
     reefs:this.model.rocks.length,colonies:this.model.corals.length,grassPatches:this.model.grass.length};}
-  dispose(){if(this.disposed)return;this.disposed=true;this.scanController.abort();this.animals.dispose();this.nearCommunity.dispose();this.benthicCorals.dispose();this.sun.shadow.dispose();
+  dispose(){if(this.disposed)return;this.disposed=true;this.scanController.abort();this.activity?.dispose();this.animals.dispose();this.nearCommunity.dispose();this.benthicCorals.dispose();this.sun.shadow.dispose();
     for(const batch of this.coralBatches){batch.mesh.dispose();batch.farMesh.dispose();}
     for(const mesh of this.skeletonMeshes)mesh.dispose();this.skeletonHandle?.dispose();this.scene.clear();for(const r of new Set(this.resources))r.dispose();for(const t of this.textures)t.dispose();}
 }

@@ -11,6 +11,8 @@ import {refitSampleSoftBedScenery} from './shallowSampleSoftBedFit.js';
 import {arrangeSampleSchoolPassages} from './shallowSampleSchoolPassages.js';
 import {arrangeNearReefAssets} from './world/ShallowNearCommunity.js';
 import preparedCover from './world/shallowPreparedCover.js';
+import {composeJourneyHabitats} from './shallowJourneyHabitat.js';
+import {initializeJourneyLife,evaluateJourneyLife} from './shallowJourneyLife.js';
 
 
 export const SHALLOW_SAMPLE_SECONDS = 75;
@@ -247,6 +249,13 @@ export function createShallowSample(seed = 55, options = {}) {
   if(model.preparedCover&&preparedCover.scenery.attachedReef)model.attachedReef=structuredClone(preparedCover.scenery.attachedReef);
   else model.attachedReef=[]; // Whole bank assets replace the scattered fill layer.
   coralBins=indexRows([...corals,...model.attachedReef],c=>c.radius);
+  if(options.livingCommunities){
+    model.livingCommunities=true;
+    model.rebuildSurfaceIndices=()=>{rockBins=indexRows(rocks,r=>Math.hypot(r.scale.x,r.scale.z)/2);coralBins=indexRows([...corals,...model.attachedReef],c=>c.radius);};
+    initializeJourneyLife(model);
+    composeJourneyHabitats(model);
+    model.rebuildSurfaceIndices();
+  }
   updateShallowSample(model,0);
   return model;
 }
@@ -272,6 +281,8 @@ export function sampleAnimalPosition(model, agent, time, withSupport=true) {
     x=a.schoolCenter.x+rx*Math.cos(groupTime)+ox+drift;
     z=a.schoolCenter.z+rz*Math.sin(groupTime)+oz+cross;
   }
+  const behavior=a.journeyLife?evaluateJourneyLife(a,time,{x,z,lift:a.lift,vertical:a.reefPatrol?a.reefPatrol.vertical*Math.sin(t)*Math.sin(t):.12*Math.sin(t*.7)}):null;
+  if(behavior){x=behavior.x;z=behavior.z;}
   if(!withSupport)return {x,z};
   const r=a.clearance?.radius ?? a.sizeM*.65;
   // Conservative whole-body clearance over bed/rock/colonies. This scene has
@@ -281,7 +292,8 @@ export function sampleAnimalPosition(model, agent, time, withSupport=true) {
   support=Math.max(support,a.reefPatrol?.supportCeiling??-Infinity);
   const swimming=a.mode==='school'||a.mode==='cruise';
   const vertical=a.reefPatrol?a.reefPatrol.vertical*Math.sin(t)*Math.sin(t):.12*Math.sin(t*.7);
-  const position={x,z,y:support+(a.clearance?.bottom??a.sizeM*.15)+(swimming?a.lift+(a.schoolVertical??0)+vertical:.012)};
+  const position={x,z,y:support+(a.clearance?.bottom??a.sizeM*.15)+(swimming?(behavior?.lift??a.lift)+(a.schoolVertical??0)+(behavior?.vertical??vertical)+(behavior?.pitchClearance??0):.012)};
+  if(behavior)position.journeyPose=behavior;
   if(a.mode==='fixed')a.fixedSamplePosition={...position};return position;
 }
 
@@ -296,6 +308,7 @@ export function updateShallowSample(model,time) {
     a.position=now; a.velocity={x:(next.x-now.x)/.02,y:dy,z:(next.z-now.z)/.02};
     if(a.mode!=='fixed') a.heading=Math.atan2(a.velocity.z,a.velocity.x);
     a.pitch=a.reefPatrol?.behavior==='dip'?clamp(Math.atan2(a.velocity.y,Math.hypot(a.velocity.x,a.velocity.z)),-.22,.22):0;
+    if(now.journeyPose){const b=now.journeyPose;a.pitch=b.pitch??a.pitch;if(Number.isFinite(b.heading))a.heading=b.heading;a.state=b.state;a.journeyActivity=b.activity;a.probeStrength=b.probeStrength??0;delete now.journeyPose;}
     a.timeSec=time;
   }
 }

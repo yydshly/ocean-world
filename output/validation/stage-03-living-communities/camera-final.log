@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: three communities retain the finite population and opt out of the 75-second sample
+ok 1 - three communities retain the finite population and opt out of the 75-second sample
+  ---
+  duration_ms: 9.1413
+  type: 'test'
+  ...
+# Subtest: actual renderer selects five differentiated animal families and one bounded sediment response
+ok 2 - actual renderer selects five differentiated animal families and one bounded sediment response
+  ---
+  duration_ms: 0.5132
+  type: 'test'
+  ...
+# Subtest: full journey has continuous camera motion and supported animal bodies in the new habitats
+ok 3 - full journey has continuous camera motion and supported animal bodies in the new habitats
+  ---
+  duration_ms: 3087.6495
+  type: 'test'
+  ...
+# Subtest: six chapters retain readable-sized actual focus animals throughout observation windows
+ok 4 - six chapters retain readable-sized actual focus animals throughout observation windows
+  ---
+  duration_ms: 1150.6001
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10144.8591
