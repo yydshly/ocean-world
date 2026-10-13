@@ -22,3 +22,12 @@
 .journey-eyebrow{display:block;font-size:10px;letter-spacing:1px;color:#bfd2cb}.journey-guide strong{display:block;font-size:17px;font-weight:500;margin-top:7px}.journey-guide p{font-size:11px;line-height:1.7;margin:7px 0;color:#dce9df}.journey-guide small{font-size:10px;color:#aac7c1}.journey-movement{display:flex;gap:5px;margin-top:10px}.journey-movement button{padding:8px 5px;background:#e1e7ca;border:0;border-radius:4px;color:#1c4a4c;touch-action:none}
 .sample-canvas:focus-visible{outline:2px solid #dbe4be;outline-offset:-3px}
 @media(max-width:700px){.shallow-journey .sample-header nav{display:flex;gap:4px;font-size:0}.shallow-journey .sample-header a{font-size:10px;padding:6px}.shallow-journey .sample-community{display:none}.shallow-journey .sample-controls{width:calc(100% - 24px)}.journey-chapters{gap:2px}.journey-chapters button{font-size:10px}.journey-guide{left:18px;bottom:calc(var(--sample-panel-height,220px) + 28px);max-width:210px;padding:9px 12px}.journey-guide p{margin:4px 0}.shallow-journey .sample-title h1{font-size:19px}.shallow-journey .sample-title{max-width:320px}}
+
+/* Narration stays in the measured footer so captions never cover its controls. */
+.journey-narration{border-top:1px solid #d9ece226;margin-top:11px;padding-top:10px}
+.narration-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:11px;color:#d3e1dc}
+.narration-actions button{background:#dbe4be;color:#214a50;border:0;border-radius:5px;font-size:12px;padding:8px 12px;cursor:pointer}
+.narration-actions button:disabled{opacity:.4;cursor:default}.narration-actions button[aria-pressed=true]{background:#ffffff14;color:#eaf1e8;border:1px solid #dae6dc35}
+.narration-actions label{display:flex;align-items:center;gap:5px}.narration-actions input[type=range]{width:75px;accent-color:#dbe4be}.narration-actions input[type=checkbox]{accent-color:#dbe4be}.narration-actions>span{font-size:10px;color:#a9c7c0}
+.narration-caption{font-size:13px;line-height:1.75;margin:10px 0 0;color:#f3f3df;max-height:100px;overflow:auto}
+@media(max-width:700px){.narration-actions{gap:8px}.narration-actions>span{width:100%}.narration-caption{font-size:12px;line-height:1.65;max-height:100px}.shallow-journey:has(.narration-caption) .journey-guide{display:none}}

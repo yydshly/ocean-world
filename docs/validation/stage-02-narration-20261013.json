@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-13",
+  "scope": "Stage02 local Chinese narration addendum; current authored240s journey only",
+  "provider": "MiniMax",
+  "model": "speech-2.8-hd",
+  "voice": "Chinese (Mandarin)_Gentleman",
+  "clips": 6,
+  "audioSeconds": 107.68,
+  "audioBytes": 1733112,
+  "tests": {
+    "uniqueRelated": 15,
+    "controller": 10,
+    "audioAssets": 1,
+    "route": 4,
+    "fullSuite": false
+  },
+  "build": {
+    "passed": true,
+    "seconds": 12.93
+  },
+  "limitations": [
+    "Narration only on shallow-journey; old75s/director/life entries unchanged",
+    "Subjective voice tone and pronunciation await user listening",
+    "Synthetic narration and authored animation are not scientific ecosystem predictions",
+    "Prior scene realism and initial-loading limits retained; no remote deploy"
+  ],
+  "playback": {
+    "speed": 1,
+    "width": 803.3333740234375,
+    "height": 871.3333740234375,
+    "pixelRatio": 1.5,
+    "duration": 240,
+    "startedAt": 29705.899999976158,
+    "resolutionHistory": [
+      {
+        "time": 0.016899999999997816,
+        "scale": 1
+      }
+    ],
+    "interruptions": [],
+    "completed": true,
+    "lastModelSecond": 240,
+    "elapsedWallSeconds": 240.09280000002386,
+    "averageFps": 109.39910245176084,
+    "p95FrameMs": 12.60000000000582,
+    "maxFrameMs": 208.39999999999418,
+    "uninterrupted": true
+  },
+  "startupMs": 4070,
+  "navigationToReadyMs": 4799.600000023842,
+  "environment": {
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "context": "WebGL2RenderingContext"
+  },
+  "narration": {
+    "allSixClipsPlayed": true,
+    "errorsOrBlocked": false,
+    "defaultOff": true,
+    "initialPass": "Stopped at194s after identifying slight clipped endings; evidence retained",
+    "correction": "Bounded0.75s natural audio tail in quiet gaps; explicit seeks and suspension cancel it",
+    "controls": "Browser pause/seek/speed/free/return/captions/volume, 390x844 layout; suspension/error/race cases also tested with fake media"
+  },
+  "consoleErrorsWarnings": []
+}

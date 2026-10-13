@@ -38,7 +38,7 @@ const a=(href,text,cls='')=>`<a class="${cls}" href="${esc(href)}" target="_blan
 const poster=`
 <main id="poster">
  <header class="masthead"><strong>TIDAL <span>海底世界</span></strong><span>产品全景 · 冻结基线 · 2026.10.12</span></header>
- <aside class="agreement"><h3>阶段02 · 完整浅海体验（本地验收归档）</h3><p>4分钟穿过礁谷、沙道与草床，沿六段路线观察现有动物群落。可随时接管，在这片有限海域内移动，再平滑返回巡游。</p><p>${a(links.journey,'进入4分钟浅海体验','entry-link')} · 本段一次准备，无途中跨区重载；下面的原版引导图与75秒数据保留历史含义。</p></aside>
+ <aside class="agreement"><h3>阶段02 · 完整浅海体验（本地验收归档）</h3><p>4分钟穿过礁谷、沙道与草床，沿六段路线观察现有动物群落，点击“开启讲解”可听中文旁白并查看同步字幕。可随时接管，在这片有限海域内移动，再平滑返回巡游。</p><p>${a(links.journey,'进入4分钟浅海体验','entry-link')} · 本段一次准备，无途中跨区重载；下面的原版引导图与75秒数据保留历史含义。</p></aside>
  <section class="hero">
   <div class="hero-copy"><span class="eyebrow">PRODUCT ATLAS / 01</span><h1>一片可观看、<br>可探索、<br>可观察生命的海。</h1><p>目标是纪录片式的海底世界。<br>冻结原型已上线，<br>可直接观看样板与探索海域。</p><div class="hero-status">当前定位 <b>已上线 · 可演示与探索的原型</b></div></div>
   <figure class="hero-image"><img src="images/reef.png" alt="最终浅海样板24秒实景，鱼群在自然礁体与珊瑚上方游动"><figcaption><span class="dot"></span>真实浏览器画面 · 最终浅海样板 / 24 秒 / 2026-10-12</figcaption></figure>

@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { ShallowSampleScene } from './world/ShallowSampleScene.js';
 import { SHALLOW_SAMPLE_SECONDS, shallowSampleChapter } from './shallowSample.js';
 import './shallowSample.css';
+import {ShallowNarration} from './ShallowNarration.jsx';
 import {createShallowJourney,shallowJourneyChapter,SHALLOW_JOURNEY_SECONDS,SHALLOW_JOURNEY_CHAPTERS,constrainShallowExploration} from './shallowJourney.js';
 import { createShallowPlaybackMetrics } from './shallowSamplePlayback.js';
 import {prepareShallowRenderer} from './world/prepareShallowRenderer.js';
@@ -23,7 +24,7 @@ export function ShallowSampleApp({journey=false}){
     const mount=canvas.current;let renderer,world,controls,frame,observer,disposed=false,last=0,lastUi=0;
     const pixelRatio=Math.min(window.devicePixelRatio||1,1.5),cadence={samples:[],slow:0,stable:0,frames:0,scale:1};
     const diagnostics=createShallowPlaybackMetrics(),metrics=diagnostics.metrics,startup=performance.now();
-    const state={time:0,lifeTime:0,playing:false,speed:1,free:false,ready:false,dirty:true,keys:new Set(),nudges:[]};
+    const state={time:0,seekRevision:0,lifeTime:0,playing:false,speed:1,free:false,ready:false,dirty:true,keys:new Set(),nudges:[]};
     let route,returnView=null;
     const initialize=async()=>{
       renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
@@ -52,7 +53,7 @@ export function ShallowSampleApp({journey=false}){
       observer=new ResizeObserver(resize);observer.observe(mount);resize();
       const startRun=()=>{const {width,height}=mount.getBoundingClientRect();diagnostics.start(performance.now(),{speed:state.speed,width,height,pixelRatio,duration});};
       const updateWorld=()=>world.update(journey?state.lifeTime:state.time,!state.free,journey?route.view(state.time):undefined);
-      runtime.current={state,diagnostics,startRun,seek(value){diagnostics.interrupt('seek');state.time=THREE.MathUtils.clamp(value,0,duration);state.lifeTime=state.time;returnView=null;updateWorld();state.dirty=true;setTime(state.time);},
+      runtime.current={state,diagnostics,startRun,narrationSnapshot:()=>({time:state.time,seekRevision:state.seekRevision,playing:state.playing,speed:state.speed,free:state.free,returning:!!returnView,ready:state.ready}),seek(value){diagnostics.interrupt('seek');state.seekRevision++;state.time=THREE.MathUtils.clamp(value,0,duration);state.lifeTime=state.time;returnView=null;updateWorld();state.dirty=true;setTime(state.time);},
         observe(value){
           if(value)diagnostics.interrupt('free-observation');state.free=value;state.dirty=true;state.keys.clear();state.nudges.length=0;controls.enabled=value;
           if(value){state.resumePlaying=state.playing;if(journey){state.playing=false;setPlaying(false);}controls.target.copy(world.camera.position).add(world.camera.getWorldDirection(new THREE.Vector3()).multiplyScalar(8));controls.update();}
@@ -177,6 +178,7 @@ export function ShallowSampleApp({journey=false}){
         <button onClick={observe} aria-pressed={free} disabled={!ready||!!error}>{free?'返回巡游镜头':journey?'接管探索':'自由观察'}</button><span>{free?journey?'WASD移动 · 拖动转向':'拖动旋转 · 滚轮靠近':time>=duration?'巡游完成，可自由观察这片海床':'礁谷 → 沙道 → 草床'}</span>
         {lastRun?.completed&&<span>最近完整播放记录 {lastRun.averageFps.toFixed(1)} FPS · {lastRun.elapsedWallSeconds.toFixed(1)} 秒{!lastRun.uninterrupted?' · 含操作中断':''}</span>}
         {lastRun?.completed&&<button onClick={downloadMetrics}>下载播放数据</button>}</div>
+      {journey&&<ShallowNarration runtime={runtime} ready={ready&&!error} onRestart={restart}/>}
     </footer>
   </main>;
 }
