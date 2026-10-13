@@ -12,9 +12,14 @@ import {loadPreparedShallowGeometry} from './world/preparedShallowGeometry.js';
 
 export function ShallowSampleApp({journey=false}){
   const duration=journey?SHALLOW_JOURNEY_SECONDS:SHALLOW_SAMPLE_SECONDS;
-  const [location,setLocation]=useState(null);
+  const [location,setLocation]=useState(null),[focused,setFocused]=useState(journey);
   const panel=useRef(null),canvas=useRef(null),runtime=useRef(null),[time,setTime]=useState(0),[playing,setPlaying]=useState(true),
     [speed,setSpeed]=useState(1),[free,setFree]=useState(false),[summary,setSummary]=useState(null),[ready,setReady]=useState(false),[error,setError]=useState('');
+  useEffect(()=>{
+    if(!journey)return;
+    const expand=e=>{if(e.key==='Escape')setFocused(false);};
+    window.addEventListener('keydown',expand);return()=>window.removeEventListener('keydown',expand);
+  },[journey]);
   useEffect(()=>{
     if(!journey||!panel.current)return;
     const footer=panel.current,measure=()=>footer.parentElement.style.setProperty('--sample-panel-height',`${footer.getBoundingClientRect().height}px`);
@@ -154,12 +159,13 @@ export function ShallowSampleApp({journey=false}){
   const toggle=()=>{const state=runtime.current?.state;if(!state||!state.ready)return;if(state.time>=duration){state.time=0;state.lifeTime=0;setTime(0);runtime.current.startRun();}else runtime.current.diagnostics.interrupt('pause');state.playing=!state.playing;setPlaying(state.playing);};
   const restart=()=>{runtime.current?.observe(false);runtime.current?.seek(0);if(runtime.current){runtime.current.state.playing=true;runtime.current.startRun();}setFree(false);setPlaying(true);};
   const changeSpeed=value=>{setSpeed(value);if(runtime.current){runtime.current.diagnostics.interrupt('speed-change');runtime.current.state.speed=value;}};
-  const observe=()=>{const next=!free;runtime.current?.observe(next);setFree(next);};
+  const observe=()=>{const next=!free;if(next)setFocused(false);runtime.current?.observe(next);setFree(next);};
   const visit=start=>{if(free){runtime.current?.observe(false);setFree(false);}runtime.current?.seek(start);};
+  const replayNarration=start=>{if(!runtime.current?.state.ready)return;if(runtime.current.state.free){runtime.current.observe(false);setFree(false);}runtime.current.seek(start);runtime.current.state.playing=true;setPlaying(true);};
   const lastRun=runtime.current?.diagnostics.metrics.runs.at(-1);
   const downloadMetrics=()=>{const blob=new Blob([JSON.stringify(runtime.current?.diagnostics.metrics,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=journey?'shallow-journey-playback.json':'shallow-sample-playback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
   const exploration=new URL(window.location.href);exploration.searchParams.set('demo','life-expedition');exploration.searchParams.set('world','whole-seabed');
-  return <main className={`shallow-sample${journey?' shallow-journey':''}`}>
+  return <main className={`shallow-sample${journey?' shallow-journey':''}${journey&&focused?' is-focused':''}${journey&&free?' is-exploring':''}`}>
     <output id="shallow-diagnostics" hidden>{JSON.stringify(runtime.current?.diagnostics.metrics??null)}</output>
     <div className="sample-canvas" ref={canvas} tabIndex={journey?0:undefined} role={journey?"region":undefined} aria-label={journey?"浅海探索画面":undefined} onPointerDown={()=>canvas.current?.focus({preventScroll:true})}/>
     <header className="sample-header"><span className="sample-brand">TIDAL <small>浅海观察</small></span><nav><a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}assets/shallow-artist/credits.html`} target="_blank" rel="noreferrer">模型来源</a> · <a href={exploration.href}>进入持续探索 ↗</a></nav></header>
@@ -171,14 +177,14 @@ export function ShallowSampleApp({journey=false}){
       {free&&<div className="journey-movement">{[['KeyW','向前'],['KeyA','向左'],['KeyS','向后'],['KeyD','向右']].map(([key,label])=><button key={key} aria-label={label} onPointerDown={e=>{e.preventDefault();runtime.current?.move(key,true);}} onPointerUp={()=>runtime.current?.move(key,false)} onPointerLeave={()=>runtime.current?.move(key,false)} onClick={()=>runtime.current?.nudge(key)}>{label}</button>)}</div>}
     </aside>}
     <footer className="sample-controls" ref={panel}>
-      {journey&&<nav className="journey-chapters" aria-label="浅海路线">{SHALLOW_JOURNEY_CHAPTERS.map((c,i)=><button key={c.start} aria-label={`跳至${c.title}`} aria-current={chapter===c?'step':undefined} disabled={!ready} onClick={()=>visit(c.start)}><small>0{i+1}</small>{['进入礁谷','礁边群落','礁沙过渡','沙底生命','草床海龟','开阔水层'][i]}</button>)}</nav>}
+      {journey&&<nav id="journey-route-controls" className="journey-chapters" aria-label="浅海路线">{SHALLOW_JOURNEY_CHAPTERS.map((c,i)=><button key={c.start} aria-label={`跳至${c.title}`} aria-current={chapter===c?'step':undefined} disabled={!ready} onClick={()=>visit(c.start)}><small>0{i+1}</small>{['进入礁谷','礁边群落','礁沙过渡','沙底生命','草床海龟','开阔水层'][i]}</button>)}</nav>}
       <div className="sample-progress"><label htmlFor="sample-progress">巡游进度</label><input id="sample-progress" disabled={!ready} type="range" min="0" max={duration} step=".1" value={time} onChange={e=>runtime.current?.seek(Number(e.target.value))}/><span>{Math.floor(time)} / {duration} 秒</span></div>
-      <div className="sample-actions"><button onClick={toggle} disabled={!ready||!!error||(journey&&free)}>{time>=duration?'重新播放':playing?'暂停巡游':'继续巡游'}</button><button onClick={restart} disabled={!ready||!!error}>从头观看</button>
-        <label>播放速度 <select disabled={!ready} value={speed} onChange={e=>changeSpeed(Number(e.target.value))}><option value=".5">0.5×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
-        <button onClick={observe} aria-pressed={free} disabled={!ready||!!error}>{free?'返回巡游镜头':journey?'接管探索':'自由观察'}</button><span>{free?journey?'WASD移动 · 拖动转向':'拖动旋转 · 滚轮靠近':time>=duration?'巡游完成，可自由观察这片海床':'礁谷 → 沙道 → 草床'}</span>
+      <div className="sample-actions">{journey&&<span className="journey-focus-position">{chapter.habitat} · {Math.floor(time/60)}:{String(Math.floor(time%60)).padStart(2,'0')} / 4:00</span>}<button onClick={toggle} className="sample-toggle" disabled={!ready||!!error||(journey&&free)}>{time>=duration?'重新播放':playing?'暂停巡游':'继续巡游'}</button><button className="journey-focus-secondary" onClick={restart} disabled={!ready||!!error}>从头观看</button>
+        <label className="journey-focus-secondary">播放速度 <select disabled={!ready} value={speed} onChange={e=>changeSpeed(Number(e.target.value))}><option value=".5">0.5×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
+        <button className="journey-focus-secondary" onClick={observe} aria-pressed={free} disabled={!ready||!!error}>{free?'返回巡游镜头':journey?'接管探索':'自由观察'}</button><span>{free?journey?'WASD移动 · 拖动转向':'拖动旋转 · 滚轮靠近':time>=duration?'巡游完成，可自由观察这片海床':'礁谷 → 沙道 → 草床'}</span>
         {lastRun?.completed&&<span>最近完整播放记录 {lastRun.averageFps.toFixed(1)} FPS · {lastRun.elapsedWallSeconds.toFixed(1)} 秒{!lastRun.uninterrupted?' · 含操作中断':''}</span>}
-        {lastRun?.completed&&<button onClick={downloadMetrics}>下载播放数据</button>}</div>
-      {journey&&<ShallowNarration runtime={runtime} ready={ready&&!error} onRestart={restart}/>}
+        {lastRun?.completed&&<button className="journey-focus-secondary" onClick={downloadMetrics}>下载播放数据</button>}{journey&&<button className="journey-focus-toggle" disabled={free} title={free?'返回巡游后可专注观看':'按Esc也可展开控制'} aria-expanded={!focused} aria-controls="journey-route-controls" onClick={()=>setFocused(!focused)}>{focused?'展开控制':'专注观看'}</button>}</div>
+      {journey&&<ShallowNarration runtime={runtime} ready={ready&&!error} onRestart={restart} onReplay={replayNarration} focused={focused}/>}
     </footer>
   </main>;
 }

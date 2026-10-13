@@ -1,3 +1,7 @@
+<!-- stage-02-guided-view-current -->
+2026-10-13 用户“继续优化”授权的Stage02语音观看体验有限收尾已完成：开启讲解保持当前位置与暂停状态，新增本段/从头重听、默认专注观看与Escape展开，探索时展开操作并隐藏暂停字幕；静音预备播放保留显式重试。原六段音频/240秒路线/场景资产不变、无新服务调用。20项定向检查通过（16控制/3状态/1成品），非全库；Vite9.48秒。最终1×240完整/239.98实秒，六段playing/无error或blocked/console空，无巡游中断；p9512.6/max79.2ms/scale1。重置移动视口后立即开播，起始390×844、38秒及结束803.3×871.3/DPR1.5，非固定尺寸性能对照。移动控件同字幕351→178px，探索方向区间隔14px。本地有限归档、不推送部署、不自动扩展或继续性能修补。详docs/stages/STAGE_02_GUIDED_VIEW.md及docs/validation/stage-02-guided-view-20261013.json。
+<!-- /stage-02-guided-view-current -->
+
 <!-- stage-02-narration-current -->
 2026-10-13 用户授权MiniMax中文语音讲解增补已完成：只在240秒 shallow-journey 入口接入六段107.68秒静态MP3（1,733,112字节），默认关闭，字幕/音量/暂停/跳章/倍速/探索与返回衔接同步。外部.env.minimax仅由本地生成脚本读取，不入前端或仓库。首轮发现句尾截断后集中修复一次，最终实际240.09秒/1倍速无操作中断，六段均playing、无error/blocked、console空；本机803.3×871.3/DPR1.5平均109.4FPS、p95 12.6ms/max208.4ms/scale1。缓存导航4.80秒（场景初始化4.07秒），非远端冷启动承诺。15个不同定向测试通过，非全库；生产build12.93秒，6运行文件实播前后哈希一致。原场景/资产、75秒样板、持久生态与旧导演不改，不继续扩展讲解或修补旧性能问题。本地阶段归档，无推送部署；音色和节奏待用户试听。详docs/stages/STAGE_02_NARRATION.md与docs/validation/stage-02-narration-20261013.json。
 <!-- /stage-02-narration-current -->

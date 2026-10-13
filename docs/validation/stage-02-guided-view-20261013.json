@@ -1,0 +1,214 @@
+{
+  "date": "2026-10-13",
+  "baseCommit": "dfe289a3c5a8778314fa44bad015fc1815b5df2a",
+  "scope": "Stage02 current-position narration, replay controls and focused viewing; no scene or asset changes",
+  "localOnly": true,
+  "runStarted": "2026-10-13T05:28:47.569Z",
+  "playback": {
+    "speed": 1,
+    "width": 390,
+    "height": 844,
+    "pixelRatio": 1.5,
+    "duration": 240,
+    "startedAt": 294713.60000002384,
+    "resolutionHistory": [
+      {
+        "time": 0,
+        "scale": 1
+      }
+    ],
+    "interruptions": [],
+    "completed": true,
+    "lastModelSecond": 240,
+    "elapsedWallSeconds": 239.98329999997617,
+    "averageFps": 144.2875,
+    "p95FrameMs": 12.599999999976717,
+    "maxFrameMs": 79.19999999995343,
+    "uninterrupted": true
+  },
+  "narration": {
+    "events": [
+      {
+        "time": 0,
+        "status": "loading",
+        "clipId": "reef-entry"
+      },
+      {
+        "time": 0.19589999999996507,
+        "status": "playing",
+        "clipId": "reef-entry"
+      },
+      {
+        "time": 18.912499999999977,
+        "status": "paused",
+        "clipId": "reef-entry"
+      },
+      {
+        "time": 18.912499999999977,
+        "status": "quiet",
+        "clipId": "reef-entry"
+      },
+      {
+        "time": 18.92499999999998,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 42.079200000003624,
+        "status": "loading",
+        "clipId": "reef-edge"
+      },
+      {
+        "time": 42.187500000003695,
+        "status": "playing",
+        "clipId": "reef-edge"
+      },
+      {
+        "time": 60.250200000006465,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 90.14170000001256,
+        "status": "loading",
+        "clipId": "reef-sand"
+      },
+      {
+        "time": 90.32510000001263,
+        "status": "playing",
+        "clipId": "reef-sand"
+      },
+      {
+        "time": 108.14170000001651,
+        "status": "paused",
+        "clipId": "reef-sand"
+      },
+      {
+        "time": 108.14170000001651,
+        "status": "quiet",
+        "clipId": "reef-sand"
+      },
+      {
+        "time": 108.14170000001651,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 122.10420000001947,
+        "status": "loading",
+        "clipId": "sand-life"
+      },
+      {
+        "time": 122.26260000001953,
+        "status": "playing",
+        "clipId": "sand-life"
+      },
+      {
+        "time": 141.37100000001806,
+        "status": "paused",
+        "clipId": "sand-life"
+      },
+      {
+        "time": 141.37100000001806,
+        "status": "quiet",
+        "clipId": "sand-life"
+      },
+      {
+        "time": 141.39580000001803,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 166.03760000001918,
+        "status": "loading",
+        "clipId": "seagrass"
+      },
+      {
+        "time": 166.1792000000192,
+        "status": "playing",
+        "clipId": "seagrass"
+      },
+      {
+        "time": 183.8917000000208,
+        "status": "paused",
+        "clipId": "seagrass"
+      },
+      {
+        "time": 183.8917000000208,
+        "status": "quiet",
+        "clipId": "seagrass"
+      },
+      {
+        "time": 183.90830000002083,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 212.14160000002354,
+        "status": "loading",
+        "clipId": "open-water"
+      },
+      {
+        "time": 212.4333000000235,
+        "status": "playing",
+        "clipId": "open-water"
+      },
+      {
+        "time": 230.0125000000267,
+        "status": "paused",
+        "clipId": "open-water"
+      },
+      {
+        "time": 230.0125000000267,
+        "status": "quiet",
+        "clipId": "open-water"
+      },
+      {
+        "time": 230.03340000002675,
+        "status": "quiet",
+        "clipId": null
+      }
+    ],
+    "playedClips": [
+      "reef-entry",
+      "reef-edge",
+      "reef-sand",
+      "sand-life",
+      "seagrass",
+      "open-water"
+    ],
+    "failures": []
+  },
+  "console": [],
+  "viewportNote": "重置移动视口后立即启动，起始记录390×844；38秒及结束画布实测803.3×871.3，DPR1.5。非固定尺寸性能对照。",
+  "finalCanvas": {
+    "height": 871.3333740234375,
+    "width": 803.3333740234375
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "beforeFooterHeight": 351.04168701171875,
+    "afterFooterHeight": 178.0104217529297,
+    "reductionPercent": 49.290802676951806,
+    "explorationControlsGapPx": 13.9999847
+  },
+  "tests": {
+    "passed": 20,
+    "controller": 16,
+    "presentation": 3,
+    "assets": 1,
+    "fullSuite": false
+  },
+  "build": {
+    "passed": true,
+    "viteSeconds": 9.48
+  },
+  "limits": [
+    "Only Windows Chromium in-app browser tested; responsive viewport is not phone/Safari validation",
+    "Existing scene realism, cold-start and old director cross-region limits retained",
+    "No remote deployment or audio regeneration"
+  ]
+}

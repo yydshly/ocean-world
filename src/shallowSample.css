@@ -31,3 +31,19 @@
 .narration-actions label{display:flex;align-items:center;gap:5px}.narration-actions input[type=range]{width:75px;accent-color:#dbe4be}.narration-actions input[type=checkbox]{accent-color:#dbe4be}.narration-actions>span{font-size:10px;color:#a9c7c0}
 .narration-caption{font-size:13px;line-height:1.75;margin:10px 0 0;color:#f3f3df;max-height:100px;overflow:auto}
 @media(max-width:700px){.narration-actions{gap:8px}.narration-actions>span{width:100%}.narration-caption{font-size:12px;line-height:1.65;max-height:100px}.shallow-journey:has(.narration-caption) .journey-guide{display:none}}
+
+/* Keep playback and speech reachable while giving the habitat the main view. */
+.sample-actions>.journey-focus-position{display:none}
+.sample-actions .sample-toggle{background:#dbe4be;color:#214a50;border-color:#dbe4be}
+.sample-actions .journey-focus-toggle{margin-left:auto}
+.is-focused .sample-header,.is-focused .sample-title,.is-focused .sample-community,.is-focused .journey-guide,.is-focused .journey-chapters,.is-focused .sample-progress,.is-focused .journey-focus-secondary,.is-focused .sample-actions>span:not(.journey-focus-position),.is-focused .narration-secondary{display:none}
+.is-focused .sample-controls{width:min(760px,calc(100% - 40px));padding:11px 16px;background:#103644c9}
+.is-focused .sample-actions{margin:0;flex-wrap:nowrap}
+.is-focused .sample-actions>.journey-focus-position{display:block;margin:0 auto 0 0;color:#dce9df;font-size:12px;white-space:nowrap}
+.is-focused .sample-actions .journey-focus-toggle{margin-left:0}
+.is-focused .journey-narration{margin-top:9px;padding-top:9px}
+.is-focused .narration-actions{gap:9px}
+.is-focused .narration-caption{margin-top:9px;font-size:14px;line-height:1.65;max-height:126px}
+.is-exploring .narration-caption{display:none}
+.shallow-journey.is-exploring .journey-guide{display:block}
+@media(max-width:700px){.is-focused .sample-controls{width:calc(100% - 24px);padding:10px 12px}.is-focused .sample-actions>.journey-focus-position{width:auto;font-size:11px;margin-top:0}.is-focused .sample-actions button{padding:7px 9px}.is-focused .narration-actions>span{width:auto;flex:1;min-width:100px}.is-focused .narration-caption{font-size:13px;max-height:126px}}

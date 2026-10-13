@@ -7,6 +7,7 @@ export function createShallowNarration(audio, clips, {baseUrl = '', onStatus = (
   let enabled = false, disposed = false, current = null, snapshot = null;
   let wanted = false, attempted = false, pending = false, waiting = false;
   let token = 0, pendingSeek = false, ended = false, blocked = false, previousStatus = '';
+  let priming = null;
   const failures = new Set();
   audio.preload = 'none';
   audio.preservesPitch = true;
@@ -35,7 +36,15 @@ export function createShallowNarration(audio, clips, {baseUrl = '', onStatus = (
     const key = JSON.stringify(value);
     if (key !== previousStatus) { previousStatus = key; onStatus(value); }
   };
+  const cancelPrime = () => {
+    if (!priming) return;
+    const previous = priming;
+    priming = null; token++;
+    audio.pause();
+    audio.muted = previous.muted;
+  };
   const stop = () => {
+    cancelPrime();
     if (wanted || attempted || pending || !audio.paused) {
       token++; pending = false; attempted = false;
       wanted = false;
@@ -75,6 +84,33 @@ export function createShallowNarration(audio, clips, {baseUrl = '', onStatus = (
       }, error => fail(error, ownToken));
     } catch (error) { fail(error, ownToken); }
   };
+  // A gesture can arrive in a silent gap or while the route is paused. Touch
+  // this same media element synchronously, silently, so browsers can grant it
+  // playback permission before the next narrated section. Some policies still
+  // require a retry; the normal blocked state remains the explicit fallback.
+  const prime = clip => {
+    if (!clip || priming || blocked || failures.has(clip.id)) return;
+    const ownToken = ++token;
+    const request = {clip, muted: audio.muted, token: ownToken};
+    priming = request;
+    audio.muted = true;
+    if (!current) {
+      audio.src = url(clip.src);
+      audio.preload = 'auto';
+      audio.load();
+    }
+    const finish = error => {
+      if (disposed || priming !== request || ownToken !== token) return;
+      priming = null;
+      audio.pause();
+      audio.muted = request.muted;
+      if (error?.name === 'NotAllowedError') blocked = true;
+      else if (error) failures.add(clip.id);
+      publish();
+    };
+    try { Promise.resolve(audio.play()).then(() => finish(), finish); }
+    catch (error) { finish(error); }
+  };
   const select = clip => {
     if (current === clip) return false;
     stop(); token++; current = clip; ended = false; waiting = false; pendingSeek = !!clip;
@@ -94,6 +130,10 @@ export function createShallowNarration(audio, clips, {baseUrl = '', onStatus = (
     let clip = null;
     for (const item of ordered) if (time >= item.start && time < item.start + item.duration) clip = item;
     const active = !!(snapshot.ready && snapshot.playing && !snapshot.free && !snapshot.returning && !snapshot.hidden);
+    if (priming) {
+      if (clip !== current || (clip && active)) cancelPrime();
+      else { if (current) seek(false); publish(); return; }
+    }
     const step = time - (Number(previous?.time) || 0);
     const remaining = audio.duration - audio.currentTime;
     // Network start and media clocks can trail the tour slightly. Let only an
@@ -133,20 +173,24 @@ export function createShallowNarration(audio, clips, {baseUrl = '', onStatus = (
     pause() { publish(); },
     ended() { ended = true; pending = false; wanted = false; publish(); },
     error() {
-      if (!enabled || !current || disposed) return;
-      failures.add(current.id); stop(); publish();
+      if (!enabled || disposed) return;
+      const failed = priming?.clip || current;
+      if (!failed) return;
+      failures.add(failed.id); stop(); publish();
     },
   };
   for (const [event, listener] of Object.entries(listeners)) audio.addEventListener(event, listener);
   publish();
   return {
     enable(value) {
-      if (disposed) return;
+      if (disposed || !value || !Number.isFinite(value.time)) return;
+      cancelPrime();
       // Reload an actual media failure only after a new user gesture.
       if (current && failures.has(current.id)) select(null);
       enabled = true; blocked = false; failures.clear();
       attempted = false;
       sync(value);
+      if (!wanted && !blocked) prime(current || ordered.find(clip => clip.start > value.time));
     },
     disable() {
       if (disposed) return;

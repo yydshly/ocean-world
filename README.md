@@ -1,4 +1,4 @@
-> **阶段02 · 本地浅海整合已验收归档：** [进入4分钟完整浅海体验](http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55)。现有资产、六段同景巡游、可接管探索；新增[中文语音讲解、同步字幕与音量控制](docs/stages/STAGE_02_NARRATION.md)（本地版本）；[范围与验收](docs/stages/STAGE_02_SHALLOW_JOURNEY.md)。已完整实播240秒，无途中加载，首次进入约8.51秒；此次不部署远端，以下原引导图保留。
+> **阶段02 · 本地浅海整合已验收归档：** [进入4分钟完整浅海体验](http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55)。现有资产、六段同景巡游、可接管探索；已有[中文语音讲解](docs/stages/STAGE_02_NARRATION.md)，新增[当前位置开讲、重听本段与专注观看](docs/stages/STAGE_02_GUIDED_VIEW.md)（本地版本）；[范围与验收](docs/stages/STAGE_02_SHALLOW_JOURNEY.md)。已完整实播240秒，无途中加载，首次进入约8.51秒；此次不部署远端，以下原引导图保留。
 
 # TIDAL · 海底世界
 
