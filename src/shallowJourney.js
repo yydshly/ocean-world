@@ -35,18 +35,28 @@ export function createShallowJourney(model){
     view(time){
       const u=THREE.MathUtils.clamp(time/SHALLOW_JOURNEY_SECONDS,0,1),p=curve.getPoint(u),n=u*(samples-1),i=Math.min(samples-2,Math.floor(n));
       p.y=THREE.MathUtils.lerp(safe[i],safe[i+1],n-i);
-      const tangent=curve.getTangent(u),target=p.clone().add(tangent.multiplyScalar(9));target.y=Math.max(model.floor(target.x,target.z)+(model.livingCommunities?.4:.7),p.y-(model.livingCommunities?1.55:.8));
+      const tangent=curve.getTangent(u),target=p.clone().add(tangent.multiplyScalar(9));
+      // Keep the resident reef in the lower frame while observing the water
+      // column. The dedicated sand chapter still looks down at its residents.
+      target.y=Math.max(model.floor(target.x,target.z)+(model.livingCommunities?.4:.7),p.y-(model.livingCommunities?.65:.8));
       SHALLOW_JOURNEY_CHAPTERS.forEach((c,index)=>{
         const fadeIn=THREE.MathUtils.smoothstep(time,c.start,c.start+12),fadeOut=1-THREE.MathUtils.smoothstep(time,c.end-10,c.end);
         const members=groups[index];if(!members.length||fadeIn*fadeOut===0)return;
         const center=new THREE.Vector3();for(const a of members)center.add(new THREE.Vector3(a.position.x,a.position.y,a.position.z));center.multiplyScalar(1/members.length);
         if(model.livingCommunities){
-          const nearby=(index===3?[]:companions[index]).filter(a=>Math.hypot(a.position.x-p.x,a.position.z-p.z)<12);
-          if(nearby.length){const lower=new THREE.Vector3();for(const a of nearby)lower.add(new THREE.Vector3(a.position.x,a.position.y,a.position.z));lower.multiplyScalar(1/nearby.length);center.lerp(lower,.28);}
-          center.y=Math.min(center.y,p.y+.35);
+          const school=[0,1,2,5].includes(index);
+          if(school){
+            // Follow the whole volume, without dragging it toward bottom
+            // companions. A little room below it keeps the habitat visible.
+            center.y-=.35;
+          }else if(index===4){
+            const nearby=companions[index].filter(a=>Math.hypot(a.position.x-p.x,a.position.z-p.z)<12);
+            if(nearby.length){const lower=new THREE.Vector3();for(const a of nearby)lower.add(new THREE.Vector3(a.position.x,a.position.y,a.position.z));lower.multiplyScalar(1/nearby.length);center.lerp(lower,.28);}
+          }
         }
         const distance=p.distanceTo(center);if(distance>18||distance<2)return;
-        target.lerp(center,fadeIn*fadeOut*.82);
+        const proximity=model.livingCommunities?THREE.MathUtils.smoothstep(distance,2,4)*(1-THREE.MathUtils.smoothstep(distance,15,18)):1;
+        target.lerp(center,fadeIn*fadeOut*.82*proximity);
       });
       return {position:p,target};
     }

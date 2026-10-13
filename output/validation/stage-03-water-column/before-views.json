@@ -1,0 +1,143 @@
+[
+  {
+    "time": 0,
+    "currentView": {
+      "time": 0,
+      "lifeTime": 0,
+      "free": false,
+      "position": [
+        -42,
+        2.55,
+        0
+      ],
+      "returning": false,
+      "activities": {
+        "school-spread": 118,
+        "grass-edge-hold": 6,
+        "grass-edge-swim": 12,
+        "reef-patrol": 15,
+        "reef-hold": 4,
+        "sand-probe": 4,
+        "sand-transit": 5
+      }
+    }
+  },
+  {
+    "time": 0,
+    "currentView": {
+      "time": 0,
+      "lifeTime": 0,
+      "free": false,
+      "position": [
+        -42,
+        2.55,
+        0
+      ],
+      "returning": false,
+      "activities": {
+        "school-spread": 118,
+        "grass-edge-hold": 6,
+        "grass-edge-swim": 12,
+        "reef-patrol": 15,
+        "reef-hold": 4,
+        "sand-probe": 4,
+        "sand-transit": 5
+      }
+    }
+  },
+  {
+    "time": 0,
+    "currentView": {
+      "time": 0,
+      "lifeTime": 0,
+      "free": false,
+      "position": [
+        -42,
+        2.55,
+        0
+      ],
+      "returning": false,
+      "activities": {
+        "school-spread": 118,
+        "grass-edge-hold": 6,
+        "grass-edge-swim": 12,
+        "reef-patrol": 15,
+        "reef-hold": 4,
+        "sand-probe": 4,
+        "sand-transit": 5
+      }
+    }
+  },
+  {
+    "time": 144,
+    "currentView": {
+      "time": 144,
+      "lifeTime": 144,
+      "free": false,
+      "position": [
+        4.781919937689353,
+        1.3755588311106992,
+        -0.4290723193155531
+      ],
+      "returning": false,
+      "activities": {
+        "school-turn": 38,
+        "school-spread": 80,
+        "grass-edge-swim": 12,
+        "grass-edge-hold": 6,
+        "reef-patrol": 15,
+        "reef-hold": 4,
+        "sand-probe": 4,
+        "sand-transit": 5
+      }
+    }
+  },
+  {
+    "time": 144,
+    "currentView": {
+      "time": 144,
+      "lifeTime": 144,
+      "free": false,
+      "position": [
+        4.781919937689353,
+        1.3755588311106992,
+        -0.4290723193155531
+      ],
+      "returning": false,
+      "activities": {
+        "school-turn": 38,
+        "school-spread": 80,
+        "grass-edge-swim": 12,
+        "grass-edge-hold": 6,
+        "reef-patrol": 15,
+        "reef-hold": 4,
+        "sand-probe": 4,
+        "sand-transit": 5
+      }
+    }
+  },
+  {
+    "time": 144,
+    "currentView": {
+      "time": 144,
+      "lifeTime": 144,
+      "free": false,
+      "position": [
+        4.781919937689353,
+        1.3755588311106992,
+        -0.4290723193155531
+      ],
+      "returning": false,
+      "activities": {
+        "school-turn": 38,
+        "school-spread": 80,
+        "grass-edge-swim": 12,
+        "grass-edge-hold": 6,
+        "reef-patrol": 15,
+        "reef-hold": 4,
+        "sand-probe": 4,
+        "sand-transit": 5
+      }
+    }
+  }
+]

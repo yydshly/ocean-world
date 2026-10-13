@@ -1,0 +1,93 @@
+{
+  "baseline": "b37ab31",
+  "candidate": "water-column-v2",
+  "times": [
+    24,
+    72,
+    96,
+    144,
+    192,
+    216
+  ],
+  "images": {
+    "before-24.png": {
+      "routeSecond": 24,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "before-72.png": {
+      "routeSecond": 72,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "before-96.png": {
+      "routeSecond": 96,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "before-144.png": {
+      "routeSecond": 144,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "before-192.png": {
+      "routeSecond": 192,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "before-216.png": {
+      "routeSecond": 216,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "after-24.png": {
+      "routeSecond": 24,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "after-72.png": {
+      "routeSecond": 72,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "after-96.png": {
+      "routeSecond": 96,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "after-144.png": {
+      "routeSecond": 144,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "after-192.png": {
+      "routeSecond": 192,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    },
+    "after-216.png": {
+      "routeSecond": 216,
+      "method": "Paused native progress slider with scene UI timestamp",
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "comparison": "Same route position/time; different camera direction and school poses. Not a material A/B.",
+  "pausedDiagnosticCaveat": "before-views.json contains throttled stale currentView times; use scene UI timestamps, not those diagnostic times.",
+  "playbackSnapshots": {
+    "playback-reef.png": 70.26,
+    "playback-sand.png": 181.94,
+    "playback-finished.png": 240
+  }
+}

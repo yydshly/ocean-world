@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createShallowSample} from '../src/shallowSample.js';
+import {createHash} from 'node:crypto';
+import {createShallowSample,sampleAnimalPosition} from '../src/shallowSample.js';
 import {initializeJourneyLife,evaluateJourneyLife,journeyLifeSummary} from '../src/shallowJourneyLife.js';
 
 const model=createShallowSample(55);
@@ -70,6 +71,44 @@ test('each forager and reef resident has readable holds and transit within its r
       assert.deepEqual(life.anchor,a.home);
     }
   }
+});
+
+test('four existing shoals occupy a thick water column and real depth throughout the route',()=>{
+  const groups=Map.groupBy(model.agents.filter(a=>a.journeyLife?.kind==='school'),a=>a.speciesId);
+  assert.equal(groups.size,4);
+  assert.equal([...groups.values()].reduce((n,agents)=>n+agents.length,0),118);
+  for(const [species,agents]of groups)for(let t=0;t<=240;t+=2){
+    const poses=agents.map(a=>evaluateJourneyLife(a,t));
+    const height=poses.map((p,i)=>p.lift+p.vertical+(agents[i].schoolVertical??0));
+    assert.ok(Math.max(...height)-Math.min(...height)>1.8,`${species}: flattened water layer at ${t}`);
+    assert.ok(Math.min(...height)>1.5&&Math.max(...height)<5,`${species}: invalid open-water band at ${t}`);
+    // The smaller horizontal covariance axis measures depth independently of
+    // heading, so rotating a flat line cannot satisfy a volumetric-school check.
+    const mx=poses.reduce((n,p)=>n+p.x,0)/poses.length,mz=poses.reduce((n,p)=>n+p.z,0)/poses.length;
+    const vx=poses.reduce((n,p)=>n+(p.x-mx)**2,0)/poses.length;
+    const vz=poses.reduce((n,p)=>n+(p.z-mz)**2,0)/poses.length;
+    const cov=poses.reduce((n,p)=>n+(p.x-mx)*(p.z-mz),0)/poses.length;
+    const depth=Math.sqrt((vx+vz-Math.sqrt((vx-vz)**2+4*cov*cov))/2);
+    assert.ok(depth>.5,`${species}: thin horizontal ribbon at ${t}`);
+    for(const [i,a]of agents.entries()){
+      const p=poses[i],next=evaluateJourneyLife(a,t+.01);
+      assert.ok(Math.hypot(next.x-p.x,next.z-p.z,next.lift+next.vertical-p.lift-p.vertical)/.01<.75);
+    }
+  }
+});
+
+test('water-column staging preserves the archived non-school trajectories',()=>{
+  // Recorded from Stage03 before changing shoals. Rounded poses cover every
+  // other animal, including turtles and the existing substrate-bound behaviours.
+  const values=[];
+  for(const t of [0,20,40,64,88,104,120,142,164,185,210,224,240]){
+    for(const a of model.agents.filter(a=>a.journeyLife?.kind!=='school')){
+      const p=sampleAnimalPosition(model,a,t),b=evaluateJourneyLife(a,t);
+      values.push([t,a.id,...[p.x,p.y,p.z,b.pitch??0].map(n=>Number(n.toFixed(6))),b.activity??null]);
+    }
+  }
+  assert.equal(createHash('sha256').update(JSON.stringify(values)).digest('hex'),
+    'ef78a79ab019806ba6ef42513daa5cf9a78db110a704cca6e1c1f8f7e4d5f0b0');
 });
 
 test('display summaries disclose authored participation without inventing ecosystem resource exchanges',()=>{

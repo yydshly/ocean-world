@@ -7,10 +7,10 @@ const mod = (n, d) => ((n % d) + d) % d;
 const smooth = n => { const t = clamp(n, 0, 1); return t*t*t*(t*(t*6-15)+10); };
 
 const SCHOOL_LAYOUT = [
-  {species:'blue-and-gold-fusilier',x:-34.7,z:-4.1,visit:20,lift:1.7,habitat:'reef'},
-  {species:'unidentified-reef-fish',x:-21.5,z:3.8,visit:64,lift:1.3,habitat:'reef'},
-  {species:'doubleline-fusilier',x:-5.4,z:-3.8,visit:104,lift:2.0,habitat:'sand'},
-  {species:'giant-trevally',x:43.5,z:3.8,visit:224,lift:2.1,habitat:'grass'},
+  {species:'blue-and-gold-fusilier',x:-34.7,z:-4.1,visit:20,lift:3.1,habitat:'reef'},
+  {species:'unidentified-reef-fish',x:-21.5,z:3.8,visit:64,lift:3.0,habitat:'reef'},
+  {species:'doubleline-fusilier',x:-5.4,z:-3.8,visit:104,lift:3.4,habitat:'sand'},
+  {species:'giant-trevally',x:43.5,z:3.8,visit:224,lift:3.6,habitat:'grass'},
 ];
 
 // A complete bounded cycle with quiet holds at both ends. Position and speed
@@ -47,8 +47,11 @@ export function initializeJourneyLife(model, options={livingCommunities:true}) {
       const dx=a.home.x-a.schoolCenter.x,dz=a.home.z-a.schoolCenter.z;
       a.home={x:group.x+dx,z:group.z+dz};a.schoolCenter={x:group.x,z:group.z};
       a.journeyLife={kind:'school',habitat:group.habitat,anchor:{x:group.x,z:group.z},
-        forward:dx*.47,side:dz*.14,index:i,phase:.8-group.visit*.12,
-        lift:group.lift,rx:1.65,rz:.62};
+        // Preserve the same members and visit-side alignment while giving the
+        // school a water-column volume instead of a single near-bed ribbon.
+        forward:dx*.52,side:dz*.42,index:i,phase:.8-group.visit*.08,
+        waterLayer:.85*Math.sin(i*1.61803398875),
+        lift:group.lift,rx:2.2,rz:1.3};
     }
   }
 
@@ -84,7 +87,7 @@ export function initializeJourneyLife(model, options={livingCommunities:true}) {
       rx:a.reefPatrol.x,rz:a.reefPatrol.z,lift:a.lift,vertical:a.reefPatrol.vertical??0};
   }
   const kinds={};for(const a of model.agents)if(a.journeyLife)kinds[a.journeyLife.kind]=(kinds[a.journeyLife.kind]??0)+1;
-  model.journeyLife={version:'three-living-communities-v1',animalCount:model.agents.length,
+  model.journeyLife={version:'three-living-communities-water-column-v2',animalCount:model.agents.length,
     participants:Object.values(kinds).reduce((a,b)=>a+b,0),kinds,footprints,
     limits:'Authored school coordination, sand probing and habitat pauses; no resource consumption or full agent avoidance.'};
   return model.journeyLife;
@@ -95,7 +98,7 @@ export function evaluateJourneyLife(agent,time,base={}) {
   const life=agent.journeyLife;if(!life)return base;
   const t=Number.isFinite(time)?time:0;
   if(life.kind==='school'){
-    const angle=t*.12+life.phase,co=Math.cos(angle),si=Math.sin(angle);
+    const angle=t*.08+life.phase,co=Math.cos(angle),si=Math.sin(angle);
     const vx=-life.rx*si,vz=life.rz*co,heading=Math.atan2(vz,vx),hx=Math.cos(heading),hz=Math.sin(heading);
     // Turns tighten the group; straight travel opens it again. Individual
     // drift stays bounded and every original animal is always present.
@@ -103,7 +106,7 @@ export function evaluateJourneyLife(agent,time,base={}) {
     const side=life.side*(.9+.16*Math.sin(t*.15));
     return {...base,x:life.anchor.x+life.rx*co+forward*hx-side*hz+.045*Math.sin(t*.6+agent.phase),
       z:life.anchor.z+life.rz*si+forward*hz+side*hx+.035*Math.sin(t*.5+agent.phase*1.4),
-      lift:life.lift,vertical:.13*Math.sin(life.index*2.39996)+.035*Math.sin(t*.25+agent.phase),
+      lift:life.lift,vertical:life.waterLayer+.13*Math.sin(life.index*2.39996)+.035*Math.sin(t*.25+agent.phase),
       pitch:0,pitchClearance:0,state:'swimming',activity:Math.abs(si)<.5?'school-turn':'school-spread',probeStrength:0};
   }
   const sand=life.kind==='sand-probe',grass=life.kind==='grass-edge';

@@ -1,0 +1,170 @@
+TAP version 13
+# Subtest: journey skins preserve visible identification marks instead of applying one fish texture to six species
+ok 1 - journey skins preserve visible identification marks instead of applying one fish texture to six species
+  ---
+  duration_ms: 1.9879
+  type: 'test'
+  ...
+# Subtest: six species retain full bodies, protected eyes/barbels, separated fins and bounded cached resources
+ok 2 - six species retain full bodies, protected eyes/barbels, separated fins and bounded cached resources
+  ---
+  duration_ms: 504.9861
+  type: 'test'
+  ...
+# Subtest: species albedo composes with existing deformation and scene grading without duplicate surface passes
+ok 3 - species albedo composes with existing deformation and scene grading without duplicate surface passes
+  ---
+  duration_ms: 21.9662
+  type: 'test'
+  ...
+# Subtest: three communities retain the finite population and opt out of the 75-second sample
+ok 4 - three communities retain the finite population and opt out of the 75-second sample
+  ---
+  duration_ms: 4.1618
+  type: 'test'
+  ...
+# Subtest: actual renderer selects five differentiated animal families and one bounded sediment response
+ok 5 - actual renderer selects five differentiated animal families and one bounded sediment response
+  ---
+  duration_ms: 0.4012
+  type: 'test'
+  ...
+# Subtest: full journey has continuous camera motion and supported animal bodies in the new habitats
+ok 6 - full journey has continuous camera motion and supported animal bodies in the new habitats
+  ---
+  duration_ms: 2732.8295
+  type: 'test'
+  ...
+# Subtest: six chapters retain readable-sized actual focus animals throughout observation windows
+ok 7 - six chapters retain readable-sized actual focus animals throughout observation windows
+  ---
+  duration_ms: 864.1654
+  type: 'test'
+  ...
+# Subtest: journey habitat is opt-in and retains identities, dimensions, bed and occupied hard habitats
+ok 8 - journey habitat is opt-in and retains identities, dimensions, bed and occupied hard habitats
+  ---
+  duration_ms: 4.4165
+  type: 'test'
+  ...
+# Subtest: relocated complete reef formations use the exact displayed triangle support without stale bins
+ok 9 - relocated complete reef formations use the exact displayed triangle support without stale bins
+  ---
+  duration_ms: 36.5803
+  type: 'test'
+  ...
+# Subtest: meadow is a connected grass habitat with an actual sand opening and bounded batches
+ok 10 - meadow is a connected grass habitat with an actual sand opening and bounded batches
+  ---
+  duration_ms: 1.6535
+  type: 'test'
+  ...
+# Subtest: all displayed grass roots and both leaf sway extremes stay on soft sediment
+ok 11 - all displayed grass roots and both leaf sway extremes stay on soft sediment
+  ---
+  duration_ms: 804.3319
+  type: 'test'
+  ...
+# Subtest: sand fragments follow the substrate and preserve every authored animal probing footprint
+ok 12 - sand fragments follow the substrate and preserve every authored animal probing footprint
+  ---
+  duration_ms: 162.0861
+  type: 'test'
+  ...
+# Subtest: the opt-in behaviour layer preserves every animal identity, metre size and turtle behaviour
+ok 13 - the opt-in behaviour layer preserves every animal identity, metre size and turtle behaviour
+  ---
+  duration_ms: 15.7328
+  type: 'test'
+  ...
+# Subtest: nine sand probers retain separated whole-body reservations on actual soft bed
+ok 14 - nine sand probers retain separated whole-body reservations on actual soft bed
+  ---
+  duration_ms: 72.7702
+  type: 'test'
+  ...
+# Subtest: seek order never changes trajectories and group turns stay continuous at natural movement speeds
+ok 15 - seek order never changes trajectories and group turns stay continuous at natural movement speeds
+  ---
+  duration_ms: 166.5338
+  type: 'test'
+  ...
+# Subtest: each forager and reef resident has readable holds and transit within its reserved footprint
+ok 16 - each forager and reef resident has readable holds and transit within its reserved footprint
+  ---
+  duration_ms: 7.6088
+  type: 'test'
+  ...
+# Subtest: four existing shoals occupy a thick water column and real depth throughout the route
+ok 17 - four existing shoals occupy a thick water column and real depth throughout the route
+  ---
+  duration_ms: 19.1986
+  type: 'test'
+  ...
+# Subtest: water-column staging preserves the archived non-school trajectories
+ok 18 - water-column staging preserves the archived non-school trajectories
+  ---
+  duration_ms: 74.5522
+  type: 'test'
+  ...
+# Subtest: display summaries disclose authored participation without inventing ecosystem resource exchanges
+ok 19 - display summaries disclose authored participation without inventing ecosystem resource exchanges
+  ---
+  duration_ms: 0.6874
+  type: 'test'
+  ...
+# Subtest: water-column framing retains the archived camera positions on the same integrated habitat
+ok 20 - water-column framing retains the archived camera positions on the same integrated habitat
+  ---
+  duration_ms: 13.9182
+  type: 'test'
+  ...
+# Subtest: all four rendered schools retain height, lateral depth and supported motion throughout the journey
+ok 21 - all four rendered schools retain height, lateral depth and supported motion throughout the journey
+  ---
+  duration_ms: 884.6038
+  type: 'test'
+  ...
+# Subtest: each school chapter sustains readable groups in both upper and middle screen thirds
+ok 22 - each school chapter sustains readable groups in both upper and middle screen thirds
+  ---
+  duration_ms: 1602.5985
+  type: 'test'
+  ...
+# 礁谷 · 进入鱼群的家: 16s sustained upper/middle groups; minimum 8s
+# 礁边 · 上下都有生命: 16s sustained upper/middle groups; minimum 9.600000000000001s
+# 沙道 · 礁与沙的交界: 9.5s sustained upper/middle groups; minimum 6.4s
+# 草床外缘 · 回望这片海: 7s sustained upper/middle groups; minimum 6s
+# Subtest: four-minute integration retains every existing habitat and animal and has no region loading
+ok 23 - four-minute integration retains every existing habitat and animal and has no region loading
+  ---
+  duration_ms: 6.382
+  type: 'test'
+  ...
+# Subtest: entire camera route clears the actual reef and has continuous speed and direction
+ok 24 - entire camera route clears the actual reef and has continuous speed and direction
+  ---
+  duration_ms: 5248.0939
+  type: 'test'
+  ...
+# Subtest: each section has its actual focus community in the view, not only a chapter label
+ok 25 - each section has its actual focus community in the view, not only a chapter label
+  ---
+  duration_ms: 325.3536
+  type: 'test'
+  ...
+# Subtest: free exploration constrains the finite habitat and keeps the camera above actual surfaces
+ok 26 - free exploration constrains the finite habitat and keeps the camera above actual surfaces
+  ---
+  duration_ms: 0.5175
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10473.56

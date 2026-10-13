@@ -1,3 +1,5 @@
+> **阶段03 · 水层与构图已本地归档：** [进入4分钟体验](http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55) · [六段实景前后对照](http://127.0.0.1:4175/ocean-world/output/validation/stage-03-water-column/review.html) · [范围与验收](docs/stages/STAGE_03_WATER_COLUMN.md)。4组主鱼群形成上下、远近层次，底栖活动保留；原路线、293个体、38展示类和资产不变。1倍速完整240.18实秒无中断，26项相关检查通过。既有动物模型感、礁体硬边与部分远景偏小保留；只本地归档，没有部署线上。
+
 > **阶段03 · 三个有生活感的浅海群落（本地归档）：** [进入4分钟体验](http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55) · [实景前后对比](http://127.0.0.1:4175/ocean-world/output/validation/stage-03-living-communities/review.html) · [阶段说明与验收](docs/stages/STAGE_03_LIVING_COMMUNITIES.md)。礁谷重新组织礁缘，沙道羊鱼停走探底，草床形成连续覆盖；5类关键动物外观更新，164个体参与群落行为。原293个体/38展示类、240秒路线保留。最终完整实播240.03实秒，六段讲解正常；本地缓存加载6.00秒，仍有礁体硬边与旧动物模型感。本轮只做一次集中修正后固定，不推送部署；以下线上入口仍为此前发布版。
 
 > **阶段02 · 本地浅海整合已验收归档：** [进入4分钟完整浅海体验](http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55)。现有资产、六段同景巡游、可接管探索；已有[中文语音讲解](docs/stages/STAGE_02_NARRATION.md)，新增[当前位置开讲、重听本段与专注观看](docs/stages/STAGE_02_GUIDED_VIEW.md)（本地版本）；[范围与验收](docs/stages/STAGE_02_SHALLOW_JOURNEY.md)。已完整实播240秒，无途中加载，首次进入约8.51秒；此次不部署远端，以下原引导图保留。
