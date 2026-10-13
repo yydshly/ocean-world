@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-13",
+  "status": "finite-local-validation-complete-uncommitted-not-deployed",
+  "baseCommit": "6b58068",
+  "deployedRuntimeUnchanged": "11edf106",
+  "scope": "One bounded loading-flow and loading-UI round. Existing assets, scene, population, route, narration, quality and preparation deadlines unchanged.",
+  "changes": [
+    "Document preloads for both shallow entry routes, including exact static geometry transport URL.",
+    "Lossless gzip geometry transport; original checksum and complete factory fallback retained.",
+    "Sand and reef materials install independently of delayed animal textures, before existing seal.",
+    "Unified real-preview loading/error view with actual progress and recovery navigation."
+  ],
+  "scene": {
+    "animals": 293,
+    "displayCategories": 38,
+    "seconds": 240,
+    "routeLengthM": 90.08271084770561
+  },
+  "validation": {
+    "shallowTests": 146,
+    "publicationAndHostingTests": 9,
+    "buildSeconds": 19.64,
+    "console": [],
+    "playback": {
+      "speed": 1,
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5,
+      "duration": 240,
+      "startedAt": 28819.799999952316,
+      "resolutionHistory": [
+        {
+          "time": 0.008399999999997817,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "completed": true,
+      "lastModelSecond": 240,
+      "elapsedWallSeconds": 239.99300000004766,
+      "averageFps": 108.06524996208246,
+      "p95FrameMs": 12.60000000000582,
+      "maxFrameMs": 66.60000000000582,
+      "uninterrupted": true
+    },
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "context": "WebGL2RenderingContext"
+    },
+    "narrationPlayingClips": [
+      "reef-entry",
+      "reef-edge",
+      "reef-sand",
+      "sand-life",
+      "seagrass",
+      "open-water"
+    ],
+    "narrationErrors": [],
+    "controls": {
+      "exploreBefore": {
+        "time": 40,
+        "lifeTime": 40.18739999999998,
+        "free": true,
+        "position": [
+          -34.4202485232734,
+          1.6415089921256356,
+          -0.5889612662328552
+        ],
+        "returning": false,
+        "activities": {
+          "school-passage": 38,
+          "school-return": 64,
+          "grass-edge-swim": 18,
+          "school-spread": 16,
+          "reef-patrol": 16,
+          "reef-hold": 3,
+          "sand-transit": 5,
+          "sand-probe": 2,
+          "sand-assess": 2
+        }
+      },
+      "exploreAfter": {
+        "time": 40,
+        "lifeTime": 40.55830000000005,
+        "free": true,
+        "position": [
+          -34.000311009230494,
+          1.6415089921256354,
+          -0.6647401729251832
+        ],
+        "returning": false,
+        "activities": {
+          "school-passage": 38,
+          "school-return": 64,
+          "grass-edge-swim": 18,
+          "school-spread": 16,
+          "reef-patrol": 16,
+          "reef-hold": 3,
+          "sand-transit": 6,
+          "sand-probe": 1,
+          "sand-assess": 2
+        }
+      },
+      "returnAndChapterJump": true,
+      "mobileViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "notes": "Mobile controls and loading layout only; not a mobile-device performance test."
+    }
+  },
+  "startup": {
+    "beforeNavigationMs": 4227.5,
+    "afterNavigationMs": 4363.899999976158,
+    "afterStartupMs": 3944.600000023842,
+    "preparedGeometry": {
+      "used": true,
+      "bytes": 2281360,
+      "transportBytes": 1951008,
+      "geometries": 8
+    },
+    "preparedTextures": 47,
+    "staticGeometryMs": 46.39999997615814,
+    "textureReadyMs": 150.10000002384186,
+    "sceneBuildMs": 2428.7000000476837,
+    "renderPreparationMs": 1266.8999999761581,
+    "sampleSmokeNavigationMs": 4644.400000095367,
+    "sampleSmokeTextures": 47,
+    "interpretation": "Local cache was not cleared; single visits, not a cold-network or statistically controlled speedup comparison. 4.23s before / 4.36s after shows no demonstrated local speedup. 75s sample only received an entry/control smoke check."
+  },
+  "retainedLimits": [
+    "Remote startup improvement unverified; no deployment in this round. Previous public visit was 33.9s and is not comparable with local time.",
+    "Approx. 48.57MB of existing textures and the retained 4s preparation cutoff can still leave fallback materials on slow first visits.",
+    "Main-thread scene construction still approx. 2.43s locally. No progressive construction introduced.",
+    "Visual realism, scan edges, animal model appearance and older cross-region waits are unchanged.",
+    "390x844 is a desktop viewport layout check, not a phone-device performance test."
+  ],
+  "geometryRawSha256": "2bb430782756eefc205e5faa6b5a2210091885a64bd074ccdf291780c0b56f1c",
+  "runtimeFiles": {
+    "index-D1Szse8H.css": "8029eee1ba83686fdea215db0ee881c1c49ca8b5f54a7fbdba783754b3777c20",
+    "index-P_1J3JXd.js": "8559b10edf1d87c30be32f3666753945809d05f9d90603e2b0bdd6695780b038",
+    "model-loader-BmUF7JJH.js": "c72fd6cdb9ce4eaac3da6f7cf4e8370440c1716a170c3ebec0c904957fd3db1f",
+    "ShallowSampleApp-0dwPODAn.js": "a1637990ada73861a2017dde2279b68bd6a5c87450228739d8aea7f56c8a7ec7",
+    "ShallowSampleApp-C3wICskf.css": "cb8f6a9ebde85593e9c930ea71e1e2cb53197fe88b3a49d1c6b319fa65e7beb0"
+  },
+  "evidenceDirectory": "output/validation/stage-04-loading"
+}

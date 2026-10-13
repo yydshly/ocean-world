@@ -13,8 +13,11 @@ export async function loadPreparedShallowGeometry({fetcher=fetch,base=import.met
   if(!manifest)return {used:false};
   if(loading)return loading;
   loading=(async()=>{
-    const response=await fetcher(`${base}assets/${manifest.file}?v=${manifest.sha256.slice(0,16)}`,{signal:globalThis.AbortSignal?.timeout?.(3000)});if(!response.ok)throw new Error('Prepared reef buffers unavailable');
-    const buffer=await response.arrayBuffer();
+    const transport=manifest.transport;
+    const response=await fetcher(`${base}assets/${transport?.file??manifest.file}?v=${manifest.sha256.slice(0,16)}`,{signal:globalThis.AbortSignal?.timeout?.(3000)});if(!response.ok)throw new Error('Prepared reef buffers unavailable');
+    const buffer=transport?.encoding==='gzip'
+      ?await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()
+      :await response.arrayBuffer();
     const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',buffer)),v=>v.toString(16).padStart(2,'0')).join('');
     if(buffer.byteLength!==manifest.bytes||digest!==manifest.sha256)throw new Error('Prepared reef buffer checksum mismatch');
     const view=row=>new types[row.type](buffer,row.offset,row.length);
@@ -30,7 +33,7 @@ export async function loadPreparedShallowGeometry({fetcher=fetch,base=import.met
       }pending.set(key,result);
     }
     for(const [key,value]of pending)geometries.set(key,value);
-    return {used:true,bytes:buffer.byteLength,geometries:geometries.size};
+    return {used:true,bytes:buffer.byteLength,transportBytes:transport?.bytes??buffer.byteLength,geometries:geometries.size};
   })();
   // A failed transport must use the original complete factories. Never seal a
   // partially loaded scene or silently drop geometry to meet a time target.

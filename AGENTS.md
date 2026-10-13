@@ -1,3 +1,7 @@
+<!-- stage-04-loading-local -->
+2026-10-13 用户“继续完善优化”授权的有限入口加载轮已本地完成；未提交/推送/部署，远端11edf106保持。双浅海入口文档级模型/静态包预载、无损gzip（2281360→1951008B/14.5%）、独立沙礁贴图安装、SceneLoading实景/真实阶段/恢复入口。293个体38类/240秒约90.1m/素材/画质/原3秒几何与4秒贴图截止均未改。146浅海+9发布通过/Vite19.64s；1280×720/DPR1.5/RTX4070Laptop/scale1，1×完整240模型/239.993实秒，无中断/p9512.6/max66.6ms/六段讲解/console空；47贴图+8静态几何齐全。前4.2275s后4.3639s未清缓存单轮本地导航，不称加速或公网5s；原公网33.9s未复测，48.57MB贴图和构建2.43s瓶颈保留。75秒入口只smoke（4.644s），390×844只布局，不称手机实机性能。见docs/stages/STAGE_04_LOADING.md、docs/validation/stage-04-loading-20261013.json及output/validation/stage-04-loading/review.html。本轮收口，Goal独立，不自动继续性能修补。
+<!-- /stage-04-loading-local -->
+
 <!-- stage-04-publication-complete -->
 2026-10-13 阶段04整理发布已完成：运行提交11edf106/标签stage-04-published-20261013，Actions38377213071构建+8组世界回归+Pages部署全过；README原图→线上导览→4分钟入口/讲解/选章/探索返回及全部对照图已验。场景/资产保持22987c4；仅文档、发布页和旧测试上下文/采样修正。21静态资源字节一致，23模型运行资源200且模型解压内容一致。线上含手动操作的检查非完整连续240秒；本次导航33.9秒/初始化10.48秒，加载仍慢，未清缓存非受控冷测。原本机240.040实播及视觉/跨区限制保留。发布后固定，不自动优化或扩展；Goal独立。见docs/CURRENT_STATUS.md、docs/releases/STAGE_04_PUBLICATION.md、docs/validation/stage-04-publication-20261013.json。
 <!-- /stage-04-publication-complete -->

@@ -342,10 +342,9 @@ transformed.x+=.07*position.y*position.y*sin(sampleTime*.85+position.z*5.0+insta
     }
     return sites;
   }
-  async loadTextures(){
+  async loadTextures({loader=new THREE.TextureLoader(),base=import.meta.env?.BASE_URL??'/'}={}){
     // The player bounds preparation, then seals arrivals before starting the
     // tour. Failed or late files retain the built fallback materials.
-    const loader=new THREE.TextureLoader(),base=import.meta.env.BASE_URL;
     const files=['sand-albedo.png',this.reefAlbedoFile.split('/').at(-1)];
     const artistReady=this.animals.artists.loadTextures();
     const openReady=this.animals.openCommunity.loadTextures();
@@ -357,18 +356,10 @@ transformed.x+=.07*position.y*position.y*sin(sampleTime*.85+position.z*5.0+insta
       if(this.disposed||this.assetsSealed){texture.dispose();return;}
       this.textures.push(texture);material.map=texture;material.needsUpdate=true;
     }));
-    const loaded=await Promise.allSettled(files.map(async(file)=>{
-      const texture=await loader.loadAsync(`${base}assets/${file}`);
-      if(this.disposed||this.assetsSealed){texture.dispose();return null;}
-      texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.colorSpace=THREE.SRGBColorSpace;
-      texture.anisotropy=4;this.textures.push(texture);return texture;
-    }));
-    await Promise.allSettled([artistReady,sourcedReady,scannedReady,turtleReady,openReady,nearReady,benthicReady,contactReady]);if(this.disposed||this.assetsSealed)return;
-    const value=i=>loaded[i]?.status==='fulfilled'?loaded[i].value:null,sand=value(0),diffuse=value(1),normalMap=null,roughMap=null;
-    if(sand){this.sedimentContact.setSand(sand);const material=this.environment.getObjectByName('Continuous shallow sand bed').material;material.map=sand;material.bumpMap=sand;material.bumpScale=.025;material.needsUpdate=true;}
-    if(!diffuse)return;
-    // Publish the complete available PBR set once; avoid multiple shader changes
-    // during a tour as independent files arrive. Failure retains the fallback.
+    const installReef=diffuse=>{
+    const normalMap=null,roughMap=null;
+    // Install this material's complete available set during preparation only.
+    // The player still seals every arrival before its single GPU preparation.
     const material=this.rockMaterial,original=material.onBeforeCompile;material.map=diffuse;material.bumpMap=null;
     material.onBeforeCompile=shader=>{
       original(shader);shader.uniforms.sampleRockNormal={value:normalMap};shader.uniforms.sampleRockRough={value:roughMap};
@@ -391,6 +382,18 @@ vec3 roughN=pow(abs(normalize(cross(dFdx(sampleWorld),dFdy(sampleWorld)))),vec3(
 vec3 roughP=sampleWorld*.32;roughnessFactor=clamp(.72+.28*(texture2D(sampleRockRough,roughP.yz).r*roughN.x+texture2D(sampleRockRough,roughP.xz).r*roughN.y+texture2D(sampleRockRough,roughP.xy).r*roughN.z),.72,1.0);`);
     };
     material.customProgramCacheKey=()=>`sample-coastal-pbr-${!!normalMap}-${!!roughMap}`;material.needsUpdate=true;
+    };
+    const baseReady=files.map(async(file,index)=>{
+      const texture=await loader.loadAsync(`${base}assets/${file}`);
+      if(this.disposed||this.assetsSealed){texture.dispose();return;}
+      texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.colorSpace=THREE.SRGBColorSpace;
+      texture.anisotropy=4;this.textures.push(texture);
+      // Sand, rock and animals are independent material owners. A slow animal
+      // must not discard a ready substrate when the preparation deadline seals.
+      if(index===0){this.sedimentContact.setSand(texture);const material=this.environment.getObjectByName('Continuous shallow sand bed').material;material.map=texture;material.bumpMap=texture;material.bumpScale=.025;material.needsUpdate=true;}
+      else installReef(texture);
+    });
+    await Promise.allSettled([...baseReady,artistReady,sourcedReady,scannedReady,turtleReady,openReady,nearReady,benthicReady,contactReady]);
   }
   update(time,autoCamera=true,cameraView=null){
     if(this.disposed)return;this.clock.value=time;updateShallowSample(this.model,time);this.animals.update(time);this.activity?.update(time);

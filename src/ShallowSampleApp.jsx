@@ -9,10 +9,12 @@ import {createShallowJourney,shallowJourneyChapter,SHALLOW_JOURNEY_SECONDS,SHALL
 import { createShallowPlaybackMetrics } from './shallowSamplePlayback.js';
 import {prepareShallowRenderer} from './world/prepareShallowRenderer.js';
 import {loadPreparedShallowGeometry} from './world/preparedShallowGeometry.js';
+import {SceneLoading} from './SceneLoading.jsx';
 
 export function ShallowSampleApp({journey=false}){
   const duration=journey?SHALLOW_JOURNEY_SECONDS:SHALLOW_SAMPLE_SECONDS;
   const [location,setLocation]=useState(null),[focused,setFocused]=useState(journey);
+  const [loadingPhase,setLoadingPhase]=useState('geometry');
   const panel=useRef(null),canvas=useRef(null),runtime=useRef(null),[time,setTime]=useState(0),[playing,setPlaying]=useState(true),
     [speed,setSpeed]=useState(1),[free,setFree]=useState(false),[summary,setSummary]=useState(null),[ready,setReady]=useState(false),[error,setError]=useState('');
   useEffect(()=>{
@@ -45,6 +47,7 @@ export function ShallowSampleApp({journey=false}){
       catch(e){metrics.preparedGeometry={used:false,reason:e.message};}
       metrics.staticGeometryReadyMs=performance.now()-staticStart;
       if(disposed)return;
+      setLoadingPhase('scene');
       const modelStart=performance.now();
       world=new ShallowSampleScene(Number.isFinite(seed)?seed:55,{scannedReef:params.get('reef')==='scanned',livingCommunities:journey});setSummary({...world.summary,scannedReef:world.model.scannedReef});
       if(journey){route=createShallowJourney(world.model);metrics.experience='stage-04-complete-habitats';metrics.routeLengthM=route.length;metrics.livingCommunities={habitat:world.model.journeyHabitat??null,life:world.model.journeyLife??null};metrics.routeSamples=[];world.update(0,true,route.view(0));}
@@ -72,12 +75,14 @@ export function ShallowSampleApp({journey=false}){
       // Prepare visible assets and programs before the tour clock starts.
       // Source timeouts retain the full fallback scene, and seal late arrivals.
       const prepare=async()=>{
+        setLoadingPhase('textures');
         const assetStart=performance.now();
         // The dry museum skeleton is optional scenery, not required living
         // reef. Its runtime placement search must not block this showcase.
         let timeout;await Promise.race([world.loadTextures(),new Promise(resolve=>timeout=setTimeout(resolve,4000))]);clearTimeout(timeout);
         metrics.textureReadyMs=performance.now()-assetStart;
         if(disposed)return;world.assetsSealed=true;world.animals.artists.sealed=true;world.animals.sourcedFish.sealed=true;world.animals.sourceTurtle.sealed=true;world.animals.openCommunity.sealed=true;world.nearCommunity.sealed=true;world.benthicCorals.sealed=true;world.animals.contactFauna.sealed=true;world.scanController.abort();
+        setLoadingPhase('render');
         const preparation=await prepareShallowRenderer(renderer,world.scene,world.camera,()=>disposed);if(disposed)return;
         metrics.compileMs=preparation.compileMs;metrics.assetUploadMs=preparation.uploadMs;metrics.preparedRenderBatches=preparation.batches;
         metrics.textureUploadMs=preparation.textureUploadMs;metrics.preparedTextureCount=preparation.textureCount;
@@ -167,12 +172,11 @@ export function ShallowSampleApp({journey=false}){
   const exploration=new URL(window.location.href);exploration.searchParams.set('demo','life-expedition');exploration.searchParams.set('world','whole-seabed');
   return <main className={`shallow-sample${journey?' shallow-journey':''}${journey&&focused?' is-focused':''}${journey&&free?' is-exploring':''}`}>
     <output id="shallow-diagnostics" hidden>{JSON.stringify(runtime.current?.diagnostics.metrics??null)}</output>
+    <div className="sample-experience" inert={!ready||!!error} aria-hidden={!ready||!!error}>
     <div className="sample-canvas" ref={canvas} tabIndex={journey?0:undefined} role={journey?"region":undefined} aria-label={journey?"浅海探索画面":undefined} onPointerDown={()=>canvas.current?.focus({preventScroll:true})}/>
     <header className="sample-header"><span className="sample-brand">TIDAL <small>浅海观察</small></span><nav><a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}assets/shallow-artist/credits.html`} target="_blank" rel="noreferrer">模型来源</a> · <a href={exploration.href}>进入持续探索 ↗</a></nav></header>
     <section className="sample-title" aria-live="polite"><p>{journey?'阶段04 · 三个完整栖息地 · 4分钟':'浅海样板 · 连续巡游 75 秒'}</p><h1>{chapter.title}</h1><span>{chapter.detail}</span></section>
     {summary&&<aside className="sample-community">{summary.species} 类动物 · {summary.animals} 个体<span>{journey?chapter.life:summary.scannedReef?'扫描珊瑚试验 · 整景验收未通过':'群游 · 巡底 · 慢移 · 固着'}</span></aside>}
-    {error&&<div className="sample-error" role="alert">{error}<button onClick={()=>window.location.reload()}>重新载入</button></div>}
-    {!ready&&!error&&<div className="sample-preparing" role="status">正在准备浅海场景…</div>}
     {journey&&<aside className="journey-guide"><span className="journey-eyebrow">{free?'就地探索':'连续海域 · 沿途观察'}</span><strong>{free?'巡游进度已保留':chapter.habitat}</strong><p>{free?'点击画面后用WASD / 方向键移动，拖动转向；方向按钮可短按或长按。':chapter.life}</p>{location&&<small>距沙底 {location.above.toFixed(1)} 米 · 本地浅海观察区</small>}
       {free&&<div className="journey-movement">{[['KeyW','向前'],['KeyA','向左'],['KeyS','向后'],['KeyD','向右']].map(([key,label])=><button key={key} aria-label={label} onPointerDown={e=>{e.preventDefault();runtime.current?.move(key,true);}} onPointerUp={()=>runtime.current?.move(key,false)} onPointerLeave={()=>runtime.current?.move(key,false)} onClick={()=>runtime.current?.nudge(key)}>{label}</button>)}</div>}
     </aside>}
@@ -186,5 +190,7 @@ export function ShallowSampleApp({journey=false}){
         {lastRun?.completed&&<button className="journey-focus-secondary" onClick={downloadMetrics}>下载播放数据</button>}{journey&&<button className="journey-focus-toggle" disabled={free} title={free?'返回巡游后可专注观看':'按Esc也可展开控制'} aria-expanded={!focused} aria-controls="journey-route-controls" onClick={()=>setFocused(!focused)}>{focused?'展开控制':'专注观看'}</button>}</div>
       {journey&&<ShallowNarration runtime={runtime} ready={ready&&!error} onRestart={restart} onReplay={replayNarration} focused={focused}/>}
     </footer>
+    </div>
+    {(!ready||error)&&<SceneLoading experience={journey?'journey':'sample'} phase={loadingPhase} error={error}/>}
   </main>;
 }
