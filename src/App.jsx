@@ -13,8 +13,8 @@ class SceneLoadBoundary extends React.Component {
 }
 
 export function App(){
-  const demo = new URLSearchParams(window.location.search).get('demo');
+  const params = new URLSearchParams(window.location.search),demo = params.get('demo');
   const sample = demo === 'shallow-sample' || demo === 'shallow-journey';
-  const experience = demo === 'shallow-journey' ? 'journey' : sample ? 'sample' : 'world';
+  const experience = demo === 'shallow-journey' ? params.get('school') === '1' ? 'school' : 'journey' : sample ? 'sample' : 'world';
   return <SceneLoadBoundary experience={experience}><Suspense fallback={<SceneLoading experience={experience}/>}>{sample ? <ShallowSample journey={demo === 'shallow-journey'}/> : <OceanApp/>}</Suspense></SceneLoadBoundary>;
 }

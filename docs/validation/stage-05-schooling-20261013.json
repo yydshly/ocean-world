@@ -1,0 +1,996 @@
+{
+  "date": "2026-10-13",
+  "stage": "05",
+  "scope": "38 existing fusiliers: neighbour coordination in the existing four-minute scene",
+  "status": "local archived; not deployed",
+  "tag": "stage-05-fish-schooling-local-20261013",
+  "population": {
+    "animals": 293,
+    "categories": 38,
+    "coordinated": 38,
+    "unchangedOtherAnimals": 255
+  },
+  "route": {
+    "seconds": 240,
+    "lengthM": 90.08271084770561,
+    "all961PositionsUnchanged": true
+  },
+  "phases": [
+    [
+      "group",
+      0,
+      8
+    ],
+    [
+      "split",
+      8,
+      28
+    ],
+    [
+      "merge",
+      28,
+      36
+    ],
+    [
+      "disturbance",
+      36,
+      46
+    ],
+    [
+      "regroup",
+      46,
+      60
+    ]
+  ],
+  "tests": {
+    "shallow": 160,
+    "newBehaviourAndIntegration": 14,
+    "publication": 5,
+    "hosting": 4,
+    "distinctPassed": 169,
+    "originalFailure": "Publication shell expected the retired stage-04 title; updated label expectation and verified both observation windows.",
+    "finalCameraMaxTurnRadSec": 0.685,
+    "frustum": "38/38 centres at eight phase times in 16:9 and .85 aspect; no occlusion proof"
+  },
+  "build": {
+    "viteSeconds": 19.93
+  },
+  "simulation": {
+    "creationMs": 113.6873999999998,
+    "preparationMs": 1555.7336999999998,
+    "checkpointBytes": 3285936,
+    "frames": [
+      {
+        "t": 24,
+        "center": {
+          "x": -39.487614811578844,
+          "y": 2.3174152635992855,
+          "z": -8.631702018431943
+        },
+        "spread": 2.897530034822276,
+        "alarm": 0,
+        "alignment": 0.9622720123861273,
+        "split": {
+          "near": 38,
+          "left": 15,
+          "right": 20
+        }
+      },
+      {
+        "t": 28,
+        "center": {
+          "x": -37.50283507197529,
+          "y": 2.3607618589683126,
+          "z": -8.67595320289174
+        },
+        "spread": 2.7034455555577868,
+        "alarm": 0,
+        "alignment": 0.9039797606793294,
+        "split": {
+          "near": 38,
+          "left": 14,
+          "right": 20
+        }
+      },
+      {
+        "t": 35.9,
+        "center": {
+          "x": -34.98596918984725,
+          "y": 2.3200186557598257,
+          "z": -9.009874793810873
+        },
+        "spread": 0.8729436858645021,
+        "alarm": 0,
+        "alignment": 0.8891599376078377,
+        "split": {
+          "near": 5,
+          "left": 2,
+          "right": 1
+        }
+      },
+      {
+        "t": 36.02,
+        "center": {
+          "x": -34.96385832388987,
+          "y": 2.3194914730944842,
+          "z": -9.009202403827526
+        },
+        "spread": 0.8692382686476225,
+        "alarm": 1,
+        "alignment": 0.8902561205377684,
+        "split": {
+          "near": 5,
+          "left": 2,
+          "right": 1
+        }
+      },
+      {
+        "t": 36.2,
+        "center": {
+          "x": -34.930512011854965,
+          "y": 2.3186863775975817,
+          "z": -9.007866267461438
+        },
+        "spread": 0.8827565299937372,
+        "alarm": 38,
+        "alignment": 0.8710902278581444,
+        "split": {
+          "near": 2,
+          "left": 1,
+          "right": 0
+        }
+      },
+      {
+        "t": 38,
+        "center": {
+          "x": -34.848003901508456,
+          "y": 2.364212427778352,
+          "z": -9.044918904985785
+        },
+        "spread": 1.5225015091372511,
+        "alarm": 38,
+        "alignment": 0.23257934168086095,
+        "split": {
+          "near": 9,
+          "left": 3,
+          "right": 2
+        }
+      },
+      {
+        "t": 46,
+        "center": {
+          "x": -32.908698308896795,
+          "y": 2.3123395670137668,
+          "z": -9.014324164487618
+        },
+        "spread": 0.8376448339112964,
+        "alarm": 0,
+        "alignment": 0.9973464543934757,
+        "split": {
+          "near": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      {
+        "t": 60,
+        "center": {
+          "x": -29.56610277853676,
+          "y": 2.3124235610299704,
+          "z": -9.00277554731339
+        },
+        "spread": 0.8345699656929362,
+        "alarm": 0,
+        "alignment": 0.9995505975588589,
+        "split": {
+          "near": 0,
+          "left": 0,
+          "right": 0
+        }
+      }
+    ],
+    "maxSpeed": 1.0599999999996457,
+    "maxTurn": 2.8000000001418,
+    "minActualTerrainClearance": 0.1903435714115831
+  },
+  "playback60": {
+    "duration": 60,
+    "modelSeconds": 60,
+    "wallSeconds": 60.009100000000004,
+    "uninterrupted": true,
+    "speed": 1,
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5
+    },
+    "averageFps": 90.64395706952844,
+    "p95FrameMs": 16.600000000002183,
+    "maxFrameMs": 95.89999999999964,
+    "resolutionHistory": [
+      {
+        "time": 0,
+        "scale": 1
+      }
+    ],
+    "intervalsOver250ms": 0,
+    "navigationToReadyMs": 9335.799999952316,
+    "startupMs": 7953.399999976158,
+    "modelBuildMs": 4552.799999952316,
+    "schoolingPreparationMs": 906.0999999046326,
+    "preparedTextureCount": 47,
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "context": "WebGL2RenderingContext"
+    }
+  },
+  "playback240": {
+    "duration": 240,
+    "modelSeconds": 240,
+    "wallSeconds": 240.22809999999998,
+    "uninterrupted": true,
+    "speed": 1,
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5
+    },
+    "averageFps": 111.08400876450551,
+    "p95FrameMs": 12.60000000000582,
+    "maxFrameMs": 162.40000000000873,
+    "resolutionHistory": [
+      {
+        "time": 0.008400000000001455,
+        "scale": 1
+      }
+    ],
+    "intervalsOver250ms": 0,
+    "navigationToReadyMs": 5118.899999976158,
+    "startupMs": 4614.5,
+    "modelBuildMs": 2618.100000023842,
+    "schoolingPreparationMs": 695.6999999284744,
+    "preparedTextureCount": 47,
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "context": "WebGL2RenderingContext"
+    }
+  },
+  "console60": [],
+  "console240": [],
+  "narration": {
+    "enabled": true,
+    "status": "quiet",
+    "clipId": null,
+    "events": [
+      {
+        "time": 0,
+        "status": "off",
+        "clipId": null
+      },
+      {
+        "time": 26.920900000000128,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 0,
+        "status": "loading",
+        "clipId": "reef-entry"
+      },
+      {
+        "time": 0.08340000000000146,
+        "status": "playing",
+        "clipId": "reef-entry"
+      },
+      {
+        "time": 18.42100000000003,
+        "status": "paused",
+        "clipId": "reef-entry"
+      },
+      {
+        "time": 18.42100000000003,
+        "status": "quiet",
+        "clipId": "reef-entry"
+      },
+      {
+        "time": 18.441800000000036,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 42.037600000001184,
+        "status": "loading",
+        "clipId": "reef-edge"
+      },
+      {
+        "time": 42.1959000000012,
+        "status": "playing",
+        "clipId": "reef-edge"
+      },
+      {
+        "time": 42.97930000000124,
+        "status": "loading",
+        "clipId": "reef-edge"
+      },
+      {
+        "time": 43.000000000001236,
+        "status": "playing",
+        "clipId": "reef-edge"
+      },
+      {
+        "time": 59.93750000000342,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 90.12070000000928,
+        "status": "loading",
+        "clipId": "reef-sand"
+      },
+      {
+        "time": 90.25400000000931,
+        "status": "playing",
+        "clipId": "reef-sand"
+      },
+      {
+        "time": 107.96230000001322,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 122.09570000001624,
+        "status": "loading",
+        "clipId": "sand-life"
+      },
+      {
+        "time": 122.21230000001627,
+        "status": "playing",
+        "clipId": "sand-life"
+      },
+      {
+        "time": 141.34990000001505,
+        "status": "paused",
+        "clipId": "sand-life"
+      },
+      {
+        "time": 141.34990000001505,
+        "status": "quiet",
+        "clipId": "sand-life"
+      },
+      {
+        "time": 141.36650000001507,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 166.15400000000898,
+        "status": "loading",
+        "clipId": "seagrass"
+      },
+      {
+        "time": 166.31650000000894,
+        "status": "playing",
+        "clipId": "seagrass"
+      },
+      {
+        "time": 183.96230000000773,
+        "status": "paused",
+        "clipId": "seagrass"
+      },
+      {
+        "time": 183.96230000000773,
+        "status": "quiet",
+        "clipId": "seagrass"
+      },
+      {
+        "time": 183.9831000000077,
+        "status": "quiet",
+        "clipId": null
+      },
+      {
+        "time": 212.16240000000568,
+        "status": "loading",
+        "clipId": "open-water"
+      },
+      {
+        "time": 212.24990000000568,
+        "status": "playing",
+        "clipId": "open-water"
+      },
+      {
+        "time": 229.59150000000474,
+        "status": "paused",
+        "clipId": "open-water"
+      },
+      {
+        "time": 229.59150000000474,
+        "status": "quiet",
+        "clipId": "open-water"
+      },
+      {
+        "time": 229.60810000000473,
+        "status": "quiet",
+        "clipId": null
+      }
+    ]
+  },
+  "controls": {
+    "date": "2026-10-13",
+    "checks": [
+      {
+        "name": "main chapter jump",
+        "passed": true,
+        "view": {
+          "time": 120,
+          "lifeTime": 120,
+          "free": false,
+          "position": [
+            -2,
+            1.6582370594661584,
+            -1
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 30,
+            "school-passage": 34,
+            "grass-edge-swim": 18,
+            "school-spread": 16,
+            "reef-patrol": 14,
+            "reef-hold": 5,
+            "sand-transit": 5,
+            "sand-assess": 2,
+            "sand-probe": 2
+          }
+        }
+      },
+      {
+        "name": "free exploration movement",
+        "passed": true,
+        "displacementM": 0.4467200000000198,
+        "before": {
+          "time": 120,
+          "lifeTime": 125.38760000000111,
+          "free": true,
+          "position": [
+            -2,
+            1.658237059466158,
+            -0.9999999999999996
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 30,
+            "school-passage": 34,
+            "grass-edge-swim": 7,
+            "grass-edge-hold": 11,
+            "school-spread": 16,
+            "reef-patrol": 16,
+            "reef-hold": 3,
+            "sand-transit": 6,
+            "sand-assess": 2,
+            "sand-probe": 1
+          }
+        },
+        "after": {
+          "time": 120,
+          "lifeTime": 126.15000000000131,
+          "free": true,
+          "position": [
+            -1.5548108392841788,
+            1.658237059466158,
+            -1.0369509077176786
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 30,
+            "school-passage": 34,
+            "grass-edge-swim": 10,
+            "grass-edge-hold": 8,
+            "school-spread": 16,
+            "reef-patrol": 16,
+            "reef-hold": 3,
+            "sand-transit": 5,
+            "sand-assess": 2,
+            "sand-probe": 2
+          }
+        }
+      },
+      {
+        "name": "return from exploration",
+        "passed": true,
+        "view": {
+          "time": 125.48539999999915,
+          "lifeTime": 142.7270999999972,
+          "free": false,
+          "position": [
+            -0.009276897833267121,
+            1.6248760071994717,
+            -1.1289379170561844
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 30,
+            "school-passage": 34,
+            "grass-edge-hold": 5,
+            "grass-edge-swim": 13,
+            "school-spread": 16,
+            "reef-patrol": 15,
+            "reef-hold": 4,
+            "sand-transit": 5,
+            "sand-probe": 2,
+            "sand-assess": 2
+          }
+        },
+        "note": "The paused diagnostic retained a returning=true snapshot until resumed; resumed movement confirms return completed."
+      },
+      {
+        "name": "half speed and resume",
+        "passed": true,
+        "view": {
+          "time": 125.48539999999915,
+          "lifeTime": 142.7270999999972,
+          "free": false,
+          "position": [
+            -0.009276897833267121,
+            1.6248760071994717,
+            -1.1289379170561844
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 30,
+            "school-passage": 34,
+            "grass-edge-hold": 5,
+            "grass-edge-swim": 13,
+            "school-spread": 16,
+            "reef-patrol": 15,
+            "reef-hold": 4,
+            "sand-transit": 5,
+            "sand-probe": 2,
+            "sand-assess": 2
+          }
+        }
+      },
+      {
+        "name": "60-second phase jump",
+        "passed": true,
+        "view": {
+          "time": 36,
+          "lifeTime": 36,
+          "free": false,
+          "position": [
+            -35.48693646879139,
+            1.6256006813771855,
+            -0.37304052195484455
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 64,
+            "grass-edge-swim": 18,
+            "school-spread": 16,
+            "reef-patrol": 16,
+            "reef-hold": 3,
+            "sand-assess": 2,
+            "sand-transit": 5,
+            "sand-probe": 2
+          }
+        },
+        "school": {
+          "version": "local-neighbour-shoal-v1",
+          "phase": "disturbed",
+          "timeSec": 36,
+          "count": 38,
+          "center": {
+            "x": -34.9872656551747,
+            "y": 2.319724944266285,
+            "z": -9.047089641598689
+          },
+          "spreadM": 0.8755114327387907,
+          "alignment": 0.8503801313469095,
+          "alarmCount": 0,
+          "minBodyGapM": 0.21363051664218474,
+          "minTerrainClearanceM": 0.19686848536083967,
+          "obstacleId": "sample-rock-0",
+          "split": {
+            "near": 5,
+            "left": 2,
+            "right": 0
+          },
+          "pending": false,
+          "fixedStepSec": 0.03333333333333333,
+          "checkpointCount": 1201,
+          "checkpointBytes": 3285936,
+          "steps": 0,
+          "neighbourInteractions": 0,
+          "supportProjections": 0,
+          "creationMs": 40.89999997615814,
+          "preparationMs": 792.2000000476837,
+          "updateMs": 0,
+          "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+        }
+      },
+      {
+        "name": "paused slider seek",
+        "passed": true,
+        "view": {
+          "time": 36.1,
+          "lifeTime": 36.1,
+          "free": false,
+          "position": [
+            -35.460910912246064,
+            1.6259404564396647,
+            -0.3788355885442114
+          ],
+          "returning": false,
+          "activities": {
+            "school-escape": 33,
+            "school-coordination": 5,
+            "school-return": 64,
+            "grass-edge-swim": 18,
+            "school-spread": 16,
+            "reef-patrol": 16,
+            "reef-hold": 3,
+            "sand-assess": 2,
+            "sand-transit": 5,
+            "sand-probe": 2
+          }
+        },
+        "school": {
+          "version": "local-neighbour-shoal-v1",
+          "phase": "disturbed",
+          "timeSec": 36.1,
+          "count": 38,
+          "center": {
+            "x": -34.96985580595555,
+            "y": 2.319409356529114,
+            "z": -9.046181152886888
+          },
+          "spreadM": 0.8742908815964883,
+          "alignment": 0.8483584124509003,
+          "alarmCount": 33,
+          "minBodyGapM": 0.21937744929003017,
+          "minTerrainClearanceM": 0.18075871875869598,
+          "obstacleId": "sample-rock-0",
+          "split": {
+            "near": 5,
+            "left": 1,
+            "right": 0
+          },
+          "pending": false,
+          "fixedStepSec": 0.03333333333333333,
+          "checkpointCount": 1201,
+          "checkpointBytes": 3285936,
+          "steps": 3,
+          "neighbourInteractions": 4208,
+          "supportProjections": 0,
+          "creationMs": 40.89999997615814,
+          "preparationMs": 792.2000000476837,
+          "updateMs": 0.10000002384185791,
+          "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+        }
+      },
+      {
+        "name": "main pause holds route time",
+        "passed": true,
+        "before": {
+          "time": 125.77289999999908,
+          "lifeTime": 143.0145999999971,
+          "free": false,
+          "position": [
+            0.08979094341310923,
+            1.6216311611379113,
+            -1.132628431279017
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 30,
+            "school-passage": 34,
+            "grass-edge-hold": 5,
+            "grass-edge-swim": 13,
+            "school-spread": 16,
+            "reef-patrol": 15,
+            "reef-hold": 4,
+            "sand-transit": 5,
+            "sand-probe": 2,
+            "sand-assess": 2
+          }
+        },
+        "after": {
+          "time": 125.77289999999908,
+          "lifeTime": 143.0145999999971,
+          "free": false,
+          "position": [
+            0.08979094341310923,
+            1.6216311611379113,
+            -1.132628431279017
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 30,
+            "school-passage": 34,
+            "grass-edge-hold": 5,
+            "grass-edge-swim": 13,
+            "school-spread": 16,
+            "reef-patrol": 15,
+            "reef-hold": 4,
+            "sand-transit": 5,
+            "sand-probe": 2,
+            "sand-assess": 2
+          }
+        }
+      },
+      {
+        "name": "60-second replay",
+        "passed": true,
+        "view": {
+          "time": 0.18339999999999423,
+          "lifeTime": 0.18339999999999423,
+          "free": false,
+          "position": [
+            -41.975584830019685,
+            2.55,
+            0.012352730888647294
+          ],
+          "returning": false,
+          "activities": {
+            "school-coordination": 38,
+            "school-return": 64,
+            "grass-edge-hold": 6,
+            "grass-edge-swim": 12,
+            "school-spread": 16,
+            "reef-patrol": 15,
+            "reef-hold": 4,
+            "sand-assess": 2,
+            "sand-transit": 5,
+            "sand-probe": 2
+          }
+        }
+      }
+    ],
+    "pausedMain": {
+      "time": 125.77289999999908,
+      "lifeTime": 143.0145999999971,
+      "free": false,
+      "position": [
+        0.08979094341310923,
+        1.6216311611379113,
+        -1.132628431279017
+      ],
+      "returning": false,
+      "activities": {
+        "school-coordination": 38,
+        "school-return": 30,
+        "school-passage": 34,
+        "grass-edge-hold": 5,
+        "grass-edge-swim": 13,
+        "school-spread": 16,
+        "reef-patrol": 15,
+        "reef-hold": 4,
+        "sand-transit": 5,
+        "sand-probe": 2,
+        "sand-assess": 2
+      }
+    },
+    "consoleAfterControls": {
+      "main": [],
+      "school": []
+    }
+  },
+  "shots": [
+    {
+      "file": "split-21.4.jpg",
+      "time": 21.37899999999993,
+      "school": {
+        "version": "local-neighbour-shoal-v1",
+        "phase": "splitting",
+        "timeSec": 21.37899999999993,
+        "count": 38,
+        "center": {
+          "x": -40.63396248214025,
+          "y": 2.335489623537378,
+          "z": -8.635546041958449
+        },
+        "spreadM": 2.488557146859136,
+        "alignment": 0.8361735909069331,
+        "alarmCount": 0,
+        "minBodyGapM": 0.2772202493936529,
+        "minTerrainClearanceM": 0.07624247365531897,
+        "obstacleId": "sample-rock-0",
+        "split": {
+          "near": 38,
+          "left": 15,
+          "right": 20
+        },
+        "pending": false,
+        "fixedStepSec": 0.03333333333333333,
+        "checkpointCount": 1201,
+        "checkpointBytes": 3285936,
+        "steps": 6,
+        "neighbourInteractions": 3714,
+        "supportProjections": 0,
+        "creationMs": 63.800000071525574,
+        "preparationMs": 905.1999999284744,
+        "updateMs": 0.10000002384185791,
+        "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+      },
+      "observation": "complete uninterrupted 60-second playback"
+    },
+    {
+      "file": "regroup-60.jpg",
+      "time": 59.98320000000229,
+      "school": {
+        "version": "local-neighbour-shoal-v1",
+        "phase": "regrouping",
+        "timeSec": 60.00400000000229,
+        "count": 38,
+        "center": {
+          "x": -29.51887090089656,
+          "y": 2.31242357397919,
+          "z": -9.002614732463435
+        },
+        "spreadM": 0.8413940677947227,
+        "alignment": 0.9999605211932298,
+        "alarmCount": 0,
+        "minBodyGapM": 0.2997220040387475,
+        "minTerrainClearanceM": 0.6470571541928974,
+        "obstacleId": "sample-rock-0",
+        "split": {
+          "near": 0,
+          "left": 0,
+          "right": 0
+        },
+        "pending": false,
+        "fixedStepSec": 0.03333333333333333,
+        "checkpointCount": 1201,
+        "checkpointBytes": 3285936,
+        "steps": 1,
+        "neighbourInteractions": 1406,
+        "supportProjections": 0,
+        "creationMs": 63.800000071525574,
+        "preparationMs": 905.1999999284744,
+        "updateMs": 0.19999992847442627,
+        "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+      },
+      "observation": "complete uninterrupted 60-second playback"
+    },
+    {
+      "file": "merge-34.jpg",
+      "time": 34,
+      "school": {
+        "version": "local-neighbour-shoal-v1",
+        "phase": "merging",
+        "timeSec": 34,
+        "count": 38,
+        "center": {
+          "x": -35.354631380961905,
+          "y": 2.330542873944555,
+          "z": -9.028419847459793
+        },
+        "spreadM": 1.0665603207945786,
+        "alignment": 0.6981720523234505,
+        "alarmCount": 0,
+        "minBodyGapM": 0.17843235547971964,
+        "minTerrainClearanceM": 0.3147052196318457,
+        "obstacleId": "sample-rock-0",
+        "split": {
+          "near": 14,
+          "left": 6,
+          "right": 5
+        },
+        "pending": false,
+        "fixedStepSec": 0.03333333333333333,
+        "checkpointCount": 1201,
+        "checkpointBytes": 3285936,
+        "steps": 0,
+        "neighbourInteractions": 0,
+        "supportProjections": 0,
+        "creationMs": 63.800000071525574,
+        "preparationMs": 905.1999999284744,
+        "updateMs": 0.09999990463256836,
+        "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+      },
+      "observation": "paused seek after full playback"
+    },
+    {
+      "file": "regroup-49.4.jpg",
+      "time": 49.387400000002266,
+      "school": {
+        "version": "local-neighbour-shoal-v1",
+        "phase": "regrouping",
+        "timeSec": 49.387400000002266,
+        "count": 38,
+        "center": {
+          "x": -32.0453868126046,
+          "y": 2.312436523086702,
+          "z": -9.007328839159428
+        },
+        "spreadM": 0.8402734933581851,
+        "alignment": 0.9961794687372982,
+        "alarmCount": 0,
+        "minBodyGapM": 0.291136393440695,
+        "minTerrainClearanceM": 0.7077357634108895,
+        "obstacleId": "sample-rock-0",
+        "split": {
+          "near": 0,
+          "left": 0,
+          "right": 0
+        },
+        "pending": false,
+        "fixedStepSec": 0.03333333333333333,
+        "checkpointCount": 1201,
+        "checkpointBytes": 3285936,
+        "steps": 6,
+        "neighbourInteractions": 8436,
+        "supportProjections": 0,
+        "creationMs": 63.800000071525574,
+        "preparationMs": 905.1999999284744,
+        "updateMs": 0.5,
+        "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+      },
+      "observation": "post-run visual playback"
+    },
+    {
+      "file": "escape-38.jpg",
+      "time": 38.1,
+      "school": {
+        "version": "local-neighbour-shoal-v1",
+        "phase": "disturbed",
+        "timeSec": 38.1,
+        "count": 38,
+        "center": {
+          "x": -34.90611112231491,
+          "y": 2.388714406677549,
+          "z": -9.040717426579675
+        },
+        "spreadM": 1.5070290239163988,
+        "alignment": 0.09167553244643278,
+        "alarmCount": 38,
+        "minBodyGapM": 0.550000736905048,
+        "minTerrainClearanceM": 0.10135214258332059,
+        "obstacleId": "sample-rock-0",
+        "split": {
+          "near": 10,
+          "left": 3,
+          "right": 4
+        },
+        "pending": false,
+        "fixedStepSec": 0.03333333333333333,
+        "checkpointCount": 1201,
+        "checkpointBytes": 3285936,
+        "steps": 3,
+        "neighbourInteractions": 2876,
+        "supportProjections": 0,
+        "creationMs": 63.800000071525574,
+        "preparationMs": 905.1999999284744,
+        "updateMs": 0.20000004768371582,
+        "limits": "Neighbour coordination with an authored destination and one local disturbance; no predation, food web or whole-world collision simulation."
+      },
+      "observation": "paused seek after full playback"
+    }
+  ],
+  "runtimeHashes": {
+    "src/shallowSample.js": "740fe93a3b475fa52fc43ab1b4225f25e76b0a65372b235b9797853e5cca8dbb",
+    "src/shallowJourney.js": "9313458153434064de439f266250f22a27c4fcf3619e0e0a80aa05a3060243a1",
+    "src/ShallowSampleApp.jsx": "b387f83d891acb34d2183dfebf00459abdb079812af1f736abbe602f610e63ff",
+    "src/shallowSchooling.js": "3a5fd4b5422ed85add1718b9faaf60dd61962e8a35d57f4f76c6e2e41657fbd8",
+    "src/SceneLoading.jsx": "753934e644d89995b1cbb3f3c6e29ccaec54137273cb9bd6fd8eeb03f57f2968",
+    "src/shallowSample.css": "e5cfb70ff9ae88a1c5112a38493b6b6d9062f435280d8971667980bcffaa3b97",
+    "src/App.jsx": "f4fb2548889880ee61d512a779756ad98e1bc756db3089ca99b3fc2fa3559bd1"
+  },
+  "limits": [
+    "Authored destination and one local stimulus; individual movement uses real neighbour states.",
+    "Sampled terrain envelope and lateral body spheres are approximations, not exhaustive mesh collision proof.",
+    "A branch can be partly obscured by foreground reef; projected visibility does not certify occlusion.",
+    "School replay is bounded to 240 seconds; this group holds its final pose during exploration after that limit.",
+    "Existing asset realism, texture deadlines and remote loading limitations are unchanged.",
+    "Normal uncleared-cache local visits; no cold-network, mobile-device or remote-performance claim."
+  ]
+}

@@ -58,6 +58,18 @@ export function createShallowJourney(model){
         const proximity=model.livingCommunities?THREE.MathUtils.smoothstep(distance,2,4)*(1-THREE.MathUtils.smoothstep(distance,15,18)):1;
         target.lerp(center,fadeIn*fadeOut*.82*proximity);
       });
+      if(model.schoolingSystem&&time<68){
+        // Observe the full shoal through its split and recovery, then hand the
+        // view back smoothly. The original continuous camera route is intact.
+        const members=groups[0],center=new THREE.Vector3();
+        for(const a of members)center.add(new THREE.Vector3(a.position.x,a.position.y,a.position.z));
+        if(members.length){center.multiplyScalar(1/members.length);
+          // Open already facing the shoal: blending opposite directions at
+          // startup produced an abrupt mid-blend turn instead of a calm view.
+          const weight=1-THREE.MathUtils.smoothstep(time,60,68);
+          if(center.distanceTo(p)>2)target.lerp(center,weight);
+        }
+      }
       return {position:p,target};
     }
   };

@@ -216,3 +216,12 @@ output/validation/screenshots/*
 # Local Python bytecode
 __pycache__/
 *.pyc
+
+# Stage 05 selected local evidence; raw logs and playback remain local.
+!output/validation/stage-05-schooling/
+output/validation/stage-05-schooling/*
+!output/validation/stage-05-schooling/review.html
+!output/validation/stage-05-schooling/split-21.4.jpg
+!output/validation/stage-05-schooling/merge-34.jpg
+!output/validation/stage-05-schooling/escape-38.jpg
+!output/validation/stage-05-schooling/regroup-60.jpg

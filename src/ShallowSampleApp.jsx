@@ -10,9 +10,11 @@ import { createShallowPlaybackMetrics } from './shallowSamplePlayback.js';
 import {prepareShallowRenderer} from './world/prepareShallowRenderer.js';
 import {loadPreparedShallowGeometry} from './world/preparedShallowGeometry.js';
 import {SceneLoading} from './SceneLoading.jsx';
+import {createShallowSchooling,prepareShallowSchooling,shallowSchoolingDiagnostics,shallowSchoolingPhase,SHALLOW_SCHOOLING_PHASES} from './shallowSchooling.js';
 
 export function ShallowSampleApp({journey=false}){
-  const duration=journey?SHALLOW_JOURNEY_SECONDS:SHALLOW_SAMPLE_SECONDS;
+  const schoolingOnly=journey&&new URLSearchParams(window.location.search).get('school')==='1';
+  const duration=schoolingOnly?60:journey?SHALLOW_JOURNEY_SECONDS:SHALLOW_SAMPLE_SECONDS;
   const [location,setLocation]=useState(null),[focused,setFocused]=useState(journey);
   const [loadingPhase,setLoadingPhase]=useState('geometry');
   const panel=useRef(null),canvas=useRef(null),runtime=useRef(null),[time,setTime]=useState(0),[playing,setPlaying]=useState(true),
@@ -50,7 +52,7 @@ export function ShallowSampleApp({journey=false}){
       setLoadingPhase('scene');
       const modelStart=performance.now();
       world=new ShallowSampleScene(Number.isFinite(seed)?seed:55,{scannedReef:params.get('reef')==='scanned',livingCommunities:journey});setSummary({...world.summary,scannedReef:world.model.scannedReef});
-      if(journey){route=createShallowJourney(world.model);metrics.experience='stage-04-complete-habitats';metrics.routeLengthM=route.length;metrics.livingCommunities={habitat:world.model.journeyHabitat??null,life:world.model.journeyLife??null};metrics.routeSamples=[];world.update(0,true,route.view(0));}
+      if(journey){world.model.schoolingSystem=createShallowSchooling(world.model);route=createShallowJourney(world.model);metrics.experience=schoolingOnly?'stage-05-schooling-60s':'stage-05-schooling-journey';metrics.routeLengthM=route.length;metrics.livingCommunities={habitat:world.model.journeyHabitat??null,life:world.model.journeyLife??null};metrics.routeSamples=[];world.update(0,false);world.update(0,true,route.view(0));}
       metrics.modelBuildMs=performance.now()-modelStart;
       metrics.sceneBuildStagesMs={...world.buildTimings};
       metrics.preparedCover={used:world.model.preparedCover,signature:world.model.coverInputSignature,raw:world.model.coverRawInputSignature,authoringRaw:world.model.coverExpectedRawSignature};
@@ -75,12 +77,16 @@ export function ShallowSampleApp({journey=false}){
       // Prepare visible assets and programs before the tour clock starts.
       // Source timeouts retain the full fallback scene, and seal late arrivals.
       const prepare=async()=>{
+        const schoolStart=performance.now();
+        const schoolReady=journey?prepareShallowSchooling(world.model.schoolingSystem).then(()=>{metrics.schoolingPreparationMs=performance.now()-schoolStart;}):Promise.resolve();
         setLoadingPhase('textures');
         const assetStart=performance.now();
         // The dry museum skeleton is optional scenery, not required living
         // reef. Its runtime placement search must not block this showcase.
-        let timeout;await Promise.race([world.loadTextures(),new Promise(resolve=>timeout=setTimeout(resolve,4000))]);clearTimeout(timeout);
-        metrics.textureReadyMs=performance.now()-assetStart;
+        let timeout;await Promise.all([schoolReady,Promise.race([world.loadTextures(),new Promise(resolve=>timeout=setTimeout(resolve,4000))]).then(()=>{
+          clearTimeout(timeout);metrics.textureReadyMs=performance.now()-assetStart;
+        })]);
+        if(journey&&!disposed)world.update(0,false);
         if(disposed)return;world.assetsSealed=true;world.animals.artists.sealed=true;world.animals.sourcedFish.sealed=true;world.animals.sourceTurtle.sealed=true;world.animals.openCommunity.sealed=true;world.nearCommunity.sealed=true;world.benthicCorals.sealed=true;world.animals.contactFauna.sealed=true;world.scanController.abort();
         setLoadingPhase('render');
         const preparation=await prepareShallowRenderer(renderer,world.scene,world.camera,()=>disposed);if(disposed)return;
@@ -149,9 +155,10 @@ export function ShallowSampleApp({journey=false}){
           }
           if(now-lastUi>180){setTime(state.time);lastUi=now;
             if(journey){const p=world.camera.position;setLocation({x:p.x,z:p.z,above:Math.max(0,p.y-world.model.floor(p.x,p.z))});metrics.currentView={time:state.time,lifeTime:state.lifeTime,free:state.free,position:p.toArray(),returning:!!returnView,activities:Object.fromEntries([...new Set(world.model.agents.map(a=>a.journeyActivity).filter(Boolean))].map(activity=>[activity,world.model.agents.filter(a=>a.journeyActivity===activity).length]))};
+              metrics.schooling=shallowSchoolingDiagnostics(world.model.schoolingSystem);
               if(state.playing&&Math.floor(state.time)>(metrics.routeSamples.at(-1)?.second??-1))metrics.routeSamples.push({second:Math.floor(state.time),position:p.toArray(),chapter:shallowJourneyChapter(state.time).habitat});}
           }
-          if(state.time>=duration&&state.playing){diagnostics.finish(now);state.playing=false;setTime(state.time);setPlaying(false);}
+          if(state.time>=duration&&state.playing){if(journey)metrics.schooling=shallowSchoolingDiagnostics(world.model.schoolingSystem);diagnostics.finish(now);state.playing=false;setTime(state.time);setPlaying(false);}
         }
         frame=requestAnimationFrame(render);
       };
@@ -159,8 +166,9 @@ export function ShallowSampleApp({journey=false}){
     };initialize().catch(e=>{if(!disposed)setError(`场景启动失败：${e.message}`);});
     return()=>{disposed=true;cancelAnimationFrame(frame);observer?.disconnect();runtime.current?.cleanupInput?.();if(runtime.current?.visibility)document.removeEventListener('visibilitychange',runtime.current.visibility);
       if(window.__shallowSampleMetrics===metrics)delete window.__shallowSampleMetrics;controls?.dispose();world?.dispose();renderer?.dispose();renderer?.domElement.remove();runtime.current=null;};
-  },[journey,duration]);
-  const chapter=journey?shallowJourneyChapter(time):shallowSampleChapter(time);
+  },[journey,duration,schoolingOnly]);
+  const schoolPhase=shallowSchoolingPhase(time);
+  const chapter=schoolingOnly?schoolPhase:journey?shallowJourneyChapter(time):shallowSampleChapter(time);
   const toggle=()=>{const state=runtime.current?.state;if(!state||!state.ready)return;if(state.time>=duration){state.time=0;state.lifeTime=0;setTime(0);runtime.current.startRun();}else runtime.current.diagnostics.interrupt('pause');state.playing=!state.playing;setPlaying(state.playing);};
   const restart=()=>{runtime.current?.observe(false);runtime.current?.seek(0);if(runtime.current){runtime.current.state.playing=true;runtime.current.startRun();}setFree(false);setPlaying(true);};
   const changeSpeed=value=>{setSpeed(value);if(runtime.current){runtime.current.diagnostics.interrupt('speed-change');runtime.current.state.speed=value;}};
@@ -170,27 +178,31 @@ export function ShallowSampleApp({journey=false}){
   const lastRun=runtime.current?.diagnostics.metrics.runs.at(-1);
   const downloadMetrics=()=>{const blob=new Blob([JSON.stringify(runtime.current?.diagnostics.metrics,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=journey?'shallow-journey-playback.json':'shallow-sample-playback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
   const exploration=new URL(window.location.href);exploration.searchParams.set('demo','life-expedition');exploration.searchParams.set('world','whole-seabed');
+  const schoolUrl=new URL(window.location.href);schoolUrl.searchParams.set('school','1');
+  const journeyUrl=new URL(window.location.href);journeyUrl.searchParams.delete('school');
   return <main className={`shallow-sample${journey?' shallow-journey':''}${journey&&focused?' is-focused':''}${journey&&free?' is-exploring':''}`}>
     <output id="shallow-diagnostics" hidden>{JSON.stringify(runtime.current?.diagnostics.metrics??null)}</output>
     <div className="sample-experience" inert={!ready||!!error} aria-hidden={!ready||!!error}>
     <div className="sample-canvas" ref={canvas} tabIndex={journey?0:undefined} role={journey?"region":undefined} aria-label={journey?"浅海探索画面":undefined} onPointerDown={()=>canvas.current?.focus({preventScroll:true})}/>
     <header className="sample-header"><span className="sample-brand">TIDAL <small>浅海观察</small></span><nav><a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}assets/shallow-artist/credits.html`} target="_blank" rel="noreferrer">模型来源</a> · <a href={exploration.href}>进入持续探索 ↗</a></nav></header>
-    <section className="sample-title" aria-live="polite"><p>{journey?'阶段04 · 三个完整栖息地 · 4分钟':'浅海样板 · 连续巡游 75 秒'}</p><h1>{chapter.title}</h1><span>{chapter.detail}</span></section>
-    {summary&&<aside className="sample-community">{summary.species} 类动物 · {summary.animals} 个体<span>{journey?chapter.life:summary.scannedReef?'扫描珊瑚试验 · 整景验收未通过':'群游 · 巡底 · 慢移 · 固着'}</span></aside>}
-    {journey&&<aside className="journey-guide"><span className="journey-eyebrow">{free?'就地探索':'连续海域 · 沿途观察'}</span><strong>{free?'巡游进度已保留':chapter.habitat}</strong><p>{free?'点击画面后用WASD / 方向键移动，拖动转向；方向按钮可短按或长按。':chapter.life}</p>{location&&<small>距沙底 {location.above.toFixed(1)} 米 · 本地浅海观察区</small>}
+    <section className="sample-title" aria-live="polite"><p>{schoolingOnly?'阶段05 · 乌尾鮗协同 · 60秒':journey?'浅海体验 · 三个完整栖息地 · 4分钟':'浅海样板 · 连续巡游 75 秒'}</p><h1>{chapter.title}</h1><span>{chapter.detail}</span></section>
+    {journey&&!free&&time<=60&&<section className="schooling-status" aria-label="鱼群协同观察"><small>38条乌尾鮗 · 60秒协同观察</small><strong>{schoolPhase.title}</strong><p>{schoolPhase.detail}</p><ol>{SHALLOW_SCHOOLING_PHASES.map(phase=><li key={phase.id} aria-current={phase.id===schoolPhase.id?'step':undefined}>{phase.title}</li>)}</ol></section>}
+    {summary&&<aside className="sample-community">{summary.species} 类动物 · {summary.animals} 个体<span>{schoolingOnly?'现有38条乌尾鮗 · 局部邻居协同':journey?chapter.life:summary.scannedReef?'扫描珊瑚试验 · 整景验收未通过':'群游 · 巡底 · 慢移 · 固着'}</span></aside>}
+    {journey&&(free||time>60)&&<aside className="journey-guide"><span className="journey-eyebrow">{free?'就地探索':'连续海域 · 沿途观察'}</span><strong>{free?'巡游进度已保留':chapter.habitat}</strong><p>{free?'点击画面后用WASD / 方向键移动，拖动转向；方向按钮可短按或长按。':chapter.life}</p>{location&&<small>距沙底 {location.above.toFixed(1)} 米 · 本地浅海观察区</small>}
       {free&&<div className="journey-movement">{[['KeyW','向前'],['KeyA','向左'],['KeyS','向后'],['KeyD','向右']].map(([key,label])=><button key={key} aria-label={label} onPointerDown={e=>{e.preventDefault();runtime.current?.move(key,true);}} onPointerUp={()=>runtime.current?.move(key,false)} onPointerLeave={()=>runtime.current?.move(key,false)} onClick={()=>runtime.current?.nudge(key)}>{label}</button>)}</div>}
     </aside>}
     <footer className="sample-controls" ref={panel}>
-      {journey&&<nav id="journey-route-controls" className="journey-chapters" aria-label="浅海路线">{SHALLOW_JOURNEY_CHAPTERS.map((c,i)=><button key={c.start} aria-label={`跳至${c.title}`} aria-current={chapter===c?'step':undefined} disabled={!ready} onClick={()=>visit(c.start)}><small>0{i+1}</small>{['进入礁谷','礁边群落','礁沙过渡','沙底生命','草床海龟','开阔水层'][i]}</button>)}</nav>}
+      {journey&&<nav id="journey-route-controls" className={`journey-chapters${schoolingOnly?' school-chapters':''}`} aria-label={schoolingOnly?'鱼群协同阶段':'浅海路线'}>{(schoolingOnly?SHALLOW_SCHOOLING_PHASES:SHALLOW_JOURNEY_CHAPTERS).map((c,i)=><button key={c.start} aria-label={`跳至${c.title}`} aria-current={chapter===c?'step':undefined} disabled={!ready} onClick={()=>visit(c.start)}><small>0{i+1}</small>{schoolingOnly?c.title:['进入礁谷','礁边群落','礁沙过渡','沙底生命','草床海龟','开阔水层'][i]}</button>)}</nav>}
       <div className="sample-progress"><label htmlFor="sample-progress">巡游进度</label><input id="sample-progress" disabled={!ready} type="range" min="0" max={duration} step=".1" value={time} onChange={e=>runtime.current?.seek(Number(e.target.value))}/><span>{Math.floor(time)} / {duration} 秒</span></div>
-      <div className="sample-actions">{journey&&<span className="journey-focus-position">{chapter.habitat} · {Math.floor(time/60)}:{String(Math.floor(time%60)).padStart(2,'0')} / 4:00</span>}<button onClick={toggle} className="sample-toggle" disabled={!ready||!!error||(journey&&free)}>{time>=duration?'重新播放':playing?'暂停巡游':'继续巡游'}</button><button className="journey-focus-secondary" onClick={restart} disabled={!ready||!!error}>从头观看</button>
+      <div className="sample-actions">{journey&&<span className="journey-focus-position">{schoolingOnly?'鱼群协同':chapter.habitat} · {Math.floor(time/60)}:{String(Math.floor(time%60)).padStart(2,'0')} / {schoolingOnly?'1:00':'4:00'}</span>}<button onClick={toggle} className="sample-toggle" disabled={!ready||!!error||(journey&&free)}>{time>=duration?'重新播放':playing?'暂停巡游':'继续巡游'}</button><button className="journey-focus-secondary" onClick={restart} disabled={!ready||!!error}>从头观看</button>
         <label className="journey-focus-secondary">播放速度 <select disabled={!ready} value={speed} onChange={e=>changeSpeed(Number(e.target.value))}><option value=".5">0.5×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label>
         <button className="journey-focus-secondary" onClick={observe} aria-pressed={free} disabled={!ready||!!error}>{free?'返回巡游镜头':journey?'接管探索':'自由观察'}</button><span>{free?journey?'WASD移动 · 拖动转向':'拖动旋转 · 滚轮靠近':time>=duration?'巡游完成，可自由观察这片海床':'礁谷 → 沙道 → 草床'}</span>
+        {journey&&<a className="journey-focus-secondary school-link" href={schoolingOnly?journeyUrl.href:schoolUrl.href}>{schoolingOnly?'观看完整4分钟':'观看60秒鱼群协同'}</a>}
         {lastRun?.completed&&<span>最近完整播放记录 {lastRun.averageFps.toFixed(1)} FPS · {lastRun.elapsedWallSeconds.toFixed(1)} 秒{!lastRun.uninterrupted?' · 含操作中断':''}</span>}
         {lastRun?.completed&&<button className="journey-focus-secondary" onClick={downloadMetrics}>下载播放数据</button>}{journey&&<button className="journey-focus-toggle" disabled={free} title={free?'返回巡游后可专注观看':'按Esc也可展开控制'} aria-expanded={!focused} aria-controls="journey-route-controls" onClick={()=>setFocused(!focused)}>{focused?'展开控制':'专注观看'}</button>}</div>
-      {journey&&<ShallowNarration runtime={runtime} ready={ready&&!error} onRestart={restart} onReplay={replayNarration} focused={focused}/>}
+      {journey&&!schoolingOnly&&<ShallowNarration runtime={runtime} ready={ready&&!error} onRestart={restart} onReplay={replayNarration} focused={focused}/>}
     </footer>
     </div>
-    {(!ready||error)&&<SceneLoading experience={journey?'journey':'sample'} phase={loadingPhase} error={error}/>}
+    {(!ready||error)&&<SceneLoading experience={schoolingOnly?'school':journey?'journey':'sample'} phase={loadingPhase} error={error}/>}
   </main>;
 }

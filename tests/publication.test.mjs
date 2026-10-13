@@ -55,6 +55,7 @@ test('every published world entry renders its initial shell before the first wor
     .map(match => new URL(match[1].replaceAll('&amp;','&'),'https://example.test/ocean-world/overview/').search))];
   assert.ok(urls.length >= 18);
   for (const demo of ['shallow-sample', 'shallow-journey']) assert.ok(urls.some(search => new URLSearchParams(search).get('demo') === demo), `Guide omits ${demo}`);
+  urls.push('?demo=shallow-journey&seed=55&school=1');
   for (const search of urls) {
     const module={exports:{}},storage={getItem:()=>null,setItem:()=>{}};
     new Function('require','module','exports','window','localStorage','document',result.outputFiles[0].text)(
@@ -63,7 +64,11 @@ test('every published world entry renders its initial shell before the first wor
     assert.match(html,/TIDAL/,search);
     assert.match(html,/产品导览/,search);
     const demo = new URLSearchParams(search).get('demo');
-    if (demo === 'shallow-journey') assert.match(html,/阶段04 · 三个完整栖息地 · 4分钟/,search);
+    if (demo === 'shallow-journey' && new URLSearchParams(search).get('school') === '1'){
+      assert.match(html,/乌尾鮗协同观察 · 连续60秒/,search);
+      assert.match(html,/aria-label="鱼群协同阶段"/,search);
+      assert.match(html,/观看完整4分钟/,search);
+    }else if (demo === 'shallow-journey') assert.match(html,/三个完整栖息地 · 4分钟/,search);
     else if (demo === 'shallow-sample') assert.match(html,/浅海样板 · 连续巡游 75 秒/,search);
     else assert.doesNotMatch(html,/class="sample-title"/,search);
   }

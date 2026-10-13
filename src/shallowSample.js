@@ -13,6 +13,7 @@ import {arrangeNearReefAssets} from './world/ShallowNearCommunity.js';
 import preparedCover from './world/shallowPreparedCover.js';
 import {composeJourneyHabitats} from './shallowJourneyHabitat.js';
 import {initializeJourneyLife,evaluateJourneyLife,configureJourneyHabitatLife} from './shallowJourneyLife.js';
+import {updateShallowSchooling,sampleShallowSchooling} from './shallowSchooling.js';
 
 
 export const SHALLOW_SAMPLE_SECONDS = 75;
@@ -299,7 +300,15 @@ export function sampleAnimalPosition(model, agent, time, withSupport=true) {
 }
 
 export function updateShallowSample(model,time) {
+  if(model.schoolingSystem)updateShallowSchooling(model.schoolingSystem,time);
   for (const a of model.agents) {
+    const coordinated=model.schoolingSystem&&sampleShallowSchooling(model.schoolingSystem,a);
+    if(coordinated){
+      a.position={...coordinated.position};a.velocity={...coordinated.velocity};
+      a.heading=coordinated.heading;a.pitch=coordinated.pitch??0;
+      a.state=coordinated.state;a.journeyActivity=coordinated.activity;
+      a.probeStrength=0;a.timeSec=time;continue;
+    }
     const dip=a.reefPatrol?.behavior==='dip',now=sampleAnimalPosition(model,a,time),next=a.mode==='fixed'?now:sampleAnimalPosition(model,a,time+.02,dip);
     // The exact current body support is still checked every update. Only the
     // horizontal tangent is needed for most display headings; vertical velocity

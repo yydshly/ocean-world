@@ -46,4 +46,9 @@
 .is-focused .narration-caption{margin-top:9px;font-size:14px;line-height:1.65;max-height:126px}
 .is-exploring .narration-caption{display:none}
 .shallow-journey.is-exploring .journey-guide{display:block}
+.schooling-status{position:absolute;left:30px;bottom:calc(var(--sample-panel-height,160px) + 42px);max-width:390px;padding:12px 15px;background:linear-gradient(90deg,#123d4bd9,#123d4b77);border-left:2px solid #dbe4be88;border-radius:0 8px 8px 0;pointer-events:none}
+.schooling-status small{font-size:10px;color:#bdd3ce}.schooling-status strong{display:block;margin:7px 0;font-size:18px;font-weight:500}.schooling-status p{margin:0;color:#e0ebe5;font-size:12px;line-height:1.65}
+.schooling-status ol{display:flex;gap:10px;list-style:none;margin:11px 0 0;padding:0;font-size:10px;color:#9ebbb5}.schooling-status li[aria-current]{color:#eff1d2;border-bottom:2px solid #dbe4be;padding-bottom:3px}
+.school-chapters{grid-template-columns:repeat(5,1fr)}.school-link{color:#eaf1e8;text-decoration:none;border:1px solid #dae6dc35;border-radius:5px;font-size:12px;padding:7px 10px}
+@media(max-width:700px){.schooling-status{left:18px;right:18px;max-width:360px;padding:10px 12px;bottom:calc(var(--sample-panel-height,180px) + 28px)}.schooling-status ol{gap:8px;flex-wrap:wrap}.schooling-status p{font-size:11px}.schooling-status strong{font-size:16px}}
 @media(max-width:700px){.is-focused .sample-controls{width:calc(100% - 24px);padding:10px 12px}.is-focused .sample-actions>.journey-focus-position{width:auto;font-size:11px;margin-top:0}.is-focused .sample-actions button{padding:7px 9px}.is-focused .narration-actions>span{width:auto;flex:1;min-width:100px}.is-focused .narration-caption{font-size:13px;max-height:126px}}

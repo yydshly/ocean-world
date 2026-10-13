@@ -1,3 +1,7 @@
+<!-- stage-05-schooling-local-complete -->
+2026-10-13用户授权的阶段05有限鱼群协同本地归档完成。既有38条乌尾鮗接入邻居分离/对齐/聚群、现有sample-rock-0避让与36秒编排局部扰动；原293动物/38类/资产、其它255动物整记录及961相机位置保持。school=1选择同一shallow-journey场景前60秒，主线前60包含演示、60–68取景交回；只固定30Hz预备240秒/1201检查点约3.286MB，寻址≤6步，超过240该群末帧冻结。主体整合后一次集中修正转向/地形格高度跳动/汇合窗，随后7运行hash冻结。169不同相关检查通过，非全世界回归；build19.93s。1×完整60模型/60.0091实秒及240模型/240.2281实秒均无操作中断；1280×720/DPR1.5/RTX4070Laptop/scale1，p95分别16.6/12.6ms、max95.9/162.4ms，无>250ms；六段原旁白playing，console空。8控制操作通过，正常缓存未清导航9.336/5.119秒，非5秒达标或冷公网性能证明。分流远侧局部遮挡/旧模型与硬边/旁白reef-edge重复playing限制保留；返回暂停诊断末采样可滞留true，继续后正常归位，未追加修补。docs/stages/STAGE_05_FISH_SCHOOLING.md、docs/validation/stage-05-schooling-20261013.json、output/validation/stage-05-schooling/review.html和四张选定实景。标签stage-05-fish-schooling-local-20261013；只本地commit/tag，无push/deploy，远端560669f保持。此阶段到此收口，不自动优化或扩展下一群；长期Goal独立。
+<!-- /stage-05-schooling-local-complete -->
+
 <!-- stage-04-loading-publication-complete -->
 2026-10-13 用户授权发布已完成：运行560669f/标签stage-04-loading-published-20261013，Actions38383872433构建+8组世界回归+部署全过；远端常规缓存未清导航10.72秒/初始化7.06秒，准备26贴图/静态包used=true。1×完整240模型/240.079实秒无中断/六段讲解/console0项；初始1280×720、后续约660×871/DPR1.5/scale1/p9512.6/max174.7ms，复访6.44秒/47贴图。非受控冷启动或全设备保证，旧视觉与跨区限制保留。用户要求阶段性归档不无限优化，本次仅发布此前通过改动、无运行追加修补。当前回执docs/releases/STAGE_04_LOADING_PUBLICATION.md及docs/validation/stage-04-loading-publication-20261013.json。历史未部署描述保持当时含义。Goal独立。
 <!-- /stage-04-loading-publication-complete -->
