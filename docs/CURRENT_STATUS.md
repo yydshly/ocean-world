@@ -1,3 +1,17 @@
+<!-- entry-navigation-publication-complete -->
+# 当前已发布：阶段05导航收尾，保留加载与旧存档问题
+
+2026-10-13发布`5e4c280`；[工作流38411166224](https://github.com/yydshly/ocean-world/actions/runs/38411166224)构建、8组世界检查及部署全部成功。右上角“更多体验”连接10个主要入口，研究页面可以返回4分钟主线；礁谷与草甸原生等待状态保留至目的地九格地形和生态实际齐备。资产、音频、路线及生态队列没有扩展，143份冻结文件保持。
+
+远端4分钟与60秒分别完整1×实播240.0191/60.0081实秒，无操作中断；最长帧间隔62.5/54.2ms，超过250ms均为0。礁谷与草甸完成进入和返回；导演、生命巡游仅启动及短段推进，能力总览、深海与75秒历史样板仅入口抽查，不宣称所有研究路线完成。
+
+**仍未完全达到目标：** 本次主线首轮导航70.597秒、初始化8.717秒、初始准备贴图1/47；60秒缓存入口6.797秒，均非5秒加载达标。海带林当前浏览器既有存档恢复失败，原动物与库存保留，不能判为正常体验。主线真实感、有限编排与旧世界跨区等边界继续保留；不以错误数组为空覆盖可见失败。
+
+[推荐4分钟主线](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55) · [正式导览](https://yydshly.github.io/ocean-world/overview/) · [本轮实景与发布回执](releases/ENTRY_NAVIGATION_PUBLICATION_20261013.md) · [结构化记录](validation/entry-navigation-20261013.json)
+
+归档标签`stage-05-entry-navigation-published-20261013`。本轮收口，不自动扩场景、资产或清空旧存档；下方历史原文保留当时含义。Goal独立。
+<!-- /entry-navigation-publication-complete -->
+
 <!-- stage-05-schooling-publication-complete -->
 # 当前已发布：阶段05 · 鱼群协同与中文讲解
 

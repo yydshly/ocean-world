@@ -8,7 +8,7 @@
 
 **点击上方原版引导图进入产品导览，选择“4分钟浅海体验”或“60秒鱼群协同”。** 图中实景与数据是 **2026-10-12 的历史快照**，包括75秒样板和当时的性能、发布状态；最新阶段说明以本文与[阶段05鱼群协同页](https://yydshly.github.io/ocean-world/overview/stage-05/)为准。[下载原版长图](https://yydshly.github.io/ocean-world/overview/ocean-world-product-atlas.png)。
 
-**入口有限收尾：** 浅海页面右上角“更多体验”连接10个主要入口，研究页面可以“返回4分钟浅海主线”。礁谷、草甸等待实际目的地地形与群落齐备后才确认进入；保留历史校验和加载耗时，不宣称所有研究路线已完整验收。[本轮导航、验证与发布记录](docs/releases/ENTRY_NAVIGATION_PUBLICATION_20261013.md)。
+**导航已发布并阶段性归档：** 页面右上角“更多体验”连接10个主要入口，研究页面可以“返回4分钟浅海主线”。礁谷、草甸等待实际目的地地形与群落齐备后才确认进入。发布提交`5e4c280`的[构建、8组世界检查与部署全部通过](https://github.com/yydshly/ocean-world/actions/runs/38411166224)；远端4分钟及60秒完整1×实播无操作中断、无超过250ms帧间隔。**仍有保留问题：** 本次主线首轮进入70.60秒，未达5秒目标；海带林当前既有存档恢复失败，原动物与库存保持。这不是加载或跨区性能加速，也不代表全部研究路线已验收。[本轮实景、结果与限制](docs/releases/ENTRY_NAVIGATION_PUBLICATION_20261013.md)。
 
 > **当前阶段：05 · 鱼群协同与中文讲解。** 现有38条乌尾鮗展示遇礁分流、汇合、受扰散开与重新聚集；60秒入口直接观察这一段，原4分钟主线的开场包含同样演示，之后继续礁谷 → 沙道 → 草床。293个体、38展示类、现有资产与原路线保持。60秒版五段中文短讲解，4分钟版共十段，均可开启字幕与语音。鱼群本地归档基线为 `a935a3e` / `stage-05-fish-schooling-local-20261013`；本轮配音、正式部署和实际远端加载播放结果以[发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)及同一提交的 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准。
 

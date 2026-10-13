@@ -1,0 +1,479 @@
+{
+  "date": "2026-10-13",
+  "runtimeCommit": "b5757398180d44064d4b0ae84a9dac1eececd821",
+  "publicationCommit": "5e4c280b2cd4dc237a9375b69ea9c843c65fd979",
+  "scope": "Finite entry discoverability and native destination readiness; no scene, asset, route or ecological queue changes.",
+  "tests": {
+    "shallow": 166,
+    "entryAndNavigation": 51,
+    "publicationAndHosting": 10,
+    "nativeAndLegacyFixture": 3,
+    "directorTransitionHook": 16,
+    "fixtureCorrectionSubset": {
+      "passed": 29,
+      "overlapsEarlierReadinessAndPendingChecks": true
+    },
+    "nativeEvidence": "Agent tool outputs; no separate native logs saved. CI executes the same cases."
+  },
+  "frozenRouteAudioAssetFiles": 143,
+  "changedFrozenFiles": 0,
+  "finalBuildSeconds": 17.54,
+  "local": {
+    "playback": {
+      "duration": 240,
+      "modelSeconds": 240,
+      "wallSeconds": 240.00839999997615,
+      "speed": 1,
+      "completed": true,
+      "uninterrupted": true,
+      "interruptions": [],
+      "p95FrameMs": 16.69999999999709,
+      "maxFrameMs": 100,
+      "framesOver250ms": 0,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "startViewport": {
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5
+      },
+      "initializationMs": 8158.399999976158,
+      "navigationToRunStartMs": 9083.600000023842,
+      "preparedTextures": 47,
+      "cache": "Ordinary uncleared browser cache; not a controlled cold measurement.",
+      "environment": {
+        "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "context": "WebGL2RenderingContext"
+      },
+      "console": [],
+      "narrationEnabled": false
+    },
+    "reef": {
+      "chunkId": "204,5",
+      "status": "ready",
+      "animals": 17,
+      "categories": 13,
+      "terrain": [
+        "204,5",
+        "204,4",
+        "203,5",
+        "205,5",
+        "204,6",
+        "203,4",
+        "205,4",
+        "203,6",
+        "205,6"
+      ],
+      "ecologicalOwners": [
+        "203,4",
+        "204,4",
+        "205,4",
+        "203,5",
+        "204,5",
+        "205,5",
+        "203,6",
+        "204,6",
+        "205,6"
+      ],
+      "errors": []
+    },
+    "meadow": {
+      "chunkId": "228,5",
+      "status": "ready",
+      "animals": 14,
+      "categories": 9,
+      "terrain": [
+        "229,5",
+        "229,4",
+        "229,6",
+        "228,4",
+        "227,4",
+        "228,5",
+        "227,5",
+        "228,6",
+        "227,6"
+      ],
+      "ecologicalOwners": [
+        "227,4",
+        "227,5",
+        "228,4",
+        "229,4",
+        "228,5",
+        "229,5",
+        "227,6",
+        "228,6",
+        "229,6"
+      ],
+      "errors": []
+    },
+    "narrowScreen": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "menuLeft": 18,
+      "menuRight": 372,
+      "scope": "Desktop browser layout only."
+    }
+  },
+  "correction": "The prior reef snapshot caught an incomplete second window; baseline full waiting succeeded. This round fixes premature UI acknowledgement, not an established permanent ecology failure.",
+  "remote": {
+    "status": "Published; bounded live checks complete with a preserved kelp saved-world restoration failure.",
+    "workflowId": 38411166224,
+    "firstFailedWorkflowId": 38408452230,
+    "firstFailure": "Seven old hook fixture cases omitted loadedChunks; production code unchanged in the correction.",
+    "publicationCommit": "5e4c280b2cd4dc237a9375b69ea9c843c65fd979",
+    "workflowUrl": "https://github.com/yydshly/ocean-world/actions/runs/38411166224",
+    "workflowStatus": "completed",
+    "workflowConclusion": "success",
+    "jobs": [
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (6)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (4)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (5)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (1)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (3)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (0)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (7)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (2)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "navigation": {
+      "majorEntryCount": 10,
+      "actualLinks": [
+        {
+          "href": "/ocean-world/?demo=shallow-journey&seed=55",
+          "text": "4分钟浅海体验当前推荐主线 · 鱼群 → 礁谷 → 沙道 → 草床"
+        },
+        {
+          "href": "/ocean-world/?demo=shallow-journey&seed=55&school=1",
+          "text": "60秒鱼群协同同一浅海 · 分流、汇合、散开与聚群"
+        },
+        {
+          "href": "/ocean-world/?demo=shallow-sample&seed=55",
+          "text": "75秒历史样板早期冻结路线 · 与当前主线范围不同"
+        },
+        {
+          "href": "/ocean-world/?demo=all&seed=55",
+          "text": "能力总览查看观察工具与各专题入口"
+        },
+        {
+          "href": "/ocean-world/?demo=director&seed=55",
+          "text": "导演模式按章节带看 · 可选章与变速"
+        },
+        {
+          "href": "/ocean-world/?demo=life-expedition&seed=55&world=whole-seabed",
+          "text": "生命巡游另一条4分钟路线 · 持续世界跨区"
+        },
+        {
+          "href": "/ocean-world/?demo=reef-valley-region&seed=55&world=whole-seabed",
+          "text": "热带礁谷区域入口 · 礁体与动物群落"
+        },
+        {
+          "href": "/ocean-world/?demo=seagrass-meadow-region&seed=55&world=whole-seabed",
+          "text": "海草草甸区域入口 · 草床、沙底与坡面"
+        },
+        {
+          "href": "/ocean-world/?demo=kelp-life&seed=55",
+          "text": "海带林温带藻林与岩底生命"
+        },
+        {
+          "href": "/ocean-world/?demo=deep-life&seed=55",
+          "text": "深海软底深海底栖群落与观察器照明"
+        },
+        {
+          "href": "/ocean-world/overview/",
+          "text": "产品导览 · 目标、能力与阶段记录 →"
+        }
+      ],
+      "openingMenuVerified": true,
+      "guideUpdated": true,
+      "regionalReturnClicked": true
+    },
+    "main": {
+      "duration": 240,
+      "modelSeconds": 240,
+      "wallSeconds": 240.01910000002385,
+      "speed": 1,
+      "completed": true,
+      "uninterrupted": true,
+      "interruptions": [],
+      "p95FrameMs": 12.5,
+      "maxFrameMs": 62.5,
+      "framesOver250ms": 0,
+      "startViewport": {
+        "width": 853.3333740234375,
+        "height": 871.3333740234375,
+        "pixelRatio": 1.5
+      },
+      "endViewport": {
+        "height": 871,
+        "pixelRatio": 1.5,
+        "visibility": "visible",
+        "width": 853
+      },
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "initializationMs": 8716.5,
+      "navigationToReadyMs": 70596.69999992847,
+      "preparedTextures": 1,
+      "expectedTextures": 47,
+      "environment": {
+        "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "context": "WebGL2RenderingContext"
+      },
+      "cache": "Ordinary uncleared cache; first visit to this new deployment, not a controlled cold-cache benchmark.",
+      "otherTabs": "Other existing pages remained open; not an isolated single-tab performance comparison.",
+      "narrationEnabled": false,
+      "console": []
+    },
+    "reef": {
+      "chunkId": "204,5",
+      "status": "ready",
+      "animals": 17,
+      "categories": 13,
+      "ecologicalOwners": [
+        "203,4",
+        "204,4",
+        "205,4",
+        "203,5",
+        "204,5",
+        "205,5",
+        "203,6",
+        "204,6",
+        "205,6"
+      ],
+      "terrain": [
+        "204,5",
+        "204,4",
+        "203,5",
+        "205,5",
+        "204,6",
+        "203,4",
+        "205,4",
+        "203,6",
+        "205,6"
+      ],
+      "errors": []
+    },
+    "meadow": {
+      "chunkId": "228,5",
+      "status": "ready",
+      "animals": 14,
+      "categories": 9,
+      "ecologicalOwners": [
+        "227,4",
+        "228,4",
+        "229,4",
+        "227,5",
+        "228,5",
+        "229,5",
+        "227,6",
+        "228,6",
+        "229,6"
+      ],
+      "terrain": [
+        "228,5",
+        "228,4",
+        "227,5",
+        "229,5",
+        "228,6",
+        "227,4",
+        "229,4",
+        "227,6",
+        "229,6"
+      ],
+      "errors": []
+    },
+    "director": {
+      "scope": "First chapter startup and two progress observations only; no full chapter or 67-chapter replay.",
+      "observations": [
+        {
+          "index": 0,
+          "phase": "showing",
+          "elapsedMs": 39312.50000000036,
+          "motionElapsedSec": 39.370800000000365,
+          "chunkId": "205,4",
+          "camera": {
+            "position": [
+              78.76772253054878,
+              -3.9499142506970277,
+              -8.767722530549634
+            ],
+            "target": [
+              85.92938652877456,
+              -4.599914250697028,
+              -12.332910993523683
+            ]
+          },
+          "motionWaiting": false,
+          "error": null,
+          "errors": []
+        },
+        {
+          "index": 0,
+          "phase": "showing",
+          "elapsedMs": 68929.10000000233,
+          "motionElapsedSec": 68.92910000000234,
+          "chunkId": "206,4",
+          "camera": {
+            "position": [
+              132.7360384687836,
+              -3.696839088679919,
+              -8
+            ],
+            "target": [
+              140.17075579115772,
+              -4.3468390886799195,
+              -5.046192569513892
+            ]
+          },
+          "motionWaiting": false,
+          "error": null,
+          "errors": []
+        }
+      ]
+    },
+    "life": {
+      "scope": "Two early progress observations only; not the full 240-second continuous-world route.",
+      "observations": [
+        {
+          "phase": "showing",
+          "elapsedMs": 37844.300000000316,
+          "elapsedSec": 37.78590000000032,
+          "travelledM": 71.23557764883317,
+          "observedClasses": 6,
+          "error": null,
+          "errors": []
+        },
+        {
+          "phase": "showing",
+          "elapsedMs": 82344.30000000555,
+          "elapsedSec": 82.11930000000552,
+          "travelledM": 154.7995446219402,
+          "observedClasses": 12,
+          "error": null,
+          "errors": []
+        }
+      ]
+    },
+    "additionalEntrySmokes": [
+      {
+        "url": "https://yydshly.github.io/ocean-world/?demo=all&seed=55",
+        "biome": "reef",
+        "errors": [],
+        "console": []
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/?demo=kelp-life&seed=55",
+        "biome": "kelp",
+        "outcome": "Entry UI appears but existing saved-world restoration failed.",
+        "userVisibleError": "- paragraph: 海域存档加载失败：Invalid saved kelp water-life community; original animals and inventory were not regenerated.",
+        "errors": [],
+        "console": [],
+        "scope": "No full route or performance acceptance. Existing saved state was preserved, not reset."
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/?demo=deep-life&seed=55",
+        "biome": "deep",
+        "errors": [],
+        "userVisibleErrors": [],
+        "console": [],
+        "scope": "Entry and biome only, no full route or isolated performance acceptance."
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/?demo=shallow-sample&seed=55",
+        "duration": 75,
+        "observedModelSecond": 34.82070000000002,
+        "initializationMs": 8471.300000071526,
+        "navigationToReadyMs": 10160.200000047684,
+        "console": [],
+        "scope": "Startup and short segment only, not a new complete 75-second acceptance."
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1",
+        "duration": 60,
+        "modelSeconds": 60,
+        "wallSeconds": 60.008100000000006,
+        "completed": true,
+        "uninterrupted": true,
+        "interruptions": [],
+        "startViewport": {
+          "width": 1280,
+          "height": 720,
+          "pixelRatio": 1.5
+        },
+        "p95FrameMs": 12.5,
+        "maxFrameMs": 54.19999999999982,
+        "framesOver250ms": 0,
+        "initializationMs": 5647.699999928474,
+        "navigationToReadyMs": 6797.100000023842,
+        "preparedTextures": 47,
+        "console": [],
+        "narrationEnabled": false,
+        "scope": "Complete 1x uninterrupted 60-second run; ordinary uncleared cache, no independent audio listening or controlled performance comparison."
+      }
+    ],
+    "limits": [
+      "Initial entry took 70.597 seconds; initialization 8.717 seconds. No five-second loading pass.",
+      "Only 1/47 textures were recorded as prepared at initial run startup; no independent complete material-quality acceptance.",
+      "Kelp UI opens but the current existing saved water-life community is rejected; original animals and inventory were not regenerated.",
+      "Short research entry checks are not complete route, crossing or performance acceptance.",
+      "No new independent narration listening test; assets, audio and routes remain frozen."
+    ]
+  },
+  "limitations": [
+    "No complete 67-chapter replay or all research route performance acceptance.",
+    "Historical validation and initial resource downloads remain expensive; no five-second guarantee.",
+    "Existing finite choreography, asset appearance and unloaded-world freezing remain."
+  ]
+}
