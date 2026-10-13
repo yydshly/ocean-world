@@ -2,15 +2,15 @@
 
 一个可以观看、探索和观察生命的浏览器海底原型。目标是自然光照、真实比例、丰富生境与安静观察的海洋纪录片式体验。**当前推荐从4分钟浅海体验开始：礁谷 → 沙道 → 草床，沿途观察动物群落，也可开启中文讲解或接管探索。**
 
-[进入4分钟浅海体验](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55) · [阶段04实景前后对照](https://yydshly.github.io/ocean-world/overview/stage-04/) · [产品导览与全部入口](https://yydshly.github.io/ocean-world/overview/)
+[进入4分钟浅海体验](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55) · [先看60秒鱼群协同](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1) · [鱼群协同实景与范围](https://yydshly.github.io/ocean-world/overview/stage-05/) · [产品导览与全部入口](https://yydshly.github.io/ocean-world/overview/)
 
 [![TIDAL 海底世界产品全景：目标、能力、生境、探索方法、实测结果与阶段边界](public/overview/ocean-world-product-atlas.png)](https://yydshly.github.io/ocean-world/overview/)
 
-**点击上方原版引导图进入产品导览，再选择“4分钟浅海体验”。** 图中实景与数据是 **2026-10-12 的历史快照**，包括75秒样板和当时的性能、发布状态；最新阶段说明以本文与[阶段04对照页](https://yydshly.github.io/ocean-world/overview/stage-04/)为准。[下载原版长图](https://yydshly.github.io/ocean-world/overview/ocean-world-product-atlas.png)。
+**点击上方原版引导图进入产品导览，选择“4分钟浅海体验”或“60秒鱼群协同”。** 图中实景与数据是 **2026-10-12 的历史快照**，包括75秒样板和当时的性能、发布状态；最新阶段说明以本文与[阶段05鱼群协同页](https://yydshly.github.io/ocean-world/overview/stage-05/)为准。[下载原版长图](https://yydshly.github.io/ocean-world/overview/ocean-world-product-atlas.png)。
 
-> **当前版本：阶段04 · 栖息地整合。** 本次发布范围包含293个动物个体、38个展示类别、240秒路线、六段中文讲解、三个浅海栖息地及两段过渡。本地场景基线为 `22987c4` / `stage-04-complete-habitats-local-20261013`。具体远端版本与部署状态以对应提交的 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准；详见[本次发布说明](docs/releases/STAGE_04_LOADING_PUBLICATION.md)。
+> **当前阶段：05 · 鱼群协同与中文讲解。** 现有38条乌尾鮗展示遇礁分流、汇合、受扰散开与重新聚集；60秒入口直接观察这一段，原4分钟主线的开场包含同样演示，之后继续礁谷 → 沙道 → 草床。293个体、38展示类、现有资产与原路线保持。60秒版五段中文短讲解，4分钟版共十段，均可开启字幕与语音。鱼群本地归档基线为 `a935a3e` / `stage-05-fish-schooling-local-20261013`；本轮配音、正式部署和实际远端加载播放结果以[发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)及同一提交的 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准。
 
-**已上线：** [`stage-04-loading-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-04-loading-published-20261013) / `560669f`；[发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38383872433)。完整4分钟及六段讲解通过；本次远端首轮10.72秒、贴图26/47，缓存复访6.44秒、47/47。首访材质仍不齐，未达到5秒目标；非受控冷测。[发布回执与保留限制](docs/releases/STAGE_04_LOADING_PUBLICATION.md)。
+**阶段04历史发布：** [`stage-04-loading-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-04-loading-published-20261013) / `560669f`；[发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38383872433)。完整4分钟及六段讲解通过；本次远端首轮10.72秒、贴图26/47，缓存复访6.44秒、47/47。首访材质仍不齐，未达到5秒目标；非受控冷测。[发布回执与保留限制](docs/releases/STAGE_04_LOADING_PUBLICATION.md)。
 
 ## 当前做到哪一步
 
@@ -20,6 +20,7 @@
 | 02 · 完整浅海路线 | 现有场景整合为4分钟、约90.1米的六段同景巡游；可接管探索；六段中文讲解、字幕及专注观看 | [路线](docs/stages/STAGE_02_SHALLOW_JOURNEY.md) · [讲解](docs/stages/STAGE_02_NARRATION.md) · [观看操作](docs/stages/STAGE_02_GUIDED_VIEW.md) |
 | 03 · 群落与水层 | 关键动物呈现和生境活动整理；4组主鱼群形成上下、远近层次，底栖动物保留合理活动范围 | [生活群落](docs/stages/STAGE_03_LIVING_COMMUNITIES.md) · [水层构图](docs/stages/STAGE_03_WATER_COLUMN.md) |
 | 04 · 栖息地整合 | 礁谷外围、沙道边界和连片草床整合；102只礁鱼、9只羊鱼、18只兔鱼的活动与实际通道、软底及草缘对应 | [范围、成果与验收](docs/stages/STAGE_04_COMPLETE_HABITATS.md) |
+| 05 · 鱼群协同与讲解 | 38条现有乌尾鮗的邻居协同、绕礁分流与汇合、局部受扰散开与恢复；60秒五段讲解，4分钟开场同演示及后续栖息地讲解，共十段 | [阶段归档](docs/stages/STAGE_05_FISH_SCHOOLING.md) · [四个实景时刻](https://yydshly.github.io/ocean-world/overview/stage-05/) · [本轮发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md) |
 
 阶段04重组了24组礁体布局，6个底栖居民随宿主迁移；草床包含267簇核心与39簇边缘，连同保留草共332簇。24项布局记录以初始化场景为基准，**不是相对上一版新增24次可见变化**。293个体、38展示类、原资产与240秒路线保持，没有靠新增物种扩充本轮成果。
 
@@ -29,8 +30,10 @@
 
 | 入口 | 用途 | 观看方式与范围 |
 | --- | --- | --- |
-| [4分钟浅海体验](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55) | **推荐主入口** | 礁谷 → 沙道 → 草床；293个体、38展示类；中文讲解、分段观看、可接管探索；阶段04已完成本机完整实播 |
-| [阶段04前后对照](https://yydshly.github.io/ocean-world/overview/stage-04/) | 查看本轮实际变化 | 同路线五个时点的真实截图、完整播放结果和保留差距 |
+| [4分钟浅海体验](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55) | **推荐主入口** | 开场鱼群协同 → 礁谷 → 沙道 → 草床；293个体、38展示类；十段中文讲解、字幕、分段观看与接管探索 |
+| [60秒鱼群协同](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1) | 快速观察群体行为 | 同一场景前60秒；遇礁分流、汇合、受扰散开、重新聚群；五段中文讲解与同步字幕 |
+| [阶段05鱼群实景](https://yydshly.github.io/ocean-world/overview/stage-05/) | 看行为变化与阶段边界 | 四张已归档真实截图、五段观察顺序、讲解操作与本轮发布回执入口 |
+| [阶段04前后对照](https://yydshly.github.io/ocean-world/overview/stage-04/) | 历史栖息地变化 | 同路线五个时点的真实截图、完整播放结果和保留差距 |
 | [产品导览](https://yydshly.github.io/ocean-world/overview/) | 了解产品全貌 | 目标、能力图、实景模块、生物目录、主要入口与验证证据 |
 | [75秒浅海样板](https://yydshly.github.io/ocean-world/?demo=shallow-sample&seed=55) | 紧凑的历史样板 | 保留原冻结路线；阶段02—04的整合主要在4分钟入口，不能用此入口代替最新阶段 |
 | [导演模式](https://yydshly.github.io/ocean-world/?demo=director&seed=55) | 范围探索：自动带看已有功能 | 67章，可选章、变速与接管；1×名义观察时长33分14秒，加载和转场另计；跨区等待仍是已知问题，本次不宣称全部67章完成新验收 |
@@ -58,11 +61,11 @@
 | 地形与景物 | 连续海床、不规则礁体、沙脊、礁脚碎石、草床与裸沙间隙；少量沉木和灌水沉底玻璃瓶 | 不是完整地质、水动力或砂粒输运模拟 |
 | 水下环境 | 深度光衰减、雾与水色、焦散、悬浮颗粒、局部扬沙、植物随流摆动、深海观察灯 | 视觉与物理规则均为有限近似 |
 | 动物与植被 | 水层鱼群、大型巡游动物、底栖动物、固定附着生物、珊瑚、海草及藻林 | 生物按生境出现，不是全部目录同时出生；形态与风格仍不统一 |
-| 群落活动 | 浅海主线的礁间通行、羊鱼停走探底、兔鱼沿草缘游停及立体鱼群；探索世界中有群游、爬行、附着、海龟换气 | 主线主要采用确定性生境编排，不等于完整自主避碰或新食物网 |
+| 群落活动 | 38条乌尾鮗根据邻居调整间距、方向和聚群，绕礁分流、汇合、受扰散开再聚集；羊鱼探底、兔鱼沿草缘游停等保留 | 固定场景协同求解预备播放，导向与36秒局部刺激有编排；不是完整自主生态、任意环境实时避碰或新食物网 |
 | 生命与生态 | 探索世界中部分接触摄食、能量与资源收支、碎屑分解及捕食联系 | 使用相对食物代理；繁殖与完整食物网未实现，未经科研级校准 |
 | 持续探索 | 种子和坐标决定按需生成的区域，近区加载与远区释放、相邻区后台准备 | 无预设水平场景墙，不代表有限设备能同时运行无限海域 |
 | 回访与保存 | 探索世界的个体身份、当地资源与演化状态保存到本机；探索手记、标记位置和返回 | 卸载区暂停演化；无云同步，浏览器存储被清除后可能丢失 |
-| 观看与讲解 | 主线六段中文语音、字幕、音量、倍速、暂停、章节、专注观看和接管探索 | 默认关闭语音，需主动开启；其它世界入口不自动继承此套讲解 |
+| 观看与讲解 | 60秒五段、4分钟十段中文语音；同步字幕、音量、倍速、暂停、选段、重听、专注观看和接管探索 | 默认关闭语音，“展开控制”→“开启讲解”；其它世界入口不自动继承此套讲解 |
 | 观察与导出 | 探索世界中预设视角、点击档案、跟随、生物图鉴、环境实验、生态读数、截图、录像、数据导出 | 录像最长45秒且依赖浏览器支持；录像和截图仅含3D画面 |
 
 ### 生境与生物目录
@@ -77,8 +80,8 @@
 
 ## 如何观察和探索
 
-1. **先看完整浅海路线**：打开主入口，默认专注观看；展开控制可调整速度、暂停、选择章节或拖动0–240秒进度。建议先用1×看完三个栖息地及两段过渡。
-2. **开启中文讲解**：点击“开启讲解”，从当前位置接上；可调音量、查看字幕、重听本段或从头讲解。无旁白时留白观察。
+1. **先观察鱼群，再看完整浅海**：60秒入口依次展示0–8秒协同群游、8–28秒遇礁分流、28–36秒汇合、36–46秒受扰散开、46–60秒重新聚集；4分钟主线开场相同，60–68秒镜头平滑交回栖息地路线。默认专注观看，展开控制可暂停、变速、选段或拖进度；建议先用1×。
+2. **开启中文讲解**：“展开控制”→“开启讲解”，从当前位置接上；60秒版五段短讲解，4分钟版共十段（五段鱼群 + 五段既有栖息地讲解）。可调音量、查看字幕、重听本段或从头讲解；其余时间留白观察。
 3. **走近群落**：点击“接管探索”，巡游与讲解暂停；使用界面方向控件或键盘移动。返回巡游后，镜头归位再接续。展开控制可查看当前入口支持的操作。
 4. **继续探索世界**：选择生命巡游、导演章节或单独生境。自由移动使用`W A S D`、`Q / E`下潜/上浮、`Shift`加速；拖动转向、右键平移、滚轮靠近。导演可选章及0.5–4×速度，远距离入口会转场。
 5. **观察一个个体或环境**：在探索世界点击生物，查看档案、尺寸、状态和可用的摄食记录，或跟随观察。在“环境实验”调整水流、浑浊、补给和观察时刻，对照当地资源与行为。
@@ -86,7 +89,11 @@
 
 ## 验证结果与已知差距
 
-**最新阶段04的本机记录：** 原240秒路线正常1×播放，实际 **240.040秒**，无暂停、跳播或中断；六段讲解均出现实际播放事件，无语音错误或阻塞，控制台error/warn为空。
+**阶段05先前本地协同基线：** 60秒与4分钟分别完整1×实播 **60.009秒 / 240.228秒**，均无操作中断，控制台error/warn为空；1280×720 / DPR1.5 / RTX4070 Laptop / 渲染比例1，p95为16.6 / 12.6ms，最长95.9 / 162.4ms，169项不同相关检查通过。正常缓存未清的本地导航为9.336 / 5.119秒，非公网受控冷加载证明。此基线早于本轮五段新旁白，4分钟当时使用六段旧讲解；不能视为本轮新配音或远端验证。详见[先前本地归档](docs/validation/stage-05-schooling-20261013.json)。
+
+**本轮正式发布：** 同一版本的60秒五段讲解与4分钟十段讲解、README引导图 → 导览 → 两个体验入口、实际加载与完整1×播放均以[本次发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)为准；部署以同一提交的Actions为准。
+
+**阶段04历史本机记录：** 原240秒路线正常1×播放，实际 **240.040秒**，无暂停、跳播或中断；六段讲解均出现实际播放事件，无语音错误或阻塞，控制台error/warn为空。
 
 | 指标 | 本地实测与口径 |
 | --- | --- |
@@ -97,11 +104,11 @@
 | 场景与镜头 | 身份数量、宿主支撑、贴地、相机净空及连续性检查通过；961个相机位置采样沿用原路线 |
 | 视觉结果 | 草床改善清楚，开场近礁改善有限；五时点对照和全程播放记录保留 |
 
-完整说明见[阶段04验收](docs/stages/STAGE_04_COMPLETE_HABITATS.md)及[结构化摘要](docs/validation/stage-04-complete-habitats-20261013.json)。本轮远端构建和发布检查，以对应提交的Actions日志及实际站点验证为准。
+上述阶段04历史完整说明见[阶段04验收](docs/stages/STAGE_04_COMPLETE_HABITATS.md)及[结构化摘要](docs/validation/stage-04-complete-habitats-20261013.json)。本轮远端构建和发布检查，以对应提交的Actions日志及实际站点验证为准。
 
 - **真实感仍有差距：** 扫描硬边、重复冠体与草叶、旧动物模型感、远处小动物不突出。阶段归档不等于纪录片级画质验收。
 - **性能不能跨范围外推：** 4分钟主线不经过持续世界的跨区加载；导演和生命巡游的准备等待仍需单独看待。本轮没有重新完整验收全部67个导演章节、手机实机及所有设备。
-- **物理与生态是有限近似：** 支撑和实景抽查不证明所有动物间的连续动态碰撞均无问题；完整繁殖、全球迁徙、卸载区持续演化与科研级食物网仍未实现。
+- **物理与生态是有限近似：** 绕礁远侧分支局部被遮挡；支撑和实景抽查不证明所有动物间的连续动态碰撞均无问题。协同预备范围到240秒，接管探索超过该时刻后，38条乌尾鮗保持末帧姿态；其它动物保留原活动。完整繁殖、全球迁徙、卸载区持续演化与科研级食物网仍未实现。
 
 历史证据继续保留：[75秒冻结样板](docs/SHALLOW_SAMPLE_FROZEN.md) · [原实景验收](https://yydshly.github.io/ocean-world/overview/evidence/review.html) · [入口体验](public/overview/evidence/entry-experience.json) · [跨区准备流水线](docs/TRANSITION_PIPELINE.md) · [历史校验收尾](docs/HISTORY_PIPELINE_CLOSEOUT.md)。历史的失败与“未部署”描述保留当时状态，不替代本次发布结果。
 
@@ -118,6 +125,8 @@ npm run preview:local
 使用终端显示的本地服务地址，进入以下路径：
 
 - 当前浅海体验：`/ocean-world/?demo=shallow-journey&seed=55`
+- 60秒鱼群协同：`/ocean-world/?demo=shallow-journey&seed=55&school=1`
+- 阶段05实景：`/ocean-world/overview/stage-05/`
 - 产品导览：`/ocean-world/overview/`
 - 阶段04对照：`/ocean-world/overview/stage-04/`
 - 历史75秒样板：`/ocean-world/?demo=shallow-sample&seed=55`
@@ -155,6 +164,6 @@ GitHub Pages使用`.github/workflows/pages.yml`：依赖安装 → 按仓库基�
 
 ## 阶段管理
 
-本次把已验收的阶段02—04成果、进展说明和实景对照整理为一次发布；不新增场景、动物或资产。发布完成后保持阶段04固定，只有明确的新目标、范围和验收标准才开启后续开发。
+本次发布已归档的阶段05鱼群协同，补五段适当的中文讲解，更新导览入口并分别检查60秒和4分钟的实际加载与完整播放；不新增场景、动物或整套资产。核验后阶段性归档，不自动继续优化，只有明确的新目标、范围和验收标准才开启后续开发。
 
-早期逐批更新保存在[README历史归档](docs/history/README-before-product-release.md)和[状态历史归档](docs/history/CURRENT_STATUS-before-product-release.md)。最新本地技术基线为`22987c4`，远端具体版本及部署是否完成以[本次发布说明](docs/releases/STAGE_04_PUBLICATION.md)和GitHub Actions为准。
+早期逐批更新保存在[README历史归档](docs/history/README-before-product-release.md)和[状态历史归档](docs/history/CURRENT_STATUS-before-product-release.md)。先前鱼群本地归档基线为`a935a3e`；本轮包含新增配音，远端具体版本及实际体验结果以[本次发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)和GitHub Actions为准。

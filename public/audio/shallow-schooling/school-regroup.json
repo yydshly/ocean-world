@@ -1,0 +1,19 @@
+{
+  "id": "school-regroup",
+  "start": 46,
+  "title": "重新聚集",
+  "text": "扰动消退，成员重新靠近，恢复协调的群游。这是一次有限的行为演示。",
+  "src": "audio/shallow-schooling/school-regroup.mp3",
+  "duration": 5.652,
+  "bytes": 92148,
+  "sha256": "4977d8b6feabebbc155a7f4eaee0b9bb02eba29134380f4f881aa585487350f8",
+  "fingerprint": "59e171299e64e5f7e28ceadfaa36fa6abc045127e458c862d9d3f92003292b6e",
+  "generatedOn": "2026-10-13T11:48:05.787Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 5.496009070294784,
+      "text": "扰动消退，成员重新靠近，恢复协调的群游。这是一次有限的行为演示。"
+    }
+  ]
+}

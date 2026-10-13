@@ -1,16 +1,16 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {createShallowNarration} from './shallowNarration.js';
-import narration from './data/shallowJourneyNarration.json';
-import {SHALLOW_JOURNEY_CHAPTERS,SHALLOW_JOURNEY_SECONDS} from './shallowJourney.js';
+import {shallowNarrationTimeline} from './shallowNarrationTimeline.js';
 import {shallowNarrationPresentation} from './shallowNarrationPresentation.js';
 
-export function ShallowNarration({runtime,ready,onRestart,onReplay,focused=false}){
+export function ShallowNarration({runtime,ready,onRestart,onReplay,focused=false,schoolingOnly=false}){
+  const timeline=shallowNarrationTimeline({schoolingOnly});
   const audio=useRef(null),controller=useRef(null),events=useRef([]);
   const [voice,setVoice]=useState({enabled:false,status:'off',subtitle:''});
   const [volume,setVolume]=useState(.75),[captions,setCaptions]=useState(true);
   const snapshot=()=>({...runtime.current?.narrationSnapshot(),hidden:document.hidden});
   useEffect(()=>{
-    const player=createShallowNarration(audio.current,narration.clips,{baseUrl:import.meta.env.BASE_URL,onStatus:next=>{
+    const player=createShallowNarration(audio.current,timeline.clips,{baseUrl:import.meta.env.BASE_URL,onStatus:next=>{
       const previous=events.current.at(-1);
       if(previous?.status!==next.status||previous?.clipId!==next.clipId){
         events.current.push({time:runtime.current?.state.time??0,status:next.status,clipId:next.clipId??null});
@@ -22,7 +22,7 @@ export function ShallowNarration({runtime,ready,onRestart,onReplay,focused=false
     const visibility=()=>player.sync(snapshot());
     document.addEventListener('visibilitychange',visibility);
     return()=>{document.removeEventListener('visibilitychange',visibility);player.dispose();controller.current=null;};
-  },[runtime]);
+  },[runtime,timeline]);
   // The route is authoritative, including explicit seeks and the return blend.
   useEffect(()=>{controller.current?.sync(snapshot());});
   // Keep this directly inside the click gesture so the media player can unlock
@@ -30,7 +30,7 @@ export function ShallowNarration({runtime,ready,onRestart,onReplay,focused=false
   const enable=()=>controller.current?.enable(snapshot());
   const fromStart=()=>{onRestart();enable();};
   const route=snapshot();
-  const presentation=shallowNarrationPresentation({snapshot:route,voice,clips:narration.clips,chapters:SHALLOW_JOURNEY_CHAPTERS,duration:SHALLOW_JOURNEY_SECONDS});
+  const presentation=shallowNarrationPresentation({snapshot:route,voice,...timeline});
   const replay=()=>{onReplay?.(presentation.replayStart);enable();};
   const retry=['blocked','error'].includes(voice.status);
   return <section className={`journey-narration${focused?' narration-focused':''}`} aria-label="浅海语音讲解">

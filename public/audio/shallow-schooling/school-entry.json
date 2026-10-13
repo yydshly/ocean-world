@@ -1,0 +1,19 @@
+{
+  "id": "school-entry",
+  "start": 0,
+  "title": "协同群游",
+  "text": "观察这群乌尾鮗，留意同伴之间的间距和共同方向。",
+  "src": "audio/shallow-schooling/school-entry.mp3",
+  "duration": 3.888,
+  "bytes": 63924,
+  "sha256": "2ee82d199a1094909a2808d5699bd3bc60c0c75ca682d3d9833fda3f7c929ebf",
+  "fingerprint": "cf66ee761e055e2d26bb8d39798cb041e2c8549508558aae30f01ac41b67b10b",
+  "generatedOn": "2026-10-13T11:47:56.547Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 3.7196825396825397,
+      "text": "观察这群乌尾鮗，留意同伴之间的间距和共同方向。"
+    }
+  ]
+}

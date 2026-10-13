@@ -1,0 +1,105 @@
+{
+  "provider": "MiniMax",
+  "synthetic": true,
+  "language": "zh-CN",
+  "model": "speech-2.8-hd",
+  "voiceId": "Chinese (Mandarin)_Gentleman",
+  "duration": 60,
+  "clips": [
+    {
+      "id": "school-entry",
+      "start": 0,
+      "title": "协同群游",
+      "text": "观察这群乌尾鮗，留意同伴之间的间距和共同方向。",
+      "src": "audio/shallow-schooling/school-entry.mp3",
+      "duration": 3.888,
+      "bytes": 63924,
+      "sha256": "2ee82d199a1094909a2808d5699bd3bc60c0c75ca682d3d9833fda3f7c929ebf",
+      "fingerprint": "cf66ee761e055e2d26bb8d39798cb041e2c8549508558aae30f01ac41b67b10b",
+      "generatedOn": "2026-10-13T11:47:56.547Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 3.7196825396825397,
+          "text": "观察这群乌尾鮗，留意同伴之间的间距和共同方向。"
+        }
+      ]
+    },
+    {
+      "id": "school-split",
+      "start": 8,
+      "title": "遇礁分流",
+      "text": "靠近礁头，鱼群从两侧分流。留意近侧和礁后成员怎样绕过障碍。",
+      "src": "audio/shallow-schooling/school-split.mp3",
+      "duration": 5.976,
+      "bytes": 97332,
+      "sha256": "bb0251ededc6cd4c2a84247d1cf80e5a52ef756d9f748b72a203c69b284d3725",
+      "fingerprint": "ad7d4d1cc1e641e3777bed991dd186d10ebb9473ccbaf02be8a213735194b7c8",
+      "generatedOn": "2026-10-13T11:48:00.112Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 5.82108843537415,
+          "text": "靠近礁头，鱼群从两侧分流。留意近侧和礁后成员怎样绕过障碍。"
+        }
+      ]
+    },
+    {
+      "id": "school-merge",
+      "start": 28,
+      "title": "通过后汇合",
+      "text": "经过礁头，两支鱼群逐渐靠近，恢复共同的游动方向。",
+      "src": "audio/shallow-schooling/school-merge.mp3",
+      "duration": 4.428,
+      "bytes": 72564,
+      "sha256": "b30bf6bdff6f750c3c423a5f2cc647ea304162ba0b369aa92c9acf405d8a1615",
+      "fingerprint": "0880c79c8bf631dfb390a4022022277dee4dd8040fcd00945fdbe17e3dc2f9ae",
+      "generatedOn": "2026-10-13T11:48:02.111Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 4.276961451247165,
+          "text": "经过礁头，两支鱼群逐渐靠近，恢复共同的游动方向。"
+        }
+      ]
+    },
+    {
+      "id": "school-disturb",
+      "start": 36,
+      "title": "局部受扰散开",
+      "text": "现在出现一次演示扰动，留意鱼群散开，朝向变得不同。",
+      "src": "audio/shallow-schooling/school-disturb.mp3",
+      "duration": 4.392,
+      "bytes": 71988,
+      "sha256": "b060110ac7b3c37bbf05198716167947f63cab94ab27f705a663ee887cd3dc2e",
+      "fingerprint": "bf50fb99ab45ec0957f963cdb1af386f76939710a6266c0565e477b51d9206b6",
+      "generatedOn": "2026-10-13T11:48:04.016Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 4.242131519274377,
+          "text": "现在出现一次演示扰动，留意鱼群散开，朝向变得不同。"
+        }
+      ]
+    },
+    {
+      "id": "school-regroup",
+      "start": 46,
+      "title": "重新聚集",
+      "text": "扰动消退，成员重新靠近，恢复协调的群游。这是一次有限的行为演示。",
+      "src": "audio/shallow-schooling/school-regroup.mp3",
+      "duration": 5.652,
+      "bytes": 92148,
+      "sha256": "4977d8b6feabebbc155a7f4eaee0b9bb02eba29134380f4f881aa585487350f8",
+      "fingerprint": "59e171299e64e5f7e28ceadfaa36fa6abc045127e458c862d9d3f92003292b6e",
+      "generatedOn": "2026-10-13T11:48:05.787Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 5.496009070294784,
+          "text": "扰动消退，成员重新靠近，恢复协调的群游。这是一次有限的行为演示。"
+        }
+      ]
+    }
+  ]
+}

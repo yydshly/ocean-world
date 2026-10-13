@@ -1,0 +1,19 @@
+{
+  "id": "school-merge",
+  "start": 28,
+  "title": "通过后汇合",
+  "text": "经过礁头，两支鱼群逐渐靠近，恢复共同的游动方向。",
+  "src": "audio/shallow-schooling/school-merge.mp3",
+  "duration": 4.428,
+  "bytes": 72564,
+  "sha256": "b30bf6bdff6f750c3c423a5f2cc647ea304162ba0b369aa92c9acf405d8a1615",
+  "fingerprint": "0880c79c8bf631dfb390a4022022277dee4dd8040fcd00945fdbe17e3dc2f9ae",
+  "generatedOn": "2026-10-13T11:48:02.111Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 4.276961451247165,
+      "text": "经过礁头，两支鱼群逐渐靠近，恢复共同的游动方向。"
+    }
+  ]
+}

@@ -1,8 +1,106 @@
 {
   "date": "2026-10-13",
-  "scope": "Published product guide with Stage04 four-minute shallow journey. validation and frozenVersion retain the historical 75-second baseline; currentStage describes the latest local archive, not hosted performance.",
+  "scope": "Stage05 product guide: 60-second existing-fusilier coordination demonstration with five Chinese narration clips, and the four-minute journey with ten clips. validation/frozenVersion retain the historical 75-second baseline; historicalHabitatStage retains Stage04; currentStage links the new release scope and a prior local baseline, not hosted performance.",
   "frozenVersion": "shallow-sample-v1.0-local-20261012",
   "currentStage": {
+    "date": "2026-10-13",
+    "stage": "05",
+    "scope": "Existing fusilier coordination demonstration and synchronized Chinese narration; existing four-minute shallow route retained.",
+    "status": "Stage05 release guide. Hosted playback is evidenced by the release receipt and matching GitHub Actions run.",
+    "localBaseline": {
+      "commit": "a935a3e",
+      "tag": "stage-05-fish-schooling-local-20261013",
+      "evidence": "local-summary.json",
+      "note": "This previous local archive predates the five new narration clips; it is not the hosted release validation."
+    },
+    "population": {
+      "animals": 293,
+      "categories": 38,
+      "coordinated": 38,
+      "unchangedOtherAnimals": 255
+    },
+    "route": {
+      "seconds": 240,
+      "lengthM": 90.08271084770561,
+      "all961PositionsUnchanged": true
+    },
+    "phases": [
+      [
+        "group",
+        0,
+        8
+      ],
+      [
+        "split",
+        8,
+        28
+      ],
+      [
+        "merge",
+        28,
+        36
+      ],
+      [
+        "disturbance",
+        36,
+        46
+      ],
+      [
+        "regroup",
+        46,
+        60
+      ]
+    ],
+    "narration": {
+      "schoolClips": 5,
+      "journeyClips": 10,
+      "defaultEnabled": false,
+      "newAudioIncludedInLocalBaseline": false
+    },
+    "screenshots": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "files": [
+        {
+          "file": "split-21.4.jpg",
+          "time": 21.379,
+          "phase": "遇礁分流",
+          "mode": "连续实播截帧",
+          "caption": "鱼群从既有礁体两侧经过，远侧分支局部被礁体遮挡。"
+        },
+        {
+          "file": "merge-34.jpg",
+          "time": 34,
+          "phase": "通过后汇合",
+          "mode": "完整实播后定位暂停",
+          "caption": "绕开礁体后，群体间距收拢，逐步恢复共同方向。"
+        },
+        {
+          "file": "escape-38.jpg",
+          "time": 38.1,
+          "phase": "局部受扰散开",
+          "mode": "完整实播后定位暂停",
+          "caption": "36秒的演示扰动传播到邻近个体，群体扩大、朝向分散。"
+        },
+        {
+          "file": "regroup-60.jpg",
+          "time": 60,
+          "phase": "重新聚集",
+          "mode": "完整实播结束截帧",
+          "caption": "扰动结束后，鱼群重新形成紧凑、方向一致的群游。"
+        }
+      ]
+    },
+    "links": {
+      "school": "../../?demo=shallow-journey&seed=55&school=1",
+      "journey": "../../?demo=shallow-journey&seed=55",
+      "guide": "../",
+      "release": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md"
+    }
+  },
+  "historicalHabitatStage": {
     "stage": "stage-04-complete-habitats-local-20261013",
     "sceneCommit": "22987c4",
     "date": "2026-10-13",
@@ -2020,6 +2118,7 @@
   ],
   "links": {
     "journey": "../?demo=shallow-journey&seed=55",
+    "school": "../?demo=shallow-journey&seed=55&school=1",
     "sample": "../?demo=shallow-sample&seed=55",
     "director": "../?demo=director&seed=55",
     "life": "../?demo=life-expedition&seed=55&world=whole-seabed",
@@ -2130,6 +2229,8 @@
     "src/App.jsx",
     "src/OceanApp.jsx",
     "src/ShallowSampleApp.jsx",
+    "src/shallowSchooling.js",
+    "src/shallowNarrationTimeline.js",
     "src/sceneCatalog.js",
     "src/demoCapabilities.js",
     "src/directorTour.js",
@@ -2139,6 +2240,8 @@
     "docs/ACTIVE_HISTORY_STAGE.md",
     "output/validation/shallow-final-closeout/stage.json",
     "docs/stages/STAGE_04_COMPLETE_HABITATS.md",
-    "docs/validation/stage-04-complete-habitats-20261013.json"
+    "docs/validation/stage-04-complete-habitats-20261013.json",
+    "docs/stages/STAGE_05_FISH_SCHOOLING.md",
+    "docs/validation/stage-05-schooling-20261013.json"
   ]
 }

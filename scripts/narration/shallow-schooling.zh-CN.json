@@ -1,0 +1,39 @@
+{
+  "language": "zh-CN",
+  "model": "speech-2.8-hd",
+  "voiceId": "Chinese (Mandarin)_Gentleman",
+  "voiceSpeed": 1.05,
+  "duration": 60,
+  "clips": [
+    {
+      "id": "school-entry",
+      "start": 0,
+      "title": "协同群游",
+      "text": "观察这群乌尾鮗，留意同伴之间的间距和共同方向。"
+    },
+    {
+      "id": "school-split",
+      "start": 8,
+      "title": "遇礁分流",
+      "text": "靠近礁头，鱼群从两侧分流。留意近侧和礁后成员怎样绕过障碍。"
+    },
+    {
+      "id": "school-merge",
+      "start": 28,
+      "title": "通过后汇合",
+      "text": "经过礁头，两支鱼群逐渐靠近，恢复共同的游动方向。"
+    },
+    {
+      "id": "school-disturb",
+      "start": 36,
+      "title": "局部受扰散开",
+      "text": "现在出现一次演示扰动，留意鱼群散开，朝向变得不同。"
+    },
+    {
+      "id": "school-regroup",
+      "start": 46,
+      "title": "重新聚集",
+      "text": "扰动消退，成员重新靠近，恢复协调的群游。这是一次有限的行为演示。"
+    }
+  ]
+}

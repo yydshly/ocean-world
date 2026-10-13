@@ -1,5 +1,5 @@
 /** UI follows the route chapter even during the intentional gaps between clips. */
-export function shallowNarrationPresentation({snapshot = {}, voice = {}, clips = [], chapters = [], duration = 240} = {}) {
+export function shallowNarrationPresentation({snapshot = {}, voice = {}, clips = [], chapters = [], duration = 240, intro = '六段中文讲解 · 开启后从当前位置继续'} = {}) {
   const time = Math.max(0, Number(snapshot.time) || 0);
   const chapter = chapters.find(item => time < item.end) || chapters.at(-1);
   const clip = chapter && clips.find(item => item.start >= chapter.start && item.start < chapter.end);
@@ -10,7 +10,7 @@ export function shallowNarrationPresentation({snapshot = {}, voice = {}, clips =
   let message;
   if (finished) message = '讲解已结束，可从头重听';
   else if (!snapshot.ready) message = '场景准备好后可开启讲解';
-  else if (!voice.enabled) message = '六段中文讲解 · 开启后从当前位置继续';
+  else if (!voice.enabled) message = intro;
   else if (voice.status === 'blocked') message = '点击重试讲解以允许播放';
   else if (voice.status === 'error') message = '语音暂不可用，仍可继续观看';
   else if (snapshot.free) message = '探索中，讲解暂停 · 返回巡游后继续';

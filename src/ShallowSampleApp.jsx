@@ -200,7 +200,7 @@ export function ShallowSampleApp({journey=false}){
         {journey&&<a className="journey-focus-secondary school-link" href={schoolingOnly?journeyUrl.href:schoolUrl.href}>{schoolingOnly?'观看完整4分钟':'观看60秒鱼群协同'}</a>}
         {lastRun?.completed&&<span>最近完整播放记录 {lastRun.averageFps.toFixed(1)} FPS · {lastRun.elapsedWallSeconds.toFixed(1)} 秒{!lastRun.uninterrupted?' · 含操作中断':''}</span>}
         {lastRun?.completed&&<button className="journey-focus-secondary" onClick={downloadMetrics}>下载播放数据</button>}{journey&&<button className="journey-focus-toggle" disabled={free} title={free?'返回巡游后可专注观看':'按Esc也可展开控制'} aria-expanded={!focused} aria-controls="journey-route-controls" onClick={()=>setFocused(!focused)}>{focused?'展开控制':'专注观看'}</button>}</div>
-      {journey&&!schoolingOnly&&<ShallowNarration runtime={runtime} ready={ready&&!error} onRestart={restart} onReplay={replayNarration} focused={focused}/>}
+      {journey&&<ShallowNarration runtime={runtime} ready={ready&&!error} onRestart={restart} onReplay={replayNarration} focused={focused} schoolingOnly={schoolingOnly}/>}
     </footer>
     </div>
     {(!ready||error)&&<SceneLoading experience={schoolingOnly?'school':journey?'journey':'sample'} phase={loadingPhase} error={error}/>}

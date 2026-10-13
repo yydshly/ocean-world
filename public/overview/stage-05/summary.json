@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-13",
+  "stage": "05",
+  "scope": "Existing fusilier coordination demonstration and synchronized Chinese narration; existing four-minute shallow route retained.",
+  "status": "Stage05 release guide. Hosted playback is evidenced by the release receipt and matching GitHub Actions run.",
+  "localBaseline": {
+    "commit": "a935a3e",
+    "tag": "stage-05-fish-schooling-local-20261013",
+    "evidence": "local-summary.json",
+    "note": "This previous local archive predates the five new narration clips; it is not the hosted release validation."
+  },
+  "population": {
+    "animals": 293,
+    "categories": 38,
+    "coordinated": 38,
+    "unchangedOtherAnimals": 255
+  },
+  "route": {
+    "seconds": 240,
+    "lengthM": 90.08271084770561,
+    "all961PositionsUnchanged": true
+  },
+  "phases": [
+    [
+      "group",
+      0,
+      8
+    ],
+    [
+      "split",
+      8,
+      28
+    ],
+    [
+      "merge",
+      28,
+      36
+    ],
+    [
+      "disturbance",
+      36,
+      46
+    ],
+    [
+      "regroup",
+      46,
+      60
+    ]
+  ],
+  "narration": {
+    "schoolClips": 5,
+    "journeyClips": 10,
+    "defaultEnabled": false,
+    "newAudioIncludedInLocalBaseline": false
+  },
+  "screenshots": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "files": [
+      {
+        "file": "split-21.4.jpg",
+        "time": 21.379,
+        "phase": "遇礁分流",
+        "mode": "连续实播截帧",
+        "caption": "鱼群从既有礁体两侧经过，远侧分支局部被礁体遮挡。"
+      },
+      {
+        "file": "merge-34.jpg",
+        "time": 34,
+        "phase": "通过后汇合",
+        "mode": "完整实播后定位暂停",
+        "caption": "绕开礁体后，群体间距收拢，逐步恢复共同方向。"
+      },
+      {
+        "file": "escape-38.jpg",
+        "time": 38.1,
+        "phase": "局部受扰散开",
+        "mode": "完整实播后定位暂停",
+        "caption": "36秒的演示扰动传播到邻近个体，群体扩大、朝向分散。"
+      },
+      {
+        "file": "regroup-60.jpg",
+        "time": 60,
+        "phase": "重新聚集",
+        "mode": "完整实播结束截帧",
+        "caption": "扰动结束后，鱼群重新形成紧凑、方向一致的群游。"
+      }
+    ]
+  },
+  "links": {
+    "school": "../../?demo=shallow-journey&seed=55&school=1",
+    "journey": "../../?demo=shallow-journey&seed=55",
+    "guide": "../",
+    "release": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md"
+  }
+}

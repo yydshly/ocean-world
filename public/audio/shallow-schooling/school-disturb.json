@@ -1,0 +1,19 @@
+{
+  "id": "school-disturb",
+  "start": 36,
+  "title": "局部受扰散开",
+  "text": "现在出现一次演示扰动，留意鱼群散开，朝向变得不同。",
+  "src": "audio/shallow-schooling/school-disturb.mp3",
+  "duration": 4.392,
+  "bytes": 71988,
+  "sha256": "b060110ac7b3c37bbf05198716167947f63cab94ab27f705a663ee887cd3dc2e",
+  "fingerprint": "bf50fb99ab45ec0957f963cdb1af386f76939710a6266c0565e477b51d9206b6",
+  "generatedOn": "2026-10-13T11:48:04.016Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 4.242131519274377,
+      "text": "现在出现一次演示扰动，留意鱼群散开，朝向变得不同。"
+    }
+  ]
+}

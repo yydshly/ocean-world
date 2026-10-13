@@ -9,8 +9,9 @@ import { createRequire } from 'node:module';
 import React from 'react';
 import { renderToPipeableStream } from 'react-dom/server';
 import { PassThrough } from 'node:stream';
+import { shallowNarrationTimeline } from '../src/shallowNarrationTimeline.js';
 
-const guidePages = ['overview/index.html', 'overview/poster.html', 'overview/evidence/review.html', 'overview/stage-04/index.html'];
+const guidePages = ['overview/index.html', 'overview/poster.html', 'overview/evidence/review.html', 'overview/stage-04/index.html', 'overview/stage-05/index.html'];
 const require = createRequire(import.meta.url);
 // The browser-only loading store has no server snapshot. Supply its current
 // snapshot for this shell check, retaining App's actual lazy route selection.
@@ -55,7 +56,10 @@ test('every published world entry renders its initial shell before the first wor
     .map(match => new URL(match[1].replaceAll('&amp;','&'),'https://example.test/ocean-world/overview/').search))];
   assert.ok(urls.length >= 18);
   for (const demo of ['shallow-sample', 'shallow-journey']) assert.ok(urls.some(search => new URLSearchParams(search).get('demo') === demo), `Guide omits ${demo}`);
-  urls.push('?demo=shallow-journey&seed=55&school=1');
+  assert.ok(urls.some(search => {
+    const params = new URLSearchParams(search);
+    return params.get('demo') === 'shallow-journey' && params.get('school') === '1';
+  }), 'Guide omits the actual sixty-second schooling entry');
   for (const search of urls) {
     const module={exports:{}},storage={getItem:()=>null,setItem:()=>{}};
     new Function('require','module','exports','window','localStorage','document',result.outputFiles[0].text)(
@@ -71,6 +75,12 @@ test('every published world entry renders its initial shell before the first wor
     }else if (demo === 'shallow-journey') assert.match(html,/三个完整栖息地 · 4分钟/,search);
     else if (demo === 'shallow-sample') assert.match(html,/浅海样板 · 连续巡游 75 秒/,search);
     else assert.doesNotMatch(html,/class="sample-title"/,search);
+    if (demo === 'shallow-journey') {
+      assert.match(html,/<audio[^>]+preload="none"[^>]+aria-label="浅海中文旁白"/,search);
+      assert.match(html,/开启讲解/,search);
+      assert.match(html,/讲解音量/,search);
+      assert.match(html,/&quot;enabled&quot;:false/,`${search}: speech must be opt-in`);
+    }
   }
 });
 
@@ -98,6 +108,8 @@ test('README points readers to the deployed guide, primary journey and stage evi
   assert.ok(links.some(url => url.pathname.endsWith('/ocean-world/overview/')), 'README lacks the published guide');
   assert.ok(links.some(url => url.searchParams.get('demo') === 'shallow-journey'), 'README lacks the primary four-minute entry');
   assert.ok(links.some(url => url.pathname.endsWith('/ocean-world/overview/stage-04/')), 'README lacks the published Stage04 evidence');
+  assert.ok(links.some(url => url.searchParams.get('demo') === 'shallow-journey' && url.searchParams.get('school') === '1'), 'README lacks the sixty-second schooling entry');
+  assert.ok(links.some(url => url.pathname.endsWith('/ocean-world/overview/stage-05/')), 'README lacks the published Stage05 evidence');
   assert.ok(links.every(url => !['localhost', '127.0.0.1'].includes(url.hostname)), 'README sends readers to a local preview');
 });
 
@@ -111,7 +123,7 @@ test('published counts and the complete catalogue agree with the shipped product
   assert.equal(guide.validation.counts.animals, 293);
   assert.equal(guide.validation.counts.displayClasses, 38);
   const stage = JSON.parse(fs.readFileSync('public/overview/stage-04/summary.json', 'utf8'));
-  assert.deepEqual(guide.currentStage, stage, 'overview and evidence disagree about the current stage');
+  assert.deepEqual(guide.historicalHabitatStage, stage, 'overview changed the archived habitat evidence');
   assert.equal(stage.route.durationSeconds, 240);
   assert.equal(stage.population.individuals, 293);
   assert.equal(stage.population.displayCategories, 38);
@@ -123,6 +135,35 @@ test('published counts and the complete catalogue agree with the shipped product
     assert.deepEqual(imageSize(fs.readFileSync(`public/overview/stage-04/${file}`), file), stage.screenshots.viewport, `Incorrect evidence dimensions ${file}`);
   }
   assert.ok(fs.statSync('public/overview/ocean-world-product-atlas.png').size > 100000);
+});
+
+test('current school guide separates new narration from archived local playback and retains portable observation entries', () => {
+  const guide = JSON.parse(fs.readFileSync('public/overview/inventory.json', 'utf8'));
+  const stage = JSON.parse(fs.readFileSync('public/overview/stage-05/summary.json', 'utf8'));
+  assert.deepEqual(guide.currentStage, stage, 'overview and school evidence disagree about the current stage');
+  assert.equal(stage.stage, '05');
+  assert.deepEqual(stage.population, {animals:293,categories:38,coordinated:38,unchangedOtherAnimals:255});
+  assert.equal(stage.route.seconds, 240);assert.equal(stage.route.all961PositionsUnchanged, true);
+  assert.deepEqual(stage.phases.map(phase => phase.slice(1)), [[0,8],[8,28],[28,36],[36,46],[46,60]]);
+  assert.equal(stage.narration.schoolClips, shallowNarrationTimeline({schoolingOnly:true}).clips.length);
+  assert.equal(stage.narration.journeyClips, shallowNarrationTimeline().clips.length);
+  assert.equal(stage.narration.defaultEnabled, false);
+  assert.equal(stage.narration.newAudioIncludedInLocalBaseline, false, 'the old local playback did not verify this new narration');
+  const archived = JSON.parse(fs.readFileSync('docs/validation/stage-05-schooling-20261013.json','utf8'));
+  assert.deepEqual(JSON.parse(fs.readFileSync('public/overview/stage-05/local-summary.json','utf8')), archived,
+    'publication must retain the original local evidence exactly');
+  assert.equal(stage.screenshots.files.length, 4);
+  const phases = new Set();
+  for (const frame of stage.screenshots.files) {
+    assert.ok(Number.isFinite(frame.time) && frame.time >= 0 && frame.time <= 60);
+    assert.deepEqual(imageSize(fs.readFileSync(`public/overview/stage-05/${frame.file}`), frame.file),stage.screenshots.viewport,
+      `Incorrect school screenshot dimensions: ${frame.file}`);
+    phases.add(frame.phase);
+  }
+  assert.equal(phases.size, 4, 'the guide needs four distinct observed behaviours, rather than duplicate frames');
+  const schoolUrl = new URL(guide.links.school, 'https://example.test/ocean-world/overview/');
+  assert.equal(schoolUrl.pathname, '/ocean-world/');assert.equal(schoolUrl.searchParams.get('demo'), 'shallow-journey');
+  assert.equal(schoolUrl.searchParams.get('school'), '1');assert.equal(schoolUrl.searchParams.get('seed'), '55');
 });
 
 test('production output includes the guide, query application and prefixed workers/assets', () => {
@@ -137,10 +178,12 @@ test('production output includes the guide, query application and prefixed worke
   for (const file of ['index.html', 'atlas.css', 'inventory.json', 'ocean-world-product-atlas.png', 'evidence/stage.json', 'images/reef.png']) {
     assert.deepEqual(fs.readFileSync(`${root}/overview/${file}`), fs.readFileSync(`public/overview/${file}`));
   }
-  const stageRoot = 'public/overview/stage-04';
-  for (const file of fs.readdirSync(stageRoot, {recursive:true})) {
-    if (!fs.statSync(path.join(stageRoot, file)).isFile()) continue;
-    assert.deepEqual(fs.readFileSync(path.join(root, 'overview/stage-04', file)), fs.readFileSync(path.join(stageRoot, file)), `Stage04 file was not shipped: ${file}`);
+  for (const folder of ['overview/stage-04','overview/stage-05','audio/shallow-schooling','audio/shallow-journey']) {
+    const sourceRoot = path.join('public',folder);
+    for (const file of fs.readdirSync(sourceRoot, {recursive:true})) {
+      if (!fs.statSync(path.join(sourceRoot, file)).isFile()) continue;
+      assert.deepEqual(fs.readFileSync(path.join(root,folder,file)), fs.readFileSync(path.join(sourceRoot,file)), `Published media/evidence was not shipped: ${folder}/${file}`);
+    }
   }
   const files = fs.readdirSync(`${root}/assets`);
   assert.ok(files.some(f => /^ShallowSampleApp-.*\.js$/.test(f)));

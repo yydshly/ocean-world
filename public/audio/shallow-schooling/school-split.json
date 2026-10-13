@@ -1,0 +1,19 @@
+{
+  "id": "school-split",
+  "start": 8,
+  "title": "遇礁分流",
+  "text": "靠近礁头，鱼群从两侧分流。留意近侧和礁后成员怎样绕过障碍。",
+  "src": "audio/shallow-schooling/school-split.mp3",
+  "duration": 5.976,
+  "bytes": 97332,
+  "sha256": "bb0251ededc6cd4c2a84247d1cf80e5a52ef756d9f748b72a203c69b284d3725",
+  "fingerprint": "ad7d4d1cc1e641e3777bed991dd186d10ebb9473ccbaf02be8a213735194b7c8",
+  "generatedOn": "2026-10-13T11:48:00.112Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 5.82108843537415,
+      "text": "靠近礁头，鱼群从两侧分流。留意近侧和礁后成员怎样绕过障碍。"
+    }
+  ]
+}
