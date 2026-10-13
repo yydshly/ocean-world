@@ -1,3 +1,7 @@
+<!-- build-history-closeout-current -->
+2026-10-13 新授权有限阶段基于b753806，分支fix/finite-build-history-20261013，仅数字支撑格、GPU编译/纹理上传重叠、完整海区复合历史公共检查去重（保留旧额外约束）；场景、资产、293动物、路线、历史、画质策略、超时不变。45历史/导演+40样板全过，98487高度法线及144圆盘精确，本地build13.79s过；14文件实播前后hash一致。实际首次导览样板610×871/DPR1.5：5.051s，1×75完整/75.012实秒/p95 16.6/max79.2ms/scale1/无中断；尺寸修正重载1280×720却实际DPR1：4.863s，1×75完整/75.255实秒/p95 12.6/max174.9ms/scale1。两次均保留，非同画质受控提升或公网冷访，不能用4.863证明原画质5s达标。导演610×871/DPR1.5首章4×采样335/800，等待max18s/运动长帧max475.1ms，失败后手选3；第3完整200秒自动4/5，最终3和4完成2/67，第5暂停；第3等待max7s/5运动长帧max433.4ms，首次采样showing选章后33.479s/完成132.05s。非完整首章、非2→3、非67验收；无新生命240/云端，两入口console空。历史完整检查/静态确认/屏障仍瓶颈；发布失败停止本轮，不推送部署、不自动追加修补。详docs/BUILD_HISTORY_CLOSEOUT.md及docs/validation/build-history-closeout-20261013.json；output/validation/build-history-closeout/review.html。
+<!-- /build-history-closeout-current -->
+
 # 当前产品状态 · 2026-10-13
 
 <!-- coastal-startup-stability-current -->

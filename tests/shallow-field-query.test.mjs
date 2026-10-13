@@ -20,3 +20,11 @@ test('height-pruned scan queries retain overhangs, negative floors and stable co
   assert.equal(oceanRockSurface('sample-field-release-query',.009,.008).height,9);
   assert.equal(oceanRockSurface('sample-field-release-query',.49,.49),null);
 });
+
+test('field bins retain negative and extended mesh coordinates without wrapping out-of-grid queries',()=>{
+  const p=[-1.2,-3,-.8,-.7,-2,-.8,-1.2,-1,.9],ix=[0,1,2];
+  registerFieldReefMesh('sample-field-extended-grid',p,ix);
+  assert.ok(oceanRockSurface('sample-field-extended-grid',-1,.1));
+  assert.equal(oceanRockSurface('sample-field-extended-grid',.8,-.8),null);
+  assert.equal(oceanRockSurface('sample-field-extended-grid',-1.2,-.9),null);
+});

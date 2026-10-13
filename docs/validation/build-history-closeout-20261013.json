@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-13",
+  "base": "b753806eec938065613da0ce57c63eb71c97d3e5",
+  "branch": "fix/finite-build-history-20261013",
+  "scope": "One finite implementation batch, existing geometry/assets/population/routes/quality policy/history rules preserved",
+  "checks": {
+    "director": {
+      "tests": 45,
+      "pass": 45,
+      "fail": 0,
+      "skipped": 0
+    },
+    "sample": {
+      "tests": 40,
+      "pass": 40,
+      "fail": 0,
+      "skipped": 0
+    }
+  },
+  "physicalEquivalence": {
+    "queries": 98487,
+    "disks": 144
+  },
+  "exactHeightsNormalsAndDiskBounds": true,
+  "buildSeconds": 13.79,
+  "codeFreezeVerified": true,
+  "samples": [
+    {
+      "source": "sample-default-viewport.json",
+      "navigationToReadyMs": 5051.200000047684,
+      "startupMs": 4526.200000047684,
+      "sceneBuildMs": 2587.5,
+      "sceneBuildStagesMs": {
+        "model": 1452,
+        "materials": 1.8000000715255737,
+        "bed": 134.79999995231628,
+        "rocks": 492.8000000715256,
+        "plants": 74.59999990463257,
+        "animals": 415.90000009536743,
+        "firstUpdate": 14.599999904632568
+      },
+      "staticGeometryReadyMs": 94.5,
+      "textureReadyMs": 171.09999990463257,
+      "gpuPreparationMs": 1587.2000000476837,
+      "compileAndTextureOverlapMs": 1155.6000000238419,
+      "textureUploadMs": 1087.8000000715256,
+      "finalWarmupMs": 431.60000002384186,
+      "firstFrameMs": 8.300000071525574,
+      "environment": {
+        "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "context": "WebGL2RenderingContext"
+      },
+      "playback": {
+        "speed": 1,
+        "width": 610,
+        "height": 871.3333740234375,
+        "pixelRatio": 1.5,
+        "startedAt": 5051.399999976158,
+        "resolutionHistory": [
+          {
+            "time": 0,
+            "scale": 1
+          }
+        ],
+        "interruptions": [],
+        "completed": true,
+        "lastModelSecond": 75,
+        "elapsedWallSeconds": 75.01180000002384,
+        "averageFps": 101.24766346417806,
+        "p95FrameMs": 16.599999999998545,
+        "maxFrameMs": 79.19999999999982,
+        "uninterrupted": true
+      }
+    },
+    {
+      "source": "sample-final.json",
+      "navigationToReadyMs": 4863,
+      "startupMs": 4245.5,
+      "sceneBuildMs": 2728.5,
+      "sceneBuildStagesMs": {
+        "model": 1805.1999999284744,
+        "materials": 1.2000000476837158,
+        "bed": 142,
+        "rocks": 394.39999997615814,
+        "plants": 54.200000047683716,
+        "animals": 322.89999997615814,
+        "firstUpdate": 8.600000023841858
+      },
+      "staticGeometryReadyMs": 56.60000002384186,
+      "textureReadyMs": 154,
+      "gpuPreparationMs": 1224.5,
+      "compileAndTextureOverlapMs": 956.3000000715256,
+      "textureUploadMs": 901.5999999046326,
+      "finalWarmupMs": 268.1999999284744,
+      "firstFrameMs": 6.5,
+      "environment": {
+        "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "context": "WebGL2RenderingContext"
+      },
+      "playback": {
+        "speed": 1,
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.0000000298023224,
+        "startedAt": 4863.200000047684,
+        "resolutionHistory": [
+          {
+            "time": 0,
+            "scale": 1
+          }
+        ],
+        "interruptions": [],
+        "completed": true,
+        "lastModelSecond": 75,
+        "elapsedWallSeconds": 75.25529999995231,
+        "averageFps": 114.60480346152917,
+        "p95FrameMs": 12.599999999998545,
+        "maxFrameMs": 174.90000000000146,
+        "uninterrupted": true
+      }
+    }
+  ],
+  "director": {
+    "method": "Guide link, 4x from chapter 1; sampled long waiting failed gate, manually selected chapter 3; full 200 model seconds, automatic chapters 4 then 5, paused in chapter5. Not a full chapter1, not automatic 2-to-3, not all67.",
+    "chapters": [
+      {
+        "title": "热带礁谷：完整海区",
+        "maxSampledUIWaitSec": 18,
+        "sampledMotionMaxSec": 335.0120000000149,
+        "unpausedMovingIntervalsOver250ms": 10,
+        "maxUnpausedMovingIntervalMs": 475.09999999999854,
+        "viewportSamples": [
+          {
+            "width": 610,
+            "height": 871,
+            "pixelRatio": 1.5
+          }
+        ]
+      },
+      {
+        "title": "浅海：连续生活带",
+        "maxSampledUIWaitSec": 7,
+        "sampledMotionMaxSec": 191.18320000000517,
+        "unpausedMovingIntervalsOver250ms": 5,
+        "maxUnpausedMovingIntervalMs": 433.3999999999651,
+        "viewportSamples": [
+          {
+            "width": 610,
+            "height": 871,
+            "pixelRatio": 1.5
+          }
+        ]
+      }
+    ],
+    "chapter3FirstShowingSampleAfterSelectionSec": 33.479,
+    "chapter3CompletedAfterSelectionSec": 131.574,
+    "completedStepIds": [
+      "coastal-life-belt",
+      "shallows-opening"
+    ],
+    "pausedOn": "浅海：附近的真实生物",
+    "error": null,
+    "console": []
+  },
+  "sampleConsole": [],
+  "gates": {
+    "sample75SecondsComplete": true,
+    "sample5SecondsAtOriginalQualityProven": false,
+    "chapter3FocusedPlaybackComplete": true,
+    "noObviousLongStops": false,
+    "fullDirectorValidated": false,
+    "release": false
+  },
+  "limitations": [
+    "Two sample playback sizes differ. Viewport override changed effective DPR to1. The 4.863s reload does not prove5s at previous1280x720/DPR1.5 quality.",
+    "First guide visit at610x871/DPR1.5 took5.051s. Both attempts retained; no controlled before/after or cold public network benchmark.",
+    "Director first chapter stopped after wait gate failure, then manually selected third. Completed third and fourth, paused fifth. No automatic2-to3 or full67 check.",
+    "UI wait sampled, not an absolute maximum. Latest-window diagnostics can span chapter transitions; they are not each chapter total loading time.",
+    "No new240s life cruise, no cloud build or deployment."
+  ],
+  "pushed": false,
+  "deployed": false,
+  "stopFurtherRepairs": true
+}

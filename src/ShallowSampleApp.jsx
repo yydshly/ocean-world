@@ -54,6 +54,8 @@ export function ShallowSampleApp(){
         if(disposed)return;world.assetsSealed=true;world.animals.artists.sealed=true;world.animals.sourcedFish.sealed=true;world.animals.sourceTurtle.sealed=true;world.animals.openCommunity.sealed=true;world.nearCommunity.sealed=true;world.benthicCorals.sealed=true;world.animals.contactFauna.sealed=true;world.scanController.abort();
         const preparation=await prepareShallowRenderer(renderer,world.scene,world.camera,()=>disposed);if(disposed)return;
         metrics.compileMs=preparation.compileMs;metrics.assetUploadMs=preparation.uploadMs;metrics.preparedRenderBatches=preparation.batches;
+        metrics.textureUploadMs=preparation.textureUploadMs;metrics.preparedTextureCount=preparation.textureCount;
+        metrics.renderPreparationMs=preparation.preparationMs;
         // Texture uploads and the first real draw belong to preparation, not
         // the first movement interval. compileAsync alone does not upload all
         // instance buffers/textures. Start the tour only after that draw.

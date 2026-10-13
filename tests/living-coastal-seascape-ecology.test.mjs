@@ -69,6 +69,26 @@ async function initialRecords() {
   return clone(await initialPromise);
 }
 
+test('complete coastal checks retain legacy composite constraints without repeating each community',async()=>{
+  const f=fixture(fromRecords(await initialRecords())),rows=groupRows(f),context=f.generator.prepareCoastalSeascapeContext(rows.map(r=>r.livingRidgePlan));
+  const before=clone(rows);
+  const check=row=>context(()=>f.model._withHistoryQueries(row,()=>f.model._validCoastalHistory(row,row.id,false)));
+  for(const row of rows){
+    assert.equal(check(row),true);
+    if(row.meadowLifeVersion!==undefined)assert.equal(context(()=>f.model._validMeadowHistory(row,row.id)),true);
+    if(row.shoalLifeVersion!==undefined)assert.equal(context(()=>f.model._validShoalHistory(row,row.id)),true);
+  }
+  const source=rows.find(r=>r.meadowLifeVersion!==undefined&&r.shoalLifeVersion!==undefined);assert.ok(source);
+  for(const [name,value]of [['reefGuildVersion',undefined],['openWaterLifeVersion',undefined],['planktonTransportVersion',undefined],
+    ['slopeCommunityVersion',999],['pelagicCommunityVersion',999],['mantaCommunityVersion',999],['formationsVersion',-1],
+    ['timeSec',.123],['ticks',-1],['meadowLifeVersion',999],['shoalLifeVersion',999]]){
+    const row=clone(source);row[name]=value;
+    assert.equal(check(row),false,name);
+    assert.equal(context(()=>f.model._validMeadowHistory(row,row.id))&&context(()=>f.model._validShoalHistory(row,row.id)),false,`legacy ${name}`);
+  }
+  assert.deepEqual(rows,before);
+});
+
 test('legacy coastal history uses retained worker terrain and rejects offscreen corruption without publication', async () => {
   const records=await initialRecords(), f=fixture(fromRecords(records)), rows=groupRows(f);
   const original=clone(rows), worker=nativePreparation();

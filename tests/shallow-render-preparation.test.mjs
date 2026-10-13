@@ -3,6 +3,20 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import {prepareShallowRenderer} from '../src/world/prepareShallowRenderer.js';
 
+test('shared image upload overlaps pending compilation and failures restore original visibility',async()=>{
+  const scene=new THREE.Scene(),texture=new THREE.Texture(),material=new THREE.MeshStandardMaterial({map:texture,normalMap:texture});
+  const mesh=new THREE.Mesh(new THREE.BoxGeometry(),material);mesh.visible=false;scene.add(mesh);
+  let complete;const pending=new Promise(resolve=>complete=resolve),events=[];
+  const renderer=statefulRenderer({compileAsync(){events.push('compile-start');return pending;},
+    initTexture(value){assert.equal(value,texture);events.push('image');complete();},render(){events.push('draw');}});
+  const result=await prepareShallowRenderer(renderer,scene,new THREE.Camera());
+  assert.deepEqual(events,['compile-start','image','draw']);assert.equal(result.textureCount,1);assert.equal(mesh.visible,false);
+  const failure=statefulRenderer({async compileAsync(){},initTexture(){throw Error('image allocation failed');},render(){assert.fail('must not mark failed upload ready');}});
+  await assert.rejects(prepareShallowRenderer(failure,scene,new THREE.Camera()),/image allocation failed/);
+  assert.equal(mesh.visible,false);assert.equal(mesh.frustumCulled,true);
+  mesh.geometry.dispose();material.dispose();texture.dispose();
+});
+
 function statefulRenderer(operations){
   const state={viewport:new THREE.Vector4(3,4,1280,720),scissor:new THREE.Vector4(5,6,100,200),test:false};
   return {state,...operations,getViewport:v=>v.copy(state.viewport),getScissor:v=>v.copy(state.scissor),getScissorTest:()=>state.test,

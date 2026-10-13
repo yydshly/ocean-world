@@ -353,19 +353,20 @@ export class OceanEcology {
     yield () => validateLivingNetworkRecord(row);
     yield () => validateReefGuildRecord(row, this.generator, options);
     yield () => validateOpenWaterLifeRecord(row, this.generator, options);
-    // V8's complete group validates this common mutable schema once. Keep
-    // every extra condition of the old meadow/shoal composite validators;
-    // v1-v7 callers continue their unchanged composite validation path.
-    yield () => !(sharedClassValidation && (meadowLifeMarked(row) || shoalLifeMarked(row)) &&
+    // All complete groups already checked the shared mutable schema above.
+    // Preserve the extra legacy composite conditions explicitly, then run each
+    // community validator once. No verdict survives this synchronous record.
+    yield () => !((meadowLifeMarked(row) || shoalLifeMarked(row)) &&
         (((this.generator.chunk(row.cx, row.cz).formationsVersion || 0) > (row.formationsVersion || 0)) ||
          (row.slopeCommunityVersion !== undefined && row.slopeCommunityVersion !== OCEAN_SLOPE_COMMUNITY_VERSION) ||
          (row.pelagicCommunityVersion !== undefined && row.pelagicCommunityVersion !== OCEAN_PELAGIC_COMMUNITY_VERSION) ||
          (row.mantaCommunityVersion !== undefined && row.mantaCommunityVersion !== OCEAN_MANTA_COMMUNITY_VERSION) ||
-         row.planktonTransportVersion !== OCEAN_PLANKTON_TRANSPORT_VERSION));
+         row.planktonTransportVersion !== OCEAN_PLANKTON_TRANSPORT_VERSION ||
+         (!sharedClassValidation && (row.reefGuildVersion !== 1 || row.openWaterLifeVersion !== 1))));
     yield () => !(row.biodiversityVersion !== undefined || row.agents.some(isOceanBiodiversityAgent)) || validateOceanBiodiversityRecord(row, this.generator, options);
     yield () => !(row.benthicLifeVersion !== undefined || row.agents.some(isOceanBenthicLifeAgent)) || validateOceanBenthicLifeRecord(row, this.generator, options);
-    yield () => !meadowLifeMarked(row) || (sharedClassValidation ? validateOceanMeadowLifeRecord(row, this.generator, options) : this._validMeadowHistory(row, id));
-    yield () => !shoalLifeMarked(row) || (sharedClassValidation ? validateOceanShoalLifeRecord(row, this.generator, options) : this._validShoalHistory(row, id));
+    yield () => !meadowLifeMarked(row) || validateOceanMeadowLifeRecord(row, this.generator, options);
+    yield () => !shoalLifeMarked(row) || validateOceanShoalLifeRecord(row, this.generator, options);
     yield () => !(row.turtleCommunityVersion !== undefined || row.turtleAgents?.length) || validateOceanTurtleRecord(row, this.generator, { surface });
     yield () => !(row.turtleGrazingVersion !== undefined || row.turtleOrganicVersion !== undefined) || validateOceanTurtleGrazingRecord(row, this.generator, { surface });
   }

@@ -228,7 +228,17 @@ export function oceanRockMesh(profile = 'mound') {
 export function registerFieldReefMesh(profile, positions, indices) {
   if(meshes.has(profile))return;
   if(!profile.startsWith('sample-field-'))throw Error('Field mesh must use a sample-only identity');
-  const p=Float32Array.from(positions),ix=Uint32Array.from(indices),fieldFaces=new Float64Array(ix.length/3*12),bins=new Map(),cells=48;
+  const p=Float32Array.from(positions),ix=Uint32Array.from(indices),fieldFaces=new Float64Array(ix.length/3*12),cells=48;
+  // These finite meshes have compact extents. A numeric grid avoids allocating
+  // a coordinate string and hashing it for every triangle/cell pair. Bounds
+  // come from the original vertices, including formations outside [-.5,.5].
+  let minCellX=Infinity,maxCellX=-Infinity,minCellZ=Infinity,maxCellZ=-Infinity;
+  for(let i=0;i<p.length;i+=3){
+    const x=Math.floor((p[i]+.5)*cells),z=Math.floor((p[i+2]+.5)*cells);
+    minCellX=Math.min(minCellX,x);maxCellX=Math.max(maxCellX,x);minCellZ=Math.min(minCellZ,z);maxCellZ=Math.max(maxCellZ,z);
+  }
+  const gridWidth=maxCellX-minCellX+1,gridHeight=maxCellZ-minCellZ+1;
+  const bins=new Array(gridWidth*gridHeight);
   let faceCount=0;
   for(let k=0;k<ix.length;k+=3){
     const a=ix[k]*3,b=ix[k+1]*3,c=ix[k+2]*3;
@@ -250,15 +260,20 @@ export function registerFieldReefMesh(profile, positions, indices) {
     fieldFaces[offset+11]=Math.max(p[a+1],p[b+1],p[c+1])+EPSILON*(Math.abs(p[a+1])+Math.abs(p[b+1])+Math.abs(p[c+1]))*4;
     for(let z=Math.floor((Math.min(p[a+2],p[b+2],p[c+2])+.5)*cells);z<=Math.floor((Math.max(p[a+2],p[b+2],p[c+2])+.5)*cells);z++)
       for(let x=Math.floor((Math.min(p[a],p[b],p[c])+.5)*cells);x<=Math.floor((Math.max(p[a],p[b],p[c])+.5)*cells);x++){
-        const key=`${x},${z}`;if(!bins.has(key))bins.set(key,[]);bins.get(key).push(face);
+        const key=(z-minCellZ)*gridWidth+x-minCellX;(bins[key]??=[]).push(face);
       }
   }
   // Query the highest possible faces first. Once their conservative upper
   // bound is below a hit, the remaining faces cannot support this point.
   // Keep original face IDs for exact normal selection at coincident surfaces.
-  for(const bin of bins.values())bin.sort((a,b)=>fieldFaces[b*12+11]-fieldFaces[a*12+11]||a-b);
+  for(const bin of bins)if(bin)bin.sort((a,b)=>fieldFaces[b*12+11]-fieldFaces[a*12+11]||a-b);
   let radiusSq=0;for(let i=0;i<p.length;i+=3)radiusSq=Math.max(radiusSq,p[i]**2+p[i+2]**2);
-  meshes.set(profile,{mesh:{positions:p,indices:ix},fieldFaces:fieldFaces.subarray(0,faceCount*12),bins,cells,fieldScan:true,radiusSq});
+  meshes.set(profile,{mesh:{positions:p,indices:ix},fieldFaces:fieldFaces.subarray(0,faceCount*12),bins,cells,minCellX,minCellZ,gridWidth,gridHeight,fieldScan:true,radiusSq});
+}
+
+function fieldBin(data,x,z){
+  x-=data.minCellX;z-=data.minCellZ;
+  return x>=0&&z>=0&&x<data.gridWidth&&z<data.gridHeight ? data.bins[z*data.gridWidth+x] : undefined;
 }
 
 function triangleSurface(data, triangle, x, z) {
@@ -287,7 +302,7 @@ export function oceanRockSurface(profile = 'mound', x, z) {
   if (x * x + z * z > (data.fieldScan?data.radiusSq:.25) + 1e-7) return null;
   if(data.fieldScan){
     let top=null,topFace=Infinity;
-    for(const face of data.bins.get(`${Math.floor((x+.5)*data.cells)},${Math.floor((z+.5)*data.cells)}`)??[]){
+    for(const face of fieldBin(data,Math.floor((x+.5)*data.cells),Math.floor((z+.5)*data.cells))??[]){
       // Barycentric edge tolerance permits a tiny extrapolation. Retain that
       // margin, including negative heights; this is not an approximate grid.
       const f=data.fieldFaces,i=face*12;
@@ -386,7 +401,7 @@ export function fieldReefDiskMaxHeight(rock, worldX, worldZ, radius) {
   if(Math.hypot(x,z)>r+.5)return null;
   const found=new Set(),cells=data.cells,p=data.mesh.positions,r2=r*r;
   for(let iz=Math.floor((z-r+.5)*cells);iz<=Math.floor((z+r+.5)*cells);iz++)for(let ix=Math.floor((x-r+.5)*cells);ix<=Math.floor((x+r+.5)*cells);ix++)
-    for(const face of data.bins.get(`${ix},${iz}`)??[])found.add(face);
+    for(const face of fieldBin(data,ix,iz)??[])found.add(face);
   const edgeHits=(a,b)=>{const vx=p[b]-p[a],vz=p[b+2]-p[a+2],length=vx*vx+vz*vz;
     const t=length?Math.max(0,Math.min(1,((x-p[a])*vx+(z-p[a+2])*vz)/length)):0;
     return (p[a]+vx*t-x)**2+(p[a+2]+vz*t-z)**2<=r2;
