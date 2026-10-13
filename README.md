@@ -8,9 +8,9 @@
 
 **点击上方原版引导图进入产品导览，再选择“4分钟浅海体验”。** 图中实景与数据是 **2026-10-12 的历史快照**，包括75秒样板和当时的性能、发布状态；最新阶段说明以本文与[阶段04对照页](https://yydshly.github.io/ocean-world/overview/stage-04/)为准。[下载原版长图](https://yydshly.github.io/ocean-world/overview/ocean-world-product-atlas.png)。
 
-> **当前版本：阶段04 · 栖息地整合。** 本次发布范围包含293个动物个体、38个展示类别、240秒路线、六段中文讲解、三个浅海栖息地及两段过渡。本地场景基线为 `22987c4` / `stage-04-complete-habitats-local-20261013`。具体远端版本与部署状态以对应提交的 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准；详见[本次发布说明](docs/releases/STAGE_04_PUBLICATION.md)。
+> **当前版本：阶段04 · 栖息地整合。** 本次发布范围包含293个动物个体、38个展示类别、240秒路线、六段中文讲解、三个浅海栖息地及两段过渡。本地场景基线为 `22987c4` / `stage-04-complete-habitats-local-20261013`。具体远端版本与部署状态以对应提交的 [GitHub Actions](https://github.com/yydshly/ocean-world/actions/workflows/pages.yml) 为准；详见[本次发布说明](docs/releases/STAGE_04_LOADING_PUBLICATION.md)。
 
-**已上线：** [`stage-04-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-04-published-20261013) / `11edf106`；[全部发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38377213071)。已核对引导图到主体验、语音和探索返回。此次远端打开约33.9秒，加载仍偏慢；详见[当前状态与发布回执](docs/CURRENT_STATUS.md)。
+**已上线：** [`stage-04-loading-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-04-loading-published-20261013) / `560669f`；[发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38383872433)。完整4分钟及六段讲解通过；本次远端首轮10.72秒、贴图26/47，缓存复访6.44秒、47/47。首访材质仍不齐，未达到5秒目标；非受控冷测。[发布回执与保留限制](docs/releases/STAGE_04_LOADING_PUBLICATION.md)。
 
 ## 当前做到哪一步
 

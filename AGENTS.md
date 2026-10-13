@@ -1,3 +1,7 @@
+<!-- stage-04-loading-publication-complete -->
+2026-10-13 用户授权发布已完成：运行560669f/标签stage-04-loading-published-20261013，Actions38383872433构建+8组世界回归+部署全过；远端常规缓存未清导航10.72秒/初始化7.06秒，准备26贴图/静态包used=true。1×完整240模型/240.079实秒无中断/六段讲解/console0项；初始1280×720、后续约660×871/DPR1.5/scale1/p9512.6/max174.7ms，复访6.44秒/47贴图。非受控冷启动或全设备保证，旧视觉与跨区限制保留。用户要求阶段性归档不无限优化，本次仅发布此前通过改动、无运行追加修补。当前回执docs/releases/STAGE_04_LOADING_PUBLICATION.md及docs/validation/stage-04-loading-publication-20261013.json。历史未部署描述保持当时含义。Goal独立。
+<!-- /stage-04-loading-publication-complete -->
+
 <!-- stage-04-loading-local -->
 2026-10-13 用户“继续完善优化”授权的有限入口加载轮已本地完成；未提交/推送/部署，远端11edf106保持。双浅海入口文档级模型/静态包预载、无损gzip（2281360→1951008B/14.5%）、独立沙礁贴图安装、SceneLoading实景/真实阶段/恢复入口。293个体38类/240秒约90.1m/素材/画质/原3秒几何与4秒贴图截止均未改。146浅海+9发布通过/Vite19.64s；1280×720/DPR1.5/RTX4070Laptop/scale1，1×完整240模型/239.993实秒，无中断/p9512.6/max66.6ms/六段讲解/console空；47贴图+8静态几何齐全。前4.2275s后4.3639s未清缓存单轮本地导航，不称加速或公网5s；原公网33.9s未复测，48.57MB贴图和构建2.43s瓶颈保留。75秒入口只smoke（4.644s），390×844只布局，不称手机实机性能。见docs/stages/STAGE_04_LOADING.md、docs/validation/stage-04-loading-20261013.json及output/validation/stage-04-loading/review.html。本轮收口，Goal独立，不自动继续性能修补。
 <!-- /stage-04-loading-local -->

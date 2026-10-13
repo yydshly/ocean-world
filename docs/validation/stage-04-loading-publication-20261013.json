@@ -1,0 +1,357 @@
+{
+  "date": "2026-10-13",
+  "status": "deployed-remote-verified-stage-archived-with-known-limits",
+  "runtimeCommit": "560669f5f632007eb18485ca25174e545f3de0dc",
+  "archiveTag": "stage-04-loading-published-20261013",
+  "website": "https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55",
+  "workflow": {
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/38383872433",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "build",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (6)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (3)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (7)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (0)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (5)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (1)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (2)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (4)",
+        "conclusion": "success"
+      },
+      {
+        "name": "deploy",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "scope": "Publication of the previous validated loading changes; no additional runtime, asset, route or quality optimization in this turn.",
+  "remoteEntry": {
+    "navigationToReadyMs": 10719.700000047684,
+    "startupMs": 7057.700000047684,
+    "preparedGeometry": {
+      "used": true,
+      "bytes": 2281360,
+      "transportBytes": 1951008,
+      "geometries": 8
+    },
+    "preparedTextureCount": 26,
+    "modelBuildMs": 2092.5,
+    "textureReadyMs": 4001.4000000953674,
+    "staticGeometryReadyMs": 25.899999976158142,
+    "renderPreparationMs": 895.1000000238419,
+    "cacheCondition": "Normal canonical-URL visit in the existing browser; cache not cleared, no network throttling; not controlled cold startup."
+  },
+  "playback": {
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "pixelRatio": 1.5,
+    "duration": 240,
+    "startedAt": 43349.700000047684,
+    "resolutionHistory": [
+      {
+        "time": 0.00839999999999418,
+        "scale": 1
+      }
+    ],
+    "interruptions": [],
+    "completed": true,
+    "lastModelSecond": 240,
+    "elapsedWallSeconds": 240.0785999999523,
+    "averageFps": 114.58142440649229,
+    "p95FrameMs": 12.60000000000582,
+    "maxFrameMs": 174.70000000000437,
+    "uninterrupted": true
+  },
+  "environment": {
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "context": "WebGL2RenderingContext"
+  },
+  "narrationPlayingClips": [
+    "reef-entry",
+    "reef-edge",
+    "reef-sand",
+    "sand-life",
+    "seagrass",
+    "open-water"
+  ],
+  "narrationErrors": [],
+  "console": [],
+  "viewportCaveat": "Run started at 1280x720; browser viewport later changed to 660x871 CSS pixels (end canvas recorded in controls). Not a fixed-viewport performance comparison.",
+  "remoteRepeat": {
+    "navigationToReadyMs": 6438.400000095367,
+    "startupMs": 5368.5,
+    "preparedTextureCount": 47,
+    "preparedGeometry": {
+      "used": true,
+      "bytes": 2281360,
+      "transportBytes": 1951008,
+      "geometries": 8
+    },
+    "scope": "Same-tab reload after the full first run; warm-cache startup check only, not a second full playback."
+  },
+  "resources": {
+    "checkedAtUtc": "2026-10-13T10:48:05.155154+00:00",
+    "status": "passed",
+    "summary": {
+      "checks": 11,
+      "http200": 11,
+      "failedChecks": 0,
+      "narrationResources": 6,
+      "geometryLossless": true,
+      "publishedLoadingUI": true
+    },
+    "checks": [
+      {
+        "url": "https://yydshly.github.io/ocean-world/",
+        "method": "GET",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "contentLength": "1796",
+        "finalUrl": "https://yydshly.github.io/ocean-world/",
+        "item": "published-home-preload",
+        "bothShallowRoutes": true,
+        "exactGeometryPreload": true
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/assets/shallow-static-v1-gzip.bin?v=2bb430782756eefc",
+        "method": "GET",
+        "status": 200,
+        "contentType": "application/octet-stream",
+        "contentLength": "1951008",
+        "finalUrl": "https://yydshly.github.io/ocean-world/assets/shallow-static-v1-gzip.bin?v=2bb430782756eefc",
+        "item": "lossless-static-geometry",
+        "transportBytes": 1951008,
+        "expectedTransportBytes": 1951008,
+        "rawBytes": 2281360,
+        "expectedRawBytes": 2281360,
+        "sha256": "2bb430782756eefc205e5faa6b5a2210091885a64bd074ccdf291780c0b56f1c",
+        "shaMatches": true,
+        "matchesLocalOriginal": true
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/assets/index-CUUUykm3.js",
+        "method": "GET",
+        "status": 200,
+        "contentType": "application/javascript; charset=utf-8",
+        "contentLength": "200810",
+        "finalUrl": "https://yydshly.github.io/ocean-world/assets/index-CUUUykm3.js",
+        "item": "entry-ui-javascript",
+        "bytes": 200810,
+        "hasLoadingUI": true
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/overview/",
+        "method": "HEAD",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "contentLength": "43499",
+        "finalUrl": "https://yydshly.github.io/ocean-world/overview/",
+        "item": "guide-preview-or-narration",
+        "path": "overview/",
+        "localFile": "public/overview/index.html",
+        "localFileExists": true,
+        "localBytes": 43499
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/overview/stage-04/after-96.jpg",
+        "method": "HEAD",
+        "status": 200,
+        "contentType": "image/jpeg",
+        "contentLength": "73725",
+        "finalUrl": "https://yydshly.github.io/ocean-world/overview/stage-04/after-96.jpg",
+        "item": "guide-preview-or-narration",
+        "path": "overview/stage-04/after-96.jpg",
+        "localFile": "public/overview/stage-04/after-96.jpg",
+        "localFileExists": true,
+        "localBytes": 73725
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/audio/shallow-journey/open-water.mp3",
+        "method": "HEAD",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "contentLength": "279348",
+        "finalUrl": "https://yydshly.github.io/ocean-world/audio/shallow-journey/open-water.mp3",
+        "item": "guide-preview-or-narration",
+        "path": "audio/shallow-journey/open-water.mp3",
+        "localFile": "public/audio/shallow-journey/open-water.mp3",
+        "localFileExists": true,
+        "localBytes": 279348
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/audio/shallow-journey/reef-edge.mp3",
+        "method": "HEAD",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "contentLength": "287988",
+        "finalUrl": "https://yydshly.github.io/ocean-world/audio/shallow-journey/reef-edge.mp3",
+        "item": "guide-preview-or-narration",
+        "path": "audio/shallow-journey/reef-edge.mp3",
+        "localFile": "public/audio/shallow-journey/reef-edge.mp3",
+        "localFileExists": true,
+        "localBytes": 287988
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/audio/shallow-journey/reef-entry.mp3",
+        "method": "HEAD",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "contentLength": "295476",
+        "finalUrl": "https://yydshly.github.io/ocean-world/audio/shallow-journey/reef-entry.mp3",
+        "item": "guide-preview-or-narration",
+        "path": "audio/shallow-journey/reef-entry.mp3",
+        "localFile": "public/audio/shallow-journey/reef-entry.mp3",
+        "localFileExists": true,
+        "localBytes": 295476
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/audio/shallow-journey/reef-sand.mp3",
+        "method": "HEAD",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "contentLength": "281652",
+        "finalUrl": "https://yydshly.github.io/ocean-world/audio/shallow-journey/reef-sand.mp3",
+        "item": "guide-preview-or-narration",
+        "path": "audio/shallow-journey/reef-sand.mp3",
+        "localFile": "public/audio/shallow-journey/reef-sand.mp3",
+        "localFileExists": true,
+        "localBytes": 281652
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/audio/shallow-journey/sand-life.mp3",
+        "method": "HEAD",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "contentLength": "308724",
+        "finalUrl": "https://yydshly.github.io/ocean-world/audio/shallow-journey/sand-life.mp3",
+        "item": "guide-preview-or-narration",
+        "path": "audio/shallow-journey/sand-life.mp3",
+        "localFile": "public/audio/shallow-journey/sand-life.mp3",
+        "localFileExists": true,
+        "localBytes": 308724
+      },
+      {
+        "url": "https://yydshly.github.io/ocean-world/audio/shallow-journey/seagrass.mp3",
+        "method": "HEAD",
+        "status": 200,
+        "contentType": "audio/mp3",
+        "contentLength": "279924",
+        "finalUrl": "https://yydshly.github.io/ocean-world/audio/shallow-journey/seagrass.mp3",
+        "item": "guide-preview-or-narration",
+        "path": "audio/shallow-journey/seagrass.mp3",
+        "localFile": "public/audio/shallow-journey/seagrass.mp3",
+        "localFileExists": true,
+        "localBytes": 279924
+      }
+    ],
+    "limits": [
+      "HTTP/path/buffer integrity verification only; browser playback acceptance is recorded separately by the parent task.",
+      "No full model or texture-library downloads. Guide, preview and six narration audio files were checked with HEAD requests.",
+      "Does not imply all 47 textures are ready on first visit; the existing four-second texture preparation deadline is retained.",
+      "This was not a cold-cache or controlled network performance measurement."
+    ]
+  },
+  "controls": {
+    "before": {
+      "time": 240,
+      "lifeTime": 274.2627000000111,
+      "free": true,
+      "position": [
+        45,
+        2.250000000000001,
+        4.999999999999998
+      ],
+      "returning": false,
+      "activities": {
+        "school-return": 68,
+        "school-passage": 34,
+        "grass-edge-swim": 18,
+        "school-spread": 16,
+        "reef-patrol": 16,
+        "reef-hold": 3,
+        "sand-probe": 2,
+        "sand-transit": 5,
+        "sand-assess": 2
+      }
+    },
+    "after": {
+      "time": 240,
+      "lifeTime": 274.63340000001074,
+      "free": true,
+      "position": [
+        45.03199836825112,
+        2.250000000000001,
+        4.990853261277084
+      ],
+      "returning": false,
+      "activities": {
+        "school-return": 68,
+        "school-passage": 34,
+        "grass-edge-swim": 18,
+        "school-spread": 16,
+        "reef-patrol": 16,
+        "reef-hold": 3,
+        "sand-probe": 3,
+        "sand-transit": 4,
+        "sand-assess": 2
+      }
+    },
+    "movementDistance": 0.03327999999998974,
+    "returnedToTour": true,
+    "chapterSelection": true,
+    "endCanvas": {
+      "bufferHeight": 1307,
+      "bufferWidth": 990,
+      "cssHeight": 871.3333740234375,
+      "cssWidth": 660
+    }
+  },
+  "preserved": {
+    "animals": 293,
+    "displayCategories": 38,
+    "routeSeconds": 240,
+    "routeLengthM": 90.08271084770561
+  },
+  "limits": [
+    "One desktop browser with existing cache; no cross-device or cold-network guarantee.",
+    "Old director and life-expedition cross-region waits are outside this finite verification.",
+    "Approx. 48.57MB existing textures and retained 4s preparation deadline remain a slow-network risk.",
+    "Known scan edges, animal model appearance and other stage04 visual gaps remain."
+  ],
+  "evidenceDirectory": "output/validation/stage-04-loading-publication",
+  "rawEvidenceSha256": {
+    "remote-entry": "493c9a60c1326a1aea25ae67a2706b710a364d1afaee94f27b7039915448ef01",
+    "remote-complete": "0e343b6327d73e20b3050ecbd612c45b01b8f598d819fdde461edb740b67dbba",
+    "remote-narration": "ad27491292c42c00263eeb99fa110a511f60180d395a37914c547c9d98723097",
+    "remote-console": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "remote-controls": "088875def431e0e034ded96fa60ce561b9819ee432611b9f17abe081861060c5"
+  }
+}
