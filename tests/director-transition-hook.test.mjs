@@ -23,7 +23,7 @@ function worldFixture({ biomeId = 'reef', living = true, entryKind = 'cut' } = {
   const protectedState = { seed: 'saved-world-seed', timeSec: 132.4, animals: [{ id: 'old-death', alive: false }],
     stock: { plankton: .75 }, ledger: { input: .1, ingested: .05 }, environment: clone(environment) };
   const world = { biomeId, isLivingShallows: living, disposed: false, paused: false, speed: 2,
-    center: [3, 3], ready: true, missingOwner: false, position: { x: 208, y: 3, z: 208 }, target: { x: 216, y: 1, z: 208 },
+    center: [3, 3], ready: true, missingOwner: false, missingTerrain: false, position: { x: 208, y: 3, z: 208 }, target: { x: 216, y: 1, z: 208 },
     protectedState, bridge: { kind: null, active: false, complete: false, error: null, elapsedSec: 0, durationSec: 2 },
     shot: { kind: null, active: false, complete: false, error: null, elapsedSec: 0, durationSec: 0 },
     planDirectorEntry(action) { log.push(['plan', action.id]); return { kind: entryKind, reason: 'finite-test-entry', choiceId: action.id,
@@ -33,8 +33,9 @@ function worldFixture({ biomeId = 'reef', living = true, entryKind = 'cut' } = {
     setEnvironment(value) { log.push(['environment', clone(value)]); Object.assign(environment, value); },
     snapshot() {
       const regions = around(...this.center); if (this.missingOwner) regions.pop();
+      const loadedChunks = around(...this.center).map(region => region.id); if (this.missingTerrain) loadedChunks.pop();
       return { biomeId: this.biomeId, ...(this.isLivingShallows ? { sceneProfile: LIVING_SHALLOWS_PROFILE } : {}), runId: `world-${this.biomeId}-${this.isLivingShallows}`,
-        environment: clone(environment), ocean: { exploring: true, chunkId: this.center.join(','),
+        environment: clone(environment), ocean: { exploring: true, chunkId: this.center.join(','), streaming: { loadedChunks },
           ecology: { metrics: { loadingRegions: this.ready ? 0 : 2, activeRegions: regions.length, alive: 4 }, regions },
           localHabitat: { status: this.ready ? 'ready' : 'loading' } } };
     },
@@ -233,6 +234,18 @@ test('cross-world loading and a second physical window requested by preparation 
   await run.until(() => run.state.phase === 'showing', 'the post-positioning complete window must unlock reveal');
   assert.equal(count(fresh.log, 'prepare'), 1); assert.equal(count(fresh.log, 'shot-begin'), 1);
   assert.deepEqual(old.world.protectedState, old.protectedState); assert.deepEqual(fresh.world.protectedState, fresh.protectedState);
+});
+
+test('a native entry keeps its cover while terrain is incomplete even when all ecology owners are ready', async () => {
+  const f = worldFixture(), run = harness(f.world); f.world.missingTerrain = true; run.publish();
+  await start(run); await run.until(() => run.execution.length === 1, 'the native entry executes under cover');
+  await run.advance(1000);
+  assert.equal(run.state.phase, 'loading'); assert.equal(run.state.transition.phase, 'covered');
+  assert.equal(run.state.transition.opacity, 1); assert.equal(count(f.log, 'shot-begin'), 0);
+  assert.equal(f.world.snapshot().ocean.ecology.regions.length, 9); assert.equal(run.state.elapsedMs, 0);
+  f.world.missingTerrain = false; run.publish(); await run.flush();
+  await run.until(() => run.state.phase === 'showing', 'all actual terrain owners permit reveal');
+  assert.equal(count(f.log, 'shot-begin'), 1); assert.deepEqual(f.world.protectedState, f.protectedState);
 });
 
 test('a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window', async () => {
