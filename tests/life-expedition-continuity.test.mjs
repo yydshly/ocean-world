@@ -80,7 +80,20 @@ test('latest native expedition preloads adjacent windows in a worker, completes 
   const plan=f.world.currentReefValleyRegionPlan();if(process.env.EXPEDITION_WORLD_VARIANT==='whole-seabed')assert.equal(plan.group.wholeSeabedVersion,1);const oldTerrain=JSON.stringify(plan),beforeCounts=[...f.disk.values()].reduce((n,r)=>n+r.agents.length+(r.turtleAgents?.length??0),0);
   assert.equal(f.world.beginDirectorMotion({...DIRECTOR_LIFE_STEPS[0].motion}),true);
   const segment=f.world.directorMotion.reefValleySegments[0];assert.equal(segment.branches,2);
-  const heights=[],owners=new Set(),timings=[];let publishedCenter=null,frames=0,preparingFrames=0,progressDuringPrepare=0,modelSteps=0,terrainWaitingFrames=0;
+  const heights=[],owners=new Set(),outerOwners=new Set(),timings=[];let publishedCenter=null,frames=0,preparingFrames=0,progressDuringPrepare=0,modelSteps=0,terrainWaitingFrames=0,motionSamples=0;
+  // Preparation also advances the actual camera. Sample both paths: otherwise a
+  // slower worker can move through whole owners that the outer loop never sees.
+  const sampleMotion=(dt,duringPreparation=false)=>{
+   const before=f.world.directorMotionSnapshot();f.world.updateReefValleyRegionMotion(dt);
+   const after=f.world.directorMotionSnapshot();assert.equal(after.error,null);
+   if(after.elapsedSec>before.elapsedSec){
+    assert.ok(Math.hypot(...['x','y','z'].map(k=>after.worldPosition[k]-before.worldPosition[k]))<1.4,'continuous bounded camera displacement');
+    const pos=after.worldPosition,owner=`${Math.floor(pos.x/64)},${Math.floor(pos.z/64)}`;
+    owners.add(owner);if(!duringPreparation)outerOwners.add(owner);
+    heights.push(pos.y-f.world.floorY(pos.x,pos.z));motionSamples++;
+   }
+   return {before,after};
+  };
   while(!f.world.directorMotion.complete){
    const p=f.world.oceanWorldPosition(),next=f.world.expeditionPreparationPosition(p),center=`${Math.floor(next.x/64)},${Math.floor(next.z/64)}`;
    if(center!==publishedCenter){
@@ -88,9 +101,8 @@ test('latest native expedition preloads adjacent windows in a worker, completes 
     const pending=f.ecology.update(next).then(()=>{settled=true;},error=>{failure=error;settled=true;});
     while(!settled){
      await new Promise(resolve=>setTimeout(resolve,0));
-     const before=f.world.directorMotion.elapsedSec;
-     f.world.updateReefValleyRegionMotion(.05);assert.equal(f.world.directorMotion.error,null);
-     preparingFrames++;if(f.world.directorMotion.elapsedSec>before)progressDuringPrepare++;
+     const {before,after}=sampleMotion(.05,true);
+     preparingFrames++;if(after.elapsedSec>before.elapsedSec)progressDuringPrepare++;
      // Finite live tick probes during preparation, not a real-time FPS test.
      if(preparingFrames%200===0&&modelSteps<80){f.ecology.step(.1,f.world.sim.environment);modelSteps++;}
      assert.ok(f.ecology._active.size<=9);assert.ok(f.generator.registryStats().size<=25);
@@ -99,8 +111,7 @@ test('latest native expedition preloads adjacent windows in a worker, completes 
     await pending;if(failure)throw failure;publishedCenter=center;bounded(f);
     timings.push({center,ms:performance.now()-start,preparation:f.ecology._reefValleyTiming?.preparation});
    }
-   const before=f.world.directorMotionSnapshot();f.world.updateReefValleyRegionMotion(.5);
-   const after=f.world.directorMotionSnapshot();assert.equal(after.error,null);
+   const {before,after}=sampleMotion(.5);
    if(after.elapsedSec===before.elapsedSec&&!after.complete) {
     assert.equal(after.waitingForRegions,true,'only a real unloaded/unactivated owner may hold the camera');
     const blocked=f.world.directorMotion.waitingPosition;assert.ok(blocked);
@@ -111,13 +122,15 @@ test('latest native expedition preloads adjacent windows in a worker, completes 
     publishedCenter=null;continue;
    }
    assert.ok(after.elapsedSec>before.elapsedSec||after.complete,'loaded current owner continues');
-   assert.ok(Math.hypot(...['x','y','z'].map(k=>after.worldPosition[k]-before.worldPosition[k]))<1.4,'continuous bounded camera displacement');
-   const pos=after.worldPosition;heights.push(pos.y-f.world.floorY(pos.x,pos.z));
-   owners.add(`${Math.floor(pos.x/64)},${Math.floor(pos.z/64)}`);frames++;
-   if(frames%40===0){f.ecology.step(.1,f.world.sim.environment);modelSteps++;f.animals.update(f.ecology.agents,f.ecology._activeTime,f.world.oceanRenderOrigin,f.world.camera.position,f.ecology.scenery);}
+   const pos=after.worldPosition;
+   if(after.elapsedSec>before.elapsedSec){
+    frames++;
+    if(frames%40===0){f.ecology.step(.1,f.world.sim.environment);modelSteps++;f.animals.update(f.ecology.agents,f.ecology._activeTime,f.world.oceanRenderOrigin,f.world.camera.position,f.ecology.scenery);}
+   }
    f.chunks.update(pos);assert.ok(frames<600);
   }
-  assert.equal(f.world.directorMotion.elapsedSec,240);assert.ok(progressDuringPrepare>0);assert.ok(owners.size>=6);
+  assert.equal(f.world.directorMotion.elapsedSec,240);assert.ok(progressDuringPrepare>0);assert.ok(owners.size>=6,`full actual camera sampling visits six owners: ${[...owners].join('; ')}`);
+  assert.equal(motionSamples,progressDuringPrepare+frames,'all preparation and outer motion steps were sampled');
   assert.ok(Math.max(...heights)-Math.min(...heights)>1.4);assert.equal(JSON.stringify(plan),oldTerrain);
   const report=f.world.oceanLifeExpedition.stats();assert.deepEqual(report.habitats,['reef','sand','meadow','slope']);assert.ok(report.individuals>0);
   const end=f.world.oceanWorldPosition();await f.ecology.update(end);await f.ecology.checkpoint();bounded(f);
@@ -130,7 +143,7 @@ test('latest native expedition preloads adjacent windows in a worker, completes 
   for(let i=0;i<3;i++){f.ecology.step(.1,f.world.sim.environment);cold.ecology.step(.1,f.world.sim.environment);}equal(capture(cold.ecology._active),capture(f.ecology._active),'future decisions and food exact');
   const result={scope:'actual 240s camera route with finite live tick probes and native Three objects; not 240 model seconds, browser images, FPS or visible species acceptance',
    branches:segment.branches,routeM:f.world.directorMotion.travelledM,frames,preparingFrames,progressDuringPrepare,terrainWaitingFrames,modelSteps,modelSeconds:modelSteps*.1,
-   cameraOwners:[...owners],heightRangeM:[Math.min(...heights),Math.max(...heights)],timings,report,beforeCounts,total,
+   cameraOwners:[...owners],outerCameraOwners:[...outerOwners],motionSamples,heightRangeM:[Math.min(...heights),Math.max(...heights)],timings,report,beforeCounts,total,
    originalCommittedTerrainExact:true,completeColdActiveAndDiskExact:true,futureThreeStepsExact:true};
   writeFileSync(new URL(`../output/validation/${process.env.EXPEDITION_RECEIPT_PREFIX ?? 'background'}-expedition-native.json`,import.meta.url),JSON.stringify(result,null,2));
   console.log(JSON.stringify({...result,report:undefined,timings:undefined}));

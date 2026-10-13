@@ -93,15 +93,24 @@ import { createLivingShallowsGenerator } from '../src/livingShallowsGeneration.j
 import { createLivingRidgeGenerator } from '../src/livingRidgeGeology.js';
 import { livingShallowsSeed } from '../src/livingShallows.js';
 import { readOceanWorldVariant } from '../src/oceanWorldVariant.js';
+import { initialLivingEntry } from '../src/initialLivingEntry.js';
 
 test('explicit preview URL reaches shipped constructors while ordinary worlds keep their save identity',async()=>{
-  const variant=readOceanWorldVariant('?demo=reef-valley-region&seed=55&world=habitat-layers');assert.equal(variant,'habitat-layers');
+  const query='?demo=reef-valley-region&seed=55&world=habitat-layers',variant=readOceanWorldVariant(query);assert.equal(variant,'habitat-layers');
   for(const query of['','?world=other','?world=','?world=habitat-layers-extra'])assert.equal(readOceanWorldVariant(query),null);
   const app=readFileSync(new URL('../src/OceanApp.jsx',import.meta.url),'utf8');
   assert.ok(app.includes('const [worldVariant]=useState(()=>readOceanWorldVariant(window.location.search));'));
   const start=app.indexOf('{biomeId:biome,mobileIndividuals:'),end=app.indexOf('});',start)+1;
-  const fromUi=new Function('biome','performanceCount','scan','appliedSeed','initialPaused','livingShallows','LIVING_SHALLOWS_PROFILE','worldVariant',`return (${app.slice(start,end)});`);
-  for(const living of[true,false])assert.equal(fromUi('reef',null,null,'55',false,living,'living-shallows-v1',variant).worldVariant,living?variant:null);
+  const fromUi=new Function('biome','performanceCount','scan','appliedSeed','initialPaused','livingShallows','LIVING_SHALLOWS_PROFILE','worldVariant','initialEntryRef',`return (${app.slice(start,end)});`);
+  // Match OceanApp's current URL-derived ref rather than omitting the direct
+  // entry context when evaluating the shipped constructor options.
+  for(const living of[true,false]){
+    const options=fromUi('reef',null,null,'55',false,living,'living-shallows-v1',variant,{current:initialLivingEntry(query)});
+    assert.equal(options.worldVariant,living?variant:null);
+    assert.equal(options.initialEntryStopId,'reef-valley-region');
+  }
+  const ordinaryOptions=fromUi('reef',null,null,'55',false,true,'living-shallows-v1',readOceanWorldVariant(''),{current:initialLivingEntry('')});
+  assert.equal(ordinaryOptions.worldVariant,null);assert.equal(ordinaryOptions.initialEntryStopId,null);
   const seed=livingShallowsSeed('55'),generator=createLivingRidgeGenerator(createLivingShallowsGenerator(seed)),store={load:async()=>null,save:async()=>{},saveMany:async()=>{},clear:async()=>{}};
   const ordinary=new OceanEcology(seed,generator,{store}),copy=new OceanEcology(seed,generator,{store,worldVariant:variant}),unknown=new OceanEcology(seed,generator,{store,worldVariant:'other'});
   try{

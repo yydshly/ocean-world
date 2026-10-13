@@ -10,6 +10,7 @@ import * as THREE from 'three';
 import { seagrassMeadowRegionOrigin } from '../src/seagrassMeadowRegion.js';
 import { coastalSeascapeWindowReady } from '../src/coastalSeascapeMotion.js';
 import { isDirectorPlaybackRate, advanceDirectorCameraElapsed } from '../src/directorCameraMotion.js';
+import { initialLivingEntry } from '../src/initialLivingEntry.js';
 
 // Execute shipped UI initialization and dispatch logic. These interface doubles
 // verify delegation and stale ownership; the separate native World suite owns
@@ -26,7 +27,7 @@ function initializer(name, setter) {
     if (c === '(') depth++; else if (c === ')' && !--depth) break;
   }
   assert.equal(depth, 0);
-  return new Function('window', 'localStorage', 'URLSearchParams', 'LIVING_SHALLOWS_PROFILE', `const expeditionMode = new URLSearchParams(window.location.search).get('demo') === 'life-expedition'; return (${source.slice(start, i)});`);
+  return new Function('window', 'localStorage', 'URLSearchParams', 'LIVING_SHALLOWS_PROFILE', `const expeditionMode = new URLSearchParams(window.location.search).get('demo') === 'life-expedition'; const directorEntryMode = new URLSearchParams(window.location.search).get('demo') === 'director'; return (${source.slice(start, i)});`);
 }
 const initializers = [['pendingDemo', 'setPendingDemo'], ['biome', 'setBiome'], ['reefProfile', 'setReefProfile']]
   .map(([name, setter]) => initializer(name, setter));
@@ -56,6 +57,7 @@ test('direct meadow URL selects the living reef and its native action without re
   assert.deepEqual(values('?demo=seagrass-meadow-region'), [{ kind: 'living-stop', biome: 'reef', profile: LIVING_SHALLOWS_PROFILE,
     stopId: 'seagrass-meadow-region', seagrassMeadowRegionEntry: true }, 'reef', LIVING_SHALLOWS_PROFILE]);
   assert.deepEqual(values(''), [null, 'kelp', 'legacy']); assert.deepEqual(writes, []);
+  for(const demo of ['director','life-expedition'])assert.deepEqual(values(`?demo=${demo}`),[null,'reef',LIVING_SHALLOWS_PROFILE]);
   const pickSeed=initializer('seed','setSeed');
   assert.equal(pickSeed({location:{search:'?demo=seagrass-meadow-region&seed=44'}},storage,URLSearchParams,LIVING_SHALLOWS_PROFILE)(),'44');
   assert.equal(pickSeed({location:{search:''}},storage,URLSearchParams,LIVING_SHALLOWS_PROFILE)(),'42');
@@ -82,7 +84,7 @@ test('explicit URL seed reaches the actual world constructor and memory namespac
     'setError', 'setSnapshot', 'setSelected', 'setObservationId', 'setExplorationIndex', 'setPaused', 'setSpeed', 'setView',
     'history', 'lastHistory', 'continuousBiome', 'memoryFor', 'livingShallowsSeed', 'biome', 'publishMemory', 'rememberOcean',
     'window', 'document', 'loadReefSkeletonScan', 'ReefWorld', 'container', 'lastMemoryWrite', 'performance', 'performanceCount',
-    'LIVING_SHALLOWS_PROFILE', 'recorder', 'saveLivingInputSeed', 'reset', 'worldVariant'];
+    'LIVING_SHALLOWS_PROFILE', 'recorder', 'saveLivingInputSeed', 'reset', 'worldVariant', 'initialEntryRef'];
   const effect = new Function('context', `const {${dependencies.join(',')}}=context;${source.slice(effectStart + '  useEffect(()=>{'.length, effectEnd)}`);
   for (const { search, living, saved, expected } of [
     { search: '?demo=seagrass-meadow-region&seed=44', living: true, saved: '42', expected: '44' },
@@ -91,7 +93,7 @@ test('explicit URL seed reaches the actual world constructor and memory namespac
     { search: '', living: false, saved: 'saved-living-17', expected: '42' },
     { search: '?seed=44', living: false, saved: '42', expected: '44' },
   ]) {
-    const writes = [], preferenceReads = [], constructors = [], memoryReads = [], remembered = [];
+    const writes = [], preferenceReads = [], constructors = [], memoryReads = [], remembered = [], errors = [];
     const savedHistory = new Map([[livingShallowsSeed('42'), { timeSec: 132.4, dead: ['retained-death'], food: .14, rng: 88 }],
       ['42', { timeSec: 99, dead: ['legacy-death'], food: .37, rng: 51 }]]), before = structuredClone(savedHistory);
     const storage = { getItem(key) { preferenceReads.push(key); return JSON.stringify({ version: 1, seed: saved }); },
@@ -111,7 +113,8 @@ test('explicit URL seed reaches the actual world constructor and memory namespac
     }
     const noop = () => {}, world = { current: null }, seedWrites = [];
     const context = { ...selectedRefs, window, document, world, AbortController, savedPause: () => true, livingShallows: living,
-      setSeed: value => seedWrites.push(value), setError: noop, setSnapshot: noop, setSelected: noop, setObservationId: noop,
+      initialEntryRef: {current:initialLivingEntry(search)},
+      setSeed: value => seedWrites.push(value), setError: value => {if(value)errors.push(value);}, setSnapshot: noop, setSelected: noop, setObservationId: noop,
       setExplorationIndex: noop, setPaused: noop, setSpeed: noop, setView: noop, history: { current: [] }, lastHistory: { current: -1 },
       continuousBiome: true, biome: 'reef', livingShallowsSeed, LIVING_SHALLOWS_PROFILE, worldVariant: null,
       memoryFor(seed, biome) { memoryReads.push({ seed, biome }); return { load: () => structuredClone(savedHistory.get(seed) ?? null), clear: forbid }; },
@@ -121,8 +124,11 @@ test('explicit URL seed reaches the actual world constructor and memory namespac
       saveLivingInputSeed: forbid, reset: forbid };
     const cleanup = effect(context); await settle();
     const namespace = living ? livingShallowsSeed(expected) : expected;
+    assert.deepEqual(errors, [], 'production preparation must not hide missing fixture context');
     assert.equal(constructors.length, 1); assert.equal(constructors[0].seed, expected, 'production effect passes the selected seed to ReefWorld');
     assert.equal(constructors[0].sceneProfile, living ? LIVING_SHALLOWS_PROFILE : null);
+    assert.equal(constructors[0].initialEntryStopId, initialLivingEntry(search));
+    assert.equal(context.initialEntryRef.current, null, 'the initial entry is consumed once by the constructor');
     assert.equal(world.current.inputSeed, expected); assert.equal(world.current.sim.seed, namespace);
     assert.deepEqual(seedWrites, [expected]); assert.deepEqual(memoryReads, [{ seed: namespace, biome: 'reef' }]);
     if (search) assert.deepEqual(preferenceReads, [], 'an explicit URL seed avoids even loading the stored seed preference');

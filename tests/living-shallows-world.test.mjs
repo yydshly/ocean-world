@@ -16,6 +16,7 @@ import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../src/livingShallo
 import { createLivingWorldState } from '../src/livingWorldState.js';
 import { createLivingDiscoveries } from '../src/livingDiscoveries.js';
 import { HABITAT_LAYERS_WORLD_VARIANT } from '../src/oceanWorldVariant.js';
+import { observeMainThreadStalls } from '../src/mainThreadStalls.js';
 
 // Execute the shipped pre-GPU constructor and CPU actions, rather than a
 // second implementation of world identity, navigation or clock behavior.
@@ -47,11 +48,13 @@ function worldFixture({ profile = LIVING_SHALLOWS_PROFILE, seed = '42', biomeId 
   const WorldCPU = new Function('THREE', 'ReefSimulation', 'KelpSimulation', 'DeepSimulation', 'sceneCatalogs', 'sceneDefinitions', 'livingShallowsSpeciesCatalog',
     'REEF_ROCKS', 'KELP_ROCKS', 'reefPresets', 'kelpPresets', 'deepPresets', 'FRAME_TIME_LIMITS_MS',
     'LIVING_SHALLOWS_PROFILE', 'livingShallowsSeed', 'createLivingWorldState', 'clamp', 'oceanLayerHeight', 'createOceanEnvironment', 'createLivingDiscoveries', 'HABITAT_LAYERS_WORLD_VARIANT',
+    'observeMainThreadStalls', 'document',
     `return class {${constructorHead}\n${methods.map(method).join('\n')}}`)(THREE, ReefSimulation, KelpSimulation, DeepSimulation,
     sceneCatalogs, sceneDefinitions, livingShallowsSpeciesCatalog, REEF_ROCKS, KELP_ROCKS,
     { wide: { position: [3, 2.8, 5], target: [-2.5, .65, -2] } }, {}, {}, [16.67, 25, 33.34, 50, 100, 250, 1000],
     LIVING_SHALLOWS_PROFILE, livingShallowsSeed, actualSeed => createLivingWorldState(actualSeed, { storage }),
-    THREE.MathUtils.clamp, oceanLayerHeight, () => ({}), actualSeed => createLivingDiscoveries(actualSeed, { storage }), HABITAT_LAYERS_WORLD_VARIANT);
+    THREE.MathUtils.clamp, oceanLayerHeight, () => ({}), actualSeed => createLivingDiscoveries(actualSeed, { storage }), HABITAT_LAYERS_WORLD_VARIANT,
+    observeMainThreadStalls, { hidden: false });
   const world = new WorldCPU({}, () => {}, () => {}, () => {}, { seed, sceneProfile: profile, biomeId, mobileIndividuals, paused: true });
   const calls = [], generator = createOceanGenerator(world.sim.seed);
   Object.assign(world, {
