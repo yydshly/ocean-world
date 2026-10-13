@@ -377,7 +377,7 @@ export class OceanEcology {
     // rows. Validate the entire transaction once in the native terrain worker,
     // including active owners. Never retain a mutable history verdict. A UI or
     // adapter mutation during the reply falls back to the original live checks.
-    if (shared && this.backgroundRuntime?.barriers > 0 && nativeSupports() && withContext.validateHistory) {
+    if (this.backgroundRuntime?.barriers > 0 && nativeSupports() && withContext.validateHistory) {
       const snapshots = rows.map(row => JSON.stringify(row));
       const valid = await withContext.validateHistory(rows, this.seed);
       if (!current()) return false;
@@ -1864,13 +1864,18 @@ export class OceanEcology {
               const row = prefetched.get(id), plan = row?.livingRidgePlan;
               return row?.coastalSeascapeVersion === 1 && row.coastalSeascapeGroupId === `${group.cx},${group.cz}` &&
                 row.coastalSeascapeInitializedAtSec === 0 && plan?.version === 7 && plan.id === id &&
-                JSON.stringify(plan.group) === JSON.stringify(group) && validateLivingRidgePlan(plan, this.generator);
+                JSON.stringify(plan.group) === JSON.stringify(group) && (this.generator.backgroundPreparationEnabled || validateLivingRidgePlan(plan, this.generator));
             });
           if (!complete) { this._center = null; throw new Error('Incomplete saved coastal seascape group; historical terrain and populations were not regenerated.'); }
           this._supportCells.clear();this._runtimePoseCache=null;
           try {
-            const valid = this.generator.withCoastalSeascapePlans(marked.map(row => row.livingRidgePlan), () =>
-              COASTAL_SEASCAPE_OWNERS.every(id => this._validCoastalHistory(prefetched.get(id), id)));
+            const plans = marked.map(row => row.livingRidgePlan);
+            const withContext = await measureAsync('canonicalValidationMs', () => this.generator.prepareCoastalSeascapeContextAsync(plans));
+            const valid = await this._validatePreparedHistory(COASTAL_SEASCAPE_OWNERS.map(id => prefetched.get(id)),
+              Object.assign(check => measure('historicalValidationMs', () => withContext(check)),
+                { validateHistory: withContext.validateHistory && ((rows, seed) => measureAsync('historicalValidationMs', () => withContext.validateHistory(rows, seed))),
+                  cacheReefHabitatOrder: withContext.cacheReefHabitatOrder }), preparation, current, false);
+            if (!current()) return;
             if (!valid) { this._center = null; throw new Error('Invalid saved coastal seascape community; historical terrain and populations were not regenerated.'); }
           } finally { this._supportCells.clear();this._runtimePoseCache=null; }
           COASTAL_SEASCAPE_OWNERS.forEach(id => coastalValidated.add(id));

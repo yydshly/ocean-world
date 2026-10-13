@@ -13,6 +13,7 @@ import { isOceanBiodiversityAgent } from '../src/oceanBiodiversity.js';
 import { isOceanBenthicLifeAgent } from '../src/oceanBenthicLife.js';
 import { isOceanMeadowLifeAgent } from '../src/oceanMeadowLife.js';
 import { isOceanShoalLifeAgent } from '../src/oceanShoalLife.js';
+import {nativePreparation} from './helpers/ocean-preparation-node.mjs';
 
 const seed = livingShallowsSeed('42'), base = createLivingShallowsGenerator(seed);
 const { cx, cz } = COASTAL_SEASCAPE_ANCHOR;
@@ -67,6 +68,30 @@ async function initialRecords() {
   })();
   return clone(await initialPromise);
 }
+
+test('legacy coastal history uses retained worker terrain and rejects offscreen corruption without publication', async () => {
+  const records=await initialRecords(), f=fixture(fromRecords(records)), rows=groupRows(f);
+  const original=clone(rows), worker=nativePreparation();
+  const generator=createLivingRidgeGenerator(createLivingShallowsGenerator(seed),{preparation:worker});
+  try {
+    const context=await generator.prepareCoastalSeascapeContextAsync(rows.map(row=>row.livingRidgePlan));
+    assert.equal(await context.validateHistory(rows,seed),true);
+    const damaged=clone(rows);damaged.at(-1).resources.detritus=-1;
+    assert.equal(await context.validateHistory(damaged,seed),false);
+    const badClock=clone(rows);badClock.at(-1).timeSec+=2;
+    assert.equal(await context.validateHistory(badClock,seed),false);
+    assert.equal(await context.validateHistory(rows,seed),true);
+    assert.deepEqual(rows,original);assert.equal(generator.registryStats().size,0);
+    const badTerrain=clone(rows.map(row=>row.livingRidgePlan));badTerrain[0].elements[0].y+=1;
+    await assert.rejects(generator.prepareCoastalSeascapeContextAsync(badTerrain),/Invalid/);
+    await assert.rejects(generator.prepareCoastalSeascapeContextAsync(rows.slice(1).map(row=>row.livingRidgePlan)),/twelve/);
+    const model=new OceanEcology(seed,generator,{store:fromRecords(records),livingGeology:true,coastalSeascape:true,
+      shallowSeascape:true,biodiversity:true,benthicLife:true,meadowLife:true,shoalLife:true,turtles:true,turtleGrazing:true});
+    await model.update(opening);
+    assert.equal(model._active.size,9);assert.ok(generator.registryStats().size<=25);
+    assert.deepEqual(groupRows({model,store:model.store}),original);
+  } finally {worker.dispose();}
+});
 
 test('twelve true owners commit one coastal bed, real quotas and inventories, then ordinary route windows move and feed', async () => {
   const initial = await initialRecords(), f = fixture(fromRecords(initial)); await f.model.update(opening);

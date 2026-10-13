@@ -1,11 +1,14 @@
 import * as THREE from 'three';
 import data from './shallowOpenCommunityData.js';
 import {deformMaterial} from './ShallowSourcedFishAssets.js';
+import {cloneGeometryKit,decodeGeometryBytes} from './shallowGeometryCache.js';
+const variants=new Map(),decoded=new WeakMap();
 
 export const SHALLOW_OPEN_FISH_IDS=Object.freeze(['blacktail-snapper','giant-trevally']);
 const coralSources={'massive':'porites-live'};
 function geometry(row){
-  const bytes=Uint8Array.from(atob(row.data),c=>c.charCodeAt(0)),g=new THREE.BufferGeometry();
+  if(!decoded.has(row))decoded.set(row,decodeGeometryBytes(row.data));
+  const bytes=decoded.get(row).slice(),g=new THREE.BufferGeometry();
   for(const [name,v]of Object.entries(row.views)){
     const T=name==='index'?Uint16Array:Float32Array,a=new THREE.BufferAttribute(new T(bytes.buffer,v.offset,v.count*v.size),v.size);
     if(name==='index')g.setIndex(a);else g.setAttribute(name,a);
@@ -13,6 +16,7 @@ function geometry(row){
   g.computeBoundingBox();g.computeBoundingSphere();return g;
 }
 export function shallowOpenCoralGeometries(detail='near'){
+  if(variants.has(detail))return cloneGeometryKit(variants.get(detail));
   const result={};
   for(const [form,key]of Object.entries(coralSources))for(const variant of [0,1]){
     const asset=data[key],g=geometry(asset.variants[detail][0]);g.rotateY(variant*Math.PI*.61);
@@ -20,7 +24,7 @@ export function shallowOpenCoralGeometries(detail='near'){
     g.userData={sourceKey:key,sourceAspect:asset.aspect,sourceKind:'CC-BY-4.0-field-colony-crop',form,detail,variant};
     result[`${form}-${variant}`]=g;
   }
-  return result;
+  variants.set(detail,result);return cloneGeometryKit(result);
 }
 // One texture/material per source part, shared by the whole community. The
 // player seals preparation before cruise; late arrivals can only be disposed.

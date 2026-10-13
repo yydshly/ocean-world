@@ -1,5 +1,9 @@
 # 当前产品状态 · 2026-10-13
 
+<!-- coastal-startup-stability-current -->
+2026-10-13 新有限稳定性阶段基于d8554f9，分支fix/finite-coastal-startup-20261013；仅v7生活带完整后台上下文/历史检查与样板珊瑚CPU原型复用，6上下文/72认证来源限额、v7原复合校验、动态库存/历史、45s超时和场景资产画质均保持。43导演历史+37样板检查全过，78组完整近远几何摘要精确，Vite17.23s过。固定代码后真实1280×720/DPR1.5：手选第3章4×完整200模型秒并自动到第4章，未重试/章内跳播；采样首次showing41.795s、完成147.527s，含加载与途中等待；不是2→3自动衔接或全67章验收。UI等待采样max6s、整窗max30.048s、5未暂停coastal-route未标等待>250ms/max387.6ms。样板唯一次导览进入7.152s，构建4.362s/上传1.752s，1×完整75模型秒/79.748实秒，scale1、无用户中断；81.06FPS/p9520.8/max1004.2ms，开头1秒帧间隔原因未定位，不能称流畅通过或受控提升。两入口error/warn空。性能门槛失败后停止，未跑完整67/新生命240/云端，不推送部署，不自动追加修补。详docs/COASTAL_STARTUP_STABILITY.md与docs/validation/coastal-startup-stability-20261013.json；output/validation/stability-closeout/review.html。
+<!-- /coastal-startup-stability-current -->
+
 <!-- finite-loading-crossing-current -->
 2026-10-13 用户授权一轮5秒加载与无明显跨区停顿收尾，基于7c130ca，固定finite-loading-crossing-candidate-20261013。仅72完整静态来源认证键（种子/模式清空）、有限样板Float64紧凑支撑索引、既有8组礁基2.28MB精确编译缓存及超时/校验回退；原素材/293动物/38类/路线/画质/动态记录校验保持。270MB全网格实验淘汰。相关12/83/36/14批全过，去重138标题，98487高度法线/144圆盘精确，最终build Vite16.55s过。样板1×75.0077完整无中断/scale1，导航7.285s、场景5.617s/模型4.780s、217.57FPS/p95 8.3/max83.3ms；5s失败。导演4×前2章完整，第三章45s有效加载超时自动暂停，2/67，无跳章重试；约13m49s在20m上限内停止。等待抽样23s/整窗25.568s，历史15.654/静态5.832/屏障6.504s为不同样本最大值；22未暂停有运动未标等待>250ms记录/max1.286s，含转场边界，长动画帧3.118s。巡游采样1280×720/DPR1.5，超时后最终快照869×871/DPR1.5，分别记录，不称全程同尺寸或受控A/B。error/warn空不掩盖导演UI超时；无新生命240实播/云端验证。两门槛与完整导演均未过，仅本地候选不推送部署，远端只读4749548。不自动重试、加长超时、放宽检查、清历史或追加修补。详docs/FINITE_LOADING_CROSSING.md及docs/validation/finite-loading-crossing-20261013.json，本地output/validation/entry-closeout/review.html。
 <!-- /finite-loading-crossing-current -->

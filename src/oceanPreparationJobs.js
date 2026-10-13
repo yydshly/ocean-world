@@ -46,7 +46,7 @@ export function createOceanPreparationJobs() {
       plans=entry.plans;
       contexts.delete(entry.key); contexts.set(entry.key,entry); contextHits++;
     } else {
-      if (!Array.isArray(plans) || plans.length > 25 || plans.some(p => ![8, 9].includes(p?.version))) throw new TypeError('Invalid background plan batch.');
+      if (!Array.isArray(plans) || plans.length > 25 || plans.some(p => ![7, 8, 9].includes(p?.version))) throw new TypeError('Invalid background plan batch.');
       // Only complete, immutable terrain is cached. The full serialized source
       // must match, including owner order and every height, support and element.
       // Each history/birth still runs against fresh independent animal records.
@@ -55,7 +55,7 @@ export function createOceanPreparationJobs() {
       if(entry) { contexts.delete(key); contexts.set(key,entry); contextHits++; }
       else {
         const generator=createLivingRidgeGenerator(base);
-        const withContext=plans[0]?.version===8 ? generator.prepareReefValleyContext(plans) : generator.prepareMeadowRegionContext(plans);
+        const withContext=plans[0]?.version===7 ? generator.prepareCoastalSeascapeContext(plans) : plans[0]?.version===8 ? generator.prepareReefValleyContext(plans) : generator.prepareMeadowRegionContext(plans);
         entry={generator,withContext,key,plans:withContext.immutablePlans,token:`${lifetime}:${++nextContext}`}; contextValidations++;
         // A complete validated group also certifies these exact static sources.
         // Keep only a bounded serialized source key, never animal/history data.
@@ -71,6 +71,7 @@ export function createOceanPreparationJobs() {
     const {generator,withContext}=entry;
     if (kind === 'validate-group') return payload.retainContext === true ? {valid:true,contextToken:entry.token} : true;
     if (kind === 'birth') {
+      if (!plans.every(plan => [8, 9].includes(plan.version))) throw new TypeError('Background macro births require version 8 or 9.');
       if (payload.options?.sceneElements || payload.options?.habitatScenes || payload.options?.macroLandscape)
         throw new TypeError('Background births require isolated native macro scenery.');
       const refuseWrite = () => { throw new Error('Background preparation cannot persist records.'); };
@@ -117,7 +118,8 @@ export function createOceanPreparationJobs() {
         if (!byId.has(row.id)) return false;
         // Terrain is sent once for the batch; all other saved fields are exact.
         row.livingRidgePlan = byId.get(row.id); ecology._supportCells.clear();
-        return ecology._withHistoryQueries(row,()=>ecology._validCoastalHistory(row, row.id, true, withContext.cacheReefHabitatOrder));
+        // Legacy coastal records keep their original full composite validators.
+        return ecology._withHistoryQueries(row,()=>ecology._validCoastalHistory(row, row.id, plans[0].version !== 7, withContext.cacheReefHabitatOrder));
       }));
     }
     throw new TypeError('Unknown ocean preparation job.');

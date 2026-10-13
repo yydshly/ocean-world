@@ -16,7 +16,7 @@ export const REEF_BANK_POCKETS=Object.freeze([
 ]);
 const cache=new Map(),registered=new Set();
 
-export function reefBankGeometries(variant,detail='near'){
+function bankTemplates(variant,detail='near'){
   const cacheKey=`${variant}/${detail}`;
   if(!cache.has(cacheKey)){
     const assets={...shallowBranchingCoralGeometries(detail),...shallowOpenCoralGeometries(detail),...shallowBenthicCoralGeometries(detail),...livingKitCoralGeometries(detail)};
@@ -50,15 +50,20 @@ export function reefBankGeometries(variant,detail='near'){
     for(const g of Object.values(result)){g.computeBoundingBox();g.computeBoundingSphere();}
     Object.values(assets).forEach(g=>g.dispose());cache.set(cacheKey,result);
   }
-  return Object.fromEntries(Object.entries(cache.get(cacheKey)).map(([key,g])=>[key,g.clone()]));
+  return cache.get(cacheKey);
+}
+export function reefBankGeometries(variant,detail='near'){
+  return Object.fromEntries(Object.entries(bankTemplates(variant,detail)).map(([key,g])=>[key,g.clone()]));
 }
 
 export function registerReefBanks(){
   for(let variant=0;variant<4;variant++){
     const profile=REEF_BANK_PROFILES[variant];if(registered.has(profile))continue;
-    const parts=Object.values(reefBankGeometries(variant));
+    // Registration only reads arrays. Avoid copying every complete reef just
+    // to merge positions into its independent physical support index.
+    const parts=Object.values(bankTemplates(variant));
     const plain=parts.map(g=>{const out=new THREE.BufferGeometry();out.setAttribute('position',g.attributes.position);out.setIndex(g.index);return out;});
     const merged=mergeGeometries(plain);registerFieldReefMesh(profile,merged.attributes.position.array,merged.index.array);
-    [...parts,...plain,merged].forEach(g=>g.dispose());registered.add(profile);
+    [...plain,merged].forEach(g=>g.dispose());registered.add(profile);
   }
 }

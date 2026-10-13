@@ -12,6 +12,8 @@ import {registerFieldReefMesh,oceanRockHeight} from '../oceanRockShape.js';
 import {reefAttachedColour} from './ShallowHabitatForms.js';
 import {shallowBranchingCoralGeometries} from './ShallowBranchingCorals.js';
 import {shallowOpenCoralGeometries} from './ShallowOpenCommunity.js';
+import {cloneGeometryKit} from './shallowGeometryCache.js';
+const colonyVariants=new Map();
 
 export const NEAR_FISH_ID='unidentified-reef-fish';
 export const FIELD_REEF_PROFILE='sample-field-reefscan-v3';
@@ -64,7 +66,7 @@ export function nearReefFoundationGeometry(){
 // reef communities. Source meshes/UVs stay intact. This is authored assembly,
 // not four new scan sites or measured biological cover.
 const assemblyCache=new Map();
-export function reefAssemblyGeometries(variant,detail='near'){
+function assemblyTemplates(variant,detail='near'){
   const cacheKey=`${variant}/${detail}`;
   if(!assemblyCache.has(cacheKey)){
     const assets={...shallowBranchingCoralGeometries(detail),...shallowOpenCoralGeometries(detail),...nearColonyGeometries(detail),...shallowBenthicCoralGeometries(detail)};
@@ -90,7 +92,10 @@ export function reefAssemblyGeometries(variant,detail='near'){
     const result={};for(const [key,parts]of groups){const g=mergeGeometries(parts);parts.forEach(p=>p.dispose());g.computeBoundingBox();g.computeBoundingSphere();result[key]=g;}
     Object.values(assets).forEach(g=>g.dispose());surface.material.dispose();base.dispose();assemblyCache.set(cacheKey,result);
   }
-  return Object.fromEntries(Object.entries(assemblyCache.get(cacheKey)).map(([k,g])=>[k,g.clone()]));
+  return assemblyCache.get(cacheKey);
+}
+export function reefAssemblyGeometries(variant,detail='near'){
+  return cloneGeometryKit(assemblyTemplates(variant,detail));
 }
 export function makeResidentReefPatch(model,rock){
   const width=4.5,height=width*data.reefscan.aspect;
@@ -147,10 +152,10 @@ export function arrangeNearReefAssets(model){
   for(let i=0;i<outcrops.length;i++)if(i%4!==0&&!outcrops[i].id.startsWith('sample-field-toe-')){
     const variant=Math.floor(i/3)%4,profile=REEF_ASSEMBLY_PROFILES[variant];
     if(!registered.has(profile)){
-      const parts=Object.values(reefAssemblyGeometries(variant));parts.push(nearReefFoundationGeometry());
+      const foundation=nearReefFoundationGeometry(),parts=[...Object.values(assemblyTemplates(variant)),foundation];
       const plain=parts.map(g=>{const p=new THREE.BufferGeometry();p.setAttribute('position',g.attributes.position);p.setIndex(g.index);return p;});
       const merged=mergeGeometries(plain);registerFieldReefMesh(profile,merged.attributes.position.array,merged.index.array);
-      [...parts,...plain,merged].forEach(g=>g.dispose());registered.add(profile);
+      [foundation,...plain,merged].forEach(g=>g.dispose());registered.add(profile);
     }
     outcrops[i].communityVariant=variant;outcrops[i].profile=profile;
   }
@@ -158,11 +163,12 @@ export function arrangeNearReefAssets(model){
 }
 
 export function nearColonyGeometries(detail='near'){
+  if(colonyVariants.has(detail))return cloneGeometryKit(colonyVariants.get(detail));
   const rows=data.foliose.variants[detail],result={};
   for(let variant=0;variant<4;variant++){
     const parts=rows.map(nearSourceGeometry),g=mergeGeometries(parts,true);parts.forEach(p=>p.dispose());g.rotateY(variant*Math.PI*.5);g.computeBoundingBox();g.computeBoundingSphere();
     g.userData={form:'table',variant,detail,sourceKey:'foliose',sourceAspect:data.foliose.aspect,sourceKind:'CC-BY-NC-SA-4.0-field-community',rootRadius:.49};result[`table-${variant}`]=g;
-  }return result;
+  }colonyVariants.set(detail,result);return cloneGeometryKit(result);
 }
 
 export class ShallowNearCommunity{

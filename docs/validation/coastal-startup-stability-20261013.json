@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-13",
+  "base": "d8554f92bb4f937ef30b6514a5195ba2cb57c14a",
+  "branch": "fix/finite-coastal-startup-20261013",
+  "scope": "one finite stability candidate; no scene, asset, population, route, quality or timeout changes",
+  "checks": {
+    "director": {
+      "tests": 43,
+      "pass": 43,
+      "fail": 0,
+      "skipped": 0
+    },
+    "sample": {
+      "tests": 37,
+      "pass": 37,
+      "fail": 0,
+      "skipped": 0
+    }
+  },
+  "geometryExactMatches": 78,
+  "buildSeconds": 17.23,
+  "sourceFreezeVerified": true,
+  "director": {
+    "method": "From product guide, wait for chapter 1 entry, then select chapter 3 at 4x; no retry or skips within chapter 3; paused on automatic chapter 4. This is not a complete 67-chapter run.",
+    "thirdCompleted": true,
+    "completedStepIds": [
+      "coastal-life-belt"
+    ],
+    "thirdModelSeconds": 200,
+    "playbackRate": 4,
+    "firstShowingSampleSec": 41.795,
+    "thirdCompletionObservedSec": 147.527,
+    "maxSampledWaitSec": 6,
+    "maxSampledWindowMs": 30048.400000095367,
+    "unpausedCoastalIntervalsOver250ms": 5,
+    "maxUnpausedCoastalIntervalMs": 387.6000000000058,
+    "maxUnpausedVisibleCoastalLongAnimationFrameMs": 386.89999997615814,
+    "viewportSamples": [
+      {
+        "height": 720,
+        "pixelRatio": 1.5,
+        "width": 1280
+      }
+    ],
+    "finalViewport": {
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5
+    },
+    "error": null,
+    "console": [],
+    "full67Attempted": false
+  },
+  "sample": {
+    "navigationToReadyMs": 7152,
+    "sceneBuildMs": 4362.099999904633,
+    "stages": {
+      "model": 2922.899999976158,
+      "materials": 2.3000000715255737,
+      "bed": 203.89999997615814,
+      "rocks": 611.2999999523163,
+      "plants": 84.5,
+      "animals": 519.8000000715256,
+      "firstUpdate": 16.899999976158142
+    },
+    "textureReadyMs": 172.90000009536743,
+    "compileMs": 228,
+    "uploadMs": 1751.6999999284744,
+    "staticGeometryReadyMs": 42,
+    "preparedGeometry": {
+      "used": true,
+      "bytes": 2281360,
+      "geometries": 8
+    },
+    "playback": {
+      "speed": 1,
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5,
+      "startedAt": 7152.200000047684,
+      "resolutionHistory": [
+        {
+          "time": 0,
+          "scale": 1
+        }
+      ],
+      "interruptions": [],
+      "completed": true,
+      "lastModelSecond": 75,
+      "elapsedWallSeconds": 79.74769999995232,
+      "averageFps": 81.05760151085993,
+      "p95FrameMs": 20.80000000000291,
+      "maxFrameMs": 1004.1999999999989,
+      "uninterrupted": true
+    },
+    "initialIntervalsMs": [
+      1000,
+      1000.1000000000004,
+      1004.1000000000004,
+      1004.1999999999989,
+      908.3000000000011,
+      33.399999999999636,
+      8.200000000000728,
+      16.69999999999891
+    ],
+    "console": [],
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "context": "WebGL2RenderingContext"
+    },
+    "attempts": 1
+  },
+  "gates": {
+    "thirdChapterFocusedPlayback": true,
+    "sampleReadyWithin5s": false,
+    "sampleComplete75ModelSeconds": true,
+    "noObviousLongStops": false,
+    "fullDirector": false,
+    "release": false
+  },
+  "limitations": [
+    "Current third-chapter check was selected from chapter 1, not an automatic 2-to-3 handoff or complete 67-chapter run.",
+    "Local existing asset cache and seed55 saved history; no public-network cold visit or controlled before/after comparison.",
+    "Read-only sampling has gaps and possible measurement overhead. Maximum UI wait is sampled, not an absolute bound.",
+    "Sample began with near-1-second frame intervals; cause not established. Visible state later read visible/hidden=false; no claim it was constant at every moment.",
+    "No new 240-second life expedition or cloud validation."
+  ],
+  "deployed": false,
+  "stopFurtherRepairs": true
+}

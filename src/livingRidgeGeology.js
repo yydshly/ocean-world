@@ -285,10 +285,14 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
     return context;
   };
   const prepareAsync = async (input, version) => {
-    if (!preparation) return version === 8 ? facade.prepareReefValleyContext(input) : facade.prepareMeadowRegionContext(input);
+    if (!preparation) return version === 7 ? facade.prepareCoastalSeascapeContext(input) : version === 8 ? facade.prepareReefValleyContext(input) : facade.prepareMeadowRegionContext(input);
+    input.forEach(freeze);
     const snapshot = freeze(structuredClone(input));
     const valid = await preparation.run('validate-group', { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, plans: snapshot, retainContext: true });
     if (valid?.valid !== true || typeof valid.contextToken !== 'string') throw new TypeError('Invalid background physical context.');
+    // The complete frozen sources were certified, including offscreen members.
+    // Publication can reuse that exact verdict without regenerating terrain.
+    input.forEach(plan => backgroundValidated.add(plan));
     // The worker validated every field of this full snapshot. Its bounded,
     // worker-lifetime token reuses only terrain, never a history verdict.
     const physicalContext = { seed: base.seed, wholeSeabed: base.wholeSeabedVersion === 1, contextToken: valid.contextToken };
@@ -400,6 +404,7 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
     disposePreparation: () => preparation?.dispose(),
     preparationStats: () => preparation?.stats() ?? null,
     prepareReefValleyContextAsync: input => prepareAsync(input, 8),
+    prepareCoastalSeascapeContextAsync: input => prepareAsync(input, 7),
     prepareMeadowRegionContextAsync: input => prepareAsync(input, 9),
     isRidgeOwnerReady: id => ready.has(id),
     registryStats: () => ({ size: ready.size, limit: LIMIT, revision, ids: [...ready],
@@ -504,6 +509,11 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
         if (result && typeof result.then === 'function') throw new TypeError('Ridge candidate callback returned an asynchronous result.');
         return result;
       } finally { queryPlans = previousPlans; queryChunks = previousChunks; candidateBatchDepth--; }
+    },
+    prepareCoastalSeascapeContext(input) {
+      const snapshot = freeze(structuredClone(input));
+      facade.withCoastalSeascapePlans(snapshot, () => {});
+      return preparedContext(snapshot);
     },
     prepareReefValleyContext(input) {
       // An isolated immutable snapshot is validated once. Later synchronous

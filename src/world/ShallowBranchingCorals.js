@@ -1,13 +1,16 @@
 import * as THREE from 'three';
 import data from './shallowBranchingCoralData.js';
+import {cloneGeometryKit,decodeGeometryBytes} from './shallowGeometryCache.js';
+const variants=new Map();
 
 // Mesh data is local and shared by instanced colonies. No external downloads
 // or runtime Draco work can interrupt the 75-second sample.
 export function shallowBranchingCoralGeometries(detail='near'){
+  if(variants.has(detail))return cloneGeometryKit(variants.get(detail));
   const result={};
   for(const form of ['branching','branching2']){
     const row=data[`${form}-${detail}`];if(!row)throw Error('Unknown museum coral detail');
-    const bytes=Uint8Array.from(atob(row.data),c=>c.charCodeAt(0)),floats=new Float32Array(bytes.buffer,0,row.count*9);
+    const bytes=decodeGeometryBytes(row.data),floats=new Float32Array(bytes.buffer,0,row.count*9);
     for(const variant of [form==='branching'?0:1]){
       const g=new THREE.BufferGeometry();
       for(const [offset,name] of [[0,'position'],[3,'normal'],[6,'color']])g.setAttribute(name,new THREE.BufferAttribute(floats.slice(row.count*offset,row.count*(offset+3)),3));
@@ -17,5 +20,5 @@ export function shallowBranchingCoralGeometries(detail='near'){
       result[`branching-${variant}`]=g;
     }
   }
-  return result;
+  variants.set(detail,result);return cloneGeometryKit(result);
 }
