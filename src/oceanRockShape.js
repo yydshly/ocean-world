@@ -228,11 +228,12 @@ export function oceanRockMesh(profile = 'mound') {
 export function registerFieldReefMesh(profile, positions, indices) {
   if(meshes.has(profile))return;
   if(!profile.startsWith('sample-field-'))throw Error('Field mesh must use a sample-only identity');
-  const p=Float32Array.from(positions),ix=Uint32Array.from(indices),faces=[],bins=new Map(),cells=48;
+  const p=Float32Array.from(positions),ix=Uint32Array.from(indices),fieldFaces=new Float64Array(ix.length/3*12),bins=new Map(),cells=48;
+  let faceCount=0;
   for(let k=0;k<ix.length;k+=3){
-    const [a,b,c]=[ix[k]*3,ix[k+1]*3,ix[k+2]*3];
-    const ab=[p[b]-p[a],p[b+1]-p[a+1],p[b+2]-p[a+2]],ac=[p[c]-p[a],p[c+1]-p[a+1],p[c+2]-p[a+2]];
-    let nx=ab[1]*ac[2]-ab[2]*ac[1],ny=ab[2]*ac[0]-ab[0]*ac[2],nz=ab[0]*ac[1]-ab[1]*ac[0];
+    const a=ix[k]*3,b=ix[k+1]*3,c=ix[k+2]*3;
+    const abx=p[b]-p[a],aby=p[b+1]-p[a+1],abz=p[b+2]-p[a+2],acx=p[c]-p[a],acy=p[c+1]-p[a+1],acz=p[c+2]-p[a+2];
+    let nx=aby*acz-abz*acy,ny=abz*acx-abx*acz,nz=abx*acy-aby*acx;
     const length=Math.hypot(nx,ny,nz),denominator=(p[b+2]-p[c+2])*(p[a]-p[c])+(p[c]-p[b])*(p[a+2]-p[c+2]);
     if(length<1e-12||Math.abs(denominator)<1e-12)continue;
     if(ny<0){nx=-nx;ny=-ny;nz=-nz;}
@@ -242,8 +243,11 @@ export function registerFieldReefMesh(profile, positions, indices) {
     // only reject impossible triangles; arithmetic, ties and normals stay exact.
     const marginX=EPSILON*(2*(maxX-minX)+1)+Number.EPSILON*Math.max(Math.abs(minX),Math.abs(maxX))*32;
     const marginZ=EPSILON*(2*(maxZ-minZ)+1)+Number.EPSILON*Math.max(Math.abs(minZ),Math.abs(maxZ))*32;
-    const face=faces.length;faces.push({a,b,c,denominator,minX:minX-marginX,maxX:maxX+marginX,minZ:minZ-marginZ,maxZ:maxZ+marginZ,normal:{x:nx/length,y:ny/length,z:nz/length},
-      ceiling:Math.max(p[a+1],p[b+1],p[c+1])+EPSILON*(Math.abs(p[a+1])+Math.abs(p[b+1])+Math.abs(p[c+1]))*4});
+    const face=faceCount++,offset=face*12;
+    fieldFaces[offset]=a;fieldFaces[offset+1]=b;fieldFaces[offset+2]=c;fieldFaces[offset+3]=denominator;
+    fieldFaces[offset+4]=minX-marginX;fieldFaces[offset+5]=maxX+marginX;fieldFaces[offset+6]=minZ-marginZ;fieldFaces[offset+7]=maxZ+marginZ;
+    fieldFaces[offset+8]=nx/length;fieldFaces[offset+9]=ny/length;fieldFaces[offset+10]=nz/length;
+    fieldFaces[offset+11]=Math.max(p[a+1],p[b+1],p[c+1])+EPSILON*(Math.abs(p[a+1])+Math.abs(p[b+1])+Math.abs(p[c+1]))*4;
     for(let z=Math.floor((Math.min(p[a+2],p[b+2],p[c+2])+.5)*cells);z<=Math.floor((Math.max(p[a+2],p[b+2],p[c+2])+.5)*cells);z++)
       for(let x=Math.floor((Math.min(p[a],p[b],p[c])+.5)*cells);x<=Math.floor((Math.max(p[a],p[b],p[c])+.5)*cells);x++){
         const key=`${x},${z}`;if(!bins.has(key))bins.set(key,[]);bins.get(key).push(face);
@@ -252,12 +256,19 @@ export function registerFieldReefMesh(profile, positions, indices) {
   // Query the highest possible faces first. Once their conservative upper
   // bound is below a hit, the remaining faces cannot support this point.
   // Keep original face IDs for exact normal selection at coincident surfaces.
-  for(const bin of bins.values())bin.sort((a,b)=>faces[b].ceiling-faces[a].ceiling||a-b);
+  for(const bin of bins.values())bin.sort((a,b)=>fieldFaces[b*12+11]-fieldFaces[a*12+11]||a-b);
   let radiusSq=0;for(let i=0;i<p.length;i+=3)radiusSq=Math.max(radiusSq,p[i]**2+p[i+2]**2);
-  meshes.set(profile,{mesh:{positions:p,indices:ix},faces,bins,cells,fieldScan:true,radiusSq});
+  meshes.set(profile,{mesh:{positions:p,indices:ix},fieldFaces:fieldFaces.subarray(0,faceCount*12),bins,cells,fieldScan:true,radiusSq});
 }
 
 function triangleSurface(data, triangle, x, z) {
+  if(data.fieldScan){
+    const f=data.fieldFaces,i=triangle*12,p=data.mesh.positions,a=f[i],b=f[i+1],c=f[i+2],denominator=f[i+3];
+    const u=((p[b+2]-p[c+2])*(x-p[c])+(p[c]-p[b])*(z-p[c+2]))/denominator;
+    const v=((p[c+2]-p[a+2])*(x-p[c])+(p[a]-p[c])*(z-p[c+2]))/denominator,w=1-u-v;
+    if(u < -EPSILON || v < -EPSILON || w < -EPSILON)return null;
+    return {height:u*p[a+1]+v*p[b+1]+w*p[c+1],normal:{x:f[i+8],y:f[i+9],z:f[i+10]}};
+  }
   const face = data.faces[triangle], p = data.mesh.positions;
   const u = ((p[face.b + 2] - p[face.c + 2]) * (x - p[face.c]) +
     (p[face.c] - p[face.b]) * (z - p[face.c + 2])) / face.denominator;
@@ -279,9 +290,9 @@ export function oceanRockSurface(profile = 'mound', x, z) {
     for(const face of data.bins.get(`${Math.floor((x+.5)*data.cells)},${Math.floor((z+.5)*data.cells)}`)??[]){
       // Barycentric edge tolerance permits a tiny extrapolation. Retain that
       // margin, including negative heights; this is not an approximate grid.
-      const bounds=data.faces[face];
-      if(top&&bounds.ceiling<top.height)break;
-      if(x<bounds.minX||x>bounds.maxX||z<bounds.minZ||z>bounds.maxZ)continue;
+      const f=data.fieldFaces,i=face*12;
+      if(top&&f[i+11]<top.height)break;
+      if(x<f[i+4]||x>f[i+5]||z<f[i+6]||z>f[i+7])continue;
       const hit=triangleSurface(data,face,x,z);
       if(hit&&(!top||hit.height>top.height||(hit.height===top.height&&face<topFace))){top=hit;topFace=face;}
     }
@@ -381,7 +392,7 @@ export function fieldReefDiskMaxHeight(rock, worldX, worldZ, radius) {
     return (p[a]+vx*t-x)**2+(p[a+2]+vz*t-z)**2<=r2;
   };
   let highest=null;
-  for(const id of found){const {a,b,c}=data.faces[id];
+  for(const id of found){const i=id*12,a=data.fieldFaces[i],b=data.fieldFaces[i+1],c=data.fieldFaces[i+2];
     if(!edgeHits(a,b)&&!edgeHits(b,c)&&!edgeHits(c,a)&&!triangleSurface(data,id,x,z))continue;
     const y=rock.y+Math.max(p[a+1],p[b+1],p[c+1])*rock.scale.y;
     highest=highest===null?y:Math.max(highest,y);

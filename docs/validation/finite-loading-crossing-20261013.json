@@ -1,0 +1,473 @@
+{
+  "candidate": "finite-loading-crossing-candidate-20261013",
+  "base": "7c130ca",
+  "branch": "fix/finite-loading-crossing-20261013",
+  "date": "2026-10-13",
+  "sourceFreeze": {
+    "base": "7c130ca",
+    "frozenAt": "2026-10-13T00:54:03.714Z",
+    "source": {
+      "package.json": "20612fc575a560334fb84e61ba7e3cf7dd3cb20d5ce65c61703c7ec8d71c8d97",
+      "src/ShallowSampleApp.jsx": "0f98e5cdce1291f57c01c8e3e7bea65ba6cc45d1cfe502b6b407bbf7f981277d",
+      "src/oceanPreparationJobs.js": "8ac00d651a51c9ada66051f8e7e85a4938a4ec06ceea34093410787d7928b2f2",
+      "src/oceanRockShape.js": "6cedee0f59466eeb61a15b61657ef87499deb884e87bfd1e38804f3a0e2463e9",
+      "src/world/ShallowNaturalHabitat.js": "f1c5d67ed7f472cf9f52d2fbb4a50cab4987fd9177c1ccce9101d402bd7a78db",
+      "src/world/preparedShallowGeometry.js": "07aca75f5e2ab15eaa558c58557552a5137954452f3e471f64457c1a6e8cbc8f",
+      "src/world/shallowGeometryManifest.js": "677f71f31ba4c90e75d1b6b40e695d8a4f3c4fd1ea330480967272256879692a",
+      "scripts/bake-shallow-geometry.mjs": "ffcca2c3d6d973dfcd9acb82fb6bba819d9ce3d1fc31d0ed46e55315a638dc42",
+      "public/assets/shallow-static-v1.bin": "2bb430782756eefc205e5faa6b5a2210091885a64bd074ccdf291780c0b56f1c",
+      "tests/shallow-static-preparation.test.mjs": "156d1a9bfa692da8c1412f11627e1537174339aa1a040fa6767b677336dda22d",
+      "tests/history-context-transport.test.mjs": "4d34a54baeb53a16480061d6b65b515430e6e8503dbff7fd9be188b08f5b7bba"
+    },
+    "build": {
+      "dist/client/assets/index-B7Lk_AS3.js": "70ba7ff8c1fdc7405817a276ffc956b0eb1344277113fd6632bc863c78c538cc",
+      "dist/client/assets/OceanApp-D6R_MRYW.js": "bfac27279bd50844301f0443197312adfd41fb4fcfaf9873499138df1287efa4",
+      "dist/client/assets/ShallowSampleApp-CPueMvRx.js": "3ed47d21e2ab21deeba788e116b98f7967f044ba0912a16be683e6e4a79e6d71"
+    },
+    "compiledBuffer": {
+      "bytes": 2281360,
+      "sha256": "2bb430782756eefc205e5faa6b5a2210091885a64bd074ccdf291780c0b56f1c"
+    }
+  },
+  "checks": {
+    "batches": [
+      {
+        "file": "checks-core.log",
+        "tests": 12,
+        "pass": 12,
+        "fail": 0
+      },
+      {
+        "file": "checks-shallow.log",
+        "tests": 83,
+        "pass": 83,
+        "fail": 0
+      },
+      {
+        "file": "checks-transition.log",
+        "tests": 36,
+        "pass": 36,
+        "fail": 0
+      },
+      {
+        "file": "checks-hosting.log",
+        "tests": 14,
+        "pass": 14,
+        "fail": 0
+      }
+    ],
+    "distinctPassingTitles": 138,
+    "titles": [
+      "CC0 source topology, authored texture coordinates and +X mouth survive the adapter",
+      "a browser-frozen hidden tab does not spend its no-progress deadline when timers resume",
+      "a distant reposition executes only under full cover and begins its shot only after reveal",
+      "a failed PBR channel does not publish a partial set or leak successful requests",
+      "a failed entry cannot fabricate readiness, chapter time or a started observation shot",
+      "a keep entry opens its existing tool without fading or acquiring an entry camera path",
+      "a nearby continuous bridge stays visible and waits for both movement completion and its actual loaded window",
+      "a pending pause checkpoint during entry also has a bounded loading deadline",
+      "all principal swimmer tail forks are open rather than filled by centroid fan triangles",
+      "all source vertices and wave extrema fit the declared analytic envelope; PBR tangents and shadows get the same wave",
+      "an asynchronous in-shot window wait freezes progress, reports waiting and resumes the same camera once ready",
+      "an indefinitely stalled shot excludes paused and hidden time, then fails with a retryable token",
+      "an upload exception restores real canvas viewport, scissor and mesh flags",
+      "atomic PBR load shares ORM channels, retains source texture factor and releases every resource exactly once",
+      "attached-cover rock rendering preserves every original supporting vertex and triangle with bounded spatial batches",
+      "background integration preserves native seed55 complete records, fractional clocks and persistence barriers",
+      "background restore checks retain the native verdict for older terrain and reject corrupted saved geometry",
+      "background transport ignores stale replies, cancels work, retries failure and bounds timeout without publishing",
+      "bank-only source maps cannot leak into older independent coral UVs",
+      "batched complete meadow histories preserve exact serial-read records and the combined private owner bound",
+      "cached natural animal placement matches uncached geometry validation and leaves unsuitable animals intact",
+      "clock stagnation without a window flag cannot stall forever, and an old timer cannot fail a replacement shot",
+      "closed massive crowns face outward and separate fan plane from volumetric hard colony",
+      "colonies share actual rock support, grass roots are on soft bed, camera crosses a continuous landscape",
+      "compiled existing substrates preserve every source vertex, normal, UV, group and bound, reject damaged transport and return independent geometry",
+      "complete banks replace scattered fill while preserving benthic asset dispatch and the scene budget",
+      "complete community-fish family has finite outward bodies, distinguishable full forms and natural total-length units within the shared mesh budget",
+      "complete historical macro batches retain exact serial-read records, public sources and admission bounds",
+      "complete meadow histories use the same retained terrain and still reject corrupt community resources",
+      "complete playback metrics retain full runs, freeze spikes, resolution changes and interrupted-run status",
+      "complete reef banks replace the broad slope with real sediment gaps and small hard contact pockets",
+      "complete unified swimmers share bounded resources and retain conservative physical motion envelopes",
+      "continuous reef benches retain complete resident and patrol spaces at natural scale for all 75 seconds",
+      "credited artist fish preserve source colouring and bounded source poses, including late-load disposal",
+      "cross-world loading and a second physical window requested by preparation remain covered until truly ready",
+      "curved ribbon leaves retain exact substrate roots, finite shared topology and the existing geometry budget",
+      "direct entry initialization selects the same native macro staging view and ordinary exploration keeps its original entry",
+      "director crosses into deep for seed55 without inventing an absent macro scene",
+      "director crosses into kelp for seed55 without inventing an absent macro scene",
+      "distant coral detail reduces geometry while exact sand tiles keep shared physical support",
+      "does not turn missing API or write requests into the app shell",
+      "emits the files required by Sites packaging",
+      "empty animal observations stay strict unless the ready director explicitly requests a disclosed habitat fallback",
+      "entire animated forms stay inside the advertised physical motion padding at low and maximum accepted speed",
+      "every published world entry renders its initial shell before the first world snapshot",
+      "failed or cancelled preparation never leaves hidden meshes enabled or renders a disposed scene",
+      "falls back to index.html for an unknown app route",
+      "finite sample is deterministic and has distinct animal communities, not scene clones",
+      "foliose front-slope cover and upgraded patrol animals share the actual habitat and finite scene budget",
+      "full 75 model seconds retain identities and body clearance; shoals face their individual movement and all mobile guilds move",
+      "height-pruned scan queries retain overhangs, negative floors and stable coincident normals",
+      "integrated seed55 living crowns support both actual LODs and reserve their complete displayed envelopes",
+      "large sample animals retain their true size measure and bounded full-body movement",
+      "live crown silhouettes spread through connected low forks and retain actual fan apertures",
+      "live slope registry leaves all nine old rock meshes byte exact and uses real Float32 top faces",
+      "living kit retains original redistributable source images and distinct full coral material groups",
+      "lookahead requests only the next adjacent committed owner, scales with playback and freezes with pause or hidden playback",
+      "lower continuous hard reef retains open branching sources, four fitted lamina forms and a bounded complete community",
+      "macro entries allow 120 effective seconds while ordinary entries retain 45 and pause/hidden time is excluded",
+      "main school kit has complete side colour signatures and natural-length bounded animated bodies",
+      "main school kit preserves other nine complete assets, hero provenance, draw and triangle budgets",
+      "mesh ring, sector and rim boundaries join with exact support; polygon exterior returns null",
+      "missing or corrupt extra historical owners fail before terrain publication without replacing records",
+      "mixed whole-colony communities reduce repeated survey blocks and share exact visible support",
+      "moving animal batch culling contains complete posed mesh bounds and skips offscreen draws without deleting animals",
+      "native mapped baseColor keeps glTF UV orientation, sRGB factors, alpha masks/blending and legacy rows",
+      "natural contact terrain retains source UVs and exact visible support, without any added flat platform",
+      "nearby communities pass broadside at natural scale; observation motion stays continuous",
+      "new asset licences and source images are traceable and original bytes unchanged",
+      "new coral sources retain redistributable attribution and byte-identical original images",
+      "new fish bounds contain sampled deformation and late source textures are released once",
+      "new grass roots and complete swaying leaves stay on soft bed; actual broken skeleton vertices fit the bed outside the camera corridor",
+      "new reef and sand communities reach the default moving view at natural size without duplicate legacy bodies",
+      "new shared rubble has actual angular fragments and stays floor-rooted in its envelope",
+      "new textures are shared and sealed late loads release exactly once",
+      "new whole benthic bodies retain complete measures, movement, open sponge cavities and bounded resource ownership",
+      "obsolete worker replies cannot overwrite a reset world, and failed jobs surface before the next advance",
+      "open community uses attributed redistributable files and real species, with bounded source motion",
+      "original-sized dead scan installs within existing colony clearance, with actual substrate clearance and safe cancellation",
+      "packaged model data round-trips every authored source exactly and remains content-cacheable",
+      "playing, hidden state and playback rate control the transition while preserving chapter time",
+      "preparation includes hidden LODs and off-camera animals then restores their exact flags",
+      "prepared showcase is identical to full exact fitting and never applies to another seed",
+      "principal shoals complete sampled 75-second habitat clearances at their actual animated mesh vertices",
+      "production output includes the guide, query application and prefixed workers/assets",
+      "published counts and the complete catalogue agree with the shipped product",
+      "published guide uses portable entries and ships every local page/image/evidence link",
+      "real worker four-owner and complete twelve-owner births exactly retain native populations before atomic publication",
+      "real worker owner preparation retains complete native records, flags, environment and main publication barrier",
+      "real worker produces exact macro terrain while the host loop runs; immutable validated context rejects corrupt terrain",
+      "real worker transports terrain only at acknowledgement, keeps native history verdicts and rejects stale handles",
+      "redistributable original photographs are unmodified and rejected specimen is absent from the scene",
+      "redistributable source identities, licence conditions and original texture hashes are retained",
+      "redistributable specimen derivatives keep finite conservative envelopes and cheaper LODs",
+      "reef passage includes attached and crawling residents on clear rock, with separate fish patrols",
+      "reef valley preparation has the same finite loading budget as the meadow",
+      "remaining outer canopy keeps real host contact and clears complete animal spaces",
+      "repeated community-fish creation shares resources while retaining independent transforms and releases every owned resource once",
+      "replacement branching specimens retain metre proportions, attributed sources and cheaper complete LODs",
+      "replacement fish have front-facing continuous bodies, coloured surfaces and moving fins; owned assets release once",
+      "retained contexts expire with LRU eviction, seed/profile changes and worker lifetime",
+      "retained source coral shares uniform physical proportions across both display levels",
+      "retained terrain checks the complete source once, isolates immutable plans and reruns every mutable history check",
+      "sample hard reef uses its actual eroded triangles; individual fish waves remain inside reserved motion clearance",
+      "sample slope has connected undulating support at its real world scale within the existing mesh budget",
+      "sealing and disposal release arrived and late textures once without publishing maps",
+      "sediment field matches every actual bed vertex and nine source animals retain complete swimming envelopes",
+      "sediment spatial lookup retains exact fields across the whole terrain and rotated ellipse boundaries",
+      "sediment-edge composition is deterministic, sparse and preserves the authored population and original habitat",
+      "seed55 director return validates all twelve original shallow owners privately and preserves history",
+      "seek and stop invalidate old fades, pause promises and applied callbacks before they can reposition a new token",
+      "serves existing static assets without a fallback",
+      "shared animal appearance preserves source swim shader, maps, alpha and bounded RGB",
+      "source crop removes the survey apron; the continuous visible foundation ends in sediment",
+      "source hawksbill preserves source topology, images and full animated body envelope",
+      "source photos load with original material factors and no late publication or resource leaks",
+      "stall evidence stays bounded and retains browser script attribution with visibility",
+      "static plan certification reuses only complete exact sources, rejects changed terrain and expires by seed with a fixed bound",
+      "streamed model loading preserves data and never reports corrupt or missing data as complete",
+      "support heights and normals match arbitrary barycentric points in the actual mesh triangles",
+      "terrace has an upper platform and shoulder while ridge has a narrow elevated spine",
+      "the real meadow, shoal, kelp water and deep hard chapters prepare actual life under cover and wait for their second native window",
+      "the scan perimeter is physically below sediment while interior rocks and original UVs remain intact",
+      "the six-context working set keeps exact geometry across consecutive complete scans and still rechecks corrupt history",
+      "three fixed macro profiles use frozen Float32 vertices, upward nondegenerate faces and bounded footprints",
+      "view selection keeps every visible full instance exactly once, preserves matrices and reduces submitted reef geometry",
+      "whole bank near and distant meshes share visible support, source UVs, real channels and a bounded LOD",
+      "whole cephalopod family preserves catalogue measures, full animated footprint and single resource ownership",
+      "whole changed substrate keeps existing and new rendered grass and rubble clear of actual hard surfaces",
+      "whole community uses tapered real aprons and one authored main fish family without changing population identities",
+      "whole coral replacements stay inside the physical colony envelopes and share batched geometry",
+      "whole crab and octopus assets have bounded complete bodies and explicit non-species source labels",
+      "whole field reef support matches independent rendered-triangle raycasts including holes",
+      "whole live crown family keeps actual physical envelope and finite shaded vertices at both LODs",
+      "worker timing attaches to the current reused job and stays bounded without altering values or accepting stale replies",
+      "worker-backed region update publishes the same whole habitat transactions and finite timings as native update",
+      "world support follows anisotropic scale and rotation, including negative and distant coordinates",
+      "world-fixed school passages retain actual animal envelopes, safe full-route clearances and deterministic rendering"
+    ],
+    "scope": "related native batches with overlaps, not a single full repository/cloud run"
+  },
+  "fieldEquivalence": {
+    "scope": "exact complete source field mesh comparison; CPU timings are ordered, not browser startup",
+    "profiles": 12,
+    "tests": {
+      "queries": 98487,
+      "disks": 144
+    },
+    "timings": [
+      {
+        "profile": "sample-field-reefscan-v3",
+        "oldMs": 24.338900000000194,
+        "newMs": 8.729100000000017,
+        "triangles": 22809
+      },
+      {
+        "profile": "sample-field-community-0-v2",
+        "oldMs": 30.195400000000063,
+        "newMs": 24.41249999999991,
+        "triangles": 67727
+      },
+      {
+        "profile": "sample-field-community-1-v2",
+        "oldMs": 39.76330000000007,
+        "newMs": 29.165500000000065,
+        "triangles": 90079
+      },
+      {
+        "profile": "sample-field-community-2-v2",
+        "oldMs": 33.26429999999982,
+        "newMs": 26.450199999999768,
+        "triangles": 77731
+      },
+      {
+        "profile": "sample-field-community-3-v2",
+        "oldMs": 30.627899999999954,
+        "newMs": 31.71770000000015,
+        "triangles": 68057
+      },
+      {
+        "profile": "sample-field-habitat-bank-0-v2",
+        "oldMs": 192.76489999999967,
+        "newMs": 120.1567,
+        "triangles": 295785
+      },
+      {
+        "profile": "sample-field-habitat-bank-1-v2",
+        "oldMs": 218.59349999999995,
+        "newMs": 199.308,
+        "triangles": 311800
+      },
+      {
+        "profile": "sample-field-habitat-bank-2-v2",
+        "oldMs": 224.2519000000002,
+        "newMs": 160.5697,
+        "triangles": 301786
+      },
+      {
+        "profile": "sample-field-habitat-bank-3-v2",
+        "oldMs": 215.98189999999977,
+        "newMs": 192.41409999999996,
+        "triangles": 299789
+      },
+      {
+        "profile": "sample-field-natural-substrate-0-v2",
+        "oldMs": 57.26670000000013,
+        "newMs": 37.295100000000275,
+        "triangles": 47978
+      },
+      {
+        "profile": "sample-field-natural-substrate-1-v2",
+        "oldMs": 54.8100000000004,
+        "newMs": 35.672599999999875,
+        "triangles": 47978
+      },
+      {
+        "profile": "sample-field-natural-substrate-2-v2",
+        "oldMs": 41.652000000000044,
+        "newMs": 32.343699999999444,
+        "triangles": 47978
+      }
+    ],
+    "completeHeightsAndNormalsExact": true,
+    "completeDiskBoundsExact": true
+  },
+  "build": {
+    "passed": true,
+    "viteSeconds": 16.55
+  },
+  "sample": {
+    "navigationToReadyMs": 7285.300000071526,
+    "startupMs": 6810.200000047684,
+    "sceneBuildMs": 5617.099999904633,
+    "stages": {
+      "animals": 170.40000009536743,
+      "bed": 280.90000009536743,
+      "firstUpdate": 6,
+      "materials": 2.299999952316284,
+      "model": 4780.299999952316,
+      "plants": 56,
+      "rocks": 320.59999990463257
+    },
+    "staticGeometryReadyMs": 34.300000071525574,
+    "preparedGeometry": {
+      "bytes": 2281360,
+      "geometries": 8,
+      "used": true
+    },
+    "textureReadyMs": 104.19999992847444,
+    "compileMs": 167.60000002384186,
+    "assetUploadMs": 790.3999999761581,
+    "seconds": 75,
+    "wallSeconds": 75.00769999992848,
+    "speed": 1,
+    "uninterrupted": true,
+    "completed": true,
+    "averageFps": 217.57477257912305,
+    "p95FrameMs": 8.30000000000291,
+    "maxFrameMs": 83.30000000000018,
+    "resolutionHistory": [
+      {
+        "scale": 1,
+        "time": 0
+      }
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "pixelRatio": 1.5
+    },
+    "errorsAndWarnings": []
+  },
+  "director": {
+    "completed": 2,
+    "total": 67,
+    "phase": "loading",
+    "playing": false,
+    "error": "这个入口未在 45 秒有效加载时间内就绪。可以重试或跳过。",
+    "entered": [
+      {
+        "absence": false,
+        "action": "stop-reef-valley-region",
+        "alive": 154,
+        "biome": "reef",
+        "chunkId": "204,5",
+        "loadingRegions": 0,
+        "panelReady": false,
+        "profile": "living-shallows-v1",
+        "step": "reef-valley-region",
+        "token": 1,
+        "transitionMode": "cut"
+      },
+      {
+        "absence": false,
+        "action": "stop-seagrass-meadow-region",
+        "alive": 141,
+        "biome": "reef",
+        "chunkId": "228,5",
+        "loadingRegions": 0,
+        "panelReady": false,
+        "profile": "living-shallows-v1",
+        "step": "seagrass-meadow-region",
+        "token": 2,
+        "transitionMode": "keep"
+      }
+    ],
+    "skips": 0,
+    "retries": 0,
+    "complete67Passed": false,
+    "speed": 4,
+    "observedViewportValues": [
+      {
+        "height": 720,
+        "pixelRatio": 1.5,
+        "width": 1280
+      }
+    ],
+    "hardware": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "maxObservedWaitSec": 23,
+    "windowTimingMaximaMs": {
+      "birthEcologyMs": 0,
+      "canonicalValidationMs": 5832.199999928474,
+      "generationMs": 0,
+      "historicalValidationMs": 15653.50000023842,
+      "otherMs": 2512.8999997377396,
+      "ownerValidationAndRestoreMs": 1210.2000000476835,
+      "persistenceMs": 0,
+      "prefetchMs": 1182.4000002145767,
+      "publicationMs": 461.6999999284744,
+      "queueAndBarrierMs": 6503.5,
+      "restoreMs": 0,
+      "totalMs": 25568.299999952316
+    },
+    "staticValidationJobs": {
+      "count": 52,
+      "minMs": 54.60000002384186,
+      "medianMs": 153.60000002384186,
+      "maxMs": 14377.899999976158
+    },
+    "historyJobs": {
+      "count": 183,
+      "minMs": 217.20000004768372,
+      "medianMs": 875.0999999046326,
+      "maxMs": 3504.600000023842
+    },
+    "capturedUnpausedNonWaitingMotionFramesOver250Ms": 22,
+    "maxCapturedMotionFrameMs": 1286.4000000000087,
+    "capturedUnpausedVisibleMotionStalls": 334,
+    "maxCapturedMotionStallMs": 3117.5,
+    "errors": [],
+    "errorsAndWarnings": [],
+    "browser": {
+      "startedAt": "2026-10-13T00:56:16.346Z",
+      "endedAt": "2026-10-13T01:10:05.737Z",
+      "observedWallSeconds": 829.391,
+      "maxObservationSeconds": 1200,
+      "endedBeforeBound": true,
+      "stopReason": "director chapter 3 effective 45 second loading timeout",
+      "skippedChapters": 0,
+      "retries": 0,
+      "sampleCompleted": true,
+      "intendedViewport": [
+        1280,
+        720
+      ],
+      "actualSampleViewport": {
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5
+      },
+      "finalDirectorViewport": {
+        "height": 871,
+        "pixelRatio": 1.5,
+        "width": 869
+      },
+      "observedDirectorPlaybackViewports": [
+        {
+          "width": 1280,
+          "height": 720,
+          "pixelRatio": 1.5
+        }
+      ]
+    },
+    "finalViewport": {
+      "height": 871,
+      "pixelRatio": 1.5,
+      "width": 869
+    }
+  },
+  "rejectedWholeGeometryPackage": {
+    "raw": 269964344,
+    "gzip": 165243195
+  },
+  "gates": {
+    "sample75Complete": true,
+    "startupWithin5Seconds": false,
+    "directorNoLongStops": false,
+    "directorComplete": false,
+    "releasePassed": false
+  },
+  "published": false,
+  "pushed": false,
+  "remoteMainReadOnly": "4749548bfa2216879315fb7b84ad6479cf3a940e",
+  "limitations": [
+    "One local browser attempt with existing seed55 histories and resource caches, not a public cold start or controlled A/B.",
+    "Director playback snapshots measured 1280x720/DPR1.5; final post-timeout snapshot is 869x871/DPR1.5. Both retained; no guarantee of one size at every instant or controlled FPS comparison.",
+    "Timing maxima come from different windows and must not be added. Sampling has gaps.",
+    "Motion long frames include transition/publication boundaries, not ordinary walking-only attribution.",
+    "No new 240 second life-expedition playback this phase; no candidate cloud verification.",
+    "Director stopped on chapter 3 timeout before 20-minute bound, no retry, seek or skipped chapter.",
+    "No new scene, species or source asset; added 2.28 MB compiled copy of unchanged substrates."
+  ]
+}

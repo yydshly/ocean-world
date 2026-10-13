@@ -6,6 +6,7 @@ import { SHALLOW_SAMPLE_SECONDS, shallowSampleChapter } from './shallowSample.js
 import './shallowSample.css';
 import { createShallowPlaybackMetrics } from './shallowSamplePlayback.js';
 import {prepareShallowRenderer} from './world/prepareShallowRenderer.js';
+import {loadPreparedShallowGeometry} from './world/preparedShallowGeometry.js';
 
 export function ShallowSampleApp(){
   const canvas=useRef(null),runtime=useRef(null),[time,setTime]=useState(0),[playing,setPlaying]=useState(true),
@@ -15,7 +16,7 @@ export function ShallowSampleApp(){
     const pixelRatio=Math.min(window.devicePixelRatio||1,1.5),cadence={samples:[],slow:0,stable:0,frames:0,scale:1};
     const diagnostics=createShallowPlaybackMetrics(),metrics=diagnostics.metrics,startup=performance.now();
     const state={time:0,playing:false,speed:1,free:false,ready:false,dirty:true};
-    try{
+    const initialize=async()=>{
       renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
       const gl=renderer.getContext(),gpu=gl.getExtension('WEBGL_debug_renderer_info');
       metrics.environment={browser:navigator.userAgent,gpu:gpu?gl.getParameter(gpu.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),context:gl.constructor.name};
@@ -24,6 +25,11 @@ export function ShallowSampleApp(){
       renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.85;
       mount.appendChild(renderer.domElement);
       const params=new URLSearchParams(window.location.search),seed=Number(params.get('seed')||55);
+      const staticStart=performance.now();
+      try{metrics.preparedGeometry=await loadPreparedShallowGeometry();}
+      catch(e){metrics.preparedGeometry={used:false,reason:e.message};}
+      metrics.staticGeometryReadyMs=performance.now()-staticStart;
+      if(disposed)return;
       const modelStart=performance.now();
       world=new ShallowSampleScene(Number.isFinite(seed)?seed:55,{scannedReef:params.get('reef')==='scanned'});setSummary({...world.summary,scannedReef:world.model.scannedReef});
       metrics.modelBuildMs=performance.now()-modelStart;
@@ -97,7 +103,7 @@ export function ShallowSampleApp(){
         frame=requestAnimationFrame(render);
       };
       frame=requestAnimationFrame(render);
-    }catch(e){setError(`场景启动失败：${e.message}`);}
+    };initialize().catch(e=>{if(!disposed)setError(`场景启动失败：${e.message}`);});
     return()=>{disposed=true;cancelAnimationFrame(frame);observer?.disconnect();if(runtime.current?.visibility)document.removeEventListener('visibilitychange',runtime.current.visibility);
       if(window.__shallowSampleMetrics===metrics)delete window.__shallowSampleMetrics;controls?.dispose();world?.dispose();renderer?.dispose();renderer?.domElement.remove();runtime.current=null;};
   },[]);

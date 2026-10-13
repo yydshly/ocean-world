@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import data from './shallowNaturalHabitatData.js';
 import {registerFieldReefMesh,oceanRockHeight} from '../oceanRockShape.js';
+import {preparedGeometry} from './preparedShallowGeometry.js';
 
 export const naturalHabitatData=data;
 const decodedSources=new WeakMap();
@@ -52,6 +53,7 @@ export function buryNaturalGroundCut(g){
 }
 const cache=new Map(),registered=new Set(),preparedGround=new Map();
 export function naturalBankSubstrate(variant,detail='near'){
+  const prepared=preparedGeometry(`substrate/${variant}/${detail}`);if(prepared)return prepared.substrate;
   const key=`${variant}/${detail}`;if(!cache.has(key)){
     const row=data.coast_land_rocks_02.variants[detail][0],parts=[];
     if(!preparedGround.has(detail))preparedGround.set(detail,buryNaturalGroundCut(naturalHabitatGeometry(row)));

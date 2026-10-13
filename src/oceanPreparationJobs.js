@@ -12,10 +12,20 @@ import { validateMeadowAnimalBelt } from './meadowAnimalBelt.js';
 export function createOceanPreparationJobs() {
   let base = null, seed, wholeSeabed;
   const contexts=new Map(), retained=new Map(), contextLimit=REEF_VALLEY_REGION_LAYOUT.maximumCachedGroups;
+  const certifiedPlans=new Map(), planLimit=contextLimit*12;
+  let planHits=0, planValidations=0;
+  const certify=plan=>{
+    const key=JSON.stringify(plan);
+    if(certifiedPlans.has(key)){certifiedPlans.delete(key);certifiedPlans.set(key,true);planHits++;return true;}
+    planValidations++;
+    const valid=validateLivingRidgePlan(plan,base);
+    if(valid){if(certifiedPlans.size>=planLimit)certifiedPlans.delete(certifiedPlans.keys().next().value);certifiedPlans.set(key,true);}
+    return valid;
+  };
   const lifetime=crypto.randomUUID(); let nextContext=0;
   let contextHits=0, contextValidations=0;
   const run=function run(kind, payload) {
-    if (!base || !Object.is(seed, payload.seed) || wholeSeabed !== (payload.wholeSeabed === true)) { seed = payload.seed; wholeSeabed = payload.wholeSeabed === true; base = withWholeSeabedGenerator(createLivingShallowsGenerator(seed), wholeSeabed); contexts.clear(); retained.clear(); }
+    if (!base || !Object.is(seed, payload.seed) || wholeSeabed !== (payload.wholeSeabed === true)) { seed = payload.seed; wholeSeabed = payload.wholeSeabed === true; base = withWholeSeabedGenerator(createLivingShallowsGenerator(seed), wholeSeabed); contexts.clear(); retained.clear(); certifiedPlans.clear(); }
     if (kind === 'generate') {
       const { version, cx, cz } = payload;
       if (![8, 9].includes(version) || ![cx, cz].every(Number.isSafeInteger)) throw new TypeError('Invalid background macro-region request.');
@@ -25,7 +35,7 @@ export function createOceanPreparationJobs() {
     if (kind === 'validate-plans') {
       if (!Array.isArray(plans) || plans.length > 25 || plans.some(p => !Number.isInteger(p?.version) || p.version < 1 || p.version > 9))
         throw new TypeError('Invalid background saved-plan request.');
-      return plans.map(plan => validateLivingRidgePlan(plan, base));
+      return plans.map(certify);
     }
     if (payload.contextToken !== undefined && (plans !== undefined || !['history','resident-habitats'].includes(kind)))
       throw new TypeError('Invalid retained physical context request.');
@@ -47,6 +57,9 @@ export function createOceanPreparationJobs() {
         const generator=createLivingRidgeGenerator(base);
         const withContext=plans[0]?.version===8 ? generator.prepareReefValleyContext(plans) : generator.prepareMeadowRegionContext(plans);
         entry={generator,withContext,key,plans:withContext.immutablePlans,token:`${lifetime}:${++nextContext}`}; contextValidations++;
+        // A complete validated group also certifies these exact static sources.
+        // Keep only a bounded serialized source key, never animal/history data.
+        for(const plan of entry.plans){const source=JSON.stringify(plan);certifiedPlans.delete(source);if(certifiedPlans.size>=planLimit)certifiedPlans.delete(certifiedPlans.keys().next().value);certifiedPlans.set(source,true);}
         if(contexts.size>=contextLimit) {
           const oldest=contexts.keys().next().value;
           retained.delete(contexts.get(oldest).token); contexts.delete(oldest);
@@ -109,7 +122,7 @@ export function createOceanPreparationJobs() {
     }
     throw new TypeError('Unknown ocean preparation job.');
   };
-  run.stats=()=>({contextHits,contextValidations,contexts:contexts.size,contextLimit,
+  run.stats=()=>({contextHits,contextValidations,contexts:contexts.size,contextLimit,planHits,planValidations,certifiedPlans:certifiedPlans.size,planLimit,
     groups:[...contexts.values()].map(entry=>entry.plans[0].group.id)});
   return run;
 }

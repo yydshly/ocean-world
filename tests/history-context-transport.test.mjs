@@ -91,3 +91,19 @@ test('complete meadow histories use the same retained terrain and still reject c
  assert.equal(jobs('history',{...payload,rows:structuredClone(changed)}),false);
  assert.deepEqual(rows,before);
 });
+
+test('static plan certification reuses only complete exact sources, rejects changed terrain and expires by seed with a fixed bound',()=>{
+ const {plans}=data(),jobs=createOceanPreparationJobs(),payload={seed,wholeSeabed:true,plans};
+ jobs('validate-group',{...payload,retainContext:true});
+ const baseline=jobs.stats();assert.equal(baseline.certifiedPlans,12);
+ assert.deepEqual(jobs('validate-plans',{...payload,plans:structuredClone(plans)}),Array(12).fill(true));
+ assert.equal(jobs.stats().planHits-baseline.planHits,12);assert.equal(jobs.stats().planValidations,baseline.planValidations);
+ for(const mutate of [p=>p.floorPatch.heights[2000]+=.2,p=>p.elements[0].x+=.1,p=>p.group.ownerIds.pop()]){
+  const changed=structuredClone(plans);mutate(changed[0]);
+  assert.equal(jobs('validate-plans',{...payload,plans:[changed[0]]})[0],false);
+ }
+ assert.equal(jobs.stats().certifiedPlans,12,'invalid sources are never cached');
+ assert.equal(jobs('validate-plans',{...payload,seed:seed+1,plans:[structuredClone(plans[0])]})[0],false);
+ assert.equal(jobs.stats().certifiedPlans,0,'seed changes invalidate previous static proofs');
+ assert.equal(jobs.stats().planLimit,72);
+});
