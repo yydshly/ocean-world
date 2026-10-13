@@ -1,7 +1,114 @@
 {
-  "date": "2026-10-12",
-  "scope": "Frozen simulation baseline and existing local validation records, prepared for publication with the product guide; hosted cold loading is not measured by these records.",
+  "date": "2026-10-13",
+  "scope": "Published product guide with Stage04 four-minute shallow journey. validation and frozenVersion retain the historical 75-second baseline; currentStage describes the latest local archive, not hosted performance.",
   "frozenVersion": "shallow-sample-v1.0-local-20261012",
+  "currentStage": {
+    "stage": "stage-04-complete-habitats-local-20261013",
+    "sceneCommit": "22987c4",
+    "date": "2026-10-13",
+    "scope": "Local Stage04 archive; these measurements are not hosted cold loading, mobile validation or a controlled performance comparison.",
+    "entry": "../../?demo=shallow-journey&seed=55",
+    "population": {
+      "individuals": 293,
+      "displayCategories": 38,
+      "assetsAdded": 0,
+      "habitatLinked": {
+        "reefSchoolFish": 102,
+        "sandProbers": 9,
+        "grassEdgeResidents": 18
+      }
+    },
+    "route": {
+      "durationSeconds": 240,
+      "lengthM": 90.08,
+      "chapters": 6,
+      "positionsPreserved": 961
+    },
+    "habitat": {
+      "reorganizedFormations": 24,
+      "movedResidents": 6,
+      "grassClumpsTotal": 332,
+      "grassClumpsReorganized": 306,
+      "coreClumps": 267,
+      "fringeClumps": 39,
+      "transitions": 2
+    },
+    "validation": {
+      "completed": true,
+      "speed": 1,
+      "modelSeconds": 240,
+      "elapsedWallSeconds": 240.04,
+      "interruptions": 0,
+      "p95FrameMs": 12.5,
+      "maxFrameMs": 133.3,
+      "renderScale": 1,
+      "cachedLocalReadySeconds": 3.949,
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "gpu": "RTX 4070 Laptop",
+      "passedTargetedChecks": 32,
+      "fullRepositoryTested": false,
+      "narrationClipsPlayed": 6,
+      "narrationErrors": 0,
+      "consoleErrors": 0,
+      "consoleWarnings": 0
+    },
+    "visualResult": "Partial: connected meadow is apparent; opening near-reef change is limited. Tests do not prove documentary realism or every visibility criterion.",
+    "limits": [
+      "Opening near-reef silhouette has limited change; many moved formations are peripheral or later in route.",
+      "Scan hard edges, animal model appearance, repeated grass and small distant animals remain.",
+      "Authored habitat motion, not a full food web or agent avoidance simulation.",
+      "Local cached desktop run, not mobile/public cold-start or a controlled performance comparison.",
+      "Surface samples and selected frames do not prove all dynamic inter-animal collisions absent."
+    ],
+    "screenshots": {
+      "times": [
+        24,
+        96,
+        144,
+        168,
+        192
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "before": "Previous Stage03 water-column archive",
+      "after": "Stage04 actual browser frames",
+      "files": [
+        {
+          "time": 24,
+          "before": "before-24.jpg",
+          "after": "after-24.jpg"
+        },
+        {
+          "time": 96,
+          "before": "before-96.jpg",
+          "after": "after-96.jpg"
+        },
+        {
+          "time": 144,
+          "before": "before-144.jpg",
+          "after": "after-144.jpg"
+        },
+        {
+          "time": 168,
+          "before": "before-168.jpg",
+          "after": "after-168.jpg"
+        },
+        {
+          "time": 192,
+          "before": "before-192.jpg",
+          "after": "after-192.jpg"
+        }
+      ],
+      "encodingNote": "Original browser captures use JPEG encoding; public filenames match the actual format. Capture bytes are unchanged."
+    },
+    "review": "review.html"
+  },
   "catalogs": [
     {
       "name": "浅海",
@@ -2030,6 +2137,8 @@
     "docs/WHOLE_SEABED_STAGE.md",
     "docs/CRUISE_SMOOTHNESS_STAGE.md",
     "docs/ACTIVE_HISTORY_STAGE.md",
-    "output/validation/shallow-final-closeout/stage.json"
+    "output/validation/shallow-final-closeout/stage.json",
+    "docs/stages/STAGE_04_COMPLETE_HABITATS.md",
+    "docs/validation/stage-04-complete-habitats-20261013.json"
   ]
 }

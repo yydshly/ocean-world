@@ -21,15 +21,17 @@ const images=[
 await fs.mkdir(path.join(here,'images'),{recursive:true});
 for(const [name] of images)await fs.access(path.join(here,'images',name));
 const stage=JSON.parse(await fs.readFile(path.join(here,'evidence/stage.json'),'utf8'));
+const currentStage=JSON.parse(await fs.readFile(path.join(here,'stage-04/summary.json'),'utf8'));
+for(const frame of currentStage.screenshots.files)for(const state of ['before','after'])await fs.access(path.join(here,'stage-04',frame[state]));
 const cats=[['浅海',livingShallowsSpeciesCatalog],['海带林',sceneCatalogs.kelp],['深海',sceneCatalogs.deep]];
-const inventory={date:'2026-10-12',scope:'Frozen simulation baseline and existing local validation records, prepared for publication with the product guide; hosted cold loading is not measured by these records.',frozenVersion:stage.version,
+const inventory={date:'2026-10-13',scope:'Published product guide with Stage04 four-minute shallow journey. validation and frozenVersion retain the historical 75-second baseline; currentStage describes the latest local archive, not hosted performance.',frozenVersion:stage.version,currentStage,
   catalogs:cats.map(([name,rows])=>({name,count:rows.length,entries:rows.map(s=>({id:s.id,name:s.commonName,scientificName:s.scientificName??null,kind:s.kind,identityLevel:s.identityLevel??null}))})),
   director:{chapters:DIRECTOR_STEPS.length,nominalSeconds:DIRECTOR_STEPS.reduce((n,s)=>n+s.durationMs,0)/1000,steps:DIRECTOR_STEPS.map(s=>({id:s.id,title:s.title,seconds:s.durationMs/1000,context:s.context}))},
   life:DIRECTOR_LIFE_STEPS.map(s=>({id:s.id,title:s.title,seconds:s.durationMs/1000})),
   worlds:DEMO_WORLDS.map(s=>({id:s.id,title:s.title,description:s.description})),
   stops:[...DEMO_LIVING_STOPS,...DEMO_KELP_STOPS,...DEMO_DEEP_STOPS].map(s=>({id:s.id,title:s.title,description:s.description,biome:s.action.biome})),
   links,images:images.map(([file,source,caption])=>({file,source,caption})),validation:stage,
-  sources:['src/App.jsx','src/OceanApp.jsx','src/ShallowSampleApp.jsx','src/sceneCatalog.js','src/demoCapabilities.js','src/directorTour.js','docs/SHALLOW_SAMPLE_FROZEN.md','docs/WHOLE_SEABED_STAGE.md','docs/CRUISE_SMOOTHNESS_STAGE.md','docs/ACTIVE_HISTORY_STAGE.md','output/validation/shallow-final-closeout/stage.json']};
+  sources:['src/App.jsx','src/OceanApp.jsx','src/ShallowSampleApp.jsx','src/sceneCatalog.js','src/demoCapabilities.js','src/directorTour.js','docs/SHALLOW_SAMPLE_FROZEN.md','docs/WHOLE_SEABED_STAGE.md','docs/CRUISE_SMOOTHNESS_STAGE.md','docs/ACTIVE_HISTORY_STAGE.md','output/validation/shallow-final-closeout/stage.json','docs/stages/STAGE_04_COMPLETE_HABITATS.md','docs/validation/stage-04-complete-habitats-20261013.json']};
 await fs.writeFile(path.join(here,'inventory.json'),JSON.stringify(inventory,null,2)+'\n');
 
 const heading=(no,title,small)=>`<div class="section-head"><span class="section-no">${no}</span><h2>${title}</h2><p>${small}</p></div>`;
@@ -37,11 +39,11 @@ const tag=(text,kind='built')=>`<span class="tag ${kind}">${text}</span>`;
 const a=(href,text,cls='')=>`<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener">${text} <span aria-hidden="true">↗</span></a>`;
 const poster=`
 <main id="poster">
- <header class="masthead"><strong>TIDAL <span>海底世界</span></strong><span>产品全景 · 冻结基线 · 2026.10.12</span></header>
- <aside class="agreement"><h3>阶段02 · 完整浅海体验（本地验收归档）</h3><p>4分钟穿过礁谷、沙道与草床，沿六段路线观察现有动物群落，点击“开启讲解”可听中文旁白并查看同步字幕。可随时接管，在这片有限海域内移动，再平滑返回巡游。</p><p>${a(links.journey,'进入4分钟浅海体验','entry-link')} · 本段一次准备，无途中跨区重载；下面的原版引导图与75秒数据保留历史含义。</p></aside>
+ <header class="masthead"><strong>TIDAL <span>海底世界</span></strong><span>产品全景 · 阶段04 · 2026.10.13</span></header>
+ <aside class="agreement"><h3>推荐入口 · 阶段04「三个栖息地、两段过渡」</h3><p>用4分钟穿过礁谷、沙道与草床。293只动物、38个展示类别，沿用现有资产；重排24组整礁，129只动物沿实际礁隙、软底与草缘活动。连片草床变化最明显，开场近礁改善有限。</p><p>${a(links.journey,'进入4分钟浅海体验','entry-link')} · ${a('stage-04/','查看五段前后对照','entry-link')} · ${a('stage-04/summary.json','本地验收摘要')}</p><p>展开控制后点击“开启讲解”，可听六段中文旁白与同步字幕；暂停、变速、选段均可。选择“接管探索”在这片有限海域中移动，再返回巡游。本段一次准备，无途中跨区重载；旧75秒数据与原版引导图保留历史含义。</p></aside>
  <section class="hero">
-  <div class="hero-copy"><span class="eyebrow">PRODUCT ATLAS / 01</span><h1>一片可观看、<br>可探索、<br>可观察生命的海。</h1><p>目标是纪录片式的海底世界。<br>冻结原型已上线，<br>可直接观看样板与探索海域。</p><div class="hero-status">当前定位 <b>已上线 · 可演示与探索的原型</b></div></div>
-  <figure class="hero-image"><img src="images/reef.png" alt="最终浅海样板24秒实景，鱼群在自然礁体与珊瑚上方游动"><figcaption><span class="dot"></span>真实浏览器画面 · 最终浅海样板 / 24 秒 / 2026-10-12</figcaption></figure>
+  <div class="hero-copy"><span class="eyebrow">PRODUCT ATLAS / 01</span><h1>一片可观看、<br>可探索、<br>可观察生命的海。</h1><p>目标是纪录片式的海底世界。<br>当前主线为4分钟浅海体验，<br>再按兴趣进入更广的探索原型。</p><div class="hero-status">当前定位 <b>阶段04 · 可演示与探索的原型</b></div></div>
+  <figure class="hero-image"><img src="stage-04/after-168.jpg" alt="阶段04沙道进入连片草床，海龟从交界经过"><figcaption><span class="dot"></span>阶段04真实浏览器画面 · 沙草过渡 / 2:48 / 2026-10-13</figcaption></figure>
  </section>
  <div class="reading-flow"><span>01 目标与进度</span><i>→</i><span>02 世界与生命</span><i>→</i><span>03 观看与探索</span><i>→</i><span>04 结果与边界</span></div>
 
@@ -68,12 +70,12 @@ const poster=`
  </aside>
 
  <section class="section tracks">
-  ${heading('02','同一个产品，两种体验','样板的验收结果，不能直接代表整个持续探索世界')}
+  ${heading('02','同一个产品，两种体验','4分钟主线与持续探索分别验收；75秒样板保留为短版入口')}
   <div class="two-cols">
-   <article class="track sample"><div class="card-top"><span class="eyebrow">A / 浅海样板</span>${tag('已实景验收 · 已冻结','verified')}</div><h3>75 秒，看当前集中呈现的效果</h3><div class="numbers"><span><b>293</b>只动物</span><span><b>38</b>个展示类别</span><span><b>1</b>条固定巡游</span></div><p>礁谷 → 沙道 → 草床。自然形态礁基、扫描珊瑚、鱼群与近底动物，组成一段有限场景；可暂停、跳播、变速和转动观察。</p><div class="track-bottom">最新资产升级主要集中于此 ${a(links.sample,'看浅海样板')}</div></article>
+   <article class="track sample"><div class="card-top"><span class="eyebrow">A / 4分钟浅海主线</span>${tag('本地完整实播 · 已归档','verified')}</div><h3>三个栖息地，连成一段浅海旅程</h3><div class="numbers"><span><b>293</b>只动物</span><span><b>38</b>个展示类别</span><span><b>1</b>条固定巡游</span></div><p>礁谷 → 礁沙交界 → 沙道 → 沙草交界 → 草床。鱼群有水层与远近层次，近底居民保留合理支撑；六段中文讲解，可接管移动再返回。</p><div class="track-bottom">本轮重点：完整空间与生境联系 ${a(links.journey,'看4分钟浅海体验')}</div></article>
    <article class="track world"><div class="card-top"><span class="eyebrow">B / 持续探索世界</span>${tag('功能已接入 · 验收范围不同')}</div><h3>沿着海床，继续走进不同生境</h3><div class="numbers"><span><b>3</b>大生境</span><span><b>67</b>个导演章节</span><span><b>持续</b>按需生成</span></div><p>新浅海、海带林、深海软底，以及保留的原浅礁入口。群落按底质、水深和空间出现，提供自由移动、生态实验和本机保存。</p><div class="track-bottom">整体画质与跨区体验仍有差距 ${a(links.life,'进入持续探索')}</div></article>
   </div>
-  <div class="bridge"><span>A 的“进入持续探索”</span><b>→</b><span>B 的生命巡游</span><em>样板的 38 类 ≠ 浅海目录的 106 条；资产升级未自动覆盖全部入口。</em></div>
+  <div class="bridge"><span>先看4分钟主线</span><b>→</b><span>再进入生命巡游或专题探索</span><em>主线与75秒样板共用293个体/38类基底；不等于探索目录106条全部同场。</em></div>
  </section>
 
  <section class="section habitats">
@@ -102,32 +104,34 @@ const poster=`
  <section class="section explore">
   ${heading('05','从哪里进入，怎样观察？','推荐顺序：先看效果，再看能力，最后自己探索')}
   <div class="journey">
-   <article><span class="step">1</span><div><h3>先看 75 秒浅海样板</h3><p>看鱼群、近景礁体、礁底动物和草床海龟。0.5 / 1 / 1.5 / 2×；暂停、进度拖动与从头观看。</p><small>“自由观察”是转动与缩放视角；点击“返回巡游镜头”继续。</small>${a(links.sample,'打开样板','entry-link')}</div></article>
+   <article><span class="step">1</span><div><h3>先看4分钟浅海体验</h3><p>完整穿过礁谷、沙道和草床，观察中层鱼群与近底居民。首次建议1×，展开控制并开启六段中文讲解。</p><small>可以暂停、拖进度、变速；“接管探索”移动观察，再返回原路线。讲解需要主动开启。</small>${a(links.journey,'打开4分钟主线','entry-link')} · ${a(links.sample,'75秒短版样板')}</div></article>
    <article><span class="step">2</span><div><h3>用导演模式看已有入口</h3><p>按章节带看生境、视角及功能；67 章，1× 名义观察时长 33 分 14 秒，另加切换与加载。</p><small>0.5–4×，可选章、暂停与接管；远距离会过渡切换。</small>${a(links.director,'打开导演模式','entry-link')}</div></article>
    <article><span class="step">3</span><div><h3>用生命巡游看连续海床</h3><p>约 4 分钟路线，连接礁区、沙沟、草甸和外坡。也可从草甸、礁谷或其他生境入口直接进入。</p><small>约 452 m；本轮完整实播与长帧结果见下方入口体验记录，首次区域准备仍需等待。</small>${a(links.life,'打开生命巡游','entry-link')}</div></article>
    <article><span class="step">4</span><div><h3>接管移动，跟随一个个体</h3><p>退出自动巡游，WASD 移动、Q/E 下潜/上浮、Shift 加速；拖动转向、右键平移、滚轮靠近。</p><small>点击动物 → 档案 → 跟随；打开环境实验或探索手记，留下观察记录。</small>${a(links.reef,'打开礁谷探索','entry-link')}</div></article>
   </div>
-  <div class="quick-links"><b>专题直达</b>${a(links.meadow,'海草甸')}${a(links.kelp,'海带林')}${a(links.deep,'深海软底')}${a(links.all,'能力总览')}<span>本页入口使用当前站点 · 历史存档与设备性能会影响体验</span></div>
+  <div class="quick-links"><b>专题直达</b>${a(links.sample,'75秒样板')}${a(links.meadow,'海草甸')}${a(links.kelp,'海带林')}${a(links.deep,'深海软底')}${a(links.all,'能力总览')}<span>本页入口使用当前站点 · 历史存档与设备性能会影响体验</span></div>
  </section>
 
  <section class="section results">
-  ${heading('06','已经得到什么结果？','证据范围：浅海样板 v1.0 · 最终一次本机浏览器实播')}
+  ${heading('06','已经得到什么结果？','最新：阶段04本地完整实播；下方保留75秒样板历史基线')}
+  <div class="agreement"><h3>阶段04 · 240.04秒完整巡游，无操作中断</h3><p>32项相关检查通过；六段讲解正常。1280×720 / DPR约1 / RTX 4070 Laptop：p95帧间隔12.5ms，最长133.3ms，渲染比例1。已有缓存的本地加载3.949秒；不是公网冷启动或其他设备承诺。</p><p>视觉部分达成：草床连片和生境联系清楚，开场近礁变化有限；扫描硬边、动物模型感、草叶重复和远鱼偏小保留。${a('stage-04/','查看最新实景与五组对照')}</p></div>
+  <p class="section-note">以下为2026-10-12的75秒样板v1.0历史记录，不能替代当前4分钟主线的测量结果。</p>
   <div class="result-layout"><figure><img src="images/school.png" alt="最终浅海样板69秒，浪人鲹在礁体上方游动"><figcaption>最终实景 · 69 秒 / 10/12 · 模型感仍可见</figcaption></figure><div class="result-data"><div class="result-metrics"><div><b>75.01<em>s</em></b><span>1× 完整播放，无暂停/跳播</span></div><div><b>54.31<em>FPS</em></b><span>平均帧率 · 全程分辨率缩放 1.0</span></div><div><b>25.0<em>ms</em></b><span>95% 帧间隔 · 最长 54.2 ms</span></div><div><b>6.10<em>s</em></b><span>本地导航至播放 · 已有素材缓存</span></div></div><p class="validation-line">89 个不同定向检查有通过记录（87 + 2）<br>构建通过 · 捕获 error / warn 为 0 / 0</p><small>1280 × 720 CSS / DPR 1.5 / RTX 4070 Laptop / WebGL2。一次本机结果，不是冷网络首访或其它设备保证。支撑与镜头净空检查、实景抽查通过，非全部动态碰撞证明。</small></div></div>
  </section>
 
  <section class="section finish">
   ${heading('07','阶段结论与完成边界','阶段性产物已固定；是否开启下一阶段，由新的有限目标决定')}
-  <div class="finish-grid"><article class="good"><span class="eyebrow">已交付</span><h3>可用于演示、探索与有限观察</h3><p>75 秒浅海样板 + 多生境探索原型 + 导演导航 + 生态观察工具 + 本机状态保存。已有源码、素材来源、静态构建、验收记录和冻结版本包。</p></article><article class="limits"><span class="eyebrow">仍有差距</span><h3>纪录片真实感与全局稳定性未达标</h3><p>裸岩与重复扫描、部分动物模型感；稳定 60 FPS、5 秒内启动未达标；跨区、其它设备及冷加载缺完整验收；繁殖与远区持续演化未实现。</p></article><article class="decision"><span class="eyebrow">当前决策</span><h3>冻结原型已上线</h3><p>既有冻结能力与产品导览已发布，场景资产和行为保持。免费可再分发素材中含署名、非商业与相同方式共享条件，不能统一视为可无条件商用。</p></article></div>
+  <div class="finish-grid"><article class="good"><span class="eyebrow">已交付</span><h3>可用于演示、探索与有限观察</h3><p>4分钟浅海主线与中文讲解 + 75秒短版样板 + 多生境探索原型 + 导演导航 + 生态观察工具 + 本机状态保存。已有源码、素材来源、静态构建、验收记录和冻结版本包。</p></article><article class="limits"><span class="eyebrow">仍有差距</span><h3>纪录片真实感与全局稳定性未达标</h3><p>开场近礁改动有限、扫描硬边与动物模型感保留；草叶重复、远处动物偏小。主线本机完成不代表所有设备稳定60 FPS或公网5秒内加载；导演跨区仍有历史等待瓶颈。繁殖与远区持续演化未实现。</p></article><article class="decision"><span class="eyebrow">当前决策</span><h3>阶段04固定，按阶段交付</h3><p>本轮只整理发布已归档成果，未继续修改场景或扩展资产；最新部署状态以仓库Actions为准。免费可再分发素材中含署名、非商业与相同方式共享条件，不能统一视为可无条件商用。</p></article></div>
  </section>
- <footer class="atlas-footer"><div><strong>TIDAL · 产品能力图</strong><span>事实依据：当前源码目录与入口 + 既有实景验收记录；图像均为项目截图，未生成理想化效果图。</span></div><div><code>shallow-sample-v1.0-local-20261012</code><span>冻结功能基线 · 发布状态以仓库 Actions 为准 · 详细目录与来源见附录</span></div></footer>
+ <footer class="atlas-footer"><div><strong>TIDAL · 产品能力图</strong><span>事实依据：当前源码目录与入口 + 既有实景验收记录；图像均为项目截图，未生成理想化效果图。</span></div><div><code>stage-04-complete-habitats-local-20261013</code><span>冻结功能基线 · 发布状态以仓库 Actions 为准 · 详细目录与来源见附录</span></div></footer>
 </main>`;
 
 const extraRoutes=[['浅海 / 礁谷','reef-valley-region','whole-seabed'],['浅海 / 海草甸','seagrass-meadow-region','whole-seabed'],['浅海 / 海岸生命带','coastal-life-belt','whole-seabed'],['浅海 / 丰富礁缘群落','biodiversity'],['浅海 / 底栖群落','benthic'],['浅海 / 水层群落','shoal-life'],['浅海 / 草床群落','meadow-life'],['海带林 / 底栖生活','kelp-life'],['海带林 / 林下附着','kelp-understory-life'],['海带林 / 近底生活','kelp-near-bottom-life'],['海带林 / 水层生活','kelp-water-life'],['深海 / 底栖生活','deep-life'],['深海 / 硬底附着','deep-hard-life'],['深海 / 离底游泳','deep-water-life'],['深海 / 中层水域','deep-midwater-life']];
-const appendix=`<section class="appendix" id="appendix"><p class="appendix-note"><b>本轮入口与性能修复：</b>导演遇到当前种子没有的整景观察点，会提示并观察同海域已有生境；生命巡游的生态计算和历史完整校验在后台运行；样板模型数据采用独立压缩与缓存。${a('evidence/entry-experience.json','查看最新本机实播与检查结果')}。原版引导图保留历史状态，完整 67 章和跨设备稳定性能仍须分别验收。</p><p class="appendix-note">引导图采用 2026-10-12 本地汇总原版，保留图中实景和历史状态标注。网页入口已适配当前站点；最新发布状态见 GitHub。浅海样板与持续探索使用不同场景和验收范围。</p><div class="section-head"><span class="section-no">＋</span><h2>详细清单与证据</h2><p>展开查看 · 目录与代码入口已核对，本次未重跑所有场景</p></div>
+const appendix=`<section class="appendix" id="appendix"><p class="appendix-note"><b>历史入口修复记录（2026-10-12）：</b>导演遇到当前种子没有的整景观察点，会提示并观察同海域已有生境；生命巡游的生态计算和历史完整校验在后台运行；样板模型数据采用独立压缩与缓存。${a('evidence/entry-experience.json','查看历史本机实播与检查结果')}。原版引导图保留历史状态，完整 67 章和跨设备稳定性能仍须分别验收。</p><p class="appendix-note">引导图采用 2026-10-12 本地汇总原版，保留图中实景和历史状态标注。网页入口已适配当前站点；最新发布状态见 GitHub。浅海样板与持续探索使用不同场景和验收范围。</p><div class="section-head"><span class="section-no">＋</span><h2>详细清单与证据</h2><p>展开查看 · 目录与代码入口已核对，本次未重跑所有场景</p></div>
  <details><summary>物种与代表类群目录：浅海 106 / 海带林 24 / 深海 15</summary><p class="appendix-note">这是持续探索的代码目录，包含藻类和科、属代表；展示取决于生境、种子与已有存档。不是当前镜头同时可见的种数，也不是浅海样板的 38 类名单。</p>${cats.map(([name,rows])=>`<h3>${name} · ${rows.length} 条</h3><div class="species-list">${rows.map(s=>`<div><b>${esc(s.commonName)}</b><small>${esc(s.scientificName||s.id)}</small></div>`).join('')}</div>`).join('')}</details>
  <details><summary>专题观察入口：15 个直达链接</summary><div class="route-list">${extraRoutes.map(([label,demo,world])=>a(entry(demo,world),label)).join('')}</div><p class="appendix-note">同一地区的个体出现受种子、底质与保存状态影响；上述链接来自当前入口解析，未在本次逐一播放验收。点击会在新标签页打开。</p></details>
  <details><summary>导演章节：${DIRECTOR_STEPS.length} 章 / 名义观察时长 33 分 14 秒</summary><p class="appendix-note">1× 观察时长不含加载和切换；导演覆盖既有生境与功能入口，75 秒样板是独立入口。</p><ol class="chapters">${DIRECTOR_STEPS.map(s=>`<li><span>${esc(s.title)}</span><small>${s.durationMs/1000} 秒 · ${esc(({reef:'浅礁',kelp:'海带林',deep:'深海'})[s.context.biome])}</small></li>`).join('')}</ol></details>
- <details><summary>来源、验收口径与素材条件</summary><div class="evidence-list"><p><b>汇总日期：</b>2026-10-12。导览依据当前源码与发布前本机记录；本文不将本机性能视为在线冷加载或跨设备实测。</p><p><b>统计口径：</b>293 是浅海样板布置的个体数，38 是实际展示类别；106 / 24 / 15 来自持续探索目录，包含不同分类层级。75 秒固定镜头与 240 秒生命路线属于不同场景。</p><p><b>性能口径：</b>最终 75 秒实播来自既有本机缓存访问。稳定 60 FPS 与导航 5 秒内仍未通过；一次完整记录不能外推为无卡顿、移动端达标或冷网络表现。</p><p><b>素材条件：</b>现有资产为自制或免费允许再分发的素材，第三方来源含 CC0、CC BY、CC BY-NC、CC BY-NC-SA。使用与再分发需逐项遵循原署名、非商业与相同方式共享条款。</p><p>${a(app+'assets/shallow-artist/credits.html','应用内模型来源')} · ${a('evidence/review.html','冻结版本验收页')} · ${a('inventory.json','本次结构化清单 JSON')}</p><h3>截图来源</h3>${images.map(([file,source,caption])=>`<p><a href="images/${file}" target="_blank">${esc(caption)} ↗</a><code>${esc(source)}</code></p>`).join('')}<h3>代码与文档依据</h3>${inventory.sources.map(s=>`<code>${esc(s)}</code>`).join('')}</div></details>
+ <details><summary>来源、验收口径与素材条件</summary><div class="evidence-list"><p><b>汇总日期：</b>2026-10-13（阶段04）；75秒历史基线为2026-10-12。导览依据当前源码与发布前本机记录；本文不将本机性能视为在线冷加载或跨设备实测。</p><p><b>统计口径：</b>293 是浅海样板布置的个体数，38 是实际展示类别；106 / 24 / 15 来自持续探索目录，包含不同分类层级。4分钟浅海主线沿用293个体与38类，约90.1m；75秒短版与持续探索的约452m生命巡游是独立入口，时长或数量相同不表示同一场景。</p><p><b>性能口径：</b>当前4分钟主线的本地实测见阶段04摘要；以下75秒记录为旧基线。当时稳定60 FPS与导航5秒目标未通过，不应套用到新主线，也不能用新主线本地缓存结果承诺公网或移动端表现。</p><p><b>素材条件：</b>现有资产为自制或免费允许再分发的素材，第三方来源含 CC0、CC BY、CC BY-NC、CC BY-NC-SA。使用与再分发需逐项遵循原署名、非商业与相同方式共享条款。</p><p>${a(app+'assets/shallow-artist/credits.html','应用内模型来源')} · ${a('stage-04/','阶段04实景验收页')} · ${a('evidence/review.html','75秒历史基线验收页')} · ${a('inventory.json','本次结构化清单 JSON')}</p><h3>截图来源</h3>${images.map(([file,source,caption])=>`<p><a href="images/${file}" target="_blank">${esc(caption)} ↗</a><code>${esc(source)}</code></p>`).join('')}<h3>代码与文档依据</h3>${inventory.sources.map(s=>`<code>${esc(s)}</code>`).join('')}</div></details>
 </section>`;
 
 const css=`
@@ -139,7 +143,7 @@ const css=`
 @media print{.toolbar,.appendix{display:none}body{background:#071f29;-webkit-print-color-adjust:exact;print-color-adjust:exact}#poster{width:1440px;max-width:none}a{color:inherit}}
 `;
 await fs.writeFile(path.join(here,'atlas.css'),css);
-const head=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TIDAL 海底世界 · 产品全景</title><meta name="description" content="目标、已实现能力、实景、观察探索入口与验收结果。2026-10-12 已上线冻结原型与产品共识。"><link rel="stylesheet" href="atlas.css"></head><body>`;
+const head=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TIDAL 海底世界 · 产品全景</title><meta name="description" content="目标、已实现能力、实景、观察探索入口与验收结果。2026-10-13 阶段04：4分钟浅海体验、中文讲解、三个栖息地与两段过渡。"><link rel="stylesheet" href="atlas.css"></head><body>`;
 await fs.writeFile(path.join(here,'poster.html'),head.replace('<body>','<body class="poster-export">')+poster+'</body></html>');
-await fs.writeFile(path.join(here,'index.html'),head+`<nav class="toolbar" aria-label="产品全景导航"><b>TIDAL · 产品全景</b><a href="#poster">看能力图</a><a href="#appendix">目录与来源</a><a href="ocean-world-product-atlas.png" download>下载原版引导图</a><a href="https://github.com/yydshly/ocean-world" target="_blank" rel="noopener">GitHub / README ↗</a>${a(links.sample,'体验浅海样板')}</nav>`+poster+appendix+'</body></html>');
+await fs.writeFile(path.join(here,'index.html'),head+`<nav class="toolbar" aria-label="产品全景导航"><b>TIDAL · 产品全景</b><a href="#poster">看能力图</a><a href="#appendix">目录与来源</a><a href="ocean-world-product-atlas.png" download>下载原版引导图</a><a href="https://github.com/yydshly/ocean-world" target="_blank" rel="noopener">GitHub / README ↗</a>${a(links.journey,'体验4分钟浅海')}${a('stage-04/','本轮效果对照')}</nav>`+poster+appendix+'</body></html>');
 console.log('Prepared product overview: 3 biomes, 145 catalog entries, 67 director chapters.');

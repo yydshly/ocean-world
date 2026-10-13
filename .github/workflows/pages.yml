@@ -39,7 +39,7 @@ jobs:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
       - name: Check built hosting artifacts
         run: node --test tests/sites-worker.test.mjs
-      - name: Check frozen shallow sample and original image integrity
+      - name: Check shallow sample, four-minute habitats, narration and original image integrity
         run: npm run test:shallow
       - name: Check published product guide and asset paths
         run: npm run test:publication

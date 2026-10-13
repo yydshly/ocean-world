@@ -1,3 +1,7 @@
+<!-- stage-04-publication-current -->
+2026-10-13 用户新授权：整理当前阶段进展、提交远端并部署GitHub Pages，覆盖此前阶段仅本地/不推送限制。本次发布以已归档22987c4运行版本为基础，不扩场景、物种、资产或重新开启性能优化；补齐README/产品导览/阶段04实景对照与发布检查。4分钟浅海体验为推荐入口，75秒样板及持续探索入口保留各自范围和旧跨区性能限制。原引导PNG保持，所有公开入口使用站点相对路径或正式GitHub Pages地址。发布成功以同一提交Actions及线上实际检查为准，不能将push成功当作部署完成。Goal状态独立。
+<!-- /stage-04-publication-current -->
+
 <!-- stage-04-complete-habitats-current -->
 2026-10-13 阶段04有限本地归档：现有293个体38类/240秒约90.1m路线与全部资产保持；24整礁布局（8bank+16小礁）、6底栖随宿主，草床306重组簇（267核心39边缘）/总332/5批，碎屑295。102礁鱼+9羊鱼+18兔鱼接入真实生境锚点。32定向通过/Vite11.73s/9运行hash保持；1×240模型/240.040实秒，1280×720/DPR约1/RTX4070Laptop，p9512.5/max133.3ms/scale1/无中断；六段playing/console空。本地缓存3.949s非公网或受控性能提升。视觉部分达成：连片草床明确，开场近礁变化有限；许多搬移位于外围或侧后方，不以数量冒称明显整体提升。旧扫描硬边/动物模型感/草叶重复/远鱼偏小保留，未声明12/10秒人眼可读性全部严格通过。一次主体整合+集中检查后收口，不再细调、不推送部署、不自动推进；Goal独立。标签stage-04-complete-habitats-local-20261013；docs/stages/STAGE_04_COMPLETE_HABITATS.md、docs/validation/stage-04-complete-habitats-20261013.json、output/validation/stage-04-complete-habitats/review.html。
 <!-- /stage-04-complete-habitats-current -->
