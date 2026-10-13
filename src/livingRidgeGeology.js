@@ -450,10 +450,15 @@ export function createLivingRidgeGenerator(baseGenerator, { preparation = null }
       if (!Array.isArray(input) || !Array.isArray(legacyIds)) throw new TypeError('Invalid ridge halo replacement.');
       const next = new Map(), nextReady = new Set();
       for (const plan of input) {
-        if ((!backgroundValidated.has(plan) && !validateLivingRidgePlan(plan, base)) || nextReady.has(plan.id)) throw new TypeError('Invalid ridge halo plan.');
-        const frozen = freeze(plan), previous = plans.get(plan.id);
+        const previous = plans.get(plan?.id);
+        // Overlapping owners already have a frozen, natively validated source.
+        // Compare every serialized field before reusing it in this worker.
+        // Changed or incoming owners still pass the full canonical validator.
+        const unchanged = previous && stamp(previous) === stamp(plan);
+        if ((!unchanged && !backgroundValidated.has(plan) && !validateLivingRidgePlan(plan, base)) || nextReady.has(plan.id)) throw new TypeError('Invalid ridge halo plan.');
+        const frozen = freeze(plan);
         // Equal canonical sources retain identity in overlapping saved halos.
-        next.set(plan.id, previous && stamp(previous) === stamp(frozen) ? previous : frozen); nextReady.add(plan.id);
+        next.set(plan.id, unchanged ? previous : frozen); nextReady.add(plan.id);
       }
       for (const id of legacyIds) { checkOwnerId(id); if (nextReady.has(id)) throw new TypeError('Duplicate ridge halo owner.'); nextReady.add(id); }
       if (nextReady.size > LIMIT) throw new RangeError('Ridge registry exceeds its 25-owner halo.');

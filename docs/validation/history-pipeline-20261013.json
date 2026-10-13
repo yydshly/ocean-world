@@ -1,0 +1,1439 @@
+{
+  "date": "2026-10-13",
+  "base": "baaca7f9f6e16fc5083e0db9ce1a3ca7a9efa450",
+  "branch": "fix/history-preparation-pipeline-20261013",
+  "changes": [
+    "Three bounded history lanes with whole native terrain and atomic combined verdict",
+    "Exact frozen overlapping terrain reuse; changed sources still validated"
+  ],
+  "checks": {
+    "tests": 75,
+    "pass": 75,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 371113.4964,
+    "buildSeconds": 22.36
+  },
+  "frozenFileHashesVerified": 29,
+  "benchmark": [
+    {
+      "laneCount": 1,
+      "contextMs": 3215.7579000000005,
+      "histories": [
+        {
+          "ms": 3788.1891000000014,
+          "valid": true
+        },
+        {
+          "ms": 493.3070999999982,
+          "valid": true
+        },
+        {
+          "ms": 364.6628000000019,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "laneCount": 3,
+      "contextMs": 2991.4055999999982,
+      "histories": [
+        {
+          "ms": 1832.1964000000007,
+          "valid": true
+        },
+        {
+          "ms": 311.8194999999978,
+          "valid": true
+        },
+        {
+          "ms": 263.97139999999854,
+          "valid": true
+        }
+      ]
+    }
+  ],
+  "sample": {
+    "version": 2,
+    "resolutionScale": 1,
+    "slowFrames": 42,
+    "drawCalls": 144,
+    "triangles": 1987298,
+    "startupMs": 6534.799999952316,
+    "environment": {
+      "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "context": "WebGL2RenderingContext"
+    },
+    "preparedGeometry": {
+      "used": true,
+      "bytes": 2281360,
+      "geometries": 8
+    },
+    "staticGeometryReadyMs": 49.5,
+    "modelBuildMs": 4055.2999999523163,
+    "sceneBuildStagesMs": {
+      "model": 2538,
+      "materials": 2,
+      "bed": 239.79999995231628,
+      "rocks": 679.6000000238419,
+      "plants": 73.29999995231628,
+      "animals": 503.8000000715256,
+      "firstUpdate": 18.199999928474426
+    },
+    "preparedCover": {
+      "used": true,
+      "signature": "260382:1732770830",
+      "raw": "310789:3737047858",
+      "authoringRaw": "310788:1698179965"
+    },
+    "textureReadyMs": 216.30000007152557,
+    "compileMs": 1632.1000000238419,
+    "assetUploadMs": 458.10000002384186,
+    "preparedRenderBatches": 328,
+    "textureUploadMs": 1551.2000000476837,
+    "preparedTextureCount": 47,
+    "renderPreparationMs": 2090.2000000476837,
+    "firstFrameMs": 10,
+    "navigationToReadyMs": 7168,
+    "runs": [
+      {
+        "speed": 1,
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5,
+        "startedAt": 7168.100000023842,
+        "resolutionHistory": [
+          {
+            "time": 0,
+            "scale": 1
+          }
+        ],
+        "interruptions": [],
+        "completed": true,
+        "lastModelSecond": 75,
+        "elapsedWallSeconds": 91.13909999997615,
+        "averageFps": 74.44674885358398,
+        "p95FrameMs": 16.700000000004366,
+        "maxFrameMs": 1004.2000000000007,
+        "uninterrupted": true
+      },
+      {
+        "speed": 1,
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5,
+        "startedAt": 129454.30000007153,
+        "resolutionHistory": [
+          {
+            "time": 0,
+            "scale": 1
+          },
+          {
+            "time": 8.642400000000046,
+            "scale": 0.85
+          },
+          {
+            "time": 16.942299999999904,
+            "scale": 0.95
+          },
+          {
+            "time": 24.963099999999624,
+            "scale": 1
+          }
+        ],
+        "interruptions": [],
+        "completed": true,
+        "lastModelSecond": 75,
+        "elapsedWallSeconds": 76.18209999992847,
+        "averageFps": 97.50643371859093,
+        "p95FrameMs": 16.699999999982538,
+        "maxFrameMs": 270.69999999998254,
+        "uninterrupted": true
+      }
+    ],
+    "finalCanvas": {
+      "cssHeight": 871.3333740234375,
+      "cssWidth": 610,
+      "height": 1307,
+      "width": 915
+    }
+  },
+  "sampleConsole": [],
+  "director": {
+    "maxSampledWaitSec": 21,
+    "stoppedMotionSec": 243.8376000000067,
+    "durationSec": 800,
+    "completedStepIds": [],
+    "error": null,
+    "console": [],
+    "worstSampledWindow": {
+      "birthEcologyMs": 0,
+      "canonicalValidationMs": 4776.700000047684,
+      "generationMs": 0,
+      "historicalValidationMs": 10460.900000095367,
+      "otherMs": 6751.899999976158,
+      "ownerValidationAndRestoreMs": 399.4999998807907,
+      "persistenceMs": 0,
+      "prefetchMs": 511.5,
+      "preparation": {
+        "cpuMs": 0,
+        "maxUnitMs": 0,
+        "units": 0,
+        "yields": 3
+      },
+      "publicationMs": 78.69999992847443,
+      "queueAndBarrierMs": 1054.7000000476835,
+      "readCalls": 6,
+      "restoreMs": 0,
+      "totalMs": 24033.89999997616
+    },
+    "timings": [
+      {
+        "birthEcologyMs": 0,
+        "canonicalValidationMs": 263.60000014305115,
+        "generationMs": 0,
+        "historicalValidationMs": 2429.1999999284744,
+        "otherMs": 919.6999998092653,
+        "ownerValidationAndRestoreMs": 559.3000000715256,
+        "persistenceMs": 0,
+        "prefetchMs": 176.10000002384186,
+        "preparation": {
+          "cpuMs": 0,
+          "maxUnitMs": 0,
+          "units": 0,
+          "yields": 3
+        },
+        "publicationMs": 126.20000004768372,
+        "queueAndBarrierMs": 3556.7000000476837,
+        "readCalls": 3,
+        "restoreMs": 0,
+        "totalMs": 8030.800000071526
+      },
+      {
+        "birthEcologyMs": 0,
+        "canonicalValidationMs": 333.60000014305115,
+        "generationMs": 0,
+        "historicalValidationMs": 3053.7000000476837,
+        "otherMs": 754.299999833107,
+        "ownerValidationAndRestoreMs": 305.10000002384186,
+        "persistenceMs": 0,
+        "prefetchMs": 284.69999980926514,
+        "preparation": {
+          "cpuMs": 0,
+          "maxUnitMs": 0,
+          "units": 0,
+          "yields": 3
+        },
+        "publicationMs": 94.70000004768372,
+        "queueAndBarrierMs": 370.7000000476837,
+        "readCalls": 4,
+        "restoreMs": 0,
+        "totalMs": 5196.799999952316
+      },
+      {
+        "birthEcologyMs": 0,
+        "canonicalValidationMs": 4776.700000047684,
+        "generationMs": 0,
+        "historicalValidationMs": 10460.900000095367,
+        "otherMs": 6751.899999976158,
+        "ownerValidationAndRestoreMs": 399.4999998807907,
+        "persistenceMs": 0,
+        "prefetchMs": 511.5,
+        "preparation": {
+          "cpuMs": 0,
+          "maxUnitMs": 0,
+          "units": 0,
+          "yields": 3
+        },
+        "publicationMs": 78.69999992847443,
+        "queueAndBarrierMs": 1054.7000000476835,
+        "readCalls": 6,
+        "restoreMs": 0,
+        "totalMs": 24033.89999997616
+      },
+      {
+        "birthEcologyMs": 0,
+        "canonicalValidationMs": 447.6999999284744,
+        "generationMs": 0,
+        "historicalValidationMs": 3673.100000023842,
+        "otherMs": 999.4999998807908,
+        "ownerValidationAndRestoreMs": 407.10000002384186,
+        "persistenceMs": 0,
+        "prefetchMs": 376.2000000476837,
+        "preparation": {
+          "cpuMs": 0,
+          "maxUnitMs": 0,
+          "units": 0,
+          "yields": 3
+        },
+        "publicationMs": 61.40000009536743,
+        "queueAndBarrierMs": 2095.7999999523163,
+        "readCalls": 6,
+        "restoreMs": 0,
+        "totalMs": 8060.799999952316
+      }
+    ],
+    "movingLongFrameCount": 70,
+    "movingMaxFrameMs": 1004.3000000000028,
+    "longFrameEvents": [
+      {
+        "milliseconds": 1000.1000000000056,
+        "motionElapsedSec": 1.6800000000000006,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 5.001086811394121,
+          "authored": 0.1786551370148991,
+          "camera": 1.099436838408729,
+          "ecology": 4.686737112586299,
+          "render": 8.204945296944144,
+          "streaming": 6.593557978895606,
+          "water": 0.2604334369388337
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 999.8999999999942,
+        "motionElapsedSec": 1.8000000000000007,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 4.710978132638895,
+          "authored": 0.170789625697595,
+          "camera": 1.0694931497994846,
+          "ecology": 4.688063406096041,
+          "render": 7.824450776786473,
+          "streaming": 5.934202181006046,
+          "water": 0.25439008609239294
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1999999999972,
+        "motionElapsedSec": 1.9200000000000008,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 4.449880321759192,
+          "authored": 0.17371065597527816,
+          "camera": 1.0625438348195362,
+          "ecology": 4.809257075023179,
+          "render": 7.502005689571083,
+          "streaming": 5.340781962905441,
+          "water": 0.24895108225152524
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000,
+        "motionElapsedSec": 2.040000000000001,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 4.244892299120016,
+          "authored": 0.16633958084100717,
+          "camera": 1.056289451337583,
+          "ecology": 4.908331374673419,
+          "render": 7.11180512299816,
+          "streaming": 4.8067037666148975,
+          "water": 0.25405596925800117
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1000000000056,
+        "motionElapsedSec": 2.160000000000001,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 4.000403064439643,
+          "authored": 0.15970562514109227,
+          "camera": 1.0306605014354528,
+          "ecology": 4.927498239590263,
+          "render": 6.800624610698344,
+          "streaming": 4.326033389953408,
+          "water": 0.25865037948475844
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1000000000058,
+        "motionElapsedSec": 2.280000000000001,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.7703627627640506,
+          "authored": 0.15373506501116885,
+          "camera": 1.007594446523536,
+          "ecology": 5.0247484132470515,
+          "render": 6.480562152012696,
+          "streaming": 3.893430050958067,
+          "water": 0.24278533199953944
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.0999999999914,
+        "motionElapsedSec": 2.4000000000000012,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.623326493640203,
+          "authored": 0.15836156327842354,
+          "camera": 1.026834994718625,
+          "ecology": 5.26227356953816,
+          "render": 6.292505939195612,
+          "streaming": 3.504087045862261,
+          "water": 0.23850679164702815
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000,
+        "motionElapsedSec": 2.520000000000002,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.450993841891997,
+          "authored": 0.17252541410313857,
+          "camera": 1.0741514952467626,
+          "ecology": 5.426046210200158,
+          "render": 6.213255345276051,
+          "streaming": 3.1536783412760347,
+          "water": 0.22465611486651113
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1000000000056,
+        "motionElapsedSec": 2.6400000000000015,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.265894448166054,
+          "authored": 0.1752728774611963,
+          "camera": 1.086736350490458,
+          "ecology": 5.683441589180142,
+          "render": 6.111929803595888,
+          "streaming": 2.838310507148431,
+          "water": 0.2421905129166032
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004,
+        "motionElapsedSec": 2.7600000000000016,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.139305003349449,
+          "authored": 0.16774559209926249,
+          "camera": 1.1180627130572265,
+          "ecology": 5.765097430262128,
+          "render": 6.020736816083742,
+          "streaming": 2.554479456433588,
+          "water": 0.23797146639331448
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1999999999972,
+        "motionElapsedSec": 2.8800000000000017,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.2653745006303185,
+          "authored": 0.18097102812096463,
+          "camera": 1.1062564417515035,
+          "ecology": 5.848587689620102,
+          "render": 6.158663132091182,
+          "streaming": 2.299031510790229,
+          "water": 0.2841743245223546
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1000000000058,
+        "motionElapsedSec": 3.0000000000000018,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.168837057719844,
+          "authored": 0.1828739300772398,
+          "camera": 1.115630790423796,
+          "ecology": 5.883728913505534,
+          "render": 6.012796823650436,
+          "streaming": 2.079128362095392,
+          "water": 0.2757568849175618
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.0999999999914,
+        "motionElapsedSec": 3.120000000000002,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.121953356716231,
+          "authored": 0.17458653945370162,
+          "camera": 1.1140677137656023,
+          "ecology": 5.855356012618238,
+          "render": 5.99151714843795,
+          "streaming": 1.871215525885853,
+          "water": 0.26818118927324824
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1999999999972,
+        "motionElapsedSec": 3.240000000000002,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.2897580162762368,
+          "authored": 0.17712789027670303,
+          "camera": 1.102660942389042,
+          "ecology": 5.959820408972228,
+          "render": 6.142365433594155,
+          "streaming": 1.6840939732972675,
+          "water": 0.311363075114295
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000,
+        "motionElapsedSec": 3.360000000000002,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.230782207496056,
+          "authored": 0.15941510124903274,
+          "camera": 1.1023948505343235,
+          "ecology": 5.933838372843377,
+          "render": 6.008128885466368,
+          "streaming": 1.515684575967541,
+          "water": 0.3002267723712371
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.2000000000118,
+        "motionElapsedSec": 3.480000000000002,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.0977039843622647,
+          "authored": 0.1634735839715721,
+          "camera": 1.102155367865077,
+          "ecology": 6.010454540327411,
+          "render": 5.8573159969197315,
+          "streaming": 1.364116118370787,
+          "water": 0.2802040975182992
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000,
+        "motionElapsedSec": 3.6000000000000023,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.4179335811576665,
+          "authored": 0.16712623034278648,
+          "camera": 1.1819398286943836,
+          "ecology": 6.059409086294671,
+          "render": 5.9115843948435725,
+          "streaming": 1.2277045065337084,
+          "water": 0.3121836901506551
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004,
+        "motionElapsedSec": 3.7200000000000024,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.296140227810272,
+          "authored": 0.16041360969269364,
+          "camera": 1.183745838672388,
+          "ecology": 6.023468182433575,
+          "render": 5.780425957743401,
+          "streaming": 1.1049340558803376,
+          "water": 0.2909653235197754
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1999999999972,
+        "motionElapsedSec": 3.8400000000000025,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.1865261978766872,
+          "authored": 0.16437225349179585,
+          "camera": 1.1553712524209634,
+          "ecology": 5.99112136895859,
+          "render": 5.612383364353247,
+          "streaming": 0.9944406502923038,
+          "water": 0.2818687959361695
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004,
+        "motionElapsedSec": 3.960000000000002,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.1278735804732047,
+          "authored": 0.16793503291098785,
+          "camera": 1.1198341224104955,
+          "ecology": 5.9320092296785445,
+          "render": 5.53114502314955,
+          "streaming": 0.8949965852630735,
+          "water": 0.27368192111092415
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.0999999999914,
+        "motionElapsedSec": 4.080000000000003,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.5950862176575127,
+          "authored": 0.1811415248515175,
+          "camera": 1.207850710169446,
+          "ecology": 6.168808313863248,
+          "render": 6.908030516066224,
+          "streaming": 0.8054969267367661,
+          "water": 0.3263137361523891
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004,
+        "motionElapsedSec": 4.200000000000003,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.445577598275947,
+          "authored": 0.17302737475055155,
+          "camera": 1.1570656319999442,
+          "ecology": 6.101927482476923,
+          "render": 6.54722745969123,
+          "streaming": 0.7349472364472752,
+          "water": 0.31368236730552185
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1000000000056,
+        "motionElapsedSec": 4.320000000000003,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.5510198384483527,
+          "authored": 0.18572464442805375,
+          "camera": 1.1613590616473926,
+          "ecology": 6.061734727076674,
+          "render": 6.4925047137221075,
+          "streaming": 0.6614525128025477,
+          "water": 0.31231413772752703
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1999999999972,
+        "motionElapsedSec": 4.440000000000003,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.3559178569877033,
+          "authored": 0.18715218475361997,
+          "camera": 1.1252231507142818,
+          "ecology": 6.035561249600636,
+          "render": 6.303254232813154,
+          "streaming": 0.595307261522293,
+          "water": 0.3110827311073317
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1999999999972,
+        "motionElapsedSec": 4.560000000000003,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.2903260760573043,
+          "authored": 0.1984369615098864,
+          "camera": 1.092700830874482,
+          "ecology": 5.912005131793129,
+          "render": 6.2129288071476525,
+          "streaming": 0.5357765353700636,
+          "water": 0.3199744556124128
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1003.9000000000088,
+        "motionElapsedSec": 4.680000000000003,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.151293466067388,
+          "authored": 0.19859327012726932,
+          "camera": 1.0534307406344765,
+          "ecology": 5.81080461622963,
+          "render": 5.961635931201259,
+          "streaming": 0.4821988818330573,
+          "water": 0.3079770148195431
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.0999999999914,
+        "motionElapsedSec": 4.800000000000003,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.166164114692278,
+          "authored": 0.18873394549872816,
+          "camera": 1.038087664186843,
+          "ecology": 5.849724159375039,
+          "render": 6.285472330928576,
+          "streaming": 0.4339789936497516,
+          "water": 0.3071793204901461
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.2000000000118,
+        "motionElapsedSec": 4.9200000000000035,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.059547705607236,
+          "authored": 0.18986055571722696,
+          "camera": 1.0142788929997872,
+          "ecology": 5.874751733900792,
+          "render": 6.106925097835719,
+          "streaming": 0.3905810942847765,
+          "water": 0.2964613932095031
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.0999999999914,
+        "motionElapsedSec": 5.040000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.03359294219907,
+          "authored": 0.20087449537713267,
+          "camera": 1.0128510036998086,
+          "ecology": 6.117276555742342,
+          "render": 6.056232590436332,
+          "streaming": 0.3515229848562988,
+          "water": 0.28681524673599545
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1999999999972,
+        "motionElapsedSec": 5.160000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.0402336503633487,
+          "authored": 0.20078705060779095,
+          "camera": 0.9915658985614562,
+          "ecology": 6.245548897783922,
+          "render": 6.130609326624327,
+          "streaming": 0.3163706863706689,
+          "water": 0.3081337220623959
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1000000000058,
+        "motionElapsedSec": 5.280000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.986210285327014,
+          "authored": 0.19070834793119767,
+          "camera": 0.9624093015527532,
+          "ecology": 6.27099400800553,
+          "render": 6.12754839634608,
+          "streaming": 0.2947336201177878,
+          "water": 0.3073203450877848
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1000000000058,
+        "motionElapsedSec": 5.400000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.007589261562684,
+          "authored": 0.19163751790644948,
+          "camera": 0.9761683618607346,
+          "ecology": 6.223894602436606,
+          "render": 6.254793566248216,
+          "streaming": 0.27526026049019486,
+          "water": 0.29658830342644893
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.0999999999914,
+        "motionElapsedSec": 5.520000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.9968303330222303,
+          "authored": 0.1924737708841761,
+          "camera": 0.9685515232904754,
+          "ecology": 6.251505142192946,
+          "render": 6.069314207239208,
+          "streaming": 0.24773423444117537,
+          "water": 0.2969294802363614
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1000000000058,
+        "motionElapsedSec": 5.640000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.0771472949516356,
+          "authored": 0.19322638664320113,
+          "camera": 0.9916963757297996,
+          "ecology": 6.236354630357837,
+          "render": 6.102382796052031,
+          "streaming": 0.22296081099705783,
+          "water": 0.30723652982853944
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.3000000000028,
+        "motionElapsedSec": 5.760000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.009432563072286,
+          "authored": 0.2039037551314384,
+          "camera": 1.022526733388448,
+          "ecology": 6.372719157785311,
+          "render": 6.172144511678456,
+          "streaming": 0.20066472989735207,
+          "water": 0.31651288638242864
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004,
+        "motionElapsedSec": 5.880000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.0084893067650578,
+          "authored": 0.21351337484992297,
+          "camera": 1.040274064817975,
+          "ecology": 6.665447249159337,
+          "render": 6.10493006051061,
+          "streaming": 0.18059825690761688,
+          "water": 0.31486159297581423
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.0999999999914,
+        "motionElapsedSec": 6.000000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.0376403713201805,
+          "authored": 0.21216204213330225,
+          "camera": 1.0362466583361774,
+          "ecology": 6.7489025242434035,
+          "render": 6.544437054459549,
+          "streaming": 0.16253843121685518,
+          "water": 0.31337544083079016
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000,
+        "motionElapsedSec": 6.1200000000000045,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 3.143876324651419,
+          "authored": 0.23094583553578624,
+          "camera": 1.1226220020393027,
+          "ecology": 6.904012267050692,
+          "render": 6.759993353781966,
+          "streaming": 0.14628458809516967,
+          "water": 0.33203789674771117
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000,
+        "motionElapsedSec": 6.240000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.989488694570463,
+          "authored": 0.2178512543663934,
+          "camera": 1.080359806603744,
+          "ecology": 6.89361103557725,
+          "render": 6.543994020787956,
+          "streaming": 0.1316561292856527,
+          "water": 0.3288341023045685
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1000000000058,
+        "motionElapsedSec": 6.360000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.890539825113417,
+          "authored": 0.21606612177719672,
+          "camera": 1.102323833095927,
+          "ecology": 6.864249934403711,
+          "render": 6.349594621093346,
+          "streaming": 0.11849051635708743,
+          "water": 0.3159506849215543
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000,
+        "motionElapsedSec": 6.480000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.8014858426020757,
+          "authored": 0.21445951436784863,
+          "camera": 1.1420914497863344,
+          "ecology": 6.8878249433475265,
+          "render": 6.114635158984012,
+          "streaming": 0.1066414647213787,
+          "water": 0.3043556092768415
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1999999999972,
+        "motionElapsedSec": 6.600000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.791337251189311,
+          "authored": 0.21301356769943536,
+          "camera": 1.0978823095760726,
+          "ecology": 6.729042444244403,
+          "render": 5.943171640701426,
+          "streaming": 0.09597731824924084,
+          "water": 0.2839200507333432
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1000000000058,
+        "motionElapsedSec": 6.720000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.6922035332229375,
+          "authored": 0.21171221569786344,
+          "camera": 1.108094071465908,
+          "ecology": 6.726138192667406,
+          "render": 5.798854476631283,
+          "streaming": 0.08637958642431674,
+          "water": 0.2855280408916373
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.0999999999914,
+        "motionElapsedSec": 6.840000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.642983172748086,
+          "authored": 0.2005409845913339,
+          "camera": 1.1172846690876888,
+          "ecology": 6.683524380553223,
+          "render": 5.6789690313523415,
+          "streaming": 0.08774163016607085,
+          "water": 0.2769752415708452
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1000000000056,
+        "motionElapsedSec": 6.960000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.578684855473278,
+          "authored": 0.20048687897964315,
+          "camera": 1.1255562069472915,
+          "ecology": 6.795171949650458,
+          "render": 5.521072130601293,
+          "streaming": 0.07896746714946377,
+          "water": 0.2892777150295749
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004,
+        "motionElapsedSec": 7.080000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.5108163675417643,
+          "authored": 0.2004381958500504,
+          "camera": 1.083000579100005,
+          "ecology": 6.625654757069598,
+          "render": 5.42896491992535,
+          "streaming": 0.0710707204345174,
+          "water": 0.29034995067917474
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.0999999999914,
+        "motionElapsedSec": 7.2000000000000055,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.509734730787588,
+          "authored": 0.200394369112488,
+          "camera": 1.104700528342562,
+          "ecology": 6.6130892813626385,
+          "render": 5.496068430317001,
+          "streaming": 0.06396364839106566,
+          "water": 0.2913149508428857
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1000000000056,
+        "motionElapsedSec": 7.320000000000006,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.478761262477201,
+          "authored": 0.2103549393537966,
+          "camera": 1.1142304683557485,
+          "ecology": 6.571780346073817,
+          "render": 5.406461589669487,
+          "streaming": 0.0575672835519591,
+          "water": 0.2921834509902256
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1000000000056,
+        "motionElapsedSec": 7.440000000000006,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.5008851409978523,
+          "authored": 0.19931943588167375,
+          "camera": 1.1528074215201736,
+          "ecology": 6.854602321003179,
+          "render": 5.465815430702538,
+          "streaming": 0.05181055519676319,
+          "water": 0.3029651035070172
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.2999999999884,
+        "motionElapsedSec": 7.560000000000006,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.4407966364348104,
+          "authored": 0.19938749706187797,
+          "camera": 1.157526672215599,
+          "ecology": 6.869142088902861,
+          "render": 5.3492338828639125,
+          "streaming": 0.04662949967708687,
+          "water": 0.30266858838794397
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004,
+        "motionElapsedSec": 7.680000000000006,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.4367169823280728,
+          "authored": 0.189448749739876,
+          "camera": 1.151773995457296,
+          "ecology": 6.7822278800125755,
+          "render": 5.164310494577521,
+          "streaming": 0.04196654970937819,
+          "water": 0.30240172478077804
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1000000000058,
+        "motionElapsedSec": 7.800000000000006,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.423045291247823,
+          "authored": 0.1805038771500742,
+          "camera": 1.1265965935273807,
+          "ecology": 6.684005087242947,
+          "render": 5.0478794451197695,
+          "streaming": 0.03776989473844037,
+          "water": 0.30216154753432867
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004,
+        "motionElapsedSec": 7.920000000000006,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.4007407668914125,
+          "authored": 0.18245349420343837,
+          "camera": 1.1039369317904568,
+          "ecology": 6.635604571366095,
+          "render": 4.963091505376164,
+          "streaming": 0.033992905264596335,
+          "water": 0.29194538562833844
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000.1000000000056,
+        "motionElapsedSec": 8.040000000000006,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.3506666997390147,
+          "authored": 0.1642081447830945,
+          "camera": 1.0735432338430395,
+          "ecology": 6.492044118997858,
+          "render": 4.826782357222734,
+          "streaming": 0.030593614738136703,
+          "water": 0.28275083991294725
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.0999999999914,
+        "motionElapsedSec": 8.160000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.385600022612556,
+          "authored": 0.17778733745734246,
+          "camera": 1.1061889080745495,
+          "ecology": 6.582839704713886,
+          "render": 5.064104126268832,
+          "streaming": 0.02753425326432303,
+          "water": 0.31447575830583835
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1004.1999999999972,
+        "motionElapsedSec": 8.280000000000005,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.367040013198743,
+          "authored": 0.1800086084799798,
+          "camera": 1.0655700220354665,
+          "ecology": 6.424555734242498,
+          "render": 5.187693708873578,
+          "streaming": 0.024780827937890732,
+          "water": 0.3030281872436261
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 1000,
+        "motionElapsedSec": 8.400000000000004,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.520336009494683,
+          "authored": 0.17200773809523864,
+          "camera": 1.099013029368663,
+          "ecology": 6.542100163202434,
+          "render": 5.238924342754592,
+          "streaming": 0.02230274514410166,
+          "water": 0.302725363750892
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 779.1000000000058,
+        "motionElapsedSec": 8.520000000000003,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.528302410929401,
+          "authored": 0.17480696905408635,
+          "camera": 1.1191117216634252,
+          "ecology": 6.757890151650563,
+          "render": 5.2350319132475045,
+          "streaming": 0.020072470629691495,
+          "water": 0.312452824991617
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 475.1000000000058,
+        "motionElapsedSec": 24.2983999999998,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.1101230944535307,
+          "authored": 0.09998434963626304,
+          "camera": 0.727195946017541,
+          "ecology": 0.03375609544205036,
+          "render": 2.562601099818292,
+          "streaming": 46.73383310085871,
+          "water": 0.14334398427479336
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 658.6000000000058,
+        "motionElapsedSec": 32.3647999999998,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.41439493490205,
+          "authored": 0.1974203348247795,
+          "camera": 1.1855578904054171,
+          "ecology": 0.08807149310540295,
+          "render": 22.639927377406227,
+          "streaming": 47.07715526953124,
+          "water": 0.255334191849813
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 350.0999999999767,
+        "motionElapsedSec": 66.29799999999999,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.0981059041001229,
+          "authored": 0.07300791477148963,
+          "camera": 0.5529097861384382,
+          "ecology": 0.05742386364890027,
+          "render": 2.2313307070227726,
+          "streaming": 34.30477771082494,
+          "water": 0.113061625512292
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 383.3999999999942,
+        "motionElapsedSec": 77.51439999999992,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.7812977533610403,
+          "authored": 0.1730204958142462,
+          "camera": 0.9025815370028742,
+          "ecology": 0.06047865397990283,
+          "render": 4.031827807153963,
+          "streaming": 34.688441451432475,
+          "water": 0.19611376373605716
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 325.0999999999767,
+        "motionElapsedSec": 98.89399999999976,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.501563349502446,
+          "authored": 0.11377305205718838,
+          "camera": 0.7812383896519026,
+          "ecology": 0.04678919102320267,
+          "render": 3.0224945223983317,
+          "streaming": 29.822738711176648,
+          "water": 0.1720874101594526
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 516.6999999999825,
+        "motionElapsedSec": 125.6071999999993,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.499816402779344,
+          "authored": 0.11125016492092472,
+          "camera": 0.8974679711357783,
+          "ecology": 0.09222406476600337,
+          "render": 2.8197398921772465,
+          "streaming": 49.03148308459403,
+          "water": 0.1439372534386835
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 412.5,
+        "motionElapsedSec": 134.5407999999997,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.3019762438933116,
+          "authored": 0.07542726791409178,
+          "camera": 0.941750034923125,
+          "ecology": 0.07219558876530681,
+          "render": 2.6731657460546456,
+          "streaming": 40.85050963864058,
+          "water": 0.1672293965220902
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 408.3999999999942,
+        "motionElapsedSec": 167.6744000000024,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.198345709541825,
+          "authored": 0.12514641522683567,
+          "camera": 0.902148554177086,
+          "ecology": 0.07435841988300003,
+          "render": 2.5858920077215473,
+          "streaming": 38.14177092764563,
+          "water": 0.14459637954906013
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 300,
+        "motionElapsedSec": 187.62480000000383,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.451842324054354,
+          "authored": 0.10345958149264764,
+          "camera": 0.9069915415712804,
+          "ecology": 0.0862199553355016,
+          "render": 3.2321070399363587,
+          "streaming": 29.00295092665076,
+          "water": 0.1551672075194278
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 366.3999999999651,
+        "motionElapsedSec": 200.00840000000463,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.1802316515295628,
+          "authored": 0.17080742497540732,
+          "camera": 1.2119186487422633,
+          "ecology": 0.11590416436183372,
+          "render": 4.160532300235875,
+          "streaming": 35.28032478031186,
+          "water": 0.24209314561855233
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 312.5999999999767,
+        "motionElapsedSec": 218.25440000000555,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 1.98820338624869,
+          "authored": 0.18467887733981864,
+          "camera": 0.8873207821199716,
+          "ecology": 0.10039247532494316,
+          "render": 3.787028150093208,
+          "streaming": 30.201857448207047,
+          "water": 0.2384682679073099
+        },
+        "waitingForRegions": false
+      },
+      {
+        "milliseconds": 399.9000000000233,
+        "motionElapsedSec": 233.3212000000064,
+        "motionKind": "reef-valley-route",
+        "paused": false,
+        "previousCpuMs": {
+          "animals": 2.568230401984858,
+          "authored": 0.16559968737328204,
+          "camera": 1.150410742146014,
+          "ecology": 0.15381618874742575,
+          "render": 4.978459192484322,
+          "streaming": 38.5183210551668,
+          "water": 0.30167641069124934
+        },
+        "waitingForRegions": false
+      }
+    ],
+    "lastPreparation": {
+      "pending": false,
+      "completed": 94,
+      "cancelled": 0,
+      "laneCount": 3,
+      "contexts": 4
+    },
+    "viewports": [
+      {
+        "height": 720,
+        "pixelRatio": 1.5,
+        "width": 1280
+      }
+    ]
+  },
+  "gates": {
+    "sample5Seconds": false,
+    "originalQualityWholePlaybackSmooth": false,
+    "directorNoLongWait": false,
+    "firstThreeDirectorChaptersComplete": false,
+    "full67DirectorComplete": false,
+    "release": false
+  },
+  "method": {
+    "sample": "One guide-page navigation; two 1x full playbacks, second using From beginning without reload. Original DPR1.5; no viewport override. Initial run settings1280x720; final canvas resized to610x871.333. Initial ~1s frame cadence cause unconfirmed.",
+    "director": "Guide-page navigation, first chapter at4x after initial1x start, no chapter seek or retry. Stopped on first chapter after sampled21s wait failure. Planned first3 and full67 not completed.",
+    "sampleCanvasFinal": "{\n  \"cssHeight\": 871.3333740234375,\n  \"cssWidth\": 610,\n  \"height\": 1307,\n  \"width\": 915\n}",
+    "directorStop": {
+      "chapter": "热带礁谷：完整海区",
+      "elapsed": 243.8376000000067,
+      "completed": []
+    },
+    "nativeWorkFinishedBeforeNavigation": true,
+    "noCodeEditsDuringPlayback": true
+  },
+  "pushed": false,
+  "deployed": false,
+  "stoppedAfterFailedGate": true
+}

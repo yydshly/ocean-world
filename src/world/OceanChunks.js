@@ -4,6 +4,7 @@ export { oceanTerrainColor } from './oceanTerrainBuffers.js';
 import * as THREE from 'three';
 import { withWholeSeabedGenerator } from '../wholeSeabedComposition.js';
 import { OceanBackgroundPreparation } from '../oceanBackgroundPreparation.js';
+import { OceanHistoryPreparation } from '../oceanHistoryPreparation.js';
 import { createOceanGenerator, OCEAN_CHUNK_SIZE, OCEAN_FORMATION_LIMIT } from '../oceanGeneration.js';
 import { createLivingRidgeGenerator } from '../livingRidgeGeology.js';
 import { OCEAN_ROCK_PROFILES, OCEAN_ROCK_SURFACE_VERSION, oceanRockMesh } from '../oceanRockShape.js';
@@ -219,7 +220,7 @@ export class OceanChunks {
   _createGenerator(seed) {
     const base = withWholeSeabedGenerator(createOceanGenerator(seed), this._wholeSeabedRequested);
     return this._livingGeologyRequested && base.profile === 'living-shallows-v1'
-        ? createLivingRidgeGenerator(base, { preparation: this._backgroundPreparationRequested && typeof Worker === 'function' ? new OceanBackgroundPreparation() : null }) : base;
+        ? createLivingRidgeGenerator(base, { preparation: this._backgroundPreparationRequested && typeof Worker === 'function' ? new OceanHistoryPreparation() : null }) : base;
   }
 
   _configureAssetKit() {
