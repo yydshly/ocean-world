@@ -1,0 +1,164 @@
+{
+  "stage": "stage-04-complete-habitats-local-20261013",
+  "date": "2026-10-13",
+  "baseCommit": "655d9c14c0dd5d829554983720874005cd1aeda9",
+  "status": "archived-local-prototype-visual-partial",
+  "localOnly": true,
+  "population": {
+    "individuals": 293,
+    "categories": 38,
+    "assetsAdded": 0,
+    "habitatLinked": {
+      "schools": 102,
+      "sandProbers": 9,
+      "grassEdgeResidents": 18,
+      "anchorIds": [
+        "reef-entry",
+        "reef-resident-opening",
+        "reef-sand-gateway",
+        "shallow-reef-goatfish-208",
+        "shallow-reef-goatfish-209",
+        "shallow-reef-goatfish-210",
+        "shallow-reef-goatfish-211",
+        "shallow-reef-goatfish-212",
+        "shallow-reef-goatfish-213",
+        "shallow-reef-goatfish-214",
+        "shallow-reef-goatfish-215",
+        "shallow-reef-goatfish-216",
+        "meadow-entry",
+        "meadow-mid",
+        "meadow-outer"
+      ]
+    }
+  },
+  "route": {
+    "duration": 240,
+    "lengthM": 90.08271084770561,
+    "positionsPreserved": 961
+  },
+  "habitat": {
+    "reorganizedFormations": 24,
+    "declined": [
+      "sample-rock-15",
+      "sample-rock-32",
+      "sample-rock-41"
+    ],
+    "movedResidents": 6,
+    "after": {
+      "grass": 332,
+      "rubble": 295,
+      "rocks": 85
+    },
+    "meadow": {
+      "bounds": {
+        "minX": 18,
+        "maxX": 51,
+        "minZ": 2.2,
+        "maxZ": 18
+      },
+      "clumps": 306,
+      "channelWidthM": 1.44,
+      "grassBatches": 5,
+      "coreClumps": 267,
+      "fringeClumps": 39
+    },
+    "comparisonNote": "moved entries compare initialized substrate, not necessarily previous Stage03 poses; visual before/after uses archived Stage03 screenshots"
+  },
+  "playback": {
+    "speed": 1,
+    "width": 1280,
+    "height": 720,
+    "pixelRatio": 1.0000000298023224,
+    "duration": 240,
+    "startedAt": 218996.69999992847,
+    "resolutionHistory": [
+      {
+        "time": 0,
+        "scale": 1
+      }
+    ],
+    "interruptions": [],
+    "completed": true,
+    "lastModelSecond": 240,
+    "elapsedWallSeconds": 240.04000000007153,
+    "averageFps": 167.58768796228986,
+    "p95FrameMs": 12.5,
+    "maxFrameMs": 133.30000000004657,
+    "uninterrupted": true
+  },
+  "navigationToReadyMs": 3949.399999976158,
+  "environment": {
+    "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "context": "WebGL2RenderingContext"
+  },
+  "narration": {
+    "playingClips": [
+      "open-water",
+      "reef-edge",
+      "reef-entry",
+      "reef-sand",
+      "sand-life",
+      "seagrass"
+    ],
+    "errors": []
+  },
+  "console": [],
+  "tests": {
+    "passed": 32,
+    "fullRepository": false,
+    "projectedTwoCategoryAndLinkedWindowsSeconds": [
+      88,
+      44,
+      39.5
+    ],
+    "note": "This projection floor also passed the previous version; it is not proof of improvement or unoccluded perception. First integration only failed an obsolete four-moves assertion, updated intentionally."
+  },
+  "independentSupportAudit": {
+    "bodySamples": 13185,
+    "minClearanceM": 0.012,
+    "hostSamples": 2380,
+    "hostedAnimals": 28,
+    "missingSupport": 0,
+    "instanceMatricesVerified": false
+  },
+  "buildSeconds": 11.73,
+  "runtimeHashes": {
+    "src/ShallowSampleApp.jsx": "964ac0f93ec90a799a15b1d8a4dd3e5402611663eb66e3dadee9fd66728b9952",
+    "src/shallowJourney.js": "2cea11e66e433baec61ae72e87a1a5540d8f7f6c6bacfbe9660cdd03e067fe16",
+    "src/shallowSample.js": "beb8e9a85296e57ebe48f34ef651a6a5c07e4b588b1f8be4e9ffa4b4e2a134b6",
+    "src/shallowJourneyLife.js": "bc998085fb4ee0ca8d913fa7008df3013fffa2a66491473378fc4c79ff4eb429",
+    "src/shallowJourneyHabitat.js": "e12999fc2a8a1722d39c9539565714ace56dcb1eded3e3763de72d58e2bdc8db",
+    "src/world/ShallowSampleScene.js": "0f44dbb527655a13e84eac28ba8c7b218e958ce21dc19b57ff84dd536beb3862",
+    "src/world/ShallowJourneyActivity.js": "22318b9b6937694cc422d6faa8c808075e051471f0bfbf54ec15b0c4b0884931",
+    "src/world/ShallowJourneyAnimalAppearance.js": "86480e0424088c25c61e2b429b05ba66798824550277a845b705d2e0b27e9006",
+    "dist/client/assets/ShallowSampleApp-C9s47SY4.js": "da8a4a775aaeed620af8c486100fee1562a1d60cf7042fb164547e69ef8b09d1"
+  },
+  "screenshots": {
+    "times": [
+      24,
+      96,
+      144,
+      168,
+      192
+    ],
+    "viewport": [
+      1280,
+      720
+    ],
+    "before": "stage-03-water-column archive;168 captured before rebuilding this turn",
+    "after": "actual Stage04 browser frames"
+  },
+  "acceptance": {
+    "technical": "pass within stated local scope",
+    "visual": "partial; connected meadow is apparent, opening near-reef change limited; semantic 12/10 second visibility remains a perceptual criterion, not asserted proven by screenshots",
+    "iteration": "one integrated implementation with one concentrated correctness/visual review; no follow-up asset or parameter loop"
+  },
+  "limits": [
+    "Opening near-reef silhouette has limited change; many moved formations are peripheral or later in route.",
+    "Scan hard edges, animal model appearance, repeated grass and small distant animals remain.",
+    "Authored habitat motion, not a full food web or agent avoidance simulation.",
+    "Local cached desktop run, not mobile/public cold-start or a controlled performance comparison.",
+    "Surface samples and selected frames do not prove all dynamic inter-animal collisions absent."
+  ]
+}

@@ -47,7 +47,7 @@ export function ShallowSampleApp({journey=false}){
       if(disposed)return;
       const modelStart=performance.now();
       world=new ShallowSampleScene(Number.isFinite(seed)?seed:55,{scannedReef:params.get('reef')==='scanned',livingCommunities:journey});setSummary({...world.summary,scannedReef:world.model.scannedReef});
-      if(journey){route=createShallowJourney(world.model);metrics.experience='stage-03-living-communities';metrics.routeLengthM=route.length;metrics.livingCommunities={habitat:world.model.journeyHabitat??null,life:world.model.journeyLife??null};metrics.routeSamples=[];world.update(0,true,route.view(0));}
+      if(journey){route=createShallowJourney(world.model);metrics.experience='stage-04-complete-habitats';metrics.routeLengthM=route.length;metrics.livingCommunities={habitat:world.model.journeyHabitat??null,life:world.model.journeyLife??null};metrics.routeSamples=[];world.update(0,true,route.view(0));}
       metrics.modelBuildMs=performance.now()-modelStart;
       metrics.sceneBuildStagesMs={...world.buildTimings};
       metrics.preparedCover={used:world.model.preparedCover,signature:world.model.coverInputSignature,raw:world.model.coverRawInputSignature,authoringRaw:world.model.coverExpectedRawSignature};
@@ -169,7 +169,7 @@ export function ShallowSampleApp({journey=false}){
     <output id="shallow-diagnostics" hidden>{JSON.stringify(runtime.current?.diagnostics.metrics??null)}</output>
     <div className="sample-canvas" ref={canvas} tabIndex={journey?0:undefined} role={journey?"region":undefined} aria-label={journey?"浅海探索画面":undefined} onPointerDown={()=>canvas.current?.focus({preventScroll:true})}/>
     <header className="sample-header"><span className="sample-brand">TIDAL <small>浅海观察</small></span><nav><a href={`${import.meta.env.BASE_URL}overview/`}>产品导览</a> · <a href={`${import.meta.env.BASE_URL}assets/shallow-artist/credits.html`} target="_blank" rel="noreferrer">模型来源</a> · <a href={exploration.href}>进入持续探索 ↗</a></nav></header>
-    <section className="sample-title" aria-live="polite"><p>{journey?'阶段03 · 三个浅海群落 · 4分钟':'浅海样板 · 连续巡游 75 秒'}</p><h1>{chapter.title}</h1><span>{chapter.detail}</span></section>
+    <section className="sample-title" aria-live="polite"><p>{journey?'阶段04 · 三个完整栖息地 · 4分钟':'浅海样板 · 连续巡游 75 秒'}</p><h1>{chapter.title}</h1><span>{chapter.detail}</span></section>
     {summary&&<aside className="sample-community">{summary.species} 类动物 · {summary.animals} 个体<span>{journey?chapter.life:summary.scannedReef?'扫描珊瑚试验 · 整景验收未通过':'群游 · 巡底 · 慢移 · 固着'}</span></aside>}
     {error&&<div className="sample-error" role="alert">{error}<button onClick={()=>window.location.reload()}>重新载入</button></div>}
     {!ready&&!error&&<div className="sample-preparing" role="status">正在准备浅海场景…</div>}

@@ -1,3 +1,5 @@
+> **阶段04 · 栖息地整合已本地归档：** [进入4分钟体验](http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55) · [五段实景前后对照](http://127.0.0.1:4175/ocean-world/output/validation/stage-04-complete-habitats/review.html) · [范围与验收](docs/stages/STAGE_04_COMPLETE_HABITATS.md)。外围礁缘重排、连片草床与129只动物的生境活动接入；原路线、293个体/38类和资产保持。32项检查、完整240.04秒实播通过。视觉部分达成：草床变化清楚，开场近礁改善有限；模型感与硬边继续保留。只本地归档，没有部署线上。
+
 > **阶段03 · 水层与构图已本地归档：** [进入4分钟体验](http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55) · [六段实景前后对照](http://127.0.0.1:4175/ocean-world/output/validation/stage-03-water-column/review.html) · [范围与验收](docs/stages/STAGE_03_WATER_COLUMN.md)。4组主鱼群形成上下、远近层次，底栖活动保留；原路线、293个体、38展示类和资产不变。1倍速完整240.18实秒无中断，26项相关检查通过。既有动物模型感、礁体硬边与部分远景偏小保留；只本地归档，没有部署线上。
 
 > **阶段03 · 三个有生活感的浅海群落（本地归档）：** [进入4分钟体验](http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55) · [实景前后对比](http://127.0.0.1:4175/ocean-world/output/validation/stage-03-living-communities/review.html) · [阶段说明与验收](docs/stages/STAGE_03_LIVING_COMMUNITIES.md)。礁谷重新组织礁缘，沙道羊鱼停走探底，草床形成连续覆盖；5类关键动物外观更新，164个体参与群落行为。原293个体/38展示类、240秒路线保留。最终完整实播240.03实秒，六段讲解正常；本地缓存加载6.00秒，仍有礁体硬边与旧动物模型感。本轮只做一次集中修正后固定，不推送部署；以下线上入口仍为此前发布版。

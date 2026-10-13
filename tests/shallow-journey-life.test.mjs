@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {createShallowSample,sampleAnimalPosition} from '../src/shallowSample.js';
-import {initializeJourneyLife,evaluateJourneyLife,journeyLifeSummary} from '../src/shallowJourneyLife.js';
+import {initializeJourneyLife,configureJourneyHabitatLife,evaluateJourneyLife,journeyLifeSummary} from '../src/shallowJourneyLife.js';
+import {composeJourneyHabitats} from '../src/shallowJourneyHabitat.js';
 
 const model=createShallowSample(55);
 const population=model.agents.map(a=>({id:a.id,speciesId:a.speciesId,sizeM:a.sizeM,mode:a.mode}));
@@ -97,7 +98,7 @@ test('four existing shoals occupy a thick water column and real depth throughout
   }
 });
 
-test('water-column staging preserves the archived non-school trajectories',()=>{
+test('the unlinked stage03 behaviour layer retains its archived non-school trajectories',()=>{
   // Recorded from Stage03 before changing shoals. Rounded poses cover every
   // other animal, including turtles and the existing substrate-bound behaviours.
   const values=[];
@@ -119,4 +120,92 @@ test('display summaries disclose authored participation without inventing ecosys
   assert.ok(summary.activities['grass-edge-hold']>0&&summary.activities['grass-edge-swim']>0);
   assert.equal(journeyLifeSummary({},142),null);
   const base={x:1,z:2,lift:3};assert.equal(evaluateJourneyLife({},142,base),base);
+});
+
+test('post-composition linkage binds only the intended groups to actual habitat anchors',()=>{
+  const linked=createShallowSample(55);initializeJourneyLife(linked);
+  assert.equal(configureJourneyHabitatLife(linked),null,'authored habitat must exist before linkage');
+  composeJourneyHabitats(linked);
+  const before=structuredClone(linked.agents),identity=linked.agents.map(a=>[a.id,a.speciesId,a.sizeM,a.mode]);
+  const result=configureJourneyHabitatLife(linked);
+  assert.equal(configureJourneyHabitatLife(linked),result,'linkage is idempotent');
+  assert.deepEqual(linked.agents.map(a=>[a.id,a.speciesId,a.sizeM,a.mode]),identity);
+  assert.deepEqual({...result.habitatLinked,anchorIds:undefined},{schools:102,sandProbers:9,grassEdgeResidents:18,anchorIds:undefined});
+  const ids=new Set(Object.values(linked.journeyHabitat.lifeAnchors).flat().map(row=>row.id));
+  for(const [i,a]of linked.agents.entries()){
+    if(a.journeyLife?.course){
+      assert.ok(ids.has(a.journeyLife.habitatAnchor));
+      assert.ok(!['fixed','crawl'].includes(a.mode));
+      if(a.journeyLife.kind==='school')for(const field of ['lift','waterLayer','forward','side'])assert.equal(a.journeyLife[field],before[i].journeyLife[field]);
+    }else assert.deepEqual(a,before[i],'all other animals retain their composed behaviour exactly');
+  }
+  const saved=JSON.stringify(linked.agents),source=JSON.stringify(linked.journeyHabitat.lifeAnchors);
+  for(const a of linked.agents.filter(a=>a.journeyLife?.course)){
+    const times=[0,20,64,104,142,185,224,240];
+    assert.deepEqual(times.map(t=>evaluateJourneyLife(a,t)),times.toReversed().map(t=>evaluateJourneyLife(a,t)).reverse());
+    for(let t=0;t<=240;t+=.25){
+      const p=evaluateJourneyLife(a,t),next=evaluateJourneyLife(a,t+.01);
+      assert.ok([p.x,p.z,p.lift,p.vertical].every(Number.isFinite));
+      assert.ok(Math.hypot(next.x-p.x,next.z-p.z)/.01<.75,`${a.id}: habitat-linked speed at ${t}`);
+      assert.equal('y' in p,false,'the exact shared surface owns vertical support');
+    }
+  }
+  assert.equal(JSON.stringify(linked.agents),saved,'seeking never writes animal state');
+  assert.equal(JSON.stringify(linked.journeyHabitat.lifeAnchors),source,'seeking never writes authored habitat');
+});
+
+test('linked schools visibly traverse the authored openings while retaining volume',()=>{
+  const linked=createShallowSample(55,{livingCommunities:true});
+  for(const source of linked.journeyHabitat.lifeAnchors.reefPassages){
+    const agents=linked.agents.filter(a=>a.speciesId===source.speciesId),course=agents[0].journeyLife.course;
+    assert.deepEqual(course.points,source.points.map(({x,z})=>({x,z})));
+    let minX=Infinity,maxX=-Infinity;
+    const activities=new Set();
+    for(let t=0;t<=240;t+=2){
+      const poses=agents.map(a=>evaluateJourneyLife(a,t));
+      const height=poses.map((p,i)=>p.lift+p.vertical+(agents[i].schoolVertical??0));
+      assert.ok(Math.max(...height)-Math.min(...height)>1.8);
+      assert.ok(Math.min(...height)>1.5&&Math.max(...height)<5);
+      const mx=poses.reduce((n,p)=>n+p.x,0)/poses.length,mz=poses.reduce((n,p)=>n+p.z,0)/poses.length;
+      minX=Math.min(minX,mx);maxX=Math.max(maxX,mx);
+      const vx=poses.reduce((n,p)=>n+(p.x-mx)**2,0)/poses.length,vz=poses.reduce((n,p)=>n+(p.z-mz)**2,0)/poses.length;
+      const cov=poses.reduce((n,p)=>n+(p.x-mx)*(p.z-mz),0)/poses.length;
+      assert.ok(Math.sqrt((vx+vz-Math.sqrt((vx-vz)**2+4*cov*cov))/2)>.5,`${source.id}: flattened passage school`);
+      activities.add(poses[0].activity);
+    }
+    assert.ok(maxX-minX>6,`${source.id}: school stays at a fixed display location`);
+    assert.deepEqual([...activities].sort(),['school-passage','school-return']);
+  }
+});
+
+test('linked bottom communities follow real soft-bed and grass margins with whole-body support',()=>{
+  const linked=createShallowSample(55,{livingCommunities:true});
+  const grass=linked.grass.filter(g=>g.journeyHabitat==='continuous-meadow');
+  for(const a of linked.agents.filter(a=>['sand-probe','grass-edge'].includes(a.journeyLife?.kind))){
+    const sand=a.journeyLife.kind==='sand-probe',activities=new Set();let minX=Infinity,maxX=-Infinity;
+    const site=linked.journeyLife.footprints.find(p=>p.id===a.id);
+    for(let t=0;t<=240;t+=.5){
+      const p=evaluateJourneyLife(a,t),position=sampleAnimalPosition(linked,a,t),r=a.clearance?.radius??a.sizeM*.65;
+      activities.add(p.activity);minX=Math.min(minX,p.x);maxX=Math.max(maxX,p.x);
+      if(sand){
+        assert.ok(Math.hypot(p.x-site.x,p.z-site.z)+a.sizeM*.70<=site.r);
+        assert.ok(p.pitch>=-.14&&p.pitch<=0&&p.probeStrength>=0&&p.probeStrength<=1);
+      }else{
+        const nearest=Math.min(...grass.map(g=>Math.hypot(g.x-p.x,g.z-p.z)));
+        assert.ok(nearest<1.8,`${a.id}: lost the actual grass edge at ${t} (${nearest})`);
+      }
+      for(let i=0;i<9;i++){
+        const x=p.x+(i===8?0:Math.cos(i*Math.PI/4)*r),z=p.z+(i===8?0:Math.sin(i*Math.PI/4)*r);
+        const support=linked.surface(x,z,true),bodyBottom=position.y-(a.clearance?.bottom??a.sizeM*.15)-Math.abs(Math.sin(p.pitch))*a.sizeM*.5;
+        assert.ok(bodyBottom>=support-1e-9,`${a.id}: unsupported body at ${t}`);
+        if(sand)assert.ok(support-linked.floor(x,z)<=.025,`${a.id}: sand probing crossed hard substrate`);
+      }
+    }
+    if(sand)assert.deepEqual([...activities].sort(),['sand-assess','sand-probe','sand-transit']);
+    else{
+      assert.deepEqual([...activities].sort(),['grass-edge-hold','grass-edge-swim']);
+      assert.ok(maxX-minX>3,'grass residents should travel along the visible edge');
+    }
+  }
+  assert.match(linked.journeyLife.limits,/no resource consumption/);
 });

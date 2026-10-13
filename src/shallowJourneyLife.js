@@ -36,6 +36,69 @@ function clearSand(model, x, z, radius) {
   return true;
 }
 
+function curvePoint(course, progress) {
+  const points=course.points,n=points.length,span=course.closed?n:n-1;
+  const scaled=(course.closed?mod(progress,1):clamp(progress,0,1))*span;
+  const segment=Math.min(Math.floor(scaled),span-1),u=scaled-segment;
+  const at=i=>course.closed?points[mod(i,n)]:i<0?
+    {x:2*points[0].x-points[1].x,z:2*points[0].z-points[1].z}:i>=n?
+      {x:2*points[n-1].x-points[n-2].x,z:2*points[n-1].z-points[n-2].z}:points[i];
+  const p0=at(segment-1),p1=at(segment),p2=at(segment+1),p3=at(segment+2),out={};
+  for(const axis of ['x','z']){
+    const a=2*p1[axis],b=p2[axis]-p0[axis],c=2*p0[axis]-5*p1[axis]+4*p2[axis]-p3[axis],d=3*p1[axis]-p0[axis]-3*p2[axis]+p3[axis];
+    out[axis]=.5*(a+u*(b+u*(c+u*d)));
+    out[axis==='x'?'dx':'dz']=.5*(b+u*(2*c+3*u*d));
+  }
+  out.heading=Math.atan2(out.dz,out.dx);
+  return out;
+}
+
+function authoredCourse(source) {
+  if(!Array.isArray(source?.points)||source.points.length<2)return null;
+  const points=source.points.map(p=>({x:p.x,z:p.z}));
+  if(points.some(p=>!Number.isFinite(p.x)||!Number.isFinite(p.z)))return null;
+  const course={id:source.id,points,closed:source.closed===true};
+  let length=0,previous=curvePoint(course,0);
+  for(let i=1;i<=128;i++){const p=curvePoint(course,i/128);length+=Math.hypot(p.x-previous.x,p.z-previous.z);previous=p;}
+  return length>.1?{...course,length}:null;
+}
+
+// An open authored passage becomes an out-and-back route with broad round
+// ends. Both legs follow the actual opening; the return stays to its other side.
+function passageCircuit(source) {
+  const authored=authoredCourse(source);if(!authored||authored.closed)return authored;
+  const points=[],width=source.returnOffsetM??1.15;
+  const edge=(u,side)=>{const p=curvePoint(authored,u),h=p.heading;
+    return {x:p.x-Math.sin(h)*width*side,z:p.z+Math.cos(h)*width*side};};
+  for(let i=0;i<=4;i++)points.push(edge(i/4,1));
+  const end=curvePoint(authored,1),start=curvePoint(authored,0);
+  points.push({x:end.x+Math.cos(end.heading)*width,z:end.z+Math.sin(end.heading)*width});
+  for(let i=4;i>=0;i--)points.push(edge(i/4,-1));
+  points.push({x:start.x-Math.cos(start.heading)*width,z:start.z-Math.sin(start.heading)*width});
+  return authoredCourse({...source,points,closed:true});
+}
+
+function passagePeriod(course, radius) {
+  // Bound the speed of the outermost member through bends, not just the
+  // school centre. The finite lookup is setup-only and evaluation stays pure.
+  let maxSweep=0,previous=curvePoint(course,0);
+  for(let i=1;i<=512;i++){
+    const p=curvePoint(course,i/512),turn=Math.atan2(Math.sin(p.heading-previous.heading),Math.cos(p.heading-previous.heading));
+    maxSweep=Math.max(maxSweep,(Math.hypot(p.x-previous.x,p.z-previous.z)+Math.abs(turn)*radius)*512);previous=p;
+  }
+  return Math.max(100,Math.ceil(maxSweep/.56));
+}
+
+function shuttle(course,time,phase,dwell,travel) {
+  const half=dwell+travel,local=mod(time+phase,half*2),side=local>=half?1:0,elapsed=local-side*half;
+  const moving=elapsed>=dwell,progress=moving?smooth((elapsed-dwell)/travel):0;
+  const p=curvePoint(course,side?1-progress:progress);
+  // While holding, turn in place before departing along the same edge. Slot
+  // offsets keep the forward edge tangent, so the formation never flips.
+  const turn=moving?side*Math.PI:Math.PI*(1-side)+Math.PI*smooth(elapsed/dwell);
+  return {...p,moving,side,settling:moving?0:smooth(elapsed/.9)*smooth((dwell-elapsed)/.9),poseHeading:p.heading+turn};
+}
+
 /** Call after the original sample and its prepared living cover are complete. */
 export function initializeJourneyLife(model, options={livingCommunities:true}) {
   if(options.livingCommunities!==true)return null;
@@ -93,10 +156,72 @@ export function initializeJourneyLife(model, options={livingCommunities:true}) {
   return model.journeyLife;
 }
 
+/** Link the observation behaviours only after the authored habitat exists. */
+export function configureJourneyHabitatLife(model) {
+  const summary=model.journeyLife,anchors=model.journeyHabitat?.lifeAnchors;
+  if(!summary||!anchors)return null;
+  if(summary.habitatLinked)return summary;
+  const linked={schools:0,sandProbers:0,grassEdgeResidents:0},anchorIds=new Set();
+  for(const source of anchors.reefPassages??[]){
+    const agents=model.agents.filter(a=>a.speciesId===source.speciesId&&a.journeyLife?.kind==='school');
+    const course=passageCircuit(source);if(!agents.length||!course)continue;
+    const extent=Math.max(...agents.map(a=>Math.hypot(a.journeyLife.forward,a.journeyLife.side)));
+    course.period=passagePeriod(course,extent);course.visit=source.visitSec??SCHOOL_LAYOUT.find(g=>g.species===source.speciesId)?.visit??0;
+    course.visitProgress=source.visitProgress??.16;
+    for(const a of agents){a.journeyLife.course=course;a.journeyLife.habitatAnchor=source.id;linked.schools++;}
+    anchorIds.add(source.id);
+  }
+  for(const a of model.agents.filter(a=>a.journeyLife?.kind==='sand-probe')){
+    const source=(anchors.softBeds??[]).find(s=>s.id===a.id||s.animalId===a.id);
+    if(!source||!Number.isFinite(source.radius)||!clearSand(model,source.x,source.z,source.radius))continue;
+    const allowance=source.radius-a.sizeM*.70,reach=Math.min(.60,allowance-.025);
+    if(reach<=.12)continue;
+    const nearbyRubble=model.rubble.reduce((best,r)=>!best||Math.hypot(r.x-source.x,r.z-source.z)<Math.hypot(best.x-source.x,best.z-source.z)?r:best,null);
+    const heading=nearbyRubble?Math.atan2(source.z-nearbyRubble.z,source.x-nearbyRubble.x):Math.PI/2;
+    const direction={x:Math.cos(heading),z:Math.sin(heading)};
+    a.journeyLife.course=authoredCourse({id:source.id,points:[
+      {x:source.x-direction.x*reach,z:source.z-direction.z*reach},
+      {x:source.x+direction.x*reach*.55,z:source.z+direction.z*reach*.55}]});
+    a.home={x:source.x,z:source.z};a.journeyLife.anchor={...a.home};
+    a.journeyLife.habitatAnchor=source.id;linked.sandProbers++;anchorIds.add(source.id);
+  }
+  const grassCourses=(anchors.grassEdges??[]).map(authoredCourse).filter(Boolean);
+  for(const [i,a]of model.agents.filter(a=>a.journeyLife?.kind==='grass-edge').entries()){
+    const course=grassCourses[Math.floor(i/6)%grassCourses.length];if(!course)continue;
+    const slot=i%6,life=a.journeyLife;
+    life.course=course;life.edgeForward=(slot%3-1)*.42;life.edgeSide=(Math.floor(slot/3)-.5)*.40;
+    life.travelSec=Math.max(20,course.length*4.5);life.habitatAnchor=course.id;
+    const centre=curvePoint(course,.5);life.anchor={x:centre.x,z:centre.z};a.home={...life.anchor};a.schoolCenter={...life.anchor};
+    linked.grassEdgeResidents++;anchorIds.add(course.id);
+  }
+  summary.version='three-connected-habitats-v3';summary.habitatLinked={...linked,anchorIds:[...anchorIds]};
+  summary.limits='Authored passage traversal, verified soft-bed probing and grass-edge station holding; no resource consumption or full agent avoidance.';
+  return summary;
+}
+
 /** Pure horizontal/pose evaluation; the caller still queries real body support. */
 export function evaluateJourneyLife(agent,time,base={}) {
   const life=agent.journeyLife;if(!life)return base;
   const t=Number.isFinite(time)?time:0;
+  if(life.course&&life.kind==='school'){
+    const course=life.course,u=(t-course.visit)/course.period+course.visitProgress,p=curvePoint(course,u);
+    const hx=Math.cos(p.heading),hz=Math.sin(p.heading),spread=.82+.18*Math.abs(Math.sin(t*.055));
+    const forward=life.forward*spread,side=life.side*(.9+.16*Math.sin(t*.15));
+    return {...base,x:p.x+forward*hx-side*hz+.045*Math.sin(t*.6+agent.phase),
+      z:p.z+forward*hz+side*hx+.035*Math.sin(t*.5+agent.phase*1.4),
+      lift:life.lift,vertical:life.waterLayer+.13*Math.sin(life.index*2.39996)+.035*Math.sin(t*.25+agent.phase),
+      pitch:0,pitchClearance:0,state:'swimming',activity:mod(u,1)<.5?'school-passage':'school-return',probeStrength:0};
+  }
+  if(life.course&&(life.kind==='sand-probe'||life.kind==='grass-edge')){
+    const sand=life.kind==='sand-probe',p=shuttle(life.course,t,life.phase,sand?7:4,sand?9:life.travelSec);
+    const probe=sand&&p.side===1?p.settling*(.68+.32*Math.sin(t*2.4+life.phase)**2):0,pitch=-.14*probe;
+    const forward=life.edgeForward??0,side=life.edgeSide??0,hx=Math.cos(p.heading),hz=Math.sin(p.heading);
+    return {...base,x:p.x+forward*hx-side*hz,z:p.z+forward*hz+side*hx,
+      lift:life.lift+(sand?.18:.10)*(1-(sand?probe:p.settling)),vertical:0,
+      heading:p.poseHeading,pitch,pitchClearance:Math.abs(Math.sin(pitch))*agent.sizeM*.55,
+      state:p.moving?'swimming':probe>0?'foraging':'resting',
+      activity:p.moving?(sand?'sand-transit':'grass-edge-swim'):sand?(p.side?'sand-probe':'sand-assess'):'grass-edge-hold',probeStrength:probe};
+  }
   if(life.kind==='school'){
     const angle=t*.08+life.phase,co=Math.cos(angle),si=Math.sin(angle);
     const vx=-life.rx*si,vz=life.rz*co,heading=Math.atan2(vz,vx),hx=Math.cos(heading),hz=Math.sin(heading);

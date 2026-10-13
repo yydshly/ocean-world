@@ -1,3 +1,7 @@
+<!-- stage-04-complete-habitats-current -->
+2026-10-13 阶段04有限本地归档：现有293个体38类/240秒约90.1m路线与全部资产保持；24整礁布局（8bank+16小礁）、6底栖随宿主，草床306重组簇（267核心39边缘）/总332/5批，碎屑295。102礁鱼+9羊鱼+18兔鱼接入真实生境锚点。32定向通过/Vite11.73s/9运行hash保持；1×240模型/240.040实秒，1280×720/DPR约1/RTX4070Laptop，p9512.5/max133.3ms/scale1/无中断；六段playing/console空。本地缓存3.949s非公网或受控性能提升。视觉部分达成：连片草床明确，开场近礁变化有限；许多搬移位于外围或侧后方，不以数量冒称明显整体提升。旧扫描硬边/动物模型感/草叶重复/远鱼偏小保留，未声明12/10秒人眼可读性全部严格通过。一次主体整合+集中检查后收口，不再细调、不推送部署、不自动推进；Goal独立。标签stage-04-complete-habitats-local-20261013；docs/stages/STAGE_04_COMPLETE_HABITATS.md、docs/validation/stage-04-complete-habitats-20261013.json、output/validation/stage-04-complete-habitats/review.html。
+<!-- /stage-04-complete-habitats-current -->
+
 <!-- stage-03-water-column-current -->
 2026-10-13 用户授权水层与构图有限阶段已完成：保留240秒/约90.1m路线、293个体38展示类及全部资产，只整体重排4主鱼群118个体为厚2.21–2.45m有纵深水层，并调整整群取景/平滑距离接入；961相机位置与前归档精确，非主群（底栖/海龟/草缘等）轨迹保持。26项定向检查通过，Vite11.79s；最终1×240完整/240.178实秒，1280×720/DPR约1，p9512.4/max137.4ms/scale1，无中断，六段讲解playing/error或blocked为空，console空。已有缓存导航3.347s不是冷公网或受控性能提升；9运行文件hash保持。六段实景同时间点对照（朝向不同）已有明显水层层次变化，旧模型/礁硬边与部分远鱼偏小保留。一体实现+一次集中检查，无后续运行修补，技术通过不等于用户视觉接受。只本地归档、不推送部署，不自动继续；Goal独立。标签stage-03-water-column-local-20261013；docs/stages/STAGE_03_WATER_COLUMN.md、docs/validation/stage-03-water-column-20261013.json、output/validation/stage-03-water-column/review.html。
 <!-- /stage-03-water-column-current -->

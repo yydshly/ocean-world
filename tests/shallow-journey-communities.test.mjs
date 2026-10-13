@@ -13,7 +13,9 @@ test('three communities retain the finite population and opt out of the 75-secon
   assert.deepEqual(identity(model),identity(legacy));
   assert.equal(model.agents.length,293);assert.equal(new Set(model.agents.map(a=>a.speciesId)).size,38);
   assert.equal(legacy.journeyLife,undefined);assert.equal(legacy.journeyHabitat,undefined);
-  assert.equal(model.journeyHabitat.reefs.moved.length,4);
+  assert.ok(model.journeyHabitat.reefs.moved.length>=20,'whole formations reorganize all three habitats');
+  assert.deepEqual(model.journeyHabitat.communities.map(c=>c.id),['reef-valley','sand-basin','meadow']);
+  assert.equal(model.journeyHabitat.transitions.length,2);
   assert.equal(model.journeyLife.kinds['sand-probe'],9);
   assert.equal(model.journeyLife.kinds['grass-edge'],18);
 });

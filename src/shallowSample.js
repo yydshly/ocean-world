@@ -12,7 +12,7 @@ import {arrangeSampleSchoolPassages} from './shallowSampleSchoolPassages.js';
 import {arrangeNearReefAssets} from './world/ShallowNearCommunity.js';
 import preparedCover from './world/shallowPreparedCover.js';
 import {composeJourneyHabitats} from './shallowJourneyHabitat.js';
-import {initializeJourneyLife,evaluateJourneyLife} from './shallowJourneyLife.js';
+import {initializeJourneyLife,evaluateJourneyLife,configureJourneyHabitatLife} from './shallowJourneyLife.js';
 
 
 export const SHALLOW_SAMPLE_SECONDS = 75;
@@ -255,6 +255,7 @@ export function createShallowSample(seed = 55, options = {}) {
     initializeJourneyLife(model);
     composeJourneyHabitats(model);
     model.rebuildSurfaceIndices();
+    configureJourneyHabitatLife(model);
   }
   updateShallowSample(model,0);
   return model;
