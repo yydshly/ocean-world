@@ -331,6 +331,18 @@ export function OceanApp(){
     }catch(e){setToast(`录像暂不可用：${e.message}`);}
   };
   const exportExperiment=async()=>{try{const file=await saveJson({schema:'tidal-experiment-v1',biomeId:biome,seed:world.current?.sim.seed,timestamp:new Date().toISOString(),snapshot:world.current?.snapshot(),history:history.current},`${biome}-seed-${seed}`);setToast(import.meta.env.DEV?`实验数据已保存：${file}`:`已请求下载实验数据：${file}，请查看下载列表`);}catch(e){setToast(e.message);}};
+  const [exportingSaveDiagnostics,setExportingSaveDiagnostics]=useState(false);
+  const exportSaveDiagnostics=async()=>{
+    if(exportingSaveDiagnostics)return;
+    setExportingSaveDiagnostics(true);
+    try{
+      const target=world.current;if(!target)throw new Error('当前海域尚不能导出存档诊断。');
+      const data=await target.exportOceanSaveDiagnostics();
+      if(world.current!==target)throw new Error('海域已经切换，请重新导出。');
+      const file=await saveJson(data,`kelp-seed-${data.seed}-save-diagnostics-${Date.now()}`);
+      setToast(import.meta.env.DEV?`原存档诊断已保存：${file}`:`已请求下载原存档诊断：${file}，请查看下载列表`);
+    }catch(e){setToast(e.message);}finally{setExportingSaveDiagnostics(false);}
+  };
   const captureScreenshot=async()=>{try{const file=await world.current?.downloadScreenshot();setToast(import.meta.env.DEV?`观察截图已保存：${file}`:`已请求下载截图：${file}，请查看下载列表`);}catch(e){setToast(e.message);}};
   const chooseDemo=choice=>{
     if(choice.directorToken===undefined)director.stop();
@@ -670,7 +682,7 @@ export function OceanApp(){
     <section className="location-label"><p className="eyebrow">{oceanExploring?'OPEN OCEAN · CONTINUOUS EXPLORATION':definition.eyebrow}</p><h1>{oceanExploring?(isDeep?(ocean?.deepMidwaterObservation?'观察中层水体':'沿深海床探索'):biome==='kelp'?'穿行巨藻林':livingShallows?'探索浅海生命':'向海洋深处探索'):biome==='reef'?definition.label:<>{definition.title}<br/>观察生命。</>}</h1><p className="location-sub">{biome!=='reef'&&(ocean?.deepMidwaterObservation?'约700米的开放中层 · 暮光层':definition.subtitle)}<span>{isDeep?'观察器照明':'自然光'} · 安静观察</span></p></section>
     <div className="biome-switch"><label htmlFor="biome">观察生境</label><select id="biome" value={biome} disabled={recording||director.state.active} onChange={e=>{setPendingDemo(null);setPanel(null);setHelp(false);rememberOcean();try{localStorage.setItem('tidal-observation-biome-v1',e.target.value);}catch{}setBiome(e.target.value);}}>{Object.values(sceneDefinitions).map(d=><option key={d.id} value={d.id}>{d.label}</option>)}</select>{biome==='reef'&&!performanceCount&&<select aria-label="浅海世界" value={reefProfile} disabled={recording||director.state.active} onChange={e=>{setPendingDemo(null);rememberOcean();setPanel(null);setSelected(null);try{localStorage.setItem('tidal-shallows-profile-v1',e.target.value);}catch{}setReefProfile(e.target.value);}}><option value={LIVING_SHALLOWS_PROFILE}>浅海生态海域</option><option value="legacy">原浅礁观察区</option></select>}</div>
     {!snapshot&&!error&&<div className="loading-note">正在构建{definition.label}与生物群落…</div>}
-    {error&&<div className="error-panel"><h2>场景暂时无法运行</h2><p>{error}</p><button onClick={()=>location.reload()}>重新加载</button></div>}
+    {error&&<div className="error-panel"><h2>场景暂时无法运行</h2><p>{error}</p><button onClick={()=>location.reload()}>重新加载</button>{biome==='kelp'&&<><button disabled={exportingSaveDiagnostics||!world.current?.oceanEcology} onClick={exportSaveDiagnostics}>{exportingSaveDiagnostics?'正在读取原记录…':'导出海域存档诊断'}</button><p>导出当前海域及关联林区的原存档，只在本机下载。原动物、库存和记录保持，不会重置。</p></>}</div>}
     {oceanExploring&&!panel&&!help&&!species&&<aside className={`reef-observation ocean-exploration${oceanToolsOpen?'':' ocean-tools-compact'}`} aria-label="海洋探索">
       <div className="observation-entry-heading"><span>海域随探索延展</span><div className="ocean-tools-heading-actions"><button onClick={returnReef}>返回{homeLabel}</button><button aria-expanded={oceanToolsOpen} aria-controls="ocean-exploration-tools" onClick={()=>setOceanToolsOpen(open=>!open)}>{oceanToolsOpen?'收起工具':'展开海域'}</button></div></div>
       <div className="ocean-position"><strong>{oceanSceneThemes[ocean.localHabitat?.sceneTheme]||oceanHabitatLabel(oceanComposition,ocean.habitat)}</strong><span>距{homeShort} {Math.round(livingShallows?ocean.distanceFromEntryM:ocean.distanceFromReefM)} m</span></div>

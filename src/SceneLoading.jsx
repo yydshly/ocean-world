@@ -1,7 +1,8 @@
-import React, { useSyncExternalStore } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import { sceneLoadingProgress } from './sceneLoadingProgress.js';
 import { ExperienceNavigation } from './ExperienceNavigation.jsx';
 import './sceneLoading.css';
+import { captureShallowEntryDiagnostics } from './shallowEntryDiagnostics.js';
 
 const preparationLabels = {
   geometry: '准备礁体',
@@ -14,11 +15,16 @@ const preparationLabels = {
 // Its subscription disappears when the scene replaces the loading view.
 export function SceneLoading({ experience = 'world', phase = 'opening', error = '' }) {
   const loading = useSyncExternalStore(sceneLoadingProgress.subscribe, sceneLoadingProgress.getSnapshot, sceneLoadingProgress.getSnapshot);
+  const [entryDiagnostics,setEntryDiagnostics]=useState(()=>captureShallowEntryDiagnostics());
+  useEffect(()=>{const update=()=>setEntryDiagnostics(captureShallowEntryDiagnostics());update();
+    const interval=setInterval(update,1000);return()=>clearInterval(interval);
+  },[]);
   const shallow = experience === 'journey' || experience === 'sample' || experience === 'school';
   const base = import.meta.env.BASE_URL;
   const activeStep = phase !== 'opening' ? 2 : loading.started > 0 ? 1 : 0;
   const status = preparationLabels[phase] || (loading.started > 0 ? '正在下载并准备模型' : '正在打开体验');
   return <section className={`scene-loading${shallow ? ' has-preview' : ''}${error ? ' has-error' : ''}`} aria-label={error ? '场景加载错误' : '场景加载'}>
+    <output id="scene-loading-diagnostics" hidden>{JSON.stringify(entryDiagnostics)}</output>
     {phase === 'opening' && <ExperienceNavigation research={!shallow}/>}
     {shallow && <img className="scene-loading-preview" src={`${base}overview/stage-04/after-96.jpg`} alt="" decoding="async"/>}
     <div className="scene-loading-content">

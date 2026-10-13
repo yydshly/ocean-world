@@ -85,7 +85,7 @@ export class KelpOceanEcology {
     this.forestBeltEnabled = this._forestBeltRequested && this._forestBeltAvailable(generator);
     this._kelpSeascapeRequested = kelpSeascape === true;
     this.kelpSeascapeEnabled = this._kelpSeascapeRequested && this.forestBeltEnabled;
-    this._active = new Map(); this._locked = new Set(); this._center = null; this._waterCells = new Map();
+    this._active = new Map(); this._locked = new Set(); this._failedWaterLife = new Set(); this._center = null; this._waterCells = new Map();
     this._waterFrames = new Map(); this._waterPlantFrames = new Map(); this._waterTransfers = [];
     this._waterContextMemo = new Map(); this._waterContextMemoActive = false;
     this._queue = Promise.resolve(); this._pending = this._queue; this._revision = 0; this._generation = 0;
@@ -706,8 +706,9 @@ export class KelpOceanEcology {
 
   _applyWaterTransfers() {
     for (const { agent, owner, destination, position, previous, dt } of this._waterTransfers.sort((a, b) => a.agent.id.localeCompare(b.agent.id))) {
+      if (this._failedWaterLife.has(owner.id)) continue;
       if (!this._waterMobile(agent) || !agent.alive || this._active.get(owner.id) !== owner || this._active.get(destination.id) !== destination ||
-        this._locked.has(owner.id) || this._locked.has(destination.id) || !owner.waterAgents.includes(agent) ||
+        this._locked.has(owner.id) || this._locked.has(destination.id) || this._failedWaterLife.has(destination.id) || !owner.waterAgents.includes(agent) ||
         this._waterRegionCount(destination) >= KELP_OCEAN_REGION_ANIMAL_LIMIT) { agent.velocity = { x: 0, y: 0, z: 0 }; continue; }
       owner.waterAgents.splice(owner.waterAgents.indexOf(agent), 1); destination.waterAgents.push(agent);
       owner.waterEverOccupied = destination.waterEverOccupied = true;
@@ -730,6 +731,14 @@ export class KelpOceanEcology {
   }
   async _save(world, records) {
     try {
+      // A failed controller must never overwrite the last committed history.
+      // Virgin owners have already passed their admission checks; live owners
+      // must still pass the unchanged, current-frame persisted-record validator.
+      for (const [id, record] of records) {
+        const active = this._active.get(id);
+        if (this._failedWaterLife.has(id) || (active?.kelpWaterLifeVersion === 1 && !validateKelpWaterLifeRecord(record, active, { generator: this.generator })))
+          throw new Error(`Kelp water-life step failed in ${id}; the last saved animals and inventory were preserved.`);
+      }
       if (typeof this.store.saveMany === 'function') {
         if (await this.store.saveMany(world, records) === null) throw new Error('Kelp regional save did not commit.');
       } else for (const [id, record] of records) {
@@ -1003,7 +1012,7 @@ export class KelpOceanEcology {
       this._accumulator = Math.max(0, this._accumulator - STEP); this._activeTime += STEP;
       this._prepareWaterFrames();
       for (const region of this._active.values()) {
-        if (this._locked.has(region.id)) continue;
+        if (this._locked.has(region.id) || this._failedWaterLife.has(region.id)) continue;
         for (const key of ['currentMps', 'turbidity', 'foodSupply', 'hour']) region.sim.environment[key] = this.environment[key];
         region.sim.step(STEP);
         if (region.kelpBenthicLifeVersion === 1) tickKelpBenthicLife(region, this.generator, STEP);
@@ -1011,21 +1020,31 @@ export class KelpOceanEcology {
       this._prepareWaterPlantFrames();
       this._waterContextMemoActive = true;
       try {
-        for (const region of this._active.values()) if (!this._locked.has(region.id)) this._tickWater(region);
+        for (const region of this._active.values()) if (!this._locked.has(region.id) && !this._failedWaterLife.has(region.id)) this._tickWater(region);
         if (this.visitorsEnabled && typeof this.store.saveMany === 'function') {
-          for (const region of this._active.values()) if (!this._locked.has(region.id)) tickKelpVisitors(region,
+          for (const region of this._active.values()) if (!this._locked.has(region.id) && !this._failedWaterLife.has(region.id)) tickKelpVisitors(region,
             { generator: this.generator, dt: STEP, contextAt: (point, seconds) => this._mobileWaterContext(point, seconds) });
         }
       } finally { this._clearWaterContextMemo(); }
       this._applyWaterTransfers();
-      for (const region of this._active.values()) if (!this._locked.has(region.id) && region.kelpWaterLifeVersion === 1)
-        tickKelpWaterLife(region, this.generator, STEP);
-      for (const region of this._active.values()) if (!this._locked.has(region.id) && region.kelpNearBottomLifeVersion === 1)
+      for (const region of this._active.values()) if (!this._locked.has(region.id) && !this._failedWaterLife.has(region.id) && region.kelpWaterLifeVersion === 1) {
+        if (!tickKelpWaterLife(region, this.generator, STEP) ||
+            !validateKelpWaterLifeRecord({ state: { agents: region.sim.agents }, waterAgents: region.waterAgents,
+              visitorAgents: region.visitorAgents, kelpBenthicAgents: region.kelpBenthicAgents,
+              ...captureKelpWaterLife(region) }, region, { generator: this.generator })) this._failWaterLifeStep(region);
+      }
+      for (const region of this._active.values()) if (!this._locked.has(region.id) && !this._failedWaterLife.has(region.id) && region.kelpNearBottomLifeVersion === 1)
         tickKelpNearBottomLife(region, this.generator, STEP);
-      for (const region of this._active.values()) if (!this._locked.has(region.id) && region.kelpUnderstoryLifeVersion === 1)
+      for (const region of this._active.values()) if (!this._locked.has(region.id) && !this._failedWaterLife.has(region.id) && region.kelpUnderstoryLifeVersion === 1)
         tickKelpUnderstoryLife(region, this.generator, STEP);
     }
     if (this._activeTime >= this._checkpointAt) { this._checkpointAt = this._activeTime + 10; this.checkpoint(); }
+  }
+
+  _failWaterLifeStep(region) {
+    if (this._failedWaterLife.has(region.id)) return;
+    this._failedWaterLife.add(region.id); this._counts.persistenceErrors++;
+    this._storageError = `Kelp water-life step failed in ${region.id}; the last saved animals and inventory were preserved.`;
   }
 
   get agents() {
@@ -1253,7 +1272,7 @@ export class KelpOceanEcology {
   reset(seed = this.seed, generator = this.generator) {
     this._clearWaterContextMemo();
     const previous = this._world, next = worldKey(seed);
-    this._generation++; this._revision++; this._active.clear(); this._locked.clear(); this._center = null; this._waterCells.clear();
+    this._generation++; this._revision++; this._active.clear(); this._locked.clear(); this._failedWaterLife.clear(); this._center = null; this._waterCells.clear();
     this._waterFrames.clear(); this._waterPlantFrames.clear(); this._waterTransfers.length = 0;
     this.benthicLifeEnabled = this._benthicLifeRequested && generator.supportVersion >= 2 && typeof this.store.saveMany === 'function';
     this._benthicLifeBirths = new WeakSet();
@@ -1279,7 +1298,7 @@ export class KelpOceanEcology {
     const world = this._world; this._disposed = true; this._generation++; this._revision++;
     return this._enqueue(async () => {
       await this._save(world, [...this._active].map(([id, region]) => [id, this._record(region)]));
-      this._active.clear(); this._locked.clear(); this._center = null; this._waterCells.clear();
+      this._active.clear(); this._locked.clear(); this._failedWaterLife.clear(); this._center = null; this._waterCells.clear();
       this._waterFrames.clear(); this._waterPlantFrames.clear(); this._waterTransfers.length = 0;
     });
   }

@@ -12,6 +12,7 @@ import {loadPreparedShallowGeometry} from './world/preparedShallowGeometry.js';
 import {SceneLoading} from './SceneLoading.jsx';
 import {createShallowSchooling,prepareShallowSchooling,shallowSchoolingDiagnostics,shallowSchoolingPhase,SHALLOW_SCHOOLING_PHASES} from './shallowSchooling.js';
 import { ExperienceNavigation } from './ExperienceNavigation.jsx';
+import { captureShallowEntryDiagnostics } from './shallowEntryDiagnostics.js';
 
 export function ShallowSampleApp({journey=false}){
   const schoolingOnly=journey&&new URLSearchParams(window.location.search).get('school')==='1';
@@ -34,6 +35,11 @@ export function ShallowSampleApp({journey=false}){
     const mount=canvas.current;let renderer,world,controls,frame,observer,disposed=false,last=0,lastUi=0;
     const pixelRatio=Math.min(window.devicePixelRatio||1,1.5),cadence={samples:[],slow:0,stable:0,frames:0,scale:1};
     const diagnostics=createShallowPlaybackMetrics(),metrics=diagnostics.metrics,startup=performance.now();
+    let entryCapturedAt=-Infinity;
+    const refreshEntryDiagnostics=(now,force=false)=>{if(force||now-entryCapturedAt>=1000){
+      metrics.entryLoading=captureShallowEntryDiagnostics({componentStartedAtMs:startup});entryCapturedAt=now;
+    }};
+    refreshEntryDiagnostics(startup,true);
     const state={time:0,seekRevision:0,lifeTime:0,playing:false,speed:1,free:false,ready:false,dirty:true,keys:new Set(),nudges:[]};
     let route,returnView=null;
     const initialize=async()=>{
@@ -99,7 +105,7 @@ export function ShallowSampleApp({journey=false}){
         // instance buffers/textures. Start the tour only after that draw.
         const firstFrameStart=performance.now();renderer.render(world.scene,world.camera);
         metrics.firstFrameMs=performance.now()-firstFrameStart;
-        metrics.startupMs=performance.now()-startup;metrics.navigationToReadyMs=performance.now();state.ready=true;state.playing=true;last=0;startRun();setReady(true);
+        metrics.startupMs=performance.now()-startup;metrics.navigationToReadyMs=performance.now();refreshEntryDiagnostics(metrics.navigationToReadyMs,true);state.ready=true;state.playing=true;last=0;startRun();setReady(true);
       };prepare().catch(e=>{if(!disposed)setError(`场景准备失败：${e.message}`);});
       // Read-only local diagnostics; no network reporting and no FPS claim.
       window.__shallowSampleMetrics=metrics;
@@ -154,7 +160,7 @@ export function ShallowSampleApp({journey=false}){
             else if(cadence.stable>8000&&scale<1){scale=Math.min(1,scale+.1);cadence.stable=0;cadence.samples.length=0;}
             if(scale!==cadence.scale){cadence.scale=scale;metrics.resolutionScale=scale;renderer.setPixelRatio(pixelRatio*scale);resize();}
           }
-          if(now-lastUi>180){setTime(state.time);lastUi=now;
+          if(now-lastUi>180){refreshEntryDiagnostics(now);setTime(state.time);lastUi=now;
             if(journey){const p=world.camera.position;setLocation({x:p.x,z:p.z,above:Math.max(0,p.y-world.model.floor(p.x,p.z))});metrics.currentView={time:state.time,lifeTime:state.lifeTime,free:state.free,position:p.toArray(),returning:!!returnView,activities:Object.fromEntries([...new Set(world.model.agents.map(a=>a.journeyActivity).filter(Boolean))].map(activity=>[activity,world.model.agents.filter(a=>a.journeyActivity===activity).length]))};
               metrics.schooling=shallowSchoolingDiagnostics(world.model.schoolingSystem);
               if(state.playing&&Math.floor(state.time)>(metrics.routeSamples.at(-1)?.second??-1))metrics.routeSamples.push({second:Math.floor(state.time),position:p.toArray(),chapter:shallowJourneyChapter(state.time).habitat});}
@@ -177,7 +183,7 @@ export function ShallowSampleApp({journey=false}){
   const visit=start=>{if(free){runtime.current?.observe(false);setFree(false);}runtime.current?.seek(start);};
   const replayNarration=start=>{if(!runtime.current?.state.ready)return;if(runtime.current.state.free){runtime.current.observe(false);setFree(false);}runtime.current.seek(start);runtime.current.state.playing=true;setPlaying(true);};
   const lastRun=runtime.current?.diagnostics.metrics.runs.at(-1);
-  const downloadMetrics=()=>{const blob=new Blob([JSON.stringify(runtime.current?.diagnostics.metrics,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=journey?'shallow-journey-playback.json':'shallow-sample-playback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+  const downloadMetrics=()=>{const metrics=runtime.current?.diagnostics.metrics;if(metrics)metrics.entryLoading=captureShallowEntryDiagnostics({componentStartedAtMs:metrics.entryLoading?.componentStartedAtMs});const blob=new Blob([JSON.stringify(metrics,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=journey?'shallow-journey-playback.json':'shallow-sample-playback.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
   const exploration=new URL(window.location.href);exploration.searchParams.set('demo','life-expedition');exploration.searchParams.set('world','whole-seabed');
   const schoolUrl=new URL(window.location.href);schoolUrl.searchParams.set('school','1');
   const journeyUrl=new URL(window.location.href);journeyUrl.searchParams.delete('school');

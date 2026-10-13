@@ -95,6 +95,7 @@ test('actual initial download and error shells expose navigation, with one menu 
     for (const error of ['', '资源未能载入']) {
       const html = renderToStaticMarkup(React.createElement(SceneLoading, { experience, error }));
       assert.match(html, /更多体验/);
+      assert.match(html, /<output id="scene-loading-diagnostics" hidden="">/);
       assert.equal((html.match(/class="experience-navigation(?: experience-navigation--research)?"/g) || []).length, 1);
       if (experience === 'world') assert.match(html, /返回4分钟浅海主线/);
       if (error) assert.match(html, /场景加载错误/);

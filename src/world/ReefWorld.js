@@ -26,6 +26,7 @@ import { OceanMacroLandscape } from './OceanMacroLandscape.js';
 import { KelpOceanChunks } from './KelpOceanChunks.js';
 import { kelpNearBottomLifeSpeciesById } from '../kelpNearBottomLifeSpecies.js';
 import { KelpOceanEcology } from '../kelpOceanEcology.js';
+import { readKelpSaveDiagnostics } from '../kelpSaveDiagnostics.js';
 import { KelpOceanAnimals } from './KelpOceanAnimals.js';
 import { KelpDriftFood } from './KelpDriftFood.js';
 import { KelpUnderstoryLife } from './KelpUnderstoryLife.js';
@@ -2648,6 +2649,8 @@ export class ReefWorld {
       if(!this.oceanEcologyResetting){
         const ecologyClock=this.oceanEcology?._activeTime??0;
         this.oceanEcology?.step(dt*this.speed,this.sim.environment);
+        if(this.isKelp&&this.oceanEcology?._failedWaterLife?.size)
+          throw new Error(this.oceanEcology._storageError||'海带林动物更新失败，最后完整存档已保留。');
         this._animalSedimentDtSec=Math.max(0,(this.oceanEcology?._activeTime??0)-ecologyClock);
       }
     }catch(error){this.paused=true;this.errors.push(error.message);this.onError(`生态模型停止：${error.message}`);}}
@@ -2841,6 +2844,16 @@ export class ReefWorld {
       camera:{position:this.camera.position.toArray(),target:this.controls.target.toArray()},
       environment:{...this.sim.environment},following:this.following,controlStartCount:this.controlStartCount,
       viewport:{width:this.container.clientWidth,height:this.container.clientHeight,pixelRatio:this.renderer.getPixelRatio()}};
+  }
+  async exportOceanSaveDiagnostics(){
+    if(!this.isKelp||this.disposed||!this.oceanEcology)throw new Error('当前海域尚不能导出存档诊断。');
+    const ecology=this.oceanEcology,position=this.oceanWorldPosition(),worldKey=ecology._world,generation=ecology._generation;
+    const isCurrent=()=>!this.disposed&&this.oceanEcology===ecology&&ecology._world===worldKey&&
+      ecology._generation===generation;
+    const result=await readKelpSaveDiagnostics({store:ecology.store,worldKey:ecology._world,seed:ecology.seed,
+      position,error:ecology._storageError||'',isCurrent});
+    if(!isCurrent())throw new Error('海域已经切换或重新准备，请在当前海域重新导出。');
+    return result;
   }
   snapshot({detailedTerrain=true}={}){const selected=this.findAgent(this.selectedId);return {...this.frameTimingSnapshot(),...this.observationStateSnapshot({detailedTerrain}),focusObservation:this.lastFocusAssessment?{...this.lastFocusAssessment}:null,biomeId:this.biomeId,sceneLabel:this.definition.label,surfaceY:this.surfaceY,visualEnvironment:{...this.visualEnvironment},workload:{...this.workload},morphology:this.isKelp?{...KELP_MORPHOLOGY}:null,selectedSpecies:selected?this.catalog.get(selected.speciesId):null,selectedAgentId:this.selectedId,runId:this.runId,wallSeconds:(Date.now()-this.runStarted)/1000,metrics:{...this.sim.metrics},environment:{...this.sim.environment},events:this.sim.events.slice(-8).reverse(),agents:(this.isLivingShallows?[]:this.sim.agents).concat(this.oceanEcology?.snapshot({detailedTerrain:false}).agents||[]).map(a=>({...a,position:{...a.position}})),fps:Math.round(this.fps),drawCalls:this.renderer.info.render.calls,triangles:this.renderer.info.render.triangles,hardware:this.hardware,viewport:{width:this.container.clientWidth,height:this.container.clientHeight,pixelRatio:this.renderer.getPixelRatio()},camera:{position:this.camera.position.toArray(),target:this.controls.target.toArray()},depthM:Math.max(0,(this.isDeep?this.definition.observationDepthM??DEEP_DEPTH_M:this.surfaceY)-this.camera.position.y),following:this.following,paused:this.paused,speed:this.speed,errors:[...this.errors]};}
   emitSnapshot(){this.lastSnapshot=this.elapsed;this.onSnapshot(this.snapshot({detailedTerrain:false}));}

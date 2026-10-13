@@ -27,7 +27,8 @@
     "tests/meadow-habitat-community-shoal.test.mjs",
     "tests/living-meadow-assets.test.mjs",
     "tests/director-tour-progress.test.mjs",
-    "tests/deep-sea-spider-rendering.test.mjs"
+    "tests/deep-sea-spider-rendering.test.mjs",
+    "tests/kelp-save-diagnostics.test.mjs"
   ],
   [
     "tests/reef-valley-region-world.test.mjs",
@@ -217,7 +218,8 @@
     "tests/observation-event-text.test.mjs",
     "tests/living-shallows-presentation.test.mjs",
     "tests/kelp-benthic-life-render.test.mjs",
-    "tests/director-camera-motion.test.mjs"
+    "tests/director-camera-motion.test.mjs",
+    "tests/kelp-water-life-persistence.test.mjs"
   ],
   [
     "tests/reef-depth-community-ecology.test.mjs",

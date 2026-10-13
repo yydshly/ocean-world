@@ -16,6 +16,8 @@
 
 **阶段04历史发布：** [`stage-04-loading-published-20261013`](https://github.com/yydshly/ocean-world/tree/stage-04-loading-published-20261013) / `560669f`；[发布检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38383872433)。完整4分钟及六段讲解通过；本次远端首轮10.72秒、贴图26/47，缓存复访6.44秒、47/47。首访材质仍不齐，未达到5秒目标；非受控冷测。[发布回执与保留限制](docs/releases/STAGE_04_LOADING_PUBLICATION.md)。
 
+**2026-10-13本地有限收尾：** 已复现海带林动态藻叶导致的更新与存档故障，新增失败停止、拒绝覆盖有效记录、原记录只读导出和加载分项计时。4分钟主线完整1×实播240.05秒，无中断，48项相关检查通过。**海带林持续运行仍未修复，公网首开加速未证明；本轮只本地归档，未推送部署，官网保持上述版本。** [本轮结果与停止条件](docs/stages/ENTRY_USE_CLOSEOUT_20261013.md)。
+
 ## 当前做到哪一步
 
 | 阶段 | 已形成的能力与效果 | 阶段记录 |
