@@ -8,6 +8,8 @@
 
 **点击引导图进入更新后的导览，再选择7分30秒海洋总览。** 图像保持原版：图中画面、数量与性能属于2026-10-12历史快照；导览顶部、本文和[阶段07发布记录](docs/releases/STAGE_07_PUBLICATION.md)提供当前状态，不以历史图片替代新验收。
 
+**2026-10-14已发布并完成远端实播。** 运行提交 ba7089a，[构建、8组世界检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38518175914)；7分30秒完整1×450.04实秒、16段讲解启动，无操作中断或超过250ms长帧。此次普通缓存加载17.7秒，仍未达5秒；真实感与旧研究问题保留。详[发布回执](docs/releases/STAGE_07_PUBLICATION.md)。
+
 ## 当前交付与观察方法
 
 | 内容 | 已实现 | 如何体验与边界 |
@@ -34,6 +36,9 @@
 ## 保留的阶段记录与浅海能力
 
 下方保留阶段01—06及阶段07本地归档时的原说明。“尚未部署”“当前阶段05”等表述属于相应日期的历史状态；当前发布范围以上方和发布回执为准。
+
+<details>
+<summary>展开旧阶段能力、入口检查与历史实测</summary>
 
 **阶段07 · 海洋总览整体升级（本地归档，尚未部署）。** 7分30秒主线保持，海面/水下采用共享波面与光照，鲸豚的身体、尾部与路径联动，深海整组形态与栖息空间升级，观察器以明确标注的时间压缩连接各海域和深度。原4分钟浅海、探索入口、资产和存档保持。[本轮实景与阶段对照](public/overview/stage-07/index.html) · [阶段范围](docs/stages/STAGE_07_OCEAN_PRIMER_REALISM.md) · [验收回执](docs/validation/ocean-primer-stage-07-20261014.json)。
 
@@ -182,6 +187,8 @@
 
 历史证据继续保留：[75秒冻结样板](docs/SHALLOW_SAMPLE_FROZEN.md) · [原实景验收](https://yydshly.github.io/ocean-world/overview/evidence/review.html) · [入口体验](public/overview/evidence/entry-experience.json) · [跨区准备流水线](docs/TRANSITION_PIPELINE.md) · [历史校验收尾](docs/HISTORY_PIPELINE_CLOSEOUT.md)。历史的失败与“未部署”描述保留当时状态，不替代本次发布结果。
 
+</details>
+
 ## 本地运行
 
 需要Node.js 22与npm；当前构建基于React、Vite和Three.js。
@@ -194,11 +201,11 @@ npm run preview:local
 
 使用终端显示的本地服务地址，进入以下路径：
 
-- 新增海洋总览：`/ocean-world/?demo=ocean-primer&seed=55`（7分30秒，阶段06本地版本）
+- 当前海洋总览：`/ocean-world/?demo=ocean-primer&seed=55`（7分30秒，阶段07归档运行版本）
 - 当前浅海体验：`/ocean-world/?demo=shallow-journey&seed=55`
 - 60秒鱼群协同：`/ocean-world/?demo=shallow-journey&seed=55&school=1`
 - 阶段05实景：`/ocean-world/overview/stage-05/`
-- 产品导览：`/ocean-world/overview/`
+- 产品导览：`/ocean-world/overview/`；阶段07实景：`/ocean-world/overview/stage-07/`；后续路线图：`/ocean-world/overview/roadmap/`
 - 阶段04对照：`/ocean-world/overview/stage-04/`
 - 历史75秒样板：`/ocean-world/?demo=shallow-sample&seed=55`
 
@@ -214,11 +221,12 @@ npm run test:shallow     # 浅海功能回归，具体范围以脚本与CI记录
 
 ## 部署与目录
 
-GitHub Pages使用`.github/workflows/pages.yml`：依赖安装 → 按仓库基路径构建 → 功能及发布检查 → 上传静态文件 → 发布。推送`main`会触发；部署要求仓库变量`PAGES_ENABLED=true`及Pages的Actions发布设置。静态产物是`dist/client/`。既有237个世界检查文件保留：236个分为8个并行组，1个依赖构建产物的检查随构建执行；浅海和导览另有独立检查。所有必要组通过后才部署。
+GitHub Pages使用`.github/workflows/pages.yml`：依赖安装 → 按仓库基路径构建 → 功能及发布检查 → 上传静态文件 → 发布。推送`main`会触发；部署要求仓库变量`PAGES_ENABLED=true`及Pages的Actions发布设置。静态产物是`dist/client/`。现有246个世界检查文件分为8个并行组，另1个依赖构建产物的检查随构建执行；浅海和导览另有独立检查。原世界检查保留，新增阶段06/07检查加入同一发布门槛；所有必要组通过后才部署。
 
 | 路径 | 内容 |
 | --- | --- |
 | `src/ShallowSampleApp.jsx`、`src/shallowSample*`、`src/shallowJourney*` | 浅海样板、4分钟路线、栖息地、群落和讲解 |
+| `src/OceanPrimerApp.jsx`、`src/oceanPrimer*`、`src/world/OceanPrimer*` | 独立7分30秒海洋总览、海面/鲸豚/深海、压缩观察旅程与讲解 |
 | `src/OceanApp.jsx`、`src/ocean*`、`src/world/` | 持续探索、动物、生态与渲染 |
 | `src/sceneCatalog.js`、`src/demoCapabilities.js`、`src/directorTour.js` | 生物目录、入口与导演章节 |
 | `public/overview/` | 正式产品导览、原版引导图、实景图与精选验收证据 |
@@ -235,6 +243,6 @@ GitHub Pages使用`.github/workflows/pages.yml`：依赖安装 → 按仓库基�
 
 ## 阶段管理
 
-本次发布已归档的阶段05鱼群协同，补五段适当的中文讲解，更新导览入口并分别检查60秒和4分钟的实际加载与完整播放；不新增场景、动物或整套资产。核验后阶段性归档，不自动继续优化，只有明确的新目标、范围和验收标准才开启后续开发。
+本次发布阶段07已归档的海洋总览，整理README、原引导图后的导航、当前实景和后续扩展方案；不新增场景、动物或整套资产。远端检查与播放结果见[阶段07发布回执](docs/releases/STAGE_07_PUBLICATION.md)。完成后阶段性归档；海岸、天气、物种互动、游戏或资源用途另设有限目标再开发。
 
 早期逐批更新保存在[README历史归档](docs/history/README-before-product-release.md)和[状态历史归档](docs/history/CURRENT_STATUS-before-product-release.md)。先前鱼群本地归档基线为`a935a3e`；本轮包含新增配音，远端具体版本及实际体验结果以[本次发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)和GitHub Actions为准。

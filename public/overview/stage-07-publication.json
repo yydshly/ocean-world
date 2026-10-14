@@ -1,8 +1,8 @@
 {
   "stage": "07",
   "date": "2026-10-14",
-  "status": "release-prepared",
-  "statusLabel": "阶段07发布准备中，远端验证结果另行记录",
+  "status": "published-runtime-verified-with-known-limits",
+  "statusLabel": "阶段07已发布；7分30秒远端完整播放通过，保留加载与真实感差距",
   "runtimeArchiveCommit": "d10d022",
   "runtimeArchiveTag": "stage-07-ocean-primer-local-20261014",
   "entry": "../?demo=ocean-primer&seed=55",
@@ -10,7 +10,17 @@
   "roadmapLink": "roadmap/",
   "releaseRecordUrl": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_07_PUBLICATION.md",
   "deployedPlayback": {
-    "verified": false
+    "verified": true,
+    "elapsedWallSec": 450.0421,
+    "speed": 1,
+    "playedClips": 16,
+    "interruptions": [],
+    "errors": [],
+    "navigationToReadySec": 17.679200000000186,
+    "maxFrameIntervalMs": 141.8000000000029,
+    "over250": 0,
+    "conditions": "Ordinary desktop visit via README original image and deployed guide. Cache was not cleared or controlled; no heavy local build/tests during loading or playback. Not a controlled cold benchmark or a five-second promise.",
+    "humanListeningVerified": false
   },
   "scope": "Publish the archived 450-second primer and preserve prior exploration modules; documentation and future expansion planning only, no runtime upgrade.",
   "limits": [
@@ -18,5 +28,7 @@
     "加载尚未稳定达到5秒内，窄窗有部分动物裁切",
     "旧研究入口的等待、低帧率和存档问题保留",
     "天气、海岸到深海新场景、更多物种与游戏化为后续方案"
-  ]
+  ],
+  "runtimeReleaseCommit": "ba7089af439f6c01d4842024dffe5eb1b6358cde",
+  "workflowUrl": "https://github.com/yydshly/ocean-world/actions/runs/38518175914"
 }

@@ -1,0 +1,306 @@
+{
+  "date": "2026-10-14",
+  "stage": "07",
+  "status": "published-runtime-verified-with-known-limits",
+  "runtimeArchiveCommit": "d10d0228f86f960026365c57d7076a26c15bdd1c",
+  "runtimeArchiveTag": "stage-07-ocean-primer-local-20261014",
+  "runtimeReleaseCommit": "ba7089af439f6c01d4842024dffe5eb1b6358cde",
+  "workflow": {
+    "url": "https://github.com/yydshly/ocean-world/actions/runs/38518175914",
+    "conclusion": "success",
+    "worldGroups": 8,
+    "registeredWorldFiles": 246,
+    "jobs": [
+      {
+        "name": "build",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (3)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (2)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (6)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (5)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (1)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (7)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (4)",
+        "conclusion": "success"
+      },
+      {
+        "name": "world-checks (0)",
+        "conclusion": "success"
+      },
+      {
+        "name": "deploy",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "localPackagingChecks": {
+    "shallow": 172,
+    "primer": 47,
+    "publicationAndSites": 10,
+    "countsAreNotAdditiveAcrossOverlappingSuites": true
+  },
+  "remote": {
+    "entry": "https://yydshly.github.io/ocean-world/?demo=ocean-primer&seed=55",
+    "fullPlayback": {
+      "startedAtMs": 37172.5,
+      "startSec": 0,
+      "speed": 1,
+      "completed": true,
+      "endedAtMs": 487214.6,
+      "elapsedWallSec": 450.0421
+    },
+    "modelEndSec": 450,
+    "interruptions": [],
+    "errors": [],
+    "console": [],
+    "startup": {
+      "navigationToReadySec": 17.679200000000186,
+      "componentStartupSec": 14.221400000000372,
+      "conditions": "Ordinary desktop visit via README original image and deployed guide. Cache was not cleared or controlled; no heavy local build/tests during loading or playback. Not a controlled cold benchmark or a five-second promise."
+    },
+    "frameIntervals": {
+      "count": 90299,
+      "p95UpperBoundMs": 10,
+      "maxMs": 141.8000000000029,
+      "over250": 0,
+      "bucketWidthMs": 5,
+      "chapters": {
+        "surface": {
+          "count": 10441,
+          "wallMs": 45041.700000000004,
+          "maxMs": 141.8000000000029,
+          "over250": 0,
+          "intervalBuckets5Ms": {
+            "5": 10162,
+            "10": 251,
+            "15": 17,
+            "20": 4,
+            "25": 4,
+            "40": 1,
+            "65": 1,
+            "145": 1
+          }
+        },
+        "shallow": {
+          "count": 45912,
+          "wallMs": 239996.19999999998,
+          "maxMs": 41.60000000000582,
+          "over250": 0,
+          "intervalBuckets5Ms": {
+            "5": 34497,
+            "10": 11188,
+            "15": 200,
+            "20": 18,
+            "25": 6,
+            "35": 1,
+            "40": 1,
+            "45": 1
+          }
+        },
+        "pelagic": {
+          "count": 18951,
+          "wallMs": 80000.10000000003,
+          "maxMs": 29.20000000001164,
+          "over250": 0,
+          "intervalBuckets5Ms": {
+            "5": 18717,
+            "10": 225,
+            "15": 7,
+            "30": 2
+          }
+        },
+        "deep": {
+          "count": 12103,
+          "wallMs": 65000,
+          "maxMs": 33.29999999998836,
+          "over250": 0,
+          "intervalBuckets5Ms": {
+            "5": 8805,
+            "10": 3143,
+            "15": 136,
+            "20": 5,
+            "25": 10,
+            "30": 3,
+            "35": 1
+          }
+        },
+        "recap": {
+          "count": 2892,
+          "wallMs": 20004.199999999953,
+          "maxMs": 50.100000000034925,
+          "over250": 0,
+          "intervalBuckets5Ms": {
+            "5": 1236,
+            "10": 1483,
+            "15": 145,
+            "20": 10,
+            "25": 8,
+            "30": 4,
+            "35": 3,
+            "40": 1,
+            "50": 1,
+            "55": 1
+          }
+        }
+      }
+    },
+    "narration": {
+      "playingClipIds": [
+        "surface-ocean-scale",
+        "primer-shallow-school-entry",
+        "primer-shallow-school-split",
+        "primer-shallow-school-merge",
+        "primer-shallow-school-disturb",
+        "primer-shallow-school-regroup",
+        "primer-shallow-reef-edge",
+        "primer-shallow-reef-sand",
+        "primer-shallow-sand-life",
+        "primer-shallow-seagrass",
+        "primer-shallow-open-water",
+        "pelagic-whale-breathing",
+        "pelagic-dolphin-space",
+        "deep-midwater-light",
+        "deep-seafloor-food",
+        "recap-three-clues"
+      ],
+      "expectedClips": 16,
+      "mediaErrors": [],
+      "humanListeningVerified": false
+    },
+    "conditions": {
+      "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "initialViewport": {
+        "width": 1280,
+        "height": 720,
+        "pixelRatio": 1.5
+      },
+      "finalViewport": {
+        "width": 780,
+        "height": 871.3333740234375,
+        "pixelRatio": 1.5
+      },
+      "viewportChangedDuringRun": true,
+      "resolutionScale": 1,
+      "speed": 1,
+      "heavyLocalWorkDuringPlayback": false,
+      "deviceScope": "This desktop only; no mobile or novice learning acceptance"
+    },
+    "navigation": {
+      "originalReadmeImageRendered": true,
+      "readmeImageToGuideToPrimerClicked": true,
+      "guideImagesLoaded": 6,
+      "mainMenuEntries": 11,
+      "mainMenu": [
+        {
+          "name": "第一次认识海洋当前7分30秒 · 海面、浅海、鲸豚与深海，带中文讲解",
+          "url": "https://yydshly.github.io/ocean-world/?demo=ocean-primer&seed=55"
+        },
+        {
+          "name": "4分钟浅海体验推荐主线 · 鱼群 → 礁谷 → 沙道 → 草床",
+          "url": "https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55"
+        },
+        {
+          "name": "60秒鱼群协同同一浅海 · 分流、汇合、散开与聚群",
+          "url": "https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1"
+        },
+        {
+          "name": "75秒历史样板早期冻结路线 · 与当前主线范围不同",
+          "url": "https://yydshly.github.io/ocean-world/?demo=shallow-sample&seed=55"
+        },
+        {
+          "name": "能力总览查看观察工具与各专题入口",
+          "url": "https://yydshly.github.io/ocean-world/?demo=all&seed=55"
+        },
+        {
+          "name": "导演模式研究入口 · 可选章与变速，跨区可能等待",
+          "url": "https://yydshly.github.io/ocean-world/?demo=director&seed=55"
+        },
+        {
+          "name": "生命巡游研究路线 · 4分钟观察，区域准备另计",
+          "url": "https://yydshly.github.io/ocean-world/?demo=life-expedition&seed=55&world=whole-seabed"
+        },
+        {
+          "name": "热带礁谷区域入口 · 礁体与动物群落",
+          "url": "https://yydshly.github.io/ocean-world/?demo=reef-valley-region&seed=55&world=whole-seabed"
+        },
+        {
+          "name": "海草草甸区域入口 · 草床、沙底与坡面",
+          "url": "https://yydshly.github.io/ocean-world/?demo=seagrass-meadow-region&seed=55&world=whole-seabed"
+        },
+        {
+          "name": "海带林研究入口 · 部分旧存档无法恢复，可能卡顿",
+          "url": "https://yydshly.github.io/ocean-world/?demo=kelp-life&seed=55"
+        },
+        {
+          "name": "深海软底研究入口 · 底栖群落与照明，可能卡顿",
+          "url": "https://yydshly.github.io/ocean-world/?demo=deep-life&seed=55"
+        }
+      ],
+      "stage07GalleryImages": 14,
+      "galleryLazyImagesInitiallyLoaded": 10,
+      "roadmapImagesLoaded": 5,
+      "roadmapHorizontalOverflow": false,
+      "allResearchDestinationsReplayed": false
+    },
+    "screenshots": [
+      {
+        "file": "stage-07-publication/remote-surface.jpg",
+        "subject": "Remote surface opening"
+      },
+      {
+        "file": "stage-07-publication/remote-shallow.jpg",
+        "subject": "Remote shallow chapter"
+      },
+      {
+        "file": "stage-07-publication/remote-whale.jpg",
+        "subject": "Remote pelagic chapter, dolphin observation; historical filename retained"
+      },
+      {
+        "file": "stage-07-publication/remote-deep.jpg",
+        "subject": "Remote midwater chapter"
+      }
+    ]
+  },
+  "preservation": {
+    "runtimeFiles": 388,
+    "changed": [],
+    "localStage07ReceiptUnchanged": true,
+    "oldStagesAndImageKept": true
+  },
+  "documentation": {
+    "followup": "Documentation and publication status will be regenerated; the app payload remains the same. Final archive tag resolves the documentation revision.",
+    "archiveTag": "stage-07-ocean-primer-published-20261014",
+    "applicationPayload": {
+      "files": 30,
+      "changed": [],
+      "method": "SHA-256 comparison of every released compiled application JS/CSS against the documentation build",
+      "manifest": "stage-07-publication/built-runtime-sha256.json"
+    }
+  },
+  "limits": [
+    "Loading remains about 17.7 seconds on this ordinary remote visit, not within five seconds.",
+    "Visual realism, narrow-window clipping, original research waits/low frame rates and some saved-world failures remain.",
+    "No human listening, mobile, novice comprehension, complete dynamic collision or field calibration acceptance.",
+    "Future weather, beach-to-deep expansion, species interactions, games and reusable resources remain proposals."
+  ]
+}
