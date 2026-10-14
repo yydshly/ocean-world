@@ -15,6 +15,9 @@ async function capture(kind,name,data){
   if(!response.ok)throw new Error('保存失败，请缩短录像或检查项目写入权限');
   return(await response.json()).file;
 }
-function downloadBlob(blob,name){
-  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);return name;
+export function downloadBlob(blob,name){
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;
+  document.body.appendChild(a);
+  try{a.click();}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);}
+  return name;
 }

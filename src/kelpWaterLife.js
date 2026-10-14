@@ -265,34 +265,38 @@ function intakeValid(a, r) {
   }
   return ['x', 'y', 'z'].every(k => close(expected[k], x.foodPosition[k]));
 }
-function validate(record, region, generator, capacity, pending = false) {
+function validate(record, region, generator, capacity, pending = false, reportFailure = null) {
+  const fail = (reason, individualId = null) => { reportFailure?.(reason, individualId); return false; };
   const old = [...(record?.state?.agents ?? region?.sim?.agents ?? []), ...(record?.waterAgents ?? []), ...(record?.visitorAgents ?? []), ...(record?.kelpBenthicAgents ?? [])];
-  if (old.some(a => isKelpWaterLifeAgent(a) || prefixed(a))) return false;
+  if (old.some(a => isKelpWaterLifeAgent(a) || prefixed(a))) return fail('misplaced-individual-record');
   if (!prefixed(record)) return true;
   if (!nativeOwner(generator, region) || !Number.isSafeInteger(capacity) || capacity < 0 || capacity > 20 || Object.keys(record).some(k => k.startsWith('kelpWaterLife') && !FIELDS.includes(k)) ||
       record.kelpWaterLifeVersion !== 1 || record.kelpWaterLifeInitializedAtSec !== 0 || !Array.isArray(record.kelpWaterLifeAgents) || record.kelpWaterLifeAgents.length > 7 ||
-      old.filter(a => a.speciesId !== 'giant-kelp').length + record.kelpWaterLifeAgents.length > capacity) return false;
+      old.filter(a => a.speciesId !== 'giant-kelp').length + record.kelpWaterLifeAgents.length > capacity) return fail('community-schema-or-capacity');
   const d = record.kelpWaterLife, agents = record.kelpWaterLifeAgents, clock = region.sim.timeSec, expectedClock = pending ? clock - .1 : clock;
-  if (!d || d.version !== 1 || typeof d.role !== 'boolean' || d.role !== kelpWaterLifeRole(generator, region.cx, region.cz) || d.foodScope !== KELP_WATER_LIFE_FOOD_SCOPE || d.scope !== MODEL.note ||
-      !nonnegative(d.lastTickSec) || !close(d.lastTickSec, expectedClock) || !Number.isSafeInteger(d.counters?.ticks) || d.counters.ticks < 0 || !close(d.counters.ticks * .1, d.lastTickSec) ||
+  if (!d || d.version !== 1 || typeof d.role !== 'boolean' || d.role !== kelpWaterLifeRole(generator, region.cx, region.cz) || d.foodScope !== KELP_WATER_LIFE_FOOD_SCOPE || d.scope !== MODEL.note)
+    return fail('community-origin-or-scope');
+  if (!nonnegative(d.lastTickSec) || !close(d.lastTickSec, expectedClock) || !Number.isSafeInteger(d.counters?.ticks) || d.counters.ticks < 0 || !close(d.counters.ticks * .1, d.lastTickSec))
+    return fail('community-clock-mismatch');
+  if (
       !Number.isSafeInteger(d.counters?.feedings) || d.counters.feedings < 0 || !Number.isSafeInteger(d.counters?.deaths) || d.counters.deaths < 0 || !nonnegative(d.counters?.consumedUnits) ||
       d.counters.consumedUnits > d.counters.feedings * MODEL.biteAmount + 1e-8 || d.counters.consumedUnits > region.sim.ledger.ingested + 1e-8 || d.counters.feedings > region.sim.counters.feedingCount ||
       d.counters.deaths !== agents.filter(a => a?.alive === false).length || d.counters.deaths > region.sim.counters.deathCount ||
       (d.counters.feedings === 0 ? d.counters.consumedUnits !== 0 : !(d.counters.consumedUnits > 0)) ||
       !Array.isArray(d.addedIds) || !Array.isArray(d.birthPlacements) || !Array.isArray(d.groups) || d.addedIds.length !== agents.length || d.birthPlacements.length !== agents.length ||
-      new Set(d.addedIds).size !== agents.length || new Set(agents.map(a => a?.id)).size !== agents.length || (!d.role && agents.length)) return false;
+      new Set(d.addedIds).size !== agents.length || new Set(agents.map(a => a?.id)).size !== agents.length || (!d.role && agents.length)) return fail('community-ledger-or-roster');
   const jack = agents.filter(a => a?.speciesId === KELP_WATER_LIFE_IDS[0]);
-  if (agents.length && (jack.length < 4 || jack.length > 5 || d.groups.length !== 1)) return false;
-  if (!agents.length && d.groups.length) return false;
+  if (agents.length && (jack.length < 4 || jack.length > 5 || d.groups.length !== 1)) return fail('school-roster');
+  if (!agents.length && d.groups.length) return fail('school-roster');
   for (const group of d.groups) {
     const patch = region.sim.preyPatches.find(p => p.id === group.foodPatchId);
     if (!patch || group.id !== `kelp-water-life-school:${region.id}:${patch.id}` || group.speciesId !== KELP_WATER_LIFE_IDS[0] || !vector(group.home) ||
         !Array.isArray(group.memberIds) || group.memberIds.length !== jack.length || new Set(group.memberIds).size !== jack.length || group.leaderId !== group.memberIds[0] ||
-        !jack.every(a => a.groupId === group.id && group.memberIds[a.schoolSlot] === a.id && ['x', 'y', 'z'].every(k => a.schoolHome?.[k] === group.home[k]))) return false;
+        !jack.every(a => a.groupId === group.id && group.memberIds[a.schoolSlot] === a.id && ['x', 'y', 'z'].every(k => a.schoolHome?.[k] === group.home[k]))) return fail('school-origin-or-membership');
   }
   const ids = new Set(old.map(a => a?.id)), elements = kelpWaterElements(generator, region.cx, region.cz);
   for (const a of agents) {
-    if (!isKelpWaterLifeAgent(a) || Object.keys(a).some(k => k.startsWith('kelpWaterLife') && !AGENT_FIELDS.includes(k))) return false;
+    if (!isKelpWaterLifeAgent(a) || Object.keys(a).some(k => k.startsWith('kelpWaterLife') && !AGENT_FIELDS.includes(k))) return fail('individual-schema', a?.id);
     const born = d.birthPlacements.find(p => p.id === a.id), patch = foodPatch(region, a);
     if (!born || !patch || ids.has(a.id) || !d.addedIds.includes(a.id) || a.id !== `kelp-water-life:${region.id}:${a.speciesId}:${a.schoolSlot ?? 0}` ||
         a.kelpWaterLifeIndividualVersion !== 1 || a.kelpWaterLifeSiteId !== born.siteId || a.kelpWaterLifeFoodPatchId !== born.kelpWaterLifeFoodPatchId ||
@@ -304,22 +308,57 @@ function validate(record, region, generator, capacity, pending = false) {
         Math.hypot(a.velocity.x, a.velocity.y, a.velocity.z) > MODEL.traits[a.speciesId].speedMps + 1e-8 || !['schooling', 'foraging', 'approaching', 'searching', 'blocked', 'kelp-water-life-feeding', 'dead'].includes(a.state) ||
         (a.alive ? a.state === 'dead' || !close(a.timeSec, d.lastTickSec) : a.state !== 'dead' || a.energy !== 0 || a.stateSince !== a.timeSec || Math.hypot(a.velocity.x, a.velocity.y, a.velocity.z) !== 0) ||
         a.foodScope !== KELP_WATER_LIFE_FOOD_SCOPE || a.conditionScope !== 'relative condition index; no new biomass or food inventory' || a.nutritionPool !== MODEL.traits[a.speciesId].pool ||
-        !homeValid(a, a.position) || !homeValid(a, a.target) || !intakeValid(a, region)) return false;
-    if (a.groupId !== born.groupId || a.schoolSlot !== born.schoolSlot || (a.groupId === null && (a.schoolHome !== null || a.schoolSlot !== null))) return false;
+        !homeValid(a, a.position) || !homeValid(a, a.target) || !intakeValid(a, region)) return fail('individual-state-or-intake', a.id);
+    if (a.groupId !== born.groupId || a.schoolSlot !== born.schoolSlot || (a.groupId === null && (a.schoolHome !== null || a.schoolSlot !== null))) return fail('individual-school-membership', a.id);
     // A moving plant can invalidate a historical target; birth/static support
     // is reconstructed at zero, and current geometry is checked before every
     // turn, movement and intake. Saved positions are never silently repaired.
     const historic = { ...region, sim: Object.assign(Object.create(Object.getPrototypeOf(region.sim)), region.sim, { timeSec: 0, _ticks: 0, environment: { currentMps: .18, deformationCurrentMps: .18 } }) };
-    if (!kelpWaterLifePositionValid(generator, historic, a, born.position, born.heading, born.pitch, { elements, occupancy: false }) ||
-        !kelpWaterLifePositionValid(generator, region, a, a.position, a.heading, a.pitch, { elements, occupancy: false, future: false }) ||
-        !kelpWaterLifePositionValid(generator, region, a, a.target, a.targetHeading, a.targetPitch, { elements, occupancy: false, checkPlants: false }) ||
-        Math.abs(a.targetPitch) > MODEL.maximumPitchRad + 1e-10 || (a.speciesId === 'pacific-sea-nettle' && a.targetPitch !== 0)) return false;
+    if (!kelpWaterLifePositionValid(generator, historic, a, born.position, born.heading, born.pitch, { elements, occupancy: false })) return fail('birth-body-clearance', a.id);
+    if (!kelpWaterLifePositionValid(generator, region, a, a.position, a.heading, a.pitch, { elements, occupancy: false, future: false }))
+      return fail(kelpWaterLifePositionValid(generator, region, a, a.position, a.heading, a.pitch, { elements, occupancy: false, checkPlants: false }) ?
+        'current-body-plant-clearance' : 'current-body-static-clearance', a.id);
+    if (!kelpWaterLifePositionValid(generator, region, a, a.target, a.targetHeading, a.targetPitch, { elements, occupancy: false, checkPlants: false }) ||
+        Math.abs(a.targetPitch) > MODEL.maximumPitchRad + 1e-10 || (a.speciesId === 'pacific-sea-nettle' && a.targetPitch !== 0)) return fail('target-body-static-clearance', a.id);
     ids.add(a.id);
   }
   return true;
 }
 export function validateKelpWaterLifeRecord(record, region, { generator, capacity = 20 } = {}) {
   try { return validate(record, region, generator, capacity); } catch { return false; }
+}
+/** Same strict validator, with a read-only first-failure explanation. No
+ * history, clock, pose, inventory, identity or record is rewritten. */
+export function explainKelpWaterLifeRecord(record, region, { generator, capacity = 20 } = {}) {
+  let reason = null, individualId = null, valid = false;
+  try { valid = validate(record, region, generator, capacity, false, (code, id) => { reason = code; individualId = id; }); }
+  catch { reason = 'record-shape-or-validation-exception'; }
+  const finite = value => Number.isFinite(value) ? value : null;
+  return { valid, reason, ownerId: region?.id ?? record?.id ?? null, individualId,
+    ownerTimeSec: finite(region?.sim?.timeSec), communityTimeSec: finite(record?.kelpWaterLife?.lastTickSec),
+    tickCount: Number.isSafeInteger(record?.kelpWaterLife?.counters?.ticks) ? record.kelpWaterLife.counters.ticks : null,
+    recovery: valid ? 'unchanged-record-admissible' : 'original-record-retained-no-automatic-repair' };
+}
+export function kelpWaterLifeFailureMessage(diagnostic) {
+  const descriptions = {
+    'community-clock-mismatch': '水层群落时钟与海域时钟不一致',
+    'current-body-plant-clearance': '当前动物身体与动态藻叶或林下植物冲突',
+    'current-body-static-clearance': '当前动物身体不满足海床、水深或分区边界净空',
+    'birth-body-clearance': '出生姿态不满足原生植物与海床净空',
+    'target-body-static-clearance': '保留目标姿态不满足海床、水深或分区边界净空',
+    'individual-state-or-intake': '动物身份、状态、个体时钟或摄食凭据不一致',
+    'community-ledger-or-roster': '水层群落库存计数或动物名册不一致',
+    'school-roster': '鱼群动物名册不一致',
+    'school-origin-or-membership': '鱼群来源或成员归属不一致',
+    'individual-school-membership': '动物的鱼群归属不一致',
+    'misplaced-individual-record': '水层动物位于错误的记录数组',
+    'community-schema-or-capacity': '水层群落结构、版本或容量不合法',
+    'community-origin-or-scope': '水层群落来源、版本或模型范围不一致',
+    'individual-schema': '水层动物记录结构不合法',
+    'record-shape-or-validation-exception': '记录结构无法完成严格校验',
+  };
+  const reason = descriptions[diagnostic?.reason] ?? '水层控制器拒绝此次更新';
+  return `分区 ${diagnostic?.ownerId ?? '未知'}：${reason}；海域时钟 ${diagnostic?.ownerTimeSec ?? '未知'} 秒，水层时钟 ${diagnostic?.communityTimeSec ?? '未知'} 秒${diagnostic?.individualId ? `；动物 ${diagnostic.individualId}` : ''}。原记录保留，不自动重生或改写。`;
 }
 /** The existing sim owns a single 0.1s clock. Validate before any mutation. */
 export function tickKelpWaterLife(region, generator, dt) {

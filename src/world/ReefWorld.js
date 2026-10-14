@@ -58,7 +58,7 @@ import { prepareReefSkeletonDisplay } from './reefScanDisplay.js';
 import { KELP_ROCKS, KELP_MORPHOLOGY, floorHeight as kelpFloorHeight, habitatHeight as kelpHabitatHeight, habitatNormal as kelpHabitatNormal, kelpLeafNormal } from '../kelpHabitat.js';
 import { DEEP_DEPTH_M, deepFloorHeight } from '../deepHabitat.js';
 import { SEA_SPIDER_BODY_LOCAL } from '../deepSeaSpiderGeometry.js';
-import { localCaptureEnabled, saveJson } from '../capture.js';
+import { localCaptureEnabled, saveJson, downloadBlob } from '../capture.js';
 import { LIVING_SHALLOWS_PROFILE, livingShallowsSeed } from '../livingShallows.js';
 import { createLivingWorldState } from '../livingWorldState.js';
 import { createDirectorCameraMotion, sampleDirectorCameraMotion, advanceDirectorCameraElapsed, isDirectorPlaybackRate } from '../directorCameraMotion.js';
@@ -2857,7 +2857,19 @@ export class ReefWorld {
   }
   snapshot({detailedTerrain=true}={}){const selected=this.findAgent(this.selectedId);return {...this.frameTimingSnapshot(),...this.observationStateSnapshot({detailedTerrain}),focusObservation:this.lastFocusAssessment?{...this.lastFocusAssessment}:null,biomeId:this.biomeId,sceneLabel:this.definition.label,surfaceY:this.surfaceY,visualEnvironment:{...this.visualEnvironment},workload:{...this.workload},morphology:this.isKelp?{...KELP_MORPHOLOGY}:null,selectedSpecies:selected?this.catalog.get(selected.speciesId):null,selectedAgentId:this.selectedId,runId:this.runId,wallSeconds:(Date.now()-this.runStarted)/1000,metrics:{...this.sim.metrics},environment:{...this.sim.environment},events:this.sim.events.slice(-8).reverse(),agents:(this.isLivingShallows?[]:this.sim.agents).concat(this.oceanEcology?.snapshot({detailedTerrain:false}).agents||[]).map(a=>({...a,position:{...a.position}})),fps:Math.round(this.fps),drawCalls:this.renderer.info.render.calls,triangles:this.renderer.info.render.triangles,hardware:this.hardware,viewport:{width:this.container.clientWidth,height:this.container.clientHeight,pixelRatio:this.renderer.getPixelRatio()},camera:{position:this.camera.position.toArray(),target:this.controls.target.toArray()},depthM:Math.max(0,(this.isDeep?this.definition.observationDepthM??DEEP_DEPTH_M:this.surfaceY)-this.camera.position.y),following:this.following,paused:this.paused,speed:this.speed,errors:[...this.errors]};}
   emitSnapshot(){this.lastSnapshot=this.elapsed;this.onSnapshot(this.snapshot({detailedTerrain:false}));}
-  async downloadScreenshot(){this.renderer.render(this.scene,this.camera);const data=this.renderer.domElement.toDataURL('image/png'),name=`${this.biomeId}-${Date.now()}`;if(localCaptureEnabled){const r=await fetch('/__reef-capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'screenshot',name,data})});if(!r.ok)throw new Error('无法写入项目验证目录');const file=(await r.json()).file;await saveJson({schema:'tidal-observation-frame-v1',biomeId:this.biomeId,image:file,selectedId:this.selectedId,snapshot:this.snapshot()},name+'-metadata');return file;}const a=document.createElement('a');a.download=name+'.png';a.href=data;a.click();return name+'.png';}
+  async downloadScreenshot(){
+    this.renderer.render(this.scene,this.camera);
+    const canvas=this.renderer.domElement,name=`${this.biomeId}-${Date.now()}`;
+    if(localCaptureEnabled){
+      const data=canvas.toDataURL('image/png');
+      const r=await fetch('/__reef-capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'screenshot',name,data})});
+      if(!r.ok)throw new Error('无法写入项目验证目录');
+      const file=(await r.json()).file;
+      await saveJson({schema:'tidal-observation-frame-v1',biomeId:this.biomeId,image:file,selectedId:this.selectedId,snapshot:this.snapshot()},name+'-metadata');return file;
+    }
+    const blob=await new Promise((resolve,reject)=>canvas.toBlob(value=>value?resolve(value):reject(new Error('截图编码失败，请重试。')),'image/png'));
+    return downloadBlob(blob,name+'.png');
+  }
   dispose(){
     if(this.disposed)return;
     this.disposed=true;

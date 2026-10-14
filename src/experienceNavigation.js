@@ -13,12 +13,12 @@ export const EXPERIENCE_GROUPS = Object.freeze([
     detail: '使用持续世界；区域需要单独准备，验收范围与主线不同。',
     entries: Object.freeze([
       Object.freeze({ id: 'all', title: '能力总览', detail: '查看观察工具与各专题入口', demo: 'all' }),
-      Object.freeze({ id: 'director', title: '导演模式', detail: '按章节带看 · 可选章与变速', demo: 'director' }),
-      Object.freeze({ id: 'life', title: '生命巡游', detail: '另一条4分钟路线 · 持续世界跨区', demo: 'life-expedition', world: 'whole-seabed' }),
+      Object.freeze({ id: 'director', title: '导演模式', detail: '研究入口 · 可选章与变速，跨区可能等待', demo: 'director' }),
+      Object.freeze({ id: 'life', title: '生命巡游', detail: '研究路线 · 4分钟观察，区域准备另计', demo: 'life-expedition', world: 'whole-seabed' }),
       Object.freeze({ id: 'reef', title: '热带礁谷', detail: '区域入口 · 礁体与动物群落', demo: 'reef-valley-region', world: 'whole-seabed' }),
       Object.freeze({ id: 'meadow', title: '海草草甸', detail: '区域入口 · 草床、沙底与坡面', demo: 'seagrass-meadow-region', world: 'whole-seabed' }),
-      Object.freeze({ id: 'kelp', title: '海带林', detail: '温带藻林与岩底生命', demo: 'kelp-life' }),
-      Object.freeze({ id: 'deep', title: '深海软底', detail: '深海底栖群落与观察器照明', demo: 'deep-life' }),
+      Object.freeze({ id: 'kelp', title: '海带林', detail: '研究入口 · 部分旧存档无法恢复，可能卡顿', demo: 'kelp-life' }),
+      Object.freeze({ id: 'deep', title: '深海软底', detail: '研究入口 · 底栖群落与照明，可能卡顿', demo: 'deep-life' }),
     ]),
   }),
 ]);

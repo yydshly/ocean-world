@@ -2116,6 +2116,56 @@
       "biome": "deep"
     }
   ],
+  "entryAudit": {
+    "date": "2026-10-14",
+    "runtimeCommit": "5e4c280",
+    "navigationRelease": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/ENTRY_NAVIGATION_PUBLICATION_20261013.md",
+    "distinctUrls": 21,
+    "scenesEntered": 20,
+    "majorMenuEntries": 10,
+    "topicLinks": 15,
+    "limits": {
+      "kelpMain": "Existing saved kelp water-life record failed recovery; original records were preserved.",
+      "slowWorldEntries": 7,
+      "observedSlowWorldFps": [
+        2,
+        5
+      ],
+      "directorChaptersSampled": 3,
+      "directorChaptersTotal": 67,
+      "internalActionsTotal": 61,
+      "allInternalActionsExecuted": false,
+      "screenshotDownloadConfirmed": false,
+      "journalMarkAndReturnConfirmed": false
+    },
+    "playback": {
+      "journey": {
+        "completed": true,
+        "modelSeconds": 240,
+        "wallSeconds": 267.5,
+        "navigationToReadySeconds": 13.7,
+        "backgroundBrowser": true
+      },
+      "school": {
+        "completed": true,
+        "modelSeconds": 60
+      },
+      "sample": {
+        "completed": true,
+        "modelSeconds": 75,
+        "navigationToReadySeconds": 6.4
+      },
+      "life": {
+        "completed": true,
+        "modelSeconds": 240,
+        "initialPreparationApproxSeconds": 45
+      },
+      "director": {
+        "chapter3ObservedCrossRegionWaitSeconds": 9
+      }
+    },
+    "conditions": "Normal cache, not cleared; hidden browser and other pages. No isolated cold, mobile, all 67 chapters or all 61 internal actions acceptance."
+  },
   "links": {
     "journey": "../?demo=shallow-journey&seed=55",
     "school": "../?demo=shallow-journey&seed=55&school=1",

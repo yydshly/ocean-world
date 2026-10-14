@@ -1,0 +1,792 @@
+{
+  "date": "2026-10-14",
+  "scope": "Finite local structural stability round; no asset, species, route expansion; no commit, push or deployment.",
+  "status": "Both proposed behavior/runtime candidates rejected and withdrawn. Earlier uncommitted capture, navigation and diagnostics retained.",
+  "deep": {
+    "verdict": "rejected-runtime-backlog",
+    "candidateCorrectness": {
+      "passed": 10,
+      "failed": 0,
+      "log": "output/validation/deep-worker-closeout/runtime-tests-final.txt",
+      "notRetainedRegressionSuite": true
+    },
+    "samples": [
+      {
+        "evidence": "native-start.json",
+        "wallSeconds": 32.422,
+        "fps": 3,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 75.71563748205816,
+          "authored": 15.473360559949674,
+          "camera": 0.1388094879079232,
+          "ecology": 211.84402515922935,
+          "render": 4.327042440489315,
+          "streaming": 0.024461195526048547,
+          "water": 0.17429180156936347
+        },
+        "queuedSeconds": null,
+        "mainThreadCopyMs": null,
+        "activeRegions": 9,
+        "alive": 165,
+        "generated": 0,
+        "restored": 9,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 140,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 7,
+            "rubble": 10
+          },
+          "environment": {
+            "clockSec": 9.9,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "139,7",
+            "140,7",
+            "141,7",
+            "139,8",
+            "140,8",
+            "141,8",
+            "139,9",
+            "140,9",
+            "141,9"
+          ],
+          "loads": 18,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 8960,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 16,
+            "ridge": 1
+          },
+          "sceneryInstances": 17,
+          "sceneryTriangles": 2992,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 9
+        }
+      },
+      {
+        "evidence": "native-end.json",
+        "wallSeconds": 107.145,
+        "fps": 4,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 52.78014615854169,
+          "authored": 10.839298132241726,
+          "camera": 0.05588356978587546,
+          "ecology": 160.88002178205505,
+          "render": 2.1236263303309753,
+          "streaming": 0.01272957488170244,
+          "water": 0.10617114810914696
+        },
+        "queuedSeconds": null,
+        "mainThreadCopyMs": null,
+        "activeRegions": 9,
+        "alive": 165,
+        "generated": 0,
+        "restored": 9,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 140,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 7,
+            "rubble": 10
+          },
+          "environment": {
+            "clockSec": 41.900000000000006,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "139,7",
+            "140,7",
+            "141,7",
+            "139,8",
+            "140,8",
+            "141,8",
+            "139,9",
+            "140,9",
+            "141,9"
+          ],
+          "loads": 18,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 8960,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 16,
+            "ridge": 1
+          },
+          "sceneryInstances": 17,
+          "sceneryTriangles": 2992,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 9
+        }
+      },
+      {
+        "evidence": "worker-start.json",
+        "wallSeconds": 20.709,
+        "fps": 76,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 7.51598005910289,
+          "authored": 1.584046140005873,
+          "camera": 0.04270481110632106,
+          "ecology": 0.12550496386876983,
+          "render": 1.62103639463232,
+          "streaming": 0.0027646272906790875,
+          "water": 0.062485809005497814
+        },
+        "queuedSeconds": 3.216699999999998,
+        "mainThreadCopyMs": 17.800000071525574,
+        "activeRegions": 9,
+        "alive": 165,
+        "generated": 0,
+        "restored": 9,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 140,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 7,
+            "rubble": 10
+          },
+          "environment": {
+            "clockSec": 18.8,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "139,7",
+            "140,7",
+            "141,7",
+            "139,8",
+            "140,8",
+            "141,8",
+            "139,9",
+            "140,9",
+            "141,9"
+          ],
+          "loads": 18,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 8960,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 16,
+            "ridge": 1
+          },
+          "sceneryInstances": 17,
+          "sceneryTriangles": 2992,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 9
+        }
+      },
+      {
+        "evidence": "worker-mid.json",
+        "wallSeconds": 95.025,
+        "fps": 79,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 2.826676408438524,
+          "authored": 0.670968538429307,
+          "camera": 0.03961062078100131,
+          "ecology": 0.0803616930679877,
+          "render": 1.1703098604125626,
+          "streaming": 6.891629870966757e-07,
+          "water": 0.041507191109170456
+        },
+        "queuedSeconds": 4.945799999999997,
+        "mainThreadCopyMs": 20,
+        "activeRegions": 9,
+        "alive": 165,
+        "generated": 0,
+        "restored": 9,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 140,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 7,
+            "rubble": 10
+          },
+          "environment": {
+            "clockSec": 93.1,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "139,7",
+            "140,7",
+            "141,7",
+            "139,8",
+            "140,8",
+            "141,8",
+            "139,9",
+            "140,9",
+            "141,9"
+          ],
+          "loads": 18,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 8960,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 16,
+            "ridge": 1
+          },
+          "sceneryInstances": 17,
+          "sceneryTriangles": 2992,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 9
+        }
+      },
+      {
+        "evidence": "worker-hard-end.json",
+        "wallSeconds": 269.593,
+        "fps": 70,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 7.422613218010742,
+          "authored": 1.084580061935842,
+          "camera": 0.039634410346603505,
+          "ecology": 0.13586621448929811,
+          "render": 1.4417392876721218,
+          "streaming": 0.0026062207636933367,
+          "water": 0.07626626992960364
+        },
+        "queuedSeconds": 0.07490000000002328,
+        "mainThreadCopyMs": 15.299999952316284,
+        "activeRegions": 9,
+        "alive": 144,
+        "generated": 0,
+        "restored": 18,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 156,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 6,
+            "rubble": 14
+          },
+          "environment": {
+            "clockSec": 161.3,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "155,7",
+            "156,7",
+            "157,7",
+            "155,8",
+            "156,8",
+            "157,8",
+            "155,9",
+            "156,9",
+            "157,9"
+          ],
+          "loads": 27,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 9984,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 19,
+            "ridge": 1
+          },
+          "sceneryInstances": 20,
+          "sceneryTriangles": 3520,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 18
+        }
+      },
+      {
+        "evidence": "worker-soft-return.json",
+        "wallSeconds": 306.927,
+        "fps": 55,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 4.90338635874165,
+          "authored": 0.5368574004965645,
+          "camera": 0.037222851897154165,
+          "ecology": 0.06685744124395253,
+          "render": 0.6052539547304299,
+          "streaming": 0.0007234824771610982,
+          "water": 0.029667892818947057
+        },
+        "queuedSeconds": 0,
+        "mainThreadCopyMs": 16.300000071525574,
+        "activeRegions": 9,
+        "alive": 165,
+        "generated": 0,
+        "restored": 27,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 140,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 7,
+            "rubble": 10
+          },
+          "environment": {
+            "clockSec": 197.8,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "139,7",
+            "140,7",
+            "141,7",
+            "139,8",
+            "140,8",
+            "141,8",
+            "139,9",
+            "140,9",
+            "141,9"
+          ],
+          "loads": 36,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 8960,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 16,
+            "ridge": 1
+          },
+          "sceneryInstances": 17,
+          "sceneryTriangles": 2992,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 27
+        }
+      },
+      {
+        "evidence": "worker-soft-end.json",
+        "wallSeconds": 398.514,
+        "fps": 102,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 1.6790918019558847,
+          "authored": 0.4875164516021786,
+          "camera": 0.02560832942308452,
+          "ecology": 0.07680520450842032,
+          "render": 1.4524835322290948,
+          "streaming": 0.014280693340033422,
+          "water": 0.03188966552831288
+        },
+        "queuedSeconds": 6.345700000000012,
+        "mainThreadCopyMs": 19.300000071525577,
+        "activeRegions": 9,
+        "alive": 165,
+        "generated": 0,
+        "restored": 27,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 140,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 7,
+            "rubble": 10
+          },
+          "environment": {
+            "clockSec": 289.40000000000003,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "139,7",
+            "140,7",
+            "141,7",
+            "139,8",
+            "140,8",
+            "141,8",
+            "139,9",
+            "140,9",
+            "141,9"
+          ],
+          "loads": 36,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 8960,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 16,
+            "ridge": 1
+          },
+          "sceneryInstances": 17,
+          "sceneryTriangles": 2992,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 27
+        }
+      },
+      {
+        "evidence": "worker-pause-observed.json",
+        "wallSeconds": 448.632,
+        "fps": 119,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 1.746648210336588,
+          "authored": 0.4323664375124161,
+          "camera": 0.026873686306429043,
+          "ecology": 0.06614345756213025,
+          "render": 1.6520346213237502,
+          "streaming": 0.0065827991254672185,
+          "water": 0.08442885032299094
+        },
+        "queuedSeconds": 0,
+        "mainThreadCopyMs": 24.799999952316284,
+        "activeRegions": 9,
+        "alive": 165,
+        "generated": 0,
+        "restored": 27,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 140,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 7,
+            "rubble": 10
+          },
+          "environment": {
+            "clockSec": 325.20000000000005,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "139,7",
+            "140,7",
+            "141,7",
+            "139,8",
+            "140,8",
+            "141,8",
+            "139,9",
+            "140,9",
+            "141,9"
+          ],
+          "loads": 36,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 8960,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 16,
+            "ridge": 1
+          },
+          "sceneryInstances": 17,
+          "sceneryTriangles": 2992,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 27
+        }
+      },
+      {
+        "evidence": "worker-cold-restore.json",
+        "wallSeconds": 10.266,
+        "fps": 123,
+        "viewport": {
+          "height": 720,
+          "pixelRatio": 1.5,
+          "width": 1280
+        },
+        "frameCpuMs": {
+          "animals": 1.1917620192869118,
+          "authored": 0.21525105144097997,
+          "camera": 0.04079636500998343,
+          "ecology": 0.046812693908980275,
+          "render": 1.1559560031417493,
+          "streaming": 0.009461207335303845,
+          "water": 0.05516108287172678
+        },
+        "queuedSeconds": 0,
+        "mainThreadCopyMs": 0,
+        "activeRegions": 9,
+        "alive": 165,
+        "generated": 0,
+        "restored": 9,
+        "errors": [],
+        "streaming": {
+          "activeChunks": 9,
+          "center": {
+            "cx": 140,
+            "cz": 8
+          },
+          "chunkSize": 64,
+          "drawCalls": 20,
+          "elementCounts": {
+            "rock": 7,
+            "rubble": 10
+          },
+          "environment": {
+            "clockSec": 0,
+            "currentMps": 0.06,
+            "observerLight": 1
+          },
+          "landscapeRole": "soft-sediment-and-sparse-hard-scenery-not-simulated-biomass",
+          "loadedChunks": [
+            "139,7",
+            "140,7",
+            "141,7",
+            "139,8",
+            "140,8",
+            "141,8",
+            "139,9",
+            "140,9",
+            "141,9"
+          ],
+          "loads": 18,
+          "maxActiveChunks": 9,
+          "maxDrawCalls": 36,
+          "naturalLight": 0,
+          "ownedOverlayGeometries": 0,
+          "photosyntheticScenery": 0,
+          "prototypeGeometries": 2,
+          "prototypeMaterials": 3,
+          "renderOrigin": {
+            "x": 8960,
+            "z": 512
+          },
+          "rockProfileCounts": {
+            "mound": 16,
+            "ridge": 1
+          },
+          "sceneryInstances": 17,
+          "sceneryTriangles": 2992,
+          "seascapeAddedRocks": 0,
+          "seascapeOwners": [],
+          "seascapeRevision": 0,
+          "seed": "55",
+          "terrainTriangles": 73728,
+          "unloads": 9
+        }
+      }
+    ],
+    "softReturnWindow": {
+      "wallSeconds": 91.58699999999999,
+      "queueStartSec": 0,
+      "queueEndSec": 6.345700000000012
+    },
+    "cold": {
+      "regionsExact": true,
+      "agentsExact": true,
+      "regionCount": 9,
+      "agents": 165
+    },
+    "pauseWait": "The 3-second browser locator wait timed out; a later observation at 14.813 seconds showed paused, queue zero, no errors. This is an observation upper bound, not exact pause completion latency.",
+    "comparisonLimit": "Sequential same-seed entrance visits with naturally advancing original history; matching viewport/pixel ratio/hardware/assets, not an identical-state controlled A/B or a general FPS guarantee.",
+    "evidence": "output/validation/deep-worker-closeout/summary.json"
+  },
+  "kelp": {
+    "verdict": "not-adopted-and-withdrawn",
+    "productionTicksCompleted": 0,
+    "target90SecondsPassed": false,
+    "rootCause": "Original 17.6-second 9-owner window rejected strict kelpUnderstoryLife recovery in owner13,-3. A supportOffset rebuild differs by ~8.88e-16 m under exact comparison. Clocks alone do not establish recovery validity.",
+    "motionFinding": "Original water body was checked against the newly advanced plant frame; the old peer occupation box can also block attainable motion. No plant/peer/geometry margin or historical field was altered.",
+    "evidence": "output/validation/kelp-motion-20261014/summary.json"
+  },
+  "unchangedLimits": [
+    "Existing illegal kelp history is preserved, not reconstructed.",
+    "Original synchronous deep ecology remains CPU heavy after rollback.",
+    "Mainline loading, director cross-region waits and life-expedition pauses are not solved by this round.",
+    "No all-entrance, all-device, complete-world or remote acceptance is claimed."
+  ],
+  "tests": {
+    "worldNavigationPassed": 9,
+    "worldNavigationLog": "output/validation/deep-worker-20261014/world-checks.log",
+    "finalBuildAndPublication": {
+      "build": "passed",
+      "viteSeconds": 12.88,
+      "publicationNavigationCaptureSitesPassed": 19,
+      "log": "output/validation/deep-worker-20261014/rollback-checks.log",
+      "fullWorldSuiteRun": false,
+      "crlfAwareDiffCheck": "passed"
+    }
+  },
+  "remote": {
+    "runtime": "5e4c280",
+    "documentationArchive": "0bcda9a",
+    "changedThisRound": false
+  },
+  "mainAfterRollback": {
+    "url": "http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55",
+    "observedModelSecond": 56.93300000000409,
+    "navigationToReadyMs": 5050.699999928474,
+    "preparedTextures": 47,
+    "console": [],
+    "complete240SecondsThisRound": false,
+    "stoppedByTestPause": true,
+    "loadingLimit": "Ordinary local browser session with cache not cleared; no runtime loading optimization retained, not a controlled improvement or remote5-second proof.",
+    "screenshot": "output/validation/deep-worker-20261014/rollback-main.png"
+  }
+}

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createKelpOceanGenerator } from '../src/kelpOceanGeneration.js';
 import { KelpOceanEcology } from '../src/kelpOceanEcology.js';
-import { validateKelpWaterLifeRecord, kelpWaterLifePositionValid } from '../src/kelpWaterLife.js';
+import { validateKelpWaterLifeRecord, explainKelpWaterLifeRecord, kelpWaterLifeFailureMessage, kelpWaterLifePositionValid } from '../src/kelpWaterLife.js';
 
 const point = { x: 922, z: -96 }, clone = value => structuredClone(value);
 class MemoryStore {
@@ -104,4 +104,42 @@ test('a failed owner cannot write even a valid-looking frame or transfer a legac
   assert.deepEqual(other.waterAgents.map(a => a.id), sourceIds);
   assert.equal(f.ecology._waterTransfers.length, 0);
   assert.deepEqual([...f.store.records], committed);
+});
+
+test('strict recovery explains a mismatched historical clock and preserves all original disk fields', async () => {
+  const f = fixture(); assert.equal(await f.ecology.update(point), true);
+  const region = f.ecology._active.get('15,-1'), invalid = f.ecology._record(region);
+  invalid.kelpWaterLife.lastTickSec = 26.2;
+  invalid.kelpWaterLife.counters.ticks = 262;
+  const original = clone(invalid), diagnostic = explainKelpWaterLifeRecord(invalid, region, { generator: f.generator });
+  assert.equal(diagnostic.valid, false);
+  assert.equal(diagnostic.reason, 'community-clock-mismatch');
+  assert.equal(diagnostic.ownerId, '15,-1');
+  assert.equal(diagnostic.ownerTimeSec, 0);
+  assert.equal(diagnostic.communityTimeSec, 26.2);
+  assert.equal(diagnostic.recovery, 'original-record-retained-no-automatic-repair');
+  assert.match(kelpWaterLifeFailureMessage(diagnostic), /15,-1.*时钟.*不一致.*26\.2.*不自动重生或改写/);
+  assert.throws(() => f.ecology._restore(invalid, 15, -1), /Invalid saved kelp water-life community.*15,-1.*不一致/);
+  assert.deepEqual(invalid, original);
+  assert.equal(validateKelpWaterLifeRecord(invalid, region, { generator: f.generator }), false);
+});
+
+test('read-only recovery diagnostics share the original full validator instead of accepting simplified records', async () => {
+  const f = fixture(); assert.equal(await f.ecology.update(point), true);
+  const region = f.ecology._active.get('15,-1'), saved = f.ecology._record(region), original = clone(saved);
+  assert.deepEqual(explainKelpWaterLifeRecord(saved, region, { generator: f.generator }), {
+    valid: true, reason: null, ownerId: '15,-1', individualId: null,
+    ownerTimeSec: 0, communityTimeSec: 0, tickCount: 0, recovery: 'unchanged-record-admissible',
+  });
+  for (const corrupt of [r => { r.kelpWaterLife.addedIds.pop(); },
+    r => { r.kelpWaterLifeAgents[0].velocity.y = 1; },
+    r => { r.kelpWaterLifeAgents[0].kelpWaterLifeHostId = 'forged'; },
+    r => { r.kelpWaterLife.counters.consumedUnits += 1; },
+    r => { r.kelpWaterLife.extra = true; r.kelpWaterLifeUnknown = 1; }]) {
+    const row = clone(saved); corrupt(row); const before = clone(row);
+    assert.equal(explainKelpWaterLifeRecord(row, region, { generator: f.generator }).valid, false);
+    assert.equal(validateKelpWaterLifeRecord(row, region, { generator: f.generator }), false);
+    assert.deepEqual(row, before);
+  }
+  assert.deepEqual(saved, original);
 });

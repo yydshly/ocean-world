@@ -2,7 +2,7 @@ import { initializeKelpUnderstoryLife, tickKelpUnderstoryLife, validateKelpUnder
 import { initializeKelpNearBottomLife, tickKelpNearBottomLife, validateKelpNearBottomLifeRecord, captureKelpNearBottomLife, kelpNearBottomLifeRole, kelpNearBottomLifeSnapshot, kelpNearBottomLifeFoodBudgetError, kelpNearBottomLifeEnergyBudgetError, KELP_NEAR_BOTTOM_LIFE_IDS } from './kelpNearBottomLife.js';
 import { KelpSimulation, DEFAULT_ENVIRONMENT } from './kelpSimulation.js';
 import { initializeKelpBenthicLife, tickKelpBenthicLife, validateKelpBenthicLifeRecord, captureKelpBenthicLife, KELP_BENTHIC_LIFE_IDS } from './kelpBenthicLife.js';
-import { initializeKelpWaterLife, tickKelpWaterLife, validateKelpWaterLifeRecord, captureKelpWaterLife, kelpWaterLifeRole, KELP_WATER_LIFE_IDS } from './kelpWaterLife.js';
+import { initializeKelpWaterLife, tickKelpWaterLife, validateKelpWaterLifeRecord, explainKelpWaterLifeRecord, kelpWaterLifeFailureMessage, captureKelpWaterLife, kelpWaterLifeRole, KELP_WATER_LIFE_IDS } from './kelpWaterLife.js';
 import { KELP_SURFACE_Y, kelpLeafNormal } from './kelpHabitat.js';
 import { KELP_OCEAN_SUPPORT_GEOMETRY_VERSION, createKelpOceanGenerator } from './kelpOceanGeneration.js';
 import { migrateKelpSupport } from './kelpSupportMigration.js';
@@ -386,8 +386,9 @@ export class KelpOceanEcology {
     if (record.kelpBenthicLifeVersion !== undefined) {
       for (const key of ['kelpBenthicLifeVersion', 'kelpBenthicLifeInitializedAtSec', 'kelpBenthicLife', 'kelpBenthicAgents']) region[key] = clone(record[key]);
     }
-    if (!validateKelpWaterLifeRecord(record, region, { generator: savedGenerator, capacity: KELP_OCEAN_REGION_ANIMAL_LIMIT }))
-      throw new Error('Invalid saved kelp water-life community; original animals and inventory were not regenerated.');
+    const waterLifeValidation = explainKelpWaterLifeRecord(record, region, { generator: savedGenerator, capacity: KELP_OCEAN_REGION_ANIMAL_LIMIT });
+    if (!waterLifeValidation.valid)
+      throw new Error(`Invalid saved kelp water-life community; original animals and inventory were not regenerated. ${kelpWaterLifeFailureMessage(waterLifeValidation)}`);
     if (record.kelpWaterLifeVersion !== undefined) {
       for (const key of ['kelpWaterLifeVersion', 'kelpWaterLifeInitializedAtSec', 'kelpWaterLife', 'kelpWaterLifeAgents']) region[key] = clone(record[key]);
     }
@@ -1044,7 +1045,8 @@ export class KelpOceanEcology {
   _failWaterLifeStep(region) {
     if (this._failedWaterLife.has(region.id)) return;
     this._failedWaterLife.add(region.id); this._counts.persistenceErrors++;
-    this._storageError = `Kelp water-life step failed in ${region.id}; the last saved animals and inventory were preserved.`;
+    const diagnostic = explainKelpWaterLifeRecord(this._record(region), region, { generator: this.generator });
+    this._storageError = `Kelp water-life step failed in ${region.id}; the last saved animals and inventory were preserved. ${kelpWaterLifeFailureMessage(diagnostic)}`;
   }
 
   get agents() {

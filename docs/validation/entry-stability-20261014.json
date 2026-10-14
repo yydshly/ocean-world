@@ -1,0 +1,243 @@
+{
+  "stage": "entry-stability-finite-local-closeout",
+  "date": "2026-10-14",
+  "status": "Finite round closed with unresolved research-entry failures. Not an all-capability acceptance.",
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "deployed": false,
+    "localBase": "12b04d0",
+    "remoteRuntime": "5e4c280",
+    "remoteDocumentationArchive": "0bcda9a"
+  },
+  "scope": "Existing entrance stability and truthful status only; no scene, species, assets, route, ecology fixed-step or saved-record regeneration changes. Failed candidate and one concentrated correction per trial were reverted.",
+  "retained": [
+    "Attached Blob download link, cleanup on errors, current-frame PNG encoding",
+    "Error alert and stopped/original-save-retained footer; preparation footer waits for actual active ecology regions",
+    "Read-only first rejection reason for strict kelp water-life saved history",
+    "README and guide identify remote audit scope, research-entry failures and historical measurements"
+  ],
+  "tests": {
+    "finalBuild": {
+      "command": "npm run build:local",
+      "pass": true,
+      "viteSeconds": 14.74,
+      "log": "output/validation/entry-stability-20261014/build-final-status.log"
+    },
+    "finalRelevantChecks": {
+      "files": [
+        "tests/publication.test.mjs",
+        "tests/capture-download.test.mjs",
+        "tests/experience-navigation.test.mjs",
+        "tests/sites-worker.test.mjs"
+      ],
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "log": "output/validation/entry-stability-20261014/final-build-checks.log"
+    },
+    "kelpChecks": {
+      "command": "node --test tests/kelp-water-life-persistence.test.mjs tests/kelp-save-diagnostics.test.mjs tests/kelp-water-life.test.mjs",
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 125312.9468,
+      "log": "output/validation/kelp-recovery-20261014/final-tests.log",
+      "logScope": "Verbatim stdout chunks returned by exec/write_stdin, assembled into this file; not native process file redirection."
+    },
+    "earlierFailure": {
+      "log": "output/validation/entry-stability-20261014/integration-before-build.log",
+      "cause": "One publication byte-comparison failed against stale dist before rebuilding; final output checks passed after build."
+    },
+    "releaseManifest": {
+      "files": 239,
+      "originalFilesRetained": 238,
+      "newFile": "tests/capture-download.test.mjs",
+      "fullSuiteRun": false
+    },
+    "limits": "Do not sum overlapping repeated cases; no all-world, mobile or exhaustive 61-action/67-chapter verification."
+  },
+  "browser": {
+    "conditions": "Codex in-app browser, ordinary localhost cache not cleared; other user page retained; no controlled network or front-facing performance comparison.",
+    "png": {
+      "actualDownloadCompleted": true,
+      "bytes": 2012941,
+      "signature": "89504e470d0a1a0a",
+      "sha256": "6c4373d9f823520092e8fafe2f298f980a33dc4e5b0ceeaf19932e97586689b2",
+      "artifact": "output/validation/entry-stability-20261014/downloaded-frame.png",
+      "uiProof": "output/validation/entry-stability-20261014/capture-panel.png"
+    },
+    "journal": {
+      "markedName": "入口验证 2026-10-14",
+      "points": 1,
+      "capacity": 12,
+      "initialPosition": [
+        217,
+        4.221353509568587,
+        232
+      ],
+      "movedPosition": [
+        441,
+        -0.6606385231018064,
+        248
+      ],
+      "returnedPosition": [
+        217,
+        4.221353509568587,
+        232
+      ],
+      "ready": "ready",
+      "regions": 9,
+      "refreshRetained": true,
+      "evidence": [
+        "journal-return.json",
+        "journal-ready.json",
+        "journal-refresh.json"
+      ],
+      "limits": "One marker and one manual return only; no deletion, cross-origin synchronization, complete journal capacity or saved-ecology recovery acceptance.",
+      "renderCameraPosition": [
+        25,
+        4.221353509568587,
+        -24
+      ],
+      "renderOrigin": {
+        "x": 192,
+        "z": 256
+      },
+      "terrainChunks": [
+        "4,2",
+        "4,3",
+        "4,4",
+        "2,2",
+        "3,2",
+        "2,3",
+        "3,3",
+        "2,4",
+        "3,4"
+      ],
+      "loadingRegions": 0,
+      "exactLogicalReturn": true,
+      "terrainChunkCount": 9
+    },
+    "mainSmoke": {
+      "url": "http://127.0.0.1:4175/ocean-world/?demo=shallow-journey&seed=55",
+      "navigationToReadyMs": 7739.800000071526,
+      "startupMs": 6894.800000071526,
+      "preparedTextures": 47,
+      "modelSeconds": 50.03190000000041,
+      "wallSeconds": 50.15350000002384,
+      "complete240": false,
+      "longestObservedFrameMs": 199.80000000000015,
+      "framesOver250Ms": 0,
+      "errors": [],
+      "consoleErrors": [],
+      "scope": "Automatic short opening segment only; not another full 60/75/240 second run or director/life full route. 5-second load target not met."
+    },
+    "guide": {
+      "url": "http://127.0.0.1:4175/ocean-world/overview/#entry-status",
+      "allFiveExistingImagesLoaded": true,
+      "majorEntries": 10,
+      "topicLinks": 15,
+      "uniqueUrlsInPriorRemoteAudit": 21,
+      "currentAuditSectionVisible": true,
+      "evidence": "guide-current-status.json",
+      "menuProof": "entry-menu-final.png"
+    },
+    "deepBaseline": {
+      "evidence": "deep-baseline.json",
+      "scope": "Local diagnostic baseline only, temporary tab closed; no accepted performance candidate or controlled browser before/after improvement."
+    }
+  },
+  "rejectedCandidates": {
+    "kelpController": {
+      "candidateAccepted": false,
+      "firstFailureSec": 17.8,
+      "correctedFailureSec": 17.8,
+      "controllerMatchesHead": true,
+      "finalProductionProtection": {
+        "seed": "55",
+        "point": {
+          "x": 922,
+          "z": -96
+        },
+        "productionFlags": [
+          "visitors",
+          "understory",
+          "forestBelt",
+          "kelpSeascape",
+          "benthicLife",
+          "waterLife",
+          "nearBottomLife",
+          "understoryLife"
+        ],
+        "actualFailureSec": 26.3,
+        "lastValidCommittedSec": 20,
+        "waterLifeIndividuals": 18,
+        "frozenOwner": "15,-1",
+        "failedCheckpointRejected": true,
+        "committedRecordsUnchanged": true,
+        "completeColdWindowReplayed": true,
+        "coldContinuationSec": 20.1,
+        "target90SecondContinuationAchieved": false,
+        "scope": "Persistence protection only; the moving-plant controller failure and previously inconsistent historical records are not repaired."
+      },
+      "evidence": "output/validation/kelp-recovery-20261014/summary.json"
+    },
+    "regionalExactQueryMemo": {
+      "candidateAccepted": false,
+      "productionFilePresent": false,
+      "results": [
+        {
+          "kind": "kelp-understory",
+          "center": [
+            58,
+            -4
+          ],
+          "animals": 141,
+          "owners": 9,
+          "fixedSteps": 20,
+          "stepSec": 0.1,
+          "plainMedianMs": 240.61199999999917,
+          "memoMedianMs": 220.8614000000016,
+          "reductionPercent": 8.208481371418578,
+          "queries": 437370,
+          "hits": 271276,
+          "misses": 166094,
+          "peakEntries": 8451,
+          "completeRecordsEqualEveryStep": true
+        },
+        {
+          "kind": "deep-hard",
+          "center": [
+            156,
+            8
+          ],
+          "animals": 144,
+          "owners": 9,
+          "fixedSteps": 20,
+          "stepSec": 0.1,
+          "plainMedianMs": 78.0561000000016,
+          "memoMedianMs": 106.62250000000131,
+          "increasePercent": 36.597255051813455,
+          "queries": 948488,
+          "hits": 222332,
+          "misses": 726156,
+          "peakEntries": 16384,
+          "completeRecordsEqualEveryStep": true
+        }
+      ],
+      "equivalence": "Both profiles' complete _record rows compared at every one of 20 steps, including all hidden saved RNG, animal identity, deaths, regional clocks, stock, food ledgers and behavior history. Complete persisted checkpoints equal. Additional cold restore checks match complete pre-reload records, then match future states across fractional .04/.06/.1/.2 second input frames and changing current/hour/turbidity/food. Zero-step leaves records unchanged; memo empty outside scopes. See recovery-results.json.",
+      "evidence": "output/validation/regional-query-closeout/summary.json"
+    }
+  },
+  "unresolved": [
+    "Some existing kelp saved records fail strict recovery; no safe missing-state reconstruction implemented.",
+    "Native kelp dynamic-plant water-life failure still occurs at 26.3 sec; preservation at 20 sec/cold 20.1 sec does not cross it.",
+    "Seven poor-FPS kelp/deep research entrances remain unresolved; synchronous ecology CPU remains substantial.",
+    "Director cross-region waits and life expedition preparation/long frames remain from remote audit; not retested as fixed.",
+    "Main local loading 7.740 sec and previous remote main/sample loading measurements do not meet 5-sec target.",
+    "Not all 61 internal actions or all 67 director chapters have been verified."
+  ],
+  "nextBoundary": "Stop this round. A separate finite authorized structural ecology-worker/save-barrier project would need full native state/input history/cold-future equivalence before production acceptance. No resets, skipped validation or indefinite local tuning."
+}
