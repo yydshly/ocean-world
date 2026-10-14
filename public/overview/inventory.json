@@ -2515,6 +2515,262 @@
       "src/data/oceanPrimerNarration.json"
     ]
   },
+  "stage07Publication": {
+    "stage": "07",
+    "date": "2026-10-14",
+    "status": "release-prepared",
+    "statusLabel": "阶段07发布准备中，远端验证结果另行记录",
+    "runtimeArchiveCommit": "d10d022",
+    "runtimeArchiveTag": "stage-07-ocean-primer-local-20261014",
+    "entry": "../?demo=ocean-primer&seed=55",
+    "reviewLink": "stage-07/",
+    "roadmapLink": "roadmap/",
+    "releaseRecordUrl": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_07_PUBLICATION.md",
+    "deployedPlayback": {
+      "verified": false
+    },
+    "scope": "Publish the archived 450-second primer and preserve prior exploration modules; documentation and future expansion planning only, no runtime upgrade.",
+    "limits": [
+      "海面与动物真实感仍有差距",
+      "加载尚未稳定达到5秒内，窄窗有部分动物裁切",
+      "旧研究入口的等待、低帧率和存档问题保留",
+      "天气、海岸到深海新场景、更多物种与游戏化为后续方案"
+    ]
+  },
+  "stage07LocalValidation": {
+    "date": "2026-10-14",
+    "stage": "07",
+    "status": "local-stage-archived-with-known-limits",
+    "published": false,
+    "entry": "?demo=ocean-primer&seed=55",
+    "durationSec": 450,
+    "baseline": {
+      "commit": "1c56822",
+      "tag": "stage-06-ocean-primer-local-20261014"
+    },
+    "fullPlayback": {
+      "completed": true,
+      "elapsedWallSec": 450.0038,
+      "endedAtMs": 491652.8,
+      "speed": 1,
+      "startSec": 0,
+      "startedAtMs": 41649,
+      "modelEndSec": 450,
+      "interruptions": [],
+      "errors": [],
+      "console": []
+    },
+    "startup": {
+      "navigationToReadySec": 7.9975,
+      "componentStartupSec": 7.434899999999907,
+      "conditions": "Normal local cache. Final run loading overlapped a 4.66-second publication/packaging check before playback; not an isolated cold benchmark. Earlier corrected candidate ordinary navigation was 6.4135s. No stable 5-second guarantee.",
+      "earlierCandidateNavigationSec": 6.4135
+    },
+    "frameIntervals": {
+      "count": 81260,
+      "averageFps": 180.5775771360254,
+      "p95UpperBoundMs": 15,
+      "maxMs": 87.60000000000582,
+      "over250": 0,
+      "bucketWidthMs": 5,
+      "chapters": [
+        {
+          "id": "deep",
+          "count": 15499,
+          "averageFps": 238.44615384615383,
+          "p95UpperBoundMs": 5,
+          "maxMs": 20.69999999995343,
+          "over250": 0
+        },
+        {
+          "id": "pelagic",
+          "count": 19136,
+          "averageFps": 239.19970100037384,
+          "p95UpperBoundMs": 5,
+          "maxMs": 12.5,
+          "over250": 0
+        },
+        {
+          "id": "recap",
+          "count": 4721,
+          "averageFps": 235.99926015906593,
+          "p95UpperBoundMs": 5,
+          "maxMs": 16.70000000001164,
+          "over250": 0
+        },
+        {
+          "id": "shallow",
+          "count": 32119,
+          "averageFps": 133.82905514245402,
+          "p95UpperBoundMs": 15,
+          "maxMs": 87.60000000000582,
+          "over250": 0
+        },
+        {
+          "id": "surface",
+          "count": 9785,
+          "averageFps": 217.46425785460457,
+          "p95UpperBoundMs": 10,
+          "maxMs": 54.20000000001164,
+          "over250": 0
+        }
+      ],
+      "conditions": {
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "viewport": {
+          "height": 871.3333740234375,
+          "pixelRatio": 1.5,
+          "width": 667.3333740234375
+        },
+        "resolutionScale": 1,
+        "heavyWorkDuringPlayback": false
+      }
+    },
+    "narration": {
+      "playedClips": 16,
+      "expectedClips": 16,
+      "mediaErrors": [],
+      "humanListeningVerified": false
+    },
+    "checks": {
+      "passed": 90,
+      "failed": 0,
+      "distinctTests": true,
+      "groups": [
+        {
+          "name": "primer timeline/travel/water/surface/deep",
+          "passed": 39
+        },
+        {
+          "name": "final linked pelagic morphology/motion",
+          "passed": 8
+        },
+        {
+          "name": "entries/navigation/publication/capture",
+          "passed": 39
+        },
+        {
+          "name": "final Sites output",
+          "passed": 4
+        }
+      ],
+      "publicationFinalRerun": 6,
+      "registeredWorldTestFiles": 246,
+      "retainedOriginalRegisteredFiles": 243,
+      "fullWorldSuiteRun": false
+    },
+    "preservation": {
+      "baselineFiles": 382,
+      "unchanged": 375,
+      "displayChanged": 6,
+      "sourceMetadataChanged": 1,
+      "unexpectedChanges": [],
+      "originalShallowResearchAndAudioPreserved": true,
+      "runtimeFrozenFiles": 388,
+      "runtimeChangesDuringPlayback": [],
+      "oldStage06EvidenceUnchanged": true
+    },
+    "assets": {
+      "newCoreDeepClasses": 5,
+      "deepFunctionalClasses": 3,
+      "deepRepresentatives": 15,
+      "cetaceans": 7,
+      "whaleLengthM": 13.8,
+      "dolphinLengthM": 2.65,
+      "externalNewModelsDownloaded": 0,
+      "scope": "original whole display kits plus existing licensed textures and functional assets; scientific sources guide morphology, not copied media"
+    },
+    "corrections": [
+      "Rejected GLSL reserved flat name fixed; actual GPU failure now stops readiness.",
+      "Underwater direction dome moved to far plane; foreground/background clipping block removed.",
+      "Underwater water-plane and volume share radiance and converge with actual sight distance; hard horizon seam removed.",
+      "Whale naturally travels into distant water during pod observation; no hiding, scale change or jump."
+    ],
+    "screenshots": [
+      {
+        "image": "surface.jpg",
+        "kind": "final-complete-run-ready",
+        "timeSec": 0,
+        "imagePixelSize": [
+          1280,
+          720
+        ]
+      },
+      {
+        "image": "shallow.jpg",
+        "kind": "final-complete-run",
+        "timeSec": 108.04170000001224,
+        "imagePixelSize": [
+          1280,
+          720
+        ]
+      },
+      {
+        "image": "deep-midwater.jpg",
+        "kind": "separate-control-inspection-after-complete-run",
+        "timeSec": 380,
+        "imagePixelSize": [
+          667,
+          871
+        ]
+      },
+      {
+        "image": "transition.jpg",
+        "kind": "separate-control-inspection-after-complete-run",
+        "timeSec": 395,
+        "imagePixelSize": [
+          667,
+          871
+        ]
+      },
+      {
+        "image": "deep-seabed.jpg",
+        "kind": "separate-control-inspection-after-complete-run",
+        "timeSec": 415,
+        "imagePixelSize": [
+          667,
+          871
+        ]
+      },
+      {
+        "image": "dolphins.jpg",
+        "kind": "separate-control-inspection-after-complete-run",
+        "timeSec": 340,
+        "imagePixelSize": [
+          667,
+          871
+        ]
+      },
+      {
+        "image": "whale.jpg",
+        "kind": "separate-control-inspection-after-complete-run",
+        "timeSec": 304,
+        "imagePixelSize": [
+          667,
+          871
+        ]
+      },
+      {
+        "image": "whale-underwater.jpg",
+        "kind": "separate-control-inspection-after-complete-run",
+        "timeSec": 317,
+        "imagePixelSize": [
+          667,
+          871
+        ]
+      }
+    ],
+    "limitations": [
+      "海面波纹仍偏规律，海岸仍简化；不宣称达到纪录片真实感。",
+      "鲸豚与深海动物仍有程序模型感，冠水母帽体与鼠尾鱼材质尤其简化。",
+      "移动、光学和海雪是有参考的有限教学近似，尚未按野外观测校准；跨海域与下潜为标注的时间压缩。",
+      "加载仍不稳定在5秒内；此轮约8秒受并行加载检查影响，普通修正版另记录约6.4秒。",
+      "窄窗口观察中，海床侧边部分动物会被裁切；手机、人耳试听、首次观众理解和全动态碰撞尚未验收。",
+      "原研究世界与历史导演/生命巡游等待的问题不因本轮通过而消失；未重新验收所有研究入口。",
+      "本轮仅本地，未推送或部署；一轮收口后停止继续优化。"
+    ],
+    "screenshotConditions": "Complete 1x playback used 1280x720; later independent observation controls were inspected in the actual narrower 667x871 pane. Full original images retained; no crop or resized viewport for flattering evidence."
+  },
   "sources": [
     "src/App.jsx",
     "src/OceanApp.jsx",

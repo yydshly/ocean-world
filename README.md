@@ -1,4 +1,39 @@
-# TIDAL · 海底世界
+# TIDAL · 从海面到深海的海洋体验
+
+**当前阶段07：7分30秒“第一次认识海洋”。** 从海面与下潜开始，沿用4分钟礁谷、沙道和草床，随后观察座头鲸、海豚、中层生物与深海海床，最后回顾海洋的立体结构。16段中文讲解配合字幕、选章、暂停、变速与自由观察。目标是让没见过大海的人先看懂海洋，再逐步探索其中的生命。
+
+[进入7分30秒海洋总览](https://yydshly.github.io/ocean-world/?demo=ocean-primer&seed=55) · [全部能力与入口](https://yydshly.github.io/ocean-world/overview/) · [阶段07实景与边界](https://yydshly.github.io/ocean-world/overview/stage-07/) · [扩展与应用路线图](https://yydshly.github.io/ocean-world/overview/roadmap/)
+
+[![TIDAL 海底世界产品全景：目标、能力、生境、探索方法、实测结果与阶段边界](public/overview/ocean-world-product-atlas.png)](https://yydshly.github.io/ocean-world/overview/)
+
+**点击引导图进入更新后的导览，再选择7分30秒海洋总览。** 图像保持原版：图中画面、数量与性能属于2026-10-12历史快照；导览顶部、本文和[阶段07发布记录](docs/releases/STAGE_07_PUBLICATION.md)提供当前状态，不以历史图片替代新验收。
+
+## 当前交付与观察方法
+
+| 内容 | 已实现 | 如何体验与边界 |
+| --- | --- | --- |
+| 海洋总览 | 450秒、5章、16段中文讲解；共享海面/水下光照、鲸豚联动运动、深海功能代表 | 点击开始并开启讲解，建议先用1×完整观看。不同海域和大深度转移是有标注的时间压缩观察旅程 |
+| 完整浅海 | 240秒礁谷→沙道→草床，293个体、38展示类别，上下远近的动物群落 | [4分钟浅海体验](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55)，可选段或接管探索；展示类别不等于精确鉴定物种数 |
+| 鱼群协同 | 38条乌尾鮗遇礁分流、汇合、局部受扰和重新聚集 | [60秒协同演示](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1)，有五段讲解；是有限求解与编排演示 |
+| 旧能力与研究世界 | 75秒样板、导演、生命巡游、礁谷、草甸、海带林、深海、观察与记录工具 | 导览及“更多体验”保留入口；旧研究路线的等待、低帧率与部分存档恢复失败仍保留，不能视为全部正常 |
+| 阶段留存 | 阶段01—07说明、实际截图、来源、实测范围、旧版本与存档保护 | 本次发布已有归档运行版本，不继续修改动物、场景或生态；新方向另设有限阶段 |
+
+**本地阶段07验收：** 完整1×播放450.0038实秒，16段讲解实际启动，无操作中断或页面错误；最大帧间隔87.6ms，没有超过250ms的长帧，90项定向检查通过。加载约6–8秒，未稳定达到5秒；这些是本机结果，远端实际部署与播放以[本次发布回执](docs/releases/STAGE_07_PUBLICATION.md)为准。真实感、窄窗裁切、人耳试听、手机性能与首次观众理解仍有差距。
+
+## 海洋扩展与后续应用
+
+当前可作为可恢复的场景底座。后续按“一个完整片段、一次集中修正、验证后归档”推进，候选顺序是海岸入水、天气海况、栖息地互动，再扩展新海域与应用。**本次只整理与发布，不自动开始新开发。**
+
+- **海岸到深海：** 沙滩、潮间带、浪区与入水、浅海、开阔水域、中层、深海；相邻环境连续行进，跨海域明确说明。
+- **天气与风格：** 同一海岸先比较晴天、阴天、黄昏，后续加入雾、雨、风浪和月夜；天空、海面、水下光照联动，沿用纪录片式真实感。
+- **物种与行为：** 按海域、底质、水深和活动水层组织生命，逐步扩展群游、摄食、避障、受扰、呼吸及群落联系；区分编排演示、实时决策与观测数据回放。
+- **游戏与资源能力：** 可探索潜水、摄影图鉴、科普任务、生态沙盒、导演工具或场景组件；游戏还需任务、规则、交互、反馈及进度保存，现有导览不是完整游戏。
+
+详见[公开路线图](https://yydshly.github.io/ocean-world/overview/roadmap/)与[完整扩展和重构规划](docs/OCEAN_EXPANSION_ROADMAP.md)。场景、物种目录、实体状态、轨迹、群体生态、流式保存、镜头讲解和应用层逐步分离；保留原个体、资源、随机序列和时钟语义。只使用原创或免费且允许按条件再分发的素材；现有部分素材有非商业/相同方式共享条件，商用游戏或资源包需逐项审查或替换，不能直接认定全部可商用。
+
+## 保留的阶段记录与浅海能力
+
+下方保留阶段01—06及阶段07本地归档时的原说明。“尚未部署”“当前阶段05”等表述属于相应日期的历史状态；当前发布范围以上方和发布回执为准。
 
 **阶段07 · 海洋总览整体升级（本地归档，尚未部署）。** 7分30秒主线保持，海面/水下采用共享波面与光照，鲸豚的身体、尾部与路径联动，深海整组形态与栖息空间升级，观察器以明确标注的时间压缩连接各海域和深度。原4分钟浅海、探索入口、资产和存档保持。[本轮实景与阶段对照](public/overview/stage-07/index.html) · [阶段范围](docs/stages/STAGE_07_OCEAN_PRIMER_REALISM.md) · [验收回执](docs/validation/ocean-primer-stage-07-20261014.json)。
 
@@ -14,7 +49,7 @@
 
 [进入4分钟浅海体验](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55) · [先看60秒鱼群协同](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1) · [鱼群协同实景与范围](https://yydshly.github.io/ocean-world/overview/stage-05/) · [产品导览与全部入口](https://yydshly.github.io/ocean-world/overview/)
 
-[![TIDAL 海底世界产品全景：目标、能力、生境、探索方法、实测结果与阶段边界](public/overview/ocean-world-product-atlas.png)](https://yydshly.github.io/ocean-world/overview/)
+原版引导图已移至本文最上方，点击即可进入更新后的产品导览。
 
 **点击上方原版引导图进入产品导览，选择“4分钟浅海体验”或“60秒鱼群协同”。** 图中实景与数据是 **2026-10-12 的历史快照**，包括75秒样板和当时的性能、发布状态；最新阶段说明以本文与[阶段05鱼群协同页](https://yydshly.github.io/ocean-world/overview/stage-05/)为准。[下载原版长图](https://yydshly.github.io/ocean-world/overview/ocean-world-product-atlas.png)。
 

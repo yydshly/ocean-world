@@ -1,0 +1,22 @@
+{
+  "stage": "07",
+  "date": "2026-10-14",
+  "status": "release-prepared",
+  "statusLabel": "阶段07发布准备中，远端验证结果另行记录",
+  "runtimeArchiveCommit": "d10d022",
+  "runtimeArchiveTag": "stage-07-ocean-primer-local-20261014",
+  "entry": "../?demo=ocean-primer&seed=55",
+  "reviewLink": "stage-07/",
+  "roadmapLink": "roadmap/",
+  "releaseRecordUrl": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_07_PUBLICATION.md",
+  "deployedPlayback": {
+    "verified": false
+  },
+  "scope": "Publish the archived 450-second primer and preserve prior exploration modules; documentation and future expansion planning only, no runtime upgrade.",
+  "limits": [
+    "海面与动物真实感仍有差距",
+    "加载尚未稳定达到5秒内，窄窗有部分动物裁切",
+    "旧研究入口的等待、低帧率和存档问题保留",
+    "天气、海岸到深海新场景、更多物种与游戏化为后续方案"
+  ]
+}

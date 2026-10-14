@@ -11,7 +11,7 @@ import { renderToPipeableStream } from 'react-dom/server';
 import { PassThrough } from 'node:stream';
 import { shallowNarrationTimeline } from '../src/shallowNarrationTimeline.js';
 
-const guidePages = ['overview/index.html', 'overview/poster.html', 'overview/evidence/review.html', 'overview/stage-04/index.html', 'overview/stage-05/index.html'];
+const guidePages = ['overview/index.html', 'overview/poster.html', 'overview/evidence/review.html', 'overview/stage-04/index.html', 'overview/stage-05/index.html', 'overview/stage-06/index.html', 'overview/stage-07/index.html', 'overview/roadmap/index.html'];
 const require = createRequire(import.meta.url);
 // The browser-only loading store has no server snapshot. Supply its current
 // snapshot for this shell check, retaining App's actual lazy route selection.
@@ -110,6 +110,8 @@ test('README points readers to the deployed guide, primary journey and stage evi
   assert.ok(links.some(url => url.pathname.endsWith('/ocean-world/overview/stage-04/')), 'README lacks the published Stage04 evidence');
   assert.ok(links.some(url => url.searchParams.get('demo') === 'shallow-journey' && url.searchParams.get('school') === '1'), 'README lacks the sixty-second schooling entry');
   assert.ok(links.some(url => url.pathname.endsWith('/ocean-world/overview/stage-05/')), 'README lacks the published Stage05 evidence');
+  assert.ok(links.some(url => url.searchParams.get('demo') === 'ocean-primer'), 'README lacks the published ocean primer');
+  assert.ok(links.some(url => url.pathname.endsWith('/ocean-world/overview/roadmap/')), 'README lacks the future expansion roadmap');
   assert.ok(links.every(url => !['localhost', '127.0.0.1'].includes(url.hostname)), 'README sends readers to a local preview');
 });
 
@@ -178,13 +180,14 @@ test('production output includes the guide, query application and prefixed worke
   for (const file of ['index.html', 'atlas.css', 'inventory.json', 'ocean-world-product-atlas.png', 'evidence/stage.json', 'images/reef.png']) {
     assert.deepEqual(fs.readFileSync(`${root}/overview/${file}`), fs.readFileSync(`public/overview/${file}`));
   }
-  for (const folder of ['overview/stage-04','overview/stage-05','audio/shallow-schooling','audio/shallow-journey']) {
+  for (const folder of ['overview/stage-04','overview/stage-05','overview/stage-06','overview/stage-07','overview/roadmap','audio/ocean-primer','audio/shallow-schooling','audio/shallow-journey']) {
     const sourceRoot = path.join('public',folder);
     for (const file of fs.readdirSync(sourceRoot, {recursive:true})) {
       if (!fs.statSync(path.join(sourceRoot, file)).isFile()) continue;
       assert.deepEqual(fs.readFileSync(path.join(root,folder,file)), fs.readFileSync(path.join(sourceRoot,file)), `Published media/evidence was not shipped: ${folder}/${file}`);
     }
   }
+  assert.deepEqual(fs.readFileSync(`${root}/overview/stage-07-publication.json`), fs.readFileSync('public/overview/stage-07-publication.json'));
   const files = fs.readdirSync(`${root}/assets`);
   assert.ok(files.some(f => /^ShallowSampleApp-.*\.js$/.test(f)));
   assert.ok(files.some(f => /^oceanPreparation\.worker-.*\.js$/.test(f)));

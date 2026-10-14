@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="海洋世界阶段07已形成7分30秒科普总览。了解后续沙滩到深海、天气海况、物种行为和群体互动的扩展思路，以及游戏与内容资源的应用方向。">
+  <title>TIDAL 海洋扩展与应用规划</title>
+  <link rel="stylesheet" href="roadmap.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <nav class="topbar" aria-label="产品导航">
+    <a class="brand" href="../">TIDAL <span>海洋世界</span></a>
+    <a href="../">产品导览</a>
+    <a href="../stage-07/">阶段07实景</a>
+    <a class="primary" href="../../?demo=ocean-primer&amp;seed=55">观看7分30秒总览 →</a>
+  </nav>
+  <main id="main">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">海洋扩展与应用规划 · 2026-10-14</p>
+        <h1>保存已有成果，<br>逐步扩展海洋。</h1>
+        <p class="lead">从沙滩到深海，从晴朗海面到不同海况，从看见动物到理解它们的生活。让海洋体验成为能够持续扩展、复用的场景能力。</p>
+        <p class="hero-scope">以代表性环境逐段完善，每一阶段交付完整片段、验证后归档。长期目标不设置“全量复制地球海洋”的完成点。</p>
+        <div class="actions"><a class="primary" href="../../?demo=ocean-primer&amp;seed=55">先看当前体验 →</a><a href="https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_EXPANSION_ROADMAP.md">阅读完整重构思路 ↗</a></div>
+      </div>
+      <figure class="hero-image">
+        <a href="../stage-07/surface.jpg"><img src="../stage-07/surface.jpg" alt="阶段07实际浏览器画面：近岸海面、岸形与观察船" fetchpriority="high"></a>
+        <figcaption>当前阶段07实际画面 · 后续海岸与天气的扩展基础</figcaption>
+      </figure>
+    </header>
+
+    <nav class="section-nav" aria-label="路线图内容">
+      <a href="#current">01 当前成果</a><a href="#expansion">02 海洋扩展</a><a href="#behavior">03 生命与行为</a><a href="#architecture">04 重构底座</a><a href="#applications">05 应用方向</a><a href="#delivery">06 阶段交付</a>
+    </nav>
+
+    <section id="current" aria-labelledby="current-title">
+      <div class="section-heading"><p class="eyebrow">当前已有 · 阶段07</p><h2 id="current-title">一段完整的海洋认识主线</h2><p>已有成果继续保存。后续能力另设范围，不把规划写成已经实现。</p></div>
+      <ol class="current-route" aria-label="现有450秒路线">
+        <li><span>45秒</span><strong>海面与下潜</strong></li><li><span>240秒</span><strong>浅海栖息地</strong></li><li><span>80秒</span><strong>鲸与海豚</strong></li><li><span>65秒</span><strong>中层与深海海床</strong></li><li><span>20秒</span><strong>回顾海洋</strong></li>
+      </ol>
+      <div class="current-grid">
+        <article><span class="badge existing">已形成</span><h3>7分30秒总览</h3><p>450秒主线与16段中文讲解，可选章、暂停、变速与自由观察。原4分钟浅海、60秒鱼群协同、75秒历史样板和研究入口继续保留。</p><a href="../stage-07/">查看实景与本地验收范围 →</a></article>
+        <article><span class="badge existing">已形成</span><h3>群落与观察基础</h3><p>浅海保留293个体与38展示类别，以及礁谷、沙道、草床。鲸豚、中层和海床提供代表性观察；类别数量不等于精确鉴定的物种数。</p><a href="../../?demo=shallow-journey&amp;seed=55&amp;school=1">观看60秒鱼群协同 →</a></article>
+        <article><span class="badge limit">保留差距</span><h3>有限教学展示</h3><p>海岸和动物仍有模型感，加载尚未稳定5秒内，窄窗可能裁切动物。旧研究世界的等待、低帧率和部分存档恢复问题继续保留。</p><p class="small">总览使用跨海域观察点与明确的时间压缩，不是同一地点的实测连续潜航，也不是完整实时生态。</p></article>
+      </div>
+      <div class="scene-strip">
+        <figure><a href="../stage-07/shallow.jpg"><img src="../stage-07/shallow.jpg" alt="阶段07实际浅海礁谷和鱼群画面" loading="lazy"></a><figcaption>浅海 · 原路线继续保留</figcaption></figure>
+        <figure><a href="../stage-07/whale-underwater.jpg"><img src="../stage-07/whale-underwater.jpg" alt="阶段07实际座头鲸水下完整身体画面" loading="lazy"></a><figcaption>鲸豚 · 米制形态与联动运动</figcaption></figure>
+        <figure><a href="../stage-07/deep-seabed.jpg"><img src="../stage-07/deep-seabed.jpg" alt="阶段07实际深海软泥海床及功能代表画面" loading="lazy"></a><figcaption>深海 · 代表性观察群落</figcaption></figure>
+      </div>
+      <p class="image-note">本页图片均复用阶段07原始截图，完整显示。它们展示现有外观，不是未来天气、游戏或场景扩展的效果承诺。</p>
+    </section>
+
+    <section id="expansion" aria-labelledby="expansion-title">
+      <div class="section-heading"><p class="eyebrow">后续规划 · 空间与环境</p><h2 id="expansion-title">从沙滩到深海，形成可理解的空间</h2><p>每一段有不同的地形、水体、生命和观察方式。相邻生境连续行进，跨海域与长距离转移明确说明。</p></div>
+      <ol class="habitat-route">
+        <li><span>01</span><h3>海岸与潮间带</h3><p>沙滩或岩岸、潮线与岸边浪，让观众认识陆地与海洋的联系。</p></li>
+        <li><span>02</span><h3>浪区与入水</h3><p>水线、折射、近岸底质和视听变化，建立由空气进入水体的体验。</p></li>
+        <li><span>03</span><h3>浅海栖息地</h3><p>活礁、沙道、草床与立体动物群落，形成完整的生活空间。</p></li>
+        <li><span>04</span><h3>开阔水域</h3><p>大尺度水体、远近参照与不同水层的动物，表达大海的广阔。</p></li>
+        <li><span>05</span><h3>中层水体</h3><p>光照减弱、海雪和适合深度的生命，说明生活条件的变化。</p></li>
+        <li><span>06</span><h3>深海海床</h3><p>软泥、岩缘、观察灯与贴底群落，区别深海和浅海环境。</p></li>
+      </ol>
+      <aside class="note"><h3>扩展空间，也要延续历史</h3><p>未来区域按位置、种子与生境规则生成，近处加载、远处释放。返回时应保持地形、个体身份和生态记录，不能卸载后补种或随机重建原群落。物种共现按具体海域与生境检查，水深范围重叠不能单独证明同站共现。</p></aside>
+
+      <div class="subheading"><h3>同一片海，也会随环境改变</h3><p>保持纪录片式写实，丰富场景气质。天气系统属于后续扩展。</p></div>
+      <div class="weather-grid">
+        <article><span class="weather-symbol" aria-hidden="true">☀</span><h4>天气</h4><p>先形成晴天、阴天和黄昏三个完整状态，再按需要增加雾、雨和雷暴。</p></article>
+        <article><span class="weather-symbol" aria-hidden="true">≈</span><h4>海况</h4><p>平静海面、温和涌浪、风浪与岸边破浪；风、涌浪、潮汐及局部海流分别组织。</p></article>
+        <article><span class="weather-symbol" aria-hidden="true">◐</span><h4>昼夜</h4><p>清晨、正午、黄昏与月夜，联动天空、海面反射、水色和可见距离。</p></article>
+        <article><span class="weather-symbol" aria-hidden="true">⌁</span><h4>海域气质</h4><p>热带沙滩、温带岩岸、开阔大洋和极地环境，逐段建立不同的整体特征。</p></article>
+      </div>
+      <p class="section-note">天空、光照、波浪与水下表现需要联动。海面变化对水下的影响按深度区分，不能用统一换色或让深海海床同步出现浪花表示天气。</p>
+    </section>
+
+    <section id="behavior" aria-labelledby="behavior-title">
+      <div class="section-heading"><p class="eyebrow">后续规划 · 物种与互动</p><h2 id="behavior-title">从更多动物，到看懂动物的生活</h2><p>物种丰富度与栖息地、活动水层、真实尺度和行为联系一起扩展。先做一个完整群落，再增加范围。</p></div>
+      <div class="behavior-feature">
+        <figure><a href="../stage-07/dolphins.jpg"><img src="../stage-07/dolphins.jpg" alt="阶段07实际海豚群体运动画面，作为行为扩展的已有基础" loading="lazy"></a><figcaption>当前海豚展示 · 有限预备跟随与姿态联动</figcaption></figure>
+        <div><h3>鱼群效应已有起点</h3><p>38条乌尾鮗已能展示遇礁分流、汇合、局部受扰和重新聚集。下一步可以研究不同速度与密度、多群体交会、动态障碍和持续刺激下的变化。</p><p>现有鱼群固定30Hz预备240秒回放，目的地和一次刺激有编排，超过240秒后保持末帧；鲸豚也采用有限预备展示。扩展为持续实时生态需要新增决策、状态和保存能力。</p></div>
+      </div>
+      <div class="three-grid">
+        <article><span class="card-number">01</span><h3>形态与身份</h3><p>具名物种、属或科代理分别标记。保持实际尺寸轴、完整身体和资产来源，替换模型不更换个体身份。</p></article>
+        <article><span class="card-number">02</span><h3>运动与轨迹</h3><p>统一位置、速度、朝向和行为状态，再联动鳍、尾、身体与呼吸。转向、停留和滑行应与路径对应。</p></article>
+        <article><span class="card-number">03</span><h3>群落与生态</h3><p>形成可观察的庇护、资源利用、摄食、捕食与躲避关系。事件需要实际原因和结果，景观痕迹不能代替生态记录。</p></article>
+      </div>
+      <details><summary>轨迹可以服务三种不同用途</summary><div class="detail-grid"><article><h4>导览展示</h4><p>作者安排观察重点，动物在有限模型内响应；适合复播和选章。</p></article><article><h4>实时互动</h4><p>动物根据邻居、地形、资源、刺激与自身状态决策；需要持续运行与保存。</p></article><article><h4>观测数据回放</h4><p>使用有许可的实际记录，说明采样间隔、适用范围和测量误差。</p></article></div></details>
+      <aside class="note"><h3>真实感分层验收</h3><p>先看整体空间与画面，再看运动形态、生境与生态，最后按资料进行科学校准。更多模型、更多个体和聚群规则，不能单独证明动物行为已经真实或经过校准。</p></aside>
+    </section>
+
+    <section id="architecture" aria-labelledby="architecture-title">
+      <div class="section-heading"><p class="eyebrow">后续重构思路 · 共享底座</p><h2 id="architecture-title">把场景、生命和观看方式分开组织</h2><p>先让一段完整体验使用清楚的模块边界，再迁入其它能力。原有入口与可恢复版本继续保留。</p></div>
+      <ol class="architecture-grid">
+        <li><span>01</span><div><h3>场景与环境配置</h3><p>海域、栖息地、地形、天气、海况、昼夜与水体参数，提供环境条件。</p></div></li>
+        <li><span>02</span><div><h3>资产与物种目录</h3><p>分类、尺寸、活动环境、来源许可与资产版本，分开生物规则和具体模型。</p></div></li>
+        <li><span>03</span><div><h3>实体状态</h3><p>保存个体身份、位置、速度、阶段和行为，让显示、决策与恢复共享状态。</p></div></li>
+        <li><span>04</span><div><h3>轨迹与决策</h3><p>物种运动约束、目标选择和避障；动物决策与镜头路径分开。</p></div></li>
+        <li><span>05</span><div><h3>群体与生态关系</h3><p>邻居协调、刺激传播、资源及捕食关系，记录事件原因与结果。</p></div></li>
+        <li><span>06</span><div><h3>流式世界与保存</h3><p>区域加载、所有权、随机序列、时钟与恢复，保持已有历史。</p></div></li>
+        <li><span>07</span><div><h3>呈现镜头与旁白</h3><p>相机、光照、观察器、字幕、语音与导览，从实际状态提取观察重点。</p></div></li>
+        <li><span>08</span><div><h3>应用层</h3><p>导览、探索、摄影、任务、沙盒与内容输出，各自定义交互规则和验收。</p></div></li>
+      </ol>
+      <aside class="note"><h3>重构先保护已有能力与记录</h3><p>个体身份、死亡、资源、随机序列和时钟保留原含义。旧盘恢复失败时停止推进、说明原因并允许导出；不通过清空、补种或放宽校验宣布恢复成功。需要迁移时单独验证状态与后续未来一致。</p></aside>
+    </section>
+
+    <section id="applications" aria-labelledby="applications-title">
+      <div class="section-heading"><p class="eyebrow">应用候选 · 尚未实现为完整产品</p><h2 id="applications-title">海洋底座可以发展为游戏和资源能力</h2><p>同一场景与生命系统可以服务不同用途。完整游戏还需要行动、规则、目标、反馈和可保存结果。</p></div>
+      <div class="application-grid">
+        <article><h3>潜水探索</h3><p>复用水体、地形、动物和观察镜头。</p><small>需增加：自由移动与碰撞、装备或行动规则、目标地点与进度保存。</small></article>
+        <article><h3>物种观察与摄影</h3><p>复用分类资料、动物状态、镜头和截图。</p><small>需增加：识别条件、图鉴、照片记录及明确评价规则。</small></article>
+        <article><h3>科普任务</h3><p>复用场景、讲解、字幕和生态事件。</p><small>需增加：问题、互动、解释与反馈，并检验用户是否理解。</small></article>
+        <article><h3>生态沙盒</h3><p>复用有限实时行为、资源和区域保存。</p><small>需增加：可控实验条件、状态可视化、重放与对比，明确模型范围。</small></article>
+        <article><h3>导演与内容制作</h3><p>复用章节、镜头、语音和场景配置。</p><small>需增加：镜头编辑、可复现拍摄、导出、字幕与来源信息。</small></article>
+        <article><h3>可复用海洋资源</h3><p>复用环境、物种目录、轨迹和呈现模块。</p><small>需增加：稳定接口、版本、示例、资源预算和逐项许可说明。</small></article>
+      </div>
+      <p class="example"><strong>一个有限应用试验：</strong>在一个既有浅海栖息地中，找到三类动物、观察一次鱼群受扰、拍摄并保存结果。用明确目标检查探索、行为、讲解和保存能否形成完整体验。</p>
+    </section>
+
+    <section id="delivery" aria-labelledby="delivery-title">
+      <div class="section-heading"><p class="eyebrow">阶段交付 · 一次一个有限目标</p><h2 id="delivery-title">每次完成一段，再决定如何继续</h2><p>以下是候选顺序，不是同时启动的实施承诺。下一阶段从海岸入水、环境变化或完整栖息地互动中选择一个目标。</p></div>
+      <ol class="delivery-list">
+        <li><span>01</span><div><h3>海岸入水</h3><p>90–120秒海岸、浪区与浅水体验，接入既有浅海。</p><small>验收：空间连续，入水变化清楚，原入口与记录保持。</small></div></li>
+        <li><span>02</span><div><h3>环境变化</h3><p>同一海岸的晴天、阴天和黄昏三个完整状态。</p><small>验收：天空、海面与浅水光照一致，切换及加载流畅。</small></div></li>
+        <li><span>03</span><div><h3>栖息地互动</h3><p>一个完整浅海栖息地、一组主鱼群、两三种可观察互动。</p><small>验收：行为原因和结果可读，无明显穿模，状态可解释。</small></div></li>
+        <li><span>04</span><div><h3>海洋范围扩展</h3><p>选择一种新海域或深度环境，补齐结构与代表性群落。</p><small>验收：特征明确，海域与共现关系合理，过渡可理解。</small></div></li>
+        <li><span>05</span><div><h3>应用试验</h3><p>选择一种观察或游戏玩法，形成完整目标与结果。</p><small>验收：用户能完成任务、保存进度并理解反馈。</small></div></li>
+      </ol>
+      <div class="finish-rule"><h3>固定范围 → 整体实现 → 集中修正一轮 → 完整验证 → 展示与归档</h3><p>分别记录画面与空间、动物与环境联系、加载与持续播放、首次观众理解四项结果。未达标时说明主要瓶颈，再决定是否另开阶段；检查数量或平均帧率不能代替整体体验。</p><p>性能按实际设备、分辨率、网络、缓存状态和场景规模记录。保护已有画质与能力，变化需要明确披露。</p></div>
+    </section>
+
+    <section class="license" aria-labelledby="license-title">
+      <p class="eyebrow">素材来源与使用条件</p><h2 id="license-title">免费素材，不代表全部可商用</h2>
+      <p>项目继续使用原创或免费且允许按条件再分发的素材。已有资产包含CC0、CC BY、CC BY-NC和CC BY-NC-SA，各项来源、署名、改动说明与原条件继续保留。商用游戏或资源包需要逐项审查，取得许可或替换受限素材；新增原创模块不能消除旧资产的条件。</p>
+      <ul class="license-links"><li><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.zh-hans">CC0 官方说明 ↗</a></li><li><a href="https://creativecommons.org/licenses/by/4.0/deed.zh-hans">CC BY 署名条件 ↗</a></li><li><a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans">CC BY-NC 非商业条件 ↗</a></li><li><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">CC BY-NC-SA 相同方式共享条件 ↗</a></li></ul>
+      <p class="small">具体版本与条件以每项素材的来源说明和原许可为准。</p>
+    </section>
+
+    <footer><div><strong>TIDAL · 海洋扩展与应用规划</strong><p>当前成果保存，后续目标分阶段确认。本页不启动新的场景、资产、生态或游戏开发。</p></div><div class="footer-links"><a href="../">返回产品导览</a><a href="../stage-07/">当前实景与限制</a><a href="https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_EXPANSION_ROADMAP.md">完整路线图与重构思路 ↗</a></div></footer>
+  </main>
+</body>
+</html>
