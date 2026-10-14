@@ -1,0 +1,38 @@
+{
+  "id": "deep-seafloor-food",
+  "start": 399,
+  "end": 430,
+  "chapterId": "deep",
+  "title": "深海海床与食物",
+  "text": "接下来，换到约三千五百米的海床。这里没有太阳光，画面由观察灯照亮。留意软泥底上的海猪和上方的鱼。许多深海动物的食物，来自上层落下的有机碎屑；这种下落物质常被称为海洋雪。黑暗里，生命仍在继续。",
+  "sourceIds": [
+    "noaa-light",
+    "noaa-marine-snow"
+  ],
+  "visualAlignment": "深海局部24–28秒压暗切换，28秒后3500米海床；399秒旁白开始时底栖段已稳定。海猪、鼠尾鳕科鱼可见；不声称每粒海雪入账，不加热液/鲸落。",
+  "src": "audio/ocean-primer/deep-seafloor-food.mp3",
+  "duration": 19.8,
+  "bytes": 318516,
+  "sha256": "2ca723d44cc46d6b8715bb72b64c85d737dc3c243550eee71854f4e0491ef12c",
+  "fingerprint": "21ec78a739f6d7cf045d97323f01370ddde4e658fe272eae9d3b1296b0fa5701",
+  "requestedOn": "2026-10-14T00:24:24.447Z",
+  "generatedOn": "2026-10-14T00:24:27.374Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 9.965850340136054,
+      "text": "接下来，换到约三千五百米的海床。这里没有太阳光，画面由观察灯照亮。留意软泥底上的海猪和上方的鱼。"
+    },
+    {
+      "start": 10.165850340136053,
+      "end": 17.205986394557822,
+      "text": "许多深海动物的食物，来自上层落下的有机碎屑；这种下落物质常被称为海洋雪。"
+    },
+    {
+      "start": 17.352,
+      "end": 19.64365532879819,
+      "text": "黑暗里，生命仍在继续。"
+    }
+  ],
+  "subtitleMode": "provider-sentence-exact-text"
+}

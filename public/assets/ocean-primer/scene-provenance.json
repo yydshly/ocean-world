@@ -1,0 +1,31 @@
+{
+  "stage": "06-first-ocean-primer",
+  "date": "2026-10-14",
+  "policy": "Only original project content and already bundled free assets redistributable under their recorded conditions.",
+  "newSurface": {
+    "source": "src/world/OceanPrimerSurface.js",
+    "authorship": "Original finite coast geometry, reference boat, birds, generated water normals and authored waves; no downloaded images, meshes or animations.",
+    "library": "Three.js Water and Sky addons, MIT; original project bundled Three license is retained at assets/reef-scan/THREE-LICENSE.txt.",
+    "scope": "A 45-second spatial introduction, not a calibrated ocean-wave or weather simulation."
+  },
+  "newPelagic": {
+    "source": "src/world/OceanPrimerPelagic.js",
+    "provenance": "animals/provenance.json",
+    "authorship": "Original project whale and dolphin meshes with scientific shape and scale references. No externally downloaded cetacean assets."
+  },
+  "reusedShallow": {
+    "source": "src/world/ShallowSampleScene.js",
+    "route": "src/shallowJourney.js",
+    "policy": "The existing 240-second chapter, species identities, assets and prior provenance/license records are retained unchanged. Some existing source assets require attribution, noncommercial use and share-alike redistribution; no blanket commercial license is claimed."
+  },
+  "reusedDeep": {
+    "source": "src/world/OceanPrimerDeep.js",
+    "models": ["src/world/DeepAnimals.js", "src/world/DeepMidwaterAnimals.js"],
+    "policy": "Reuses project-authored existing representative deep animals and their native local body dimensions. New finite terrain and camera sequence do not access exploration save stores. Display particles are illustrative, not additions to the food ledger."
+  },
+  "newNarration": {
+    "source": "scripts/narration/ocean-primer.zh-CN.json",
+    "authorship": "Six original Chinese teaching passages generated with the previously authorized MiniMax voice; ten prior shallow passages reused without changing recordings. Source webpages are cited and paraphrased; their images/audio/video are not bundled.",
+    "credentials": "No credential or provider environment file is included in this artifact."
+  }
+}

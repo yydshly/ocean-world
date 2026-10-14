@@ -1,0 +1,27 @@
+{
+  "id": "recap-three-clues",
+  "start": 430,
+  "end": 450,
+  "chapterId": "recap",
+  "title": "带着三个线索继续观察",
+  "text": "回想三个线索：离海面多深，光能照到哪里，生命住在水层还是海床。今天走的是编排的科普路线，不是全海洋生态预测。带着这三个问题，继续观察。",
+  "sourceIds": [
+    "noaa-light"
+  ],
+  "visualAlignment": "430–450秒回顾海面/浅海/水层/海床的尺度与光照；无需新增动物动作或真实世界预测。",
+  "src": "audio/ocean-primer/recap-three-clues.mp3",
+  "duration": 15.948,
+  "bytes": 256884,
+  "sha256": "7ffe7b7ea2c3d1cdc9ed0e2f64271eb074490c2d9cbbd53319fc5b7b84a84a92",
+  "fingerprint": "21c170515d23400a1c06ac29beb9cd939403f5209e0a6c837527d086184d405f",
+  "requestedOn": "2026-10-14T00:24:27.766Z",
+  "generatedOn": "2026-10-14T00:24:29.824Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 15.782448979591837,
+      "text": "回想三个线索：离海面多深，光能照到哪里，生命住在水层还是海床。今天走的是编排的科普路线，不是全海洋生态预测。带着这三个问题，继续观察。"
+    }
+  ],
+  "subtitleMode": "provider-sentence-exact-text"
+}

@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { SceneLoading } from './SceneLoading.jsx';
 const OceanApp = lazy(() => import('./OceanApp.jsx').then(module => ({ default: module.OceanApp })));
 const ShallowSample = lazy(() => import('./ShallowSampleApp.jsx').then(module => ({ default: module.ShallowSampleApp })));
+const OceanPrimer = lazy(() => import('./OceanPrimerApp.jsx').then(module => ({ default: module.OceanPrimerApp })));
 
 class SceneLoadBoundary extends React.Component {
   state = { error: null };
@@ -14,6 +15,7 @@ class SceneLoadBoundary extends React.Component {
 
 export function App(){
   const params = new URLSearchParams(window.location.search),demo = params.get('demo');
+  if (demo === 'ocean-primer') return <SceneLoadBoundary experience="primer"><Suspense fallback={<SceneLoading experience="primer"/>}><OceanPrimer/></Suspense></SceneLoadBoundary>;
   const sample = demo === 'shallow-sample' || demo === 'shallow-journey';
   const experience = demo === 'shallow-journey' ? params.get('school') === '1' ? 'school' : 'journey' : sample ? 'sample' : 'world';
   return <SceneLoadBoundary experience={experience}><Suspense fallback={<SceneLoading experience={experience}/>}>{sample ? <ShallowSample journey={demo === 'shallow-journey'}/> : <OceanApp/>}</Suspense></SceneLoadBoundary>;

@@ -1,0 +1,89 @@
+{
+  "stage": "06-ocean-primer-pelagic",
+  "date": "2026-10-14",
+  "status": "original-project-authored-candidate",
+  "author": "Ocean World project, authored with Codex",
+  "representationSource": "src/world/OceanPrimerPelagic.js",
+  "geometry": "Original continuous closed radial bodies, closed shaped fins, low skin tubercles, recessed small eyes and authored vertex pigmentation. No external animal geometry, photograph, texture or animation was copied.",
+  "redistribution": "This new project-authored content has no additional third-party asset restrictions. It can accompany redistribution of the project. The scientific reference pages are cited only; their photos and illustrations are not bundled.",
+  "runtimeFiles": [],
+  "models": [
+    {
+      "name": "座头鲸",
+      "scientificName": "Megaptera novaeangliae",
+      "count": 1,
+      "displayLengthM": 13.8,
+      "measurement": "Head-to-tail total length; longitudinal geometry spans exactly 1.0 before metre scaling.",
+      "field": "Caribbean representative observation scenario",
+      "authenticity": "Authored visual representative; not a scan, measured individual, calibrated anatomy or natural population simulation.",
+      "largeShapeReferences": "Mostly dark dorsal body, pale variable underside, long pectoral fins, small posterior dorsal hump, broad horizontal flukes, head tubercles and paired blowholes.",
+      "choreography": "0–16 seconds rising, 16–22 near the surface, 17.5–20.5 seconds short authored breath mist, 22–35 seconds descending. The timing, speed, trajectory and grouping are educational display choices."
+    },
+    {
+      "name": "宽吻海豚",
+      "scientificName": "Tursiops truncatus",
+      "count": 6,
+      "displayLengthM": 2.65,
+      "measurement": "Head-to-tail total length; longitudinal geometry spans exactly 1.0 before metre scaling.",
+      "field": "Caribbean representative observation scenario",
+      "authenticity": "Authored visual representative; not a scan, measured individual, calibrated anatomy or natural population simulation.",
+      "largeShapeReferences": "Gray dorsal body, pale underside, continuous short blunt beak with forehead, swept dorsal fin, paired pectoral fins, horizontal flukes and one blowhole.",
+      "choreography": "Six independently phased animals travel in the same broad direction with staggered depth and lateral separation. This is a representative authored pod, not evidence of a naturally associated whale-and-dolphin group."
+    }
+  ],
+  "scientificReferences": [
+    {
+      "url": "https://www.fisheries.noaa.gov/species/humpback-whale",
+      "author": "NOAA Fisheries",
+      "usedFor": "Species identity, general appearance, total length up to about 60 feet, long pectoral fins and horizontal broad flukes; Caribbean breeding-ground context.",
+      "copiedAssets": false,
+      "retrieved": "2026-10-14"
+    },
+    {
+      "url": "https://www.fisheries.noaa.gov/species/common-bottlenose-dolphin",
+      "author": "NOAA Fisheries",
+      "usedFor": "Species identity, general appearance, coastal and offshore distribution and 6–13 foot adult length range; display length 2.65 m is inside the range.",
+      "copiedAssets": false,
+      "retrieved": "2026-10-14"
+    },
+    {
+      "url": "https://sanctuaire-agoa.fr/documentation/les-cetaces-du-sanctuaire-agoa-en-3d",
+      "author": "Office français de la biodiversité / Sanctuaire Agoa",
+      "usedFor": "Caribbean species and candidate-model authorship/license verification only.",
+      "copiedAssets": false,
+      "retrieved": "2026-10-14"
+    }
+  ],
+  "externalCandidatesNotBundled": [
+    {
+      "name": "CARI'MAM humpback whale",
+      "url": "https://sketchfab.com/3d-models/humpback-whale-f85fe853de6b4ff4a0bb3cfed2bc14a4",
+      "author": "Weeteam / CARI'MAM / Office français de la biodiversité / Agoa Sanctuary",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "licenseEvidence": "The official Agoa page and anonymous model metadata both explicitly identify the license. Author attribution, noncommercial use and same-license derivatives are required.",
+      "downloadEndpoint": "https://api.sketchfab.com/v3/models/f85fe853de6b4ff4a0bb3cfed2bc14a4/download",
+      "downloadResult": "401 Unauthorized on 2026-10-14; no authenticated download was attempted and encrypted viewer assets were not bypassed.",
+      "downloaded": false,
+      "sha256": null
+    },
+    {
+      "name": "CARI'MAM bottlenose dolphin",
+      "url": "https://sketchfab.com/3d-models/bottlenose-dolphin-61e066c96a554e2b9c881404d946432d",
+      "author": "Weeteam / CARI'MAM / Office français de la biodiversité / Agoa Sanctuary",
+      "license": "CC BY-NC-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "licenseEvidence": "The official Agoa page and anonymous model metadata both explicitly identify the license. Author attribution, noncommercial use and same-license derivatives are required.",
+      "downloadResult": "Same authenticated Sketchfab download workflow; not downloaded after the paired whale candidate returned 401.",
+      "downloaded": false,
+      "sha256": null
+    }
+  ],
+  "limits": [
+    "The whale and dolphin shapes are original visual representatives and retain an authored model appearance; no scan fidelity is claimed.",
+    "Vertical fluke/fin movement, surface waves, suspended particles and breath mist are display effects rather than anatomy, fluid or respiratory simulations.",
+    "One whale and six dolphins are shown as separate representative Caribbean observations in one authored open-water composition; natural interspecies association is not claimed.",
+    "The pelagic chapter has no seabed because the bottom is outside this near-surface observation volume, not because all open ocean has identical depth.",
+    "This independent scene does not load, rewrite, advance or save the existing persistent ecology."
+  ]
+}

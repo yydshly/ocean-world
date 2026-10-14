@@ -1,0 +1,58 @@
+{
+  "baselineTag": "stage-05-preserved-before-ocean-primer-20261014",
+  "baselineCommit": "6d555b0",
+  "checked": 1103,
+  "changes": [
+    {
+      "file": "public/overview/index.html",
+      "expected": "04c7b406e14ed72b08513bc72f9f1ca9b07d2d03d898828f53cae8b7ebb17923",
+      "actual": "16bf9fa2685d4e6e5f832cd607519b508bcffde2f751e12365b0f5fd50617739"
+    },
+    {
+      "file": "public/overview/inventory.json",
+      "expected": "ea49fff31bb01ead14f303d3e42964371a944a16dd0353a6074fdc6ca66ff963",
+      "actual": "36e79f742e64057ad7c5b3555467956c73fa8ba9c8c84a93dd9f092c87c1d81d"
+    },
+    {
+      "file": "public/overview/poster.html",
+      "expected": "6a0b409aeba62fa3e81c419010652183b1ca8220a5fe669a0cf2298d5a075bd7",
+      "actual": "5ecdd9b22f77a20697d7635e51b8a52ab294172f87097050db7aa23061d57962"
+    },
+    {
+      "file": "scripts/build-product-overview.mjs",
+      "expected": "ceeb4d2786e764d1cb3963022b9c2e87fd1e6bb4e672600438d7e83bcddea945",
+      "actual": "7f79916fd387046676067f68370abcaeeaa27613aed6d200066e1618c4894d73"
+    },
+    {
+      "file": "scripts/test-world-release.mjs",
+      "expected": "8786e0b804505402cfabca519e36bea928b246fc4724a21e09ef3844c6f94492",
+      "actual": "9a13d93a069e8b978e60eedc86a5c7219fd92fd7418f79f72b727e671e69471c"
+    },
+    {
+      "file": "src/App.jsx",
+      "expected": "f4fb2548889880ee61d512a779756ad98e1bc756db3089ca99b3fc2fa3559bd1",
+      "actual": "21a2bb635defe466ca7f755942428a8324fdc8d4ac4cf54093707da472b6ef54"
+    },
+    {
+      "file": "src/SceneLoading.jsx",
+      "expected": "5705293bf36e86f0e2d63419db5162e2ff6fb7d43ac62bd3a3d57eb6c2746b85",
+      "actual": "9d092b218ee9955cd2859e81b84b57579c59bf750d3e8ad3062bfc03a111d99f"
+    },
+    {
+      "file": "src/experienceNavigation.js",
+      "expected": "a5b2f615f4cd42d1f3ffdafa8688339be080c1571cb5ecdc082af969b746cc20",
+      "actual": "d9dc11d3369c755f23416576e28a630e94d43dc0bc3ebc0d44d0eca02f977671"
+    },
+    {
+      "file": "tests/experience-navigation.test.mjs",
+      "expected": "f2dcdceff225bb6cd41c3c6ce3322f4fa5cff3ed9d955bf69310b432a1b42177",
+      "actual": "94738f7ac5373e5b276bd3ba666be666625df13ccd42a5a65e9f74ae955e98af"
+    },
+    {
+      "file": "tests/release-world-shards.json",
+      "expected": "9c418635d8e5d109cdf7dd8972624407ba4ea8db664c754cd5f27a5dbc11ae4a",
+      "actual": "8d4d8552dac4ecd4a27c9000f62ceaabe12fd346d2e054d0faa33e92b7b5cfa9"
+    }
+  ],
+  "unchanged": 1093
+}

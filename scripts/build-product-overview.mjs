@@ -8,6 +8,10 @@ import { EXPERIENCE_ENTRIES, experienceHref } from '../src/experienceNavigation.
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const here=path.join(root,'public/overview');
+const writeGenerated=async(file,content)=>{
+  try{if(await fs.readFile(file,'utf8')===content)return;}catch(error){if(error.code!=='ENOENT')throw error;}
+  await fs.writeFile(file,content);
+};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const app='../';
 const entry=(demo,world='')=>app+'?demo='+demo+'&seed=55'+(world?'&world='+world:'');
@@ -17,6 +21,28 @@ const entryAudit={date:'2026-10-14',runtimeCommit:'5e4c280',navigationRelease:'h
   limits:{kelpMain:'Existing saved kelp water-life record failed recovery; original records were preserved.',slowWorldEntries:7,observedSlowWorldFps:[2,5],directorChaptersSampled:3,directorChaptersTotal:67,internalActionsTotal:61,allInternalActionsExecuted:false,screenshotDownloadConfirmed:false,journalMarkAndReturnConfirmed:false},
   playback:{journey:{completed:true,modelSeconds:240,wallSeconds:267.5,navigationToReadySeconds:13.7,backgroundBrowser:true},school:{completed:true,modelSeconds:60},sample:{completed:true,modelSeconds:75,navigationToReadySeconds:6.4},life:{completed:true,modelSeconds:240,initialPreparationApproxSeconds:45},director:{chapter3ObservedCrossRegionWaitSeconds:9}},
   conditions:'Normal cache, not cleared; hidden browser and other pages. No isolated cold, mobile, all 67 chapters or all 61 internal actions acceptance.'};
+// Add the local educational route separately; the hosted Stage05 audit above stays dated and unchanged.
+const primerValidation=JSON.parse(await fs.readFile(path.join(root,'docs/validation/ocean-primer-stage-06-20261014.json'),'utf8'));
+const addition={date:'2026-10-14',stage:'06',title:'第一次认识海洋',status:'本地完整播放已完成（保留差距）',localOnly:true,published:false,
+  scope:'四章加回顾；比较海面、水层、生境与生命。沿用既有浅海，新增原创鲸豚展示，并复用已有深海动物模型。',
+  links:{entry:app+'?demo=ocean-primer&seed=55',localReview:'stage-06/'},
+  route:{seconds:450,displayDuration:'7分30秒',chapters:[
+    {id:'surface',title:'海面与海洋尺度',start:0,seconds:45},
+    {id:'shallow',title:'浅海礁谷、沙道与草床',start:45,seconds:240},
+    {id:'pelagic',title:'开阔水域的鲸与海豚',start:285,seconds:80},
+    {id:'deep',title:'深海中层与海床',start:365,seconds:65},
+    {id:'recap',title:'回顾三个观察线索',start:430,seconds:20}],
+    transitionNote:'不同海域和水深之间为压缩观察点切换；不是同一珊瑚礁连续下潜。'},
+  assets:{shallow:'复用既有240秒浅海场景和资产',pelagic:'本轮原创座头鲸与六只宽吻海豚模型',deep:'复用已有冠水母、吸血乌贼、海猪、鼠尾鳕科鱼与绒球海葵模型'},
+  narration:{totalClips:16,reusedShallowClips:10,newClips:6,defaultEnabled:false},
+  learning:['辨认海面、水层与海床的空间关系','用水深与光照比较不同生境','观察鲸豚呼吸、群游及深海生命的代表差异'],
+  limits:['编排式科普展示，不是全海洋生态预测','鲸豚与深海代表不声明同站共现或真实野外密度','深海画面使用观察灯，海雪粒子是展示近似','一次深海645.8ms长帧；模型感、海面和回顾白字对明亮天空的对比度不足保留','人耳试听、首次观众理解、手动拖动视角、变速播放和390px移动端未验收','尚未发布；不改变既有远端入口、性能、存档及素材许可结论'],
+  validation:{full450SecondPlayback:'completed-local-with-known-limits',playback:primerValidation.fullPlayback,
+    startup:primerValidation.startup,frameIntervals:primerValidation.frameIntervals,device:primerValidation.device,
+    narration:primerValidation.narration,controls:primerValidation.controls,checks:primerValidation.checks,
+    preservation:primerValidation.preservation,humanListening:'unverified',firstAudienceLearning:'unverified',deployment:'not-published',
+    receipt:'docs/validation/ocean-primer-stage-06-20261014.json'},
+  sources:['src/OceanPrimerApp.jsx','src/oceanPrimer.js','src/world/OceanPrimerSurface.js','src/world/OceanPrimerPelagic.js','src/world/OceanPrimerDeep.js','src/data/oceanPrimerNarration.json']};
 const images=[
  ['reef.png','output/validation/shallow-final-closeout/browser/final-24.png','浅海样板 / 最终版本 / 暂停于 24 秒，2026-10-12'],
  ['school.png','output/validation/shallow-final-closeout/browser/final-69.png','浅海样板 / 最终版本 / 暂停于 69 秒，2026-10-12'],
@@ -38,7 +64,7 @@ const schoolingFrames=[
 ];
 for(const frame of schoolingFrames)await fs.access(path.join(here,'stage-05',frame.file));
 const currentStage={date:schoolingLocal.date,stage:'05',scope:'Existing fusilier coordination demonstration and synchronized Chinese narration; existing four-minute shallow route retained.',status:'Stage05 release guide. Hosted playback is evidenced by the release receipt and matching GitHub Actions run.',localBaseline:{commit:'a935a3e',tag:schoolingLocal.tag,evidence:'local-summary.json',note:'This previous local archive predates the five new narration clips; it is not the hosted release validation.'},population:schoolingLocal.population,route:schoolingLocal.route,phases:schoolingLocal.phases,narration:{schoolClips:5,journeyClips:10,defaultEnabled:false,newAudioIncludedInLocalBaseline:false},screenshots:{viewport:[1280,720],files:schoolingFrames},links:{school:'../../?demo=shallow-journey&seed=55&school=1',journey:'../../?demo=shallow-journey&seed=55',guide:'../',release:'https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md'}};
-await fs.writeFile(path.join(here,'stage-05/summary.json'),JSON.stringify(currentStage,null,2)+'\n');
+await writeGenerated(path.join(here,'stage-05/summary.json'),JSON.stringify(currentStage,null,2)+'\n');
 const cats=[['浅海',livingShallowsSpeciesCatalog],['海带林',sceneCatalogs.kelp],['深海',sceneCatalogs.deep]];
 const inventory={date:'2026-10-13',scope:'Stage05 product guide: 60-second existing-fusilier coordination demonstration with five Chinese narration clips, and the four-minute journey with ten clips. validation/frozenVersion retain the historical 75-second baseline; historicalHabitatStage retains Stage04; currentStage links the new release scope and a prior local baseline, not hosted performance.',frozenVersion:stage.version,currentStage,historicalHabitatStage,
   catalogs:cats.map(([name,rows])=>({name,count:rows.length,entries:rows.map(s=>({id:s.id,name:s.commonName,scientificName:s.scientificName??null,kind:s.kind,identityLevel:s.identityLevel??null}))})),
@@ -46,13 +72,14 @@ const inventory={date:'2026-10-13',scope:'Stage05 product guide: 60-second exist
   life:DIRECTOR_LIFE_STEPS.map(s=>({id:s.id,title:s.title,seconds:s.durationMs/1000})),
   worlds:DEMO_WORLDS.map(s=>({id:s.id,title:s.title,description:s.description})),
   stops:[...DEMO_LIVING_STOPS,...DEMO_KELP_STOPS,...DEMO_DEEP_STOPS].map(s=>({id:s.id,title:s.title,description:s.description,biome:s.action.biome})),
-  entryAudit,links,images:images.map(([file,source,caption])=>({file,source,caption})),validation:stage,
+  entryAudit,links,images:images.map(([file,source,caption])=>({file,source,caption})),validation:stage,addition,
   sources:['src/App.jsx','src/OceanApp.jsx','src/ShallowSampleApp.jsx','src/shallowSchooling.js','src/shallowNarrationTimeline.js','src/sceneCatalog.js','src/demoCapabilities.js','src/directorTour.js','docs/SHALLOW_SAMPLE_FROZEN.md','docs/WHOLE_SEABED_STAGE.md','docs/CRUISE_SMOOTHNESS_STAGE.md','docs/ACTIVE_HISTORY_STAGE.md','output/validation/shallow-final-closeout/stage.json','docs/stages/STAGE_04_COMPLETE_HABITATS.md','docs/validation/stage-04-complete-habitats-20261013.json','docs/stages/STAGE_05_FISH_SCHOOLING.md','docs/validation/stage-05-schooling-20261013.json']};
-await fs.writeFile(path.join(here,'inventory.json'),JSON.stringify(inventory,null,2)+'\n');
+await writeGenerated(path.join(here,'inventory.json'),JSON.stringify(inventory,null,2)+'\n');
 
 const heading=(no,title,small)=>`<div class="section-head"><span class="section-no">${no}</span><h2>${title}</h2><p>${small}</p></div>`;
 const tag=(text,kind='built')=>`<span class="tag ${kind}">${text}</span>`;
 const a=(href,text,cls='')=>`<a class="${cls}" href="${esc(href)}" target="_blank" rel="noopener">${text} <span aria-hidden="true">↗</span></a>`;
+const primerPanel=`<aside class="agreement" id="ocean-primer-addition" aria-labelledby="ocean-primer-title"><span class="eyebrow">新增本地科普总览 / 阶段06</span><h3 id="ocean-primer-title">第一次认识海洋 · 7分30秒</h3><p><strong>${esc(addition.status)}</strong>。从海面认识海洋尺度，沿既有浅海看礁谷、沙道与草床，再比较开阔水域的鲸豚、约700米中层与约3500米海床，最后回顾空间、光照和生境三个线索。</p><p><strong>四章＋回顾：</strong>海面45秒 → 浅海4分钟 → 开阔水域80秒 → 深海65秒 → 回顾20秒。提供16段中文讲解与字幕：沿用浅海10段，新增6段；语音默认关闭。</p><p><strong>素材与范围：</strong>浅海复用原场景与资产，鲸豚为本轮原创模型，深海复用已有动物模型。不同海域和水深为压缩观察点切换；深海使用观察灯。它们是代表性科普编排，不声明同站共现、野外密度或全海洋生态预测。</p><p><strong>本地实播：</strong>正常1×完成450模型秒 / ${primerValidation.fullPlayback.elapsedWallSec.toFixed(4)}实秒，无操作中断，16段讲解有playing记录，无媒体或控制台错误。深海有一次${primerValidation.frameIntervals.maxMs.toFixed(1)}ms长帧，不能称全程流畅；普通本地缓存导航${primerValidation.startup.navigationToReadySec.toFixed(4)}秒，不是冷公网或5秒验收。模型感与亮天空对白字的对比度不足保留。</p><p>${a(addition.links.entry,'打开本地7分30秒科普总览','entry-link')} · ${a(addition.links.localReview,'查看本轮本地实景与验收')} · ${a('inventory.json','查看新增范围')}。人耳试听、首次观众理解、变速播放、手动拖动视角和390px手机体验未验收；尚未部署。下方既有10个入口、15个专题及已发布记录保留原范围与限制。</p></aside>`;
 const entryAuditPanel=`<aside class="agreement" id="entry-status" aria-labelledby="entry-status-title"><h3 id="entry-status-title">入口当前状态 · ${entryAudit.date}远端复查</h3><p><strong>推荐主线：</strong>4分钟浅海、60秒鱼群与75秒样板均完整播放；README引导图 → 导览 → 主线已实际点击验证。“更多体验”展示10个主要入口，附录有15个专题链接，合计21个不同体验地址，20个进入实际场景。</p><p><strong>研究入口：</strong>导演前3章能进入，第3章仍有跨区等待9秒；未遍历全部67章。生命巡游完整完成240模型秒，但初始准备约45秒，途中仍有长帧。浅海专题可进入，不能据短时检查认定全部路线流畅。</p><p><strong>已知限制：</strong>海带林主入口本次既有存档恢复失败，原记录保留；其余3个海带林专题与4个深海专题仅约2–5 FPS。主线加载约13.7秒、75秒样板约6.4秒；后台浏览器的主线240模型秒耗时267.5实秒，不能据此认定前台流畅达标。截图下载、手记标记与回访尚未确认。</p><p>本次对应远端运行 <code>${entryAudit.runtimeCommit}</code>；普通缓存未清、后台浏览器且有其他页面，不是冷启动、手机或全部61个内部操作验收。后续本地修复不自动改变此远端结论。${a(entryAudit.navigationRelease,'最新远端导航发布记录')} · ${a('inventory.json','查看结构化范围与检查条件')}</p></aside>`;
 const phaseLabels=['协同群游','遇礁分流','通过后汇合','局部受扰散开','重新聚集'];
 const schoolingPage=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TIDAL · 60秒鱼群协同观察</title><meta name="description" content="用现有38条乌尾鮗观察遇礁分流、汇合、受扰散开与重新聚集，含五段中文讲解；同一场景衔接4分钟浅海旅程。"><link rel="stylesheet" href="../atlas.css"><style>.school-intro{margin:28px 0}.school-intro h1{font-size:clamp(30px,5vw,56px);line-height:1.3;font-weight:550;margin:14px 0}.school-intro p{max-width:950px;color:var(--muted)}.school-actions{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0}.school-actions a{padding:12px 19px;background:#cbe4d0;color:#163b36;border-radius:5px;font-size:15px;font-weight:650}.school-actions a+a{background:#24454c;color:var(--ink)}.school-timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:24px 0}.school-timeline article{padding:14px;border-top:2px solid var(--sea);background:var(--surface)}.school-timeline b,.school-timeline span{display:block}.school-timeline b{font-size:13px;color:var(--sea)}.school-timeline span{font-size:16px;margin-top:8px}.school-frame{margin:0;border:1px solid var(--border);background:var(--surface)}.school-frame img{width:100%;height:auto}.school-frame figcaption{padding:13px 17px;font-size:14px;color:var(--muted)}.school-frame figcaption strong{display:block;color:var(--ink);font-size:18px}.school-frame figcaption small{display:block;margin-top:6px;color:#8db5ad}.school-local{display:grid;grid-template-columns:1fr 1fr;gap:16px}.school-local article{background:var(--surface);padding:18px;border:1px solid var(--border)}.school-local h3{font-weight:550;font-size:21px;margin-bottom:8px}.school-local p{font-size:14px;color:var(--muted)}@media(max-width:700px){.school-timeline{grid-template-columns:1fr 1fr}.school-timeline article:last-child{grid-column:1 / -1}.school-local{grid-template-columns:1fr}}</style></head><body><main id="poster">
@@ -66,10 +93,11 @@ const schoolingPage=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-
 <section class="section">${heading('04','到这里收口','版本固定，保留已知边界')}<p class="section-note">这是有限60秒演示与240秒浅海主线。30Hz邻居求解先准备为固定场景播放，单次扰动和导向有编排；不是对任意新环境实时反应的完整鱼群生态。既有模型感、礁体硬边、远侧遮挡与约5–9秒的本地基线加载仍保留。准备范围到240秒，接管探索后超过该时刻，这38条鱼保持末帧姿态。其他持续探索入口仍有自己的跨区等待与验收范围。</p><p class="section-note">素材仍为自制或免费且允许按条件再分发的既有资产，署名、非商业与相同方式共享条件保持。发布并核验后阶段性归档，不自动新增场景、资产或开启下一轮优化。</p></section>
 <footer class="atlas-footer"><div><strong>阶段05 · 鱼群协同与讲解</strong><span>四张实景来自本地归档，正式部署效果以本轮回执和同一提交Actions为准。</span></div><div>${a('summary.json','结构化发布范围')}${a('../stage-04/','阶段04栖息地历史对照')}</div></footer>
 </main></body></html>`;
-await fs.writeFile(path.join(here,'stage-05/index.html'),schoolingPage);
+await writeGenerated(path.join(here,'stage-05/index.html'),schoolingPage);
 const poster=`
 <main id="poster">
  <header class="masthead"><strong>TIDAL <span>海底世界</span></strong><span>产品全景 · 阶段05 · 2026.10.13</span></header>
+ ${primerPanel}
  <aside class="agreement"><h3>推荐入口 · 4分钟浅海旅程 / 60秒鱼群协同</h3><p>4分钟穿过礁谷、沙道与草床；开场观察38条现有乌尾鮗分流、汇合、受扰散开与重新聚集。想先看行为变化，可直接选择60秒版。293只动物、38个展示类别、同一条路线与既有资产保持。</p><p>${a(links.journey,'进入4分钟浅海体验','entry-link')} · ${a(links.school,'先看60秒鱼群协同','entry-link')} · ${a('stage-05/','查看鱼群实景与阶段范围','entry-link')}</p><p>语音默认关闭；“展开控制”→“开启讲解”可听中文旁白与同步字幕。60秒版五段，4分钟版开场同五段，随后继续礁边、沙道与草床讲解，共十段；可暂停、变速、选段、重听。“接管探索”暂停巡游和讲解，返回后接续。讲解的历史发布记录见${a(currentStage.links.release,'鱼群协同发布回执')}；当前远端加载与入口状态见下方2026-10-14复查，历史图和数据保留原含义。</p></aside>
  ${entryAuditPanel}
  <section class="hero">
@@ -175,8 +203,8 @@ const css=`
 @container(max-width:700px){body{font-size:16px}#poster{padding:18px}.masthead{display:block;font-size:11px}.masthead>span{display:block;margin-top:4px}.hero{display:flex;flex-direction:column}.hero h1{font-size:34px}.hero h1 br{display:none}.hero-copy>p br{display:none}.hero-status{margin-top:13px}.hero-image{width:100%}.reading-flow{font-size:12px;padding:12px;gap:4px;letter-spacing:0}.reading-flow i{font-size:10px}.section{margin-top:24px}.section-head h2{font-size:23px;letter-spacing:0}.section-head p{font-size:12px}.goal-grid{grid-template-columns:1fr 1fr;gap:20px}.goal-grid b{font-size:17px}.goal-grid p{font-size:13px}.tag{font-size:10px;letter-spacing:0;padding:2px 5px}.goal-grid small{font-size:11px}.two-cols,.habitat-grid,.journey,.result-layout,.finish-grid{grid-template-columns:1fr}.track{padding:17px}.track h3{font-size:21px}.track-bottom{display:block}.track-bottom a{display:block;margin-top:6px}.bridge{font-size:13px;gap:8px}.habitat-title{display:flex}.habitat figure img{height:auto;max-height:330px}.habitat-copy{padding:14px 16px}.cap-grid{grid-template-columns:1fr 1fr}.cap-grid article{padding:14px}.cap-grid article:nth-child(n){border-right:none;border-bottom:1px solid var(--border)}.cap-grid article:nth-child(odd){border-right:1px solid var(--border)}.cap-grid article:nth-last-child(-n+2){border-bottom:0}.cap-grid h3{font-size:17px}.cap-grid p{font-size:13px}.cap-grid small{font-size:11px}.system-flow{font-size:11px;flex-wrap:wrap;gap:7px;padding:12px}.journey{gap:13px}.journey h3{font-size:20px}.quick-links{gap:12px;font-size:13px}.result-layout{padding:14px}.result-data{padding:0}.result-metrics b{font-size:33px}.finish-grid{gap:18px}.atlas-footer{flex-direction:column;gap:10px}.toolbar{padding:10px 18px;flex-wrap:wrap;gap:12px;font-size:12px}.toolbar>b{flex:1 1 100%}.appendix{padding:24px 18px}.appendix summary{font-size:16px}.species-list{grid-template-columns:1fr 1fr}.route-list{grid-template-columns:1fr;font-size:14px}.chapters{columns:1}.hero-image figcaption{font-size:10px}}
 @media print{.toolbar,.appendix{display:none}body{background:#071f29;-webkit-print-color-adjust:exact;print-color-adjust:exact}#poster{width:1440px;max-width:none}a{color:inherit}}
 `;
-await fs.writeFile(path.join(here,'atlas.css'),css);
+await writeGenerated(path.join(here,'atlas.css'),css);
 const head=`<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TIDAL 海底世界 · 产品全景</title><meta name="description" content="目标、已实现能力、实景、观察探索入口与验收结果。2026-10-13 阶段05：60秒鱼群协同、五段中文讲解与4分钟完整浅海旅程。"><link rel="stylesheet" href="atlas.css"></head><body>`;
-await fs.writeFile(path.join(here,'poster.html'),head.replace('<body>','<body class="poster-export">')+poster+'</body></html>');
-await fs.writeFile(path.join(here,'index.html'),head+`<nav class="toolbar" aria-label="产品全景导航"><b>TIDAL · 产品全景</b><a href="#poster">看能力图</a><a href="#entry-status">入口当前状态</a><a href="#appendix">目录与来源</a><a href="ocean-world-product-atlas.png" download>下载原版引导图</a><a href="https://github.com/yydshly/ocean-world" target="_blank" rel="noopener">GitHub / README ↗</a>${a(links.journey,'体验4分钟浅海')}${a(links.school,'60秒鱼群协同')}${a('stage-05/','本轮鱼群实景')}</nav>`+poster+appendix+'</body></html>');
-console.log('Prepared Stage05 product guide: 60-second schooling and four-minute journey; four real schooling frames; existing catalogues retained.');
+await writeGenerated(path.join(here,'poster.html'),head.replace('<body>','<body class="poster-export">')+poster+'</body></html>');
+await writeGenerated(path.join(here,'index.html'),head+`<nav class="toolbar" aria-label="产品全景导航"><b>TIDAL · 产品全景</b><a href="#poster">看能力图</a><a href="#entry-status">入口当前状态</a><a href="#appendix">目录与来源</a><a href="ocean-world-product-atlas.png" download>下载原版引导图</a><a href="https://github.com/yydshly/ocean-world" target="_blank" rel="noopener">GitHub / README ↗</a>${a(addition.links.entry,'本地7分30秒总览 · 保留差距')}${a(links.journey,'体验4分钟浅海')}${a(links.school,'60秒鱼群协同')}${a('stage-05/','本轮鱼群实景')}</nav>`+poster+appendix+'</body></html>');
+console.log('Prepared Stage05 guide plus local Stage06 complete-playback receipt with known limits; unpublished, existing entries, topics, image and hosted evidence retained.');

@@ -1,5 +1,6 @@
 [
   [
+    "tests/ocean-primer-surface.test.mjs",
     "tests/life-expedition-native.test.mjs",
     "tests/reef-life-ecology.test.mjs",
     "tests/living-shallow-seascape-ecology.test.mjs",
@@ -31,6 +32,7 @@
     "tests/kelp-save-diagnostics.test.mjs"
   ],
   [
+    "tests/ocean-primer-pelagic.test.mjs",
     "tests/reef-valley-region-world.test.mjs",
     "tests/reef-diversity-ecology.test.mjs",
     "tests/deep-hard-life-world.test.mjs",
@@ -63,6 +65,7 @@
     "tests/deep-water-life-render.test.mjs"
   ],
   [
+    "tests/ocean-primer-deep.test.mjs",
     "tests/reef-filter-life-ecology.test.mjs",
     "tests/reef-assemblage-ecology.test.mjs",
     "tests/living-coastal-seascape-ecology.test.mjs",
@@ -94,6 +97,7 @@
     "tests/deep-hard-life-render.test.mjs"
   ],
   [
+    "tests/ocean-primer-timeline.test.mjs",
     "tests/reef-suspension-life-ecology.test.mjs",
     "tests/reef-community-ecology.test.mjs",
     "tests/living-coastal-seascape-world.test.mjs",

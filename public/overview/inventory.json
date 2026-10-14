@@ -2167,6 +2167,7 @@
     "conditions": "Normal cache, not cleared; hidden browser and other pages. No isolated cold, mobile, all 67 chapters or all 61 internal actions acceptance."
   },
   "links": {
+    "primer": "../?demo=ocean-primer&seed=55",
     "journey": "../?demo=shallow-journey&seed=55",
     "school": "../?demo=shallow-journey&seed=55&school=1",
     "sample": "../?demo=shallow-sample&seed=55",
@@ -2274,6 +2275,245 @@
       "originalGeometryAnd151PoseSamplesExact": true
     },
     "publication": "No commit, push or deployment"
+  },
+  "addition": {
+    "date": "2026-10-14",
+    "stage": "06",
+    "title": "第一次认识海洋",
+    "status": "本地完整播放已完成（保留差距）",
+    "localOnly": true,
+    "published": false,
+    "scope": "四章加回顾；比较海面、水层、生境与生命。沿用既有浅海，新增原创鲸豚展示，并复用已有深海动物模型。",
+    "links": {
+      "entry": "../?demo=ocean-primer&seed=55",
+      "localReview": "stage-06/"
+    },
+    "route": {
+      "seconds": 450,
+      "displayDuration": "7分30秒",
+      "chapters": [
+        {
+          "id": "surface",
+          "title": "海面与海洋尺度",
+          "start": 0,
+          "seconds": 45
+        },
+        {
+          "id": "shallow",
+          "title": "浅海礁谷、沙道与草床",
+          "start": 45,
+          "seconds": 240
+        },
+        {
+          "id": "pelagic",
+          "title": "开阔水域的鲸与海豚",
+          "start": 285,
+          "seconds": 80
+        },
+        {
+          "id": "deep",
+          "title": "深海中层与海床",
+          "start": 365,
+          "seconds": 65
+        },
+        {
+          "id": "recap",
+          "title": "回顾三个观察线索",
+          "start": 430,
+          "seconds": 20
+        }
+      ],
+      "transitionNote": "不同海域和水深之间为压缩观察点切换；不是同一珊瑚礁连续下潜。"
+    },
+    "assets": {
+      "shallow": "复用既有240秒浅海场景和资产",
+      "pelagic": "本轮原创座头鲸与六只宽吻海豚模型",
+      "deep": "复用已有冠水母、吸血乌贼、海猪、鼠尾鳕科鱼与绒球海葵模型"
+    },
+    "narration": {
+      "totalClips": 16,
+      "reusedShallowClips": 10,
+      "newClips": 6,
+      "defaultEnabled": false
+    },
+    "learning": [
+      "辨认海面、水层与海床的空间关系",
+      "用水深与光照比较不同生境",
+      "观察鲸豚呼吸、群游及深海生命的代表差异"
+    ],
+    "limits": [
+      "编排式科普展示，不是全海洋生态预测",
+      "鲸豚与深海代表不声明同站共现或真实野外密度",
+      "深海画面使用观察灯，海雪粒子是展示近似",
+      "一次深海645.8ms长帧；模型感、海面和回顾白字对明亮天空的对比度不足保留",
+      "人耳试听、首次观众理解、手动拖动视角、变速播放和390px移动端未验收",
+      "尚未发布；不改变既有远端入口、性能、存档及素材许可结论"
+    ],
+    "validation": {
+      "full450SecondPlayback": "completed-local-with-known-limits",
+      "playback": {
+        "completed": true,
+        "elapsedWallSec": 450.6290999999762,
+        "endedAtMs": 477158.7,
+        "speed": 1,
+        "startSec": 0,
+        "startedAtMs": 26529.60000002384,
+        "modelEndSec": 450,
+        "interruptions": [],
+        "errors": [],
+        "console": []
+      },
+      "startup": {
+        "navigationToReadySec": 5.328800000071525,
+        "componentStartupSec": 4.203700000047684,
+        "conditions": "Normal local cache, not cleared; browser work in background, current document active; other tabs retained. Not an isolated cold or hosted loading result."
+      },
+      "frameIntervals": {
+        "count": 84215,
+        "p95UpperBoundMs": 10,
+        "bucketWidthMs": 5,
+        "maxMs": 645.7999999999884,
+        "over250": 1,
+        "chapters": [
+          {
+            "id": "deep",
+            "count": 13902,
+            "observedWallSec": 65.54590000000002,
+            "averageFps": 212.09564595192066,
+            "p95UpperBoundMs": 10,
+            "maxMs": 645.7999999999884,
+            "over250": 1
+          },
+          {
+            "id": "pelagic",
+            "count": 17869,
+            "observedWallSec": 80.0833,
+            "averageFps": 223.13016571494933,
+            "p95UpperBoundMs": 10,
+            "maxMs": 183.29999999998836,
+            "over250": 0
+          },
+          {
+            "id": "recap",
+            "count": 4786,
+            "observedWallSec": 20.00420000000001,
+            "averageFps": 239.24975755091418,
+            "p95UpperBoundMs": 5,
+            "maxMs": 12.400000000023285,
+            "over250": 0
+          },
+          {
+            "id": "shallow",
+            "count": 36903,
+            "observedWallSec": 239.9999,
+            "averageFps": 153.76256406773504,
+            "p95UpperBoundMs": 15,
+            "maxMs": 91.60000000000582,
+            "over250": 0
+          },
+          {
+            "id": "surface",
+            "count": 10755,
+            "observedWallSec": 44.99589999999999,
+            "averageFps": 239.02177753973143,
+            "p95UpperBoundMs": 5,
+            "maxMs": 20.799999999999272,
+            "over250": 0
+          }
+        ]
+      },
+      "device": {
+        "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "height": 720,
+        "pixelRatio": 1.5,
+        "width": 1280,
+        "resolutionScale": 1
+      },
+      "narration": {
+        "newClips": 6,
+        "reusedShallowClips": 10,
+        "playingClipIds": [
+          "surface-ocean-scale",
+          "primer-shallow-school-entry",
+          "primer-shallow-school-split",
+          "primer-shallow-school-merge",
+          "primer-shallow-school-disturb",
+          "primer-shallow-school-regroup",
+          "primer-shallow-reef-edge",
+          "primer-shallow-reef-sand",
+          "primer-shallow-sand-life",
+          "primer-shallow-seagrass",
+          "primer-shallow-open-water",
+          "pelagic-whale-breathing",
+          "pelagic-dolphin-space",
+          "deep-midwater-light",
+          "deep-seafloor-food",
+          "recap-three-clues"
+        ],
+        "playingCount": 16,
+        "errorOrBlocked": [],
+        "humanEarListeningVerified": false,
+        "firstTimeLearnerVerified": false
+      },
+      "controls": {
+        "chapterSelectionAndNativeSlider": true,
+        "pauseAndContinue": true,
+        "freeEntryAndReturnViaContinue": true,
+        "manualOrbitDragVerified": false,
+        "speedOptionsPresent": true,
+        "speedPlaybackVerified": false,
+        "deepLocationSwitchTextObserved": true,
+        "all11MainEntriesObserved": true,
+        "original15GuideTopicsRetainedByChecks": true,
+        "narrowScreen390Verified": false
+      },
+      "checks": {
+        "passed": 46,
+        "failed": 0,
+        "full239WorldFilesRun": false,
+        "worldSuiteRetained": 239,
+        "worldSuiteAdded": 4,
+        "buildPassed": true,
+        "viteSeconds": 10.02,
+        "archiveBuildViteSeconds": 21.06,
+        "guideArchiveRecheckPassed": 27,
+        "runtimeBundleUnchangedAfterDocumentationBuild": "OceanPrimerApp-CkTs-pbV.js"
+      },
+      "preservation": {
+        "baselineCommit": "6d555b0",
+        "baselineTag": "stage-05-preserved-before-ocean-primer-20261014",
+        "trackedBaselineFiles": 1103,
+        "unchangedBaselineFiles": 1093,
+        "additiveSharedChanges": [
+          "public/overview/index.html",
+          "public/overview/inventory.json",
+          "public/overview/poster.html",
+          "scripts/build-product-overview.mjs",
+          "scripts/test-world-release.mjs",
+          "src/App.jsx",
+          "src/SceneLoading.jsx",
+          "src/experienceNavigation.js",
+          "tests/experience-navigation.test.mjs",
+          "tests/release-world-shards.json"
+        ],
+        "oldNativeSceneModelsAssetsAudioUnchanged": true,
+        "frozenRuntimeFiles": 382,
+        "frozenRuntimeChanged": [],
+        "oldPersistenceConnected": false
+      },
+      "humanListening": "unverified",
+      "firstAudienceLearning": "unverified",
+      "deployment": "not-published",
+      "receipt": "docs/validation/ocean-primer-stage-06-20261014.json"
+    },
+    "sources": [
+      "src/OceanPrimerApp.jsx",
+      "src/oceanPrimer.js",
+      "src/world/OceanPrimerSurface.js",
+      "src/world/OceanPrimerPelagic.js",
+      "src/world/OceanPrimerDeep.js",
+      "src/data/oceanPrimerNarration.json"
+    ]
   },
   "sources": [
     "src/App.jsx",

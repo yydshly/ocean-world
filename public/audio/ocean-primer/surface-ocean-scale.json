@@ -1,0 +1,33 @@
+{
+  "id": "surface-ocean-scale",
+  "start": 0,
+  "end": 45,
+  "chapterId": "surface",
+  "title": "海面下的立体海洋",
+  "text": "欢迎第一次认识海洋。海洋覆盖地球表面约百分之七十一，平均深度超过三千米。眼前的海面只是顶部，下面还有广阔水层和海床。跟着这条路线，先沿礁谷、沙道和草床认识浅海，再看开阔水域与深海的代表生命。",
+  "sourceIds": [
+    "noaa-global-ocean",
+    "noaa-ocean-depth"
+  ],
+  "visualAlignment": "海面及向下看水层；45秒进入既有浅海。平均深度为全球量级，不能把局部演示地形标为3682米。",
+  "src": "audio/ocean-primer/surface-ocean-scale.mp3",
+  "duration": 18.828,
+  "bytes": 302964,
+  "sha256": "2ef7caa4429a0a395aa36bdb753948bd4639727897e3e0c279a0a9ed68274dc9",
+  "fingerprint": "fea76f1bde140b5d113cee822e3f4c3e4d604ba66f19d2add06b943bcfd26b70",
+  "requestedOn": "2026-10-14T00:24:08.993Z",
+  "generatedOn": "2026-10-14T00:24:14.567Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 10.22126984126984,
+      "text": "欢迎第一次认识海洋。海洋覆盖地球表面约百分之七十一，平均深度超过三千米。眼前的海面只是顶部，下面还有广阔水层和海床。"
+    },
+    {
+      "start": 10.368,
+      "end": 18.673623582766442,
+      "text": "跟着这条路线，先沿礁谷、沙道和草床认识浅海，再看开阔水域与深海的代表生命。"
+    }
+  ],
+  "subtitleMode": "provider-sentence-exact-text"
+}

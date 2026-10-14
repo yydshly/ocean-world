@@ -1,0 +1,326 @@
+{
+  "date": "2026-10-14",
+  "scope": "One concentrated review correction: remove the duplicate 13.8 breath scale, and make the 35–65s dolphin pod the foreground subject with a closer oblique tracking camera.",
+  "source": "src/world/OceanPrimerPelagic.js",
+  "before": {
+    "sha256": "f1aba1685645a94ca14a3a6c2de4c505c424a9f14a1e11b24264674691a02aab",
+    "observations": [
+      {
+        "localSecond": 18,
+        "actualNoseCentreM": [
+          1.460965167154023,
+          0.4392000030658463,
+          -8.364899298975553
+        ],
+        "breathBaseM": [
+          49.92274343426451,
+          15.657840000000002,
+          -4.967023142086072
+        ],
+        "gapM": 50.90870768880727,
+        "sprayVisible": true,
+        "opacity": 0.3
+      },
+      {
+        "localSecond": 19,
+        "actualNoseCentreM": [
+          1.7209651671540236,
+          0.4392000030658463,
+          -8.399899298975551
+        ],
+        "breathBaseM": [
+          50.18274343426451,
+          15.657840000000002,
+          -5.00202314208607
+        ],
+        "gapM": 50.90870768880727,
+        "sprayVisible": true,
+        "opacity": 0.3
+      },
+      {
+        "localSecond": 20,
+        "actualNoseCentreM": [
+          1.9809651671540234,
+          0.4392000030658463,
+          -8.434899298975552
+        ],
+        "breathBaseM": [
+          50.442743434264514,
+          15.657840000000002,
+          -5.0370231420860705
+        ],
+        "gapM": 50.90870768880727,
+        "sprayVisible": true,
+        "opacity": 0.20507812499999972
+      }
+    ],
+    "testResult": {
+      "tests": 6,
+      "pass": 5,
+      "fail": 1,
+      "failure": "breath base attachment, 50.909m gap at local 18s"
+    }
+  },
+  "limits": "Animal geometry, metre scale, animal trajectories, other assets, old ecology and persistent storage unchanged. Camera composition changes within the same review correction; no second refinement round.",
+  "after": {
+    "sha256": "104d18389dc0d8b211d6c03fc6e4be7f51386bb34084792bcd87768026435364",
+    "observations": [
+      {
+        "localSecond": 18,
+        "actualNoseCentreM": [
+          1.460965167154023,
+          0.4392000030658463,
+          -8.364899298975553
+        ],
+        "breathBaseM": [
+          1.4657060459611961,
+          0.4668000000000001,
+          -8.364566894354065
+        ],
+        "gapM": 0.028006182450701696,
+        "sprayVisible": true,
+        "opacity": 0.3
+      },
+      {
+        "localSecond": 19,
+        "actualNoseCentreM": [
+          1.7209651671540236,
+          0.4392000030658463,
+          -8.399899298975551
+        ],
+        "breathBaseM": [
+          1.7257060459611968,
+          0.4668000000000001,
+          -8.399566894354063
+        ],
+        "gapM": 0.028006182450701696,
+        "sprayVisible": true,
+        "opacity": 0.3
+      },
+      {
+        "localSecond": 20,
+        "actualNoseCentreM": [
+          1.9809651671540234,
+          0.4392000030658463,
+          -8.434899298975552
+        ],
+        "breathBaseM": [
+          1.9857060459611966,
+          0.4668000000000001,
+          -8.434566894354063
+        ],
+        "gapM": 0.028006182450701696,
+        "sprayVisible": true,
+        "opacity": 0.20507812499999972
+      }
+    ],
+    "testResult": {
+      "command": "node --test tests/ocean-primer-pelagic.test.mjs",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "durationMs": 334.8692
+    },
+    "onlyDuplicateScaleRemoved": false,
+    "onlyAuthorizedBreathAndCameraChanges": true
+  },
+  "status": "concentrated-correction-complete",
+  "breathOnlyIntermediate": {
+    "sha256": "8a5468d1a93cb04be4757271aeaf35e5f4779cc4478639e8fe3301287f29eb2f",
+    "observations": [
+      {
+        "localSecond": 18,
+        "actualNoseCentreM": [
+          1.460965167154023,
+          0.4392000030658463,
+          -8.364899298975553
+        ],
+        "breathBaseM": [
+          1.4657060459611961,
+          0.4668000000000001,
+          -8.364566894354065
+        ],
+        "gapM": 0.028006182450701696,
+        "sprayVisible": true,
+        "opacity": 0.3
+      },
+      {
+        "localSecond": 19,
+        "actualNoseCentreM": [
+          1.7209651671540236,
+          0.4392000030658463,
+          -8.399899298975551
+        ],
+        "breathBaseM": [
+          1.7257060459611968,
+          0.4668000000000001,
+          -8.399566894354063
+        ],
+        "gapM": 0.028006182450701696,
+        "sprayVisible": true,
+        "opacity": 0.3
+      },
+      {
+        "localSecond": 20,
+        "actualNoseCentreM": [
+          1.9809651671540234,
+          0.4392000030658463,
+          -8.434899298975552
+        ],
+        "breathBaseM": [
+          1.9857060459611966,
+          0.4668000000000001,
+          -8.434566894354063
+        ],
+        "gapM": 0.028006182450701696,
+        "sprayVisible": true,
+        "opacity": 0.20507812499999972
+      }
+    ],
+    "testResult": {
+      "command": "node --test tests/ocean-primer-pelagic.test.mjs",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "durationMs": 482.7968
+    },
+    "onlyDuplicateScaleRemoved": true
+  },
+  "cameraComposition": {
+    "localSecond": 55,
+    "referenceImage": "output/validation/ocean-primer-stage-06/candidate-dolphins.png",
+    "before": {
+      "cameraPositionM": [
+        7.6,
+        -1.1400331359771725,
+        26.625507584416475
+      ],
+      "cameraTargetM": [
+        5.1,
+        -4.340033135977173,
+        6.625507584416473
+      ],
+      "whaleCentreNdc": [
+        0.1260716054496604,
+        -0.11057418581139145
+      ],
+      "dolphins": [
+        {
+          "name": "2.65 m bottlenose dolphin 1",
+          "centreNdc": [
+            0.2589369055406801,
+            -0.018634836246543475
+          ],
+          "projectedWidthNdc": 0.13661784348276862
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 2",
+          "centreNdc": [
+            0.1183744806982598,
+            -0.009398896863342799
+          ],
+          "projectedWidthNdc": 0.11762058002851729
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 3",
+          "centreNdc": [
+            4.804570535536826e-17,
+            8.541458729843246e-17
+          ],
+          "projectedWidthNdc": 0.14366592775860543
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 4",
+          "centreNdc": [
+            -0.03831602648750138,
+            -0.024234376093832635
+          ],
+          "projectedWidthNdc": 0.10931799023328856
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 5",
+          "centreNdc": [
+            -0.149370804345853,
+            -0.03469154082872126
+          ],
+          "projectedWidthNdc": 0.1280204770660864
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 6",
+          "centreNdc": [
+            -0.2672273720336806,
+            -0.18743480417550945
+          ],
+          "projectedWidthNdc": 0.1506604421688057
+        }
+      ]
+    },
+    "after": {
+      "cameraPositionM": [
+        13.149999999999999,
+        -2.894727845810725,
+        14.408840917749806
+      ],
+      "cameraTargetM": [
+        4.649999999999999,
+        -5.194727845810725,
+        4.4088409177498065
+      ],
+      "whaleCentreNdc": [
+        0.5412823130749084,
+        -0.1855084051083006
+      ],
+      "dolphins": [
+        {
+          "name": "2.65 m bottlenose dolphin 1",
+          "centreNdc": [
+            0.4453061597675624,
+            -0.04161111024144248
+          ],
+          "projectedWidthNdc": 0.32806699316668914
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 2",
+          "centreNdc": [
+            0.29281244886945684,
+            0.010525999221681796
+          ],
+          "projectedWidthNdc": 0.21529567178461076
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 3",
+          "centreNdc": [
+            -0.10745926661886551,
+            0.08741488762375182
+          ],
+          "projectedWidthNdc": 0.21813794441119208
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 4",
+          "centreNdc": [
+            0.1007739367705782,
+            0.020951455008184933
+          ],
+          "projectedWidthNdc": 0.15669797248621462
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 5",
+          "centreNdc": [
+            -0.16973299704153885,
+            0.04660947960239674
+          ],
+          "projectedWidthNdc": 0.15660891367098345
+        },
+        {
+          "name": "2.65 m bottlenose dolphin 6",
+          "centreNdc": [
+            -0.4690389180494296,
+            -0.13487114437769873
+          ],
+          "projectedWidthNdc": 0.1524053670838531
+        }
+      ]
+    },
+    "bounds": "Projection measurements use actual undeformed mesh vertices at a 16:9 viewport; they are geometric composition checks, not visual acceptance or full motion occlusion proof."
+  }
+}

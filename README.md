@@ -1,5 +1,9 @@
 # TIDAL · 海底世界
 
+**阶段06 · 第一次认识海洋（本地新增，尚未部署）。** 新增独立的7分30秒科普总览：海面与下潜 → 原4分钟浅海栖息地 → 座头鲸与海豚 → 深海水层与海床 → 回顾。总览入口参数为 `?demo=ocean-primer&seed=55`；本地启动方法见下文。中文讲解需要点击开始或开启讲解。旧浅海、鱼群协同、样板及研究入口继续保留，原探索存档不接入这段科普展示。[本阶段范围、素材与验收](docs/stages/STAGE_06_OCEAN_PRIMER.md)。下方公网入口与历史引导图仍指向原阶段05，不能据本地新功能认定已经上线。
+
+本轮已完整1×播放450模型秒 / 450.63实秒，16段讲解正常启动，无操作中断或页面错误，46项相关检查通过。**保留一个0.65秒深海长帧，以及海岸与部分动物的模型感；首次观众理解、人耳试听与手机性能尚未验收。** 原版本保存为`6d555b0` / `stage-05-preserved-before-ocean-primer-20261014`；本轮本地归档标签为`stage-06-ocean-primer-local-20261014`，未推送部署，不再自动优化。[真实截图与阶段结果](public/overview/stage-06/index.html) · [结构化验收范围](docs/validation/ocean-primer-stage-06-20261014.json)。
+
 一个可以观看、探索和观察生命的浏览器海底原型。目标是自然光照、真实比例、丰富生境与安静观察的海洋纪录片式体验。**当前推荐从4分钟浅海体验开始：礁谷 → 沙道 → 草床，沿途观察动物群落，也可开启中文讲解或接管探索。**
 
 [进入4分钟浅海体验](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55) · [先看60秒鱼群协同](https://yydshly.github.io/ocean-world/?demo=shallow-journey&seed=55&school=1) · [鱼群协同实景与范围](https://yydshly.github.io/ocean-world/overview/stage-05/) · [产品导览与全部入口](https://yydshly.github.io/ocean-world/overview/)
@@ -42,6 +46,7 @@
 | 03 · 群落与水层 | 关键动物呈现和生境活动整理；4组主鱼群形成上下、远近层次，底栖动物保留合理活动范围 | [生活群落](docs/stages/STAGE_03_LIVING_COMMUNITIES.md) · [水层构图](docs/stages/STAGE_03_WATER_COLUMN.md) |
 | 04 · 栖息地整合 | 礁谷外围、沙道边界和连片草床整合；102只礁鱼、9只羊鱼、18只兔鱼的活动与实际通道、软底及草缘对应 | [范围、成果与验收](docs/stages/STAGE_04_COMPLETE_HABITATS.md) |
 | 05 · 鱼群协同与讲解 | 38条现有乌尾鮗的邻居协同、绕礁分流与汇合、局部受扰散开与恢复；60秒五段讲解，4分钟开场同演示及后续栖息地讲解，共十段 | [阶段归档](docs/stages/STAGE_05_FISH_SCHOOLING.md) · [四个实景时刻](https://yydshly.github.io/ocean-world/overview/stage-05/) · [本轮发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md) |
+| 06 · 第一次认识海洋（本地） | 7分30秒独立科普总览，保留原浅海，新增海面与鲸豚、复用深海动物；16段讲解与空间定位；整段完成，保留深海一次长帧和模型感 | [阶段归档](docs/stages/STAGE_06_OCEAN_PRIMER.md) · [六张本轮实景](public/overview/stage-06/index.html) |
 
 阶段04重组了24组礁体布局，6个底栖居民随宿主迁移；草床包含267簇核心与39簇边缘，连同保留草共332簇。24项布局记录以初始化场景为基准，**不是相对上一版新增24次可见变化**。293个体、38展示类、原资产与240秒路线保持，没有靠新增物种扩充本轮成果。
 
@@ -148,6 +153,7 @@ npm run preview:local
 
 使用终端显示的本地服务地址，进入以下路径：
 
+- 新增海洋总览：`/ocean-world/?demo=ocean-primer&seed=55`（7分30秒，阶段06本地版本）
 - 当前浅海体验：`/ocean-world/?demo=shallow-journey&seed=55`
 - 60秒鱼群协同：`/ocean-world/?demo=shallow-journey&seed=55&school=1`
 - 阶段05实景：`/ocean-world/overview/stage-05/`

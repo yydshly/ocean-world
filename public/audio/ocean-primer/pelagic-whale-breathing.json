@@ -1,0 +1,33 @@
+{
+  "id": "pelagic-whale-breathing",
+  "start": 285,
+  "end": 322,
+  "chapterId": "pelagic",
+  "title": "开阔水域与鲸的呼吸",
+  "text": "现在换到开阔水域观察点。这里的生命，也可以生活在离海床很远的水层。先看座头鲸完整的身体，再比较海豚的大小。鲸和海豚都是哺乳动物，用肺呼吸空气，必须回到海面换气。",
+  "sourceIds": [
+    "noaa-mammals",
+    "noaa-dolphins"
+  ],
+  "visualAlignment": "285–320秒先完整座头鲸；海面可见。只解释肺呼吸，不把喷水、模型上浮或同场动物编排当成野外记录。",
+  "src": "audio/ocean-primer/pelagic-whale-breathing.mp3",
+  "duration": 16.524,
+  "bytes": 266100,
+  "sha256": "27830f07e2466b47dda0973e6325f5155d31e69ce6f65854cb5c8eddac457765",
+  "fingerprint": "5b1036bbccefabb786c43c8daf77e35c25951e44786d3b82edb85d1ed3631c43",
+  "requestedOn": "2026-10-14T00:24:16.191Z",
+  "generatedOn": "2026-10-14T00:24:18.394Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 10.093560090702947,
+      "text": "现在换到开阔水域观察点。这里的生命，也可以生活在离海床很远的水层。先看座头鲸完整的身体，再比较海豚的大小。"
+    },
+    {
+      "start": 10.293560090702947,
+      "end": 16.370068027210884,
+      "text": "鲸和海豚都是哺乳动物，用肺呼吸空气，必须回到海面换气。"
+    }
+  ],
+  "subtitleMode": "provider-sentence-exact-text"
+}

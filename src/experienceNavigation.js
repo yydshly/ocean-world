@@ -3,6 +3,7 @@ export const EXPERIENCE_GROUPS = Object.freeze([
     id: 'watch', title: '观看主线',
     detail: '当前浅海主线、鱼群演示与历史样板。',
     entries: Object.freeze([
+      Object.freeze({ id: 'primer', title: '第一次认识海洋', detail: '7分30秒 · 海面、浅海、鲸豚与深海，带中文讲解', demo: 'ocean-primer' }),
       Object.freeze({ id: 'journey', title: '4分钟浅海体验', detail: '推荐主线 · 鱼群 → 礁谷 → 沙道 → 草床', demo: 'shallow-journey' }),
       Object.freeze({ id: 'school', title: '60秒鱼群协同', detail: '同一浅海 · 分流、汇合、散开与聚群', demo: 'shallow-journey', school: '1' }),
       Object.freeze({ id: 'sample', title: '75秒历史样板', detail: '早期冻结路线 · 与当前主线范围不同', demo: 'shallow-sample' }),

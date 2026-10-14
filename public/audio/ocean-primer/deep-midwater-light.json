@@ -1,0 +1,27 @@
+{
+  "id": "deep-midwater-light",
+  "start": 365,
+  "end": 389,
+  "chapterId": "deep",
+  "title": "约七百米的微光水层",
+  "text": "眼前是约七百米深的中层观察点。阳光在向下传播时迅速减弱；约两百米以下，通常已经很昏暗。水母和吸血乌贼生活的这一层，仍是离海床很远的水中空间。画面用了观察灯，方便我们看清它们。",
+  "sourceIds": [
+    "noaa-light"
+  ],
+  "visualAlignment": "深海局部0–24秒约700米冠水母/吸血乌贼；灯是观察器，不声称太阳光完全消失或画面亮度就是自然700米光照。",
+  "src": "audio/ocean-primer/deep-midwater-light.mp3",
+  "duration": 15.3,
+  "bytes": 246516,
+  "sha256": "97577682974f1a3e6737227bf7f80718fe34e276ad91fa793af09b9343912032",
+  "fingerprint": "6eecc20fe0ea8d06d680ddc2fa4b05badc7720de71dcf07e8350ff96b6b1c5d8",
+  "requestedOn": "2026-10-14T00:24:21.921Z",
+  "generatedOn": "2026-10-14T00:24:24.056Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 15.132290249433106,
+      "text": "眼前是约七百米深的中层观察点。阳光在向下传播时迅速减弱；约两百米以下，通常已经很昏暗。水母和吸血乌贼生活的这一层，仍是离海床很远的水中空间。画面用了观察灯，方便我们看清它们。"
+    }
+  ],
+  "subtitleMode": "provider-sentence-exact-text"
+}

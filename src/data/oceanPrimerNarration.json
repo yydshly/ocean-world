@@ -1,0 +1,268 @@
+{
+  "provider": "MiniMax",
+  "synthetic": true,
+  "language": "zh-CN",
+  "model": "speech-2.8-hd",
+  "voiceId": "Chinese (Mandarin)_Gentleman",
+  "voiceSpeed": 1.05,
+  "duration": 450,
+  "scope": "代表生境与动物的编排式科普展示，不是全海洋生态预测；不同观察区之间为压缩切换，不是假装真实连续下潜。",
+  "authorship": "本项目原创中文旁白，依据下列科学资料转述；未下载或引用资料中的图片、声音和视频。",
+  "reusedShallow": {
+    "timeline": "shallowNarrationTimeline({schoolingOnly:false})",
+    "offset": 45,
+    "duration": 240,
+    "clipCount": 10,
+    "policy": "五段鱼群语音加原五段后续生境语音，内容、文件与字幕保持；仅全局开始时间加45秒。"
+  },
+  "sources": [
+    {
+      "id": "noaa-global-ocean",
+      "title": "NOAA National Ocean Service — How many oceans are there?",
+      "url": "https://oceanservice.noaa.gov/facts/howmanyoceans.html",
+      "accessedOn": "2026-10-14",
+      "supports": "海洋覆盖地球表面约71%；全球海洋相互连通。"
+    },
+    {
+      "id": "noaa-ocean-depth",
+      "title": "NOAA National Ocean Service — How deep is the ocean?",
+      "url": "https://oceanservice.noaa.gov/facts/oceandepth.html",
+      "accessedOn": "2026-10-14",
+      "supports": "海洋平均深度约3682米，旁白用超过三千米表达量级。"
+    },
+    {
+      "id": "noaa-mammals",
+      "title": "NOAA Education — Marine mammals",
+      "url": "https://www.noaa.gov/education/resource-collections/marine-life/marine-mammals",
+      "accessedOn": "2026-10-14",
+      "supports": "鲸和海豚属于海洋哺乳动物，用肺呼吸空气。"
+    },
+    {
+      "id": "noaa-dolphins",
+      "title": "NOAA National Ocean Service — Are dolphins fish?",
+      "url": "https://oceanservice.noaa.gov/facts/dolphin.html",
+      "accessedOn": "2026-10-14",
+      "supports": "海豚用肺呼吸，必须返回水面换气。"
+    },
+    {
+      "id": "noaa-light",
+      "title": "NOAA National Ocean Service — How far does light travel in the ocean?",
+      "url": "https://oceanservice.noaa.gov/facts/light_travel.html",
+      "accessedOn": "2026-10-14",
+      "supports": "通常200米以下光迅速减弱，200–1000米为微光层，1000米以下无太阳光；边界是近似，受水况影响。"
+    },
+    {
+      "id": "noaa-marine-snow",
+      "title": "NOAA National Ocean Service — What is marine snow?",
+      "url": "https://oceanservice.noaa.gov/facts/marinesnow.html",
+      "accessedOn": "2026-10-14",
+      "supports": "海洋雪包含从上层下落的有机物与其它物质，为许多深海动物提供食物；未声称每个可见粒子真实进入模拟食物账。"
+    },
+    {
+      "id": "mbari-vampire-squid",
+      "title": "MBARI — Vampire squid",
+      "url": "https://www.mbari.org/animal/vampire-squid/",
+      "accessedOn": "2026-10-14",
+      "supports": "吸血乌贼Vampyroteuthis infernalis为中层代表，机构物种页给600–900米；约700米为有限观察点选择。"
+    },
+    {
+      "id": "mbari-helmet-jelly-observation",
+      "title": "MBARI — Researchers encounter rarely seen deep-sea seven-arm octopus",
+      "url": "https://www.mbari.org/news/mbari-researchers-encounter-rarely-seen-deep-sea-seven-arm-octopus/",
+      "accessedOn": "2026-10-14",
+      "supports": "2025年11月6日蒙特雷约700米原始观察中具名Periphylla periphylla；该食物网观察不是本展示共同样方的证明。"
+    }
+  ],
+  "clips": [
+    {
+      "id": "surface-ocean-scale",
+      "start": 0,
+      "end": 45,
+      "chapterId": "surface",
+      "title": "海面下的立体海洋",
+      "text": "欢迎第一次认识海洋。海洋覆盖地球表面约百分之七十一，平均深度超过三千米。眼前的海面只是顶部，下面还有广阔水层和海床。跟着这条路线，先沿礁谷、沙道和草床认识浅海，再看开阔水域与深海的代表生命。",
+      "sourceIds": [
+        "noaa-global-ocean",
+        "noaa-ocean-depth"
+      ],
+      "visualAlignment": "海面及向下看水层；45秒进入既有浅海。平均深度为全球量级，不能把局部演示地形标为3682米。",
+      "src": "audio/ocean-primer/surface-ocean-scale.mp3",
+      "duration": 18.828,
+      "bytes": 302964,
+      "sha256": "2ef7caa4429a0a395aa36bdb753948bd4639727897e3e0c279a0a9ed68274dc9",
+      "fingerprint": "fea76f1bde140b5d113cee822e3f4c3e4d604ba66f19d2add06b943bcfd26b70",
+      "requestedOn": "2026-10-14T00:24:08.993Z",
+      "generatedOn": "2026-10-14T00:24:14.567Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 10.22126984126984,
+          "text": "欢迎第一次认识海洋。海洋覆盖地球表面约百分之七十一，平均深度超过三千米。眼前的海面只是顶部，下面还有广阔水层和海床。"
+        },
+        {
+          "start": 10.368,
+          "end": 18.673623582766442,
+          "text": "跟着这条路线，先沿礁谷、沙道和草床认识浅海，再看开阔水域与深海的代表生命。"
+        }
+      ],
+      "subtitleMode": "provider-sentence-exact-text"
+    },
+    {
+      "id": "pelagic-whale-breathing",
+      "start": 285,
+      "end": 322,
+      "chapterId": "pelagic",
+      "title": "开阔水域与鲸的呼吸",
+      "text": "现在换到开阔水域观察点。这里的生命，也可以生活在离海床很远的水层。先看座头鲸完整的身体，再比较海豚的大小。鲸和海豚都是哺乳动物，用肺呼吸空气，必须回到海面换气。",
+      "sourceIds": [
+        "noaa-mammals",
+        "noaa-dolphins"
+      ],
+      "visualAlignment": "285–320秒先完整座头鲸；海面可见。只解释肺呼吸，不把喷水、模型上浮或同场动物编排当成野外记录。",
+      "src": "audio/ocean-primer/pelagic-whale-breathing.mp3",
+      "duration": 16.524,
+      "bytes": 266100,
+      "sha256": "27830f07e2466b47dda0973e6325f5155d31e69ce6f65854cb5c8eddac457765",
+      "fingerprint": "5b1036bbccefabb786c43c8daf77e35c25951e44786d3b82edb85d1ed3631c43",
+      "requestedOn": "2026-10-14T00:24:16.191Z",
+      "generatedOn": "2026-10-14T00:24:18.394Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 10.093560090702947,
+          "text": "现在换到开阔水域观察点。这里的生命，也可以生活在离海床很远的水层。先看座头鲸完整的身体，再比较海豚的大小。"
+        },
+        {
+          "start": 10.293560090702947,
+          "end": 16.370068027210884,
+          "text": "鲸和海豚都是哺乳动物，用肺呼吸空气，必须回到海面换气。"
+        }
+      ],
+      "subtitleMode": "provider-sentence-exact-text"
+    },
+    {
+      "id": "pelagic-dolphin-space",
+      "start": 322,
+      "end": 365,
+      "chapterId": "pelagic",
+      "title": "海豚所在的水层",
+      "text": "接着，把视线放到海豚身上。留意它们的身体朝向、同伴间距，以及上方的海面。水层是立体的生活空间，动物可以向上、向下，也可以穿过远处。这里的动作是为观察而编排，不代表野外动物一定这样游动。",
+      "sourceIds": [],
+      "visualAlignment": "322秒后六只宽吻海豚及共同游动方向；不主张鲸豚必同时成群、共用自然样方或与浅海路线连续相接。",
+      "src": "audio/ocean-primer/pelagic-dolphin-space.mp3",
+      "duration": 17.892,
+      "bytes": 287988,
+      "sha256": "f755ead6e7bda72c3199402268392964c952df194f0b3550830144f53767e6a1",
+      "fingerprint": "ac3d2fb86cfd8964f879c13dcf568f0d019c996b6b2b9414d8e1854a85354c35",
+      "requestedOn": "2026-10-14T00:24:18.788Z",
+      "generatedOn": "2026-10-14T00:24:21.516Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 13.588163265306122,
+          "text": "接着，把视线放到海豚身上。留意它们的身体朝向、同伴间距，以及上方的海面。水层是立体的生活空间，动物可以向上、向下，也可以穿过远处。"
+        },
+        {
+          "start": 13.788163265306123,
+          "end": 17.751655328798183,
+          "text": "这里的动作是为观察而编排，不代表野外动物一定这样游动。"
+        }
+      ],
+      "subtitleMode": "provider-sentence-exact-text"
+    },
+    {
+      "id": "deep-midwater-light",
+      "start": 365,
+      "end": 389,
+      "chapterId": "deep",
+      "title": "约七百米的微光水层",
+      "text": "眼前是约七百米深的中层观察点。阳光在向下传播时迅速减弱；约两百米以下，通常已经很昏暗。水母和吸血乌贼生活的这一层，仍是离海床很远的水中空间。画面用了观察灯，方便我们看清它们。",
+      "sourceIds": [
+        "noaa-light",
+        "mbari-vampire-squid",
+        "mbari-helmet-jelly-observation"
+      ],
+      "visualAlignment": "深海局部0–24秒约700米冠水母/吸血乌贼；灯是观察器，不声称太阳光完全消失或画面亮度就是自然700米光照。",
+      "src": "audio/ocean-primer/deep-midwater-light.mp3",
+      "duration": 15.3,
+      "bytes": 246516,
+      "sha256": "97577682974f1a3e6737227bf7f80718fe34e276ad91fa793af09b9343912032",
+      "fingerprint": "6eecc20fe0ea8d06d680ddc2fa4b05badc7720de71dcf07e8350ff96b6b1c5d8",
+      "requestedOn": "2026-10-14T00:24:21.921Z",
+      "generatedOn": "2026-10-14T00:24:24.056Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 15.132290249433106,
+          "text": "眼前是约七百米深的中层观察点。阳光在向下传播时迅速减弱；约两百米以下，通常已经很昏暗。水母和吸血乌贼生活的这一层，仍是离海床很远的水中空间。画面用了观察灯，方便我们看清它们。"
+        }
+      ],
+      "subtitleMode": "provider-sentence-exact-text"
+    },
+    {
+      "id": "deep-seafloor-food",
+      "start": 399,
+      "end": 430,
+      "chapterId": "deep",
+      "title": "深海海床与食物",
+      "text": "接下来，换到约三千五百米的海床。这里没有太阳光，画面由观察灯照亮。留意软泥底上的海猪和上方的鱼。许多深海动物的食物，来自上层落下的有机碎屑；这种下落物质常被称为海洋雪。黑暗里，生命仍在继续。",
+      "sourceIds": [
+        "noaa-light",
+        "noaa-marine-snow"
+      ],
+      "visualAlignment": "深海局部24–28秒压暗切换，28秒后3500米海床；399秒旁白开始时底栖段已稳定。海猪、鼠尾鳕科鱼可见；不声称每粒海雪入账，不加热液/鲸落。",
+      "src": "audio/ocean-primer/deep-seafloor-food.mp3",
+      "duration": 19.8,
+      "bytes": 318516,
+      "sha256": "2ca723d44cc46d6b8715bb72b64c85d737dc3c243550eee71854f4e0491ef12c",
+      "fingerprint": "21ec78a739f6d7cf045d97323f01370ddde4e658fe272eae9d3b1296b0fa5701",
+      "requestedOn": "2026-10-14T00:24:24.447Z",
+      "generatedOn": "2026-10-14T00:24:27.374Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 9.965850340136054,
+          "text": "接下来，换到约三千五百米的海床。这里没有太阳光，画面由观察灯照亮。留意软泥底上的海猪和上方的鱼。"
+        },
+        {
+          "start": 10.165850340136053,
+          "end": 17.205986394557822,
+          "text": "许多深海动物的食物，来自上层落下的有机碎屑；这种下落物质常被称为海洋雪。"
+        },
+        {
+          "start": 17.352,
+          "end": 19.64365532879819,
+          "text": "黑暗里，生命仍在继续。"
+        }
+      ],
+      "subtitleMode": "provider-sentence-exact-text"
+    },
+    {
+      "id": "recap-three-clues",
+      "start": 430,
+      "end": 450,
+      "chapterId": "recap",
+      "title": "带着三个线索继续观察",
+      "text": "回想三个线索：离海面多深，光能照到哪里，生命住在水层还是海床。今天走的是编排的科普路线，不是全海洋生态预测。带着这三个问题，继续观察。",
+      "sourceIds": [
+        "noaa-light"
+      ],
+      "visualAlignment": "430–450秒回顾海面/浅海/水层/海床的尺度与光照；无需新增动物动作或真实世界预测。",
+      "src": "audio/ocean-primer/recap-three-clues.mp3",
+      "duration": 15.948,
+      "bytes": 256884,
+      "sha256": "7ffe7b7ea2c3d1cdc9ed0e2f64271eb074490c2d9cbbd53319fc5b7b84a84a92",
+      "fingerprint": "21c170515d23400a1c06ac29beb9cd939403f5209e0a6c837527d086184d405f",
+      "requestedOn": "2026-10-14T00:24:27.766Z",
+      "generatedOn": "2026-10-14T00:24:29.824Z",
+      "subtitles": [
+        {
+          "start": 0,
+          "end": 15.782448979591837,
+          "text": "回想三个线索：离海面多深，光能照到哪里，生命住在水层还是海床。今天走的是编排的科普路线，不是全海洋生态预测。带着这三个问题，继续观察。"
+        }
+      ],
+      "subtitleMode": "provider-sentence-exact-text"
+    }
+  ]
+}

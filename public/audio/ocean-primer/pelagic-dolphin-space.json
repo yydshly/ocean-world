@@ -1,0 +1,30 @@
+{
+  "id": "pelagic-dolphin-space",
+  "start": 322,
+  "end": 365,
+  "chapterId": "pelagic",
+  "title": "海豚所在的水层",
+  "text": "接着，把视线放到海豚身上。留意它们的身体朝向、同伴间距，以及上方的海面。水层是立体的生活空间，动物可以向上、向下，也可以穿过远处。这里的动作是为观察而编排，不代表野外动物一定这样游动。",
+  "sourceIds": [],
+  "visualAlignment": "322秒后六只宽吻海豚及共同游动方向；不主张鲸豚必同时成群、共用自然样方或与浅海路线连续相接。",
+  "src": "audio/ocean-primer/pelagic-dolphin-space.mp3",
+  "duration": 17.892,
+  "bytes": 287988,
+  "sha256": "f755ead6e7bda72c3199402268392964c952df194f0b3550830144f53767e6a1",
+  "fingerprint": "ac3d2fb86cfd8964f879c13dcf568f0d019c996b6b2b9414d8e1854a85354c35",
+  "requestedOn": "2026-10-14T00:24:18.788Z",
+  "generatedOn": "2026-10-14T00:24:21.516Z",
+  "subtitles": [
+    {
+      "start": 0,
+      "end": 13.588163265306122,
+      "text": "接着，把视线放到海豚身上。留意它们的身体朝向、同伴间距，以及上方的海面。水层是立体的生活空间，动物可以向上、向下，也可以穿过远处。"
+    },
+    {
+      "start": 13.788163265306123,
+      "end": 17.751655328798183,
+      "text": "这里的动作是为观察而编排，不代表野外动物一定这样游动。"
+    }
+  ],
+  "subtitleMode": "provider-sentence-exact-text"
+}

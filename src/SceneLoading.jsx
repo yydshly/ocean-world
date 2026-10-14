@@ -29,9 +29,9 @@ export function SceneLoading({ experience = 'world', phase = 'opening', error = 
     {shallow && <img className="scene-loading-preview" src={`${base}overview/stage-04/after-96.jpg`} alt="" decoding="async"/>}
     <div className="scene-loading-content">
       <div className="scene-loading-brand">TIDAL <span>海底世界</span></div>
-      <p className="scene-loading-eyebrow">{experience === 'school' ? '乌尾鮗协同观察 · 连续60秒' : experience === 'journey' ? '4分钟浅海体验 · 三个栖息地' : experience === 'sample' ? '浅海样板 · 连续巡游75秒' : '观察生命，探索海洋'}</p>
-      <h1>{error ? '场景未能加载' : shallow ? '即将进入这片浅海' : '正在打开海底世界'}</h1>
-      <p className="scene-loading-intro">{error ? '请检查网络后重新载入。已保存的探索记录会保留。' : shallow ? '准备完成后自动开始巡游。你可以沿途观察，也可以随时暂停。' : '正在准备这片海域，完成后即可进入观察与探索。'}</p>
+      <p className="scene-loading-eyebrow">{experience === 'primer' ? '7分30秒海洋总览 · 海面、浅海、鲸豚与深海' : experience === 'school' ? '乌尾鮗协同观察 · 连续60秒' : experience === 'journey' ? '4分钟浅海体验 · 三个栖息地' : experience === 'sample' ? '浅海样板 · 连续巡游75秒' : '观察生命，探索海洋'}</p>
+      <h1>{error ? '场景未能加载' : experience === 'primer' ? '即将开始认识海洋' : shallow ? '即将进入这片浅海' : '正在打开海底世界'}</h1>
+      <p className="scene-loading-intro">{error ? '请检查网络后重新载入。已保存的探索记录会保留。' : experience === 'primer' ? '正在准备四个观察章节。完成后可选择带讲解的导览，原有模块与探索记录保持。' : shallow ? '准备完成后自动开始巡游。你可以沿途观察，也可以随时暂停。' : '正在准备这片海域，完成后即可进入观察与探索。'}</p>
       {error ? <div className="scene-loading-error" role="alert">{error}</div> : <div className="scene-loading-status">
         <ol aria-label="加载阶段">{['打开体验', '下载模型', '准备画面'].map((label, index) => <li key={label} className={index < activeStep ? 'is-complete' : ''} aria-current={index === activeStep ? 'step' : undefined}><span>{index < activeStep ? '✓' : `0${index + 1}`}</span>{label}</li>)}</ol>
         <p className="scene-loading-current" role="status">{status}…</p>

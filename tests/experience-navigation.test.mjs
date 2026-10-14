@@ -28,7 +28,7 @@ async function loadingComponents() {
 
 test('the shared navigation distinguishes the three playback entries from existing exploration routes', () => {
   assert.deepEqual(EXPERIENCE_GROUPS.map(group => group.id), ['watch', 'explore']);
-  assert.deepEqual(EXPERIENCE_GROUPS[0].entries.map(entry => entry.id), ['journey', 'school', 'sample']);
+  assert.deepEqual(EXPERIENCE_GROUPS[0].entries.map(entry => entry.id), ['primer', 'journey', 'school', 'sample']);
   assert.deepEqual(EXPERIENCE_GROUPS[1].entries.map(entry => entry.id), ['all', 'director', 'life', 'reef', 'meadow', 'kelp', 'deep']);
   for (const id of ['reef', 'meadow']) {
     const url = new URL(experienceHref(id), 'https://example.org');

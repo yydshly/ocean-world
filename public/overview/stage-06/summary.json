@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-14",
+  "stage": "06",
+  "status": "local-stage-archived-with-known-limits",
+  "published": false,
+  "entry": "?demo=ocean-primer&seed=55",
+  "durationSec": 450,
+  "fullPlayback": {
+    "completed": true,
+    "elapsedWallSec": 450.6290999999762,
+    "endedAtMs": 477158.7,
+    "speed": 1,
+    "startSec": 0,
+    "startedAtMs": 26529.60000002384,
+    "modelEndSec": 450,
+    "interruptions": [],
+    "errors": [],
+    "console": []
+  },
+  "startup": {
+    "navigationToReadySec": 5.328800000071525,
+    "componentStartupSec": 4.203700000047684,
+    "conditions": "Normal local cache, not cleared; browser work in background, current document active; other tabs retained. Not an isolated cold or hosted loading result."
+  },
+  "frameIntervals": {
+    "count": 84215,
+    "p95UpperBoundMs": 10,
+    "bucketWidthMs": 5,
+    "maxMs": 645.7999999999884,
+    "over250": 1,
+    "chapters": [
+      {
+        "id": "deep",
+        "count": 13902,
+        "observedWallSec": 65.54590000000002,
+        "averageFps": 212.09564595192066,
+        "p95UpperBoundMs": 10,
+        "maxMs": 645.7999999999884,
+        "over250": 1
+      },
+      {
+        "id": "pelagic",
+        "count": 17869,
+        "observedWallSec": 80.0833,
+        "averageFps": 223.13016571494933,
+        "p95UpperBoundMs": 10,
+        "maxMs": 183.29999999998836,
+        "over250": 0
+      },
+      {
+        "id": "recap",
+        "count": 4786,
+        "observedWallSec": 20.00420000000001,
+        "averageFps": 239.24975755091418,
+        "p95UpperBoundMs": 5,
+        "maxMs": 12.400000000023285,
+        "over250": 0
+      },
+      {
+        "id": "shallow",
+        "count": 36903,
+        "observedWallSec": 239.9999,
+        "averageFps": 153.76256406773504,
+        "p95UpperBoundMs": 15,
+        "maxMs": 91.60000000000582,
+        "over250": 0
+      },
+      {
+        "id": "surface",
+        "count": 10755,
+        "observedWallSec": 44.99589999999999,
+        "averageFps": 239.02177753973143,
+        "p95UpperBoundMs": 5,
+        "maxMs": 20.799999999999272,
+        "over250": 0
+      }
+    ]
+  },
+  "device": {
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Laptop GPU (0x00002860) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "height": 720,
+    "pixelRatio": 1.5,
+    "width": 1280,
+    "resolutionScale": 1
+  },
+  "narration": {
+    "newClips": 6,
+    "reusedShallowClips": 10,
+    "playingClipIds": [
+      "surface-ocean-scale",
+      "primer-shallow-school-entry",
+      "primer-shallow-school-split",
+      "primer-shallow-school-merge",
+      "primer-shallow-school-disturb",
+      "primer-shallow-school-regroup",
+      "primer-shallow-reef-edge",
+      "primer-shallow-reef-sand",
+      "primer-shallow-sand-life",
+      "primer-shallow-seagrass",
+      "primer-shallow-open-water",
+      "pelagic-whale-breathing",
+      "pelagic-dolphin-space",
+      "deep-midwater-light",
+      "deep-seafloor-food",
+      "recap-three-clues"
+    ],
+    "playingCount": 16,
+    "errorOrBlocked": [],
+    "humanEarListeningVerified": false,
+    "firstTimeLearnerVerified": false
+  },
+  "preservation": {
+    "baselineCommit": "6d555b0",
+    "baselineTag": "stage-05-preserved-before-ocean-primer-20261014",
+    "trackedBaselineFiles": 1103,
+    "unchangedBaselineFiles": 1093,
+    "additiveSharedChanges": [
+      "public/overview/index.html",
+      "public/overview/inventory.json",
+      "public/overview/poster.html",
+      "scripts/build-product-overview.mjs",
+      "scripts/test-world-release.mjs",
+      "src/App.jsx",
+      "src/SceneLoading.jsx",
+      "src/experienceNavigation.js",
+      "tests/experience-navigation.test.mjs",
+      "tests/release-world-shards.json"
+    ],
+    "oldNativeSceneModelsAssetsAudioUnchanged": true,
+    "frozenRuntimeFiles": 382,
+    "frozenRuntimeChanged": [],
+    "oldPersistenceConnected": false
+  },
+  "checks": {
+    "passed": 46,
+    "failed": 0,
+    "full239WorldFilesRun": false,
+    "worldSuiteRetained": 239,
+    "worldSuiteAdded": 4,
+    "buildPassed": true,
+    "viteSeconds": 10.02,
+    "archiveBuildViteSeconds": 21.06,
+    "guideArchiveRecheckPassed": 27,
+    "runtimeBundleUnchangedAfterDocumentationBuild": "OceanPrimerApp-CkTs-pbV.js"
+  },
+  "concentratedCorrection": [
+    "GPU gentle swell and coherent irregular coast",
+    "Whale breath mist double scale removed",
+    "Dolphin camera follows closer actual pod center",
+    "Shallow habitat learning cue and resume-from-free control integration"
+  ],
+  "controls": {
+    "chapterSelectionAndNativeSlider": true,
+    "pauseAndContinue": true,
+    "freeEntryAndReturnViaContinue": true,
+    "manualOrbitDragVerified": false,
+    "speedOptionsPresent": true,
+    "speedPlaybackVerified": false,
+    "deepLocationSwitchTextObserved": true,
+    "all11MainEntriesObserved": true,
+    "original15GuideTopicsRetainedByChecks": true,
+    "narrowScreen390Verified": false
+  },
+  "knownLimits": [
+    "One deep chapter frame interval of 645.8ms; no further repair this round; precise cause not profiled.",
+    "Original models, smooth coast, repeated coral and some benthic animals retain a visible model appearance.",
+    "Surface/recap white header has weak contrast against bright sky.",
+    "Whale remains prominent in dolphin composition; animal motion/grouping is authored teaching display, not wild co-occurrence evidence.",
+    "Old director/life streaming waits and kelp/deep research failures/low frame rates are not repaired by this independent tour.",
+    "Human listening, first-time learner comprehension, mobile and all dynamic collisions are not accepted."
+  ],
+  "assetsPolicy": "Original new surface and cetacean geometry; prior free assets reused with existing attribution/NC/SA conditions. No unlicensed external animal download. Credentials excluded.",
+  "archive": {
+    "localOnly": true,
+    "branch": "feat/ocean-primer-stage-06",
+    "tag": "stage-06-ocean-primer-local-20261014",
+    "noFurtherOptimization": true
+  },
+  "screenshots": [
+    {
+      "file": "surface.jpg",
+      "source": "final-intro.png",
+      "kind": "ready-intro",
+      "raster": {
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg"
+      }
+    },
+    {
+      "file": "shallow.jpg",
+      "source": "full-sand-entry.png",
+      "kind": "uninterrupted-full-playback",
+      "raster": {
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg"
+      }
+    },
+    {
+      "file": "whale.jpg",
+      "source": "controls-whale-breath.png",
+      "kind": "separate-paused-control-check-at-303",
+      "raster": {
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg"
+      }
+    },
+    {
+      "file": "dolphins.jpg",
+      "source": "controls-dolphins.png",
+      "kind": "separate-paused-control-check-at-340",
+      "raster": {
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg"
+      }
+    },
+    {
+      "file": "deep-midwater.jpg",
+      "source": "full-deep-midwater.png",
+      "kind": "uninterrupted-full-playback",
+      "raster": {
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg"
+      }
+    },
+    {
+      "file": "deep-seabed.jpg",
+      "source": "full-deep-seabed.png",
+      "kind": "uninterrupted-full-playback",
+      "raster": {
+        "width": 1280,
+        "height": 720,
+        "format": "jpeg"
+      }
+    }
+  ]
+}
