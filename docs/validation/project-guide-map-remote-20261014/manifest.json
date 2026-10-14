@@ -1,0 +1,36 @@
+{
+  "archivedOn": "2026-10-14",
+  "scope": "Byte-identical preservation of existing deployed navigation/documentation verification. No new scene, optimization, browser playback or performance measurement.",
+  "checkedCommit": "f3bf094e11e4dea764b697ac50cefcecbada5663",
+  "checkedWorkflow": "https://github.com/yydshly/ocean-world/actions/runs/38526233529",
+  "priorPublishedTag": "stage-07-project-map-20261014",
+  "priorTagObject": "f5039a57b27b72f20244bae6cb901e17eeb5a669",
+  "originalDirectory": "output/validation/project-guide-map",
+  "files": [
+    {
+      "file": "remote-browser-checks.json",
+      "bytes": 6584,
+      "sha256": "424971b02e62fcffb339adb6e6096eb135d4c2ffb1ac2f72c4be9d38ded15a12"
+    },
+    {
+      "file": "remote-readme.jpg",
+      "bytes": 97385,
+      "sha256": "9c99b2816f01f8086935ecfef4ce116ec04952603c7720b8b6b4630f15709081"
+    },
+    {
+      "file": "remote-home.jpg",
+      "bytes": 72822,
+      "sha256": "daca2b3b6af721f2b59c9563a5180f83e7189d7525082068952789b665eb85a1"
+    },
+    {
+      "file": "remote-map.jpg",
+      "bytes": 78836,
+      "sha256": "7a859c8986454ba2dac580110cf5dd9b4a93c9dd8c5a4b5aab08dc5ab4eb378c"
+    },
+    {
+      "file": "remote-scenes.jpg",
+      "bytes": 45456,
+      "sha256": "1f5bc0111a86c935c82faf54fce1e2ed5f123fc5e786dd4fdc0b2629353b855b"
+    }
+  ]
+}

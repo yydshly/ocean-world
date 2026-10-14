@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-14",
+  "scope": "Published navigation, documentation and images; no new runtime playback or performance measurement.",
+  "commit": "f3bf094e11e4dea764b697ac50cefcecbada5663",
+  "workflow": "https://github.com/yydshly/ocean-world/actions/runs/38526233529",
+  "flow": "Actual README image click to deployed homepage, homepage text link to project map, map navigation to roadmap candidates.",
+  "readme": {
+    "imageDecoded": true,
+    "width": 1600,
+    "height": 3884,
+    "outsideFold": true,
+    "target": "https://yydshly.github.io/ocean-world/overview/"
+  },
+  "homepage": {
+    "searchWeather": 1,
+    "webPageFilter": 13,
+    "allCards": 61
+  },
+  "publicPages": [
+    {
+      "actual": "https://yydshly.github.io/ocean-world/assets/shallow-artist/credits.html",
+      "heading": "浅海模型来源",
+      "name": "资产来源与许可 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/assets/shallow-artist/credits.html",
+      "title": "浅海模型来源"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/",
+      "heading": "第一次认识海洋7分30秒 · 从海面看向深海",
+      "name": "早期导览兼容入口 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/output/product-overview/index.html",
+      "title": "TIDAL 海洋项目 · 总入口与扩展全景"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/evidence/review.html",
+      "heading": "浅海样板 v1.0 · 本轮已收尾",
+      "name": "75秒样板历史验收 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/evidence/review.html",
+      "title": "浅海样板 v1.0 · 已固定"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/index.html",
+      "heading": "第一次认识海洋7分30秒 · 从海面看向深海",
+      "name": "产品导览首页 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/index.html",
+      "title": "TIDAL 海洋项目 · 总入口与扩展全景"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/poster.html",
+      "heading": "第一次认识海洋7分30秒 · 从海面看向深海",
+      "name": "原产品能力长页 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/poster.html",
+      "title": "TIDAL 海洋项目 · 总入口与扩展全景"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/project-map/index.html",
+      "heading": "项目当前阶段与海洋扩展总览",
+      "name": "项目与扩展一图总览 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/project-map/index.html",
+      "title": "TIDAL 项目与扩展总览"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/project-map/poster.html",
+      "heading": "认识海洋，观察生命，逐步扩展。",
+      "name": "项目总览图制作页 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/project-map/poster.html",
+      "title": "TIDAL 项目与扩展总览图"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/roadmap/index.html",
+      "heading": "保存已有成果，逐步扩展海洋。",
+      "name": "海洋扩展与应用规划 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/roadmap/index.html",
+      "title": "TIDAL 海洋扩展与应用规划"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/stage-04/index.html",
+      "heading": "从礁谷，穿过沙道，走进一片草床。",
+      "name": "阶段04栖息地历史对照 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/stage-04/index.html",
+      "title": "TIDAL · 三个栖息地阶段记录"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/stage-04/review.html",
+      "heading": "从礁谷，穿过沙道，走进一片草床。",
+      "name": "阶段04历史验收页 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/stage-04/review.html",
+      "title": "TIDAL · 三个栖息地阶段记录"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/stage-05/index.html",
+      "heading": "一群鱼，如何一起经过礁体？",
+      "name": "阶段05鱼群协同 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/stage-05/index.html",
+      "title": "TIDAL · 60秒鱼群协同观察"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/stage-06/index.html",
+      "heading": "第一次认识海洋",
+      "name": "阶段06历史实景 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/stage-06/index.html",
+      "title": "第一次认识海洋 · 阶段06本地实景"
+    },
+    {
+      "actual": "https://yydshly.github.io/ocean-world/overview/stage-07/index.html",
+      "heading": "让一次海洋观察更像一段完整旅程。",
+      "name": "阶段07实景与验收 ↗",
+      "notFound": false,
+      "requested": "https://yydshly.github.io/ocean-world/overview/stage-07/index.html",
+      "title": "海洋总览 · 阶段07本地实景与阶段对照"
+    }
+  ],
+  "map": {
+    "images": [
+      {
+        "complete": true,
+        "height": 3884,
+        "width": 1600
+      }
+    ],
+    "overflow": false,
+    "url": "https://yydshly.github.io/ocean-world/overview/project-map/"
+  },
+  "roadmap": {
+    "candidates": 18,
+    "groups": [
+      "新候选",
+      "新候选",
+      "新候选",
+      "新候选",
+      "新候选",
+      "沿用扩展",
+      "沿用扩展",
+      "沿用扩展",
+      "沿用扩展",
+      "沿用扩展",
+      "沿用扩展",
+      "沿用扩展",
+      "沿用扩展",
+      "条件候选",
+      "条件候选",
+      "条件候选",
+      "条件候选",
+      "条件候选"
+    ],
+    "overflow": false,
+    "url": "https://yydshly.github.io/ocean-world/overview/roadmap/#scenes"
+  },
+  "screenshots": [
+    "remote-readme.jpg",
+    "remote-home.jpg",
+    "remote-map.jpg",
+    "remote-scenes.jpg"
+  ],
+  "limits": "HTML smoke and navigation checks do not replay every research experience; inherited runtime and loading limits remain."
+}
