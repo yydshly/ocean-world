@@ -9,8 +9,10 @@ import { createShallowSchooling, prepareShallowSchooling } from './shallowSchool
 import { createOceanPrimerSurface } from './world/OceanPrimerSurface.js';
 import { createOceanPrimerPelagic } from './world/OceanPrimerPelagic.js';
 import { createOceanPrimerDeep, oceanPrimerDeepFloorHeight } from './world/OceanPrimerDeep.js';
+import { createPrimerWater } from './world/OceanPrimerWater.js';
+import { createPrimerPassage, createPrimerCompositor, primerTravelState } from './oceanPrimerTravel.js';
 import { createShallowNarration } from './shallowNarration.js';
-import { OCEAN_PRIMER_SECONDS, OCEAN_PRIMER_CHAPTERS, OCEAN_PRIMER_CLIPS, oceanPrimerChapter, oceanPrimerTransition, oceanPrimerDepthMarker } from './oceanPrimer.js';
+import { OCEAN_PRIMER_CHAPTERS, OCEAN_PRIMER_CLIPS, oceanPrimerChapter, oceanPrimerDepthMarker } from './oceanPrimer.js';
 import { ExperienceNavigation } from './ExperienceNavigation.jsx';
 import { SceneLoading } from './SceneLoading.jsx';
 import './oceanPrimer.css';
@@ -41,10 +43,10 @@ export function OceanPrimerApp() {
     return () => { controller.dispose(); player.current = null; };
   }, []);
   useEffect(() => {
-    let renderer, shallow, surface, pelagic, deep, frame, controls, observer, disposed = false, last = 0, uiAt = 0;
+    let renderer, shallow, shallowWater, surface, pelagic, deep, passage, compositor, frame, controls, observer, disposed = false, last = 0, uiAt = 0;
     const seedQuery = Number(new URLSearchParams(window.location.search).get('seed') ?? 55), seed = Number.isFinite(seedQuery) ? seedQuery : 55;
     const state = { time: 0, ready: false, playing: false, started: false, speed: 1, free: false, seekRevision: 0, dirty: true };
-    const metrics = { version: 1, scope: 'finite-authored-ocean-learning-tour', durationSec: 450, seed,
+    const metrics = { version: 2, stage: '07', scope: 'finite-authored-ocean-learning-tour', durationSec: 450, seed,
       persistence: 'none; original exploration stores are not connected', runs: [], preparation: [], frames: 0, intervalsMs: [],
       chapterFrames: {}, interruptions: [], errors: [], resolutionScale: 1, baselineShallowPreserved: true };
     let route, activeScene, activeCamera, activeUnit, depth = 0;
@@ -54,17 +56,15 @@ export function OceanPrimerApp() {
       if (current.id === 'shallow') {
         activeScene = shallow.scene; activeCamera = shallow.camera; activeUnit = null;
         shallow.update(local, !state.free, route.view(local));
-        depth = Math.max(0, 8 - activeCamera.position.y);
+        shallow.water.visible = false;
       } else {
         const id = current.id === 'recap' ? 'surface' : current.id;
         const t = current.id === 'recap' ? 12 + local * .2 : local;
         activeUnit = { surface, pelagic, deep }[id]; activeScene = scenes[id]; activeCamera = cameras[id];
-        activeUnit.update(t);
         if (!state.free) {
           const pose = activeUnit.cameraPose(t); activeCamera.position.copy(poseVector(pose.position)); activeCamera.lookAt(poseVector(pose.target));
           if (activeCamera.fov !== pose.fov) { activeCamera.fov = pose.fov ?? 52; activeCamera.updateProjectionMatrix(); }
         }
-        depth = activeUnit.environmentAt?.(t)?.depthM ?? Math.max(0, -activeCamera.position.y);
       }
       if (controls && controls.object !== activeCamera) { controls.object = activeCamera; controls.enabled = false; }
       if (state.free) {
@@ -76,12 +76,35 @@ export function OceanPrimerApp() {
           p.y = Math.max(p.y, oceanPrimerDeepFloorHeight(p.x, p.z) + .6);
         }
       }
+      if (current.id === 'shallow') {
+        shallowWater?.update(value, activeCamera);
+        depth = Math.max(0, 8 - activeCamera.position.y);
+      } else {
+        const t = current.id === 'recap' ? 12 + local * .2 : local;
+        activeUnit.update(t, activeCamera, value);
+        depth = activeUnit.environmentAt?.(current.id === 'pelagic' ? activeCamera : t)?.depthM ?? Math.max(0, -activeCamera.position.y);
+      }
       return current;
+    };
+    const renderView = value => { selectWorld(value); return { scene: activeScene, camera: activeCamera }; };
+    const drawFrame = () => {
+      const travel = !state.free && primerTravelState(state.time); metrics.travel = travel || null;
+      if (!travel) { const view = renderView(state.time); renderer.render(view.scene, view.camera); return oceanPrimerChapter(state.time); }
+      passage.update(state.time, travel);
+      const pose = passage.cameraPose(state.time, travel), camera = cameras.passage;
+      camera.position.copy(poseVector(pose.position)); camera.lookAt(poseVector(pose.target));
+      const movingWater = { scene: scenes.passage, camera };
+      if (travel.leg === 'departure') compositor.render(renderer, renderView(Math.min(state.time, travel.boundary - .001)), movingWater, travel.blend);
+      else if (travel.leg === 'arrival') compositor.render(renderer, movingWater, renderView(Math.max(state.time, travel.boundary + .001)), travel.blend);
+      else { activeScene = movingWater.scene; activeCamera = movingWater.camera; renderer.render(activeScene, activeCamera); }
+      depth = travel.depthM; activeUnit = passage;
+      return oceanPrimerChapter(state.time);
     };
     const resize = () => {
       if (!renderer) return; const { width, height } = canvas.current.getBoundingClientRect(); if (!width || !height) return;
       renderer.setSize(width, height, false);
       metrics.viewport = { width, height, pixelRatio: renderer.getPixelRatio() };
+      compositor?.resize(width, height, renderer.getPixelRatio());
       for (const camera of [shallow?.camera, ...Object.values(cameras)].filter(Boolean)) { camera.aspect = width / height; camera.updateProjectionMatrix(); }
       state.dirty = true;
     };
@@ -90,7 +113,7 @@ export function OceanPrimerApp() {
       const next = { ...metrics, timeSec: state.time, ready: state.ready, playing: state.playing, free: state.free, speed: state.speed,
         chapterId: c.id, depthM: depth, camera: activeCamera?.position.toArray(), narration: { ...latestVoice.current, events: narrationEvents.current },
         unit: activeUnit?.diagnostics?.() ?? { type: 'unchanged-shallow-chapter', animalCount: shallow?.model.agents.length, localTimeSec: state.time - 45 },
-        drawCalls: renderer?.info.render.calls, triangles: renderer?.info.render.triangles };
+        lastRenderPassDrawCalls: renderer?.info.render.calls, lastRenderPassTriangles: renderer?.info.render.triangles };
       setDiagnostics(next); setTime(state.time);
     };
     runtime.current = { state, metrics, start() {
@@ -120,7 +143,7 @@ export function OceanPrimerApp() {
       if (document.hidden) { last = 0; return; }
       if (state.playing || state.dirty || state.free) {
         if (state.playing && !state.free) state.time = Math.min(450, state.time + dt * state.speed);
-        const c = selectWorld(state.time); renderer.render(activeScene, activeCamera); state.dirty = false;
+        const c = drawFrame(); state.dirty = false;
         if (state.playing && interval > 0) {
           metrics.frames++; metrics.intervalsMs.push(interval); if (metrics.intervalsMs.length > 600) metrics.intervalsMs.shift();
           const group = metrics.chapterFrames[c.id] ??= { count: 0, wallMs: 0, maxMs: 0, over250: 0, intervalBuckets5Ms: {} };
@@ -141,27 +164,47 @@ export function OceanPrimerApp() {
     const initialize = async () => {
       const begun = performance.now();
       renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' }); renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
+      renderer.debug.onShaderError = () => { throw new Error('画面着色器未能编译，已停止准备，避免显示缺失的场景'); };
       renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .85;
       renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap; canvas.current.appendChild(renderer.domElement);
       const gl = renderer.getContext(), extension = gl.getExtension('WEBGL_debug_renderer_info'); metrics.gpu = extension ? gl.getParameter(extension.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
       try { await loadPreparedShallowGeometry(); } catch (e) { metrics.preparedGeometryFallback = e.message; }
       if (disposed) return;
       shallow = new ShallowSampleScene(seed, { livingCommunities: true }); shallow.model.schoolingSystem = createShallowSchooling(shallow.model); route = createShallowJourney(shallow.model);
+      // Only this independent instance adopts the shared water presentation.
+      // The standalone shallow scene, its assets and original ecology remain.
+      shallow.scene.traverse(object => { if (object.isLight) object.visible = false; });
+      shallowWater = createPrimerWater(shallow.scene, { seed, seaLevelM: 8, underwaterOnly: true, extentM: 1600 });
+      if (shallowWater.sun) {
+        shallowWater.sun.castShadow = true; shallowWater.sun.shadow.mapSize.set(1024, 1024);
+        Object.assign(shallowWater.sun.shadow.camera, { left: -18, right: 18, top: 15, bottom: -15, near: .5, far: 400 });
+        shallowWater.sun.shadow.bias = -.00025; shallowWater.sun.shadow.normalBias = .035;
+      }
+      shallow.water.visible = false;
       shallow.update(0, true, route.view(0)); metrics.shallow = { animalCount: shallow.model.agents.length, routeLengthM: route.length, habitats: ['礁谷', '沙道', '草床'] };
-      for (const id of ['surface', 'pelagic', 'deep']) { scenes[id] = new THREE.Scene(); cameras[id] = new THREE.PerspectiveCamera(52, 1, .05, id === 'surface' ? 3000 : 250); }
+      for (const id of ['surface', 'pelagic', 'deep', 'passage']) { scenes[id] = new THREE.Scene(); cameras[id] = new THREE.PerspectiveCamera(52, 1, .05, id === 'surface' ? 3000 : 250); }
       surface = createOceanPrimerSurface(scenes.surface, { seed }); pelagic = createOceanPrimerPelagic(scenes.pelagic, { seed }); deep = createOceanPrimerDeep(scenes.deep, { seed });
+      passage = createPrimerPassage(scenes.passage, { seed }); compositor = createPrimerCompositor();
       let preparationTimer;
-      try { await Promise.race([Promise.all([prepareShallowSchooling(shallow.model.schoolingSystem), shallow.loadTextures()]),
+      try { await Promise.race([Promise.all([prepareShallowSchooling(shallow.model.schoolingSystem), shallow.loadTextures(), surface.loadTextures?.(import.meta.env.BASE_URL)]),
         new Promise((_, reject) => { preparationTimer = setTimeout(() => reject(new Error('模型与贴图准备超过30秒，请重新载入')), 30000); })]); }
       finally { clearTimeout(preparationTimer); }
       if (disposed) return;
       shallow.assetsSealed = true; shallow.scanController.abort();
       controls = new OrbitControls(cameras.surface, renderer.domElement); controls.enabled = false; controls.enableDamping = true; controls.enablePan = false; controls.minDistance = 1.2; controls.maxDistance = 60;
       observer = new ResizeObserver(resize); observer.observe(canvas.current); resize();
-      for (const [id, worldScene, camera] of [['surface', scenes.surface, cameras.surface], ['shallow', shallow.scene, shallow.camera], ['pelagic', scenes.pelagic, cameras.pelagic], ['deep', scenes.deep, cameras.deep]]) {
+      for (const [id, sample] of [['surface', 0], ['shallow', 95], ['pelagic', 340], ['deep', 373], ['deep', 405]]) {
         if (disposed) return;
-        metrics.preparation.push({ id, ...await prepareShallowRenderer(renderer, worldScene, camera, () => disposed) });
+        const view = renderView(sample);
+        metrics.preparation.push({ id, sample, ...await prepareShallowRenderer(renderer, view.scene, view.camera, () => disposed) });
+        renderer.setRenderTarget(compositor.targets[0]);
+        try { await prepareShallowRenderer(renderer, view.scene, view.camera, () => disposed); }
+        finally { renderer.setRenderTarget(null); }
       }
+      const warmTravel = primerTravelState(365); passage.update(365, warmTravel);
+      const warmPose = passage.cameraPose(365, warmTravel); cameras.passage.position.copy(poseVector(warmPose.position)); cameras.passage.lookAt(poseVector(warmPose.target));
+      await prepareShallowRenderer(renderer, scenes.passage, cameras.passage, () => disposed);
+      await prepareShallowRenderer(renderer, compositor.scene, compositor.camera, () => disposed);
       if (disposed) return;
       state.ready = true; selectWorld(0); renderer.render(activeScene, activeCamera); metrics.navigationToReadyMs = performance.now(); metrics.startupMs = performance.now() - begun;
       state.dirty = false; setReady(true); publish(); frame = requestAnimationFrame(render);
@@ -169,12 +212,11 @@ export function OceanPrimerApp() {
     initialize().catch(e => { if (!disposed) { metrics.errors.push(e.message); setError(`海洋总览准备失败：${e.message}`); } });
     return () => {
       disposed = true; cancelAnimationFrame(frame); observer?.disconnect(); document.removeEventListener('visibilitychange', visibility); controls?.dispose();
-      shallow?.dispose(); surface?.dispose(); pelagic?.dispose(); deep?.dispose(); renderer?.dispose(); renderer?.forceContextLoss(); renderer?.domElement.remove(); runtime.current = null;
+      shallowWater?.dispose(); shallow?.dispose(); surface?.dispose(); pelagic?.dispose(); deep?.dispose(); passage?.dispose(); compositor?.dispose(); renderer?.dispose(); renderer?.forceContextLoss(); renderer?.domElement.remove(); runtime.current = null;
     };
   }, []);
   const start = () => { runtime.current?.start(); player.current?.enable(narrationSnapshot()); };
   const seek = value => runtime.current?.seek(Number(value));
-  const extraTransition = chapter.id === 'deep' ? diagnostics.unit?.transitionOpacity ?? 0 : 0;
   const depth = diagnostics.depthM ?? 0;
   return <main className="ocean-primer">
     <div ref={canvas} className="ocean-primer-canvas" aria-label="从海面到深海的三维科普画面"/>
@@ -189,7 +231,7 @@ export function OceanPrimerApp() {
     </section>}
     {started && <>
       <header className="primer-heading"><p>第一次认识海洋 · {clock(time)} / 7:30</p><h1>{chapter.title}</h1><span>{chapter.place}</span></header>
-      {chapter.id === 'shallow' && <aside className="primer-subject"><strong>{shallowJourneyChapter(time - 45).title}</strong><span>{shallowJourneyChapter(time - 45).life}</span></aside>}
+      {!diagnostics.travel && chapter.id === 'shallow' && <aside className="primer-subject"><strong>{shallowJourneyChapter(time - 45).title}</strong><span>{shallowJourneyChapter(time - 45).life}</span></aside>}
       <aside className="primer-space" aria-label="当前海洋空间位置">
         <strong>我们在哪里</strong><span>{depth < .2 ? '海面之上' : `${depth >= 100 ? Math.round(depth) : depth.toFixed(1)} 米水下`}</span>
         <svg viewBox="0 0 210 100" role="img" aria-label="海面、水层、海床的深度关系示意">
@@ -198,11 +240,12 @@ export function OceanPrimerApp() {
           <circle cx={depth < 40 ? 43 : 132} cy={18 + oceanPrimerDepthMarker(depth) * 57} r="5" fill="#d7dfad"/>
         </svg><small>深度位置示意 · 非等比例</small>
       </aside>
-      {chapter.id === 'pelagic' && <aside className="primer-subject"><strong>{time < 320 ? '座头鲸 · 约13.8米' : '宽吻海豚 · 约2.65米'}</strong><span>真实尺度 · 活动为科普编排</span></aside>}
-      {chapter.id === 'deep' && <aside className="primer-subject"><strong>{time < 391 ? '700米中层水体' : '3500米深海海床'}</strong><span>画面由观察器灯照明 · 非太阳光</span></aside>}
+      {!diagnostics.travel && chapter.id === 'pelagic' && <aside className="primer-subject"><strong>{time < 320 ? '座头鲸 · 约13.8米' : '宽吻海豚 · 约2.65米'}</strong><span>真实尺度 · 活动为科普编排</span></aside>}
+      {!diagnostics.travel && chapter.id === 'deep' && <aside className="primer-subject"><strong>{depth < 1000 ? '中层水体观察' : depth < 3499 ? '前往深海海床' : '3500米深海海床'}</strong>
+        <span>{depth < 1000 ? '冠水母 · 吸血乌贼' : depth >= 3499 ? '海猪 · 鼠尾鱼 · 软海葵' : '灯束与海雪引导视线'}</span><span>观察器灯照明 · 非太阳光</span></aside>}
       {chapter.id === 'recap' && <section className="primer-recap"><h2>带着这三件事回望大海</h2><p>海面之下，是广阔的水体与海床。</p><p>不同深度和栖息地，有不同的生命。</p><p>观察动物，也要观察它周围的环境。</p></section>}
-      <div className="primer-transition" style={{ opacity: Math.max(playing ? oceanPrimerTransition(time) : 0, extraTransition) }} aria-hidden="true"/>
-      {chapter.id === 'deep' && time >= 389 && time < 393 && <div className="primer-switch">切换观察地点：700米水层 → 3500米海床<br/><small>时间压缩示意，不是真实连续下潜</small></div>}
+      {diagnostics.travel && <aside className="primer-travel" aria-label="观察旅程进度"><strong>{diagnostics.travel.label}</strong><span>{diagnostics.travel.note}</span><progress value={diagnostics.travel.progress} max="1"/><small>正在前行 · {Math.round(diagnostics.travel.depthM)}米深度示意</small></aside>}
+      {!diagnostics.travel && chapter.id === 'deep' && time >= 392 && time < 400 && <aside className="primer-travel"><strong>观察器继续前往海床</strong><span>700米水层 → 3500米海床 · 下潜时间压缩</span><small>灯束与海雪引导视线，海床逐渐显露</small></aside>}
       <section className="primer-controls" aria-label="海洋总览播放控制">
         <p className="primer-lesson">{chapter.lesson}</p>
         {voice.enabled && voice.subtitle && <p className="primer-caption" aria-label="当前讲解字幕">{voice.subtitle}</p>}
@@ -212,7 +255,7 @@ export function OceanPrimerApp() {
         {details && <div className="primer-expanded"><nav aria-label="海洋总览章节">{OCEAN_PRIMER_CHAPTERS.map(c => <button key={c.id} aria-current={c.id === chapter.id ? 'step' : undefined} onClick={() => seek(c.start)}>{c.title}</button>)}</nav>
           <label>总览进度 <input aria-label="总览进度" type="range" min="0" max="450" step="1" value={time} onChange={e => seek(e.target.value)}/></label>
           <label>速度 <select aria-label="总览速度" value={speed} onChange={e => runtime.current?.speed(Number(e.target.value))}>{[.5, 1, 1.5, 2, 4].map(v => <option key={v} value={v}>{v}×</option>)}</select></label>
-          <button onClick={() => runtime.current?.observe()}>{free ? '返回导览镜头' : '自由转动观察'}</button><button onClick={() => { seek(0); start(); }}>从头观看</button>
+          <button disabled={Boolean(diagnostics.travel)} onClick={() => runtime.current?.observe()}>{free ? '返回导览镜头' : diagnostics.travel ? '抵达后自由观察' : '自由转动观察'}</button><button onClick={() => { seek(0); start(); }}>从头观看</button>
           <a href={`${import.meta.env.BASE_URL}?demo=shallow-journey&seed=55`}>单独观看原4分钟浅海 →</a><a href={`${import.meta.env.BASE_URL}assets/ocean-primer/animals/README.md`}>模型来源与展示范围</a></div>}
       </section>
     </>}

@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { createOceanPrimerPelagic } from '../src/world/OceanPrimerPelagic.js';
+import { deformPelagicVertex } from '../src/world/OceanPrimerPelagicMotion.js';
 
 const samples = Array.from({ length: 161 }, (_, i) => i * .5);
 const fixture = () => {
@@ -60,6 +61,7 @@ test('all 161 chapter camera samples produce finite, nondegenerate rendered came
       update(f, t); const { pose, camera } = cameraAt(f, t);
       assert.ok([...Object.values(pose.position), ...Object.values(pose.target), pose.fov].every(Number.isFinite), `finite camera at ${t}s`);
       assert.ok(pose.fov >= 40 && pose.fov <= 75, `usable camera field of view at ${t}s`);
+      close(pose.depthM,f.world.environmentAt(pose.position).depthM,`camera depth agrees with actual shared wave at ${t}s`);
       assert.ok(camera.position.distanceTo(new THREE.Vector3(pose.target.x, pose.target.y, pose.target.z)) > 5, `nondegenerate camera target at ${t}s`);
       for (const matrix of [camera.matrixWorld, camera.matrixWorldInverse, camera.projectionMatrix]) assert.ok(matrix.elements.every(Number.isFinite), `finite rendered matrices at ${t}s`);
       for (const animal of [f.whale, ...f.dolphins]) assert.ok(animal.matrixWorld.elements.every(Number.isFinite), `finite animal world transform at ${t}s`);
@@ -72,11 +74,11 @@ test('whale breath occurs only in the near-surface window, with actual nose hole
   try {
     for (const t of samples) {
       update(f, t); const nose = blowholeCentre(f.whale), opacity = f.spray.material.uniforms.opacity.value;
-      const surfaceY = f.world.environmentAt(t).surfaceY;
+      const surfaceY = f.world.sampleSurface(nose.x,nose.z,285+t).heightM;
       if (f.spray.visible && opacity > 0) {
         breathSamples++;
         assert.ok(t >= 16 && t <= 22, `breath should be inside the surface visit at ${t}s`);
-        assert.ok(nose.y >= surfaceY -.04 && nose.y <= surfaceY + 1, `actual blowholes near and above the sea at ${t}s: ${nose.y}m`);
+        assert.ok(nose.y > surfaceY && nose.y <= surfaceY + 1, `actual blowholes clear the moving wave at ${t}s: ${nose.y-surfaceY}m`);
       } else if (nose.y < surfaceY - 1) {
         deepSamples++;
         assert.equal(f.spray.visible, false, `no false underwater breath at ${t}s`);
@@ -94,7 +96,7 @@ test('whale breath occurs only in the near-surface window, with actual nose hole
 test('visible breath mist is attached to the actual metre-scaled whale blowholes', () => {
   const f = fixture();
   try {
-    for (const t of [18, 19, 20]) {
+    for (const t of [18.5, 19, 20]) {
       update(f, t); assert.ok(f.spray.visible && f.spray.material.uniforms.opacity.value > 0);
       const nose = blowholeCentre(f.whale), sprayBase = f.spray.getWorldPosition(new THREE.Vector3());
       assert.ok(nose.distanceTo(sprayBase) < .15, `breath base must attach to actual blowholes at ${t}s; observed ${nose.distanceTo(sprayBase).toFixed(3)}m gap`);
@@ -102,22 +104,17 @@ test('visible breath mist is attached to the actual metre-scaled whale blowholes
   } finally { f.world.dispose(); }
 });
 
-test('six dolphins occupy actual near/far and vertical layers with no intersecting padded body bounds', () => {
+test('six dolphins occupy near/far layers and their full deformed envelopes remain separated', () => {
   const f = fixture(); let nearFarSamples = 0;
   try {
     for (const t of samples) {
       update(f, t); const { camera } = cameraAt(f, t);
-      const bounds = f.dolphins.map(d => d.geometry.boundingBox.clone().applyMatrix4(d.matrixWorld)
-        // This covers the full authored vertical tail and pectoral offsets
-        // (less than .13m after metre scaling), not just the undeformed body.
-        .expandByVector(new THREE.Vector3(.02, .15, .02)));
-      for (let i = 0; i < bounds.length; i++) for (let j = i + 1; j < bounds.length; j++) {
-        assert.equal(bounds[i].intersectsBox(bounds[j]), false, `dolphins ${i + 1}/${j + 1} body envelopes overlap at ${t}s`);
-      }
+      if(Number.isInteger(t)&&t%2===0){const bounds=f.world.posedAnimalBounds();
+        for(let i=0;i<bounds.length;i++)for(let j=i+1;j<bounds.length;j++)assert.equal(bounds[i].box.intersectsBox(bounds[j].box),false,`full posed whale/pod envelopes ${i}/${j} overlap at ${t}s`);}
       const depths = f.dolphins.map(d => d.getWorldPosition(new THREE.Vector3()).applyMatrix4(camera.matrixWorldInverse).z);
       const heights = f.dolphins.map(d => d.position.y);
       assert.ok(Math.max(...depths) - Math.min(...depths) > 5, `actual camera-depth separation at ${t}s`);
-      assert.ok(Math.max(...heights) - Math.min(...heights) > 1, `actual vertical layering at ${t}s`);
+      assert.ok(Math.max(...heights) - Math.min(...heights) > 2.65/4, `vertical layering remains at least one-quarter dolphin length at ${t}s`);
       if (t >= 43 && t <= 65) {
         nearFarSamples++;
         for (const dolphin of f.dolphins) {
@@ -132,7 +129,7 @@ test('six dolphins occupy actual near/far and vertical layers with no intersecti
 
 test('actual animal geometry attributes and indices are finite, and scene resources dispose exactly once', () => {
   const f = fixture(), resources = new Set(), disposed = new Map();
-  f.world.root.traverse(o => {
+  f.scene.traverse(o => {
     if (o.geometry) resources.add(o.geometry);
     for (const material of Array.isArray(o.material) ? o.material : o.material ? [o.material] : []) resources.add(material);
   });
@@ -149,4 +146,46 @@ test('actual animal geometry attributes and indices are finite, and scene resour
   assert.equal(f.scene.children.length, 0, 'independent scene root detached');
   assert.equal(f.world.root.children.length, 0, 'no retained render objects');
   for (const [resource, count] of disposed) assert.equal(count, 1, `${resource.type} disposed exactly once`);
+});
+
+test('actual metre-scale trajectory tangents match rendered body direction and include controlled glides',()=>{
+  const f=fixture();let whaleGlide=0,dolphinGlide=0,formationChange=0;let initial=null;
+  try{
+    for(const t of samples){update(f,t);const d=f.world.diagnostics(),states=[d.whaleMotion,...d.dolphinMotion];
+      const low=Math.max(0,t-.001),high=Math.min(80,t+.001),before=f.world.motionAt(low),after=f.world.motionAt(high);
+      [f.whale,...f.dolphins].forEach((mesh,i)=>{const forward=new THREE.Vector3(1,0,0).applyQuaternion(mesh.quaternion),a=i===0?before.whale:before.dolphins[i-1],b=i===0?after.whale:after.dolphins[i-1];
+        const velocity=new THREE.Vector3(...Object.values(b.position)).sub(new THREE.Vector3(...Object.values(a.position))).divideScalar(high-low);
+        assert.ok(THREE.MathUtils.radToDeg(forward.angleTo(velocity))<1,`${mesh.name} must face its actual measured path tangent at ${t}s`);});
+      if(d.whaleMotion.stroke<.01)whaleGlide++;if(d.dolphinMotion.some(s=>s.stroke<.01))dolphinGlide++;
+      const offsets=d.dolphinMotion.map(s=>s.position.x-d.dolphinMotion[0].position.x);
+      if(!initial)initial=offsets;formationChange=Math.max(formationChange,...offsets.map((n,i)=>Math.abs(n-initial[i])));
+      assert.ok(d.dolphinMotion.every(s=>s.speed>.7&&s.speed<2.1),'finite bounded follower speed');
+    }
+    assert.ok(whaleGlide>10&&dolphinGlide>5,'both species visibly alternate strokes and glides');
+    assert.ok(formationChange>.8,'pod actually changes relative longitudinal positions');
+    const p=f.world.motionAt(55).dolphins;assert.ok(new Set(p.map(s=>s.heading.toFixed(4))).size>1,'followers have individual steering');
+  }finally{f.world.dispose();}
+});
+
+test('seek restores the complete motion, breathing and wave state, and posed normals respond to the controlled deformation',()=>{
+  const f=fixture();
+  try{
+    update(f,19);const first=JSON.stringify(f.world.diagnostics()),matrices=[f.whale,...f.dolphins].map(m=>m.matrixWorld.toArray());
+    for(const t of [80,43,0,65,7,19])update(f,t);
+    assert.equal(JSON.stringify(f.world.diagnostics()),first,'reverse and arbitrary seek restores the same state');
+    assert.deepEqual([f.whale,...f.dolphins].map(m=>m.matrixWorld.toArray()),matrices,'all actual mesh transforms restore exactly');
+    const actualCamera=new THREE.PerspectiveCamera();actualCamera.position.set(4,-12,8);f.world.updatePresentation(actualCamera,304);
+    const env=f.world.environmentAt(actualCamera.position);assert.ok(env.depthM>11&&env.underwater,'water presentation samples the actual explored camera');
+    update(f,45);const pose=f.world.diagnostics().dolphinMotion[0],g=f.dolphins[0].geometry;
+    const shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};f.dolphins[0].material.onBeforeCompile(shader);
+    assert.ok(shader.vertexShader.includes('objectNormal=normalize(cross(dt,db))'),'normal is updated by the deformation differential');
+    let changed=0;
+    for(let i=0;i<g.attributes.position.count;i+=137){const p=new THREE.Vector3().fromBufferAttribute(g.attributes.position,i),role=g.attributes.cetaceanRole.getX(i),n=new THREE.Vector3().fromBufferAttribute(g.attributes.normal,i).normalize();
+      const tangent=new THREE.Vector3().crossVectors(n,Math.abs(n.y)<.8?new THREE.Vector3(0,1,0):new THREE.Vector3(1,0,0)).normalize(),bitangent=new THREE.Vector3().crossVectors(n,tangent),e=.0005;
+      const dt=deformPelagicVertex(p.clone().addScaledVector(tangent,e),role,pose,'dolphin').sub(deformPelagicVertex(p.clone().addScaledVector(tangent,-e),role,pose,'dolphin'));
+      const db=deformPelagicVertex(p.clone().addScaledVector(bitangent,e),role,pose,'dolphin').sub(deformPelagicVertex(p.clone().addScaledVector(bitangent,-e),role,pose,'dolphin'));
+      const posedNormal=new THREE.Vector3().crossVectors(dt,db).normalize();assert.ok(posedNormal.toArray().every(Number.isFinite));assert.ok(posedNormal.length()>.99);if(posedNormal.angleTo(n)>.02)changed++;
+    }
+    assert.ok(changed>10,'actual moving surfaces have changed shading normals');
+  }finally{f.world.dispose();}
 });

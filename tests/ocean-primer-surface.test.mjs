@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import * as THREE from 'three';
 import { createOceanPrimerSurface, sampleOceanPrimerSurface, oceanPrimerNearshoreHeight,
-  OCEAN_PRIMER_SURFACE_SWELLS } from '../src/world/OceanPrimerSurface.js';
+  OCEAN_PRIMER_SURFACE_SWELLS, OCEAN_PRIMER_COAST_TEXTURES } from '../src/world/OceanPrimerSurface.js';
 
 const finite = p => ['x', 'y', 'z'].every(axis => Number.isFinite(p[axis]));
 const digest = array => createHash('sha256').update(Buffer.from(array.buffer, array.byteOffset, array.byteLength)).digest('hex');
@@ -15,13 +15,13 @@ function fixture(t, seed = 55, scene = new THREE.Scene()) {
   assert.ok(water?.isWater && coast?.isMesh && boat?.isGroup); return { scene, chapter, water, coast, boat };
 }
 const close = (actual, expected, epsilon = 1e-7) => assert.ok(Math.abs(actual - expected) < epsilon, `${actual} != ${expected}`);
-const expectedPoints = [[0, 5.2, 35], [-6, 4.8, 21], [-15, 3.4, 3], [-16, .8, -17], [-9, -2.3, -33], [-1, -4.3, -51]].map(p => new THREE.Vector3(...p));
-const expectedTargets = [[85, 3, -130], [65, 1, -110], [0, -.5, -60], [-5, -4, -43], [-3, -6.8, -54], [0, -7, -65]].map(p => new THREE.Vector3(...p));
-const oldPath = new THREE.CatmullRomCurve3(expectedPoints), oldTargetPath = new THREE.CatmullRomCurve3(expectedTargets);
+const expectedPoints = [[-18, 4.8, 42], [-12, 4, 22], [-8, 2.2, 2], [-12, .45, -18], [-9, -2.3, -33], [-1, -4.3, -51]].map(p => new THREE.Vector3(...p));
+const expectedTargets = [[5, .3, -75], [10, .05, -82], [-4, -.6, -54], [-5, -4, -43], [-3, -6.8, -54], [0, -7, -65]].map(p => new THREE.Vector3(...p));
+const path = new THREE.CatmullRomCurve3(expectedPoints), targetPath = new THREE.CatmullRomCurve3(expectedTargets);
 
 test('finite metre swell samples obey the gentle amplitude budget and their actual surface gradients', () => {
   const limit = OCEAN_PRIMER_SURFACE_SWELLS.reduce((sum, w) => sum + w.amplitudeM, 0);
-  close(limit, .42); assert.equal(OCEAN_PRIMER_SURFACE_SWELLS.length, 3);
+  close(limit, .42); assert.equal(OCEAN_PRIMER_SURFACE_SWELLS.length, 6);
   for (const time of [0, 1.25, 12, 29.5, 45]) for (const [x, z] of [[0, 0], [-25, 8], [48, -92], [450, 160], [900, 0]]) {
     const sample = sampleOceanPrimerSurface(x, z, time), h = sample.heightM, e = .001;
     assert.ok(Number.isFinite(h) && Math.abs(h) <= limit + 1e-10);
@@ -32,7 +32,7 @@ test('finite metre swell samples obey the gentle amplitude budget and their actu
   }
   assert.notEqual(sampleOceanPrimerSurface(0, 0, 0).heightM, sampleOceanPrimerSurface(0, 0, 2).heightM,
     'the real wave field advances rather than moving only a normal texture');
-  assert.equal(sampleOceanPrimerSurface(900, 0, 12).heightM, 0, 'far-horizon geometry receives no undersampled displacement');
+  assert.notEqual(sampleOceanPrimerSurface(900, 0, 12).heightM, 0, 'physical sampling keeps the shared sea field beyond the near mesh');
   assert.throws(() => sampleOceanPrimerSurface(NaN, 0, 0), TypeError);
   assert.throws(() => sampleOceanPrimerSurface(0, 0, Infinity), TypeError);
 });
@@ -55,29 +55,30 @@ test('one continuous water mesh and one nearshore bed contain finite indexed geo
     colourMin = Math.min(colourMin, c.getY(i)); colourMax = Math.max(colourMax, c.getY(i));
   }
   assert.ok(minimum < -7 && maximum > 28 && maximum < 45, 'continuous coastal relief and submerged bed');
-  assert.ok(colourMax - colourMin > .10, 'sand, exposed shoulder and hillside colour layers');
-  assert.match(water.material.vertexShader, /mirrorCoord\.y \+= primerSwell/);
-  assert.match(water.material.vertexShader, /viewMatrix \* worldPosition/);
-  assert.match(water.material.fragmentShader, /swellSlope.*primerSwell/);
-  assert.match(water.material.fragmentShader, /smallRipple/);
-  assert.equal(water.material.uniforms.size.value, 48);
+  assert.ok(colourMax - colourMin > .10, 'sand and stratified exposed rock colour layers');
+  assert.match(water.material.vertexShader, /primerWave\(baseWorld\.xz,primerSpacing/);
+  assert.match(water.material.vertexShader, /normal=normalize\(cross\(tz,tx\)\)/);
+  assert.match(water.material.vertexShader, /projectionMatrix\*viewMatrix\*vec4\(vWorld/);
+  assert.match(water.material.fragmentShader, /vVariance/);
+  assert.match(water.material.fragmentShader, /float ripple/);
+  assert.match(water.material.fragmentShader, /exp\(-sigma\*path\)/);
   const hull = boat.children[0]; hull.geometry.computeBoundingBox();
   close((hull.geometry.boundingBox.max.z - hull.geometry.boundingBox.min.z) * hull.scale.z, 14);
   assert.equal(chapter.diagnostics().referenceBoatLengthM, 14);
 });
 
-test('all 91 half-second camera samples preserve the old 45-second path and keep nearshore clearance finite', t => {
+test('all 91 half-second camera samples keep the revised open-sea path and original nearshore clearance budget', t => {
   const { chapter, water, coast, boat } = fixture(t);
   const staticGeometry = [water.geometry, coast.geometry].map(g => ({ version: g.attributes.position.version, hash: digest(g.attributes.position.array) }));
   for (let tick = 0; tick <= 90; tick++) {
     const time = tick * .5; chapter.update(time);
-    const pose = chapter.cameraPose(time), expected = oldPath.getPoint(time / 45), target = oldTargetPath.getPoint(time / 45);
+    const pose = chapter.cameraPose(time), expected = path.getPoint(time / 45), target = targetPath.getPoint(time / 45);
     assert.ok(finite(pose.position) && finite(pose.target)); assert.equal(pose.fov, 54);
     assert.deepEqual(pose.position, { x: expected.x, y: expected.y, z: expected.z });
     assert.deepEqual(pose.target, { x: target.x, y: target.y, z: target.z });
     assert.ok(expected.distanceTo(target) > 5);
     assert.ok(pose.position.y > oceanPrimerNearshoreHeight(pose.position.x, pose.position.z) + 1,
-      'unchanged path clears the new coast and nearshore bed');
+      'the whole path clears the new coast and nearshore bed by at least one metre');
     assert.equal(water.material.uniforms.time.value, time);
     const sample = sampleOceanPrimerSurface(boat.position.x, boat.position.z, time);
     close(boat.position.y, .15 + sample.heightM);
@@ -108,7 +109,7 @@ test('arbitrary surface seeks and another same-seed scene restore the entire aut
   }
 });
 
-test('surface disposal releases all scenery and its captured reflection framebuffer once, then restores the scene', t => {
+test('surface disposal releases all scenery and both captured framebuffers once, then restores the scene', t => {
   const ownScene = new THREE.Scene(), background = new THREE.Color(0x123456), fog = new THREE.Fog(0x334455, 1, 30);
   ownScene.background = background; ownScene.fog = fog;
   const { scene, chapter, water } = fixture(t, 55, ownScene), disposed = new Map();
@@ -122,21 +123,60 @@ test('surface disposal releases all scenery and its captured reflection framebuf
       track(material); if (material.uniforms?.normalSampler) track(material.uniforms.normalSampler.value);
     }
   });
-  let currentTarget = null, reflectionTarget = null;
+  let currentTarget = null; const renderTargets = new Set();
   const renderer = { xr: { enabled: false }, shadowMap: { autoUpdate: true }, autoClear: true,
     getRenderTarget() { return currentTarget; },
-    setRenderTarget(target) { currentTarget = target; if (target) reflectionTarget = target; },
+    setRenderTarget(target) { currentTarget = target; if (target) renderTargets.add(target); },
     state: { buffers: { depth: { setMask() {} } } }, render() {}, clear() {},
   };
   const camera = new THREE.PerspectiveCamera(54, 16 / 9, .1, 4000);
   camera.position.set(0, 5, 35); camera.lookAt(85, 3, -130); camera.updateMatrixWorld(true);
   scene.updateMatrixWorld(true); water.onBeforeRender(renderer, scene, camera);
-  assert.ok(reflectionTarget?.isWebGLRenderTarget, 'actual bundled Water framebuffer was captured');
-  assert.equal(reflectionTarget.texture, water.material.uniforms.mirrorSampler.value); track(reflectionTarget);
-  assert.equal(currentTarget, null, 'Water restores the caller render target');
+  assert.equal(renderTargets.size, 2, 'actual reflection and underwater refraction framebuffers were captured');
+  const mapTextures = [water.material.uniforms.reflectionMap.value, water.material.uniforms.refractionMap.value];
+  for (const target of renderTargets) { assert.ok(target.isWebGLRenderTarget); assert.ok(mapTextures.includes(target.texture)); track(target); }
+  assert.equal(currentTarget, null, 'shared water restores the caller render target');
   chapter.dispose(); chapter.dispose();
   assert.ok(disposed.size > 20 && [...disposed.values()].every(count => count === 1));
   assert.equal(chapter.update(12), false); assert.equal(chapter.diagnostics().disposed, true);
   assert.equal(scene.children.length, 0); assert.equal(chapter.root.children.length, 0);
   assert.equal(scene.background, background); assert.equal(scene.fog, fog);
+});
+
+test('the complete fourteen-metre boat is legible inside the opening frame and actual free-observe depth drives the water', t => {
+  const { chapter, boat } = fixture(t); const pose = chapter.cameraPose(0);
+  const camera = new THREE.PerspectiveCamera(pose.fov, 16 / 9, .1, 4000);
+  camera.position.copy(pose.position); camera.lookAt(new THREE.Vector3().copy(pose.target)); camera.updateMatrixWorld(true);
+  const hull = boat.children[0]; hull.updateWorldMatrix(true, false);
+  const ends = [-1, 1].map(z => new THREE.Vector3(0, 0, z).applyMatrix4(hull.matrixWorld).project(camera));
+  for (const point of ends) assert.ok(Math.abs(point.x) < .88 && Math.abs(point.y) < .88 && point.z < 1);
+  assert.ok(Math.abs(ends[1].x - ends[0].x) > .20, 'the full hull occupies more than ten percent of frame width');
+  chapter.update(40, {position: {x: -18, y: 5, z: 42}}, 400);
+  assert.equal(chapter.environmentAt().underwater, false); assert.equal(chapter.waterRig.diagnostics().timeSec, 400);
+  chapter.update(2, {position: {x: -18, y: -3, z: 42}}, 400);
+  assert.equal(chapter.environmentAt().underwater, true);
+});
+
+test('existing rock and sand maps install atomically once and are released without touching their source files', async t => {
+  const { chapter, coast } = fixture(t); const calls = [], textures = [];
+  const loader = {async loadAsync(url) { calls.push(url); const texture = new THREE.Texture(); textures.push(texture); return texture; }};
+  const first = chapter.loadTextures('/ocean-world/', loader), second = chapter.loadTextures('/unused/', loader);
+  assert.equal(first, second); const result = await first;
+  assert.equal(result.loaded, 4); assert.deepEqual(calls, OCEAN_PRIMER_COAST_TEXTURES.map(item => '/ocean-world/' + item.file));
+  assert.equal(coast.material.map, textures[0]); assert.equal(coast.material.normalMap, textures[1]);
+  assert.equal(coast.material.roughnessMap, textures[2]); assert.equal(coast.material.userData.sandMap, textures[3]);
+  assert.equal(textures[0].colorSpace, THREE.SRGBColorSpace); assert.equal(textures[1].colorSpace, THREE.NoColorSpace);
+  assert.equal(chapter.diagnostics().textures.status, 'ready');
+  const counts = textures.map(() => 0); textures.forEach((texture, i) => texture.addEventListener('dispose', () => counts[i]++));
+  chapter.dispose(); chapter.dispose(); assert.deepEqual(counts, [1, 1, 1, 1]);
+});
+
+test('a failed existing coast map prevents partial installation and has a bounded no-retry failure', async t => {
+  const { chapter, coast } = fixture(t); let calls = 0; const counts = [];
+  const loader = {async loadAsync() { const index = calls++; if (index === 2) throw new Error('missing map');
+    const texture = new THREE.Texture(); counts[index] = 0; texture.addEventListener('dispose', () => counts[index]++); return texture; }};
+  await assert.rejects(chapter.loadTextures('/', loader), /no replacement asset or automatic retry/);
+  await assert.rejects(chapter.loadTextures('/', loader), /no replacement asset or automatic retry/);
+  assert.equal(calls, 4); assert.equal(coast.material.map, null); assert.equal(chapter.diagnostics().textures.status, 'error');
+  for (const count of counts) if (count !== undefined) assert.equal(count, 1);
 });

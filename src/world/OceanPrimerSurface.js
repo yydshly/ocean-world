@@ -1,244 +1,162 @@
 import * as THREE from 'three';
-import { Sky } from 'three/addons/objects/Sky.js';
-import { Water } from 'three/addons/objects/Water.js';
+import { createPrimerWater, samplePrimerWaterSurface, primerCoastHeight, PRIMER_WATER_WAVES } from './OceanPrimerWater.js';
 
-const TAU = Math.PI * 2;
-export const OCEAN_PRIMER_SURFACE_SWELLS = Object.freeze([
-  Object.freeze({ amplitudeM: .24, wavelengthM: 34, periodSec: 7.8, direction: Object.freeze([.86, .51]) }),
-  Object.freeze({ amplitudeM: .12, wavelengthM: 19, periodSec: 5.5, direction: Object.freeze([.98, -.20]) }),
-  Object.freeze({ amplitudeM: .06, wavelengthM: 9.5, periodSec: 3.6, direction: Object.freeze([.64, .77]) }),
+export const OCEAN_PRIMER_SURFACE_SWELLS = PRIMER_WATER_WAVES;
+export const sampleOceanPrimerSurface = samplePrimerWaterSurface;
+export const oceanPrimerNearshoreHeight = primerCoastHeight;
+export const OCEAN_PRIMER_COAST_TEXTURES = Object.freeze([
+  Object.freeze({ role: 'rock', file: 'assets/coastal-rock/Diffuse.jpg', color: true }),
+  Object.freeze({ role: 'normal', file: 'assets/coastal-rock/nor_gl.jpg', color: false }),
+  Object.freeze({ role: 'roughness', file: 'assets/coastal-rock/rough.jpg', color: false }),
+  Object.freeze({ role: 'sand', file: 'assets/sand-albedo.png', color: true }),
 ]);
-const swellComponents = OCEAN_PRIMER_SURFACE_SWELLS.map(wave => ({ ...wave,
-  direction: new THREE.Vector2(...wave.direction).normalize(), k: TAU / wave.wavelengthM, omega: TAU / wave.periodSec }));
+const clamp = THREE.MathUtils.clamp;
 const validTime = time => {
   if (!Number.isFinite(time)) throw new TypeError('Surface primer time must be finite seconds.');
-  return THREE.MathUtils.clamp(time, 0, 45);
+  return clamp(time, 0, 45);
 };
-function phaseFor(seed) {
-  if (!['string', 'number'].includes(typeof seed) || (typeof seed === 'number' && !Number.isFinite(seed)))
-    throw new TypeError('Surface primer seed must be finite or a string.');
-  let hash = 2166136261;
-  for (const char of `primer-surface|${typeof seed}:${seed}`) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
-  return (hash >>> 0) / 4294967296 * TAU;
+
+function coastMaterial() {
+  const material = new THREE.MeshStandardMaterial({ color: '#d8d4c5', vertexColors: true, roughness: .96, metalness: 0 });
+  const uniforms = { sandMap: { value: null }, rockScale: { value: .36 }, sandScale: { value: .30 }, seaLevel: { value: 0 } };
+  material.onBeforeCompile = shader => {
+    Object.assign(shader.uniforms, uniforms);
+    shader.vertexShader = 'varying vec3 vCoastWorld;varying vec3 vCoastNormal;\n' + shader.vertexShader;
+    shader.vertexShader = shader.vertexShader.replace('#include <worldpos_vertex>', `#include <worldpos_vertex>
+      vCoastWorld=(modelMatrix*vec4(transformed,1.0)).xyz;
+      vCoastNormal=normalize(mat3(modelMatrix)*objectNormal);`);
+    shader.fragmentShader = `varying vec3 vCoastWorld;varying vec3 vCoastNormal;
+      uniform sampler2D sandMap;uniform float rockScale;uniform float sandScale;uniform float seaLevel;
+      vec3 coastWeights(){vec3 w=pow(abs(normalize(vCoastNormal)),vec3(4.0));return w/max(dot(w,vec3(1.0)),.0001);}
+      vec4 coastTexture(sampler2D image){vec3 p=vCoastWorld*rockScale,w=coastWeights();
+        return texture2D(image,p.yz)*w.x+texture2D(image,p.xz)*w.y+texture2D(image,p.xy)*w.z;}
+    ` + shader.fragmentShader;
+    shader.fragmentShader = shader.fragmentShader.replace('#include <map_fragment>', `
+      #ifdef USE_MAP
+        float gentle=pow(max(vCoastNormal.y,0.0),4.0);
+        float sandBand=(1.0-smoothstep(1.1,3.0,vCoastWorld.y))*gentle;
+        vec4 stone=coastTexture(map);vec4 sand=texture2D(sandMap,vCoastWorld.xz*sandScale);
+        diffuseColor*=mix(stone,sand,sandBand);
+        float wet=1.0-smoothstep(.20,1.4,vCoastWorld.y-seaLevel);
+        diffuseColor.rgb*=mix(1.0,.68,wet);
+      #endif`);
+    shader.fragmentShader = shader.fragmentShader.replace('#include <roughnessmap_fragment>', `
+      #include <roughnessmap_fragment>
+      float wetRough=1.0-smoothstep(.20,1.3,vCoastWorld.y-seaLevel);
+      roughnessFactor=mix(roughnessFactor,max(.48,roughnessFactor*.65),wetRough);`);
+  };
+  material.customProgramCacheKey = () => 'primer-coast-cc0-rock-and-existing-sand-v1';
+  material.userData = { source: 'assets/coastal-rock/provenance.json', license: 'CC0-1.0 for existing coastal rock maps',
+    sand: 'existing project sand-albedo.png', scope: 'whole rocky/sandy coastal display; no vegetation or surveyed shoreline claim',
+    projection: 'world metre triplanar rock / horizontal sand; original source images unchanged' };
+  return material;
 }
 
-// The CPU sampler and GPU shader share these metre/second wave components.
-// This is gentle finite display motion, not a calibrated wave forecast.
-export function sampleOceanPrimerSurface(x, z, time, { seed = 55 } = {}) {
-  if (!Number.isFinite(x) || !Number.isFinite(z)) throw new TypeError('Surface samples require finite metre coordinates.');
-  const phase = phaseFor(seed), t = validTime(time), radius = Math.hypot(x, z);
-  const u = THREE.MathUtils.clamp((radius - 220) / 630, 0, 1), envelope = 1 - u * u * (3 - 2 * u);
-  const derivative = radius > 220 && radius < 850 ? -6 * u * (1 - u) / 630 : 0;
-  let height = 0, dx = 0, dz = 0;
-  for (const [i, wave] of swellComponents.entries()) {
-    const angle = wave.k * (x * wave.direction.x + z * wave.direction.y) - wave.omega * t + phase + i * 1.71;
-    height += wave.amplitudeM * Math.sin(angle);
-    const slope = wave.amplitudeM * wave.k * Math.cos(angle);
-    dx += slope * wave.direction.x; dz += slope * wave.direction.y;
+function coastGeometry(seed) {
+  const width = 660, segments = 192, geometry = new THREE.PlaneGeometry(width, width, segments, segments);
+  geometry.rotateX(-Math.PI / 2); const p = geometry.attributes.position, colors = [], uv = [];
+  const sand = new THREE.Color('#c5baa0'), stone = new THREE.Color('#7c7b72');
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), z = p.getZ(i), y = primerCoastHeight(x, z, seed); p.setY(i, y);
+    const rockFraction = THREE.MathUtils.smoothstep(y, .25, 4.5);
+    const variation = .94 + .06 * Math.sin(x * .20 + z * .17) * Math.cos(z * .13);
+    const color = sand.clone().lerp(stone, rockFraction).multiplyScalar(variation);
+    colors.push(color.r, color.g, color.b); uv.push(x * .36, z * .36);
   }
-  return { heightM: height * envelope,
-    gradient: { x: dx * envelope + height * derivative * (radius > 0 ? x / radius : 0),
-      z: dz * envelope + height * derivative * (radius > 0 ? z / radius : 0) } };
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3)); geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+  geometry.computeVertexNormals(); geometry.computeBoundingBox(); geometry.computeBoundingSphere(); return geometry;
 }
 
-export function oceanPrimerNearshoreHeight(x, z, seed = 55) {
-  const phase = phaseFor(seed);
-  const wx = x + 10 * Math.sin(z * .055 + phase) + 5 * Math.sin(z * .113 + 1.2);
-  const wz = z + 8 * Math.sin(x * .048 + phase * .3);
-  const main = 35 * Math.exp(-(((wx - 149) / 66) ** 2 + ((wz + 153) / 156) ** 2));
-  const shoulder = 10 * Math.exp(-(((wx - 221) / 55) ** 2 + ((wz + 84) / 88) ** 2));
-  const cove = 8 * Math.exp(-(((wx - 76) / 34) ** 2 + ((wz + 111) / 32) ** 2));
-  const ridge = .17 * Math.sin(x * .052 + z * .041 + phase) + .09 * Math.cos(x * .091 - z * .027);
-  return -8 + main * (1 + ridge) + shoulder - cove;
-}
-
-function waterGeometry() {
-  // A single continuous mesh resolves the nearby swell without spending a
-  // dense rectangular grid on the distant horizon. Geometry stays static.
-  const sectors = 192, radii = [];
-  for (let r = 2; r <= 220; r += 2) radii.push(r);
-  for (let i = 1; i <= 28; i++) radii.push(220 * (1600 / 220) ** (i / 28));
-  const positions = [0, 0, 0], normals = [0, 0, 1], indices = [];
-  for (const radius of radii) for (let i = 0; i < sectors; i++) {
-    const angle = i / sectors * TAU; positions.push(Math.cos(angle) * radius, Math.sin(angle) * radius, 0);
-    normals.push(0, 0, 1);
-  }
-  for (let i = 0; i < sectors; i++) indices.push(0, 1 + i, 1 + (i + 1) % sectors);
-  for (let ring = 0; ring < radii.length - 1; ring++) for (let i = 0; i < sectors; i++) {
-    const a = 1 + ring * sectors + i, b = 1 + ring * sectors + (i + 1) % sectors;
-    const c = a + sectors, d = b + sectors; indices.push(a, c, b, b, c, d);
-  }
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-  geometry.setAttribute('normal', new THREE.Float32BufferAttribute(normals, 3)); geometry.setIndex(indices);
-  geometry.computeBoundingSphere(); geometry.boundingSphere.radius += .5;
-  return geometry;
-}
-
-function addSwellShader(material, phase) {
-  const number = n => n.toFixed(9);
-  const components = swellComponents.map((w, i) => `
-    {
-      vec2 direction = vec2(${number(w.direction.x)}, ${number(w.direction.y)});
-      float theta = dot(xz, direction) * ${number(w.k)} - time * ${number(w.omega)} + primerPhase + ${number(i * 1.71)};
-      value.x += ${number(w.amplitudeM)} * sin(theta);
-      value.yz += direction * ${number(w.amplitudeM * w.k)} * cos(theta);
-    }`).join('\n');
-  const functions = `
-    uniform float primerPhase;
-    vec3 primerSwell(vec2 xz) {
-      vec3 value = vec3(0.0);
-      ${components}
-      float radius = length(xz);
-      float u = clamp((radius - 220.0) / 630.0, 0.0, 1.0);
-      float envelope = 1.0 - u * u * (3.0 - 2.0 * u);
-      float derivative = radius > 220.0 && radius < 850.0 ? -6.0 * u * (1.0 - u) / 630.0 : 0.0;
-      value.yz = value.yz * envelope + value.x * derivative * xz / max(radius, .001);
-      value.x *= envelope;
-      return value;
-    }
-  `;
-  const beforeVertex = material.vertexShader, beforeFragment = material.fragmentShader;
-  const vertexAnchor = 'mirrorCoord = modelMatrix * vec4( position, 1.0 );';
-  const viewAnchor = 'vec4 mvPosition =  modelViewMatrix * vec4( position, 1.0 );';
-  const normalAnchor = 'vec3 surfaceNormal = normalize( noise.xzy * vec3( 1.5, 1.0, 1.5 ) );';
-  if (!beforeVertex.includes(vertexAnchor) || !beforeVertex.includes(viewAnchor) || !beforeFragment.includes(normalAnchor))
-    throw new Error('Bundled Three Water shader changed; review swell integration against its actual source.');
-  material.uniforms.primerPhase = { value: phase }; material.uniforms.size.value = 48;
-  material.vertexShader = beforeVertex.replace('void main() {', `${functions}\nvoid main() {`)
-    .replace(vertexAnchor, `${vertexAnchor}\nmirrorCoord.y += primerSwell(mirrorCoord.xz).x;`)
-    .replace(viewAnchor, 'vec4 mvPosition = viewMatrix * worldPosition;');
-  material.fragmentShader = beforeFragment.replace('void main() {', `${functions}\nvoid main() {`)
-    .replace(normalAnchor, `vec2 swellSlope = primerSwell(worldPosition.xz).yz;
-      vec2 smallRipple = vec2(
-        .036 * cos(dot(worldPosition.xz, vec2(2.6, 1.1)) - time * 2.4),
-        .026 * sin(dot(worldPosition.xz, vec2(-1.3, 3.5)) - time * 3.1));
-      vec3 surfaceNormal = normalize(vec3(-swellSlope.x + noise.x * .30 + smallRipple.x,
-        1.0, -swellSlope.y + noise.y * .30 + smallRipple.y));`)
-    .replace('sunLight( surfaceNormal, eyeDirection, 100.0, 2.0, 0.5, diffuseLight, specularLight );',
-      'sunLight( surfaceNormal, eyeDirection, 80.0, 1.15, 0.5, diffuseLight, specularLight );');
-  material.needsUpdate = true;
-}
-
-// Original finite teaching scenery, metre scale. It never reads world history.
+// Original finite coastal scene. It owns only display scenery and the shared
+// water rig; loading the four existing image files never changes native ecology.
 export function createOceanPrimerSurface(scene, { seed = 55 } = {}) {
   if (!scene?.isScene) throw new TypeError('Surface primer requires its own Three.js Scene.');
-  const phase = phaseFor(seed), originalBackground = scene.background, originalFog = scene.fog;
   const root = new THREE.Group(); root.name = 'Primer: sea surface and nearshore'; scene.add(root);
   const resources = new Set(), own = value => (resources.add(value), value);
-  const sky = new Sky(); sky.scale.setScalar(4000); root.add(sky);
-  sky.material.uniforms.turbidity.value = 3.2; sky.material.uniforms.rayleigh.value = 2.2;
-  sky.material.uniforms.mieCoefficient.value = .004; sky.material.uniforms.mieDirectionalG.value = .8;
-  const sunDirection = new THREE.Vector3(-.42, .52, -.73).normalize();
-  sky.material.uniforms.sunPosition.value.copy(sunDirection).multiplyScalar(1000);
-  const sun = new THREE.DirectionalLight(0xfff3d6, 3); sun.position.copy(sunDirection).multiplyScalar(250);
-  root.add(sun, new THREE.HemisphereLight(0xb9def0, 0x6c7b70, 2));
-  const data = new Uint8Array(128 * 128 * 4);
-  for (let y = 0; y < 128; y++) for (let x = 0; x < 128; x++) {
-    const i = (y * 128 + x) * 4;
-    data[i] = 128 + Math.round(16 * Math.sin(x * .43 + y * .19) + 7 * Math.cos(y * .63));
-    data[i + 1] = 128 + Math.round(16 * Math.cos(y * .39 - x * .21) + 7 * Math.sin(x * .53));
-    data[i + 2] = 253; data[i + 3] = 255;
-  }
-  const normals = own(new THREE.DataTexture(data, 128, 128)); normals.wrapS = normals.wrapT = THREE.RepeatWrapping;
-  normals.minFilter = normals.magFilter = THREE.LinearFilter; normals.needsUpdate = true;
-  const water = new Water(own(waterGeometry()), {
-    textureWidth: 512, textureHeight: 512, waterNormals: normals, sunDirection,
-    sunColor: 0xfff3d6, waterColor: 0x087f98, distortionScale: 1.65, fog: true,
-  });
-  water.name = 'Primer gentle swells and fine surface ripples';
-  water.rotation.x = -Math.PI / 2; water.material.side = THREE.DoubleSide; root.add(water);
-  addSwellShader(water.material, phase);
-  // Water keeps its render target in a closure. Capture that one target at
-  // first reflection so this chapter can release its framebuffer on exit.
-  const reflect = water.onBeforeRender; let reflectionTarget = null;
-  water.onBeforeRender = function(renderer, ...args) {
-    if (reflectionTarget) return reflect.call(this, renderer, ...args);
-    const proxy = new Proxy(renderer, { get(target, key) {
-      if (key === 'setRenderTarget') return (renderTarget, ...rest) => {
-        if (renderTarget?.texture === water.material.uniforms.mirrorSampler.value) reflectionTarget = renderTarget;
-        return target.setRenderTarget(renderTarget, ...rest);
-      };
-      const value = Reflect.get(target, key); return typeof value === 'function' ? value.bind(target) : value;
-    } });
-    return reflect.call(this, proxy, ...args);
-  };
-  const bedGeometry = own(new THREE.PlaneGeometry(660, 660, 192, 192)); bedGeometry.rotateX(-Math.PI / 2);
-  const positions = bedGeometry.attributes.position, colors = [];
-  const sand = new THREE.Color('#c7ba8d'), rock = new THREE.Color('#6c7168'), grass = new THREE.Color('#5c7254');
-  for (let i = 0; i < positions.count; i++) {
-    const x = positions.getX(i), z = positions.getZ(i);
-    const y = oceanPrimerNearshoreHeight(x, z, seed);
-    positions.setY(i, y);
-    const variation = .5 + .5 * Math.sin(x * .09 + z * .071 + phase) * Math.cos(z * .048 - x * .033);
-    const color = y < 2 ? sand.clone().lerp(rock, THREE.MathUtils.smoothstep(y, .4, 2) * .70) :
-      rock.clone().lerp(grass, (.42 + .44 * variation) * (1 - THREE.MathUtils.smoothstep(y, 19, 34) * .5));
-    color.multiplyScalar(.92 + .10 * variation);
-    colors.push(color.r, color.g, color.b);
-  }
-  bedGeometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3)); bedGeometry.computeVertexNormals();
-  const bed = new THREE.Mesh(bedGeometry, own(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .94 })));
-  bed.name = 'Primer continuous irregular nearshore coast';
-  root.add(bed);
+  const waterRig = createPrimerWater(scene, {seed, seaLevelM: 0, extentM: 1600, nearshore: true});
+  scene.remove(waterRig.root); root.add(waterRig.root);
+  const material = own(coastMaterial()), bed = new THREE.Mesh(own(coastGeometry(seed)), material);
+  bed.name = 'Primer continuous irregular nearshore coast'; bed.userData.role = 'whole-rock-sand-coast-not-smooth-green-hills';
+  bed.receiveShadow = true; root.add(bed);
   const boat = new THREE.Group(); boat.name = 'Primer fourteen metre reference boat';
-  boat.position.set(-25, .15, 8); boat.rotation.y = -.35; root.add(boat);
-  const white = own(new THREE.MeshStandardMaterial({ color: 0xe4e4d6, roughness: .5 }));
-  const blue = own(new THREE.MeshStandardMaterial({ color: 0x254752, roughness: .58 }));
+  boat.position.set(-18, .15, 2); boat.rotation.y = -1.07; root.add(boat);
+  const white = own(new THREE.MeshStandardMaterial({ color: '#dadfd8', roughness: .54 }));
+  const blue = own(new THREE.MeshStandardMaterial({ color: '#274f60', roughness: .52 }));
   const hull = new THREE.Mesh(own(new THREE.SphereGeometry(1, 48, 24)), white); hull.scale.set(1.75, 1.05, 7); boat.add(hull);
   const deck = new THREE.Mesh(own(new THREE.BoxGeometry(2.9, .22, 10.5)), white); deck.position.y = .65; boat.add(deck);
   const cabin = new THREE.Mesh(own(new THREE.BoxGeometry(2.2, 1.6, 3.7)), white); cabin.position.set(0, 1.4, -.3); boat.add(cabin);
   const window = new THREE.Mesh(own(new THREE.BoxGeometry(2.23, .65, 3.74)), blue); window.position.copy(cabin.position).add(new THREE.Vector3(0, .2, 0)); boat.add(window);
   const roof = new THREE.Mesh(own(new THREE.BoxGeometry(2.65, .18, 4.4)), white); roof.position.set(0, 2.28, -.3); boat.add(roof);
   const mast = new THREE.Mesh(own(new THREE.CylinderGeometry(.025, .025, 2, 8)), white); mast.position.set(0, 3.3, .4); boat.add(mast);
-  const birdMaterial = own(new THREE.MeshBasicMaterial({ color: 0x35424a, side: THREE.DoubleSide })), birds = [];
+  boat.traverse(node => { if (node.isMesh) node.castShadow = true; });
+  const birdMaterial = own(new THREE.MeshBasicMaterial({ color: '#35424a', side: THREE.DoubleSide })), birds = [];
   for (let i = 0; i < 7; i++) {
     const group = new THREE.Group(), wings = [];
     for (const side of [-1, 1]) {
       const wing = new THREE.Mesh(own(new THREE.PlaneGeometry(1.15, .2)), birdMaterial);
       wing.position.x = side * .48; wing.rotation.x = Math.PI / 2; group.add(wing); wings.push(wing);
     }
-    root.add(group); birds.push({ group, wings, phase: i * 1.63 });
+    root.add(group); birds.push({group, wings, phase: i * 1.63});
   }
-  const points = [[0, 5.2, 35], [-6, 4.8, 21], [-15, 3.4, 3], [-16, .8, -17], [-9, -2.3, -33], [-1, -4.3, -51]].map(p => new THREE.Vector3(...p));
-  const targets = [[85, 3, -130], [65, 1, -110], [0, -.5, -60], [-5, -4, -43], [-3, -6.8, -54], [0, -7, -65]].map(p => new THREE.Vector3(...p));
+  const points = [[-18, 4.8, 42], [-12, 4.0, 22], [-8, 2.2, 2], [-12, .45, -18], [-9, -2.3, -33], [-1, -4.3, -51]].map(p => new THREE.Vector3(...p));
+  const targets = [[5, .3, -75], [10, .05, -82], [-4, -.6, -54], [-5, -4, -43], [-3, -6.8, -54], [0, -7, -65]].map(p => new THREE.Vector3(...p));
   const path = new THREE.CatmullRomCurve3(points), targetPath = new THREE.CatmullRomCurve3(targets);
   const cameraPose = time => {
     const t = validTime(time) / 45, p = path.getPoint(t), target = targetPath.getPoint(t);
-    return { position: { x: p.x, y: p.y, z: p.z }, target: { x: target.x, y: target.y, z: target.z }, fov: 54 };
+    return {position: {x: p.x, y: p.y, z: p.z}, target: {x: target.x, y: target.y, z: target.z}, fov: 54};
   };
-  const aboveBackground = new THREE.Color('#a8d9e5'), belowBackground = new THREE.Color('#347d91');
-  const aboveFog = new THREE.FogExp2(0xc6dde1, .001), belowFog = new THREE.FogExp2(0x347d91, .027);
-  let current = 0, disposed = false;
-  const update = time => {
+  let current = 0, globalTime = 0, actualPose = cameraPose(0), disposed = false, texturePromise = null, textureStatus = 'unloaded';
+  const update = (localSec, cameraOrPose = cameraPose(localSec), globalSec = localSec) => {
     if (disposed) return false;
-    current = validTime(time); water.material.uniforms.time.value = current;
-    const boatWave = sampleOceanPrimerSurface(boat.position.x, boat.position.z, current, { seed });
-    boat.position.y = .15 + boatWave.heightM;
-    boat.rotation.x = boatWave.gradient.z * .45; boat.rotation.z = -boatWave.gradient.x * .45;
-    const pose = cameraPose(current), underwater = pose.position.y < sampleOceanPrimerSurface(pose.position.x, pose.position.z, current, { seed }).heightM;
-    sky.visible = !underwater; scene.background = underwater ? belowBackground : aboveBackground;
-    scene.fog = underwater ? belowFog : aboveFog;
-    birds.forEach(({ group, wings, phase }, i) => {
+    current = validTime(localSec); globalTime = globalSec; actualPose = cameraOrPose;
+    waterRig.update(globalSec, cameraOrPose);
+    const wave = waterRig.sampleSurface(boat.position.x, boat.position.z, globalSec);
+    boat.position.y = .15 + wave.heightM; boat.rotation.x = wave.gradient.z * .45; boat.rotation.z = -wave.gradient.x * .45;
+    birds.forEach(({group, wings, phase}, i) => {
       group.position.set(30 + Math.sin(current * .055 + phase) * 55, 12 + i * 1.2, -70 - Math.cos(current * .055 + phase) * 35);
       group.rotation.y = current * .055 + phase; wings[0].rotation.z = Math.sin(current * 2.5 + phase) * .25; wings[1].rotation.z = -wings[0].rotation.z;
     });
     root.updateMatrixWorld(true); return true;
   };
-  update(0);
-  return { root, update, cameraPose,
-    environmentAt: time => ({ depthM: Math.max(0, -cameraPose(time).position.y), naturalLight: 1, location: '热带近岸海面 · 空间关系示意' }),
-    diagnostics: () => ({ type: 'original-surface-teaching-scenery', seed, timeSec: current, seaLevelM: 0, nearshoreDepthM: 8,
-      referenceBoatLengthM: 14, birds: 7, surfaceMotion: 'gpu-analytic-gentle-swells-and-fine-normal-ripples',
-      maximumSwellAmplitudeM: .42, swellComponents: 3, waterVertices: water.geometry.attributes.position.count,
-      waterTriangles: water.geometry.index.count / 3, reflection: 'Three-Water-planar-mean-sea-level-approximation',
-      scope: 'finite-surface-and-nearshore-display-no-ecological-storage', disposed }),
-    dispose() {
-      if (disposed) return; disposed = true; scene.remove(root);
-      for (const r of resources) r.dispose();
-      if (reflectionTarget) reflectionTarget.dispose(); else water.material.uniforms.mirrorSampler.value.dispose();
-      water.material.dispose(); sky.geometry.dispose(); sky.material.dispose(); root.clear();
-      if (scene.background === aboveBackground || scene.background === belowBackground) scene.background = originalBackground;
-      if (scene.fog === aboveFog || scene.fog === belowFog) scene.fog = originalFog;
-    },
+  const loadTextures = (baseUrl = '/', loader = new THREE.TextureLoader()) => {
+    if (disposed) return Promise.reject(new Error('Surface primer was disposed before texture loading.'));
+    if (texturePromise) return texturePromise;
+    textureStatus = 'loading';
+    texturePromise = (async () => {
+      const base = `${baseUrl.replace(/\/?$/, '/')}`;
+      const results = await Promise.allSettled(OCEAN_PRIMER_COAST_TEXTURES.map(item => loader.loadAsync(base + item.file)));
+      const textures = results.filter(result => result.status === 'fulfilled').map(result => result.value);
+      if (disposed || results.some(result => result.status === 'rejected')) {
+        for (const texture of textures) texture.dispose(); textureStatus = disposed ? 'disposed' : 'error';
+        throw new Error('Existing coastal rock/sand textures could not be installed; no replacement asset or automatic retry.');
+      }
+      const maps = {};
+      results.forEach((result, i) => {
+        const texture = own(result.value), item = OCEAN_PRIMER_COAST_TEXTURES[i];
+        texture.colorSpace = item.color ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.anisotropy = 4; maps[item.role] = texture;
+      });
+      material.map = maps.rock; material.normalMap = maps.normal; material.normalScale.set(.22, .22);
+      material.roughnessMap = maps.roughness; material.userData.sandMap = maps.sand;
+      const compile = material.onBeforeCompile;
+      material.onBeforeCompile = shader => { compile(shader); shader.uniforms.sandMap.value = maps.sand; };
+      material.needsUpdate = true; textureStatus = 'ready'; return {loaded: 4, files: OCEAN_PRIMER_COAST_TEXTURES.map(item => item.file)};
+    })();
+    return texturePromise;
   };
+  update(0);
+  return { root, sun: waterRig.sun, ambient: waterRig.ambient, waterRig, update, cameraPose, loadTextures,
+    sampleSurface: waterRig.sampleSurface,
+    environmentAt: () => ({...waterRig.environmentAt(actualPose), location: '热带近岸海面 · 岩砂海岸与共用水体示意'}),
+    diagnostics: () => ({type: 'original-surface-shared-water-teaching-scenery', seed, timeSec: current, globalTimeSec: globalTime, seaLevelM: 0,
+      nearshoreDepthM: 8, referenceBoatLengthM: 14, referenceBoatPosition: boat.position.toArray(), birds: 7,
+      surfaceMotion: 'shared-gpu-gerstner-displacement-analytic-normals-and-filtered-slope-variance',
+      maximumSwellAmplitudeM: waterRig.diagnostics().maximumSwellAmplitudeM, swellComponents: PRIMER_WATER_WAVES.length,
+      waterVertices: waterRig.diagnostics().waterVertices, coastVertices: bed.geometry.attributes.position.count,
+      coastRepresentation: 'continuous-stratified-rock-and-sand-no-green-gaussian-hills', textures: {status: textureStatus, files: OCEAN_PRIMER_COAST_TEXTURES.map(item => item.file)},
+      water: waterRig.diagnostics(), disposed, noEcologyStorage: true}),
+    dispose() {
+      if (disposed) return; disposed = true; root.removeFromParent(); root.clear(); waterRig.dispose();
+      for (const resource of resources) resource.dispose(); resources.clear();
+    } };
 }

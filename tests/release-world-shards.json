@@ -29,7 +29,8 @@
     "tests/living-meadow-assets.test.mjs",
     "tests/director-tour-progress.test.mjs",
     "tests/deep-sea-spider-rendering.test.mjs",
-    "tests/kelp-save-diagnostics.test.mjs"
+    "tests/kelp-save-diagnostics.test.mjs",
+    "tests/ocean-primer-water.test.mjs"
   ],
   [
     "tests/ocean-primer-pelagic.test.mjs",
@@ -94,7 +95,8 @@
     "tests/meadow-animal-belt-shoal.test.mjs",
     "tests/kelp-understory-render.test.mjs",
     "tests/director-player.test.mjs",
-    "tests/deep-hard-life-render.test.mjs"
+    "tests/deep-hard-life-render.test.mjs",
+    "tests/ocean-primer-travel.test.mjs"
   ],
   [
     "tests/ocean-primer-timeline.test.mjs",
@@ -126,7 +128,8 @@
     "tests/meadow-animal-belt-bottom.test.mjs",
     "tests/kelp-understory-life-render.test.mjs",
     "tests/director-motion-receipt.test.mjs",
-    "tests/deep-benthic-life-render.test.mjs"
+    "tests/deep-benthic-life-render.test.mjs",
+    "tests/ocean-primer-deep-life.test.mjs"
   ],
   [
     "tests/reef-mobile-benthos-ecology.test.mjs",

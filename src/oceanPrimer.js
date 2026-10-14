@@ -15,8 +15,12 @@ export function oceanPrimerChapter(time) {
   return OCEAN_PRIMER_CHAPTERS.find(c => time < c.end) ?? OCEAN_PRIMER_CHAPTERS.at(-1);
 }
 export const OCEAN_PRIMER_CLIPS = Object.freeze([
-  ...primer.clips,
-  ...shallowNarrationTimeline().clips.map(clip => ({ ...clip, id: `primer-shallow-${clip.id}`, start: clip.start + 45, chapterId: 'shallow', reused: true })),
+  // Stage07 retimes existing recordings to arrival; their audio, subtitles,
+  // generation receipts and the original standalone timelines stay intact.
+  ...primer.clips.map(clip => ({ ...clip, start: ({ 'pelagic-whale-breathing': 294, 'deep-midwater-light': 375, 'deep-seafloor-food': 405 })[clip.id] ?? clip.start,
+    end: clip.id === 'deep-midwater-light' ? 392 : clip.end })),
+  ...shallowNarrationTimeline().clips.map(clip => ({ ...clip, id: `primer-shallow-${clip.id}`,
+    start: ({ 'school-entry': 52, 'school-split': 56 })[clip.id] ?? clip.start + 45, chapterId: 'shallow', reused: true })),
 ].sort((a, b) => a.start - b.start));
 
 export function oceanPrimerTransition(time) {

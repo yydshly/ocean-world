@@ -76,10 +76,11 @@ test('the complete primer covers 450 seconds in four contiguous chapters plus a 
   for (const invalid of [NaN, Infinity, -Infinity, '45', undefined]) assert.throws(() => oceanPrimerChapter(invalid), TypeError);
 });
 
-test('the original 240-second shallow section reuses its exact ten clips with only a 45-second offset and scoped IDs', () => {
+test('the original 240-second shallow section retains all recordings and retimes only two opening cues for arrival', () => {
   const shallow = shallowNarrationTimeline(), reused = OCEAN_PRIMER_CLIPS.filter(clip => clip.reused);
   assert.equal(shallow.duration, 240); assert.equal(shallow.clips.length, 10); assert.equal(reused.length, 10);
-  assert.deepEqual(reused, shallow.clips.map(clip => ({...clip, id: `primer-shallow-${clip.id}`, start: clip.start + 45, chapterId: 'shallow', reused: true})));
+  assert.deepEqual(reused, shallow.clips.map(clip => ({...clip, id: `primer-shallow-${clip.id}`,
+    start: ({'school-entry':52,'school-split':56})[clip.id] ?? clip.start + 45, chapterId: 'shallow', reused: true})));
   assert.equal(manifest.reusedShallow.offset, 45); assert.equal(manifest.reusedShallow.duration, 240);
   assert.equal(manifest.reusedShallow.clipCount, 10);
   assert.deepEqual(shallowNarrationTimeline().clips, shallow.clips, 'composition must not mutate the old timeline');
@@ -89,7 +90,9 @@ test('six new clips and ten reused clips have unique identities, stay in their c
   assert.equal(OCEAN_PRIMER_CLIPS.length, 16); assert.equal(new Set(OCEAN_PRIMER_CLIPS.map(c => c.id)).size, 16);
   assert.deepEqual(manifest.clips.map(c => c.id), newIds);
   assert.deepEqual(manifest.clips.map(c => c.start), [0, 285, 322, 365, 399, 430]);
-  assert.deepEqual(OCEAN_PRIMER_CLIPS.filter(c => !c.reused), manifest.clips);
+  assert.deepEqual(OCEAN_PRIMER_CLIPS.filter(c => !c.reused), manifest.clips.map(c=>({...c,
+    start:({'pelagic-whale-breathing':294,'deep-midwater-light':375,'deep-seafloor-food':405})[c.id]??c.start,
+    end:c.id==='deep-midwater-light'?392:c.end})));
   for (const [index, clip] of OCEAN_PRIMER_CLIPS.entries()) {
     const chapter = OCEAN_PRIMER_CHAPTERS.find(c => c.id === clip.chapterId);
     assert.ok(chapter, `${clip.id}: missing chapter`);
@@ -98,8 +101,13 @@ test('six new clips and ten reused clips have unique identities, stay in their c
     assert.ok(clip.start + clip.duration <= (OCEAN_PRIMER_CLIPS[index + 1]?.start ?? 450), `${clip.id}: overlaps later speech`);
     if (!clip.reused) assert.ok(clip.start + clip.duration + .15 <= clip.end, `${clip.id}: truncation guard`);
   }
-  assert.ok(manifest.clips.find(c => c.id === 'deep-midwater-light').start + manifest.clips.find(c => c.id === 'deep-midwater-light').duration < 389,
-    '700 m narration finishes before the 24-second deep observation-point change');
+  const cue=id=>OCEAN_PRIMER_CLIPS.find(c=>c.id===id);
+  assert.equal(cue('primer-shallow-school-entry').start,52,'observe reef fish after the arrival passage');
+  assert.equal(cue('pelagic-whale-breathing').start,294,'observe whale after the open-water arrival');
+  assert.equal(cue('deep-midwater-light').start,375,'describe 700 m only after the observation vehicle arrives');
+  assert.ok(cue('deep-midwater-light').start+cue('deep-midwater-light').duration<392,
+    '700 m narration finishes before the 27-second deep observation journey');
+  assert.ok(cue('deep-seafloor-food').start>=400,'describe seabed only after the internal journey');
 });
 
 test('new speech retains the authorized model and voice, its exact text, relative subtitles and official source provenance', () => {

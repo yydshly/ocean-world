@@ -1,0 +1,74 @@
+[
+  {
+    "image": "surface.jpg",
+    "kind": "final-complete-run-ready",
+    "timeSec": 0,
+    "imagePixelSize": [
+      1280,
+      720
+    ]
+  },
+  {
+    "image": "shallow.jpg",
+    "kind": "final-complete-run",
+    "timeSec": 108.04170000001224,
+    "imagePixelSize": [
+      1280,
+      720
+    ]
+  },
+  {
+    "image": "deep-midwater.jpg",
+    "kind": "separate-control-inspection-after-complete-run",
+    "timeSec": 380,
+    "imagePixelSize": [
+      667,
+      871
+    ]
+  },
+  {
+    "image": "transition.jpg",
+    "kind": "separate-control-inspection-after-complete-run",
+    "timeSec": 395,
+    "imagePixelSize": [
+      667,
+      871
+    ]
+  },
+  {
+    "image": "deep-seabed.jpg",
+    "kind": "separate-control-inspection-after-complete-run",
+    "timeSec": 415,
+    "imagePixelSize": [
+      667,
+      871
+    ]
+  },
+  {
+    "image": "dolphins.jpg",
+    "kind": "separate-control-inspection-after-complete-run",
+    "timeSec": 340,
+    "imagePixelSize": [
+      667,
+      871
+    ]
+  },
+  {
+    "image": "whale.jpg",
+    "kind": "separate-control-inspection-after-complete-run",
+    "timeSec": 304,
+    "imagePixelSize": [
+      667,
+      871
+    ]
+  },
+  {
+    "image": "whale-underwater.jpg",
+    "kind": "separate-control-inspection-after-complete-run",
+    "timeSec": 317,
+    "imagePixelSize": [
+      667,
+      871
+    ]
+  }
+]

@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 const shards = JSON.parse(readFileSync(new URL('../tests/release-world-shards.json', import.meta.url)));
 const files = shards.flat();
 assert.equal(shards.length, 8);
-assert.equal(files.length, 243, 'Retain all 239 existing world files and add four independent ocean primer checks; sites-worker remains build-dependent.');
+assert.equal(files.length, 246, 'Retain all 243 registered files and append shared primer water, travel and deep-life checks; sites-worker remains build-dependent.');
 assert.equal(new Set(files).size, files.length, 'no duplicate test files');
 for (const file of files) assert.ok(existsSync(file), `missing required test: ${file}`);
 const index = Number(process.argv[2]);

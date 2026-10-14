@@ -1,0 +1,32 @@
+{
+  "stage": "07",
+  "artifact": "independent finite whole deep-life teaching kit",
+  "createdAt": "2026-10-14",
+  "units": "metres and seconds",
+  "ownership": "Five new core meshes, colour maps, tissue materials and bounded poses are original project-authored code. Three.js geometric helpers and BufferGeometryUtils are MIT. No third-party model, photograph, video or texture was downloaded or embedded.",
+  "sourceUse": "The linked scientific and institutional pages guide identification, anatomical outline, measurement axes and functional behavior. Their images are reference evidence, not copied assets; copyright is not claimed to be a reusable mesh licence.",
+  "scope": "700m middle-water and 3500m seafloor representatives in the northeast Pacific. Source ranges overlap but do not establish one surveyed co-occurrence community. Camera descent is time-compressed travel illustration, not an actual measured dive or ocean transect.",
+  "unchangedOriginals": ["deepSpecies.js", "deepHabitat.js", "deepSimulation.js", "DeepOceanAnimals.js", "deepOrganisms.js", "DeepMidwaterLifeAssets.js", "DeepBenthicLifeAssets.js", "DeepWaterLifeAssets.js", "DeepHardLifeAssets.js", "all original ecological records and storage namespaces"],
+  "budget": {"coreClasses":5,"coreIndividuals":12,"nativeLocalBottomIndividuals":10,"additionalFunctionalClasses":3,"additionalFunctionalIndividuals":3,"totalIndividuals":15,"durationSec":65,"travelWindowSec":[27,35]},
+  "factsAndDisplayChoices": [
+    "Taxonomic levels and selected anatomical sizes come unchanged from the existing source catalogs; selected ratios, pigment patterns, appendage sampling, tissue transmission and motions are uncalibrated teaching choices.",
+    "The four sea pigs, three rattails and three anemones read one separate in-memory native local model. Only its actual lastFeedAt drives an oral-feeding visual cue; this module never creates intake events or updates food ledgers.",
+    "The middle-water animals and three functional additions use bounded display trajectories and have no invented native ingestion, population clock or ecological stock.",
+    "Marine snow is a finite camera-local light-scattering display volume; authored prior bed traces and detrital colour patches are scenery, not recorded feeding, carbon mass, or saved environmental history.",
+    "At 700m extremely weak natural light may exist but is not calibrated here; visible subjects are illuminated by the observation vehicle. At 3500m there is no sunlight or local photosynthesis. Only one observation spot light casts finite contact shadows.",
+    "Ophiosphalma arm span and Thalassocrinus complete height are not independently verified field maxima. The existing catalog retains illustrative span and arm-length axes without promoting them to natural size distributions."
+  ],
+  "core": [
+    {"id":"helmet-jelly","identity":"Periphylla periphylla","level":"species","selectedSizeM":0.225,"measure":"bell-diameter","anatomy":"curved pointed coronate bell; twelve complete marginal tentacles; sixteen soft margin lappets; no four long oral arms","sources":["https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/helmet-jelly","https://www.mbari.org/news/mbari-researchers-encounter-rarely-seen-deep-sea-seven-arm-octopus/"]},
+    {"id":"vampire-squid","identity":"Vampyroteuthis infernalis","level":"species","selectedSizeM":0.115,"measure":"mantle-length","anatomy":"continuous rounded mantle; head and paired eyes; two adult fins; eight webbed arms; two complete retractile filaments, only one extended; no club tentacles","sources":["https://www.mbari.org/animal/vampire-squid/","https://pmc.ncbi.nlm.nih.gov/articles/PMC3479720/"]},
+    {"id":"sea-pig-group","identity":"Scotoplanes spp.","level":"genus-group","selectedSizeM":"unchanged native range 0.08-0.16","measure":"body-length","anatomy":"continuous soft elevated body; twelve curved contact tube feet; four illustrative dorsal papillae; connected oral tentacles; counts do not diagnose every genus member","sources":["https://www.mbari.org/animal/sea-pig/"]},
+    {"id":"rattail-family","identity":"Macrouridae","level":"family-group","selectedSizeM":"unchanged native range 0.35-0.75","measure":"body-length","anatomy":"heavy head; tapered slender tail; paired pectoral fins; continuous median fins; proportionate eyes and short barbel; no species identity invented","sources":["https://www.mbari.org/animal/rattail-fish/"]},
+    {"id":"pom-pom-anemone","identity":"Liponema brevicorne","level":"species","selectedSizeM":"unchanged native range 0.12-0.28","measure":"expanded-diameter","anatomy":"attached low body and irregular rounded puff of curved round-ended soft tentacles; no hard spines; sampled tentacle count is illustrative","sources":["https://www.mbari.org/animal/pom-pom-anemone/"]}
+  ],
+  "functionalAdditions": [
+    {"id":"abyssal-brittle-star","identity":"Ophiosphalma glabrum","asset":"original unchanged DeepBenthicLifeAssets","selectedSizeM":0.14,"measure":"arm-span","support":"actual soft-sediment surface; slow illustrative surface activity","depthEvidenceM":[878,5203],"sources":["https://www.sciencedirect.com/org/science/article/pii/S1313298925000011","https://darwinweb.africamuseum.be/echinodermata_v2/index.php/docman0/documents-public/894-summers-and-nybakken-2000/file"]},
+    {"id":"abyssal-dumbo-octopus","identity":"Grimpoteuthis bathynectes","asset":"original unchanged DeepWaterLifeAssets","selectedSizeM":0.075,"measure":"mantle-length","support":"whole authored body in near-bottom water, separated from the actual mud surface","depthEvidenceM":[2816,3932],"sources":["https://www.fao.org/4/i3489e/i3489e.pdf","https://tolweb.org/Grimpoteuthis_bathynectes/20118"]},
+    {"id":"sea-lily-thalassocrinus","identity":"Thalassocrinus alvinae","asset":"original unchanged DeepHardLifeAssets","selectedSizeM":0.135,"measure":"one-arm centreline length; not complete height","support":"fixed on the actual native mound top shared Float32 triangles","depthEvidenceM":[3100,3500],"sources":["https://www.jstage.jst.go.jp/article/specdiv/7/2/7_KJ00003893337/_pdf/-char/en","https://pubs.oregon.gov/dogami/ofr/O-87-05.pdf"]}
+  ],
+  "environmentReferences": ["https://oceanservice.noaa.gov/facts/light_travel.html","https://oceanservice.noaa.gov/facts/marinesnow.html","https://www.mbari.org/news/deep-sea-animal-communities-can-change-dramatically-and-erratically-over-time/"]
+}

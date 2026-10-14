@@ -1,3 +1,13 @@
+<!-- stage-07-ocean-primer-local-20261014 -->
+## 阶段07 · 海洋总览整体升级，本地已归档
+
+沿用450秒总览与原240秒浅海，整组统一海面/水下，升级鲸豚运动、完整深海代表和连续观察旅程。一次集中修正后完整1×450.0038实秒完成，16讲解正常，无操作中断与报错；81260帧p95上界15ms、最大87.6ms、无>250ms长帧，90不重复相关检查通过。
+
+375/382旧基线字节保持，6显示层与1来源说明允许修改；旧浅海、研究、录音保持。388运行文件完整实播前后不变。真实感、窄窗部分取景及加载6–8秒仍有差距；非野外生态校准、非首次观众/人耳/手机验收，历史研究问题没修。本地未push/deploy，停止自动优化。源标签stage-07-ocean-primer-local-20261014，前版1c56822与stage06历史不覆盖。
+
+实景 public/overview/stage-07/index.html；范围 docs/stages/STAGE_07_OCEAN_PRIMER_REALISM.md；结果 docs/validation/ocean-primer-stage-07-20261014.json。以下保留历史口径。
+<!-- /stage-07-ocean-primer-local-20261014 -->
+
 <!-- stage-06-ocean-primer-local-20261014 -->
 # 阶段06有限计划与停止条件
 

@@ -7,8 +7,11 @@ import { DeepSimulation, DEEP_MODEL_PARAMETERS } from '../src/deepSimulation.js'
 import { deepSpeciesCatalog } from '../src/deepSpecies.js';
 import { deepFloorHeight } from '../src/deepHabitat.js';
 import { deepMidwaterLifeSpeciesCatalog } from '../src/deepMidwaterLifeSpecies.js';
+import { deepBenthicLifeSpeciesCatalog } from '../src/deepBenthicLifeSpecies.js';
+import { deepWaterLifeSpeciesCatalog } from '../src/deepWaterLifeSpecies.js';
+import { deepHardLifeSpeciesCatalog } from '../src/deepHardLifeSpecies.js';
 import { deepMidwaterLifeAssetStats } from '../src/world/DeepMidwaterLifeAssets.js';
-import { createOceanPrimerDeep, oceanPrimerDeepFloorHeight } from '../src/world/OceanPrimerDeep.js';
+import { createOceanPrimerDeep, oceanPrimerDeepFloorHeight, OCEAN_PRIMER_DEEP_BED_Y } from '../src/world/OceanPrimerDeep.js';
 
 // Before stage 06, every byte below matches the original committed source.
 // These pins preserve all original rules and entire asset kits rather than
@@ -41,6 +44,7 @@ function visualSnapshot(chapter) {
   chapter.root.updateMatrixWorld(true);
   for (const animal of animalRoots(chapter.root)) animal.traverse(node => {
     digest.update(JSON.stringify(node.matrixWorld.toArray()));
+    if(node.userData.primerUniforms)digest.update(JSON.stringify(Object.fromEntries(Object.entries(node.userData.primerUniforms).map(([key,u])=>[key,u.value]))));
     if (node.isMesh) {
       const array = node.geometry.attributes.position.array;
       digest.update(Buffer.from(array.buffer, array.byteOffset, array.byteLength));
@@ -51,7 +55,7 @@ function visualSnapshot(chapter) {
     nativeSample: { ...d.nativeLocalModel, preparationMs: 0 }, geometry: digest.digest('hex') };
 }
 
-test('stage 06 leaves all native deep rules, original whole assets and metre ranges byte-for-byte intact', () => {
+test('stages 06 and 07 leave all native deep rules, original whole assets and metre ranges byte-for-byte intact', () => {
   for (const [path, expected] of Object.entries(originalHashes))
     assert.equal(hash(readFileSync(new URL(`../${path}`, import.meta.url))), expected, path);
   assert.deepEqual(deepSpeciesCatalog.map(s => [s.id, s.displaySizeM.range, s.taxonomicLevel]), [
@@ -94,7 +98,7 @@ test('actual finite terrain keeps the native support region and has finite, upwa
   const { chapter } = fixture(t), terrain = chapter.root.getObjectByName('Finite deep soft bottom and surrounding slopes');
   assert.ok(terrain?.isMesh);
   for (let x = -3; x <= 3; x += .25) for (let z = -2.8; z <= 2.8; z += .25)
-    assert.equal(oceanPrimerDeepFloorHeight(x, z), deepFloorHeight(x, z));
+    assert.equal(oceanPrimerDeepFloorHeight(x, z), deepFloorHeight(x, z)+OCEAN_PRIMER_DEEP_BED_Y);
   const geometry = terrain.geometry, positions = geometry.attributes.position, normals = geometry.attributes.normal;
   assert.ok(positions.count < 20000, 'finite display terrain budget');
   for (let i = 0; i < positions.count; i++) {
@@ -103,12 +107,12 @@ test('actual finite terrain keeps the native support region and has finite, upwa
     assert.ok(normals.getY(i) > Math.cos(Math.PI / 4), 'all scenery slopes stay upward and below 45 degrees');
   }
   for (const index of geometry.index.array) assert.ok(index >= 0 && index < positions.count);
-  assert.ok(oceanPrimerDeepFloorHeight(0, -14) > deepFloorHeight(0, -14) + 2,
+  assert.ok(oceanPrimerDeepFloorHeight(0, -14)-OCEAN_PRIMER_DEEP_BED_Y > deepFloorHeight(0, -14) + 2,
     'the background relief is real geometry, beyond the native animal support');
 });
 
 test('the complete 65-second half-second sample keeps camera, animal bodies and source-size budgets finite and clear', t => {
-  const { chapter } = fixture(t), catalogue = new Map([...deepSpeciesCatalog, ...deepMidwaterLifeSpeciesCatalog].map(s => [s.id, s]));
+  const { chapter } = fixture(t), catalogue = new Map([...deepSpeciesCatalog, ...deepMidwaterLifeSpeciesCatalog,...deepBenthicLifeSpeciesCatalog,...deepWaterLifeSpeciesCatalog,...deepHardLifeSpeciesCatalog].map(s => [s.id, s]));
   const vertex = new THREE.Vector3(), camera = new THREE.Vector3();
   let sampledBodies = 0, sampledVertices = 0, previousPose = null;
   for (let tick = 0; tick <= 130; tick++) {
@@ -118,15 +122,15 @@ test('the complete 65-second half-second sample keeps camera, animal bodies and 
     assert.ok(pose.fov >= 35 && pose.fov <= 60);
     camera.set(pose.position.x, pose.position.y, pose.position.z);
     assert.ok(camera.distanceTo(new THREE.Vector3(pose.target.x, pose.target.y, pose.target.z)) > .2);
-    if (time >= 26) assert.ok(camera.y >= oceanPrimerDeepFloorHeight(camera.x, camera.z) + .239999);
-    if (previousPose && time !== 26)
-      assert.ok(camera.distanceTo(previousPose) < .4, 'ordinary shot motion stays continuous in local metres');
+    if (time >= 27) assert.ok(camera.y >= oceanPrimerDeepFloorHeight(camera.x, camera.z) + .239999);
+    if (previousPose)
+      assert.ok(camera.distanceTo(previousPose) < (time>=27&&time<=35?1.15:.4), 'local camera stays continuous, including explicit time-compressed travel');
     previousPose = camera.clone();
     assert.equal(environment.naturalLight, 0); assert.equal(diagnostic.nativeLocalModel.preparationSteps, 650);
     assert.ok(Math.abs(diagnostic.nativeLocalModel.resourceBudgetError) < 1e-10);
     assert.ok(Math.abs(diagnostic.nativeLocalModel.energyBudgetError) < 1e-10);
     const roots = animalRoots(chapter.root);
-    assert.equal(roots.length, time < 26 ? 2 : 16);
+    assert.equal(roots.length, time < 27 ? 2 : time < 35 ? 15 : 13);
     for (const animal of roots) {
       const species = catalogue.get(animal.userData.speciesId), size = animal.scale.x, bounds = new THREE.Box3();
       assert.equal(animal.userData.identityLevel, species.identityLevel);
@@ -138,7 +142,7 @@ test('the complete 65-second half-second sample keeps camera, animal bodies and 
         for (let i = 0; i < position.count; i++) {
           vertex.fromBufferAttribute(position, i).applyMatrix4(mesh.matrixWorld);
           assert.ok(finitePoint(vertex)); bounds.expandByPoint(vertex); sampledVertices++;
-          if (time >= 26) assert.ok(vertex.y >= oceanPrimerDeepFloorHeight(vertex.x, vertex.z) - .006,
+          if (time >= 27) assert.ok(vertex.y >= oceanPrimerDeepFloorHeight(vertex.x, vertex.z) - .006,
             `${animal.userData.speciesId} body vertex basic mud clearance at ${time}s`);
         }
       });
@@ -160,32 +164,34 @@ test('arbitrary backward seeks and repeated same-seed instances recover exact an
   for (const time of checkpoints) { twin.update(time); assert.deepEqual(visualSnapshot(twin), expected.get(time)); }
 });
 
-test('only observer lamps illuminate the chapter and the 700m-to-3500m change is explicitly covered', t => {
+test('only observer lamps illuminate the chapter and time-compressed descent keeps continuous light and depth', t => {
   const { scene, chapter } = fixture(t), lights = [];
   scene.traverse(node => { if (node.isLight) lights.push(node); });
   assert.equal(lights.length, 3);
   for (const light of lights) {
     assert.equal(light.userData.illuminationRole, 'observer-artificial-light');
-    assert.ok(light.isSpotLight || light.isPointLight); assert.equal(light.castShadow, false);
+    assert.ok(light.isSpotLight || light.isPointLight);
   }
+  assert.equal(lights.filter(light=>light.castShadow).length,1,'one actual vehicle lamp supplies finite contact shadows');
   chapter.root.traverse(mesh => {
     if (!mesh.isMesh) return;
     for (const material of [].concat(mesh.material)) {
       if (material.emissive) assert.deepEqual(material.emissive.toArray(), [0, 0, 0]);
     }
   });
-  for (const time of [24, 25, 26, 27, 28]) {
+  let lastDepth=700;
+  for (const time of [27,29,31,33,35]) {
     chapter.update(time); const e = chapter.environmentAt(time);
-    assert.equal(e.depthM, time < 26 ? 700 : 3500); assert.equal(e.locationSwitch, time < 28);
-    if (time === 26) {
-      assert.equal(e.transitionOpacity, 1); assert.equal(e.observerLight, 0);
-      assert.ok(lights.every(light => light.intensity === 0));
-    }
+    assert.ok(e.depthM>=lastDepth&&e.depthM<=3500);lastDepth=e.depthM;assert.equal(e.locationSwitch,time<35);
+    assert.equal(e.transitionOpacity,0);assert.equal(e.observerLight,1);assert.ok(lights.every(light=>light.intensity>0));
   }
+  assert.equal(chapter.environmentAt(27).depthM,700);assert.equal(chapter.environmentAt(35).depthM,3500);
+  for(const boundary of[27,35]){const a=chapter.cameraPose(boundary-1e-6),b=chapter.cameraPose(boundary+1e-6);
+    assert.ok(new THREE.Vector3(...Object.values(a.position)).distanceTo(new THREE.Vector3(...Object.values(b.position)))<1e-5);}
   const snow = chapter.root.getObjectByName('Slowly falling observer-lit marine snow');
   assert.equal(snow.userData.role, 'display-only-marine-snow-not-food-ledger-or-particle-ingestion');
-  assert.ok(snow.geometry.attributes.position.count <= 512);
-  assert.equal(snow.material.uniforms.timeSec.value, 28);
+  assert.ok(snow.geometry.attributes.position.count <= 640);
+  assert.equal(snow.material.uniforms.timeSec.value, 35);
   assert.ok(chapter.diagnostics().limitations.some(note => note.includes('非真实连续下潜')));
 });
 
@@ -196,7 +202,7 @@ test('disposal frees all owned and shared resources once and restores the indepe
   chapter.update(65); const resources = new Map();
   scene.traverse(node => {
     if (!node.isMesh && !node.isPoints) return;
-    for (const resource of [node.geometry, ...[].concat(node.material)]) {
+    for (const resource of [node.geometry, ...[].concat(node.material),...(node.customDepthMaterial?[node.customDepthMaterial]:[])]) {
       if (!resources.has(resource)) { resources.set(resource, 0); resource.addEventListener('dispose', () => resources.set(resource, resources.get(resource) + 1)); }
       if (resource.isMaterial) for (const value of Object.values(resource)) if (value?.isTexture && !resources.has(value)) {
         resources.set(value, 0); value.addEventListener('dispose', () => resources.set(value, resources.get(value) + 1));

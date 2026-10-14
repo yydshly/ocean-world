@@ -1,10 +1,13 @@
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { createPrimerWater } from './OceanPrimerWater.js';
+import { createPelagicMotion, deformPelagicVertex, PELAGIC_MOTION_VERSION } from './OceanPrimerPelagicMotion.js';
 
 // Stage 06: independent educational choreography, with no saved ecology.
 // Original project-authored animal surfaces; no scan or third-party mesh is
 // copied. Dimensions are metres. See assets/ocean-primer/animals/provenance.json.
 export const OCEAN_PRIMER_PELAGIC_SECONDS = 80;
+export const OCEAN_PRIMER_PELAGIC_APPEARANCE_VERSION = 'pelagic-natural-body-skin-v2';
 export const OCEAN_PRIMER_PELAGIC_SPECIES = Object.freeze([
   { id: 'humpback-whale', latin: 'Megaptera novaeangliae', lengthM: 13.8, count: 1 },
   { id: 'bottlenose-dolphin', latin: 'Tursiops truncatus', lengthM: 2.65, count: 6 },
@@ -16,6 +19,23 @@ const colours = new Map();
 const colour = hex => { if (!colours.has(hex)) colours.set(hex, new THREE.Color(hex)); return colours.get(hex); };
 const vec = a => new THREE.Vector3(...a);
 const point = v => ({ x: v.x, y: v.y, z: v.z });
+const bodyProfiles = {
+  whale: [[-.50,.001,.001,-.010],[-.44,.010,.018,-.006],[-.34,.032,.033,-.001],[-.20,.067,.055,.006],
+    [-.04,.104,.080,.008],[.12,.103,.086,.002],[.22,.081,.083,-.001],[.35,.049,.073,-.008],
+    [.43,.024,.055,-.016],[.485,.009,.032,-.021],[.50,.001,.003,-.022]],
+  dolphin: [[-.50,.001,.001,-.008],[-.43,.009,.013,-.004],[-.33,.025,.031,.001],[-.20,.058,.054,.006],
+    [-.035,.086,.068,.012],[.13,.096,.072,.014],[.23,.077,.060,.018],[.30,.050,.043,.010],
+    [.35,.020,.025,-.014],[.43,.014,.020,-.020],[.485,.009,.014,-.022],[.50,.001,.003,-.022]],
+};
+function profileAt(kind, x) {
+  const rows = bodyProfiles[kind]; let k = 0; while (k < rows.length - 2 && x > rows[k + 1][0]) k++;
+  const a = rows[k], b = rows[k + 1], span = b[0] - a[0], u = clamp((x - a[0]) / span, 0, 1);
+  const tangent = (i, axis) => { const l = rows[Math.max(0, i - 1)], r = rows[Math.min(rows.length - 1, i + 1)]; return (r[axis] - l[axis]) / (r[0] - l[0]); };
+  return [1,2,3].map(axis => (2*u**3-3*u**2+1)*a[axis]+(u**3-2*u**2+u)*span*tangent(k,axis)
+    +(-2*u**3+3*u**2)*b[axis]+(u**3-u**2)*span*tangent(k+1,axis)).map((n,i)=>i<2?Math.max(.001,n):n);
+}
+const headTop = (kind, x, z = 0) => { const [ry,rz,cy] = profileAt(kind,x); return cy+ry*Math.sqrt(Math.max(0,1-(z/rz)**2)); };
+export const PELAGIC_WHALE_NOSE_LOCAL = Object.freeze({x:.275,y:headTop('whale',.275)+.0018,z:0});
 
 function paint(g, skin, role = 0) {
   const p = g.attributes.position, rgb = new Float32Array(p.count * 3), roles = new Float32Array(p.count);
@@ -49,25 +69,9 @@ function skin(kind, x, y, z) {
 // The dolphin's beak is part of the body profile rather than a separate cone.
 function body(kind) {
   const whale = kind === 'whale';
-  const stations = whale ? [
-    [-.50, .001, .001, -.015], [-.44, .009, .017, -.010], [-.36, .021, .027, -.005],
-    [-.24, .054, .049, .000], [-.10, .085, .069, .005], [.07, .098, .077, .004],
-    [.23, .088, .081, -.002], [.35, .066, .075, -.013], [.44, .043, .059, -.020],
-    [.49, .017, .024, -.025], [.50, .001, .001, -.025],
-  ] : [
-    [-.50, .001, .001, -.008], [-.43, .008, .012, -.005], [-.34, .020, .026, -.001],
-    [-.23, .047, .045, .001], [-.08, .076, .064, .004], [.09, .087, .068, .006],
-    [.23, .075, .061, .004], [.30, .061, .049, .003], [.35, .035, .033, -.010],
-    [.37, .020, .024, -.019], [.45, .015, .019, -.022], [.49, .010, .012, -.022],
-    [.50, .001, .001, -.022],
-  ];
   const rows = whale ? 168 : 78, sectors = whale ? 64 : 40;
   const positions = [], indices = [];
-  const sample = x => {
-    let k = 0; while (k < stations.length - 2 && x > stations[k + 1][0]) k++;
-    const a = stations[k], b = stations[k + 1], u = smooth(a[0], b[0], x);
-    return [mix(a[1], b[1], u), mix(a[2], b[2], u), mix(a[3], b[3], u)];
-  };
+  const sample = x => profileAt(kind,x);
   for (let i = 0; i <= rows; i++) {
     const x = -.5 + i / rows, [ry, rz, cy] = sample(x);
     for (let j = 0; j <= sectors; j++) {
@@ -155,13 +159,13 @@ function animalGeometry(kind) {
   if (whale) {
     // Head tubercles are low skin bumps integrated into the visible profile.
     for (const [x, z] of [[.29, 0], [.345, 0], [.395, 0], [.43, 0], [.30, -.052], [.30, .052], [.38, -.046], [.38, .046], [.446, -.032], [.446, .032]]) {
-      const y = x < .34 ? .073 : x < .41 ? .045 : .023;
+      const y = headTop('whale',x,z)-.001;
       parts.push(ellipse([x, y, z], [.009, .005, .008], skinFn));
     }
     // Paired humpback blowholes sit above the front head.
-    for (const z of [-.009, .009]) parts.push(ellipse([.275, .084, z], [.009, .0012, .004], () => colour('#1b2b30').clone()));
+    for (const z of [-.008, .008]) parts.push(ellipse([.275, headTop('whale',.275,z)+.0018, z], [.009, .0012, .0035], () => colour('#1b2b30').clone()));
   } else {
-    parts.push(ellipse([.225, .077, 0], [.012, .0014, .008], () => colour('#334c54').clone()));
+    parts.push(ellipse([.235, headTop('dolphin',.235)+.0012, 0], [.010, .0014, .006], () => colour('#334c54').clone()));
   }
   const g = mergeGeometries(parts); parts.forEach(p => p.dispose());
   g.computeBoundingBox(); g.computeBoundingSphere();
@@ -169,20 +173,34 @@ function animalGeometry(kind) {
   return g;
 }
 
-function animalMaterial(kind, clock, phase) {
-  const whale = kind === 'whale', material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .56, metalness: 0, side: THREE.DoubleSide });
+function animalMaterial(kind, motionUniforms) {
+  const whale = kind === 'whale', material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: whale?.58:.48, metalness: 0, side: THREE.DoubleSide });
   material.onBeforeCompile = shader => {
-    shader.uniforms.primerTime = clock; shader.uniforms.primerPhase = phase;
+    Object.assign(shader.uniforms, motionUniforms);
     shader.vertexShader = shader.vertexShader.replace('#include <common>', `#include <common>
-attribute float cetaceanRole; uniform float primerTime; uniform float primerPhase;`)
+attribute float cetaceanRole;
+uniform float cetaceanPhase;uniform float cetaceanAmplitude;uniform float cetaceanStroke;
+uniform float cetaceanFlukePitch;uniform float cetaceanPectoralPitch;uniform float cetaceanPectoralRoll;
+varying vec3 cetaceanRest;
+float bodyBend(float x){float w=clamp((-.12-x)/.36,0.,1.);return cetaceanAmplitude*w*w*sin(cetaceanPhase-(1.-w)*.75);}
+vec3 cetaceanPose(vec3 p,float role){
+  if(role>1.5){float a=-cetaceanFlukePitch*cos(cetaceanPhase);vec2 d=p.xy-vec2(-.44,-.012);p.xy=vec2(-.44,-.012)+mat2(cos(a),sin(a),-sin(a),cos(a))*d+vec2(0.,bodyBend(-.44));}
+  else{p.y+=bodyBend(p.x);if(role>.5){float s=sign(p.z),rz=s*.055,w=smoothstep(.055,${whale?'.22':'.14'},abs(p.z));float a=(cetaceanPectoralPitch+s*cetaceanPectoralRoll+.022*cetaceanStroke*sin(cetaceanPhase))*s*w;vec2 d=vec2(p.y+.025,p.z-rz);vec2 q=mat2(cos(a),sin(a),-sin(a),cos(a))*d;p.yz=vec2(-.025,rz)+q;}}
+  return p;
+}`)
+      .replace('#include <beginnormal_vertex>', `#include <beginnormal_vertex>
+if(position.x<-.12||cetaceanRole>.5){vec3 n=normalize(objectNormal);vec3 tangent=normalize(cross(n,abs(n.y)<.8?vec3(0.,1.,0.):vec3(1.,0.,0.)));vec3 bitangent=cross(n,tangent);float e=.0005;
+vec3 dt=cetaceanPose(position+tangent*e,cetaceanRole)-cetaceanPose(position-tangent*e,cetaceanRole);
+vec3 db=cetaceanPose(position+bitangent*e,cetaceanRole)-cetaceanPose(position-bitangent*e,cetaceanRole);objectNormal=normalize(cross(dt,db));}`)
       .replace('#include <begin_vertex>', `#include <begin_vertex>
-float tail=clamp((.02-position.x)/.47,0.0,1.0);
-float wave=sin(primerTime*${whale ? '2.2' : '5.1'}+primerPhase+position.x*3.1);
-transformed.y+=tail*tail*${whale ? '.031' : '.038'}*wave;
-if(cetaceanRole>.5&&cetaceanRole<1.5)transformed.y+=pow(clamp(abs(position.z)/${whale ? '.36' : '.19'},0.0,1.0),1.5)*${whale ? '.018' : '.010'}*sin(primerTime*${whale ? '1.3' : '2.4'}+primerPhase);`);
+cetaceanRest=position;transformed=cetaceanPose(position,cetaceanRole);`);
+    if(shader.fragmentShader)shader.fragmentShader=shader.fragmentShader.replace('#include <common>',`#include <common>
+varying vec3 cetaceanRest;`).replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
+float skinVariation=.5+.5*sin(cetaceanRest.x*113.+sin(cetaceanRest.z*97.))*sin(cetaceanRest.y*139.+cetaceanRest.z*83.);
+roughnessFactor=clamp(roughnessFactor+(skinVariation-.5)*.085,.35,.72);`);
   };
-  material.customProgramCacheKey = () => `ocean-primer-${kind}-motion-v1`;
-  material.userData = { authoredSkin: true, photographs: false, displayMotion: true };
+  material.customProgramCacheKey = () => `ocean-primer-${kind}-integrated-motion-v2`;
+  material.userData = { authoredSkin: true, photographs: false, displayMotion: true, appearanceVersion:OCEAN_PRIMER_PELAGIC_APPEARANCE_VERSION,posedNormals:true };
   return material;
 }
 
@@ -191,42 +209,25 @@ function seeded(seed) {
   return () => { s += 0x6D2B79F5; let n = s; n = Math.imul(n ^ n >>> 15, n | 1); n ^= n + Math.imul(n ^ n >>> 7, n | 61); return ((n ^ n >>> 14) >>> 0) / 4294967296; };
 }
 
-export function oceanPrimerWhalePose(t) {
-  t = clamp(t, 0, 80);
-  const rise = smooth(2, 16, t), dive = smooth(22, 35, t), depth = mix(-9.6, -.72, rise) - dive * 8.3;
-  const pitch = (smooth(3, 8, t) * (1 - smooth(11, 16, t)) * .11) - smooth(23, 27, t) * (1 - smooth(32, 37, t)) * .14;
-  return { position: { x: -7 + t * .26, y: depth, z: -8 - t * .035 }, pitch, heading: -.07, breathing: t >= 17.5 && t <= 20.5 };
-}
-
-const podOffsets = [[0, 0, 0], [-2.8, -.6, -2.9], [-4.9, .1, 1.9], [-6.6, -1.1, -4.2], [-8.3, -.4, -.2], [-9.5, -1.4, 3.5]];
-export function oceanPrimerDolphinPoses(t) {
-  t = clamp(t, 0, 80);
-  return podOffsets.map(([x, y, z], i) => ({ position: { x: -12 + t * .40 + x, y: -4.6 + y + Math.sin(t * .32 + i * 1.4) * .16, z: 3.6 + z + Math.sin(t * .035) * 1.2 }, heading: .08 + Math.cos(t * .035) * .04, pitch: Math.cos(t * .32 + i * 1.4) * .024 }));
-}
+let referenceMotion;
+export function oceanPrimerWhalePose(t) { return (referenceMotion??=createPelagicMotion()).whaleAt(t); }
+export function oceanPrimerDolphinPoses(t) { return (referenceMotion??=createPelagicMotion()).dolphinsAt(t); }
 
 export function createOceanPrimerPelagic(scene, { seed = 55 } = {}) {
   if (!scene?.isScene) throw new TypeError('OceanPrimerPelagic needs an independent THREE.Scene');
   const root = new THREE.Group(); root.name = 'Ocean primer / Caribbean representative cetaceans'; scene.add(root);
-  const resources = new Set(), own = r => { resources.add(r); return r; }, clock = { value: 0 };
-  let disposed = false, time = 0;
+  const resources = new Set(), own = r => { resources.add(r); return r; }, clock = { value: 0 }, motion = createPelagicMotion();
+  const water = createPrimerWater(scene,{seed,seaLevelM:0,extentM:1600});
+  let disposed = false, time = 0, globalTime = 285, currentWhale, currentDolphins, noseClearanceM = -Infinity;
+  const surfaceAt = (x,z,t) => water.sampleSurface(x,z,globalTime-time+t);
   root.userData = { educationalChoreography: true, noEcologyStorage: true, region: 'Caribbean', note: '加勒比海代表性观察场景，动物活动为科普编排；原创外形模型，非扫描。' };
-  const sky = new THREE.HemisphereLight('#cbecef', '#1b5365', 1.6); root.add(sky);
-  const sun = new THREE.DirectionalLight('#fff6e3', 2.5); sun.position.set(-25, 45, 30); root.add(sun);
-  const fill = new THREE.DirectionalLight('#86c1d2', .55); fill.position.set(25, -2, -25); root.add(fill);
-  const water = own(new THREE.ShaderMaterial({ side: THREE.BackSide, depthWrite: false,
-    uniforms: { upper: { value: colour('#6cabbc').clone() }, lower: { value: colour('#0d3f60').clone() } },
-    vertexShader: 'varying vec3 direction;void main(){direction=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-    fragmentShader: 'uniform vec3 upper;uniform vec3 lower;varying vec3 direction;void main(){float h=smoothstep(-.2,.9,normalize(direction).y);gl_FragColor=vec4(mix(lower,upper,h),1.);\n#include <colorspace_fragment>\n}' }));
-  const dome = new THREE.Mesh(own(new THREE.SphereGeometry(240, 32, 18)), water); dome.renderOrder = -2; dome.name = 'Open water light gradient'; root.add(dome);
-  const surfaceMaterial = own(new THREE.ShaderMaterial({ transparent: true, side: THREE.DoubleSide, depthWrite: false,
-    uniforms: { time: clock },
-    vertexShader: 'uniform float time;varying vec3 sea;void main(){vec3 p=position;p.z+=.10*sin(p.x*.26+time*.71)+.055*sin(p.y*.31-time*.45);sea=p;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);}',
-    fragmentShader: 'uniform float time;varying vec3 sea;void main(){float ripple=pow(.5+.5*sin(sea.x*.39+sea.y*.31+time*.9),12.);vec3 c=gl_FrontFacing?vec3(.17,.48,.59):vec3(.47,.74,.79);gl_FragColor=vec4(c+ripple*.11,gl_FrontFacing?.62:.34);\n#include <colorspace_fragment>\n}' }));
-  const surface = new THREE.Mesh(own(new THREE.PlaneGeometry(440, 440, 100, 100)), surfaceMaterial); surface.rotation.x = -Math.PI / 2; surface.name = 'Pelagic metre-scale sea surface'; root.add(surface);
-  const whaleGeometry = own(animalGeometry('whale')), whaleMaterial = own(animalMaterial('whale', clock, { value: .2 }));
+  const uniforms = () => Object.fromEntries(['Phase','Amplitude','Stroke','FlukePitch','PectoralPitch','PectoralRoll'].map(key=>[`cetacean${key}`,{value:0}]));
+  const whaleUniforms=uniforms(),dolphinUniforms=Array.from({length:6},uniforms);
+  const applyMotion = (values,pose) => {for(const key of ['Phase','Amplitude','Stroke','FlukePitch','PectoralPitch','PectoralRoll'])values[`cetacean${key}`].value=pose[key[0].toLowerCase()+key.slice(1)];};
+  const whaleGeometry = own(animalGeometry('whale')), whaleMaterial = own(animalMaterial('whale', whaleUniforms));
   const whale = new THREE.Mesh(whaleGeometry, whaleMaterial); whale.scale.setScalar(13.8); whale.name = '13.8 m humpback whale / original project model'; root.add(whale);
   const dolphinGeometry = own(animalGeometry('dolphin'));
-  const dolphins = podOffsets.map((_, i) => { const mesh = new THREE.Mesh(dolphinGeometry, own(animalMaterial('dolphin', clock, { value: i * 1.31 }))); mesh.scale.setScalar(2.65); mesh.name = `2.65 m bottlenose dolphin ${i + 1}`; root.add(mesh); return mesh; });
+  const dolphins = Array.from({length:6},(_, i) => { const mesh = new THREE.Mesh(dolphinGeometry, own(animalMaterial('dolphin', dolphinUniforms[i]))); mesh.scale.setScalar(2.65); mesh.name = `2.65 m bottlenose dolphin ${i + 1}`; root.add(mesh); return mesh; });
   const random = seeded(seed), suspended = [];
   for (let i = 0; i < 320; i++) suspended.push((random() - .5) * 130, -random() * 35, (random() - .5) * 110);
   const dustGeometry = own(new THREE.BufferGeometry()); dustGeometry.setAttribute('position', new THREE.Float32BufferAttribute(suspended, 3));
@@ -241,41 +242,48 @@ export function createOceanPrimerPelagic(scene, { seed = 55 } = {}) {
 
   const cameraPose = t => {
     t = clamp(t, 0, 80);
-    const w = oceanPrimerWhalePose(t), pod = oceanPrimerDolphinPoses(t);
+    const w = motion.whaleAt(t,surfaceAt), pod = motion.dolphinsAt(t);
     const dolphinTarget = pod.reduce((center, animal) => center.add(vec(Object.values(animal.position))), new THREE.Vector3()).divideScalar(pod.length);
     const whaleTarget = vec(Object.values(w.position)).add(new THREE.Vector3(.6, .6, 0));
     const toPod = smooth(34, 43, t), returnView = smooth(65, 77, t);
     const target = whaleTarget.clone().lerp(dolphinTarget, toPod).lerp(whaleTarget.clone().lerp(dolphinTarget, .55), returnView);
-    const surfaceVisit = smooth(9, 16, t) * (1 - smooth(22, 31, t));
+    const surfaceVisit = smooth(10, 16, t) * (1 - smooth(23, 32, t));
     const aboveSea = mix(target.y + 3.4, 3.8, surfaceVisit);
     // A closer oblique view makes the complete pod the foreground subject;
     // parallax places the much larger whale to the side in the background.
-    const distance = mix(mix(24, 10, toPod), 27, returnView);
+    const distance = mix(mix(24, 13, toPod), 53, returnView);
     const position = target.clone().add(new THREE.Vector3(mix(mix(5.5, 8.5, toPod), 2.5, returnView), 0, distance)); position.y = mix(aboveSea, target.y + mix(2.3, 3.2, returnView), toPod);
-    return { position: point(position), target: point(target), fov: 54, depthM: Math.max(0, -position.y) };
+    return { position: point(position), target: point(target), fov: 54, depthM: Math.max(0, surfaceAt(position.x,position.z,t).heightM-position.y) };
   };
-  const environmentAt = t => {
-    const pose = cameraPose(t), above = pose.position.y > .1;
-    return { background: above ? '#7daec0' : '#0d3f60', fogColor: above ? '#7daec0' : '#155370', fogDensity: above ? .0016 : .012, depthM: pose.depthM, surfaceY: 0, lighting: 'blue-green natural daylight' };
+  const environmentAt = input => {
+    const position = typeof input==='number'?cameraPose(input).position:input?.position??input??cameraPose(time).position;
+    return {...water.environmentAt(position),lighting:'shared blue-green natural daylight'};
   };
-  const update = t => {
+  const update = (t,actualCamera=null,globalSec=285+t) => {
     if (disposed) return; time = clock.value = clamp(Number.isFinite(t) ? t : 0, 0, 80);
-    const wp = oceanPrimerWhalePose(time); whale.position.set(wp.position.x, wp.position.y, wp.position.z); whale.rotation.set(0, wp.heading, wp.pitch, 'YXZ');
-    const poses = oceanPrimerDolphinPoses(time);
-    dolphins.forEach((mesh, i) => { const p = poses[i]; mesh.position.set(p.position.x, p.position.y, p.position.z); mesh.rotation.set(0, p.heading, p.pitch, 'YXZ'); });
-    spray.visible = wp.breathing; sprayMaterial.uniforms.opacity.value = smooth(17.5, 18, time) * (1 - smooth(19.7, 20.5, time)) * .30;
-    whale.updateMatrixWorld(true); spray.position.copy(new THREE.Vector3(.275, .086, 0).applyMatrix4(whale.matrixWorld));
-    const pose = cameraPose(time), env = environmentAt(time); dome.position.set(pose.position.x, pose.position.y, pose.position.z);
-    water.uniforms.upper.value.set(pose.position.y > 0 ? '#8cb9c9' : '#6cabbc');
-    scene.background = new THREE.Color(env.background); scene.fog = new THREE.FogExp2(env.fogColor, env.fogDensity);
+    globalTime=Number.isFinite(globalSec)?Math.max(0,globalSec):285+time;
+    currentWhale=motion.whaleAt(time,surfaceAt);currentDolphins=motion.dolphinsAt(time);
+    const wp=currentWhale;whale.position.set(wp.position.x,wp.position.y,wp.position.z);whale.quaternion.fromArray(wp.quaternion);applyMotion(whaleUniforms,wp);
+    dolphins.forEach((mesh,i)=>{const p=currentDolphins[i];mesh.position.set(p.position.x,p.position.y,p.position.z);mesh.quaternion.fromArray(p.quaternion);applyMotion(dolphinUniforms[i],p);});
+    whale.updateMatrixWorld(true);spray.position.copy(new THREE.Vector3(PELAGIC_WHALE_NOSE_LOCAL.x,PELAGIC_WHALE_NOSE_LOCAL.y,0).applyMatrix4(whale.matrixWorld));
+    const actualSurface=water.sampleSurface(spray.position.x,spray.position.z,globalTime);noseClearanceM=spray.position.y-actualSurface.heightM;
+    spray.visible=wp.breathingWindow&&noseClearanceM>.025;sprayMaterial.uniforms.opacity.value=spray.visible?smooth(18,18.25,time)*(1-smooth(20.1,21,time))*.30:0;
+    water.update(globalTime,actualCamera??cameraPose(time).position);
   };
   update(0);
   return {
     root, update, cameraPose, environmentAt,
+    updatePresentation:(actualCamera,globalSec=globalTime)=>{if(!disposed)water.update(globalSec,actualCamera);},
+    sampleSurface:(x,z,t=globalTime)=>water.sampleSurface(x,z,t),
+    motionAt:(t)=>({whale:motion.whaleAt(t,surfaceAt),dolphins:motion.dolphinsAt(t)}),
+    posedAnimalBounds:()=>[whale,...dolphins].map((mesh,i)=>{
+      mesh.updateMatrixWorld(true);const p=mesh.geometry.attributes.position,role=mesh.geometry.attributes.cetaceanRole,pose=i===0?currentWhale:currentDolphins[i-1],box=new THREE.Box3();
+      for(let k=0;k<p.count;k++)box.expandByPoint(deformPelagicVertex(new THREE.Vector3().fromBufferAttribute(p,k),role.getX(k),pose,i===0?'whale':'dolphin').applyMatrix4(mesh.matrixWorld));return {name:mesh.name,box};}),
     diagnostics: () => ({ kind: 'ocean-primer-pelagic', time, duration: 80, region: 'Caribbean representative observation', animals: 7, species: OCEAN_PRIMER_PELAGIC_SPECIES,
-      authoredModels: true, sourceScans: false, naturalPopulationSimulation: false, whaleBreathing: spray.visible, externalAssets: 0,
+      authoredModels: true, sourceScans: false, naturalPopulationSimulation: false, whaleBreathing: spray.visible, noseClearanceM,globalTime, externalAssets: 0,
+      appearanceVersion:OCEAN_PRIMER_PELAGIC_APPEARANCE_VERSION,motion:motion.diagnostics(),whaleMotion:currentWhale,dolphinMotion:currentDolphins,water:water.diagnostics(),
       whaleTriangles: whaleGeometry.index.count / 3, dolphinTriangles: dolphinGeometry.index.count / 3,
       renderedAnimalTriangles: whaleGeometry.index.count / 3 + dolphins.length * dolphinGeometry.index.count / 3 }),
-    dispose: () => { if (disposed) return; disposed = true; root.removeFromParent(); root.clear(); for (const resource of resources) resource.dispose(); resources.clear(); },
+    dispose: () => { if (disposed) return; disposed = true;water.dispose();root.removeFromParent(); root.clear(); for (const resource of resources) resource.dispose(); resources.clear(); },
   };
 }
