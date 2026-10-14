@@ -2783,6 +2783,582 @@
     ],
     "screenshotConditions": "Complete 1x playback used 1280x720; later independent observation controls were inspected in the actual narrower 667x871 pane. Full original images retained; no crop or resized viewport for flattering evidence."
   },
+  "siteMap": {
+    "date": "2026-10-14",
+    "scope": "Published experience links, every copied public HTML page, stage documents and release explanations; ignored local output reviews excluded.",
+    "currentStage": "07",
+    "recommended": "../?demo=ocean-primer&seed=55",
+    "projectMap": "project-map/",
+    "projectOverview": "https://github.com/yydshly/ocean-world/blob/main/docs/PROJECT_OVERVIEW.md",
+    "groups": [
+      {
+        "id": "main",
+        "title": "主要观看与探索入口",
+        "description": "先看7分30秒总览，再按需要进入保留主线或研究模块。",
+        "entries": [
+          {
+            "id": "experience-primer",
+            "title": "第一次认识海洋",
+            "description": "7分30秒 · 海面、浅海、鲸豚与深海，带中文讲解",
+            "href": "../?demo=ocean-primer&seed=55",
+            "category": "main",
+            "status": "当前推荐"
+          },
+          {
+            "id": "experience-journey",
+            "title": "4分钟浅海体验",
+            "description": "推荐主线 · 鱼群 → 礁谷 → 沙道 → 草床",
+            "href": "../?demo=shallow-journey&seed=55",
+            "category": "main",
+            "status": "保留主线"
+          },
+          {
+            "id": "experience-school",
+            "title": "60秒鱼群协同",
+            "description": "同一浅海 · 分流、汇合、散开与聚群",
+            "href": "../?demo=shallow-journey&seed=55&school=1",
+            "category": "main",
+            "status": "保留主线"
+          },
+          {
+            "id": "experience-sample",
+            "title": "75秒历史样板",
+            "description": "早期冻结路线 · 与当前主线范围不同",
+            "href": "../?demo=shallow-sample&seed=55",
+            "category": "main",
+            "status": "历史样板"
+          },
+          {
+            "id": "experience-all",
+            "title": "能力总览",
+            "description": "查看观察工具与各专题入口",
+            "href": "../?demo=all&seed=55",
+            "category": "main",
+            "status": "研究入口"
+          },
+          {
+            "id": "experience-director",
+            "title": "导演模式",
+            "description": "研究入口 · 可选章与变速，跨区可能等待",
+            "href": "../?demo=director&seed=55",
+            "category": "main",
+            "status": "研究入口"
+          },
+          {
+            "id": "experience-life",
+            "title": "生命巡游",
+            "description": "研究路线 · 4分钟观察，区域准备另计",
+            "href": "../?demo=life-expedition&seed=55&world=whole-seabed",
+            "category": "main",
+            "status": "研究入口"
+          },
+          {
+            "id": "experience-reef",
+            "title": "热带礁谷",
+            "description": "区域入口 · 礁体与动物群落",
+            "href": "../?demo=reef-valley-region&seed=55&world=whole-seabed",
+            "category": "main",
+            "status": "研究入口"
+          },
+          {
+            "id": "experience-meadow",
+            "title": "海草草甸",
+            "description": "区域入口 · 草床、沙底与坡面",
+            "href": "../?demo=seagrass-meadow-region&seed=55&world=whole-seabed",
+            "category": "main",
+            "status": "研究入口"
+          },
+          {
+            "id": "experience-kelp",
+            "title": "海带林",
+            "description": "研究入口 · 部分旧存档无法恢复，可能卡顿",
+            "href": "../?demo=kelp-life&seed=55",
+            "category": "main",
+            "status": "研究入口"
+          },
+          {
+            "id": "experience-deep",
+            "title": "深海软底",
+            "description": "研究入口 · 底栖群落与照明，可能卡顿",
+            "href": "../?demo=deep-life&seed=55",
+            "category": "main",
+            "status": "研究入口"
+          }
+        ]
+      },
+      {
+        "id": "topics",
+        "title": "专题与生境观察",
+        "description": "15个专题入口；与主要入口有4个重合地址，分别按用途展示。",
+        "entries": [
+          {
+            "id": "topic-0",
+            "title": "浅海 / 礁谷",
+            "description": "浅海专题；出现受生境、种子与已有存档影响",
+            "href": "../?demo=reef-valley-region&seed=55&world=whole-seabed",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-1",
+            "title": "浅海 / 海草甸",
+            "description": "浅海专题；出现受生境、种子与已有存档影响",
+            "href": "../?demo=seagrass-meadow-region&seed=55&world=whole-seabed",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-2",
+            "title": "浅海 / 海岸生命带",
+            "description": "浅海专题；出现受生境、种子与已有存档影响",
+            "href": "../?demo=coastal-life-belt&seed=55&world=whole-seabed",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-3",
+            "title": "浅海 / 丰富礁缘群落",
+            "description": "浅海专题；出现受生境、种子与已有存档影响",
+            "href": "../?demo=biodiversity&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-4",
+            "title": "浅海 / 底栖群落",
+            "description": "浅海专题；出现受生境、种子与已有存档影响",
+            "href": "../?demo=benthic&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-5",
+            "title": "浅海 / 水层群落",
+            "description": "浅海专题；出现受生境、种子与已有存档影响",
+            "href": "../?demo=shoal-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-6",
+            "title": "浅海 / 草床群落",
+            "description": "浅海专题；出现受生境、种子与已有存档影响",
+            "href": "../?demo=meadow-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-7",
+            "title": "海带林 / 底栖生活",
+            "description": "海带林专题；旧存档恢复与低帧率限制保留",
+            "href": "../?demo=kelp-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-8",
+            "title": "海带林 / 林下附着",
+            "description": "海带林专题；旧存档恢复与低帧率限制保留",
+            "href": "../?demo=kelp-understory-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-9",
+            "title": "海带林 / 近底生活",
+            "description": "海带林专题；旧存档恢复与低帧率限制保留",
+            "href": "../?demo=kelp-near-bottom-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-10",
+            "title": "海带林 / 水层生活",
+            "description": "海带林专题；旧存档恢复与低帧率限制保留",
+            "href": "../?demo=kelp-water-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-11",
+            "title": "深海 / 底栖生活",
+            "description": "深海专题；旧低帧率限制保留",
+            "href": "../?demo=deep-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-12",
+            "title": "深海 / 硬底附着",
+            "description": "深海专题；旧低帧率限制保留",
+            "href": "../?demo=deep-hard-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-13",
+            "title": "深海 / 离底游泳",
+            "description": "深海专题；旧低帧率限制保留",
+            "href": "../?demo=deep-water-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          },
+          {
+            "id": "topic-14",
+            "title": "深海 / 中层水域",
+            "description": "深海专题；旧低帧率限制保留",
+            "href": "../?demo=deep-midwater-life&seed=55",
+            "category": "topics",
+            "status": "范围探索"
+          }
+        ]
+      },
+      {
+        "id": "pages",
+        "title": "网页、图示、实景与素材来源",
+        "description": "只列实际发布的public静态网页，保留兼容跳转入口。",
+        "entries": [
+          {
+            "id": "page-assets-shallow-artist-credits-html",
+            "title": "资产来源与许可",
+            "description": "署名、来源和再分发条件",
+            "href": "../assets/shallow-artist/credits.html",
+            "file": "assets/shallow-artist/credits.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-output-product-overview-index-html",
+            "title": "早期导览兼容入口",
+            "description": "正式发布的跳转页，进入当前overview",
+            "href": "../output/product-overview/index.html",
+            "file": "output/product-overview/index.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-evidence-review-html",
+            "title": "75秒样板历史验收",
+            "description": "冻结样板的实景与检查边界",
+            "href": "../overview/evidence/review.html",
+            "file": "overview/evidence/review.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-index-html",
+            "title": "产品导览首页",
+            "description": "当前主推荐、总入口、阶段和扩展方向",
+            "href": "../overview/index.html",
+            "file": "overview/index.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-poster-html",
+            "title": "原产品能力长页",
+            "description": "含历次能力说明与历史验收范围",
+            "href": "../overview/poster.html",
+            "file": "overview/poster.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-project-map-index-html",
+            "title": "项目与扩展一图总览",
+            "description": "新图、当前阶段和未来扩展清单",
+            "href": "../overview/project-map/index.html",
+            "file": "overview/project-map/index.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-project-map-poster-html",
+            "title": "项目总览图制作页",
+            "description": "用项目实景说明底座、扩展与应用",
+            "href": "../overview/project-map/poster.html",
+            "file": "overview/project-map/poster.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-roadmap-index-html",
+            "title": "海洋扩展与应用规划",
+            "description": "空间、天气、物种、轨迹、生态和游戏能力",
+            "href": "../overview/roadmap/index.html",
+            "file": "overview/roadmap/index.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-stage-04-index-html",
+            "title": "阶段04栖息地历史对照",
+            "description": "三个完整栖息地与两段自然过渡",
+            "href": "../overview/stage-04/index.html",
+            "file": "overview/stage-04/index.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-stage-04-review-html",
+            "title": "阶段04历史验收页",
+            "description": "当时的对照画面与有限检查结果",
+            "href": "../overview/stage-04/review.html",
+            "file": "overview/stage-04/review.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-stage-05-index-html",
+            "title": "阶段05鱼群协同",
+            "description": "分流、汇合、散开、重新聚集与旁白",
+            "href": "../overview/stage-05/index.html",
+            "file": "overview/stage-05/index.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-stage-06-index-html",
+            "title": "阶段06历史实景",
+            "description": "首轮海洋总览本地归档",
+            "href": "../overview/stage-06/index.html",
+            "file": "overview/stage-06/index.html",
+            "category": "pages",
+            "status": "正式网页"
+          },
+          {
+            "id": "page-overview-stage-07-index-html",
+            "title": "阶段07实景与验收",
+            "description": "7分30秒海洋总览；保留本地历史口径",
+            "href": "../overview/stage-07/index.html",
+            "file": "overview/stage-07/index.html",
+            "category": "pages",
+            "status": "正式网页"
+          }
+        ]
+      },
+      {
+        "id": "stages",
+        "title": "阶段01–07与有限收尾记录",
+        "description": "GitHub中的历史阶段文档；当时结果不自动代表当前远端验收。",
+        "entries": [
+          {
+            "id": "docs-stages-ENTRY_STRUCTURE_CLOSEOUT_20261014.md",
+            "title": "已有入口：结构稳定性有限排查",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/ENTRY_STRUCTURE_CLOSEOUT_20261014.md",
+            "file": "docs/stages/ENTRY_STRUCTURE_CLOSEOUT_20261014.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-ENTRY_USE_CLOSEOUT_20261013.md",
+            "title": "入口可用性：有限排查与本地保护版",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/ENTRY_USE_CLOSEOUT_20261013.md",
+            "file": "docs/stages/ENTRY_USE_CLOSEOUT_20261013.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_01_OCEAN_PROTOTYPE.md",
+            "title": "阶段 01：海底世界可演示原型",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_01_OCEAN_PROTOTYPE.md",
+            "file": "docs/stages/STAGE_01_OCEAN_PROTOTYPE.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_02_GUIDED_VIEW.md",
+            "title": "阶段02增补：边看边听与专注观看",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_02_GUIDED_VIEW.md",
+            "file": "docs/stages/STAGE_02_GUIDED_VIEW.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_02_NARRATION.md",
+            "title": "阶段02增补：浅海中文讲解",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_02_NARRATION.md",
+            "file": "docs/stages/STAGE_02_NARRATION.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_02_SHALLOW_JOURNEY.md",
+            "title": "阶段02：完整浅海体验",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_02_SHALLOW_JOURNEY.md",
+            "file": "docs/stages/STAGE_02_SHALLOW_JOURNEY.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_03_LIVING_COMMUNITIES.md",
+            "title": "阶段03：三个有生活感的浅海群落",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_03_LIVING_COMMUNITIES.md",
+            "file": "docs/stages/STAGE_03_LIVING_COMMUNITIES.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_03_WATER_COLUMN.md",
+            "title": "阶段03补充：立体水层与整体取景",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_03_WATER_COLUMN.md",
+            "file": "docs/stages/STAGE_03_WATER_COLUMN.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_04_COMPLETE_HABITATS.md",
+            "title": "阶段04：三个完整栖息地、两段自然过渡",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_04_COMPLETE_HABITATS.md",
+            "file": "docs/stages/STAGE_04_COMPLETE_HABITATS.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_04_LOADING.md",
+            "title": "阶段04：入口加载有限完善（本地）",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_04_LOADING.md",
+            "file": "docs/stages/STAGE_04_LOADING.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_05_FISH_SCHOOLING.md",
+            "title": "阶段05：一群鱼的协同演示",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_05_FISH_SCHOOLING.md",
+            "file": "docs/stages/STAGE_05_FISH_SCHOOLING.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_06_OCEAN_PRIMER.md",
+            "title": "阶段06：第一次认识海洋",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_06_OCEAN_PRIMER.md",
+            "file": "docs/stages/STAGE_06_OCEAN_PRIMER.md",
+            "category": "stages",
+            "status": "阶段归档"
+          },
+          {
+            "id": "docs-stages-STAGE_07_OCEAN_PRIMER_REALISM.md",
+            "title": "阶段07：海洋总览的整体真实感与观察旅程",
+            "description": "阶段归档 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/stages/STAGE_07_OCEAN_PRIMER_REALISM.md",
+            "file": "docs/stages/STAGE_07_OCEAN_PRIMER_REALISM.md",
+            "category": "stages",
+            "status": "阶段归档"
+          }
+        ]
+      },
+      {
+        "id": "records",
+        "title": "当前说明、后续规划与发布回执",
+        "description": "区分已发布事实和后续方案；游戏化仍未启动。",
+        "entries": [
+          {
+            "id": "project-overview",
+            "title": "项目全貌与扩展说明",
+            "description": "目标、当前阶段、场景举例、物种轨迹和应用方向",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/PROJECT_OVERVIEW.md",
+            "file": "docs/PROJECT_OVERVIEW.md",
+            "category": "records",
+            "status": "当前说明"
+          },
+          {
+            "id": "expansion-roadmap",
+            "title": "扩展与重构路线图",
+            "description": "六个扩展维度、有限阶段与验收标准",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_EXPANSION_ROADMAP.md",
+            "file": "docs/OCEAN_EXPANSION_ROADMAP.md",
+            "category": "records",
+            "status": "后续规划"
+          },
+          {
+            "id": "repository",
+            "title": "GitHub与README",
+            "description": "源码、图示、归档标签与使用说明",
+            "href": "https://github.com/yydshly/ocean-world",
+            "category": "records",
+            "status": "仓库入口"
+          },
+          {
+            "id": "docs-releases-ENTRY_NAVIGATION_PUBLICATION_20261013.md",
+            "title": "入口导航与区域准备：有限收尾",
+            "description": "发布记录 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/ENTRY_NAVIGATION_PUBLICATION_20261013.md",
+            "file": "docs/releases/ENTRY_NAVIGATION_PUBLICATION_20261013.md",
+            "category": "records",
+            "status": "发布记录"
+          },
+          {
+            "id": "docs-releases-PROJECT_GUIDE_MAP_20261014.md",
+            "title": "阶段07补充：统一入口、项目说明与扩展总图",
+            "description": "发布记录 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/PROJECT_GUIDE_MAP_20261014.md",
+            "file": "docs/releases/PROJECT_GUIDE_MAP_20261014.md",
+            "category": "records",
+            "status": "发布记录"
+          },
+          {
+            "id": "docs-releases-STAGE_04_LOADING_PUBLICATION.md",
+            "title": "阶段04入口加载完善：已发布并归档",
+            "description": "发布记录 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_04_LOADING_PUBLICATION.md",
+            "file": "docs/releases/STAGE_04_LOADING_PUBLICATION.md",
+            "category": "records",
+            "status": "发布记录"
+          },
+          {
+            "id": "docs-releases-STAGE_04_PUBLICATION.md",
+            "title": "阶段04发布说明：4分钟浅海体验与进展归档",
+            "description": "发布记录 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_04_PUBLICATION.md",
+            "file": "docs/releases/STAGE_04_PUBLICATION.md",
+            "category": "records",
+            "status": "发布记录"
+          },
+          {
+            "id": "docs-releases-STAGE_05_SCHOOLING_PUBLICATION.md",
+            "title": "阶段05：鱼群协同与中文观察讲解",
+            "description": "发布记录 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md",
+            "file": "docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md",
+            "category": "records",
+            "status": "发布记录"
+          },
+          {
+            "id": "docs-releases-STAGE_07_PUBLICATION.md",
+            "title": "阶段07：海洋总览发布与扩展方案归档",
+            "description": "发布记录 · 历史条件按各文档说明",
+            "href": "https://github.com/yydshly/ocean-world/blob/main/docs/releases/STAGE_07_PUBLICATION.md",
+            "file": "docs/releases/STAGE_07_PUBLICATION.md",
+            "category": "records",
+            "status": "发布记录"
+          }
+        ]
+      }
+    ],
+    "counts": {
+      "mainEntries": 11,
+      "topicEntries": 15,
+      "distinctExperienceUrls": 22,
+      "publicHtmlPages": 13,
+      "stageDocuments": 13,
+      "releaseDocuments": 6,
+      "indexCards": 61
+    }
+  },
   "sources": [
     "src/App.jsx",
     "src/OceanApp.jsx",

@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-14",
+  "stage": "07",
+  "scope": "Documentation, navigation and project map; no scene, animal, audio, ecology or save changes.",
+  "status": "local-guide-verified-deployment-recorded-by-workflow-and-published-tag",
+  "publication": {
+    "workflow": "https://github.com/yydshly/ocean-world/actions/workflows/pages.yml",
+    "confirmationTag": "stage-07-project-map-20261014",
+    "runtimeRelease": "ba7089af439f6c01d4842024dffe5eb1b6358cde"
+  },
+  "counts": {
+    "mainEntries": 11,
+    "topicEntries": 15,
+    "distinctExperienceUrls": 22,
+    "publicHtmlPages": 13,
+    "stageDocuments": 13,
+    "releaseDocuments": 6,
+    "indexCards": 61
+  },
+  "sceneCandidates": 18,
+  "build": {
+    "productionBase": "/ocean-world/",
+    "viteSeconds": 11.63,
+    "passed": true
+  },
+  "checks": {
+    "publication": {
+      "passed": 8,
+      "failed": 0
+    },
+    "sites": {
+      "passed": 4,
+      "failed": 0
+    }
+  },
+  "preserved": {
+    "runtimeFiles": 388,
+    "changedRuntime": [],
+    "builtJsCss": 30,
+    "changedBuiltJsCss": [],
+    "historicalInventoryFields": [
+      "entryAudit",
+      "currentStage",
+      "historicalHabitatStage",
+      "validation",
+      "addition",
+      "stage07Publication",
+      "stage07LocalValidation"
+    ],
+    "changedHistoricalInventory": [],
+    "historicalPngSha256": "fc31a5e84742672276f9105db33e2a99335ae76962b9a0e2d896ac681beb50ef"
+  },
+  "browser": {
+    "localBase": "http://127.0.0.1:4175/ocean-world/overview/",
+    "search": {
+      "weather": 1,
+      "unmatched": 0,
+      "emptyRestores": 61
+    },
+    "filters": {
+      "experienceCards": 26,
+      "distinctExperienceUrls": 22,
+      "webPages": 13,
+      "stages": 13,
+      "explanations": 9,
+      "all": 61
+    },
+    "desktop": {
+      "viewportWidth": 1280,
+      "horizontalOverflow": false,
+      "mapDecoded": true,
+      "mapWidth": 1600,
+      "mapHeight": 3884
+    },
+    "responsive": {
+      "requestedAndObservedWidth": 390,
+      "observedHeight": 844,
+      "documentWidth": 375,
+      "horizontalOverflow": false,
+      "filtersWrap": true,
+      "mapDecoded": true,
+      "mapDisplayWidth": 343,
+      "mapDisplayHeight": 832,
+      "scope": "Browser layout only, not actual phone or playback performance; override reset."
+    },
+    "roadmap": {
+      "cards": 18,
+      "scenesAnchorReached": true
+    },
+    "logs": {
+      "observedErrors": 0,
+      "observedWarnings": 0
+    },
+    "screenshots": [
+      "project-guide-map/local-home.jpg"
+    ]
+  },
+  "image": {
+    "date": "2026-10-14",
+    "stage": "07",
+    "scope": "Current published representative modules plus explicitly labelled future candidates; recap reuses the surface still as an illustrative module, not a new recap capture.",
+    "renderer": "Actual in-app browser full-page screenshot of the code-native poster; no AI scene assets or photo editing.",
+    "image": {
+      "file": "ocean-project-map.jpg",
+      "width": 1600,
+      "height": 3884,
+      "sha256": "1b80b24be056295c683b72f036fea220c06184d3019a04911d45449a6c1e0cbd"
+    },
+    "source": {
+      "file": "poster.html",
+      "sha256": "90428e676ae828dc298b77b3c9ea1569397e73df36b8e6598224c493d9eb170a"
+    },
+    "screenshots": [
+      {
+        "file": "overview/stage-07/surface.jpg",
+        "sha256": "92713288985f1114e82f645518dd9d8776ebc48be0b236fabc1f60bd5e75d8b2"
+      },
+      {
+        "file": "overview/stage-07/shallow.jpg",
+        "sha256": "729489b0daf78b4ea43900bcdf13e078945b61b3da11cca24f4c45706a9c29bd"
+      },
+      {
+        "file": "overview/stage-07/whale-underwater.jpg",
+        "sha256": "e9f1869b2d3f111225a219a499b4b4d19f03b314d8c8e34ddd1eec96d08dd94a"
+      },
+      {
+        "file": "overview/stage-07/deep-seabed.jpg",
+        "sha256": "6a4d0f00b5c7f87cb2900bec40dcacad011cc1c7e8f47e44ea93465c96b5a753"
+      }
+    ],
+    "credits": "../../assets/shallow-artist/credits.html",
+    "historicalImage": {
+      "file": "overview/ocean-world-product-atlas.png",
+      "sha256": "fc31a5e84742672276f9105db33e2a99335ae76962b9a0e2d896ac681beb50ef"
+    }
+  },
+  "limitations": [
+    "Existing 17.679-second ordinary remote loading and runtime limits are inherited, not remeasured or repaired.",
+    "Presence and correct targets do not mean all research routes were replayed.",
+    "No new 450-second playback; unchanged runtime relies on independent original publication receipt.",
+    "Human hearing, actual mobile performance and novice comprehension were not verified.",
+    "Original stage and local evidence retain dated claims; future scenes, weather, real migration and games are not delivered."
+  ]
+}

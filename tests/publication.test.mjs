@@ -2,8 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { livingShallowsSpeciesCatalog, sceneCatalogs } from '../src/sceneCatalog.js';
 import { DIRECTOR_STEPS } from '../src/directorTour.js';
+import { EXPERIENCE_ENTRIES, experienceHref } from '../src/experienceNavigation.js';
 import { build } from 'esbuild';
 import { createRequire } from 'node:module';
 import React from 'react';
@@ -11,7 +13,7 @@ import { renderToPipeableStream } from 'react-dom/server';
 import { PassThrough } from 'node:stream';
 import { shallowNarrationTimeline } from '../src/shallowNarrationTimeline.js';
 
-const guidePages = ['overview/index.html', 'overview/poster.html', 'overview/evidence/review.html', 'overview/stage-04/index.html', 'overview/stage-05/index.html', 'overview/stage-06/index.html', 'overview/stage-07/index.html', 'overview/roadmap/index.html'];
+const guidePages = ['overview/index.html', 'overview/poster.html', 'overview/evidence/review.html', 'overview/stage-04/index.html', 'overview/stage-05/index.html', 'overview/stage-06/index.html', 'overview/stage-07/index.html', 'overview/roadmap/index.html', 'overview/project-map/index.html', 'overview/project-map/poster.html'];
 const require = createRequire(import.meta.url);
 // The browser-only loading store has no server snapshot. Supply its current
 // snapshot for this shell check, retaining App's actual lazy route selection.
@@ -102,6 +104,96 @@ test('published guide uses portable entries and ships every local page/image/evi
   }
 });
 
+test('homepage index exposes every published HTML page, experience and archive document without escaping either mount', () => {
+  const map = JSON.parse(fs.readFileSync('public/overview/site-map.json', 'utf8'));
+  const inventory = JSON.parse(fs.readFileSync('public/overview/inventory.json', 'utf8'));
+  assert.deepEqual(inventory.siteMap, map, 'homepage inventory and downloadable entry index disagree');
+  const groups = new Map(map.groups.map(group => [group.id, group.entries]));
+  assert.equal(groups.size, map.groups.length, 'duplicate entry groups');
+  const entries = map.groups.flatMap(group => {
+    for (const entry of group.entries) assert.equal(entry.category, group.id, entry.id);
+    return group.entries;
+  });
+  assert.equal(new Set(entries.map(entry => entry.id)).size, entries.length, 'duplicate entry identities');
+  assert.equal(map.counts.indexCards, entries.length);
+  assert.equal(map.counts.mainEntries, groups.get('main').length);
+  assert.equal(map.counts.topicEntries, groups.get('topics').length);
+  assert.deepEqual(groups.get('main').map(entry => entry.href), EXPERIENCE_ENTRIES.map(entry => experienceHref(entry.id, {base:'../', seed:'55'})),
+    'homepage omitted or changed a preserved application entry');
+  const experienceUrls = [...groups.get('main'), ...groups.get('topics')].map(entry => new URL(entry.href, 'https://example.test/ocean-world/overview/').href);
+  assert.equal(map.counts.distinctExperienceUrls, new Set(experienceUrls).size);
+  const publicHtml = fs.readdirSync('public', {recursive:true}).filter(file => file.endsWith('.html') && fs.statSync(path.join('public', file)).isFile())
+    .map(file => file.replaceAll('\\', '/')).sort();
+  assert.deepEqual(groups.get('pages').map(entry => entry.file).sort(), publicHtml,
+    'a copied public webpage is missing from the homepage');
+  assert.equal(map.counts.publicHtmlPages, publicHtml.length);
+  for (const [directory, count] of [['stages', 'stageDocuments'], ['releases', 'releaseDocuments']]) {
+    const documents = fs.readdirSync(`docs/${directory}`).filter(file => file.endsWith('.md')).map(file => `docs/${directory}/${file}`).sort();
+    assert.deepEqual(entries.filter(entry => entry.file?.startsWith(`docs/${directory}/`)).map(entry => entry.file).sort(), documents,
+      `homepage omitted a ${directory} document`);
+    assert.equal(map.counts[count], documents.length);
+  }
+  const homepage = fs.readFileSync('public/overview/index.html', 'utf8');
+  const cards = [...homepage.matchAll(/<article\b[^>]*\bdata-page-card\b[^>]*>([\s\S]*?)<\/article>/g)];
+  assert.equal(cards.length, entries.length, 'downloadable index entries are not all displayed on the homepage');
+  const displayedHrefs = cards.map(([, html]) => html.match(/href="([^"]+)"/)[1].replaceAll('&amp;', '&')).sort();
+  assert.deepEqual(displayedHrefs, entries.map(entry => entry.href).sort());
+  for (const mount of ['/ocean-world/', '/']) {
+    const base = new URL(mount, 'https://example.test');
+    for (const entry of entries) {
+      const url = new URL(entry.href, new URL('overview/', base));
+      assert.ok(!['localhost', '127.0.0.1'].includes(url.hostname), `Local-only index link: ${entry.href}`);
+      if (url.origin !== base.origin) {
+        assert.equal(url.origin, 'https://github.com', entry.href);
+        if (entry.file) {
+          assert.equal(decodeURIComponent(url.pathname), `/yydshly/ocean-world/blob/main/${entry.file}`, entry.href);
+          assert.ok(fs.statSync(entry.file).isFile(), `Missing linked document: ${entry.file}`);
+        } else assert.equal(url.pathname, '/yydshly/ocean-world', entry.href);
+        continue;
+      }
+      assert.ok(url.pathname.startsWith(mount), `Index escaped mount: ${entry.href}`);
+      const relative = decodeURIComponent(url.pathname.slice(mount.length));
+      if (!relative) {
+        assert.ok(url.searchParams.has('demo'), `Index lacks a specific experience: ${entry.href}`);
+        continue;
+      }
+      assert.equal(relative, entry.file, `Index points to a different webpage: ${entry.href}`);
+      assert.ok(fs.statSync(path.join('public', relative)).isFile(), `Missing indexed page: ${relative}`);
+    }
+  }
+});
+
+test('new README overview image is visible outside history and matches its actual poster and archived screenshot sources', () => {
+  const folder = 'public/overview/project-map';
+  const provenance = JSON.parse(fs.readFileSync(`${folder}/provenance.json`, 'utf8'));
+  const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
+  const image = fs.readFileSync(path.join(folder, provenance.image.file));
+  assert.equal(image.readUInt16BE(0), 0xffd8, 'README overview must be the actual JPEG capture');
+  assert.equal(path.extname(provenance.image.file), '.jpg');
+  assert.deepEqual(imageSize(image, provenance.image.file), [provenance.image.width, provenance.image.height]);
+  assert.deepEqual([provenance.image.width, provenance.image.height], [1600, 3884]);
+  assert.equal(sha256(image), provenance.image.sha256, 'poster raster changed without updating its capture evidence');
+  assert.equal(provenance.source.file, 'poster.html');
+  const source = fs.readFileSync(path.join(folder, provenance.source.file));
+  assert.equal(sha256(source), provenance.source.sha256, 'poster source changed after the actual raster capture');
+  const references = [...source.toString().matchAll(/(?:src="([^"]+)"|url\(['"]?([^)'"\s]+))/g)]
+    .map(match => new URL(match[1] || match[2], 'https://example.test/overview/project-map/poster.html'))
+    .filter(url => url.origin === 'https://example.test')
+    .map(url => decodeURIComponent(url.pathname.slice(1)));
+  assert.deepEqual([...new Set(references)].sort(), provenance.screenshots.map(frame => frame.file).sort(),
+    'poster image backgrounds are not the documented project screenshots');
+  for (const frame of [...provenance.screenshots, provenance.historicalImage]) {
+    assert.equal(sha256(fs.readFileSync(path.join('public', frame.file))), frame.sha256,
+      `archived guide image changed: ${frame.file}`);
+  }
+  const readme = fs.readFileSync('README.md', 'utf8');
+  const currentImage = `public/overview/project-map/${provenance.image.file}`;
+  const imagePosition = readme.indexOf(currentImage);
+  assert.ok(imagePosition >= 0 && imagePosition < readme.indexOf('<details'), 'new project image is hidden inside historical details');
+  assert.ok([...readme.matchAll(/<details\b[^>]*>[\s\S]*?<\/details>/g)].some(([section]) => section.includes(`public/${provenance.historicalImage.file}`)),
+    'README no longer retains the historical guide image');
+});
+
 test('README points readers to the deployed guide, primary journey and stage evidence', () => {
   const readme = fs.readFileSync('README.md', 'utf8');
   const links = [...readme.matchAll(/\]\((https?:\/\/[^)]+)\)/g)].map(match => new URL(match[1]));
@@ -177,10 +269,10 @@ test('production output includes the guide, query application and prefixed worke
     assert.ok(src.startsWith(expectedBase), `Incorrect build base: ${src}`);
     assert.ok(fs.existsSync(path.join(root, src.slice(expectedBase.length))));
   }
-  for (const file of ['index.html', 'atlas.css', 'inventory.json', 'ocean-world-product-atlas.png', 'evidence/stage.json', 'images/reef.png']) {
+  for (const file of ['index.html', 'atlas.css', 'inventory.json', 'site-map.json', 'ocean-world-product-atlas.png', 'evidence/stage.json', 'images/reef.png']) {
     assert.deepEqual(fs.readFileSync(`${root}/overview/${file}`), fs.readFileSync(`public/overview/${file}`));
   }
-  for (const folder of ['overview/stage-04','overview/stage-05','overview/stage-06','overview/stage-07','overview/roadmap','audio/ocean-primer','audio/shallow-schooling','audio/shallow-journey']) {
+  for (const folder of ['overview/stage-04','overview/stage-05','overview/stage-06','overview/stage-07','overview/roadmap','overview/project-map','audio/ocean-primer','audio/shallow-schooling','audio/shallow-journey']) {
     const sourceRoot = path.join('public',folder);
     for (const file of fs.readdirSync(sourceRoot, {recursive:true})) {
       if (!fs.statSync(path.join(sourceRoot, file)).isFile()) continue;

@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-14",
+  "stage": "07",
+  "scope": "Current published representative modules plus explicitly labelled future candidates; recap reuses the surface still as an illustrative module, not a new recap capture.",
+  "renderer": "Actual in-app browser full-page screenshot of the code-native poster; no AI scene assets or photo editing.",
+  "image": {
+    "file": "ocean-project-map.jpg",
+    "width": 1600,
+    "height": 3884,
+    "sha256": "1b80b24be056295c683b72f036fea220c06184d3019a04911d45449a6c1e0cbd"
+  },
+  "source": {
+    "file": "poster.html",
+    "sha256": "90428e676ae828dc298b77b3c9ea1569397e73df36b8e6598224c493d9eb170a"
+  },
+  "screenshots": [
+    {
+      "file": "overview/stage-07/surface.jpg",
+      "sha256": "92713288985f1114e82f645518dd9d8776ebc48be0b236fabc1f60bd5e75d8b2"
+    },
+    {
+      "file": "overview/stage-07/shallow.jpg",
+      "sha256": "729489b0daf78b4ea43900bcdf13e078945b61b3da11cca24f4c45706a9c29bd"
+    },
+    {
+      "file": "overview/stage-07/whale-underwater.jpg",
+      "sha256": "e9f1869b2d3f111225a219a499b4b4d19f03b314d8c8e34ddd1eec96d08dd94a"
+    },
+    {
+      "file": "overview/stage-07/deep-seabed.jpg",
+      "sha256": "6a4d0f00b5c7f87cb2900bec40dcacad011cc1c7e8f47e44ea93465c96b5a753"
+    }
+  ],
+  "credits": "../../assets/shallow-artist/credits.html",
+  "historicalImage": {
+    "file": "overview/ocean-world-product-atlas.png",
+    "sha256": "fc31a5e84742672276f9105db33e2a99335ae76962b9a0e2d896ac681beb50ef"
+  }
+}

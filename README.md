@@ -4,9 +4,9 @@
 
 [进入7分30秒海洋总览](https://yydshly.github.io/ocean-world/?demo=ocean-primer&seed=55) · [全部能力与入口](https://yydshly.github.io/ocean-world/overview/) · [阶段07实景与边界](https://yydshly.github.io/ocean-world/overview/stage-07/) · [扩展与应用路线图](https://yydshly.github.io/ocean-world/overview/roadmap/)
 
-[![TIDAL 海底世界产品全景：目标、能力、生境、探索方法、实测结果与阶段边界](public/overview/ocean-world-product-atlas.png)](https://yydshly.github.io/ocean-world/overview/)
+[![TIDAL 海洋项目与扩展总览：当前阶段、空间场景、天气海况、物种轨迹、模块重构和应用方向](public/overview/project-map/ocean-project-map.jpg)](https://yydshly.github.io/ocean-world/overview/)
 
-**点击引导图进入更新后的导览，再选择7分30秒海洋总览。** 图像保持原版：图中画面、数量与性能属于2026-10-12历史快照；导览顶部、本文和[阶段07发布记录](docs/releases/STAGE_07_PUBLICATION.md)提供当前状态，不以历史图片替代新验收。
+**一张图了解当前成果与后续扩展。** 新图使用项目实际海面、浅海、鲸豚和深海画面，并标清已有代表能力、已知差距与后续候选。点击进入统一首页，可按用途或关键词查找全部网页、体验和专题。[放大阅读与下载新图](https://yydshly.github.io/ocean-world/overview/project-map/) · [全部网页索引](https://yydshly.github.io/ocean-world/overview/#all-pages) · [完整项目说明](docs/PROJECT_OVERVIEW.md)。原2026-10-12引导图保存在下方历史折叠区，原文件保持。
 
 **2026-10-14已发布并完成远端实播。** 运行提交 ba7089a，[构建、8组世界检查与部署通过](https://github.com/yydshly/ocean-world/actions/runs/38518175914)；7分30秒完整1×450.04实秒、16段讲解启动，无操作中断或超过250ms长帧。此次普通缓存加载17.7秒，仍未达5秒；真实感与旧研究问题保留。详[发布回执](docs/releases/STAGE_07_PUBLICATION.md)。
 
@@ -24,7 +24,7 @@
 
 ## 海洋扩展与后续应用
 
-当前可作为可恢复的场景底座。后续按“一个完整片段、一次集中修正、验证后归档”推进，候选顺序是海岸入水、天气海况、栖息地互动，再扩展新海域与应用。**本次只整理与发布，不自动开始新开发。**
+当前可作为可恢复的场景底座。后续按“一个完整片段、一次集中修正、验证后归档”推进，候选顺序是海岸入水、天气海况、栖息地互动，再扩展新海域与应用。**本次整理入口、说明与总览图；新场景和行为另设有限阶段。**
 
 - **海岸到深海：** 沙滩、潮间带、浪区与入水、浅海、开阔水域、中层、深海；相邻环境连续行进，跨海域明确说明。
 - **天气与风格：** 同一海岸先比较晴天、阴天、黄昏，后续加入雾、雨、风浪和月夜；天空、海面、水下光照联动，沿用纪录片式真实感。
@@ -33,12 +33,30 @@
 
 详见[公开路线图](https://yydshly.github.io/ocean-world/overview/roadmap/)与[完整扩展和重构规划](docs/OCEAN_EXPANSION_ROADMAP.md)。场景、物种目录、实体状态、轨迹、群体生态、流式保存、镜头讲解和应用层逐步分离；保留原个体、资源、随机序列和时钟语义。只使用原创或免费且允许按条件再分发的素材；现有部分素材有非商业/相同方式共享条件，商用游戏或资源包需逐项审查或替换，不能直接认定全部可商用。
 
+## 可扩展场景的具体清单
+
+| 范围 | 场景与内容候选 | 当前与后续的关系 |
+| --- | --- | --- |
+| 海岸与近岸 | 沙滩、岩岸、潮间带、潮池、岸边浪、浅水入海 | 现有简化海岸可作为背景基础，完整岸边活动与入水过程待建设 |
+| 浅海与温带 | 活礁谷、礁墙与外坡、沙道沙坡、海草甸、海带林与岩底 | 已有代表模块，后续补完整结构、生境过渡和动物联系 |
+| 开阔海洋与中层 | 大尺度海面水柱、鲸豚、不同水层鱼群、弱光海雪与悬浮生命 | 已有有限观察展示，后续扩空间尺度、物种与真实行为 |
+| 深海与特殊生境 | 软泥、岩缘、洞穴、海峡、海山、热液、冷泉、极地海冰边缘 | 泥底与部分岩缘已有研究基础，特殊场景按可靠资料与合规素材另选 |
+| 环境变化 | 晴阴雾雨与雷暴、平静涌浪风浪和破浪、潮汐海流、清晨黄昏月夜 | 当前固定光照与共享波面提供基础；完整状态、循环和联动待扩展 |
+| 物种与生活 | 水层鱼群、大型动物、近底与附着生命、海草藻体和微小生产者 | 按具体海域、生境、尺寸、水层与分类层级组织，不混放或以数量冒称生态全面 |
+| 轨迹与生态联系 | 导览编排、实时决策、观测数据回放；群游、避礁、受扰、摄食、庇护、捕食、成长与迁移 | 当前有限协同与部分研究生态保留，更完整的实时互动、观测回放和长期演化分阶段补齐 |
+
+[逐类场景与状态说明](https://yydshly.github.io/ocean-world/overview/roadmap/#scenes) · [详细扩展与重构方案](docs/OCEAN_EXPANSION_ROADMAP.md)。应用内图鉴、跟随、环境实验、手记、截图和录像从能力总览进入，首页不为它们编造独立网页。
+
 ## 保留的阶段记录与浅海能力
 
 下方保留阶段01—06及阶段07本地归档时的原说明。“尚未部署”“当前阶段05”等表述属于相应日期的历史状态；当前发布范围以上方和发布回执为准。
 
 <details>
 <summary>展开旧阶段能力、入口检查与历史实测</summary>
+
+历史引导图（2026-10-12原始快照，不能代替当前总图与新验收）：
+
+[![TIDAL 海底世界产品全景：目标、能力、生境、探索方法、实测结果与阶段边界](public/overview/ocean-world-product-atlas.png)](https://yydshly.github.io/ocean-world/overview/)
 
 **阶段07 · 海洋总览整体升级（本地归档，尚未部署）。** 7分30秒主线保持，海面/水下采用共享波面与光照，鲸豚的身体、尾部与路径联动，深海整组形态与栖息空间升级，观察器以明确标注的时间压缩连接各海域和深度。原4分钟浅海、探索入口、资产和存档保持。[本轮实景与阶段对照](public/overview/stage-07/index.html) · [阶段范围](docs/stages/STAGE_07_OCEAN_PRIMER_REALISM.md) · [验收回执](docs/validation/ocean-primer-stage-07-20261014.json)。
 
@@ -245,4 +263,4 @@ GitHub Pages使用`.github/workflows/pages.yml`：依赖安装 → 按仓库基�
 
 本次发布阶段07已归档的海洋总览，整理README、原引导图后的导航、当前实景和后续扩展方案；不新增场景、动物或整套资产。远端检查与播放结果见[阶段07发布回执](docs/releases/STAGE_07_PUBLICATION.md)。完成后阶段性归档；海岸、天气、物种互动、游戏或资源用途另设有限目标再开发。
 
-早期逐批更新保存在[README历史归档](docs/history/README-before-product-release.md)和[状态历史归档](docs/history/CURRENT_STATUS-before-product-release.md)。先前鱼群本地归档基线为`a935a3e`；本轮包含新增配音，远端具体版本及实际体验结果以[本次发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)和GitHub Actions为准。
+早期逐批更新保存在[README历史归档](docs/history/README-before-product-release.md)和[状态历史归档](docs/history/CURRENT_STATUS-before-product-release.md)。先前鱼群本地归档基线为`a935a3e`；阶段05当时包含新增配音，历史运行结果以[阶段05发布回执](docs/releases/STAGE_05_SCHOOLING_PUBLICATION.md)和GitHub Actions为准。

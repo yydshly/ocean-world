@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-product-overview.mjs && node scripts/bake-shallow-cover.mjs && node scripts/bake-shallow-geometry.mjs && vite build && node scripts/prepare-sites-build.mjs",
-    "build:local": "node scripts/build-product-overview.mjs && node scripts/bake-shallow-cover.mjs && node scripts/bake-shallow-geometry.mjs && vite build --base=/ocean-world/ && node scripts/prepare-sites-build.mjs",
+    "build": "node scripts/build-project-map.mjs && node scripts/build-product-overview.mjs && node scripts/bake-shallow-cover.mjs && node scripts/bake-shallow-geometry.mjs && vite build && node scripts/prepare-sites-build.mjs",
+    "build:local": "node scripts/build-project-map.mjs && node scripts/build-product-overview.mjs && node scripts/bake-shallow-cover.mjs && node scripts/bake-shallow-geometry.mjs && vite build --base=/ocean-world/ && node scripts/prepare-sites-build.mjs",
     "build:validation": "node scripts/build-validation.mjs",
     "preview": "vite preview",
     "preview:local": "vite preview --base=/ocean-world/ --host=127.0.0.1 --port=4175 --strictPort",
     "test:sites": "node --test tests/sites-worker.test.mjs",
-    "build:overview": "node scripts/build-product-overview.mjs",
+    "build:overview": "node scripts/build-project-map.mjs && node scripts/build-product-overview.mjs",
     "test:publication": "node --test tests/publication.test.mjs",
     "test:shallow": "node scripts/test-shallow-release.mjs"
   },

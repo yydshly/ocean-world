@@ -54,6 +54,15 @@ h4 { font-size: 18px; font-weight: 600; }
 .badge { display: inline-block; padding: 2px 9px; font-size: 12px; line-height: 1.65; border-radius: 3px; margin-bottom: 12px; }
 .existing { color: #aff1d1; background: #134b40; border: 1px solid #408d6d; }
 .limit { color: var(--amber); background: #42372a; border: 1px solid #7e6445; }
+.candidate { color: #bde1f3; background: #153d53; border: 1px solid #5b8fa8; }
+.conditional { color: var(--amber); background: #42372a; border: 1px solid #7e6445; }
+.candidate-legend { display: flex; flex-wrap: wrap; gap: 12px 24px; padding: 17px 21px; margin-bottom: 23px; background: var(--panel); }
+.candidate-legend p { color: var(--muted); font-size: 13px; }
+.candidate-legend .badge { margin: 0 6px 0 0; }
+.scene-candidates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.scene-candidates article { min-width: 0; padding: 21px 23px; background: var(--surface); border: 1px solid var(--line); }
+.scene-candidates h3 { font-size: 19px; }
+.scene-candidates p { color: var(--muted); font-size: 14px; margin-top: 9px; }
 .current-grid p, .three-grid p { margin-top: 10px; color: var(--muted); font-size: 14px; }
 .current-grid a { display: inline-block; margin-top: 13px; font-size: 13px; }
 .small { font-size: 12px !important; }
@@ -117,6 +126,7 @@ footer p { color: var(--muted); max-width: 760px; margin-top: 7px; }
   .current-route li { padding: 13px; }
   .weather-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .current-grid article, .three-grid article, .application-grid article { padding: 18px; }
+  .scene-candidates { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
   .topbar { padding: 16px 18px; gap: 13px 20px; }
@@ -135,6 +145,9 @@ footer p { color: var(--muted); max-width: 760px; margin-top: 7px; }
   .current-route { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .current-route li:last-child { grid-column: 1 / -1; }
   .current-grid, .three-grid, .scene-strip, .application-grid, .detail-grid { grid-template-columns: 1fr; gap: 16px; }
+  .scene-candidates { grid-template-columns: 1fr; gap: 15px; }
+  .scene-candidates article { padding: 18px; }
+  .candidate-legend { padding: 15px 18px; }
   .habitat-route { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .habitat-route li { padding: 17px; }
   .habitat-route h3 { font-size: 18px; }

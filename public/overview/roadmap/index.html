@@ -12,7 +12,8 @@
   <a class="skip-link" href="#main">跳到主要内容</a>
   <nav class="topbar" aria-label="产品导航">
     <a class="brand" href="../">TIDAL <span>海洋世界</span></a>
-    <a href="../">产品导览</a>
+    <a href="../#all-pages">全部网页入口</a>
+    <a href="../project-map/">一张图看懂项目</a>
     <a href="../stage-07/">阶段07实景</a>
     <a class="primary" href="../../?demo=ocean-primer&amp;seed=55">观看7分30秒总览 →</a>
   </nav>
@@ -23,7 +24,7 @@
         <h1>保存已有成果，<br>逐步扩展海洋。</h1>
         <p class="lead">从沙滩到深海，从晴朗海面到不同海况，从看见动物到理解它们的生活。让海洋体验成为能够持续扩展、复用的场景能力。</p>
         <p class="hero-scope">以代表性环境逐段完善，每一阶段交付完整片段、验证后归档。长期目标不设置“全量复制地球海洋”的完成点。</p>
-        <div class="actions"><a class="primary" href="../../?demo=ocean-primer&amp;seed=55">先看当前体验 →</a><a href="https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_EXPANSION_ROADMAP.md">阅读完整重构思路 ↗</a></div>
+        <div class="actions"><a class="primary" href="../../?demo=ocean-primer&amp;seed=55">先看当前体验 →</a><a href="../project-map/">用一张图理解当前与未来 →</a><a href="https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_EXPANSION_ROADMAP.md">阅读完整重构思路 ↗</a></div>
       </div>
       <figure class="hero-image">
         <a href="../stage-07/surface.jpg"><img src="../stage-07/surface.jpg" alt="阶段07实际浏览器画面：近岸海面、岸形与观察船" fetchpriority="high"></a>
@@ -32,7 +33,7 @@
     </header>
 
     <nav class="section-nav" aria-label="路线图内容">
-      <a href="#current">01 当前成果</a><a href="#expansion">02 海洋扩展</a><a href="#behavior">03 生命与行为</a><a href="#architecture">04 重构底座</a><a href="#applications">05 应用方向</a><a href="#delivery">06 阶段交付</a>
+      <a href="#current">01 当前成果</a><a href="#expansion">02 空间与天气</a><a href="#scenes">03 场景候选清单</a><a href="#behavior">04 生命与行为</a><a href="#architecture">05 重构底座</a><a href="#applications">06 应用方向</a><a href="#delivery">07 阶段交付</a>
     </nav>
 
     <section id="current" aria-labelledby="current-title">
@@ -65,14 +66,40 @@
       </ol>
       <aside class="note"><h3>扩展空间，也要延续历史</h3><p>未来区域按位置、种子与生境规则生成，近处加载、远处释放。返回时应保持地形、个体身份和生态记录，不能卸载后补种或随机重建原群落。物种共现按具体海域与生境检查，水深范围重叠不能单独证明同站共现。</p></aside>
 
-      <div class="subheading"><h3>同一片海，也会随环境改变</h3><p>保持纪录片式写实，丰富场景气质。天气系统属于后续扩展。</p></div>
+      <div class="subheading"><h3>同一片海，也会随环境改变</h3><p>当前总览沿用固定晴朗光照与平静海面；下面的动态天气、昼夜和不同海况属于后续扩展。保持纪录片式写实，让场景气质变化有环境依据。</p></div>
       <div class="weather-grid">
-        <article><span class="weather-symbol" aria-hidden="true">☀</span><h4>天气</h4><p>先形成晴天、阴天和黄昏三个完整状态，再按需要增加雾、雨和雷暴。</p></article>
+        <article><span class="weather-symbol" aria-hidden="true">☀</span><h4>天气</h4><p>先形成晴天、阴天和黄昏三个完整状态，再按需要增加海雾、降雨和较强风浪。</p></article>
         <article><span class="weather-symbol" aria-hidden="true">≈</span><h4>海况</h4><p>平静海面、温和涌浪、风浪与岸边破浪；风、涌浪、潮汐及局部海流分别组织。</p></article>
         <article><span class="weather-symbol" aria-hidden="true">◐</span><h4>昼夜</h4><p>清晨、正午、黄昏与月夜，联动天空、海面反射、水色和可见距离。</p></article>
         <article><span class="weather-symbol" aria-hidden="true">⌁</span><h4>海域气质</h4><p>热带沙滩、温带岩岸、开阔大洋和极地环境，逐段建立不同的整体特征。</p></article>
       </div>
       <p class="section-note">天空、光照、波浪与水下表现需要联动。海面变化对水下的影响按深度区分，不能用统一换色或让深海海床同步出现浪花表示天气。</p>
+    </section>
+
+    <section id="scenes" aria-labelledby="scenes-title">
+      <div class="section-heading"><p class="eyebrow">后续候选 · 18类空间</p><h2 id="scenes-title">可扩展场景，逐类说清楚</h2><p>已有模块可沿用扩展，新空间另设阶段。下列完整场景与连接尚未全部上线，每次选择一种海域、季节和观察范围，形成可观看或探索的完整片段。</p></div>
+      <div class="candidate-legend" aria-label="场景候选状态说明"><p><span class="badge existing">沿用扩展</span> 已有对应模块，完整群落与体验还需升级</p><p><span class="badge candidate">新候选</span> 需要新增空间与环境连接</p><p><span class="badge conditional">条件候选</span> 先取得环境依据与合规素材，再确定范围</p></div>
+      <div class="scene-candidates">
+        <article><span class="badge candidate">新候选</span><h3>01 沙滩与海岸</h3><p>沙滩、潮线、岸浪、漂积物与陆海尺度。当前简化岸形仅作为参照。</p></article>
+        <article><span class="badge candidate">新候选</span><h3>02 岩岸</h3><p>岩台、裂隙、浪蚀形态，以及陆地与水体的衔接。</p></article>
+        <article><span class="badge candidate">新候选</span><h3>03 潮间带与潮池</h3><p>露出与淹没、潮沟、附着群落和潮池居民，解释潮汐变化。</p></article>
+        <article><span class="badge candidate">新候选</span><h3>04 近岸浪区</h3><p>破浪、岸边浪花、底质、浑浊与观察者运动一起呈现。</p></article>
+        <article><span class="badge candidate">新候选</span><h3>05 浅水入海</h3><p>水线、折射、入水视听与空气到水体的连续空间变化。</p></article>
+        <article><span class="badge existing">沿用扩展</span><h3>06 连续活礁谷</h3><p>沿用浅海，补齐礁坡、谷地、洞隙、庇护与上下水层群落。</p></article>
+        <article><span class="badge existing">沿用扩展</span><h3>07 沙道与沙坡</h3><p>沿用浅海沙道，形成沙纹、起伏、礁沙边缘和贴底活动联系。</p></article>
+        <article><span class="badge existing">沿用扩展</span><h3>08 海草甸</h3><p>沿用草床，联结草床核心、草边、裸沙与对应动物的活动空间。</p></article>
+        <article><span class="badge existing">沿用扩展</span><h3>09 温带藻林与岩底</h3><p>沿用研究模块，形成林下、藻间、冠层及林外水体；旧存档与性能限制需先处理。</p></article>
+        <article><span class="badge existing">沿用扩展</span><h3>10 开阔海洋</h3><p>沿用总览，补海面尺度、水柱、较稀疏生命与大型动物呼吸观察。</p></article>
+        <article><span class="badge existing">沿用扩展</span><h3>11 中层水体</h3><p>沿用总览及研究模块，补光照梯度、立体空间、适深动物与海雪。</p></article>
+        <article><span class="badge existing">沿用扩展</span><h3>12 深海泥底</h3><p>沿用总览及研究模块，补软泥、坡面、观察灯与贴底和离底群落。</p></article>
+        <article><span class="badge existing">沿用扩展</span><h3>13 深海岩缘与露头</h3><p>沿用部分研究模块，形成硬底结构、附着空间与软硬底过渡。</p></article>
+        <article><span class="badge conditional">条件候选</span><h3>14 水下洞穴</h3><p>入口、遮蔽、壁面、净空与特定群落，另定海域与观察条件。</p></article>
+        <article><span class="badge conditional">条件候选</span><h3>15 海山</h3><p>大尺度坡面、深度变化、水流条件与相应群落，避免简单放大浅海。</p></article>
+        <article><span class="badge conditional">条件候选</span><h3>16 热液区</h3><p>独立的地质、环境、资料支持的群落与观察解释。</p></article>
+        <article><span class="badge conditional">条件候选</span><h3>17 冷泉区</h3><p>独立的底质、环境和群落，避免复用热液场景的外观与解释。</p></article>
+        <article><span class="badge conditional">条件候选</span><h3>18 极地海洋</h3><p>冰、水面、水下光照与该海域生命，单独确定资料与资产范围。</p></article>
+      </div>
+      <aside class="note"><h3>连接的是海洋知识，也要说明地理差异</h3><p>相邻栖息地可以连续观察。热带浅海、温带藻林、极地与不同深海站点需要明确海域和时间压缩，不能随意拼成同一真实地点。洞穴、海山、热液、冷泉和极地需先获得环境与物种依据，以及允许使用和再分发的素材。</p><p><a href="../project-map/">在一张图中查看当前模块、扩展空间与应用关系 →</a></p></aside>
     </section>
 
     <section id="behavior" aria-labelledby="behavior-title">
@@ -86,6 +113,8 @@
         <article><span class="card-number">02</span><h3>运动与轨迹</h3><p>统一位置、速度、朝向和行为状态，再联动鳍、尾、身体与呼吸。转向、停留和滑行应与路径对应。</p></article>
         <article><span class="card-number">03</span><h3>群落与生态</h3><p>形成可观察的庇护、资源利用、摄食、捕食与躲避关系。事件需要实际原因和结果，景观痕迹不能代替生态记录。</p></article>
       </div>
+      <div class="subheading"><h3>按生活空间补齐物种</h3><p>附着群落与植物 → 近底居民 → 草间或洞隙居民 → 中层鱼群 → 开放水域访客 → 大型动物 → 深海软底、硬底与水层代表。每批先确认分类层级、尺寸、海域、底质、水深与活动范围，再形成可观察的联系；不只在空处增加模型数量。</p></div>
+      <p class="section-note">后续轨迹可从巡游、停留、避障与受扰，扩展到群体交会、庇护、摄食，再选择资料支持的昼夜垂直运动或季节迁移。长时迁移需要明确物种、海域与时钟，循环路径或重新生成个体不能计作自然迁移。</p>
       <details><summary>轨迹可以服务三种不同用途</summary><div class="detail-grid"><article><h4>导览展示</h4><p>作者安排观察重点，动物在有限模型内响应；适合复播和选章。</p></article><article><h4>实时互动</h4><p>动物根据邻居、地形、资源、刺激与自身状态决策；需要持续运行与保存。</p></article><article><h4>观测数据回放</h4><p>使用有许可的实际记录，说明采样间隔、适用范围和测量误差。</p></article></div></details>
       <aside class="note"><h3>真实感分层验收</h3><p>先看整体空间与画面，再看运动形态、生境与生态，最后按资料进行科学校准。更多模型、更多个体和聚群规则，不能单独证明动物行为已经真实或经过校准。</p></aside>
     </section>
@@ -137,7 +166,7 @@
       <p class="small">具体版本与条件以每项素材的来源说明和原许可为准。</p>
     </section>
 
-    <footer><div><strong>TIDAL · 海洋扩展与应用规划</strong><p>当前成果保存，后续目标分阶段确认。本页不启动新的场景、资产、生态或游戏开发。</p></div><div class="footer-links"><a href="../">返回产品导览</a><a href="../stage-07/">当前实景与限制</a><a href="https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_EXPANSION_ROADMAP.md">完整路线图与重构思路 ↗</a></div></footer>
+    <footer><div><strong>TIDAL · 海洋扩展与应用规划</strong><p>当前成果保存，后续目标分阶段确认。本页不启动新的场景、资产、生态或游戏开发。</p></div><div class="footer-links"><a href="../#all-pages">返回全部网页入口</a><a href="../project-map/">一张图看懂项目</a><a href="../stage-07/">当前实景与限制</a><a href="https://github.com/yydshly/ocean-world/blob/main/docs/OCEAN_EXPANSION_ROADMAP.md">完整路线图与重构思路 ↗</a></div></footer>
   </main>
 </body>
 </html>
